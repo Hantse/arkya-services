@@ -5,4 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>arkya-admin-local</UserSecretsId>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Arkya.ServiceDefaults/Arkya.ServiceDefaults.csproj" />
+  </ItemGroup>
 </Project>

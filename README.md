@@ -20,10 +20,11 @@ Arkya is a Unity3D MMORPG project using Unity DOTS (Data-Oriented Technology Sta
 - Area prototype: two server processes and two clients on one continuous map, with entity authority transfers and cross-area combat; see the [build and run guide](docs/AREA_PROTOTYPE.md).
 - Backend: separate .NET 10 Identity (Discord accounts/sessions) and Characters services in `backend/`, alongside the existing local development API.
 - Public API deployment: a YARP gateway routes `api.arkya.online` to the backend services; [k3s setup and Docker image workflows](backend/deploy/gateway/README.md).
+- Realm deployment backoffice: `Arkya.Admin` manages persistent realm definitions through `Arkya.Realms.Api`, which creates and observes dedicated workloads in approved k3s namespaces; [architecture, scope and setup](docs/REALM_DEPLOYMENT.md). Player admission and a compatible Linux dedicated image remain separate integration work.
 - Backend persistence: MongoDB, with a separate database owned by each service and local Compose setup.
 - Quest content: an ASP.NET admin edits kill objectives and publishes immutable catalogs; dedicated area servers load a pinned version at startup and save character progress through Characters. See the [quest content guide](docs/QUEST_CONTENT.md).
 - Server target: authoritative Unity dedicated server communicating with the ASP.NET Core services; initial contracts use HTTPS JSON.
-- Realm model: a character belongs to one persistent realm, whose simulation can span several area servers. Realm APIs and character realm binding remain planned.
+- Realm model: a character belongs to one persistent realm, whose simulation can span several area servers. Operator deployment APIs exist; the public realm catalogue, character realm binding and admission remain planned.
 
 The repository is still in foundation mode. Identity and Characters establish the backend boundaries; the isolated Unity creation scene integrates Discord login and persistent character appearance, while the area prototype exercises continuous simulation across two owners. Realm selection, persistent realm-bound characters, and dedicated-server admission still need integration. The existing gameplay bootstrap continues to use its local development flow.
 

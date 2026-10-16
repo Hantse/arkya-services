@@ -1,0 +1,38 @@
+@page "/Realms/{realmId}"
+@model RealmModel
+@using Arkya.Admin.Realms
+@{
+    ViewData["Title"] = Model.Realm?.DisplayName ?? "Realm";
+}
+<a class="text-link" asp-page="/Realms">← Tous les realms</a>
+<header class="page-header realm-header"><div><div class="eyebrow">UNIVERS / DÉPLOIEMENT</div><h1>@(Model.Realm?.DisplayName ?? "Realm")</h1><p class="intro">Configuration enregistrée et état des serveurs.</p></div><a class="button secondary" asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]">Actualiser</a></header>
+@if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error</div> }
+@if (Model.Realm is { } realm)
+{
+    <div class="realms-workspace">
+        <section aria-labelledby="servers-heading">
+            <div class="section-heading"><h2 id="servers-heading">Serveurs dédiés</h2><span class="realm-status @RealmPresentation.StatusClass(realm.Status)">@RealmPresentation.StatusLabel(realm.Status)</span></div>
+            <div class="panel realm-topology"><div class="realm-root"><span class="realm-node" aria-hidden="true">◇</span><div><strong>@realm.DisplayName</strong><small class="mono">@realm.RealmId</small></div></div><ul class="realm-servers">
+            @foreach (var server in realm.Servers)
+            {
+                <li><div><strong class="mono">@server.Id</strong><small>UDP @server.Port · @server.ReadyReplicas / @server.DesiredReplicas réplica(s) prêt(s)</small></div><code class="server-address">@(string.IsNullOrWhiteSpace(server.Address) ? "Adresse en attente" : server.Address)</code></li>
+            }
+            </ul></div>
+            @if (realm.Status == "Failed") { <div class="alert error realm-alert" role="alert">@RealmPresentation.FailureMessage(realm.LastError)</div> }
+            <div class="workflow-note"><strong>Déploiement prêt ≠ ouverture aux joueurs</strong><p>La disponibilité affichée concerne les ressources du cluster. L'admission des joueurs et le raccordement des personnages à ce realm restent à intégrer.</p></div>
+        </section>
+        <aside aria-labelledby="configuration-heading">
+            <div class="section-heading"><h2 id="configuration-heading">Configuration</h2><span class="badge">Révision @realm.Revision</span></div>
+            <div class="panel publish-panel"><dl class="realm-facts"><div><dt>Cible</dt><dd>@realm.TargetId</dd></div><div><dt>Namespace</dt><dd class="mono">@realm.Namespace</dd></div><div><dt>Profil</dt><dd>@realm.ProfileId</dd></div><div><dt>Image des serveurs</dt><dd class="mono">@realm.Image</dd></div><div><dt>Dernier changement d'état</dt><dd><time datetime="@realm.UpdatedAt.ToString("O")">@realm.UpdatedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></dd></div></dl>
+            @if (RealmPresentation.CanDeploy(realm))
+            {
+                <form method="post" asp-page-handler="Deploy" asp-route-realmId="@realm.RealmId"><input type="hidden" asp-for="ExpectedRevision" /><button class="button primary full-width" type="submit" disabled="@(!Model.DeploymentEnabled)">@(realm.Status == "Failed" ? "Relancer le déploiement" : "Déployer ce realm")</button></form>
+                <small>Cette action crée les ressources du realm sur la cible configurée.</small>
+            }
+            else if (realm.Status is "Pending" or "Deploying") { <p>Déploiement en cours. Actualisez la page pour consulter son avancement.</p> }
+            @if (!Model.DeploymentEnabled) { <p class="realm-alert">Le déploiement est désactivé sur cette installation.</p> }
+            </div>
+        </aside>
+    </div>
+}

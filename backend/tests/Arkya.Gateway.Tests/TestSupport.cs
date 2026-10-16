@@ -30,6 +30,8 @@ internal sealed class Downstream : IAsyncDisposable
     public static async Task<Downstream> StartAsync(string name, Func<HttpContext, Task>? respond = null)
     {
         var builder = WebApplication.CreateBuilder();
+        // This recorder accepts either public host independently of the gateway's appsettings.
+        builder.Configuration.AddInMemoryCollection(new Dictionary<string, string?> { ["AllowedHosts"] = "*" });
         builder.WebHost.UseUrls("http://127.0.0.1:0");
         builder.Logging.ClearProviders();
         var app = builder.Build();

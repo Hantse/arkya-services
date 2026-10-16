@@ -82,7 +82,15 @@ YARP relaie une liste de routes et de méthodes explicites, sans suppression de 
 | `GET /health` | Gateway elle-même |
 | `GET/POST /v1/characters`, `GET /v1/characters/{guid}`, `GET /v1/characters/appearance-options` | Characters, seulement si activé |
 
-Les prérequêtes `OPTIONS` des appels API sont transmises au service concerné, qui conserve sa politique CORS. `/internal`, les routes d'administration, de développement, Social SDK et les sondes détaillées ne sont pas publiés. Un nouveau sous-service demande une route explicite dans `GatewayRoutes.cs`, sa destination et son filtrage réseau ; aucun chemin générique ne donne accès à toutes ses API.
+Les prérequêtes `OPTIONS` des appels API sont transmises au service concerné, qui conserve sa politique CORS. Sur le domaine API, `/internal`, les routes d'administration, de développement, Social SDK et les sondes détaillées ne sont pas publiés. Un nouveau sous-service demande une route explicite dans `GatewayRoutes.cs`, sa destination et son filtrage réseau ; aucun chemin générique ne donne accès à toutes ses API.
+
+### Backoffice sur un domaine distinct
+
+Le routage du backoffice est désactivé par défaut. Renseigner `adminAddress` avec l'origine interne d'Admin, par exemple `http://arkya-admin.arkya-operations.svc.cluster.local:8080/`, et `adminHost` avec `backoffice.arkya.online`. Le renderer active alors `Gateway:AdminEnabled`, configure `AdminHost`/`AdminAddress` et ajoute le domaine dans `AllowedHosts`. Le Host exact du backoffice reçoit ses pages, fichiers statiques et `/health` ; il ne reçoit pas les routes Identity/Characters. Les autres Hosts ne sont jamais dirigés vers Admin.
+
+Ajouter le routeur [Traefik backoffice](traefik/backoffice.dynamic.example.yaml) au provider fichier existant, en adaptant domaine, certificat et entryPoint. Il réutilise le service `arkya-gateway` déjà déclaré. Admin exige la confiance explicite dans les proxies pour HTTP privé et conserve ses contrôles de session et antiforgery. Son backend Realms reste interne, en HTTPS. Le [guide opérations k3s](../realms/README.md) décrit ses manifests, Secrets et certificats.
+
+Le test `./Test-AdminRendering.ps1` vérifie cette configuration sans contacter de cluster.
 
 ### Activer Characters ultérieurement
 

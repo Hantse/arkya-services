@@ -1,4 +1,5 @@
 using Arkya.ServiceDefaults;
+using Microsoft.Extensions.Options;
 
 namespace Arkya.Gateway;
 
@@ -28,7 +29,11 @@ public partial class Program
             }
             await next(context);
         });
-        app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "arkya-gateway" }));
+        var health = app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "arkya-gateway" }));
+        var gateway = app.Services.GetRequiredService<IOptions<GatewayOptions>>().Value;
+        if (gateway.AdminEnabled)
+            health.RequireHost(GatewayOptions.AllowedHosts(app.Configuration)
+                .Where(host => !host.Equals(gateway.AdminHost, StringComparison.OrdinalIgnoreCase)).ToArray());
         app.MapReverseProxy();
         app.Run();
     }

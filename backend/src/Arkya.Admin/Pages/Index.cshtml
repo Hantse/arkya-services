@@ -9,7 +9,7 @@
 </header>
 @if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
 @if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Index">Recharger le catalogue</a></div> }
-<div asp-validation-summary="All" class="alert error" role="alert"></div>
+@if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
 @if (Model.Loaded)
 {
     <div class="workspace">

@@ -4,6 +4,8 @@ Identity et Characters établissent le parcours compte/personnage en ASP.NET Cor
 
 ## Services et propriété des données
 
+Le [backoffice de déploiement des realms sur k3s](deploy/realms/README.md) ajoute `Arkya.Realms.Api` et l'écran **Realms** d'`Arkya.Admin` : définitions dans `arkya_realms`, demandes durables et observation Kubernetes. Le module est activé explicitement dans Admin. Le backend de déploiement reste interne ; seul le backoffice peut être publié sur son domaine via la gateway. Voir [l'architecture réseau et le périmètre](../docs/REALM_DEPLOYMENT.md).
+
 | Application | Adresse locale | Responsabilité | Base MongoDB |
 | --- | --- | --- | --- |
 | `Arkya.Gateway` | `https://localhost:7140` | YARP : entrée publique commune pour Identity et Characters | Aucune |

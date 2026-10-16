@@ -15,6 +15,7 @@ configMapGenerator:
       - ProxyTrust__ForwardLimit=1
       - Management__Port=8081
       - Gateway__CharactersEnabled=false
+      - Gateway__AdminEnabled=false
       - ReverseProxy__Clusters__identity__Destinations__primary__Address=http://arkya-identity.arkya-identity.svc.cluster.local:8080/
       - Logging__LogLevel__Microsoft.AspNetCore=Warning
       - Logging__LogLevel__System.Net.Http.HttpClient=Warning

@@ -3,6 +3,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Arkya.Admin.Content;
+using Arkya.Admin.Realms;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
@@ -54,19 +55,32 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
 {
     public const string Password = "admin-test-password-for-http-tests";
     public const string AdminKey = "content-outbound-test-admin-key-1234";
+    public const string RealmsAdminKey = "realms-outbound-test-admin-key-12345";
     public ContentStub Content { get; } = new();
+    public RealmsStub Realms { get; } = new();
+    public Dictionary<string, string?> Settings { get; } = [];
+    public string EnvironmentName { get; set; } = "Development";
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        builder.UseEnvironment("Development");
-        builder.ConfigureAppConfiguration((_, configuration) => configuration.AddInMemoryCollection(new Dictionary<string, string?>
+        builder.UseEnvironment(EnvironmentName);
+        builder.ConfigureAppConfiguration((_, configuration) =>
         {
-            ["Admin:Password"] = Password,
-            ["ContentApi:BaseUrl"] = "https://content.example/",
-            ["ContentApi:AdminKey"] = AdminKey
-        }));
-        builder.ConfigureServices(services => services.AddHttpClient<ContentAdminClient>()
-            .ConfigurePrimaryHttpMessageHandler(() => Content));
+            configuration.AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["Admin:Password"] = Password,
+                ["ContentApi:BaseUrl"] = "https://content.example/",
+                ["ContentApi:AdminKey"] = AdminKey,
+                ["RealmsApi:BaseUrl"] = "https://realms.example/",
+                ["RealmsApi:AdminKey"] = RealmsAdminKey
+            });
+            configuration.AddInMemoryCollection(Settings);
+        });
+        builder.ConfigureServices(services =>
+        {
+            services.AddHttpClient<ContentAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Content);
+            services.AddHttpClient<RealmsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Realms);
+        });
     }
 
     public HttpClient Browser() => CreateClient(new WebApplicationFactoryClientOptions
@@ -114,6 +128,7 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
     {
         Assert.DoesNotContain(Password, response);
         Assert.DoesNotContain(AdminKey, response);
+        Assert.DoesNotContain(RealmsAdminKey, response);
         Assert.DoesNotContain("private upstream details", response);
     }
 }

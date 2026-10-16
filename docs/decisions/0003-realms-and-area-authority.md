@@ -2,7 +2,7 @@
 
 ## Statut
 
-Décision de conception acceptée. Le prototype d'areas existe dans Unity ; le service Realm et le rattachement persistant des personnages restent à implémenter.
+Décision de conception acceptée. Le prototype d'areas existe dans Unity. Le service Realms propose maintenant le catalogue opérateur et le déploiement k3s ; le catalogue joueur, l'admission et le rattachement persistant des personnages restent à implémenter.
 
 ## Contexte
 
@@ -22,7 +22,7 @@ Un MMORPG doit distinguer l'univers auquel un joueur appartient des processus qu
 
 `Unity3D/Arkya/Assets/Arkya/AreaPrototype/` contient une expérience locale avec deux areas et deux clients. Elle utilise des entités, jobs Burst et ghosts Netcode, avec transferts d'autorité, impacts identifiés et registre de déduplication transféré avec la cible. Aucun `realmId` persistant n'est actuellement transmis par ce protocole.
 
-Identity possède les comptes et sessions ; Characters possède les personnages du compte. Le modèle Characters actuel ne comporte pas encore de realm et son index de nom reste global. Aucun service Realm, catalogue public, sélecteur Unity ni admission liée au realm n'est présent dans cette tranche.
+Identity possède les comptes et sessions ; Characters possède les personnages du compte. Le modèle Characters actuel ne comporte pas encore de realm et son index de nom reste global. `Arkya.Realms.Api` possède désormais les définitions opérateur et les demandes de déploiement k3s dans `arkya_realms`, avec profils figés et suivi des ressources ; voir le [périmètre de déploiement](../REALM_DEPLOYMENT.md). Aucun catalogue public, sélecteur Unity ni admission liée au realm n'est présent dans cette tranche.
 
 ## Conséquences
 

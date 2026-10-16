@@ -5,11 +5,11 @@
 }
 <div class="login-wrap">
     <div class="eyebrow">ARKYA / ADMINISTRATION</div>
-    <h1>Entrer dans l'atelier</h1>
-    <p class="intro">Créez les quêtes et préparez leur prochaine publication.</p>
+    <h1>Administrer Arkya</h1>
+    <p class="intro">Préparez les mondes, déployez les serveurs et publiez les quêtes.</p>
     <form method="post" class="panel login-panel">
         <input type="hidden" asp-for="ReturnUrl" />
-        <div asp-validation-summary="All" class="alert error" role="alert"></div>
+        @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
         <label asp-for="Password">Mot de passe administrateur</label>
         <input asp-for="Password" type="password" autocomplete="current-password" required maxlength="512" />
         <button type="submit" class="button primary">Se connecter <span aria-hidden="true">→</span></button>

@@ -1,0 +1,29 @@
+{
+  "operationsNamespace": "arkya-operations",
+  "gatewayNamespace": "arkya-identity",
+  "adminHost": "backoffice.arkya.online",
+  "trustedGatewayPodNetworks": ["10.42.0.0/16"],
+  "adminImage": "ghcr.io/hantse/arkya-services-admin@sha256:REPLACE_WITH_PUBLISHED_DIGEST",
+  "realmsImage": "ghcr.io/hantse/arkya-services-realms@sha256:REPLACE_WITH_PUBLISHED_DIGEST",
+  "imagePullSecretName": "",
+  "storageClassName": "local-path",
+  "deployment": {
+    "enabled": false,
+    "apiServer": "https://kubernetes.default.svc",
+    "tokenFile": "/var/run/secrets/kubernetes.io/serviceaccount/token",
+    "certificateAuthorityFile": "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt",
+    "targets": [
+      { "id": "eu-test", "displayName": "Europe · test", "namespace": "arkya-realm-eu-test" }
+    ],
+    "profiles": [
+      {
+        "id": "island-test",
+        "displayName": "Île · un serveur de validation",
+        "image": "ghcr.io/hantse/arkya-dedicated@sha256:REPLACE_WITH_PUBLISHED_DIGEST",
+        "servers": [{ "id": "island", "port": 7777, "args": [] }],
+        "environmentSecretName": "",
+        "imagePullSecretName": ""
+      }
+    ]
+  }
+}

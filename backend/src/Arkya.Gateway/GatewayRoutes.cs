@@ -4,7 +4,8 @@ namespace Arkya.Gateway;
 
 public static class GatewayRoutes
 {
-    public static IReadOnlyList<RouteConfig> Create(bool charactersEnabled)
+    public static IReadOnlyList<RouteConfig> Create(bool charactersEnabled, string? adminHost = null,
+        IReadOnlyList<string>? publicHosts = null)
     {
         var routes = new List<RouteConfig>
         {
@@ -20,6 +21,16 @@ public static class GatewayRoutes
             routes.Add(Route("characters-list-create", "characters", "/v1/characters", "GET", "POST", "OPTIONS"));
             routes.Add(Route("characters-get", "characters", "/v1/characters/{id:guid}", "GET", "OPTIONS"));
             routes.Add(Route("characters-appearance", "characters", "/v1/characters/appearance-options", "GET", "OPTIONS"));
+        }
+        if (adminHost is not null)
+        {
+            routes = routes.Select(route => route with { Match = route.Match with { Hosts = publicHosts } }).ToList();
+            routes.Add(new RouteConfig
+            {
+                RouteId = "admin",
+                ClusterId = "admin",
+                Match = new RouteMatch { Hosts = [adminHost], Path = "/{**path}" }
+            });
         }
         return routes;
     }

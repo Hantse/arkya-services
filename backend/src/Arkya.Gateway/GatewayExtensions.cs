@@ -13,6 +13,14 @@ public static class GatewayExtensions
 {
     public static IServiceCollection AddGateway(this IServiceCollection services)
     {
+        services.AddOptions<GatewayOptions>().BindConfiguration("Gateway")
+            .Validate(options => !options.AdminEnabled || GatewayOptions.IsAdminHostValid(options.AdminHost),
+                "Gateway:AdminHost must be an exact DNS hostname distinct from api.arkya.online.")
+            .Validate(options => !options.AdminEnabled || GatewayOptions.IsOriginValid(options.AdminAddress),
+                "Gateway:AdminAddress must be an HTTP(S) origin without credentials, path prefix, query or fragment.")
+            .Validate<IConfiguration>((options, configuration) => !options.AdminEnabled || options.HasExplicitAllowedHosts(configuration),
+                "AllowedHosts must explicitly include api.arkya.online and Gateway:AdminHost, without wildcard hosts.")
+            .ValidateOnStart();
         services.AddOptions<GatewayManagementOptions>().BindConfiguration("Management")
             .Validate(options => options.Port == 0 || options.Port is >= 1024 and <= 65535,
                 "Management port must be zero (disabled) or 1024-65535.").ValidateOnStart();
@@ -20,9 +28,22 @@ public static class GatewayExtensions
         services.AddSingleton<IProxyConfigProvider>(provider =>
         {
             var finalConfiguration = provider.GetRequiredService<IConfiguration>();
-            var routes = GatewayRoutes.Create(finalConfiguration.GetValue<bool>("Gateway:CharactersEnabled"));
+            var options = provider.GetRequiredService<IOptions<GatewayOptions>>().Value;
+            var publicHosts = options.AdminEnabled ? GatewayOptions.AllowedHosts(finalConfiguration)
+                .Where(host => !host.Equals(options.AdminHost, StringComparison.OrdinalIgnoreCase)).ToArray() : null;
+            var routes = GatewayRoutes.Create(options.CharactersEnabled, options.AdminEnabled ? options.AdminHost : null, publicHosts);
             var configured = finalConfiguration.GetSection("ReverseProxy:Clusters").Get<Dictionary<string, ClusterConfig>>()
                 ?? throw new InvalidOperationException("ReverseProxy:Clusters must be configured.");
+            if (options.AdminEnabled)
+                configured["admin"] = new ClusterConfig
+                {
+                    ClusterId = "admin",
+                    Destinations = new Dictionary<string, DestinationConfig>
+                    {
+                        ["primary"] = new() { Address = new Uri(options.AdminAddress).AbsoluteUri }
+                    },
+                    HttpRequest = new() { ActivityTimeout = TimeSpan.FromSeconds(30) }
+                };
             var clusters = routes.Select(route => route.ClusterId!).Distinct(StringComparer.Ordinal)
                 .Select(id => configured.TryGetValue(id, out var cluster)
                     ? cluster with { ClusterId = id }

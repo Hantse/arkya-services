@@ -4,6 +4,8 @@ Arkya utilise Unity DOTS (Data-Oriented Technology Stack) pour la simulation tem
 
 ## Vue d'ensemble
 
+La cible réseau et services retenue le 16 octobre 2026 est détaillée dans [Backoffice et déploiement des realms](REALM_DEPLOYMENT.md) : Traefik VM → YARP public → frontend/backoffice/API, avec des endpoints UDP distincts pour les dedicated et une gateway HTTP interne de services de jeu encore à intégrer. La première tranche implémente l'administration des déploiements k3s ; le schéma ci-dessous décrit les flux compte/personnage déjà présents.
+
 ```mermaid
 flowchart LR
     Client["Client Unity DOTS\nPrésentation et prédiction locale"]
@@ -74,19 +76,20 @@ Le prototype actuel emploie des identifiants de test et deux areas fixes sur loo
 
 | Projet | Responsabilité | Données possédées |
 | --- | --- | --- |
-| `Arkya.Gateway` | Reverse proxy YARP, routes publiques Identity/Characters sur une origine commune ; aucune route interne/admin/dev | Aucune donnée métier |
+| `Arkya.Gateway` | Reverse proxy YARP, routes publiques Identity/Characters et backoffice facultatif sur un domaine distinct ; aucune API interne/dev | Aucune donnée métier |
 | `Arkya.Identity.Api` | Connexion Discord, identité Arkya, création, validation et révocation des sessions | Comptes, challenges de connexion, sessions dans `arkya_identity` |
 | `Arkya.Characters.Api` | Création, validation d'apparence, liste et lecture des personnages du compte connecté ; résolution interne par propriétaire | Personnages et apparences dans `arkya_characters` |
 | `Arkya.Content.Api` | Brouillons de quêtes, validation et publication de catalogues immuables | Révisions et publications dans `arkya_content` |
-| `Arkya.Admin` | Interface web authentifiée pour éditer et publier le contenu | Aucune donnée métier ; appels serveur vers Content |
+| `Arkya.Admin` | Interface web authentifiée pour éditer/publier le contenu et créer/déployer/suivre les realms | Aucune donnée métier ; appels serveur vers Content et Realms |
+| `Arkya.Realms.Api` | Catalogue opérateur des realms, demandes de déploiement durables et observation des dedicated k3s | Définitions, profils figés et état des opérations dans `arkya_realms` |
 | `Arkya.Backend.Api` | Ancien parcours local : annuaire de serveurs mock et connexion de développement | Sessions de développement en mémoire |
 | `Arkya.ServiceDefaults` | Bibliothèque technique commune : options MongoDB et authentification des appels de service | Aucune donnée métier |
 
-Un service Realm est prévu pour le catalogue des univers disponibles et leurs points d'entrée. Il n'est pas implémenté. Le rattachement des personnages à un `realmId`, la validation de ce realm et l'émission d'un droit d'admission nécessitent encore des contrats et une migration ; l'API Characters actuelle continue de fonctionner avec son seul propriétaire de compte et son index de nom global.
+`Arkya.Realms.Api` fournit désormais le catalogue réservé aux opérateurs et le déploiement de processus dédiés dans des namespaces k3s préautorisés. Il ne publie pas encore un catalogue joueur ni un droit d'entrée en jeu. Le rattachement des personnages à un `realmId`, la validation de ce realm et l'émission d'un droit d'admission nécessitent encore des contrats et une migration ; l'API Characters actuelle continue de fonctionner avec son seul propriétaire de compte et son index de nom global.
 
 Les nouvelles API ciblent .NET 10. Chaque service sépare contrats HTTP, règles applicatives et adaptateurs de persistance. Les documents MongoDB restent internes. Un `accountId` Arkya est stable et distinct de l'identifiant Discord ; Characters conserve cette référence sans lire la base Identity.
 
-La gateway conserve l’authentification et les règles métier dans les services. Son allowlist de routes est explicite : connexion web Identity et endpoints publics Characters ; Content et Admin ont actuellement des API d’exploitation et ne sont pas publiés. Les routes Social SDK restent hors de cette première exposition web. Les futures routes doivent être ajoutées volontairement et testées. Les workflows GitHub Actions construisent et publient séparément les images Identity et Gateway dans GHCR.
+La gateway conserve l’authentification et les règles métier dans les services. Son allowlist de routes API est explicite : connexion web Identity et endpoints publics Characters. Un routage Admin facultatif dessert exclusivement son domaine configuré, distinct de `api.arkya.online` ; les API Content et Realms restent internes. Les routes Social SDK restent hors de cette exposition web. Les futures routes doivent être ajoutées volontairement et testées. Les workflows GitHub Actions construisent et publient séparément les images Identity, Gateway, Admin et Realms dans GHCR.
 
 Un même processus MongoDB peut héberger les deux bases en développement. Chaque service reste seul propriétaire de sa base : pas de jointure entre bases ni de lecture directe des collections d'un autre service. En déploiement, fournir des comptes MongoDB limités à leur base ; les identifiants administrateur du Compose servent uniquement au développement local.
 
@@ -155,7 +158,7 @@ Les routes internes utilisent actuellement `X-Arkya-Service-Key` avec une clé d
 ## Prochaines frontières
 
 - Raccorder la sélection de personnage Unity à l'admission et au chargement dans le monde persistant.
-- Définir le service Realm, le rattachement persistant des personnages et la migration du modèle Characters.
+- Étendre le catalogue opérateur Realms vers la sélection joueur, définir le rattachement persistant des personnages et la migration du modèle Characters.
 - Définir l'admission serveur : ticket court, destination, personnage, consommation unique et prévention des connexions concurrentes.
 - Définir les mutations persistantes autoritaires et leurs garanties de concurrence/rejeu.
 - Valider un build dédié Unity et son client HTTP ou gRPC sur les plateformes retenues.

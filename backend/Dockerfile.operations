@@ -1,0 +1,36 @@
+# syntax=docker/dockerfile:1
+ARG SDK_IMAGE=mcr.microsoft.com/dotnet/sdk:10.0-noble@sha256:0d99ebf1ccad15037b5c98c9fe8979d6b8dbac23812feae2277a0b277b5c5ffa
+ARG RUNTIME_IMAGE=mcr.microsoft.com/dotnet/aspnet:10.0-noble@sha256:d5633778c754e89a386882eddf8dbee6942447a8a4b8267c19cf1e1158d0b0ac
+
+FROM --platform=$BUILDPLATFORM ${SDK_IMAGE} AS source
+ARG TARGETARCH
+WORKDIR /source
+COPY src/Arkya.Realms.Api/ src/Arkya.Realms.Api/
+COPY src/Arkya.Admin/ src/Arkya.Admin/
+COPY src/Arkya.ServiceDefaults/ src/Arkya.ServiceDefaults/
+
+FROM source AS build-realms
+RUN dotnet restore src/Arkya.Realms.Api/Arkya.Realms.Api.csproj --arch ${TARGETARCH}
+RUN dotnet publish src/Arkya.Realms.Api/Arkya.Realms.Api.csproj --no-restore --configuration Release \
+    --arch ${TARGETARCH} --self-contained false /p:UseAppHost=false --output /app/publish
+
+FROM source AS build-admin
+RUN dotnet restore src/Arkya.Admin/Arkya.Admin.csproj --arch ${TARGETARCH}
+RUN dotnet publish src/Arkya.Admin/Arkya.Admin.csproj --no-restore --configuration Release \
+    --arch ${TARGETARCH} --self-contained false /p:UseAppHost=false --output /app/publish
+
+FROM ${RUNTIME_IMAGE} AS realms
+WORKDIR /app
+ENV ASPNETCORE_ENVIRONMENT=Production DOTNET_EnableDiagnostics=0 TMPDIR=/tmp
+COPY --from=build-realms /app/publish/ ./
+USER 1654:1654
+EXPOSE 8443
+ENTRYPOINT ["dotnet", "Arkya.Realms.Api.dll"]
+
+FROM ${RUNTIME_IMAGE} AS admin
+WORKDIR /app
+ENV ASPNETCORE_ENVIRONMENT=Production ASPNETCORE_HTTP_PORTS=8080 DOTNET_EnableDiagnostics=0 TMPDIR=/tmp
+COPY --from=build-admin /app/publish/ ./
+USER 1654:1654
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "Arkya.Admin.dll"]

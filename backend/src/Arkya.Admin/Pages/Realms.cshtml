@@ -1,0 +1,52 @@
+@page
+@model RealmsModel
+@using Arkya.Admin.Realms
+@{
+    ViewData["Title"] = "Realms";
+}
+<header class="page-header">
+    <div><div class="eyebrow">UNIVERS / DÉPLOIEMENT</div><h1>Realms</h1><p class="intro">Préparez chaque monde et suivez ses serveurs dédiés.</p></div>
+    <a class="button secondary" asp-page="/Realms">Actualiser</a>
+</header>
+@if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Realms">Réessayer</a></div> }
+@if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
+@if (!Model.Enabled)
+{
+    <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h2>La gestion des realms est désactivée</h2><p>Activez la connexion au service Realms dans la configuration de l'administration pour préparer un monde.</p></div>
+}
+else if (Model.Loaded)
+{
+    <div class="realms-workspace">
+        <section aria-labelledby="realms-heading">
+            <div class="section-heading"><h2 id="realms-heading">Mondes enregistrés</h2><span class="muted">@Model.Realms.Length realm(s)</span></div>
+            @if (Model.Realms.Length == 0)
+            {
+                <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h3>Un premier monde à préparer</h3><p>Choisissez une cible et un profil. Vous pourrez vérifier les serveurs avant de les déployer.</p></div>
+            }
+            else
+            {
+                <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Realms et état de déploiement</caption><thead><tr><th scope="col">Realm</th><th scope="col">État</th><th scope="col">Serveurs</th></tr></thead><tbody>
+                @foreach (var realm in Model.Realms)
+                {
+                    <tr><th scope="row"><a asp-page="/Realm" asp-route-realmId="@realm.RealmId">@realm.DisplayName</a><small class="mono">@realm.RealmId</small><small>@realm.TargetId · @realm.ProfileId</small></th><td><span class="realm-status @RealmPresentation.StatusClass(realm.Status)">@RealmPresentation.StatusLabel(realm.Status)</span></td><td><span class="server-count">@realm.Servers.Sum(server => server.ReadyReplicas)<span class="muted"> / @realm.Servers.Sum(server => server.DesiredReplicas)</span></span><small>réplicas prêts</small></td></tr>
+                }
+                </tbody></table></div>
+            }
+            <div class="workflow-note"><strong>Prêt à l'échelle de l'infrastructure</strong><p>L'état « Déploiement prêt » décrit les ressources du cluster. L'admission des joueurs dans Unity reste à intégrer.</p></div>
+        </section>
+        <aside aria-labelledby="create-heading">
+            <div class="section-heading"><h2 id="create-heading">Préparer un realm</h2></div>
+            <form method="post" asp-page-handler="Create" class="panel realm-form">
+                <div class="field"><label asp-for="Input.DisplayName">Nom du monde</label><input asp-for="Input.DisplayName" maxlength="80" placeholder="Les Terres d'Aube" required /></div>
+                <div class="field"><label asp-for="Input.RealmId">Identifiant permanent</label><input asp-for="Input.RealmId" class="mono" minlength="3" maxlength="31" pattern="[a-z][a-z0-9\-]{1,29}[a-z0-9]" placeholder="terres-aube" required aria-describedby="realm-id-help" /><small id="realm-id-help">3 à 31 caractères : minuscules, chiffres et tirets.</small></div>
+                <div class="field"><label asp-for="Input.TargetId">Cible de déploiement</label><select asp-for="Input.TargetId" required><option value="">Choisir une cible</option>@foreach (var target in Model.Options.Targets) { <option value="@target.Id">@target.DisplayName · @target.Namespace</option> }</select></div>
+                <div class="field"><label asp-for="Input.ProfileId">Profil de serveurs</label><select asp-for="Input.ProfileId" required><option value="">Choisir un profil</option>@foreach (var profile in Model.Options.Profiles) { <option value="@profile.Id">@profile.DisplayName · @profile.Servers.Length serveur(s)</option> }</select></div>
+                <button class="button primary full-width" type="submit" disabled="@(Model.Options.Targets.Length == 0 || Model.Options.Profiles.Length == 0)">Créer le realm</button>
+                <small>La création enregistre la configuration. Le déploiement se lance depuis la fiche du realm.</small>
+            </form>
+            @if (!Model.Options.DeploymentEnabled) { <div class="workflow-note"><strong>Déploiement désactivé</strong><p>Vous pouvez préparer les realms. L'activation du déploiement appartient à la configuration du service.</p></div> }
+            @if (Model.Options.Targets.Length == 0 || Model.Options.Profiles.Length == 0) { <div class="workflow-note"><strong>Configuration incomplète</strong><p>Ajoutez au moins une cible et un profil au service Realms avant de créer un monde.</p></div> }
+        </aside>
+    </div>
+}

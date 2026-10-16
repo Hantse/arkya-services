@@ -75,15 +75,42 @@ if ($charactersEnabled) {
         throw 'charactersAddress must be an HTTP(S) service origin without credentials, query, fragment or path prefix.'
     }
 }
+if ($config.ContainsKey('adminAddress') -and $config.adminAddress -isnot [string]) {
+    throw 'adminAddress must be a string, or empty to disable the backoffice.'
+}
+$adminEnabled = ![string]::IsNullOrWhiteSpace($config.adminAddress)
+$adminHost = if ($config.ContainsKey('adminHost')) { $config.adminHost } else { 'backoffice.arkya.online' }
+if ($adminEnabled) {
+    $adminHostIp = $null
+    if ($adminHost -isnot [string] -or $adminHost.Length -gt 253 -or
+        $adminHost -cnotmatch '\A[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+\z' -or
+        [Net.IPAddress]::TryParse($adminHost, [ref]$adminHostIp) -or $adminHost -ieq 'api.arkya.online') {
+        throw 'adminHost must be an exact DNS hostname distinct from api.arkya.online.'
+    }
+    $adminUri = $null
+    if ($config.adminAddress -match '\s|\\' -or ![Uri]::IsWellFormedUriString($config.adminAddress, [UriKind]::Absolute) -or
+        ![Uri]::TryCreate($config.adminAddress, [UriKind]::Absolute, [ref]$adminUri) -or
+        $adminUri.Scheme -notin @('http', 'https') -or !$adminUri.Host -or $adminUri.UserInfo -or
+        $adminUri.Query -or $adminUri.Fragment -or $adminUri.AbsolutePath -ne '/' -or
+        $adminUri.Host -match '(?i)replace|example') {
+        throw 'adminAddress must be an HTTP(S) service origin without credentials, query, fragment or path prefix.'
+    }
+}
 
 $outputDirectory = Join-Path $PSScriptRoot '.local/production'
 New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null
-$literals = @("Gateway__CharactersEnabled=$($charactersEnabled.ToString().ToLowerInvariant())")
+$literals = @("Gateway__CharactersEnabled=$($charactersEnabled.ToString().ToLowerInvariant())",
+    "Gateway__AdminEnabled=$($adminEnabled.ToString().ToLowerInvariant())",
+    $(if ($adminEnabled) { "AllowedHosts=api.arkya.online;$adminHost" } else { 'AllowedHosts=api.arkya.online' }))
 for ($i = 0; $i -lt $config.trustedProxyNetworks.Count; $i++) {
     $literals += "ProxyTrust__KnownNetworks__$i=$($config.trustedProxyNetworks[$i])"
 }
 if ($charactersEnabled) {
     $literals += "ReverseProxy__Clusters__characters__Destinations__primary__Address=$($charactersUri.AbsoluteUri)"
+}
+if ($adminEnabled) {
+    $literals += "Gateway__AdminHost=$adminHost"
+    $literals += "Gateway__AdminAddress=$($adminUri.AbsoluteUri)"
 }
 $servicePatch = @{
     apiVersion = 'v1'; kind = 'Service'; metadata = @{ name = 'arkya-gateway' }

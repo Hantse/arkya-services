@@ -4,15 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] · Arkya</title>
+    <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
     <link rel="stylesheet" href="~/admin.css" asp-append-version="true" />
 </head>
 <body>
     <a class="skip-link" href="#main">Aller au contenu</a>
     <div class="app-shell">
         <aside class="sidebar" aria-label="Administration Arkya">
-            <a class="brand" asp-page="/Index"><span class="brand-mark" aria-hidden="true">A</span><span>ARKYA<small>Atelier de contenu</small></span></a>
+            <a class="brand" asp-page="/Realms"><span class="brand-mark" aria-hidden="true">A</span><span>ARKYA<small>Administration du monde</small></span></a>
             <div class="sidebar-section">UNIVERS</div>
-            <a class="nav-item" asp-page="/Index" aria-current="page"><span aria-hidden="true">◇</span> Quêtes</a>
+            <nav class="world-navigation" aria-label="Univers">
+                <a class="nav-item" asp-page="/Realms" aria-current="@(ViewContext.RouteData.Values["page"]?.ToString() is "/Realms" or "/Realm" ? "page" : null)"><span aria-hidden="true">◇</span> Realms</a>
+                <a class="nav-item" asp-page="/Index" aria-current="@(ViewContext.RouteData.Values["page"]?.ToString() == "/Index" ? "page" : null)"><span aria-hidden="true">≡</span> Quêtes</a>
+            </nav>
             <div class="sidebar-bottom"><span class="status-dot" aria-hidden="true"></span> Administration du monde
                 @if (User.Identity?.IsAuthenticated == true)
                 {

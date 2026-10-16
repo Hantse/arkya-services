@@ -1,0 +1,12 @@
+# Optional route: apply alongside gateway.dynamic.example.yaml only after
+# enabling Admin in YARP and deploying the authenticated Admin service.
+http:
+  routers:
+    arkya-backoffice:
+      entryPoints: [websecure]
+      rule: Host(`backoffice.arkya.online`)
+      service: arkya-gateway
+      tls: {}
+      observability:
+        accessLogs: false
+        tracing: false

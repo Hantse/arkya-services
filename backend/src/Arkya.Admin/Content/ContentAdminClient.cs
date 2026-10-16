@@ -6,6 +6,7 @@ namespace Arkya.Admin.Content;
 
 public sealed class ContentApiOptions
 {
+    public bool Enabled { get; init; } = true;
     public string BaseUrl { get; init; } = "http://localhost:5143";
     public string AdminKey { get; init; } = "";
 
@@ -33,6 +34,8 @@ public sealed class ContentAdminClient(HttpClient client, IOptions<ContentApiOpt
 
     private async Task<T> SendAsync<T>(HttpMethod method, string path, object? body, CancellationToken ct)
     {
+        if (!options.Value.Enabled)
+            throw new ContentApiException(HttpStatusCode.ServiceUnavailable, "L'atelier de quêtes est désactivé sur cette installation.");
         using var request = new HttpRequestMessage(method, path);
         request.Headers.Add("X-Arkya-Admin-Key", options.Value.AdminKey);
         if (body is not null) request.Content = JsonContent.Create(body);
