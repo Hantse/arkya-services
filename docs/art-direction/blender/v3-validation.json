@@ -1,0 +1,89 @@
+{
+  "blender": "4.5.14 LTS",
+  "scenes": [
+    {
+      "file": "02-cites-ether-v3.blend",
+      "camera": "Camera_V3",
+      "resolution": [
+        2560,
+        1440
+      ],
+      "samples": 160,
+      "hero_objects": 113,
+      "hero_height_m": 1.88,
+      "hero_feet_above_root_m": 0.0,
+      "hero_projection": {
+        "feet": [
+          0.3222,
+          0.0711
+        ],
+        "head": [
+          0.3248,
+          0.3334
+        ]
+      },
+      "packed_images": 25,
+      "unpacked_images": [],
+      "attribution": "Rain/Snow by Blender Studio / Blender Foundation, CC BY 4.0; adapted costumes, proportions and materials. See CREDITS.md."
+    },
+    {
+      "file": "03-terres-anciens-v3.blend",
+      "camera": "Camera_V3",
+      "resolution": [
+        2560,
+        1440
+      ],
+      "samples": 160,
+      "hero_objects": 191,
+      "hero_height_m": 1.8065,
+      "hero_feet_above_root_m": 0.00165,
+      "hero_projection": {
+        "feet": [
+          0.3604,
+          0.0681
+        ],
+        "head": [
+          0.3616,
+          0.3295
+        ]
+      },
+      "packed_images": 3,
+      "unpacked_images": [],
+      "attribution": "Rain/Snow by Blender Studio / Blender Foundation, CC BY 4.0; adapted costumes, proportions and materials. See CREDITS.md."
+    }
+  ],
+  "images": [
+    {
+      "file": "02-cites-ether-v3-render.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "bytes": 4724668
+    },
+    {
+      "file": "02-cites-ether-character-v3.png",
+      "size": [
+        1350,
+        1800
+      ],
+      "bytes": 2261310
+    },
+    {
+      "file": "03-terres-anciens-v3-render.png",
+      "size": [
+        2560,
+        1440
+      ],
+      "bytes": 5818325
+    },
+    {
+      "file": "03-terres-anciens-character-v3.png",
+      "size": [
+        1350,
+        1800
+      ],
+      "bytes": 2201368
+    }
+  ]
+}

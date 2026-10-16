@@ -1,0 +1,19 @@
+{
+  "id": "bouquet-mystique",
+  "shape": "bouquet",
+  "material": "mystique",
+  "label": "Bouquet de prairie · Mystique",
+  "glb": "assets/bouquet-mystique/bouquet-mystique.glb",
+  "blend": "assets/bouquet-mystique/bouquet-mystique.blend",
+  "preview": "assets/bouquet-mystique/bouquet-mystique-preview.png",
+  "height": 0.45,
+  "width": 0.3888,
+  "depth": 0.3042,
+  "triangles": 20968,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

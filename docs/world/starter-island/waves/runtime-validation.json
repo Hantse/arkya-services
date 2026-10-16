@@ -1,0 +1,386 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-16T08:35:45.1100731Z",
+  "unity": "6000.6.6f1",
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "caseCount": 29,
+  "elapsedSeconds": 0.8286738,
+  "checks": [
+    {
+      "name": "Ocean surface is active and configured",
+      "passed": true,
+      "detail": {
+        "far": "Ocean - presentation only",
+        "local": "Local displaced ocean - 2m grid"
+      }
+    },
+    {
+      "name": "Unity Console starts without errors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "The native water shader is supported and error-free",
+      "passed": true,
+      "detail": {
+        "shader": "Arkya/World/Starter Island Water",
+        "passes": 1
+      }
+    },
+    {
+      "name": "Water uses one rendering pass",
+      "passed": true,
+      "detail": {
+        "passes": 1
+      }
+    },
+    {
+      "name": "The local wave mesh stays within its vertex and triangle budgets",
+      "passed": true,
+      "detail": {
+        "vertices": 37249,
+        "triangles": 73728,
+        "expectedVertices": 37249,
+        "expectedTriangles": 73728
+      }
+    },
+    {
+      "name": "The local patch covers 384 metres with a two-metre grid",
+      "passed": true,
+      "detail": {
+        "spanX": 384.0,
+        "spanZ": 384.0,
+        "PatchRadius": 180.0
+      }
+    },
+    {
+      "name": "The source mesh stays flat for GPU displacement",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "The far ocean retains its 4200-metre extent",
+      "passed": true,
+      "detail": {
+        "width": 4200.0,
+        "length": 4200.0
+      }
+    },
+    {
+      "name": "Violet swell is configured higher than turquoise ripples",
+      "passed": true,
+      "detail": {
+        "CalmWaveHeight": 0.14,
+        "BoundaryWaveHeight": 0.85,
+        "WaveSpeed": 1.0,
+        "BoundaryTransition": 22.0
+      }
+    },
+    {
+      "name": "Wave preview freezes its own clock across real frames",
+      "passed": true,
+      "detail": {
+        "CurrentTimeSeconds": 10.0,
+        "PreviewSeconds": 10.0
+      }
+    },
+    {
+      "name": "Both water renderers receive the controlled clock and patch modes",
+      "passed": true,
+      "detail": {
+        "far": [
+          1.0,
+          0.0,
+          10.0,
+          1.0,
+          0.0,
+          0.0,
+          768.0,
+          28.0,
+          158.0,
+          180.0,
+          0.14,
+          0.85,
+          1.0,
+          22.0,
+          0.0
+        ],
+        "local": [
+          1.0,
+          1.0,
+          10.0,
+          1.0,
+          0.0,
+          0.0,
+          768.0,
+          28.0,
+          158.0,
+          180.0,
+          0.14,
+          0.85,
+          1.0,
+          22.0,
+          0.0
+        ],
+        "CurrentTimeSeconds": 10.0
+      }
+    },
+    {
+      "name": "The local mesh follows the viewer on its two-metre grid",
+      "passed": true,
+      "detail": {
+        "viewer": {
+          "x": 768.0,
+          "y": 31.9175167,
+          "z": 158.417847
+        },
+        "patch": {
+          "x": 768.0,
+          "y": 28.0,
+          "z": 158.0
+        }
+      }
+    },
+    {
+      "name": "Deep turquoise water has small actual height variations",
+      "passed": true,
+      "detail": {
+        "Minimum": 27.8630772,
+        "Maximum": 28.1227016,
+        "Range": 0.259624481,
+        "point": {
+          "x": 768.0,
+          "y": 28.0,
+          "z": 133.417847
+        },
+        "depth": 8.14938
+      }
+    },
+    {
+      "name": "Violet water has a substantially larger actual swell",
+      "passed": true,
+      "detail": {
+        "Minimum": 27.1691933,
+        "Maximum": 28.7435322,
+        "Range": 1.57433891,
+        "point": {
+          "x": 768.0,
+          "y": 28.0,
+          "z": -97.0
+        }
+      }
+    },
+    {
+      "name": "The local patch also follows the viewer into violet water",
+      "passed": true,
+      "detail": {
+        "viewer": {
+          "x": 768.0,
+          "y": 30.0,
+          "z": -97.0
+        },
+        "patch": {
+          "x": 768.0,
+          "y": 28.0,
+          "z": -96.0
+        }
+      }
+    },
+    {
+      "name": "Displacement fades to the original sea level outside the local patch",
+      "passed": true,
+      "detail": {
+        "point": {
+          "x": 949.0,
+          "y": 28.0,
+          "z": -96.0
+        },
+        "height": 28.0,
+        "seaLevel": 28.0
+      }
+    },
+    {
+      "name": "Wave time visibly changes the real shoreline render",
+      "passed": true,
+      "detail": {
+        "changedPixels": 461584,
+        "camera": {
+          "x": 768.0,
+          "y": 31.9175167,
+          "z": 158.417847
+        },
+        "coast": {
+          "x": 768.0,
+          "y": 28.1499844,
+          "z": 153.417847
+        }
+      }
+    },
+    {
+      "name": "Wave time visibly changes the violet-water render",
+      "passed": true,
+      "detail": {
+        "changedPixels": 781794
+      }
+    },
+    {
+      "name": "Turquoise waves move the GPU-rendered water silhouette",
+      "passed": true,
+      "detail": {
+        "ActiveChangedPixels": 463993,
+        "ZeroChangedPixels": 0,
+        "ZeroHeightError": 0.0,
+        "Camera": {
+          "x": 768.0,
+          "y": 28.05,
+          "z": 133.417847
+        },
+        "WaterDepth": 8.14938
+      }
+    },
+    {
+      "name": "Violet swell moves the GPU-rendered water silhouette",
+      "passed": true,
+      "detail": {
+        "ActiveChangedPixels": 34918,
+        "ZeroChangedPixels": 0,
+        "ZeroHeightError": 0.0,
+        "Camera": {
+          "x": 768.0,
+          "y": 28.1,
+          "z": -97.0
+        },
+        "WaterDepth": 30.0
+      }
+    },
+    {
+      "name": "Zero wave height leaves the deep-water silhouette unchanged",
+      "passed": true,
+      "detail": {
+        "ActiveChangedPixels": 463993,
+        "ZeroChangedPixels": 0,
+        "ZeroHeightError": 0.0,
+        "Camera": {
+          "x": 768.0,
+          "y": 28.05,
+          "z": 133.417847
+        },
+        "WaterDepth": 8.14938
+      }
+    },
+    {
+      "name": "Zero wave height returns the sampled surface to sea level",
+      "passed": true,
+      "detail": {
+        "ActiveChangedPixels": 463993,
+        "ZeroChangedPixels": 0,
+        "ZeroHeightError": 0.0,
+        "Camera": {
+          "x": 768.0,
+          "y": 28.05,
+          "z": 133.417847
+        },
+        "WaterDepth": 8.14938
+      }
+    },
+    {
+      "name": "Disabling the controller hides the local patch and restores renderer state",
+      "passed": true,
+      "detail": {
+        "localEnabled": false,
+        "farBlockEmpty": true,
+        "localBlockEmpty": true
+      }
+    },
+    {
+      "name": "Reenabling the controller reuses the same two renderer objects",
+      "passed": true,
+      "detail": {
+        "far": [
+          1.0,
+          0.0,
+          10.0,
+          1.0,
+          0.0,
+          0.0,
+          768.0,
+          28.0,
+          -96.0,
+          180.0,
+          0.14,
+          0.85,
+          1.0,
+          22.0,
+          0.0
+        ],
+        "local": [
+          1.0,
+          1.0,
+          10.0,
+          1.0,
+          0.0,
+          0.0,
+          768.0,
+          28.0,
+          -96.0,
+          180.0,
+          0.14,
+          0.85,
+          1.0,
+          22.0,
+          0.0
+        ],
+        "CurrentTimeSeconds": 10.0
+      }
+    },
+    {
+      "name": "Wave review preserves the four-hour celestial phase",
+      "passed": true,
+      "detail": {
+        "phaseBefore": 0.4,
+        "phaseAfter": 0.4,
+        "cycleSeconds": 14400.0
+      }
+    },
+    {
+      "name": "Waves preserve terrain source heights",
+      "passed": true,
+      "detail": {
+        "source": "Assets/Arkya/World/StarterIsland/Terrain/StarterIslandTerrain.asset",
+        "sha256": "0FE6F9005188CC2F3F0EA5FAD2A7F41F8561672201070929B767DFE9C73C0676"
+      }
+    },
+    {
+      "name": "Waves preserve the authoritative boundary-water rule",
+      "passed": true,
+      "detail": {
+        "centerX": 768.0,
+        "centerZ": 768.0,
+        "InnerRadius": 835.0,
+        "SurfaceHeight": 28.0,
+        "DeathDelaySeconds": 5.0,
+        "InstallInServerWorlds": true
+      }
+    },
+    {
+      "name": "Wave validation does not leak scene roots",
+      "passed": true,
+      "detail": {
+        "before": 13,
+        "after": 13
+      }
+    },
+    {
+      "name": "No Unity errors during wave validation",
+      "passed": true,
+      "detail": {
+        "observedErrorEvents": 0,
+        "consoleErrors": 0
+      }
+    }
+  ],
+  "failures": [],
+  "exception": null,
+  "errors": [],
+  "note": "Actual Play Mode mesh, renderer-property, GPU coverage and lifecycle checks. GPU phase pairs render in one invocation with fixed camera and lighting. Zero height compares coverage on deep turquoise water, not animated foam or color. Preview modes, camera, layers, fog, renderer blocks and runInBackground are restored. No source asset or global project setting is saved. No new gameplay collision, network socket or performance benchmark is exercised."
+}

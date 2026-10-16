@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "artStatus": "Refonte à examiner",
+  "generator": "scripts/build_totems_v2.py",
+  "coordinateSystem": {
+    "source": "Z up, +X forward",
+    "gltf": "Y up, +X forward"
+  },
+  "colorways": [
+    {
+      "id": "lunar",
+      "name": "Lune astrale",
+      "colors": [
+        "#172536",
+        "#293c52",
+        "#405c77",
+        "#688da1",
+        "#aac8d1",
+        "#dbe9e4",
+        "#f3efd8",
+        "#97b9bf",
+        "#54758b",
+        "#111a29",
+        "#54dfd6",
+        "#d3fff1"
+      ],
+      "magicColor": "#54dfd6"
+    },
+    {
+      "id": "ember",
+      "name": "Braise rousse",
+      "colors": [
+        "#542720",
+        "#783527",
+        "#a94b29",
+        "#d17b3c",
+        "#e9ae66",
+        "#f4ddb0",
+        "#fff0cf",
+        "#bd8457",
+        "#713f2e",
+        "#251f28",
+        "#ffb95b",
+        "#fff0aa"
+      ],
+      "magicColor": "#ffb95b"
+    },
+    {
+      "id": "jade",
+      "name": "Jade spirituel",
+      "colors": [
+        "#102f31",
+        "#1c4945",
+        "#2e6b59",
+        "#5c9576",
+        "#a3bb8f",
+        "#d5d9ad",
+        "#f3e8c5",
+        "#85ab8a",
+        "#3e7468",
+        "#11252b",
+        "#63f0bd",
+        "#cffff0"
+      ],
+      "magicColor": "#63f0bd"
+    },
+    {
+      "id": "amethyst",
+      "name": "Améthyste",
+      "colors": [
+        "#2a203d",
+        "#463057",
+        "#644674",
+        "#966b9d",
+        "#c3a0bc",
+        "#e2ced8",
+        "#f2e5e8",
+        "#ab8fb5",
+        "#64547f",
+        "#181728",
+        "#cf8cf3",
+        "#f6d6ff"
+      ],
+      "magicColor": "#cf8cf3"
+    },
+    {
+      "id": "frost",
+      "name": "Givre boréal",
+      "colors": [
+        "#24404d",
+        "#436373",
+        "#648fa2",
+        "#9bbdca",
+        "#cddde1",
+        "#e9eeee",
+        "#fff9e6",
+        "#aecbd3",
+        "#7197b1",
+        "#152936",
+        "#72dcff",
+        "#e1ffff"
+      ],
+      "magicColor": "#72dcff"
+    },
+    {
+      "id": "solar",
+      "name": "Or solaire",
+      "colors": [
+        "#463123",
+        "#72502c",
+        "#a37c3d",
+        "#d1ad5b",
+        "#e9d38e",
+        "#f0e5b6",
+        "#fff2ce",
+        "#c9b681",
+        "#8e7750",
+        "#27232a",
+        "#ffdc6a",
+        "#fff8d1"
+      ],
+      "magicColor": "#ffdc6a"
+    },
+    {
+      "id": "rose",
+      "name": "Rose d’aube",
+      "colors": [
+        "#452333",
+        "#6b364b",
+        "#9b5367",
+        "#c3828b",
+        "#dfb4ac",
+        "#efdbce",
+        "#ffefda",
+        "#b8929f",
+        "#865a76",
+        "#231e30",
+        "#ff97ba",
+        "#ffe4ee"
+      ],
+      "magicColor": "#ff97ba"
+    },
+    {
+      "id": "abyss",
+      "name": "Abysses",
+      "colors": [
+        "#101e30",
+        "#172c44",
+        "#244563",
+        "#3a6482",
+        "#728eaa",
+        "#b9c7d5",
+        "#e5e5df",
+        "#586f96",
+        "#343e69",
+        "#0c1523",
+        "#5f99ff",
+        "#cde7ff"
+      ],
+      "magicColor": "#5f99ff"
+    },
+    {
+      "id": "moss",
+      "name": "Mousse ancienne",
+      "colors": [
+        "#252c20",
+        "#424a2b",
+        "#65703c",
+        "#919255",
+        "#b8b47c",
+        "#d7d2a3",
+        "#eee6c5",
+        "#929f70",
+        "#56654c",
+        "#18261f",
+        "#b7e774",
+        "#f1ffd2"
+      ],
+      "magicColor": "#b7e774"
+    },
+    {
+      "id": "copper",
+      "name": "Cuivre enchanté",
+      "colors": [
+        "#3e292b",
+        "#674036",
+        "#955b42",
+        "#bc8359",
+        "#d5aa7a",
+        "#e8d2aa",
+        "#f7ead0",
+        "#a98d79",
+        "#745f58",
+        "#211e29",
+        "#6aefdc",
+        "#d4fff1"
+      ],
+      "magicColor": "#6aefdc"
+    },
+    {
+      "id": "pearl",
+      "name": "Perle onirique",
+      "colors": [
+        "#555264",
+        "#7c788c",
+        "#a19bb0",
+        "#c1b9c9",
+        "#ded5dd",
+        "#f0e7e6",
+        "#fff6e8",
+        "#c5bfcc",
+        "#918fa8",
+        "#363447",
+        "#efaaff",
+        "#fff0ff"
+      ],
+      "magicColor": "#efaaff"
+    },
+    {
+      "id": "storm",
+      "name": "Tempête",
+      "colors": [
+        "#232a35",
+        "#3d4752",
+        "#626b73",
+        "#8a9397",
+        "#b8bfc0",
+        "#dce0d9",
+        "#f1edda",
+        "#8d9fa5",
+        "#556f80",
+        "#111d29",
+        "#b3d5ff",
+        "#eff9ff"
+      ],
+      "magicColor": "#b3d5ff"
+    }
+  ],
+  "animations": [
+    {
+      "id": "Idle",
+      "durationBySpecies": {
+        "wolf": 4.0,
+        "fox": 4.0
+      }
+    },
+    {
+      "id": "Walk",
+      "durationBySpecies": {
+        "wolf": 1.0,
+        "fox": 1.0
+      }
+    },
+    {
+      "id": "Run",
+      "durationBySpecies": {
+        "wolf": 0.7,
+        "fox": 0.6
+      }
+    }
+  ],
+  "species": [
+    {
+      "id": "wolf",
+      "name": "Loup",
+      "defaultColorway": "lunar",
+      "blend": "assets/wolf.blend",
+      "fbx": "assets/wolf.fbx",
+      "models": {
+        "lunar": "models/wolf-lunar.glb",
+        "ember": "models/wolf-ember.glb",
+        "jade": "models/wolf-jade.glb",
+        "amethyst": "models/wolf-amethyst.glb",
+        "frost": "models/wolf-frost.glb",
+        "solar": "models/wolf-solar.glb",
+        "rose": "models/wolf-rose.glb",
+        "abyss": "models/wolf-abyss.glb",
+        "moss": "models/wolf-moss.glb",
+        "copper": "models/wolf-copper.glb",
+        "pearl": "models/wolf-pearl.glb",
+        "storm": "models/wolf-storm.glb"
+      },
+      "textures": {
+        "lunar": "textures/wolf-lunar-basecolor.png",
+        "ember": "textures/wolf-ember-basecolor.png",
+        "jade": "textures/wolf-jade-basecolor.png",
+        "amethyst": "textures/wolf-amethyst-basecolor.png",
+        "frost": "textures/wolf-frost-basecolor.png",
+        "solar": "textures/wolf-solar-basecolor.png",
+        "rose": "textures/wolf-rose-basecolor.png",
+        "abyss": "textures/wolf-abyss-basecolor.png",
+        "moss": "textures/wolf-moss-basecolor.png",
+        "copper": "textures/wolf-copper-basecolor.png",
+        "pearl": "textures/wolf-pearl-basecolor.png",
+        "storm": "textures/wolf-storm-basecolor.png"
+      },
+      "dimensions": {
+        "lengthM": 1.791,
+        "widthM": 0.58,
+        "heightM": 1.085
+      },
+      "rig": {
+        "bones": 39,
+        "maxInfluences": 4
+      },
+      "triangles": 30382,
+      "unity": {},
+      "locomotion": {
+        "report": "wolf-locomotion.json",
+        "clips": [
+          {
+            "name": "Idle",
+            "duration_seconds": 4.0,
+            "expected_speed_mps": 0.0,
+            "gait": "breathing",
+            "checks": {
+              "max_contact_slip_m": 5.02423578391879e-07,
+              "max_contact_height_error_m": 3.87e-07,
+              "max_ik_error_m": 4.0788101235541687e-07,
+              "max_loop_position_error_m": 0.0,
+              "max_loop_rotation_error_degrees": 0.0,
+              "max_foot_loop_velocity_error_mps": 5.209621132839373e-05,
+              "frame_count": 241,
+              "passed": true
+            }
+          },
+          {
+            "name": "Walk",
+            "duration_seconds": 1.0,
+            "expected_speed_mps": 0.44090445172041653,
+            "gait": "four_beat_walk",
+            "checks": {
+              "max_contact_slip_m": 4.7624516441919976e-07,
+              "max_contact_height_error_m": 3.13e-07,
+              "max_ik_error_m": 3.863720531413473e-07,
+              "max_loop_position_error_m": 0.0,
+              "max_loop_rotation_error_degrees": 0.0,
+              "max_foot_loop_velocity_error_mps": 0.005050695503950951,
+              "frame_count": 61,
+              "passed": true
+            }
+          },
+          {
+            "name": "Run",
+            "duration_seconds": 0.7,
+            "expected_speed_mps": 1.5746587561443448,
+            "gait": "transverse_gallop",
+            "checks": {
+              "max_contact_slip_m": 3.6261532077800957e-07,
+              "max_contact_height_error_m": 3.43e-07,
+              "max_ik_error_m": 3.4337397282728294e-07,
+              "max_loop_position_error_m": 0.0,
+              "max_loop_rotation_error_degrees": 0.0,
+              "max_foot_loop_velocity_error_mps": 0.00188813402044087,
+              "frame_count": 43,
+              "passed": true
+            }
+          }
+        ]
+      },
+      "sourceCredit": "Fox by Bake3D, CC BY 4.0; anatomy, rig, coats and animations modified for Arkya.",
+      "artRevision": 3
+    },
+    {
+      "id": "fox",
+      "name": "Renard",
+      "defaultColorway": "ember",
+      "blend": "assets/fox.blend",
+      "fbx": "assets/fox.fbx",
+      "models": {
+        "lunar": "models/fox-lunar.glb",
+        "ember": "models/fox-ember.glb",
+        "jade": "models/fox-jade.glb",
+        "amethyst": "models/fox-amethyst.glb",
+        "frost": "models/fox-frost.glb",
+        "solar": "models/fox-solar.glb",
+        "rose": "models/fox-rose.glb",
+        "abyss": "models/fox-abyss.glb",
+        "moss": "models/fox-moss.glb",
+        "copper": "models/fox-copper.glb",
+        "pearl": "models/fox-pearl.glb",
+        "storm": "models/fox-storm.glb"
+      },
+      "textures": {
+        "lunar": "textures/fox-lunar-basecolor.png",
+        "ember": "textures/fox-ember-basecolor.png",
+        "jade": "textures/fox-jade-basecolor.png",
+        "amethyst": "textures/fox-amethyst-basecolor.png",
+        "frost": "textures/fox-frost-basecolor.png",
+        "solar": "textures/fox-solar-basecolor.png",
+        "rose": "textures/fox-rose-basecolor.png",
+        "abyss": "textures/fox-abyss-basecolor.png",
+        "moss": "textures/fox-moss-basecolor.png",
+        "copper": "textures/fox-copper-basecolor.png",
+        "pearl": "textures/fox-pearl-basecolor.png",
+        "storm": "textures/fox-storm-basecolor.png"
+      },
+      "dimensions": {
+        "lengthM": 0.798,
+        "widthM": 0.244,
+        "heightM": 0.644
+      },
+      "rig": {
+        "bones": 39,
+        "maxInfluences": 4
+      },
+      "triangles": 30382,
+      "unity": {},
+      "locomotion": {
+        "report": "fox-locomotion.json",
+        "clips": [
+          {
+            "name": "Idle",
+            "duration_seconds": 4.0,
+            "expected_speed_mps": 0.0,
+            "gait": "breathing",
+            "checks": {
+              "max_contact_slip_m": 2.2712224277649696e-07,
+              "max_contact_height_error_m": 1.61e-07,
+              "max_ik_error_m": 1.623202005755098e-07,
+              "max_loop_position_error_m": 0.0,
+              "max_loop_rotation_error_degrees": 0.0,
+              "max_foot_loop_velocity_error_mps": 2.9821101247614244e-05,
+              "frame_count": 241,
+              "passed": true
+            }
+          },
+          {
+            "name": "Walk",
+            "duration_seconds": 1.0,
+            "expected_speed_mps": 0.18722614999860523,
+            "gait": "four_beat_walk",
+            "checks": {
+              "max_contact_slip_m": 1.5904363282200073e-07,
+              "max_contact_height_error_m": 1.4e-07,
+              "max_ik_error_m": 1.4054024867443464e-07,
+              "max_loop_position_error_m": 0.0,
+              "max_loop_rotation_error_degrees": 0.0,
+              "max_foot_loop_velocity_error_mps": 0.0021821782334677372,
+              "frame_count": 61,
+              "passed": true
+            }
+          },
+          {
+            "name": "Run",
+            "duration_seconds": 0.6,
+            "expected_speed_mps": 0.6686648214235902,
+            "gait": "transverse_gallop",
+            "checks": {
+              "max_contact_slip_m": 1.0523124101312084e-07,
+              "max_contact_height_error_m": 1.07e-07,
+              "max_ik_error_m": 1.3676258756844442e-07,
+              "max_loop_position_error_m": 0.0,
+              "max_loop_rotation_error_degrees": 0.0,
+              "max_foot_loop_velocity_error_mps": 0.005193937685955592,
+              "frame_count": 37,
+              "passed": true
+            }
+          }
+        ]
+      },
+      "sourceCredit": "Fox by Bake3D, CC BY 4.0; anatomy, rig, coats and animations modified for Arkya."
+    }
+  ],
+  "revision": "20261016T103309070262Z-totems"
+}

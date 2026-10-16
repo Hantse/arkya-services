@@ -1,0 +1,56 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Quêtes";
+}
+<header class="page-header">
+    <div><div class="eyebrow">UNIVERS / CONTENU</div><h1>Quêtes</h1><p class="intro">Écrivez les objectifs. Publiez les prochaines aventures.</p></div>
+    <span class="scope-label">ARKYA · ATELIER</span>
+</header>
+@if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Index">Recharger le catalogue</a></div> }
+<div asp-validation-summary="All" class="alert error" role="alert"></div>
+@if (Model.Loaded)
+{
+    <div class="workspace">
+        <section aria-labelledby="draft-heading">
+            <div class="section-heading"><h2 id="draft-heading">Brouillon de travail</h2><span class="badge">Révision @Model.Revision</span></div>
+            <form method="post" class="quest-form">
+                <input type="hidden" asp-for="Revision" />
+                @if (Model.Quests.Count == 0)
+                {
+                    <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h3>Une première aventure à écrire</h3><p>Ajoutez une quête et choisissez combien d'ennemis il faudra vaincre.</p></div>
+                }
+                @for (var i = 0; i < Model.Quests.Count; i++)
+                {
+                    <fieldset class="panel quest-editor">
+                        <legend class="sr-only">Quête @(i + 1)</legend>
+                        <div class="editor-heading"><span class="quest-type">◇ &nbsp; VAINCRE DES ENNEMIS</span><button class="text-button danger" type="submit" asp-page-handler="Remove" name="index" value="@i" formnovalidate>Retirer</button></div>
+                        <div class="field"><label asp-for="Quests[i].Title">Titre de la quête</label><input asp-for="Quests[i].Title" placeholder="La menace du bois" maxlength="120" required /></div>
+                        <div class="field"><label asp-for="Quests[i].QuestId">Identifiant permanent</label><input asp-for="Quests[i].QuestId" class="mono" placeholder="la-menace-du-bois" pattern="[a-z0-9]+(-[a-z0-9]+)*" maxlength="64" required /><small>Conservez cet identifiant pour les personnages ayant déjà accepté cette quête.</small></div>
+                        <div class="field"><label asp-for="Quests[i].Description">Description</label><textarea asp-for="Quests[i].Description" rows="3" maxlength="2000" placeholder="Ce qui attend le joueur…"></textarea></div>
+                        <div class="objective"><span class="objective-label">OBJECTIF</span><div class="objective-fields"><span>Vaincre</span><label asp-for="Quests[i].RequiredKills" class="sr-only">Nombre d'ennemis à vaincre</label><input asp-for="Quests[i].RequiredKills" type="number" min="1" max="10000" required /><span>×</span><span class="enemy-name">Monstre du prototype</span></div></div>
+                    </fieldset>
+                }
+                <div class="editor-actions"><button class="button secondary" type="submit" asp-page-handler="Add" formnovalidate>+ Ajouter une quête</button><button class="button primary" type="submit" asp-page-handler="Save">Enregistrer le brouillon</button></div>
+            </form>
+        </section>
+        <aside class="publication-column" aria-labelledby="publish-heading">
+            <div class="section-heading"><h2 id="publish-heading">Publication</h2></div>
+            <div class="panel publish-panel"><span class="publish-symbol" aria-hidden="true">↗</span><h3>Prêt pour le monde ?</h3><p>Publiez le brouillon enregistré dans une version conservée dans l'historique.</p><dl class="publication-facts"><div><dt>Révision enregistrée</dt><dd>@Model.Revision</dd></div><div><dt>Application en jeu</dt><dd>Au prochain démarrage</dd></div></dl>
+                <form method="post" asp-page-handler="Publish"><input type="hidden" name="Revision" value="@Model.Revision" /><button class="button primary full-width" type="submit" disabled="@(Model.Quests.Count == 0)">Publier cette révision <span aria-hidden="true">↗</span></button></form>
+                <small>Enregistrez vos modifications avant de publier.</small>
+            </div>
+            <div class="workflow-note"><strong>Une version reste stable.</strong><p>Les serveurs déjà lancés conservent leur catalogue. Les quêtes en cours gardent leur objectif d'origine.</p></div>
+        </aside>
+    </div>
+    <section class="history" aria-labelledby="history-heading"><div class="section-heading"><h2 id="history-heading">Versions publiées</h2><span class="muted">@Model.Catalogs.Length version(s)</span></div>
+        @if (Model.Catalogs.Length == 0) { <div class="panel history-empty">Aucune publication. Enregistrez votre première quête, puis publiez-la.</div> }
+        @foreach (var catalog in Model.Catalogs)
+        {
+            <details class="panel catalog-entry"><summary><span class="publication-dot" aria-hidden="true"></span><span class="catalog-version mono">@catalog.Version</span><span class="muted">@catalog.Quests.Length quête(s)</span><time datetime="@catalog.PublishedAt.ToString("O")">@catalog.PublishedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time><span class="expand-label">Détails ↓</span></summary>
+                <div class="catalog-detail"><ul>@foreach (var quest in catalog.Quests) { <li><strong>@quest.Title</strong><span>Vaincre @quest.RequiredKills ennemi(s) · <code>@quest.QuestId</code></span></li> }</ul><a asp-page-handler="Download" asp-route-version="@catalog.Version" class="text-link">Télécharger le catalogue JSON →</a></div>
+            </details>
+        }
+    </section>
+}

@@ -1,0 +1,19 @@
+{
+  "id": "rond-automnal",
+  "shape": "rond",
+  "material": "automnal",
+  "label": "Buisson rond · Automnal",
+  "glb": "assets/rond-automnal/rond-automnal.glb",
+  "blend": "assets/rond-automnal/rond-automnal.blend",
+  "preview": "assets/rond-automnal/rond-automnal-preview.png",
+  "height": 0.85,
+  "width": 1.074,
+  "depth": 0.9486,
+  "triangles": 29708,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

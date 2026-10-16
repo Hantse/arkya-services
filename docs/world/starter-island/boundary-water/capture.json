@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "captures": [
+    {
+      "name": "overview",
+      "ActiveNearCamera": false,
+      "LiveParticleCount": 0,
+      "ParticleBudget": 320
+    },
+    {
+      "name": "boiling-day",
+      "ActiveNearCamera": true,
+      "LiveParticleCount": 212,
+      "ParticleBudget": 320
+    },
+    {
+      "name": "boiling-night",
+      "ActiveNearCamera": true,
+      "LiveParticleCount": 229,
+      "ParticleBudget": 320
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "tordue-mystique",
+  "shape": "tordue",
+  "material": "mystique",
+  "label": "Souche tordue · Mystique",
+  "glb": "assets/tordue-mystique/tordue-mystique.glb",
+  "blend": "assets/tordue-mystique/tordue-mystique.blend",
+  "preview": "assets/tordue-mystique/tordue-mystique-preview.png",
+  "height": 0.65,
+  "width": 1.003,
+  "depth": 0.8301,
+  "triangles": 21504,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

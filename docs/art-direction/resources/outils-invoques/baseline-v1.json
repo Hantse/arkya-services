@@ -1,0 +1,29 @@
+{
+  "description": "Original blue tools without upgrade sockets, preserved when adding palette and socket variants. Artistic proposals, not approved references.",
+  "files": [
+    {
+      "file": "assets/hache-azur/hache-azur.blend",
+      "sha256": "cbd81433ec263193fa3bd27558aa4d13b9cc85eac1abeb420b283deca1d2d641"
+    },
+    {
+      "file": "assets/hache-azur/hache-azur.glb",
+      "sha256": "f0e780a61b5c36ed2498e48b23460b567addb57f8e9abd6e914a43833fe3dea8"
+    },
+    {
+      "file": "assets/hache-azur/hache-azur-preview.png",
+      "sha256": "202d0db2fed4960e8622911356922a92248a1396dc532de25c2a04218e878782"
+    },
+    {
+      "file": "assets/pioche-azur/pioche-azur.blend",
+      "sha256": "a4a3244997fccce3e75aadcb45743e44991efe1f2a0c22a5a016d2350c4084b2"
+    },
+    {
+      "file": "assets/pioche-azur/pioche-azur.glb",
+      "sha256": "4a3c711c8c1141e417a6c3a21eea9c3c15bb643bbef4617b7e82565e012e79fe"
+    },
+    {
+      "file": "assets/pioche-azur/pioche-azur-preview.png",
+      "sha256": "38482829a4da3b629d6f7b869e6d7a9152b61833034ae5481164bc1d55446173"
+    }
+  ]
+}

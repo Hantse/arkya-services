@@ -1,0 +1,368 @@
+{
+  "success": true,
+  "captures": [
+    {
+      "name": "clear",
+      "state": {
+        "weather": {
+          "Kind": 0,
+          "Cloud": 0.0,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.24
+        },
+        "skyWeather": {
+          "Kind": 0,
+          "Cloud": 0.0,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.24
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 1.7,
+        "fog": 0.00048,
+        "wind": 1.0336,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.0,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 0,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "overcast",
+      "state": {
+        "weather": {
+          "Kind": 1,
+          "Cloud": 0.78,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.4
+        },
+        "skyWeather": {
+          "Kind": 1,
+          "Cloud": 0.78,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.4
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.771800041,
+        "fog": 0.000948,
+        "wind": 1.156,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.0,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 0,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "rain",
+      "state": {
+        "weather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "skyWeather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.406980038,
+        "fog": 0.001944,
+        "wind": 1.3396,
+        "RainParticleCount": 400,
+        "SplashParticleCount": 14,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.170624986,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 0,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "storm",
+      "state": {
+        "weather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "skyWeather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.168300018,
+        "fog": 0.00328,
+        "wind": 1.57675,
+        "RainParticleCount": 667,
+        "SplashParticleCount": 22,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.305499971,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 0,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "storm-flash",
+      "state": {
+        "weather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "skyWeather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "phase": 0.4,
+        "lightning": 1.0,
+        "sun": 1.2683,
+        "fog": 0.00328,
+        "wind": 1.57675,
+        "RainParticleCount": 673,
+        "SplashParticleCount": 23,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.305499971,
+        "ThunderCount": 0,
+        "LightningFlash": 1.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 3,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "sky-clear",
+      "state": {
+        "weather": {
+          "Kind": 0,
+          "Cloud": 0.0,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.24
+        },
+        "skyWeather": {
+          "Kind": 0,
+          "Cloud": 0.0,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.24
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 1.7,
+        "fog": 0.00048,
+        "wind": 1.0336,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.0,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 0,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "sky-storm",
+      "state": {
+        "weather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "skyWeather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.168300018,
+        "fog": 0.00328,
+        "wind": 1.57675,
+        "RainParticleCount": 673,
+        "SplashParticleCount": 21,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.305499971,
+        "ThunderCount": 1,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 0,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "rain-shelter",
+      "state": {
+        "weather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "skyWeather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.406980038,
+        "fog": 0.001944,
+        "wind": 1.3396,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.0477749966,
+        "ThunderCount": 1,
+        "LightningFlash": 0.0,
+        "IsSheltered": true
+      },
+      "visibleBoltRenderers": 0,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "night-rain",
+      "state": {
+        "weather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "skyWeather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "phase": 0.0,
+        "lightning": 0.0,
+        "sun": 0.0,
+        "fog": 0.00231400016,
+        "wind": 1.3396,
+        "RainParticleCount": 396,
+        "SplashParticleCount": 18,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.170624986,
+        "ThunderCount": 1,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 0,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "night-storm-flash",
+      "state": {
+        "weather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "skyWeather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "phase": 0.0,
+        "lightning": 1.0,
+        "sun": 0.0,
+        "fog": 0.00365,
+        "wind": 1.57675,
+        "RainParticleCount": 677,
+        "SplashParticleCount": 26,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.305499971,
+        "ThunderCount": 1,
+        "LightningFlash": 1.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 3,
+      "boltGpuChangedPixels": null
+    },
+    {
+      "name": "storm-lightning-coast",
+      "state": {
+        "weather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "skyWeather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "phase": 0.4,
+        "lightning": 1.0,
+        "sun": 1.2683,
+        "fog": 0.00328,
+        "wind": 1.57675,
+        "RainParticleCount": 762,
+        "SplashParticleCount": 28,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.305499971,
+        "ThunderCount": 2,
+        "LightningFlash": 1.0,
+        "IsSheltered": false
+      },
+      "visibleBoltRenderers": 3,
+      "boltGpuChangedPixels": 1321
+    }
+  ]
+}

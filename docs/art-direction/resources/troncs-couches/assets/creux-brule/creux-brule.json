@@ -1,0 +1,19 @@
+{
+  "id": "creux-brule",
+  "shape": "creux",
+  "material": "brule",
+  "label": "Tronc creux · Bois brûlé",
+  "glb": "assets/creux-brule/creux-brule.glb",
+  "blend": "assets/creux-brule/creux-brule.blend",
+  "preview": "assets/creux-brule/creux-brule-preview.png",
+  "height": 0.6765,
+  "width": 2.8,
+  "depth": 0.8517,
+  "triangles": 10752,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

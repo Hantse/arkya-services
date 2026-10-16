@@ -1,0 +1,116 @@
+{
+  "assets": [
+    {
+      "id": "fondation-bois",
+      "triangles": 8648,
+      "geometry_sha256": "99e59893b572216a827ca858658ffd52fa2507b53c1e801c741ff7ffb0b83f22",
+      "glb_sha256": "1d00f2d63d1e22ea927ceb3423f31c6bbed00a85b9aa42ddad263ca425dc4359"
+    },
+    {
+      "id": "fondation-chaume",
+      "triangles": 16880,
+      "geometry_sha256": "b6b5e880a005a2afa8844b9d550ba1a45577f6ce3c343f44912330ccbae03c2b",
+      "glb_sha256": "59dc9536382561b0268bb0a60aaf55b9de4d1f9b12cfa92d1c565b7e9e4862cf"
+    },
+    {
+      "id": "fondation-pierre",
+      "triangles": 9400,
+      "geometry_sha256": "a2a9b684f32fcd93f59714ee22cf355c7a597061a3143d4d375868b2f7c004b0",
+      "glb_sha256": "9e9baaa269e2403128725375ef174c1adb43b551692f4161f4fbf770d881e718"
+    },
+    {
+      "id": "mur-fenetre-bois",
+      "triangles": 5264,
+      "geometry_sha256": "8e79f8311e80fc0db04de60c6354ae1c40f839cf0f883fe8ccdd7bab203979eb",
+      "glb_sha256": "9b440cd5634ae934ab610f5a85daac1fbb056243c6540ab7c13d7cb829eff265"
+    },
+    {
+      "id": "mur-fenetre-chaume",
+      "triangles": 8896,
+      "geometry_sha256": "3d46bc3de03a5bc192702a5a9f6e482101e42728907740221eb1f041aa2409f5",
+      "glb_sha256": "144300437efe0298da73f4e277d40327fda9ecb807cd89229339654ad1501817"
+    },
+    {
+      "id": "mur-fenetre-pierre",
+      "triangles": 5076,
+      "geometry_sha256": "58a4d16fed3a07c6ff0153abcc0d14fdf00f9b409fde07ea7f0f57b030541857",
+      "glb_sha256": "1cbda04d5ff8e0db0fb7a04285e55db00a6041864c3e7417e82748fbff8334c6"
+    },
+    {
+      "id": "mur-plein-bois",
+      "triangles": 3572,
+      "geometry_sha256": "6404d18eee3f476257095f3f383cabc2ea238d49631a0e4356c61972b183b033",
+      "glb_sha256": "888432459461bd41670e624aa8bae24a5224fff2d9b46d776d1b765ee65e3f03"
+    },
+    {
+      "id": "mur-plein-chaume",
+      "triangles": 5800,
+      "geometry_sha256": "26c544292ed6f6a45f67d3bc4346cc25051e0345b12ecaad789ca5293d4971d7",
+      "glb_sha256": "44dc9fe5c53047e396de59899c67860eb234d8812c0466967a2ecae3afaad674"
+    },
+    {
+      "id": "mur-plein-pierre",
+      "triangles": 3572,
+      "geometry_sha256": "ac0ab01c7d58238764d24d9f230ae9dd8514b7c2071024c19a21c2c58da6df42",
+      "glb_sha256": "2b5b67c73857b0c6c23a8053f5e93b9a40d84e591739561cbe186b875587cf49"
+    },
+    {
+      "id": "mur-porte-bois",
+      "triangles": 4512,
+      "geometry_sha256": "085cf90dd3f15b98c7679b59fe8489f40fd7e7ecfdfb340a5cbbb01872929c73",
+      "glb_sha256": "4bd41585442bb95cdaa0c6bdcf97b85dae4b4dd8ae1e0e5dcb5895bb94d2cdb0"
+    },
+    {
+      "id": "mur-porte-chaume",
+      "triangles": 8388,
+      "geometry_sha256": "7673dbc6501f365a78d0af5b7031751cd622d0dc19b4a9de23741799ead4d06c",
+      "glb_sha256": "23d6aca46d1fd166a2f9580477a7a6302ad8de4ebbb4c02fde5cba3a5523e964"
+    },
+    {
+      "id": "mur-porte-pierre",
+      "triangles": 4888,
+      "geometry_sha256": "e5867e1d2b8150aee0e6323cecb408b716258c29fe6c6706d66f0965ba14d8e6",
+      "glb_sha256": "472732859daa1de4c3b0dbdcc3ef97410b55dcf942f51f278b0050f2886a88c4"
+    },
+    {
+      "id": "plafond-bois",
+      "triangles": 2256,
+      "geometry_sha256": "757db14275b1e8de2bca350da7c8fd48f06d9c12f88d8d7d77e010ff5461272f",
+      "glb_sha256": "feedd2f4eb0bd4113e6db0e01f957ca665fce09786db48390b880262c3e3fc82"
+    },
+    {
+      "id": "plafond-chaume",
+      "triangles": 3932,
+      "geometry_sha256": "690754e32473aace77c92fb59e14ec19b65eed05b1f2c53c954c4af8e65f1729",
+      "glb_sha256": "cfbf1a63d4cbc49bf2c60698e1107b1eb6486e96c2540e80e776b32713fa8b43"
+    },
+    {
+      "id": "plafond-pierre",
+      "triangles": 1880,
+      "geometry_sha256": "46a375d545adcd4f565051cea3464484d8899964f93c283d0e8632151c05d863",
+      "glb_sha256": "86291f91b56a9879b2dad61673c57c2935ad635425ad007e5c0c94a0f0f06564"
+    }
+  ],
+  "stone_files": {
+    "assets/fondation-pierre/fondation-pierre-preview.png": "fc4b5443d819a370227d5f8212e47a74e71e89a8e619303148182d8cb82ca6d6",
+    "assets/fondation-pierre/fondation-pierre.blend": "eca69d696011336ca91d97cb647bdc60f51439d01054937f3c212667e90bbbb3",
+    "assets/fondation-pierre/fondation-pierre.glb": "9e9baaa269e2403128725375ef174c1adb43b551692f4161f4fbf770d881e718",
+    "assets/fondation-pierre/fondation-pierre.json": "3b55463dc270abf3084dce283bd96730b6ac3dd979ad2c592a75bcf42517ad58",
+    "assets/mur-fenetre-pierre/mur-fenetre-pierre-preview.png": "b296fcb7324cb16cd0dddc4f165730468e84d270c728dea691187dff1eee8d17",
+    "assets/mur-fenetre-pierre/mur-fenetre-pierre.blend": "fd4b8abdfe76147cb5f462cc90e2c47e23b5fc09508e047b447f083ce0715c13",
+    "assets/mur-fenetre-pierre/mur-fenetre-pierre.glb": "1cbda04d5ff8e0db0fb7a04285e55db00a6041864c3e7417e82748fbff8334c6",
+    "assets/mur-fenetre-pierre/mur-fenetre-pierre.json": "2aa15873aa007160816d34b2d4d401d2cb2920c2edf454b6873a51d23c052a97",
+    "assets/mur-plein-pierre/mur-plein-pierre-preview.png": "d6c48f8aefb194faf74c8189520f7485be0a5469b57b5f63f2cab10be99dc7bf",
+    "assets/mur-plein-pierre/mur-plein-pierre.blend": "affbc5103ed990c6c5e6b9b9c2901b8902de96cb09389854a56f2aed58c81e9a",
+    "assets/mur-plein-pierre/mur-plein-pierre.glb": "2b5b67c73857b0c6c23a8053f5e93b9a40d84e591739561cbe186b875587cf49",
+    "assets/mur-plein-pierre/mur-plein-pierre.json": "be7f95ba602a6b52ef23134cf732be3d036eec80730393655d8e8f9b49239878",
+    "assets/mur-porte-pierre/mur-porte-pierre-preview.png": "0489d9a74638f28254eb9a0f5dcc28232dac115103f274892b39ecfdd0267e1d",
+    "assets/mur-porte-pierre/mur-porte-pierre.blend": "7971686dba225fc1596a7e6c4d173c675de22b68e9638f04691f6d9a0fe7b597",
+    "assets/mur-porte-pierre/mur-porte-pierre.glb": "472732859daa1de4c3b0dbdcc3ef97410b55dcf942f51f278b0050f2886a88c4",
+    "assets/mur-porte-pierre/mur-porte-pierre.json": "99e4a3adcd8ac001b270aa64a8d5762849b826782338ebf04b2e09641cb7e0d8",
+    "assets/plafond-pierre/plafond-pierre-preview.png": "8f35ca97b994068bcf8cb08cee761279b1b382a7f95aa71d7ddab095ccafd1b5",
+    "assets/plafond-pierre/plafond-pierre.blend": "baef0aeb991590b6f13dc3660149873adb20b19ab6a422d3a1a1e23d1ec01296",
+    "assets/plafond-pierre/plafond-pierre.glb": "86291f91b56a9879b2dad61673c57c2935ad635425ad007e5c0c94a0f0f06564",
+    "assets/plafond-pierre/plafond-pierre.json": "1a4fa6f821754b4e95cd9734f0ab11568e252c8a48000231ab2532a7a7c7beec"
+  }
+}

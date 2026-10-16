@@ -1,0 +1,293 @@
+{
+  "family": "champignons",
+  "artistic_status": "approved",
+  "approved_at": "2026-10-15",
+  "shapes": [
+    {
+      "id": "boutons",
+      "label": "Colonie de boutons",
+      "height": 0.18,
+      "description": "Cinq boutons dodus à différents stades, groupés en arc ouvert."
+    },
+    {
+      "id": "amanite",
+      "label": "Amanite bombée",
+      "height": 0.4,
+      "description": "Grand chapeau penché, rebord charnu et petit compagnon décalé."
+    },
+    {
+      "id": "chanterelles",
+      "label": "Chanterelles en éventail",
+      "height": 0.6,
+      "description": "Trois coupes ondulées et évasées, lamelles descendantes et pieds incurvés."
+    },
+    {
+      "id": "parasol",
+      "label": "Parasol ancien",
+      "height": 0.95,
+      "description": "Grand parasol asymétrique à bosse centrale, bord souple et jeunes pousses latérales."
+    }
+  ],
+  "materials": [
+    {
+      "id": "corail",
+      "label": "Corail crème",
+      "swatch": "#cd6f52",
+      "description": "Chapeaux corail chaleureux, quelques marques crème et pieds ivoire ombrés de terre rose."
+    },
+    {
+      "id": "sous-bois",
+      "label": "Miel des sous-bois",
+      "swatch": "#bb914c",
+      "description": "Brun noisette, miel, liserés ocre et pieds crème; la teinte reste mate et peinte."
+    },
+    {
+      "id": "mystique",
+      "label": "Mystique boréal",
+      "swatch": "#7e71ad",
+      "description": "Violet feutré, ombres pétrole et accents turquoise limités au rebord et aux marques."
+    }
+  ],
+  "assets": [
+    {
+      "id": "boutons-corail",
+      "shape": "boutons",
+      "material": "corail",
+      "label": "Colonie de boutons · Corail crème",
+      "glb": "assets/boutons-corail/boutons-corail.glb",
+      "blend": "assets/boutons-corail/boutons-corail.blend",
+      "preview": "assets/boutons-corail/boutons-corail-preview.png",
+      "height": 0.18,
+      "width": 0.3554,
+      "depth": 0.2455,
+      "triangles": 28000,
+      "mushrooms": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "boutons-sous-bois",
+      "shape": "boutons",
+      "material": "sous-bois",
+      "label": "Colonie de boutons · Miel des sous-bois",
+      "glb": "assets/boutons-sous-bois/boutons-sous-bois.glb",
+      "blend": "assets/boutons-sous-bois/boutons-sous-bois.blend",
+      "preview": "assets/boutons-sous-bois/boutons-sous-bois-preview.png",
+      "height": 0.18,
+      "width": 0.3554,
+      "depth": 0.2455,
+      "triangles": 28000,
+      "mushrooms": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "boutons-mystique",
+      "shape": "boutons",
+      "material": "mystique",
+      "label": "Colonie de boutons · Mystique boréal",
+      "glb": "assets/boutons-mystique/boutons-mystique.glb",
+      "blend": "assets/boutons-mystique/boutons-mystique.blend",
+      "preview": "assets/boutons-mystique/boutons-mystique-preview.png",
+      "height": 0.18,
+      "width": 0.3554,
+      "depth": 0.2455,
+      "triangles": 28000,
+      "mushrooms": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "amanite-corail",
+      "shape": "amanite",
+      "material": "corail",
+      "label": "Amanite bombée · Corail crème",
+      "glb": "assets/amanite-corail/amanite-corail.glb",
+      "blend": "assets/amanite-corail/amanite-corail.blend",
+      "preview": "assets/amanite-corail/amanite-corail-preview.png",
+      "height": 0.4,
+      "width": 0.5541,
+      "depth": 0.4142,
+      "triangles": 11968,
+      "mushrooms": 2,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "amanite-sous-bois",
+      "shape": "amanite",
+      "material": "sous-bois",
+      "label": "Amanite bombée · Miel des sous-bois",
+      "glb": "assets/amanite-sous-bois/amanite-sous-bois.glb",
+      "blend": "assets/amanite-sous-bois/amanite-sous-bois.blend",
+      "preview": "assets/amanite-sous-bois/amanite-sous-bois-preview.png",
+      "height": 0.4,
+      "width": 0.5541,
+      "depth": 0.4142,
+      "triangles": 11968,
+      "mushrooms": 2,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "amanite-mystique",
+      "shape": "amanite",
+      "material": "mystique",
+      "label": "Amanite bombée · Mystique boréal",
+      "glb": "assets/amanite-mystique/amanite-mystique.glb",
+      "blend": "assets/amanite-mystique/amanite-mystique.blend",
+      "preview": "assets/amanite-mystique/amanite-mystique-preview.png",
+      "height": 0.4,
+      "width": 0.5541,
+      "depth": 0.4142,
+      "triangles": 11968,
+      "mushrooms": 2,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "chanterelles-corail",
+      "shape": "chanterelles",
+      "material": "corail",
+      "label": "Chanterelles en éventail · Corail crème",
+      "glb": "assets/chanterelles-corail/chanterelles-corail.glb",
+      "blend": "assets/chanterelles-corail/chanterelles-corail.blend",
+      "preview": "assets/chanterelles-corail/chanterelles-corail-preview.png",
+      "height": 0.6,
+      "width": 0.8882,
+      "depth": 0.7102,
+      "triangles": 16800,
+      "mushrooms": 3,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "chanterelles-sous-bois",
+      "shape": "chanterelles",
+      "material": "sous-bois",
+      "label": "Chanterelles en éventail · Miel des sous-bois",
+      "glb": "assets/chanterelles-sous-bois/chanterelles-sous-bois.glb",
+      "blend": "assets/chanterelles-sous-bois/chanterelles-sous-bois.blend",
+      "preview": "assets/chanterelles-sous-bois/chanterelles-sous-bois-preview.png",
+      "height": 0.6,
+      "width": 0.8882,
+      "depth": 0.7102,
+      "triangles": 16800,
+      "mushrooms": 3,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "chanterelles-mystique",
+      "shape": "chanterelles",
+      "material": "mystique",
+      "label": "Chanterelles en éventail · Mystique boréal",
+      "glb": "assets/chanterelles-mystique/chanterelles-mystique.glb",
+      "blend": "assets/chanterelles-mystique/chanterelles-mystique.blend",
+      "preview": "assets/chanterelles-mystique/chanterelles-mystique-preview.png",
+      "height": 0.6,
+      "width": 0.8882,
+      "depth": 0.7102,
+      "triangles": 16800,
+      "mushrooms": 3,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "parasol-corail",
+      "shape": "parasol",
+      "material": "corail",
+      "label": "Parasol ancien · Corail crème",
+      "glb": "assets/parasol-corail/parasol-corail.glb",
+      "blend": "assets/parasol-corail/parasol-corail.blend",
+      "preview": "assets/parasol-corail/parasol-corail-preview.png",
+      "height": 0.95,
+      "width": 1.1313,
+      "depth": 0.8638,
+      "triangles": 18336,
+      "mushrooms": 3,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "parasol-sous-bois",
+      "shape": "parasol",
+      "material": "sous-bois",
+      "label": "Parasol ancien · Miel des sous-bois",
+      "glb": "assets/parasol-sous-bois/parasol-sous-bois.glb",
+      "blend": "assets/parasol-sous-bois/parasol-sous-bois.blend",
+      "preview": "assets/parasol-sous-bois/parasol-sous-bois-preview.png",
+      "height": 0.95,
+      "width": 1.1313,
+      "depth": 0.8638,
+      "triangles": 18336,
+      "mushrooms": 3,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "parasol-mystique",
+      "shape": "parasol",
+      "material": "mystique",
+      "label": "Parasol ancien · Mystique boréal",
+      "glb": "assets/parasol-mystique/parasol-mystique.glb",
+      "blend": "assets/parasol-mystique/parasol-mystique.blend",
+      "preview": "assets/parasol-mystique/parasol-mystique-preview.png",
+      "height": 0.95,
+      "width": 1.1313,
+      "depth": 0.8638,
+      "triangles": 18336,
+      "mushrooms": 3,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    }
+  ]
+}

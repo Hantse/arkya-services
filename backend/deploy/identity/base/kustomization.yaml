@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: arkya-identity
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+  - network-policy.yaml
+  - keys-pvc.yaml
+configMapGenerator:
+  - name: arkya-identity-config
+    literals:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_HTTP_PORTS=8080;8081
+      - AllowedHosts=identity.arkya.online
+      - Mongo__DatabaseName=arkya_identity
+      - Discord__PublicBaseUrl=https://identity.arkya.online
+      - Discord__RedirectUri=https://identity.arkya.online/v1/auth/discord/callback
+      - Sessions__Lifetime=08:00:00
+      - WebClient__AllowedOrigins__0=https://arkya-atlas.easykrill33.chatgpt.site
+      - ReverseProxy__ForwardLimit=1
+      - Management__Port=8081
+      - Management__ReadinessTimeout=00:00:02
+      - DataProtection__KeysPath=/var/lib/arkya/keys
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
+      - Logging__LogLevel__System.Net.Http.HttpClient=Warning

@@ -1,0 +1,35 @@
+{
+  "blender_version": "4.5.14 LTS",
+  "scene": "ancients",
+  "engine": "CYCLES",
+  "devices": [
+    "NVIDIA GeForce RTX 3060"
+  ],
+  "samples": 128,
+  "resolution": [
+    1800,
+    1200
+  ],
+  "objects": 579,
+  "mesh_objects": 566,
+  "unique_meshes": 566,
+  "materials": 29,
+  "cameras": [
+    "Camera_Main",
+    "Camera_Overview",
+    "Camera_Path"
+  ],
+  "source": "build_terres_anciens.py",
+  "notes": {
+    "title": "Terres des Anciens",
+    "seed": 2137,
+    "objects": 579,
+    "main_camera": "Camera_Main",
+    "notes": [
+      "Fully procedural mesh, material and lighting study.",
+      "Smooth sculptural trees and foliage; no external images or vendor assets.",
+      "The ranger is a scale mannequin, not a final game character."
+    ]
+  },
+  "external_images": []
+}

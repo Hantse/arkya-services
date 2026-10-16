@@ -1,0 +1,28 @@
+{
+  "id": "hache-vert",
+  "shape": "hache",
+  "material": "vert",
+  "label": "Hache invoquée · Mana vert · 0 emplacements",
+  "artistic_status": "proposal",
+  "glb": "assets/hache-vert/hache-vert.glb",
+  "blend": "assets/hache-vert/hache-vert.blend",
+  "preview": "assets/hache-vert/hache-vert-preview.png",
+  "height": 1.2816,
+  "width": 0.6794,
+  "depth": 0.1794,
+  "triangles": 7768,
+  "materials": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "animation": "SummonedToolIdle",
+  "animation_duration": 4,
+  "fps": 24,
+  "socket_count": 0,
+  "sockets": [],
+  "pivot": "centre de la prise, Tool_Root",
+  "axes_blender": "+Z vers la tête, face avant -Y",
+  "axes_glb": "+Y vers la tête, face avant +Z",
+  "opaque": true
+}

@@ -1,0 +1,76 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-15T21:41:46.9708793Z",
+  "unity": "6000.6.6f1",
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "terrainSize": 1536.0,
+  "heightmapResolution": 1025,
+  "terrainLayers": 6,
+  "maximumAdjacentHeightDifference": 2.87126541,
+  "maximumBoundaryHeight": 12.0944881,
+  "levels": [
+    1,
+    6
+  ],
+  "progressionZones": 6,
+  "routes": [
+    {
+      "Id": "arrival-refuge",
+      "Width": 16.0,
+      "minimumSeaClearance": 5.687603,
+      "maximumGrade": 0.183288619
+    },
+    {
+      "Id": "meadow-west-loop",
+      "Width": 13.0,
+      "minimumSeaClearance": 19.4872742,
+      "maximumGrade": 0.154287964
+    },
+    {
+      "Id": "forest-main",
+      "Width": 15.0,
+      "minimumSeaClearance": 19.4872742,
+      "maximumGrade": 0.1978404
+    },
+    {
+      "Id": "forest-west-loop",
+      "Width": 12.0,
+      "minimumSeaClearance": 22.8317757,
+      "maximumGrade": 0.09930878
+    },
+    {
+      "Id": "mana-basin",
+      "Width": 14.0,
+      "minimumSeaClearance": 13.33905,
+      "maximumGrade": 0.215191409
+    },
+    {
+      "Id": "ridge-west-ascent",
+      "Width": 14.0,
+      "minimumSeaClearance": 31.37159,
+      "maximumGrade": 0.2116077
+    },
+    {
+      "Id": "ridge-east-ascent",
+      "Width": 14.0,
+      "minimumSeaClearance": 23.1456985,
+      "maximumGrade": 0.2186309
+    },
+    {
+      "Id": "harbor-road",
+      "Width": 16.0,
+      "minimumSeaClearance": 5.25202942,
+      "maximumGrade": 0.208856449
+    },
+    {
+      "Id": "summit-to-harbor",
+      "Width": 14.0,
+      "minimumSeaClearance": 11.3012314,
+      "maximumGrade": 0.219117716
+    }
+  ],
+  "lodGroups": 3696,
+  "materials": 40,
+  "errors": [],
+  "scope": "Terrain and layout authoring only. No admission, population benchmark, quests, combat, ECS terrain collision or multiplayer instancing implemented."
+}

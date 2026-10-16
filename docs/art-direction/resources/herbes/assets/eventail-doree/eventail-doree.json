@@ -1,0 +1,20 @@
+{
+  "id": "eventail-doree",
+  "shape": "eventail",
+  "material": "doree",
+  "label": "Touffe éventail · Herbe dorée",
+  "glb": "assets/eventail-doree/eventail-doree.glb",
+  "blend": "assets/eventail-doree/eventail-doree.blend",
+  "preview": "assets/eventail-doree/eventail-doree-preview.png",
+  "height": 0.45,
+  "width": 0.8411,
+  "depth": 0.5835,
+  "triangles": 10668,
+  "blades": 42,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

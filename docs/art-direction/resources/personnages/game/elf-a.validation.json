@@ -1,0 +1,117 @@
+{
+  "id": "elf-a",
+  "attribution": "Rain and Snow by Blender Studio / Blender Foundation, CC BY 4.0. Arkya adaptations: fantasy costumes, painted surfaces, proportions, elf ears, hairstyles, compact rig and procedural locomotion. See ../CREDITS.md.",
+  "bones": 26,
+  "vertices": 30994,
+  "trianglesAllHairOptions": 58671,
+  "trianglesShort": 51955,
+  "maxInfluences": 4,
+  "unweightedVertices": 0,
+  "maxWeightSumError": 1.5847035683691502e-07,
+  "clips": [
+    {
+      "name": "Idle",
+      "frames": 121,
+      "durationSeconds": 4.0,
+      "inPlace": true,
+      "loop": true
+    },
+    {
+      "name": "Walk",
+      "frames": 37,
+      "durationSeconds": 1.2,
+      "inPlace": true,
+      "loop": true
+    },
+    {
+      "name": "Run",
+      "frames": 25,
+      "durationSeconds": 0.8,
+      "inPlace": true,
+      "loop": true
+    }
+  ],
+  "animationDeformationProbes": [
+    {
+      "clip": "Idle",
+      "maxVertexDisplacementMeters": 0.02541404200603206
+    },
+    {
+      "clip": "Walk",
+      "maxVertexDisplacementMeters": 0.274880964013569
+    },
+    {
+      "clip": "Run",
+      "maxVertexDisplacementMeters": 0.42858317063646567
+    }
+  ],
+  "meshes": [
+    {
+      "name": "HairMain",
+      "triangles": 4920,
+      "materials": [
+        "Hair"
+      ]
+    },
+    {
+      "name": "HairLong",
+      "triangles": 2782,
+      "materials": [
+        "Hair"
+      ]
+    },
+    {
+      "name": "HairBraid",
+      "triangles": 3934,
+      "materials": [
+        "Hair",
+        "Metal"
+      ]
+    },
+    {
+      "name": "CharacterMesh",
+      "triangles": 47035,
+      "materials": [
+        "Skin",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "DarkLeather",
+        "OutfitAccent",
+        "Ivory",
+        "Metal",
+        "Gem"
+      ]
+    }
+  ],
+  "boneNames": [
+    "Root",
+    "Hips",
+    "Spine",
+    "Chest",
+    "Neck",
+    "Head",
+    "HairUpper",
+    "HairLower",
+    "LeftShoulder",
+    "LeftUpperArm",
+    "LeftLowerArm",
+    "LeftHand",
+    "RightShoulder",
+    "RightUpperArm",
+    "RightLowerArm",
+    "RightHand",
+    "CapeUpper",
+    "CapeLower",
+    "LeftUpperLeg",
+    "LeftLowerLeg",
+    "LeftFoot",
+    "LeftToes",
+    "RightUpperLeg",
+    "RightLowerLeg",
+    "RightFoot",
+    "RightToes"
+  ],
+  "verticesUsingRemappedSourceWeights": 14308
+}

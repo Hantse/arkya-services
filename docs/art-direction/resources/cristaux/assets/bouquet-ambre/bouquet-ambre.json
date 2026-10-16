@@ -1,0 +1,20 @@
+{
+  "id": "bouquet-ambre",
+  "shape": "bouquet",
+  "material": "ambre",
+  "label": "Bouquet · Ambre",
+  "glb": "assets/bouquet-ambre/bouquet-ambre.glb",
+  "blend": "assets/bouquet-ambre/bouquet-ambre.blend",
+  "preview": "assets/bouquet-ambre/bouquet-ambre-preview.png",
+  "height": 1.1,
+  "width": 1.0541,
+  "depth": 0.9296,
+  "triangles": 2598,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "bake": "Cycles CPU, emission channel transfer to basecolor/roughness/emission"
+}

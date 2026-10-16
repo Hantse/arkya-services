@@ -1,0 +1,47 @@
+{
+  "dimensions_m": {
+    "width": 16.344,
+    "depth": 15.14,
+    "height": 16.0
+  },
+  "bounds_blender_z_up": {
+    "min": [
+      -7.850271701812744,
+      -6.697356224060059,
+      0.0
+    ],
+    "max": [
+      8.493694305419922,
+      8.442453384399414,
+      16.0
+    ]
+  },
+  "mesh_count": 3,
+  "vertices": 332510,
+  "triangles": 429204,
+  "id": "04-venerable",
+  "title": "Vénérable",
+  "description": "Arbre massif, contreforts puissants, grande couronne courbe et modérément vrillée.",
+  "source_asset": "../../../arkya-ancient-tree-v2.blend",
+  "deformation": {
+    "id": "04-venerable",
+    "title": "Vénérable",
+    "height": 16.0,
+    "stem": 1.91,
+    "crown_x": 1.76,
+    "crown_y": 1.62,
+    "curve": 0.18,
+    "power": 1.55,
+    "twist": 0.25,
+    "bend": 1.43,
+    "leaf": 1.4,
+    "description": "Arbre massif, contreforts puissants, grande couronne courbe et modérément vrillée."
+  },
+  "leaf_count": 18600,
+  "leaf_shape_preservation": "Each blade uses a local polar rotation and uniform size; its base follows the deformed twig exactly.",
+  "materials": "Approved base materials unchanged; packed bark 2K base color/normal, COLOR_0 leaf color and occlusion retained.",
+  "leaf_color_entries": 204600,
+  "gltf_up_axis": "Y",
+  "blender_up_axis": "Z",
+  "glb_bytes": 22670888
+}

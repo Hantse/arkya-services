@@ -1,0 +1,20 @@
+{
+  "id": "courbee-doree",
+  "shape": "courbee",
+  "material": "doree",
+  "label": "Touffe courbée · Herbe dorée",
+  "glb": "assets/courbee-doree/courbee-doree.glb",
+  "blend": "assets/courbee-doree/courbee-doree.blend",
+  "preview": "assets/courbee-doree/courbee-doree-preview.png",
+  "height": 0.7,
+  "width": 0.828,
+  "depth": 0.8366,
+  "triangles": 11176,
+  "blades": 44,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

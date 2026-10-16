@@ -1,0 +1,245 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-16T08:39:13.4673974Z",
+  "captures": [
+    {
+      "name": "shore-day-10",
+      "phase": 0.4,
+      "waveSeconds": 10.0,
+      "camera": {
+        "x": 768.0,
+        "y": 31.9175167,
+        "z": 158.417847
+      },
+      "sampleHeight": 28.0,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "shore-day-12",
+      "phase": 0.4,
+      "waveSeconds": 12.0,
+      "camera": {
+        "x": 768.0,
+        "y": 31.9175167,
+        "z": 158.417847
+      },
+      "sampleHeight": 28.0,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "shore-night-10",
+      "phase": 0.0,
+      "waveSeconds": 10.0,
+      "camera": {
+        "x": 768.0,
+        "y": 31.9175167,
+        "z": 158.417847
+      },
+      "sampleHeight": 28.0,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "boundary-day-10",
+      "phase": 0.4,
+      "waveSeconds": 10.0,
+      "camera": {
+        "x": 768.0,
+        "y": 30.4,
+        "z": -97.0
+      },
+      "sampleHeight": 27.5957756,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "boundary-day-12",
+      "phase": 0.4,
+      "waveSeconds": 12.0,
+      "camera": {
+        "x": 768.0,
+        "y": 30.4,
+        "z": -97.0
+      },
+      "sampleHeight": 27.7927589,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "boundary-night-10",
+      "phase": 0.0,
+      "waveSeconds": 10.0,
+      "camera": {
+        "x": 768.0,
+        "y": 30.4,
+        "z": -97.0
+      },
+      "sampleHeight": 27.5957756,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "calm-silhouette-10",
+      "phase": 0.4,
+      "waveSeconds": 10.0,
+      "camera": {
+        "x": 768.0,
+        "y": 28.22,
+        "z": 133.417847
+      },
+      "sampleHeight": 28.0245075,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "calm-silhouette-12",
+      "phase": 0.4,
+      "waveSeconds": 12.0,
+      "camera": {
+        "x": 768.0,
+        "y": 28.22,
+        "z": 133.417847
+      },
+      "sampleHeight": 27.8705387,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "boundary-silhouette-10",
+      "phase": 0.4,
+      "waveSeconds": 10.0,
+      "camera": {
+        "x": 768.0,
+        "y": 28.5,
+        "z": -97.0
+      },
+      "sampleHeight": 27.5957756,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "boundary-silhouette-12",
+      "phase": 0.4,
+      "waveSeconds": 12.0,
+      "camera": {
+        "x": 768.0,
+        "y": 28.5,
+        "z": -97.0
+      },
+      "sampleHeight": 27.7927589,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "shore-contact-10",
+      "phase": 0.4,
+      "waveSeconds": 10.0,
+      "camera": {
+        "x": 768.0,
+        "y": 30.7,
+        "z": 133.417847
+      },
+      "sampleHeight": 28.0245075,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    },
+    {
+      "name": "shore-contact-12",
+      "phase": 0.4,
+      "waveSeconds": 12.0,
+      "camera": {
+        "x": 768.0,
+        "y": 30.7,
+        "z": 133.417847
+      },
+      "sampleHeight": 27.8705387,
+      "coast": {
+        "x": 768.0,
+        "y": 28.1499844,
+        "z": 153.417847
+      },
+      "coastGroundHeight": 28.1499844,
+      "depthAtCalmSample": 8.14938
+    }
+  ],
+  "calmGeometry": {
+    "ActiveChangedPixels": 463993,
+    "ZeroChangedPixels": 0,
+    "ZeroHeightError": 0.0,
+    "Camera": {
+      "x": 768.0,
+      "y": 28.05,
+      "z": 133.417847
+    },
+    "WaterDepth": 8.14938
+  },
+  "violetGeometry": {
+    "ActiveChangedPixels": 34918,
+    "ZeroChangedPixels": 0,
+    "ZeroHeightError": 0.0,
+    "Camera": {
+      "x": 768.0,
+      "y": 28.1,
+      "z": -97.0
+    },
+    "WaterDepth": 30.0
+  },
+  "note": "Twelve color views plus six isolated GPU silhouette proof images. Magenta is a review background only. Identical geometry masks at zero height isolate displacement from animated water color and foam. All review state is restored; no Unity source asset or settings are saved."
+}

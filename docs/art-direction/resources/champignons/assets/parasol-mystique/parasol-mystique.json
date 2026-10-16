@@ -1,0 +1,20 @@
+{
+  "id": "parasol-mystique",
+  "shape": "parasol",
+  "material": "mystique",
+  "label": "Parasol ancien · Mystique boréal",
+  "glb": "assets/parasol-mystique/parasol-mystique.glb",
+  "blend": "assets/parasol-mystique/parasol-mystique.blend",
+  "preview": "assets/parasol-mystique/parasol-mystique-preview.png",
+  "height": 0.95,
+  "width": 1.1313,
+  "depth": 0.8638,
+  "triangles": 18336,
+  "mushrooms": 3,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "pioche-azur",
+  "shape": "pioche",
+  "material": "azur",
+  "label": "Pioche invoquée · Azur",
+  "artistic_status": "proposal",
+  "glb": "assets/pioche-azur/pioche-azur.glb",
+  "blend": "assets/pioche-azur/pioche-azur.blend",
+  "preview": "assets/pioche-azur/pioche-azur-preview.png",
+  "height": 1.3028,
+  "width": 0.9286,
+  "depth": 0.1794,
+  "triangles": 7692,
+  "materials": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "animation": "SummonedToolIdle",
+  "animation_duration": 4,
+  "fps": 24,
+  "pivot": "centre de la prise, Tool_Root",
+  "axes_blender": "+Z vers la tête, face avant -Y",
+  "axes_glb": "+Y vers la tête, face avant +Z",
+  "opaque": true,
+  "socket_count": 0,
+  "sockets": []
+}

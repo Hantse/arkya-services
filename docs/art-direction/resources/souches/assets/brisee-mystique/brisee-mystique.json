@@ -1,0 +1,19 @@
+{
+  "id": "brisee-mystique",
+  "shape": "brisee",
+  "material": "mystique",
+  "label": "Vieille souche brisée · Mystique",
+  "glb": "assets/brisee-mystique/brisee-mystique.glb",
+  "blend": "assets/brisee-mystique/brisee-mystique.blend",
+  "preview": "assets/brisee-mystique/brisee-mystique-preview.png",
+  "height": 1.35,
+  "width": 1.4172,
+  "depth": 1.1792,
+  "triangles": 23296,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

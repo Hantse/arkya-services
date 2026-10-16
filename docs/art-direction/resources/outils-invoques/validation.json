@@ -1,0 +1,4764 @@
+{
+  "success": true,
+  "asset_count": 36,
+  "assets": [
+    {
+      "id": "hache-azur",
+      "shape": "hache",
+      "material": "azur",
+      "socket_count": 0,
+      "sockets": [],
+      "glb": {
+        "triangles": 7768,
+        "meshes": 23,
+        "primitives": 23,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8909312,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-azur-sockets-1",
+      "shape": "hache",
+      "material": "azur",
+      "socket_count": 1,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.17516502737998962,
+            -0.058125000447034836,
+            0.5662499666213989
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8404,
+        "meshes": 25,
+        "primitives": 25,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8932684,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-azur-sockets-2",
+      "shape": "hache",
+      "material": "azur",
+      "socket_count": 2,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.17516502737998962,
+            -0.058125000447034836,
+            0.5662499666213989
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 1.862645149230957e-08,
+          "position_blender": [
+            0.2876650393009186,
+            -0.058125000447034836,
+            0.5887500047683716
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9040,
+        "meshes": 27,
+        "primitives": 27,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8956056,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-azur-sockets-3",
+      "shape": "hache",
+      "material": "azur",
+      "socket_count": 3,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.17516502737998962,
+            -0.058125000447034836,
+            0.5662499666213989
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 1.862645149230957e-08,
+          "position_blender": [
+            0.2876650393009186,
+            -0.058125000447034836,
+            0.5887500047683716
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_03",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.3851649761199951,
+            -0.058125000447034836,
+            0.5362499952316284
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9676,
+        "meshes": 29,
+        "primitives": 29,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8979428,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-orange",
+      "shape": "hache",
+      "material": "orange",
+      "socket_count": 0,
+      "sockets": [],
+      "glb": {
+        "triangles": 7768,
+        "meshes": 23,
+        "primitives": 23,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8943052,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-orange-sockets-1",
+      "shape": "hache",
+      "material": "orange",
+      "socket_count": 1,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.17516502737998962,
+            -0.058125000447034836,
+            0.5662499666213989
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8404,
+        "meshes": 25,
+        "primitives": 25,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8966424,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-orange-sockets-2",
+      "shape": "hache",
+      "material": "orange",
+      "socket_count": 2,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.17516502737998962,
+            -0.058125000447034836,
+            0.5662499666213989
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 1.862645149230957e-08,
+          "position_blender": [
+            0.2876650393009186,
+            -0.058125000447034836,
+            0.5887500047683716
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9040,
+        "meshes": 27,
+        "primitives": 27,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8989796,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-orange-sockets-3",
+      "shape": "hache",
+      "material": "orange",
+      "socket_count": 3,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.17516502737998962,
+            -0.058125000447034836,
+            0.5662499666213989
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 1.862645149230957e-08,
+          "position_blender": [
+            0.2876650393009186,
+            -0.058125000447034836,
+            0.5887500047683716
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_03",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.3851649761199951,
+            -0.058125000447034836,
+            0.5362499952316284
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9676,
+        "meshes": 29,
+        "primitives": 29,
+        "materials": 5,
+        "images": 10,
+        "bytes": 9013168,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-vert",
+      "shape": "hache",
+      "material": "vert",
+      "socket_count": 0,
+      "sockets": [],
+      "glb": {
+        "triangles": 7768,
+        "meshes": 23,
+        "primitives": 23,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8767396,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-vert-sockets-1",
+      "shape": "hache",
+      "material": "vert",
+      "socket_count": 1,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.17516502737998962,
+            -0.058125000447034836,
+            0.5662499666213989
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8404,
+        "meshes": 25,
+        "primitives": 25,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8790768,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-vert-sockets-2",
+      "shape": "hache",
+      "material": "vert",
+      "socket_count": 2,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.17516502737998962,
+            -0.058125000447034836,
+            0.5662499666213989
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 1.862645149230957e-08,
+          "position_blender": [
+            0.2876650393009186,
+            -0.058125000447034836,
+            0.5887500047683716
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9040,
+        "meshes": 27,
+        "primitives": 27,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8814140,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "hache-vert-sockets-3",
+      "shape": "hache",
+      "material": "vert",
+      "socket_count": 3,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.17516502737998962,
+            -0.058125000447034836,
+            0.5662499666213989
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 1.862645149230957e-08,
+          "position_blender": [
+            0.2876650393009186,
+            -0.058125000447034836,
+            0.5887500047683716
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_03",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 3.725290298461914e-09,
+          "position_blender": [
+            0.3851649761199951,
+            -0.058125000447034836,
+            0.5362499952316284
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9676,
+        "meshes": 29,
+        "primitives": 29,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8837512,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-azur",
+      "shape": "pioche",
+      "material": "azur",
+      "socket_count": 0,
+      "sockets": [],
+      "glb": {
+        "triangles": 7692,
+        "meshes": 21,
+        "primitives": 21,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8903936,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-azur-sockets-1",
+      "shape": "pioche",
+      "material": "azur",
+      "socket_count": 1,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.1175870895385742e-08,
+          "position_blender": [
+            -0.2785849869251251,
+            -0.0370718352496624,
+            0.5737500190734863
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8290,
+        "meshes": 22,
+        "primitives": 22,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8924264,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-azur-sockets-2",
+      "shape": "pioche",
+      "material": "azur",
+      "socket_count": 2,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.1175870895385742e-08,
+          "position_blender": [
+            -0.2785849869251251,
+            -0.0370718352496624,
+            0.5737500190734863
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 0.0,
+          "position_blender": [
+            -0.1473349779844284,
+            -0.04730601608753204,
+            0.6097500324249268
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8874,
+        "meshes": 23,
+        "primitives": 23,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8944128,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-azur-sockets-3",
+      "shape": "pioche",
+      "material": "azur",
+      "socket_count": 3,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.1175870895385742e-08,
+          "position_blender": [
+            -0.2785849869251251,
+            -0.0370718352496624,
+            0.5737500190734863
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 0.0,
+          "position_blender": [
+            -0.1473349779844284,
+            -0.04730601608753204,
+            0.6097500324249268
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_03",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.4901161193847656e-08,
+          "position_blender": [
+            0.17516502737998962,
+            -0.04379715025424957,
+            0.5715000033378601
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9472,
+        "meshes": 24,
+        "primitives": 24,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8964456,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-orange",
+      "shape": "pioche",
+      "material": "orange",
+      "socket_count": 0,
+      "sockets": [],
+      "glb": {
+        "triangles": 7692,
+        "meshes": 21,
+        "primitives": 21,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8937676,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-orange-sockets-1",
+      "shape": "pioche",
+      "material": "orange",
+      "socket_count": 1,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.1175870895385742e-08,
+          "position_blender": [
+            -0.2785849869251251,
+            -0.0370718352496624,
+            0.5737500190734863
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8290,
+        "meshes": 22,
+        "primitives": 22,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8958004,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-orange-sockets-2",
+      "shape": "pioche",
+      "material": "orange",
+      "socket_count": 2,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.1175870895385742e-08,
+          "position_blender": [
+            -0.2785849869251251,
+            -0.0370718352496624,
+            0.5737500190734863
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 0.0,
+          "position_blender": [
+            -0.1473349779844284,
+            -0.04730601608753204,
+            0.6097500324249268
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8874,
+        "meshes": 23,
+        "primitives": 23,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8977868,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-orange-sockets-3",
+      "shape": "pioche",
+      "material": "orange",
+      "socket_count": 3,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.1175870895385742e-08,
+          "position_blender": [
+            -0.2785849869251251,
+            -0.0370718352496624,
+            0.5737500190734863
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 0.0,
+          "position_blender": [
+            -0.1473349779844284,
+            -0.04730601608753204,
+            0.6097500324249268
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_03",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.4901161193847656e-08,
+          "position_blender": [
+            0.17516502737998962,
+            -0.04379715025424957,
+            0.5715000033378601
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9472,
+        "meshes": 24,
+        "primitives": 24,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8998196,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-vert",
+      "shape": "pioche",
+      "material": "vert",
+      "socket_count": 0,
+      "sockets": [],
+      "glb": {
+        "triangles": 7692,
+        "meshes": 21,
+        "primitives": 21,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8762020,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-vert-sockets-1",
+      "shape": "pioche",
+      "material": "vert",
+      "socket_count": 1,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.1175870895385742e-08,
+          "position_blender": [
+            -0.2785849869251251,
+            -0.0370718352496624,
+            0.5737500190734863
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8290,
+        "meshes": 22,
+        "primitives": 22,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8782348,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-vert-sockets-2",
+      "shape": "pioche",
+      "material": "vert",
+      "socket_count": 2,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.1175870895385742e-08,
+          "position_blender": [
+            -0.2785849869251251,
+            -0.0370718352496624,
+            0.5737500190734863
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 0.0,
+          "position_blender": [
+            -0.1473349779844284,
+            -0.04730601608753204,
+            0.6097500324249268
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8874,
+        "meshes": 23,
+        "primitives": 23,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8802212,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "pioche-vert-sockets-3",
+      "shape": "pioche",
+      "material": "vert",
+      "socket_count": 3,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.1175870895385742e-08,
+          "position_blender": [
+            -0.2785849869251251,
+            -0.0370718352496624,
+            0.5737500190734863
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": 0.0,
+          "position_blender": [
+            -0.1473349779844284,
+            -0.04730601608753204,
+            0.6097500324249268
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_03",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -1.4901161193847656e-08,
+          "position_blender": [
+            0.17516502737998962,
+            -0.04379715025424957,
+            0.5715000033378601
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9472,
+        "meshes": 24,
+        "primitives": 24,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8822540,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-azur",
+      "shape": "faucille",
+      "material": "azur",
+      "socket_count": 0,
+      "sockets": [],
+      "glb": {
+        "triangles": 8092,
+        "meshes": 21,
+        "primitives": 21,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8931520,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-azur-sockets-1",
+      "shape": "faucille",
+      "material": "azur",
+      "socket_count": 1,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.1328650265932083,
+            -0.05062500387430191,
+            0.26774999499320984
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8728,
+        "meshes": 23,
+        "primitives": 23,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8954896,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-azur-sockets-2",
+      "shape": "faucille",
+      "material": "azur",
+      "socket_count": 2,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.1328650265932083,
+            -0.05062500387430191,
+            0.26774999499320984
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -2.2351741790771484e-08,
+          "position_blender": [
+            0.2294650375843048,
+            -0.05062500387430191,
+            0.2996250092983246
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9364,
+        "meshes": 25,
+        "primitives": 25,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8978268,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-azur-sockets-3",
+      "shape": "faucille",
+      "material": "azur",
+      "socket_count": 3,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.1328650265932083,
+            -0.05062500387430191,
+            0.26774999499320984
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -2.2351741790771484e-08,
+          "position_blender": [
+            0.2294650375843048,
+            -0.05062500387430191,
+            0.2996250092983246
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_03",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.31916505098342896,
+            -0.05062500387430191,
+            0.35062500834465027
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 10000,
+        "meshes": 27,
+        "primitives": 27,
+        "materials": 5,
+        "images": 10,
+        "bytes": 9001640,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-orange",
+      "shape": "faucille",
+      "material": "orange",
+      "socket_count": 0,
+      "sockets": [],
+      "glb": {
+        "triangles": 8092,
+        "meshes": 21,
+        "primitives": 21,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8965260,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-orange-sockets-1",
+      "shape": "faucille",
+      "material": "orange",
+      "socket_count": 1,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.1328650265932083,
+            -0.05062500387430191,
+            0.26774999499320984
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8728,
+        "meshes": 23,
+        "primitives": 23,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8988636,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-orange-sockets-2",
+      "shape": "faucille",
+      "material": "orange",
+      "socket_count": 2,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.1328650265932083,
+            -0.05062500387430191,
+            0.26774999499320984
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -2.2351741790771484e-08,
+          "position_blender": [
+            0.2294650375843048,
+            -0.05062500387430191,
+            0.2996250092983246
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9364,
+        "meshes": 25,
+        "primitives": 25,
+        "materials": 5,
+        "images": 10,
+        "bytes": 9012008,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-orange-sockets-3",
+      "shape": "faucille",
+      "material": "orange",
+      "socket_count": 3,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.1328650265932083,
+            -0.05062500387430191,
+            0.26774999499320984
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -2.2351741790771484e-08,
+          "position_blender": [
+            0.2294650375843048,
+            -0.05062500387430191,
+            0.2996250092983246
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_03",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.31916505098342896,
+            -0.05062500387430191,
+            0.35062500834465027
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 10000,
+        "meshes": 27,
+        "primitives": 27,
+        "materials": 5,
+        "images": 10,
+        "bytes": 9035380,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-vert",
+      "shape": "faucille",
+      "material": "vert",
+      "socket_count": 0,
+      "sockets": [],
+      "glb": {
+        "triangles": 8092,
+        "meshes": 21,
+        "primitives": 21,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8789604,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-vert-sockets-1",
+      "shape": "faucille",
+      "material": "vert",
+      "socket_count": 1,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.1328650265932083,
+            -0.05062500387430191,
+            0.26774999499320984
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 8728,
+        "meshes": 23,
+        "primitives": 23,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8812980,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-vert-sockets-2",
+      "shape": "faucille",
+      "material": "vert",
+      "socket_count": 2,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.1328650265932083,
+            -0.05062500387430191,
+            0.26774999499320984
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -2.2351741790771484e-08,
+          "position_blender": [
+            0.2294650375843048,
+            -0.05062500387430191,
+            0.2996250092983246
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 9364,
+        "meshes": 25,
+        "primitives": 25,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8836352,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    },
+    {
+      "id": "faucille-vert-sockets-3",
+      "shape": "faucille",
+      "material": "vert",
+      "socket_count": 3,
+      "sockets": [
+        {
+          "name": "Socket_01",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.1328650265932083,
+            -0.05062500387430191,
+            0.26774999499320984
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_02",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -2.2351741790771484e-08,
+          "position_blender": [
+            0.2294650375843048,
+            -0.05062500387430191,
+            0.2996250092983246
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        },
+        {
+          "name": "Socket_03",
+          "empty_cavity": true,
+          "centre_surface_offset_m": -7.450580596923828e-09,
+          "position_blender": [
+            0.31916505098342896,
+            -0.05062500387430191,
+            0.35062500834465027
+          ],
+          "axis_blender": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ]
+        }
+      ],
+      "glb": {
+        "triangles": 10000,
+        "meshes": 27,
+        "primitives": 27,
+        "materials": 5,
+        "images": 10,
+        "bytes": 8859724,
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0,
+        "animations": [
+          {
+            "name": "SummonedToolIdle",
+            "duration": 4.0,
+            "channels": 6,
+            "samplers": 6,
+            "animated_nodes": 3
+          }
+        ]
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bronze-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bronze-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "leather-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mana-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "steel-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "wood-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "single_grip_root": true,
+      "loop_duration": 4.0,
+      "animated_nodes": 3,
+      "maximum_loop_endpoint_delta": 0.0
+    }
+  ],
+  "variant_matrix_complete": true,
+  "palette_geometry_checks": [
+    {
+      "shape": "hache",
+      "socket_count": 0,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "hache",
+      "socket_count": 1,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "hache",
+      "socket_count": 2,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "hache",
+      "socket_count": 3,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "pioche",
+      "socket_count": 0,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "pioche",
+      "socket_count": 1,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "pioche",
+      "socket_count": 2,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "pioche",
+      "socket_count": 3,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "faucille",
+      "socket_count": 0,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "faucille",
+      "socket_count": 1,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "faucille",
+      "socket_count": 2,
+      "same_geometry_sockets_animation_across_palettes": true
+    },
+    {
+      "shape": "faucille",
+      "socket_count": 3,
+      "same_geometry_sockets_animation_across_palettes": true
+    }
+  ],
+  "reference_and_baseline_hashes_unchanged": {
+    "tree": 15,
+    "mana": 65,
+    "original_tools": 6,
+    "pre_sickle_tools_and_textures": 86
+  }
+}

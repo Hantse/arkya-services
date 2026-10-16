@@ -1,0 +1,19 @@
+{
+  "id": "etoilee-ivoire",
+  "shape": "etoilee",
+  "material": "ivoire",
+  "label": "Grand lis étoilé · Ivoire doré",
+  "glb": "assets/etoilee-ivoire/etoilee-ivoire.glb",
+  "blend": "assets/etoilee-ivoire/etoilee-ivoire.blend",
+  "preview": "assets/etoilee-ivoire/etoilee-ivoire-preview.png",
+  "height": 1.0,
+  "width": 0.7379,
+  "depth": 0.5579,
+  "triangles": 17548,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

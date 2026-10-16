@@ -1,0 +1,196 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.69,
+      "summary": {
+        "total": 24,
+        "passed": 24,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.CenterAndThresholdAreConfigurable",
+          "Status": "Passed",
+          "Duration": 0.0108915,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.DeathHappensAtFiveSecondsAndNeverAtFourPointNineNineNine",
+          "Status": "Passed",
+          "Duration": 0.000949,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.ExistingDeathClearsExposureWithoutCreatingAnotherHealthState",
+          "Status": "Passed",
+          "Duration": 0.1063766,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.ExteriorIncludesTheInnerEdgeAndHasNoOuterEscape(834.99f,False)",
+          "Status": "Passed",
+          "Duration": 0.0020814,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.ExteriorIncludesTheInnerEdgeAndHasNoOuterEscape(835.0f,True)",
+          "Status": "Passed",
+          "Duration": 0.0001889,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.ExteriorIncludesTheInnerEdgeAndHasNoOuterEscape(900.0f,True)",
+          "Status": "Passed",
+          "Duration": 0.0001058,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.ExteriorIncludesTheInnerEdgeAndHasNoOuterEscape(5000.0f,True)",
+          "Status": "Passed",
+          "Duration": 0.0000965,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.InvalidRadiusDoesNotApplyDeath(0.0f)",
+          "Status": "Passed",
+          "Duration": 0.0004537,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.InvalidRadiusDoesNotApplyDeath(-1.0f)",
+          "Status": "Passed",
+          "Duration": 0.0001166,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.InvalidRadiusDoesNotApplyDeath(float.NaN)",
+          "Status": "Passed",
+          "Duration": 0.0000842,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.InvalidRadiusDoesNotApplyDeath(float.PositiveInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0000858,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.InvalidRadiusDoesNotApplyDeath(1000001.0f)",
+          "Status": "Passed",
+          "Duration": 0.0000827,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.JumpingAfterContactAndCrossingTheFarSideCannotResetExposure",
+          "Status": "Passed",
+          "Duration": 0.0012388,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.RadialReturnResetsTheTimerAndASecondVisitGetsFiveFullSeconds",
+          "Status": "Passed",
+          "Duration": 0.0005287,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.WaterContactArmsExposureOnlyAtOrBelowTheSurfaceAllowance(28.3f,True)",
+          "Status": "Passed",
+          "Duration": 0.0005668,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.WaterContactArmsExposureOnlyAtOrBelowTheSurfaceAllowance(28.0f,True)",
+          "Status": "Passed",
+          "Duration": 0.0001796,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.WaterContactArmsExposureOnlyAtOrBelowTheSurfaceAllowance(-50.0f,True)",
+          "Status": "Passed",
+          "Duration": 0.0001022,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.WaterContactArmsExposureOnlyAtOrBelowTheSurfaceAllowance(28.31f,False)",
+          "Status": "Passed",
+          "Duration": 0.0001033,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterRulesTests.WaterContactArmsExposureOnlyAtOrBelowTheSurfaceAllowance(100.0f,False)",
+          "Status": "Passed",
+          "Duration": 0.0000961,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterSystemTests.EvenAnExplicitlyCreatedClientSystemCannotChangeClientHealth",
+          "Status": "Passed",
+          "Duration": 0.0339795,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterSystemTests.JumpingOutsideAfterContactStillDiesAtTheOriginalDeadline",
+          "Status": "Passed",
+          "Duration": 0.0106742,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterSystemTests.LeavingAndRespawningInsideTheIslandClearOldExposure",
+          "Status": "Passed",
+          "Duration": 0.0016993,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterSystemTests.ServerAutoAttachesExposureAndKillsThroughExistingCharacterStatsAtTheDeadline",
+          "Status": "Passed",
+          "Duration": 0.0010477,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.Tests.BoundaryWaterSystemTests.SystemIsDiscoveredForServersAndNeverForClientSimulation",
+          "Status": "Passed",
+          "Duration": 0.0061435,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

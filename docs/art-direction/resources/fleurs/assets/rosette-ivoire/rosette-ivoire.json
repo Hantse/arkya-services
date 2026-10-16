@@ -1,0 +1,19 @@
+{
+  "id": "rosette-ivoire",
+  "shape": "rosette",
+  "material": "ivoire",
+  "label": "Rosette basse · Ivoire doré",
+  "glb": "assets/rosette-ivoire/rosette-ivoire.glb",
+  "blend": "assets/rosette-ivoire/rosette-ivoire.blend",
+  "preview": "assets/rosette-ivoire/rosette-ivoire-preview.png",
+  "height": 0.2,
+  "width": 0.3319,
+  "depth": 0.283,
+  "triangles": 6784,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

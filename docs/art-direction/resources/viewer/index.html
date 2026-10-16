@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Arkya — Bibliothèque des Anciens</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="/vendor/model-viewer.min.js"></script>
+  <script type="module" src="viewer.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="../README.md" target="_blank"><span class="mark" aria-hidden="true">◇</span><span><small>ARKYA · DIRECTION ARTISTIQUE</small><strong>Bibliothèque des Anciens</strong></span></a>
+    <a class="character-workshop" href="../personnages/viewer/index.html">Créer une apparence ↗</a>
+    <a class="character-workshop" href="../totems/viewer/index.html">Familiers totems ↗</a>
+    <div class="reference-note"><span class="dot"></span><span id="artistic-status">Finition peinte</span></div>
+  </header>
+  <nav id="families" aria-label="Famille de ressources"></nav>
+  <main>
+    <aside aria-label="Choisir les variantes">
+      <div class="section-top"><h2>La collection</h2><span id="count"></span></div>
+      <p id="family-description"></p>
+      <div class="section-top"><h3>Forme & taille</h3><span id="shape-count"></span></div>
+      <div id="shapes" class="shape-list"></div>
+      <div class="section-top material-heading"><h3>Matière</h3><span id="material-count"></span></div>
+      <div id="materials" class="materials"></div>
+      <div id="socket-control" hidden>
+        <div class="section-top material-heading"><h3 id="socket-heading">Sockets vides</h3><span>0 à 3</span></div>
+        <div id="sockets" class="sockets" role="group" aria-labelledby="socket-heading"></div>
+        <p class="hint">Le cœur de mana reste décoratif ; les sockets sont vides.</p>
+      </div>
+      <a id="size-comparison" target="_blank" class="comparison">↗ Voir les tailles ensemble</a>
+      <a id="socket-comparison" target="_blank" class="comparison" hidden>↗ Comparer les sockets</a>
+      <a id="color-comparison" target="_blank" class="comparison" hidden>↗ Comparer les couleurs</a>
+      <p class="hint">Chaque objet est cadré automatiquement.<br>Les dimensions indiquent sa taille réelle.</p>
+    </aside>
+    <section class="stage" aria-label="Aperçu 3D">
+      <model-viewer id="object" camera-controls touch-action="pan-y" environment-image="neutral" exposure="1" shadow-intensity="1" shadow-softness="0.9" camera-orbit="35deg 68deg 110%" field-of-view="35deg" interaction-prompt="none" min-camera-orbit="auto auto 20%" max-camera-orbit="auto auto 220%"></model-viewer>
+      <div class="stage-title"><span id="selected-family"></span><h1 id="selected-name">Les ressources d’Arkya</h1><p id="selected-material"></p><p id="selected-contract" hidden></p></div>
+      <div class="stage-bottom">
+        <dl class="dimensions"><div><dt>Hauteur</dt><dd id="height">—</dd></div><div><dt id="width-label">Largeur</dt><dd id="width">—</dd></div><div><dt>Profondeur</dt><dd id="depth">—</dd></div></dl>
+        <div class="viewer-actions"><label id="animation-control" hidden><input type="checkbox" id="animate"> Magie animée</label><label><input type="checkbox" id="rotate"> Rotation auto</label><button id="reset">⌖ Recentrer</button></div>
+      </div>
+      <div class="progress"><div id="load-fill"></div></div>
+    </section>
+  </main>
+  <footer><span id="status" role="status">Chargement de la bibliothèque…</span><div class="downloads"><a id="download-glb" download>GLB ↓</a><a id="download-blend" download>Blender ↓</a><span>Glisser pour tourner · Molette pour zoomer</span></div></footer>
+</body>
+</html>

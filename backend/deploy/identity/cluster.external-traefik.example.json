@@ -1,0 +1,10 @@
+{
+  "exposure": "external-traefik",
+  "image": "registry.example.com/arkya/identity:replace-with-release-tag",
+  "serviceAddress": "192.168.100.218",
+  "servicePort": 80,
+  "serviceAnnotations": {},
+  "trustedProxyNetworks": ["192.168.100.0/24"],
+  "storageClass": "replace-with-storage-class",
+  "imagePullSecretName": ""
+}

@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: arkya-identity
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+  - network-policy.yaml
+configMapGenerator:
+  - name: arkya-gateway-config
+    literals:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_HTTP_PORTS=8080;8081
+      - AllowedHosts=api.arkya.online
+      - ProxyTrust__ForwardLimit=1
+      - Management__Port=8081
+      - Gateway__CharactersEnabled=false
+      - ReverseProxy__Clusters__identity__Destinations__primary__Address=http://arkya-identity.arkya-identity.svc.cluster.local:8080/
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
+      - Logging__LogLevel__System.Net.Http.HttpClient=Warning
+      - Logging__LogLevel__Yarp.ReverseProxy=Warning

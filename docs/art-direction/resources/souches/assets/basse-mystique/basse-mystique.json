@@ -1,0 +1,19 @@
+{
+  "id": "basse-mystique",
+  "shape": "basse",
+  "material": "mystique",
+  "label": "Souche basse · Mystique",
+  "glb": "assets/basse-mystique/basse-mystique.glb",
+  "blend": "assets/basse-mystique/basse-mystique.blend",
+  "preview": "assets/basse-mystique/basse-mystique-preview.png",
+  "height": 0.35,
+  "width": 1.0054,
+  "depth": 0.9182,
+  "triangles": 17408,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

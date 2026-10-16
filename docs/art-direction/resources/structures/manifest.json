@@ -1,0 +1,1836 @@
+{
+  "family": "structures",
+  "artistic_status": "proposed",
+  "shapes": [
+    {
+      "id": "fondation",
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.5,
+        "depth": 1.0
+      },
+      "label": "Fondation",
+      "width": 1.0,
+      "height": 0.5,
+      "depth": 1.0,
+      "description": "Socle carré de 1 m, haut de 50 cm."
+    },
+    {
+      "id": "mur-plein",
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "label": "Mur plein",
+      "width": 1.0,
+      "height": 1.0,
+      "depth": 0.15,
+      "description": "Panneau plein de 1 m de côté, épais de 15 cm."
+    },
+    {
+      "id": "mur-fenetre",
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "label": "Mur avec fenêtre",
+      "width": 1.0,
+      "height": 1.0,
+      "depth": 0.15,
+      "description": "Vraie baie centrale de 50 × 50 cm, allège à 30 cm.",
+      "opening": {
+        "width": 0.5,
+        "height": 0.5,
+        "bottom": 0.3,
+        "top": 0.8
+      }
+    },
+    {
+      "id": "mur-porte",
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 2.0,
+        "depth": 0.15
+      },
+      "label": "Mur avec porte",
+      "width": 1.0,
+      "height": 2.0,
+      "depth": 0.15,
+      "description": "Passage libre de 72 × 185 cm, sans seuil.",
+      "opening": {
+        "width": 0.72,
+        "height": 1.85,
+        "bottom": 0.0,
+        "top": 1.85
+      }
+    },
+    {
+      "id": "plafond",
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.1,
+        "depth": 1.0
+      },
+      "label": "Plafond",
+      "width": 1.0,
+      "height": 0.1,
+      "depth": 1.0,
+      "description": "Dalle carrée de 1 m, épaisse de 10 cm."
+    }
+  ],
+  "materials": [
+    {
+      "id": "chaume",
+      "label": "Chaume",
+      "swatch": "#c2a461",
+      "description": "Faisceaux dorés tressés, ossature de bois et liens de corde."
+    },
+    {
+      "id": "bois",
+      "label": "Bois",
+      "swatch": "#94704c",
+      "description": "Larges planches sciées, cadres chauds et chevilles discrètes."
+    },
+    {
+      "id": "pierre",
+      "label": "Pierre",
+      "swatch": "#87989e",
+      "description": "Blocs appareillés adoucis, variations peintes et mortier froid."
+    }
+  ],
+  "assets": [
+    {
+      "id": "fondation-chaume",
+      "shape": "fondation",
+      "material": "chaume",
+      "label": "Fondation · Chaume",
+      "glb": "assets/fondation-chaume/fondation-chaume.glb",
+      "blend": "assets/fondation-chaume/fondation-chaume.blend",
+      "preview": "assets/fondation-chaume/fondation-chaume-preview.png",
+      "height": 0.5,
+      "width": 1.0,
+      "depth": 1.0,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.5,
+        "depth": 1.0
+      },
+      "triangles": 16880,
+      "materials_count": 3,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.25,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.25,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            0.5,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.25,
+            0.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.25,
+            -0.5
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      }
+    },
+    {
+      "id": "fondation-bois",
+      "shape": "fondation",
+      "material": "bois",
+      "label": "Fondation · Bois",
+      "glb": "assets/fondation-bois/fondation-bois.glb",
+      "blend": "assets/fondation-bois/fondation-bois.blend",
+      "preview": "assets/fondation-bois/fondation-bois-preview.png",
+      "height": 0.5,
+      "width": 1.0,
+      "depth": 1.0,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.5,
+        "depth": 1.0
+      },
+      "triangles": 8648,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.25,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.25,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            0.5,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.25,
+            0.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.25,
+            -0.5
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      }
+    },
+    {
+      "id": "fondation-pierre",
+      "shape": "fondation",
+      "material": "pierre",
+      "label": "Fondation · Pierre",
+      "glb": "assets/fondation-pierre/fondation-pierre.glb",
+      "blend": "assets/fondation-pierre/fondation-pierre.blend",
+      "preview": "assets/fondation-pierre/fondation-pierre-preview.png",
+      "height": 0.5,
+      "width": 1.0,
+      "depth": 1.0,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.5,
+        "depth": 1.0
+      },
+      "triangles": 9400,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.25,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.25,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            0.5,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.25,
+            0.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.25,
+            -0.5
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local"
+    },
+    {
+      "id": "mur-plein-chaume",
+      "shape": "mur-plein",
+      "material": "chaume",
+      "label": "Mur plein · Chaume",
+      "glb": "assets/mur-plein-chaume/mur-plein-chaume.glb",
+      "blend": "assets/mur-plein-chaume/mur-plein-chaume.blend",
+      "preview": "assets/mur-plein-chaume/mur-plein-chaume-preview.png",
+      "height": 1.0,
+      "width": 1.0,
+      "depth": 0.15,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "triangles": 5800,
+      "materials_count": 3,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            1.0,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.5,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.5,
+            -0.075
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      }
+    },
+    {
+      "id": "mur-plein-bois",
+      "shape": "mur-plein",
+      "material": "bois",
+      "label": "Mur plein · Bois",
+      "glb": "assets/mur-plein-bois/mur-plein-bois.glb",
+      "blend": "assets/mur-plein-bois/mur-plein-bois.blend",
+      "preview": "assets/mur-plein-bois/mur-plein-bois-preview.png",
+      "height": 1.0,
+      "width": 1.0,
+      "depth": 0.15,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "triangles": 3572,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            1.0,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.5,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.5,
+            -0.075
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      }
+    },
+    {
+      "id": "mur-plein-pierre",
+      "shape": "mur-plein",
+      "material": "pierre",
+      "label": "Mur plein · Pierre",
+      "glb": "assets/mur-plein-pierre/mur-plein-pierre.glb",
+      "blend": "assets/mur-plein-pierre/mur-plein-pierre.blend",
+      "preview": "assets/mur-plein-pierre/mur-plein-pierre-preview.png",
+      "height": 1.0,
+      "width": 1.0,
+      "depth": 0.15,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "triangles": 3572,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            1.0,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.5,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.5,
+            -0.075
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local"
+    },
+    {
+      "id": "mur-fenetre-chaume",
+      "shape": "mur-fenetre",
+      "material": "chaume",
+      "label": "Mur avec fenêtre · Chaume",
+      "glb": "assets/mur-fenetre-chaume/mur-fenetre-chaume.glb",
+      "blend": "assets/mur-fenetre-chaume/mur-fenetre-chaume.blend",
+      "preview": "assets/mur-fenetre-chaume/mur-fenetre-chaume-preview.png",
+      "height": 1.0,
+      "width": 1.0,
+      "depth": 0.15,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "triangles": 8896,
+      "materials_count": 3,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            1.0,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.5,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.5,
+            -0.075
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      },
+      "opening": {
+        "width": 0.5,
+        "height": 0.5,
+        "bottom": 0.3,
+        "top": 0.8
+      }
+    },
+    {
+      "id": "mur-fenetre-bois",
+      "shape": "mur-fenetre",
+      "material": "bois",
+      "label": "Mur avec fenêtre · Bois",
+      "glb": "assets/mur-fenetre-bois/mur-fenetre-bois.glb",
+      "blend": "assets/mur-fenetre-bois/mur-fenetre-bois.blend",
+      "preview": "assets/mur-fenetre-bois/mur-fenetre-bois-preview.png",
+      "height": 1.0,
+      "width": 1.0,
+      "depth": 0.15,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "triangles": 5264,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            1.0,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.5,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.5,
+            -0.075
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      },
+      "opening": {
+        "width": 0.5,
+        "height": 0.5,
+        "bottom": 0.3,
+        "top": 0.8
+      }
+    },
+    {
+      "id": "mur-fenetre-pierre",
+      "shape": "mur-fenetre",
+      "material": "pierre",
+      "label": "Mur avec fenêtre · Pierre",
+      "glb": "assets/mur-fenetre-pierre/mur-fenetre-pierre.glb",
+      "blend": "assets/mur-fenetre-pierre/mur-fenetre-pierre.blend",
+      "preview": "assets/mur-fenetre-pierre/mur-fenetre-pierre-preview.png",
+      "height": 1.0,
+      "width": 1.0,
+      "depth": 0.15,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "triangles": 5076,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            1.0,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.5,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.5,
+            -0.075
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "opening": {
+        "width": 0.5,
+        "height": 0.5,
+        "bottom": 0.3,
+        "top": 0.8
+      }
+    },
+    {
+      "id": "mur-porte-chaume",
+      "shape": "mur-porte",
+      "material": "chaume",
+      "label": "Mur avec porte · Chaume",
+      "glb": "assets/mur-porte-chaume/mur-porte-chaume.glb",
+      "blend": "assets/mur-porte-chaume/mur-porte-chaume.blend",
+      "preview": "assets/mur-porte-chaume/mur-porte-chaume-preview.png",
+      "height": 2.0,
+      "width": 1.0,
+      "depth": 0.15,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 2.0,
+        "depth": 0.15
+      },
+      "triangles": 8388,
+      "materials_count": 3,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            1.0,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            1.0,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            2.0,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            1.0,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            1.0,
+            -0.075
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      },
+      "opening": {
+        "width": 0.72,
+        "height": 1.85,
+        "bottom": 0.0,
+        "top": 1.85
+      }
+    },
+    {
+      "id": "mur-porte-bois",
+      "shape": "mur-porte",
+      "material": "bois",
+      "label": "Mur avec porte · Bois",
+      "glb": "assets/mur-porte-bois/mur-porte-bois.glb",
+      "blend": "assets/mur-porte-bois/mur-porte-bois.blend",
+      "preview": "assets/mur-porte-bois/mur-porte-bois-preview.png",
+      "height": 2.0,
+      "width": 1.0,
+      "depth": 0.15,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 2.0,
+        "depth": 0.15
+      },
+      "triangles": 4512,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            1.0,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            1.0,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            2.0,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            1.0,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            1.0,
+            -0.075
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      },
+      "opening": {
+        "width": 0.72,
+        "height": 1.85,
+        "bottom": 0.0,
+        "top": 1.85
+      }
+    },
+    {
+      "id": "mur-porte-pierre",
+      "shape": "mur-porte",
+      "material": "pierre",
+      "label": "Mur avec porte · Pierre",
+      "glb": "assets/mur-porte-pierre/mur-porte-pierre.glb",
+      "blend": "assets/mur-porte-pierre/mur-porte-pierre.blend",
+      "preview": "assets/mur-porte-pierre/mur-porte-pierre-preview.png",
+      "height": 2.0,
+      "width": 1.0,
+      "depth": 0.15,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 2.0,
+        "depth": 0.15
+      },
+      "triangles": 4888,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            1.0,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            1.0,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            2.0,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            1.0,
+            0.075
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            1.0,
+            -0.075
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "opening": {
+        "width": 0.72,
+        "height": 1.85,
+        "bottom": 0.0,
+        "top": 1.85
+      }
+    },
+    {
+      "id": "plafond-chaume",
+      "shape": "plafond",
+      "material": "chaume",
+      "label": "Plafond · Chaume",
+      "glb": "assets/plafond-chaume/plafond-chaume.glb",
+      "blend": "assets/plafond-chaume/plafond-chaume.blend",
+      "preview": "assets/plafond-chaume/plafond-chaume-preview.png",
+      "height": 0.1,
+      "width": 1.0,
+      "depth": 1.0,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.1,
+        "depth": 1.0
+      },
+      "triangles": 3932,
+      "materials_count": 3,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.05,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.05,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            0.1,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.05,
+            0.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.05,
+            -0.5
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      }
+    },
+    {
+      "id": "plafond-bois",
+      "shape": "plafond",
+      "material": "bois",
+      "label": "Plafond · Bois",
+      "glb": "assets/plafond-bois/plafond-bois.glb",
+      "blend": "assets/plafond-bois/plafond-bois.blend",
+      "preview": "assets/plafond-bois/plafond-bois-preview.png",
+      "height": 0.1,
+      "width": 1.0,
+      "depth": 1.0,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.1,
+        "depth": 1.0
+      },
+      "triangles": 2256,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.05,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.05,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            0.1,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.05,
+            0.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.05,
+            -0.5
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local",
+      "wood_finish": {
+        "revision": 2,
+        "uv_tile_metres": [
+          1.2,
+          2.4
+        ],
+        "roughness": 0.96,
+        "source": "sources/worked-timber-painted-v2.png"
+      }
+    },
+    {
+      "id": "plafond-pierre",
+      "shape": "plafond",
+      "material": "pierre",
+      "label": "Plafond · Pierre",
+      "glb": "assets/plafond-pierre/plafond-pierre.glb",
+      "blend": "assets/plafond-pierre/plafond-pierre.blend",
+      "preview": "assets/plafond-pierre/plafond-pierre-preview.png",
+      "height": 0.1,
+      "width": 1.0,
+      "depth": 1.0,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.1,
+        "depth": 1.0
+      },
+      "triangles": 1880,
+      "materials_count": 2,
+      "texture_resolution": [
+        1254,
+        1254
+      ],
+      "opaque": true,
+      "pivot": "centre au sol",
+      "gltf_up_axis": "Y",
+      "snap_points": [
+        {
+          "name": "Snap_Left",
+          "position_m": [
+            -0.5,
+            0.05,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Right",
+          "position_m": [
+            0.5,
+            0.05,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Bottom",
+          "position_m": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Top",
+          "position_m": [
+            0,
+            0.1,
+            0
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "Snap_Front",
+          "position_m": [
+            0,
+            0.05,
+            0.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "Snap_Back",
+          "position_m": [
+            0,
+            0.05,
+            -0.5
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "snap_coordinate_system": "glTF Y-up, metres, root-local"
+    }
+  ]
+}

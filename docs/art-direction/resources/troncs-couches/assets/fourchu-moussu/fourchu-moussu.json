@@ -1,0 +1,19 @@
+{
+  "id": "fourchu-moussu",
+  "shape": "fourchu",
+  "material": "moussu",
+  "label": "Grand tronc fourchu · Ancien moussu",
+  "glb": "assets/fourchu-moussu/fourchu-moussu.glb",
+  "blend": "assets/fourchu-moussu/fourchu-moussu.blend",
+  "preview": "assets/fourchu-moussu/fourchu-moussu-preview.png",
+  "height": 0.7707,
+  "width": 4.2,
+  "depth": 1.8639,
+  "triangles": 13898,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

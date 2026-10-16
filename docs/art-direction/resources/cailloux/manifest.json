@@ -1,0 +1,384 @@
+{
+  "family": "cailloux",
+  "shapes": [
+    {
+      "id": "01-galet",
+      "label": "Galet compact",
+      "height": 0.45,
+      "intent": "Volume usé, compact et arrondi, plans doux."
+    },
+    {
+      "id": "02-bloc-oblique",
+      "label": "Bloc oblique",
+      "height": 0.9,
+      "intent": "Sommet incliné, épaule décalée et base stable."
+    },
+    {
+      "id": "03-rocher-large",
+      "label": "Rocher large",
+      "height": 1.6,
+      "intent": "Masse horizontale asymétrique et ressaut latéral."
+    },
+    {
+      "id": "04-affleurement",
+      "label": "Affleurement",
+      "height": 2.7,
+      "intent": "Trois épaules inégales autour d’une crête oblique."
+    }
+  ],
+  "materials": [
+    {
+      "id": "01-gris-bleu",
+      "label": "Pierre gris bleu",
+      "palette": [
+        [
+          0.085,
+          0.12,
+          0.157
+        ],
+        [
+          0.205,
+          0.275,
+          0.315
+        ],
+        [
+          0.385,
+          0.465,
+          0.49
+        ]
+      ]
+    },
+    {
+      "id": "02-gres-chaud",
+      "label": "Grès chaud",
+      "palette": [
+        [
+          0.18,
+          0.095,
+          0.045
+        ],
+        [
+          0.38,
+          0.245,
+          0.115
+        ],
+        [
+          0.59,
+          0.445,
+          0.255
+        ]
+      ]
+    },
+    {
+      "id": "03-moussu",
+      "label": "Pierre moussue",
+      "palette": [
+        [
+          0.09,
+          0.115,
+          0.09
+        ],
+        [
+          0.225,
+          0.265,
+          0.185
+        ],
+        [
+          0.4,
+          0.435,
+          0.29
+        ]
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "01-galet-01-gris-bleu",
+      "shape": "01-galet",
+      "material": "01-gris-bleu",
+      "label": "Galet compact · Pierre gris bleu",
+      "glb": "01-galet/01-gris-bleu/01-galet-01-gris-bleu.glb",
+      "blend": "01-galet/01-gris-bleu/01-galet-01-gris-bleu.blend",
+      "preview": "01-galet/01-gris-bleu/01-galet-01-gris-bleu-preview.png",
+      "height": 0.45,
+      "width": 0.7387,
+      "depth": 0.5553,
+      "triangles": 8200,
+      "vertices": 4102,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "01-galet-02-gres-chaud",
+      "shape": "01-galet",
+      "material": "02-gres-chaud",
+      "label": "Galet compact · Grès chaud",
+      "glb": "01-galet/02-gres-chaud/01-galet-02-gres-chaud.glb",
+      "blend": "01-galet/02-gres-chaud/01-galet-02-gres-chaud.blend",
+      "preview": "01-galet/02-gres-chaud/01-galet-02-gres-chaud-preview.png",
+      "height": 0.45,
+      "width": 0.7387,
+      "depth": 0.5553,
+      "triangles": 8200,
+      "vertices": 4102,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "01-galet-03-moussu",
+      "shape": "01-galet",
+      "material": "03-moussu",
+      "label": "Galet compact · Pierre moussue",
+      "glb": "01-galet/03-moussu/01-galet-03-moussu.glb",
+      "blend": "01-galet/03-moussu/01-galet-03-moussu.blend",
+      "preview": "01-galet/03-moussu/01-galet-03-moussu-preview.png",
+      "height": 0.45,
+      "width": 0.7387,
+      "depth": 0.5553,
+      "triangles": 8200,
+      "vertices": 4102,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "02-bloc-oblique-01-gris-bleu",
+      "shape": "02-bloc-oblique",
+      "material": "01-gris-bleu",
+      "label": "Bloc oblique · Pierre gris bleu",
+      "glb": "02-bloc-oblique/01-gris-bleu/02-bloc-oblique-01-gris-bleu.glb",
+      "blend": "02-bloc-oblique/01-gris-bleu/02-bloc-oblique-01-gris-bleu.blend",
+      "preview": "02-bloc-oblique/01-gris-bleu/02-bloc-oblique-01-gris-bleu-preview.png",
+      "height": 0.9,
+      "width": 0.9127,
+      "depth": 0.6505,
+      "triangles": 7820,
+      "vertices": 3912,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "02-bloc-oblique-02-gres-chaud",
+      "shape": "02-bloc-oblique",
+      "material": "02-gres-chaud",
+      "label": "Bloc oblique · Grès chaud",
+      "glb": "02-bloc-oblique/02-gres-chaud/02-bloc-oblique-02-gres-chaud.glb",
+      "blend": "02-bloc-oblique/02-gres-chaud/02-bloc-oblique-02-gres-chaud.blend",
+      "preview": "02-bloc-oblique/02-gres-chaud/02-bloc-oblique-02-gres-chaud-preview.png",
+      "height": 0.9,
+      "width": 0.9127,
+      "depth": 0.6505,
+      "triangles": 7820,
+      "vertices": 3912,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "02-bloc-oblique-03-moussu",
+      "shape": "02-bloc-oblique",
+      "material": "03-moussu",
+      "label": "Bloc oblique · Pierre moussue",
+      "glb": "02-bloc-oblique/03-moussu/02-bloc-oblique-03-moussu.glb",
+      "blend": "02-bloc-oblique/03-moussu/02-bloc-oblique-03-moussu.blend",
+      "preview": "02-bloc-oblique/03-moussu/02-bloc-oblique-03-moussu-preview.png",
+      "height": 0.9,
+      "width": 0.9127,
+      "depth": 0.6505,
+      "triangles": 7820,
+      "vertices": 3912,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "03-rocher-large-01-gris-bleu",
+      "shape": "03-rocher-large",
+      "material": "01-gris-bleu",
+      "label": "Rocher large · Pierre gris bleu",
+      "glb": "03-rocher-large/01-gris-bleu/03-rocher-large-01-gris-bleu.glb",
+      "blend": "03-rocher-large/01-gris-bleu/03-rocher-large-01-gris-bleu.blend",
+      "preview": "03-rocher-large/01-gris-bleu/03-rocher-large-01-gris-bleu-preview.png",
+      "height": 1.6,
+      "width": 2.8364,
+      "depth": 1.7435,
+      "triangles": 8500,
+      "vertices": 4252,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "03-rocher-large-02-gres-chaud",
+      "shape": "03-rocher-large",
+      "material": "02-gres-chaud",
+      "label": "Rocher large · Grès chaud",
+      "glb": "03-rocher-large/02-gres-chaud/03-rocher-large-02-gres-chaud.glb",
+      "blend": "03-rocher-large/02-gres-chaud/03-rocher-large-02-gres-chaud.blend",
+      "preview": "03-rocher-large/02-gres-chaud/03-rocher-large-02-gres-chaud-preview.png",
+      "height": 1.6,
+      "width": 2.8364,
+      "depth": 1.7435,
+      "triangles": 8500,
+      "vertices": 4252,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "03-rocher-large-03-moussu",
+      "shape": "03-rocher-large",
+      "material": "03-moussu",
+      "label": "Rocher large · Pierre moussue",
+      "glb": "03-rocher-large/03-moussu/03-rocher-large-03-moussu.glb",
+      "blend": "03-rocher-large/03-moussu/03-rocher-large-03-moussu.blend",
+      "preview": "03-rocher-large/03-moussu/03-rocher-large-03-moussu-preview.png",
+      "height": 1.6,
+      "width": 2.8364,
+      "depth": 1.7435,
+      "triangles": 8500,
+      "vertices": 4252,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "04-affleurement-01-gris-bleu",
+      "shape": "04-affleurement",
+      "material": "01-gris-bleu",
+      "label": "Affleurement · Pierre gris bleu",
+      "glb": "04-affleurement/01-gris-bleu/04-affleurement-01-gris-bleu.glb",
+      "blend": "04-affleurement/01-gris-bleu/04-affleurement-01-gris-bleu.blend",
+      "preview": "04-affleurement/01-gris-bleu/04-affleurement-01-gris-bleu-preview.png",
+      "height": 2.7,
+      "width": 2.9683,
+      "depth": 1.942,
+      "triangles": 8500,
+      "vertices": 4252,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "04-affleurement-02-gres-chaud",
+      "shape": "04-affleurement",
+      "material": "02-gres-chaud",
+      "label": "Affleurement · Grès chaud",
+      "glb": "04-affleurement/02-gres-chaud/04-affleurement-02-gres-chaud.glb",
+      "blend": "04-affleurement/02-gres-chaud/04-affleurement-02-gres-chaud.blend",
+      "preview": "04-affleurement/02-gres-chaud/04-affleurement-02-gres-chaud-preview.png",
+      "height": 2.7,
+      "width": 2.9683,
+      "depth": 1.942,
+      "triangles": 8500,
+      "vertices": 4252,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    },
+    {
+      "id": "04-affleurement-03-moussu",
+      "shape": "04-affleurement",
+      "material": "03-moussu",
+      "label": "Affleurement · Pierre moussue",
+      "glb": "04-affleurement/03-moussu/04-affleurement-03-moussu.glb",
+      "blend": "04-affleurement/03-moussu/04-affleurement-03-moussu.blend",
+      "preview": "04-affleurement/03-moussu/04-affleurement-03-moussu-preview.png",
+      "height": 2.7,
+      "width": 2.9683,
+      "depth": 1.942,
+      "triangles": 8500,
+      "vertices": 4252,
+      "textures_size": [
+        2048,
+        2048
+      ],
+      "paint_contrast": 0.75,
+      "source": "../sources/stone-painted.png",
+      "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "mesh_count": 1,
+      "pivot": "Centered X/Y, lowest point Z=0",
+      "gltf_up_axis": "Y"
+    }
+  ]
+}

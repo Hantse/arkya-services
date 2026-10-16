@@ -1,0 +1,47 @@
+{
+  "dimensions_m": {
+    "width": 4.207,
+    "depth": 4.104,
+    "height": 5.5
+  },
+  "bounds_blender_z_up": {
+    "min": [
+      -2.1246278285980225,
+      -1.8704904317855835,
+      0.0
+    ],
+    "max": [
+      2.082453727722168,
+      2.2339649200439453,
+      5.5
+    ]
+  },
+  "mesh_count": 3,
+  "vertices": 332510,
+  "triangles": 429204,
+  "id": "01-jeune",
+  "title": "Jeune",
+  "description": "Jeune arbre fin, houppier compact et vertical, contreforts discrets.",
+  "source_asset": "../../../arkya-ancient-tree-v2.blend",
+  "deformation": {
+    "id": "01-jeune",
+    "title": "Jeune",
+    "height": 5.5,
+    "stem": 0.34,
+    "crown_x": 0.43,
+    "crown_y": 0.41,
+    "curve": 0.12,
+    "power": 1.55,
+    "twist": -0.035,
+    "bend": 0.11,
+    "leaf": 0.72,
+    "description": "Jeune arbre fin, houppier compact et vertical, contreforts discrets."
+  },
+  "leaf_count": 18600,
+  "leaf_shape_preservation": "Each blade uses a local polar rotation and uniform size; its base follows the deformed twig exactly.",
+  "materials": "Approved base materials unchanged; packed bark 2K base color/normal, COLOR_0 leaf color and occlusion retained.",
+  "leaf_color_entries": 204600,
+  "gltf_up_axis": "Y",
+  "blender_up_axis": "Z",
+  "glb_bytes": 22670840
+}

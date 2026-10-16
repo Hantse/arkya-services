@@ -1,0 +1,19 @@
+{
+  "id": "coussin-automnal",
+  "shape": "coussin",
+  "material": "automnal",
+  "label": "Coussin bas · Automnal",
+  "glb": "assets/coussin-automnal/coussin-automnal.glb",
+  "blend": "assets/coussin-automnal/coussin-automnal.blend",
+  "preview": "assets/coussin-automnal/coussin-automnal-preview.png",
+  "height": 0.45,
+  "width": 0.97,
+  "depth": 0.7554,
+  "triangles": 21220,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

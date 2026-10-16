@@ -1,0 +1,47 @@
+{
+  "dimensions_m": {
+    "width": 13.868,
+    "depth": 13.237,
+    "height": 8.0
+  },
+  "bounds_blender_z_up": {
+    "min": [
+      -7.04871129989624,
+      -5.989874839782715,
+      0.0
+    ],
+    "max": [
+      6.819035053253174,
+      7.246733665466309,
+      8.0
+    ]
+  },
+  "mesh_count": 3,
+  "vertices": 332510,
+  "triangles": 429204,
+  "id": "02-etale",
+  "title": "Étalé",
+  "description": "Port étalé, tronc court et large couronne en ombrelle.",
+  "source_asset": "../../../arkya-ancient-tree-v2.blend",
+  "deformation": {
+    "id": "02-etale",
+    "title": "Étalé",
+    "height": 8.0,
+    "stem": 1.11,
+    "crown_x": 1.49,
+    "crown_y": 1.39,
+    "curve": 0.35,
+    "power": 1.7,
+    "twist": 0.035,
+    "bend": 0.28,
+    "leaf": 1.08,
+    "description": "Port étalé, tronc court et large couronne en ombrelle."
+  },
+  "leaf_count": 18600,
+  "leaf_shape_preservation": "Each blade uses a local polar rotation and uniform size; its base follows the deformed twig exactly.",
+  "materials": "Approved base materials unchanged; packed bark 2K base color/normal, COLOR_0 leaf color and occlusion retained.",
+  "leaf_color_entries": 204600,
+  "gltf_up_axis": "Y",
+  "blender_up_axis": "Z",
+  "glb_bytes": 22670840
+}

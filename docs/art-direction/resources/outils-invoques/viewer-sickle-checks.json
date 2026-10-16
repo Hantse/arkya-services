@@ -1,0 +1,91 @@
+{
+  "selections": [
+    {
+      "color": "azur",
+      "sockets": 0,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur/faucille-azur.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur/faucille-azur.blend"
+    },
+    {
+      "color": "azur",
+      "sockets": 1,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-1/faucille-azur-sockets-1.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-1/faucille-azur-sockets-1.blend"
+    },
+    {
+      "color": "azur",
+      "sockets": 2,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-2/faucille-azur-sockets-2.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-2/faucille-azur-sockets-2.blend"
+    },
+    {
+      "color": "azur",
+      "sockets": 3,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-3/faucille-azur-sockets-3.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-3/faucille-azur-sockets-3.blend"
+    },
+    {
+      "color": "orange",
+      "sockets": 0,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange/faucille-orange.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange/faucille-orange.blend"
+    },
+    {
+      "color": "orange",
+      "sockets": 1,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-1/faucille-orange-sockets-1.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-1/faucille-orange-sockets-1.blend"
+    },
+    {
+      "color": "orange",
+      "sockets": 2,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-2/faucille-orange-sockets-2.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-2/faucille-orange-sockets-2.blend"
+    },
+    {
+      "color": "orange",
+      "sockets": 3,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-3/faucille-orange-sockets-3.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-3/faucille-orange-sockets-3.blend"
+    },
+    {
+      "color": "vert",
+      "sockets": 0,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert/faucille-vert.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert/faucille-vert.blend"
+    },
+    {
+      "color": "vert",
+      "sockets": 1,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-1/faucille-vert-sockets-1.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-1/faucille-vert-sockets-1.blend"
+    },
+    {
+      "color": "vert",
+      "sockets": 2,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-2/faucille-vert-sockets-2.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-2/faucille-vert-sockets-2.blend"
+    },
+    {
+      "color": "vert",
+      "sockets": 3,
+      "ready": true,
+      "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-3/faucille-vert-sockets-3.glb",
+      "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-3/faucille-vert-sockets-3.blend"
+    }
+  ],
+  "shape_switch_keeps_color_and_socket_count": true,
+  "animation_toggle_tested": true,
+  "final_selection": "faucille-vert-sockets-3"
+}

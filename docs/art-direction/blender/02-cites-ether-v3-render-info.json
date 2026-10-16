@@ -1,0 +1,155 @@
+{
+  "scene": "ether",
+  "version": 3,
+  "portrait": false,
+  "blender": "4.5.14 LTS",
+  "engine": "Cycles",
+  "samples": 160,
+  "resolution": [
+    2560,
+    1440
+  ],
+  "camera": "Camera_V3",
+  "objects": 3133,
+  "textures": [
+    {
+      "name": "eyes_diffuse.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "eyes_metalic.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "eyes_normal.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "eyes_specular.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "hair_anisotropy.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "hair_anisotropy_rotation.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "hair_diffuse.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "hair_roughness.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "hair_specular.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "hair_sss_color.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "hair_sss_value.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "pants_diffuse.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "pants_normal.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "pants_roughness.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "shirt_diffuse.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "shirt_normal.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "shirt_roughness.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "shoes_diffuse.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "shoes_metalness.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "shoes_normal.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "shoes_roughness.png.001",
+      "packed": true,
+      "source": "FILE"
+    },
+    {
+      "name": "skin_diffuse.1001.png.001",
+      "packed": true,
+      "source": "TILED"
+    },
+    {
+      "name": "skin_roughness.1001.png.001",
+      "packed": true,
+      "source": "TILED"
+    },
+    {
+      "name": "skin_sss_color.1001.png.001",
+      "packed": true,
+      "source": "TILED"
+    },
+    {
+      "name": "skin_sss_value.1001.png.001",
+      "packed": true,
+      "source": "TILED"
+    }
+  ],
+  "notes": {
+    "hero_position": [
+      -0.6,
+      -7.6,
+      1.25
+    ],
+    "camera": "Camera_V3",
+    "improvements": [
+      "Separated foreground ring and distant gate",
+      "Asymmetric market and botanical detail",
+      "Dressed stone variation and cool lanterns",
+      "Directed daylight and atmospheric depth"
+    ]
+  }
+}

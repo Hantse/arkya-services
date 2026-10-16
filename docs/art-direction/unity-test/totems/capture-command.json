@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "AgentScripts/Totems/ValidateTotems.cs",
+      "entry": "ValidateTotems.Capture",
+      "timeout_ms": "180000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 276,
+      "executeMs": 1204,
+      "assemblyName": "PipelineRunScript_ValidateTotems_72c949c8b5df4545bbd89d700633d040",
+      "success": true,
+      "result": "{\r\n  \"success\": true,\r\n  \"captures\": [\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-lunar.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-lunar-magic-flow.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-ember.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-jade.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-amethyst.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-frost.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-solar.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-rose.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-abyss.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-moss.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-copper.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-pearl.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-storm.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-lunar.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-ember.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-ember-magic-flow.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-jade.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-amethyst.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-frost.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-solar.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-rose.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-abyss.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-moss.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-copper.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-pearl.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\fox-storm.png\"\r\n  ],\r\n  \"magicFlowChecks\": [\r\n    {\r\n      \"species\": \"wolf\",\r\n      \"variant\": \"lunar\",\r\n      \"changedPixels\": 533,\r\n      \"timestamps\": [\r\n        0.0,\r\n        0.55\r\n      ]\r\n    },\r\n    {\r\n      \"species\": \"fox\",\r\n      \"variant\": \"ember\",\r\n      \"changedPixels\": 400,\r\n      \"timestamps\": [\r\n        0.0,\r\n        0.55\r\n      ]\r\n    }\r\n  ]\r\n}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

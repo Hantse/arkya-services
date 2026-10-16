@@ -1,0 +1,9 @@
+{
+  "image": "ghcr.io/replace-owner/replace-repository-gateway:replace-with-sha-tag",
+  "serviceAddress": "192.168.100.218",
+  "servicePort": 80,
+  "serviceAnnotations": {},
+  "trustedProxyNetworks": ["192.168.100.0/24"],
+  "charactersAddress": "",
+  "imagePullSecretName": ""
+}

@@ -1,0 +1,19 @@
+{
+  "id": "clochettes-ivoire",
+  "shape": "clochettes",
+  "material": "ivoire",
+  "label": "Hampe de clochettes · Ivoire doré",
+  "glb": "assets/clochettes-ivoire/clochettes-ivoire.glb",
+  "blend": "assets/clochettes-ivoire/clochettes-ivoire.blend",
+  "preview": "assets/clochettes-ivoire/clochettes-ivoire-preview.png",
+  "height": 0.7,
+  "width": 0.4657,
+  "depth": 0.4575,
+  "triangles": 13670,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

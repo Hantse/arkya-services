@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Arkya — Les trois HUD</title>
+  <style>
+    :root {
+      --ground: #111b1e;
+      --surface: #19272b;
+      --line: #3c4c50;
+      --text: #f1e4cb;
+      --muted: #b3c0bf;
+      --accent: #b78b59;
+      --focus: #a3d4c3;
+      font-family: "Segoe UI", Candara, sans-serif;
+      color: var(--text);
+      background: var(--ground);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    button, a { touch-action: manipulation; }
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 5px;
+    }
+    main { width: min(1800px, 100%); margin: auto; padding: 32px 38px 24px; }
+    header { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
+    .wordmark { margin: 0 0 8px; font: 600 15px Georgia, serif; letter-spacing: .25em; }
+    h1 { margin: 0; font: 400 clamp(28px, 3vw, 44px)/1.15 Georgia, "Times New Roman", serif; }
+    .scope { max-width: 390px; margin: 0 0 3px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .scope strong { display: block; color: var(--text); font-weight: 500; }
+    .themes { display: flex; gap: 10px; margin: 26px 0 20px; flex-wrap: wrap; }
+    .theme {
+      position: relative; display: flex; align-items: center; gap: 11px;
+      border: 1px solid var(--line); border-radius: 4px; padding: 11px 17px;
+      background: transparent; color: var(--muted); cursor: pointer;
+      font-size: 14px; min-height: 47px;
+    }
+    .theme:hover { background: var(--surface); color: var(--text); }
+    .theme[aria-pressed="true"] {
+      border-color: var(--accent); background: var(--surface); color: var(--text);
+      box-shadow: inset 0 -3px var(--accent);
+    }
+    .swatch { display: inline-flex; width: 21px; height: 21px; border: 1px solid #ffffff35; transform: rotate(45deg); overflow: hidden; }
+    .swatch::before, .swatch::after { content: ""; width: 50%; height: 100%; }
+    .ink::before { background: #192c30; }
+    .ink::after { background: #b78b59; }
+    .paper::before { background: #dbc69e; }
+    .paper::after { background: #4b694c; }
+    .stone::before { background: #4e5d76; }
+    .stone::after { background: #a89bd2; }
+    .preview { background: #080d10; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+    .preview-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 12px 16px; background: var(--surface); }
+    .preview-info { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .preview-name { font-size: 13px; font-weight: 600; letter-spacing: .02em; }
+    .versions { display: flex; gap: 4px; }
+    .version { padding: 6px 10px; border: 1px solid transparent; border-radius: 3px; background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; }
+    .version:hover { color: var(--text); border-color: var(--line); }
+    .version[aria-pressed="true"] { color: var(--text); border-color: var(--accent); background: var(--ground); }
+    .preview-actions { display: flex; align-items: center; gap: 18px; }
+    .preview-actions a, .preview-actions button {
+      color: var(--text); font-size: 12px; line-height: 1.5; padding: 5px 0;
+      text-decoration: none; background: none; border: 0; cursor: pointer;
+    }
+    .preview-actions a:hover, .preview-actions button:hover { text-decoration: underline; text-underline-offset: 4px; }
+    figure { position: relative; margin: 0; display: grid; place-items: center; min-height: 120px; }
+    .hud-image { display: block; width: 100%; height: auto; max-height: 76vh; object-fit: contain; }
+    .image-error { margin: 0; max-width: 600px; padding: 48px 24px; color: var(--text); font-size: 14px; line-height: 1.7; text-align: center; }
+    [hidden] { display: none !important; }
+    .caption { display: flex; align-items: baseline; gap: 24px; margin-top: 18px; }
+    .caption h2 { min-width: 220px; margin: 0; font: 400 24px/1.3 Georgia, serif; }
+    .caption p { margin: 0; max-width: 810px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    footer { margin-top: 22px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .status { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+    .preview:fullscreen { display: flex; flex-direction: column; width: 100vw; height: 100vh; border: 0; border-radius: 0; }
+    .preview:fullscreen .preview-toolbar { flex-shrink: 0; }
+    .preview:fullscreen figure { display: flex; flex: 1; min-height: 0; align-items: center; justify-content: center; }
+    .preview:fullscreen .hud-image { width: 100%; height: 100%; max-height: 100%; }
+    @media (max-width: 760px) {
+      main { padding: 24px 16px; }
+      header, .caption { flex-direction: column; align-items: start; gap: 14px; }
+      .scope { max-width: none; }
+      .themes { gap: 8px; margin-top: 22px; }
+      .theme { flex: 1 1 180px; justify-content: center; padding: 11px 12px; }
+      .caption h2 { min-width: 0; }
+      .preview-toolbar { flex-wrap: wrap; gap: 5px; padding: 9px 12px; }
+      .preview-actions { gap: 20px; }
+      .preview:fullscreen .preview-name { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="wordmark">ARKYA</p>
+        <h1>Plus de place pour jouer.</h1>
+      </div>
+      <p class="scope"><strong>Maquette artistique • HUD non intégré dans Unity</strong>Récolte sous le groupe · Buffs sous les jauges · Vie et dégâts sur les ennemis</p>
+    </header>
+
+    <div class="themes" role="group" aria-label="Choisir une direction artistique">
+      <button class="theme" type="button" data-theme="ink" aria-pressed="true" aria-controls="preview"><span class="swatch ink" aria-hidden="true"></span>Encre &amp; cuivre</button>
+      <button class="theme" type="button" data-theme="paper" aria-pressed="false" aria-controls="preview"><span class="swatch paper" aria-hidden="true"></span>Carnet d’exploration</button>
+      <button class="theme" type="button" data-theme="stone" aria-pressed="false" aria-controls="preview"><span class="swatch stone" aria-hidden="true"></span>Pierre de mana</button>
+    </div>
+
+    <section class="preview" id="preview" aria-label="Aperçu du HUD">
+      <div class="preview-toolbar">
+        <div class="preview-info">
+          <span class="preview-name" id="preview-name">Encre &amp; cuivre · V3</span>
+          <div class="versions" role="group" aria-label="Comparer les versions du HUD">
+            <button class="version" type="button" data-version="v3" aria-pressed="true" aria-controls="hud-image">V3 · Combat</button>
+            <button class="version" type="button" data-version="v2" aria-pressed="false" aria-controls="hud-image">V2 · Allégé</button>
+            <button class="version" type="button" data-version="v1" aria-pressed="false" aria-controls="hud-image">V1 · Initial</button>
+          </div>
+        </div>
+        <div class="preview-actions">
+          <a id="original-link" href="01-encre-cuivre-v3.png" target="_blank" rel="noopener">Ouvrir à taille originale ↗</a>
+          <button id="fullscreen-button" type="button" hidden>Plein écran</button>
+        </div>
+      </div>
+      <figure>
+        <img class="hud-image" id="hud-image" src="01-encre-cuivre-v3.png" alt="Maquette du HUD d’Arkya, thème Encre &amp; cuivre, V3 · Combat.">
+        <p class="image-error" id="image-error" role="status" hidden>L’image n’a pas pu être chargée. Conservez cette page et les images PNG des trois versions dans le même dossier, puis rechargez la page.</p>
+      </figure>
+    </section>
+    <p class="status" id="status" role="status" hidden></p>
+
+    <div class="caption" aria-live="polite" aria-atomic="true">
+      <h2 id="theme-title">Encre &amp; cuivre · V3</h2>
+      <p id="theme-description">Des fonds bleu-vert profonds, des cadres de cuivre patiné et des textes ivoire. Un habillage artisanal qui laisse les icônes peintes et le paysage porter la couleur.</p>
+    </div>
+    <footer>Images statiques : les commandes dessinées dans le HUD ne sont pas interactives. Valeurs, textes et raccourcis illustratifs.</footer>
+    <noscript><p class="status">Activez JavaScript pour changer de thème et comparer les versions. Vous pouvez aussi ouvrir le <a href="02-carnet-exploration-v3.png">Carnet d’exploration V3</a> ou la <a href="03-pierre-mana-v3.png">Pierre de mana V3</a>.</p></noscript>
+  </main>
+
+  <script>
+    (() => {
+      const themes = {
+        ink: {
+          title: 'Encre & cuivre',
+          images: { v3: '01-encre-cuivre-v3.png', v2: '01-encre-cuivre-v2.png', v1: '01-encre-cuivre.png' },
+          description: 'Des fonds bleu-vert profonds, des cadres de cuivre patiné et des textes ivoire. Un habillage artisanal qui laisse les icônes peintes et le paysage porter la couleur.'
+        },
+        paper: {
+          title: 'Carnet d’exploration',
+          images: { v3: '02-carnet-exploration-v3.png', v2: '02-carnet-exploration-v2.png', v1: '02-carnet-exploration.png' },
+          description: 'Du parchemin chaud, du vert forêt et des attaches de cuir. Un carnet d’aventure accueillant, dont les surfaces claires apportent une présence plus marquée à l’écran.'
+        },
+        stone: {
+          title: 'Pierre de mana',
+          images: { v3: '03-pierre-mana-v3.png', v2: '03-pierre-mana-v2.png', v1: '03-pierre-mana.png' },
+          description: 'De l’ardoise bleutée, des reliefs minéraux et quelques accents de mana. Une piste plus mystique, avec des lueurs concentrées sur les détails des cadres.'
+        }
+      };
+      const versions = { v3: 'V3 · Combat', v2: 'V2 · Allégé', v1: 'V1 · Initial' };
+      const buttons = [...document.querySelectorAll('[data-theme]')];
+      const versionButtons = [...document.querySelectorAll('[data-version]')];
+      const hudImage = document.getElementById('hud-image');
+      const imageError = document.getElementById('image-error');
+      const preview = document.getElementById('preview');
+      const fullscreenButton = document.getElementById('fullscreen-button');
+      const status = document.getElementById('status');
+      const storageKey = 'arkya-hud-art-theme';
+      let selectedTheme = 'ink';
+      let selectedVersion = 'v3';
+
+      function renderSelection() {
+        const theme = themes[selectedTheme];
+        const image = theme.images[selectedVersion];
+        const title = `${theme.title} · ${selectedVersion.toUpperCase()}`;
+        buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.theme === selectedTheme)));
+        versionButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.version === selectedVersion)));
+        hudImage.hidden = false;
+        imageError.hidden = true;
+        hudImage.alt = `Maquette du HUD d’Arkya, thème ${theme.title}, ${versions[selectedVersion]}.`;
+        hudImage.src = image;
+        document.getElementById('original-link').href = image;
+        document.getElementById('preview-name').textContent = title;
+        document.getElementById('theme-title').textContent = title;
+        document.getElementById('theme-description').textContent = theme.description;
+      }
+
+      function selectTheme(key) {
+        if (!Object.prototype.hasOwnProperty.call(themes, key)) key = 'ink';
+        selectedTheme = key;
+        renderSelection();
+        try { localStorage.setItem(storageKey, key); } catch { /* Storage can be unavailable for local files. */ }
+      }
+
+      hudImage.addEventListener('error', () => { hudImage.hidden = true; imageError.hidden = false; });
+      hudImage.addEventListener('load', () => { hudImage.hidden = false; imageError.hidden = true; });
+      buttons.forEach(button => button.addEventListener('click', () => selectTheme(button.dataset.theme)));
+      versionButtons.forEach(button => button.addEventListener('click', () => {
+        selectedVersion = button.dataset.version;
+        renderSelection();
+      }));
+      let initialTheme = 'ink';
+      try { initialTheme = localStorage.getItem(storageKey) || 'ink'; } catch { /* Keep the default. */ }
+      selectTheme(initialTheme);
+
+      if (document.fullscreenEnabled && preview.requestFullscreen) {
+        fullscreenButton.hidden = false;
+        fullscreenButton.addEventListener('click', async () => {
+          status.hidden = true;
+          try {
+            if (document.fullscreenElement === preview) await document.exitFullscreen();
+            else await preview.requestFullscreen();
+          } catch {
+            status.textContent = 'Le plein écran n’est pas disponible ici. Utilisez « Ouvrir à taille originale » pour afficher l’image séparément.';
+            status.hidden = false;
+          }
+        });
+        document.addEventListener('fullscreenchange', () => {
+          fullscreenButton.textContent = document.fullscreenElement === preview ? 'Quitter le plein écran' : 'Plein écran';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

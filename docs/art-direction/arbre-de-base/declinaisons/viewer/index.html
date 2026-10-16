@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#263d35">
+  <title>Arkya — Arbres des Anciens</title>
+  <!-- Local bundle: @google/model-viewer 4.4.0, Google, Apache-2.0.
+       Original distribution: https://unpkg.com/@google/model-viewer@4.4.0/dist/model-viewer.min.js -->
+  <script type="module" src="./model-viewer.min.js"></script>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./viewer.js"></script>
+</head>
+<body>
+  <header class="page-header">
+    <div class="identity">
+      <svg class="brand-mark" viewBox="0 0 40 46" fill="none" aria-hidden="true"><path d="M20 42V19M20 29 8 19M20 22l12-12M20 34l11-8M20 19 14 9"/><path d="M10 40c4-2 7-4 10-4s6 2 10 4M10 20c-7-1-7-11 1-12 1-8 12-8 15-3 10-1 14 10 7 15 6 8-3 14-10 11"/></svg>
+      <div><p class="eyebrow">Arkya · Terres des Anciens</p><h1>Arbres des Anciens</h1></div>
+    </div>
+    <div class="collection-note"><span class="range-mark" aria-hidden="true"></span><span>Formes & matières<small>Une famille d’arbres, de 5,5 à 16 m</small></span></div>
+  </header>
+
+  <main class="workspace">
+    <aside class="catalogue" aria-label="Choisir un arbre">
+      <div class="catalogue-heading"><h2>La collection</h2><span id="item-count" class="item-count"></span></div>
+      <div class="selection-summary"><span>À l’écran</span><p id="selected-description">Choisissez un arbre pour découvrir ses caractéristiques.</p><div id="material-comparison" class="material-comparison" role="group" aria-label="Comparer les matières" hidden><button type="button" data-version="painted" aria-pressed="true">Peint</button><button type="button" data-version="previous" aria-pressed="false">Première passe</button></div></div>
+      <div id="base-choice" class="base-choice"></div>
+      <div class="tabs" role="tablist" aria-label="Déclinaisons">
+        <button id="tab-forme" class="tab" role="tab" aria-selected="true" aria-controls="variant-list" data-category="forme">Formes <span id="forme-count"></span></button>
+        <button id="tab-matiere" class="tab" role="tab" aria-selected="false" aria-controls="variant-list" tabindex="-1" data-category="matiere">Matières <span id="matiere-count"></span></button>
+      </div>
+      <a id="compare-sizes" class="compare-link" href="/formes/comparaison-formes-meme-echelle.png" target="_blank" rel="noopener">Comparer les tailles <span aria-hidden="true">↗</span></a>
+      <div id="variant-list" class="variant-list" role="tabpanel" aria-labelledby="tab-forme"></div>
+      <div id="catalogue-message" class="catalogue-message" role="status">Chargement de la collection…</div>
+      <div class="catalogue-bottom"><p>Choisissez une silhouette ou explorez ses matières.</p><button id="refresh" class="quiet-button" type="button"><span aria-hidden="true">↻</span> Actualiser la collection</button></div>
+    </aside>
+
+    <section class="stage" aria-labelledby="selected-name">
+      <model-viewer id="tree"
+        alt="Arbre stylisé des Terres des Anciens"
+        camera-controls camera-orbit="35deg 72deg 110%" camera-target="auto auto auto"
+        field-of-view="35deg" min-camera-orbit="auto 0deg 8%" max-camera-orbit="auto 180deg 350%"
+        environment-image="neutral" exposure="1" shadow-intensity="0.6" shadow-softness="0.85"
+        interaction-prompt="none" touch-action="none" loading="eager">
+        <div slot="progress-bar" class="load-progress"><span id="load-fill"></span></div>
+      </model-viewer>
+      <div class="model-heading"><span id="selected-category" class="model-category">Collection</span><h2 id="selected-name">Explorez les silhouettes</h2></div>
+      <div class="stage-bottom">
+        <dl class="dimensions" aria-label="Dimensions du modèle"><div><dt>Hauteur</dt><dd id="height">—</dd></div><div><dt>Largeur</dt><dd id="width">—</dd></div><div><dt>Profondeur</dt><dd id="depth">—</dd></div></dl>
+        <div class="view-controls"><label class="rotate-control"><input id="rotate" type="checkbox"><span>Rotation auto</span></label><button id="reset" type="button" class="reset-button"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m6 0h4v-4M7 10h6m-3-3v6"/></svg>Recentrer</button></div>
+      </div>
+    </section>
+  </main>
+  <footer class="page-footer"><span id="status" role="status">Préparation de la collection…</span><span class="gesture-hint">Glisser pour tourner · Molette pour zoomer</span></footer>
+  <noscript>Activez JavaScript pour parcourir la collection et manipuler les arbres en 3D.</noscript>
+</body>
+</html>

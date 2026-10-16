@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 2,
+  "checkedAt": "2026-10-16T10:33:50.097Z",
+  "passed": true,
+  "viewer": "http://127.0.0.1:51805/totems/viewer/index.html",
+  "models": [
+    {
+      "id": "wolf-lunar",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-lunar.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-ember",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-ember.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-jade",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-jade.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-amethyst",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-amethyst.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-frost",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-frost.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-solar",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-solar.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-rose",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-rose.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-abyss",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-abyss.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-moss",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-moss.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-copper",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-copper.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-pearl",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-pearl.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "wolf-storm",
+      "src": "http://127.0.0.1:51805/totems/models/wolf-storm.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-lunar",
+      "src": "http://127.0.0.1:51805/totems/models/fox-lunar.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-ember",
+      "src": "http://127.0.0.1:51805/totems/models/fox-ember.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-jade",
+      "src": "http://127.0.0.1:51805/totems/models/fox-jade.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-amethyst",
+      "src": "http://127.0.0.1:51805/totems/models/fox-amethyst.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-frost",
+      "src": "http://127.0.0.1:51805/totems/models/fox-frost.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-solar",
+      "src": "http://127.0.0.1:51805/totems/models/fox-solar.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-rose",
+      "src": "http://127.0.0.1:51805/totems/models/fox-rose.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-abyss",
+      "src": "http://127.0.0.1:51805/totems/models/fox-abyss.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-moss",
+      "src": "http://127.0.0.1:51805/totems/models/fox-moss.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-copper",
+      "src": "http://127.0.0.1:51805/totems/models/fox-copper.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-pearl",
+      "src": "http://127.0.0.1:51805/totems/models/fox-pearl.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    },
+    {
+      "id": "fox-storm",
+      "src": "http://127.0.0.1:51805/totems/models/fox-storm.glb?v=20261016T103309070262Z-totems",
+      "clips": [
+        "Idle",
+        "Run",
+        "Walk"
+      ],
+      "materials": 3,
+      "palette": 12
+    }
+  ],
+  "animations": [
+    {
+      "species": "wolf",
+      "clip": "Idle",
+      "duration": 4,
+      "timeScale": 0.5,
+      "paused": true,
+      "delta": 0
+    },
+    {
+      "species": "wolf",
+      "clip": "Walk",
+      "duration": 1,
+      "timeScale": 0.5,
+      "paused": true,
+      "delta": 0
+    },
+    {
+      "species": "wolf",
+      "clip": "Run",
+      "duration": 0.699999988079071,
+      "timeScale": 0.5,
+      "paused": true,
+      "delta": 0
+    },
+    {
+      "species": "fox",
+      "clip": "Idle",
+      "duration": 4,
+      "timeScale": 0.5,
+      "paused": true,
+      "delta": 0
+    },
+    {
+      "species": "fox",
+      "clip": "Walk",
+      "duration": 1,
+      "timeScale": 0.5,
+      "paused": true,
+      "delta": 0
+    },
+    {
+      "species": "fox",
+      "clip": "Run",
+      "duration": 0.6000000238418579,
+      "timeScale": 0.5,
+      "paused": true,
+      "delta": 0
+    }
+  ],
+  "downloads": [
+    {
+      "url": "http://127.0.0.1:51805/totems/models/wolf-lunar.glb?v=20261016T103309070262Z-totems",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:51805/totems/assets/wolf.blend?v=20261016T103309070262Z-totems",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:51805/totems/assets/wolf.fbx?v=20261016T103309070262Z-totems",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:51805/totems/models/fox-ember.glb?v=20261016T103309070262Z-totems",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:51805/totems/assets/fox.blend?v=20261016T103309070262Z-totems",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:51805/totems/assets/fox.fbx?v=20261016T103309070262Z-totems",
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "revision": "20261016T103309070262Z-totems",
+  "mobileOverflow": false
+}

@@ -1,0 +1,2614 @@
+{
+  "success": true,
+  "family": "structures",
+  "asset_count": 15,
+  "coordinate_system": "glTF: X width, Y up, Z depth; metres",
+  "geometry_differs_across_materials": true,
+  "exact_envelopes_and_bottom_center_pivots": true,
+  "placement_metadata_contract": "Root extras.arkya_pivot=bottom_center; reserved node extras.pivot absent",
+  "openings_checked_from_triangles": true,
+  "comparison_preview_size_px": [
+    1800,
+    1350
+  ],
+  "blender_sources_opened_and_packed": true,
+  "paint_source_provenance": [
+    {
+      "source": "sources/sawn-wood-painted.png",
+      "sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+      "prompt_present": true,
+      "identical_copies_checked": []
+    },
+    {
+      "source": "sources/worked-timber-painted-v2.png",
+      "sha256": "30b4da22c7fed4c0f3475f3ba9f9cb7fa97586a2026b2c3f57a6f45300ab90a8",
+      "prompt_present": true,
+      "identical_copies_checked": [
+        "textures/bois-basecolor.png",
+        "textures/timber-basecolor.png"
+      ]
+    },
+    {
+      "source": "sources/thatch-painted.png",
+      "sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+      "prompt_present": true,
+      "identical_copies_checked": [
+        "textures/chaume-basecolor.png",
+        "textures/rope-basecolor.png"
+      ]
+    },
+    {
+      "source": "../sources/stone-painted.png",
+      "sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "prompt_present": true,
+      "identical_copies_checked": [
+        "textures/pierre-basecolor.png",
+        "textures/mortar-basecolor.png"
+      ]
+    }
+  ],
+  "approved_reference_preservation": [
+    {
+      "reference": "references/arbre-peint-v3",
+      "hash_manifest": "reference.json",
+      "files_checked": 15,
+      "unchanged": true
+    },
+    {
+      "reference": "mares-de-mana",
+      "hash_manifest": "approved-reference.json",
+      "files_checked": 65,
+      "unchanged": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "fondation-chaume",
+      "shape": "fondation",
+      "material": "chaume",
+      "paths": {
+        "glb": "assets/fondation-chaume/fondation-chaume.glb",
+        "blend": "assets/fondation-chaume/fondation-chaume.blend",
+        "preview": "assets/fondation-chaume/fondation-chaume-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        0.5,
+        1.0
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "bounds_max_m": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 16880,
+      "mesh_nodes": 1,
+      "materials": 3,
+      "embedded_images": 3,
+      "external_dependencies": 0,
+      "geometry_sha256": "af277acc479c354ea373f1ad0e474a3110d0676930341aa9161da10ff9f7223e",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        -0.0007861233898438513,
+        1.1519097089767456
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.25,
+          -0.5
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.25,
+          0.5
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.25,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.25,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          0.5,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.45125,
+            -0.25
+          ],
+          [
+            0.45125,
+            0.0
+          ],
+          [
+            0.45125,
+            0.25
+          ],
+          [
+            0.4675,
+            -0.25
+          ],
+          [
+            0.4675,
+            0.0
+          ],
+          [
+            0.4675,
+            0.25
+          ],
+          [
+            0.48375,
+            -0.25
+          ],
+          [
+            0.48375,
+            0.0
+          ],
+          [
+            0.48375,
+            0.25
+          ]
+        ],
+        "contact_zone": "upper deck perimeter",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": null,
+      "wall_coverage": null,
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 16880,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "chaume-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 6314112
+    },
+    {
+      "id": "fondation-bois",
+      "shape": "fondation",
+      "material": "bois",
+      "paths": {
+        "glb": "assets/fondation-bois/fondation-bois.glb",
+        "blend": "assets/fondation-bois/fondation-bois.blend",
+        "preview": "assets/fondation-bois/fondation-bois-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        0.5,
+        1.0
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "bounds_max_m": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 8648,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "c5062ded89f2450a3cb58d718b6e1f564a2a89ffb9bc6cd54e4993bb647357ce",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        -0.03014310449361801,
+        1.1517484188079834
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.25,
+          -0.5
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.25,
+          0.5
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.25,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.25,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          0.5,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.45125,
+            -0.25
+          ],
+          [
+            0.45125,
+            0.0
+          ],
+          [
+            0.45125,
+            0.25
+          ],
+          [
+            0.4675,
+            -0.25
+          ],
+          [
+            0.4675,
+            0.0
+          ],
+          [
+            0.4675,
+            0.25
+          ],
+          [
+            0.48375,
+            -0.25
+          ],
+          [
+            0.48375,
+            0.0
+          ],
+          [
+            0.48375,
+            0.25
+          ]
+        ],
+        "contact_zone": "upper deck perimeter",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": null,
+      "wall_coverage": null,
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 8648,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "bois-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4474776
+    },
+    {
+      "id": "fondation-pierre",
+      "shape": "fondation",
+      "material": "pierre",
+      "paths": {
+        "glb": "assets/fondation-pierre/fondation-pierre.glb",
+        "blend": "assets/fondation-pierre/fondation-pierre.blend",
+        "preview": "assets/fondation-pierre/fondation-pierre-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        0.5,
+        1.0
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "bounds_max_m": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 9400,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "36575f1579e346943755ae93774cdb7c1a51204e639416326e3a7bef21752279",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        0.02298790216445923,
+        0.9771403074264526
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.25,
+          -0.5
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.25,
+          0.5
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.25,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.25,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          0.5,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.45125,
+            -0.25
+          ],
+          [
+            0.45125,
+            0.0
+          ],
+          [
+            0.45125,
+            0.25
+          ],
+          [
+            0.4675,
+            -0.25
+          ],
+          [
+            0.4675,
+            0.0
+          ],
+          [
+            0.4675,
+            0.25
+          ],
+          [
+            0.48375,
+            -0.25
+          ],
+          [
+            0.48375,
+            0.0
+          ],
+          [
+            0.48375,
+            0.25
+          ]
+        ],
+        "contact_zone": "upper deck perimeter",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": null,
+      "wall_coverage": null,
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 9400,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "mortar-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "pierre-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4614672
+    },
+    {
+      "id": "mur-plein-chaume",
+      "shape": "mur-plein",
+      "material": "chaume",
+      "paths": {
+        "glb": "assets/mur-plein-chaume/mur-plein-chaume.glb",
+        "blend": "assets/mur-plein-chaume/mur-plein-chaume.blend",
+        "preview": "assets/mur-plein-chaume/mur-plein-chaume-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        1.0,
+        0.15000000596046448
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.07500000298023224
+      ],
+      "bounds_max_m": [
+        0.5,
+        1.0,
+        0.07500000298023224
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 5800,
+      "mesh_nodes": 1,
+      "materials": 3,
+      "embedded_images": 3,
+      "external_dependencies": 0,
+      "geometry_sha256": "f5f55b238bd24e27ce49918eb251159fef41f4844667b61e21513d64c65ccaf1",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        0.0,
+        1.175767183303833
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.5,
+          -0.07500000298023224
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.5,
+          0.07500000298023224
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.25,
+            -0.0375
+          ],
+          [
+            0.25,
+            0.0
+          ],
+          [
+            0.25,
+            0.0375
+          ],
+          [
+            0.5,
+            -0.0375
+          ],
+          [
+            0.5,
+            0.0
+          ],
+          [
+            0.5,
+            0.0375
+          ],
+          [
+            0.75,
+            -0.0375
+          ],
+          [
+            0.75,
+            0.0
+          ],
+          [
+            0.75,
+            0.0375
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": null,
+      "wall_coverage": {
+        "axis_ray_grid_pitch_m": 0.04,
+        "outside_aperture_probes": 625,
+        "unexpected_wide_gaps": 0,
+        "small_join_grooves_allowed": 3,
+        "groove_neighborhood_radius_m": 0.006
+      },
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 5800,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "chaume-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 5971008
+    },
+    {
+      "id": "mur-plein-bois",
+      "shape": "mur-plein",
+      "material": "bois",
+      "paths": {
+        "glb": "assets/mur-plein-bois/mur-plein-bois.glb",
+        "blend": "assets/mur-plein-bois/mur-plein-bois.blend",
+        "preview": "assets/mur-plein-bois/mur-plein-bois-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        1.0,
+        0.15000000596046448
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.07500000298023224
+      ],
+      "bounds_max_m": [
+        0.5,
+        1.0,
+        0.07500000298023224
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 3572,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "a18ede833ff09aa6ffad8f23f694cd62e4c2add0c8eeae92d6befc19ee3ab826",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        0.025718625634908676,
+        1.175767183303833
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.5,
+          -0.07500000298023224
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.5,
+          0.07500000298023224
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.25,
+            -0.0375
+          ],
+          [
+            0.25,
+            0.0
+          ],
+          [
+            0.25,
+            0.0375
+          ],
+          [
+            0.5,
+            -0.0375
+          ],
+          [
+            0.5,
+            0.0
+          ],
+          [
+            0.5,
+            0.0375
+          ],
+          [
+            0.75,
+            -0.0375
+          ],
+          [
+            0.75,
+            0.0
+          ],
+          [
+            0.75,
+            0.0375
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": null,
+      "wall_coverage": {
+        "axis_ray_grid_pitch_m": 0.04,
+        "outside_aperture_probes": 625,
+        "unexpected_wide_gaps": 0,
+        "small_join_grooves_allowed": 0,
+        "groove_neighborhood_radius_m": 0.006
+      },
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 3572,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "bois-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4317268
+    },
+    {
+      "id": "mur-plein-pierre",
+      "shape": "mur-plein",
+      "material": "pierre",
+      "paths": {
+        "glb": "assets/mur-plein-pierre/mur-plein-pierre.glb",
+        "blend": "assets/mur-plein-pierre/mur-plein-pierre.blend",
+        "preview": "assets/mur-plein-pierre/mur-plein-pierre-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        1.0,
+        0.15000000596046448
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.07500000298023224
+      ],
+      "bounds_max_m": [
+        0.5,
+        1.0,
+        0.07500000298023224
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 3572,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "9ba5984e48d3d43d3ef72691218eafcf45ec9ac54028bfc271658fb36ef32e18",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        0.027123868465423584,
+        0.976751446723938
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.5,
+          -0.07500000298023224
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.5,
+          0.07500000298023224
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.25,
+            -0.0375
+          ],
+          [
+            0.25,
+            0.0
+          ],
+          [
+            0.25,
+            0.0375
+          ],
+          [
+            0.5,
+            -0.0375
+          ],
+          [
+            0.5,
+            0.0
+          ],
+          [
+            0.5,
+            0.0375
+          ],
+          [
+            0.75,
+            -0.0375
+          ],
+          [
+            0.75,
+            0.0
+          ],
+          [
+            0.75,
+            0.0375
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": null,
+      "wall_coverage": {
+        "axis_ray_grid_pitch_m": 0.04,
+        "outside_aperture_probes": 625,
+        "unexpected_wide_gaps": 0,
+        "small_join_grooves_allowed": 0,
+        "groove_neighborhood_radius_m": 0.006
+      },
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 3572,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "mortar-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "pierre-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4431040
+    },
+    {
+      "id": "mur-fenetre-chaume",
+      "shape": "mur-fenetre",
+      "material": "chaume",
+      "paths": {
+        "glb": "assets/mur-fenetre-chaume/mur-fenetre-chaume.glb",
+        "blend": "assets/mur-fenetre-chaume/mur-fenetre-chaume.blend",
+        "preview": "assets/mur-fenetre-chaume/mur-fenetre-chaume-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        1.0,
+        0.15000000596046448
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.07500000298023224
+      ],
+      "bounds_max_m": [
+        0.5,
+        1.0,
+        0.07500000298023224
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 8896,
+      "mesh_nodes": 1,
+      "materials": 3,
+      "embedded_images": 3,
+      "external_dependencies": 0,
+      "geometry_sha256": "6263a7c25cf0b60bcf0463d775685fd7a0d5e0fa3b34e04299bead7f2c2989ac",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        -0.024201689288020134,
+        1.175767183303833
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.5,
+          -0.07500000298023224
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.5,
+          0.07500000298023224
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.25,
+            -0.0375
+          ],
+          [
+            0.25,
+            0.0
+          ],
+          [
+            0.25,
+            0.0375
+          ],
+          [
+            0.5,
+            -0.0375
+          ],
+          [
+            0.5,
+            0.0
+          ],
+          [
+            0.5,
+            0.0375
+          ],
+          [
+            0.75,
+            -0.0375
+          ],
+          [
+            0.75,
+            0.0
+          ],
+          [
+            0.75,
+            0.0375
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": {
+        "bounds_xy_m": [
+          -0.25,
+          0.25,
+          0.3,
+          0.8
+        ],
+        "clear_width_m": 0.5,
+        "clear_height_m": 0.5,
+        "triangle_projection_clipping": true,
+        "obstructing_triangles": 0,
+        "boundary_tolerance_m": 1e-05,
+        "surrounding_wall_ray_probes": 4,
+        "surrounding_wall_narrow_groove_adjustments": 0
+      },
+      "wall_coverage": {
+        "axis_ray_grid_pitch_m": 0.04,
+        "outside_aperture_probes": 456,
+        "unexpected_wide_gaps": 0,
+        "small_join_grooves_allowed": 1,
+        "groove_neighborhood_radius_m": 0.006
+      },
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 8896,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "chaume-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 6071168
+    },
+    {
+      "id": "mur-fenetre-bois",
+      "shape": "mur-fenetre",
+      "material": "bois",
+      "paths": {
+        "glb": "assets/mur-fenetre-bois/mur-fenetre-bois.glb",
+        "blend": "assets/mur-fenetre-bois/mur-fenetre-bois.blend",
+        "preview": "assets/mur-fenetre-bois/mur-fenetre-bois-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        1.0,
+        0.15000000596046448
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.07500000298023224
+      ],
+      "bounds_max_m": [
+        0.5,
+        1.0,
+        0.07500000298023224
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 5264,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "f3abc9b25e4e06256ef123a9ccdce072fb32df6c2b8d3739c1ad58f1f30bdfb3",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        -0.024201689288020134,
+        1.175767183303833
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.5,
+          -0.07500000298023224
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.5,
+          0.07500000298023224
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.25,
+            -0.0375
+          ],
+          [
+            0.25,
+            0.0
+          ],
+          [
+            0.25,
+            0.0375
+          ],
+          [
+            0.5,
+            -0.0375
+          ],
+          [
+            0.5,
+            0.0
+          ],
+          [
+            0.5,
+            0.0375
+          ],
+          [
+            0.75,
+            -0.0375
+          ],
+          [
+            0.75,
+            0.0
+          ],
+          [
+            0.75,
+            0.0375
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": {
+        "bounds_xy_m": [
+          -0.25,
+          0.25,
+          0.3,
+          0.8
+        ],
+        "clear_width_m": 0.5,
+        "clear_height_m": 0.5,
+        "triangle_projection_clipping": true,
+        "obstructing_triangles": 0,
+        "boundary_tolerance_m": 1e-05,
+        "surrounding_wall_ray_probes": 4,
+        "surrounding_wall_narrow_groove_adjustments": 0
+      },
+      "wall_coverage": {
+        "axis_ray_grid_pitch_m": 0.04,
+        "outside_aperture_probes": 456,
+        "unexpected_wide_gaps": 0,
+        "small_join_grooves_allowed": 0,
+        "groove_neighborhood_radius_m": 0.006
+      },
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 5264,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "bois-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4370184
+    },
+    {
+      "id": "mur-fenetre-pierre",
+      "shape": "mur-fenetre",
+      "material": "pierre",
+      "paths": {
+        "glb": "assets/mur-fenetre-pierre/mur-fenetre-pierre.glb",
+        "blend": "assets/mur-fenetre-pierre/mur-fenetre-pierre.blend",
+        "preview": "assets/mur-fenetre-pierre/mur-fenetre-pierre-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        1.0,
+        0.15000000596046448
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.07500000298023224
+      ],
+      "bounds_max_m": [
+        0.5,
+        1.0,
+        0.07500000298023224
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 5076,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "b8ac1db4f6f5e231d9414fde28b87707bbbcbb14bb879c521ac2fbaaaaa30e92",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        0.022929847240447998,
+        0.9675952196121216
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.5,
+          -0.07500000298023224
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.5,
+          0.07500000298023224
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.25,
+            -0.0375
+          ],
+          [
+            0.25,
+            0.0
+          ],
+          [
+            0.25,
+            0.0375
+          ],
+          [
+            0.5,
+            -0.0375
+          ],
+          [
+            0.5,
+            0.0
+          ],
+          [
+            0.5,
+            0.0375
+          ],
+          [
+            0.75,
+            -0.0375
+          ],
+          [
+            0.75,
+            0.0
+          ],
+          [
+            0.75,
+            0.0375
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": {
+        "bounds_xy_m": [
+          -0.25,
+          0.25,
+          0.3,
+          0.8
+        ],
+        "clear_width_m": 0.5,
+        "clear_height_m": 0.5,
+        "triangle_projection_clipping": true,
+        "obstructing_triangles": 0,
+        "boundary_tolerance_m": 1e-05,
+        "surrounding_wall_ray_probes": 4,
+        "surrounding_wall_narrow_groove_adjustments": 0
+      },
+      "wall_coverage": {
+        "axis_ray_grid_pitch_m": 0.04,
+        "outside_aperture_probes": 456,
+        "unexpected_wide_gaps": 0,
+        "small_join_grooves_allowed": 0,
+        "groove_neighborhood_radius_m": 0.006
+      },
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 5076,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "mortar-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "pierre-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4477032
+    },
+    {
+      "id": "mur-porte-chaume",
+      "shape": "mur-porte",
+      "material": "chaume",
+      "paths": {
+        "glb": "assets/mur-porte-chaume/mur-porte-chaume.glb",
+        "blend": "assets/mur-porte-chaume/mur-porte-chaume.blend",
+        "preview": "assets/mur-porte-chaume/mur-porte-chaume-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        2.0,
+        0.15000000596046448
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.07500000298023224
+      ],
+      "bounds_max_m": [
+        0.5,
+        2.0,
+        0.07500000298023224
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 8388,
+      "mesh_nodes": 1,
+      "materials": 3,
+      "embedded_images": 3,
+      "external_dependencies": 0,
+      "geometry_sha256": "434ddfbd5ead2d737a6f617a7217645472d966f186919c123342d05e7ad6e93d",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        -0.024201689288020134,
+        1.3841004371643066
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          1.0,
+          -0.07500000298023224
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          1.0,
+          0.07500000298023224
+        ],
+        "Snap_Left": [
+          -0.5,
+          1.0,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          1.0,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          2.0,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.5,
+            -0.0375
+          ],
+          [
+            0.5,
+            0.0
+          ],
+          [
+            0.5,
+            0.0375
+          ],
+          [
+            1.0,
+            -0.0375
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0375
+          ],
+          [
+            1.5,
+            -0.0375
+          ],
+          [
+            1.5,
+            0.0
+          ],
+          [
+            1.5,
+            0.0375
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": {
+        "bounds_xy_m": [
+          -0.36,
+          0.36,
+          0.0,
+          1.85
+        ],
+        "clear_width_m": 0.72,
+        "clear_height_m": 1.85,
+        "triangle_projection_clipping": true,
+        "obstructing_triangles": 0,
+        "boundary_tolerance_m": 1e-05,
+        "surrounding_wall_ray_probes": 3,
+        "surrounding_wall_narrow_groove_adjustments": 0
+      },
+      "wall_coverage": {
+        "axis_ray_grid_pitch_m": 0.04,
+        "outside_aperture_probes": 376,
+        "unexpected_wide_gaps": 0,
+        "small_join_grooves_allowed": 0,
+        "groove_neighborhood_radius_m": 0.006
+      },
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 8388,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "chaume-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 6059188
+    },
+    {
+      "id": "mur-porte-bois",
+      "shape": "mur-porte",
+      "material": "bois",
+      "paths": {
+        "glb": "assets/mur-porte-bois/mur-porte-bois.glb",
+        "blend": "assets/mur-porte-bois/mur-porte-bois.blend",
+        "preview": "assets/mur-porte-bois/mur-porte-bois-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        2.0,
+        0.15000000596046448
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.07500000298023224
+      ],
+      "bounds_max_m": [
+        0.5,
+        2.0,
+        0.07500000298023224
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 4512,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "ee14c61f4c4f11826e26ac0e2590dba64ad42d05f2756dc477a6dc44a290ac78",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        -0.030416307970881462,
+        1.3841004371643066
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          1.0,
+          -0.07500000298023224
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          1.0,
+          0.07500000298023224
+        ],
+        "Snap_Left": [
+          -0.5,
+          1.0,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          1.0,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          2.0,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.5,
+            -0.0375
+          ],
+          [
+            0.5,
+            0.0
+          ],
+          [
+            0.5,
+            0.0375
+          ],
+          [
+            1.0,
+            -0.0375
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0375
+          ],
+          [
+            1.5,
+            -0.0375
+          ],
+          [
+            1.5,
+            0.0
+          ],
+          [
+            1.5,
+            0.0375
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": {
+        "bounds_xy_m": [
+          -0.36,
+          0.36,
+          0.0,
+          1.85
+        ],
+        "clear_width_m": 0.72,
+        "clear_height_m": 1.85,
+        "triangle_projection_clipping": true,
+        "obstructing_triangles": 0,
+        "boundary_tolerance_m": 1e-05,
+        "surrounding_wall_ray_probes": 3,
+        "surrounding_wall_narrow_groove_adjustments": 1
+      },
+      "wall_coverage": {
+        "axis_ray_grid_pitch_m": 0.04,
+        "outside_aperture_probes": 376,
+        "unexpected_wide_gaps": 0,
+        "small_join_grooves_allowed": 2,
+        "groove_neighborhood_radius_m": 0.006
+      },
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 4512,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "bois-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4347908
+    },
+    {
+      "id": "mur-porte-pierre",
+      "shape": "mur-porte",
+      "material": "pierre",
+      "paths": {
+        "glb": "assets/mur-porte-pierre/mur-porte-pierre.glb",
+        "blend": "assets/mur-porte-pierre/mur-porte-pierre.blend",
+        "preview": "assets/mur-porte-pierre/mur-porte-pierre-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        2.0,
+        0.15000000596046448
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.07500000298023224
+      ],
+      "bounds_max_m": [
+        0.5,
+        2.0,
+        0.07500000298023224
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 4888,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "151d5232ec19cb24055db3cf71578bdaf10f1700259bb2afb680ea37ee9c842c",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        0.024274706840515137,
+        0.9732984304428101
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          1.0,
+          -0.07500000298023224
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          1.0,
+          0.07500000298023224
+        ],
+        "Snap_Left": [
+          -0.5,
+          1.0,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          1.0,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          2.0,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.5,
+            -0.0375
+          ],
+          [
+            0.5,
+            0.0
+          ],
+          [
+            0.5,
+            0.0375
+          ],
+          [
+            1.0,
+            -0.0375
+          ],
+          [
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0375
+          ],
+          [
+            1.5,
+            -0.0375
+          ],
+          [
+            1.5,
+            0.0
+          ],
+          [
+            1.5,
+            0.0375
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": {
+        "bounds_xy_m": [
+          -0.36,
+          0.36,
+          0.0,
+          1.85
+        ],
+        "clear_width_m": 0.72,
+        "clear_height_m": 1.85,
+        "triangle_projection_clipping": true,
+        "obstructing_triangles": 0,
+        "boundary_tolerance_m": 1e-05,
+        "surrounding_wall_ray_probes": 3,
+        "surrounding_wall_narrow_groove_adjustments": 0
+      },
+      "wall_coverage": {
+        "axis_ray_grid_pitch_m": 0.04,
+        "outside_aperture_probes": 376,
+        "unexpected_wide_gaps": 0,
+        "small_join_grooves_allowed": 0,
+        "groove_neighborhood_radius_m": 0.006
+      },
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 4888,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "mortar-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "pierre-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4472464
+    },
+    {
+      "id": "plafond-chaume",
+      "shape": "plafond",
+      "material": "chaume",
+      "paths": {
+        "glb": "assets/plafond-chaume/plafond-chaume.glb",
+        "blend": "assets/plafond-chaume/plafond-chaume.blend",
+        "preview": "assets/plafond-chaume/plafond-chaume-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        0.10000000149011612,
+        1.0
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "bounds_max_m": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 3932,
+      "mesh_nodes": 1,
+      "materials": 3,
+      "embedded_images": 3,
+      "external_dependencies": 0,
+      "geometry_sha256": "7e307a5897bade7dceab6783a53c5f0a126472410cc3c2ebe3d5e4999de8e9f0",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        0.0,
+        1.1571028232574463
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.05000000074505806,
+          -0.5
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.05000000074505806,
+          0.5
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.05000000074505806,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.05000000074505806,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          0.10000000149011612,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.025,
+            -0.25
+          ],
+          [
+            0.025,
+            0.0
+          ],
+          [
+            0.025,
+            0.25
+          ],
+          [
+            0.05,
+            -0.25
+          ],
+          [
+            0.05,
+            0.0
+          ],
+          [
+            0.05,
+            0.25
+          ],
+          [
+            0.075,
+            -0.25
+          ],
+          [
+            0.075,
+            0.0
+          ],
+          [
+            0.075,
+            0.25
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": null,
+      "wall_coverage": null,
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 3932,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "chaume-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 5908664
+    },
+    {
+      "id": "plafond-bois",
+      "shape": "plafond",
+      "material": "bois",
+      "paths": {
+        "glb": "assets/plafond-bois/plafond-bois.glb",
+        "blend": "assets/plafond-bois/plafond-bois.blend",
+        "preview": "assets/plafond-bois/plafond-bois-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        0.10000000149011612,
+        1.0
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "bounds_max_m": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 2256,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "74f3b2ec3b813c7d17e732ec69ef7f09b435661472daeed3111013a2b87cd813",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        0.040582332760095596,
+        1.1571028232574463
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.05000000074505806,
+          -0.5
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.05000000074505806,
+          0.5
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.05000000074505806,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.05000000074505806,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          0.10000000149011612,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.025,
+            -0.25
+          ],
+          [
+            0.025,
+            0.0
+          ],
+          [
+            0.025,
+            0.25
+          ],
+          [
+            0.05,
+            -0.25
+          ],
+          [
+            0.05,
+            0.0
+          ],
+          [
+            0.05,
+            0.25
+          ],
+          [
+            0.075,
+            -0.25
+          ],
+          [
+            0.075,
+            0.0
+          ],
+          [
+            0.075,
+            0.25
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": null,
+      "wall_coverage": null,
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 2256,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "bois-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "rope-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "timber-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4274356
+    },
+    {
+      "id": "plafond-pierre",
+      "shape": "plafond",
+      "material": "pierre",
+      "paths": {
+        "glb": "assets/plafond-pierre/plafond-pierre.glb",
+        "blend": "assets/plafond-pierre/plafond-pierre.blend",
+        "preview": "assets/plafond-pierre/plafond-pierre-preview.png"
+      },
+      "dimensions_width_height_depth_m": [
+        1.0,
+        0.10000000149011612,
+        1.0
+      ],
+      "bounds_min_m": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "bounds_max_m": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "bottom_center_pivot": true,
+      "identity_root_and_mesh_transforms": true,
+      "placement_metadata_contract": {
+        "arkya_pivot": "bottom_center",
+        "reserved_pivot_extra_absent": true
+      },
+      "triangles": 1880,
+      "mesh_nodes": 1,
+      "materials": 2,
+      "embedded_images": 2,
+      "external_dependencies": 0,
+      "geometry_sha256": "2140ff86aa157882df4ee4962973c221b14e46cf9a0830f462fa77ecfd743b64",
+      "finite_geometry_and_uv": true,
+      "uv_range": [
+        0.0349053330719471,
+        0.9771403074264526
+      ],
+      "uv_contract": "Wood/timber use metric repeat at 1.2 x 2.4 m; other materials stay in the 0..1 painted atlas",
+      "snap_markers_positions_m": {
+        "Snap_Back": [
+          0.0,
+          0.05000000074505806,
+          -0.5
+        ],
+        "Snap_Bottom": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Snap_Front": [
+          0.0,
+          0.05000000074505806,
+          0.5
+        ],
+        "Snap_Left": [
+          -0.5,
+          0.05000000074505806,
+          0.0
+        ],
+        "Snap_Right": [
+          0.5,
+          0.05000000074505806,
+          0.0
+        ],
+        "Snap_Top": [
+          0.0,
+          0.10000000149011612,
+          0.0
+        ]
+      },
+      "snap_marker_roles_and_normals_valid": true,
+      "side_seams": {
+        "planes_x_m": [
+          -0.5,
+          0.5
+        ],
+        "surface_ray_probes_yz_m": [
+          [
+            0.025,
+            -0.25
+          ],
+          [
+            0.025,
+            0.0
+          ],
+          [
+            0.025,
+            0.25
+          ],
+          [
+            0.05,
+            -0.25
+          ],
+          [
+            0.05,
+            0.0
+          ],
+          [
+            0.05,
+            0.25
+          ],
+          [
+            0.075,
+            -0.25
+          ],
+          [
+            0.075,
+            0.0
+          ],
+          [
+            0.075,
+            0.25
+          ]
+        ],
+        "contact_zone": "middle side face",
+        "both_planes_reached": true,
+        "tolerance_m": 1e-05
+      },
+      "opening": null,
+      "wall_coverage": null,
+      "blend_source_present": true,
+      "blend": {
+        "opened": true,
+        "scripts_disabled": true,
+        "linked_libraries": 0,
+        "mesh_nodes": 1,
+        "triangles": 1880,
+        "exact_bounds": true,
+        "finite_geometry_and_uv": true,
+        "packed_images": [
+          {
+            "name": "mortar-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "pierre-basecolor.png",
+            "size_px": [
+              1254,
+              1254
+            ]
+          }
+        ]
+      },
+      "preview_size_px": [
+        1000,
+        1000
+      ],
+      "glb_bytes": 4377856
+    }
+  ]
+}

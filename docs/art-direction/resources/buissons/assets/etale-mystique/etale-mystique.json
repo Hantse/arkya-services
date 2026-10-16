@@ -1,0 +1,19 @@
+{
+  "id": "etale-mystique",
+  "shape": "etale",
+  "material": "mystique",
+  "label": "Buisson étalé · Mystique",
+  "glb": "assets/etale-mystique/etale-mystique.glb",
+  "blend": "assets/etale-mystique/etale-mystique.blend",
+  "preview": "assets/etale-mystique/etale-mystique-preview.png",
+  "height": 1.25,
+  "width": 2.1169,
+  "depth": 1.3579,
+  "triangles": 36074,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

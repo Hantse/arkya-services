@@ -1,0 +1,1054 @@
+{
+  "foxFiles": [
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Animations\\fox.controller",
+      "sha256": "5C3EAD6CDD7FEAB086B04DE8DEC2D4D578E23CA45EF982897924019036F72BA9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Animations\\fox.controller.meta",
+      "sha256": "EF74319DC68794FE8E3DB7E9DAC4457EC2967FD891D03C7DA9BA877FAC7B94AA"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-abyss-fur.mat",
+      "sha256": "0030FD49FF5CD7F2DE3F439AA755948E09ECECBF9F82248AD95278662668B7AA"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-abyss-fur.mat.meta",
+      "sha256": "21FC8A433D02DA772BFD5F0D39CF155D5D34500598730B4FCB1A64715FCBB586"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-abyss-magic.mat",
+      "sha256": "5415D189180EC12142B7D056D2974F21C9149181E4C2E393C0A6E34CBE0C0AE7"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-abyss-magic.mat.meta",
+      "sha256": "EC78D14883B8BE6270FE57E6353E4DC60486C86A6BD4C3DDD8DC24811CD7D974"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-abyss-spark.mat",
+      "sha256": "9A1999954DE31566AFF1C07B32AC53340DFE210D7CA41B54D3D2CAD78B35BE47"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-abyss-spark.mat.meta",
+      "sha256": "FFF1BC6B1451F8ABA3A2A7A7B406667520DF5210AF95424ACD6DE25943E9A410"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-amethyst-fur.mat",
+      "sha256": "23AD5B013755CF8F62B5ABA468E5E88A23622FF856D9765DAC13A08D3201F2B6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-amethyst-fur.mat.meta",
+      "sha256": "E33C1021EC5A3FEA751958286E8D1D021BE851F5CDC862BCC24FDA9493D77642"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-amethyst-magic.mat",
+      "sha256": "B3A723313166DB29BDEC8CC809BCB2C2E3242EED1B0E34FE5FD436B8EE1CE752"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-amethyst-magic.mat.meta",
+      "sha256": "FBB46095DC9C400A8F260726222C819D2C2A915C1059A79A154DBB37353DD44B"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-amethyst-spark.mat",
+      "sha256": "026551452BAC70F17ED7F91E52FA141730B527276C95CA5EA7F83D4C2DB60523"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-amethyst-spark.mat.meta",
+      "sha256": "539F69782C9E4BD4D4EA66EF8008C5D21EB5C7C62DBE6A6645F86A9D768EB3D5"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-copper-fur.mat",
+      "sha256": "825729FC5D68DEFD965527FAC4E6A1B8260DFD5ACDA97DFED41F98352F4479E9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-copper-fur.mat.meta",
+      "sha256": "1FACDFBC47B01319B3B2D4D0A86133EA1E040B37319AE43F528398043A42D823"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-copper-magic.mat",
+      "sha256": "8E4B6887E127FBA702710726334905F5772027F0EA2B0C7B3714D6A5286BECCE"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-copper-magic.mat.meta",
+      "sha256": "118519E0958EC0FBED6EF466D3F869A5703CA61DEC174A19E1382B81C04EEB76"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-copper-spark.mat",
+      "sha256": "FB8860014978E1EA0F511F16364FFC16FC25998B500377DD091A8FB8909665F3"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-copper-spark.mat.meta",
+      "sha256": "7F303EC1C6AC3DF91A228D58FF48EA72AA4EED53CCAC203FE0DE485E3AE5F071"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-ember-fur.mat",
+      "sha256": "4592C627AE3D057503470CD4AC63DE0208D3F9D92A6D86065ADC9F9CD5FC06FC"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-ember-fur.mat.meta",
+      "sha256": "20172A8E3F5037A62E33915DD22FDA412FDC78BF1371BE8BE1AAA30A9914C025"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-ember-magic.mat",
+      "sha256": "40A2E853FBCF434351CEF51FD6AFFA329D4935632D95733615C52C5199603B68"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-ember-magic.mat.meta",
+      "sha256": "EF23C0D8918DC29AD8BEA970AE1CBC66F6570058438B1558695D206FB26F7AF6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-ember-spark.mat",
+      "sha256": "A6158E0318F02ECF2FE47602832762CAA29172E6B18256F51AC24BA8DB026116"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-ember-spark.mat.meta",
+      "sha256": "5E8D7E0BA52700C1ED47461C9F3DC3933F61A43D9AC44D0FF6C6AA37E4AB3597"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-frost-fur.mat",
+      "sha256": "47EC919E83319E61BFAA2308D627A7344DBEAD8CB0A49A9EA8A47054AC641CE0"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-frost-fur.mat.meta",
+      "sha256": "9A31F7145F076F1D1D19DE03505A73DE3AA8F9165CEA0844494EFF9D2E7827AE"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-frost-magic.mat",
+      "sha256": "4D66E0DE7B37E09D0A958302EF151AE52922AD5220C777BF60F12AF02130719B"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-frost-magic.mat.meta",
+      "sha256": "9A1F5B767800C49F66126AE2FAB8D7A3226550943168F11BFDE1065A67D2E8AC"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-frost-spark.mat",
+      "sha256": "314144515DA18494C0A696B511C9B599540D18C73A7EDC81E1E443D0EDAA58B5"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-frost-spark.mat.meta",
+      "sha256": "73BD68D48B26AF05E76899A809BB062C0F460BEFE3FD725EF796227686C803E0"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-jade-fur.mat",
+      "sha256": "608F47B4BD4735CBD8B18DB2BF493DBAAAA09A992ACE70158FA976DDB592C2AE"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-jade-fur.mat.meta",
+      "sha256": "7D1CA7EDEE6C5D6E24EFF4B526CEA430D6BC3010B3DDEB1AE8165A97B329BC8F"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-jade-magic.mat",
+      "sha256": "581824DD46A25BC78F483302D2DB75E059AD68E96FEC34FF618151EB1045738D"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-jade-magic.mat.meta",
+      "sha256": "2DEA5C2C4613D542B0BB7F64DF52F04E16B4BCD6D1C4308DA55BC99888A35B81"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-jade-spark.mat",
+      "sha256": "AB1118AF6A9E7993FA8E32399708EA9D1FF58D40B8B45EAA5E3CA5BF835DD560"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-jade-spark.mat.meta",
+      "sha256": "22FB3F21AEE7899D587B75DD55DD6DF8BB35C34ACBD68D24B63100678E7C65A5"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-lunar-fur.mat",
+      "sha256": "EC3F9483C4EDC0A0AEDC46B8098D988BA51E6BA61FE79FB0CBF5B04100FE7A3F"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-lunar-fur.mat.meta",
+      "sha256": "D4F8CE0B27534A365CAE8F8E22580070D59291752889F82CABD75AF6F9CD2ADE"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-lunar-magic.mat",
+      "sha256": "A9E09736240C2852E1830C38DCF672F962DACE4901BE9498BF036FC8D07522B3"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-lunar-magic.mat.meta",
+      "sha256": "3F7188C16B43E39D15EBA0922B7EF710C04C04E9B8B9BB0B06B1474B08FA3A92"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-lunar-spark.mat",
+      "sha256": "CC04DAA6A2401C8D6CB26B62B8FE3967833CAA88E9B808551729AF084828D8F1"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-lunar-spark.mat.meta",
+      "sha256": "FA35B9D3D9C9D53008BBAAB2CEFDFBB96C2C01593CBDC2E353532AFCED203730"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-moss-fur.mat",
+      "sha256": "DBF3FEDAAC0E027B5F28DBDC163ACE362591DAE2E8B3AFBCF5A400A6C56F2DC0"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-moss-fur.mat.meta",
+      "sha256": "016A7F8441DC420BED6898B263B1F1E54EC77628BABC26F0D7986C06EA9C38B5"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-moss-magic.mat",
+      "sha256": "AFDDE3557A6F4C5C133F34E3F043364877D5697BF27AB1C773D135FB790BE468"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-moss-magic.mat.meta",
+      "sha256": "C844BA2002CF3FC85A278D4F761EF13E4A77B7D0DFB6692850B1EC21B17A40C3"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-moss-spark.mat",
+      "sha256": "C9A54DAF1CB193CA519295995C40019C54D958D12D07C25610588D49AB950155"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-moss-spark.mat.meta",
+      "sha256": "F0C35F196A3BA5DD458FEA84CAC5C7F9C0BAEB394AFF5FF78FB18AF64C41C2EF"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-pearl-fur.mat",
+      "sha256": "65865F321CE645BCBDA72F5786D56E13A798A8BB8EC7A7428B1FBBD06BD2036E"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-pearl-fur.mat.meta",
+      "sha256": "9C0375BB500D2BDC6320413E706C3348E8575C1DA39C8AE518B7E95B0B63E1A2"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-pearl-magic.mat",
+      "sha256": "251AC7980FFF4D276A8B001AD1AEC41CCFF38CCCFFB09A40324136906B9CD666"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-pearl-magic.mat.meta",
+      "sha256": "06D34D45BA54C87EDF862CB7662155F46C6D167366C37226E7F59F83283FE1F6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-pearl-spark.mat",
+      "sha256": "291754501F6E5B43DE6891EBD1B599ED9B0A85316F3D6BEE1E74A5AE20C877EC"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-pearl-spark.mat.meta",
+      "sha256": "AC765451A7BC159844BBD4C2C508042BEE0E0CA68DF13ED79EB39F82BE098D63"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-rose-fur.mat",
+      "sha256": "3742770B1B4E514FB9511DA2F602DF21F4C93C8E7568412655C2B3E794A66467"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-rose-fur.mat.meta",
+      "sha256": "E7C8264E5B9C2F311CDA7948736E6E5935C553CF48B8F7B95C14F76566BBBAC6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-rose-magic.mat",
+      "sha256": "A7A00B1EDE85075ABAA1AEE521634A0AF9ADD0E1E86A95D96295BC2D63EED8D9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-rose-magic.mat.meta",
+      "sha256": "CC5FB7333769D2F1F1ED2FA7AF96F73A3058E25A1D3EECD45DE0908A46B25EFC"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-rose-spark.mat",
+      "sha256": "F10AB11E61D1FEC472F4B7AAB91531C3663EDEB58F133B72176D9C2EFD443D42"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-rose-spark.mat.meta",
+      "sha256": "90E02EC408BF7604F24B7713B0A247ED612AC9693A9B5BC353C235D9EFBE5561"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-solar-fur.mat",
+      "sha256": "53C7C988CBB1ECD5B7E19AB17A1B47919B3403652BCE6A45E32EB45F5AA01C1B"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-solar-fur.mat.meta",
+      "sha256": "99EFCE36A868CF541C2E8F58503CDB855C0A491A9EBB91298B0057812BCBC8D7"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-solar-magic.mat",
+      "sha256": "A7C08E654210AE6F10EE80A87CF4F36718B12F3A93B8AAE888E7C26D0F864A3A"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-solar-magic.mat.meta",
+      "sha256": "2B881FBE19BEEBB8565B78567BC1D73C6476667DAB3680736282273745FA30E1"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-solar-spark.mat",
+      "sha256": "5C9794C8F73118699B2116C2A758517D56122181A98E7AE26D5C15605687200E"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-solar-spark.mat.meta",
+      "sha256": "71CADAB9E1398AF107D9219F4DEC4841734CB5B17557D246403DDDCFBBA104CF"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-storm-fur.mat",
+      "sha256": "9ACCD88E036929518667A8A3FBEBF4B1A61FBBD546FFFFD3549452534F50B3F6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-storm-fur.mat.meta",
+      "sha256": "0E012A712D2240323BFC86F7552C3B7FD30AA973A84BEDC45A48655B6C52160C"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-storm-magic.mat",
+      "sha256": "E5BB9A0CF98809E093DCC9359B3A605D5A06F03D1A9C8C7E024631C2CB5065D0"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-storm-magic.mat.meta",
+      "sha256": "2D470B0F45A0D22ED49E23CD0DA5CC8306F4221D8C992BD25E0587F4E5D5B30F"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-storm-spark.mat",
+      "sha256": "42A7662D09AC36F3CBC111B253C1C17B832673601BD339530CE9D92387430525"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-storm-spark.mat.meta",
+      "sha256": "1C4FDF50B205B5E8C306137D37634DA7110D29454A5912A3C1644F33EEB2B882"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Models\\fox.fbx",
+      "sha256": "1C5C06B0BFEE3CB01D4FD187688EA7139A4D1A6AF4C8B3516CB73F8D0B74998F"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Models\\fox.fbx.meta",
+      "sha256": "B4B05E09B270CE1A2AFD2D1AB71F3A2A653038CF1CDD349E84B16C1750B7B5E8"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-abyss.prefab",
+      "sha256": "7E453FBA22590042FEE796A4E28DFFB8769AC0F24D3A6B461B34B36553BB022A"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-abyss.prefab.meta",
+      "sha256": "CE5D42D88FF45347A27E7750D0F7A35F9F983B4704DAE3C4032C0B0D3E3A8AF4"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-amethyst.prefab",
+      "sha256": "35C5647717A211F0DA2CF9CF99F37C709991CE5217EA776EF7835E44AAF316AD"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-amethyst.prefab.meta",
+      "sha256": "F00A37B9EF34923CB3A2A8D9B78AC5D63FA9BD8EF986F1ABC7180722A18A02C9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-copper.prefab",
+      "sha256": "F2A850E799523B2947C70A8AAC8182987CA05F35C056A2B76B03ACA31947BE43"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-copper.prefab.meta",
+      "sha256": "1A4CBE3F704B779236D8EC80D11828B79E643A5F84DFF0246E9F4BA267A7FD4A"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-ember.prefab",
+      "sha256": "7859F931271A4EF26931A2CB3813D82BBC88E2002BA0D6A0E4EFF02146B1EE2C"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-ember.prefab.meta",
+      "sha256": "33BC8FCDA389897A931A4725C6A0845F8A72363E5256F9ADF0F5EAF59C3F4ADF"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-frost.prefab",
+      "sha256": "569742F6AEAF570E4DD92E94BA3140C6A83BDF15B275D16A509F2904A5DDB3AB"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-frost.prefab.meta",
+      "sha256": "A7EC240FDA4763335CD8A1ADDFF0CE9D285CE30E37370891713305DEB9EED7DE"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-jade.prefab",
+      "sha256": "19037D8D72BE66AD6EC6EE46B00D13D20072F05A0D3895436BCC0591C04588E2"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-jade.prefab.meta",
+      "sha256": "A7606ECDA266FB36A93E0F4BA76EFB89A68368224EC4F283BCA425BB77A0B4C0"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-lunar.prefab",
+      "sha256": "1DDFA01E389F6C8AD62F40501896244A9F02DC19E266AAA8B68390838EBD7F93"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-lunar.prefab.meta",
+      "sha256": "8A3CD34E15AF8787BFA41FFD989B4E01A550DCEB4F0DB3215054A8B44EC70A71"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-moss.prefab",
+      "sha256": "D9AB3C40710F303297EB23634AD0212C28EFDF009E10B9125D4F1FB9ECD782B9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-moss.prefab.meta",
+      "sha256": "E133EDAD3F837AEA8A593BCBBB0F0603D2F712986EAA3B8E5B7EB9878311B87F"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-pearl.prefab",
+      "sha256": "D9BFA7318D355F6D028A51331F11A6A1A05A8B3C4D6103C18DEA759B0CCAD581"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-pearl.prefab.meta",
+      "sha256": "49573D556917E947307A8F7F57DB022BC7472E411DD3D6F1DBD95FF1BEB99B1A"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-rose.prefab",
+      "sha256": "18FE88E1C965C2AE3A97B95ADB13C76ABDB53508E9068E9869A57F92229FF481"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-rose.prefab.meta",
+      "sha256": "B8260A501E085D758B2754E0F3F9E56545BCD15958775D2DD337F5429691F143"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-solar.prefab",
+      "sha256": "3BD5A2F63587315B15D42E5F7F5E6F0BA92994D7904DCD710AADAA66A9B052F8"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-solar.prefab.meta",
+      "sha256": "BEC12F1C1CC93E1A9C55F25DF98AB13B4DD5CA907535A2AFEE648E5369185023"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-storm.prefab",
+      "sha256": "3A1068EC5E35957FFDBF3E9E892C1D8447A6995B0283F46845F36F44B5D15DD8"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-storm.prefab.meta",
+      "sha256": "B6868AA8BB98D836D501E98884B893D48E69130E16885867734DF9C4B910EF2F"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox.prefab",
+      "sha256": "050944F80A6BFAEA9D300EE33FADE187BBC842AB46268CC527F92EFD8D2369E1"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox.prefab.meta",
+      "sha256": "ED6D753887FB8C5ADA2D5236D9544F47611C2A4D323742AFD0C1971C16B7D101"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-abyss-basecolor.png",
+      "sha256": "2B66EFC136BC1ED468B5D38242EDC310418DA0CCB1C7C74D66E942354F791CFA"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-abyss-basecolor.png.meta",
+      "sha256": "2680ED5B31400BEC27918A548CC10A110C02FB19494D2310DCD8C16BF35CDC87"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-amethyst-basecolor.png",
+      "sha256": "C0D87BB455BAC11BB153F0FE17D6E98A636D2258CC609A8AC52F60A3C38924C0"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-amethyst-basecolor.png.meta",
+      "sha256": "3027256FB92BAB3CFE74532D057CA953390EF977ED51AF683E417008ED295562"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-copper-basecolor.png",
+      "sha256": "DF42F4AD18C58400FF1CD8977CF5C32FAF370326EFCB6F3E8C8FE1B9E1639E8F"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-copper-basecolor.png.meta",
+      "sha256": "7D8630C155B7909E607569143C65BADD80DFB28DC91B33196F4E18889F967CE9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-ember-basecolor.png",
+      "sha256": "18B755A3457550B2CA356FBE283E13183774BB1CEE410988A0BE4B080450DC7D"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-ember-basecolor.png.meta",
+      "sha256": "B192FB556B0AB12FCB92A0238ADB29E6E609459BA0EA528A45F4B66DD832382C"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-frost-basecolor.png",
+      "sha256": "ACAD71CF139FD50470E6BA2090075908B8A0B161595677767FA1247C3CB5C909"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-frost-basecolor.png.meta",
+      "sha256": "36FC9039F2397F898A5AFE459B408F01A0F35645ECE4A7D7DBE658960515D32F"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-jade-basecolor.png",
+      "sha256": "02AAAD01D73865F5E03E9656F698D166F87E5D52A6BE634B7482D80BC599D208"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-jade-basecolor.png.meta",
+      "sha256": "ED404DEBFCF506C8C0E36AA447EEA7DD7E544A15D58FCBFACA6259A55CDB9AEE"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-lunar-basecolor.png",
+      "sha256": "D67576A7D9AC7AFC992AED2AABC84BFC3DCC01CD4C7AFF93527B4FCD46F9E680"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-lunar-basecolor.png.meta",
+      "sha256": "5CA95B2351884A65F3A8303CC7367C981DD6B7458382C46BB0C7FE91664C2A90"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-moss-basecolor.png",
+      "sha256": "0BE9EE8383B248919B88830FF578C1C818BA23516AC41FD4F6436EC96E014932"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-moss-basecolor.png.meta",
+      "sha256": "6402C093AF12E6BF6ED45100B9DABCE4A4451BCE082E3509355EDCA041EB1374"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-pearl-basecolor.png",
+      "sha256": "DF63B8084AA15D3B84AA650B4B89029B21450BE6E6252DFB0E5126449B7E26E6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-pearl-basecolor.png.meta",
+      "sha256": "F5B993D475375B62F70E53B6F824EA7A027F4E05D1701962EF1ABFA0FA5A1AC1"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-rose-basecolor.png",
+      "sha256": "376DFC720CAAD93B30A38A820226E820ED403BADF7AFD086BCE3A08047F20007"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-rose-basecolor.png.meta",
+      "sha256": "9A63E035871918BD85EA05DAAEB428A44EE23A3C407F3BE748232B32EB98B412"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-solar-basecolor.png",
+      "sha256": "BD2D980CD0CED6576C8DFF96957901DDA9DDB9C6F01263BF9EBA1DD74104F4F6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-solar-basecolor.png.meta",
+      "sha256": "95831184E5847048473F748AFCA86B43040C8BC37E6E591F3996A0E4E21C2962"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-storm-basecolor.png",
+      "sha256": "04F2D83D9D0663E81A1E80EE0FFEB4CBAC3A0E04D320A67FB521EC2233B9F093"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-storm-basecolor.png.meta",
+      "sha256": "D87364A7B37A9732F3D5083E7FC3F78DE5B6DF7867D94E2BEF6740065ECC2909"
+    }
+  ],
+  "assetGuids": [
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Animations.meta",
+      "guid": "9f40e15429d46b343b9ab3d050fd0a3f"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\CC-BY-4.0.txt.meta",
+      "guid": "12142884727d09c40aa917f0754f37ac"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\manifest.json.meta",
+      "guid": "34b878f90994a9649b78943189060c6c"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials.meta",
+      "guid": "1f0f12177f7d3504692fb2e62f07b276"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Models.meta",
+      "guid": "f5e3d8fa41cda5c4fb835afe33aecf1c"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs.meta",
+      "guid": "0a85d1ceacc84584ba3e90c05e2e1dd6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\README.md.meta",
+      "guid": "d111eb4ceb2ab9940a854e2f07b544d1"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Shaders.meta",
+      "guid": "a547dabf272384840be3b247c81a0173"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures.meta",
+      "guid": "bdbcb8eeb5d6ad0478f469ae68c5e632"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Animations\\fox.controller.meta",
+      "guid": "4d60a35212ab50c4f8f7362c6ce110ab"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Animations\\wolf.controller.meta",
+      "guid": "dcced293ca7ee9b4f99e0ad68c61d141"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-abyss-fur.mat.meta",
+      "guid": "96b246633df9edc4a92d213d37d4ef76"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-abyss-magic.mat.meta",
+      "guid": "b25e8748ec8c58d4997bdea1a920483a"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-abyss-spark.mat.meta",
+      "guid": "9f2651809bb569d4eabe086f75a36c39"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-amethyst-fur.mat.meta",
+      "guid": "5bca82cf6ec78af4b8116a9e20325761"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-amethyst-magic.mat.meta",
+      "guid": "cef798e3c7090ca43abb89d6f7828ac9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-amethyst-spark.mat.meta",
+      "guid": "d0852913522d6864891290b1c183edc8"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-copper-fur.mat.meta",
+      "guid": "2d29c8f64a0438b4399a2bd6bb707584"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-copper-magic.mat.meta",
+      "guid": "60fd3dac640316b47baedfd0d03bb852"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-copper-spark.mat.meta",
+      "guid": "02a0af0d1b098244aa375e1cdbdfe56f"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-ember-fur.mat.meta",
+      "guid": "3b0af9faced82e143ac939bf49431fa9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-ember-magic.mat.meta",
+      "guid": "0e0af1266ddbdf046b65b1f4da8f20a0"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-ember-spark.mat.meta",
+      "guid": "9a0b903afde75644f9eec9807aca6e71"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-frost-fur.mat.meta",
+      "guid": "fa3e9e344499b9d40923853e43108766"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-frost-magic.mat.meta",
+      "guid": "3914d4f4ed452c14aaf49dd74c026456"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-frost-spark.mat.meta",
+      "guid": "1df960320c49226468f0d3b797fe6889"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-jade-fur.mat.meta",
+      "guid": "4b26e852176e5f84889a86b0a1a8363f"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-jade-magic.mat.meta",
+      "guid": "3fe90e7a1018b17408ce5e8db4e38fcb"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-jade-spark.mat.meta",
+      "guid": "fc2b0050d4d1801498d1bc78529618f2"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-lunar-fur.mat.meta",
+      "guid": "08c6ef6b0bc405a4985364b19be09da0"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-lunar-magic.mat.meta",
+      "guid": "3184a5efb4d0a7444927dc8641fd50e2"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-lunar-spark.mat.meta",
+      "guid": "67f439fe16130d447baf1f8db1bb9ca3"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-moss-fur.mat.meta",
+      "guid": "c3d02f6687a0b574ca4e5cedd079587b"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-moss-magic.mat.meta",
+      "guid": "fcedb895395967f4598bb590557bce91"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-moss-spark.mat.meta",
+      "guid": "07c29a02b65b1cb48b5ba7b89fa76f92"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-pearl-fur.mat.meta",
+      "guid": "1dadd0df8883b744ca80d4afc0502481"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-pearl-magic.mat.meta",
+      "guid": "469954c09aec73f46bb0b31419c58317"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-pearl-spark.mat.meta",
+      "guid": "56e8af5769f35b245951feafbbfc204e"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-rose-fur.mat.meta",
+      "guid": "bbe40f0c95c52404db658a97469c75ed"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-rose-magic.mat.meta",
+      "guid": "1875e9483c8019e4f85631c05fd0cecd"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-rose-spark.mat.meta",
+      "guid": "1d04348c7fc79ad4c88c9847891a0e4d"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-solar-fur.mat.meta",
+      "guid": "1410ed33609f74b4c97931e38c9ce398"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-solar-magic.mat.meta",
+      "guid": "ce67db6f0ffb2b6429ce93e961e2e081"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-solar-spark.mat.meta",
+      "guid": "5e9d16aee3fe02e4d9b50b780e980d90"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-storm-fur.mat.meta",
+      "guid": "3680afd45fc0e524c957df99f6c93e47"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-storm-magic.mat.meta",
+      "guid": "e5cb78ac52fd6064b83b221f77f80df2"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\fox-storm-spark.mat.meta",
+      "guid": "2477429f26221e04d8a58eab3512d6f3"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-abyss-fur.mat.meta",
+      "guid": "d13f6ec9524101c40b13a1c4d3338d62"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-abyss-magic.mat.meta",
+      "guid": "0da705d1dfc1dd744b0d95760b0cc514"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-abyss-spark.mat.meta",
+      "guid": "726e45c76773d9c49950eaa5dd5534fc"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-amethyst-fur.mat.meta",
+      "guid": "8d2728c1b130f9e489be329cda63cf0a"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-amethyst-magic.mat.meta",
+      "guid": "61bfd64c14b79424bae6be7218c5a6ae"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-amethyst-spark.mat.meta",
+      "guid": "20e63c9ce98ee724294fa49f6669a50a"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-copper-fur.mat.meta",
+      "guid": "b2b23ece1ddacc4449fcfce2deeb3921"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-copper-magic.mat.meta",
+      "guid": "87ddbd53defed174e9da4d976a6a82dd"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-copper-spark.mat.meta",
+      "guid": "45e5e6ab05b334c46961934342957b09"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-ember-fur.mat.meta",
+      "guid": "e67b2239a3d864043bd6b463f421f365"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-ember-magic.mat.meta",
+      "guid": "e9456819a02614e478b8cc70dbb714a2"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-ember-spark.mat.meta",
+      "guid": "243be1dfdd6ea864b99421203958fc68"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-frost-fur.mat.meta",
+      "guid": "2cff8d6e1d66f6b4ea70e3e228cb6fcd"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-frost-magic.mat.meta",
+      "guid": "858498e620a7dc64bb3327491a9613e1"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-frost-spark.mat.meta",
+      "guid": "346c116e443484845a494a7464caccf0"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-jade-fur.mat.meta",
+      "guid": "8e9a5dd5144ecfc4e9ee5e2261cb957e"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-jade-magic.mat.meta",
+      "guid": "4558cd7090e24c845a4bab3dee35dd36"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-jade-spark.mat.meta",
+      "guid": "261a9d99aecd128499efd999d8426c5b"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-lunar-fur.mat.meta",
+      "guid": "68d1ab14e130a2549859ea6493792ed4"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-lunar-magic.mat.meta",
+      "guid": "b97800f5275fbce4dac60eb0b5f41b38"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-lunar-spark.mat.meta",
+      "guid": "8a0cfe4632da42f4887f8c7607af20d3"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-moss-fur.mat.meta",
+      "guid": "b2ab04d4510623f46978a3b1f26e08f2"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-moss-magic.mat.meta",
+      "guid": "a8489a0e53eeb8f4eaab46ef5ae84213"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-moss-spark.mat.meta",
+      "guid": "faca11100662c00449fe2da94f8e62e9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-pearl-fur.mat.meta",
+      "guid": "1003049685e1de54aa902c0383ee679e"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-pearl-magic.mat.meta",
+      "guid": "a2a73a9974aa26141a874ea9beda24a6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-pearl-spark.mat.meta",
+      "guid": "05cd64872aa8c424b93c007fe8f63cd9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-rose-fur.mat.meta",
+      "guid": "2331c66f118590a49b418d2f196a321e"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-rose-magic.mat.meta",
+      "guid": "096350d1783b94d4886b34eac46b89da"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-rose-spark.mat.meta",
+      "guid": "1d723c82f23b1f3468643e54623fe69b"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-solar-fur.mat.meta",
+      "guid": "b0ec327387c67244bbe86353d024fd96"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-solar-magic.mat.meta",
+      "guid": "d5d4c02bc7a779c45b02fe9a07b4a341"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-solar-spark.mat.meta",
+      "guid": "ee9fc6cc247a52c4dace0cb185746221"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-storm-fur.mat.meta",
+      "guid": "78457fdab638d2f438e38e3219820515"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-storm-magic.mat.meta",
+      "guid": "8de56f89a7961994886c221d010d73c6"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Materials\\wolf-storm-spark.mat.meta",
+      "guid": "48d63b47fd6aed24dbe24b177bd8ef5e"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Models\\fox.fbx.meta",
+      "guid": "f0ea25c816581954fb87bbabd696a16f"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Models\\wolf.fbx.meta",
+      "guid": "3007bb7fb0d9d3e4ea42eff54600962a"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-abyss.prefab.meta",
+      "guid": "e2c6ca829d440bc438fca5dbf56c5d69"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-amethyst.prefab.meta",
+      "guid": "bac09fc12d399254486fd0920f264536"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-copper.prefab.meta",
+      "guid": "3e8a7c393bf071142b8c6cc65405b0ce"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-ember.prefab.meta",
+      "guid": "ffc39e30b370f3f4db8db881c5d24eee"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-frost.prefab.meta",
+      "guid": "11d0608e2a74a1147b8d68617ae166dc"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-jade.prefab.meta",
+      "guid": "b41805c247b17694ba147016ba13e6a7"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-lunar.prefab.meta",
+      "guid": "7bc2d4a1e22b61743b46672cf045eaf3"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-moss.prefab.meta",
+      "guid": "eabc82f3b95f0e542aacf69e16038c1e"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-pearl.prefab.meta",
+      "guid": "065083c288d090f4c927e4753de2d52a"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-rose.prefab.meta",
+      "guid": "5de49f6d2dd2e4a4b8cd1417c6048489"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-solar.prefab.meta",
+      "guid": "45b2607711c7fb74fa645b65223ee7b1"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox-storm.prefab.meta",
+      "guid": "1213b9be3818461469cab0f040bdf9a4"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\fox.prefab.meta",
+      "guid": "4b1db99f11c52764b890c53abfd134dc"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-abyss.prefab.meta",
+      "guid": "2901839f711694f44bbbb70ca443ed5a"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-amethyst.prefab.meta",
+      "guid": "d16789babc06ef84d80824307462f21f"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-copper.prefab.meta",
+      "guid": "76ca511d034d0dd46b9adc0553d43e66"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-ember.prefab.meta",
+      "guid": "fcb7c35d08ff6594cb1af6b4c6573102"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-frost.prefab.meta",
+      "guid": "b45cfe2d90305a94cb8576185de7e894"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-jade.prefab.meta",
+      "guid": "243d39851ba72d742af42876b5665873"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-lunar.prefab.meta",
+      "guid": "abffa5ef2f520394e857b84fc4478170"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-moss.prefab.meta",
+      "guid": "5c200438a1284354ebc7cd63fbf9711e"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-pearl.prefab.meta",
+      "guid": "a7608b23e4a628a498205f97113076b3"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-rose.prefab.meta",
+      "guid": "c5f1df6dcbdc3864eaab28a58108e0f9"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-solar.prefab.meta",
+      "guid": "e0e50c8bbb271214db1cd632c3f769db"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf-storm.prefab.meta",
+      "guid": "b0d0186d9307caf44842ece305d4f2ee"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Prefabs\\wolf.prefab.meta",
+      "guid": "2d25fb822385d14418f0f233ad0612d5"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Shaders\\PaintedTotem.shader.meta",
+      "guid": "87d4360ebe453174dabf3f9005e50426"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-abyss-basecolor.png.meta",
+      "guid": "3c9c0cc72f7561148874918eef49978a"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-amethyst-basecolor.png.meta",
+      "guid": "5613f6d9d6ab8964e889b256b250323d"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-copper-basecolor.png.meta",
+      "guid": "104649b179e7ed84b80103bbaf5ec4f3"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-ember-basecolor.png.meta",
+      "guid": "42fe435f0dfe87d409728dc22b6b717e"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-frost-basecolor.png.meta",
+      "guid": "15dec17374ef7564284044189689e046"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-jade-basecolor.png.meta",
+      "guid": "07aba5d5b0242104797bc1d35b7f9b08"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-lunar-basecolor.png.meta",
+      "guid": "12ed294ab4b85b44cafe72aaf1f5cd44"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-moss-basecolor.png.meta",
+      "guid": "ca134c3e03babcf4e8760f3cffbe4107"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-pearl-basecolor.png.meta",
+      "guid": "d8502070fc157c24eb4d3cd1561a2d5a"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-rose-basecolor.png.meta",
+      "guid": "e4e4a361d5ff2b94fa0333d06af01695"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-solar-basecolor.png.meta",
+      "guid": "d6fd6fba9df674e45bf36e976fc088ea"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-storm-basecolor.png.meta",
+      "guid": "12df7f47d01f21e4aa427f2431ac80fa"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-abyss-basecolor.png.meta",
+      "guid": "286e7175047aedc479ef19f208b64480"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-amethyst-basecolor.png.meta",
+      "guid": "959b808b5cba532488951b741735334c"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-copper-basecolor.png.meta",
+      "guid": "61c03ee96b1c0d24c99e2f1333413ffe"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-ember-basecolor.png.meta",
+      "guid": "2be639aa95359384da10a873e9f2ee84"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-frost-basecolor.png.meta",
+      "guid": "ff56afb39c215184689d070588204f0c"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-jade-basecolor.png.meta",
+      "guid": "fecf3d6e968a7424ea277948279b5861"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-lunar-basecolor.png.meta",
+      "guid": "731226a2a818c3e48affff4c1d465a8d"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-moss-basecolor.png.meta",
+      "guid": "e1dc25ad79b96d9499f7a3d776ae244d"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-pearl-basecolor.png.meta",
+      "guid": "7e72b8a9fd7a0994081736980525282f"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-rose-basecolor.png.meta",
+      "guid": "b6a7bc0472f745a4ebc0d7ea83476d50"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-solar-basecolor.png.meta",
+      "guid": "90aea859e55956e4fb67076c51583150"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-storm-basecolor.png.meta",
+      "guid": "26d76846286889f4e8522e76d448e73e"
+    }
+  ]
+}

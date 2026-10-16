@@ -1,0 +1,514 @@
+{
+  "verified_at": "2026-10-15T15:37:30.648Z",
+  "base_url": "http://127.0.0.1:51805/",
+  "default_family": "structures",
+  "family": "structures",
+  "artistic_status": "proposed",
+  "shapes": 5,
+  "materials": 3,
+  "assets": 15,
+  "previous_families_preserved": true,
+  "dimensions_nominal_and_openings_match": true,
+  "placement_metadata_present": true,
+  "http_links_checked": 45,
+  "http_links_passed": 45,
+  "comparison": {
+    "path": "structures/comparaison-tailles.png",
+    "status": 200
+  },
+  "resources": [
+    {
+      "asset": "fondation-chaume",
+      "kind": "glb",
+      "path": "structures/assets/fondation-chaume/fondation-chaume.glb",
+      "status": 200,
+      "bytes": 5920768,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "fondation-chaume",
+      "kind": "blend",
+      "path": "structures/assets/fondation-chaume/fondation-chaume.blend",
+      "status": 200,
+      "bytes": 6972955,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "fondation-chaume",
+      "kind": "preview",
+      "path": "structures/assets/fondation-chaume/fondation-chaume-preview.png",
+      "status": 200,
+      "bytes": 1385526,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "fondation-bois",
+      "kind": "glb",
+      "path": "structures/assets/fondation-bois/fondation-bois.glb",
+      "status": 200,
+      "bytes": 3688108,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "fondation-bois",
+      "kind": "blend",
+      "path": "structures/assets/fondation-bois/fondation-bois.blend",
+      "status": 200,
+      "bytes": 6326111,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "fondation-bois",
+      "kind": "preview",
+      "path": "structures/assets/fondation-bois/fondation-bois-preview.png",
+      "status": 200,
+      "bytes": 1280637,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "fondation-pierre",
+      "kind": "glb",
+      "path": "structures/assets/fondation-pierre/fondation-pierre.glb",
+      "status": 200,
+      "bytes": 4614672,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "fondation-pierre",
+      "kind": "blend",
+      "path": "structures/assets/fondation-pierre/fondation-pierre.blend",
+      "status": 200,
+      "bytes": 5405538,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "fondation-pierre",
+      "kind": "preview",
+      "path": "structures/assets/fondation-pierre/fondation-pierre-preview.png",
+      "status": 200,
+      "bytes": 1256220,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "mur-plein-chaume",
+      "kind": "glb",
+      "path": "structures/assets/mur-plein-chaume/mur-plein-chaume.glb",
+      "status": 200,
+      "bytes": 5577664,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "mur-plein-chaume",
+      "kind": "blend",
+      "path": "structures/assets/mur-plein-chaume/mur-plein-chaume.blend",
+      "status": 200,
+      "bytes": 6270179,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "mur-plein-chaume",
+      "kind": "preview",
+      "path": "structures/assets/mur-plein-chaume/mur-plein-chaume-preview.png",
+      "status": 200,
+      "bytes": 1281945,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "mur-plein-bois",
+      "kind": "glb",
+      "path": "structures/assets/mur-plein-bois/mur-plein-bois.glb",
+      "status": 200,
+      "bytes": 3530596,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "mur-plein-bois",
+      "kind": "blend",
+      "path": "structures/assets/mur-plein-bois/mur-plein-bois.blend",
+      "status": 200,
+      "bytes": 6006755,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "mur-plein-bois",
+      "kind": "preview",
+      "path": "structures/assets/mur-plein-bois/mur-plein-bois-preview.png",
+      "status": 200,
+      "bytes": 1176887,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "mur-plein-pierre",
+      "kind": "glb",
+      "path": "structures/assets/mur-plein-pierre/mur-plein-pierre.glb",
+      "status": 200,
+      "bytes": 4431040,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "mur-plein-pierre",
+      "kind": "blend",
+      "path": "structures/assets/mur-plein-pierre/mur-plein-pierre.blend",
+      "status": 200,
+      "bytes": 5038870,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "mur-plein-pierre",
+      "kind": "preview",
+      "path": "structures/assets/mur-plein-pierre/mur-plein-pierre-preview.png",
+      "status": 200,
+      "bytes": 1328030,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "mur-fenetre-chaume",
+      "kind": "glb",
+      "path": "structures/assets/mur-fenetre-chaume/mur-fenetre-chaume.glb",
+      "status": 200,
+      "bytes": 5677824,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "mur-fenetre-chaume",
+      "kind": "blend",
+      "path": "structures/assets/mur-fenetre-chaume/mur-fenetre-chaume.blend",
+      "status": 200,
+      "bytes": 6460781,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "mur-fenetre-chaume",
+      "kind": "preview",
+      "path": "structures/assets/mur-fenetre-chaume/mur-fenetre-chaume-preview.png",
+      "status": 200,
+      "bytes": 1253796,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "mur-fenetre-bois",
+      "kind": "glb",
+      "path": "structures/assets/mur-fenetre-bois/mur-fenetre-bois.glb",
+      "status": 200,
+      "bytes": 3583512,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "mur-fenetre-bois",
+      "kind": "blend",
+      "path": "structures/assets/mur-fenetre-bois/mur-fenetre-bois.blend",
+      "status": 200,
+      "bytes": 6113209,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "mur-fenetre-bois",
+      "kind": "preview",
+      "path": "structures/assets/mur-fenetre-bois/mur-fenetre-bois-preview.png",
+      "status": 200,
+      "bytes": 1196369,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "mur-fenetre-pierre",
+      "kind": "glb",
+      "path": "structures/assets/mur-fenetre-pierre/mur-fenetre-pierre.glb",
+      "status": 200,
+      "bytes": 4477032,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "mur-fenetre-pierre",
+      "kind": "blend",
+      "path": "structures/assets/mur-fenetre-pierre/mur-fenetre-pierre.blend",
+      "status": 200,
+      "bytes": 5133496,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "mur-fenetre-pierre",
+      "kind": "preview",
+      "path": "structures/assets/mur-fenetre-pierre/mur-fenetre-pierre-preview.png",
+      "status": 200,
+      "bytes": 1279231,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "mur-porte-chaume",
+      "kind": "glb",
+      "path": "structures/assets/mur-porte-chaume/mur-porte-chaume.glb",
+      "status": 200,
+      "bytes": 5665844,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "mur-porte-chaume",
+      "kind": "blend",
+      "path": "structures/assets/mur-porte-chaume/mur-porte-chaume.blend",
+      "status": 200,
+      "bytes": 6421047,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "mur-porte-chaume",
+      "kind": "preview",
+      "path": "structures/assets/mur-porte-chaume/mur-porte-chaume-preview.png",
+      "status": 200,
+      "bytes": 1057011,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "mur-porte-bois",
+      "kind": "glb",
+      "path": "structures/assets/mur-porte-bois/mur-porte-bois.glb",
+      "status": 200,
+      "bytes": 3561236,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "mur-porte-bois",
+      "kind": "blend",
+      "path": "structures/assets/mur-porte-bois/mur-porte-bois.blend",
+      "status": 200,
+      "bytes": 6065895,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "mur-porte-bois",
+      "kind": "preview",
+      "path": "structures/assets/mur-porte-bois/mur-porte-bois-preview.png",
+      "status": 200,
+      "bytes": 1029861,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "mur-porte-pierre",
+      "kind": "glb",
+      "path": "structures/assets/mur-porte-pierre/mur-porte-pierre.glb",
+      "status": 200,
+      "bytes": 4472464,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "mur-porte-pierre",
+      "kind": "blend",
+      "path": "structures/assets/mur-porte-pierre/mur-porte-pierre.blend",
+      "status": 200,
+      "bytes": 5121666,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "mur-porte-pierre",
+      "kind": "preview",
+      "path": "structures/assets/mur-porte-pierre/mur-porte-pierre-preview.png",
+      "status": 200,
+      "bytes": 1098089,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "plafond-chaume",
+      "kind": "glb",
+      "path": "structures/assets/plafond-chaume/plafond-chaume.glb",
+      "status": 200,
+      "bytes": 5515320,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "plafond-chaume",
+      "kind": "blend",
+      "path": "structures/assets/plafond-chaume/plafond-chaume.blend",
+      "status": 200,
+      "bytes": 6161021,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "plafond-chaume",
+      "kind": "preview",
+      "path": "structures/assets/plafond-chaume/plafond-chaume-preview.png",
+      "status": 200,
+      "bytes": 1244555,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "plafond-bois",
+      "kind": "glb",
+      "path": "structures/assets/plafond-bois/plafond-bois.glb",
+      "status": 200,
+      "bytes": 3487684,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "plafond-bois",
+      "kind": "blend",
+      "path": "structures/assets/plafond-bois/plafond-bois.blend",
+      "status": 200,
+      "bytes": 5923957,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "plafond-bois",
+      "kind": "preview",
+      "path": "structures/assets/plafond-bois/plafond-bois-preview.png",
+      "status": 200,
+      "bytes": 1185257,
+      "content_type": "image/png"
+    },
+    {
+      "asset": "plafond-pierre",
+      "kind": "glb",
+      "path": "structures/assets/plafond-pierre/plafond-pierre.glb",
+      "status": 200,
+      "bytes": 4377856,
+      "content_type": "model/gltf-binary"
+    },
+    {
+      "asset": "plafond-pierre",
+      "kind": "blend",
+      "path": "structures/assets/plafond-pierre/plafond-pierre.blend",
+      "status": 200,
+      "bytes": 4932416,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "asset": "plafond-pierre",
+      "kind": "preview",
+      "path": "structures/assets/plafond-pierre/plafond-pierre-preview.png",
+      "status": 200,
+      "bytes": 1131431,
+      "content_type": "image/png"
+    }
+  ],
+  "browser_interactions": {
+    "status": "PASS",
+    "source": "Parent task, in-app browser after repaired GLB reload.",
+    "variants_loaded": 15,
+    "combinations": "5 shapes × chaume/bois/pierre",
+    "status_text": "Prêt à explorer",
+    "dimensions_match_nominal": true,
+    "dimension_tolerance": "float32",
+    "camera_targets_finite_and_centered": true,
+    "camera_orbits_finite_and_positive": true,
+    "additional_checks": {
+      "reset": {
+        "status": "PASS",
+        "asset": "plafond-pierre",
+        "camera_orbit": {
+          "theta": 0.5235988,
+          "phi": 1.134464,
+          "radius": 2.818796
+        },
+        "camera_target": {
+          "x": 0,
+          "y": 0.05,
+          "z": 0
+        }
+      },
+      "family_round_trip": {
+        "status": "PASS",
+        "sequence": [
+          "Cailloux (12)",
+          "Structures (15)",
+          "Mur avec fenêtre / Bois"
+        ],
+        "model_visible": true,
+        "framing_confirmed_in_screenshot": true
+      }
+    }
+  },
+  "gltf_metadata": {
+    "status": "PASS",
+    "reason": "The loader interprets the reserved extras.pivot key as a three-component transform. Arkya placement metadata uses extras.arkya_pivot instead.",
+    "assets": [
+      {
+        "asset": "fondation-chaume",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "fondation-bois",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "fondation-pierre",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "mur-plein-chaume",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "mur-plein-bois",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "mur-plein-pierre",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "mur-fenetre-chaume",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "mur-fenetre-bois",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "mur-fenetre-pierre",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "mur-porte-chaume",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "mur-porte-bois",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "mur-porte-pierre",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "plafond-chaume",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "plafond-bois",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      },
+      {
+        "asset": "plafond-pierre",
+        "reserved_pivot_extra_absent": true,
+        "namespaced_pivot": "arkya_pivot",
+        "pivot_value": "bottom_center"
+      }
+    ]
+  }
+}

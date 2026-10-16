@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-10-15",
+  "artistic_status": "proposed",
+  "modelling": "Blender 4.5.14 LTS; deterministic source in scripts/generate_structures.py",
+  "sources": [
+    {"file":"sources/sawn-wood-painted.png","sha256":"8086AC03364CA2934D3AB204D9F76C13E277B838E7AF6C827CD634BCACCE0A01","native_resolution":[1254,1254],"method":"built-in imagegen; original V1 kept as historical source","prompt":"sources/sawn-wood-painted-provenance.md","used_by":[]},
+    {"file":"sources/worked-timber-painted-v2.png","sha256":"30b4da22c7fed4c0f3475f3ba9f9cb7fa97586a2026b2c3f57a6f45300ab90a8","native_resolution":[1254,1254],"method":"existing built-in imagegen native V2 timber; direct unedited copy","prompt":"sources/worked-timber-painted-v2-provenance.md","used_by":["textures/bois-basecolor.png","textures/timber-basecolor.png"]},
+    {"file":"sources/thatch-painted.png","sha256":"CB55316E76BBBDAC09DFDBB7DDB0E9B3E1B7CFFE8559066EE88FF37341CB5B88","native_resolution":[1254,1254],"method":"built-in imagegen; direct unedited copy","prompt":"sources/thatch-painted-provenance.md","used_by":["textures/chaume-basecolor.png","textures/rope-basecolor.png"]},
+    {"file":"../sources/stone-painted.png","sha256":"BC1992D1284C052A33C06BE4F8C7485C715BD00B55E537A12EDB599B159D2D90","native_resolution":[1254,1254],"method":"existing approved painted stone source; direct unedited copy","prompt":"../sources/stone-painted-provenance.md","used_by":["textures/pierre-basecolor.png","textures/mortar-basecolor.png"]}
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-16T07:00:57.0729056Z",
+  "caseCount": 9,
+  "checks": [
+    {
+      "name": "Leaves pollen and grains share a fixed budget",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Particles live close to vegetation",
+      "passed": true,
+      "detail": {
+        "ActiveNearFoliage": true,
+        "LiveCount": 66,
+        "ParticlesBudget": 200
+      }
+    },
+    {
+      "name": "Velocity modules have compatible curves",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No forest particles over open ocean",
+      "passed": true,
+      "detail": {
+        "ActiveNearFoliage": false,
+        "LiveCount": 0
+      }
+    },
+    {
+      "name": "Zero wind clears drifting particles",
+      "passed": true,
+      "detail": {
+        "LiveCount": 0
+      }
+    },
+    {
+      "name": "Zero speed clears drifting particles",
+      "passed": true,
+      "detail": {
+        "LiveCount": 0
+      }
+    },
+    {
+      "name": "Particles resume with wind",
+      "passed": true,
+      "detail": {
+        "LiveCount": 25
+      }
+    },
+    {
+      "name": "Disabling clears and deactivates all effects",
+      "passed": true,
+      "detail": {
+        "liveSystems": 0
+      }
+    },
+    {
+      "name": "Reenabling recreates three particle systems",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "failures": []
+}

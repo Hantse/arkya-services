@@ -1,0 +1,1264 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "method": "Independent GLB binary parsing",
+  "checks": [
+    "2 species, 12 colorways, 12 distinct palette hues per colorway and all manifest assets present",
+    "24 self-contained GLBs",
+    "skin weights and joint indices",
+    "finite geometry, unit normals and valid triangle indices",
+    "Idle/Walk/Run movement and matching loop endpoints",
+    "identical geometry and weights across twelve coats of each animal",
+    "twelve distinct embedded painted textures per animal"
+  ],
+  "models": [
+    {
+      "file": "models/fox-abyss.glb",
+      "bytes": 4017832,
+      "sha256": "4b9f1cfcb99d5c3498156847b971d0d57f8ea1db99ff4f3f0e9a07b0f8b03120",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "2b66efc136bc1ed468b5d38242edc310418da0ccb1c7c74d66e942354f791cfa"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-amethyst.glb",
+      "bytes": 4133888,
+      "sha256": "ff3e20166ea67d8abed3e7459b1672c4a300df55e223df63084346add3b5ca75",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "c0d87bb455bac11bb153f0fe17d6e98a636d2258cc609a8ac52f60a3c38924c0"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-copper.glb",
+      "bytes": 4041088,
+      "sha256": "4d32e672fb672cbe9720aa69dc8c2f1b6328f336c3b63dff14454119f43f820c",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "df42f4ad18c58400ff1cd8977cf5c32faf370326efcb6f3e8c8fe1b9e1639e8f"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-ember.glb",
+      "bytes": 4116164,
+      "sha256": "d767ded2399087fa9706d57a24459145589bb988103a1e4049ece9cdd1e3c7e1",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "18b755a3457550b2ca356fbe283e13183774bb1cee410988a0be4b080450dc7d"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-frost.glb",
+      "bytes": 4221464,
+      "sha256": "193c48d5e3fae96b7778d35af6f8c5233a5796c861ba6ecd975c01cd5b3bed55",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "acad71cf139fd50470e6ba2090075908b8a0b161595677767fa1247c3cb5c909"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-jade.glb",
+      "bytes": 4121192,
+      "sha256": "14e2dc7acfef28dc921ec65a1fe2f904838f4b77e8fa87dcd51420c569437943",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "02aaad01d73865f5e03e9656f698d166f87e5d52a6be634b7482d80bc599d208"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-lunar.glb",
+      "bytes": 4200916,
+      "sha256": "e6ad0be35cb3c220a3ee601fab4c7eb565760015f25edfde4ae40790eee9417d",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "d67576a7d9ac7afc992aed2aabc84bfc3dcc01cd4c7aff93527b4fcd46f9e680"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-moss.glb",
+      "bytes": 4014360,
+      "sha256": "bed1bc14cc878e82fc900bc71d01d3dbb4f34b93c0bed188fdc10a168a9b1071",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "0be9ee8383b248919b88830ff578c1c818ba23516ac41fd4f6436ec96e014932"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-pearl.glb",
+      "bytes": 4078760,
+      "sha256": "c52e8b719c22e8d3d4da25c55d711532e48a2f76817d02e120493fe1f05317ea",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "df63b8084aa15d3b84aa650b4b89029b21450be6e6252dfb0e5126449b7e26e6"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-rose.glb",
+      "bytes": 4136652,
+      "sha256": "b8698c33ac90a36b97b5960f896bd76b69901422160958d4285c9c1962def1ac",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "376dfc720caad93b30a38a820226e820ed403badf7afd086bce3a08047f20007"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-solar.glb",
+      "bytes": 4187148,
+      "sha256": "6974aed90b5bb7617b93996dcd8d5e40d68975a3985a0cf3422c90817df891a4",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "bd2d980cd0ced6576c8dff96957901dda9ddb9c6f01263bf9eba1dd74104f4f6"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/fox-storm.glb",
+      "bytes": 4053008,
+      "sha256": "f9f07d5487b3869e28d9be79e481377e9e57b8586cc24ded68a37f547b4740a1",
+      "triangles": 30382,
+      "vertices": 18951,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.3317912817001343e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "04f2d83d9d0663e81a1e80ee0ffeb4cbac3a0e04d320a67fb521ec2233b9f093"
+      ],
+      "localMeshBounds": [
+        [
+          -0.3987575173377991,
+          -0.0022749481722712517,
+          -0.12232805788516998
+        ],
+        [
+          0.39888566732406616,
+          0.6500000357627869,
+          0.12238077074289322
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.6000000238418579,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "1dbadc5a24ef265ae17358d422eba8cb65f1138525a8a8f1dfe3aa13eac58590"
+    },
+    {
+      "file": "models/wolf-abyss.glb",
+      "bytes": 3641292,
+      "sha256": "c260321f600b56a45cbbbf96f839ea649da36357fe24273df37bf81169fe121c",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "b4d098a8162279d8fdaaff813bbbbe67319dc885d71935532d8b9afd0d5b0ff5"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-amethyst.glb",
+      "bytes": 3731064,
+      "sha256": "44f57089ed3936b5b46e14f5cbc6801df50876ae85ce035e7c042a01d1527867",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "140fd298ba91f75ca1f5c05cedf28de5d9e3b114fde90d9da393e073bcf4b813"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-copper.glb",
+      "bytes": 3724776,
+      "sha256": "bcabb6eb311f10392fae084ffbcfb23d87d23d55cbd7ec6ad8051f35ccf944a0",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "470a0eefd851a56583ced23f10b1a03e392a2619a5ebceba77e9ea5f87873721"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-ember.glb",
+      "bytes": 3757312,
+      "sha256": "51d3ceb72d8bcbd1d99dc1dc605af23b6221af7de0a3b2046a59d38760a80af5",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "ba7d7d751ae020f15168c2a328693cc82e180949a142ec236501e073687437e3"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-frost.glb",
+      "bytes": 3828792,
+      "sha256": "fa417f5353d80f94c76693da3dcc253894b20e4d149fd77228e4109ad7996f1a",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "940feee8139cafd908b3f5f9e138e78bb7920ad798850c06ce4cf00095f2be78"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-jade.glb",
+      "bytes": 3745096,
+      "sha256": "e4b36eb524ab1266266a5c5c045bb4c2378a695d7b5faed13875bc3450c9befe",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "ac983da21f8890e95f5df1e28322ec37063819e9ff8f841de7a13c2fadf69766"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-lunar.glb",
+      "bytes": 3802212,
+      "sha256": "38c9b31b35a0eea86df6bdf522bd78142484a52bab872eaec8360e8381170da3",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "c867e5be5124e314d6686168a11c9bea1152e1f313aceb9d5eaf8c1e145b3e0d"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-moss.glb",
+      "bytes": 3628560,
+      "sha256": "fa521f4fc820bed4b5b0d9eee0accf14c5b2bf12a728c24d3968cf94220ee6a8",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "145e69fec4b63f79bde5aa561021a7cf4ecd3a062dd7ca5d1cf291e94966d7a8"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-pearl.glb",
+      "bytes": 3679128,
+      "sha256": "423565abd976f49e254ceb2f50b8292f7ec09e83301fa541b7dd28c569803916",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "3b08a2b3724c60729a33ec136b71c5ed992d0214e95705d4066c5f99c170c078"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-rose.glb",
+      "bytes": 3776840,
+      "sha256": "2056f068151f4fff52a93479c13c5ae55c1a75a374553871113865fac096f658",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "1196dc69e33244692100f04640b854359914b652ea9b4a0a46eec38104c5bb60"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-solar.glb",
+      "bytes": 3833680,
+      "sha256": "9e1939612ec71c4a14453144e88e09e2c80d54c720de7959cff6350d1784e1cb",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "a0e85bc314d0cc56784c5d1f155b5a67ccc1b1dfc21e3ffd72fed4cf00134577"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    },
+    {
+      "file": "models/wolf-storm.glb",
+      "bytes": 3625344,
+      "sha256": "c8ca76a7392c354291bd1e2361eb089f62a3ba73b525c7319ee6caec8ccfa21d",
+      "triangles": 30382,
+      "vertices": 18892,
+      "skinCount": 1,
+      "bones": 39,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.457519829273224e-07,
+      "materialCount": 3,
+      "embeddedImages": 1,
+      "embeddedImageSha256": [
+        "f6b4c956ffffcaa94b745c1fd6f96e5ba0cf30196529ed7ad18c3bd720dc97fa"
+      ],
+      "localMeshBounds": [
+        [
+          -0.8618531823158264,
+          -0.0038501883391290903,
+          -0.29007598757743835
+        ],
+        [
+          0.9292497038841248,
+          1.1000865697860718,
+          0.2902209758758545
+        ]
+      ],
+      "animations": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "movingChannels": 36,
+          "movingBodyChannels": 24,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.699999988079071,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.0,
+          "movingChannels": 40,
+          "movingBodyChannels": 28,
+          "maxLoopComponentError": 0
+        }
+      ],
+      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+    }
+  ]
+}

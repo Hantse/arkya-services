@@ -1,0 +1,140 @@
+{
+  "species": "fox",
+  "revision": "v2",
+  "bones": 39,
+  "meshes": {
+    "TotemFur": {
+      "vertices": 14402,
+      "triangles": 28800,
+      "materials": 1,
+      "maxInfluences": 4,
+      "maxWeightError": 4.936009645462036e-08
+    },
+    "TotemMagic": {
+      "vertices": 1120,
+      "triangles": 1102,
+      "materials": 1,
+      "maxInfluences": 4,
+      "maxWeightError": 4.0978193283081055e-08
+    },
+    "TotemSpark": {
+      "vertices": 252,
+      "triangles": 480,
+      "materials": 1,
+      "maxInfluences": 1,
+      "maxWeightError": 0.0
+    }
+  },
+  "clips": [
+    {
+      "name": "Idle",
+      "duration_seconds": 4.0,
+      "expected_speed_mps": 0.0,
+      "gait": "breathing",
+      "checks": {
+        "max_contact_slip_m": 2.2712224277649696e-07,
+        "max_contact_height_error_m": 1.61e-07,
+        "max_ik_error_m": 1.623202005755098e-07,
+        "max_loop_position_error_m": 0.0,
+        "max_loop_rotation_error_degrees": 0.0,
+        "max_foot_loop_velocity_error_mps": 2.9821101247614244e-05,
+        "frame_count": 241,
+        "passed": true
+      }
+    },
+    {
+      "name": "Walk",
+      "duration_seconds": 1.0,
+      "expected_speed_mps": 0.18722614999860523,
+      "gait": "four_beat_walk",
+      "checks": {
+        "max_contact_slip_m": 1.5904363282200073e-07,
+        "max_contact_height_error_m": 1.4e-07,
+        "max_ik_error_m": 1.4054024867443464e-07,
+        "max_loop_position_error_m": 0.0,
+        "max_loop_rotation_error_degrees": 0.0,
+        "max_foot_loop_velocity_error_mps": 0.0021821782334677372,
+        "frame_count": 61,
+        "passed": true
+      }
+    },
+    {
+      "name": "Run",
+      "duration_seconds": 0.6,
+      "expected_speed_mps": 0.6686648214235902,
+      "gait": "transverse_gallop",
+      "checks": {
+        "max_contact_slip_m": 1.0523124101312084e-07,
+        "max_contact_height_error_m": 1.07e-07,
+        "max_ik_error_m": 1.3676258756844442e-07,
+        "max_loop_position_error_m": 0.0,
+        "max_loop_rotation_error_degrees": 0.0,
+        "max_foot_loop_velocity_error_mps": 0.005193937685955592,
+        "frame_count": 37,
+        "passed": true
+      }
+    }
+  ],
+  "variants": [
+    {
+      "id": "ember",
+      "glb": "models/fox-ember.glb",
+      "texture": "textures/fox-ember-basecolor.png"
+    },
+    {
+      "id": "lunar",
+      "glb": "models/fox-lunar.glb",
+      "texture": "textures/fox-lunar-basecolor.png"
+    },
+    {
+      "id": "jade",
+      "glb": "models/fox-jade.glb",
+      "texture": "textures/fox-jade-basecolor.png"
+    },
+    {
+      "id": "amethyst",
+      "glb": "models/fox-amethyst.glb",
+      "texture": "textures/fox-amethyst-basecolor.png"
+    },
+    {
+      "id": "frost",
+      "glb": "models/fox-frost.glb",
+      "texture": "textures/fox-frost-basecolor.png"
+    },
+    {
+      "id": "solar",
+      "glb": "models/fox-solar.glb",
+      "texture": "textures/fox-solar-basecolor.png"
+    },
+    {
+      "id": "rose",
+      "glb": "models/fox-rose.glb",
+      "texture": "textures/fox-rose-basecolor.png"
+    },
+    {
+      "id": "abyss",
+      "glb": "models/fox-abyss.glb",
+      "texture": "textures/fox-abyss-basecolor.png"
+    },
+    {
+      "id": "moss",
+      "glb": "models/fox-moss.glb",
+      "texture": "textures/fox-moss-basecolor.png"
+    },
+    {
+      "id": "copper",
+      "glb": "models/fox-copper.glb",
+      "texture": "textures/fox-copper-basecolor.png"
+    },
+    {
+      "id": "pearl",
+      "glb": "models/fox-pearl.glb",
+      "texture": "textures/fox-pearl-basecolor.png"
+    },
+    {
+      "id": "storm",
+      "glb": "models/fox-storm.glb",
+      "texture": "textures/fox-storm-basecolor.png"
+    }
+  ]
+}

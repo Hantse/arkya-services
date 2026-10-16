@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-15T21:58:34.8742483Z",
+  "caseCount": 7,
+  "checks": [
+    {
+      "name": "Visual and server configuration agree",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Water shader compiles and is supported",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Boundary preserves every dry terrain sample",
+      "passed": true,
+      "detail": {
+        "maximumDryRadius": 801.895569,
+        "InnerRadius": 835.0
+      }
+    },
+    {
+      "name": "Boiling particles live near the water",
+      "passed": true,
+      "detail": {
+        "ActiveNearCamera": true,
+        "LiveParticleCount": 198,
+        "ParticleBudget": 320
+      }
+    },
+    {
+      "name": "Boiling stops away from the boundary",
+      "passed": true,
+      "detail": {
+        "ActiveNearCamera": false,
+        "LiveParticleCount": 0
+      }
+    },
+    {
+      "name": "Disabling releases temporary effect objects",
+      "passed": true,
+      "detail": {
+        "childCount": 0
+      }
+    },
+    {
+      "name": "Reenabling recreates exactly three particle systems",
+      "passed": true,
+      "detail": {
+        "particleSystems": 3
+      }
+    }
+  ],
+  "failures": []
+}

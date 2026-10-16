@@ -1,0 +1,19 @@
+{
+  "id": "etale-sylvestre",
+  "shape": "etale",
+  "material": "sylvestre",
+  "label": "Buisson étalé · Vert sylvestre",
+  "glb": "assets/etale-sylvestre/etale-sylvestre.glb",
+  "blend": "assets/etale-sylvestre/etale-sylvestre.blend",
+  "preview": "assets/etale-sylvestre/etale-sylvestre-preview.png",
+  "height": 1.25,
+  "width": 2.1169,
+  "depth": 1.3579,
+  "triangles": 36074,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

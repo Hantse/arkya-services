@@ -1,0 +1,108 @@
+{
+  "defaultId": "mystique",
+  "items": [
+    {
+      "id": "base",
+      "category": "base",
+      "label": "Arbre de base",
+      "description": "Chêne retenu : tronc courbe, racines généreuses et feuillage dense.",
+      "url": "/base/arkya-ancient-tree-v2.glb",
+      "preview": "/base/arkya-ancient-tree-v2-front.png",
+      "height": 10.128,
+      "width": 9.44,
+      "depth": 9.657
+    },
+    {
+      "id": "jeune",
+      "category": "forme",
+      "label": "Jeune",
+      "description": "Jeune arbre fin, houppier compact et vertical, contreforts discrets.",
+      "url": "/formes/01-jeune/01-jeune.glb",
+      "preview": "/formes/01-jeune/01-jeune-preview.png",
+      "height": 5.5,
+      "width": 4.207,
+      "depth": 4.104
+    },
+    {
+      "id": "etale",
+      "category": "forme",
+      "label": "Étalé",
+      "description": "Port étalé, tronc court et large couronne en ombrelle.",
+      "url": "/formes/02-etale/02-etale.glb",
+      "preview": "/formes/02-etale/02-etale-preview.png",
+      "height": 8.0,
+      "width": 13.868,
+      "depth": 13.237
+    },
+    {
+      "id": "elance",
+      "category": "forme",
+      "label": "Élancé",
+      "description": "Tronc élancé, premières fourches hautes et houppier étroit.",
+      "url": "/formes/03-elance/03-elance.glb",
+      "preview": "/formes/03-elance/03-elance-preview.png",
+      "height": 14.0,
+      "width": 6.747,
+      "depth": 6.928
+    },
+    {
+      "id": "venerable",
+      "category": "forme",
+      "label": "Vénérable",
+      "description": "Arbre massif, contreforts puissants, grande couronne courbe et modérément vrillée.",
+      "url": "/formes/04-venerable/04-venerable.glb",
+      "preview": "/formes/04-venerable/04-venerable-preview.png",
+      "height": 16.0,
+      "width": 16.344,
+      "depth": 15.14
+    },
+    {
+      "id": "mystique",
+      "category": "matiere",
+      "label": "Mystique",
+      "description": "Écorce prune aux fibres peintes et aux nœuds travaillés, creux turquoise et feuillage nuancé.",
+      "url": "/matieres-v3/01-mystique/01-mystique.glb?revision=2",
+      "preview": "/matieres-v3/01-mystique/01-mystique-preview.png?revision=2",
+      "height": 10.128,
+      "width": 9.44,
+      "depth": 9.657,
+      "previousUrl": "/matieres-v2/01-mystique/01-mystique.glb?revision=2",
+      "previousPreview": "/matieres-v2/01-mystique/01-mystique-preview.png?revision=2",
+      "previousDescription": "Écorce prune peinte, sillons doux, accents turquoise choisis et feuillage aux ombres adoucies.",
+      "versionLabel": "Affiné V3",
+      "previousLabel": "Peint V2"
+    },
+    {
+      "id": "brule",
+      "category": "matiere",
+      "label": "Brûlé",
+      "description": "Bois carbonisé aux fibres peintes, cendres bleutées et braises intégrées aux creux.",
+      "url": "/matieres-v3/02-brule/02-brule.glb?revision=2",
+      "preview": "/matieres-v3/02-brule/02-brule-preview.png?revision=2",
+      "height": 10.128,
+      "width": 9.44,
+      "depth": 9.657,
+      "previousUrl": "/matieres-v2/02-brule/02-brule.glb?revision=2",
+      "previousPreview": "/matieres-v2/02-brule/02-brule-preview.png?revision=2",
+      "previousDescription": "Charbon bleuté aux dégradés doux, quelques fentes ambrées et feuillage roussi.",
+      "versionLabel": "Affiné V3",
+      "previousLabel": "Peint V2"
+    },
+    {
+      "id": "moussu",
+      "category": "matiere",
+      "label": "Ancien moussu",
+      "description": "Fibres de bois miel, mousse sauge nuancée et feuillage ombré par bouquets.",
+      "url": "/matieres-v3/03-moussu/03-moussu.glb?revision=2",
+      "preview": "/matieres-v3/03-moussu/03-moussu-preview.png?revision=2",
+      "height": 10.128,
+      "width": 9.44,
+      "depth": 9.657,
+      "previousUrl": "/matieres-v2/03-moussu/03-moussu.glb?revision=2",
+      "previousPreview": "/matieres-v2/03-moussu/03-moussu-preview.png?revision=2",
+      "previousDescription": "Bois miel encore visible, grandes zones de mousse sauge et feuillage aux ombres douces.",
+      "versionLabel": "Affiné V3",
+      "previousLabel": "Peint V2"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "tordue-brule",
+  "shape": "tordue",
+  "material": "brule",
+  "label": "Souche tordue · Bois brûlé",
+  "glb": "assets/tordue-brule/tordue-brule.glb",
+  "blend": "assets/tordue-brule/tordue-brule.blend",
+  "preview": "assets/tordue-brule/tordue-brule-preview.png",
+  "height": 0.65,
+  "width": 1.003,
+  "depth": 0.8301,
+  "triangles": 21504,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

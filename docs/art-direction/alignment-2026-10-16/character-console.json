@@ -1,0 +1,38 @@
+{
+  "success": true,
+  "command": "command console_status",
+  "data": {
+    "command": "console_status",
+    "parameters": {},
+    "result": {
+      "entries": [],
+      "cursor": 383,
+      "session": "d86abd5d037548b098f4745370e863bb",
+      "returned": 0,
+      "dropped": false,
+      "reset": false,
+      "counts": {
+        "error": 0,
+        "warn": 363,
+        "log": 20
+      },
+      "groundTruth": {
+        "sampledUtc": "2026-10-16T09:12:48.0298565Z",
+        "ageMs": 14,
+        "compilationFailed": false,
+        "compiling": false,
+        "consoleErrors": 0,
+        "consoleWarnings": 59,
+        "consoleLogs": 0,
+        "seeded": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7803,
+      "projectPath": "D:\\Repositories\\arkya\\artifacts\\characters-game\\validation-project"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

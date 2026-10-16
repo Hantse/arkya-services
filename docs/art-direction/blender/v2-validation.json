@@ -1,0 +1,28 @@
+[
+  {
+    "file": "02-cites-ether-v2.blend",
+    "camera": "Camera_Refined",
+    "hero_objects": 52,
+    "textures": 25,
+    "unpacked_textures": [],
+    "armatures": 0,
+    "old_mannequins": [],
+    "resolution": [
+      2160,
+      1440
+    ]
+  },
+  {
+    "file": "03-terres-anciens-v2.blend",
+    "camera": "Camera_Refined",
+    "hero_objects": 45,
+    "textures": 3,
+    "unpacked_textures": [],
+    "armatures": 0,
+    "old_mannequins": [],
+    "resolution": [
+      2160,
+      1440
+    ]
+  }
+]

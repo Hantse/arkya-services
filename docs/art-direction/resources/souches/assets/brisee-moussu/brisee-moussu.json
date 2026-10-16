@@ -1,0 +1,19 @@
+{
+  "id": "brisee-moussu",
+  "shape": "brisee",
+  "material": "moussu",
+  "label": "Vieille souche brisée · Ancien moussu",
+  "glb": "assets/brisee-moussu/brisee-moussu.glb",
+  "blend": "assets/brisee-moussu/brisee-moussu.blend",
+  "preview": "assets/brisee-moussu/brisee-moussu-preview.png",
+  "height": 1.35,
+  "width": 1.4172,
+  "depth": 1.1792,
+  "triangles": 23296,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

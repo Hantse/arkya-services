@@ -1,0 +1,19 @@
+{
+  "id": "coussin-sylvestre",
+  "shape": "coussin",
+  "material": "sylvestre",
+  "label": "Coussin bas · Vert sylvestre",
+  "glb": "assets/coussin-sylvestre/coussin-sylvestre.glb",
+  "blend": "assets/coussin-sylvestre/coussin-sylvestre.blend",
+  "preview": "assets/coussin-sylvestre/coussin-sylvestre-preview.png",
+  "height": 0.45,
+  "width": 0.97,
+  "depth": 0.7554,
+  "triangles": 21220,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

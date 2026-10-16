@@ -1,0 +1,210 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.68,
+      "summary": {
+        "total": 26,
+        "passed": 26,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.ARouteRequiresTwoPoints",
+          "Status": "Passed",
+          "Duration": 0.0181965,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.ArrivalAndDepartureMustBeAboveWater(28.0f)",
+          "Status": "Passed",
+          "Duration": 0.000764,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.ArrivalAndDepartureMustBeAboveWater(20.0f)",
+          "Status": "Passed",
+          "Duration": 0.0002593,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.CompleteLevelOneThroughSixLayoutIsValid",
+          "Status": "Passed",
+          "Duration": 0.0015591,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.DuplicateZoneAndRouteIdentifiersAreReported",
+          "Status": "Passed",
+          "Duration": 0.0004213,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.GapInProgressionReportsTheMissingLevel",
+          "Status": "Passed",
+          "Duration": 0.0003582,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.InstancesMustRetainRealmZoneAndInstanceIdentity",
+          "Status": "Passed",
+          "Duration": 0.0004182,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.InvalidLevelRangesAreRejected(0,3)",
+          "Status": "Passed",
+          "Duration": 0.0004578,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.InvalidLevelRangesAreRejected(1,7)",
+          "Status": "Passed",
+          "Duration": 0.0002463,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.InvalidLevelRangesAreRejected(4,2)",
+          "Status": "Passed",
+          "Duration": 0.0002638,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.InvalidZoneRadiusAndRouteWidthAreRejected(0.0f)",
+          "Status": "Passed",
+          "Duration": 0.0010928,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.InvalidZoneRadiusAndRouteWidthAreRejected(-1.0f)",
+          "Status": "Passed",
+          "Duration": 0.0003264,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.InvalidZoneRadiusAndRouteWidthAreRejected(float.NaN)",
+          "Status": "Passed",
+          "Duration": 0.0002564,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.InvalidZoneRadiusAndRouteWidthAreRejected(float.PositiveInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0002724,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.MissingCollectionsAndEntriesReturnErrorsWithoutThrowing",
+          "Status": "Passed",
+          "Duration": 0.0012068,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.NonFiniteGeometryIsReported(float.NaN)",
+          "Status": "Passed",
+          "Duration": 0.0005869,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.NonFiniteGeometryIsReported(float.PositiveInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0002676,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.NonFiniteGeometryIsReported(float.NegativeInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0002695,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.OutOfBoundsLayoutPositionsAreRejected(-1.0f)",
+          "Status": "Passed",
+          "Duration": 0.0009265,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.OutOfBoundsLayoutPositionsAreRejected(1537.0f)",
+          "Status": "Passed",
+          "Duration": 0.0002855,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.OverlappingProgressionRangesAreAllowed",
+          "Status": "Passed",
+          "Duration": 0.0004416,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.PersistentIdentifiersMustBeCanonical(\"Arrival\")",
+          "Status": "Passed",
+          "Duration": 0.0004923,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.PersistentIdentifiersMustBeCanonical(\"arrival\\n\")",
+          "Status": "Passed",
+          "Duration": 0.000252,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.PersistentIdentifiersMustBeCanonical(\"arrival--beach\")",
+          "Status": "Passed",
+          "Duration": 0.0003562,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.PersistentIdentifiersMustBeCanonical(\"arrival-\")",
+          "Status": "Passed",
+          "Duration": 0.0003469,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Authoring.Tests.StarterIslandDefinitionTests.PersistentIdentifiersMustBeCanonical(\"\")",
+          "Status": "Passed",
+          "Duration": 0.0002756,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

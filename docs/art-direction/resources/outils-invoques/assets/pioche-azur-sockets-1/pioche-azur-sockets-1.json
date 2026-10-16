@@ -1,0 +1,62 @@
+{
+  "id": "pioche-azur-sockets-1",
+  "shape": "pioche",
+  "material": "azur",
+  "label": "Pioche invoquée · Mana azur · 1 emplacement",
+  "artistic_status": "proposal",
+  "glb": "assets/pioche-azur-sockets-1/pioche-azur-sockets-1.glb",
+  "blend": "assets/pioche-azur-sockets-1/pioche-azur-sockets-1.blend",
+  "preview": "assets/pioche-azur-sockets-1/pioche-azur-sockets-1-preview.png",
+  "height": 1.3028,
+  "width": 0.9286,
+  "depth": 0.1794,
+  "triangles": 8290,
+  "materials": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "animation": "SummonedToolIdle",
+  "animation_duration": 4,
+  "fps": 24,
+  "socket_count": 1,
+  "sockets": [
+    {
+      "index": 1,
+      "name": "Socket_01",
+      "marker": "Socket_01",
+      "empty": true,
+      "position_blender": [
+        -0.278585,
+        -0.0370718,
+        0.57375
+      ],
+      "rotation_blender_xyzw": [
+        0.70710677,
+        0.0,
+        0.0,
+        0.70710677
+      ],
+      "position_gltf": [
+        -0.278585,
+        0.57375,
+        0.0370718
+      ],
+      "rotation_gltf_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "inner_diameter": 0.0465,
+      "cavity_depth": 0.02475,
+      "origin": "centre du fond utile",
+      "axis": "local +Z sortant",
+      "units": "metres"
+    }
+  ],
+  "pivot": "centre de la prise, Tool_Root",
+  "axes_blender": "+Z vers la tête, face avant -Y",
+  "axes_glb": "+Y vers la tête, face avant +Z",
+  "opaque": true
+}

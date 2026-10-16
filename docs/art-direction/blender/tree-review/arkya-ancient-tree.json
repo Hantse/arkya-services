@@ -1,0 +1,60 @@
+{
+  "dimensions_m": {
+    "width_x": 9.5432,
+    "depth_y": 9.4603,
+    "height_z": 11.5488
+  },
+  "bounds_blender_z_up": {
+    "min": [
+      -3.631270408630371,
+      -3.339031219482422,
+      0.0
+    ],
+    "max": [
+      5.911974906921387,
+      6.121257781982422,
+      11.548776626586914
+    ]
+  },
+  "mesh_count": 3,
+  "vertices": 11600,
+  "triangles": 14076,
+  "source_translation_removed": [
+    4.0,
+    34.0,
+    1.3028203248977661
+  ],
+  "title": "Arkya — arbre du sous-bois des Terres des Anciens",
+  "source_scene": "D:\\Repositories\\arkya\\docs\\art-direction\\blender\\03-terres-anciens-v3.blend",
+  "source_tree_index": 19,
+  "source_objects": [
+    "V2 | forest depth twisting trunk.019",
+    "V2 | forest depth buttress roots.057",
+    "V2 | forest depth buttress roots.058",
+    "V2 | forest depth buttress roots.059",
+    "V2 | forest depth crown branch.057",
+    "V2 | forest depth crown branch.058",
+    "V2 | forest depth crown branch.059",
+    "V2 | layered forest crown | supporting twig.114",
+    "V2 | layered forest crown | supporting twig.115",
+    "V2 | layered forest crown | supporting twig.116",
+    "V2 | layered forest crown | supporting twig.117",
+    "V2 | layered forest crown | supporting twig.118",
+    "V2 | layered forest crown | supporting twig.119",
+    "V2 | layered forest crown | dense twig-grown leaves.038",
+    "V2 | layered forest crown | dense twig-grown leaves.039"
+  ],
+  "parts": {
+    "trunk": 1,
+    "buttress_roots": 3,
+    "branches": 3,
+    "twigs": 6,
+    "leaf_crowns": 2
+  },
+  "geometry": "Exact evaluated V3 geometry; no added branches or foliage and no severed arch.",
+  "materials": "V3 bark base color and tangent normals baked to 1024px textures; original five leaf colors.",
+  "units": "metres",
+  "gltf_up_axis": "Y",
+  "blender_up_axis": "Z",
+  "glb_bytes": 2780572
+}

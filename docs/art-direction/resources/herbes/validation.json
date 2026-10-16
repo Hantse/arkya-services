@@ -1,0 +1,607 @@
+{
+  "passed": true,
+  "asset_count": 12,
+  "geometry_same_across_materials": true,
+  "assets": [
+    {
+      "id": "rase-prairie",
+      "shape": "rase",
+      "material": "prairie",
+      "glb": {
+        "triangles": 11176,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2471992,
+        "geometry_hashes": [
+          "85f9c258ff458192b1bab7fe149dec016a37cbfec0d2b494141087d06698ce52"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "prairie-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "prairie-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "prairie-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 44
+    },
+    {
+      "id": "rase-doree",
+      "shape": "rase",
+      "material": "doree",
+      "glb": {
+        "triangles": 11176,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2630484,
+        "geometry_hashes": [
+          "85f9c258ff458192b1bab7fe149dec016a37cbfec0d2b494141087d06698ce52"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "doree-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "doree-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "doree-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 44
+    },
+    {
+      "id": "rase-mystique",
+      "shape": "rase",
+      "material": "mystique",
+      "glb": {
+        "triangles": 11176,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2605348,
+        "geometry_hashes": [
+          "85f9c258ff458192b1bab7fe149dec016a37cbfec0d2b494141087d06698ce52"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 44
+    },
+    {
+      "id": "eventail-prairie",
+      "shape": "eventail",
+      "material": "prairie",
+      "glb": {
+        "triangles": 10668,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2453116,
+        "geometry_hashes": [
+          "ef6d3debefc9fa2558efd5858247962763793bd6588199065b1944da545ee799"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "prairie-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "prairie-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "prairie-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 42
+    },
+    {
+      "id": "eventail-doree",
+      "shape": "eventail",
+      "material": "doree",
+      "glb": {
+        "triangles": 10668,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2611608,
+        "geometry_hashes": [
+          "ef6d3debefc9fa2558efd5858247962763793bd6588199065b1944da545ee799"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "doree-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "doree-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "doree-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 42
+    },
+    {
+      "id": "eventail-mystique",
+      "shape": "eventail",
+      "material": "mystique",
+      "glb": {
+        "triangles": 10668,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2586472,
+        "geometry_hashes": [
+          "ef6d3debefc9fa2558efd5858247962763793bd6588199065b1944da545ee799"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 42
+    },
+    {
+      "id": "courbee-prairie",
+      "shape": "courbee",
+      "material": "prairie",
+      "glb": {
+        "triangles": 11176,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2471996,
+        "geometry_hashes": [
+          "fc2d6545276d81cabbb4e20db982cfd2cacd01423a5cb4286a74bf48400b0bef"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "prairie-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "prairie-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "prairie-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 44
+    },
+    {
+      "id": "courbee-doree",
+      "shape": "courbee",
+      "material": "doree",
+      "glb": {
+        "triangles": 11176,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2630488,
+        "geometry_hashes": [
+          "fc2d6545276d81cabbb4e20db982cfd2cacd01423a5cb4286a74bf48400b0bef"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "doree-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "doree-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "doree-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 44
+    },
+    {
+      "id": "courbee-mystique",
+      "shape": "courbee",
+      "material": "mystique",
+      "glb": {
+        "triangles": 11176,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2605352,
+        "geometry_hashes": [
+          "fc2d6545276d81cabbb4e20db982cfd2cacd01423a5cb4286a74bf48400b0bef"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 44
+    },
+    {
+      "id": "haute-prairie",
+      "shape": "haute",
+      "material": "prairie",
+      "glb": {
+        "triangles": 14224,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2585324,
+        "geometry_hashes": [
+          "b9c213466919b7dd0e14666e09965fc72b75060fa7fa9a3d88cc4795a9126767"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "prairie-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "prairie-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "prairie-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 56
+    },
+    {
+      "id": "haute-doree",
+      "shape": "haute",
+      "material": "doree",
+      "glb": {
+        "triangles": 14224,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2743816,
+        "geometry_hashes": [
+          "b9c213466919b7dd0e14666e09965fc72b75060fa7fa9a3d88cc4795a9126767"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "doree-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "doree-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "doree-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 56
+    },
+    {
+      "id": "haute-mystique",
+      "shape": "haute",
+      "material": "mystique",
+      "glb": {
+        "triangles": 14224,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2718680,
+        "geometry_hashes": [
+          "b9c213466919b7dd0e14666e09965fc72b75060fa7fa9a3d88cc4795a9126767"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_blades": true,
+      "opaque": true,
+      "blade_count": 56
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "hache-orange-sockets-1",
+  "shape": "hache",
+  "material": "orange",
+  "label": "Hache invoquée · Mana orange · 1 emplacement",
+  "artistic_status": "proposal",
+  "glb": "assets/hache-orange-sockets-1/hache-orange-sockets-1.glb",
+  "blend": "assets/hache-orange-sockets-1/hache-orange-sockets-1.blend",
+  "preview": "assets/hache-orange-sockets-1/hache-orange-sockets-1-preview.png",
+  "height": 1.2816,
+  "width": 0.6794,
+  "depth": 0.1794,
+  "triangles": 8404,
+  "materials": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "animation": "SummonedToolIdle",
+  "animation_duration": 4,
+  "fps": 24,
+  "socket_count": 1,
+  "sockets": [
+    {
+      "index": 1,
+      "name": "Socket_01",
+      "marker": "Socket_01",
+      "empty": true,
+      "position_blender": [
+        0.175165,
+        -0.058125,
+        0.56625
+      ],
+      "rotation_blender_xyzw": [
+        0.70710677,
+        0.0,
+        0.0,
+        0.70710677
+      ],
+      "position_gltf": [
+        0.175165,
+        0.56625,
+        0.058125
+      ],
+      "rotation_gltf_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "inner_diameter": 0.0465,
+      "cavity_depth": 0.02475,
+      "origin": "centre du fond utile",
+      "axis": "local +Z sortant",
+      "units": "metres"
+    }
+  ],
+  "pivot": "centre de la prise, Tool_Root",
+  "axes_blender": "+Z vers la tête, face avant -Y",
+  "axes_glb": "+Y vers la tête, face avant +Z",
+  "opaque": true
+}

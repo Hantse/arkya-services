@@ -1,0 +1,20 @@
+{
+  "id": "eventail-prairie",
+  "shape": "eventail",
+  "material": "prairie",
+  "label": "Touffe éventail · Prairie verte",
+  "glb": "assets/eventail-prairie/eventail-prairie.glb",
+  "blend": "assets/eventail-prairie/eventail-prairie.blend",
+  "preview": "assets/eventail-prairie/eventail-prairie-preview.png",
+  "height": 0.45,
+  "width": 0.8411,
+  "depth": 0.5835,
+  "triangles": 10668,
+  "blades": 42,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

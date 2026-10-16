@@ -1,0 +1,22 @@
+{
+  "id": "mare-abyssale",
+  "shape": "mare",
+  "material": "abyssal",
+  "label": "Mare de mana · Mana abyssal",
+  "glb": "assets/mare-abyssale/mare-abyssale.glb",
+  "blend": "assets/mare-abyssale/mare-abyssale.blend",
+  "preview": "assets/mare-abyssale/mare-abyssale-preview.png",
+  "height": 0.7979,
+  "width": 2.7069,
+  "depth": 2.0364,
+  "triangles": 18172,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": false,
+  "pivot": "centre au sol",
+  "animation": "ManaFlow",
+  "animation_duration": 6,
+  "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises."
+}

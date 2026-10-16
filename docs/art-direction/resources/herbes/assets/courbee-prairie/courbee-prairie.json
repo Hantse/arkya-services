@@ -1,0 +1,20 @@
+{
+  "id": "courbee-prairie",
+  "shape": "courbee",
+  "material": "prairie",
+  "label": "Touffe courbée · Prairie verte",
+  "glb": "assets/courbee-prairie/courbee-prairie.glb",
+  "blend": "assets/courbee-prairie/courbee-prairie.blend",
+  "preview": "assets/courbee-prairie/courbee-prairie-preview.png",
+  "height": 0.7,
+  "width": 0.828,
+  "depth": 0.8366,
+  "triangles": 11176,
+  "blades": 44,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "fourchu-brule",
+  "shape": "fourchu",
+  "material": "brule",
+  "label": "Grand tronc fourchu · Bois brûlé",
+  "glb": "assets/fourchu-brule/fourchu-brule.glb",
+  "blend": "assets/fourchu-brule/fourchu-brule.blend",
+  "preview": "assets/fourchu-brule/fourchu-brule-preview.png",
+  "height": 0.7707,
+  "width": 4.2,
+  "depth": 1.8639,
+  "triangles": 13898,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

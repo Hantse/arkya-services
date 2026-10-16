@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "captures": [
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-lunar.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-lunar-magic-flow.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-ember.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-jade.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-amethyst.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-frost.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-solar.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-rose.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-abyss.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-moss.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-copper.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-pearl.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-storm.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-lunar.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-ember.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-ember-magic-flow.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-jade.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-amethyst.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-frost.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-solar.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-rose.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-abyss.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-moss.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-copper.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-pearl.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\fox-storm.png"
+  ],
+  "magicFlowChecks": [
+    {
+      "species": "wolf",
+      "variant": "lunar",
+      "changedPixels": 533,
+      "timestamps": [
+        0.0,
+        0.55
+      ]
+    },
+    {
+      "species": "fox",
+      "variant": "ember",
+      "changedPixels": 400,
+      "timestamps": [
+        0.0,
+        0.55
+      ]
+    }
+  ]
+}

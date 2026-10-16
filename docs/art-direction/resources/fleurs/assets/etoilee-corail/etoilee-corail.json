@@ -1,0 +1,19 @@
+{
+  "id": "etoilee-corail",
+  "shape": "etoilee",
+  "material": "corail",
+  "label": "Grand lis étoilé · Corail abricot",
+  "glb": "assets/etoilee-corail/etoilee-corail.glb",
+  "blend": "assets/etoilee-corail/etoilee-corail.blend",
+  "preview": "assets/etoilee-corail/etoilee-corail-preview.png",
+  "height": 1.0,
+  "width": 0.7379,
+  "depth": 0.5579,
+  "triangles": 17548,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

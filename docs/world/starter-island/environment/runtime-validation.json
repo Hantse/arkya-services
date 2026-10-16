@@ -1,0 +1,543 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-16T08:18:59.4431463Z",
+  "unity": "6000.6.6f1",
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "elapsedSeconds": 8.1080679,
+  "caseCount": 34,
+  "initialPhase": 0.0785328448,
+  "cases": [
+    {
+      "name": "Unity Console starts without errors",
+      "passed": true,
+      "detail": {
+        "Errors": 0,
+        "Warnings": 7,
+        "Logs": 0
+      }
+    },
+    {
+      "name": "Four-hour cycle",
+      "passed": true,
+      "detail": {
+        "seconds": 14400.0
+      }
+    },
+    {
+      "name": "Active presentation components",
+      "passed": true,
+      "detail": {
+        "environment": true,
+        "ambience": true
+      }
+    },
+    {
+      "name": "Assigned sun and moon",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Particle velocity curve modes agree",
+      "passed": true,
+      "detail": {
+        "systems": 28,
+        "inconsistentVelocity": []
+      }
+    },
+    {
+      "name": "Authored ambience references",
+      "passed": true,
+      "detail": {
+        "daySystems": 8,
+        "fireflySystems": 5,
+        "cachedPlants": 756,
+        "birds": 9,
+        "hearthLights": 3
+      }
+    },
+    {
+      "name": "Bounded warm lighting",
+      "passed": true,
+      "detail": [
+        {
+          "name": "Hearth amber glow",
+          "range": 9.0,
+          "shadows": "None"
+        },
+        {
+          "name": "Hearth amber glow",
+          "range": 9.0,
+          "shadows": "None"
+        },
+        {
+          "name": "Hearth amber glow",
+          "range": 9.0,
+          "shadows": "None"
+        }
+      ]
+    },
+    {
+      "name": "Noon illumination",
+      "passed": true,
+      "detail": {
+        "phase": 0.5,
+        "Daylight": 1.0,
+        "NightAmount": 0.0,
+        "sun": 1.5,
+        "moon": 0.0
+      }
+    },
+    {
+      "name": "Noon particle transition",
+      "passed": true,
+      "detail": {
+        "day": [
+          {
+            "name": "Warm drifting pollen",
+            "emission": 2.0,
+            "particles": 30
+          },
+          {
+            "name": "Warm drifting pollen",
+            "emission": 2.0,
+            "particles": 1
+          },
+          {
+            "name": "Warm drifting pollen",
+            "emission": 2.0,
+            "particles": 1
+          },
+          {
+            "name": "Warm drifting pollen",
+            "emission": 2.0,
+            "particles": 1
+          },
+          {
+            "name": "Warm drifting pollen",
+            "emission": 2.0,
+            "particles": 0
+          },
+          {
+            "name": "Meadow butterflies",
+            "emission": 0.35,
+            "particles": 6
+          },
+          {
+            "name": "Meadow butterflies",
+            "emission": 0.35,
+            "particles": 0
+          },
+          {
+            "name": "Meadow butterflies",
+            "emission": 0.35,
+            "particles": 0
+          }
+        ],
+        "night": [
+          {
+            "name": "Woodland fireflies",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Woodland fireflies",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Woodland fireflies",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Woodland fireflies",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Woodland fireflies",
+            "emission": 0.0,
+            "particles": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "Day birds visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Day audio crossfade",
+      "passed": true,
+      "detail": {
+        "birds": 0.0320801958,
+        "crickets": 0.0
+      }
+    },
+    {
+      "name": "Runtime frames advance",
+      "passed": true,
+      "detail": {
+        "frames": 29,
+        "elapsed": 1.52370834
+      }
+    },
+    {
+      "name": "Tree roots stay stable for shader wind",
+      "passed": true,
+      "detail": {
+        "wholePlantSwayEnabled": false,
+        "movingPlants": 0,
+        "maximumAngleDegrees": 0.0,
+        "selected": 0,
+        "budget": 90
+      }
+    },
+    {
+      "name": "Decorative birds move",
+      "passed": true,
+      "detail": {
+        "movingBirds": 9,
+        "maximumDistanceMeters": 6.8116107
+      }
+    },
+    {
+      "name": "Readable non-silent clip: Hearth",
+      "passed": true,
+      "detail": {
+        "rms": 0.062443771859459547,
+        "readable": true
+      }
+    },
+    {
+      "name": "Readable non-silent clip: Wind",
+      "passed": true,
+      "detail": {
+        "rms": 0.15168752187979412,
+        "readable": true
+      }
+    },
+    {
+      "name": "Readable non-silent clip: Surf",
+      "passed": true,
+      "detail": {
+        "rms": 0.0889497387137303,
+        "readable": true
+      }
+    },
+    {
+      "name": "Readable non-silent clip: Birdsong",
+      "passed": true,
+      "detail": {
+        "rms": 0.18560514808188402,
+        "readable": true
+      }
+    },
+    {
+      "name": "Readable non-silent clip: Crickets",
+      "passed": true,
+      "detail": {
+        "rms": 0.11342428834303386,
+        "readable": true
+      }
+    },
+    {
+      "name": "Loop playback and listener",
+      "passed": true,
+      "detail": {
+        "clips": 5,
+        "sources": 7,
+        "playing": 7,
+        "activeSceneListeners": 1
+      }
+    },
+    {
+      "name": "Ambience volume mutes every source",
+      "passed": true,
+      "detail": [
+        {
+          "name": "Close hearth crackle",
+          "volume": 0.0
+        },
+        {
+          "name": "Close hearth crackle",
+          "volume": 0.0
+        },
+        {
+          "name": "Close hearth crackle",
+          "volume": 0.0
+        },
+        {
+          "name": "Island wind",
+          "volume": 0.0
+        },
+        {
+          "name": "Sheltered cove surf",
+          "volume": 0.0
+        },
+        {
+          "name": "Distant woodland birds",
+          "volume": 0.0
+        },
+        {
+          "name": "Evening insects",
+          "volume": 0.0
+        }
+      ]
+    },
+    {
+      "name": "Night illumination and stars",
+      "passed": true,
+      "detail": {
+        "phase": 0.0,
+        "Daylight": 0.0,
+        "StarVisibility": 1.0,
+        "NightAmount": 1.0,
+        "sun": 0.0,
+        "moon": 0.34
+      }
+    },
+    {
+      "name": "Night particle transition",
+      "passed": true,
+      "detail": {
+        "day": [
+          {
+            "name": "Warm drifting pollen",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Warm drifting pollen",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Warm drifting pollen",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Warm drifting pollen",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Warm drifting pollen",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Meadow butterflies",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Meadow butterflies",
+            "emission": 0.0,
+            "particles": 0
+          },
+          {
+            "name": "Meadow butterflies",
+            "emission": 0.0,
+            "particles": 0
+          }
+        ],
+        "night": [
+          {
+            "name": "Woodland fireflies",
+            "emission": 1.5,
+            "particles": 2
+          },
+          {
+            "name": "Woodland fireflies",
+            "emission": 1.5,
+            "particles": 3
+          },
+          {
+            "name": "Woodland fireflies",
+            "emission": 1.5,
+            "particles": 3
+          },
+          {
+            "name": "Woodland fireflies",
+            "emission": 1.5,
+            "particles": 3
+          },
+          {
+            "name": "Woodland fireflies",
+            "emission": 1.5,
+            "particles": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "Night audio crossfade",
+      "passed": true,
+      "detail": {
+        "birds": 0.0,
+        "crickets": 0.04170832
+      }
+    },
+    {
+      "name": "Birds rest at night",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Night ambient and fog palette changes",
+      "passed": true,
+      "detail": {
+        "skyDistance": 0.8956003,
+        "fogDistance": 1.098858
+      }
+    },
+    {
+      "name": "Opposed celestial directions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Runtime sky parameters",
+      "passed": true,
+      "detail": {
+        "material": "PaintedSky (Environment Preview)"
+      }
+    },
+    {
+      "name": "Explicit preview freezes runtime time",
+      "passed": true,
+      "detail": {
+        "before": 0.3,
+        "after": 0.3
+      }
+    },
+    {
+      "name": "Live UTC clock advances at four-hour rate",
+      "passed": true,
+      "detail": {
+        "before": 0.07901241,
+        "after": 0.0790922,
+        "elapsedSeconds": 1.1490266999999998,
+        "actualPhaseProgress": 7.978827E-05,
+        "expectedPhaseProgress": 7.9793520833333317E-05
+      }
+    },
+    {
+      "name": "Trusted server sample corrects presentation clock",
+      "passed": true,
+      "detail": {
+        "sampledUnixSeconds": 3600,
+        "correctedPhase": 0.25001356
+      }
+    },
+    {
+      "name": "Island render profile active",
+      "passed": true,
+      "detail": {
+        "name": "IslandRenderPipeline",
+        "msaa": 4,
+        "shadowDistance": 240.0
+      }
+    },
+    {
+      "name": "Review camera stays above terrain",
+      "passed": true,
+      "detail": {
+        "minimumHeight": 52.803112,
+        "actualHeight": 52.803112
+      }
+    },
+    {
+      "name": "No Unity errors during runtime validation",
+      "passed": true,
+      "detail": {
+        "console": {
+          "Errors": 0,
+          "Warnings": 7,
+          "Logs": 0
+        },
+        "observedErrorEvents": 0
+      }
+    }
+  ],
+  "audioClips": [
+    {
+      "name": "Hearth",
+      "length": 8.0,
+      "samples": 176400,
+      "frequency": 22050,
+      "channels": 1,
+      "loaded": "Loaded",
+      "readWindows": 7,
+      "windowSize": 512,
+      "rms": 0.062443771859459547,
+      "passed": true
+    },
+    {
+      "name": "Wind",
+      "length": 16.0,
+      "samples": 352800,
+      "frequency": 22050,
+      "channels": 1,
+      "loaded": "Loaded",
+      "readWindows": 7,
+      "windowSize": 512,
+      "rms": 0.15168752187979412,
+      "passed": true
+    },
+    {
+      "name": "Surf",
+      "length": 24.0,
+      "samples": 529200,
+      "frequency": 22050,
+      "channels": 1,
+      "loaded": "Loaded",
+      "readWindows": 7,
+      "windowSize": 512,
+      "rms": 0.0889497387137303,
+      "passed": true
+    },
+    {
+      "name": "Birdsong",
+      "length": 28.0,
+      "samples": 617400,
+      "frequency": 22050,
+      "channels": 1,
+      "loaded": "Loaded",
+      "readWindows": 7,
+      "windowSize": 512,
+      "rms": 0.18560514808188402,
+      "passed": true
+    },
+    {
+      "name": "Crickets",
+      "length": 16.0,
+      "samples": 352800,
+      "frequency": 22050,
+      "channels": 1,
+      "loaded": "Loaded",
+      "readWindows": 7,
+      "windowSize": 512,
+      "rms": 0.11342428834303386,
+      "passed": true
+    }
+  ],
+  "initialConsole": {
+    "Errors": 0,
+    "Warnings": 7,
+    "Logs": 0
+  },
+  "finalConsole": {
+    "Errors": 0,
+    "Warnings": 7,
+    "Logs": 0
+  },
+  "unityErrorCount": 0,
+  "unityErrors": [],
+  "failures": [],
+  "exception": null,
+  "note": "Play Mode integration verification. The Editor Console must have zero errors before and after; emitted Error/Exception/Assert events and velocity mode mismatches across all scene ParticleSystems fail validation. Actual presentation components run across frames; temporary preview time, trusted clock offset, camera pose, review-camera enabled state and ambience volume are restored. Audio PCM samples prove non-silent decoded assets and source playback, not subjective audio quality or hardware output. This is not a performance benchmark."
+}

@@ -1,0 +1,656 @@
+{
+  "passed": true,
+  "asset_count": 12,
+  "geometry_same_across_materials": true,
+  "uv_same_across_materials": true,
+  "assets": [
+    {
+      "id": "rosette-corail",
+      "shape": "rosette",
+      "material": "corail",
+      "glb": {
+        "triangles": 6784,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1794984,
+        "geometry_hashes": [
+          "8e69229c0acbd4efd48399558e8c1d534bfab3a347f2cc1d001991bc1141b30f"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "corail-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "4fd74942416709659dfe68f20def127632a69ebfa2d41ef8415ef65955431a3a",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "rosette-ivoire",
+      "shape": "rosette",
+      "material": "ivoire",
+      "glb": {
+        "triangles": 6784,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1858468,
+        "geometry_hashes": [
+          "8e69229c0acbd4efd48399558e8c1d534bfab3a347f2cc1d001991bc1141b30f"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "ivoire-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "ivoire-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "ivoire-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "4fd74942416709659dfe68f20def127632a69ebfa2d41ef8415ef65955431a3a",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "rosette-mystique",
+      "shape": "rosette",
+      "material": "mystique",
+      "glb": {
+        "triangles": 6784,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1861048,
+        "geometry_hashes": [
+          "8e69229c0acbd4efd48399558e8c1d534bfab3a347f2cc1d001991bc1141b30f"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "4fd74942416709659dfe68f20def127632a69ebfa2d41ef8415ef65955431a3a",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "bouquet-corail",
+      "shape": "bouquet",
+      "material": "corail",
+      "glb": {
+        "triangles": 20968,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2346712,
+        "geometry_hashes": [
+          "f3be2cf9a8f6831ba9c7ad3c7a88238ae971254f0f6f19c02bb76cfce0573eb7"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "corail-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "05e24d673f6d0ef169784f7e699c6a6a332d46ba59dec1dd80ecf7a5cde7c2f0",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "bouquet-ivoire",
+      "shape": "bouquet",
+      "material": "ivoire",
+      "glb": {
+        "triangles": 20968,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2410196,
+        "geometry_hashes": [
+          "f3be2cf9a8f6831ba9c7ad3c7a88238ae971254f0f6f19c02bb76cfce0573eb7"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "ivoire-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "ivoire-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "ivoire-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "05e24d673f6d0ef169784f7e699c6a6a332d46ba59dec1dd80ecf7a5cde7c2f0",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "bouquet-mystique",
+      "shape": "bouquet",
+      "material": "mystique",
+      "glb": {
+        "triangles": 20968,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2412776,
+        "geometry_hashes": [
+          "f3be2cf9a8f6831ba9c7ad3c7a88238ae971254f0f6f19c02bb76cfce0573eb7"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "05e24d673f6d0ef169784f7e699c6a6a332d46ba59dec1dd80ecf7a5cde7c2f0",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "clochettes-corail",
+      "shape": "clochettes",
+      "material": "corail",
+      "glb": {
+        "triangles": 13670,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2036760,
+        "geometry_hashes": [
+          "5ced0bb1546f16ce32fe0c713f6209e33e8c26b436724e49474e05045f65fbb5"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "corail-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "d109fcef53622ff6d7f8a7052ede409c7aed5d914591c817782c74a314d89104",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "clochettes-ivoire",
+      "shape": "clochettes",
+      "material": "ivoire",
+      "glb": {
+        "triangles": 13670,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2100244,
+        "geometry_hashes": [
+          "5ced0bb1546f16ce32fe0c713f6209e33e8c26b436724e49474e05045f65fbb5"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "ivoire-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "ivoire-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "ivoire-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "d109fcef53622ff6d7f8a7052ede409c7aed5d914591c817782c74a314d89104",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "clochettes-mystique",
+      "shape": "clochettes",
+      "material": "mystique",
+      "glb": {
+        "triangles": 13670,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2102824,
+        "geometry_hashes": [
+          "5ced0bb1546f16ce32fe0c713f6209e33e8c26b436724e49474e05045f65fbb5"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "d109fcef53622ff6d7f8a7052ede409c7aed5d914591c817782c74a314d89104",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "etoilee-corail",
+      "shape": "etoilee",
+      "material": "corail",
+      "glb": {
+        "triangles": 17548,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2218612,
+        "geometry_hashes": [
+          "1fff7122af065d877617bdfc577be52964fb8acfe04f420601d2e8e009e675fb"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "corail-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "bcb5fa6f5a1391b6a62d7e957034d25549070c66358659d96b6693414b8d333f",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "etoilee-ivoire",
+      "shape": "etoilee",
+      "material": "ivoire",
+      "glb": {
+        "triangles": 17548,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2282096,
+        "geometry_hashes": [
+          "1fff7122af065d877617bdfc577be52964fb8acfe04f420601d2e8e009e675fb"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "ivoire-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "ivoire-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "ivoire-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "bcb5fa6f5a1391b6a62d7e957034d25549070c66358659d96b6693414b8d333f",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    },
+    {
+      "id": "etoilee-mystique",
+      "shape": "etoilee",
+      "material": "mystique",
+      "glb": {
+        "triangles": 17548,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2284676,
+        "geometry_hashes": [
+          "1fff7122af065d877617bdfc577be52964fb8acfe04f420601d2e8e009e675fb"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "bcb5fa6f5a1391b6a62d7e957034d25549070c66358659d96b6693414b8d333f",
+      "pivot_ground_centred": true,
+      "closed_manifold_components": true,
+      "opaque": true,
+      "preview_size": [
+        1100,
+        1100
+      ]
+    }
+  ]
+}

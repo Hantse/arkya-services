@@ -1,0 +1,19 @@
+{
+  "id": "etoilee-mystique",
+  "shape": "etoilee",
+  "material": "mystique",
+  "label": "Grand lis étoilé · Mystique",
+  "glb": "assets/etoilee-mystique/etoilee-mystique.glb",
+  "blend": "assets/etoilee-mystique/etoilee-mystique.blend",
+  "preview": "assets/etoilee-mystique/etoilee-mystique-preview.png",
+  "height": 1.0,
+  "width": 0.7379,
+  "depth": 0.5579,
+  "triangles": 17548,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

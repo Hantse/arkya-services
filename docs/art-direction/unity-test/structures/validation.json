@@ -1,0 +1,2869 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-16T09:48:44.8319857Z",
+  "unity": "6000.6.6f1",
+  "playMode": false,
+  "scope": "Fifteen imported structure prefabs, stable catalog identities, rendered geometry, typed sockets and isolated 3D physics.",
+  "assetCount": 15,
+  "catalogPath": "Assets/Arkya/Building/Structures/StructureCatalog.asset",
+  "catalogGuid": "e8dce9201ab7872479db01c40893b829",
+  "catalogCount": 15,
+  "isolatedPhysicsScene": false,
+  "isolatedPreviewScene": true,
+  "physicsMethod": "Collider.Raycast against each declared BoxCollider in preview scene",
+  "originalScenePreserved": true,
+  "noAssetsOrScenesSaved": true,
+  "approvedReferences": [
+    {
+      "reference": "references/arbre-peint-v3",
+      "filesChecked": 15,
+      "unchanged": true
+    },
+    {
+      "reference": "mares-de-mana",
+      "filesChecked": 65,
+      "unchanged": true
+    }
+  ],
+  "assets": [
+    {
+      "sourceAssetId": "fondation-chaume",
+      "moduleId": "arkya.structure.foundation.thatch",
+      "shape": "fondation",
+      "material": "chaume",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/fondation-chaume.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/fondation-chaume.glb",
+      "prefabGuid": "6954b314a10251b468607f08fa6a41a2",
+      "modelGuid": "fefac2d9274c97f43893da827ccb6c86",
+      "sourceSha256": "a6c38c2c0fc5ad130c98124e0b9c8fc42b4dd9195be2e2e7becc56a38153a2f0",
+      "nominalSize": [
+        1.0,
+        0.5,
+        1.0
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 16880,
+        "materials": 3,
+        "textures": 3,
+        "min": [
+          -0.5,
+          0.0,
+          -0.5
+        ],
+        "max": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "Body",
+          "center": [
+            0.0,
+            0.25,
+            0.0
+          ],
+          "size": [
+            1.0,
+            0.5,
+            1.0
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.25,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.25,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.25,
+            0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.25,
+            -0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 0,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "fondation-bois",
+      "moduleId": "arkya.structure.foundation.wood",
+      "shape": "fondation",
+      "material": "bois",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/fondation-bois.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/fondation-bois.glb",
+      "prefabGuid": "18822c665524a8640bea52b7c3daacf3",
+      "modelGuid": "b0b62c88d8d9fce468028a79a79531c9",
+      "sourceSha256": "41a0b1654516ea7eeb95cd80df811246d9960a45f872e0cbde19cd1b02a378e9",
+      "nominalSize": [
+        1.0,
+        0.5,
+        1.0
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 8648,
+        "materials": 2,
+        "textures": 1,
+        "min": [
+          -0.5,
+          0.0,
+          -0.5
+        ],
+        "max": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "Body",
+          "center": [
+            0.0,
+            0.25,
+            0.0
+          ],
+          "size": [
+            1.0,
+            0.5,
+            1.0
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.25,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.25,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.25,
+            0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.25,
+            -0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 0,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "fondation-pierre",
+      "moduleId": "arkya.structure.foundation.stone",
+      "shape": "fondation",
+      "material": "pierre",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/fondation-pierre.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/fondation-pierre.glb",
+      "prefabGuid": "aa0ac9368b6599047b999b40020e6aec",
+      "modelGuid": "4d29659c8c31dfc4bb20d54ad3eb6990",
+      "sourceSha256": "9e9baaa269e2403128725375ef174c1adb43b551692f4161f4fbf770d881e718",
+      "nominalSize": [
+        1.0,
+        0.5,
+        1.0
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 9400,
+        "materials": 2,
+        "textures": 2,
+        "min": [
+          -0.5,
+          0.0,
+          -0.5
+        ],
+        "max": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "Body",
+          "center": [
+            0.0,
+            0.25,
+            0.0
+          ],
+          "size": [
+            1.0,
+            0.5,
+            1.0
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.25,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.25,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.25,
+            0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.25,
+            -0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 0,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "mur-plein-chaume",
+      "moduleId": "arkya.structure.solid-wall.thatch",
+      "shape": "mur-plein",
+      "material": "chaume",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/mur-plein-chaume.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/mur-plein-chaume.glb",
+      "prefabGuid": "4c31752f252de564095791695e090a0f",
+      "modelGuid": "4317bf03295908740b04cb433fc0c075",
+      "sourceSha256": "5f9ea1de66eb803acbbc5552b0cc45c4127c5a56a31d2c2a8bf56203e3a57aa2",
+      "nominalSize": [
+        1.0,
+        1.0,
+        0.15
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 5800,
+        "materials": 3,
+        "textures": 3,
+        "min": [
+          -0.5,
+          0.0,
+          -0.075
+        ],
+        "max": [
+          0.5,
+          1.0,
+          0.075
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "Body",
+          "center": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "size": [
+            1.0,
+            1.0,
+            0.15
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.5,
+            0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.5,
+            -0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 0,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "mur-plein-bois",
+      "moduleId": "arkya.structure.solid-wall.wood",
+      "shape": "mur-plein",
+      "material": "bois",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/mur-plein-bois.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/mur-plein-bois.glb",
+      "prefabGuid": "cc407b6110724364b820e34e994ac38b",
+      "modelGuid": "517a872bd220ad047b6008a36ea55380",
+      "sourceSha256": "2ad379a4297409032b2346738a8ead63da8d18533e2ac3fa0c8cf78005a1f1b1",
+      "nominalSize": [
+        1.0,
+        1.0,
+        0.15
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 3572,
+        "materials": 2,
+        "textures": 1,
+        "min": [
+          -0.5,
+          0.0,
+          -0.075
+        ],
+        "max": [
+          0.5,
+          1.0,
+          0.075
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "Body",
+          "center": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "size": [
+            1.0,
+            1.0,
+            0.15
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.5,
+            0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.5,
+            -0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 0,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "mur-plein-pierre",
+      "moduleId": "arkya.structure.solid-wall.stone",
+      "shape": "mur-plein",
+      "material": "pierre",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/mur-plein-pierre.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/mur-plein-pierre.glb",
+      "prefabGuid": "f27dd9f5ef90aac4c898f9e4f517401d",
+      "modelGuid": "519964c95f2703a4db25f9fc5b52feb5",
+      "sourceSha256": "2b5b67c73857b0c6c23a8053f5e93b9a40d84e591739561cbe186b875587cf49",
+      "nominalSize": [
+        1.0,
+        1.0,
+        0.15
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 3572,
+        "materials": 2,
+        "textures": 2,
+        "min": [
+          -0.5,
+          0.0,
+          -0.075
+        ],
+        "max": [
+          0.5,
+          1.0,
+          0.075
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "Body",
+          "center": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "size": [
+            1.0,
+            1.0,
+            0.15
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.5,
+            0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.5,
+            -0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 0,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "mur-fenetre-chaume",
+      "moduleId": "arkya.structure.window-wall.thatch",
+      "shape": "mur-fenetre",
+      "material": "chaume",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/mur-fenetre-chaume.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/mur-fenetre-chaume.glb",
+      "prefabGuid": "181b19127f60ccf4188f647dd7656c11",
+      "modelGuid": "31b7afa32bcbed64783161f492b08710",
+      "sourceSha256": "374eb34c7c13da6392f2393f29526e5f371769a72de1dcaec6707e61873e78fb",
+      "nominalSize": [
+        1.0,
+        1.0,
+        0.15
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 8896,
+        "materials": 3,
+        "textures": 3,
+        "min": [
+          -0.5,
+          0.0,
+          -0.075
+        ],
+        "max": [
+          0.5,
+          1.0,
+          0.075
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "LeftJamb",
+          "center": [
+            -0.375,
+            0.5,
+            0.0
+          ],
+          "size": [
+            0.25,
+            1.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "RightJamb",
+          "center": [
+            0.375,
+            0.5,
+            0.0
+          ],
+          "size": [
+            0.25,
+            1.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "Sill",
+          "center": [
+            0.0,
+            0.15,
+            0.0
+          ],
+          "size": [
+            0.5,
+            0.3,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "Lintel",
+          "center": [
+            0.0,
+            0.9,
+            0.0
+          ],
+          "size": [
+            0.5,
+            0.2,
+            0.15
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.5,
+            0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.5,
+            -0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 112,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "mur-fenetre-bois",
+      "moduleId": "arkya.structure.window-wall.wood",
+      "shape": "mur-fenetre",
+      "material": "bois",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/mur-fenetre-bois.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/mur-fenetre-bois.glb",
+      "prefabGuid": "a1f2557098194154e82a9aa114baac6b",
+      "modelGuid": "abdf5b8eea1f4ec4485aecb6a020efdc",
+      "sourceSha256": "8d73bdb645d626e966bf9bcd5d8ed2f896fbe121866d96a8163d733dc0db8fa4",
+      "nominalSize": [
+        1.0,
+        1.0,
+        0.15
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 5264,
+        "materials": 2,
+        "textures": 1,
+        "min": [
+          -0.5,
+          0.0,
+          -0.075
+        ],
+        "max": [
+          0.5,
+          1.0,
+          0.075
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "LeftJamb",
+          "center": [
+            -0.375,
+            0.5,
+            0.0
+          ],
+          "size": [
+            0.25,
+            1.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "RightJamb",
+          "center": [
+            0.375,
+            0.5,
+            0.0
+          ],
+          "size": [
+            0.25,
+            1.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "Sill",
+          "center": [
+            0.0,
+            0.15,
+            0.0
+          ],
+          "size": [
+            0.5,
+            0.3,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "Lintel",
+          "center": [
+            0.0,
+            0.9,
+            0.0
+          ],
+          "size": [
+            0.5,
+            0.2,
+            0.15
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.5,
+            0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.5,
+            -0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 112,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "mur-fenetre-pierre",
+      "moduleId": "arkya.structure.window-wall.stone",
+      "shape": "mur-fenetre",
+      "material": "pierre",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/mur-fenetre-pierre.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/mur-fenetre-pierre.glb",
+      "prefabGuid": "3a1d51dcebb01b94f8f0f697889b4b5d",
+      "modelGuid": "17d349a490993a548b76653e3a7de6a0",
+      "sourceSha256": "1cbda04d5ff8e0db0fb7a04285e55db00a6041864c3e7417e82748fbff8334c6",
+      "nominalSize": [
+        1.0,
+        1.0,
+        0.15
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 5076,
+        "materials": 2,
+        "textures": 2,
+        "min": [
+          -0.5,
+          0.0,
+          -0.075
+        ],
+        "max": [
+          0.5,
+          1.0,
+          0.075
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "LeftJamb",
+          "center": [
+            -0.375,
+            0.5,
+            0.0
+          ],
+          "size": [
+            0.25,
+            1.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "RightJamb",
+          "center": [
+            0.375,
+            0.5,
+            0.0
+          ],
+          "size": [
+            0.25,
+            1.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "Sill",
+          "center": [
+            0.0,
+            0.15,
+            0.0
+          ],
+          "size": [
+            0.5,
+            0.3,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "Lintel",
+          "center": [
+            0.0,
+            0.9,
+            0.0
+          ],
+          "size": [
+            0.5,
+            0.2,
+            0.15
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.5,
+            0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.5,
+            -0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 112,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "mur-porte-chaume",
+      "moduleId": "arkya.structure.door-wall.thatch",
+      "shape": "mur-porte",
+      "material": "chaume",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/mur-porte-chaume.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/mur-porte-chaume.glb",
+      "prefabGuid": "92739d3d7622cac43ab67b4c4601f0b6",
+      "modelGuid": "a66e04c21cdc73242ad862628b453e5d",
+      "sourceSha256": "d5e5a34be9c0cb23c3838354e80d024d0cd4dd8d27657fcd4f9da0063b6c2bf2",
+      "nominalSize": [
+        1.0,
+        2.0,
+        0.15
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 8388,
+        "materials": 3,
+        "textures": 3,
+        "min": [
+          -0.5,
+          0.0,
+          -0.075
+        ],
+        "max": [
+          0.5,
+          2.0,
+          0.075
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "LeftJamb",
+          "center": [
+            -0.43,
+            1.0,
+            0.0
+          ],
+          "size": [
+            0.14,
+            2.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "RightJamb",
+          "center": [
+            0.43,
+            1.0,
+            0.0
+          ],
+          "size": [
+            0.14,
+            2.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "Lintel",
+          "center": [
+            0.0,
+            1.925,
+            0.0
+          ],
+          "size": [
+            0.72,
+            0.15,
+            0.15
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            1.0,
+            0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            1.0,
+            -0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 270,
+        "doorwayFloorSampleM": 0.005,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "mur-porte-bois",
+      "moduleId": "arkya.structure.door-wall.wood",
+      "shape": "mur-porte",
+      "material": "bois",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/mur-porte-bois.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/mur-porte-bois.glb",
+      "prefabGuid": "894511facbc703d46852eb81ca234b2e",
+      "modelGuid": "f67ff3b6029e1c4459b03de58604f3e5",
+      "sourceSha256": "1799b6bcd00224c4c7e0c4b666d93cbfa890cc0008ec2a74caa57fe8e4f18a30",
+      "nominalSize": [
+        1.0,
+        2.0,
+        0.15
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 4512,
+        "materials": 2,
+        "textures": 1,
+        "min": [
+          -0.5,
+          0.0,
+          -0.075
+        ],
+        "max": [
+          0.5,
+          2.0,
+          0.075
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "LeftJamb",
+          "center": [
+            -0.43,
+            1.0,
+            0.0
+          ],
+          "size": [
+            0.14,
+            2.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "RightJamb",
+          "center": [
+            0.43,
+            1.0,
+            0.0
+          ],
+          "size": [
+            0.14,
+            2.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "Lintel",
+          "center": [
+            0.0,
+            1.925,
+            0.0
+          ],
+          "size": [
+            0.72,
+            0.15,
+            0.15
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            1.0,
+            0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            1.0,
+            -0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 270,
+        "doorwayFloorSampleM": 0.005,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "mur-porte-pierre",
+      "moduleId": "arkya.structure.door-wall.stone",
+      "shape": "mur-porte",
+      "material": "pierre",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/mur-porte-pierre.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/mur-porte-pierre.glb",
+      "prefabGuid": "75018e62b9e8ed641bee94e03e5a9369",
+      "modelGuid": "581e9cba616b9b04bb44dd5f453a1eb9",
+      "sourceSha256": "472732859daa1de4c3b0dbdcc3ef97410b55dcf942f51f278b0050f2886a88c4",
+      "nominalSize": [
+        1.0,
+        2.0,
+        0.15
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 4888,
+        "materials": 2,
+        "textures": 2,
+        "min": [
+          -0.5,
+          0.0,
+          -0.075
+        ],
+        "max": [
+          0.5,
+          2.0,
+          0.075
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "LeftJamb",
+          "center": [
+            -0.43,
+            1.0,
+            0.0
+          ],
+          "size": [
+            0.14,
+            2.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "RightJamb",
+          "center": [
+            0.43,
+            1.0,
+            0.0
+          ],
+          "size": [
+            0.14,
+            2.0,
+            0.15
+          ],
+          "trigger": false
+        },
+        {
+          "name": "Lintel",
+          "center": [
+            0.0,
+            1.925,
+            0.0
+          ],
+          "size": [
+            0.72,
+            0.15,
+            0.15
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            1.0,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            1.0,
+            0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            1.0,
+            -0.075
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 270,
+        "doorwayFloorSampleM": 0.005,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "plafond-chaume",
+      "moduleId": "arkya.structure.ceiling.thatch",
+      "shape": "plafond",
+      "material": "chaume",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/plafond-chaume.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/plafond-chaume.glb",
+      "prefabGuid": "5a3d7201b65e8424ba27f319c03bc529",
+      "modelGuid": "a942e86624e8e19479a5ad24b0a5d354",
+      "sourceSha256": "7e7672f9b45b6e8db1cbd929c88cacf26d44dd9be90bac565187cc0f491f991a",
+      "nominalSize": [
+        1.0,
+        0.1,
+        1.0
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 3932,
+        "materials": 3,
+        "textures": 3,
+        "min": [
+          -0.5,
+          0.0,
+          -0.5
+        ],
+        "max": [
+          0.5,
+          0.1,
+          0.5
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "Body",
+          "center": [
+            0.0,
+            0.05,
+            0.0
+          ],
+          "size": [
+            1.0,
+            0.1,
+            1.0
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.05,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.05,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            0.1,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.05,
+            0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.05,
+            -0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 0,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "plafond-bois",
+      "moduleId": "arkya.structure.ceiling.wood",
+      "shape": "plafond",
+      "material": "bois",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/plafond-bois.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/plafond-bois.glb",
+      "prefabGuid": "daee8334f1d37e14e8624bfcf2c9de92",
+      "modelGuid": "30f8bd4be63d6c94b95fc5794abca71a",
+      "sourceSha256": "589c3732cad3ffaa7f4a170d052321368d728bae0f1876bf5233a3c7f086b1bc",
+      "nominalSize": [
+        1.0,
+        0.1,
+        1.0
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 2256,
+        "materials": 2,
+        "textures": 1,
+        "min": [
+          -0.5,
+          0.0,
+          -0.5
+        ],
+        "max": [
+          0.5,
+          0.1,
+          0.5
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "Body",
+          "center": [
+            0.0,
+            0.05,
+            0.0
+          ],
+          "size": [
+            1.0,
+            0.1,
+            1.0
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.05,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.05,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            0.1,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.05,
+            0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.05,
+            -0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 0,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    },
+    {
+      "sourceAssetId": "plafond-pierre",
+      "moduleId": "arkya.structure.ceiling.stone",
+      "shape": "plafond",
+      "material": "pierre",
+      "prefabPath": "Assets/Arkya/Building/Structures/Prefabs/plafond-pierre.prefab",
+      "modelPath": "Assets/Arkya/Building/Structures/Models/plafond-pierre.glb",
+      "prefabGuid": "4d78cd122ae181342a0ea43de5c0300d",
+      "modelGuid": "b41fedee646ff3e4aa9823e1e364b03e",
+      "sourceSha256": "86291f91b56a9879b2dad61673c57c2935ad635425ad007e5c0c94a0f0f06564",
+      "nominalSize": [
+        1.0,
+        0.1,
+        1.0
+      ],
+      "visual": {
+        "meshes": 1,
+        "triangles": 1880,
+        "materials": 2,
+        "textures": 2,
+        "min": [
+          -0.5,
+          0.0,
+          -0.5
+        ],
+        "max": [
+          0.5,
+          0.1,
+          0.5
+        ],
+        "originalMeshReferences": true,
+        "canonicalWoodMaterialsAllowed": true
+      },
+      "colliders": [
+        {
+          "name": "Body",
+          "center": [
+            0.0,
+            0.05,
+            0.0
+          ],
+          "size": [
+            1.0,
+            0.1,
+            1.0
+          ],
+          "trigger": false
+        }
+      ],
+      "sockets": [
+        {
+          "face": "Left",
+          "position": [
+            -0.5,
+            0.05,
+            0.0
+          ],
+          "outwardNormal": [
+            -1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Right",
+          "position": [
+            0.5,
+            0.05,
+            0.0
+          ],
+          "outwardNormal": [
+            1.00000012,
+            0.0,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Bottom",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            -1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Top",
+          "position": [
+            0.0,
+            0.1,
+            0.0
+          ],
+          "outwardNormal": [
+            0.0,
+            1.00000012,
+            -1.1920929E-07
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Front",
+          "position": [
+            0.0,
+            0.05,
+            0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "face": "Back",
+          "position": [
+            0.0,
+            0.05,
+            -0.5
+          ],
+          "outwardNormal": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "testedYaws": [
+            0,
+            90,
+            180,
+            270
+          ]
+        }
+      ],
+      "physics": {
+        "actualPhysicsRaycasts": 451,
+        "clearApertureRaycasts": 0,
+        "doorwayFloorSampleM": 0.0,
+        "independentPhysicsWorld": false,
+        "method": "Collider.Raycast per declared box"
+      },
+      "stableIdsAndGuidsComparedToPrevious": true,
+      "missingScripts": 0
+    }
+  ],
+  "limitations": [
+    "Artistic rendering is reviewed separately in the comparison scene.",
+    "No networked build placement or ECS conversion is implemented or validated in this asset integration."
+  ]
+}

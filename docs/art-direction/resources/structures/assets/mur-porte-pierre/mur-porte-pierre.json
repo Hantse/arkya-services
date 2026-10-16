@@ -1,0 +1,113 @@
+{
+  "id": "mur-porte-pierre",
+  "shape": "mur-porte",
+  "material": "pierre",
+  "label": "Mur avec porte · Pierre",
+  "glb": "assets/mur-porte-pierre/mur-porte-pierre.glb",
+  "blend": "assets/mur-porte-pierre/mur-porte-pierre.blend",
+  "preview": "assets/mur-porte-pierre/mur-porte-pierre-preview.png",
+  "height": 2.0,
+  "width": 1.0,
+  "depth": 0.15,
+  "nominal_dimensions": {
+    "width": 1.0,
+    "height": 2.0,
+    "depth": 0.15
+  },
+  "triangles": 4888,
+  "materials_count": 2,
+  "texture_resolution": [
+    1254,
+    1254
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "gltf_up_axis": "Y",
+  "snap_points": [
+    {
+      "name": "Snap_Left",
+      "position_m": [
+        -0.5,
+        1.0,
+        0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Right",
+      "position_m": [
+        0.5,
+        1.0,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Bottom",
+      "position_m": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Top",
+      "position_m": [
+        0,
+        2.0,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Front",
+      "position_m": [
+        0,
+        1.0,
+        0.075
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Snap_Back",
+      "position_m": [
+        0,
+        1.0,
+        -0.075
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "snap_coordinate_system": "glTF Y-up, metres, root-local",
+  "opening": {
+    "width": 0.72,
+    "height": 1.85,
+    "bottom": 0.0,
+    "top": 1.85
+  }
+}

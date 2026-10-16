@@ -1,0 +1,20 @@
+{
+  "id": "parasol-corail",
+  "shape": "parasol",
+  "material": "corail",
+  "label": "Parasol ancien · Corail crème",
+  "glb": "assets/parasol-corail/parasol-corail.glb",
+  "blend": "assets/parasol-corail/parasol-corail.blend",
+  "preview": "assets/parasol-corail/parasol-corail-preview.png",
+  "height": 0.95,
+  "width": 1.1313,
+  "depth": 0.8638,
+  "triangles": 18336,
+  "mushrooms": 3,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

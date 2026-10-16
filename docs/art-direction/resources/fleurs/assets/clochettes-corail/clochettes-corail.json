@@ -1,0 +1,19 @@
+{
+  "id": "clochettes-corail",
+  "shape": "clochettes",
+  "material": "corail",
+  "label": "Hampe de clochettes · Corail abricot",
+  "glb": "assets/clochettes-corail/clochettes-corail.glb",
+  "blend": "assets/clochettes-corail/clochettes-corail.blend",
+  "preview": "assets/clochettes-corail/clochettes-corail-preview.png",
+  "height": 0.7,
+  "width": 0.4657,
+  "depth": 0.4575,
+  "triangles": 13670,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

@@ -1,0 +1,324 @@
+{
+  "family": "roches-metalliferes",
+  "shapes": [
+    {
+      "id": "nodule",
+      "label": "Nodule",
+      "height": 0.7,
+      "description": "Compact rounded nodule with an exposed ore pocket"
+    },
+    {
+      "id": "bloc-fendu",
+      "label": "Bloc fendu",
+      "height": 1.3,
+      "description": "Two split rock masses with a metallic intrusion in the fracture"
+    },
+    {
+      "id": "filon-oblique",
+      "label": "Filon oblique",
+      "height": 2.2,
+      "description": "Leaning layered slab with a diagonal band of embedded ore"
+    },
+    {
+      "id": "affleurement",
+      "label": "Affleurement",
+      "height": 3.2,
+      "description": "Broad terraced outcrop with several exposed ore zones"
+    }
+  ],
+  "materials": [
+    {
+      "id": "fer",
+      "label": "Fer acier",
+      "description": "Cool blue steel plates in slate grey rock"
+    },
+    {
+      "id": "cuivre",
+      "label": "Cuivre patiné",
+      "description": "Warm copper with restrained green patina"
+    },
+    {
+      "id": "or",
+      "label": "Or stylisé",
+      "description": "Satin golden ore embedded in dark warm stone"
+    }
+  ],
+  "assets": [
+    {
+      "id": "nodule-fer",
+      "shape": "nodule",
+      "material": "fer",
+      "label": "Nodule · Fer acier",
+      "glb": "assets/nodule/nodule-fer.glb",
+      "blend": "assets/nodule/nodule-fer.blend",
+      "preview": "assets/nodule/nodule-fer-preview.png",
+      "height": 0.7,
+      "width": 1.0713,
+      "depth": 0.8769,
+      "triangles": 5026,
+      "textures": "textures/nodule-fer",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "c9a8f9b1f735ff2a89a582b45b47a5f3a9dbb94aac92bfbe750987b4e2e13160"
+    },
+    {
+      "id": "nodule-cuivre",
+      "shape": "nodule",
+      "material": "cuivre",
+      "label": "Nodule · Cuivre patiné",
+      "glb": "assets/nodule/nodule-cuivre.glb",
+      "blend": "assets/nodule/nodule-cuivre.blend",
+      "preview": "assets/nodule/nodule-cuivre-preview.png",
+      "height": 0.7,
+      "width": 1.0713,
+      "depth": 0.8769,
+      "triangles": 5026,
+      "textures": "textures/nodule-cuivre",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "9ca670073ac05df507656530eadd242e2ae6c3170a6d779f1ac5be3ab0bfb597"
+    },
+    {
+      "id": "nodule-or",
+      "shape": "nodule",
+      "material": "or",
+      "label": "Nodule · Or stylisé",
+      "glb": "assets/nodule/nodule-or.glb",
+      "blend": "assets/nodule/nodule-or.blend",
+      "preview": "assets/nodule/nodule-or-preview.png",
+      "height": 0.7,
+      "width": 1.0713,
+      "depth": 0.8769,
+      "triangles": 5026,
+      "textures": "textures/nodule-or",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "12595e22770af257eddb993bcc5d133f19971c9aa0fbd5a0e78c0561a6bf64e9"
+    },
+    {
+      "id": "bloc-fendu-fer",
+      "shape": "bloc-fendu",
+      "material": "fer",
+      "label": "Bloc fendu · Fer acier",
+      "glb": "assets/bloc-fendu/bloc-fendu-fer.glb",
+      "blend": "assets/bloc-fendu/bloc-fendu-fer.blend",
+      "preview": "assets/bloc-fendu/bloc-fendu-fer-preview.png",
+      "height": 1.3,
+      "width": 1.71,
+      "depth": 1.2419,
+      "triangles": 8948,
+      "textures": "textures/bloc-fendu-fer",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "7462546ec3bbb34d28e684974d2091a3e5d5e1ad730c43b1b9fb11f5c41944d2"
+    },
+    {
+      "id": "bloc-fendu-cuivre",
+      "shape": "bloc-fendu",
+      "material": "cuivre",
+      "label": "Bloc fendu · Cuivre patiné",
+      "glb": "assets/bloc-fendu/bloc-fendu-cuivre.glb",
+      "blend": "assets/bloc-fendu/bloc-fendu-cuivre.blend",
+      "preview": "assets/bloc-fendu/bloc-fendu-cuivre-preview.png",
+      "height": 1.3,
+      "width": 1.71,
+      "depth": 1.2419,
+      "triangles": 8948,
+      "textures": "textures/bloc-fendu-cuivre",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "c1453fa0b627e6da7b15fe6447d6e10be4266548a6fcc07c4e2b75da5539af06"
+    },
+    {
+      "id": "bloc-fendu-or",
+      "shape": "bloc-fendu",
+      "material": "or",
+      "label": "Bloc fendu · Or stylisé",
+      "glb": "assets/bloc-fendu/bloc-fendu-or.glb",
+      "blend": "assets/bloc-fendu/bloc-fendu-or.blend",
+      "preview": "assets/bloc-fendu/bloc-fendu-or-preview.png",
+      "height": 1.3,
+      "width": 1.71,
+      "depth": 1.2419,
+      "triangles": 8948,
+      "textures": "textures/bloc-fendu-or",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "c14deb07f35ac5c36979f8d7f10e0830b938bb3cd7e1c85315d2d7b24ede1d65"
+    },
+    {
+      "id": "filon-oblique-fer",
+      "shape": "filon-oblique",
+      "material": "fer",
+      "label": "Filon oblique · Fer acier",
+      "glb": "assets/filon-oblique/filon-oblique-fer.glb",
+      "blend": "assets/filon-oblique/filon-oblique-fer.blend",
+      "preview": "assets/filon-oblique/filon-oblique-fer-preview.png",
+      "height": 2.2,
+      "width": 1.7255,
+      "depth": 1.4175,
+      "triangles": 9584,
+      "textures": "textures/filon-oblique-fer",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "31e329de37efb45a920aed9193a65849dc606e3c64582f5266e6288de660c238"
+    },
+    {
+      "id": "filon-oblique-cuivre",
+      "shape": "filon-oblique",
+      "material": "cuivre",
+      "label": "Filon oblique · Cuivre patiné",
+      "glb": "assets/filon-oblique/filon-oblique-cuivre.glb",
+      "blend": "assets/filon-oblique/filon-oblique-cuivre.blend",
+      "preview": "assets/filon-oblique/filon-oblique-cuivre-preview.png",
+      "height": 2.2,
+      "width": 1.7255,
+      "depth": 1.4175,
+      "triangles": 9584,
+      "textures": "textures/filon-oblique-cuivre",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "85f17c178efe1f2b32eea3c1d0d16490a1675fe054706d1fa4fd70fc8a62cf12"
+    },
+    {
+      "id": "filon-oblique-or",
+      "shape": "filon-oblique",
+      "material": "or",
+      "label": "Filon oblique · Or stylisé",
+      "glb": "assets/filon-oblique/filon-oblique-or.glb",
+      "blend": "assets/filon-oblique/filon-oblique-or.blend",
+      "preview": "assets/filon-oblique/filon-oblique-or-preview.png",
+      "height": 2.2,
+      "width": 1.7255,
+      "depth": 1.4175,
+      "triangles": 9584,
+      "textures": "textures/filon-oblique-or",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "939a79fb415e3f9a773b3aeba273f524463328f15725957c273d79a17e8fb9ff"
+    },
+    {
+      "id": "affleurement-fer",
+      "shape": "affleurement",
+      "material": "fer",
+      "label": "Affleurement · Fer acier",
+      "glb": "assets/affleurement/affleurement-fer.glb",
+      "blend": "assets/affleurement/affleurement-fer.blend",
+      "preview": "assets/affleurement/affleurement-fer-preview.png",
+      "height": 3.2,
+      "width": 3.5581,
+      "depth": 2.2408,
+      "triangles": 13326,
+      "textures": "textures/affleurement-fer",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "92ca045e4406f1098e751377416eb9de108a9b42a72298ee88cdf39f8b6c1c05"
+    },
+    {
+      "id": "affleurement-cuivre",
+      "shape": "affleurement",
+      "material": "cuivre",
+      "label": "Affleurement · Cuivre patiné",
+      "glb": "assets/affleurement/affleurement-cuivre.glb",
+      "blend": "assets/affleurement/affleurement-cuivre.blend",
+      "preview": "assets/affleurement/affleurement-cuivre-preview.png",
+      "height": 3.2,
+      "width": 3.5581,
+      "depth": 2.2408,
+      "triangles": 13326,
+      "textures": "textures/affleurement-cuivre",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "5b38665f4bfa9044b6a3a14d986366150245dd4c47742556351226b572a3d398"
+    },
+    {
+      "id": "affleurement-or",
+      "shape": "affleurement",
+      "material": "or",
+      "label": "Affleurement · Or stylisé",
+      "glb": "assets/affleurement/affleurement-or.glb",
+      "blend": "assets/affleurement/affleurement-or.blend",
+      "preview": "assets/affleurement/affleurement-or-preview.png",
+      "height": 3.2,
+      "width": 3.5581,
+      "depth": 2.2408,
+      "triangles": 13326,
+      "textures": "textures/affleurement-or",
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "pivot": "XY bounding-box center, ground at Z=0",
+      "ore_geometry": "Embedded irregular plates and connected metal seams",
+      "painted_source": "../sources/stone-painted.png",
+      "embedded_images": 3,
+      "sha256": "661fe7087b19cce16d28e9f0900c2bbc5e3c19fc892a01c988aea6c71103a462"
+    }
+  ]
+}

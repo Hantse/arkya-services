@@ -1,0 +1,19 @@
+{
+  "id": "creux-mystique",
+  "shape": "creux",
+  "material": "mystique",
+  "label": "Tronc creux · Mystique",
+  "glb": "assets/creux-mystique/creux-mystique.glb",
+  "blend": "assets/creux-mystique/creux-mystique.blend",
+  "preview": "assets/creux-mystique/creux-mystique-preview.png",
+  "height": 0.6765,
+  "width": 2.8,
+  "depth": 0.8517,
+  "triangles": 10752,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

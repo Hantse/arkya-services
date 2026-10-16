@@ -1,0 +1,31 @@
+{
+  "blender_version": "4.5.14 LTS",
+  "scene": "ether",
+  "engine": "CYCLES",
+  "devices": [
+    "NVIDIA GeForce RTX 3060"
+  ],
+  "samples": 128,
+  "resolution": [
+    1800,
+    1200
+  ],
+  "objects": 1111,
+  "mesh_objects": 1060,
+  "unique_meshes": 1060,
+  "materials": 31,
+  "cameras": [
+    "Camera_Main",
+    "Camera_Overview",
+    "Camera_Path"
+  ],
+  "source": "build_cites_ether.py",
+  "notes": {
+    "title": "Arkya / 02 - Cites d'Ether",
+    "notes": "Cour monumentale: anneau ouvert, cristal suspendu, domes nervures, galeries, jardins et voyageur a echelle humaine.",
+    "assets": "Entirely procedural original mesh and curve geometry; no external textures.",
+    "palette": "Warm ivory, petroleum blue, turquoise enamel, coral textiles, satin bronze.",
+    "objects": 1111
+  },
+  "external_images": []
+}

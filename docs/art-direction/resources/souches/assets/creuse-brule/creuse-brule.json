@@ -1,0 +1,19 @@
+{
+  "id": "creuse-brule",
+  "shape": "creuse",
+  "material": "brule",
+  "label": "Souche creuse · Bois brûlé",
+  "glb": "assets/creuse-brule/creuse-brule.glb",
+  "blend": "assets/creuse-brule/creuse-brule.blend",
+  "preview": "assets/creuse-brule/creuse-brule-preview.png",
+  "height": 0.95,
+  "width": 1.3482,
+  "depth": 1.0842,
+  "triangles": 19200,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

@@ -1,0 +1,632 @@
+{
+  "passed": true,
+  "asset_count": 12,
+  "geometry_same_across_materials": true,
+  "uv_same_across_materials": true,
+  "assets": [
+    {
+      "id": "billot-moussu",
+      "shape": "billot",
+      "material": "moussu",
+      "glb": {
+        "triangles": 7040,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3490624,
+        "geometry_hashes": [
+          "4e633f2f0e53d0beab55c7ebcecdfdbb1af0c60dc7de35929ccd2295da4161d5"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "moussu-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "moussu-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "moussu-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 0.12337442640752808,
+      "opaque": true,
+      "uv_hash": "bc1d9448d46331e28ac225e42e379a3d13cb6179a38b9420b8da66fdef198176"
+    },
+    {
+      "id": "billot-mystique",
+      "shape": "billot",
+      "material": "mystique",
+      "glb": {
+        "triangles": 7040,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3428160,
+        "geometry_hashes": [
+          "4e633f2f0e53d0beab55c7ebcecdfdbb1af0c60dc7de35929ccd2295da4161d5"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 0.12337442640752808,
+      "opaque": true,
+      "uv_hash": "bc1d9448d46331e28ac225e42e379a3d13cb6179a38b9420b8da66fdef198176"
+    },
+    {
+      "id": "billot-brule",
+      "shape": "billot",
+      "material": "brule",
+      "glb": {
+        "triangles": 7040,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3049884,
+        "geometry_hashes": [
+          "4e633f2f0e53d0beab55c7ebcecdfdbb1af0c60dc7de35929ccd2295da4161d5"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "brule-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "brule-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "brule-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 0.12337442640752808,
+      "opaque": true,
+      "uv_hash": "bc1d9448d46331e28ac225e42e379a3d13cb6179a38b9420b8da66fdef198176"
+    },
+    {
+      "id": "noueux-moussu",
+      "shape": "noueux",
+      "material": "moussu",
+      "glb": {
+        "triangles": 10906,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3622300,
+        "geometry_hashes": [
+          "63d1c74ae216f4ee7216d1f582a4980f1b65a3b7d71b1238b328f1c62e60fc49"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "moussu-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "moussu-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "moussu-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 0.33415004664342507,
+      "opaque": true,
+      "uv_hash": "bb057e697296df71b26aed445dd4f1afe5d5e6e0cbfc5e5d8b0b657bd2e27c39"
+    },
+    {
+      "id": "noueux-mystique",
+      "shape": "noueux",
+      "material": "mystique",
+      "glb": {
+        "triangles": 10906,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3559832,
+        "geometry_hashes": [
+          "63d1c74ae216f4ee7216d1f582a4980f1b65a3b7d71b1238b328f1c62e60fc49"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 0.33415004664342507,
+      "opaque": true,
+      "uv_hash": "bb057e697296df71b26aed445dd4f1afe5d5e6e0cbfc5e5d8b0b657bd2e27c39"
+    },
+    {
+      "id": "noueux-brule",
+      "shape": "noueux",
+      "material": "brule",
+      "glb": {
+        "triangles": 10906,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3181560,
+        "geometry_hashes": [
+          "63d1c74ae216f4ee7216d1f582a4980f1b65a3b7d71b1238b328f1c62e60fc49"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "brule-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "brule-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "brule-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 0.33415004664342507,
+      "opaque": true,
+      "uv_hash": "bb057e697296df71b26aed445dd4f1afe5d5e6e0cbfc5e5d8b0b657bd2e27c39"
+    },
+    {
+      "id": "creux-moussu",
+      "shape": "creux",
+      "material": "moussu",
+      "glb": {
+        "triangles": 10752,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3609804,
+        "geometry_hashes": [
+          "45ffeba47029011d51260133eab0ab806d08544077819fd592cb0a574d524c3c"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "moussu-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "moussu-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "moussu-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 0.5987844963832191,
+      "opaque": true,
+      "uv_hash": "ca453cda6c208cdbc7aa1f2cd09ae3c590b0e4d1b6bc08bdc93e3a709b27be3b"
+    },
+    {
+      "id": "creux-mystique",
+      "shape": "creux",
+      "material": "mystique",
+      "glb": {
+        "triangles": 10752,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3547340,
+        "geometry_hashes": [
+          "45ffeba47029011d51260133eab0ab806d08544077819fd592cb0a574d524c3c"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 0.5987844963832191,
+      "opaque": true,
+      "uv_hash": "ca453cda6c208cdbc7aa1f2cd09ae3c590b0e4d1b6bc08bdc93e3a709b27be3b"
+    },
+    {
+      "id": "creux-brule",
+      "shape": "creux",
+      "material": "brule",
+      "glb": {
+        "triangles": 10752,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3169068,
+        "geometry_hashes": [
+          "45ffeba47029011d51260133eab0ab806d08544077819fd592cb0a574d524c3c"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "brule-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "brule-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "brule-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 0.5987844963832191,
+      "opaque": true,
+      "uv_hash": "ca453cda6c208cdbc7aa1f2cd09ae3c590b0e4d1b6bc08bdc93e3a709b27be3b"
+    },
+    {
+      "id": "fourchu-moussu",
+      "shape": "fourchu",
+      "material": "moussu",
+      "glb": {
+        "triangles": 13898,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3723200,
+        "geometry_hashes": [
+          "0e955fb09484d159c530f51ae0352ae166910c8ed91ef0d19e224a67314744f7"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "moussu-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "moussu-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "moussu-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 1.7520599339135783,
+      "opaque": true,
+      "uv_hash": "cd08229eebbe38f6bdd190b604d3465787adda7ff3de77bfc54ddd69061fd5a8"
+    },
+    {
+      "id": "fourchu-mystique",
+      "shape": "fourchu",
+      "material": "mystique",
+      "glb": {
+        "triangles": 13898,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3660736,
+        "geometry_hashes": [
+          "0e955fb09484d159c530f51ae0352ae166910c8ed91ef0d19e224a67314744f7"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 1.7520599339135783,
+      "opaque": true,
+      "uv_hash": "cd08229eebbe38f6bdd190b604d3465787adda7ff3de77bfc54ddd69061fd5a8"
+    },
+    {
+      "id": "fourchu-brule",
+      "shape": "fourchu",
+      "material": "brule",
+      "glb": {
+        "triangles": 13898,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 3282460,
+        "geometry_hashes": [
+          "0e955fb09484d159c530f51ae0352ae166910c8ed91ef0d19e224a67314744f7"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "brule-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "brule-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "brule-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_wood_walls": true,
+      "connected_components": 1,
+      "signed_volume_m3": 1.7520599339135783,
+      "opaque": true,
+      "uv_hash": "cd08229eebbe38f6bdd190b604d3465787adda7ff3de77bfc54ddd69061fd5a8"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "treeCount": 756,
+  "detailCount": 3636,
+  "terrainHeightmap": 1025,
+  "terrainHeightUnchanged": true,
+  "terrainLayers": 5,
+  "cycleSeconds": 14400,
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "scope": "Presentation: painted terrain, clustered approved assets, shelters, sky and lighting. No gameplay or instance admission."
+}

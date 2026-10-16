@@ -1,0 +1,2877 @@
+{
+  "family": "outils-invoques",
+  "artistic_status": "proposal",
+  "description": "Outils de récolte peints, trois couleurs de mana et zéro à trois réceptacles vides pour de futurs cristaux.",
+  "shapes": [
+    {
+      "id": "hache",
+      "artistic_status": "proposal",
+      "label": "Hache invoquée",
+      "description": "Large lame en croissant, manche courbe et cœur de mana."
+    },
+    {
+      "id": "pioche",
+      "artistic_status": "proposal",
+      "label": "Pioche invoquée",
+      "description": "Bec effilé et panne courte, manche gainé et éclats de mana suspendus."
+    },
+    {
+      "id": "faucille",
+      "artistic_status": "proposal",
+      "label": "Faucille invoquée",
+      "description": "Croissant à tranchant intérieur et pointe recourbée, prise courte gainée et mana suspendue."
+    }
+  ],
+  "materials": [
+    {
+      "id": "azur",
+      "label": "Mana azur",
+      "swatch": "#59b8c9",
+      "description": "Acier ardoise, bois sombre, bronze patiné ; mana azur."
+    },
+    {
+      "id": "orange",
+      "label": "Mana orange",
+      "swatch": "#ee9b29",
+      "description": "Acier ardoise, bois sombre, bronze patiné ; mana orange."
+    },
+    {
+      "id": "vert",
+      "label": "Mana vert",
+      "swatch": "#3ac17c",
+      "description": "Acier ardoise, bois sombre, bronze patiné ; mana vert."
+    }
+  ],
+  "socket_counts": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "sockets_contract": {
+    "empty": true,
+    "units": "metres",
+    "origin": "centre du fond utile",
+    "axis": "local +Z sortant",
+    "decorative_mana_core_counts_as_socket": false
+  },
+  "assets": [
+    {
+      "id": "hache-azur",
+      "shape": "hache",
+      "material": "azur",
+      "label": "Hache invoquée · Azur",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-azur/hache-azur.glb",
+      "blend": "assets/hache-azur/hache-azur.blend",
+      "preview": "assets/hache-azur/hache-azur-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 7768,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true,
+      "socket_count": 0,
+      "sockets": []
+    },
+    {
+      "id": "hache-azur-sockets-1",
+      "shape": "hache",
+      "material": "azur",
+      "label": "Hache invoquée · Mana azur · 1 emplacement",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-azur-sockets-1/hache-azur-sockets-1.glb",
+      "blend": "assets/hache-azur-sockets-1/hache-azur-sockets-1.blend",
+      "preview": "assets/hache-azur-sockets-1/hache-azur-sockets-1-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 8404,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 1,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.058125,
+            0.56625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.56625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-azur-sockets-2",
+      "shape": "hache",
+      "material": "azur",
+      "label": "Hache invoquée · Mana azur · 2 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-azur-sockets-2/hache-azur-sockets-2.glb",
+      "blend": "assets/hache-azur-sockets-2/hache-azur-sockets-2.blend",
+      "preview": "assets/hache-azur-sockets-2/hache-azur-sockets-2-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 9040,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 2,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.058125,
+            0.56625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.56625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.287665,
+            -0.058125,
+            0.58875
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.287665,
+            0.58875,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-azur-sockets-3",
+      "shape": "hache",
+      "material": "azur",
+      "label": "Hache invoquée · Mana azur · 3 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-azur-sockets-3/hache-azur-sockets-3.glb",
+      "blend": "assets/hache-azur-sockets-3/hache-azur-sockets-3.blend",
+      "preview": "assets/hache-azur-sockets-3/hache-azur-sockets-3-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 9676,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 3,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.058125,
+            0.56625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.56625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.287665,
+            -0.058125,
+            0.58875
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.287665,
+            0.58875,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 3,
+          "name": "Socket_03",
+          "marker": "Socket_03",
+          "empty": true,
+          "position_blender": [
+            0.385165,
+            -0.058125,
+            0.53625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.385165,
+            0.53625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-orange",
+      "shape": "hache",
+      "material": "orange",
+      "label": "Hache invoquée · Mana orange · 0 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-orange/hache-orange.glb",
+      "blend": "assets/hache-orange/hache-orange.blend",
+      "preview": "assets/hache-orange/hache-orange-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 7768,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 0,
+      "sockets": [],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-orange-sockets-1",
+      "shape": "hache",
+      "material": "orange",
+      "label": "Hache invoquée · Mana orange · 1 emplacement",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-orange-sockets-1/hache-orange-sockets-1.glb",
+      "blend": "assets/hache-orange-sockets-1/hache-orange-sockets-1.blend",
+      "preview": "assets/hache-orange-sockets-1/hache-orange-sockets-1-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 8404,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 1,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.058125,
+            0.56625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.56625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-orange-sockets-2",
+      "shape": "hache",
+      "material": "orange",
+      "label": "Hache invoquée · Mana orange · 2 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-orange-sockets-2/hache-orange-sockets-2.glb",
+      "blend": "assets/hache-orange-sockets-2/hache-orange-sockets-2.blend",
+      "preview": "assets/hache-orange-sockets-2/hache-orange-sockets-2-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 9040,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 2,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.058125,
+            0.56625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.56625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.287665,
+            -0.058125,
+            0.58875
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.287665,
+            0.58875,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-orange-sockets-3",
+      "shape": "hache",
+      "material": "orange",
+      "label": "Hache invoquée · Mana orange · 3 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-orange-sockets-3/hache-orange-sockets-3.glb",
+      "blend": "assets/hache-orange-sockets-3/hache-orange-sockets-3.blend",
+      "preview": "assets/hache-orange-sockets-3/hache-orange-sockets-3-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 9676,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 3,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.058125,
+            0.56625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.56625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.287665,
+            -0.058125,
+            0.58875
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.287665,
+            0.58875,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 3,
+          "name": "Socket_03",
+          "marker": "Socket_03",
+          "empty": true,
+          "position_blender": [
+            0.385165,
+            -0.058125,
+            0.53625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.385165,
+            0.53625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-vert",
+      "shape": "hache",
+      "material": "vert",
+      "label": "Hache invoquée · Mana vert · 0 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-vert/hache-vert.glb",
+      "blend": "assets/hache-vert/hache-vert.blend",
+      "preview": "assets/hache-vert/hache-vert-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 7768,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 0,
+      "sockets": [],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-vert-sockets-1",
+      "shape": "hache",
+      "material": "vert",
+      "label": "Hache invoquée · Mana vert · 1 emplacement",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-vert-sockets-1/hache-vert-sockets-1.glb",
+      "blend": "assets/hache-vert-sockets-1/hache-vert-sockets-1.blend",
+      "preview": "assets/hache-vert-sockets-1/hache-vert-sockets-1-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 8404,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 1,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.058125,
+            0.56625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.56625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-vert-sockets-2",
+      "shape": "hache",
+      "material": "vert",
+      "label": "Hache invoquée · Mana vert · 2 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-vert-sockets-2/hache-vert-sockets-2.glb",
+      "blend": "assets/hache-vert-sockets-2/hache-vert-sockets-2.blend",
+      "preview": "assets/hache-vert-sockets-2/hache-vert-sockets-2-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 9040,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 2,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.058125,
+            0.56625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.56625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.287665,
+            -0.058125,
+            0.58875
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.287665,
+            0.58875,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "hache-vert-sockets-3",
+      "shape": "hache",
+      "material": "vert",
+      "label": "Hache invoquée · Mana vert · 3 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/hache-vert-sockets-3/hache-vert-sockets-3.glb",
+      "blend": "assets/hache-vert-sockets-3/hache-vert-sockets-3.blend",
+      "preview": "assets/hache-vert-sockets-3/hache-vert-sockets-3-preview.png",
+      "height": 1.2816,
+      "width": 0.6794,
+      "depth": 0.1794,
+      "triangles": 9676,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 3,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.058125,
+            0.56625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.56625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.287665,
+            -0.058125,
+            0.58875
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.287665,
+            0.58875,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 3,
+          "name": "Socket_03",
+          "marker": "Socket_03",
+          "empty": true,
+          "position_blender": [
+            0.385165,
+            -0.058125,
+            0.53625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.385165,
+            0.53625,
+            0.058125
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-azur",
+      "shape": "pioche",
+      "material": "azur",
+      "label": "Pioche invoquée · Azur",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-azur/pioche-azur.glb",
+      "blend": "assets/pioche-azur/pioche-azur.blend",
+      "preview": "assets/pioche-azur/pioche-azur-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 7692,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true,
+      "socket_count": 0,
+      "sockets": []
+    },
+    {
+      "id": "pioche-azur-sockets-1",
+      "shape": "pioche",
+      "material": "azur",
+      "label": "Pioche invoquée · Mana azur · 1 emplacement",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-azur-sockets-1/pioche-azur-sockets-1.glb",
+      "blend": "assets/pioche-azur-sockets-1/pioche-azur-sockets-1.blend",
+      "preview": "assets/pioche-azur-sockets-1/pioche-azur-sockets-1-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 8290,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 1,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            -0.278585,
+            -0.0370718,
+            0.57375
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.278585,
+            0.57375,
+            0.0370718
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-azur-sockets-2",
+      "shape": "pioche",
+      "material": "azur",
+      "label": "Pioche invoquée · Mana azur · 2 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-azur-sockets-2/pioche-azur-sockets-2.glb",
+      "blend": "assets/pioche-azur-sockets-2/pioche-azur-sockets-2.blend",
+      "preview": "assets/pioche-azur-sockets-2/pioche-azur-sockets-2-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 8874,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 2,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            -0.278585,
+            -0.0370718,
+            0.57375
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.278585,
+            0.57375,
+            0.0370718
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            -0.147335,
+            -0.047306,
+            0.60975
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.147335,
+            0.60975,
+            0.047306
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-azur-sockets-3",
+      "shape": "pioche",
+      "material": "azur",
+      "label": "Pioche invoquée · Mana azur · 3 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-azur-sockets-3/pioche-azur-sockets-3.glb",
+      "blend": "assets/pioche-azur-sockets-3/pioche-azur-sockets-3.blend",
+      "preview": "assets/pioche-azur-sockets-3/pioche-azur-sockets-3-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 9472,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 3,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            -0.278585,
+            -0.0370718,
+            0.57375
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.278585,
+            0.57375,
+            0.0370718
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            -0.147335,
+            -0.047306,
+            0.60975
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.147335,
+            0.60975,
+            0.047306
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 3,
+          "name": "Socket_03",
+          "marker": "Socket_03",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.0437972,
+            0.5715
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.5715,
+            0.0437972
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-orange",
+      "shape": "pioche",
+      "material": "orange",
+      "label": "Pioche invoquée · Mana orange · 0 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-orange/pioche-orange.glb",
+      "blend": "assets/pioche-orange/pioche-orange.blend",
+      "preview": "assets/pioche-orange/pioche-orange-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 7692,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 0,
+      "sockets": [],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-orange-sockets-1",
+      "shape": "pioche",
+      "material": "orange",
+      "label": "Pioche invoquée · Mana orange · 1 emplacement",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-orange-sockets-1/pioche-orange-sockets-1.glb",
+      "blend": "assets/pioche-orange-sockets-1/pioche-orange-sockets-1.blend",
+      "preview": "assets/pioche-orange-sockets-1/pioche-orange-sockets-1-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 8290,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 1,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            -0.278585,
+            -0.0370718,
+            0.57375
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.278585,
+            0.57375,
+            0.0370718
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-orange-sockets-2",
+      "shape": "pioche",
+      "material": "orange",
+      "label": "Pioche invoquée · Mana orange · 2 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-orange-sockets-2/pioche-orange-sockets-2.glb",
+      "blend": "assets/pioche-orange-sockets-2/pioche-orange-sockets-2.blend",
+      "preview": "assets/pioche-orange-sockets-2/pioche-orange-sockets-2-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 8874,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 2,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            -0.278585,
+            -0.0370718,
+            0.57375
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.278585,
+            0.57375,
+            0.0370718
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            -0.147335,
+            -0.047306,
+            0.60975
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.147335,
+            0.60975,
+            0.047306
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-orange-sockets-3",
+      "shape": "pioche",
+      "material": "orange",
+      "label": "Pioche invoquée · Mana orange · 3 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-orange-sockets-3/pioche-orange-sockets-3.glb",
+      "blend": "assets/pioche-orange-sockets-3/pioche-orange-sockets-3.blend",
+      "preview": "assets/pioche-orange-sockets-3/pioche-orange-sockets-3-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 9472,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 3,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            -0.278585,
+            -0.0370718,
+            0.57375
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.278585,
+            0.57375,
+            0.0370718
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            -0.147335,
+            -0.047306,
+            0.60975
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.147335,
+            0.60975,
+            0.047306
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 3,
+          "name": "Socket_03",
+          "marker": "Socket_03",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.0437972,
+            0.5715
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.5715,
+            0.0437972
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-vert",
+      "shape": "pioche",
+      "material": "vert",
+      "label": "Pioche invoquée · Mana vert · 0 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-vert/pioche-vert.glb",
+      "blend": "assets/pioche-vert/pioche-vert.blend",
+      "preview": "assets/pioche-vert/pioche-vert-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 7692,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 0,
+      "sockets": [],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-vert-sockets-1",
+      "shape": "pioche",
+      "material": "vert",
+      "label": "Pioche invoquée · Mana vert · 1 emplacement",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-vert-sockets-1/pioche-vert-sockets-1.glb",
+      "blend": "assets/pioche-vert-sockets-1/pioche-vert-sockets-1.blend",
+      "preview": "assets/pioche-vert-sockets-1/pioche-vert-sockets-1-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 8290,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 1,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            -0.278585,
+            -0.0370718,
+            0.57375
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.278585,
+            0.57375,
+            0.0370718
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-vert-sockets-2",
+      "shape": "pioche",
+      "material": "vert",
+      "label": "Pioche invoquée · Mana vert · 2 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-vert-sockets-2/pioche-vert-sockets-2.glb",
+      "blend": "assets/pioche-vert-sockets-2/pioche-vert-sockets-2.blend",
+      "preview": "assets/pioche-vert-sockets-2/pioche-vert-sockets-2-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 8874,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 2,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            -0.278585,
+            -0.0370718,
+            0.57375
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.278585,
+            0.57375,
+            0.0370718
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            -0.147335,
+            -0.047306,
+            0.60975
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.147335,
+            0.60975,
+            0.047306
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "pioche-vert-sockets-3",
+      "shape": "pioche",
+      "material": "vert",
+      "label": "Pioche invoquée · Mana vert · 3 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/pioche-vert-sockets-3/pioche-vert-sockets-3.glb",
+      "blend": "assets/pioche-vert-sockets-3/pioche-vert-sockets-3.blend",
+      "preview": "assets/pioche-vert-sockets-3/pioche-vert-sockets-3-preview.png",
+      "height": 1.3028,
+      "width": 0.9286,
+      "depth": 0.1794,
+      "triangles": 9472,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 3,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            -0.278585,
+            -0.0370718,
+            0.57375
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.278585,
+            0.57375,
+            0.0370718
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            -0.147335,
+            -0.047306,
+            0.60975
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            -0.147335,
+            0.60975,
+            0.047306
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 3,
+          "name": "Socket_03",
+          "marker": "Socket_03",
+          "empty": true,
+          "position_blender": [
+            0.175165,
+            -0.0437972,
+            0.5715
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.175165,
+            0.5715,
+            0.0437972
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-azur",
+      "shape": "faucille",
+      "material": "azur",
+      "label": "Faucille invoquée · Mana azur · 0 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-azur/faucille-azur.glb",
+      "blend": "assets/faucille-azur/faucille-azur.blend",
+      "preview": "assets/faucille-azur/faucille-azur-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 8092,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 0,
+      "sockets": [],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-azur-sockets-1",
+      "shape": "faucille",
+      "material": "azur",
+      "label": "Faucille invoquée · Mana azur · 1 emplacement",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-azur-sockets-1/faucille-azur-sockets-1.glb",
+      "blend": "assets/faucille-azur-sockets-1/faucille-azur-sockets-1.blend",
+      "preview": "assets/faucille-azur-sockets-1/faucille-azur-sockets-1-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 8728,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 1,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.132865,
+            -0.050625,
+            0.26775
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.132865,
+            0.26775,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-azur-sockets-2",
+      "shape": "faucille",
+      "material": "azur",
+      "label": "Faucille invoquée · Mana azur · 2 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-azur-sockets-2/faucille-azur-sockets-2.glb",
+      "blend": "assets/faucille-azur-sockets-2/faucille-azur-sockets-2.blend",
+      "preview": "assets/faucille-azur-sockets-2/faucille-azur-sockets-2-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 9364,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 2,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.132865,
+            -0.050625,
+            0.26775
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.132865,
+            0.26775,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.229465,
+            -0.050625,
+            0.299625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.229465,
+            0.299625,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-azur-sockets-3",
+      "shape": "faucille",
+      "material": "azur",
+      "label": "Faucille invoquée · Mana azur · 3 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-azur-sockets-3/faucille-azur-sockets-3.glb",
+      "blend": "assets/faucille-azur-sockets-3/faucille-azur-sockets-3.blend",
+      "preview": "assets/faucille-azur-sockets-3/faucille-azur-sockets-3-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 10000,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 3,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.132865,
+            -0.050625,
+            0.26775
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.132865,
+            0.26775,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.229465,
+            -0.050625,
+            0.299625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.229465,
+            0.299625,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 3,
+          "name": "Socket_03",
+          "marker": "Socket_03",
+          "empty": true,
+          "position_blender": [
+            0.3191651,
+            -0.050625,
+            0.350625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.3191651,
+            0.350625,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-orange",
+      "shape": "faucille",
+      "material": "orange",
+      "label": "Faucille invoquée · Mana orange · 0 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-orange/faucille-orange.glb",
+      "blend": "assets/faucille-orange/faucille-orange.blend",
+      "preview": "assets/faucille-orange/faucille-orange-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 8092,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 0,
+      "sockets": [],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-orange-sockets-1",
+      "shape": "faucille",
+      "material": "orange",
+      "label": "Faucille invoquée · Mana orange · 1 emplacement",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-orange-sockets-1/faucille-orange-sockets-1.glb",
+      "blend": "assets/faucille-orange-sockets-1/faucille-orange-sockets-1.blend",
+      "preview": "assets/faucille-orange-sockets-1/faucille-orange-sockets-1-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 8728,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 1,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.132865,
+            -0.050625,
+            0.26775
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.132865,
+            0.26775,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-orange-sockets-2",
+      "shape": "faucille",
+      "material": "orange",
+      "label": "Faucille invoquée · Mana orange · 2 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-orange-sockets-2/faucille-orange-sockets-2.glb",
+      "blend": "assets/faucille-orange-sockets-2/faucille-orange-sockets-2.blend",
+      "preview": "assets/faucille-orange-sockets-2/faucille-orange-sockets-2-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 9364,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 2,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.132865,
+            -0.050625,
+            0.26775
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.132865,
+            0.26775,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.229465,
+            -0.050625,
+            0.299625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.229465,
+            0.299625,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-orange-sockets-3",
+      "shape": "faucille",
+      "material": "orange",
+      "label": "Faucille invoquée · Mana orange · 3 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-orange-sockets-3/faucille-orange-sockets-3.glb",
+      "blend": "assets/faucille-orange-sockets-3/faucille-orange-sockets-3.blend",
+      "preview": "assets/faucille-orange-sockets-3/faucille-orange-sockets-3-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 10000,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 3,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.132865,
+            -0.050625,
+            0.26775
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.132865,
+            0.26775,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.229465,
+            -0.050625,
+            0.299625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.229465,
+            0.299625,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 3,
+          "name": "Socket_03",
+          "marker": "Socket_03",
+          "empty": true,
+          "position_blender": [
+            0.3191651,
+            -0.050625,
+            0.350625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.3191651,
+            0.350625,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-vert",
+      "shape": "faucille",
+      "material": "vert",
+      "label": "Faucille invoquée · Mana vert · 0 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-vert/faucille-vert.glb",
+      "blend": "assets/faucille-vert/faucille-vert.blend",
+      "preview": "assets/faucille-vert/faucille-vert-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 8092,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 0,
+      "sockets": [],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-vert-sockets-1",
+      "shape": "faucille",
+      "material": "vert",
+      "label": "Faucille invoquée · Mana vert · 1 emplacement",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-vert-sockets-1/faucille-vert-sockets-1.glb",
+      "blend": "assets/faucille-vert-sockets-1/faucille-vert-sockets-1.blend",
+      "preview": "assets/faucille-vert-sockets-1/faucille-vert-sockets-1-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 8728,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 1,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.132865,
+            -0.050625,
+            0.26775
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.132865,
+            0.26775,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-vert-sockets-2",
+      "shape": "faucille",
+      "material": "vert",
+      "label": "Faucille invoquée · Mana vert · 2 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-vert-sockets-2/faucille-vert-sockets-2.glb",
+      "blend": "assets/faucille-vert-sockets-2/faucille-vert-sockets-2.blend",
+      "preview": "assets/faucille-vert-sockets-2/faucille-vert-sockets-2-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 9364,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 2,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.132865,
+            -0.050625,
+            0.26775
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.132865,
+            0.26775,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.229465,
+            -0.050625,
+            0.299625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.229465,
+            0.299625,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    },
+    {
+      "id": "faucille-vert-sockets-3",
+      "shape": "faucille",
+      "material": "vert",
+      "label": "Faucille invoquée · Mana vert · 3 emplacements",
+      "artistic_status": "proposal",
+      "glb": "assets/faucille-vert-sockets-3/faucille-vert-sockets-3.glb",
+      "blend": "assets/faucille-vert-sockets-3/faucille-vert-sockets-3.blend",
+      "preview": "assets/faucille-vert-sockets-3/faucille-vert-sockets-3-preview.png",
+      "height": 1.1387,
+      "width": 0.6022,
+      "depth": 0.1794,
+      "triangles": 10000,
+      "materials": 5,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "animation": "SummonedToolIdle",
+      "animation_duration": 4,
+      "fps": 24,
+      "socket_count": 3,
+      "sockets": [
+        {
+          "index": 1,
+          "name": "Socket_01",
+          "marker": "Socket_01",
+          "empty": true,
+          "position_blender": [
+            0.132865,
+            -0.050625,
+            0.26775
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.132865,
+            0.26775,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 2,
+          "name": "Socket_02",
+          "marker": "Socket_02",
+          "empty": true,
+          "position_blender": [
+            0.229465,
+            -0.050625,
+            0.299625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.229465,
+            0.299625,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        },
+        {
+          "index": 3,
+          "name": "Socket_03",
+          "marker": "Socket_03",
+          "empty": true,
+          "position_blender": [
+            0.3191651,
+            -0.050625,
+            0.350625
+          ],
+          "rotation_blender_xyzw": [
+            0.70710677,
+            0.0,
+            0.0,
+            0.70710677
+          ],
+          "position_gltf": [
+            0.3191651,
+            0.350625,
+            0.050625
+          ],
+          "rotation_gltf_xyzw": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "inner_diameter": 0.0465,
+          "cavity_depth": 0.02475,
+          "origin": "centre du fond utile",
+          "axis": "local +Z sortant",
+          "units": "metres"
+        }
+      ],
+      "pivot": "centre de la prise, Tool_Root",
+      "axes_blender": "+Z vers la tête, face avant -Y",
+      "axes_glb": "+Y vers la tête, face avant +Z",
+      "opaque": true
+    }
+  ]
+}

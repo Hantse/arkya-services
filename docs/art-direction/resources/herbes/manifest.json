@@ -1,0 +1,291 @@
+{
+  "family": "herbes",
+  "shapes": [
+    {
+      "id": "rase",
+      "label": "Touffe rase",
+      "height": 0.22,
+      "description": "Coussin étalé de brins courts, périphérie basse et centre souple."
+    },
+    {
+      "id": "eventail",
+      "label": "Touffe éventail",
+      "height": 0.45,
+      "description": "Gerbe ouverte, rubans arqués et pointes de hauteurs décalées."
+    },
+    {
+      "id": "courbee",
+      "label": "Touffe courbée",
+      "height": 0.7,
+      "description": "Brins souples regroupés en trois vagues inclinées vers un côté."
+    },
+    {
+      "id": "haute",
+      "label": "Hautes herbes",
+      "height": 1.05,
+      "description": "Gerbe élancée à plusieurs étages, cœur vertical et rubans extérieurs retombants."
+    }
+  ],
+  "materials": [
+    {
+      "id": "prairie",
+      "label": "Prairie verte",
+      "swatch": "#7b9c4e",
+      "description": "Racines vert sauge, corps vert tendre et pointes citronnées."
+    },
+    {
+      "id": "doree",
+      "label": "Herbe dorée",
+      "swatch": "#c3a761",
+      "description": "Base terre d’ombre, corps ocre olive et pointes dorées."
+    },
+    {
+      "id": "mystique",
+      "label": "Mystique",
+      "swatch": "#4ca89c",
+      "description": "Racines prune, rubans bleu pétrole et pointes turquoise à lueur contenue."
+    }
+  ],
+  "assets": [
+    {
+      "id": "rase-prairie",
+      "shape": "rase",
+      "material": "prairie",
+      "label": "Touffe rase · Prairie verte",
+      "glb": "assets/rase-prairie/rase-prairie.glb",
+      "blend": "assets/rase-prairie/rase-prairie.blend",
+      "preview": "assets/rase-prairie/rase-prairie-preview.png",
+      "height": 0.22,
+      "width": 0.9135,
+      "depth": 0.5919,
+      "triangles": 11176,
+      "blades": 44,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "rase-doree",
+      "shape": "rase",
+      "material": "doree",
+      "label": "Touffe rase · Herbe dorée",
+      "glb": "assets/rase-doree/rase-doree.glb",
+      "blend": "assets/rase-doree/rase-doree.blend",
+      "preview": "assets/rase-doree/rase-doree-preview.png",
+      "height": 0.22,
+      "width": 0.9135,
+      "depth": 0.5919,
+      "triangles": 11176,
+      "blades": 44,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "rase-mystique",
+      "shape": "rase",
+      "material": "mystique",
+      "label": "Touffe rase · Mystique",
+      "glb": "assets/rase-mystique/rase-mystique.glb",
+      "blend": "assets/rase-mystique/rase-mystique.blend",
+      "preview": "assets/rase-mystique/rase-mystique-preview.png",
+      "height": 0.22,
+      "width": 0.9135,
+      "depth": 0.5919,
+      "triangles": 11176,
+      "blades": 44,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "eventail-prairie",
+      "shape": "eventail",
+      "material": "prairie",
+      "label": "Touffe éventail · Prairie verte",
+      "glb": "assets/eventail-prairie/eventail-prairie.glb",
+      "blend": "assets/eventail-prairie/eventail-prairie.blend",
+      "preview": "assets/eventail-prairie/eventail-prairie-preview.png",
+      "height": 0.45,
+      "width": 0.8411,
+      "depth": 0.5835,
+      "triangles": 10668,
+      "blades": 42,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "eventail-doree",
+      "shape": "eventail",
+      "material": "doree",
+      "label": "Touffe éventail · Herbe dorée",
+      "glb": "assets/eventail-doree/eventail-doree.glb",
+      "blend": "assets/eventail-doree/eventail-doree.blend",
+      "preview": "assets/eventail-doree/eventail-doree-preview.png",
+      "height": 0.45,
+      "width": 0.8411,
+      "depth": 0.5835,
+      "triangles": 10668,
+      "blades": 42,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "eventail-mystique",
+      "shape": "eventail",
+      "material": "mystique",
+      "label": "Touffe éventail · Mystique",
+      "glb": "assets/eventail-mystique/eventail-mystique.glb",
+      "blend": "assets/eventail-mystique/eventail-mystique.blend",
+      "preview": "assets/eventail-mystique/eventail-mystique-preview.png",
+      "height": 0.45,
+      "width": 0.8411,
+      "depth": 0.5835,
+      "triangles": 10668,
+      "blades": 42,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "courbee-prairie",
+      "shape": "courbee",
+      "material": "prairie",
+      "label": "Touffe courbée · Prairie verte",
+      "glb": "assets/courbee-prairie/courbee-prairie.glb",
+      "blend": "assets/courbee-prairie/courbee-prairie.blend",
+      "preview": "assets/courbee-prairie/courbee-prairie-preview.png",
+      "height": 0.7,
+      "width": 0.828,
+      "depth": 0.8366,
+      "triangles": 11176,
+      "blades": 44,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "courbee-doree",
+      "shape": "courbee",
+      "material": "doree",
+      "label": "Touffe courbée · Herbe dorée",
+      "glb": "assets/courbee-doree/courbee-doree.glb",
+      "blend": "assets/courbee-doree/courbee-doree.blend",
+      "preview": "assets/courbee-doree/courbee-doree-preview.png",
+      "height": 0.7,
+      "width": 0.828,
+      "depth": 0.8366,
+      "triangles": 11176,
+      "blades": 44,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "courbee-mystique",
+      "shape": "courbee",
+      "material": "mystique",
+      "label": "Touffe courbée · Mystique",
+      "glb": "assets/courbee-mystique/courbee-mystique.glb",
+      "blend": "assets/courbee-mystique/courbee-mystique.blend",
+      "preview": "assets/courbee-mystique/courbee-mystique-preview.png",
+      "height": 0.7,
+      "width": 0.828,
+      "depth": 0.8366,
+      "triangles": 11176,
+      "blades": 44,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "haute-prairie",
+      "shape": "haute",
+      "material": "prairie",
+      "label": "Hautes herbes · Prairie verte",
+      "glb": "assets/haute-prairie/haute-prairie.glb",
+      "blend": "assets/haute-prairie/haute-prairie.blend",
+      "preview": "assets/haute-prairie/haute-prairie-preview.png",
+      "height": 1.05,
+      "width": 0.8235,
+      "depth": 0.6969,
+      "triangles": 14224,
+      "blades": 56,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "haute-doree",
+      "shape": "haute",
+      "material": "doree",
+      "label": "Hautes herbes · Herbe dorée",
+      "glb": "assets/haute-doree/haute-doree.glb",
+      "blend": "assets/haute-doree/haute-doree.blend",
+      "preview": "assets/haute-doree/haute-doree-preview.png",
+      "height": 1.05,
+      "width": 0.8235,
+      "depth": 0.6969,
+      "triangles": 14224,
+      "blades": 56,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "haute-mystique",
+      "shape": "haute",
+      "material": "mystique",
+      "label": "Hautes herbes · Mystique",
+      "glb": "assets/haute-mystique/haute-mystique.glb",
+      "blend": "assets/haute-mystique/haute-mystique.blend",
+      "preview": "assets/haute-mystique/haute-mystique-preview.png",
+      "height": 1.05,
+      "width": 0.8235,
+      "depth": 0.6969,
+      "triangles": 14224,
+      "blades": 56,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    }
+  ]
+}

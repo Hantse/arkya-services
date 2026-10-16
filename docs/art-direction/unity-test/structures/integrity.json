@@ -1,0 +1,309 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-15T17:55:36.694310+00:00",
+  "unity": "6000.6.6f1",
+  "scope": "Read-only file integrity after structure import and Edit/Play validation",
+  "existingUnityReferencesPackagesSettings": {
+    "filesChecked": 391,
+    "unchanged": 391,
+    "missing": [],
+    "changed": [],
+    "snapshotSha256": "290fc239e21e535aa3d02231a00570c010819cc95c798e8588b0c665c1d62ff1",
+    "roots": [
+      "Assets/Arkya/ArtDirection",
+      "Packages",
+      "ProjectSettings"
+    ]
+  },
+  "approvedDAReferences": [
+    {
+      "reference": "references/arbre-peint-v3",
+      "hash_manifest": "reference.json",
+      "files_checked": 15,
+      "unchanged": true
+    },
+    {
+      "reference": "mares-de-mana",
+      "hash_manifest": "approved-reference.json",
+      "files_checked": 65,
+      "unchanged": true
+    }
+  ],
+  "paintSourcesAndIdenticalCopies": [
+    {
+      "source": "sources/sawn-wood-painted.png",
+      "sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+      "prompt_present": true,
+      "identical_copies_checked": [
+        "textures/bois-basecolor.png",
+        "textures/timber-basecolor.png"
+      ]
+    },
+    {
+      "source": "sources/thatch-painted.png",
+      "sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+      "prompt_present": true,
+      "identical_copies_checked": [
+        "textures/chaume-basecolor.png",
+        "textures/rope-basecolor.png"
+      ]
+    },
+    {
+      "source": "../sources/stone-painted.png",
+      "sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+      "prompt_present": true,
+      "identical_copies_checked": [
+        "textures/pierre-basecolor.png",
+        "textures/mortar-basecolor.png"
+      ]
+    }
+  ],
+  "newBuildingAssetsAndFolders": {
+    "root": "Assets/Arkya/Building",
+    "assetsChecked": 37,
+    "foldersChecked": 7,
+    "metaFilesChecked": 44,
+    "missingMetaFiles": [],
+    "orphanedMetaFiles": [],
+    "newGuidsUniqueAcrossProjectAssets": true,
+    "guidCollisions": {},
+    "fileTypes": {
+      ".asset": 2,
+      ".cs": 3,
+      ".glb": 15,
+      ".mat": 1,
+      ".prefab": 15,
+      ".unity": 1
+    },
+    "assetGuids": {
+      "Assets/Arkya/Building": "39e97bb159b2e98419950c7fd1e54287",
+      "Assets/Arkya/Building/Authoring": "fb43e09a6516eb04e9b6dbe53a373db9",
+      "Assets/Arkya/Building/Authoring/BuildModuleAuthoring.cs": "216d627073f22c8459c5f58aee940ad4",
+      "Assets/Arkya/Building/Authoring/BuildModuleCatalog.cs": "aa8fe3f54b301ec43aab9420b52e6c54",
+      "Assets/Arkya/Building/Authoring/BuildSocketAuthoring.cs": "e067eb10ab7fc934cb485c19133a4b4e",
+      "Assets/Arkya/Building/Structures": "0f8ba00b2d1f41e4cb297a62866296f6",
+      "Assets/Arkya/Building/Structures/Models": "378db2e880172e54ab4114385283be20",
+      "Assets/Arkya/Building/Structures/Models/fondation-bois.glb": "b0b62c88d8d9fce468028a79a79531c9",
+      "Assets/Arkya/Building/Structures/Models/fondation-chaume.glb": "fefac2d9274c97f43893da827ccb6c86",
+      "Assets/Arkya/Building/Structures/Models/fondation-pierre.glb": "4d29659c8c31dfc4bb20d54ad3eb6990",
+      "Assets/Arkya/Building/Structures/Models/mur-fenetre-bois.glb": "abdf5b8eea1f4ec4485aecb6a020efdc",
+      "Assets/Arkya/Building/Structures/Models/mur-fenetre-chaume.glb": "31b7afa32bcbed64783161f492b08710",
+      "Assets/Arkya/Building/Structures/Models/mur-fenetre-pierre.glb": "17d349a490993a548b76653e3a7de6a0",
+      "Assets/Arkya/Building/Structures/Models/mur-plein-bois.glb": "517a872bd220ad047b6008a36ea55380",
+      "Assets/Arkya/Building/Structures/Models/mur-plein-chaume.glb": "4317bf03295908740b04cb433fc0c075",
+      "Assets/Arkya/Building/Structures/Models/mur-plein-pierre.glb": "519964c95f2703a4db25f9fc5b52feb5",
+      "Assets/Arkya/Building/Structures/Models/mur-porte-bois.glb": "f67ff3b6029e1c4459b03de58604f3e5",
+      "Assets/Arkya/Building/Structures/Models/mur-porte-chaume.glb": "a66e04c21cdc73242ad862628b453e5d",
+      "Assets/Arkya/Building/Structures/Models/mur-porte-pierre.glb": "581e9cba616b9b04bb44dd5f453a1eb9",
+      "Assets/Arkya/Building/Structures/Models/plafond-bois.glb": "30f8bd4be63d6c94b95fc5794abca71a",
+      "Assets/Arkya/Building/Structures/Models/plafond-chaume.glb": "a942e86624e8e19479a5ad24b0a5d354",
+      "Assets/Arkya/Building/Structures/Models/plafond-pierre.glb": "b41fedee646ff3e4aa9823e1e364b03e",
+      "Assets/Arkya/Building/Structures/Prefabs": "712db4a2b3aa6644895b88f1e384d09c",
+      "Assets/Arkya/Building/Structures/Prefabs/fondation-bois.prefab": "18822c665524a8640bea52b7c3daacf3",
+      "Assets/Arkya/Building/Structures/Prefabs/fondation-chaume.prefab": "6954b314a10251b468607f08fa6a41a2",
+      "Assets/Arkya/Building/Structures/Prefabs/fondation-pierre.prefab": "aa0ac9368b6599047b999b40020e6aec",
+      "Assets/Arkya/Building/Structures/Prefabs/mur-fenetre-bois.prefab": "a1f2557098194154e82a9aa114baac6b",
+      "Assets/Arkya/Building/Structures/Prefabs/mur-fenetre-chaume.prefab": "181b19127f60ccf4188f647dd7656c11",
+      "Assets/Arkya/Building/Structures/Prefabs/mur-fenetre-pierre.prefab": "3a1d51dcebb01b94f8f0f697889b4b5d",
+      "Assets/Arkya/Building/Structures/Prefabs/mur-plein-bois.prefab": "cc407b6110724364b820e34e994ac38b",
+      "Assets/Arkya/Building/Structures/Prefabs/mur-plein-chaume.prefab": "4c31752f252de564095791695e090a0f",
+      "Assets/Arkya/Building/Structures/Prefabs/mur-plein-pierre.prefab": "f27dd9f5ef90aac4c898f9e4f517401d",
+      "Assets/Arkya/Building/Structures/Prefabs/mur-porte-bois.prefab": "894511facbc703d46852eb81ca234b2e",
+      "Assets/Arkya/Building/Structures/Prefabs/mur-porte-chaume.prefab": "92739d3d7622cac43ab67b4c4601f0b6",
+      "Assets/Arkya/Building/Structures/Prefabs/mur-porte-pierre.prefab": "75018e62b9e8ed641bee94e03e5a9369",
+      "Assets/Arkya/Building/Structures/Prefabs/plafond-bois.prefab": "daee8334f1d37e14e8624bfcf2c9de92",
+      "Assets/Arkya/Building/Structures/Prefabs/plafond-chaume.prefab": "5a3d7201b65e8424ba27f319c03bc529",
+      "Assets/Arkya/Building/Structures/Prefabs/plafond-pierre.prefab": "4d78cd122ae181342a0ea43de5c0300d",
+      "Assets/Arkya/Building/Structures/Review": "474baa41dcda39c49b7f9d692f170573",
+      "Assets/Arkya/Building/Structures/Review/Ground.mat": "6ec5bb1c39cc9e044bb24b4f7f444109",
+      "Assets/Arkya/Building/Structures/Review/NeutralGrading.asset": "e6c7c74ff43d4594f93dd1c12d5973ea",
+      "Assets/Arkya/Building/Structures/Scenes": "62d962e56d504bd42b02666da5ca21e2",
+      "Assets/Arkya/Building/Structures/Scenes/StructureKitReview.unity": "53d7599a2f57d524eae1c9c5550e69bb",
+      "Assets/Arkya/Building/Structures/StructureCatalog.asset": "e8dce9201ab7872479db01c40893b829"
+    }
+  },
+  "sourceGLBCopies": [
+    {
+      "sourceAssetId": "fondation-chaume",
+      "source": "docs/art-direction/resources/structures/assets/fondation-chaume/fondation-chaume.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/fondation-chaume.glb",
+      "sha256": "59dc9536382561b0268bb0a60aaf55b9de4d1f9b12cfa92d1c565b7e9e4862cf",
+      "modelGuid": "fefac2d9274c97f43893da827ccb6c86",
+      "modelMetaSha256": "3335ab8410566d64103ab2867d9fdb7eef6a6003ce7a4f0a4dca415219e110a5",
+      "prefabGuid": "6954b314a10251b468607f08fa6a41a2",
+      "moduleId": "arkya.structure.foundation.thatch",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "fondation-bois",
+      "source": "docs/art-direction/resources/structures/assets/fondation-bois/fondation-bois.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/fondation-bois.glb",
+      "sha256": "1d00f2d63d1e22ea927ceb3423f31c6bbed00a85b9aa42ddad263ca425dc4359",
+      "modelGuid": "b0b62c88d8d9fce468028a79a79531c9",
+      "modelMetaSha256": "e496f50d5ce61bcf88467e26566222d724b172c9ff08df4a516a50223e103740",
+      "prefabGuid": "18822c665524a8640bea52b7c3daacf3",
+      "moduleId": "arkya.structure.foundation.wood",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "fondation-pierre",
+      "source": "docs/art-direction/resources/structures/assets/fondation-pierre/fondation-pierre.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/fondation-pierre.glb",
+      "sha256": "9e9baaa269e2403128725375ef174c1adb43b551692f4161f4fbf770d881e718",
+      "modelGuid": "4d29659c8c31dfc4bb20d54ad3eb6990",
+      "modelMetaSha256": "ba1942739d69a9ab8b6e5bfb1a40025d1b3293f76e275d3e3e8553235e50f61c",
+      "prefabGuid": "aa0ac9368b6599047b999b40020e6aec",
+      "moduleId": "arkya.structure.foundation.stone",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "mur-plein-chaume",
+      "source": "docs/art-direction/resources/structures/assets/mur-plein-chaume/mur-plein-chaume.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/mur-plein-chaume.glb",
+      "sha256": "44dc9fe5c53047e396de59899c67860eb234d8812c0466967a2ecae3afaad674",
+      "modelGuid": "4317bf03295908740b04cb433fc0c075",
+      "modelMetaSha256": "daaaf23bdceb70778867046150433e9435ec565650e62d6e525373040a35cc80",
+      "prefabGuid": "4c31752f252de564095791695e090a0f",
+      "moduleId": "arkya.structure.solid-wall.thatch",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "mur-plein-bois",
+      "source": "docs/art-direction/resources/structures/assets/mur-plein-bois/mur-plein-bois.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/mur-plein-bois.glb",
+      "sha256": "888432459461bd41670e624aa8bae24a5224fff2d9b46d776d1b765ee65e3f03",
+      "modelGuid": "517a872bd220ad047b6008a36ea55380",
+      "modelMetaSha256": "50724b780be7b6fe2291cfce525514322ea0477e35fc1cf6c5542298f00ed299",
+      "prefabGuid": "cc407b6110724364b820e34e994ac38b",
+      "moduleId": "arkya.structure.solid-wall.wood",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "mur-plein-pierre",
+      "source": "docs/art-direction/resources/structures/assets/mur-plein-pierre/mur-plein-pierre.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/mur-plein-pierre.glb",
+      "sha256": "2b5b67c73857b0c6c23a8053f5e93b9a40d84e591739561cbe186b875587cf49",
+      "modelGuid": "519964c95f2703a4db25f9fc5b52feb5",
+      "modelMetaSha256": "3e7ad8a2aab418d1f6cf93172825b2dcf8ec44a7765608bbc1d38eca4c682637",
+      "prefabGuid": "f27dd9f5ef90aac4c898f9e4f517401d",
+      "moduleId": "arkya.structure.solid-wall.stone",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "mur-fenetre-chaume",
+      "source": "docs/art-direction/resources/structures/assets/mur-fenetre-chaume/mur-fenetre-chaume.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/mur-fenetre-chaume.glb",
+      "sha256": "144300437efe0298da73f4e277d40327fda9ecb807cd89229339654ad1501817",
+      "modelGuid": "31b7afa32bcbed64783161f492b08710",
+      "modelMetaSha256": "7bab450a4917b1fdd6b667c157fe40109646bb8762bea9dd0c901e9722ebd162",
+      "prefabGuid": "181b19127f60ccf4188f647dd7656c11",
+      "moduleId": "arkya.structure.window-wall.thatch",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "mur-fenetre-bois",
+      "source": "docs/art-direction/resources/structures/assets/mur-fenetre-bois/mur-fenetre-bois.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/mur-fenetre-bois.glb",
+      "sha256": "9b440cd5634ae934ab610f5a85daac1fbb056243c6540ab7c13d7cb829eff265",
+      "modelGuid": "abdf5b8eea1f4ec4485aecb6a020efdc",
+      "modelMetaSha256": "65d3df83cf83253542e89050ca6a0e32b53f77a22d93136b64edd3b07910cbaf",
+      "prefabGuid": "a1f2557098194154e82a9aa114baac6b",
+      "moduleId": "arkya.structure.window-wall.wood",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "mur-fenetre-pierre",
+      "source": "docs/art-direction/resources/structures/assets/mur-fenetre-pierre/mur-fenetre-pierre.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/mur-fenetre-pierre.glb",
+      "sha256": "1cbda04d5ff8e0db0fb7a04285e55db00a6041864c3e7417e82748fbff8334c6",
+      "modelGuid": "17d349a490993a548b76653e3a7de6a0",
+      "modelMetaSha256": "7a59d8b8f69dfb56bc4b5d1cf49e115b5db0519b282d7b1c53fd55a982ffc7cc",
+      "prefabGuid": "3a1d51dcebb01b94f8f0f697889b4b5d",
+      "moduleId": "arkya.structure.window-wall.stone",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "mur-porte-chaume",
+      "source": "docs/art-direction/resources/structures/assets/mur-porte-chaume/mur-porte-chaume.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/mur-porte-chaume.glb",
+      "sha256": "23d6aca46d1fd166a2f9580477a7a6302ad8de4ebbb4c02fde5cba3a5523e964",
+      "modelGuid": "a66e04c21cdc73242ad862628b453e5d",
+      "modelMetaSha256": "430c381b82a71d3100a0758a8a937e7c88083ecedee79db90b0efe7b2feb5134",
+      "prefabGuid": "92739d3d7622cac43ab67b4c4601f0b6",
+      "moduleId": "arkya.structure.door-wall.thatch",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "mur-porte-bois",
+      "source": "docs/art-direction/resources/structures/assets/mur-porte-bois/mur-porte-bois.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/mur-porte-bois.glb",
+      "sha256": "4bd41585442bb95cdaa0c6bdcf97b85dae4b4dd8ae1e0e5dcb5895bb94d2cdb0",
+      "modelGuid": "f67ff3b6029e1c4459b03de58604f3e5",
+      "modelMetaSha256": "23f727917aa0e71c5b57eb496f82cc7967b2ade6cc0639fb3c87be7c6189284c",
+      "prefabGuid": "894511facbc703d46852eb81ca234b2e",
+      "moduleId": "arkya.structure.door-wall.wood",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "mur-porte-pierre",
+      "source": "docs/art-direction/resources/structures/assets/mur-porte-pierre/mur-porte-pierre.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/mur-porte-pierre.glb",
+      "sha256": "472732859daa1de4c3b0dbdcc3ef97410b55dcf942f51f278b0050f2886a88c4",
+      "modelGuid": "581e9cba616b9b04bb44dd5f453a1eb9",
+      "modelMetaSha256": "c6f9266571fd2676ad434f795362a95b89961f3dbec5d277dc755e7b1ca6ca7c",
+      "prefabGuid": "75018e62b9e8ed641bee94e03e5a9369",
+      "moduleId": "arkya.structure.door-wall.stone",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "plafond-chaume",
+      "source": "docs/art-direction/resources/structures/assets/plafond-chaume/plafond-chaume.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/plafond-chaume.glb",
+      "sha256": "cfbf1a63d4cbc49bf2c60698e1107b1eb6486e96c2540e80e776b32713fa8b43",
+      "modelGuid": "a942e86624e8e19479a5ad24b0a5d354",
+      "modelMetaSha256": "cf192561db87c866d8988f68925939c8245676ea4c7e36b0048af4112fc25205",
+      "prefabGuid": "5a3d7201b65e8424ba27f319c03bc529",
+      "moduleId": "arkya.structure.ceiling.thatch",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "plafond-bois",
+      "source": "docs/art-direction/resources/structures/assets/plafond-bois/plafond-bois.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/plafond-bois.glb",
+      "sha256": "feedd2f4eb0bd4113e6db0e01f957ca665fce09786db48390b880262c3e3fc82",
+      "modelGuid": "30f8bd4be63d6c94b95fc5794abca71a",
+      "modelMetaSha256": "b718433fd1c0d7d7f263515fd931e1a6b61405f018d5215f5ce557844e1fc766",
+      "prefabGuid": "daee8334f1d37e14e8624bfcf2c9de92",
+      "moduleId": "arkya.structure.ceiling.wood",
+      "identical": true
+    },
+    {
+      "sourceAssetId": "plafond-pierre",
+      "source": "docs/art-direction/resources/structures/assets/plafond-pierre/plafond-pierre.glb",
+      "target": "Assets/Arkya/Building/Structures/Models/plafond-pierre.glb",
+      "sha256": "86291f91b56a9879b2dad61673c57c2935ad635425ad007e5c0c94a0f0f06564",
+      "modelGuid": "b41fedee646ff3e4aa9823e1e364b03e",
+      "modelMetaSha256": "2b01fb47f1f3626ac82952355d8ed78f782a50f1519697e9c5da0fa8583df1f4",
+      "prefabGuid": "4d78cd122ae181342a0ea43de5c0300d",
+      "moduleId": "arkya.structure.ceiling.stone",
+      "identical": true
+    }
+  ],
+  "stableLogicalIdsAndAssetGuids": {
+    "moduleCount": 15,
+    "modelGuidCount": 15,
+    "prefabGuidCount": 15,
+    "catalogGuid": "e8dce9201ab7872479db01c40893b829",
+    "editAndPlayAgree": true
+  },
+  "validationEvidence": {
+    "editReport": "validation.json",
+    "playReport": "playmode-validation.json",
+    "editPhysicsMethod": "Collider.Raycast against each declared BoxCollider in preview scene",
+    "playPhysicsMethod": "PhysicsScene.Raycast in independent simulated 3D world",
+    "colliders": 30,
+    "sockets": 90,
+    "physicsRaycastsPerMode": 6765,
+    "clearApertureRaycastsPerMode": 1146
+  }
+}

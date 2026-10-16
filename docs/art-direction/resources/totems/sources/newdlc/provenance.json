@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "title": "3d wolf",
+  "author": "NewDLC",
+  "sourcePage": "https://opengameart.org/content/3d-wolf",
+  "sourcePublishedDate": "2016-09-02",
+  "downloadedDate": "2026-10-16",
+  "downloadUrl": "https://opengameart.org/sites/default/files/3dwolf_blend.zip",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "licenseTextUrl": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt",
+  "sourceCredit": "3d wolf by NewDLC, CC0 1.0. Source: https://opengameart.org/content/3d-wolf",
+  "files": {
+    "3dwolf_blend-original.zip": "6bd5e25ce8d9f9661f74199a755e7827927545973fa4081eecb4598a9d5e49dc",
+    "dog2.blend": "6f8b59c31c8dd39725b5c533c9d08b8f9216e592177b39218c486d914fe9af65",
+    "dog2Color.png": "a04c1da566be5c50a42f62b66199f97c13ad3f5ce2dde0f84ed75a61b0e292cb",
+    "dog2Normal.png": "6d536f2279b816aca1556e9eee72f472e2d091c14127f988991d87e78d083347",
+    "dog2Roughness.png": "600a8c9f99c14b70cc744ced86c85bd50f025c18d6d885ab9fd007ac1e6d1630",
+    "dog2specular.png": "bd375199e6732cda8e7deb3e799962c4f5e3f1461a83963b2916c4fa11c18c12",
+    "CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+  },
+  "inspection": {
+    "blenderVersion": "4.5.14",
+    "autoExecuteScripts": false,
+    "meshCount": 1,
+    "vertexCount": 2923,
+    "triangleCount": 5358,
+    "uvLayerCount": 1,
+    "boneCount": 36,
+    "actionCount": 0,
+    "colorTextureResolution": [1024, 1024]
+  },
+  "originalsModified": false
+}

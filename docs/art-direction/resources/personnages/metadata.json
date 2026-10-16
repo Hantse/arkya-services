@@ -1,0 +1,450 @@
+{
+  "schemaVersion": 1,
+  "sourceAttribution": "Adapted from Rain and Snow by Blender Studio / Blender Foundation, CC BY 4.0. Arkya modifications: static pose, costumes, proportions, surface paint, elf ears, hairstyles and optimization. See CREDITS.md.",
+  "models": [
+    {
+      "id": "human-a-short",
+      "race": "human",
+      "silhouette": "a",
+      "hair": "short",
+      "glb": "models/human-a-short.glb",
+      "blend": "assets/human-a-short.blend",
+      "triangles": 74749,
+      "heightMeters": 1.75,
+      "boundsBlenderZUp": [
+        [
+          -0.3558572828769684,
+          -0.2088031768798828,
+          0.0
+        ],
+        [
+          0.385216623544693,
+          0.22644983232021332,
+          1.7499998807907104
+        ]
+      ],
+      "materials": [
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Ivory",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin"
+      ],
+      "source": "snow-ether-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "elf-a-braid",
+      "race": "elf",
+      "silhouette": "a",
+      "hair": "braid",
+      "glb": "models/elf-a-braid.glb",
+      "blend": "assets/elf-a-braid.blend",
+      "triangles": 81785,
+      "heightMeters": 1.85,
+      "boundsBlenderZUp": [
+        [
+          -0.34609663486480713,
+          -0.20969805121421814,
+          0.0
+        ],
+        [
+          0.37465065717697144,
+          0.22742033004760742,
+          1.8499999046325684
+        ]
+      ],
+      "materials": [
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Ivory",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin"
+      ],
+      "source": "snow-ether-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "human-a-long",
+      "race": "human",
+      "silhouette": "a",
+      "hair": "long",
+      "glb": "models/human-a-long.glb",
+      "blend": "assets/human-a-long.blend",
+      "triangles": 79729,
+      "heightMeters": 1.75,
+      "boundsBlenderZUp": [
+        [
+          -0.3558572828769684,
+          -0.2088031768798828,
+          0.0
+        ],
+        [
+          0.385216623544693,
+          0.22644983232021332,
+          1.7499998807907104
+        ]
+      ],
+      "materials": [
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Ivory",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin"
+      ],
+      "source": "snow-ether-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "human-a-braid",
+      "race": "human",
+      "silhouette": "a",
+      "hair": "braid",
+      "glb": "models/human-a-braid.glb",
+      "blend": "assets/human-a-braid.blend",
+      "triangles": 81785,
+      "heightMeters": 1.75,
+      "boundsBlenderZUp": [
+        [
+          -0.3558572828769684,
+          -0.2088031768798828,
+          0.0
+        ],
+        [
+          0.385216623544693,
+          0.22644983232021332,
+          1.7499998807907104
+        ]
+      ],
+      "materials": [
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Ivory",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin"
+      ],
+      "source": "snow-ether-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "elf-a-short",
+      "race": "elf",
+      "silhouette": "a",
+      "hair": "short",
+      "glb": "models/elf-a-short.glb",
+      "blend": "assets/elf-a-short.blend",
+      "triangles": 74749,
+      "heightMeters": 1.85,
+      "boundsBlenderZUp": [
+        [
+          -0.34609663486480713,
+          -0.20969805121421814,
+          0.0
+        ],
+        [
+          0.37465065717697144,
+          0.22742033004760742,
+          1.8499999046325684
+        ]
+      ],
+      "materials": [
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Ivory",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin"
+      ],
+      "source": "snow-ether-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "elf-a-long",
+      "race": "elf",
+      "silhouette": "a",
+      "hair": "long",
+      "glb": "models/elf-a-long.glb",
+      "blend": "assets/elf-a-long.blend",
+      "triangles": 79729,
+      "heightMeters": 1.85,
+      "boundsBlenderZUp": [
+        [
+          -0.34609663486480713,
+          -0.20969805121421814,
+          0.0
+        ],
+        [
+          0.37465065717697144,
+          0.22742033004760742,
+          1.8499999046325684
+        ]
+      ],
+      "materials": [
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Ivory",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin"
+      ],
+      "source": "snow-ether-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "human-b-short",
+      "race": "human",
+      "silhouette": "b",
+      "hair": "short",
+      "glb": "models/human-b-short.glb",
+      "blend": "assets/human-b-short.blend",
+      "triangles": 87668,
+      "heightMeters": 1.75,
+      "boundsBlenderZUp": [
+        [
+          -0.3564537763595581,
+          -0.22471757233142853,
+          0.0
+        ],
+        [
+          0.3167029321193695,
+          0.27250000834465027,
+          1.75
+        ]
+      ],
+      "materials": [
+        "Cloth",
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Leather",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin",
+        "Thread"
+      ],
+      "source": "rain-ancients-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "elf-b-braid",
+      "race": "elf",
+      "silhouette": "b",
+      "hair": "braid",
+      "glb": "models/elf-b-braid.glb",
+      "blend": "assets/elf-b-braid.blend",
+      "triangles": 94704,
+      "heightMeters": 1.85,
+      "boundsBlenderZUp": [
+        [
+          -0.3466767370700836,
+          -0.2256806492805481,
+          0.0
+        ],
+        [
+          0.30801621079444885,
+          0.2736678421497345,
+          1.850000023841858
+        ]
+      ],
+      "materials": [
+        "Cloth",
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Leather",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin",
+        "Thread"
+      ],
+      "source": "rain-ancients-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "human-b-long",
+      "race": "human",
+      "silhouette": "b",
+      "hair": "long",
+      "glb": "models/human-b-long.glb",
+      "blend": "assets/human-b-long.blend",
+      "triangles": 92648,
+      "heightMeters": 1.75,
+      "boundsBlenderZUp": [
+        [
+          -0.3564537763595581,
+          -0.22471757233142853,
+          0.0
+        ],
+        [
+          0.3167029321193695,
+          0.27250000834465027,
+          1.75
+        ]
+      ],
+      "materials": [
+        "Cloth",
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Leather",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin",
+        "Thread"
+      ],
+      "source": "rain-ancients-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "human-b-braid",
+      "race": "human",
+      "silhouette": "b",
+      "hair": "braid",
+      "glb": "models/human-b-braid.glb",
+      "blend": "assets/human-b-braid.blend",
+      "triangles": 94704,
+      "heightMeters": 1.75,
+      "boundsBlenderZUp": [
+        [
+          -0.3564537763595581,
+          -0.22471757233142853,
+          0.0
+        ],
+        [
+          0.3167029321193695,
+          0.27250000834465027,
+          1.75
+        ]
+      ],
+      "materials": [
+        "Cloth",
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Leather",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin",
+        "Thread"
+      ],
+      "source": "rain-ancients-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "elf-b-short",
+      "race": "elf",
+      "silhouette": "b",
+      "hair": "short",
+      "glb": "models/elf-b-short.glb",
+      "blend": "assets/elf-b-short.blend",
+      "triangles": 87668,
+      "heightMeters": 1.85,
+      "boundsBlenderZUp": [
+        [
+          -0.3466767370700836,
+          -0.2256806492805481,
+          0.0
+        ],
+        [
+          0.30801621079444885,
+          0.2736678421497345,
+          1.850000023841858
+        ]
+      ],
+      "materials": [
+        "Cloth",
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Leather",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin",
+        "Thread"
+      ],
+      "source": "rain-ancients-v3",
+      "vertexPainted": true
+    },
+    {
+      "id": "elf-b-long",
+      "race": "elf",
+      "silhouette": "b",
+      "hair": "long",
+      "glb": "models/elf-b-long.glb",
+      "blend": "assets/elf-b-long.blend",
+      "triangles": 92648,
+      "heightMeters": 1.85,
+      "boundsBlenderZUp": [
+        [
+          -0.3466767370700836,
+          -0.2256806492805481,
+          0.0
+        ],
+        [
+          0.30801621079444885,
+          0.2736678421497345,
+          1.850000023841858
+        ]
+      ],
+      "materials": [
+        "Cloth",
+        "DarkLeather",
+        "EyesWhite",
+        "Gem",
+        "Hair",
+        "Iris",
+        "Leather",
+        "Metal",
+        "OutfitAccent",
+        "Pupil",
+        "Skin",
+        "Thread"
+      ],
+      "source": "rain-ancients-v3",
+      "vertexPainted": true
+    }
+  ]
+}

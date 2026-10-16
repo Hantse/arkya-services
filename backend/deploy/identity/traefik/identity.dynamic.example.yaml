@@ -1,0 +1,28 @@
+# Dynamic configuration for the existing external Traefik v3 file provider.
+# Use the HTTPS entryPoint name configured on that Traefik instance.
+http:
+  routers:
+    arkya-identity:
+      entryPoints: [websecure]
+      rule: >-
+        Host(`identity.arkya.online`) &&
+        (Path(`/health`) ||
+         Path(`/v1/auth/discord/challenges`) ||
+         PathRegexp(`^/v1/auth/discord/authorize/[a-f0-9]{32}$`) ||
+         Path(`/v1/auth/discord/callback`) ||
+         Path(`/v1/auth/discord/exchange`) ||
+         Path(`/v1/auth/me`) ||
+         Path(`/v1/auth/logout`))
+      service: arkya-identity
+      # Uses a certificate already available on Traefik.
+      # For automatic issuance, add certResolver with the existing resolver name.
+      tls: {}
+      observability:
+        accessLogs: false
+        tracing: false
+  services:
+    arkya-identity:
+      loadBalancer:
+        passHostHeader: true
+        servers:
+          - url: http://192.168.100.218:80

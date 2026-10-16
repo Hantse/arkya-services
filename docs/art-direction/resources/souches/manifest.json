@@ -1,0 +1,281 @@
+{
+  "family": "souches",
+  "artistic_status": "approved",
+  "approved_at": "2026-10-15",
+  "shapes": [
+    {
+      "id": "basse",
+      "label": "Souche basse",
+      "height": 0.35,
+      "description": "Coupe large et basse, six racines en contreforts et cernes décentrés."
+    },
+    {
+      "id": "tordue",
+      "label": "Souche tordue",
+      "height": 0.65,
+      "description": "Tronc courbé, coupe oblique et ancien départ de branche latéral."
+    },
+    {
+      "id": "creuse",
+      "label": "Souche creuse",
+      "height": 0.95,
+      "description": "Large ouverture réelle, paroi épaisse et cavité profonde au fond fermé."
+    },
+    {
+      "id": "brisee",
+      "label": "Vieille souche brisée",
+      "height": 1.35,
+      "description": "Silhouette haute fendue en pans arrondis, entaille et racines irrégulières."
+    }
+  ],
+  "materials": [
+    {
+      "id": "moussu",
+      "label": "Ancien moussu",
+      "swatch": "#836b3d",
+      "description": "Écorce miel et brun, mousse verte localisée, bois de coupe chaud."
+    },
+    {
+      "id": "mystique",
+      "label": "Mystique",
+      "swatch": "#6b596a",
+      "description": "Brun violet feutré, creux froids et accents cyan contenus."
+    },
+    {
+      "id": "brule",
+      "label": "Bois brûlé",
+      "swatch": "#49434b",
+      "description": "Charbon aux ombres colorées, coupe sombre et quelques fines braises."
+    }
+  ],
+  "assets": [
+    {
+      "id": "basse-moussu",
+      "shape": "basse",
+      "material": "moussu",
+      "label": "Souche basse · Ancien moussu",
+      "glb": "assets/basse-moussu/basse-moussu.glb",
+      "blend": "assets/basse-moussu/basse-moussu.blend",
+      "preview": "assets/basse-moussu/basse-moussu-preview.png",
+      "height": 0.35,
+      "width": 1.0054,
+      "depth": 0.9182,
+      "triangles": 17408,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "basse-mystique",
+      "shape": "basse",
+      "material": "mystique",
+      "label": "Souche basse · Mystique",
+      "glb": "assets/basse-mystique/basse-mystique.glb",
+      "blend": "assets/basse-mystique/basse-mystique.blend",
+      "preview": "assets/basse-mystique/basse-mystique-preview.png",
+      "height": 0.35,
+      "width": 1.0054,
+      "depth": 0.9182,
+      "triangles": 17408,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "basse-brule",
+      "shape": "basse",
+      "material": "brule",
+      "label": "Souche basse · Bois brûlé",
+      "glb": "assets/basse-brule/basse-brule.glb",
+      "blend": "assets/basse-brule/basse-brule.blend",
+      "preview": "assets/basse-brule/basse-brule-preview.png",
+      "height": 0.35,
+      "width": 1.0054,
+      "depth": 0.9182,
+      "triangles": 17408,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "tordue-moussu",
+      "shape": "tordue",
+      "material": "moussu",
+      "label": "Souche tordue · Ancien moussu",
+      "glb": "assets/tordue-moussu/tordue-moussu.glb",
+      "blend": "assets/tordue-moussu/tordue-moussu.blend",
+      "preview": "assets/tordue-moussu/tordue-moussu-preview.png",
+      "height": 0.65,
+      "width": 1.003,
+      "depth": 0.8301,
+      "triangles": 21504,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "tordue-mystique",
+      "shape": "tordue",
+      "material": "mystique",
+      "label": "Souche tordue · Mystique",
+      "glb": "assets/tordue-mystique/tordue-mystique.glb",
+      "blend": "assets/tordue-mystique/tordue-mystique.blend",
+      "preview": "assets/tordue-mystique/tordue-mystique-preview.png",
+      "height": 0.65,
+      "width": 1.003,
+      "depth": 0.8301,
+      "triangles": 21504,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "tordue-brule",
+      "shape": "tordue",
+      "material": "brule",
+      "label": "Souche tordue · Bois brûlé",
+      "glb": "assets/tordue-brule/tordue-brule.glb",
+      "blend": "assets/tordue-brule/tordue-brule.blend",
+      "preview": "assets/tordue-brule/tordue-brule-preview.png",
+      "height": 0.65,
+      "width": 1.003,
+      "depth": 0.8301,
+      "triangles": 21504,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "creuse-moussu",
+      "shape": "creuse",
+      "material": "moussu",
+      "label": "Souche creuse · Ancien moussu",
+      "glb": "assets/creuse-moussu/creuse-moussu.glb",
+      "blend": "assets/creuse-moussu/creuse-moussu.blend",
+      "preview": "assets/creuse-moussu/creuse-moussu-preview.png",
+      "height": 0.95,
+      "width": 1.3482,
+      "depth": 1.0842,
+      "triangles": 19200,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "creuse-mystique",
+      "shape": "creuse",
+      "material": "mystique",
+      "label": "Souche creuse · Mystique",
+      "glb": "assets/creuse-mystique/creuse-mystique.glb",
+      "blend": "assets/creuse-mystique/creuse-mystique.blend",
+      "preview": "assets/creuse-mystique/creuse-mystique-preview.png",
+      "height": 0.95,
+      "width": 1.3482,
+      "depth": 1.0842,
+      "triangles": 19200,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "creuse-brule",
+      "shape": "creuse",
+      "material": "brule",
+      "label": "Souche creuse · Bois brûlé",
+      "glb": "assets/creuse-brule/creuse-brule.glb",
+      "blend": "assets/creuse-brule/creuse-brule.blend",
+      "preview": "assets/creuse-brule/creuse-brule-preview.png",
+      "height": 0.95,
+      "width": 1.3482,
+      "depth": 1.0842,
+      "triangles": 19200,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "brisee-moussu",
+      "shape": "brisee",
+      "material": "moussu",
+      "label": "Vieille souche brisée · Ancien moussu",
+      "glb": "assets/brisee-moussu/brisee-moussu.glb",
+      "blend": "assets/brisee-moussu/brisee-moussu.blend",
+      "preview": "assets/brisee-moussu/brisee-moussu-preview.png",
+      "height": 1.35,
+      "width": 1.4172,
+      "depth": 1.1792,
+      "triangles": 23296,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "brisee-mystique",
+      "shape": "brisee",
+      "material": "mystique",
+      "label": "Vieille souche brisée · Mystique",
+      "glb": "assets/brisee-mystique/brisee-mystique.glb",
+      "blend": "assets/brisee-mystique/brisee-mystique.blend",
+      "preview": "assets/brisee-mystique/brisee-mystique-preview.png",
+      "height": 1.35,
+      "width": 1.4172,
+      "depth": 1.1792,
+      "triangles": 23296,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "brisee-brule",
+      "shape": "brisee",
+      "material": "brule",
+      "label": "Vieille souche brisée · Bois brûlé",
+      "glb": "assets/brisee-brule/brisee-brule.glb",
+      "blend": "assets/brisee-brule/brisee-brule.blend",
+      "preview": "assets/brisee-brule/brisee-brule-preview.png",
+      "height": 1.35,
+      "width": 1.4172,
+      "depth": 1.1792,
+      "triangles": 23296,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    }
+  ]
+}

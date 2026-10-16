@@ -1,0 +1,107 @@
+{
+  "id": "plafond-pierre",
+  "shape": "plafond",
+  "material": "pierre",
+  "label": "Plafond · Pierre",
+  "glb": "assets/plafond-pierre/plafond-pierre.glb",
+  "blend": "assets/plafond-pierre/plafond-pierre.blend",
+  "preview": "assets/plafond-pierre/plafond-pierre-preview.png",
+  "height": 0.1,
+  "width": 1.0,
+  "depth": 1.0,
+  "nominal_dimensions": {
+    "width": 1.0,
+    "height": 0.1,
+    "depth": 1.0
+  },
+  "triangles": 1880,
+  "materials_count": 2,
+  "texture_resolution": [
+    1254,
+    1254
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "gltf_up_axis": "Y",
+  "snap_points": [
+    {
+      "name": "Snap_Left",
+      "position_m": [
+        -0.5,
+        0.05,
+        0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Right",
+      "position_m": [
+        0.5,
+        0.05,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Bottom",
+      "position_m": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Top",
+      "position_m": [
+        0,
+        0.1,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Front",
+      "position_m": [
+        0,
+        0.05,
+        0.5
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Snap_Back",
+      "position_m": [
+        0,
+        0.05,
+        -0.5
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "snap_coordinate_system": "glTF Y-up, metres, root-local"
+}

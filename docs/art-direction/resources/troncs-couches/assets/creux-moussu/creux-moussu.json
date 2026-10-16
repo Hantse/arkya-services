@@ -1,0 +1,19 @@
+{
+  "id": "creux-moussu",
+  "shape": "creux",
+  "material": "moussu",
+  "label": "Tronc creux · Ancien moussu",
+  "glb": "assets/creux-moussu/creux-moussu.glb",
+  "blend": "assets/creux-moussu/creux-moussu.blend",
+  "preview": "assets/creux-moussu/creux-moussu-preview.png",
+  "height": 0.6765,
+  "width": 2.8,
+  "depth": 0.8517,
+  "triangles": 10752,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

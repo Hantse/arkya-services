@@ -1,0 +1,19 @@
+{
+  "id": "fourchu-mystique",
+  "shape": "fourchu",
+  "material": "mystique",
+  "label": "Grand tronc fourchu · Mystique",
+  "glb": "assets/fourchu-mystique/fourchu-mystique.glb",
+  "blend": "assets/fourchu-mystique/fourchu-mystique.blend",
+  "preview": "assets/fourchu-mystique/fourchu-mystique-preview.png",
+  "height": 0.7707,
+  "width": 4.2,
+  "depth": 1.8639,
+  "triangles": 13898,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

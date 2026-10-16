@@ -1,0 +1,24 @@
+{
+  "id": "02-bloc-oblique-02-gres-chaud",
+  "shape": "02-bloc-oblique",
+  "material": "02-gres-chaud",
+  "label": "Bloc oblique · Grès chaud",
+  "glb": "02-bloc-oblique/02-gres-chaud/02-bloc-oblique-02-gres-chaud.glb",
+  "blend": "02-bloc-oblique/02-gres-chaud/02-bloc-oblique-02-gres-chaud.blend",
+  "preview": "02-bloc-oblique/02-gres-chaud/02-bloc-oblique-02-gres-chaud-preview.png",
+  "height": 0.9,
+  "width": 0.9127,
+  "depth": 0.6505,
+  "triangles": 7820,
+  "vertices": 3912,
+  "textures_size": [
+    2048,
+    2048
+  ],
+  "paint_contrast": 0.75,
+  "source": "../sources/stone-painted.png",
+  "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+  "mesh_count": 1,
+  "pivot": "Centered X/Y, lowest point Z=0",
+  "gltf_up_axis": "Y"
+}

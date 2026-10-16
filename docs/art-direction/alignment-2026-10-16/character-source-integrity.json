@@ -1,0 +1,45 @@
+{
+  "checked": 124,
+  "mismatches": [
+    {
+      "path": "Runtime\\Arkya.Characters.Runtime.asmdef",
+      "identical": false
+    },
+    {
+      "path": "Runtime\\Playtest\\CharacterLocalPlaytest.cs",
+      "identical": false
+    },
+    {
+      "path": "Runtime\\Services\\CharacterServiceClient.cs",
+      "identical": false
+    },
+    {
+      "path": "Runtime\\UI\\CharacterCreation.uss",
+      "identical": false
+    },
+    {
+      "path": "Runtime\\UI\\CharacterCreation.uxml",
+      "identical": false
+    },
+    {
+      "path": "Runtime\\UI\\CharacterCreationScreen.cs",
+      "identical": false
+    },
+    {
+      "path": "Runtime\\UI\\DiscordSocialPanel.cs",
+      "identical": false
+    },
+    {
+      "path": "Runtime\\UI\\DiscordSocialPanel.cs.meta",
+      "identical": false
+    },
+    {
+      "path": "Tests\\Editor\\DiscordSocialPanelRuntimeTests.cs",
+      "identical": false
+    },
+    {
+      "path": "Tests\\Editor\\DiscordSocialPanelRuntimeTests.cs.meta",
+      "identical": false
+    }
+  ]
+}

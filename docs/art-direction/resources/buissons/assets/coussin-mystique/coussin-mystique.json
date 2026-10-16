@@ -1,0 +1,19 @@
+{
+  "id": "coussin-mystique",
+  "shape": "coussin",
+  "material": "mystique",
+  "label": "Coussin bas · Mystique",
+  "glb": "assets/coussin-mystique/coussin-mystique.glb",
+  "blend": "assets/coussin-mystique/coussin-mystique.blend",
+  "preview": "assets/coussin-mystique/coussin-mystique-preview.png",
+  "height": 0.45,
+  "width": 0.97,
+  "depth": 0.7554,
+  "triangles": 21220,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

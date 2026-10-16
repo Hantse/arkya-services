@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "errors": [],
+  "triangles": 18172,
+  "materials": 6,
+  "embedded_images": 5,
+  "animations": [
+    "ManaFlow"
+  ],
+  "animated_nodes": 15,
+  "animation_duration": 6
+}

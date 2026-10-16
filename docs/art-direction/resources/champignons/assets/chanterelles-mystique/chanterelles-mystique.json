@@ -1,0 +1,20 @@
+{
+  "id": "chanterelles-mystique",
+  "shape": "chanterelles",
+  "material": "mystique",
+  "label": "Chanterelles en éventail · Mystique boréal",
+  "glb": "assets/chanterelles-mystique/chanterelles-mystique.glb",
+  "blend": "assets/chanterelles-mystique/chanterelles-mystique.blend",
+  "preview": "assets/chanterelles-mystique/chanterelles-mystique-preview.png",
+  "height": 0.6,
+  "width": 0.8882,
+  "depth": 0.7102,
+  "triangles": 16800,
+  "mushrooms": 3,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

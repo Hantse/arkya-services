@@ -1,0 +1,651 @@
+{
+  "success": true,
+  "checked_at": "2026-10-15T19:42:46.381205+00:00",
+  "asset_count": 36,
+  "http_paths": [
+    {
+      "path": "viewer/index.html",
+      "status": 200
+    },
+    {
+      "path": "viewer/viewer.js",
+      "status": 200
+    },
+    {
+      "path": "catalogue.json",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/comparaison-tailles.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/comparaison-sockets.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/comparaison-couleurs.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur/hache-azur.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur/hache-azur.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur/hache-azur-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur-sockets-1/hache-azur-sockets-1.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur-sockets-1/hache-azur-sockets-1.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur-sockets-1/hache-azur-sockets-1-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur-sockets-2/hache-azur-sockets-2.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur-sockets-2/hache-azur-sockets-2.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur-sockets-2/hache-azur-sockets-2-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur-sockets-3/hache-azur-sockets-3.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur-sockets-3/hache-azur-sockets-3.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-azur-sockets-3/hache-azur-sockets-3-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange/hache-orange.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange/hache-orange.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange/hache-orange-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange-sockets-1/hache-orange-sockets-1.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange-sockets-1/hache-orange-sockets-1.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange-sockets-1/hache-orange-sockets-1-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange-sockets-2/hache-orange-sockets-2.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange-sockets-2/hache-orange-sockets-2.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange-sockets-2/hache-orange-sockets-2-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange-sockets-3/hache-orange-sockets-3.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange-sockets-3/hache-orange-sockets-3.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-orange-sockets-3/hache-orange-sockets-3-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert/hache-vert.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert/hache-vert.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert/hache-vert-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert-sockets-1/hache-vert-sockets-1.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert-sockets-1/hache-vert-sockets-1.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert-sockets-1/hache-vert-sockets-1-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert-sockets-2/hache-vert-sockets-2.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert-sockets-2/hache-vert-sockets-2.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert-sockets-2/hache-vert-sockets-2-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert-sockets-3/hache-vert-sockets-3.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert-sockets-3/hache-vert-sockets-3.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/hache-vert-sockets-3/hache-vert-sockets-3-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur/pioche-azur.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur/pioche-azur.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur/pioche-azur-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur-sockets-1/pioche-azur-sockets-1.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur-sockets-1/pioche-azur-sockets-1.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur-sockets-1/pioche-azur-sockets-1-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur-sockets-2/pioche-azur-sockets-2.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur-sockets-2/pioche-azur-sockets-2.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur-sockets-2/pioche-azur-sockets-2-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur-sockets-3/pioche-azur-sockets-3.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur-sockets-3/pioche-azur-sockets-3.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-azur-sockets-3/pioche-azur-sockets-3-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange/pioche-orange.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange/pioche-orange.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange/pioche-orange-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange-sockets-1/pioche-orange-sockets-1.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange-sockets-1/pioche-orange-sockets-1.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange-sockets-1/pioche-orange-sockets-1-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange-sockets-2/pioche-orange-sockets-2.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange-sockets-2/pioche-orange-sockets-2.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange-sockets-2/pioche-orange-sockets-2-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange-sockets-3/pioche-orange-sockets-3.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange-sockets-3/pioche-orange-sockets-3.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-orange-sockets-3/pioche-orange-sockets-3-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert/pioche-vert.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert/pioche-vert.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert/pioche-vert-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert-sockets-1/pioche-vert-sockets-1.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert-sockets-1/pioche-vert-sockets-1.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert-sockets-1/pioche-vert-sockets-1-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert-sockets-2/pioche-vert-sockets-2.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert-sockets-2/pioche-vert-sockets-2.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert-sockets-2/pioche-vert-sockets-2-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert-sockets-3/pioche-vert-sockets-3.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert-sockets-3/pioche-vert-sockets-3.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/pioche-vert-sockets-3/pioche-vert-sockets-3-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur/faucille-azur.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur/faucille-azur.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur/faucille-azur-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur-sockets-1/faucille-azur-sockets-1.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur-sockets-1/faucille-azur-sockets-1.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur-sockets-1/faucille-azur-sockets-1-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur-sockets-2/faucille-azur-sockets-2.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur-sockets-2/faucille-azur-sockets-2.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur-sockets-2/faucille-azur-sockets-2-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur-sockets-3/faucille-azur-sockets-3.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur-sockets-3/faucille-azur-sockets-3.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-azur-sockets-3/faucille-azur-sockets-3-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange/faucille-orange.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange/faucille-orange.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange/faucille-orange-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange-sockets-1/faucille-orange-sockets-1.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange-sockets-1/faucille-orange-sockets-1.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange-sockets-1/faucille-orange-sockets-1-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange-sockets-2/faucille-orange-sockets-2.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange-sockets-2/faucille-orange-sockets-2.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange-sockets-2/faucille-orange-sockets-2-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange-sockets-3/faucille-orange-sockets-3.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange-sockets-3/faucille-orange-sockets-3.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-orange-sockets-3/faucille-orange-sockets-3-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert/faucille-vert.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert/faucille-vert.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert/faucille-vert-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert-sockets-1/faucille-vert-sockets-1.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert-sockets-1/faucille-vert-sockets-1.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert-sockets-1/faucille-vert-sockets-1-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert-sockets-2/faucille-vert-sockets-2.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert-sockets-2/faucille-vert-sockets-2.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert-sockets-2/faucille-vert-sockets-2-preview.png",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert-sockets-3/faucille-vert-sockets-3.glb",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert-sockets-3/faucille-vert-sockets-3.blend",
+      "status": 200
+    },
+    {
+      "path": "outils-invoques/assets/faucille-vert-sockets-3/faucille-vert-sockets-3-preview.png",
+      "status": 200
+    }
+  ],
+  "new_readme_links_valid": true,
+  "missing_readme_links": [],
+  "ui_observations": {
+    "previous_axe_pickaxe_checks": {
+      "selections": [
+        {
+          "shape": "hache",
+          "color": "orange",
+          "sockets": 3,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange-sockets-3/hache-orange-sockets-3.glb"
+        },
+        {
+          "shape": "hache",
+          "color": "orange",
+          "sockets": 0,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange/hache-orange.glb"
+        },
+        {
+          "shape": "hache",
+          "color": "orange",
+          "sockets": 1,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange-sockets-1/hache-orange-sockets-1.glb"
+        },
+        {
+          "shape": "hache",
+          "color": "orange",
+          "sockets": 2,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange-sockets-2/hache-orange-sockets-2.glb"
+        },
+        {
+          "shape": "hache",
+          "color": "orange",
+          "sockets": 3,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange-sockets-3/hache-orange-sockets-3.glb"
+        },
+        {
+          "shape": "hache",
+          "color": "vert",
+          "sockets": 3,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-vert-sockets-3/hache-vert-sockets-3.glb"
+        },
+        {
+          "shape": "pioche",
+          "color": "vert",
+          "sockets": 3,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-vert-sockets-3/pioche-vert-sockets-3.glb"
+        },
+        {
+          "shape": "pioche",
+          "color": "vert",
+          "sockets": 0,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-vert/pioche-vert.glb"
+        },
+        {
+          "shape": "pioche",
+          "color": "vert",
+          "sockets": 1,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-vert-sockets-1/pioche-vert-sockets-1.glb"
+        },
+        {
+          "shape": "pioche",
+          "color": "vert",
+          "sockets": 2,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-vert-sockets-2/pioche-vert-sockets-2.glb"
+        },
+        {
+          "shape": "pioche",
+          "color": "orange",
+          "sockets": 2,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-orange-sockets-2/pioche-orange-sockets-2.glb"
+        },
+        {
+          "shape": "pioche",
+          "color": "azur",
+          "sockets": 2,
+          "ready": true,
+          "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-azur-sockets-2/pioche-azur-sockets-2.glb"
+        }
+      ],
+      "other_family_sockets_hidden": true,
+      "animation_toggle_tested": true,
+      "final_selection": "hache-orange-sockets-3",
+      "screenshot": "viewer-sockets-orange.jpg"
+    },
+    "sickle": {
+      "selections": [
+        {
+          "color": "azur",
+          "sockets": 0,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur/faucille-azur.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur/faucille-azur.blend"
+        },
+        {
+          "color": "azur",
+          "sockets": 1,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-1/faucille-azur-sockets-1.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-1/faucille-azur-sockets-1.blend"
+        },
+        {
+          "color": "azur",
+          "sockets": 2,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-2/faucille-azur-sockets-2.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-2/faucille-azur-sockets-2.blend"
+        },
+        {
+          "color": "azur",
+          "sockets": 3,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-3/faucille-azur-sockets-3.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-azur-sockets-3/faucille-azur-sockets-3.blend"
+        },
+        {
+          "color": "orange",
+          "sockets": 0,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange/faucille-orange.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange/faucille-orange.blend"
+        },
+        {
+          "color": "orange",
+          "sockets": 1,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-1/faucille-orange-sockets-1.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-1/faucille-orange-sockets-1.blend"
+        },
+        {
+          "color": "orange",
+          "sockets": 2,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-2/faucille-orange-sockets-2.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-2/faucille-orange-sockets-2.blend"
+        },
+        {
+          "color": "orange",
+          "sockets": 3,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-3/faucille-orange-sockets-3.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-orange-sockets-3/faucille-orange-sockets-3.blend"
+        },
+        {
+          "color": "vert",
+          "sockets": 0,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert/faucille-vert.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert/faucille-vert.blend"
+        },
+        {
+          "color": "vert",
+          "sockets": 1,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-1/faucille-vert-sockets-1.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-1/faucille-vert-sockets-1.blend"
+        },
+        {
+          "color": "vert",
+          "sockets": 2,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-2/faucille-vert-sockets-2.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-2/faucille-vert-sockets-2.blend"
+        },
+        {
+          "color": "vert",
+          "sockets": 3,
+          "ready": true,
+          "glb": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-3/faucille-vert-sockets-3.glb",
+          "blend": "http://127.0.0.1:51805/outils-invoques/assets/faucille-vert-sockets-3/faucille-vert-sockets-3.blend"
+        }
+      ],
+      "shape_switch_keeps_color_and_socket_count": true,
+      "animation_toggle_tested": true,
+      "final_selection": "faucille-vert-sockets-3"
+    }
+  },
+  "screenshot": "viewer-faucille-verte.jpg"
+}

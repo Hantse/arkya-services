@@ -1,0 +1,20 @@
+{
+  "id": "eclat-amethyste",
+  "shape": "eclat",
+  "material": "amethyste",
+  "label": "Éclat · Améthyste",
+  "glb": "assets/eclat-amethyste/eclat-amethyste.glb",
+  "blend": "assets/eclat-amethyste/eclat-amethyste.blend",
+  "preview": "assets/eclat-amethyste/eclat-amethyste-preview.png",
+  "height": 0.55,
+  "width": 0.4667,
+  "depth": 0.3157,
+  "triangles": 1894,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "bake": "Cycles CPU, emission channel transfer to basecolor/roughness/emission"
+}

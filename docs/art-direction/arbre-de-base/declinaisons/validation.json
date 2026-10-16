@@ -1,0 +1,367 @@
+{
+  "success": true,
+  "assets": [
+    {
+      "asset": "formes/01-jeune/01-jeune.glb",
+      "glb": {
+        "bytes": 22670840,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 2,
+        "normal_maps": 1,
+        "roughness_maps": 0,
+        "emission_maps": 0,
+        "external_dependencies": 0,
+        "positions_finite": true
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    },
+    {
+      "asset": "formes/02-etale/02-etale.glb",
+      "glb": {
+        "bytes": 22670840,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 2,
+        "normal_maps": 1,
+        "roughness_maps": 0,
+        "emission_maps": 0,
+        "external_dependencies": 0,
+        "positions_finite": true
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    },
+    {
+      "asset": "formes/03-elance/03-elance.glb",
+      "glb": {
+        "bytes": 22670896,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 2,
+        "normal_maps": 1,
+        "roughness_maps": 0,
+        "emission_maps": 0,
+        "external_dependencies": 0,
+        "positions_finite": true
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    },
+    {
+      "asset": "formes/04-venerable/04-venerable.glb",
+      "glb": {
+        "bytes": 22670888,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 2,
+        "normal_maps": 1,
+        "roughness_maps": 0,
+        "emission_maps": 0,
+        "external_dependencies": 0,
+        "positions_finite": true
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    },
+    {
+      "asset": "matieres/01-mystique/01-mystique.glb",
+      "glb": {
+        "bytes": 26306540,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 4,
+        "normal_maps": 1,
+        "roughness_maps": 1,
+        "emission_maps": 1,
+        "external_dependencies": 0,
+        "positions_finite": true
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "01-mystique-basecolor",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "01-mystique-emission",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "01-mystique-normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "01-mystique-roughness",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    },
+    {
+      "asset": "matieres/02-brule/02-brule.glb",
+      "glb": {
+        "bytes": 25853260,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 4,
+        "normal_maps": 1,
+        "roughness_maps": 1,
+        "emission_maps": 1,
+        "external_dependencies": 0,
+        "positions_finite": true
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "02-brule-basecolor",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "02-brule-emission",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "02-brule-normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "02-brule-roughness",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    },
+    {
+      "asset": "matieres/03-moussu/03-moussu.glb",
+      "glb": {
+        "bytes": 24775904,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 4,
+        "normal_maps": 1,
+        "roughness_maps": 1,
+        "emission_maps": 1,
+        "external_dependencies": 0,
+        "positions_finite": true
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "03-moussu-basecolor",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "03-moussu-emission",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "03-moussu-normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "03-moussu-roughness",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    }
+  ]
+}

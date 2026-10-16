@@ -1,0 +1,89 @@
+{
+  "success": true,
+  "unity": "6000.6.6f1",
+  "importedModels": 10,
+  "prefabsChanged": 10,
+  "sceneRenderersChanged": 96,
+  "totalIslandWoodRenderers": 102,
+  "legacyWoodRenderers": 0,
+  "savedScene": true,
+  "texture": "Assets/Arkya/Building/Art/Textures/PaintedTimberV2.png",
+  "materials": [
+    "Assets/Arkya/Building/Art/Materials/Painted boards V2.mat",
+    "Assets/Arkya/Building/Art/Materials/Painted beams V2.mat"
+  ],
+  "groups": [
+    {
+      "name": "Structure_mur-fenetre-bois",
+      "count": 9
+    },
+    {
+      "name": "Structure_mur-plein-bois",
+      "count": 12
+    },
+    {
+      "name": "Structure_plafond-chaume",
+      "count": 6
+    },
+    {
+      "name": "Structure_mur-porte-bois",
+      "count": 3
+    },
+    {
+      "name": "Soft timber corner",
+      "count": 12
+    },
+    {
+      "name": "Carved roof timber",
+      "count": 9
+    },
+    {
+      "name": "Painted rear gable infill",
+      "count": 3
+    },
+    {
+      "name": "Painted front gable infill",
+      "count": 3
+    },
+    {
+      "name": "Garden rail post",
+      "count": 7
+    },
+    {
+      "name": "Garden rail",
+      "count": 6
+    },
+    {
+      "name": "Carved waypost",
+      "count": 4
+    },
+    {
+      "name": "Timber direction board",
+      "count": 4
+    },
+    {
+      "name": "Rounded jetty plank",
+      "count": 14
+    },
+    {
+      "name": "Jetty timber pile",
+      "count": 10
+    }
+  ],
+  "meshes": [
+    "Assets/Arkya/Building/Art/Meshes/mur-fenetre-bois_3000_3000_2000.asset",
+    "Assets/Arkya/Building/Art/Meshes/mur-plein-bois_2500_3000_2000.asset",
+    "Assets/Arkya/Building/Art/Meshes/plafond-chaume_4000_3000_6300.asset",
+    "Assets/Arkya/Building/Art/Meshes/mur-porte-bois_3000_1500_2000.asset",
+    "Assets/Arkya/Building/Art/Meshes/RoundedTimber_270_3200_270.asset",
+    "Assets/Arkya/Building/Art/Meshes/RoundedTimber_280_300_6450.asset",
+    "Assets/Arkya/Building/Art/Meshes/RoundedTimber_340_340_6450.asset",
+    "Assets/Arkya/World/StarterIsland/Meshes/RefugeGableInfill.asset",
+    "Assets/Arkya/Building/Art/Meshes/RoundedTimber_160_1300_160.asset",
+    "Assets/Arkya/Building/Art/Meshes/RoundedTimber_3000_140_150.asset",
+    "Assets/Arkya/Building/Art/Meshes/RoundedTimber_220_3200_220.asset",
+    "Assets/Arkya/Building/Art/Meshes/RoundedTimber_1700_400_180.asset",
+    "Assets/Arkya/Building/Art/Meshes/RoundedTimber_2850_250_7000.asset",
+    "Assets/Arkya/Building/Art/Meshes/RoundedTimber_500_12102_500.asset"
+  ]
+}

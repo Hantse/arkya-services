@@ -1,0 +1,47 @@
+{
+  "dimensions_m": {
+    "width": 6.747,
+    "depth": 6.928,
+    "height": 14.0
+  },
+  "bounds_blender_z_up": {
+    "min": [
+      -3.290334463119507,
+      -3.1269681453704834,
+      0.0
+    ],
+    "max": [
+      3.4561784267425537,
+      3.801015615463257,
+      14.0
+    ]
+  },
+  "mesh_count": 3,
+  "vertices": 332510,
+  "triangles": 429204,
+  "id": "03-elance",
+  "title": "Élancé",
+  "description": "Tronc élancé, premières fourches hautes et houppier étroit.",
+  "source_asset": "../../../arkya-ancient-tree-v2.blend",
+  "deformation": {
+    "id": "03-elance",
+    "title": "Élancé",
+    "height": 14.0,
+    "stem": 0.77,
+    "crown_x": 0.69,
+    "crown_y": 0.7,
+    "curve": -0.24,
+    "power": 1.6,
+    "twist": -0.055,
+    "bend": 0.38,
+    "leaf": 0.98,
+    "description": "Tronc élancé, premières fourches hautes et houppier étroit."
+  },
+  "leaf_count": 18600,
+  "leaf_shape_preservation": "Each blade uses a local polar rotation and uniform size; its base follows the deformed twig exactly.",
+  "materials": "Approved base materials unchanged; packed bark 2K base color/normal, COLOR_0 leaf color and occlusion retained.",
+  "leaf_color_entries": 204600,
+  "gltf_up_axis": "Y",
+  "blender_up_axis": "Z",
+  "glb_bytes": 22670896
+}

@@ -1,0 +1,20 @@
+{
+  "id": "geode-azur",
+  "shape": "geode",
+  "material": "azur",
+  "label": "Géode ouverte · Azur",
+  "glb": "assets/geode-azur/geode-azur.glb",
+  "blend": "assets/geode-azur/geode-azur.blend",
+  "preview": "assets/geode-azur/geode-azur-preview.png",
+  "height": 1.9,
+  "width": 1.7557,
+  "depth": 1.0366,
+  "triangles": 4712,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "bake": "Cycles CPU, emission channel transfer to basecolor/roughness/emission"
+}

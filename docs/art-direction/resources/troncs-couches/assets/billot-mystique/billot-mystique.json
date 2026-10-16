@@ -1,0 +1,19 @@
+{
+  "id": "billot-mystique",
+  "shape": "billot",
+  "material": "mystique",
+  "label": "Billot court · Mystique",
+  "glb": "assets/billot-mystique/billot-mystique.glb",
+  "blend": "assets/billot-mystique/billot-mystique.blend",
+  "preview": "assets/billot-mystique/billot-mystique-preview.png",
+  "height": 0.3978,
+  "width": 0.9,
+  "depth": 0.4983,
+  "triangles": 7040,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

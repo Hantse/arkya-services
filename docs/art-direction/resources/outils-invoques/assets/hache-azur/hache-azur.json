@@ -1,0 +1,28 @@
+{
+  "id": "hache-azur",
+  "shape": "hache",
+  "material": "azur",
+  "label": "Hache invoquée · Azur",
+  "artistic_status": "proposal",
+  "glb": "assets/hache-azur/hache-azur.glb",
+  "blend": "assets/hache-azur/hache-azur.blend",
+  "preview": "assets/hache-azur/hache-azur-preview.png",
+  "height": 1.2816,
+  "width": 0.6794,
+  "depth": 0.1794,
+  "triangles": 7768,
+  "materials": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "animation": "SummonedToolIdle",
+  "animation_duration": 4,
+  "fps": 24,
+  "pivot": "centre de la prise, Tool_Root",
+  "axes_blender": "+Z vers la tête, face avant -Y",
+  "axes_glb": "+Y vers la tête, face avant +Z",
+  "opaque": true,
+  "socket_count": 0,
+  "sockets": []
+}

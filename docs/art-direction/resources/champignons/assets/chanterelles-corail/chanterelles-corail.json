@@ -1,0 +1,20 @@
+{
+  "id": "chanterelles-corail",
+  "shape": "chanterelles",
+  "material": "corail",
+  "label": "Chanterelles en éventail · Corail crème",
+  "glb": "assets/chanterelles-corail/chanterelles-corail.glb",
+  "blend": "assets/chanterelles-corail/chanterelles-corail.blend",
+  "preview": "assets/chanterelles-corail/chanterelles-corail-preview.png",
+  "height": 0.6,
+  "width": 0.8882,
+  "depth": 0.7102,
+  "triangles": 16800,
+  "mushrooms": 3,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

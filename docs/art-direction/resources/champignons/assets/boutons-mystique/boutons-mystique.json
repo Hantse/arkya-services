@@ -1,0 +1,20 @@
+{
+  "id": "boutons-mystique",
+  "shape": "boutons",
+  "material": "mystique",
+  "label": "Colonie de boutons · Mystique boréal",
+  "glb": "assets/boutons-mystique/boutons-mystique.glb",
+  "blend": "assets/boutons-mystique/boutons-mystique.blend",
+  "preview": "assets/boutons-mystique/boutons-mystique-preview.png",
+  "height": 0.18,
+  "width": 0.3554,
+  "depth": 0.2455,
+  "triangles": 28000,
+  "mushrooms": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

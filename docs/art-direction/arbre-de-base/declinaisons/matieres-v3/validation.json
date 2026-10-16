@@ -1,0 +1,290 @@
+{
+  "success": true,
+  "assets": [
+    {
+      "asset": "matieres-v3/01-mystique/01-mystique.glb",
+      "glb": {
+        "bytes": 45130396,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 5,
+        "normal_maps": 1,
+        "roughness_maps": 1,
+        "emission_maps": 1,
+        "external_dependencies": 0,
+        "positions_finite": true,
+        "refined_foliage": {
+          "vertex_color_mean": [
+            0.05209281072425101,
+            0.13149894228488865,
+            0.1106401904701199
+          ],
+          "color_range": 0.3645227740901808,
+          "texture_and_uv_present": true
+        }
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "01-mystique-V3-basecolor",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "01-mystique-V3-emission",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "01-mystique-V3-normal",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "01-mystique-V3-roughness",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "Arkya V3 | painted leaf detail",
+            "size": [
+              256,
+              256
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "painted-bark.png",
+            "size": [
+              1254,
+              1254
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    },
+    {
+      "asset": "matieres-v3/02-brule/02-brule.glb",
+      "glb": {
+        "bytes": 44605928,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 5,
+        "normal_maps": 1,
+        "roughness_maps": 1,
+        "emission_maps": 1,
+        "external_dependencies": 0,
+        "positions_finite": true,
+        "refined_foliage": {
+          "vertex_color_mean": [
+            0.13097259156827348,
+            0.06601796784319863,
+            0.03581108944587635
+          ],
+          "color_range": 0.3816891737239643,
+          "texture_and_uv_present": true
+        }
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "02-brule-V3-basecolor",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "02-brule-V3-emission",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "02-brule-V3-normal",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "02-brule-V3-roughness",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "Arkya V3 | painted leaf detail",
+            "size": [
+              256,
+              256
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "painted-bark.png",
+            "size": [
+              1254,
+              1254
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    },
+    {
+      "asset": "matieres-v3/03-moussu/03-moussu.glb",
+      "glb": {
+        "bytes": 42962040,
+        "meshes": 3,
+        "materials": 3,
+        "triangles": 429204,
+        "embedded_images": 5,
+        "normal_maps": 1,
+        "roughness_maps": 1,
+        "emission_maps": 1,
+        "external_dependencies": 0,
+        "positions_finite": true,
+        "refined_foliage": {
+          "vertex_color_mean": [
+            0.062124232444296365,
+            0.13313452179867238,
+            0.06860718931714062
+          ],
+          "color_range": 0.3568780041199359,
+          "texture_and_uv_present": true
+        }
+      },
+      "blend": {
+        "opened": true,
+        "tree_meshes": 3,
+        "packed_images": [
+          {
+            "name": "03-moussu-V3-basecolor",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "03-moussu-V3-emission",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "03-moussu-V3-normal",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "03-moussu-V3-roughness",
+            "size": [
+              4096,
+              4096
+            ],
+            "packed": true
+          },
+          {
+            "name": "Arkya V3 | painted leaf detail",
+            "size": [
+              256,
+              256
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_color",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "Oak_V2_Bark_normal",
+            "size": [
+              2048,
+              2048
+            ],
+            "packed": true
+          },
+          {
+            "name": "painted-bark.png",
+            "size": [
+              1254,
+              1254
+            ],
+            "packed": true
+          }
+        ],
+        "linked_libraries": 0
+      }
+    }
+  ]
+}

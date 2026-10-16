@@ -1,0 +1,65 @@
+{
+  "id": "01-mystique",
+  "material_version": 3,
+  "variant": "mystique",
+  "source": "arkya-ancient-tree-v2.blend",
+  "source_sha256": "b19ae1144c3ac6622bc6c9b92859819e28e7bfecdbfed3ef9a8cf2fe5e5c9e8a",
+  "painted_source": "../source/painted-bark.png",
+  "painted_source_sha256": "be86ed087040c7e4930eaaa7fcdfadb8916b5ef0725f48fd0d042d290f85cd15",
+  "geometry": "Approved positions and topology unchanged; original wood UV preserved",
+  "vertices": 332510,
+  "triangles": 429204,
+  "mesh_count": 3,
+  "textures": {
+    "basecolor": "textures/01-mystique-basecolor.png",
+    "normal": "textures/01-mystique-normal.png",
+    "roughness": "textures/01-mystique-roughness.png",
+    "emission": "textures/01-mystique-emission.png"
+  },
+  "texture_resolution": [
+    4096,
+    4096
+  ],
+  "foliage": {
+    "leaf_count": 18600,
+    "sky_rays": 223200,
+    "shade_range": [
+      0.3608,
+      0.9592
+    ],
+    "shade_mean": 0.5559,
+    "texture_size": [
+      256,
+      256
+    ],
+    "texture_path": "D:\\Repositories\\arkya\\docs\\art-direction\\arbre-de-base\\declinaisons\\matieres-v3\\source\\leaf-painted-detail.png",
+    "uv_channel": "Arkya_LeafPaint_UV",
+    "geometry_unchanged": true,
+    "positions_sha256": "fe1421032d20fc2221835d7d0168e86d7116f9d7baaeda268d533cba5032754c"
+  },
+  "render": {
+    "engine": "Cycles OptiX",
+    "samples": 32,
+    "size": 1100
+  },
+  "glb_bytes": 45130396,
+  "notes": "Painted bitmap carries full bark structure; softened image normal; accents follow its crevices; centerline-oriented projection blended at forks",
+  "validation": {
+    "geometry_identical_to_base": true,
+    "wood_uv_identical_to_base": true,
+    "blend_images_packed": true,
+    "glb_embedded_images": 5,
+    "glb_all_pbr_maps_present": true,
+    "glb_color_0_present": true,
+    "glb_leaf_vertex_rgb_mean": [
+      [
+        0.052141,
+        0.131637,
+        0.110754
+      ]
+    ],
+    "glb_leaf_texture_and_uv_present": true,
+    "glb_external_dependencies": false,
+    "source_sha256_unchanged": true
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "lobee-bleu",
+  "shape": "lobee",
+  "material": "bleu",
+  "label": "Grande mare à lobes · Mana bleu azur",
+  "glb": "assets/lobee-bleu/lobee-bleu.glb",
+  "blend": "assets/lobee-bleu/lobee-bleu.blend",
+  "preview": "assets/lobee-bleu/lobee-bleu-preview.png",
+  "height": 0.9406,
+  "width": 3.29,
+  "depth": 2.632,
+  "triangles": 22136,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": false,
+  "pivot": "centre au sol",
+  "animation": "ManaFlow",
+  "animation_duration": 6,
+  "animated_nodes": 20,
+  "wisp_count": 7,
+  "droplet_count": 12,
+  "artistic_status": "approved",
+  "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+  "approved_at": "2026-10-15"
+}

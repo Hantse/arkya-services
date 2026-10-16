@@ -1,0 +1,42 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.1,
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.PlayModeTests.BoundaryWaterSimulationTests.BootstrapPreservesPreexistingConfigurationAndCleansOnlyItsOwnEntity",
+          "Status": "Passed",
+          "Duration": 0.0393957,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Gameplay.BoundaryWater.PlayModeTests.BoundaryWaterSimulationTests.OrdinarySceneConfigurationInstallsOnlyOnServerAndServerKillsAtFiveSeconds",
+          "Status": "Passed",
+          "Duration": 0.0385513,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

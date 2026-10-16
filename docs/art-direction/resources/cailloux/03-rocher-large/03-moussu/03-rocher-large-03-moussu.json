@@ -1,0 +1,24 @@
+{
+  "id": "03-rocher-large-03-moussu",
+  "shape": "03-rocher-large",
+  "material": "03-moussu",
+  "label": "Rocher large · Pierre moussue",
+  "glb": "03-rocher-large/03-moussu/03-rocher-large-03-moussu.glb",
+  "blend": "03-rocher-large/03-moussu/03-rocher-large-03-moussu.blend",
+  "preview": "03-rocher-large/03-moussu/03-rocher-large-03-moussu-preview.png",
+  "height": 1.6,
+  "width": 2.8364,
+  "depth": 1.7435,
+  "triangles": 8500,
+  "vertices": 4252,
+  "textures_size": [
+    2048,
+    2048
+  ],
+  "paint_contrast": 0.75,
+  "source": "../sources/stone-painted.png",
+  "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+  "mesh_count": 1,
+  "pivot": "Centered X/Y, lowest point Z=0",
+  "gltf_up_axis": "Y"
+}

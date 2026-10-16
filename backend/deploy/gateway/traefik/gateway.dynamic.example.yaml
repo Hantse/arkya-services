@@ -1,0 +1,19 @@
+# Dynamic configuration for the existing external Traefik v3 file provider.
+http:
+  routers:
+    arkya-api:
+      entryPoints: [websecure]
+      rule: Host(`api.arkya.online`)
+      service: arkya-gateway
+      # Use an existing certificate or add the existing certResolver name.
+      tls: {}
+      # OAuth callback query strings contain short-lived authorization codes.
+      observability:
+        accessLogs: false
+        tracing: false
+  services:
+    arkya-gateway:
+      loadBalancer:
+        passHostHeader: true
+        servers:
+          - url: http://192.168.100.218:80

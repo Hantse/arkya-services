@@ -1,0 +1,168 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.58,
+      "summary": {
+        "total": 20,
+        "passed": 20,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.CelestialBodiesAndLightingFollowTheAppliedPhase",
+          "Status": "Passed",
+          "Duration": 0.0327061,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.DisablingEnvironmentRestoresItsRenderSettingsAndDoesNotMutateSkyAsset",
+          "Status": "Passed",
+          "Duration": 0.0059307,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(0,0)",
+          "Status": "Passed",
+          "Duration": 0.0012513,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(3600,0.25d)",
+          "Status": "Passed",
+          "Duration": 0.0000568,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(7200,0.5d)",
+          "Status": "Passed",
+          "Duration": 0.0000424,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(10800,0.75d)",
+          "Status": "Passed",
+          "Duration": 0.0000407,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(14400,0)",
+          "Status": "Passed",
+          "Duration": 0.0000418,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(28800,0)",
+          "Status": "Passed",
+          "Duration": 0.000042,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(-3600,0.75d)",
+          "Status": "Passed",
+          "Duration": 0.0000403,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(-14400,0)",
+          "Status": "Passed",
+          "Duration": 0.0000399,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidCycleIsRejected(0)",
+          "Status": "Passed",
+          "Duration": 0.0016022,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidCycleIsRejected(-1)",
+          "Status": "Passed",
+          "Duration": 0.0000616,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidCycleIsRejected(double.NaN)",
+          "Status": "Passed",
+          "Duration": 0.0001054,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidCycleIsRejected(double.PositiveInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0000556,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidTimesAreRejected",
+          "Status": "Passed",
+          "Duration": 0.0005082,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.PreviewPhasesWrapInBothDirections(-1.25d,0.75d)",
+          "Status": "Passed",
+          "Duration": 0.0009692,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.PreviewPhasesWrapInBothDirections(3.125d,0.125d)",
+          "Status": "Passed",
+          "Duration": 0.0002326,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.PreviewPhasesWrapInBothDirections(1,0)",
+          "Status": "Passed",
+          "Duration": 0.0002135,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.SeparateIslandCopiesShareAnEpochAndWrapOffset",
+          "Status": "Passed",
+          "Duration": 0.0013886,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.IslandRenderProfileTests.PreviewOverrideIsReleasedAndCanBeEnabledAgainWithoutChangingTheGraphicsDefault",
+          "Status": "Passed",
+          "Duration": 0.008047,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

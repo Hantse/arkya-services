@@ -1,0 +1,24 @@
+{
+  "id": "01-galet-03-moussu",
+  "shape": "01-galet",
+  "material": "03-moussu",
+  "label": "Galet compact · Pierre moussue",
+  "glb": "01-galet/03-moussu/01-galet-03-moussu.glb",
+  "blend": "01-galet/03-moussu/01-galet-03-moussu.blend",
+  "preview": "01-galet/03-moussu/01-galet-03-moussu-preview.png",
+  "height": 0.45,
+  "width": 0.7387,
+  "depth": 0.5553,
+  "triangles": 8200,
+  "vertices": 4102,
+  "textures_size": [
+    2048,
+    2048
+  ],
+  "paint_contrast": 0.75,
+  "source": "../sources/stone-painted.png",
+  "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+  "mesh_count": 1,
+  "pivot": "Centered X/Y, lowest point Z=0",
+  "gltf_up_axis": "Y"
+}

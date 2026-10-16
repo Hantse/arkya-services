@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-15T14:40:26.2072883Z",
+  "unity": "6000.6.6f1",
+  "scene": "Assets/Arkya/ArtDirection/Scenes/ArtDirectionComparison.unity",
+  "playMode": true,
+  "clip": "ManaFlow",
+  "clipSeconds": 6.0,
+  "clipLoop": true,
+  "curveBindings": 107,
+  "unresolvedBindings": 0,
+  "animatedNodes": 15,
+  "movingNodes": 15,
+  "pauseDrift": 0.0,
+  "normalizedLoopsAdvanced": 1.32181263,
+  "testedViews": 12,
+  "materialCount": 22,
+  "unsupportedShaders": 0,
+  "vertexColorMeshes": 1,
+  "note": "Runtime loop, actual transform motion, pause/resume, camera framing and material presence checked. Rendering parity is visually assessed separately."
+}

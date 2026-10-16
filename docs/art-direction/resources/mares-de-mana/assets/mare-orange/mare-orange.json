@@ -1,0 +1,24 @@
+{
+  "id": "mare-orange",
+  "shape": "mare",
+  "material": "orange",
+  "label": "Mare de mana · Mana orange ambré",
+  "glb": "assets/mare-orange/mare-orange.glb",
+  "blend": "assets/mare-orange/mare-orange.blend",
+  "preview": "assets/mare-orange/mare-orange-preview.png",
+  "height": 0.7979,
+  "width": 2.7069,
+  "depth": 2.0364,
+  "triangles": 18172,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": false,
+  "pivot": "centre au sol",
+  "animation": "ManaFlow",
+  "animation_duration": 6,
+  "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+  "artistic_status": "approved",
+  "approved_at": "2026-10-15"
+}

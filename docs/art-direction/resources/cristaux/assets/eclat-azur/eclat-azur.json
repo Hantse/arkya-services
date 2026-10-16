@@ -1,0 +1,20 @@
+{
+  "id": "eclat-azur",
+  "shape": "eclat",
+  "material": "azur",
+  "label": "Éclat · Azur",
+  "glb": "assets/eclat-azur/eclat-azur.glb",
+  "blend": "assets/eclat-azur/eclat-azur.blend",
+  "preview": "assets/eclat-azur/eclat-azur-preview.png",
+  "height": 0.55,
+  "width": 0.4667,
+  "depth": 0.3157,
+  "triangles": 1894,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "bake": "Cycles CPU, emission channel transfer to basecolor/roughness/emission"
+}

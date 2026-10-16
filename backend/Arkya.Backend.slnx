@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Arkya.Admin/Arkya.Admin.csproj" />
+    <Project Path="src/Arkya.Backend.Api/Arkya.Backend.Api.csproj" />
+    <Project Path="src/Arkya.ServiceDefaults/Arkya.ServiceDefaults.csproj" />
+    <Project Path="src/Arkya.Content.Api/Arkya.Content.Api.csproj" />
+    <Project Path="src/Arkya.Identity.Api/Arkya.Identity.Api.csproj" />
+    <Project Path="src/Arkya.Gateway/Arkya.Gateway.csproj" />
+    <Project Path="src/Arkya.Characters.Api/Arkya.Characters.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Arkya.Content.Tests/Arkya.Content.Tests.csproj" />
+    <Project Path="tests/Arkya.Identity.Tests/Arkya.Identity.Tests.csproj" />
+    <Project Path="tests/Arkya.Gateway.Tests/Arkya.Gateway.Tests.csproj" />
+    <Project Path="tests/Arkya.Characters.Tests/Arkya.Characters.Tests.csproj" />
+    <Project Path="tests/Arkya.Admin.Tests/Arkya.Admin.Tests.csproj" />
+    <Project Path="tests/Arkya.Backend.Flow.Tests/Arkya.Backend.Flow.Tests.csproj" />
+  </Folder>
+</Solution>

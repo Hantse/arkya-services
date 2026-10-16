@@ -1,0 +1,19 @@
+{
+  "id": "creuse-mystique",
+  "shape": "creuse",
+  "material": "mystique",
+  "label": "Souche creuse · Mystique",
+  "glb": "assets/creuse-mystique/creuse-mystique.glb",
+  "blend": "assets/creuse-mystique/creuse-mystique.blend",
+  "preview": "assets/creuse-mystique/creuse-mystique-preview.png",
+  "height": 0.95,
+  "width": 1.3482,
+  "depth": 1.0842,
+  "triangles": 19200,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

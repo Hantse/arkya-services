@@ -1,0 +1,28 @@
+{
+  "id": "faucille-vert",
+  "shape": "faucille",
+  "material": "vert",
+  "label": "Faucille invoquée · Mana vert · 0 emplacements",
+  "artistic_status": "proposal",
+  "glb": "assets/faucille-vert/faucille-vert.glb",
+  "blend": "assets/faucille-vert/faucille-vert.blend",
+  "preview": "assets/faucille-vert/faucille-vert-preview.png",
+  "height": 1.1387,
+  "width": 0.6022,
+  "depth": 0.1794,
+  "triangles": 8092,
+  "materials": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "animation": "SummonedToolIdle",
+  "animation_duration": 4,
+  "fps": 24,
+  "socket_count": 0,
+  "sockets": [],
+  "pivot": "centre de la prise, Tool_Root",
+  "axes_blender": "+Z vers la tête, face avant -Y",
+  "axes_glb": "+Y vers la tête, face avant +Z",
+  "opaque": true
+}

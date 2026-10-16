@@ -1,0 +1,562 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-15T16:02:34.2479233Z",
+  "unity": "6000.6.6f1",
+  "scene": "Assets/Arkya/ArtDirection/Scenes/ArtDirectionComparison.unity",
+  "groups": 11,
+  "totalOriginalTriangles": 572464,
+  "totalTrianglesByLod": [
+    236874,
+    107644,
+    55444
+  ],
+  "reductionsPercent": [
+    58.62,
+    81.2,
+    90.31
+  ],
+  "uniqueMeshes": 108,
+  "uniqueMeshMemoryBytes": 58714572,
+  "materialCount": 21,
+  "uniqueTextures": 43,
+  "checkedMaterialSlots": 114,
+  "checkedVertexLayouts": 108,
+  "forcedLevelsExercised": [
+    0,
+    1,
+    2
+  ],
+  "objects": [
+    {
+      "name": "Mana",
+      "sourceTriangles": 18172,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 8915,
+          "vertices": 5525,
+          "uniqueMeshes": 23,
+          "uniqueMeshMemoryBytes": 674058,
+          "renderers": 23,
+          "materialSlots": 23,
+          "transitionHeight": 0.32,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 3875,
+          "vertices": 2764,
+          "uniqueMeshes": 23,
+          "uniqueMeshMemoryBytes": 348550,
+          "renderers": 23,
+          "materialSlots": 23,
+          "transitionHeight": 0.12,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 1653,
+          "vertices": 1331,
+          "uniqueMeshes": 23,
+          "uniqueMeshMemoryBytes": 184322,
+          "renderers": 23,
+          "materialSlots": 23,
+          "transitionHeight": 0.015,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 2.84244084,
+      "referencePoint": [
+        -0.00813233852,
+        0.398878485,
+        0.042188108
+      ]
+    },
+    {
+      "name": "Arbre",
+      "sourceTriangles": 429204,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 140282,
+          "vertices": 168467,
+          "uniqueMeshes": 3,
+          "uniqueMeshMemoryBytes": 21406032,
+          "renderers": 3,
+          "materialSlots": 3,
+          "transitionHeight": 0.32,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 65212,
+          "vertices": 109291,
+          "uniqueMeshes": 3,
+          "uniqueMeshMemoryBytes": 14027504,
+          "renderers": 3,
+          "materialSlots": 3,
+          "transitionHeight": 0.12,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 35660,
+          "vertices": 80045,
+          "uniqueMeshes": 3,
+          "uniqueMeshMemoryBytes": 9714944,
+          "renderers": 3,
+          "materialSlots": 3,
+          "transitionHeight": 0.008,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 10.2292252,
+      "referencePoint": [
+        0.174904346,
+        5.06369638,
+        -0.41374445
+      ]
+    },
+    {
+      "name": "Pierre",
+      "sourceTriangles": 7820,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 4692,
+          "vertices": 2633,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 310672,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.3,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 1954,
+          "vertices": 1154,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 135824,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.1,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 782,
+          "vertices": 507,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 59656,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.015,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 0.9220929,
+      "referencePoint": [
+        -3.36617231E-05,
+        0.450427949,
+        -2.72989273E-05
+      ]
+    },
+    {
+      "name": "Minerai",
+      "sourceTriangles": 8948,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 5367,
+          "vertices": 3923,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 442614,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.3,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 2235,
+          "vertices": 1877,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 208614,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.1,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 893,
+          "vertices": 971,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 105534,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.015,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 1.72754931,
+      "referencePoint": [
+        -0.000209957361,
+        0.65,
+        2.70605087E-05
+      ]
+    },
+    {
+      "name": "Cristal",
+      "sourceTriangles": 2598,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 2598,
+          "vertices": 2012,
+          "uniqueMeshes": 2,
+          "uniqueMeshMemoryBytes": 227512,
+          "renderers": 2,
+          "materialSlots": 2,
+          "transitionHeight": 0.3,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 1680,
+          "vertices": 1395,
+          "uniqueMeshes": 2,
+          "uniqueMeshMemoryBytes": 157264,
+          "renderers": 2,
+          "materialSlots": 2,
+          "transitionHeight": 0.1,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 898,
+          "vertices": 923,
+          "uniqueMeshes": 2,
+          "uniqueMeshMemoryBytes": 102568,
+          "renderers": 2,
+          "materialSlots": 2,
+          "transitionHeight": 0.015,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 1.11100006,
+      "referencePoint": [
+        -0.000317752361,
+        0.55,
+        -2.168119E-05
+      ]
+    },
+    {
+      "name": "Buisson",
+      "sourceTriangles": 29708,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 25250,
+          "vertices": 24073,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 2615704,
+          "renderers": 1,
+          "materialSlots": 2,
+          "transitionHeight": 0.32,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 13368,
+          "vertices": 12064,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 1320248,
+          "renderers": 1,
+          "materialSlots": 2,
+          "transitionHeight": 0.12,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 7426,
+          "vertices": 7749,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 834712,
+          "renderers": 1,
+          "materialSlots": 2,
+          "transitionHeight": 0.02,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 1.084758,
+      "referencePoint": [
+        0.0,
+        0.425090671,
+        4.94718552E-05
+      ]
+    },
+    {
+      "name": "Herbe",
+      "sourceTriangles": 10668,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 6400,
+          "vertices": 4624,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 522296,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.28,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 3200,
+          "vertices": 2763,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 305248,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.1,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 1600,
+          "vertices": 1538,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 168440,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.025,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 0.849547148,
+      "referencePoint": [
+        0.0,
+        0.2249574,
+        0.0
+      ]
+    },
+    {
+      "name": "Champignon",
+      "sourceTriangles": 11968,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 7180,
+          "vertices": 4093,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 480688,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.28,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 2992,
+          "vertices": 1871,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 217120,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.1,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 1196,
+          "vertices": 830,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 95624,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.025,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 0.561009645,
+      "referencePoint": [
+        -8.508563E-05,
+        0.20017916,
+        -0.0004390031
+      ]
+    },
+    {
+      "name": "Fleur",
+      "sourceTriangles": 20968,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 17822,
+          "vertices": 11926,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 1360352,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.28,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 5242,
+          "vertices": 4705,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 516184,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.1,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 2096,
+          "vertices": 2284,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 246008,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.025,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 0.454837024,
+      "referencePoint": [
+        0.0,
+        0.224833146,
+        0.0
+      ]
+    },
+    {
+      "name": "Souche",
+      "sourceTriangles": 21504,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 11826,
+          "vertices": 6303,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 748696,
+          "renderers": 1,
+          "materialSlots": 2,
+          "transitionHeight": 0.3,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 5160,
+          "vertices": 2830,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 335288,
+          "renderers": 1,
+          "materialSlots": 2,
+          "transitionHeight": 0.1,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 2150,
+          "vertices": 1238,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 146336,
+          "renderers": 1,
+          "materialSlots": 2,
+          "transitionHeight": 0.015,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 1.01307571,
+      "referencePoint": [
+        8.255243E-06,
+        0.325140625,
+        -1.12652779E-05
+      ]
+    },
+    {
+      "name": "Tronc",
+      "sourceTriangles": 10906,
+      "levels": [
+        {
+          "level": 0,
+          "triangles": 6542,
+          "vertices": 3610,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 426656,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.3,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 1,
+          "triangles": 2726,
+          "vertices": 1611,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 188968,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.1,
+          "fadeWidth": 0.15
+        },
+        {
+          "level": 2,
+          "triangles": 1090,
+          "vertices": 684,
+          "uniqueMeshes": 1,
+          "uniqueMeshMemoryBytes": 80336,
+          "renderers": 1,
+          "materialSlots": 1,
+          "transitionHeight": 0.015,
+          "fadeWidth": 0.15
+        }
+      ],
+      "fadeMode": "CrossFade",
+      "boundsSize": 1.81813514,
+      "referencePoint": [
+        6.01410866E-05,
+        0.2683366,
+        4.99933958E-05
+      ]
+    }
+  ],
+  "animation": {
+    "animatorCount": 1,
+    "clip": "ManaFlow",
+    "durationSeconds": 6.0,
+    "curveBindings": 107,
+    "unresolvedBindings": 0,
+    "animatedNodes": 15,
+    "movingNodes": 15,
+    "loopsAdvanced": 1.05743837,
+    "sampledFrames": 62,
+    "pauseDrift": 0.0,
+    "sampledBoundsCenter": [
+      -0.00813233852,
+      0.398824662,
+      0.042188108
+    ],
+    "sampledBoundsSize": [
+      2.70708656,
+      0.7982192,
+      2.03636074
+    ],
+    "maximumBoundsExcess": 0.0,
+    "note": "Bounds sampled in Play Mode over a full loop; not an analytic proof for unsampled poses."
+  },
+  "note": "Mesh memory is Unity's runtime object-memory estimate, not measured GPU residency. Geometry counts exclude floor and crossfade overlap. Material values and exact texture references were compared with preserved reference prefabs. Forced LOD calls are exercised; visual parity and transition artifacts require the companion captures."
+}

@@ -1,0 +1,92 @@
+{
+  "selections": [
+    {
+      "shape": "hache",
+      "color": "orange",
+      "sockets": 3,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange-sockets-3/hache-orange-sockets-3.glb"
+    },
+    {
+      "shape": "hache",
+      "color": "orange",
+      "sockets": 0,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange/hache-orange.glb"
+    },
+    {
+      "shape": "hache",
+      "color": "orange",
+      "sockets": 1,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange-sockets-1/hache-orange-sockets-1.glb"
+    },
+    {
+      "shape": "hache",
+      "color": "orange",
+      "sockets": 2,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange-sockets-2/hache-orange-sockets-2.glb"
+    },
+    {
+      "shape": "hache",
+      "color": "orange",
+      "sockets": 3,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-orange-sockets-3/hache-orange-sockets-3.glb"
+    },
+    {
+      "shape": "hache",
+      "color": "vert",
+      "sockets": 3,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/hache-vert-sockets-3/hache-vert-sockets-3.glb"
+    },
+    {
+      "shape": "pioche",
+      "color": "vert",
+      "sockets": 3,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-vert-sockets-3/pioche-vert-sockets-3.glb"
+    },
+    {
+      "shape": "pioche",
+      "color": "vert",
+      "sockets": 0,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-vert/pioche-vert.glb"
+    },
+    {
+      "shape": "pioche",
+      "color": "vert",
+      "sockets": 1,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-vert-sockets-1/pioche-vert-sockets-1.glb"
+    },
+    {
+      "shape": "pioche",
+      "color": "vert",
+      "sockets": 2,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-vert-sockets-2/pioche-vert-sockets-2.glb"
+    },
+    {
+      "shape": "pioche",
+      "color": "orange",
+      "sockets": 2,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-orange-sockets-2/pioche-orange-sockets-2.glb"
+    },
+    {
+      "shape": "pioche",
+      "color": "azur",
+      "sockets": 2,
+      "ready": true,
+      "download": "http://127.0.0.1:51805/outils-invoques/assets/pioche-azur-sockets-2/pioche-azur-sockets-2.glb"
+    }
+  ],
+  "other_family_sockets_hidden": true,
+  "animation_toggle_tested": true,
+  "final_selection": "hache-orange-sockets-3",
+  "screenshot": "viewer-sockets-orange.jpg"
+}

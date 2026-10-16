@@ -1,0 +1,3021 @@
+{
+  "format": "glb",
+  "conversion_required": false,
+  "unity_project": "Unity3D/Arkya",
+  "gltfast_version": "6.20.0",
+  "family_artistic_status": "proposed",
+  "coordinate_contract": {
+    "gltf_to_unity_position_and_normal": "(-x, y, z)",
+    "vertical_axis": "Y",
+    "units": "metres",
+    "model_scale": [
+      1,
+      1,
+      1
+    ],
+    "pivot": "bottom_center",
+    "snap_normalization": "Rename imported Snap_Left to Snap_Right and imported Snap_Right to Snap_Left.",
+    "snap_rotation": "Orient each prefab snap Transform from its converted outward normal; source empty rotations are identity.",
+    "evidence": [
+      "Unity3D/Arkya/Library/PackageCache/com.unity.cloud.gltfast@11ddc2436f97/Runtime/Scripts/NodeExtension.cs",
+      "Unity3D/Arkya/Library/PackageCache/com.unity.cloud.gltfast@11ddc2436f97/Runtime/Scripts/CachedFunction.cs"
+    ]
+  },
+  "assets": [
+    {
+      "id": "fondation-chaume",
+      "shape": "fondation",
+      "material": "chaume",
+      "label": "Fondation · Chaume",
+      "source": "structures/assets/fondation-chaume/fondation-chaume.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/fondation-chaume/fondation-chaume.glb",
+      "sha256": "59dc9536382561b0268bb0a60aaf55b9de4d1f9b12cfa92d1c565b7e9e4862cf",
+      "bytes": 5920768,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.5,
+        "depth": 1.0
+      },
+      "opening": null,
+      "root_name": "Arkya_Structure_fondation-chaume",
+      "mesh_name": "Structure_fondation-chaume",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 16880,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.25,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.25,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.25,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.25,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.25,
+            0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.25,
+            0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.25,
+            -0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.25,
+            -0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | chaume | painted",
+          "key": "chaume",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/chaume-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 2,
+          "name": "Arkya | rope | painted",
+          "key": "rope",
+          "metallic": 0,
+          "roughness": 0.9300000071525574,
+          "urp_smoothness_equivalent": 0.07,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/rope-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "fondation-bois",
+      "shape": "fondation",
+      "material": "bois",
+      "label": "Fondation · Bois",
+      "source": "structures/assets/fondation-bois/fondation-bois.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/fondation-bois/fondation-bois.glb",
+      "sha256": "1d00f2d63d1e22ea927ceb3423f31c6bbed00a85b9aa42ddad263ca425dc4359",
+      "bytes": 3688108,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.5,
+        "depth": 1.0
+      },
+      "opening": null,
+      "root_name": "Arkya_Structure_fondation-bois",
+      "mesh_name": "Structure_fondation-bois",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 8648,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.25,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.25,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.25,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.25,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.25,
+            0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.25,
+            0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.25,
+            -0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.25,
+            -0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | bois | painted",
+          "key": "bois",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/bois-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "fondation-pierre",
+      "shape": "fondation",
+      "material": "pierre",
+      "label": "Fondation · Pierre",
+      "source": "structures/assets/fondation-pierre/fondation-pierre.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/fondation-pierre/fondation-pierre.glb",
+      "sha256": "9e9baaa269e2403128725375ef174c1adb43b551692f4161f4fbf770d881e718",
+      "bytes": 4614672,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.5,
+        "depth": 1.0
+      },
+      "opening": null,
+      "root_name": "Arkya_Structure_fondation-pierre",
+      "mesh_name": "Structure_fondation-pierre",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 9400,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.25,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.25,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.25,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.25,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.25,
+            0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.25,
+            0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.25,
+            -0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.25,
+            -0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | pierre | painted",
+          "key": "pierre",
+          "metallic": 0,
+          "roughness": 0.8600000143051147,
+          "urp_smoothness_equivalent": 0.14,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/pierre-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | mortar | painted",
+          "key": "mortar",
+          "metallic": 0,
+          "roughness": 0.949999988079071,
+          "urp_smoothness_equivalent": 0.05,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/mortar-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "mur-plein-chaume",
+      "shape": "mur-plein",
+      "material": "chaume",
+      "label": "Mur plein · Chaume",
+      "source": "structures/assets/mur-plein-chaume/mur-plein-chaume.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/mur-plein-chaume/mur-plein-chaume.glb",
+      "sha256": "44dc9fe5c53047e396de59899c67860eb234d8812c0466967a2ecae3afaad674",
+      "bytes": 5577664,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "opening": null,
+      "root_name": "Arkya_Structure_mur-plein-chaume",
+      "mesh_name": "Structure_mur-plein-chaume",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 5800,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | chaume | painted",
+          "key": "chaume",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/chaume-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 2,
+          "name": "Arkya | rope | painted",
+          "key": "rope",
+          "metallic": 0,
+          "roughness": 0.9300000071525574,
+          "urp_smoothness_equivalent": 0.07,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/rope-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "mur-plein-bois",
+      "shape": "mur-plein",
+      "material": "bois",
+      "label": "Mur plein · Bois",
+      "source": "structures/assets/mur-plein-bois/mur-plein-bois.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/mur-plein-bois/mur-plein-bois.glb",
+      "sha256": "888432459461bd41670e624aa8bae24a5224fff2d9b46d776d1b765ee65e3f03",
+      "bytes": 3530596,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "opening": null,
+      "root_name": "Arkya_Structure_mur-plein-bois",
+      "mesh_name": "Structure_mur-plein-bois",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 3572,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | bois | painted",
+          "key": "bois",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/bois-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "mur-plein-pierre",
+      "shape": "mur-plein",
+      "material": "pierre",
+      "label": "Mur plein · Pierre",
+      "source": "structures/assets/mur-plein-pierre/mur-plein-pierre.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/mur-plein-pierre/mur-plein-pierre.glb",
+      "sha256": "2b5b67c73857b0c6c23a8053f5e93b9a40d84e591739561cbe186b875587cf49",
+      "bytes": 4431040,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "opening": null,
+      "root_name": "Arkya_Structure_mur-plein-pierre",
+      "mesh_name": "Structure_mur-plein-pierre",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 3572,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | pierre | painted",
+          "key": "pierre",
+          "metallic": 0,
+          "roughness": 0.8600000143051147,
+          "urp_smoothness_equivalent": 0.14,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/pierre-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | mortar | painted",
+          "key": "mortar",
+          "metallic": 0,
+          "roughness": 0.949999988079071,
+          "urp_smoothness_equivalent": 0.05,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/mortar-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "mur-fenetre-chaume",
+      "shape": "mur-fenetre",
+      "material": "chaume",
+      "label": "Mur avec fenêtre · Chaume",
+      "source": "structures/assets/mur-fenetre-chaume/mur-fenetre-chaume.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/mur-fenetre-chaume/mur-fenetre-chaume.glb",
+      "sha256": "144300437efe0298da73f4e277d40327fda9ecb807cd89229339654ad1501817",
+      "bytes": 5677824,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "opening": {
+        "width": 0.5,
+        "height": 0.5,
+        "bottom": 0.3,
+        "top": 0.8
+      },
+      "root_name": "Arkya_Structure_mur-fenetre-chaume",
+      "mesh_name": "Structure_mur-fenetre-chaume",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 8896,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | chaume | painted",
+          "key": "chaume",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/chaume-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 2,
+          "name": "Arkya | rope | painted",
+          "key": "rope",
+          "metallic": 0,
+          "roughness": 0.9300000071525574,
+          "urp_smoothness_equivalent": 0.07,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/rope-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "mur-fenetre-bois",
+      "shape": "mur-fenetre",
+      "material": "bois",
+      "label": "Mur avec fenêtre · Bois",
+      "source": "structures/assets/mur-fenetre-bois/mur-fenetre-bois.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/mur-fenetre-bois/mur-fenetre-bois.glb",
+      "sha256": "9b440cd5634ae934ab610f5a85daac1fbb056243c6540ab7c13d7cb829eff265",
+      "bytes": 3583512,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "opening": {
+        "width": 0.5,
+        "height": 0.5,
+        "bottom": 0.3,
+        "top": 0.8
+      },
+      "root_name": "Arkya_Structure_mur-fenetre-bois",
+      "mesh_name": "Structure_mur-fenetre-bois",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 5264,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | bois | painted",
+          "key": "bois",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/bois-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "mur-fenetre-pierre",
+      "shape": "mur-fenetre",
+      "material": "pierre",
+      "label": "Mur avec fenêtre · Pierre",
+      "source": "structures/assets/mur-fenetre-pierre/mur-fenetre-pierre.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/mur-fenetre-pierre/mur-fenetre-pierre.glb",
+      "sha256": "1cbda04d5ff8e0db0fb7a04285e55db00a6041864c3e7417e82748fbff8334c6",
+      "bytes": 4477032,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 1.0,
+        "depth": 0.15
+      },
+      "opening": {
+        "width": 0.5,
+        "height": 0.5,
+        "bottom": 0.3,
+        "top": 0.8
+      },
+      "root_name": "Arkya_Structure_mur-fenetre-pierre",
+      "mesh_name": "Structure_mur-fenetre-pierre",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 5076,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.5,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.5,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.5,
+            -0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | pierre | painted",
+          "key": "pierre",
+          "metallic": 0,
+          "roughness": 0.8600000143051147,
+          "urp_smoothness_equivalent": 0.14,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/pierre-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | mortar | painted",
+          "key": "mortar",
+          "metallic": 0,
+          "roughness": 0.949999988079071,
+          "urp_smoothness_equivalent": 0.05,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/mortar-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "mur-porte-chaume",
+      "shape": "mur-porte",
+      "material": "chaume",
+      "label": "Mur avec porte · Chaume",
+      "source": "structures/assets/mur-porte-chaume/mur-porte-chaume.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/mur-porte-chaume/mur-porte-chaume.glb",
+      "sha256": "23d6aca46d1fd166a2f9580477a7a6302ad8de4ebbb4c02fde5cba3a5523e964",
+      "bytes": 5665844,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 2.0,
+        "depth": 0.15
+      },
+      "opening": {
+        "width": 0.72,
+        "height": 1.85,
+        "bottom": 0.0,
+        "top": 1.85
+      },
+      "root_name": "Arkya_Structure_mur-porte-chaume",
+      "mesh_name": "Structure_mur-porte-chaume",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 8388,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            2,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            2,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            1,
+            0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            1,
+            -0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            -0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | chaume | painted",
+          "key": "chaume",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/chaume-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 2,
+          "name": "Arkya | rope | painted",
+          "key": "rope",
+          "metallic": 0,
+          "roughness": 0.9300000071525574,
+          "urp_smoothness_equivalent": 0.07,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/rope-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "mur-porte-bois",
+      "shape": "mur-porte",
+      "material": "bois",
+      "label": "Mur avec porte · Bois",
+      "source": "structures/assets/mur-porte-bois/mur-porte-bois.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/mur-porte-bois/mur-porte-bois.glb",
+      "sha256": "4bd41585442bb95cdaa0c6bdcf97b85dae4b4dd8ae1e0e5dcb5895bb94d2cdb0",
+      "bytes": 3561236,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 2.0,
+        "depth": 0.15
+      },
+      "opening": {
+        "width": 0.72,
+        "height": 1.85,
+        "bottom": 0.0,
+        "top": 1.85
+      },
+      "root_name": "Arkya_Structure_mur-porte-bois",
+      "mesh_name": "Structure_mur-porte-bois",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 4512,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            2,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            2,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            1,
+            0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            1,
+            -0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            -0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | bois | painted",
+          "key": "bois",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/bois-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "mur-porte-pierre",
+      "shape": "mur-porte",
+      "material": "pierre",
+      "label": "Mur avec porte · Pierre",
+      "source": "structures/assets/mur-porte-pierre/mur-porte-pierre.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/mur-porte-pierre/mur-porte-pierre.glb",
+      "sha256": "472732859daa1de4c3b0dbdcc3ef97410b55dcf942f51f278b0050f2886a88c4",
+      "bytes": 4472464,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 2.0,
+        "depth": 0.15
+      },
+      "opening": {
+        "width": 0.72,
+        "height": 1.85,
+        "bottom": 0.0,
+        "top": 1.85
+      },
+      "root_name": "Arkya_Structure_mur-porte-pierre",
+      "mesh_name": "Structure_mur-porte-pierre",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 4888,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            1,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            1,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            2,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            2,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            1,
+            0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            1,
+            -0.07500000298023224
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            1,
+            -0.07500000298023224
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | pierre | painted",
+          "key": "pierre",
+          "metallic": 0,
+          "roughness": 0.8600000143051147,
+          "urp_smoothness_equivalent": 0.14,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/pierre-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | mortar | painted",
+          "key": "mortar",
+          "metallic": 0,
+          "roughness": 0.949999988079071,
+          "urp_smoothness_equivalent": 0.05,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/mortar-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "plafond-chaume",
+      "shape": "plafond",
+      "material": "chaume",
+      "label": "Plafond · Chaume",
+      "source": "structures/assets/plafond-chaume/plafond-chaume.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/plafond-chaume/plafond-chaume.glb",
+      "sha256": "cfbf1a63d4cbc49bf2c60698e1107b1eb6486e96c2540e80e776b32713fa8b43",
+      "bytes": 5515320,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.1,
+        "depth": 1.0
+      },
+      "opening": null,
+      "root_name": "Arkya_Structure_plafond-chaume",
+      "mesh_name": "Structure_plafond-chaume",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 3932,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.05000000074505806,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.05000000074505806,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.05000000074505806,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.05000000074505806,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            0.10000000149011612,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.10000000149011612,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.05000000074505806,
+            0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.05000000074505806,
+            0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.05000000074505806,
+            -0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.05000000074505806,
+            -0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | chaume | painted",
+          "key": "chaume",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/chaume-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 2,
+          "name": "Arkya | rope | painted",
+          "key": "rope",
+          "metallic": 0,
+          "roughness": 0.9300000071525574,
+          "urp_smoothness_equivalent": 0.07,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/rope-basecolor.png",
+          "texture_source_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_embedded_sha256": "cb55316e76bbbdac09dfdbb7ddb0e9b3e1b7cffe8559066ee88ff37341cb5b88",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "plafond-bois",
+      "shape": "plafond",
+      "material": "bois",
+      "label": "Plafond · Bois",
+      "source": "structures/assets/plafond-bois/plafond-bois.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/plafond-bois/plafond-bois.glb",
+      "sha256": "feedd2f4eb0bd4113e6db0e01f957ca665fce09786db48390b880262c3e3fc82",
+      "bytes": 3487684,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.1,
+        "depth": 1.0
+      },
+      "opening": null,
+      "root_name": "Arkya_Structure_plafond-bois",
+      "mesh_name": "Structure_plafond-bois",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 2256,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.05000000074505806,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.05000000074505806,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.05000000074505806,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.05000000074505806,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            0.10000000149011612,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.10000000149011612,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.05000000074505806,
+            0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.05000000074505806,
+            0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.05000000074505806,
+            -0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.05000000074505806,
+            -0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | bois | painted",
+          "key": "bois",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/bois-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | timber | painted",
+          "key": "timber",
+          "metallic": 0,
+          "roughness": 0.800000011920929,
+          "urp_smoothness_equivalent": 0.2,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/timber-basecolor.png",
+          "texture_source_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_embedded_sha256": "8086ac03364ca2934d3ab204d9f76c13e277b838e7af6c827cd634bcacce0a01",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    },
+    {
+      "id": "plafond-pierre",
+      "shape": "plafond",
+      "material": "pierre",
+      "label": "Plafond · Pierre",
+      "source": "structures/assets/plafond-pierre/plafond-pierre.glb",
+      "source_repo": "docs/art-direction/resources/structures/assets/plafond-pierre/plafond-pierre.glb",
+      "sha256": "86291f91b56a9879b2dad61673c57c2935ad635425ad007e5c0c94a0f0f06564",
+      "bytes": 4377856,
+      "format": "glb",
+      "embedded_textures": true,
+      "nominal_dimensions": {
+        "width": 1.0,
+        "height": 0.1,
+        "depth": 1.0
+      },
+      "opening": null,
+      "root_name": "Arkya_Structure_plafond-pierre",
+      "mesh_name": "Structure_plafond-pierre",
+      "pivot_unity_m": [
+        0,
+        0,
+        0
+      ],
+      "triangles": 1880,
+      "snap_points": [
+        {
+          "source_name": "Snap_Left",
+          "gltf_position_m": [
+            -0.5,
+            0.05000000074505806,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.5,
+            0.05000000074505806,
+            0.0
+          ],
+          "imported_unity_normal": [
+            1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Right"
+        },
+        {
+          "source_name": "Snap_Right",
+          "gltf_position_m": [
+            0.5,
+            0.05000000074505806,
+            0
+          ],
+          "imported_unity_position_m": [
+            -0.5,
+            0.05000000074505806,
+            0.0
+          ],
+          "imported_unity_normal": [
+            -1,
+            0.0,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Left"
+        },
+        {
+          "source_name": "Snap_Bottom",
+          "gltf_position_m": [
+            0,
+            0,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            -1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Bottom"
+        },
+        {
+          "source_name": "Snap_Top",
+          "gltf_position_m": [
+            0,
+            0.10000000149011612,
+            0
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.10000000149011612,
+            0.0
+          ],
+          "imported_unity_normal": [
+            0.0,
+            1,
+            0.0
+          ],
+          "canonical_unity_name": "Snap_Top"
+        },
+        {
+          "source_name": "Snap_Front",
+          "gltf_position_m": [
+            0,
+            0.05000000074505806,
+            0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.05000000074505806,
+            0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            1
+          ],
+          "canonical_unity_name": "Snap_Front"
+        },
+        {
+          "source_name": "Snap_Back",
+          "gltf_position_m": [
+            0,
+            0.05000000074505806,
+            -0.5
+          ],
+          "imported_unity_position_m": [
+            0.0,
+            0.05000000074505806,
+            -0.5
+          ],
+          "imported_unity_normal": [
+            0.0,
+            0.0,
+            -1
+          ],
+          "canonical_unity_name": "Snap_Back"
+        }
+      ],
+      "materials": [
+        {
+          "index": 0,
+          "name": "Arkya | pierre | painted",
+          "key": "pierre",
+          "metallic": 0,
+          "roughness": 0.8600000143051147,
+          "urp_smoothness_equivalent": 0.14,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/pierre-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        },
+        {
+          "index": 1,
+          "name": "Arkya | mortar | painted",
+          "key": "mortar",
+          "metallic": 0,
+          "roughness": 0.949999988079071,
+          "urp_smoothness_equivalent": 0.05,
+          "base_color_factor": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "texture": "docs/art-direction/resources/structures/textures/mortar-basecolor.png",
+          "texture_source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_embedded_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+          "texture_size": [
+            1254,
+            1254
+          ],
+          "alpha_mode": "OPAQUE",
+          "double_sided": true
+        }
+      ]
+    }
+  ]
+}

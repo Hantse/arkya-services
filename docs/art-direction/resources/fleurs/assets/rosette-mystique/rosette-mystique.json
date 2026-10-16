@@ -1,0 +1,19 @@
+{
+  "id": "rosette-mystique",
+  "shape": "rosette",
+  "material": "mystique",
+  "label": "Rosette basse · Mystique",
+  "glb": "assets/rosette-mystique/rosette-mystique.glb",
+  "blend": "assets/rosette-mystique/rosette-mystique.blend",
+  "preview": "assets/rosette-mystique/rosette-mystique-preview.png",
+  "height": 0.2,
+  "width": 0.3319,
+  "depth": 0.283,
+  "triangles": 6784,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

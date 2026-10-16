@@ -1,0 +1,122 @@
+{
+  "id": "mur-fenetre-chaume",
+  "shape": "mur-fenetre",
+  "material": "chaume",
+  "label": "Mur avec fenêtre · Chaume",
+  "glb": "assets/mur-fenetre-chaume/mur-fenetre-chaume.glb",
+  "blend": "assets/mur-fenetre-chaume/mur-fenetre-chaume.blend",
+  "preview": "assets/mur-fenetre-chaume/mur-fenetre-chaume-preview.png",
+  "height": 1.0,
+  "width": 1.0,
+  "depth": 0.15,
+  "nominal_dimensions": {
+    "width": 1.0,
+    "height": 1.0,
+    "depth": 0.15
+  },
+  "triangles": 8896,
+  "materials_count": 3,
+  "texture_resolution": [
+    1254,
+    1254
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "gltf_up_axis": "Y",
+  "snap_points": [
+    {
+      "name": "Snap_Left",
+      "position_m": [
+        -0.5,
+        0.5,
+        0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Right",
+      "position_m": [
+        0.5,
+        0.5,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Bottom",
+      "position_m": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Top",
+      "position_m": [
+        0,
+        1.0,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Front",
+      "position_m": [
+        0,
+        0.5,
+        0.075
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Snap_Back",
+      "position_m": [
+        0,
+        0.5,
+        -0.075
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "snap_coordinate_system": "glTF Y-up, metres, root-local",
+  "wood_finish": {
+    "revision": 2,
+    "uv_tile_metres": [
+      1.2,
+      2.4
+    ],
+    "roughness": 0.96,
+    "source": "sources/worked-timber-painted-v2.png"
+  },
+  "opening": {
+    "width": 0.5,
+    "height": 0.5,
+    "bottom": 0.3,
+    "top": 0.8
+  }
+}

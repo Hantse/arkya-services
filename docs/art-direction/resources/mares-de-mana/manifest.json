@@ -1,0 +1,331 @@
+{
+  "family": "mares-de-mana",
+  "artistic_status": "approved",
+  "shapes": [
+    {
+      "id": "mare",
+      "label": "Mare de mana",
+      "height": 0.7979,
+      "description": "Mare organique aplatie, liquide coloré irisé et cinq volutes de mana animées.",
+      "artistic_status": "approved",
+      "approved_at": "2026-10-15"
+    },
+    {
+      "id": "allongee",
+      "label": "Petite mare allongée",
+      "description": "Flaque étroite et sinueuse, une extrémité gonflée et trois volutes réparties le long du courant.",
+      "height": 0.5905,
+      "artistic_status": "approved",
+      "approved_at": "2026-10-15"
+    },
+    {
+      "id": "lobee",
+      "label": "Grande mare à lobes",
+      "description": "Large nappe asymétrique découpée en lobes arrondis, sept sources de mana et courants séparés.",
+      "height": 0.9406,
+      "artistic_status": "approved",
+      "approved_at": "2026-10-15"
+    }
+  ],
+  "materials": [
+    {
+      "id": "bleu",
+      "label": "Mana bleu azur",
+      "swatch": "#35a8d2",
+      "description": "Liquide peint coloré et volutes ascendantes assorties."
+    },
+    {
+      "id": "orange",
+      "label": "Mana orange ambré",
+      "swatch": "#ee9b29",
+      "description": "Liquide peint coloré et volutes ascendantes assorties."
+    },
+    {
+      "id": "vert",
+      "label": "Mana vert émeraude",
+      "swatch": "#3ac17c",
+      "description": "Liquide peint coloré et volutes ascendantes assorties."
+    }
+  ],
+  "assets": [
+    {
+      "id": "mare-bleue",
+      "shape": "mare",
+      "material": "bleu",
+      "label": "Mare de mana · Mana bleu azur",
+      "glb": "assets/mare-bleue/mare-bleue.glb",
+      "blend": "assets/mare-bleue/mare-bleue.blend",
+      "preview": "assets/mare-bleue/mare-bleue-preview.png",
+      "height": 0.7979,
+      "width": 2.7069,
+      "depth": 2.0364,
+      "triangles": 18172,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": false,
+      "pivot": "centre au sol",
+      "animation": "ManaFlow",
+      "animation_duration": 6,
+      "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+      "artistic_status": "approved",
+      "approved_at": "2026-10-15",
+      "animated_nodes": 15,
+      "wisp_count": 5,
+      "droplet_count": 9
+    },
+    {
+      "id": "mare-orange",
+      "shape": "mare",
+      "material": "orange",
+      "label": "Mare de mana · Mana orange ambré",
+      "glb": "assets/mare-orange/mare-orange.glb",
+      "blend": "assets/mare-orange/mare-orange.blend",
+      "preview": "assets/mare-orange/mare-orange-preview.png",
+      "height": 0.7979,
+      "width": 2.7069,
+      "depth": 2.0364,
+      "triangles": 18172,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": false,
+      "pivot": "centre au sol",
+      "animation": "ManaFlow",
+      "animation_duration": 6,
+      "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+      "artistic_status": "approved",
+      "approved_at": "2026-10-15",
+      "animated_nodes": 15,
+      "wisp_count": 5,
+      "droplet_count": 9
+    },
+    {
+      "id": "mare-verte",
+      "shape": "mare",
+      "material": "vert",
+      "label": "Mare de mana · Mana vert émeraude",
+      "glb": "assets/mare-verte/mare-verte.glb",
+      "blend": "assets/mare-verte/mare-verte.blend",
+      "preview": "assets/mare-verte/mare-verte-preview.png",
+      "height": 0.7979,
+      "width": 2.7069,
+      "depth": 2.0364,
+      "triangles": 18172,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": false,
+      "pivot": "centre au sol",
+      "animation": "ManaFlow",
+      "animation_duration": 6,
+      "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+      "artistic_status": "approved",
+      "approved_at": "2026-10-15",
+      "animated_nodes": 15,
+      "wisp_count": 5,
+      "droplet_count": 9
+    },
+    {
+      "id": "allongee-bleu",
+      "shape": "allongee",
+      "material": "bleu",
+      "label": "Petite mare allongée · Mana bleu azur",
+      "glb": "assets/allongee-bleu/allongee-bleu.glb",
+      "blend": "assets/allongee-bleu/allongee-bleu.blend",
+      "preview": "assets/allongee-bleu/allongee-bleu-preview.png",
+      "height": 0.5905,
+      "width": 1.7902,
+      "depth": 0.752,
+      "triangles": 12156,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": false,
+      "pivot": "centre au sol",
+      "animation": "ManaFlow",
+      "animation_duration": 6,
+      "animated_nodes": 10,
+      "wisp_count": 3,
+      "droplet_count": 6,
+      "artistic_status": "approved",
+      "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+      "approved_at": "2026-10-15"
+    },
+    {
+      "id": "allongee-orange",
+      "shape": "allongee",
+      "material": "orange",
+      "label": "Petite mare allongée · Mana orange ambré",
+      "glb": "assets/allongee-orange/allongee-orange.glb",
+      "blend": "assets/allongee-orange/allongee-orange.blend",
+      "preview": "assets/allongee-orange/allongee-orange-preview.png",
+      "height": 0.5905,
+      "width": 1.7902,
+      "depth": 0.752,
+      "triangles": 12156,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": false,
+      "pivot": "centre au sol",
+      "animation": "ManaFlow",
+      "animation_duration": 6,
+      "animated_nodes": 10,
+      "wisp_count": 3,
+      "droplet_count": 6,
+      "artistic_status": "approved",
+      "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+      "approved_at": "2026-10-15"
+    },
+    {
+      "id": "allongee-vert",
+      "shape": "allongee",
+      "material": "vert",
+      "label": "Petite mare allongée · Mana vert émeraude",
+      "glb": "assets/allongee-vert/allongee-vert.glb",
+      "blend": "assets/allongee-vert/allongee-vert.blend",
+      "preview": "assets/allongee-vert/allongee-vert-preview.png",
+      "height": 0.5905,
+      "width": 1.7902,
+      "depth": 0.752,
+      "triangles": 12156,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": false,
+      "pivot": "centre au sol",
+      "animation": "ManaFlow",
+      "animation_duration": 6,
+      "animated_nodes": 10,
+      "wisp_count": 3,
+      "droplet_count": 6,
+      "artistic_status": "approved",
+      "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+      "approved_at": "2026-10-15"
+    },
+    {
+      "id": "lobee-bleu",
+      "shape": "lobee",
+      "material": "bleu",
+      "label": "Grande mare à lobes · Mana bleu azur",
+      "glb": "assets/lobee-bleu/lobee-bleu.glb",
+      "blend": "assets/lobee-bleu/lobee-bleu.blend",
+      "preview": "assets/lobee-bleu/lobee-bleu-preview.png",
+      "height": 0.9406,
+      "width": 3.29,
+      "depth": 2.632,
+      "triangles": 22136,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": false,
+      "pivot": "centre au sol",
+      "animation": "ManaFlow",
+      "animation_duration": 6,
+      "animated_nodes": 20,
+      "wisp_count": 7,
+      "droplet_count": 12,
+      "artistic_status": "approved",
+      "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+      "approved_at": "2026-10-15"
+    },
+    {
+      "id": "lobee-orange",
+      "shape": "lobee",
+      "material": "orange",
+      "label": "Grande mare à lobes · Mana orange ambré",
+      "glb": "assets/lobee-orange/lobee-orange.glb",
+      "blend": "assets/lobee-orange/lobee-orange.blend",
+      "preview": "assets/lobee-orange/lobee-orange-preview.png",
+      "height": 0.9406,
+      "width": 3.29,
+      "depth": 2.632,
+      "triangles": 22136,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": false,
+      "pivot": "centre au sol",
+      "animation": "ManaFlow",
+      "animation_duration": 6,
+      "animated_nodes": 20,
+      "wisp_count": 7,
+      "droplet_count": 12,
+      "artistic_status": "approved",
+      "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+      "approved_at": "2026-10-15"
+    },
+    {
+      "id": "lobee-vert",
+      "shape": "lobee",
+      "material": "vert",
+      "label": "Grande mare à lobes · Mana vert émeraude",
+      "glb": "assets/lobee-vert/lobee-vert.glb",
+      "blend": "assets/lobee-vert/lobee-vert.blend",
+      "preview": "assets/lobee-vert/lobee-vert-preview.png",
+      "height": 0.9406,
+      "width": 3.29,
+      "depth": 2.632,
+      "triangles": 22136,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": false,
+      "pivot": "centre au sol",
+      "animation": "ManaFlow",
+      "animation_duration": 6,
+      "animated_nodes": 20,
+      "wisp_count": 7,
+      "droplet_count": 12,
+      "artistic_status": "approved",
+      "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+      "approved_at": "2026-10-15"
+    }
+  ],
+  "approved_at": "2026-10-15",
+  "approved_asset_ids": [
+    "mare-bleue",
+    "mare-orange",
+    "mare-verte",
+    "allongee-bleu",
+    "allongee-orange",
+    "allongee-vert",
+    "lobee-bleu",
+    "lobee-orange",
+    "lobee-vert"
+  ],
+  "comparison": "comparaison-tailles.png",
+  "approval_history": [
+    {
+      "approved_at": "2026-10-15",
+      "asset_ids": [
+        "mare-bleue",
+        "mare-orange",
+        "mare-verte"
+      ],
+      "scope": "Mare d’origine, trois couleurs et animation"
+    },
+    {
+      "approved_at": "2026-10-15",
+      "asset_ids": [
+        "allongee-bleu",
+        "allongee-orange",
+        "allongee-vert",
+        "lobee-bleu",
+        "lobee-orange",
+        "lobee-vert"
+      ],
+      "scope": "Petite mare allongée et grande mare à lobes, trois couleurs et animation"
+    }
+  ]
+}

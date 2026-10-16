@@ -1,0 +1,349 @@
+{
+  "description": "Existing 24 axe/pickaxe deliveries and shared painted textures, preserved before adding the sickle. Artistic proposals, not approved references.",
+  "files": [
+    {
+      "file": "assets/hache-azur-sockets-1/hache-azur-sockets-1-preview.png",
+      "sha256": "1f01b4905c15869b70d36103870dbca99a9761e7e53b12bd5bc2cf083db5d2cb"
+    },
+    {
+      "file": "assets/hache-azur-sockets-1/hache-azur-sockets-1.blend",
+      "sha256": "6792340c757adb0676a73de87bb2f6c790edcdb246abd744e5ae72aa60d4b93c"
+    },
+    {
+      "file": "assets/hache-azur-sockets-1/hache-azur-sockets-1.glb",
+      "sha256": "c883285c48fc6ef30c28cf4e64e05a6d055c97d0cf9b0753fe9b93b1995e99c7"
+    },
+    {
+      "file": "assets/hache-azur-sockets-2/hache-azur-sockets-2-preview.png",
+      "sha256": "e0062b72eea81c0ee59e70c8445db4efe6a3c89ba96a8f23fbc89f049331c66f"
+    },
+    {
+      "file": "assets/hache-azur-sockets-2/hache-azur-sockets-2.blend",
+      "sha256": "a3c23cb955cb402c9990a26a7b50dec5aff6a3a141dd54483c74af497d46674c"
+    },
+    {
+      "file": "assets/hache-azur-sockets-2/hache-azur-sockets-2.glb",
+      "sha256": "b68e0cd4a33e5417410937e07b16a8fc42770d18f4d5c6d92709a7eb4c377af4"
+    },
+    {
+      "file": "assets/hache-azur-sockets-3/hache-azur-sockets-3-preview.png",
+      "sha256": "a6e121dbd1383ea0e9a91be9d42f5c35fb648c61df08ae01606871098fba70f5"
+    },
+    {
+      "file": "assets/hache-azur-sockets-3/hache-azur-sockets-3.blend",
+      "sha256": "56ad9025fde21702e5a45c1293541ec06b0197dcdcf7d788310058b5d389a806"
+    },
+    {
+      "file": "assets/hache-azur-sockets-3/hache-azur-sockets-3.glb",
+      "sha256": "f23ebd4e5b3873d82c068284a4a708b3928a1de9f609bb66f19f65180997f788"
+    },
+    {
+      "file": "assets/hache-azur/hache-azur-preview.png",
+      "sha256": "202d0db2fed4960e8622911356922a92248a1396dc532de25c2a04218e878782"
+    },
+    {
+      "file": "assets/hache-azur/hache-azur.blend",
+      "sha256": "cbd81433ec263193fa3bd27558aa4d13b9cc85eac1abeb420b283deca1d2d641"
+    },
+    {
+      "file": "assets/hache-azur/hache-azur.glb",
+      "sha256": "f0e780a61b5c36ed2498e48b23460b567addb57f8e9abd6e914a43833fe3dea8"
+    },
+    {
+      "file": "assets/hache-orange-sockets-1/hache-orange-sockets-1-preview.png",
+      "sha256": "ab0ac74831bbef9c06010796c3d7d1c24a18686693f9a17f1be85a60034cfb25"
+    },
+    {
+      "file": "assets/hache-orange-sockets-1/hache-orange-sockets-1.blend",
+      "sha256": "0b5a16ff6c37b5e11593cd7c5a9a6a3045a18c3482f0b05d05b610382a541957"
+    },
+    {
+      "file": "assets/hache-orange-sockets-1/hache-orange-sockets-1.glb",
+      "sha256": "dc6a9f086e5503b9a2f4182c6816bbbd8d004c3e698ccd81334880e55d42d541"
+    },
+    {
+      "file": "assets/hache-orange-sockets-2/hache-orange-sockets-2-preview.png",
+      "sha256": "01bac05b77c4101b03116c25864cc33bd48fb0eb7c4948872cb3500d11c331fe"
+    },
+    {
+      "file": "assets/hache-orange-sockets-2/hache-orange-sockets-2.blend",
+      "sha256": "7543e808dda101052362015e6bb0031c53e0b9096ae04dbb88000430b7723177"
+    },
+    {
+      "file": "assets/hache-orange-sockets-2/hache-orange-sockets-2.glb",
+      "sha256": "86a616a9756776033add1797bd9648f4f5baeb79353dd5b2589911c9a2bc3f7e"
+    },
+    {
+      "file": "assets/hache-orange-sockets-3/hache-orange-sockets-3-preview.png",
+      "sha256": "374a6a83d795ff24094b9707233e428771def670a11fbafa51fb92baa96922e1"
+    },
+    {
+      "file": "assets/hache-orange-sockets-3/hache-orange-sockets-3.blend",
+      "sha256": "f346f38fccc6352c62d12de7df708205579140d9585260824230349f8b7e38b7"
+    },
+    {
+      "file": "assets/hache-orange-sockets-3/hache-orange-sockets-3.glb",
+      "sha256": "289d2c1e68327432af64256a616ca2f95db77c5e64faa54c3df54951aaa47ff1"
+    },
+    {
+      "file": "assets/hache-orange/hache-orange-preview.png",
+      "sha256": "593fafd067a2115d5f4a2d8528e68ddc036f99950094b5e9ec93216df38d12d6"
+    },
+    {
+      "file": "assets/hache-orange/hache-orange.blend",
+      "sha256": "fbef58ff48b3df3bf646aedadd2899ba4432d03fdd5297375de2bb7acaa07f33"
+    },
+    {
+      "file": "assets/hache-orange/hache-orange.glb",
+      "sha256": "335019e54295ae75af09cfbabccda778ce04057848304bce5294c7a023af37a0"
+    },
+    {
+      "file": "assets/hache-vert-sockets-1/hache-vert-sockets-1-preview.png",
+      "sha256": "3a37b2166f7b7a854e991c51a93c979ec27ba819ce74ed8ed295575d5c6904a6"
+    },
+    {
+      "file": "assets/hache-vert-sockets-1/hache-vert-sockets-1.blend",
+      "sha256": "b76ba4c6906208388975a57fc04a28c79a961a6e911b840051f2c8deddb04d0d"
+    },
+    {
+      "file": "assets/hache-vert-sockets-1/hache-vert-sockets-1.glb",
+      "sha256": "ce140dfc8b41b81ed55786a62bd769e290a66c80c5a267afa8088c4ef48d03b9"
+    },
+    {
+      "file": "assets/hache-vert-sockets-2/hache-vert-sockets-2-preview.png",
+      "sha256": "a5a0090bc0478c595788c693c48c6ab11094f2ab57284747d02b68ea37ef8b4b"
+    },
+    {
+      "file": "assets/hache-vert-sockets-2/hache-vert-sockets-2.blend",
+      "sha256": "bb6f5ea8f2dcba7937e0161a5fe56f7fddae5c2843769fdad10f419739820e2c"
+    },
+    {
+      "file": "assets/hache-vert-sockets-2/hache-vert-sockets-2.glb",
+      "sha256": "9b2281a0ea0c56d6ebedcb727662bbc5fbed4d497a550297fef7e5a69711d94c"
+    },
+    {
+      "file": "assets/hache-vert-sockets-3/hache-vert-sockets-3-preview.png",
+      "sha256": "c51ecdf9a0a1a0f416d3c4395e25179555e766cb3cf707b181911b5c1a528be8"
+    },
+    {
+      "file": "assets/hache-vert-sockets-3/hache-vert-sockets-3.blend",
+      "sha256": "d3afe8c668d45c3a41652d29a58368637a802eb02a45d11ebb6e5a7766fcd591"
+    },
+    {
+      "file": "assets/hache-vert-sockets-3/hache-vert-sockets-3.glb",
+      "sha256": "c2591c9057e64f2e2eb020b673ab83adc2be0ba06382523dd37eb39dbe58539b"
+    },
+    {
+      "file": "assets/hache-vert/hache-vert-preview.png",
+      "sha256": "49e63046a9e8cdebaf5fe94525bc537a842a46baf1eb54ea6bbf1d8598ca3ed5"
+    },
+    {
+      "file": "assets/hache-vert/hache-vert.blend",
+      "sha256": "c75aec42b0d384cad613fb748ae107b81146f79cbc797f4f89939858379df3f3"
+    },
+    {
+      "file": "assets/hache-vert/hache-vert.glb",
+      "sha256": "a465e218aa35cf024204feedc58564dd90d8b2846550d13a33885425e8aace32"
+    },
+    {
+      "file": "assets/pioche-azur-sockets-1/pioche-azur-sockets-1-preview.png",
+      "sha256": "8906fbaaf66f63cb9062f70cbac90cdd3571cc291cf42c00d26aa644e823fe65"
+    },
+    {
+      "file": "assets/pioche-azur-sockets-1/pioche-azur-sockets-1.blend",
+      "sha256": "c3bfa608b38e0c33de823341c7f91a6f485a1113d0c3a82c9b0ad6dce6ec6fb1"
+    },
+    {
+      "file": "assets/pioche-azur-sockets-1/pioche-azur-sockets-1.glb",
+      "sha256": "273c8f0ff09adb6c1be36a38f3c4a57eb359939d05e33cd648d0ad1a37dbf9d8"
+    },
+    {
+      "file": "assets/pioche-azur-sockets-2/pioche-azur-sockets-2-preview.png",
+      "sha256": "5a6999acd030b550b500e5839b33be5287cb890e59883498914e51c09bd999ff"
+    },
+    {
+      "file": "assets/pioche-azur-sockets-2/pioche-azur-sockets-2.blend",
+      "sha256": "f3b34ce36d5c97b4436730ab4dd6bbab2836588e810d6f74b86ccdfa3b44ecc3"
+    },
+    {
+      "file": "assets/pioche-azur-sockets-2/pioche-azur-sockets-2.glb",
+      "sha256": "0c8fdc81aad2d2f41194ba423be4030dd57875809260f0b7bb94ca56d9461d5e"
+    },
+    {
+      "file": "assets/pioche-azur-sockets-3/pioche-azur-sockets-3-preview.png",
+      "sha256": "bd4d3b5f872c424d056b133d083ad468a3f2e13ea9f46290037f9fcbd4f7be7f"
+    },
+    {
+      "file": "assets/pioche-azur-sockets-3/pioche-azur-sockets-3.blend",
+      "sha256": "f53e507cf6114848463bde19d3488a5c8cb4c02a8cba093f90ed9ff2de6bd6fb"
+    },
+    {
+      "file": "assets/pioche-azur-sockets-3/pioche-azur-sockets-3.glb",
+      "sha256": "a0ad9a4e84d714fe05cf60dd711b3aab572af943ff60e1a5252b53308f920843"
+    },
+    {
+      "file": "assets/pioche-azur/pioche-azur-preview.png",
+      "sha256": "38482829a4da3b629d6f7b869e6d7a9152b61833034ae5481164bc1d55446173"
+    },
+    {
+      "file": "assets/pioche-azur/pioche-azur.blend",
+      "sha256": "a4a3244997fccce3e75aadcb45743e44991efe1f2a0c22a5a016d2350c4084b2"
+    },
+    {
+      "file": "assets/pioche-azur/pioche-azur.glb",
+      "sha256": "4a3c711c8c1141e417a6c3a21eea9c3c15bb643bbef4617b7e82565e012e79fe"
+    },
+    {
+      "file": "assets/pioche-orange-sockets-1/pioche-orange-sockets-1-preview.png",
+      "sha256": "850e83f3a5ee00190d05f22285edbd05907e893dee3a2755f0bdfb85fa5bbb76"
+    },
+    {
+      "file": "assets/pioche-orange-sockets-1/pioche-orange-sockets-1.blend",
+      "sha256": "733bff0b0c55c4ef46677f85d2cd242c12ec8eb5e508b225da54a505e062fa29"
+    },
+    {
+      "file": "assets/pioche-orange-sockets-1/pioche-orange-sockets-1.glb",
+      "sha256": "64f65352ff1510b3b37a4d20ae45b34e8bc7de30983a60bbe6e0e8c65cee1a34"
+    },
+    {
+      "file": "assets/pioche-orange-sockets-2/pioche-orange-sockets-2-preview.png",
+      "sha256": "b4da84528bfaa781806c8797297842fd73feb53e5068de145c7d5f0a7dc90dca"
+    },
+    {
+      "file": "assets/pioche-orange-sockets-2/pioche-orange-sockets-2.blend",
+      "sha256": "68a163bb1603422c6cb33f848ebc90fb26c59a03ec5cd9195defcb83868bc424"
+    },
+    {
+      "file": "assets/pioche-orange-sockets-2/pioche-orange-sockets-2.glb",
+      "sha256": "8cdd7caa490e2ab31d9705e5918769d4d19a748b2917b4131bfa8c33e720e215"
+    },
+    {
+      "file": "assets/pioche-orange-sockets-3/pioche-orange-sockets-3-preview.png",
+      "sha256": "7183dd5359d465387a831cd57c087205af1ec2752b817b126df82fc1c4a094ba"
+    },
+    {
+      "file": "assets/pioche-orange-sockets-3/pioche-orange-sockets-3.blend",
+      "sha256": "f199832bfefd6861b28da9663a1899353edfe69918a8eea4fb9789410cf4e702"
+    },
+    {
+      "file": "assets/pioche-orange-sockets-3/pioche-orange-sockets-3.glb",
+      "sha256": "7e39ba9c07e9526903eb2e34f68b84c9bac4b7134461789276faf3ff7e14181c"
+    },
+    {
+      "file": "assets/pioche-orange/pioche-orange-preview.png",
+      "sha256": "9ed33df9a03cf484553f7180afc8a9aba1b025239ab824a7a7cd1a34868fe6c1"
+    },
+    {
+      "file": "assets/pioche-orange/pioche-orange.blend",
+      "sha256": "ff1ad21f08113d0c83dd1714d2c4e0159d3e030a76ec99611ca9b1bb72e4a518"
+    },
+    {
+      "file": "assets/pioche-orange/pioche-orange.glb",
+      "sha256": "c543481090b1b6dc26941c1cb1c048aee90ab4cc50d8cfcd4a725427d6967b55"
+    },
+    {
+      "file": "assets/pioche-vert-sockets-1/pioche-vert-sockets-1-preview.png",
+      "sha256": "e6a7f4bdeb89e3c3397f9c40cd8991da726c86bee36919e495a2d7ab0d31ef30"
+    },
+    {
+      "file": "assets/pioche-vert-sockets-1/pioche-vert-sockets-1.blend",
+      "sha256": "67d460f36b27cbadd0d04c6c288dd58f316091390462593d352c3c6cceb23b15"
+    },
+    {
+      "file": "assets/pioche-vert-sockets-1/pioche-vert-sockets-1.glb",
+      "sha256": "8f878f96727b211af884b675549ff0d8358eabdc641182b3a3f653355dc44c26"
+    },
+    {
+      "file": "assets/pioche-vert-sockets-2/pioche-vert-sockets-2-preview.png",
+      "sha256": "9573b6014e006b7657393fa48e04f6e34855974b67b6fe008a07a577f5013f17"
+    },
+    {
+      "file": "assets/pioche-vert-sockets-2/pioche-vert-sockets-2.blend",
+      "sha256": "f95793995bbb6df948f557c46279ea433f17a1b37aeaa5ab69b475a5a236d4f1"
+    },
+    {
+      "file": "assets/pioche-vert-sockets-2/pioche-vert-sockets-2.glb",
+      "sha256": "dd87b457434ac5ab016d7af9d7b3aaf7b85e13a924d0e67e8dca775f3363da92"
+    },
+    {
+      "file": "assets/pioche-vert-sockets-3/pioche-vert-sockets-3-preview.png",
+      "sha256": "1cd0fa7f6edc6119ca4ea4744973b6f49a9415cb1964d29a2e4972e9df481bf6"
+    },
+    {
+      "file": "assets/pioche-vert-sockets-3/pioche-vert-sockets-3.blend",
+      "sha256": "62dcbb3e70aabaf6a3d565f8669467ef37e2e5d3705457f9b1d03c395757e674"
+    },
+    {
+      "file": "assets/pioche-vert-sockets-3/pioche-vert-sockets-3.glb",
+      "sha256": "54ab4622ad375804383bdc6bb3a0a92f2bd77b9530f73d419f4aceee014855a0"
+    },
+    {
+      "file": "assets/pioche-vert/pioche-vert-preview.png",
+      "sha256": "fcad9e485e7f9686a578022e74987b2ccd33b22c5aedcd77f1c9f537844e1e3c"
+    },
+    {
+      "file": "assets/pioche-vert/pioche-vert.blend",
+      "sha256": "9c81c0d29d43ebeb59c212d8dbda897d07e431c206dca33cf58c109b83118fd1"
+    },
+    {
+      "file": "assets/pioche-vert/pioche-vert.glb",
+      "sha256": "43f33f7f6ba805758da28e395bf5032a82491666628d85fb6c2e6971b2696f3b"
+    },
+    {
+      "file": "textures/azur/bronze-basecolor.png",
+      "sha256": "357b4f42e791a880e316ee835491033de6947327ef78423f2ad00dbd9eb3caeb"
+    },
+    {
+      "file": "textures/azur/bronze-roughness.png",
+      "sha256": "5b94e128737372147df4b6f83a15b9c3763e7fe317bafe75d3cf9133a839e95c"
+    },
+    {
+      "file": "textures/azur/leather-basecolor.png",
+      "sha256": "9cb70ae780d02a75fe94895def4ccbc06e67ffbbc4c657f37cdacbe08ec8d94f"
+    },
+    {
+      "file": "textures/azur/leather-roughness.png",
+      "sha256": "30af82ea4e2a955ad33264cd330ee9480bc9dfdda69b18405e8e93705aaea26c"
+    },
+    {
+      "file": "textures/azur/mana-basecolor.png",
+      "sha256": "5358ea34926ab0eeac5159b978ba7c77908ca7f3937717809b229847f389250a"
+    },
+    {
+      "file": "textures/azur/mana-roughness.png",
+      "sha256": "230cd7492b26ba6125d51c631c63453a435e22721976ace3d31016933af4a4e8"
+    },
+    {
+      "file": "textures/azur/steel-basecolor.png",
+      "sha256": "6782af3b491051a609d953ba54ecc48ff9c1ae362dc092cfcb172865faed3c70"
+    },
+    {
+      "file": "textures/azur/steel-roughness.png",
+      "sha256": "165abd5e3b5c04c482fc5e7ee359ea0e1b3005131fec540280a11ea03394f862"
+    },
+    {
+      "file": "textures/azur/wood-basecolor.png",
+      "sha256": "23b1dc81af811f6bd063aae9475affd47d93927081747d155b437388fd31fef7"
+    },
+    {
+      "file": "textures/azur/wood-roughness.png",
+      "sha256": "9bf70c64a1cf92c6762263a2502bc8f19d9d4c8bdd0d9b9d596e94536cd5bed0"
+    },
+    {
+      "file": "textures/orange/mana-basecolor.png",
+      "sha256": "7797194db97565ce8dbdc15c2cf34ee68c495086957d0a6e5bb6843ad3315e74"
+    },
+    {
+      "file": "textures/orange/mana-roughness.png",
+      "sha256": "230cd7492b26ba6125d51c631c63453a435e22721976ace3d31016933af4a4e8"
+    },
+    {
+      "file": "textures/vert/mana-basecolor.png",
+      "sha256": "3a2a2d97ac6c66070d549aa19d02817bcc83972029b4fe34f1102e1718a3e491"
+    },
+    {
+      "file": "textures/vert/mana-roughness.png",
+      "sha256": "230cd7492b26ba6125d51c631c63453a435e22721976ace3d31016933af4a4e8"
+    }
+  ]
+}

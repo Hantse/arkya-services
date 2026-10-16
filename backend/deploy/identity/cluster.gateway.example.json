@@ -1,0 +1,7 @@
+{
+  "exposure": "gateway",
+  "image": "registry.example.com/arkya/identity:replace-with-release-tag",
+  "storageClass": "replace-with-storage-class",
+  "trustedProxyNetworks": ["10.42.0.0/16"],
+  "imagePullSecretName": ""
+}

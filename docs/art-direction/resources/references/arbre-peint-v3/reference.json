@@ -1,0 +1,67 @@
+{
+  "status": "Référence validée par utilisateur",
+  "date": "2026-10-15",
+  "source": "../../../arbre-de-base/declinaisons/matieres-v3",
+  "files": [
+    {
+      "file": "01-mystique/01-mystique.blend",
+      "sha256": "7764FC5B0E6FC86CCE528C3AB2C535AD7F88F5C55E520232C3A329EE16920D8A"
+    },
+    {
+      "file": "01-mystique/01-mystique.glb",
+      "sha256": "25FAB550F1D3CAC224163285E7C0A887A03FF47A89C59DDFF08AB1E2A1BA7D5D"
+    },
+    {
+      "file": "01-mystique/01-mystique-preview.png",
+      "sha256": "CCAA11B6EA112A8E347EDB6B2234971CD417840C8F18C8ADF0EDE66D132E234B"
+    },
+    {
+      "file": "01-mystique/01-mystique-tronc.png",
+      "sha256": "70A1E253C02B09AF73FFB54682AA04DF6C541CBF5ADD8ED51A700B511B32C049"
+    },
+    {
+      "file": "01-mystique/01-mystique.json",
+      "sha256": "E868DA9C108DA00E82D2C888B80ECC4A5778DE3377619D8021C84D616F6DCB49"
+    },
+    {
+      "file": "02-brule/02-brule.blend",
+      "sha256": "EDD78ED13E9C573BE574823F93F4FE8DA5B21BA3C34E6C66162383E5F9214F1D"
+    },
+    {
+      "file": "02-brule/02-brule.glb",
+      "sha256": "7C6CC06C4F64CBE1859BFB6EF8767E7EFF0765ECDE1365AFE51EF451F2DD59D9"
+    },
+    {
+      "file": "02-brule/02-brule-preview.png",
+      "sha256": "37B47F20BF7834635BC3DF81CF47200458A882382375FBA737C91E02336D1926"
+    },
+    {
+      "file": "02-brule/02-brule-tronc.png",
+      "sha256": "CC40A0DF2F420753F9514C41EE31D024692246F25A03E7B275C4CFDEA5FCED48"
+    },
+    {
+      "file": "02-brule/02-brule.json",
+      "sha256": "BC2437E77E3380FF6F2E9EDADEDBC51BFA5E9C1075F751C886766D6AE1FDE4CA"
+    },
+    {
+      "file": "03-moussu/03-moussu.blend",
+      "sha256": "5FBFE5B8D6C6C225B69A1053545D4B7EE3096DA5B711758A8C9E5D593BF30EEE"
+    },
+    {
+      "file": "03-moussu/03-moussu.glb",
+      "sha256": "C5DD97B056A6242AFC5B0C3805928CF1B0EDDC0492C4F0D69B2387D7770E6032"
+    },
+    {
+      "file": "03-moussu/03-moussu-preview.png",
+      "sha256": "88B6174ABB4DED65187F6103AE7624AB93A0603F0E479FD3FA597069634DB325"
+    },
+    {
+      "file": "03-moussu/03-moussu-tronc.png",
+      "sha256": "3DC0FDCBD523CDDC40DE35CED2F02136D8EC0A15C1931F2CF777FD5E11FD07F1"
+    },
+    {
+      "file": "03-moussu/03-moussu.json",
+      "sha256": "4EE7A49B50F8F290A55519BB3B1FC7EB4A9E215E57D53C49C1AF80263678445A"
+    }
+  ]
+}

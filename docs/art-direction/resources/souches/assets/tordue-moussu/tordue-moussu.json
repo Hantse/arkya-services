@@ -1,0 +1,19 @@
+{
+  "id": "tordue-moussu",
+  "shape": "tordue",
+  "material": "moussu",
+  "label": "Souche tordue · Ancien moussu",
+  "glb": "assets/tordue-moussu/tordue-moussu.glb",
+  "blend": "assets/tordue-moussu/tordue-moussu.blend",
+  "preview": "assets/tordue-moussu/tordue-moussu-preview.png",
+  "height": 0.65,
+  "width": 1.003,
+  "depth": 0.8301,
+  "triangles": 21504,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

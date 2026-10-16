@@ -1,0 +1,19 @@
+{
+  "id": "bouquet-ivoire",
+  "shape": "bouquet",
+  "material": "ivoire",
+  "label": "Bouquet de prairie · Ivoire doré",
+  "glb": "assets/bouquet-ivoire/bouquet-ivoire.glb",
+  "blend": "assets/bouquet-ivoire/bouquet-ivoire.blend",
+  "preview": "assets/bouquet-ivoire/bouquet-ivoire-preview.png",
+  "height": 0.45,
+  "width": 0.3888,
+  "depth": 0.3042,
+  "triangles": 20968,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "amanite-mystique",
+  "shape": "amanite",
+  "material": "mystique",
+  "label": "Amanite bombée · Mystique boréal",
+  "glb": "assets/amanite-mystique/amanite-mystique.glb",
+  "blend": "assets/amanite-mystique/amanite-mystique.blend",
+  "preview": "assets/amanite-mystique/amanite-mystique-preview.png",
+  "height": 0.4,
+  "width": 0.5541,
+  "depth": 0.4142,
+  "triangles": 11968,
+  "mushrooms": 2,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

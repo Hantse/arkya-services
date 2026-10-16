@@ -1,0 +1,261 @@
+{
+  "success": true,
+  "command": "command run_tests",
+  "data": {
+    "command": "run_tests",
+    "parameters": {
+      "mode": "editor",
+      "filter": "Arkya.Characters.EditorTests",
+      "filter_type": "assembly",
+      "async_tests": "false"
+    },
+    "result": {
+      "Summary": {
+        "Total": 32,
+        "Passed": 32,
+        "Failed": 0,
+        "Skipped": 0,
+        "Inconclusive": 0
+      },
+      "Results": [
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterAppearanceTests.CloneDoesNotMutateSavedAppearance",
+          "Status": "Passed",
+          "Duration": 0.0009351,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndThreeAnimationStates(\"human-a\")",
+          "Status": "Passed",
+          "Duration": 0.0008894,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndThreeAnimationStates(\"human-b\")",
+          "Status": "Passed",
+          "Duration": 0.0008033,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndThreeAnimationStates(\"elf-a\")",
+          "Status": "Passed",
+          "Duration": 0.0005535,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndThreeAnimationStates(\"elf-b\")",
+          "Status": "Passed",
+          "Duration": 0.0004775,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterAppearanceTests.HeightLimitsMatchServer(\"human\",160,195)",
+          "Status": "Passed",
+          "Duration": 0.0001637,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterAppearanceTests.HeightLimitsMatchServer(\"elf\",170,205)",
+          "Status": "Passed",
+          "Duration": 0.0001373,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterAppearanceTests.RejectsUnknownOptionsAndVersion",
+          "Status": "Passed",
+          "Duration": 0.0016047,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterCreationRuntimeTests.CreationSceneDeformsAllRigsAndRunsAuthoritativeLocalClient",
+          "Status": "Passed",
+          "Duration": 5.7079838,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.BrowserLoginStaysOnTheConfiguredAuthorizationEndpoint(\"https://localhost:7141/v1/auth/discord/authorize/0123456789abcdef0123456789abcdef\",True)",
+          "Status": "Passed",
+          "Duration": 0.000232,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.BrowserLoginStaysOnTheConfiguredAuthorizationEndpoint(\"https://other.example/v1/auth/discord/authorize/0123456789abcdef0123456789abcdef\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001717,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.BrowserLoginStaysOnTheConfiguredAuthorizationEndpoint(\"http://localhost:7141/v1/auth/discord/authorize/0123456789abcdef0123456789abcdef\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001496,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.BrowserLoginStaysOnTheConfiguredAuthorizationEndpoint(\"https://localhost:7141/other\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001453,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.BrowserLoginStaysOnTheConfiguredAuthorizationEndpoint(\"https://localhost:7141/v1/auth/discord/authorize/0123456789abcdef0123456789abcdef?next=https://other.example\",False)",
+          "Status": "Passed",
+          "Duration": 0.0002298,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.BrowserLoginStaysOnTheConfiguredAuthorizationEndpoint(\"https://user@localhost:7141/v1/auth/discord/authorize/0123456789abcdef0123456789abcdef\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001672,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.NamesMatchCharacterServiceContract(\"Aeloria\",True)",
+          "Status": "Passed",
+          "Duration": 0.0001899,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.NamesMatchCharacterServiceContract(\"  Aeloria  \",True)",
+          "Status": "Passed",
+          "Duration": 0.000141,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.NamesMatchCharacterServiceContract(\"Ab\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001158,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.NamesMatchCharacterServiceContract(\"Aeloria The Tall\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001071,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.NamesMatchCharacterServiceContract(\"Élorie\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001149,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.NamesMatchCharacterServiceContract(\"Player123\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001142,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.NamesMatchCharacterServiceContract(\"abcdefghijklmnopqrstu\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001054,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.NamesMatchCharacterServiceContract(null,False)",
+          "Status": "Passed",
+          "Duration": 0.0001093,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.PkceChallengeMatchesRfc7636KnownVector",
+          "Status": "Passed",
+          "Duration": 0.0001286,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.ServiceOriginsProtectAccountTransport(\"https://localhost:7141\",True)",
+          "Status": "Passed",
+          "Duration": 0.0002329,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.ServiceOriginsProtectAccountTransport(\"https://identity.arkya.example/\",True)",
+          "Status": "Passed",
+          "Duration": 0.000184,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.ServiceOriginsProtectAccountTransport(\"http://localhost:7141\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001478,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.ServiceOriginsProtectAccountTransport(\"https://user:password@identity.arkya.example\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001403,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.ServiceOriginsProtectAccountTransport(\"https://identity.arkya.example/path\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001281,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.ServiceOriginsProtectAccountTransport(\"https://identity.arkya.example/?token=secret\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001339,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.ServiceOriginsProtectAccountTransport(\"https://identity.arkya.example/#fragment\",False)",
+          "Status": "Passed",
+          "Duration": 0.0001391,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterServiceClientTests.ServiceOriginsProtectAccountTransport(null,False)",
+          "Status": "Passed",
+          "Duration": 0.0001246,
+          "Message": null,
+          "StackTrace": null
+        }
+      ],
+      "Duration": 8.88,
+      "StatusPath": null,
+      "Mode": "EditMode",
+      "FilterApplied": "assembly: Arkya.Characters.EditorTests",
+      "success": true,
+      "result": null
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7803,
+      "projectPath": "D:\\Repositories\\arkya\\artifacts\\characters-game\\validation-project"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

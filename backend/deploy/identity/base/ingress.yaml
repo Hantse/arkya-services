@@ -1,0 +1,55 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: arkya-identity
+spec:
+  ingressClassName: replace-before-deploy
+  tls:
+    - hosts: [identity.arkya.online]
+      secretName: arkya-identity-tls
+  rules:
+    - host: identity.arkya.online
+      http:
+        paths:
+          - path: /health
+            pathType: Exact
+            backend:
+              service:
+                name: arkya-identity
+                port: { name: http }
+          - path: /v1/auth/discord/challenges
+            pathType: Exact
+            backend:
+              service:
+                name: arkya-identity
+                port: { name: http }
+          - path: /v1/auth/discord/authorize
+            pathType: Prefix
+            backend:
+              service:
+                name: arkya-identity
+                port: { name: http }
+          - path: /v1/auth/discord/callback
+            pathType: Exact
+            backend:
+              service:
+                name: arkya-identity
+                port: { name: http }
+          - path: /v1/auth/discord/exchange
+            pathType: Exact
+            backend:
+              service:
+                name: arkya-identity
+                port: { name: http }
+          - path: /v1/auth/me
+            pathType: Exact
+            backend:
+              service:
+                name: arkya-identity
+                port: { name: http }
+          - path: /v1/auth/logout
+            pathType: Exact
+            backend:
+              service:
+                name: arkya-identity
+                port: { name: http }

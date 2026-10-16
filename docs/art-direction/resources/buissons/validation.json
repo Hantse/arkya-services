@@ -1,0 +1,596 @@
+{
+  "success": true,
+  "asset_count": 12,
+  "geometry_same_across_materials": true,
+  "uv_same_across_materials": true,
+  "assets": [
+    {
+      "id": "coussin-sylvestre",
+      "shape": "coussin",
+      "glb": {
+        "triangles": 21220,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3156312,
+        "geometry_hashes": [
+          "0a49227dae6e896a654dd1778e9920aa68c0c3b6064ea016804fee3dfb8eb9c1",
+          "eb3820bcb759cb33e67c1c123c818a22242c5813441770e38916d223c1760b65"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "sylvestre-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sylvestre-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sylvestre-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "45fe1444939a07f127f5b9f27c27e513760a5ba41bb53d4f097ab5f05e7cebaf",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "coussin-automnal",
+      "shape": "coussin",
+      "glb": {
+        "triangles": 21220,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3118520,
+        "geometry_hashes": [
+          "0a49227dae6e896a654dd1778e9920aa68c0c3b6064ea016804fee3dfb8eb9c1",
+          "eb3820bcb759cb33e67c1c123c818a22242c5813441770e38916d223c1760b65"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "automnal-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "automnal-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "automnal-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "45fe1444939a07f127f5b9f27c27e513760a5ba41bb53d4f097ab5f05e7cebaf",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "coussin-mystique",
+      "shape": "coussin",
+      "glb": {
+        "triangles": 21220,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3242696,
+        "geometry_hashes": [
+          "0a49227dae6e896a654dd1778e9920aa68c0c3b6064ea016804fee3dfb8eb9c1",
+          "eb3820bcb759cb33e67c1c123c818a22242c5813441770e38916d223c1760b65"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "45fe1444939a07f127f5b9f27c27e513760a5ba41bb53d4f097ab5f05e7cebaf",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "rond-sylvestre",
+      "shape": "rond",
+      "glb": {
+        "triangles": 29708,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3590856,
+        "geometry_hashes": [
+          "53b176ab058638907e5414764cd0720268e04e86ad6967e6e54cb3915d67ce7c",
+          "d5b66f710ce7b2ed943174b2150562b900bbc995341249a249f53118b5490976"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "sylvestre-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sylvestre-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sylvestre-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "a0015728edde5d28329e25af341fd46fd93fc020006168d8fe77a075ebf3a62a",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "rond-automnal",
+      "shape": "rond",
+      "glb": {
+        "triangles": 29708,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3553068,
+        "geometry_hashes": [
+          "53b176ab058638907e5414764cd0720268e04e86ad6967e6e54cb3915d67ce7c",
+          "d5b66f710ce7b2ed943174b2150562b900bbc995341249a249f53118b5490976"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "automnal-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "automnal-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "automnal-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "a0015728edde5d28329e25af341fd46fd93fc020006168d8fe77a075ebf3a62a",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "rond-mystique",
+      "shape": "rond",
+      "glb": {
+        "triangles": 29708,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3677244,
+        "geometry_hashes": [
+          "53b176ab058638907e5414764cd0720268e04e86ad6967e6e54cb3915d67ce7c",
+          "d5b66f710ce7b2ed943174b2150562b900bbc995341249a249f53118b5490976"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "a0015728edde5d28329e25af341fd46fd93fc020006168d8fe77a075ebf3a62a",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "etale-sylvestre",
+      "shape": "etale",
+      "glb": {
+        "triangles": 36074,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3916756,
+        "geometry_hashes": [
+          "64d92e08964363bc8f0ebf969ddbc4867c1f8501a89aa9870fed5db0c3c2413c",
+          "fea78b1fb92ea11f0abc2759f044b32f0e941a1dec15deea72c66048e8860223"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "sylvestre-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sylvestre-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sylvestre-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "a2684c6f7e1ccea35bbba43af1868c9e7b62febd384ba60f4e712318d8f0ccf8",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "etale-automnal",
+      "shape": "etale",
+      "glb": {
+        "triangles": 36074,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3878968,
+        "geometry_hashes": [
+          "64d92e08964363bc8f0ebf969ddbc4867c1f8501a89aa9870fed5db0c3c2413c",
+          "fea78b1fb92ea11f0abc2759f044b32f0e941a1dec15deea72c66048e8860223"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "automnal-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "automnal-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "automnal-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "a2684c6f7e1ccea35bbba43af1868c9e7b62febd384ba60f4e712318d8f0ccf8",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "etale-mystique",
+      "shape": "etale",
+      "glb": {
+        "triangles": 36074,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 4003144,
+        "geometry_hashes": [
+          "64d92e08964363bc8f0ebf969ddbc4867c1f8501a89aa9870fed5db0c3c2413c",
+          "fea78b1fb92ea11f0abc2759f044b32f0e941a1dec15deea72c66048e8860223"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "a2684c6f7e1ccea35bbba43af1868c9e7b62febd384ba60f4e712318d8f0ccf8",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "dresse-sylvestre",
+      "shape": "dresse",
+      "glb": {
+        "triangles": 36904,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3960632,
+        "geometry_hashes": [
+          "1d55e0a6feb041d40096cb94d7acb8e1a28d37a5a1a82deb74bdd1f9ce0dd765",
+          "aa2c9616a066764612d99e617a38514947951823dbde64cda941b59c689b439b"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "sylvestre-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sylvestre-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sylvestre-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "c97e6c2feafab38f15e2d7ee3206b8c29a26598709404cf714de3a531253a79d",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "dresse-automnal",
+      "shape": "dresse",
+      "glb": {
+        "triangles": 36904,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 3922844,
+        "geometry_hashes": [
+          "1d55e0a6feb041d40096cb94d7acb8e1a28d37a5a1a82deb74bdd1f9ce0dd765",
+          "aa2c9616a066764612d99e617a38514947951823dbde64cda941b59c689b439b"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "automnal-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "automnal-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "automnal-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "c97e6c2feafab38f15e2d7ee3206b8c29a26598709404cf714de3a531253a79d",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    },
+    {
+      "id": "dresse-mystique",
+      "shape": "dresse",
+      "glb": {
+        "triangles": 36904,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 3,
+        "bytes": 4047020,
+        "geometry_hashes": [
+          "1d55e0a6feb041d40096cb94d7acb8e1a28d37a5a1a82deb74bdd1f9ce0dd765",
+          "aa2c9616a066764612d99e617a38514947951823dbde64cda941b59c689b439b"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-feuilles-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-feuilles-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-rameaux-basecolor.png",
+            "size": [
+              512,
+              512
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "uv_hash": "c97e6c2feafab38f15e2d7ee3206b8c29a26598709404cf714de3a531253a79d",
+      "pivot_ground_centred": true,
+      "dimensions_match": true
+    }
+  ]
+}

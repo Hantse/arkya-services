@@ -1,0 +1,19 @@
+{
+  "id": "rond-mystique",
+  "shape": "rond",
+  "material": "mystique",
+  "label": "Buisson rond · Mystique",
+  "glb": "assets/rond-mystique/rond-mystique.glb",
+  "blend": "assets/rond-mystique/rond-mystique.blend",
+  "preview": "assets/rond-mystique/rond-mystique-preview.png",
+  "height": 0.85,
+  "width": 1.074,
+  "depth": 0.9486,
+  "triangles": 29708,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

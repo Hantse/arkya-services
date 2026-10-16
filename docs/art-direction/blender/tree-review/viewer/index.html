@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Arkya — Chêne des Anciens V2 · Vue 3D</title>
+  <!-- Local bundle: @google/model-viewer 4.4.0, Google, Apache-2.0.
+       Original distribution: https://unpkg.com/@google/model-viewer@4.4.0/dist/model-viewer.min.js -->
+  <script type="module" src="./model-viewer.min.js"></script>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #25332e; background: #e8ebe7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; height: 100dvh; min-height: 360px; display: flex; flex-direction: column; }
+    header { padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid #ccd3ca; background: #f6f7f3; }
+    h1 { margin: 0; font-size: 19px; font-weight: 650; }
+    .subtitle { margin: 4px 0 0; font-size: 13px; color: #58685e; }
+    .controls { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+    label { display: flex; gap: 8px; align-items: center; font-size: 13px; cursor: pointer; }
+    input { accent-color: #355d45; width: 16px; height: 16px; }
+    button { padding: 9px 14px; border: 1px solid #9daea0; border-radius: 7px; background: white; color: #25332e; font: inherit; font-size: 13px; cursor: pointer; }
+    button:hover { background: #e5ece3; }
+    button:focus-visible, input:focus-visible { outline: 3px solid #6d9677; outline-offset: 3px; }
+    model-viewer { width: 100%; flex: 1; min-height: 0; background: #e8ebe7; --poster-color: transparent; }
+    footer { padding: 11px 24px; font-size: 12px; color: #5a685e; display: flex; justify-content: space-between; gap: 16px; background: #f6f7f3; border-top: 1px solid #ccd3ca; }
+    a { color: #355d45; }
+    @media (max-width: 640px) { header { padding: 14px 16px; align-items: flex-start; flex-direction: column; gap: 12px; } footer { padding: 10px 16px; } footer a { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Chêne des Anciens · V2</h1>
+      <p class="subtitle">Arkya · Terres des Anciens · Hauteur : 10,13 m</p>
+    </div>
+    <div class="controls">
+      <label><input id="rotate" type="checkbox"> Rotation automatique</label>
+      <button id="reset" type="button">Recentrer la vue</button>
+    </div>
+  </header>
+  <model-viewer id="tree"
+    src="../arkya-ancient-tree-v2.glb"
+    alt="Chêne stylisé des Terres des Anciens, avec un tronc courbe, des racines étalées et une couronne feuillue dense."
+    camera-controls
+    camera-orbit="35deg 72deg 110%"
+    camera-target="auto auto auto"
+    field-of-view="35deg"
+    min-camera-orbit="auto 0deg 8%"
+    max-camera-orbit="auto 180deg 350%"
+    environment-image="neutral"
+    exposure="1"
+    shadow-intensity="0.4"
+    shadow-softness="0.8"
+    interaction-prompt="none"
+    touch-action="none"
+    loading="eager">
+  </model-viewer>
+  <footer>
+    <span id="status" role="status">Chargement du modèle…</span>
+    <a href="https://modelviewer.dev/" target="_blank" rel="noopener">Affichage : Google model-viewer</a>
+  </footer>
+  <script>
+    const tree = document.getElementById('tree');
+    const rotate = document.getElementById('rotate');
+    const status = document.getElementById('status');
+    tree.addEventListener('load', () => {
+      status.textContent = 'Glisser pour tourner · Molette pour zoomer · Clic droit pour déplacer';
+    });
+    tree.addEventListener('error', () => {
+      status.textContent = 'Le modèle n’a pas pu être chargé. Vérifiez le serveur local puis actualisez la page.';
+    });
+    rotate.addEventListener('change', () => { tree.autoRotate = rotate.checked; });
+    document.getElementById('reset').addEventListener('click', () => {
+      rotate.checked = false;
+      tree.autoRotate = false;
+      tree.cameraTarget = 'auto auto auto';
+      tree.cameraOrbit = '35deg 72deg 110%';
+      tree.fieldOfView = '35deg';
+      tree.jumpCameraToGoal();
+    });
+  </script>
+</body>
+</html>

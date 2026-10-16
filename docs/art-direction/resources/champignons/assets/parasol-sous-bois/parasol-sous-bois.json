@@ -1,0 +1,20 @@
+{
+  "id": "parasol-sous-bois",
+  "shape": "parasol",
+  "material": "sous-bois",
+  "label": "Parasol ancien · Miel des sous-bois",
+  "glb": "assets/parasol-sous-bois/parasol-sous-bois.glb",
+  "blend": "assets/parasol-sous-bois/parasol-sous-bois.blend",
+  "preview": "assets/parasol-sous-bois/parasol-sous-bois-preview.png",
+  "height": 0.95,
+  "width": 1.1313,
+  "depth": 0.8638,
+  "triangles": 18336,
+  "mushrooms": 3,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "rase-doree",
+  "shape": "rase",
+  "material": "doree",
+  "label": "Touffe rase · Herbe dorée",
+  "glb": "assets/rase-doree/rase-doree.glb",
+  "blend": "assets/rase-doree/rase-doree.blend",
+  "preview": "assets/rase-doree/rase-doree-preview.png",
+  "height": 0.22,
+  "width": 0.9135,
+  "depth": 0.5919,
+  "triangles": 11176,
+  "blades": 44,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

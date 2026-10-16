@@ -1,0 +1,343 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.44,
+      "summary": {
+        "total": 45,
+        "passed": 45,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.CelestialBodiesAndLightingFollowTheAppliedPhase",
+          "Status": "Passed",
+          "Duration": 0.0864697,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.DisablingEnvironmentRestoresItsRenderSettingsAndDoesNotMutateSkyAsset",
+          "Status": "Passed",
+          "Duration": 0.0089951,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(0,0)",
+          "Status": "Passed",
+          "Duration": 0.001285,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(3600,0.25d)",
+          "Status": "Passed",
+          "Duration": 0.0001959,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(7200,0.5d)",
+          "Status": "Passed",
+          "Duration": 0.0000719,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(10800,0.75d)",
+          "Status": "Passed",
+          "Duration": 0.0000551,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(14400,0)",
+          "Status": "Passed",
+          "Duration": 0.0000739,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(28800,0)",
+          "Status": "Passed",
+          "Duration": 0.000064,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(-3600,0.75d)",
+          "Status": "Passed",
+          "Duration": 0.0000428,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.FourRealHoursAreOneFullCycle(-14400,0)",
+          "Status": "Passed",
+          "Duration": 0.0000633,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidCycleIsRejected(0)",
+          "Status": "Passed",
+          "Duration": 0.0017688,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidCycleIsRejected(-1)",
+          "Status": "Passed",
+          "Duration": 0.000103,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidCycleIsRejected(double.NaN)",
+          "Status": "Passed",
+          "Duration": 0.0001815,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidCycleIsRejected(double.PositiveInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0001189,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.InvalidTimesAreRejected",
+          "Status": "Passed",
+          "Duration": 0.0006522,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.PreviewPhasesWrapInBothDirections(-1.25d,0.75d)",
+          "Status": "Passed",
+          "Duration": 0.0002972,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.PreviewPhasesWrapInBothDirections(3.125d,0.125d)",
+          "Status": "Passed",
+          "Duration": 0.0000632,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.PreviewPhasesWrapInBothDirections(1,0)",
+          "Status": "Passed",
+          "Duration": 0.0001776,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.DayNightClockTests.SeparateIslandCopiesShareAnEpochAndWrapOffset",
+          "Status": "Passed",
+          "Duration": 0.0004319,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.IslandRenderProfileTests.PreviewOverrideIsReleasedAndCanBeEnabledAgainWithoutChangingTheGraphicsDefault",
+          "Status": "Passed",
+          "Duration": 0.004333,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.IndependentIslandCopiesUseTheSameUtcScheduleRegardlessOfCallOrder",
+          "Status": "Passed",
+          "Duration": 0.0012422,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidOrUnsupportedTimestampIsRejected(double.NaN)",
+          "Status": "Passed",
+          "Duration": 0.000665,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidOrUnsupportedTimestampIsRejected(double.PositiveInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0002366,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidOrUnsupportedTimestampIsRejected(double.NegativeInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0001481,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidOrUnsupportedTimestampIsRejected(double.MaxValue)",
+          "Status": "Passed",
+          "Duration": 0.000108,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidSegmentDurationIsRejected(0)",
+          "Status": "Passed",
+          "Duration": 0.0006651,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidSegmentDurationIsRejected(-1)",
+          "Status": "Passed",
+          "Duration": 0.0002422,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidSegmentDurationIsRejected(double.NaN)",
+          "Status": "Passed",
+          "Duration": 0.0001466,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidSegmentDurationIsRejected(double.PositiveInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0001168,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidTransitionDurationIsRejected(-1)",
+          "Status": "Passed",
+          "Duration": 0.0006221,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidTransitionDurationIsRejected(901)",
+          "Status": "Passed",
+          "Duration": 0.0002031,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidTransitionDurationIsRejected(double.NaN)",
+          "Status": "Passed",
+          "Duration": 0.0001273,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.InvalidTransitionDurationIsRejected(double.PositiveInfinity)",
+          "Status": "Passed",
+          "Duration": 0.0001084,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.LerpKeepsTheTargetKindAndClampsItsEndpoints",
+          "Status": "Passed",
+          "Duration": 0.0005759,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.NegativeUtcBoundariesRemainContinuousAndFinite",
+          "Status": "Passed",
+          "Duration": 0.0006391,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.PresetsHaveTheExpectedPresentationChannels(Clear,0.0f,0.0f,0.0f,0.24f)",
+          "Status": "Passed",
+          "Duration": 0.0008854,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.PresetsHaveTheExpectedPresentationChannels(Cloudy,0.78f,0.0f,0.0f,0.4f)",
+          "Status": "Passed",
+          "Duration": 0.0003561,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.PresetsHaveTheExpectedPresentationChannels(Rain,0.94f,0.75f,0.0f,0.64f)",
+          "Status": "Passed",
+          "Duration": 0.0001886,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.PresetsHaveTheExpectedPresentationChannels(Storm,1.0f,1.0f,1.0f,0.95f)",
+          "Status": "Passed",
+          "Duration": 0.0001464,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.SampleChannelsClampAndRejectNonFiniteInput",
+          "Status": "Passed",
+          "Duration": 0.0013583,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.SegmentBoundaryStartsFromThePreviousWeatherWithoutAChannelJump",
+          "Status": "Passed",
+          "Duration": 0.0005818,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.SegmentHashUsesTheRequestedWeatherWeightsAndSeed",
+          "Status": "Passed",
+          "Duration": 0.0067234,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.TransitionUsesSmoothStepAndThenHoldsTheTargetThroughTheSegment",
+          "Status": "Passed",
+          "Duration": 0.0007205,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.WeatherAndLightningPreserveTheDayNightPhaseWithoutAccumulatingLightingChanges",
+          "Status": "Passed",
+          "Duration": 0.0026603,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.World.Environment.Tests.WeatherTimelineTests.ZeroTransitionAndCustomDurationsAreSupported",
+          "Status": "Passed",
+          "Duration": 0.0005424,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

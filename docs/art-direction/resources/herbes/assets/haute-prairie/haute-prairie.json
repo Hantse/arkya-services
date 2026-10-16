@@ -1,0 +1,20 @@
+{
+  "id": "haute-prairie",
+  "shape": "haute",
+  "material": "prairie",
+  "label": "Hautes herbes · Prairie verte",
+  "glb": "assets/haute-prairie/haute-prairie.glb",
+  "blend": "assets/haute-prairie/haute-prairie.blend",
+  "preview": "assets/haute-prairie/haute-prairie-preview.png",
+  "height": 1.05,
+  "width": 0.8235,
+  "depth": 0.6969,
+  "triangles": 14224,
+  "blades": 56,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

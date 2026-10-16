@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "http_paths_checked": 375,
+  "documentation_links_checked": 161,
+  "failures": [],
+  "broken": [],
+  "mana_viewer_checks": {
+    "shapes": [
+      "mare",
+      "allongee",
+      "lobee"
+    ],
+    "palettes": [
+      "bleu",
+      "orange",
+      "vert"
+    ],
+    "clip": "ManaFlow",
+    "duration_seconds": 6,
+    "pause_resume_verified": true,
+    "approved_shape_label_verified": true,
+    "console_errors": 0,
+    "all_shape_approval_labels_verified": true
+  },
+  "mana_approval_checks": {
+    "approved_assets": 9,
+    "approved_shapes": 3,
+    "reference_files_checked": 65,
+    "reference_files_unchanged": true,
+    "asset_metadata_consistent": true
+  }
+}

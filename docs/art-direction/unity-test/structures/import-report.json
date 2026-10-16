@@ -1,0 +1,397 @@
+{
+  "success": true,
+  "unity": "6000.6.6f1",
+  "project": "D:\\Repositories\\arkya\\Unity3D\\Arkya",
+  "createdModels": 0,
+  "createdPrefabs": 0,
+  "catalog": "Assets/Arkya/Building/Structures/StructureCatalog.asset",
+  "coordinateSystem": "Unity: X width, Y up, Z depth, metres; Left=-X, Front=+Z",
+  "sockets": "Canonical authoring transforms; forward is the outward normal. Imported glTF empties removed from Visual.",
+  "imported": [
+    {
+      "sourceAssetId": "fondation-chaume",
+      "moduleId": "arkya.structure.foundation.thatch",
+      "source": "assets/fondation-chaume/fondation-chaume.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/fondation-chaume.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/fondation-chaume.prefab",
+      "sha256": "59dc9536382561b0268bb0a60aaf55b9de4d1f9b12cfa92d1c565b7e9e4862cf",
+      "modelGuid": "fefac2d9274c97f43893da827ccb6c86",
+      "prefabGuid": "6954b314a10251b468607f08fa6a41a2",
+      "colliders": 1,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | chaume | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | rope | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "fondation-bois",
+      "moduleId": "arkya.structure.foundation.wood",
+      "source": "assets/fondation-bois/fondation-bois.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/fondation-bois.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/fondation-bois.prefab",
+      "sha256": "1d00f2d63d1e22ea927ceb3423f31c6bbed00a85b9aa42ddad263ca425dc4359",
+      "modelGuid": "b0b62c88d8d9fce468028a79a79531c9",
+      "prefabGuid": "18822c665524a8640bea52b7c3daacf3",
+      "colliders": 1,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | bois | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "fondation-pierre",
+      "moduleId": "arkya.structure.foundation.stone",
+      "source": "assets/fondation-pierre/fondation-pierre.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/fondation-pierre.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/fondation-pierre.prefab",
+      "sha256": "9e9baaa269e2403128725375ef174c1adb43b551692f4161f4fbf770d881e718",
+      "modelGuid": "4d29659c8c31dfc4bb20d54ad3eb6990",
+      "prefabGuid": "aa0ac9368b6599047b999b40020e6aec",
+      "colliders": 1,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | pierre | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | mortar | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "mur-plein-chaume",
+      "moduleId": "arkya.structure.solid-wall.thatch",
+      "source": "assets/mur-plein-chaume/mur-plein-chaume.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/mur-plein-chaume.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/mur-plein-chaume.prefab",
+      "sha256": "44dc9fe5c53047e396de59899c67860eb234d8812c0466967a2ecae3afaad674",
+      "modelGuid": "4317bf03295908740b04cb433fc0c075",
+      "prefabGuid": "4c31752f252de564095791695e090a0f",
+      "colliders": 1,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | chaume | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | rope | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "mur-plein-bois",
+      "moduleId": "arkya.structure.solid-wall.wood",
+      "source": "assets/mur-plein-bois/mur-plein-bois.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/mur-plein-bois.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/mur-plein-bois.prefab",
+      "sha256": "888432459461bd41670e624aa8bae24a5224fff2d9b46d776d1b765ee65e3f03",
+      "modelGuid": "517a872bd220ad047b6008a36ea55380",
+      "prefabGuid": "cc407b6110724364b820e34e994ac38b",
+      "colliders": 1,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | bois | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "mur-plein-pierre",
+      "moduleId": "arkya.structure.solid-wall.stone",
+      "source": "assets/mur-plein-pierre/mur-plein-pierre.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/mur-plein-pierre.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/mur-plein-pierre.prefab",
+      "sha256": "2b5b67c73857b0c6c23a8053f5e93b9a40d84e591739561cbe186b875587cf49",
+      "modelGuid": "519964c95f2703a4db25f9fc5b52feb5",
+      "prefabGuid": "f27dd9f5ef90aac4c898f9e4f517401d",
+      "colliders": 1,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | pierre | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | mortar | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "mur-fenetre-chaume",
+      "moduleId": "arkya.structure.window-wall.thatch",
+      "source": "assets/mur-fenetre-chaume/mur-fenetre-chaume.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/mur-fenetre-chaume.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/mur-fenetre-chaume.prefab",
+      "sha256": "144300437efe0298da73f4e277d40327fda9ecb807cd89229339654ad1501817",
+      "modelGuid": "31b7afa32bcbed64783161f492b08710",
+      "prefabGuid": "181b19127f60ccf4188f647dd7656c11",
+      "colliders": 4,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | chaume | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | rope | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "mur-fenetre-bois",
+      "moduleId": "arkya.structure.window-wall.wood",
+      "source": "assets/mur-fenetre-bois/mur-fenetre-bois.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/mur-fenetre-bois.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/mur-fenetre-bois.prefab",
+      "sha256": "9b440cd5634ae934ab610f5a85daac1fbb056243c6540ab7c13d7cb829eff265",
+      "modelGuid": "abdf5b8eea1f4ec4485aecb6a020efdc",
+      "prefabGuid": "a1f2557098194154e82a9aa114baac6b",
+      "colliders": 4,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | bois | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "mur-fenetre-pierre",
+      "moduleId": "arkya.structure.window-wall.stone",
+      "source": "assets/mur-fenetre-pierre/mur-fenetre-pierre.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/mur-fenetre-pierre.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/mur-fenetre-pierre.prefab",
+      "sha256": "1cbda04d5ff8e0db0fb7a04285e55db00a6041864c3e7417e82748fbff8334c6",
+      "modelGuid": "17d349a490993a548b76653e3a7de6a0",
+      "prefabGuid": "3a1d51dcebb01b94f8f0f697889b4b5d",
+      "colliders": 4,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | pierre | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | mortar | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "mur-porte-chaume",
+      "moduleId": "arkya.structure.door-wall.thatch",
+      "source": "assets/mur-porte-chaume/mur-porte-chaume.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/mur-porte-chaume.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/mur-porte-chaume.prefab",
+      "sha256": "23d6aca46d1fd166a2f9580477a7a6302ad8de4ebbb4c02fde5cba3a5523e964",
+      "modelGuid": "a66e04c21cdc73242ad862628b453e5d",
+      "prefabGuid": "92739d3d7622cac43ab67b4c4601f0b6",
+      "colliders": 3,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | chaume | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | rope | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "mur-porte-bois",
+      "moduleId": "arkya.structure.door-wall.wood",
+      "source": "assets/mur-porte-bois/mur-porte-bois.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/mur-porte-bois.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/mur-porte-bois.prefab",
+      "sha256": "4bd41585442bb95cdaa0c6bdcf97b85dae4b4dd8ae1e0e5dcb5895bb94d2cdb0",
+      "modelGuid": "f67ff3b6029e1c4459b03de58604f3e5",
+      "prefabGuid": "894511facbc703d46852eb81ca234b2e",
+      "colliders": 3,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | bois | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "mur-porte-pierre",
+      "moduleId": "arkya.structure.door-wall.stone",
+      "source": "assets/mur-porte-pierre/mur-porte-pierre.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/mur-porte-pierre.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/mur-porte-pierre.prefab",
+      "sha256": "472732859daa1de4c3b0dbdcc3ef97410b55dcf942f51f278b0050f2886a88c4",
+      "modelGuid": "581e9cba616b9b04bb44dd5f453a1eb9",
+      "prefabGuid": "75018e62b9e8ed641bee94e03e5a9369",
+      "colliders": 3,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | pierre | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | mortar | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "plafond-chaume",
+      "moduleId": "arkya.structure.ceiling.thatch",
+      "source": "assets/plafond-chaume/plafond-chaume.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/plafond-chaume.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/plafond-chaume.prefab",
+      "sha256": "cfbf1a63d4cbc49bf2c60698e1107b1eb6486e96c2540e80e776b32713fa8b43",
+      "modelGuid": "a942e86624e8e19479a5ad24b0a5d354",
+      "prefabGuid": "5a3d7201b65e8424ba27f319c03bc529",
+      "colliders": 1,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | chaume | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | rope | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "plafond-bois",
+      "moduleId": "arkya.structure.ceiling.wood",
+      "source": "assets/plafond-bois/plafond-bois.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/plafond-bois.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/plafond-bois.prefab",
+      "sha256": "feedd2f4eb0bd4113e6db0e01f957ca665fce09786db48390b880262c3e3fc82",
+      "modelGuid": "30f8bd4be63d6c94b95fc5794abca71a",
+      "prefabGuid": "daee8334f1d37e14e8624bfcf2c9de92",
+      "colliders": 1,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | bois | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | timber | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "sourceAssetId": "plafond-pierre",
+      "moduleId": "arkya.structure.ceiling.stone",
+      "source": "assets/plafond-pierre/plafond-pierre.glb",
+      "model": "Assets/Arkya/Building/Structures/Models/plafond-pierre.glb",
+      "prefab": "Assets/Arkya/Building/Structures/Prefabs/plafond-pierre.prefab",
+      "sha256": "86291f91b56a9879b2dad61673c57c2935ad635425ad007e5c0c94a0f0f06564",
+      "modelGuid": "b41fedee646ff3e4aa9823e1e364b03e",
+      "prefabGuid": "4d78cd122ae181342a0ea43de5c0300d",
+      "colliders": 1,
+      "sockets": 6,
+      "materials": [
+        {
+          "name": "Arkya | pierre | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | mortar | painted",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ]
+    }
+  ]
+}

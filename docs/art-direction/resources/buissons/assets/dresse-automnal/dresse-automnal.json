@@ -1,0 +1,19 @@
+{
+  "id": "dresse-automnal",
+  "shape": "dresse",
+  "material": "automnal",
+  "label": "Buisson dressé · Automnal",
+  "glb": "assets/dresse-automnal/dresse-automnal.glb",
+  "blend": "assets/dresse-automnal/dresse-automnal.blend",
+  "preview": "assets/dresse-automnal/dresse-automnal-preview.png",
+  "height": 1.8,
+  "width": 1.2362,
+  "depth": 1.1086,
+  "triangles": 36904,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

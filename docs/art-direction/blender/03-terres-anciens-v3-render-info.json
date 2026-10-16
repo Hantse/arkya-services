@@ -1,0 +1,58 @@
+{
+  "scene": "ancients",
+  "version": 3,
+  "portrait": false,
+  "blender": "4.5.14 LTS",
+  "engine": "Cycles",
+  "samples": 160,
+  "resolution": [
+    2560,
+    1440
+  ],
+  "camera": "Camera_V3",
+  "objects": 2322,
+  "textures": [
+    {
+      "name": "TEX-rain_body_diffuse.1001.png.001",
+      "packed": true,
+      "source": "TILED"
+    },
+    {
+      "name": "TEX-rain_body_roughness.1001.png.001",
+      "packed": true,
+      "source": "TILED"
+    },
+    {
+      "name": "TEX-rain_eyes.png.001",
+      "packed": true,
+      "source": "FILE"
+    }
+  ],
+  "notes": {
+    "environment": "Terres des Anciens V3",
+    "camera": "Camera_V3",
+    "hero_position": [
+      0.0,
+      -8.0,
+      0.23522279377243127
+    ],
+    "hero_projection": {
+      "feet_xy": [
+        0.36038485169410706,
+        0.06790141761302948
+      ],
+      "head_xy": [
+        0.36171388626098633,
+        0.3641912341117859
+      ],
+      "height_fraction": 0.2962898164987564
+    },
+    "new_objects": 526,
+    "notes": [
+      "Warm raised lodge at the path destination and staged golden/cool lighting",
+      "Feathered natural soil margins, embedded stones and irregular grass banks",
+      "Recessed asymmetric second stall; raised living arch and flowing bark plates"
+    ],
+    "character_edits": false
+  }
+}

@@ -1,0 +1,866 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-15T21:47:22.912744+00:00",
+  "family": "personnages",
+  "coordinate_system": "glTF: X width, Y up, Z depth; metres",
+  "scope": "Static GLB, manifest and Blender source presence checks only",
+  "blender_sources_opened": false,
+  "browser_checked": false,
+  "unity_checked": false,
+  "assets": [
+    {
+      "id": "human-a-short",
+      "race": "human",
+      "silhouette": "a",
+      "hair": "short",
+      "glb": "models/human-a-short.glb",
+      "blend": "assets/human-a-short.blend",
+      "glb_bytes": 2345676,
+      "glb_sha256": "45fbf105f9f7c0a8e6fd6f898b7231eca2365f1957d77f40488bf6f605e8a362",
+      "triangles": 74749,
+      "primitives": 107,
+      "mesh_nodes": 105,
+      "bounds_min_m": [
+        -0.3558572828769684,
+        0.0,
+        -0.22644983232021332
+      ],
+      "bounds_max_m": [
+        0.385216623544693,
+        1.7499998807907104,
+        0.2088031768798828
+      ],
+      "dimensions_width_height_depth_m": [
+        0.7410739064216614,
+        1.7499998807907104,
+        0.43525300920009613
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.75,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 107,
+      "uv_primitives": 66,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        -0.9982485771179199,
+        2.9930925369262695
+      ],
+      "geometry_sha256": "449f8284679d77f0695a4f4c49b84b39e238b36a8de03e6fea55d804decf9542",
+      "hair_geometry_sha256": "8b193d4ff7bbcc95131674d38445538ac5790262fcda834eacb86f264f6543ef",
+      "head_geometry_normalized_sha256": "33e51e70743dbc5d6cdc9af39b4fdd0ef763cd91a11135a68a8a6e98641d7af8",
+      "head_width_over_character_height": 0.16584134101867676,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "human-a-long",
+      "race": "human",
+      "silhouette": "a",
+      "hair": "long",
+      "glb": "models/human-a-long.glb",
+      "blend": "assets/human-a-long.blend",
+      "glb_bytes": 2439416,
+      "glb_sha256": "f0aecb82cb0d5e447a53c26cbf7b44a14d008f232d69f8ae7a61e3b6c9826dfc",
+      "triangles": 79729,
+      "primitives": 116,
+      "mesh_nodes": 114,
+      "bounds_min_m": [
+        -0.3558572828769684,
+        0.0,
+        -0.22644983232021332
+      ],
+      "bounds_max_m": [
+        0.385216623544693,
+        1.7499998807907104,
+        0.2088031768798828
+      ],
+      "dimensions_width_height_depth_m": [
+        0.7410739064216614,
+        1.7499998807907104,
+        0.43525300920009613
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.75,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 116,
+      "uv_primitives": 66,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        -0.9982485771179199,
+        2.9930925369262695
+      ],
+      "geometry_sha256": "17b25e55de375bbdd0340ba06f57e7c9199e2ccdd9487cd4b2b71546cd555c72",
+      "hair_geometry_sha256": "cf66be1e5147d2fd3e17e2c4143b66335113996fad789329966e58a10a81440a",
+      "head_geometry_normalized_sha256": "33e51e70743dbc5d6cdc9af39b4fdd0ef763cd91a11135a68a8a6e98641d7af8",
+      "head_width_over_character_height": 0.16584134101867676,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "human-a-braid",
+      "race": "human",
+      "silhouette": "a",
+      "hair": "braid",
+      "glb": "models/human-a-braid.glb",
+      "blend": "assets/human-a-braid.blend",
+      "glb_bytes": 2478144,
+      "glb_sha256": "4e866ab0c6984c4d78eafaf4b38340819dbf91a9b88b545b4375f7ec02672e43",
+      "triangles": 81785,
+      "primitives": 112,
+      "mesh_nodes": 110,
+      "bounds_min_m": [
+        -0.3558572828769684,
+        0.0,
+        -0.22644983232021332
+      ],
+      "bounds_max_m": [
+        0.385216623544693,
+        1.7499998807907104,
+        0.2088031768798828
+      ],
+      "dimensions_width_height_depth_m": [
+        0.7410739064216614,
+        1.7499998807907104,
+        0.43525300920009613
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.75,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 112,
+      "uv_primitives": 66,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        -0.9982485771179199,
+        2.9930925369262695
+      ],
+      "geometry_sha256": "96311ecd2c0f856cce560b7b49772726a3dbe82b363098a96153e944ecf6d5f2",
+      "hair_geometry_sha256": "23428916cc79b40f4d040718c56b1d002e00b072beb28cefe2215e6444867f66",
+      "head_geometry_normalized_sha256": "33e51e70743dbc5d6cdc9af39b4fdd0ef763cd91a11135a68a8a6e98641d7af8",
+      "head_width_over_character_height": 0.16584134101867676,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "human-b-short",
+      "race": "human",
+      "silhouette": "b",
+      "hair": "short",
+      "glb": "models/human-b-short.glb",
+      "blend": "assets/human-b-short.blend",
+      "glb_bytes": 3513916,
+      "glb_sha256": "b377591fd1bfd9885cdeadb090e20b5f99dce61ba45043892edda179ade8e616",
+      "triangles": 87668,
+      "primitives": 166,
+      "mesh_nodes": 164,
+      "bounds_min_m": [
+        -0.3564537763595581,
+        0.0,
+        -0.27250000834465027
+      ],
+      "bounds_max_m": [
+        0.3167029321193695,
+        1.75,
+        0.22471757233142853
+      ],
+      "dimensions_width_height_depth_m": [
+        0.6731567084789276,
+        1.75,
+        0.4972175806760788
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.75,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Metal",
+        "Thread",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 166,
+      "uv_primitives": 123,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        0.0,
+        2.9925310611724854
+      ],
+      "geometry_sha256": "961595af9d8a7f71f3676da89e1e95c9e32aaedeb7a2e5421b27ed3ca7345f2a",
+      "hair_geometry_sha256": "26a5fad79643ec29a2c825040420cc7e027e9d4ed7443a07cb7c28fd18b32d0d",
+      "head_geometry_normalized_sha256": "b0a2564fea8d93024fb3b5e900f93aabb4552b430063b97fb862c629de1289cc",
+      "head_width_over_character_height": 0.1533071313585554,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "human-b-long",
+      "race": "human",
+      "silhouette": "b",
+      "hair": "long",
+      "glb": "models/human-b-long.glb",
+      "blend": "assets/human-b-long.blend",
+      "glb_bytes": 3607632,
+      "glb_sha256": "8834caf6775ed250f1f4a0727c1bbf72c988990e388c6cccd6601731d8bd25ee",
+      "triangles": 92648,
+      "primitives": 175,
+      "mesh_nodes": 173,
+      "bounds_min_m": [
+        -0.3564537763595581,
+        0.0,
+        -0.27250000834465027
+      ],
+      "bounds_max_m": [
+        0.3167029321193695,
+        1.75,
+        0.22471757233142853
+      ],
+      "dimensions_width_height_depth_m": [
+        0.6731567084789276,
+        1.75,
+        0.4972175806760788
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.75,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Metal",
+        "Thread",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 175,
+      "uv_primitives": 123,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        0.0,
+        2.9925310611724854
+      ],
+      "geometry_sha256": "669e2eaea7b0eff2dc3cb385a420f6b3873bb73e78db7d786edac6b0105fab08",
+      "hair_geometry_sha256": "321e9e3fb998ba2ace13b31791dc8780f2dfeecda5a188659d8ffc0d46ae68e4",
+      "head_geometry_normalized_sha256": "b0a2564fea8d93024fb3b5e900f93aabb4552b430063b97fb862c629de1289cc",
+      "head_width_over_character_height": 0.1533071313585554,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "human-b-braid",
+      "race": "human",
+      "silhouette": "b",
+      "hair": "braid",
+      "glb": "models/human-b-braid.glb",
+      "blend": "assets/human-b-braid.blend",
+      "glb_bytes": 3646380,
+      "glb_sha256": "c03b319eaf774b3e76899168ffa7aaee1eb7d141f97b4ee4796eb05a0b0f2e98",
+      "triangles": 94704,
+      "primitives": 171,
+      "mesh_nodes": 169,
+      "bounds_min_m": [
+        -0.3564537763595581,
+        0.0,
+        -0.27250000834465027
+      ],
+      "bounds_max_m": [
+        0.3167029321193695,
+        1.75,
+        0.22471757233142853
+      ],
+      "dimensions_width_height_depth_m": [
+        0.6731567084789276,
+        1.75,
+        0.4972175806760788
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.75,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Metal",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Thread",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 171,
+      "uv_primitives": 123,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        0.0,
+        2.9925310611724854
+      ],
+      "geometry_sha256": "17534a3b3151af8be1cc5f772f5458e46de012438fcb37aa09c69f416909cb63",
+      "hair_geometry_sha256": "61ca8e0019201183a7045947d7c711ba01068ff76a264df30608501c5af06354",
+      "head_geometry_normalized_sha256": "b0a2564fea8d93024fb3b5e900f93aabb4552b430063b97fb862c629de1289cc",
+      "head_width_over_character_height": 0.1533071313585554,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "elf-a-short",
+      "race": "elf",
+      "silhouette": "a",
+      "hair": "short",
+      "glb": "models/elf-a-short.glb",
+      "blend": "assets/elf-a-short.blend",
+      "glb_bytes": 2345644,
+      "glb_sha256": "a3020a62e8a3b3349819cc9c6460764048325ba225823f32021ce61c0f09c235",
+      "triangles": 74749,
+      "primitives": 107,
+      "mesh_nodes": 105,
+      "bounds_min_m": [
+        -0.34609663486480713,
+        0.0,
+        -0.22742033004760742
+      ],
+      "bounds_max_m": [
+        0.37465065717697144,
+        1.8499999046325684,
+        0.20969805121421814
+      ],
+      "dimensions_width_height_depth_m": [
+        0.7207472920417786,
+        1.8499999046325684,
+        0.43711838126182556
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.85,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 107,
+      "uv_primitives": 66,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        -0.9982485771179199,
+        2.9930925369262695
+      ],
+      "geometry_sha256": "08e11bcafd3f6e7c725398ae5525fd289e098f821a8ab75ea43b16514d225e79",
+      "hair_geometry_sha256": "97d7e124306ec58a63068cf9b7d8cf6a595b07cb1bfcadba066ca4d7bc57833f",
+      "head_geometry_normalized_sha256": "92d222d44df53ece66acde2d6ccd12b56c20ab296e0885b5819fb19a6abee66d",
+      "head_width_over_character_height": 0.22873805181400195,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "elf-a-long",
+      "race": "elf",
+      "silhouette": "a",
+      "hair": "long",
+      "glb": "models/elf-a-long.glb",
+      "blend": "assets/elf-a-long.blend",
+      "glb_bytes": 2439376,
+      "glb_sha256": "d848d232539ef675cead3c1cf80de44565779598cbb6e1ff6f90ed1ab7d4d36e",
+      "triangles": 79729,
+      "primitives": 116,
+      "mesh_nodes": 114,
+      "bounds_min_m": [
+        -0.34609663486480713,
+        0.0,
+        -0.22742033004760742
+      ],
+      "bounds_max_m": [
+        0.37465065717697144,
+        1.8499999046325684,
+        0.20969805121421814
+      ],
+      "dimensions_width_height_depth_m": [
+        0.7207472920417786,
+        1.8499999046325684,
+        0.43711838126182556
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.85,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 116,
+      "uv_primitives": 66,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        -0.9982485771179199,
+        2.9930925369262695
+      ],
+      "geometry_sha256": "2eeda251ca67d8710c46aa48a4d97d4e3f94d5d0ae2dcd6b22f6bf179436b1c7",
+      "hair_geometry_sha256": "53190fee3c62d62b39f721755d898868f77cf6534939d0c422c76200bcd3c340",
+      "head_geometry_normalized_sha256": "92d222d44df53ece66acde2d6ccd12b56c20ab296e0885b5819fb19a6abee66d",
+      "head_width_over_character_height": 0.22873805181400195,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "elf-a-braid",
+      "race": "elf",
+      "silhouette": "a",
+      "hair": "braid",
+      "glb": "models/elf-a-braid.glb",
+      "blend": "assets/elf-a-braid.blend",
+      "glb_bytes": 2478112,
+      "glb_sha256": "443656b620c40b0f0f12939418a13e1e86578be40235d15f3258696ed13a9d9c",
+      "triangles": 81785,
+      "primitives": 112,
+      "mesh_nodes": 110,
+      "bounds_min_m": [
+        -0.34609663486480713,
+        0.0,
+        -0.22742033004760742
+      ],
+      "bounds_max_m": [
+        0.37465065717697144,
+        1.8499999046325684,
+        0.20969805121421814
+      ],
+      "dimensions_width_height_depth_m": [
+        0.7207472920417786,
+        1.8499999046325684,
+        0.43711838126182556
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.85,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 112,
+      "uv_primitives": 66,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        -0.9982485771179199,
+        2.9930925369262695
+      ],
+      "geometry_sha256": "1e98a6a993c3a497cb0b734ddaa7232f39d184da93160dc5662de9a5e3169cb2",
+      "hair_geometry_sha256": "9e96fb766ccd4584e764e69a4f51a53cc674cab851e5af352ca92d4fd156a754",
+      "head_geometry_normalized_sha256": "92d222d44df53ece66acde2d6ccd12b56c20ab296e0885b5819fb19a6abee66d",
+      "head_width_over_character_height": 0.22873805181400195,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "elf-b-short",
+      "race": "elf",
+      "silhouette": "b",
+      "hair": "short",
+      "glb": "models/elf-b-short.glb",
+      "blend": "assets/elf-b-short.blend",
+      "glb_bytes": 3513936,
+      "glb_sha256": "bb932628c915d594bb74bb2233fac3a066fee28eb9d446ad00c7907381de2d78",
+      "triangles": 87668,
+      "primitives": 166,
+      "mesh_nodes": 164,
+      "bounds_min_m": [
+        -0.3466767370700836,
+        0.0,
+        -0.2736678421497345
+      ],
+      "bounds_max_m": [
+        0.30801621079444885,
+        1.850000023841858,
+        0.2256806492805481
+      ],
+      "dimensions_width_height_depth_m": [
+        0.6546929478645325,
+        1.850000023841858,
+        0.4993484914302826
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.85,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Metal",
+        "Thread",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 166,
+      "uv_primitives": 123,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        0.0,
+        2.9925310611724854
+      ],
+      "geometry_sha256": "68053342e7e972210311a6315a0e179f96b3102b5bd52c8768dbc7baccd897dd",
+      "hair_geometry_sha256": "4972258c84c8e39a41672ec3e23fa1346e29de7267183596bd5b860aae748b88",
+      "head_geometry_normalized_sha256": "84e28d1b7ee086875d4a09062853c416fba2e3ba0a58bcb15b1efe94f764c909",
+      "head_width_over_character_height": 0.24798928885846525,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "elf-b-long",
+      "race": "elf",
+      "silhouette": "b",
+      "hair": "long",
+      "glb": "models/elf-b-long.glb",
+      "blend": "assets/elf-b-long.blend",
+      "glb_bytes": 3607664,
+      "glb_sha256": "c67c35036c86e43126678dca252a5b06870995f5ecf528ee62767242c3ffd730",
+      "triangles": 92648,
+      "primitives": 175,
+      "mesh_nodes": 173,
+      "bounds_min_m": [
+        -0.3466767370700836,
+        0.0,
+        -0.2736678421497345
+      ],
+      "bounds_max_m": [
+        0.30801621079444885,
+        1.850000023841858,
+        0.2256806492805481
+      ],
+      "dimensions_width_height_depth_m": [
+        0.6546929478645325,
+        1.850000023841858,
+        0.4993484914302826
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.85,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Metal",
+        "Thread",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 175,
+      "uv_primitives": 123,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        0.0,
+        2.9925310611724854
+      ],
+      "geometry_sha256": "6727a79d0ae22d3c935b76c9fa096c2ce312e2be2d9e32393088f0a5d91f0622",
+      "hair_geometry_sha256": "a547bbdb19a55833c5445214442847e028d02ae453d1295c51583af6ddbf3a6b",
+      "head_geometry_normalized_sha256": "84e28d1b7ee086875d4a09062853c416fba2e3ba0a58bcb15b1efe94f764c909",
+      "head_width_over_character_height": 0.24798928885846525,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    },
+    {
+      "id": "elf-b-braid",
+      "race": "elf",
+      "silhouette": "b",
+      "hair": "braid",
+      "glb": "models/elf-b-braid.glb",
+      "blend": "assets/elf-b-braid.blend",
+      "glb_bytes": 3646400,
+      "glb_sha256": "189e84afc55a27cb8e0b6d85d3bd88aec49101e93d09ae06cbbbd2e621dc33ef",
+      "triangles": 94704,
+      "primitives": 171,
+      "mesh_nodes": 169,
+      "bounds_min_m": [
+        -0.3466767370700836,
+        0.0,
+        -0.2736678421497345
+      ],
+      "bounds_max_m": [
+        0.30801621079444885,
+        1.850000023841858,
+        0.2256806492805481
+      ],
+      "dimensions_width_height_depth_m": [
+        0.6546929478645325,
+        1.850000023841858,
+        0.4993484914302826
+      ],
+      "feet_on_ground": true,
+      "expected_base_height_m": 1.85,
+      "height_tolerance_including_hair_m": 0.1,
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Metal",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Thread",
+        "Gem"
+      ],
+      "tint_materials_used": [
+        "Hair",
+        "Iris",
+        "OutfitAccent",
+        "Skin"
+      ],
+      "embedded_images": [],
+      "external_dependencies": 0,
+      "vertex_color_primitives": 171,
+      "uv_primitives": 123,
+      "finite_positions_normals_uv_colors": true,
+      "valid_buffer_and_accessor_ranges": true,
+      "valid_triangle_index_ranges": true,
+      "uv_range": [
+        0.0,
+        2.9925310611724854
+      ],
+      "geometry_sha256": "2b9b255ec63cc7f6e0a990bc59920340b7b5d02045a0b812f9d13475086f51e1",
+      "hair_geometry_sha256": "e650e984fb5f5fa956ff1f7e45f845d5f4c55ecdfc16d63d8f7b9fbb13454731",
+      "head_geometry_normalized_sha256": "84e28d1b7ee086875d4a09062853c416fba2e3ba0a58bcb15b1efe94f764c909",
+      "head_width_over_character_height": 0.24798928885846525,
+      "blend_source_present": true,
+      "blend_source_opened": false
+    }
+  ],
+  "errors": [],
+  "comparisons": {
+    "distinct_hair_geometry_per_style": true,
+    "race_head_and_ear_comparisons": [
+      {
+        "silhouette": "a",
+        "hair": "short",
+        "different_normalized_head_geometry": true,
+        "elf_head_lateral_extension_greater": true
+      },
+      {
+        "silhouette": "a",
+        "hair": "long",
+        "different_normalized_head_geometry": true,
+        "elf_head_lateral_extension_greater": true
+      },
+      {
+        "silhouette": "a",
+        "hair": "braid",
+        "different_normalized_head_geometry": true,
+        "elf_head_lateral_extension_greater": true
+      },
+      {
+        "silhouette": "b",
+        "hair": "short",
+        "different_normalized_head_geometry": true,
+        "elf_head_lateral_extension_greater": true
+      },
+      {
+        "silhouette": "b",
+        "hair": "long",
+        "different_normalized_head_geometry": true,
+        "elf_head_lateral_extension_greater": true
+      },
+      {
+        "silhouette": "b",
+        "hair": "braid",
+        "different_normalized_head_geometry": true,
+        "elf_head_lateral_extension_greater": true
+      }
+    ]
+  },
+  "palette_choice_counts": {
+    "skin": 8,
+    "hair": 8,
+    "eyes": 6,
+    "outfit": 4
+  },
+  "asset_count": 12,
+  "manifest_paths_valid": true
+}

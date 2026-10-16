@@ -1,0 +1,873 @@
+{
+  "passed": true,
+  "asset_count": 12,
+  "geometry_same_across_materials": true,
+  "uv_same_across_materials": true,
+  "approved_bark_source_unchanged": true,
+  "assets": [
+    {
+      "id": "basse-moussu",
+      "shape": "basse",
+      "material": "moussu",
+      "glb": {
+        "triangles": 17408,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 6639040,
+        "geometry_hashes": [
+          "3b35acb92b9440993d72bbe83d8dec1a12931583f9dc595e31a4cfd42d85e84d",
+          "d2b84aa2d7c5e3bd4d19e58fd1cf823b5cb4e253b5f85576edfb8730944f73c5"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "de18b29391333b96f903259fdf5d109cc68e06858d9f664007a8c18d1c9bf7e2"
+    },
+    {
+      "id": "basse-mystique",
+      "shape": "basse",
+      "material": "mystique",
+      "glb": {
+        "triangles": 17408,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 8855492,
+        "geometry_hashes": [
+          "3b35acb92b9440993d72bbe83d8dec1a12931583f9dc595e31a4cfd42d85e84d",
+          "d2b84aa2d7c5e3bd4d19e58fd1cf823b5cb4e253b5f85576edfb8730944f73c5"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "de18b29391333b96f903259fdf5d109cc68e06858d9f664007a8c18d1c9bf7e2"
+    },
+    {
+      "id": "basse-brule",
+      "shape": "basse",
+      "material": "brule",
+      "glb": {
+        "triangles": 17408,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 8307800,
+        "geometry_hashes": [
+          "3b35acb92b9440993d72bbe83d8dec1a12931583f9dc595e31a4cfd42d85e84d",
+          "d2b84aa2d7c5e3bd4d19e58fd1cf823b5cb4e253b5f85576edfb8730944f73c5"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "de18b29391333b96f903259fdf5d109cc68e06858d9f664007a8c18d1c9bf7e2"
+    },
+    {
+      "id": "tordue-moussu",
+      "shape": "tordue",
+      "material": "moussu",
+      "glb": {
+        "triangles": 21504,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 6769072,
+        "geometry_hashes": [
+          "2dd0aa449bd12b63f0e494a6a9b1b9700be2485ef11d902f98484346e8b032df",
+          "67cca0db127f2b62437ffe02e6a319d776c9a5668c2cf83b806de51b646ded94"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "e09405e5e5a65f0cb5b50a33a978a2adb354609e3af750e4bed64838dc2691e7"
+    },
+    {
+      "id": "tordue-mystique",
+      "shape": "tordue",
+      "material": "mystique",
+      "glb": {
+        "triangles": 21504,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 8985520,
+        "geometry_hashes": [
+          "2dd0aa449bd12b63f0e494a6a9b1b9700be2485ef11d902f98484346e8b032df",
+          "67cca0db127f2b62437ffe02e6a319d776c9a5668c2cf83b806de51b646ded94"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "e09405e5e5a65f0cb5b50a33a978a2adb354609e3af750e4bed64838dc2691e7"
+    },
+    {
+      "id": "tordue-brule",
+      "shape": "tordue",
+      "material": "brule",
+      "glb": {
+        "triangles": 21504,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 8437828,
+        "geometry_hashes": [
+          "2dd0aa449bd12b63f0e494a6a9b1b9700be2485ef11d902f98484346e8b032df",
+          "67cca0db127f2b62437ffe02e6a319d776c9a5668c2cf83b806de51b646ded94"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "e09405e5e5a65f0cb5b50a33a978a2adb354609e3af750e4bed64838dc2691e7"
+    },
+    {
+      "id": "creuse-moussu",
+      "shape": "creuse",
+      "material": "moussu",
+      "glb": {
+        "triangles": 19200,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 6706044,
+        "geometry_hashes": [
+          "5d176f1defc43dd860905b04fa9e3910410bba14ecfff4c89ecee7772bf3affa",
+          "700dec77f8bd9d965e441ace19d44234c3f5b4e8542d7c2b2e54fae05941e2d0"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "cc80fd782cc7f04a63e49e39a656a5b90088cb91083cdd40d6959299cdda6d20"
+    },
+    {
+      "id": "creuse-mystique",
+      "shape": "creuse",
+      "material": "mystique",
+      "glb": {
+        "triangles": 19200,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 8922496,
+        "geometry_hashes": [
+          "5d176f1defc43dd860905b04fa9e3910410bba14ecfff4c89ecee7772bf3affa",
+          "700dec77f8bd9d965e441ace19d44234c3f5b4e8542d7c2b2e54fae05941e2d0"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "cc80fd782cc7f04a63e49e39a656a5b90088cb91083cdd40d6959299cdda6d20"
+    },
+    {
+      "id": "creuse-brule",
+      "shape": "creuse",
+      "material": "brule",
+      "glb": {
+        "triangles": 19200,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 8374804,
+        "geometry_hashes": [
+          "5d176f1defc43dd860905b04fa9e3910410bba14ecfff4c89ecee7772bf3affa",
+          "700dec77f8bd9d965e441ace19d44234c3f5b4e8542d7c2b2e54fae05941e2d0"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "cc80fd782cc7f04a63e49e39a656a5b90088cb91083cdd40d6959299cdda6d20"
+    },
+    {
+      "id": "brisee-moussu",
+      "shape": "brisee",
+      "material": "moussu",
+      "glb": {
+        "triangles": 23296,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 6836096,
+        "geometry_hashes": [
+          "a927583a18a63d5686d45374d51248e5510dbe2e46dad0a20b24b829d44b1554",
+          "c2f0b3c86531050793fa0e878c86122f1cd151fe28345070d777372862a5d4a9"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "24c64a5a3da442fd2f7e7ea7dc215ad9dc7e9a2394f09d4e103dd6c859308827"
+    },
+    {
+      "id": "brisee-mystique",
+      "shape": "brisee",
+      "material": "mystique",
+      "glb": {
+        "triangles": 23296,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 9052544,
+        "geometry_hashes": [
+          "a927583a18a63d5686d45374d51248e5510dbe2e46dad0a20b24b829d44b1554",
+          "c2f0b3c86531050793fa0e878c86122f1cd151fe28345070d777372862a5d4a9"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "24c64a5a3da442fd2f7e7ea7dc215ad9dc7e9a2394f09d4e103dd6c859308827"
+    },
+    {
+      "id": "brisee-brule",
+      "shape": "brisee",
+      "material": "brule",
+      "glb": {
+        "triangles": 23296,
+        "meshes": 1,
+        "primitives": 2,
+        "materials": 2,
+        "images": 6,
+        "bytes": 8504852,
+        "geometry_hashes": [
+          "a927583a18a63d5686d45374d51248e5510dbe2e46dad0a20b24b829d44b1554",
+          "c2f0b3c86531050793fa0e878c86122f1cd151fe28345070d777372862a5d4a9"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "bark-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "bark-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "cut-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "24c64a5a3da442fd2f7e7ea7dc215ad9dc7e9a2394f09d4e103dd6c859308827"
+    }
+  ]
+}

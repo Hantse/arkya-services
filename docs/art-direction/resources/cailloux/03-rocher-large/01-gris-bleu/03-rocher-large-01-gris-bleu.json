@@ -1,0 +1,24 @@
+{
+  "id": "03-rocher-large-01-gris-bleu",
+  "shape": "03-rocher-large",
+  "material": "01-gris-bleu",
+  "label": "Rocher large · Pierre gris bleu",
+  "glb": "03-rocher-large/01-gris-bleu/03-rocher-large-01-gris-bleu.glb",
+  "blend": "03-rocher-large/01-gris-bleu/03-rocher-large-01-gris-bleu.blend",
+  "preview": "03-rocher-large/01-gris-bleu/03-rocher-large-01-gris-bleu-preview.png",
+  "height": 1.6,
+  "width": 2.8364,
+  "depth": 1.7435,
+  "triangles": 8500,
+  "vertices": 4252,
+  "textures_size": [
+    2048,
+    2048
+  ],
+  "paint_contrast": 0.75,
+  "source": "../sources/stone-painted.png",
+  "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+  "mesh_count": 1,
+  "pivot": "Centered X/Y, lowest point Z=0",
+  "gltf_up_axis": "Y"
+}

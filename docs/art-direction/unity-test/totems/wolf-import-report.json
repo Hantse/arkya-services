@@ -1,0 +1,327 @@
+{
+  "success": true,
+  "revision": "20261016T103309070262Z-totems",
+  "unity": "6000.6.6f1",
+  "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems",
+  "activeScenePreserved": true,
+  "models": 1,
+  "variantsPerAnimal": 12,
+  "appearancePrefabs": 12,
+  "defaultPrefabs": 1,
+  "forwardAxis": "+Z (source +X is rotated on the Visual child)",
+  "controllerParameter": "Speed: Idle <0.1, Walk 0.1–0.65, Run >=0.65; normalized presentation input",
+  "assets": [
+    {
+      "species": "wolf",
+      "id": "lunar",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-lunar.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-lunar-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-lunar-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-lunar-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-lunar-spark.mat"
+      ],
+      "magicColor": "#54DFD6",
+      "palette": [
+        "#172536",
+        "#293c52",
+        "#405c77",
+        "#688da1",
+        "#aac8d1",
+        "#dbe9e4",
+        "#f3efd8",
+        "#97b9bf",
+        "#54758b",
+        "#111a29",
+        "#54dfd6",
+        "#d3fff1"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "ember",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-ember.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-ember-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-ember-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-ember-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-ember-spark.mat"
+      ],
+      "magicColor": "#FFB95B",
+      "palette": [
+        "#542720",
+        "#783527",
+        "#a94b29",
+        "#d17b3c",
+        "#e9ae66",
+        "#f4ddb0",
+        "#fff0cf",
+        "#bd8457",
+        "#713f2e",
+        "#251f28",
+        "#ffb95b",
+        "#fff0aa"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "jade",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-jade.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-jade-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-jade-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-jade-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-jade-spark.mat"
+      ],
+      "magicColor": "#63F0BD",
+      "palette": [
+        "#102f31",
+        "#1c4945",
+        "#2e6b59",
+        "#5c9576",
+        "#a3bb8f",
+        "#d5d9ad",
+        "#f3e8c5",
+        "#85ab8a",
+        "#3e7468",
+        "#11252b",
+        "#63f0bd",
+        "#cffff0"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "amethyst",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-amethyst.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-amethyst-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-amethyst-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-amethyst-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-amethyst-spark.mat"
+      ],
+      "magicColor": "#CF8CF3",
+      "palette": [
+        "#2a203d",
+        "#463057",
+        "#644674",
+        "#966b9d",
+        "#c3a0bc",
+        "#e2ced8",
+        "#f2e5e8",
+        "#ab8fb5",
+        "#64547f",
+        "#181728",
+        "#cf8cf3",
+        "#f6d6ff"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "frost",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-frost.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-frost-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-frost-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-frost-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-frost-spark.mat"
+      ],
+      "magicColor": "#72DCFF",
+      "palette": [
+        "#24404d",
+        "#436373",
+        "#648fa2",
+        "#9bbdca",
+        "#cddde1",
+        "#e9eeee",
+        "#fff9e6",
+        "#aecbd3",
+        "#7197b1",
+        "#152936",
+        "#72dcff",
+        "#e1ffff"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "solar",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-solar.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-solar-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-solar-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-solar-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-solar-spark.mat"
+      ],
+      "magicColor": "#FFDC6A",
+      "palette": [
+        "#463123",
+        "#72502c",
+        "#a37c3d",
+        "#d1ad5b",
+        "#e9d38e",
+        "#f0e5b6",
+        "#fff2ce",
+        "#c9b681",
+        "#8e7750",
+        "#27232a",
+        "#ffdc6a",
+        "#fff8d1"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "rose",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-rose.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-rose-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-rose-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-rose-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-rose-spark.mat"
+      ],
+      "magicColor": "#FF97BA",
+      "palette": [
+        "#452333",
+        "#6b364b",
+        "#9b5367",
+        "#c3828b",
+        "#dfb4ac",
+        "#efdbce",
+        "#ffefda",
+        "#b8929f",
+        "#865a76",
+        "#231e30",
+        "#ff97ba",
+        "#ffe4ee"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "abyss",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-abyss.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-abyss-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-abyss-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-abyss-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-abyss-spark.mat"
+      ],
+      "magicColor": "#5F99FF",
+      "palette": [
+        "#101e30",
+        "#172c44",
+        "#244563",
+        "#3a6482",
+        "#728eaa",
+        "#b9c7d5",
+        "#e5e5df",
+        "#586f96",
+        "#343e69",
+        "#0c1523",
+        "#5f99ff",
+        "#cde7ff"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "moss",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-moss.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-moss-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-moss-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-moss-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-moss-spark.mat"
+      ],
+      "magicColor": "#B7E774",
+      "palette": [
+        "#252c20",
+        "#424a2b",
+        "#65703c",
+        "#919255",
+        "#b8b47c",
+        "#d7d2a3",
+        "#eee6c5",
+        "#929f70",
+        "#56654c",
+        "#18261f",
+        "#b7e774",
+        "#f1ffd2"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "copper",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-copper.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-copper-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-copper-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-copper-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-copper-spark.mat"
+      ],
+      "magicColor": "#6AEFDC",
+      "palette": [
+        "#3e292b",
+        "#674036",
+        "#955b42",
+        "#bc8359",
+        "#d5aa7a",
+        "#e8d2aa",
+        "#f7ead0",
+        "#a98d79",
+        "#745f58",
+        "#211e29",
+        "#6aefdc",
+        "#d4fff1"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "pearl",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-pearl.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-pearl-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-pearl-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-pearl-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-pearl-spark.mat"
+      ],
+      "magicColor": "#EFAAFF",
+      "palette": [
+        "#555264",
+        "#7c788c",
+        "#a19bb0",
+        "#c1b9c9",
+        "#ded5dd",
+        "#f0e7e6",
+        "#fff6e8",
+        "#c5bfcc",
+        "#918fa8",
+        "#363447",
+        "#efaaff",
+        "#fff0ff"
+      ]
+    },
+    {
+      "species": "wolf",
+      "id": "storm",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-storm.prefab",
+      "texture": "Assets/Arkya/Totems/Textures/wolf-storm-basecolor.png",
+      "materials": [
+        "Assets/Arkya/Totems/Materials/wolf-storm-fur.mat",
+        "Assets/Arkya/Totems/Materials/wolf-storm-magic.mat",
+        "Assets/Arkya/Totems/Materials/wolf-storm-spark.mat"
+      ],
+      "magicColor": "#B3D5FF",
+      "palette": [
+        "#232a35",
+        "#3d4752",
+        "#626b73",
+        "#8a9397",
+        "#b8bfc0",
+        "#dce0d9",
+        "#f1edda",
+        "#8d9fa5",
+        "#556f80",
+        "#111d29",
+        "#b3d5ff",
+        "#eff9ff"
+      ]
+    }
+  ]
+}

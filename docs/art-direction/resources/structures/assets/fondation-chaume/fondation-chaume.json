@@ -1,0 +1,116 @@
+{
+  "id": "fondation-chaume",
+  "shape": "fondation",
+  "material": "chaume",
+  "label": "Fondation · Chaume",
+  "glb": "assets/fondation-chaume/fondation-chaume.glb",
+  "blend": "assets/fondation-chaume/fondation-chaume.blend",
+  "preview": "assets/fondation-chaume/fondation-chaume-preview.png",
+  "height": 0.5,
+  "width": 1.0,
+  "depth": 1.0,
+  "nominal_dimensions": {
+    "width": 1.0,
+    "height": 0.5,
+    "depth": 1.0
+  },
+  "triangles": 16880,
+  "materials_count": 3,
+  "texture_resolution": [
+    1254,
+    1254
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "gltf_up_axis": "Y",
+  "snap_points": [
+    {
+      "name": "Snap_Left",
+      "position_m": [
+        -0.5,
+        0.25,
+        0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Right",
+      "position_m": [
+        0.5,
+        0.25,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Bottom",
+      "position_m": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Top",
+      "position_m": [
+        0,
+        0.5,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Snap_Front",
+      "position_m": [
+        0,
+        0.25,
+        0.5
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Snap_Back",
+      "position_m": [
+        0,
+        0.25,
+        -0.5
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "snap_coordinate_system": "glTF Y-up, metres, root-local",
+  "wood_finish": {
+    "revision": 2,
+    "uv_tile_metres": [
+      1.2,
+      2.4
+    ],
+    "roughness": 0.96,
+    "source": "sources/worked-timber-painted-v2.png"
+  }
+}

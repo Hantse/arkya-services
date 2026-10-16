@@ -1,0 +1,27 @@
+{
+  "id": "allongee-vert",
+  "shape": "allongee",
+  "material": "vert",
+  "label": "Petite mare allongée · Mana vert émeraude",
+  "glb": "assets/allongee-vert/allongee-vert.glb",
+  "blend": "assets/allongee-vert/allongee-vert.blend",
+  "preview": "assets/allongee-vert/allongee-vert-preview.png",
+  "height": 0.5905,
+  "width": 1.7902,
+  "depth": 0.752,
+  "triangles": 12156,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": false,
+  "pivot": "centre au sol",
+  "animation": "ManaFlow",
+  "animation_duration": 6,
+  "animated_nodes": 10,
+  "wisp_count": 3,
+  "droplet_count": 6,
+  "artistic_status": "approved",
+  "dimension_note": "Enveloppe maximale de la boucle complète, particules comprises.",
+  "approved_at": "2026-10-15"
+}

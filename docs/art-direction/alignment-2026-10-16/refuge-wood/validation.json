@@ -1,0 +1,26 @@
+{
+  "cottages": 3,
+  "gables": 6,
+  "boardsPerGable": 20,
+  "gableTriangles": 636,
+  "remappedRenderers": 51,
+  "sharedRemappedMeshes": 7,
+  "texture": "Assets/Arkya/World/StarterIsland/Textures/PaintedTimberV2.png",
+  "textureSize": [
+    1254,
+    1254
+  ],
+  "uvTileMeters": [
+    1.2,
+    2.4
+  ],
+  "existingModuleGeometryUnchanged": true,
+  "sourceGLBsUnchanged": true,
+  "savedScene": true,
+  "materials": [
+    "Assets/Arkya/World/StarterIsland/Materials/Environment/Refuge painted boards V2.mat",
+    "Assets/Arkya/World/StarterIsland/Materials/Environment/Refuge painted beams V2.mat"
+  ],
+  "closedJointRayChecks": 38,
+  "validatedCottageRenderers": 57
+}

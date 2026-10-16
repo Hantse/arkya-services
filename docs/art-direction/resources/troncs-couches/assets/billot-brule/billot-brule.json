@@ -1,0 +1,19 @@
+{
+  "id": "billot-brule",
+  "shape": "billot",
+  "material": "brule",
+  "label": "Billot court · Bois brûlé",
+  "glb": "assets/billot-brule/billot-brule.glb",
+  "blend": "assets/billot-brule/billot-brule.blend",
+  "preview": "assets/billot-brule/billot-brule-preview.png",
+  "height": 0.3978,
+  "width": 0.9,
+  "depth": 0.4983,
+  "triangles": 7040,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

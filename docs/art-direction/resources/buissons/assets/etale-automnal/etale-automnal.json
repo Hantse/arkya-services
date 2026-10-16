@@ -1,0 +1,19 @@
+{
+  "id": "etale-automnal",
+  "shape": "etale",
+  "material": "automnal",
+  "label": "Buisson étalé · Automnal",
+  "glb": "assets/etale-automnal/etale-automnal.glb",
+  "blend": "assets/etale-automnal/etale-automnal.blend",
+  "preview": "assets/etale-automnal/etale-automnal-preview.png",
+  "height": 1.25,
+  "width": 2.1169,
+  "depth": 1.3579,
+  "triangles": 36074,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

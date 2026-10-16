@@ -1,0 +1,20 @@
+{
+  "id": "bouquet-amethyste",
+  "shape": "bouquet",
+  "material": "amethyste",
+  "label": "Bouquet · Améthyste",
+  "glb": "assets/bouquet-amethyste/bouquet-amethyste.glb",
+  "blend": "assets/bouquet-amethyste/bouquet-amethyste.blend",
+  "preview": "assets/bouquet-amethyste/bouquet-amethyste-preview.png",
+  "height": 1.1,
+  "width": 1.0541,
+  "depth": 0.9296,
+  "triangles": 2598,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "bake": "Cycles CPU, emission channel transfer to basecolor/roughness/emission"
+}

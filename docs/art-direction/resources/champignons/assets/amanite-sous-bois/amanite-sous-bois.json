@@ -1,0 +1,20 @@
+{
+  "id": "amanite-sous-bois",
+  "shape": "amanite",
+  "material": "sous-bois",
+  "label": "Amanite bombée · Miel des sous-bois",
+  "glb": "assets/amanite-sous-bois/amanite-sous-bois.glb",
+  "blend": "assets/amanite-sous-bois/amanite-sous-bois.blend",
+  "preview": "assets/amanite-sous-bois/amanite-sous-bois-preview.png",
+  "height": 0.4,
+  "width": 0.5541,
+  "depth": 0.4142,
+  "triangles": 11968,
+  "mushrooms": 2,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

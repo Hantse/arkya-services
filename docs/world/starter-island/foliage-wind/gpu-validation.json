@@ -1,0 +1,119 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-16T08:18:25.6582542Z",
+  "caseCount": 17,
+  "checks": [
+    {
+      "name": "GPU shader compiles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Original painted textures are reused",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Whole tree rotation is disabled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Arbre LOD0 visible GPU motion",
+      "passed": true,
+      "detail": {
+        "changedPixels": 79779
+      }
+    },
+    {
+      "name": "Arbre LOD0 wind zero is stable",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "Arbre LOD1 visible GPU motion",
+      "passed": true,
+      "detail": {
+        "changedPixels": 80958
+      }
+    },
+    {
+      "name": "Arbre LOD1 wind zero is stable",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "Arbre LOD2 visible GPU motion",
+      "passed": true,
+      "detail": {
+        "changedPixels": 88008
+      }
+    },
+    {
+      "name": "Arbre LOD2 wind zero is stable",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "Buisson LOD0 visible GPU motion",
+      "passed": true,
+      "detail": {
+        "changedPixels": 108859
+      }
+    },
+    {
+      "name": "Buisson LOD0 wind zero is stable",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "Buisson LOD1 visible GPU motion",
+      "passed": true,
+      "detail": {
+        "changedPixels": 107951
+      }
+    },
+    {
+      "name": "Buisson LOD1 wind zero is stable",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "Buisson LOD2 visible GPU motion",
+      "passed": true,
+      "detail": {
+        "changedPixels": 107649
+      }
+    },
+    {
+      "name": "Buisson LOD2 wind zero is stable",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "Disable restores previous global wind",
+      "passed": true,
+      "detail": {
+        "restoredStrength": 0.0
+      }
+    },
+    {
+      "name": "Reenable publishes configured wind",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "failures": []
+}

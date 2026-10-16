@@ -1,0 +1,19 @@
+{
+  "id": "billot-moussu",
+  "shape": "billot",
+  "material": "moussu",
+  "label": "Billot court · Ancien moussu",
+  "glb": "assets/billot-moussu/billot-moussu.glb",
+  "blend": "assets/billot-moussu/billot-moussu.blend",
+  "preview": "assets/billot-moussu/billot-moussu-preview.png",
+  "height": 0.3978,
+  "width": 0.9,
+  "depth": 0.4983,
+  "triangles": 7040,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

@@ -1,0 +1,13 @@
+{
+  "source": "../references/arbre-peint-v3/source/painted-bark.png",
+  "sha256": "BE86ED087040C7E4930EAAA7FCDFADB8916B5EF0725F48FD0D042D290F85CD15",
+  "source_pixels": [
+    1254,
+    1254
+  ],
+  "output_pixels": [
+    2048,
+    2048
+  ],
+  "process": "Source bark resampled and recolored with approved V3 ramps; original procedural end grain; deterministic mesh and UV generator."
+}

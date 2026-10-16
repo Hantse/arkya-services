@@ -1,0 +1,620 @@
+{
+  "passed": true,
+  "asset_count": 12,
+  "geometry_same_across_materials": true,
+  "uv_same_across_materials": true,
+  "assets": [
+    {
+      "id": "boutons-corail",
+      "shape": "boutons",
+      "material": "corail",
+      "glb": {
+        "triangles": 28000,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2266284,
+        "geometry_hashes": [
+          "3fc1cadd09ef391156b72533cfc88b6da777efc641a6f3e3f467716ac1471d32"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "corail-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "47913f26ea76d83f375ad8cfba6b0f7f0f91f002f24d3b7f3917c3aa02a1181c",
+      "mushroom_count": 5
+    },
+    {
+      "id": "boutons-sous-bois",
+      "shape": "boutons",
+      "material": "sous-bois",
+      "glb": {
+        "triangles": 28000,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2220688,
+        "geometry_hashes": [
+          "3fc1cadd09ef391156b72533cfc88b6da777efc641a6f3e3f467716ac1471d32"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "sous-bois-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sous-bois-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sous-bois-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "47913f26ea76d83f375ad8cfba6b0f7f0f91f002f24d3b7f3917c3aa02a1181c",
+      "mushroom_count": 5
+    },
+    {
+      "id": "boutons-mystique",
+      "shape": "boutons",
+      "material": "mystique",
+      "glb": {
+        "triangles": 28000,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 2237100,
+        "geometry_hashes": [
+          "3fc1cadd09ef391156b72533cfc88b6da777efc641a6f3e3f467716ac1471d32"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "47913f26ea76d83f375ad8cfba6b0f7f0f91f002f24d3b7f3917c3aa02a1181c",
+      "mushroom_count": 5
+    },
+    {
+      "id": "amanite-corail",
+      "shape": "amanite",
+      "material": "corail",
+      "glb": {
+        "triangles": 11968,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1759252,
+        "geometry_hashes": [
+          "1575fb737c5af5fee6a0cfc5aac03c12c241147ed26863dd2e0559ad275560dd"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "corail-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "43cb5d926830c35f109f4edf34ffaeaffab4ea2d7b3d581b614d2cd85c4c33a4",
+      "mushroom_count": 2
+    },
+    {
+      "id": "amanite-sous-bois",
+      "shape": "amanite",
+      "material": "sous-bois",
+      "glb": {
+        "triangles": 11968,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1713656,
+        "geometry_hashes": [
+          "1575fb737c5af5fee6a0cfc5aac03c12c241147ed26863dd2e0559ad275560dd"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "sous-bois-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sous-bois-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sous-bois-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "43cb5d926830c35f109f4edf34ffaeaffab4ea2d7b3d581b614d2cd85c4c33a4",
+      "mushroom_count": 2
+    },
+    {
+      "id": "amanite-mystique",
+      "shape": "amanite",
+      "material": "mystique",
+      "glb": {
+        "triangles": 11968,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1730068,
+        "geometry_hashes": [
+          "1575fb737c5af5fee6a0cfc5aac03c12c241147ed26863dd2e0559ad275560dd"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "43cb5d926830c35f109f4edf34ffaeaffab4ea2d7b3d581b614d2cd85c4c33a4",
+      "mushroom_count": 2
+    },
+    {
+      "id": "chanterelles-corail",
+      "shape": "chanterelles",
+      "material": "corail",
+      "glb": {
+        "triangles": 16800,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1911092,
+        "geometry_hashes": [
+          "7efb67958029dfadfe647ac76baca150e1b8864275454ed6bd36ad084e2f1dfb"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "corail-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "d1336f7339ff3180ed89f8e65d5986fc0ccd7499c1bed432515139fe56b618cd",
+      "mushroom_count": 3
+    },
+    {
+      "id": "chanterelles-sous-bois",
+      "shape": "chanterelles",
+      "material": "sous-bois",
+      "glb": {
+        "triangles": 16800,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1865492,
+        "geometry_hashes": [
+          "7efb67958029dfadfe647ac76baca150e1b8864275454ed6bd36ad084e2f1dfb"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "sous-bois-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sous-bois-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sous-bois-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "d1336f7339ff3180ed89f8e65d5986fc0ccd7499c1bed432515139fe56b618cd",
+      "mushroom_count": 3
+    },
+    {
+      "id": "chanterelles-mystique",
+      "shape": "chanterelles",
+      "material": "mystique",
+      "glb": {
+        "triangles": 16800,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1881904,
+        "geometry_hashes": [
+          "7efb67958029dfadfe647ac76baca150e1b8864275454ed6bd36ad084e2f1dfb"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "d1336f7339ff3180ed89f8e65d5986fc0ccd7499c1bed432515139fe56b618cd",
+      "mushroom_count": 3
+    },
+    {
+      "id": "parasol-corail",
+      "shape": "parasol",
+      "material": "corail",
+      "glb": {
+        "triangles": 18336,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1962624,
+        "geometry_hashes": [
+          "99532f72ec5cb0f1802ab9df2d3b338ebdb7f478c02eee6501941d8e0fbacd3b"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "corail-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "corail-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "96fa34dbdd9fb99affcc346bae33255e296aa9a97c4cc48914627e5fb56b6e17",
+      "mushroom_count": 3
+    },
+    {
+      "id": "parasol-sous-bois",
+      "shape": "parasol",
+      "material": "sous-bois",
+      "glb": {
+        "triangles": 18336,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1917024,
+        "geometry_hashes": [
+          "99532f72ec5cb0f1802ab9df2d3b338ebdb7f478c02eee6501941d8e0fbacd3b"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "sous-bois-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sous-bois-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "sous-bois-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "96fa34dbdd9fb99affcc346bae33255e296aa9a97c4cc48914627e5fb56b6e17",
+      "mushroom_count": 3
+    },
+    {
+      "id": "parasol-mystique",
+      "shape": "parasol",
+      "material": "mystique",
+      "glb": {
+        "triangles": 18336,
+        "meshes": 1,
+        "primitives": 1,
+        "materials": 1,
+        "images": 3,
+        "bytes": 1933436,
+        "geometry_hashes": [
+          "99532f72ec5cb0f1802ab9df2d3b338ebdb7f478c02eee6501941d8e0fbacd3b"
+        ],
+        "finite_geometry": true,
+        "embedded_images": true,
+        "external_dependencies": 0
+      },
+      "blend": {
+        "opened": true,
+        "packed_images": [
+          {
+            "name": "mystique-basecolor.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-emission.png",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "mystique-roughness.png",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "linked_libraries": 0
+      },
+      "pivot_ground_centred": true,
+      "closed_manifold_surfaces": true,
+      "opaque": true,
+      "uv_hash": "96fa34dbdd9fb99affcc346bae33255e296aa9a97c4cc48914627e5fb56b6e17",
+      "mushroom_count": 3
+    }
+  ]
+}

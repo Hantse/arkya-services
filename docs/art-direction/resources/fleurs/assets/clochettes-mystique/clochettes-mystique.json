@@ -1,0 +1,19 @@
+{
+  "id": "clochettes-mystique",
+  "shape": "clochettes",
+  "material": "mystique",
+  "label": "Hampe de clochettes · Mystique",
+  "glb": "assets/clochettes-mystique/clochettes-mystique.glb",
+  "blend": "assets/clochettes-mystique/clochettes-mystique.blend",
+  "preview": "assets/clochettes-mystique/clochettes-mystique-preview.png",
+  "height": 0.7,
+  "width": 0.4657,
+  "depth": 0.4575,
+  "triangles": 13670,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

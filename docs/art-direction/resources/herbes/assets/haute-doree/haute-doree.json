@@ -1,0 +1,20 @@
+{
+  "id": "haute-doree",
+  "shape": "haute",
+  "material": "doree",
+  "label": "Hautes herbes · Herbe dorée",
+  "glb": "assets/haute-doree/haute-doree.glb",
+  "blend": "assets/haute-doree/haute-doree.blend",
+  "preview": "assets/haute-doree/haute-doree-preview.png",
+  "height": 1.05,
+  "width": 0.8235,
+  "depth": 0.6969,
+  "triangles": 14224,
+  "blades": 56,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

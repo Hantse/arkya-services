@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "artisticStatus": "proposal",
+  "races": [
+    {
+      "id": "human",
+      "label": "Humain",
+      "description": "Des proportions franches, un visage expressif et une silhouette ancrée dans le monde d’Arkya.",
+      "height": { "min": 160, "max": 195, "default": 175 },
+      "baseHeightCm": 175,
+      "models": {
+        "a": { "short": "models/human-a-short.glb", "long": "models/human-a-long.glb", "braid": "models/human-a-braid.glb" },
+        "b": { "short": "models/human-b-short.glb", "long": "models/human-b-long.glb", "braid": "models/human-b-braid.glb" }
+      }
+    },
+    {
+      "id": "elf",
+      "label": "Elfe",
+      "description": "Des lignes élancées, des oreilles effilées et des étoffes aux courbes inspirées du monde végétal.",
+      "height": { "min": 170, "max": 205, "default": 185 },
+      "baseHeightCm": 185,
+      "models": {
+        "a": { "short": "models/elf-a-short.glb", "long": "models/elf-a-long.glb", "braid": "models/elf-a-braid.glb" },
+        "b": { "short": "models/elf-b-short.glb", "long": "models/elf-b-long.glb", "braid": "models/elf-b-braid.glb" }
+      }
+    }
+  ],
+  "silhouettes": [ { "id": "a", "label": "Masculine" }, { "id": "b", "label": "Féminine" } ],
+  "hairStyles": [ { "id": "short", "label": "Courts" }, { "id": "long", "label": "Longs" }, { "id": "braid", "label": "Tressés" } ],
+  "materials": { "skin": "Skin", "hair": "Hair", "eyes": "Iris", "outfit": "OutfitAccent" },
+  "palettes": {
+    "skin": [
+      { "id": "porcelain", "label": "Porcelaine", "hex": "#f0d6c6" },
+      { "id": "rose", "label": "Rosé", "hex": "#dfb8a4" },
+      { "id": "sand", "label": "Sable", "hex": "#d7ad87" },
+      { "id": "warm", "label": "Miel", "hex": "#bc8a65" },
+      { "id": "olive", "label": "Olive", "hex": "#aa8969" },
+      { "id": "copper", "label": "Cuivré", "hex": "#96664c" },
+      { "id": "umber", "label": "Terre d’ombre", "hex": "#724e3e" },
+      { "id": "ebony", "label": "Ébène", "hex": "#4a342d" }
+    ],
+    "hair": [
+      { "id": "black", "label": "Noir", "hex": "#272b2c" },
+      { "id": "brown", "label": "Châtain", "hex": "#665044" },
+      { "id": "chestnut", "label": "Châtaigne", "hex": "#885a3d" },
+      { "id": "auburn", "label": "Auburn", "hex": "#b5784d" },
+      { "id": "blond", "label": "Blond doré", "hex": "#d8bd7d" },
+      { "id": "ash", "label": "Blond cendré", "hex": "#b9ad94" },
+      { "id": "silver", "label": "Argent", "hex": "#c5d0ca" },
+      { "id": "white", "label": "Blanc nacré", "hex": "#eee8d3" }
+    ],
+    "eyes": [
+      { "id": "brown", "label": "Brun", "hex": "#795132" },
+      { "id": "amber", "label": "Ambre", "hex": "#c59346" },
+      { "id": "green", "label": "Vert sauge", "hex": "#7c9c7b" },
+      { "id": "blue", "label": "Bleu ardoise", "hex": "#6c9ba9" },
+      { "id": "gray", "label": "Gris", "hex": "#a7b2ad" },
+      { "id": "violet", "label": "Améthyste", "hex": "#9883aa" }
+    ],
+    "outfit": [
+      { "id": "sage", "label": "Sauge", "hex": "#7c9c7b" },
+      { "id": "ocean", "label": "Océan", "hex": "#608d99" },
+      { "id": "ochre", "label": "Ocre", "hex": "#bd965b" },
+      { "id": "wine", "label": "Lie-de-vin", "hex": "#9d6e79" }
+    ]
+  },
+  "defaults": { "version": 1, "race": "human", "silhouette": "a", "heightCm": 175, "skin": "warm", "hairStyle": "short", "hairColor": "brown", "eyeColor": "green", "outfitColor": "sage" }
+}

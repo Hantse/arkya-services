@@ -1,0 +1,140 @@
+{
+  "species": "wolf",
+  "artRevision": 3,
+  "bones": 39,
+  "meshes": {
+    "TotemFur": {
+      "vertices": 14402,
+      "triangles": 28800,
+      "materials": 1,
+      "maxInfluences": 4,
+      "maxWeightError": 4.8050424084067345e-08
+    },
+    "TotemMagic": {
+      "vertices": 1120,
+      "triangles": 1102,
+      "materials": 1,
+      "maxInfluences": 4,
+      "maxWeightError": 4.470348358154297e-08
+    },
+    "TotemSpark": {
+      "vertices": 252,
+      "triangles": 480,
+      "materials": 1,
+      "maxInfluences": 1,
+      "maxWeightError": 0.0
+    }
+  },
+  "clips": [
+    {
+      "name": "Idle",
+      "duration_seconds": 4.0,
+      "expected_speed_mps": 0.0,
+      "gait": "breathing",
+      "checks": {
+        "max_contact_slip_m": 5.02423578391879e-07,
+        "max_contact_height_error_m": 3.87e-07,
+        "max_ik_error_m": 4.0788101235541687e-07,
+        "max_loop_position_error_m": 0.0,
+        "max_loop_rotation_error_degrees": 0.0,
+        "max_foot_loop_velocity_error_mps": 5.209621132839373e-05,
+        "frame_count": 241,
+        "passed": true
+      }
+    },
+    {
+      "name": "Walk",
+      "duration_seconds": 1.0,
+      "expected_speed_mps": 0.44090445172041653,
+      "gait": "four_beat_walk",
+      "checks": {
+        "max_contact_slip_m": 4.7624516441919976e-07,
+        "max_contact_height_error_m": 3.13e-07,
+        "max_ik_error_m": 3.863720531413473e-07,
+        "max_loop_position_error_m": 0.0,
+        "max_loop_rotation_error_degrees": 0.0,
+        "max_foot_loop_velocity_error_mps": 0.005050695503950951,
+        "frame_count": 61,
+        "passed": true
+      }
+    },
+    {
+      "name": "Run",
+      "duration_seconds": 0.7,
+      "expected_speed_mps": 1.5746587561443448,
+      "gait": "transverse_gallop",
+      "checks": {
+        "max_contact_slip_m": 3.6261532077800957e-07,
+        "max_contact_height_error_m": 3.43e-07,
+        "max_ik_error_m": 3.4337397282728294e-07,
+        "max_loop_position_error_m": 0.0,
+        "max_loop_rotation_error_degrees": 0.0,
+        "max_foot_loop_velocity_error_mps": 0.00188813402044087,
+        "frame_count": 43,
+        "passed": true
+      }
+    }
+  ],
+  "variants": [
+    {
+      "id": "lunar",
+      "glb": "models/wolf-lunar.glb",
+      "texture": "textures/wolf-lunar-basecolor.png"
+    },
+    {
+      "id": "ember",
+      "glb": "models/wolf-ember.glb",
+      "texture": "textures/wolf-ember-basecolor.png"
+    },
+    {
+      "id": "jade",
+      "glb": "models/wolf-jade.glb",
+      "texture": "textures/wolf-jade-basecolor.png"
+    },
+    {
+      "id": "amethyst",
+      "glb": "models/wolf-amethyst.glb",
+      "texture": "textures/wolf-amethyst-basecolor.png"
+    },
+    {
+      "id": "frost",
+      "glb": "models/wolf-frost.glb",
+      "texture": "textures/wolf-frost-basecolor.png"
+    },
+    {
+      "id": "solar",
+      "glb": "models/wolf-solar.glb",
+      "texture": "textures/wolf-solar-basecolor.png"
+    },
+    {
+      "id": "rose",
+      "glb": "models/wolf-rose.glb",
+      "texture": "textures/wolf-rose-basecolor.png"
+    },
+    {
+      "id": "abyss",
+      "glb": "models/wolf-abyss.glb",
+      "texture": "textures/wolf-abyss-basecolor.png"
+    },
+    {
+      "id": "moss",
+      "glb": "models/wolf-moss.glb",
+      "texture": "textures/wolf-moss-basecolor.png"
+    },
+    {
+      "id": "copper",
+      "glb": "models/wolf-copper.glb",
+      "texture": "textures/wolf-copper-basecolor.png"
+    },
+    {
+      "id": "pearl",
+      "glb": "models/wolf-pearl.glb",
+      "texture": "textures/wolf-pearl-basecolor.png"
+    },
+    {
+      "id": "storm",
+      "glb": "models/wolf-storm.glb",
+      "texture": "textures/wolf-storm-basecolor.png"
+    }
+  ]
+}

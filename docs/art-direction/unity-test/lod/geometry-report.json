@@ -1,0 +1,3007 @@
+{
+  "generator": "Blender 4.5.14 LTS",
+  "strategy": "Per-family quadric collapse, transferred reference split normals, existing UVs and vertex colours; material names only",
+  "animation_integration": "Reuse original animated transforms and attach each level mesh under the exact source node; do not apply exported node transforms twice",
+  "assets": [
+    {
+      "label": "Arbre",
+      "source": "Assets/Arkya/ArtDirection/Models/03-moussu.glb",
+      "source_sha256": "c5dd97b056a6242afc5b0c3805928cf1b0eddc0492c4f0d69b2387d7770e6032",
+      "source_triangles": 429204,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/03-moussu-LOD0.glb",
+          "sha256": "218384dcf75ef1a9dd786cc2a4d61e47f3e294edd1130b9d4bea582c12d08f19",
+          "bytes": 9811644,
+          "triangles": 140282,
+          "meshes": [
+            {
+              "node": "Oak | continuous sculpted trunk roots and limbs",
+              "mesh": "Hero tree sculpt source",
+              "ratio_requested": 0.35,
+              "triangles": 40244,
+              "source_triangles": 114988,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 11496,
+                "max_distance_local": 0.006432870402932167,
+                "rms_distance_local": 0.0013069293960815726,
+                "max_distance_over_diagonal": 0.00046374639029641163
+              }
+            },
+            {
+              "node": "Oak | layered connected foliage",
+              "mesh": "Hero Tree | living canopy 01",
+              "ratio_requested": 0.4,
+              "triangles": 74400,
+              "source_triangles": 186000,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [
+                "Color"
+              ],
+              "surface_error": {
+                "sampled_vertices": 10230,
+                "max_distance_local": 0.014175334013998508,
+                "rms_distance_local": 0.004596906235063492,
+                "max_distance_over_diagonal": 0.0009599086273047332
+              }
+            },
+            {
+              "node": "Oak | living branchlet network",
+              "mesh": "Hero Tree | connected twigs 01",
+              "ratio_requested": 0.2,
+              "triangles": 25638,
+              "source_triangles": 128216,
+              "uv_layers": [],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 10062,
+                "max_distance_local": 0.010619774460792542,
+                "rms_distance_local": 0.0025709287320126667,
+                "max_distance_over_diagonal": 0.0007419121745079777
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 168467,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/03-moussu-LOD1.glb",
+          "sha256": "d350ac22cc8adc97a49472c4a0261071016cc08b2fbdfa82a30882bb745c1072",
+          "bytes": 6345564,
+          "triangles": 65212,
+          "meshes": [
+            {
+              "node": "Oak | continuous sculpted trunk roots and limbs",
+              "mesh": "Hero tree sculpt source",
+              "ratio_requested": 0.12,
+              "triangles": 13798,
+              "source_triangles": 114988,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 11496,
+                "max_distance_local": 0.017725512385368347,
+                "rms_distance_local": 0.003082408099260474,
+                "max_distance_over_diagonal": 0.0012778342901361862
+              }
+            },
+            {
+              "node": "Oak | layered connected foliage",
+              "mesh": "Hero Tree | living canopy 01",
+              "ratio_requested": 0.25,
+              "triangles": 46500,
+              "source_triangles": 186000,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [
+                "Color"
+              ],
+              "surface_error": {
+                "sampled_vertices": 10230,
+                "max_distance_local": 0.05172574147582054,
+                "rms_distance_local": 0.010012851868958056,
+                "max_distance_over_diagonal": 0.0035027030366509733
+              }
+            },
+            {
+              "node": "Oak | living branchlet network",
+              "mesh": "Hero Tree | connected twigs 01",
+              "ratio_requested": 0.06,
+              "triangles": 4914,
+              "source_triangles": 128216,
+              "uv_layers": [],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 10062,
+                "max_distance_local": 0.02872050367295742,
+                "rms_distance_local": 0.005867493131521097,
+                "max_distance_over_diagonal": 0.002006454224770608
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 109291,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/03-moussu-LOD2.glb",
+          "sha256": "92f547f8497e95015b2213cbdeae96db353534c43379f13bfb4eb09a53f277bf",
+          "bytes": 4345556,
+          "triangles": 35660,
+          "meshes": [
+            {
+              "node": "Oak | continuous sculpted trunk roots and limbs",
+              "mesh": "Hero tree sculpt source",
+              "ratio_requested": 0.04,
+              "triangles": 4598,
+              "source_triangles": 114988,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 11496,
+                "max_distance_local": 0.03783692046999931,
+                "rms_distance_local": 0.0072771356137410455,
+                "max_distance_over_diagonal": 0.002727668084203377
+              }
+            },
+            {
+              "node": "Oak | layered connected foliage",
+              "mesh": "Hero Tree | living canopy 01",
+              "ratio_requested": 0.15,
+              "triangles": 27900,
+              "source_triangles": 186000,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [
+                "Color"
+              ],
+              "surface_error": {
+                "sampled_vertices": 10230,
+                "max_distance_local": 0.13351954519748688,
+                "rms_distance_local": 0.020910438278260893,
+                "max_distance_over_diagonal": 0.00904151981338176
+              }
+            },
+            {
+              "node": "Oak | living branchlet network",
+              "mesh": "Hero Tree | connected twigs 01",
+              "ratio_requested": 0.02,
+              "triangles": 3162,
+              "source_triangles": 128216,
+              "uv_layers": [],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 10062,
+                "max_distance_local": 0.04450998082756996,
+                "rms_distance_local": 0.006671029856666237,
+                "max_distance_over_diagonal": 0.003109529000357546
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 80045,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Pierre",
+      "source": "Assets/Arkya/ArtDirection/Models/02-bloc-oblique-01-gris-bleu.glb",
+      "source_sha256": "e894ef64133896303a2fa8902c726a848ee58774e8550257192498531611b23c",
+      "source_triangles": 7820,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/02-bloc-oblique-01-gris-bleu-LOD0.glb",
+          "sha256": "57839b8c2f5cdef4775e9c9ab1b3d0aeee42e06830a5e53e6204d4469456d131",
+          "bytes": 155996,
+          "triangles": 4692,
+          "meshes": [
+            {
+              "node": "Arkya | Bloc oblique",
+              "mesh": "Bloc | leaning crown",
+              "ratio_requested": 0.6,
+              "triangles": 4692,
+              "source_triangles": 7820,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 3912,
+                "max_distance_local": 0.000247518764808774,
+                "rms_distance_local": 8.462952492426433e-05,
+                "max_distance_over_diagonal": 0.00017220029856987584
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 2633,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/02-bloc-oblique-01-gris-bleu-LOD1.glb",
+          "sha256": "1a281dc5908d347b98be8d2160a3c02dff7bd8c9b6f573250b3171f01b1197dc",
+          "bytes": 68572,
+          "triangles": 1954,
+          "meshes": [
+            {
+              "node": "Arkya | Bloc oblique",
+              "mesh": "Bloc | leaning crown",
+              "ratio_requested": 0.25,
+              "triangles": 1954,
+              "source_triangles": 7820,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 3912,
+                "max_distance_local": 0.0007445618393830955,
+                "rms_distance_local": 0.0002637937982808264,
+                "max_distance_over_diagonal": 0.000517996165440464
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 1154,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/02-bloc-oblique-01-gris-bleu-LOD2.glb",
+          "sha256": "d06d572eb952643912be3edd2a09e2080aa5fb48b91786c80baa2f7fbf5a764e",
+          "bytes": 30472,
+          "triangles": 782,
+          "meshes": [
+            {
+              "node": "Arkya | Bloc oblique",
+              "mesh": "Bloc | leaning crown",
+              "ratio_requested": 0.1,
+              "triangles": 782,
+              "source_triangles": 7820,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 3912,
+                "max_distance_local": 0.0014680809108540416,
+                "rms_distance_local": 0.000524388522606913,
+                "max_distance_over_diagonal": 0.001021352750241423
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 507,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Minerai",
+      "source": "Assets/Arkya/ArtDirection/Models/bloc-fendu-fer.glb",
+      "source_sha256": "7462546ec3bbb34d28e684974d2091a3e5d5e1ad730c43b1b9fb11f5c41944d2",
+      "source_triangles": 8948,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/bloc-fendu-fer-LOD0.glb",
+          "sha256": "5f7d5e2f5eba6e1dd2aef7e95ca5eb9343c137fbb3b5b9c48b36b53991e48ad5",
+          "bytes": 221908,
+          "triangles": 5367,
+          "meshes": [
+            {
+              "node": "Ore Rock | Bloc fendu",
+              "mesh": "Stone mass 00",
+              "ratio_requested": 0.6,
+              "triangles": 5367,
+              "source_triangles": 8948,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 4504,
+                "max_distance_local": 0.0003216691839043051,
+                "rms_distance_local": 7.687807697525731e-05,
+                "max_distance_over_diagonal": 0.00012964143894362304
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 3923,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/bloc-fendu-fer-LOD1.glb",
+          "sha256": "653133570640d24d7c250c4c55b239fe58fe383ec02a9d8654e070644d5bdc01",
+          "bytes": 104904,
+          "triangles": 2235,
+          "meshes": [
+            {
+              "node": "Ore Rock | Bloc fendu",
+              "mesh": "Stone mass 00",
+              "ratio_requested": 0.25,
+              "triangles": 2235,
+              "source_triangles": 8948,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 4504,
+                "max_distance_local": 0.0015266240807250142,
+                "rms_distance_local": 0.0003869328722569066,
+                "max_distance_over_diagonal": 0.0006152710687078278
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 1877,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/bloc-fendu-fer-LOD2.glb",
+          "sha256": "cb496ff96c68a8253cd6602e705563ffcf6c0ad001eae84052b5f3701c5ea2d1",
+          "bytes": 53380,
+          "triangles": 893,
+          "meshes": [
+            {
+              "node": "Ore Rock | Bloc fendu",
+              "mesh": "Stone mass 00",
+              "ratio_requested": 0.1,
+              "triangles": 893,
+              "source_triangles": 8948,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 4504,
+                "max_distance_local": 0.00715976394712925,
+                "rms_distance_local": 0.0011712078753137655,
+                "max_distance_over_diagonal": 0.0028855798038728057
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 971,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Cristal",
+      "source": "Assets/Arkya/ArtDirection/Models/bouquet-azur.glb",
+      "source_sha256": "3b13c49f4f817ab7f4927880a4c5a8461d5933b422b578603594f9976f3025f8",
+      "source_triangles": 2598,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/bouquet-azur-LOD0.glb",
+          "sha256": "a1ca3afe35e4f12ede4d03ad3a331eb129b71162b4063dcac69fad95915a2288",
+          "bytes": 123488,
+          "triangles": 2598,
+          "meshes": [
+            {
+              "node": "Crystal | bouquet | 01",
+              "mesh": "Crystal | bouquet | 01",
+              "ratio_requested": 1.0,
+              "triangles": 158,
+              "source_triangles": 158,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 81,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 02",
+              "mesh": "Crystal | bouquet | 02",
+              "ratio_requested": 1.0,
+              "triangles": 198,
+              "source_triangles": 198,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 101,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 03",
+              "mesh": "Crystal | bouquet | 03",
+              "ratio_requested": 1.0,
+              "triangles": 182,
+              "source_triangles": 182,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 93,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 04",
+              "mesh": "Crystal | bouquet | 04",
+              "ratio_requested": 1.0,
+              "triangles": 178,
+              "source_triangles": 178,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 91,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 05",
+              "mesh": "Crystal | bouquet | 05",
+              "ratio_requested": 1.0,
+              "triangles": 206,
+              "source_triangles": 206,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 105,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 06",
+              "mesh": "Crystal | bouquet | 06",
+              "ratio_requested": 1.0,
+              "triangles": 194,
+              "source_triangles": 194,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 99,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 07",
+              "mesh": "Crystal | bouquet | 07",
+              "ratio_requested": 1.0,
+              "triangles": 170,
+              "source_triangles": 170,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 87,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Host stone | 01",
+              "mesh": "Icosphere",
+              "ratio_requested": 1.0,
+              "triangles": 312,
+              "source_triangles": 312,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 158,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Host stone | 02",
+              "mesh": "Icosphere.001",
+              "ratio_requested": 1.0,
+              "triangles": 320,
+              "source_triangles": 320,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 162,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Host stone | 03",
+              "mesh": "Icosphere.002",
+              "ratio_requested": 1.0,
+              "triangles": 336,
+              "source_triangles": 336,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 170,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            },
+            {
+              "node": "Host stone | 04",
+              "mesh": "Icosphere.003",
+              "ratio_requested": 1.0,
+              "triangles": 344,
+              "source_triangles": 344,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 174,
+                "max_distance_local": 0.0,
+                "rms_distance_local": 0.0,
+                "max_distance_over_diagonal": 0.0
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 2012,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/bouquet-azur-LOD1.glb",
+          "sha256": "8d6b50da8669bd7cbfac6a042ecc81893e8dfd4dc0d44f532ea3c7c990bb0c30",
+          "bytes": 88336,
+          "triangles": 1680,
+          "meshes": [
+            {
+              "node": "Crystal | bouquet | 01",
+              "mesh": "Crystal | bouquet | 01",
+              "ratio_requested": 0.65,
+              "triangles": 102,
+              "source_triangles": 158,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 81,
+                "max_distance_local": 0.0019771461375057697,
+                "rms_distance_local": 0.0007958253411209861,
+                "max_distance_over_diagonal": 0.001803523002402281
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 02",
+              "mesh": "Crystal | bouquet | 02",
+              "ratio_requested": 0.65,
+              "triangles": 128,
+              "source_triangles": 198,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 101,
+                "max_distance_local": 0.0009759509121067822,
+                "rms_distance_local": 0.0004489822190293368,
+                "max_distance_over_diagonal": 0.0011604324796506936
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 03",
+              "mesh": "Crystal | bouquet | 03",
+              "ratio_requested": 0.65,
+              "triangles": 118,
+              "source_triangles": 182,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 93,
+                "max_distance_local": 0.0014222280588001013,
+                "rms_distance_local": 0.0005516418476881436,
+                "max_distance_over_diagonal": 0.0016179119507971856
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 04",
+              "mesh": "Crystal | bouquet | 04",
+              "ratio_requested": 0.65,
+              "triangles": 114,
+              "source_triangles": 178,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 91,
+                "max_distance_local": 0.001066583557985723,
+                "rms_distance_local": 0.0004295204785664455,
+                "max_distance_over_diagonal": 0.0014643263910361845
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 05",
+              "mesh": "Crystal | bouquet | 05",
+              "ratio_requested": 0.65,
+              "triangles": 132,
+              "source_triangles": 206,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 105,
+                "max_distance_local": 0.0006842825678177178,
+                "rms_distance_local": 0.00026393813100831885,
+                "max_distance_over_diagonal": 0.0013335236496308468
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 06",
+              "mesh": "Crystal | bouquet | 06",
+              "ratio_requested": 0.65,
+              "triangles": 126,
+              "source_triangles": 194,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 99,
+                "max_distance_local": 0.0009731673635542393,
+                "rms_distance_local": 0.00041352888175100725,
+                "max_distance_over_diagonal": 0.0014071693053952195
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 07",
+              "mesh": "Crystal | bouquet | 07",
+              "ratio_requested": 0.65,
+              "triangles": 110,
+              "source_triangles": 170,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 87,
+                "max_distance_local": 0.0006381981656886637,
+                "rms_distance_local": 0.00028114001764114455,
+                "max_distance_over_diagonal": 0.0013478219836862407
+              }
+            },
+            {
+              "node": "Host stone | 01",
+              "mesh": "Icosphere",
+              "ratio_requested": 0.65,
+              "triangles": 202,
+              "source_triangles": 312,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 158,
+                "max_distance_local": 0.0020977393724024296,
+                "rms_distance_local": 0.0006661607916865122,
+                "max_distance_over_diagonal": 0.0021901648664484426
+              }
+            },
+            {
+              "node": "Host stone | 02",
+              "mesh": "Icosphere.001",
+              "ratio_requested": 0.65,
+              "triangles": 208,
+              "source_triangles": 320,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 162,
+                "max_distance_local": 0.001194881508126855,
+                "rms_distance_local": 0.00044420486904711527,
+                "max_distance_over_diagonal": 0.002371711264358866
+              }
+            },
+            {
+              "node": "Host stone | 03",
+              "mesh": "Icosphere.002",
+              "ratio_requested": 0.65,
+              "triangles": 218,
+              "source_triangles": 336,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 170,
+                "max_distance_local": 0.0011171413352712989,
+                "rms_distance_local": 0.0004114181411666494,
+                "max_distance_over_diagonal": 0.002359710561907874
+              }
+            },
+            {
+              "node": "Host stone | 04",
+              "mesh": "Icosphere.003",
+              "ratio_requested": 0.65,
+              "triangles": 222,
+              "source_triangles": 344,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 174,
+                "max_distance_local": 0.0009814590448513627,
+                "rms_distance_local": 0.0003324179039107794,
+                "max_distance_over_diagonal": 0.0027204686911969566
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 1395,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/bouquet-azur-LOD2.glb",
+          "sha256": "06ee348280c8312d31eeb7c6117dbc84590dbb256908885b6b9d5b3c7b9004ec",
+          "bytes": 60940,
+          "triangles": 898,
+          "meshes": [
+            {
+              "node": "Crystal | bouquet | 01",
+              "mesh": "Crystal | bouquet | 01",
+              "ratio_requested": 0.35,
+              "triangles": 54,
+              "source_triangles": 158,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 81,
+                "max_distance_local": 0.003432612866163254,
+                "rms_distance_local": 0.0016402255843549695,
+                "max_distance_over_diagonal": 0.0031311778856555994
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 02",
+              "mesh": "Crystal | bouquet | 02",
+              "ratio_requested": 0.35,
+              "triangles": 68,
+              "source_triangles": 198,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 101,
+                "max_distance_local": 0.0021011708304286003,
+                "rms_distance_local": 0.0010082108416894842,
+                "max_distance_over_diagonal": 0.0024983499135837564
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 03",
+              "mesh": "Crystal | bouquet | 03",
+              "ratio_requested": 0.35,
+              "triangles": 62,
+              "source_triangles": 182,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 93,
+                "max_distance_local": 0.0023141796700656414,
+                "rms_distance_local": 0.0011983266768248548,
+                "max_distance_over_diagonal": 0.002632586891619848
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 04",
+              "mesh": "Crystal | bouquet | 04",
+              "ratio_requested": 0.35,
+              "triangles": 62,
+              "source_triangles": 178,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 91,
+                "max_distance_local": 0.0017153761582449079,
+                "rms_distance_local": 0.0009038378672810446,
+                "max_distance_over_diagonal": 0.002355062161108154
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 05",
+              "mesh": "Crystal | bouquet | 05",
+              "ratio_requested": 0.35,
+              "triangles": 72,
+              "source_triangles": 206,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 105,
+                "max_distance_local": 0.0010856961598619819,
+                "rms_distance_local": 0.0005738966060512503,
+                "max_distance_over_diagonal": 0.002115794809893531
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 06",
+              "mesh": "Crystal | bouquet | 06",
+              "ratio_requested": 0.35,
+              "triangles": 66,
+              "source_triangles": 194,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 99,
+                "max_distance_local": 0.001828059321269393,
+                "rms_distance_local": 0.000919419882063189,
+                "max_distance_over_diagonal": 0.0026433161053993123
+              }
+            },
+            {
+              "node": "Crystal | bouquet | 07",
+              "mesh": "Crystal | bouquet | 07",
+              "ratio_requested": 0.35,
+              "triangles": 58,
+              "source_triangles": 170,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 87,
+                "max_distance_local": 0.0010880165500566363,
+                "rms_distance_local": 0.0005821070462810621,
+                "max_distance_over_diagonal": 0.0022978013783514764
+              }
+            },
+            {
+              "node": "Host stone | 01",
+              "mesh": "Icosphere",
+              "ratio_requested": 0.35,
+              "triangles": 108,
+              "source_triangles": 312,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 158,
+                "max_distance_local": 0.00356234866194427,
+                "rms_distance_local": 0.0015374179213146096,
+                "max_distance_over_diagonal": 0.0037193042110348503
+              }
+            },
+            {
+              "node": "Host stone | 02",
+              "mesh": "Icosphere.001",
+              "ratio_requested": 0.35,
+              "triangles": 112,
+              "source_triangles": 320,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 162,
+                "max_distance_local": 0.002159877447411418,
+                "rms_distance_local": 0.0010116463756445653,
+                "max_distance_over_diagonal": 0.004287124402561673
+              }
+            },
+            {
+              "node": "Host stone | 03",
+              "mesh": "Icosphere.002",
+              "ratio_requested": 0.35,
+              "triangles": 116,
+              "source_triangles": 336,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 170,
+                "max_distance_local": 0.0019578635692596436,
+                "rms_distance_local": 0.0009164536290415053,
+                "max_distance_over_diagonal": 0.00413554775684194
+              }
+            },
+            {
+              "node": "Host stone | 04",
+              "mesh": "Icosphere.003",
+              "ratio_requested": 0.35,
+              "triangles": 120,
+              "source_triangles": 344,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 174,
+                "max_distance_local": 0.0017860201187431812,
+                "rms_distance_local": 0.0007942419905462045,
+                "max_distance_over_diagonal": 0.004950600680056435
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 923,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Buisson",
+      "source": "Assets/Arkya/ArtDirection/Models/rond-sylvestre.glb",
+      "source_sha256": "a10c32a2983609f8529d0e4082075fbd27bb7ef6e117a8fbe3a4a70e09d231d2",
+      "source_triangles": 29708,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/rond-sylvestre-LOD0.glb",
+          "sha256": "1e453059508048c621a280e49a4dd6e82ff656a0b05ddf759f542962f374d0c3",
+          "bytes": 1309528,
+          "triangles": 25250,
+          "meshes": [
+            {
+              "node": "Arkya | Buisson rond",
+              "mesh": "Sculpted leaf blades and branching stems",
+              "ratio_requested": 0.85,
+              "triangles": 25250,
+              "source_triangles": 29708,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "normal_transfer_guarded_corners": 16,
+              "surface_error": {
+                "sampled_vertices": 15778,
+                "max_distance_local": 0.0002680741890799254,
+                "rms_distance_local": 4.9529002502485e-05,
+                "max_distance_over_diagonal": 0.00016089787883493184
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 24073,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/rond-sylvestre-LOD1.glb",
+          "sha256": "eb3cc2c08c4f1fe20c0d481726607fd5cb76b6f026d9176a99d4ef1845e7986c",
+          "bytes": 661796,
+          "triangles": 13368,
+          "meshes": [
+            {
+              "node": "Arkya | Buisson rond",
+              "mesh": "Sculpted leaf blades and branching stems",
+              "ratio_requested": 0.45,
+              "triangles": 13368,
+              "source_triangles": 29708,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "normal_transfer_guarded_corners": 795,
+              "surface_error": {
+                "sampled_vertices": 15778,
+                "max_distance_local": 0.0019726420287042856,
+                "rms_distance_local": 0.0003561082336408988,
+                "max_distance_over_diagonal": 0.0011839779100274602
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 12064,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/rond-sylvestre-LOD2.glb",
+          "sha256": "7816c74a80cab7b97447f7f605e422e2e7c992785589bcb890cf3f824c3ddba5",
+          "bytes": 419032,
+          "triangles": 7426,
+          "meshes": [
+            {
+              "node": "Arkya | Buisson rond",
+              "mesh": "Sculpted leaf blades and branching stems",
+              "ratio_requested": 0.25,
+              "triangles": 7426,
+              "source_triangles": 29708,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "normal_transfer_guarded_corners": 9902,
+              "surface_error": {
+                "sampled_vertices": 15778,
+                "max_distance_local": 0.007139194291085005,
+                "rms_distance_local": 0.001495041257793796,
+                "max_distance_over_diagonal": 0.004284937770281035
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 7749,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Herbe",
+      "source": "Assets/Arkya/ArtDirection/Models/eventail-prairie.glb",
+      "source_sha256": "63a0aa51fb2c9b600e55af95f19ca0a7bfe0adda6989426a83073f51d172fb3f",
+      "source_triangles": 10668,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/eventail-prairie-LOD0.glb",
+          "sha256": "a726f54d5478a71e1fd802210fbce2c024eecb5626d674692ab09d447e9ae74d",
+          "bytes": 261792,
+          "triangles": 6400,
+          "meshes": [
+            {
+              "node": "Touffe éventail",
+              "mesh": "Sculpted curved blades",
+              "ratio_requested": 0.6,
+              "triangles": 6400,
+              "source_triangles": 10668,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 5418,
+                "max_distance_local": 0.0003967052907682955,
+                "rms_distance_local": 0.00011716424654380172,
+                "max_distance_over_diagonal": 0.00035476349436359955
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 4624,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/eventail-prairie-LOD1.glb",
+          "sha256": "12bbf8f21d0b171c53162849341b8bc15c203d3545ee58a6cf3c88888039fbc2",
+          "bytes": 153260,
+          "triangles": 3200,
+          "meshes": [
+            {
+              "node": "Touffe éventail",
+              "mesh": "Sculpted curved blades",
+              "ratio_requested": 0.3,
+              "triangles": 3200,
+              "source_triangles": 10668,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 5418,
+                "max_distance_local": 0.037072133272886276,
+                "rms_distance_local": 0.002083235852084651,
+                "max_distance_over_diagonal": 0.033152669877256125
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 2763,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/eventail-prairie-LOD2.glb",
+          "sha256": "4727c914f0956803dc0202bd94214205d4270cb85fdb8d9838ad736a14e8456e",
+          "bytes": 84856,
+          "triangles": 1600,
+          "meshes": [
+            {
+              "node": "Touffe éventail",
+              "mesh": "Sculpted curved blades",
+              "ratio_requested": 0.15,
+              "triangles": 1600,
+              "source_triangles": 10668,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 5418,
+                "max_distance_local": 0.04747482389211655,
+                "rms_distance_local": 0.0024519589850710488,
+                "max_distance_over_diagonal": 0.04245553263392423
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 1538,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Champignon",
+      "source": "Assets/Arkya/ArtDirection/Models/amanite-corail.glb",
+      "source_sha256": "53e4150ee66d077ac6d04837d8db376f8ad16c4a15639ac97a3c100f9de0991d",
+      "source_triangles": 11968,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/amanite-corail-LOD0.glb",
+          "sha256": "749fca9f889483e4c7a1769207c9c9500c39399708fb654cabf252c0f25abfa9",
+          "bytes": 240996,
+          "triangles": 7180,
+          "meshes": [
+            {
+              "node": "Amanite bombée",
+              "mesh": "Sculpted caps, rolled lips, lamellae and curved stems",
+              "ratio_requested": 0.6,
+              "triangles": 7180,
+              "source_triangles": 11968,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 5992,
+                "max_distance_local": 0.00018482877931091934,
+                "rms_distance_local": 3.75607407040965e-05,
+                "max_distance_over_diagonal": 0.0002313001935935888
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 4093,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/amanite-corail-LOD1.glb",
+          "sha256": "79f91c9b54d7b19c56f0eb5d1977d7a1152f6bef7b5e269ecf4eb4a90a316c48",
+          "bytes": 109228,
+          "triangles": 2992,
+          "meshes": [
+            {
+              "node": "Amanite bombée",
+              "mesh": "Sculpted caps, rolled lips, lamellae and curved stems",
+              "ratio_requested": 0.25,
+              "triangles": 2992,
+              "source_triangles": 11968,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 5992,
+                "max_distance_local": 0.0020512330811470747,
+                "rms_distance_local": 0.00025003336275738894,
+                "max_distance_over_diagonal": 0.0025669736636455853
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 1871,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/amanite-corail-LOD2.glb",
+          "sha256": "c35c5a9837ef5ee474783af94937eb2399b2c25d5cdbf02ba41a49a31702c9fe",
+          "bytes": 48476,
+          "triangles": 1196,
+          "meshes": [
+            {
+              "node": "Amanite bombée",
+              "mesh": "Sculpted caps, rolled lips, lamellae and curved stems",
+              "ratio_requested": 0.1,
+              "triangles": 1196,
+              "source_triangles": 11968,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 5992,
+                "max_distance_local": 0.0034345302265137434,
+                "rms_distance_local": 0.0006398872598177019,
+                "max_distance_over_diagonal": 0.0042980725688790454
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 830,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Fleur",
+      "source": "Assets/Arkya/ArtDirection/Models/bouquet-corail.glb",
+      "source_sha256": "d965ca7dc6089fe89f32cf0410977775c776f176958632282e4ecb3711ffa7bd",
+      "source_triangles": 20968,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/bouquet-corail-LOD0.glb",
+          "sha256": "e9f24c62c7186889e26192f73f7a9b03c8c577616a82bb839b98d8d9be1acfdb",
+          "bytes": 680820,
+          "triangles": 17822,
+          "meshes": [
+            {
+              "node": "Arkya | Bouquet de prairie",
+              "mesh": "Closed petals, stems, leaves and corollas",
+              "ratio_requested": 0.85,
+              "triangles": 17822,
+              "source_triangles": 20968,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "normal_transfer_guarded_corners": 0,
+              "surface_error": {
+                "sampled_vertices": 10696,
+                "max_distance_local": 2.9995593649800867e-05,
+                "rms_distance_local": 3.407765774680725e-06,
+                "max_distance_over_diagonal": 4.490570297779875e-05
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 11926,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/bouquet-corail-LOD1.glb",
+          "sha256": "350b06f72cec217f9e288069e271eeebd069f311502d59df4be1596ec4a4576a",
+          "bytes": 258744,
+          "triangles": 5242,
+          "meshes": [
+            {
+              "node": "Arkya | Bouquet de prairie",
+              "mesh": "Closed petals, stems, leaves and corollas",
+              "ratio_requested": 0.25,
+              "triangles": 5242,
+              "source_triangles": 20968,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "normal_transfer_guarded_corners": 691,
+              "surface_error": {
+                "sampled_vertices": 10696,
+                "max_distance_local": 0.0010146423010155559,
+                "rms_distance_local": 0.00023973036405413055,
+                "max_distance_over_diagonal": 0.0015189973010724962
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 4705,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/bouquet-corail-LOD2.glb",
+          "sha256": "6f72ae7cd31869c64b8211ed41a1ac6aded1cbe3e1cc8b2ac003ea4819a45778",
+          "bytes": 123656,
+          "triangles": 2096,
+          "meshes": [
+            {
+              "node": "Arkya | Bouquet de prairie",
+              "mesh": "Closed petals, stems, leaves and corollas",
+              "ratio_requested": 0.1,
+              "triangles": 2096,
+              "source_triangles": 20968,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "normal_transfer_guarded_corners": 800,
+              "surface_error": {
+                "sampled_vertices": 10696,
+                "max_distance_local": 0.0022180541418492794,
+                "rms_distance_local": 0.0005322141790782582,
+                "max_distance_over_diagonal": 0.003320597073204493
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 2284,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Souche",
+      "source": "Assets/Arkya/ArtDirection/Models/tordue-moussu.glb",
+      "source_sha256": "49e27789c1df5d2975a34f927f7fc18f4e68db588fc966df62604f35ef25e6c9",
+      "source_triangles": 21504,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/tordue-moussu-LOD0.glb",
+          "sha256": "962df40bef0a8a0fdfc33cd241266235def5bf5c082772aff6865eaa20a81b1e",
+          "bytes": 376028,
+          "triangles": 11826,
+          "meshes": [
+            {
+              "node": "Souche tordue",
+              "mesh": "Sculpted stump continuous roots",
+              "ratio_requested": 0.55,
+              "triangles": 11826,
+              "source_triangles": 21504,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 10756,
+                "max_distance_local": 0.00013481758651323617,
+                "rms_distance_local": 3.062636356306398e-05,
+                "max_distance_over_diagonal": 9.264633360259116e-05
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 6303,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/tordue-moussu-LOD1.glb",
+          "sha256": "94b94de4ca19e494d4263f235a5618b5e201206c2a9cbea98a8bd8ee34d7e629",
+          "bytes": 169320,
+          "triangles": 5160,
+          "meshes": [
+            {
+              "node": "Souche tordue",
+              "mesh": "Sculpted stump continuous roots",
+              "ratio_requested": 0.24,
+              "triangles": 5160,
+              "source_triangles": 21504,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 10756,
+                "max_distance_local": 0.0005806786939501762,
+                "rms_distance_local": 0.00012875689991000301,
+                "max_distance_over_diagonal": 0.0003990410553028495
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 2830,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/tordue-moussu-LOD2.glb",
+          "sha256": "2c858a87aa574378c863b8d7b39f3a73d0659237428895613093708449ce1a72",
+          "bytes": 74828,
+          "triangles": 2150,
+          "meshes": [
+            {
+              "node": "Souche tordue",
+              "mesh": "Sculpted stump continuous roots",
+              "ratio_requested": 0.1,
+              "triangles": 2150,
+              "source_triangles": 21504,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 10756,
+                "max_distance_local": 0.0032904113177210093,
+                "rms_distance_local": 0.0003417436751590087,
+                "max_distance_over_diagonal": 0.002261163046420454
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 1238,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Tronc",
+      "source": "Assets/Arkya/ArtDirection/Models/noueux-moussu.glb",
+      "source_sha256": "f4dc8b39190ded4e6b71183be0dffd2533e1bacd95390c679706a1e4852beae1",
+      "source_triangles": 10906,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/noueux-moussu-LOD0.glb",
+          "sha256": "8f065d93f1ef0ac9de46e1b638f4b25774962ab00ff791678749048f224258b2",
+          "bytes": 213972,
+          "triangles": 6542,
+          "meshes": [
+            {
+              "node": "Tronc noueux",
+              "mesh": "Rounded bark, shaped cut wood",
+              "ratio_requested": 0.6,
+              "triangles": 6542,
+              "source_triangles": 10906,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 5455,
+                "max_distance_local": 0.00017687260697130114,
+                "rms_distance_local": 3.566899889297703e-05,
+                "max_distance_over_diagonal": 8.648841871376242e-05
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 3610,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/noueux-moussu-LOD1.glb",
+          "sha256": "6ca4e96d7a3176ea91427598d6c4953ed0dc4fecd939301d36002fe6872836f8",
+          "bytes": 95120,
+          "triangles": 2726,
+          "meshes": [
+            {
+              "node": "Tronc noueux",
+              "mesh": "Rounded bark, shaped cut wood",
+              "ratio_requested": 0.25,
+              "triangles": 2726,
+              "source_triangles": 10906,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 5455,
+                "max_distance_local": 0.0009337833034805954,
+                "rms_distance_local": 0.0001893244026653147,
+                "max_distance_over_diagonal": 0.0004566079661643374
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 1611,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/noueux-moussu-LOD2.glb",
+          "sha256": "433538d789e53dbf9ea310b3a2950748fd2c24ad0ddd2b8034dcbac53db646c6",
+          "bytes": 40796,
+          "triangles": 1090,
+          "meshes": [
+            {
+              "node": "Tronc noueux",
+              "mesh": "Rounded bark, shaped cut wood",
+              "ratio_requested": 0.1,
+              "triangles": 1090,
+              "source_triangles": 10906,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 5455,
+                "max_distance_local": 0.0024859632831066847,
+                "rms_distance_local": 0.0005410694936398877,
+                "max_distance_over_diagonal": 0.001215603914128189
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 684,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Mana",
+      "source": "Assets/Arkya/ArtDirection/Models/mare-bleue.glb",
+      "source_sha256": "c26ead34b157f09b32ba5e1652162abd46cd116ac93af4b7c22bc962db6c084f",
+      "source_triangles": 18172,
+      "source_unchanged": true,
+      "levels": [
+        {
+          "level": 0,
+          "file": "ArtDirectionGenerated/Models/mare-bleue-LOD0.glb",
+          "sha256": "3e1b6dc916007479242f577400e2e7d9c44c303ac392016255f3311005a2f27c",
+          "bytes": 345552,
+          "triangles": 8915,
+          "meshes": [
+            {
+              "node": "Mana pool | irregular shallow liquid",
+              "mesh": "Mana pool | irregular shallow liquid",
+              "ratio_requested": 0.45,
+              "triangles": 3456,
+              "source_triangles": 7680,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 3842,
+                "max_distance_local": 6.797066453145817e-05,
+                "rms_distance_local": 1.001679876494448e-05,
+                "max_distance_over_diagonal": 2.022759463596011e-05
+              }
+            },
+            {
+              "node": "Thin satellite spill 00",
+              "mesh": "Thin satellite spill 00",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0002763760567177087,
+                "rms_distance_local": 0.00014496372622061743,
+                "max_distance_over_diagonal": 0.001863659107231331
+              }
+            },
+            {
+              "node": "Thin satellite spill 01",
+              "mesh": "Thin satellite spill 01",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0002881834516301751,
+                "rms_distance_local": 0.00015767426868025343,
+                "max_distance_over_diagonal": 0.0026065108025836448
+              }
+            },
+            {
+              "node": "Thin satellite spill 02",
+              "mesh": "Thin satellite spill 02",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.00021620828192681074,
+                "rms_distance_local": 0.00013055455769711376,
+                "max_distance_over_diagonal": 0.0011408494744012728
+              }
+            },
+            {
+              "node": "Thin satellite spill 03",
+              "mesh": "Thin satellite spill 03",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.00028523814398795366,
+                "rms_distance_local": 0.00015624630451816675,
+                "max_distance_over_diagonal": 0.00342893762031598
+              }
+            },
+            {
+              "node": "Broken drifting current 00",
+              "mesh": "Broken drifting current 00",
+              "ratio_requested": 0.5,
+              "triangles": 306,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.0007206000154837966,
+                "rms_distance_local": 0.00030627564538870223,
+                "max_distance_over_diagonal": 0.0008245097185957131
+              }
+            },
+            {
+              "node": "Broken drifting current 01",
+              "mesh": "Broken drifting current 01",
+              "ratio_requested": 0.5,
+              "triangles": 306,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.0007206221926026046,
+                "rms_distance_local": 0.0003122548468844716,
+                "max_distance_over_diagonal": 0.001049665559145027
+              }
+            },
+            {
+              "node": "Broken drifting current 02",
+              "mesh": "Broken drifting current 02",
+              "ratio_requested": 0.5,
+              "triangles": 306,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.00026433798484504223,
+                "rms_distance_local": 0.00011351608936190446,
+                "max_distance_over_diagonal": 0.0002701035524803025
+              }
+            },
+            {
+              "node": "Broken drifting current 03",
+              "mesh": "Broken drifting current 03",
+              "ratio_requested": 0.5,
+              "triangles": 306,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.00013809431402478367,
+                "rms_distance_local": 5.723267157937256e-05,
+                "max_distance_over_diagonal": 0.0002680337992305964
+              }
+            },
+            {
+              "node": "Rising mana wisp 00",
+              "mesh": "Rising mana wisp 00",
+              "ratio_requested": 0.55,
+              "triangles": 473,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.000805431220214814,
+                "rms_distance_local": 0.000153589621383034,
+                "max_distance_over_diagonal": 0.001078630464608212
+              }
+            },
+            {
+              "node": "Rising mana wisp 01",
+              "mesh": "Rising mana wisp 01",
+              "ratio_requested": 0.55,
+              "triangles": 473,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.0009151609265245497,
+                "rms_distance_local": 0.00016328900553991212,
+                "max_distance_over_diagonal": 0.001062123207365455
+              }
+            },
+            {
+              "node": "Rising mana wisp 02",
+              "mesh": "Rising mana wisp 02",
+              "ratio_requested": 0.55,
+              "triangles": 472,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.0006448379717767239,
+                "rms_distance_local": 0.00010442038810369475,
+                "max_distance_over_diagonal": 0.0009787530294842284
+              }
+            },
+            {
+              "node": "Rising mana wisp 03",
+              "mesh": "Rising mana wisp 03",
+              "ratio_requested": 0.55,
+              "triangles": 473,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.0007084846729412675,
+                "rms_distance_local": 0.00014680909912766216,
+                "max_distance_over_diagonal": 0.0008896500585106652
+              }
+            },
+            {
+              "node": "Rising mana wisp 04",
+              "mesh": "Rising mana wisp 04",
+              "ratio_requested": 0.55,
+              "triangles": 472,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.0006766157457605004,
+                "rms_distance_local": 9.385069353336056e-05,
+                "max_distance_over_diagonal": 0.0010819049131387166
+              }
+            },
+            {
+              "node": "Floating mana droplet 00",
+              "mesh": "Floating mana droplet 00",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0003766546433325857,
+                "rms_distance_local": 0.00021753414029163524,
+                "max_distance_over_diagonal": 0.008096201644728917
+              }
+            },
+            {
+              "node": "Floating mana droplet 01",
+              "mesh": "Floating mana droplet 01",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.00041467961273156106,
+                "rms_distance_local": 0.00023949548907940677,
+                "max_distance_over_diagonal": 0.008096179443562479
+              }
+            },
+            {
+              "node": "Floating mana droplet 02",
+              "mesh": "Floating mana droplet 02",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0003078781010117382,
+                "rms_distance_local": 0.00016898697470229824,
+                "max_distance_over_diagonal": 0.008767514526816933
+              }
+            },
+            {
+              "node": "Floating mana droplet 03",
+              "mesh": "Floating mana droplet 03",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.00037874208646826446,
+                "rms_distance_local": 0.00020537376268510326,
+                "max_distance_over_diagonal": 0.008767474215217378
+              }
+            },
+            {
+              "node": "Floating mana droplet 04",
+              "mesh": "Floating mana droplet 04",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.00035631071659736335,
+                "rms_distance_local": 0.0001917577404559049,
+                "max_distance_over_diagonal": 0.00876750462357095
+              }
+            },
+            {
+              "node": "Floating mana droplet 05",
+              "mesh": "Floating mana droplet 05",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0004804195777978748,
+                "rms_distance_local": 0.00026050700678868983,
+                "max_distance_over_diagonal": 0.008767546168622973
+              }
+            },
+            {
+              "node": "Floating mana droplet 06",
+              "mesh": "Floating mana droplet 06",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0003009728970937431,
+                "rms_distance_local": 0.0001734716088501347,
+                "max_distance_over_diagonal": 0.008096223128533043
+              }
+            },
+            {
+              "node": "Floating mana droplet 07",
+              "mesh": "Floating mana droplet 07",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.00041624612640589476,
+                "rms_distance_local": 0.00022525323572994695,
+                "max_distance_over_diagonal": 0.008767519763163732
+              }
+            },
+            {
+              "node": "Floating mana droplet 08",
+              "mesh": "Floating mana droplet 08",
+              "ratio_requested": 0.5,
+              "triangles": 144,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0003603063232731074,
+                "rms_distance_local": 0.00019498162060665138,
+                "max_distance_over_diagonal": 0.008767517850467385
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 5525,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 1,
+          "file": "ArtDirectionGenerated/Models/mare-bleue-LOD1.glb",
+          "sha256": "0bbf2a30c18bd4b31530e616323687eaa71433b979edd2b2124ef6d75d529b3b",
+          "bytes": 182684,
+          "triangles": 3875,
+          "meshes": [
+            {
+              "node": "Mana pool | irregular shallow liquid",
+              "mesh": "Mana pool | irregular shallow liquid",
+              "ratio_requested": 0.18,
+              "triangles": 1382,
+              "source_triangles": 7680,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 3842,
+                "max_distance_local": 0.0008144060266204178,
+                "rms_distance_local": 6.0835841399939776e-05,
+                "max_distance_over_diagonal": 0.00024236154066047857
+              }
+            },
+            {
+              "node": "Thin satellite spill 00",
+              "mesh": "Thin satellite spill 00",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.000919662939850241,
+                "rms_distance_local": 0.0004848977147478291,
+                "max_distance_over_diagonal": 0.006201471407436943
+              }
+            },
+            {
+              "node": "Thin satellite spill 01",
+              "mesh": "Thin satellite spill 01",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0010136115597561002,
+                "rms_distance_local": 0.00046024162968280423,
+                "max_distance_over_diagonal": 0.009167734875763752
+              }
+            },
+            {
+              "node": "Thin satellite spill 02",
+              "mesh": "Thin satellite spill 02",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0008682337938807905,
+                "rms_distance_local": 0.0004765271079821138,
+                "max_distance_over_diagonal": 0.004581341929083123
+              }
+            },
+            {
+              "node": "Thin satellite spill 03",
+              "mesh": "Thin satellite spill 03",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0009670893778093159,
+                "rms_distance_local": 0.00044000058765107484,
+                "max_distance_over_diagonal": 0.011625686184237632
+              }
+            },
+            {
+              "node": "Broken drifting current 00",
+              "mesh": "Broken drifting current 00",
+              "ratio_requested": 0.23,
+              "triangles": 140,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.0021318974904716015,
+                "rms_distance_local": 0.0008898139801379542,
+                "max_distance_over_diagonal": 0.0024393146852259152
+              }
+            },
+            {
+              "node": "Broken drifting current 01",
+              "mesh": "Broken drifting current 01",
+              "ratio_requested": 0.23,
+              "triangles": 140,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.0021648022811859846,
+                "rms_distance_local": 0.0008518714490875623,
+                "max_distance_over_diagonal": 0.0031532728526064316
+              }
+            },
+            {
+              "node": "Broken drifting current 02",
+              "mesh": "Broken drifting current 02",
+              "ratio_requested": 0.23,
+              "triangles": 140,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.0009982411283999681,
+                "rms_distance_local": 0.00038551444309989233,
+                "max_distance_over_diagonal": 0.00102001411250387
+              }
+            },
+            {
+              "node": "Broken drifting current 03",
+              "mesh": "Broken drifting current 03",
+              "ratio_requested": 0.23,
+              "triangles": 140,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.0006257729255594313,
+                "rms_distance_local": 0.0002145468418134845,
+                "max_distance_over_diagonal": 0.0012145923304506042
+              }
+            },
+            {
+              "node": "Rising mana wisp 00",
+              "mesh": "Rising mana wisp 00",
+              "ratio_requested": 0.25,
+              "triangles": 215,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.0024189725518226624,
+                "rms_distance_local": 0.0006476315442579256,
+                "max_distance_over_diagonal": 0.0032394789548275834
+              }
+            },
+            {
+              "node": "Rising mana wisp 01",
+              "mesh": "Rising mana wisp 01",
+              "ratio_requested": 0.25,
+              "triangles": 215,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.0023956845980137587,
+                "rms_distance_local": 0.0006093193323844101,
+                "max_distance_over_diagonal": 0.0027803986548480945
+              }
+            },
+            {
+              "node": "Rising mana wisp 02",
+              "mesh": "Rising mana wisp 02",
+              "ratio_requested": 0.25,
+              "triangles": 215,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.0020797147881239653,
+                "rms_distance_local": 0.0004994731324018573,
+                "max_distance_over_diagonal": 0.003156649016389323
+              }
+            },
+            {
+              "node": "Rising mana wisp 03",
+              "mesh": "Rising mana wisp 03",
+              "ratio_requested": 0.25,
+              "triangles": 215,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.002011185744777322,
+                "rms_distance_local": 0.0005851455354438047,
+                "max_distance_over_diagonal": 0.0025254625595341382
+              }
+            },
+            {
+              "node": "Rising mana wisp 04",
+              "mesh": "Rising mana wisp 04",
+              "ratio_requested": 0.25,
+              "triangles": 215,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.001507349661551416,
+                "rms_distance_local": 0.00043488206084952826,
+                "max_distance_over_diagonal": 0.00241024394550184
+              }
+            },
+            {
+              "node": "Floating mana droplet 00",
+              "mesh": "Floating mana droplet 00",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0009454183746129274,
+                "rms_distance_local": 0.0004599765601382952,
+                "max_distance_over_diagonal": 0.02032179327931286
+              }
+            },
+            {
+              "node": "Floating mana droplet 01",
+              "mesh": "Floating mana droplet 01",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0007675732485949993,
+                "rms_distance_local": 0.00043546864366625354,
+                "max_distance_over_diagonal": 0.014986053246669124
+              }
+            },
+            {
+              "node": "Floating mana droplet 02",
+              "mesh": "Floating mana droplet 02",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0005148987984284759,
+                "rms_distance_local": 0.0003055908051603211,
+                "max_distance_over_diagonal": 0.014662889891249946
+              }
+            },
+            {
+              "node": "Floating mana droplet 03",
+              "mesh": "Floating mana droplet 03",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0008217334980145097,
+                "rms_distance_local": 0.00041871592011087774,
+                "max_distance_over_diagonal": 0.01902225158762829
+              }
+            },
+            {
+              "node": "Floating mana droplet 04",
+              "mesh": "Floating mana droplet 04",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0007655120571143925,
+                "rms_distance_local": 0.0003707116866443101,
+                "max_distance_over_diagonal": 0.018836454216823326
+              }
+            },
+            {
+              "node": "Floating mana droplet 05",
+              "mesh": "Floating mana droplet 05",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0011621410958468914,
+                "rms_distance_local": 0.0005802667630749431,
+                "max_distance_over_diagonal": 0.02120880618353682
+              }
+            },
+            {
+              "node": "Floating mana droplet 06",
+              "mesh": "Floating mana droplet 06",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0005571844521909952,
+                "rms_distance_local": 0.00032232890805994644,
+                "max_distance_over_diagonal": 0.014988358394552367
+              }
+            },
+            {
+              "node": "Floating mana droplet 07",
+              "mesh": "Floating mana droplet 07",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0009197211475111544,
+                "rms_distance_local": 0.0004303039802787346,
+                "max_distance_over_diagonal": 0.019372368475906315
+              }
+            },
+            {
+              "node": "Floating mana droplet 08",
+              "mesh": "Floating mana droplet 08",
+              "ratio_requested": 0.23,
+              "triangles": 66,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0007339937146753073,
+                "rms_distance_local": 0.00037541376666141226,
+                "max_distance_over_diagonal": 0.017860644068321687
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 2764,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        },
+        {
+          "level": 2,
+          "file": "ArtDirectionGenerated/Models/mare-bleue-LOD2.glb",
+          "sha256": "700efbf0d5400a915bce703efa741a3b1ebd951fd5496f703c5c44159c95cb86",
+          "bytes": 100424,
+          "triangles": 1653,
+          "meshes": [
+            {
+              "node": "Mana pool | irregular shallow liquid",
+              "mesh": "Mana pool | irregular shallow liquid",
+              "ratio_requested": 0.07,
+              "triangles": 536,
+              "source_triangles": 7680,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 3842,
+                "max_distance_local": 0.0037301131524145603,
+                "rms_distance_local": 0.0003020813111762104,
+                "max_distance_over_diagonal": 0.0011100555999181778
+              }
+            },
+            {
+              "node": "Thin satellite spill 00",
+              "mesh": "Thin satellite spill 00",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0023456693161278963,
+                "rms_distance_local": 0.0010932091698461863,
+                "max_distance_over_diagonal": 0.015817318024838645
+              }
+            },
+            {
+              "node": "Thin satellite spill 01",
+              "mesh": "Thin satellite spill 01",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0026436983607709408,
+                "rms_distance_local": 0.0009766844634660366,
+                "max_distance_over_diagonal": 0.023911256170826588
+              }
+            },
+            {
+              "node": "Thin satellite spill 02",
+              "mesh": "Thin satellite spill 02",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.004660328384488821,
+                "rms_distance_local": 0.001375086358520244,
+                "max_distance_over_diagonal": 0.024590793380344173
+              }
+            },
+            {
+              "node": "Thin satellite spill 03",
+              "mesh": "Thin satellite spill 03",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.002197031397372484,
+                "rms_distance_local": 0.0009365221533653449,
+                "max_distance_over_diagonal": 0.026411206811751152
+              }
+            },
+            {
+              "node": "Broken drifting current 00",
+              "mesh": "Broken drifting current 00",
+              "ratio_requested": 0.1,
+              "triangles": 60,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.004315139725804329,
+                "rms_distance_local": 0.0018324812073150553,
+                "max_distance_over_diagonal": 0.0049373779691573045
+              }
+            },
+            {
+              "node": "Broken drifting current 01",
+              "mesh": "Broken drifting current 01",
+              "ratio_requested": 0.1,
+              "triangles": 60,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.004497425630688667,
+                "rms_distance_local": 0.0016790161167520995,
+                "max_distance_over_diagonal": 0.006550995567178336
+              }
+            },
+            {
+              "node": "Broken drifting current 02",
+              "mesh": "Broken drifting current 02",
+              "ratio_requested": 0.1,
+              "triangles": 60,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.002554772887378931,
+                "rms_distance_local": 0.0009532806140101379,
+                "max_distance_over_diagonal": 0.0026104959265159174
+              }
+            },
+            {
+              "node": "Broken drifting current 03",
+              "mesh": "Broken drifting current 03",
+              "ratio_requested": 0.1,
+              "triangles": 60,
+              "source_triangles": 612,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 308,
+                "max_distance_local": 0.0016507478430867195,
+                "rms_distance_local": 0.0006141823318673671,
+                "max_distance_over_diagonal": 0.0032040147277522125
+              }
+            },
+            {
+              "node": "Rising mana wisp 00",
+              "mesh": "Rising mana wisp 00",
+              "ratio_requested": 0.12,
+              "triangles": 103,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.005579330027103424,
+                "rms_distance_local": 0.0013715005371934656,
+                "max_distance_over_diagonal": 0.007471817814228835
+              }
+            },
+            {
+              "node": "Rising mana wisp 01",
+              "mesh": "Rising mana wisp 01",
+              "ratio_requested": 0.12,
+              "triangles": 103,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.004539152141660452,
+                "rms_distance_local": 0.001194005025012816,
+                "max_distance_over_diagonal": 0.005268077659007051
+              }
+            },
+            {
+              "node": "Rising mana wisp 02",
+              "mesh": "Rising mana wisp 02",
+              "ratio_requested": 0.12,
+              "triangles": 102,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.004047829657793045,
+                "rms_distance_local": 0.0009554155042493207,
+                "max_distance_over_diagonal": 0.006143908568977447
+              }
+            },
+            {
+              "node": "Rising mana wisp 03",
+              "mesh": "Rising mana wisp 03",
+              "ratio_requested": 0.12,
+              "triangles": 103,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.004429148975759745,
+                "rms_distance_local": 0.001148992862748713,
+                "max_distance_over_diagonal": 0.0055617189699794164
+              }
+            },
+            {
+              "node": "Rising mana wisp 04",
+              "mesh": "Rising mana wisp 04",
+              "ratio_requested": 0.12,
+              "triangles": 102,
+              "source_triangles": 860,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 528,
+                "max_distance_local": 0.0031846119090914726,
+                "rms_distance_local": 0.0009569588457796739,
+                "max_distance_over_diagonal": 0.005092177195807835
+              }
+            },
+            {
+              "node": "Floating mana droplet 00",
+              "mesh": "Floating mana droplet 00",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0017800468485802412,
+                "rms_distance_local": 0.0008879293878988414,
+                "max_distance_over_diagonal": 0.0382621546774466
+              }
+            },
+            {
+              "node": "Floating mana droplet 01",
+              "mesh": "Floating mana droplet 01",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.002244410337880254,
+                "rms_distance_local": 0.0011477443605339812,
+                "max_distance_over_diagonal": 0.04381973041975456
+              }
+            },
+            {
+              "node": "Floating mana droplet 02",
+              "mesh": "Floating mana droplet 02",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0011235993588343263,
+                "rms_distance_local": 0.000660352835504187,
+                "max_distance_over_diagonal": 0.03199699383791691
+              }
+            },
+            {
+              "node": "Floating mana droplet 03",
+              "mesh": "Floating mana droplet 03",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.001991510624065995,
+                "rms_distance_local": 0.0009125835359812485,
+                "max_distance_over_diagonal": 0.04610134091156287
+              }
+            },
+            {
+              "node": "Floating mana droplet 04",
+              "mesh": "Floating mana droplet 04",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0017774684820324183,
+                "rms_distance_local": 0.0007978257849903126,
+                "max_distance_over_diagonal": 0.043737003712074674
+              }
+            },
+            {
+              "node": "Floating mana droplet 05",
+              "mesh": "Floating mana droplet 05",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0020957677625119686,
+                "rms_distance_local": 0.0010461067012630181,
+                "max_distance_over_diagonal": 0.038247276892337825
+              }
+            },
+            {
+              "node": "Floating mana droplet 06",
+              "mesh": "Floating mana droplet 06",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0015190164558589458,
+                "rms_distance_local": 0.0007218835126022186,
+                "max_distance_over_diagonal": 0.04086180610049077
+              }
+            },
+            {
+              "node": "Floating mana droplet 07",
+              "mesh": "Floating mana droplet 07",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.0016324437456205487,
+                "rms_distance_local": 0.0009421287424965041,
+                "max_distance_over_diagonal": 0.034384663049151436
+              }
+            },
+            {
+              "node": "Floating mana droplet 08",
+              "mesh": "Floating mana droplet 08",
+              "ratio_requested": 0.1,
+              "triangles": 28,
+              "source_triangles": 288,
+              "uv_layers": [
+                "UVMap"
+              ],
+              "color_attributes": [],
+              "surface_error": {
+                "sampled_vertices": 146,
+                "max_distance_local": 0.002103172242641449,
+                "rms_distance_local": 0.0008617861047477423,
+                "max_distance_over_diagonal": 0.05117756472452873
+              }
+            }
+          ],
+          "no_textures_or_animation_duplicated": true,
+          "required_attributes_and_material_slots_preserved": true,
+          "binary_validation": {
+            "vertices_checked": 1331,
+            "max_normal_length_error": 1.1920928955078125e-07,
+            "finite_attributes": true,
+            "valid_indices": true,
+            "no_degenerate_triangles": true
+          }
+        }
+      ]
+    }
+  ],
+  "source_triangles": 572464,
+  "triangles_by_level": [
+    236874,
+    107644,
+    55444
+  ]
+}

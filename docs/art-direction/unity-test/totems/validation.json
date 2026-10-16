@@ -1,0 +1,982 @@
+{
+  "success": true,
+  "revision": "20261016T094641751729Z-v2",
+  "unity": "6000.6.6f1",
+  "testedInEditor": true,
+  "mode": "isolated preview scene, actual baked deformation",
+  "playingDuringValidation": false,
+  "userPlayModePreserved": true,
+  "models": 2,
+  "prefabs": 24,
+  "normalizedWeights": true,
+  "activeScenePreserved": true,
+  "shaderErrors": [],
+  "assets": [
+    {
+      "species": "wolf",
+      "variant": "lunar",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-lunar.prefab",
+      "prefabGuid": "abffa5ef2f520394e857b84fc4478170",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-lunar-fur",
+        "wolf-lunar-magic",
+        "wolf-lunar-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [
+        {
+          "clip": "Walk",
+          "seconds": 1.0,
+          "maximumVertexDisplacementMeters": 0.223545521,
+          "bodyVertexDisplacementMeters": 0.223545521,
+          "loopSeamMeters": 0.0
+        },
+        {
+          "clip": "Idle",
+          "seconds": 4.0,
+          "maximumVertexDisplacementMeters": 0.149837747,
+          "bodyVertexDisplacementMeters": 0.0289497748,
+          "loopSeamMeters": 0.0
+        },
+        {
+          "clip": "Run",
+          "seconds": 0.700000048,
+          "maximumVertexDisplacementMeters": 0.414465725,
+          "bodyVertexDisplacementMeters": 0.414465725,
+          "loopSeamMeters": 0.0
+        }
+      ],
+      "controllerStates": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Idle"
+      ]
+    },
+    {
+      "species": "wolf",
+      "variant": "ember",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-ember.prefab",
+      "prefabGuid": "fcb7c35d08ff6594cb1af6b4c6573102",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-ember-fur",
+        "wolf-ember-magic",
+        "wolf-ember-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "jade",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-jade.prefab",
+      "prefabGuid": "243d39851ba72d742af42876b5665873",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-jade-fur",
+        "wolf-jade-magic",
+        "wolf-jade-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "amethyst",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-amethyst.prefab",
+      "prefabGuid": "d16789babc06ef84d80824307462f21f",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-amethyst-fur",
+        "wolf-amethyst-magic",
+        "wolf-amethyst-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "frost",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-frost.prefab",
+      "prefabGuid": "b45cfe2d90305a94cb8576185de7e894",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-frost-fur",
+        "wolf-frost-magic",
+        "wolf-frost-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "solar",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-solar.prefab",
+      "prefabGuid": "e0e50c8bbb271214db1cd632c3f769db",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-solar-fur",
+        "wolf-solar-magic",
+        "wolf-solar-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "rose",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-rose.prefab",
+      "prefabGuid": "c5f1df6dcbdc3864eaab28a58108e0f9",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-rose-fur",
+        "wolf-rose-magic",
+        "wolf-rose-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "abyss",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-abyss.prefab",
+      "prefabGuid": "2901839f711694f44bbbb70ca443ed5a",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-abyss-fur",
+        "wolf-abyss-magic",
+        "wolf-abyss-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "moss",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-moss.prefab",
+      "prefabGuid": "5c200438a1284354ebc7cd63fbf9711e",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-moss-fur",
+        "wolf-moss-magic",
+        "wolf-moss-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "copper",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-copper.prefab",
+      "prefabGuid": "76ca511d034d0dd46b9adc0553d43e66",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-copper-fur",
+        "wolf-copper-magic",
+        "wolf-copper-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "pearl",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-pearl.prefab",
+      "prefabGuid": "a7608b23e4a628a498205f97113076b3",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-pearl-fur",
+        "wolf-pearl-magic",
+        "wolf-pearl-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "wolf",
+      "variant": "storm",
+      "prefab": "Assets/Arkya/Totems/Prefabs/wolf-storm.prefab",
+      "prefabGuid": "b0d0186d9307caf44842ece305d4f2ee",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "wolf-storm-fur",
+        "wolf-storm-magic",
+        "wolf-storm-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16532,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1747,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "lunar",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-lunar.prefab",
+      "prefabGuid": "7bc2d4a1e22b61743b46672cf045eaf3",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-lunar-fur",
+        "fox-lunar-magic",
+        "fox-lunar-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [
+        {
+          "clip": "Walk",
+          "seconds": 1.0,
+          "maximumVertexDisplacementMeters": 0.10739018,
+          "bodyVertexDisplacementMeters": 0.10739018,
+          "loopSeamMeters": 0.0
+        },
+        {
+          "clip": "Idle",
+          "seconds": 4.0,
+          "maximumVertexDisplacementMeters": 0.0591451637,
+          "bodyVertexDisplacementMeters": 0.0167060327,
+          "loopSeamMeters": 0.0
+        },
+        {
+          "clip": "Run",
+          "seconds": 0.6,
+          "maximumVertexDisplacementMeters": 0.170295134,
+          "bodyVertexDisplacementMeters": 0.170295134,
+          "loopSeamMeters": 0.0
+        }
+      ],
+      "controllerStates": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Idle"
+      ]
+    },
+    {
+      "species": "fox",
+      "variant": "ember",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-ember.prefab",
+      "prefabGuid": "ffc39e30b370f3f4db8db881c5d24eee",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-ember-fur",
+        "fox-ember-magic",
+        "fox-ember-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "jade",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-jade.prefab",
+      "prefabGuid": "b41805c247b17694ba147016ba13e6a7",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-jade-fur",
+        "fox-jade-magic",
+        "fox-jade-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "amethyst",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-amethyst.prefab",
+      "prefabGuid": "bac09fc12d399254486fd0920f264536",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-amethyst-fur",
+        "fox-amethyst-magic",
+        "fox-amethyst-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "frost",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-frost.prefab",
+      "prefabGuid": "11d0608e2a74a1147b8d68617ae166dc",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-frost-fur",
+        "fox-frost-magic",
+        "fox-frost-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "solar",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-solar.prefab",
+      "prefabGuid": "45b2607711c7fb74fa645b65223ee7b1",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-solar-fur",
+        "fox-solar-magic",
+        "fox-solar-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "rose",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-rose.prefab",
+      "prefabGuid": "5de49f6d2dd2e4a4b8cd1417c6048489",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-rose-fur",
+        "fox-rose-magic",
+        "fox-rose-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "abyss",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-abyss.prefab",
+      "prefabGuid": "e2c6ca829d440bc438fca5dbf56c5d69",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-abyss-fur",
+        "fox-abyss-magic",
+        "fox-abyss-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "moss",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-moss.prefab",
+      "prefabGuid": "eabc82f3b95f0e542aacf69e16038c1e",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-moss-fur",
+        "fox-moss-magic",
+        "fox-moss-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "copper",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-copper.prefab",
+      "prefabGuid": "3e8a7c393bf071142b8c6cc65405b0ce",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-copper-fur",
+        "fox-copper-magic",
+        "fox-copper-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "pearl",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-pearl.prefab",
+      "prefabGuid": "065083c288d090f4c927e4753de2d52a",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-pearl-fur",
+        "fox-pearl-magic",
+        "fox-pearl-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    },
+    {
+      "species": "fox",
+      "variant": "storm",
+      "prefab": "Assets/Arkya/Totems/Prefabs/fox-storm.prefab",
+      "prefabGuid": "1213b9be3818461469cab0f040bdf9a4",
+      "boneCount": 39,
+      "skinnedRenderers": 3,
+      "materials": [
+        "fox-storm-fur",
+        "fox-storm-magic",
+        "fox-storm-spark"
+      ],
+      "meshes": [
+        {
+          "mesh": "TotemFur",
+          "vertices": 16558,
+          "triangles": 28800,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemMagic",
+          "vertices": 1678,
+          "triangles": 1086,
+          "bones": 39,
+          "normalizedWeights": true
+        },
+        {
+          "mesh": "TotemSpark",
+          "vertices": 366,
+          "triangles": 480,
+          "bones": 39,
+          "normalizedWeights": true
+        }
+      ],
+      "animations": [],
+      "controllerStates": []
+    }
+  ]
+}

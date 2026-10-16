@@ -1,0 +1,19 @@
+{
+  "id": "brisee-brule",
+  "shape": "brisee",
+  "material": "brule",
+  "label": "Vieille souche brisée · Bois brûlé",
+  "glb": "assets/brisee-brule/brisee-brule.glb",
+  "blend": "assets/brisee-brule/brisee-brule.blend",
+  "preview": "assets/brisee-brule/brisee-brule-preview.png",
+  "height": 1.35,
+  "width": 1.4172,
+  "depth": 1.1792,
+  "triangles": 23296,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

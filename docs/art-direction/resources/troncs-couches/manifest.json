@@ -1,0 +1,285 @@
+{
+  "family": "troncs-couches",
+  "artistic_status": "approved",
+  "approved_at": "2026-10-15",
+  "shapes": [
+    {
+      "id": "billot",
+      "height": 0.3978,
+      "label": "Billot court",
+      "length": 0.9,
+      "description": "Section trapue, deux coupes bombées à cernes décentrés et écorce arrondie."
+    },
+    {
+      "id": "noueux",
+      "height": 0.5366,
+      "label": "Tronc noueux",
+      "length": 1.8,
+      "description": "Tronc légèrement cambré, ventre irrégulier et moignon latéral intégré."
+    },
+    {
+      "id": "creux",
+      "height": 0.6765,
+      "label": "Tronc creux",
+      "length": 2.8,
+      "description": "Tube de bois épais, vraie cavité traversante et lèvres irrégulières."
+    },
+    {
+      "id": "fourchu",
+      "height": 0.7707,
+      "label": "Grand tronc fourchu",
+      "length": 4.2,
+      "description": "Grand bois ancien divisé en deux branches, avec extrémités rompues sculptées."
+    }
+  ],
+  "materials": [
+    {
+      "id": "moussu",
+      "label": "Ancien moussu",
+      "swatch": "#8d7948",
+      "description": "Écorce miel, cernes chauds et nappes de mousse peintes sur le dessus."
+    },
+    {
+      "id": "mystique",
+      "label": "Mystique",
+      "swatch": "#74648a",
+      "description": "Bois brun violet, creux bleutés et accents turquoise contenus."
+    },
+    {
+      "id": "brule",
+      "label": "Bois brûlé",
+      "swatch": "#4d4245",
+      "description": "Charbon violet brun, cœur calciné et braises fines au fond de quelques fibres."
+    }
+  ],
+  "assets": [
+    {
+      "id": "billot-moussu",
+      "shape": "billot",
+      "material": "moussu",
+      "label": "Billot court · Ancien moussu",
+      "glb": "assets/billot-moussu/billot-moussu.glb",
+      "blend": "assets/billot-moussu/billot-moussu.blend",
+      "preview": "assets/billot-moussu/billot-moussu-preview.png",
+      "height": 0.3978,
+      "width": 0.9,
+      "depth": 0.4983,
+      "triangles": 7040,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "billot-mystique",
+      "shape": "billot",
+      "material": "mystique",
+      "label": "Billot court · Mystique",
+      "glb": "assets/billot-mystique/billot-mystique.glb",
+      "blend": "assets/billot-mystique/billot-mystique.blend",
+      "preview": "assets/billot-mystique/billot-mystique-preview.png",
+      "height": 0.3978,
+      "width": 0.9,
+      "depth": 0.4983,
+      "triangles": 7040,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "billot-brule",
+      "shape": "billot",
+      "material": "brule",
+      "label": "Billot court · Bois brûlé",
+      "glb": "assets/billot-brule/billot-brule.glb",
+      "blend": "assets/billot-brule/billot-brule.blend",
+      "preview": "assets/billot-brule/billot-brule-preview.png",
+      "height": 0.3978,
+      "width": 0.9,
+      "depth": 0.4983,
+      "triangles": 7040,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "noueux-moussu",
+      "shape": "noueux",
+      "material": "moussu",
+      "label": "Tronc noueux · Ancien moussu",
+      "glb": "assets/noueux-moussu/noueux-moussu.glb",
+      "blend": "assets/noueux-moussu/noueux-moussu.blend",
+      "preview": "assets/noueux-moussu/noueux-moussu-preview.png",
+      "height": 0.5366,
+      "width": 1.8,
+      "depth": 0.8088,
+      "triangles": 10906,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "noueux-mystique",
+      "shape": "noueux",
+      "material": "mystique",
+      "label": "Tronc noueux · Mystique",
+      "glb": "assets/noueux-mystique/noueux-mystique.glb",
+      "blend": "assets/noueux-mystique/noueux-mystique.blend",
+      "preview": "assets/noueux-mystique/noueux-mystique-preview.png",
+      "height": 0.5366,
+      "width": 1.8,
+      "depth": 0.8088,
+      "triangles": 10906,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "noueux-brule",
+      "shape": "noueux",
+      "material": "brule",
+      "label": "Tronc noueux · Bois brûlé",
+      "glb": "assets/noueux-brule/noueux-brule.glb",
+      "blend": "assets/noueux-brule/noueux-brule.blend",
+      "preview": "assets/noueux-brule/noueux-brule-preview.png",
+      "height": 0.5366,
+      "width": 1.8,
+      "depth": 0.8088,
+      "triangles": 10906,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "creux-moussu",
+      "shape": "creux",
+      "material": "moussu",
+      "label": "Tronc creux · Ancien moussu",
+      "glb": "assets/creux-moussu/creux-moussu.glb",
+      "blend": "assets/creux-moussu/creux-moussu.blend",
+      "preview": "assets/creux-moussu/creux-moussu-preview.png",
+      "height": 0.6765,
+      "width": 2.8,
+      "depth": 0.8517,
+      "triangles": 10752,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "creux-mystique",
+      "shape": "creux",
+      "material": "mystique",
+      "label": "Tronc creux · Mystique",
+      "glb": "assets/creux-mystique/creux-mystique.glb",
+      "blend": "assets/creux-mystique/creux-mystique.blend",
+      "preview": "assets/creux-mystique/creux-mystique-preview.png",
+      "height": 0.6765,
+      "width": 2.8,
+      "depth": 0.8517,
+      "triangles": 10752,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "creux-brule",
+      "shape": "creux",
+      "material": "brule",
+      "label": "Tronc creux · Bois brûlé",
+      "glb": "assets/creux-brule/creux-brule.glb",
+      "blend": "assets/creux-brule/creux-brule.blend",
+      "preview": "assets/creux-brule/creux-brule-preview.png",
+      "height": 0.6765,
+      "width": 2.8,
+      "depth": 0.8517,
+      "triangles": 10752,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "fourchu-moussu",
+      "shape": "fourchu",
+      "material": "moussu",
+      "label": "Grand tronc fourchu · Ancien moussu",
+      "glb": "assets/fourchu-moussu/fourchu-moussu.glb",
+      "blend": "assets/fourchu-moussu/fourchu-moussu.blend",
+      "preview": "assets/fourchu-moussu/fourchu-moussu-preview.png",
+      "height": 0.7707,
+      "width": 4.2,
+      "depth": 1.8639,
+      "triangles": 13898,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "fourchu-mystique",
+      "shape": "fourchu",
+      "material": "mystique",
+      "label": "Grand tronc fourchu · Mystique",
+      "glb": "assets/fourchu-mystique/fourchu-mystique.glb",
+      "blend": "assets/fourchu-mystique/fourchu-mystique.blend",
+      "preview": "assets/fourchu-mystique/fourchu-mystique-preview.png",
+      "height": 0.7707,
+      "width": 4.2,
+      "depth": 1.8639,
+      "triangles": 13898,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "fourchu-brule",
+      "shape": "fourchu",
+      "material": "brule",
+      "label": "Grand tronc fourchu · Bois brûlé",
+      "glb": "assets/fourchu-brule/fourchu-brule.glb",
+      "blend": "assets/fourchu-brule/fourchu-brule.blend",
+      "preview": "assets/fourchu-brule/fourchu-brule-preview.png",
+      "height": 0.7707,
+      "width": 4.2,
+      "depth": 1.8639,
+      "triangles": 13898,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    }
+  ]
+}

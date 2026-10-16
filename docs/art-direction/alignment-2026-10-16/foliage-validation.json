@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "AgentScripts/World/ValidateFoliageWind.cs",
+      "entry": "ValidateFoliageWind.Main"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 2559,
+      "executeMs": 1628,
+      "assemblyName": "PipelineRunScript_ValidateFoliageWind_d8144476724d447d9a981a71048c7668",
+      "success": true,
+      "result": "{\r\n  \"success\": true,\r\n  \"checkedAtUtc\": \"2026-10-16T08:18:25.6582542Z\",\r\n  \"caseCount\": 17,\r\n  \"checks\": [\r\n    {\r\n      \"name\": \"GPU shader compiles\",\r\n      \"passed\": true,\r\n      \"detail\": null\r\n    },\r\n    {\r\n      \"name\": \"Original painted textures are reused\",\r\n      \"passed\": true,\r\n      \"detail\": null\r\n    },\r\n    {\r\n      \"name\": \"Whole tree rotation is disabled\",\r\n      \"passed\": true,\r\n      \"detail\": null\r\n    },\r\n    {\r\n      \"name\": \"Arbre LOD0 visible GPU motion\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 79779\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Arbre LOD0 wind zero is stable\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 0\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Arbre LOD1 visible GPU motion\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 80958\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Arbre LOD1 wind zero is stable\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 0\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Arbre LOD2 visible GPU motion\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 88008\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Arbre LOD2 wind zero is stable\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 0\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Buisson LOD0 visible GPU motion\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 108859\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Buisson LOD0 wind zero is stable\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 0\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Buisson LOD1 visible GPU motion\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 107951\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Buisson LOD1 wind zero is stable\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 0\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Buisson LOD2 visible GPU motion\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 107649\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Buisson LOD2 wind zero is stable\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"changedPixels\": 0\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Disable restores previous global wind\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"restoredStrength\": 0.0\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Reenable publishes configured wind\",\r\n      \"passed\": true,\r\n      \"detail\": null\r\n    }\r\n  ],\r\n  \"failures\": []\r\n}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

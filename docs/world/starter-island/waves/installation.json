@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "vertexCount": 37249,
+  "triangles": 73728,
+  "patchSpan": 384.0,
+  "patchRadius": 180.0,
+  "CalmWaveHeight": 0.14,
+  "BoundaryWaveHeight": 0.85,
+  "seaLevel": 28.0,
+  "boundaryRadius": 835.0,
+  "boundaryEffectsFollowWaves": true
+}

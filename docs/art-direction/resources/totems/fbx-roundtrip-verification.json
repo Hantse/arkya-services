@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "method": "Fresh Blender FBX reimport; evaluated skinned vertex samples",
+  "models": [
+    {
+      "species": "wolf",
+      "sha256": "e06bb5bb6afb3b45797f1f1035d3fd3236e5af0d47ef0165bf9601e0bb843d34",
+      "bones": 39,
+      "meshes": 3,
+      "maxInfluences": 4,
+      "maxWeightSumError": 9.740006134961732e-07,
+      "animations": [
+        {
+          "name": "Idle",
+          "sampleCount": 9,
+          "maxVertexDisplacementMeters": 0.5072416051596834,
+          "maxLoopVertexErrorMeters": 0.0,
+          "meshMaxDisplacementMeters": {
+            "TotemSpark": 0.5072416051596834,
+            "TotemFur": 0.034660954099381996,
+            "TotemMagic": 0.00670123359422121
+          },
+          "sampledMinZMeters": -1.4998050801295904e-07,
+          "sampledMaxZMeters": 1.0914238691329956
+        },
+        {
+          "name": "Walk",
+          "sampleCount": 9,
+          "maxVertexDisplacementMeters": 0.5034143842636362,
+          "maxLoopVertexErrorMeters": 0.0,
+          "meshMaxDisplacementMeters": {
+            "TotemSpark": 0.5034143842636362,
+            "TotemFur": 0.30682268554490316,
+            "TotemMagic": 0.030671983280717366
+          },
+          "sampledMinZMeters": -3.139681211905554e-05,
+          "sampledMaxZMeters": 1.0723092555999756
+        },
+        {
+          "name": "Run",
+          "sampleCount": 9,
+          "maxVertexDisplacementMeters": 0.5150542646975894,
+          "maxLoopVertexErrorMeters": 0.0,
+          "meshMaxDisplacementMeters": {
+            "TotemSpark": 0.5150542646975894,
+            "TotemFur": 0.4702478698824567,
+            "TotemMagic": 0.0849310495913182
+          },
+          "sampledMinZMeters": -0.0003169418778270483,
+          "sampledMaxZMeters": 1.0411748886108398
+        }
+      ]
+    },
+    {
+      "species": "fox",
+      "sha256": "1c5c06b0bfee3cb01d4fd187688ea7139a4d1a6af4c8b3516cb73f8d0b74998f",
+      "bones": 39,
+      "meshes": 3,
+      "maxInfluences": 4,
+      "maxWeightSumError": 9.492505341768265e-07,
+      "animations": [
+        {
+          "name": "Idle",
+          "sampleCount": 9,
+          "maxVertexDisplacementMeters": 0.15305265289879466,
+          "maxLoopVertexErrorMeters": 0.0,
+          "meshMaxDisplacementMeters": {
+            "TotemFur": 0.016778269434693394,
+            "TotemSpark": 0.15305265289879466,
+            "TotemMagic": 0.0037492345623154036
+          },
+          "sampledMinZMeters": -1.2221529743783321e-07,
+          "sampledMaxZMeters": 0.6461727619171143
+        },
+        {
+          "name": "Walk",
+          "sampleCount": 9,
+          "maxVertexDisplacementMeters": 0.15360096146299676,
+          "maxLoopVertexErrorMeters": 0.0,
+          "meshMaxDisplacementMeters": {
+            "TotemFur": 0.1299597398004186,
+            "TotemSpark": 0.15360096146299676,
+            "TotemMagic": 0.01200940976701378
+          },
+          "sampledMinZMeters": -1.2298416550038382e-05,
+          "sampledMaxZMeters": 0.6381536722183228
+        },
+        {
+          "name": "Run",
+          "sampleCount": 9,
+          "maxVertexDisplacementMeters": 0.1707514389477836,
+          "maxLoopVertexErrorMeters": 0.0,
+          "meshMaxDisplacementMeters": {
+            "TotemFur": 0.1707514389477836,
+            "TotemSpark": 0.15405852125387773,
+            "TotemMagic": 0.033809486554627545
+          },
+          "sampledMinZMeters": -0.00018035007815342396,
+          "sampledMaxZMeters": 0.6349564790725708
+        }
+      ]
+    }
+  ]
+}

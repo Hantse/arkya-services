@@ -1,0 +1,198 @@
+{
+  "assets": [
+    {
+      "id": "eclat-azur",
+      "triangles": 1894,
+      "height_m": 0.55,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 6933388
+    },
+    {
+      "id": "eclat-amethyste",
+      "triangles": 1894,
+      "height_m": 0.55,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 6958476
+    },
+    {
+      "id": "eclat-ambre",
+      "triangles": 1894,
+      "height_m": 0.55,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 6951452
+    },
+    {
+      "id": "bouquet-azur",
+      "triangles": 2598,
+      "height_m": 1.1,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 6968932
+    },
+    {
+      "id": "bouquet-amethyste",
+      "triangles": 2598,
+      "height_m": 1.1,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 6994020
+    },
+    {
+      "id": "bouquet-ambre",
+      "triangles": 2598,
+      "height_m": 1.1,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 6986996
+    },
+    {
+      "id": "geode-azur",
+      "triangles": 4712,
+      "height_m": 1.9,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 7069496
+    },
+    {
+      "id": "geode-amethyste",
+      "triangles": 4712,
+      "height_m": 1.9,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 7094584
+    },
+    {
+      "id": "geode-ambre",
+      "triangles": 4712,
+      "height_m": 1.9,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 7087560
+    },
+    {
+      "id": "maitresse-azur",
+      "triangles": 3120,
+      "height_m": 3.0,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 6995632
+    },
+    {
+      "id": "maitresse-amethyste",
+      "triangles": 3120,
+      "height_m": 3.0,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 7020720
+    },
+    {
+      "id": "maitresse-ambre",
+      "triangles": 3120,
+      "height_m": 3.0,
+      "pivot_ground_centred": true,
+      "uv_present": true,
+      "texture_size": [
+        2048,
+        2048
+      ],
+      "glb_embedded_images": 6,
+      "glb_external_dependencies": false,
+      "blend_images_packed": true,
+      "opaque_materials": true,
+      "glb_bytes": 7013696
+    }
+  ],
+  "asset_count": 12,
+  "passed": true
+}

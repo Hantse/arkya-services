@@ -1,0 +1,113 @@
+{
+  "passed": true,
+  "assets": [
+    {
+      "id": "nodule-fer",
+      "triangles": 5026,
+      "height": 0.7,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "2970f09efabaf562a37b6465c5ffcb11d42c90a43e96f049145c20742702db57"
+    },
+    {
+      "id": "nodule-cuivre",
+      "triangles": 5026,
+      "height": 0.7,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "2970f09efabaf562a37b6465c5ffcb11d42c90a43e96f049145c20742702db57"
+    },
+    {
+      "id": "nodule-or",
+      "triangles": 5026,
+      "height": 0.7,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "2970f09efabaf562a37b6465c5ffcb11d42c90a43e96f049145c20742702db57"
+    },
+    {
+      "id": "bloc-fendu-fer",
+      "triangles": 8948,
+      "height": 1.3,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "c020280333aff00c719ae971bb9a577bbdeea5d22292a2c4f1bbb064ae90a95e"
+    },
+    {
+      "id": "bloc-fendu-cuivre",
+      "triangles": 8948,
+      "height": 1.3,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "c020280333aff00c719ae971bb9a577bbdeea5d22292a2c4f1bbb064ae90a95e"
+    },
+    {
+      "id": "bloc-fendu-or",
+      "triangles": 8948,
+      "height": 1.3,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "c020280333aff00c719ae971bb9a577bbdeea5d22292a2c4f1bbb064ae90a95e"
+    },
+    {
+      "id": "filon-oblique-fer",
+      "triangles": 9584,
+      "height": 2.2,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "95a049ca0a1ad3b6fc46915ffadd74d5d0d14fa6a2b9a3c5ae266942b615d930"
+    },
+    {
+      "id": "filon-oblique-cuivre",
+      "triangles": 9584,
+      "height": 2.2,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "95a049ca0a1ad3b6fc46915ffadd74d5d0d14fa6a2b9a3c5ae266942b615d930"
+    },
+    {
+      "id": "filon-oblique-or",
+      "triangles": 9584,
+      "height": 2.2,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "95a049ca0a1ad3b6fc46915ffadd74d5d0d14fa6a2b9a3c5ae266942b615d930"
+    },
+    {
+      "id": "affleurement-fer",
+      "triangles": 13326,
+      "height": 3.2,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "92798ccd281996d2d549d8a6add5404f19848fb1392444b4e8c08455723414c9"
+    },
+    {
+      "id": "affleurement-cuivre",
+      "triangles": 13326,
+      "height": 3.2,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "92798ccd281996d2d549d8a6add5404f19848fb1392444b4e8c08455723414c9"
+    },
+    {
+      "id": "affleurement-or",
+      "triangles": 13326,
+      "height": 3.2,
+      "portable_pbr": true,
+      "packed_blend": true,
+      "grounded_pivot": true,
+      "geometry_and_uv_sha256": "92798ccd281996d2d549d8a6add5404f19848fb1392444b4e8c08455723414c9"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "automatic": true,
+  "Seed": 137,
+  "SegmentSeconds": 900.0,
+  "TransitionSeconds": 75.0,
+  "shelterRoofs": 6,
+  "particleBudget": 1800,
+  "rainSeconds": 24.0,
+  "thunderSeconds": 8.0,
+  "scope": "Cosmetic presentation. No gameplay authority or new replicated fields."
+}

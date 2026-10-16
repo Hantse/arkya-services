@@ -1,0 +1,278 @@
+{
+  "family": "fleurs",
+  "status": "validé",
+  "approved_at": "2026-10-15",
+  "shapes": [
+    {
+      "id": "rosette",
+      "label": "Rosette basse",
+      "height": 0.2,
+      "description": "Fleur basse à cinq pétales en coupe, bouton latéral et feuilles en rosette."
+    },
+    {
+      "id": "bouquet",
+      "label": "Bouquet de prairie",
+      "height": 0.45,
+      "description": "Quatre fleurs de hauteurs et orientations différentes, une tige en bouton et feuilles alternées."
+    },
+    {
+      "id": "clochettes",
+      "label": "Hampe de clochettes",
+      "height": 0.7,
+      "description": "Hampe arquée portant quatre corolles pendantes, boutons terminaux et longues feuilles."
+    },
+    {
+      "id": "etoilee",
+      "label": "Grand lis étoilé",
+      "height": 1.0,
+      "description": "Grande corolle à six pétales recourbés, étamines saillantes et deux fleurs satellites."
+    }
+  ],
+  "materials": [
+    {
+      "id": "corail",
+      "label": "Corail abricot",
+      "swatch": "#dc716c"
+    },
+    {
+      "id": "ivoire",
+      "label": "Ivoire doré",
+      "swatch": "#e8ce8d"
+    },
+    {
+      "id": "mystique",
+      "label": "Mystique",
+      "swatch": "#a39bdb"
+    }
+  ],
+  "assets": [
+    {
+      "id": "rosette-corail",
+      "shape": "rosette",
+      "material": "corail",
+      "label": "Rosette basse · Corail abricot",
+      "glb": "assets/rosette-corail/rosette-corail.glb",
+      "blend": "assets/rosette-corail/rosette-corail.blend",
+      "preview": "assets/rosette-corail/rosette-corail-preview.png",
+      "height": 0.2,
+      "width": 0.3319,
+      "depth": 0.283,
+      "triangles": 6784,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "rosette-ivoire",
+      "shape": "rosette",
+      "material": "ivoire",
+      "label": "Rosette basse · Ivoire doré",
+      "glb": "assets/rosette-ivoire/rosette-ivoire.glb",
+      "blend": "assets/rosette-ivoire/rosette-ivoire.blend",
+      "preview": "assets/rosette-ivoire/rosette-ivoire-preview.png",
+      "height": 0.2,
+      "width": 0.3319,
+      "depth": 0.283,
+      "triangles": 6784,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "rosette-mystique",
+      "shape": "rosette",
+      "material": "mystique",
+      "label": "Rosette basse · Mystique",
+      "glb": "assets/rosette-mystique/rosette-mystique.glb",
+      "blend": "assets/rosette-mystique/rosette-mystique.blend",
+      "preview": "assets/rosette-mystique/rosette-mystique-preview.png",
+      "height": 0.2,
+      "width": 0.3319,
+      "depth": 0.283,
+      "triangles": 6784,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "bouquet-corail",
+      "shape": "bouquet",
+      "material": "corail",
+      "label": "Bouquet de prairie · Corail abricot",
+      "glb": "assets/bouquet-corail/bouquet-corail.glb",
+      "blend": "assets/bouquet-corail/bouquet-corail.blend",
+      "preview": "assets/bouquet-corail/bouquet-corail-preview.png",
+      "height": 0.45,
+      "width": 0.3888,
+      "depth": 0.3042,
+      "triangles": 20968,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "bouquet-ivoire",
+      "shape": "bouquet",
+      "material": "ivoire",
+      "label": "Bouquet de prairie · Ivoire doré",
+      "glb": "assets/bouquet-ivoire/bouquet-ivoire.glb",
+      "blend": "assets/bouquet-ivoire/bouquet-ivoire.blend",
+      "preview": "assets/bouquet-ivoire/bouquet-ivoire-preview.png",
+      "height": 0.45,
+      "width": 0.3888,
+      "depth": 0.3042,
+      "triangles": 20968,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "bouquet-mystique",
+      "shape": "bouquet",
+      "material": "mystique",
+      "label": "Bouquet de prairie · Mystique",
+      "glb": "assets/bouquet-mystique/bouquet-mystique.glb",
+      "blend": "assets/bouquet-mystique/bouquet-mystique.blend",
+      "preview": "assets/bouquet-mystique/bouquet-mystique-preview.png",
+      "height": 0.45,
+      "width": 0.3888,
+      "depth": 0.3042,
+      "triangles": 20968,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "clochettes-corail",
+      "shape": "clochettes",
+      "material": "corail",
+      "label": "Hampe de clochettes · Corail abricot",
+      "glb": "assets/clochettes-corail/clochettes-corail.glb",
+      "blend": "assets/clochettes-corail/clochettes-corail.blend",
+      "preview": "assets/clochettes-corail/clochettes-corail-preview.png",
+      "height": 0.7,
+      "width": 0.4657,
+      "depth": 0.4575,
+      "triangles": 13670,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "clochettes-ivoire",
+      "shape": "clochettes",
+      "material": "ivoire",
+      "label": "Hampe de clochettes · Ivoire doré",
+      "glb": "assets/clochettes-ivoire/clochettes-ivoire.glb",
+      "blend": "assets/clochettes-ivoire/clochettes-ivoire.blend",
+      "preview": "assets/clochettes-ivoire/clochettes-ivoire-preview.png",
+      "height": 0.7,
+      "width": 0.4657,
+      "depth": 0.4575,
+      "triangles": 13670,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "clochettes-mystique",
+      "shape": "clochettes",
+      "material": "mystique",
+      "label": "Hampe de clochettes · Mystique",
+      "glb": "assets/clochettes-mystique/clochettes-mystique.glb",
+      "blend": "assets/clochettes-mystique/clochettes-mystique.blend",
+      "preview": "assets/clochettes-mystique/clochettes-mystique-preview.png",
+      "height": 0.7,
+      "width": 0.4657,
+      "depth": 0.4575,
+      "triangles": 13670,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "etoilee-corail",
+      "shape": "etoilee",
+      "material": "corail",
+      "label": "Grand lis étoilé · Corail abricot",
+      "glb": "assets/etoilee-corail/etoilee-corail.glb",
+      "blend": "assets/etoilee-corail/etoilee-corail.blend",
+      "preview": "assets/etoilee-corail/etoilee-corail-preview.png",
+      "height": 1.0,
+      "width": 0.7379,
+      "depth": 0.5579,
+      "triangles": 17548,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "etoilee-ivoire",
+      "shape": "etoilee",
+      "material": "ivoire",
+      "label": "Grand lis étoilé · Ivoire doré",
+      "glb": "assets/etoilee-ivoire/etoilee-ivoire.glb",
+      "blend": "assets/etoilee-ivoire/etoilee-ivoire.blend",
+      "preview": "assets/etoilee-ivoire/etoilee-ivoire-preview.png",
+      "height": 1.0,
+      "width": 0.7379,
+      "depth": 0.5579,
+      "triangles": 17548,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "etoilee-mystique",
+      "shape": "etoilee",
+      "material": "mystique",
+      "label": "Grand lis étoilé · Mystique",
+      "glb": "assets/etoilee-mystique/etoilee-mystique.glb",
+      "blend": "assets/etoilee-mystique/etoilee-mystique.blend",
+      "preview": "assets/etoilee-mystique/etoilee-mystique-preview.png",
+      "height": 1.0,
+      "width": 0.7379,
+      "depth": 0.5579,
+      "triangles": 17548,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    }
+  ]
+}

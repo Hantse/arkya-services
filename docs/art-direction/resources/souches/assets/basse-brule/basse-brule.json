@@ -1,0 +1,19 @@
+{
+  "id": "basse-brule",
+  "shape": "basse",
+  "material": "brule",
+  "label": "Souche basse · Bois brûlé",
+  "glb": "assets/basse-brule/basse-brule.glb",
+  "blend": "assets/basse-brule/basse-brule.blend",
+  "preview": "assets/basse-brule/basse-brule-preview.png",
+  "height": 0.35,
+  "width": 1.0054,
+  "depth": 0.9182,
+  "triangles": 17408,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

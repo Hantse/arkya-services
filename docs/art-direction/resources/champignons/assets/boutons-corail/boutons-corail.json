@@ -1,0 +1,20 @@
+{
+  "id": "boutons-corail",
+  "shape": "boutons",
+  "material": "corail",
+  "label": "Colonie de boutons · Corail crème",
+  "glb": "assets/boutons-corail/boutons-corail.glb",
+  "blend": "assets/boutons-corail/boutons-corail.blend",
+  "preview": "assets/boutons-corail/boutons-corail-preview.png",
+  "height": 0.18,
+  "width": 0.3554,
+  "depth": 0.2455,
+  "triangles": 28000,
+  "mushrooms": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

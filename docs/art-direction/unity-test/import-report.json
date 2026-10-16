@@ -1,0 +1,226 @@
+{
+  "unity": "6000.6.6f1",
+  "imported": [
+    {
+      "source": "mares-de-mana/assets/mare-bleue/mare-bleue.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/mare-bleue.glb",
+      "sha256": "c26ead34b157f09b32ba5e1652162abd46cd116ac93af4b7c22bc962db6c084f",
+      "textures": 5,
+      "meshes": 23,
+      "materials": [
+        {
+          "name": "Mana core | soft 3D ribbons",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Mana droplets | bleu",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Mana halo | soft 3D ribbons",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Painted coloured mana | bleu",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Wet irregular liquid edge",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Broken surface current | bleu",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": [
+        {
+          "name": "ManaFlow",
+          "length": 6.0,
+          "legacy": false
+        }
+      ]
+    },
+    {
+      "source": "references/arbre-peint-v3/03-moussu/03-moussu.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/03-moussu.glb",
+      "sha256": "c5dd97b056a6242afc5b0c3805928cf1b0eddc0492c4f0d69b2387d7770e6032",
+      "textures": 5,
+      "meshes": 3,
+      "materials": [
+        {
+          "name": "Arkya V3 | moussu | painted foliage with true occlusion",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya V3 | moussu | warm living branchlets",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya V3 | 03-moussu | baked PBR 4K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    },
+    {
+      "source": "cailloux/02-bloc-oblique/01-gris-bleu/02-bloc-oblique-01-gris-bleu.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/02-bloc-oblique-01-gris-bleu.glb",
+      "sha256": "e894ef64133896303a2fa8902c726a848ee58774e8550257192498531611b23c",
+      "textures": 3,
+      "meshes": 1,
+      "materials": [
+        {
+          "name": "Arkya | 02-bloc-oblique-01-gris-bleu | baked painted PBR 2K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    },
+    {
+      "source": "roches-metalliferes/assets/bloc-fendu/bloc-fendu-fer.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/bloc-fendu-fer.glb",
+      "sha256": "7462546ec3bbb34d28e684974d2091a3e5d5e1ad730c43b1b9fb11f5c41944d2",
+      "textures": 3,
+      "meshes": 1,
+      "materials": [
+        {
+          "name": "Ore Rock | fer | baked PBR 2K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    },
+    {
+      "source": "cristaux/assets/bouquet-azur/bouquet-azur.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/bouquet-azur.glb",
+      "sha256": "3b13c49f4f817ab7f4927880a4c5a8461d5933b422b578603594f9976f3025f8",
+      "textures": 6,
+      "meshes": 11,
+      "materials": [
+        {
+          "name": "Arkya | azur | painted PBR 2K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness-Clearcoat",
+          "supported": true
+        },
+        {
+          "name": "Arkya | stone | painted PBR 2K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    },
+    {
+      "source": "buissons/assets/rond-sylvestre/rond-sylvestre.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/rond-sylvestre.glb",
+      "sha256": "a10c32a2983609f8529d0e4082075fbd27bb7ef6e117a8fbe3a4a70e09d231d2",
+      "textures": 3,
+      "meshes": 1,
+      "materials": [
+        {
+          "name": "sylvestre | feuillage peint",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "sylvestre | rameaux",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    },
+    {
+      "source": "herbes/assets/eventail-prairie/eventail-prairie.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/eventail-prairie.glb",
+      "sha256": "63a0aa51fb2c9b600e55af95f19ca0a7bfe0adda6989426a83073f51d172fb3f",
+      "textures": 3,
+      "meshes": 1,
+      "materials": [
+        {
+          "name": "Arkya | Prairie verte | painted 2K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    },
+    {
+      "source": "champignons/assets/amanite-corail/amanite-corail.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/amanite-corail.glb",
+      "sha256": "53e4150ee66d077ac6d04837d8db376f8ad16c4a15639ac97a3c100f9de0991d",
+      "textures": 3,
+      "meshes": 1,
+      "materials": [
+        {
+          "name": "Arkya | Corail crème | painted 2K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    },
+    {
+      "source": "fleurs/assets/bouquet-corail/bouquet-corail.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/bouquet-corail.glb",
+      "sha256": "d965ca7dc6089fe89f32cf0410977775c776f176958632282e4ecb3711ffa7bd",
+      "textures": 3,
+      "meshes": 1,
+      "materials": [
+        {
+          "name": "Arkya flowers | corail",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    },
+    {
+      "source": "souches/assets/tordue-moussu/tordue-moussu.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/tordue-moussu.glb",
+      "sha256": "49e27789c1df5d2975a34f927f7fc18f4e68db588fc966df62604f35ef25e6c9",
+      "textures": 6,
+      "meshes": 1,
+      "materials": [
+        {
+          "name": "Arkya | Ancien moussu | bark 2K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        },
+        {
+          "name": "Arkya | Ancien moussu | cut 2K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    },
+    {
+      "source": "troncs-couches/assets/noueux-moussu/noueux-moussu.glb",
+      "target": "Assets/Arkya/ArtDirection/Models/noueux-moussu.glb",
+      "sha256": "f4dc8b39190ded4e6b71183be0dffd2533e1bacd95390c679706a1e4852beae1",
+      "textures": 3,
+      "meshes": 1,
+      "materials": [
+        {
+          "name": "Arkya | Ancien moussu | Painted wood 2K",
+          "shader": "Shader Graphs/glTF-pbrMetallicRoughness",
+          "supported": true
+        }
+      ],
+      "animations": []
+    }
+  ]
+}

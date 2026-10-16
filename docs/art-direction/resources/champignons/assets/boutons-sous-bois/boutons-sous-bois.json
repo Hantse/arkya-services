@@ -1,0 +1,20 @@
+{
+  "id": "boutons-sous-bois",
+  "shape": "boutons",
+  "material": "sous-bois",
+  "label": "Colonie de boutons · Miel des sous-bois",
+  "glb": "assets/boutons-sous-bois/boutons-sous-bois.glb",
+  "blend": "assets/boutons-sous-bois/boutons-sous-bois.blend",
+  "preview": "assets/boutons-sous-bois/boutons-sous-bois-preview.png",
+  "height": 0.18,
+  "width": 0.3554,
+  "depth": 0.2455,
+  "triangles": 28000,
+  "mushrooms": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

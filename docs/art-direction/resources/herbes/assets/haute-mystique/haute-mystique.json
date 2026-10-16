@@ -1,0 +1,20 @@
+{
+  "id": "haute-mystique",
+  "shape": "haute",
+  "material": "mystique",
+  "label": "Hautes herbes · Mystique",
+  "glb": "assets/haute-mystique/haute-mystique.glb",
+  "blend": "assets/haute-mystique/haute-mystique.blend",
+  "preview": "assets/haute-mystique/haute-mystique-preview.png",
+  "height": 1.05,
+  "width": 0.8235,
+  "depth": 0.6969,
+  "triangles": 14224,
+  "blades": 56,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

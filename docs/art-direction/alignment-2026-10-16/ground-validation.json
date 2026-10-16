@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "AgentScripts/World/HarmonizeIslandGround.cs",
+      "entry": "HarmonizeIslandGround.Main",
+      "timeout_ms": "60000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 263,
+      "executeMs": 5967,
+      "assemblyName": "PipelineRunScript_HarmonizeIslandGround_3e3966e55bef4a22b0241e0744502618",
+      "success": true,
+      "result": "{\r\n  \"success\": true,\r\n  \"version\": 4,\r\n  \"layerCount\": 8,\r\n  \"alphaResolution\": 2048,\r\n  \"alphaControlTextureCount\": 2,\r\n  \"alphaControlRgba8MiB\": 32,\r\n  \"trees\": 756,\r\n  \"rockContactPatches\": 228,\r\n  \"routeCount\": 9,\r\n  \"changedHeightSamples\": 0,\r\n  \"routesUnchanged\": true,\r\n  \"shaderUnchanged\": true,\r\n  \"maxWeightError\": 2.98023224E-07,\r\n  \"layers\": [\r\n    {\r\n      \"name\": \"SageMeadowV4\",\r\n      \"tile\": [\r\n        8.3,\r\n        10.1\r\n      ],\r\n      \"offset\": [\r\n        11.7,\r\n        5.4\r\n      ],\r\n      \"coveragePercent\": 18.802\r\n    },\r\n    {\r\n      \"name\": \"DuneSandV4\",\r\n      \"tile\": [\r\n        9.7,\r\n        12.3\r\n      ],\r\n      \"offset\": [\r\n        7.1,\r\n        19.7\r\n      ],\r\n      \"coveragePercent\": 54.488\r\n    },\r\n    {\r\n      \"name\": \"PaintedRockV4\",\r\n      \"tile\": [\r\n        8.1,\r\n        6.7\r\n      ],\r\n      \"offset\": [\r\n        13.3,\r\n        5.7\r\n      ],\r\n      \"coveragePercent\": 1.344\r\n    },\r\n    {\r\n      \"name\": \"MeadowGlazeV4\",\r\n      \"tile\": [\r\n        27.7,\r\n        23.9\r\n      ],\r\n      \"offset\": [\r\n        43.2,\r\n        31.8\r\n      ],\r\n      \"coveragePercent\": 7.584\r\n    },\r\n    {\r\n      \"name\": \"EarthPathV4\",\r\n      \"tile\": [\r\n        5.3,\r\n        4.1\r\n      ],\r\n      \"offset\": [\r\n        17.6,\r\n        23.3\r\n      ],\r\n      \"coveragePercent\": 1.067\r\n    },\r\n    {\r\n      \"name\": \"WoodlandLoamV4\",\r\n      \"tile\": [\r\n        7.1,\r\n        5.9\r\n      ],\r\n      \"offset\": [\r\n        19.7,\r\n        41.3\r\n      ],\r\n      \"coveragePercent\": 3.243\r\n    },\r\n    {\r\n      \"name\": \"CoolMeadowV4\",\r\n      \"tile\": [\r\n        14.9,\r\n        11.3\r\n      ],\r\n      \"offset\": [\r\n        37.1,\r\n        61.4\r\n      ],\r\n      \"coveragePercent\": 11.991\r\n    },\r\n    {\r\n      \"name\": \"WeatheredEarthV4\",\r\n      \"tile\": [\r\n        13.7,\r\n        9.1\r\n      ],\r\n      \"offset\": [\r\n        29.7,\r\n        63.4\r\n      ],\r\n      \"coveragePercent\": 1.48\r\n    }\r\n  ],\r\n  \"saved\": false,\r\n  \"scope\": \"Paint only. Existing image sources, terrain geometry, routes and placed objects are unchanged.\"\r\n}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

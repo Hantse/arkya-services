@@ -1,0 +1,20 @@
+{
+  "id": "maitresse-azur",
+  "shape": "maitresse",
+  "material": "azur",
+  "label": "Formation maîtresse · Azur",
+  "glb": "assets/maitresse-azur/maitresse-azur.glb",
+  "blend": "assets/maitresse-azur/maitresse-azur.blend",
+  "preview": "assets/maitresse-azur/maitresse-azur-preview.png",
+  "height": 3.0,
+  "width": 2.3802,
+  "depth": 2.2057,
+  "triangles": 3120,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "bake": "Cycles CPU, emission channel transfer to basecolor/roughness/emission"
+}

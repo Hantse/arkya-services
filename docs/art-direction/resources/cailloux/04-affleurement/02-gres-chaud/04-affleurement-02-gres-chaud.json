@@ -1,0 +1,24 @@
+{
+  "id": "04-affleurement-02-gres-chaud",
+  "shape": "04-affleurement",
+  "material": "02-gres-chaud",
+  "label": "Affleurement · Grès chaud",
+  "glb": "04-affleurement/02-gres-chaud/04-affleurement-02-gres-chaud.glb",
+  "blend": "04-affleurement/02-gres-chaud/04-affleurement-02-gres-chaud.blend",
+  "preview": "04-affleurement/02-gres-chaud/04-affleurement-02-gres-chaud-preview.png",
+  "height": 2.7,
+  "width": 2.9683,
+  "depth": 1.942,
+  "triangles": 8500,
+  "vertices": 4252,
+  "textures_size": [
+    2048,
+    2048
+  ],
+  "paint_contrast": 0.75,
+  "source": "../sources/stone-painted.png",
+  "source_sha256": "bc1992d1284c052a33c06be4f8c7485c715bd00b55e537a12edb599b159d2d90",
+  "mesh_count": 1,
+  "pivot": "Centered X/Y, lowest point Z=0",
+  "gltf_up_axis": "Y"
+}

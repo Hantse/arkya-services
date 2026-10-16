@@ -1,0 +1,25 @@
+# Prompt — exploration UI 01
+
+16 octobre 2026. Outil intégré `image_gen` ; génération d'une nouvelle planche, fond opaque. Les références locales ont été inspectées pour définir le brief, sans être envoyées comme images d'entrée.
+
+```text
+Use case: ui-mockup
+Asset type: high-fidelity art direction exploration board for Arkya, a stylized painted fantasy MMORPG.
+Primary request: Create one beautifully art-directed landscape comparison board showing THREE genuinely different candidate game UI material languages, all designed for the same game and the same components. This is a concept proposal, not a screenshot or final implemented UI. Deliver at high resolution, preferably 2400 by 1600 or similar landscape 3:2 aspect.
+
+Overall board: warm near-black charcoal background, restrained editorial typography, generous margins. Top heading exact French text "ARKYA — DIRECTIONS UI". Small subtitle exact text "Exploration 01 • Propositions". Three equal clearly separated vertical columns with consistent layout, generous gaps. Each column includes a heading, a short materials subtitle, a substantial inventory window with twelve slots (4 columns, 3 rows), a selected crystal with tooltip, one primary button, a health bar and six painted ability hotbar slots at the bottom. All widgets share the same content and scale so material language can be compared. Five small palette swatches at the foot of each column. No perspective: front-facing pixel-crisp UI mockup. The interface is the subject, no landscape illustration needed. Use readable French text sparingly; no paragraphs, no fake microtext.
+
+Column 1 exact title "01 — ENCRE & CUIVRE"; subtitle "Sobre • Tactile • Aventure".
+Refined dark blue-green ink panels (#192C30), layered desaturated leather-like painted surface, muted aged copper edging (#B78B59), warm ivory type (#F1E4CB), sparse pale jade selection accents (#81B8A4). Compact clean frame silhouette with gently carved clipped corners and small inset corner metal pieces, slight painted edge light. Rich brushed painted feel but quiet broad flat text areas. Main selected slot uses jade double contour, never only a color distinction. A single small inset gemstone in the window heading, not elaborate vines or horns. This is the strongest versatile candidate. Button filled muted copper with dark text, deliberately clear.
+
+Column 2 exact title "02 — CARNET D’EXPLORATION"; subtitle "Chaleureux • Organique • Voyage".
+Light warm parchment panel (#E8D8B5), very subtle paper texture, deep forest-green title lettering (#294C3A), aged honey wood rim (#8E6542), warm moss accents (#6F855B). Softly irregular hand-cut paper corners inside slim crafted wooden frame, tiny leather binding details at top corners only. Friendly mature fantasy journal. Inventory slots lined in faded green with dark brown readable counts; primary forest-green button with cream text. Organic and tactile, readable not busy, no massive scroll curls.
+
+Column 3 exact title "03 — PIERRE DE MANA"; subtitle "Minéral • Mystique • Précis".
+Dark blue slate panels (#202A40), muted violet slate frame (#6C668A), silvery pale type (#E4E6EE), restrained amber rune accent (#D4AE6D), small contained blue mana highlights (#76B8D7). Sculpted stone rim, restrained broad bevels, few precisely placed etched lines, soft blue light in one small crystal inset. Cut corners with stone construction. Fantasy ritual object, not science-fiction. No neon, no holograms.
+
+Identical content in each column: inventory title "Inventaire"; capacity "24 / 150"; twelve square slots, painted icons depicting copper ore, blue crystal, wood bundle, mushroom, herb, potion, a pickaxe and some empty slots; stacks shown with simple numbers such as 12, 8, 3. A compact legible item tooltip overlapping only a small lower edge of the inventory, exact text "Cristal de mana", "Matériau", "Poids : 0,2". Primary button exact label "Équiper". Below inventory show exact label "Vitalité" and "840 / 1000" beside a restrained warm brick-red health bar. Six ability slots with key labels 1 through 6, depict a sword slash, shield, fire, healing leaf, pickaxe, sprint, one cooldown labeled "4 s". All icons have chunky carefully shaped painted fantasy volumes, colored shadows, deliberate edge highlights, brush detail at medium scale. Soft surfaces and crafted forms consistent with painterly tree bark, mossy stones, glowing crystals in a stylized world. No raw low-poly facets. All small UI details drawn accurately, component spacing and repeated slot alignment consistent.
+
+Constraints: actually different LIGHT vs DARK material alternatives, not three palette swaps of the exact same frame. Thin restrained framing, strong text contrast, calm opaque text grounds. Ornament restricted to corners and title focal point. No branded game logos or copied game UI. No website navigation, no browser chrome, no glassmorphism, no gradients used as decoration, no cyberpunk, no glossy plastic, no giant MMO filigree. No invented game lore or character classes. Final small board footer exact text "Concepts visuels — à valider en jeu".
+```
+

@@ -1,0 +1,301 @@
+{
+  "status": "approved",
+  "approved_at": "2026-10-15",
+  "scope": "Trois formes mare, allongee et lobee dans les trois couleurs bleu, orange et vert ; finition peinte et animation ManaFlow.",
+  "asset_ids": [
+    "mare-bleue",
+    "mare-orange",
+    "mare-verte",
+    "allongee-bleu",
+    "allongee-orange",
+    "allongee-vert",
+    "lobee-bleu",
+    "lobee-orange",
+    "lobee-vert"
+  ],
+  "files": [
+    {
+      "file": "assets/mare-bleue/mare-bleue.glb",
+      "sha256": "c26ead34b157f09b32ba5e1652162abd46cd116ac93af4b7c22bc962db6c084f"
+    },
+    {
+      "file": "assets/mare-bleue/mare-bleue.blend",
+      "sha256": "ede6033472bf7caf77082ad98a646cd70b75c57acdaf3be5f248bd2a62c56642"
+    },
+    {
+      "file": "assets/mare-bleue/mare-bleue-preview.png",
+      "sha256": "f4c5b682bc6b9519418dbb350e203f0c45b8ab3e8ff34a4d887472885dc87b3c"
+    },
+    {
+      "file": "assets/mare-bleue/mare-bleue-pose-010.png",
+      "sha256": "8951a5c46d7306ab7fe67279f93c979c1c413a58d4a32a1c07250f2e638def82"
+    },
+    {
+      "file": "assets/mare-bleue/mare-bleue-pose-100.png",
+      "sha256": "e4b31ce88b8d01508ddf44a9b132c0d527ea55435571808fb50017932b0adc88"
+    },
+    {
+      "file": "assets/mare-orange/mare-orange.glb",
+      "sha256": "058e730d84fb69f4016175a2bcf0739b15713b8a7ea96d859e194f8a7bc19d85"
+    },
+    {
+      "file": "assets/mare-orange/mare-orange.blend",
+      "sha256": "12d71da420385e0f80a26cf1aca08530de65b4d8bfedf9a2c8e28776e17243d7"
+    },
+    {
+      "file": "assets/mare-orange/mare-orange-preview.png",
+      "sha256": "fb803cde80e814090df9ccd0b77d6f7bd71d9107774aac43b888bbe946e58543"
+    },
+    {
+      "file": "assets/mare-orange/mare-orange-pose-010.png",
+      "sha256": "da666afa82a12b82b4222a55a32c972e938bf4103d6b02e06733c0cb6bc61e97"
+    },
+    {
+      "file": "assets/mare-orange/mare-orange-pose-100.png",
+      "sha256": "9a2a9a8b90dcb607069b79238c5ef822d1937ca6551d4c7de8af726be79baa8c"
+    },
+    {
+      "file": "assets/mare-verte/mare-verte.glb",
+      "sha256": "adefb7df93e37bba5e229bcae0033bfbd48c0264f0f91f53a507acd4fc0cb1d0"
+    },
+    {
+      "file": "assets/mare-verte/mare-verte.blend",
+      "sha256": "d4087f98b3895eab59108eeacc512b70abf552ee82ad50f8d5fb66f1410828e0"
+    },
+    {
+      "file": "assets/mare-verte/mare-verte-preview.png",
+      "sha256": "67cab959d586969f799b1a1869da6c41dd58e40c4397a033321d700ec1233124"
+    },
+    {
+      "file": "assets/mare-verte/mare-verte-pose-010.png",
+      "sha256": "43e6111f9b86e641cd2a20611af76bdadd93511cc6c70f898c944da257893ac2"
+    },
+    {
+      "file": "assets/mare-verte/mare-verte-pose-100.png",
+      "sha256": "246048ad839f292ea0aef6523b86e7bf354b840321b852c63d3618d44a019592"
+    },
+    {
+      "file": "textures/bleu-mana-liquid-basecolor.png",
+      "sha256": "b80d1be3e61f7e0396ee34deb4756f5e74961734a6acefde8331d8202ca4c8e3"
+    },
+    {
+      "file": "textures/bleu-mana-liquid-emission.png",
+      "sha256": "afa48a4d2615c965c341b2778717b9467f54a951b41f88713150fda1bbe0357f"
+    },
+    {
+      "file": "textures/bleu-mana-liquid-roughness.png",
+      "sha256": "0be374238a4de094b5e1055d987bc1a05b01a2336302b932969c69e0f9a4222f"
+    },
+    {
+      "file": "textures/bleu-mana-wisp-core.png",
+      "sha256": "f867eb7622afaf6e11e78ebdd865f5350ae41b7a06cf1649ca5e889284a34c7e"
+    },
+    {
+      "file": "textures/bleu-mana-wisp-halo.png",
+      "sha256": "1a454141908bb064845215d333438e01276d4e37e377c7de15e88b805beee737"
+    },
+    {
+      "file": "textures/orange-mana-liquid-basecolor.png",
+      "sha256": "2326d77412d8d454a142e89fa10084b1a7999e2a9e6788c6306e909b87c8c297"
+    },
+    {
+      "file": "textures/orange-mana-liquid-emission.png",
+      "sha256": "6f51129df312bd940a666df0f3810903b77e6006fba257bb02e2230830b75ee5"
+    },
+    {
+      "file": "textures/orange-mana-liquid-roughness.png",
+      "sha256": "0be374238a4de094b5e1055d987bc1a05b01a2336302b932969c69e0f9a4222f"
+    },
+    {
+      "file": "textures/orange-mana-wisp-core.png",
+      "sha256": "90d92041a569b5b52b41aa53480b5107a5e492442dac919107d75fdc232111f7"
+    },
+    {
+      "file": "textures/orange-mana-wisp-halo.png",
+      "sha256": "b2fbe6b487288b118cf6f317aaf9fc6b1f317c2090d213e2500abb7aadeaff4c"
+    },
+    {
+      "file": "textures/vert-mana-liquid-basecolor.png",
+      "sha256": "1aea3fb676d156b0f99bb16bba5c9862ebd08eb69fcaef8036ceca9db1ec8fcc"
+    },
+    {
+      "file": "textures/vert-mana-liquid-emission.png",
+      "sha256": "fc4790a30449a22d555497f400c03329300dee3b82e524db021ef21dfbc1a902"
+    },
+    {
+      "file": "textures/vert-mana-liquid-roughness.png",
+      "sha256": "0be374238a4de094b5e1055d987bc1a05b01a2336302b932969c69e0f9a4222f"
+    },
+    {
+      "file": "textures/vert-mana-wisp-core.png",
+      "sha256": "563ceefbccc761e9d0a793ae0c6b97f88f72f3221bb58afe7d0036a1c80cc59f"
+    },
+    {
+      "file": "textures/vert-mana-wisp-halo.png",
+      "sha256": "9fabcb113daf3d8c948d6c8cc1f9417ba080dd1776111d12729076bb314f5c3e"
+    },
+    {
+      "file": "scripts/generate_mana_pool.py",
+      "sha256": "c857e4be763d14bde741e56bc30b4c0dc820066010b1652df68466cf71ec3093"
+    },
+    {
+      "file": "assets/allongee-bleu/allongee-bleu.glb",
+      "sha256": "601d456b21d9b07032f3c78a8972968926be179c1b8e7e968500fdf051da40c8"
+    },
+    {
+      "file": "assets/allongee-bleu/allongee-bleu.blend",
+      "sha256": "70001fb809f6ad1656b06b210d20be677bf7df23a50999baf4ebff5455b709d2"
+    },
+    {
+      "file": "assets/allongee-bleu/allongee-bleu-preview.png",
+      "sha256": "ef8f24f84d28aa2ffa01ba83c165adea5852827440b906e9cdf3093754d725e2"
+    },
+    {
+      "file": "assets/allongee-bleu/allongee-bleu-pose-010.png",
+      "sha256": "b2e7dba1bcf25f79b99c1de180e576f358ada1fbf042ca4a220bb97bc457ed46"
+    },
+    {
+      "file": "assets/allongee-bleu/allongee-bleu-pose-100.png",
+      "sha256": "8bca9f637806d3b15264a810a8a4a291c473b4308bbd6714f3f9c87b494735c9"
+    },
+    {
+      "file": "assets/allongee-orange/allongee-orange.glb",
+      "sha256": "5ff00a3f31a6a77e7e3bed79a16b5542ef8f7e5d1a6815739068bb6c150ca835"
+    },
+    {
+      "file": "assets/allongee-orange/allongee-orange.blend",
+      "sha256": "e45d04c6590772795a20b65ab4188a9a4442eea12cb87603efd5a6a909368063"
+    },
+    {
+      "file": "assets/allongee-orange/allongee-orange-preview.png",
+      "sha256": "7443349b1164589d85671287903383133dd96a3446ad347b5ed0c4df6f5ae84c"
+    },
+    {
+      "file": "assets/allongee-orange/allongee-orange-pose-010.png",
+      "sha256": "7873798f182f2590cb4e241fba86ac4a515bf8a1ec34547612d247464cd626cc"
+    },
+    {
+      "file": "assets/allongee-orange/allongee-orange-pose-100.png",
+      "sha256": "08c9fad637a585d9e2fde87795140db2ff7e61fd06639940f8337e3348d6a9bb"
+    },
+    {
+      "file": "assets/allongee-vert/allongee-vert.glb",
+      "sha256": "8ebdf67366c8c78175e159094d85ebb814ccac997e9ae8480e7a1537a2ed46ca"
+    },
+    {
+      "file": "assets/allongee-vert/allongee-vert.blend",
+      "sha256": "07138b8a752624da3b7d4310f6671921bbcb75387ccebbcb0d75d05083bcdc42"
+    },
+    {
+      "file": "assets/allongee-vert/allongee-vert-preview.png",
+      "sha256": "955e972c7b8022053ca95462dd34bb3c792d4986a66c03fbd1e3074c16dcfa04"
+    },
+    {
+      "file": "assets/allongee-vert/allongee-vert-pose-010.png",
+      "sha256": "50c49ebc43ce6cab32207f50bf260b214794ff39a7e5ecdb65bd1cac8926bc55"
+    },
+    {
+      "file": "assets/allongee-vert/allongee-vert-pose-100.png",
+      "sha256": "4eeae217e50f2a09c73f0412fc539a66aa03c62dfd97c8fa36ab204a5e79e1f5"
+    },
+    {
+      "file": "assets/lobee-bleu/lobee-bleu.glb",
+      "sha256": "322814b0f520651557f718e96367de25fa02f01d8e52ee0ff00d100b67cbe41b"
+    },
+    {
+      "file": "assets/lobee-bleu/lobee-bleu.blend",
+      "sha256": "fb9b0dc967761c7887819ddec9a5102aefd24ebde01c1d976c00c678642eff6f"
+    },
+    {
+      "file": "assets/lobee-bleu/lobee-bleu-preview.png",
+      "sha256": "923fd1cc98d37ed018f1cbc4ee86510acbc9ee4c733d0b25099ffc75763fe2b6"
+    },
+    {
+      "file": "assets/lobee-bleu/lobee-bleu-pose-010.png",
+      "sha256": "d620891df91d739ef1d8807de02df1fe77460a81d36a3ee7aea8209ef92fc469"
+    },
+    {
+      "file": "assets/lobee-bleu/lobee-bleu-pose-100.png",
+      "sha256": "9fc6a9037710fcb2c85889fb6070a2c0744e22f795af2195fa1775d9374f8d76"
+    },
+    {
+      "file": "assets/lobee-orange/lobee-orange.glb",
+      "sha256": "7090c875bfee3308421a766b3dd6096f7ef1e398233ad3da3cfd61d4d9d351be"
+    },
+    {
+      "file": "assets/lobee-orange/lobee-orange.blend",
+      "sha256": "613f097b861b6e55e120114e2bae1166e7ae35224219ee2c2f9f3bbdda27ce54"
+    },
+    {
+      "file": "assets/lobee-orange/lobee-orange-preview.png",
+      "sha256": "f5187ac6a89ef803d2b5c7bab53fbc7c482778a3d3afb7ac7b5e63ea566c7ff3"
+    },
+    {
+      "file": "assets/lobee-orange/lobee-orange-pose-010.png",
+      "sha256": "d44b7f29d5b46d569d2c4e839a4bdd68fa214e0a5270c172a723cd7539b01ffe"
+    },
+    {
+      "file": "assets/lobee-orange/lobee-orange-pose-100.png",
+      "sha256": "82968c8c982a3d51314aa13d26d4ddb7fd0ceb15116b69c8e2b5ed425b59a179"
+    },
+    {
+      "file": "assets/lobee-vert/lobee-vert.glb",
+      "sha256": "83ff0f82e94eedf50cd5d35e7f79ce99ea649d71f437ed8d739ac79a37ea3bb6"
+    },
+    {
+      "file": "assets/lobee-vert/lobee-vert.blend",
+      "sha256": "92516cd57a3f6fc3a9694068dc434113825c0f2e15bcbeb26c0658cac807abc3"
+    },
+    {
+      "file": "assets/lobee-vert/lobee-vert-preview.png",
+      "sha256": "f4aa6adaad7f487ddb6549154a789c4ec113775542db4d26116891b674866bb0"
+    },
+    {
+      "file": "assets/lobee-vert/lobee-vert-pose-010.png",
+      "sha256": "d1fbf54ec07514fb22c26864a72f87dd415bb2bf366033b510124259cac5d26c"
+    },
+    {
+      "file": "assets/lobee-vert/lobee-vert-pose-100.png",
+      "sha256": "c3960277be24a60c1421d23f6e299e4017501549bfe11cbe834af907476c2543"
+    },
+    {
+      "file": "scripts/generate_mana_shapes.py",
+      "sha256": "41f1fb926a5196598b6a311a25faffeea6c9f14ed5bf84cbbfc46462a03c33c1"
+    },
+    {
+      "file": "scripts/render_comparison.py",
+      "sha256": "5519e418f5b7c07aa8351d1efc3404ef6a594a3f46ad9b0f5fe86c83bb663fa1"
+    },
+    {
+      "file": "comparaison-tailles.png",
+      "sha256": "71606fdc27d080bbc5929ea764265a53d364a4e4877ab2bd55664b18fd216cb4"
+    },
+    {
+      "file": "comparaison-tailles.blend",
+      "sha256": "aad4f9b23d0854fd43f49cabc45bc292ef0fd41b24d0580de207024d0fd2266b"
+    }
+  ],
+  "approval_history": [
+    {
+      "approved_at": "2026-10-15",
+      "asset_ids": [
+        "mare-bleue",
+        "mare-orange",
+        "mare-verte"
+      ],
+      "scope": "Mare d’origine, trois couleurs et animation"
+    },
+    {
+      "approved_at": "2026-10-15",
+      "asset_ids": [
+        "allongee-bleu",
+        "allongee-orange",
+        "allongee-vert",
+        "lobee-bleu",
+        "lobee-orange",
+        "lobee-vert"
+      ],
+      "scope": "Petite mare allongée et grande mare à lobes, trois couleurs et animation"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "AgentScripts/Totems/ValidateTotems.cs",
+      "entry": "ValidateTotems.CaptureMotion",
+      "args": "[\"wolf\"]",
+      "timeout_ms": "180000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 279,
+      "executeMs": 585,
+      "assemblyName": "PipelineRunScript_ValidateTotems_c9596268c2154a3484cf1017b2d16cce",
+      "success": true,
+      "result": "{\r\n  \"success\": true,\r\n  \"species\": \"wolf\",\r\n  \"files\": [\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-walk-motion.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-run-motion.png\"\r\n  ],\r\n  \"layout\": \"Top two rows: side view, t=0 to 7/8 of cycle left to right; bottom two rows: same phases in three-quarter view. Camera fixed for each view. No ground geometry or physics.\",\r\n  \"activeScenePreserved\": true\r\n}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

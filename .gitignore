@@ -1,0 +1,78 @@
+# Independently managed nested repositories
+/Unity3D/
+/sites/arkya/
+
+# Unity generated folders
+/My project/[Ll]ibrary/
+/My project/[Tt]emp/
+/My project/[Oo]bj/
+/My project/[Bb]uild/
+/My project/[Bb]uilds/
+/My project/[Ll]ogs/
+/My project/[Uu]ser[Ss]ettings/
+/My project/MemoryCaptures/
+/My project/Recordings/
+
+# Unity generated project files
+/My project/*.csproj
+/My project/*.sln
+/My project/*.sln.DotSettings.user
+/My project/*.pidb
+/My project/*.booproj
+/My project/*.svd
+/My project/*.user
+/My project/*.userprefs
+
+# Unity crash and profiler data
+sysinfo.txt
+*.stackdump
+*.raw
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+.vscode/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET build outputs
+bin/
+obj/
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+appsettings.Local.json
+appsettings.*.Local.json
+secrets.json
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Local builds, runtime reports and isolated validation checkouts
+/artifacts/
+/output/
+/.playwright-cli/
+/.codex/
+
+# JavaScript dependencies and Python caches
+node_modules/
+__pycache__/
+*.pyc
+
+# Blender backup files (editable .blend sources remain versioned)
+*.blend[0-9]

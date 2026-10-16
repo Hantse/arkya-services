@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dimensions_m": [
+    9.44,
+    9.657,
+    10.128
+  ],
+  "mesh_count": 3,
+  "vertices": 332510,
+  "triangles": 429204,
+  "description": "New standalone stylized oak; reconstructed trunk, fused roots and ramifications, connected foliage. Not an extraction of scene V3.",
+  "foliage_anchors": 62,
+  "leaves": 18600
+}

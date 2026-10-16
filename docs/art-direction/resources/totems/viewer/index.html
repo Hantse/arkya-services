@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#172532">
+  <title>Arkya — Les âmes totems</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23c1a788' d='M16 2 29 26 16 21 3 26Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="/vendor/model-viewer.min.js"></script>
+  <script type="module" src="viewer.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#choices">Choisir son totem</a>
+  <header class="masthead">
+    <a class="brand" href="../../viewer/index.html" aria-label="Arkya — bibliothèque artistique">
+      <svg viewBox="0 0 40 46" aria-hidden="true"><path d="m20 3 17 30-17 10L3 33Z M20 13 9 32l11-6 11 6Z M20 13v13"/></svg>
+      <span>ARKYA<small>Bestiaire des âmes</small></span>
+    </a>
+    <span class="collection-status"><i></i>Proposition artistique</span>
+    <a class="back-link" href="../../viewer/index.html">La bibliothèque <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="stage" aria-label="Aperçu du familier en trois dimensions">
+      <div class="stage-intro">
+        <p class="eyebrow">Un lien dès le premier pas</p>
+        <h1>Les âmes<br><em>totems.</em></h1>
+        <p class="intro-copy">L’âme d’un animal, liée à la vôtre.<br>Une présence à vos côtés.</p>
+      </div>
+      <div class="spirit-orbit" aria-hidden="true"><span>✧</span></div>
+      <div class="stage-name"><span id="stage-species">Chargement</span><span id="stage-coat"></span></div>
+      <model-viewer id="totem" alt="Familier mystique d’Arkya en trois dimensions" camera-controls touch-action="pan-y" environment-image="neutral" exposure="1" shadow-intensity="1" shadow-softness="1" camera-orbit="35deg 78deg auto" field-of-view="30deg" min-camera-orbit="auto 25deg 35%" max-camera-orbit="auto 100deg 250%" interaction-prompt="none" interpolation-decay="100" animation-crossfade-duration="250" aria-describedby="stage-help">
+        <div class="loading" slot="poster" id="loading"><span class="loading-mark" aria-hidden="true">✧</span><span id="loading-label">L’âme prend forme…</span></div>
+        <div slot="progress-bar" class="progress-track"><span id="progress-fill"></span></div>
+      </model-viewer>
+      <div class="stage-toolbar">
+        <div class="camera-controls" role="group" aria-label="Vue du totem">
+          <button id="reset-camera" type="button" title="Recentrer la vue" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4"/><circle cx="10" cy="10" r="3"/></svg><span>Recentrer</span></button>
+          <button id="rotate" type="button" aria-pressed="false" title="Faire tourner la vue" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15 5a7 7 0 1 0 2 8M15 1v5h-5"/></svg><span>Rotation</span></button>
+        </div>
+        <p id="stage-help">Glisser pour tourner <b>·</b> Pincer ou défiler pour zoomer</p>
+      </div>
+      <div class="stage-footnote"><span>Volumes sculptés <b>·</b> Pelages peints</span><span id="stage-measure"></span></div>
+    </section>
+    <aside class="choices" id="choices" aria-labelledby="choices-title">
+      <div class="panel-intro"><p class="eyebrow">Votre compagnon</p><h2 id="choices-title">Une âme à reconnaître</h2></div>
+      <fieldset class="species-field"><legend>Animal</legend><div id="species" class="species-choices"></div></fieldset>
+      <fieldset class="coats-field"><legend>Pelage <span id="coat-count"></span></legend><div id="coats" class="coat-choices"></div></fieldset>
+      <div class="coat-detail">
+        <div class="coat-title"><h3 id="coat-title">La collection se prépare</h3><span id="coat-index"></span></div>
+        <p id="coat-description">Chaque pelage possède sa propre palette et ses lignes de magie.</p>
+        <div id="palette" class="palette" aria-label="Palette du pelage"></div>
+        <p class="palette-note"><span id="palette-count">12</span> teintes de référence <span>Ombres, pelage & lumière</span></p>
+      </div>
+      <div class="animation-section">
+        <div class="control-heading"><span>Mouvement</span><button id="play" type="button" aria-label="Mettre l’animation en pause" aria-pressed="true" disabled><svg id="pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10m6-10v10"/></svg><svg id="play-icon" viewBox="0 0 16 16" aria-hidden="true" hidden><path d="m5 3 8 5-8 5Z"/></svg><span id="play-label">Pause</span></button></div>
+        <div id="animations" class="animation-choices" role="group" aria-label="Animation du totem"></div>
+        <div class="playback-rate"><label for="playback-rate">Lecture</label><select id="playback-rate"><option value="0.5">Ralenti × 0,5</option><option value="1" selected>Vitesse normale</option></select></div>
+        <p id="motion-note" class="motion-note">Respiration et petits mouvements au repos.</p>
+        <div class="magic-row"><div><label for="magic">Lueur du pelage</label><span>Les flux suivent le corps.</span></div><button id="magic" type="button" class="switch" role="switch" aria-checked="true" aria-label="Lueur du pelage" disabled><span></span></button></div>
+      </div>
+      <details class="model-info"><summary>Le modèle en détail <span aria-hidden="true">+</span></summary><dl id="model-stats"></dl><p id="source-credit" class="source-credit"></p></details>
+      <div class="downloads"><span>Emporter le modèle</span><div id="downloads"></div><p>Le GLB conserve le pelage choisi et les animations.</p></div>
+    </aside>
+  </main>
+  <footer><p id="status" role="status" aria-live="polite">Chargement des deux familiers…</p><a id="provenance" href="../README.md" target="_blank" rel="noopener">Crédit et provenance du modèle</a><a href="../README.md" target="_blank" rel="noopener">Notes de création <span aria-hidden="true">↗</span></a></footer>
+  <noscript>Activez JavaScript pour examiner les modèles 3D et leurs pelages.</noscript>
+</body>
+</html>

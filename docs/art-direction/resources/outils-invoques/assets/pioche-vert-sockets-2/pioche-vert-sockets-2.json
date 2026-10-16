@@ -1,0 +1,95 @@
+{
+  "id": "pioche-vert-sockets-2",
+  "shape": "pioche",
+  "material": "vert",
+  "label": "Pioche invoquée · Mana vert · 2 emplacements",
+  "artistic_status": "proposal",
+  "glb": "assets/pioche-vert-sockets-2/pioche-vert-sockets-2.glb",
+  "blend": "assets/pioche-vert-sockets-2/pioche-vert-sockets-2.blend",
+  "preview": "assets/pioche-vert-sockets-2/pioche-vert-sockets-2-preview.png",
+  "height": 1.3028,
+  "width": 0.9286,
+  "depth": 0.1794,
+  "triangles": 8874,
+  "materials": 5,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "animation": "SummonedToolIdle",
+  "animation_duration": 4,
+  "fps": 24,
+  "socket_count": 2,
+  "sockets": [
+    {
+      "index": 1,
+      "name": "Socket_01",
+      "marker": "Socket_01",
+      "empty": true,
+      "position_blender": [
+        -0.278585,
+        -0.0370718,
+        0.57375
+      ],
+      "rotation_blender_xyzw": [
+        0.70710677,
+        0.0,
+        0.0,
+        0.70710677
+      ],
+      "position_gltf": [
+        -0.278585,
+        0.57375,
+        0.0370718
+      ],
+      "rotation_gltf_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "inner_diameter": 0.0465,
+      "cavity_depth": 0.02475,
+      "origin": "centre du fond utile",
+      "axis": "local +Z sortant",
+      "units": "metres"
+    },
+    {
+      "index": 2,
+      "name": "Socket_02",
+      "marker": "Socket_02",
+      "empty": true,
+      "position_blender": [
+        -0.147335,
+        -0.047306,
+        0.60975
+      ],
+      "rotation_blender_xyzw": [
+        0.70710677,
+        0.0,
+        0.0,
+        0.70710677
+      ],
+      "position_gltf": [
+        -0.147335,
+        0.60975,
+        0.047306
+      ],
+      "rotation_gltf_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "inner_diameter": 0.0465,
+      "cavity_depth": 0.02475,
+      "origin": "centre du fond utile",
+      "axis": "local +Z sortant",
+      "units": "metres"
+    }
+  ],
+  "pivot": "centre de la prise, Tool_Root",
+  "axes_blender": "+Z vers la tête, face avant -Y",
+  "axes_glb": "+Y vers la tête, face avant +Z",
+  "opaque": true
+}

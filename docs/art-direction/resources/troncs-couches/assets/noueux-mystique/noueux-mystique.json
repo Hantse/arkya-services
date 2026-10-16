@@ -1,0 +1,19 @@
+{
+  "id": "noueux-mystique",
+  "shape": "noueux",
+  "material": "mystique",
+  "label": "Tronc noueux · Mystique",
+  "glb": "assets/noueux-mystique/noueux-mystique.glb",
+  "blend": "assets/noueux-mystique/noueux-mystique.blend",
+  "preview": "assets/noueux-mystique/noueux-mystique-preview.png",
+  "height": 0.5366,
+  "width": 1.8,
+  "depth": 0.8088,
+  "triangles": 10906,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

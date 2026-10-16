@@ -1,0 +1,130 @@
+# Gateway YARP sur api.arkya.online
+
+Le point d'entrée public devient **`https://api.arkya.online`**. Le Traefik externe termine TLS et envoie les requêtes à la gateway YARP, qui relaie les routes autorisées vers les services internes. Le navigateur conserve l'URL publique ; ce routage ne lui envoie pas une redirection HTTP vers un sous-service.
+
+```mermaid
+flowchart LR
+    Client[Navigateur ou client Unity] -->|HTTPS api.arkya.online| Traefik[Traefik externe · TLS]
+    Traefik -->|HTTP privé 192.168.100.218:80| Gateway[Gateway YARP · k3s]
+    Gateway -->|/v1/auth · ClusterIP:8080| Identity[Identity]
+    Gateway -.->|/v1/characters · activation explicite| Characters[Characters]
+    Identity --> Discord[Discord OAuth]
+    Identity --> Mongo[(MongoDB)]
+```
+
+La gateway et Identity partagent le namespace existant `arkya-identity`. Identity conserve ses secrets, sa base et son PVC de clés ; la gateway est sans état et sans secret applicatif. Ses deux réplicas utilisent le port 8080 pour les requêtes et le port 8081 uniquement pour les sondes kubelet. Le Service LoadBalancer ne publie que 80 → 8080. Aucun Ingress Kubernetes, certificat ou cert-manager n'est ajouté.
+
+## Préparer les images et les manifests
+
+Publier les images avec les workflows [Gateway image](GITHUB_ACTIONS.md) et [Identity image](../identity/GITHUB_ACTIONS.md), puis utiliser leurs digests. Identity doit inclure la prise en charge du profil derrière la gateway.
+
+Depuis `backend/deploy/gateway` :
+
+```powershell
+New-Item -ItemType Directory -Path .local -Force
+Copy-Item cluster.example.json .local/cluster.json
+# Renseigner image avec le digest GHCR produit par Gateway image.
+./Render-Manifests.ps1 -Configuration .local/cluster.json
+```
+
+Le résultat `.local/production/gateway.yaml` contient cinq ressources : Namespace, ConfigMap, Deployment, Service et NetworkPolicy. Le script ne contacte pas l'API du cluster et n'applique rien. Le champ `imagePullSecretName` désigne un Secret de registre existant dans `arkya-identity` si l'image GHCR est privée ; voir le [guide CI](GITHUB_ACTIONS.md).
+
+| Paramètre | Valeur initiale | Usage |
+| --- | --- | --- |
+| `image` | À renseigner | Digest ou tag SHA de la gateway, jamais `latest` |
+| `serviceAddress` | `192.168.100.218` | IP LoadBalancer réservée à la gateway |
+| `servicePort` | `80` | Port joint par le Traefik externe |
+| `serviceAnnotations` | `{}` | Annotations éventuelles du contrôleur LoadBalancer existant |
+| `trustedProxyNetworks` | `192.168.100.0/24` | Sources Traefik acceptées pour les en-têtes et l'accès au pod |
+| `charactersAddress` | Vide | Vide : routes Characters désactivées ; renseigné : origine HTTP(S) du service |
+| `imagePullSecretName` | Vide | Nom du Secret de lecture du registre, si nécessaire |
+
+`192.168.100.0/24` est une hypothèse explicite sur le réseau privé, pas une IP Traefik observée. Le renderer utilise ces CIDR à la fois pour la confiance dans `X-Forwarded-Proto` et pour la NetworkPolicy. Réduire la plage à la source réelle quand elle sera connue ; ne pas remplacer par `0.0.0.0/0`. La destination `.218` n'est pas la source du Traefik. `externalTrafficPolicy: Local` demande un pod prêt sur le nœud qui reçoit le trafic et conserve la source selon le contrôleur utilisé. Celui-ci doit attribuer `.218` comme pour vos autres Services LoadBalancer ; le manifeste ne crée pas le mécanisme d'allocation.
+
+## Placer Identity derrière la gateway
+
+Utiliser le profil `gateway` d'[Identity](../identity/README.md), avec [cluster.gateway.example.json](../identity/cluster.gateway.example.json). Il produit un Service **ClusterIP au port 8080**, sans Ingress ni adresse LoadBalancer, et n'autorise l'accès applicatif que depuis les pods `arkya-gateway`. Le réseau de confiance d'Identity doit correspondre aux IP des pods gateway ; `10.42.0.0/16` est le défaut k3s proposé, à adapter si le cluster utilise un autre Pod CIDR. Ce réseau diffère du réseau privé de Traefik.
+
+Depuis `backend/deploy/identity`, copier cet exemple dans `.local/cluster.json`, renseigner l'image et la StorageClass, puis exécuter `./Render-Manifests.ps1 -Configuration .local/cluster.json`. Le résultat est `.local/gateway/identity.yaml`.
+
+Ce profil règle notamment :
+
+```text
+AllowedHosts=api.arkya.online
+Discord__PublicBaseUrl=https://api.arkya.online
+Discord__RedirectUri=https://api.arkya.online/v1/auth/discord/callback
+```
+
+La destination Identity dans YARP est `http://arkya-identity.arkya-identity.svc.cluster.local:8080/`. Le chemin, la query string OAuth, le Host public, les cookies de corrélation et le jeton Bearer arrivent au service. YARP reconstruit les en-têtes de transfert depuis la requête acceptée de Traefik ; Identity accepte son indication HTTPS uniquement depuis le réseau de confiance configuré. Les liaisons HTTP internes restent sur les réseaux privés maîtrisés.
+
+**Ne pas attribuer `.218` simultanément aux deux Services.** Si l'ancien profil Identity externe est déjà appliqué, préparer une fenêtre de bascule : désactiver son ancien routeur Traefik, appliquer d'abord le profil Identity `gateway`, vérifier que `arkya-identity` est ClusterIP et que l'ancienne allocation `.218` est libérée, puis appliquer la gateway. Si l'ancien profil Ingress avait été utilisé, supprimer explicitement son Ingress obsolète après vérification : un `kubectl apply` de la nouvelle liste ne supprime pas automatiquement les ressources retirées. Ne pas supprimer le namespace ni le PVC Identity.
+
+## Traefik, DNS et Discord
+
+Intégrer [traefik/gateway.dynamic.example.yaml](traefik/gateway.dynamic.example.yaml) au provider fichier du Traefik existant, ou transposer son routeur dans votre configuration habituelle :
+
+- DNS Gandi : `api.arkya.online` pointe vers l'adresse publique de Traefik.
+- Routeur : Host `api.arkya.online`, entryPoint HTTPS `websecure` à adapter, destination privée `http://192.168.100.218:80`, Host conservé.
+- Certificat : `tls: {}` réutilise un certificat déjà disponible. Pour ACME, préciser `certResolver` avec le nom du resolver déjà configuré dans Traefik.
+- Discord Developer Portal : enregistrer exactement **`https://api.arkya.online/v1/auth/discord/callback`** dans les URL de redirection OAuth2 de l'application existante.
+
+Le routeur désactive les journaux d'accès et les traces afin de ne pas enregistrer les codes OAuth présents dans la query string. Si la version Traefik ne propose pas ces options par routeur, appliquer l'équivalent globalement. La gateway est configurée sans journalisation des URL de requêtes. Les secrets Discord restent dans Identity.
+
+## Routes disponibles
+
+YARP relaie une liste de routes et de méthodes explicites, sans suppression de préfixe :
+
+| Route publique | Destination |
+| --- | --- |
+| `POST /v1/auth/discord/challenges`, `GET /v1/auth/discord/authorize/{id}` | Identity |
+| `GET /v1/auth/discord/callback`, `POST /v1/auth/discord/exchange` | Identity |
+| `GET /v1/auth/me`, `POST /v1/auth/logout` | Identity |
+| `GET /health` | Gateway elle-même |
+| `GET/POST /v1/characters`, `GET /v1/characters/{guid}`, `GET /v1/characters/appearance-options` | Characters, seulement si activé |
+
+Les prérequêtes `OPTIONS` des appels API sont transmises au service concerné, qui conserve sa politique CORS. `/internal`, les routes d'administration, de développement, Social SDK et les sondes détaillées ne sont pas publiés. Un nouveau sous-service demande une route explicite dans `GatewayRoutes.cs`, sa destination et son filtrage réseau ; aucun chemin générique ne donne accès à toutes ses API.
+
+### Activer Characters ultérieurement
+
+Characters existe dans le code mais ce dossier ne le déploie pas. Après avoir déployé son Service interne, renseigner par exemple `charactersAddress` avec `http://arkya-characters.arkya-identity.svc.cluster.local:8080/` **si ce nom et ce port correspondent au Service créé**, puis régénérer. Le renderer active alors `Gateway__CharactersEnabled=true` et sa destination YARP ; sans adresse, ces routes n'existent pas.
+
+Pour HTTP privé, configurer Characters avec les CIDR réels des pods gateway dans `ProxyTrust__KnownNetworks`, autoriser le Host `api.arkya.online` et limiter son ingress réseau aux pods gateway. Sinon, utiliser une destination HTTPS avec un certificat valide ; la gateway ne désactive pas la validation des certificats. Le service doit également pouvoir introspecter les sessions auprès d'Identity via son transport interne authentifié. Le profil Identity initial n'autorise que la gateway : prévoir les accès réseau internes et TLS nécessaires à Characters avant de l'activer, sans rendre `/internal` public. Characters est actuellement utilisé par le client Unity et ne possède pas de politique CORS. Des appels depuis le site nécessiteraient d'ajouter au service une politique limitée aux origines autorisées.
+
+## Appliquer et vérifier
+
+Après préparation du profil Identity, de ses secrets et des éventuels Secrets de registre, exécuter depuis `backend/deploy/gateway`. Si un ancien routeur Identity est actif, suivre d'abord la fenêtre de bascule décrite plus haut :
+
+```powershell
+$arkyaContext = 'CONTEXTE_KUBERNETES'
+kubectl --context $arkyaContext apply --dry-run=server -f ../identity/.local/gateway/identity.yaml
+kubectl --context $arkyaContext apply -f ../identity/.local/gateway/identity.yaml
+kubectl --context $arkyaContext -n arkya-identity rollout status deployment/arkya-identity --timeout=300s
+kubectl --context $arkyaContext -n arkya-identity get service arkya-identity -o wide
+# Continuer seulement lorsque Identity est ClusterIP et que .218 est libérée.
+kubectl --context $arkyaContext apply --dry-run=server -f .local/production/gateway.yaml
+kubectl --context $arkyaContext apply -f .local/production/gateway.yaml
+kubectl --context $arkyaContext -n arkya-identity rollout status deployment/arkya-gateway --timeout=300s
+kubectl --context $arkyaContext -n arkya-identity get services arkya-gateway arkya-identity -o wide
+```
+
+La gateway seule doit porter l'adresse externe `.218`. Après activation du routeur HTTPS et enregistrement du callback Discord, exécuter depuis `backend/deploy/gateway` :
+
+```powershell
+../identity/Test-Deployment.ps1 -Origin https://api.arkya.online -PrepareWebsiteConfig
+```
+
+Ce contrôle vérifie le CORS, les routes privées et le début du parcours de connexion ; après réussite, il prépare `backend/deploy/identity/.local/auth-config.js` avec cette origine publique. Publier ensuite cette configuration sur le site et effectuer une vraie connexion Discord.
+
+`/health` et la readiness gateway indiquent l'état du routeur, pas la disponibilité MongoDB ni celle de chaque sous-service. Identity conserve sa propre readiness MongoDB. Contrôler aussi son rollout et le parcours de challenge ; un routeur sain peut retourner une erreur si un sous-service est indisponible.
+
+Les manifests sont préparés localement. Leur application, le DNS, le certificat, la mise à jour du portail Discord et une connexion réelle restent à réaliser sur votre infrastructure.
+
+## Validation locale
+
+Le runtime YARP passe **43 tests**, avec de vrais serveurs HTTP de destination : routage Identity/Characters, corps et jetons, cookies et redirections OAuth, CORS relayé, en-têtes usurpés, confidentialité des logs, isolation des sondes et panne d’un sous-service. Après extraction de la confiance proxy partagée, Identity conserve 144 tests réussis et Characters en passe 108 ; sept tests MongoDB sont ignorés localement faute de base de test. La publication .NET Release réussit pour `linux-x64` et `linux-arm64`, et les deux workflows passent `actionlint`. Le build complet des images Docker et leur push restent à confirmer par les premières exécutions GitHub.
+
+Les profils sans Characters, avec destination HTTPS Characters et après désactivation ont été rendus hors cluster. Leurs cinq ressources respectives passent les schémas Kubernetes 1.36.1 stricts ; quinze configurations invalides sont refusées, dont les réseaux universels, les ports incorrects et les destinations avec identifiants ou préfixe. Le routage Traefik, les ports exposés, la correspondance entre confiance et NetworkPolicy et les sondes séparées ont été contrôlés dans `output/gateway-manifest-validation`. Cela ne remplace pas la validation serveur du cluster ni le contrôle du parcours public après déploiement.
+
+Le nouveau profil Identity `gateway` produit six ressources valides en mode strict, avec Service ClusterIP 8080 et configuration publique `api.arkya.online`. L’ancien profil LoadBalancer externe conserve ses six ressources valides. Les rendus de contrôle sont dans `output/gateway-integration-validation`.
+
+Références : [Services Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/), [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/), [routeurs Traefik](https://doc.traefik.io/traefik/reference/routing-configuration/http/routing/router/).

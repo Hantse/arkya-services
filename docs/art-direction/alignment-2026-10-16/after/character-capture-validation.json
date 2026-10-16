@@ -1,0 +1,68 @@
+{
+  "capturedInUnity": true,
+  "capturedUtc": "2026-10-16T09:11:57.0051388Z",
+  "unityVersion": "6000.6.6f1",
+  "graphicsApi": "Direct3D11",
+  "rows": [
+    {
+      "race": "human",
+      "body": "a",
+      "meshes": 4,
+      "triangles": 58669,
+      "visibleTriangles": 51953,
+      "bones": 26,
+      "missingMaterials": 0,
+      "unsupportedShaders": 0,
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run"
+      ]
+    },
+    {
+      "race": "human",
+      "body": "b",
+      "meshes": 4,
+      "triangles": 69385,
+      "visibleTriangles": 65451,
+      "bones": 26,
+      "missingMaterials": 0,
+      "unsupportedShaders": 0,
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run"
+      ]
+    },
+    {
+      "race": "elf",
+      "body": "a",
+      "meshes": 4,
+      "triangles": 58671,
+      "visibleTriangles": 51955,
+      "bones": 26,
+      "missingMaterials": 0,
+      "unsupportedShaders": 0,
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run"
+      ]
+    },
+    {
+      "race": "elf",
+      "body": "b",
+      "meshes": 4,
+      "triangles": 69378,
+      "visibleTriangles": 65444,
+      "bones": 26,
+      "missingMaterials": 0,
+      "unsupportedShaders": 0,
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run"
+      ]
+    }
+  ]
+}

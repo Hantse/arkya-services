@@ -1,0 +1,20 @@
+{
+  "id": "chanterelles-sous-bois",
+  "shape": "chanterelles",
+  "material": "sous-bois",
+  "label": "Chanterelles en éventail · Miel des sous-bois",
+  "glb": "assets/chanterelles-sous-bois/chanterelles-sous-bois.glb",
+  "blend": "assets/chanterelles-sous-bois/chanterelles-sous-bois.blend",
+  "preview": "assets/chanterelles-sous-bois/chanterelles-sous-bois-preview.png",
+  "height": 0.6,
+  "width": 0.8882,
+  "depth": 0.7102,
+  "triangles": 16800,
+  "mushrooms": 3,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

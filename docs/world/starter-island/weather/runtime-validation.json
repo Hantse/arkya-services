@@ -1,0 +1,466 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-16T07:21:00.5122180Z",
+  "unity": "6000.6.6f1",
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "caseCount": 27,
+  "elapsedSeconds": 8.663420799999999,
+  "checks": [
+    {
+      "name": "Weather components are active",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unity Console starts without errors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Clear weather clears real rain and splash particles",
+      "passed": true,
+      "detail": {
+        "weather": {
+          "Kind": 0,
+          "Cloud": 0.0,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.24
+        },
+        "skyWeather": {
+          "Kind": 0,
+          "Cloud": 0.0,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.24
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 1.7,
+        "fog": 0.00048,
+        "wind": 1.0336,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.0,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      }
+    },
+    {
+      "name": "Clear preview reaches the sky controller",
+      "passed": true,
+      "detail": {
+        "weather": {
+          "Kind": 0,
+          "Cloud": 0.0,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.24
+        },
+        "skyWeather": {
+          "Kind": 0,
+          "Cloud": 0.0,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.24
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 1.7,
+        "fog": 0.00048,
+        "wind": 1.0336,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.0,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      }
+    },
+    {
+      "name": "Overcast changes clouds and daylight without rain",
+      "passed": true,
+      "detail": {
+        "weather": {
+          "Kind": 1,
+          "Cloud": 0.78,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.4
+        },
+        "skyWeather": {
+          "Kind": 1,
+          "Cloud": 0.78,
+          "Rain": 0.0,
+          "Storm": 0.0,
+          "Wind": 0.4
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.771800041,
+        "fog": 0.000948,
+        "wind": 1.156,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.0,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      }
+    },
+    {
+      "name": "Rain emits actual drops and ground splashes",
+      "passed": true,
+      "detail": {
+        "weather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "skyWeather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.406980038,
+        "fog": 0.001944,
+        "wind": 1.3396,
+        "RainParticleCount": 337,
+        "SplashParticleCount": 16,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.170624986,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      }
+    },
+    {
+      "name": "Rain audio is playing",
+      "passed": true,
+      "detail": {
+        "volume": 0.170624986
+      }
+    },
+    {
+      "name": "Weather reaches the foliage wind",
+      "passed": true,
+      "detail": {
+        "clearWind": 1.0336,
+        "rainWind": 1.3396,
+        "WeatherRain": 0.75
+      }
+    },
+    {
+      "name": "Weather darkens sunlight and increases fog",
+      "passed": true,
+      "detail": {
+        "clearSun": 1.7,
+        "rainSun": 0.406980038,
+        "clearFog": 0.00048,
+        "rainFog": 0.001944
+      }
+    },
+    {
+      "name": "A configured cottage roof shelters the viewer",
+      "passed": true,
+      "detail": {
+        "weather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "skyWeather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.406980038,
+        "fog": 0.001944,
+        "wind": 1.3396,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.0477749966,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": true
+      }
+    },
+    {
+      "name": "Rain resumes after leaving the shelter",
+      "passed": true,
+      "detail": {
+        "weather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "skyWeather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.406980038,
+        "fog": 0.001944,
+        "wind": 1.3396,
+        "RainParticleCount": 337,
+        "SplashParticleCount": 13,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.170624986,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      }
+    },
+    {
+      "name": "Storm couples heavy rain, cloud and stronger wind",
+      "passed": true,
+      "detail": {
+        "weather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "skyWeather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.168300018,
+        "fog": 0.00328,
+        "wind": 1.57675,
+        "RainParticleCount": 611,
+        "SplashParticleCount": 21,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.305499971,
+        "ThunderCount": 0,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      }
+    },
+    {
+      "name": "Weather particles remain within the declared budget",
+      "passed": true,
+      "detail": {
+        "live": 640,
+        "budget": 1800,
+        "systems": 3
+      }
+    },
+    {
+      "name": "Particle velocity modes remain compatible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "A lightning strike flashes immediately but thunder is deferred",
+      "passed": true,
+      "detail": {
+        "immediateFlash": 1.0,
+        "immediateThunder": 0,
+        "thunderBefore": 0,
+        "distance": 100.0
+      }
+    },
+    {
+      "name": "Thunder plays after sound travel from the strike",
+      "passed": true,
+      "detail": {
+        "before": 0,
+        "after": 1,
+        "elapsedSeconds": 0.2918234,
+        "expectedMinimumSeconds": 0.291545182
+      }
+    },
+    {
+      "name": "The lightning flash expires",
+      "passed": true,
+      "detail": {
+        "weather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "skyWeather": {
+          "Kind": 3,
+          "Cloud": 1.0,
+          "Rain": 1.0,
+          "Storm": 1.0,
+          "Wind": 0.95
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.168300018,
+        "fog": 0.00328,
+        "wind": 1.57675,
+        "RainParticleCount": 672,
+        "SplashParticleCount": 25,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.305499971,
+        "ThunderCount": 1,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      }
+    },
+    {
+      "name": "The island controller routes a storm strike",
+      "passed": true,
+      "detail": {
+        "immediateFlash": 1.0,
+        "skyFlash": 1.0
+      }
+    },
+    {
+      "name": "The routed strike reaches the thunder pool",
+      "passed": true,
+      "detail": {
+        "before": 1,
+        "after": 2
+      }
+    },
+    {
+      "name": "Ambience mute also silences rain and already playing thunder",
+      "passed": true,
+      "detail": {
+        "thunderWasPlaying": true,
+        "rainVolume": 0.0,
+        "sourceVolumes": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "Lightning creates no extra scene lights",
+      "passed": true,
+      "detail": {
+        "sceneLights": 5
+      }
+    },
+    {
+      "name": "Automatic UTC weather transitions progress continuously",
+      "passed": true,
+      "detail": {
+        "sampleTime": 933.75,
+        "maxChannelStep": 0.00273656845,
+        "maxSunStep": 0.00365185738,
+        "maxFogStep": 4.26208135E-06,
+        "before": {
+          "Kind": 0,
+          "Cloud": 0.539485633,
+          "Rain": 0.430440664,
+          "Storm": 0.0,
+          "Wind": 0.469568342
+        },
+        "after": {
+          "Kind": 0,
+          "Cloud": 0.51236546,
+          "Rain": 0.408802241,
+          "Storm": 0.0,
+          "Wind": 0.458027869
+        }
+      }
+    },
+    {
+      "name": "Weather preserves the frozen four-hour celestial phase",
+      "passed": true,
+      "detail": {
+        "phaseBefore": 0.4,
+        "phaseAfter": 0.4,
+        "cycleSeconds": 14400.0
+      }
+    },
+    {
+      "name": "Disabling weather releases temporary effects",
+      "passed": true,
+      "detail": {
+        "childCount": 0
+      }
+    },
+    {
+      "name": "Reenabling weather recreates one bounded effects set",
+      "passed": true,
+      "detail": {
+        "weather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "skyWeather": {
+          "Kind": 2,
+          "Cloud": 0.94,
+          "Rain": 0.75,
+          "Storm": 0.0,
+          "Wind": 0.64
+        },
+        "phase": 0.4,
+        "lightning": 0.0,
+        "sun": 0.406980038,
+        "fog": 0.001944,
+        "wind": 1.3396,
+        "RainParticleCount": 319,
+        "SplashParticleCount": 19,
+        "ParticleBudget": 1800,
+        "RainVolume": 0.170624986,
+        "ThunderCount": 2,
+        "LightningFlash": 0.0,
+        "IsSheltered": false
+      }
+    },
+    {
+      "name": "Weather testing does not leak scene roots",
+      "passed": true,
+      "detail": {
+        "before": 12,
+        "after": 12
+      }
+    },
+    {
+      "name": "No Unity errors during weather validation",
+      "passed": true,
+      "detail": {
+        "observedErrorEvents": 0,
+        "consoleErrors": 0
+      }
+    }
+  ],
+  "failures": [],
+  "exception": null,
+  "errors": [],
+  "note": "Real Play Mode presentation checks across frames. Preview modes, separate weather/sky clock offsets, camera pose, component enabled states and Application.runInBackground are restored. No scene, PlayerSettings or source asset is saved. Audio playback does not verify hardware output. No gameplay, network socket or performance benchmark is exercised."
+}

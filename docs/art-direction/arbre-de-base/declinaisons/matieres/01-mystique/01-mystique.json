@@ -1,0 +1,37 @@
+{
+  "id": "01-mystique",
+  "variant": "mystique",
+  "source": "arkya-ancient-tree-v2.blend",
+  "source_sha256": "b19ae1144c3ac6622bc6c9b92859819e28e7bfecdbfed3ef9a8cf2fe5e5c9e8a",
+  "geometry": "Unchanged approved tree: identical meshes, topology and UVs",
+  "vertices": 332510,
+  "triangles": 429204,
+  "mesh_count": 3,
+  "textures": {
+    "basecolor": "textures/01-mystique-basecolor.png",
+    "normal": "textures/01-mystique-normal.png",
+    "roughness": "textures/01-mystique-roughness.png",
+    "emission": "textures/01-mystique-emission.png"
+  },
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "foliage": "Original vertex COLOR_0 AO preserved through linear remapping",
+  "render": {
+    "engine": "Cycles OptiX",
+    "samples": 32,
+    "size": 1100
+  },
+  "glb_bytes": 26306540,
+  "notes": "Brown violet and indigo grain; sparse turquoise organic fissures with restrained emission",
+  "validation": {
+    "geometry_and_uv_identical_to_base": true,
+    "blend_images_packed": true,
+    "glb_embedded_images": 4,
+    "glb_all_pbr_maps_present": true,
+    "glb_color_0_present": true,
+    "glb_external_dependencies": false,
+    "source_sha256_unchanged": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "bouquet-corail",
+  "shape": "bouquet",
+  "material": "corail",
+  "label": "Bouquet de prairie · Corail abricot",
+  "glb": "assets/bouquet-corail/bouquet-corail.glb",
+  "blend": "assets/bouquet-corail/bouquet-corail.blend",
+  "preview": "assets/bouquet-corail/bouquet-corail-preview.png",
+  "height": 0.45,
+  "width": 0.3888,
+  "depth": 0.3042,
+  "triangles": 20968,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

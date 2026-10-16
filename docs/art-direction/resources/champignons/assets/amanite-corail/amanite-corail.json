@@ -1,0 +1,20 @@
+{
+  "id": "amanite-corail",
+  "shape": "amanite",
+  "material": "corail",
+  "label": "Amanite bombée · Corail crème",
+  "glb": "assets/amanite-corail/amanite-corail.glb",
+  "blend": "assets/amanite-corail/amanite-corail.blend",
+  "preview": "assets/amanite-corail/amanite-corail-preview.png",
+  "height": 0.4,
+  "width": 0.5541,
+  "depth": 0.4142,
+  "triangles": 11968,
+  "mushrooms": 2,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

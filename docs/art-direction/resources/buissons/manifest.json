@@ -1,0 +1,276 @@
+{
+  "family": "buissons",
+  "shapes": [
+    {
+      "id": "coussin",
+      "label": "Coussin bas",
+      "height": 0.45,
+      "description": "Port bas en trois nappes irrégulières, petites branches rampantes."
+    },
+    {
+      "id": "rond",
+      "label": "Buisson rond",
+      "height": 0.85,
+      "description": "Couronne arrondie asymétrique, étages de feuillage et ouvertures entre les rameaux."
+    },
+    {
+      "id": "etale",
+      "label": "Buisson étalé",
+      "height": 1.25,
+      "description": "Large éventail décentré, deux bras latéraux et feuillage retombant."
+    },
+    {
+      "id": "dresse",
+      "label": "Buisson dressé",
+      "height": 1.8,
+      "description": "Port vertical à plusieurs tiges, sommet décalé et rameaux secondaires ouverts."
+    }
+  ],
+  "materials": [
+    {
+      "id": "sylvestre",
+      "label": "Vert sylvestre",
+      "swatch": "#6c9157"
+    },
+    {
+      "id": "automnal",
+      "label": "Automnal",
+      "swatch": "#bc784c"
+    },
+    {
+      "id": "mystique",
+      "label": "Mystique",
+      "swatch": "#739fa0"
+    }
+  ],
+  "assets": [
+    {
+      "id": "coussin-sylvestre",
+      "shape": "coussin",
+      "material": "sylvestre",
+      "label": "Coussin bas · Vert sylvestre",
+      "glb": "assets/coussin-sylvestre/coussin-sylvestre.glb",
+      "blend": "assets/coussin-sylvestre/coussin-sylvestre.blend",
+      "preview": "assets/coussin-sylvestre/coussin-sylvestre-preview.png",
+      "height": 0.45,
+      "width": 0.97,
+      "depth": 0.7554,
+      "triangles": 21220,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "coussin-automnal",
+      "shape": "coussin",
+      "material": "automnal",
+      "label": "Coussin bas · Automnal",
+      "glb": "assets/coussin-automnal/coussin-automnal.glb",
+      "blend": "assets/coussin-automnal/coussin-automnal.blend",
+      "preview": "assets/coussin-automnal/coussin-automnal-preview.png",
+      "height": 0.45,
+      "width": 0.97,
+      "depth": 0.7554,
+      "triangles": 21220,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "coussin-mystique",
+      "shape": "coussin",
+      "material": "mystique",
+      "label": "Coussin bas · Mystique",
+      "glb": "assets/coussin-mystique/coussin-mystique.glb",
+      "blend": "assets/coussin-mystique/coussin-mystique.blend",
+      "preview": "assets/coussin-mystique/coussin-mystique-preview.png",
+      "height": 0.45,
+      "width": 0.97,
+      "depth": 0.7554,
+      "triangles": 21220,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "rond-sylvestre",
+      "shape": "rond",
+      "material": "sylvestre",
+      "label": "Buisson rond · Vert sylvestre",
+      "glb": "assets/rond-sylvestre/rond-sylvestre.glb",
+      "blend": "assets/rond-sylvestre/rond-sylvestre.blend",
+      "preview": "assets/rond-sylvestre/rond-sylvestre-preview.png",
+      "height": 0.85,
+      "width": 1.074,
+      "depth": 0.9486,
+      "triangles": 29708,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "rond-automnal",
+      "shape": "rond",
+      "material": "automnal",
+      "label": "Buisson rond · Automnal",
+      "glb": "assets/rond-automnal/rond-automnal.glb",
+      "blend": "assets/rond-automnal/rond-automnal.blend",
+      "preview": "assets/rond-automnal/rond-automnal-preview.png",
+      "height": 0.85,
+      "width": 1.074,
+      "depth": 0.9486,
+      "triangles": 29708,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "rond-mystique",
+      "shape": "rond",
+      "material": "mystique",
+      "label": "Buisson rond · Mystique",
+      "glb": "assets/rond-mystique/rond-mystique.glb",
+      "blend": "assets/rond-mystique/rond-mystique.blend",
+      "preview": "assets/rond-mystique/rond-mystique-preview.png",
+      "height": 0.85,
+      "width": 1.074,
+      "depth": 0.9486,
+      "triangles": 29708,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "etale-sylvestre",
+      "shape": "etale",
+      "material": "sylvestre",
+      "label": "Buisson étalé · Vert sylvestre",
+      "glb": "assets/etale-sylvestre/etale-sylvestre.glb",
+      "blend": "assets/etale-sylvestre/etale-sylvestre.blend",
+      "preview": "assets/etale-sylvestre/etale-sylvestre-preview.png",
+      "height": 1.25,
+      "width": 2.1169,
+      "depth": 1.3579,
+      "triangles": 36074,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "etale-automnal",
+      "shape": "etale",
+      "material": "automnal",
+      "label": "Buisson étalé · Automnal",
+      "glb": "assets/etale-automnal/etale-automnal.glb",
+      "blend": "assets/etale-automnal/etale-automnal.blend",
+      "preview": "assets/etale-automnal/etale-automnal-preview.png",
+      "height": 1.25,
+      "width": 2.1169,
+      "depth": 1.3579,
+      "triangles": 36074,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "etale-mystique",
+      "shape": "etale",
+      "material": "mystique",
+      "label": "Buisson étalé · Mystique",
+      "glb": "assets/etale-mystique/etale-mystique.glb",
+      "blend": "assets/etale-mystique/etale-mystique.blend",
+      "preview": "assets/etale-mystique/etale-mystique-preview.png",
+      "height": 1.25,
+      "width": 2.1169,
+      "depth": 1.3579,
+      "triangles": 36074,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "dresse-sylvestre",
+      "shape": "dresse",
+      "material": "sylvestre",
+      "label": "Buisson dressé · Vert sylvestre",
+      "glb": "assets/dresse-sylvestre/dresse-sylvestre.glb",
+      "blend": "assets/dresse-sylvestre/dresse-sylvestre.blend",
+      "preview": "assets/dresse-sylvestre/dresse-sylvestre-preview.png",
+      "height": 1.8,
+      "width": 1.2362,
+      "depth": 1.1086,
+      "triangles": 36904,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "dresse-automnal",
+      "shape": "dresse",
+      "material": "automnal",
+      "label": "Buisson dressé · Automnal",
+      "glb": "assets/dresse-automnal/dresse-automnal.glb",
+      "blend": "assets/dresse-automnal/dresse-automnal.blend",
+      "preview": "assets/dresse-automnal/dresse-automnal-preview.png",
+      "height": 1.8,
+      "width": 1.2362,
+      "depth": 1.1086,
+      "triangles": 36904,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    },
+    {
+      "id": "dresse-mystique",
+      "shape": "dresse",
+      "material": "mystique",
+      "label": "Buisson dressé · Mystique",
+      "glb": "assets/dresse-mystique/dresse-mystique.glb",
+      "blend": "assets/dresse-mystique/dresse-mystique.blend",
+      "preview": "assets/dresse-mystique/dresse-mystique-preview.png",
+      "height": 1.8,
+      "width": 1.2362,
+      "depth": 1.1086,
+      "triangles": 36904,
+      "texture_resolution": [
+        2048,
+        2048
+      ],
+      "opaque": true,
+      "pivot": "centre au sol"
+    }
+  ]
+}

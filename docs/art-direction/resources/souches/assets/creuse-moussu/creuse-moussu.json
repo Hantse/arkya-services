@@ -1,0 +1,19 @@
+{
+  "id": "creuse-moussu",
+  "shape": "creuse",
+  "material": "moussu",
+  "label": "Souche creuse · Ancien moussu",
+  "glb": "assets/creuse-moussu/creuse-moussu.glb",
+  "blend": "assets/creuse-moussu/creuse-moussu.blend",
+  "preview": "assets/creuse-moussu/creuse-moussu-preview.png",
+  "height": 0.95,
+  "width": 1.3482,
+  "depth": 1.0842,
+  "triangles": 19200,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

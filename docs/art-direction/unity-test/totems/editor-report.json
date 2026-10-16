@@ -1,0 +1,62 @@
+{
+  "success": true,
+  "revision": "20261016T103309070262Z-totems",
+  "scope": "wolf V3 targeted import; fox V2 unchanged",
+  "operations": [
+    {
+      "operation": "wolf-import",
+      "success": true,
+      "diagnostics": []
+    },
+    {
+      "operation": "wolf-validation",
+      "success": true,
+      "diagnostics": []
+    },
+    {
+      "operation": "wolf-audit",
+      "success": true,
+      "diagnostics": []
+    },
+    {
+      "operation": "wolf-capture",
+      "success": true,
+      "diagnostics": []
+    },
+    {
+      "operation": "wolf-motion",
+      "success": true,
+      "diagnostics": []
+    },
+    {
+      "operation": "wolf-editor-state",
+      "success": true,
+      "diagnostics": []
+    }
+  ],
+  "locomotion": {
+    "fox": "existing V2 audit; files unchanged",
+    "wolf": true
+  },
+  "preservation": {
+    "success": true,
+    "revision": "20261016T103309070262Z-totems",
+    "foxFilesChecked": 126,
+    "changedFoxFiles": [],
+    "assetGuidsChecked": 136,
+    "changedGuids": [],
+    "baseline": "wolf-revision-baseline.json"
+  },
+  "sourceCopies": true,
+  "editor": {
+    "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+    "dirty": false,
+    "playing": false,
+    "compiling": false,
+    "textures": 24,
+    "all2048": true,
+    "shaderSupported": true,
+    "shaderErrors": [],
+    "prefabs": 26
+  }
+}

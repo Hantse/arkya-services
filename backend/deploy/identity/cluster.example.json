@@ -1,0 +1,12 @@
+{
+  "image": "registry.example.com/arkya/identity:replace-with-release-tag",
+  "ingressClass": "replace-with-ingress-class",
+  "ingressNamespace": "replace-with-ingress-namespace",
+  "ingressPodLabels": { "app.kubernetes.io/name": "replace-with-controller-label" },
+  "trustedProxyNetworks": ["replace-with-ingress-source-cidr"],
+  "storageClass": "replace-with-storage-class",
+  "clusterIssuer": "",
+  "tlsSecretName": "arkya-identity-tls",
+  "imagePullSecretName": "",
+  "ingressAnnotations": {}
+}

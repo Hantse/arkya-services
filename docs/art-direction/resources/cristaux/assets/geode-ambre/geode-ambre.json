@@ -1,0 +1,20 @@
+{
+  "id": "geode-ambre",
+  "shape": "geode",
+  "material": "ambre",
+  "label": "Géode ouverte · Ambre",
+  "glb": "assets/geode-ambre/geode-ambre.glb",
+  "blend": "assets/geode-ambre/geode-ambre.blend",
+  "preview": "assets/geode-ambre/geode-ambre-preview.png",
+  "height": 1.9,
+  "width": 1.7557,
+  "depth": 1.0366,
+  "triangles": 4712,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol",
+  "bake": "Cycles CPU, emission channel transfer to basecolor/roughness/emission"
+}

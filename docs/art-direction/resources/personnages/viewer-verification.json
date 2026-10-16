@@ -1,0 +1,382 @@
+{
+  "variants": [
+    {
+      "id": "human-a-short",
+      "src": "http://127.0.0.1:51805/personnages/models/human-a-short.glb",
+      "dimensions": {
+        "x": 0.7410739064216614,
+        "y": 1.7499998807907104,
+        "z": 0.43525300920009613
+      },
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ]
+    },
+    {
+      "id": "human-a-long",
+      "src": "http://127.0.0.1:51805/personnages/models/human-a-long.glb",
+      "dimensions": {
+        "x": 0.7410739064216614,
+        "y": 1.7499998807907104,
+        "z": 0.43525300920009613
+      },
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ]
+    },
+    {
+      "id": "human-a-braid",
+      "src": "http://127.0.0.1:51805/personnages/models/human-a-braid.glb",
+      "dimensions": {
+        "x": 0.7410739064216614,
+        "y": 1.7499998807907104,
+        "z": 0.43525300920009613
+      },
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ]
+    },
+    {
+      "id": "human-b-short",
+      "src": "http://127.0.0.1:51805/personnages/models/human-b-short.glb",
+      "dimensions": {
+        "x": 0.6731567084789276,
+        "y": 1.75,
+        "z": 0.4972175806760788
+      },
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Metal",
+        "Thread",
+        "Gem"
+      ]
+    },
+    {
+      "id": "human-b-long",
+      "src": "http://127.0.0.1:51805/personnages/models/human-b-long.glb",
+      "dimensions": {
+        "x": 0.6731567084789276,
+        "y": 1.75,
+        "z": 0.4972175806760788
+      },
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Metal",
+        "Thread",
+        "Gem"
+      ]
+    },
+    {
+      "id": "human-b-braid",
+      "src": "http://127.0.0.1:51805/personnages/models/human-b-braid.glb",
+      "dimensions": {
+        "x": 0.6731567084789276,
+        "y": 1.75,
+        "z": 0.4972175806760788
+      },
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Metal",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Thread",
+        "Gem"
+      ]
+    },
+    {
+      "id": "elf-a-short",
+      "src": "http://127.0.0.1:51805/personnages/models/elf-a-short.glb",
+      "dimensions": {
+        "x": 0.7207472920417786,
+        "y": 1.8499999046325684,
+        "z": 0.43711838126182556
+      },
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ]
+    },
+    {
+      "id": "elf-a-long",
+      "src": "http://127.0.0.1:51805/personnages/models/elf-a-long.glb",
+      "dimensions": {
+        "x": 0.7207472920417786,
+        "y": 1.8499999046325684,
+        "z": 0.43711838126182556
+      },
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ]
+    },
+    {
+      "id": "elf-a-braid",
+      "src": "http://127.0.0.1:51805/personnages/models/elf-a-braid.glb",
+      "dimensions": {
+        "x": 0.7207472920417786,
+        "y": 1.8499999046325684,
+        "z": 0.43711838126182556
+      },
+      "materials": [
+        "Skin",
+        "Ivory",
+        "Metal",
+        "DarkLeather",
+        "OutfitAccent",
+        "Hair",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Gem"
+      ]
+    },
+    {
+      "id": "elf-b-short",
+      "src": "http://127.0.0.1:51805/personnages/models/elf-b-short.glb",
+      "dimensions": {
+        "x": 0.6546929478645325,
+        "y": 1.850000023841858,
+        "z": 0.4993484914302826
+      },
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Metal",
+        "Thread",
+        "Gem"
+      ]
+    },
+    {
+      "id": "elf-b-long",
+      "src": "http://127.0.0.1:51805/personnages/models/elf-b-long.glb",
+      "dimensions": {
+        "x": 0.6546929478645325,
+        "y": 1.850000023841858,
+        "z": 0.4993484914302826
+      },
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Metal",
+        "Thread",
+        "Gem"
+      ]
+    },
+    {
+      "id": "elf-b-braid",
+      "src": "http://127.0.0.1:51805/personnages/models/elf-b-braid.glb",
+      "dimensions": {
+        "x": 0.6546929478645325,
+        "y": 1.850000023841858,
+        "z": 0.4993484914302826
+      },
+      "materials": [
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Pupil",
+        "Metal",
+        "Hair",
+        "Leather",
+        "DarkLeather",
+        "OutfitAccent",
+        "Cloth",
+        "Thread",
+        "Gem"
+      ]
+    }
+  ],
+  "downloads": [
+    {
+      "fileName": "arkya-elf-apparence.json",
+      "path": "output/playwright/character-export.json"
+    },
+    {
+      "fileName": "arkya-elf-personnalise.glb",
+      "path": "output/playwright/character-export.glb"
+    }
+  ],
+  "errors": [],
+  "maxHeight": {
+    "value": "205",
+    "scale": "1.1081081081081081 1.1081081081081081 1.1081081081081081"
+  },
+  "tints": {
+    "Skin": [
+      0.3049873140591091,
+      0.13286832154414627,
+      0.0722718506743852,
+      1
+    ],
+    "Iris": [
+      0.3139887133649649,
+      0.22696587349938613,
+      0.4019777798219466,
+      1
+    ],
+    "Hair": [
+      0.5583403896257968,
+      0.6307571363387763,
+      0.5906188409113381,
+      1
+    ],
+    "OutfitAccent": [
+      0.3371636150376657,
+      0.15592646369776456,
+      0.1912016827303171,
+      1
+    ]
+  },
+  "saved": {
+    "version": 1,
+    "race": "elf",
+    "silhouette": "b",
+    "heightCm": 205,
+    "skin": "copper",
+    "hairStyle": "braid",
+    "hairColor": "silver",
+    "eyeColor": "violet",
+    "outfitColor": "wine"
+  },
+  "restoreAndReload": true,
+  "invalidSaveRejected": true,
+  "rapidFinalSrc": "http://127.0.0.1:51805/personnages/models/elf-a-braid.glb",
+  "success": true,
+  "browser": "Microsoft Edge via Playwright",
+  "date": "2026-10-15",
+  "viewport_desktop": [
+    1440,
+    1000
+  ],
+  "viewport_mobile": [
+    390,
+    844
+  ],
+  "mobile_horizontal_overflow": false,
+  "height_keyboard_stress_35_steps": true,
+  "reduced_motion_stops_rotation": true,
+  "pure_logic_tests_passed": 4,
+  "unity_checked": false,
+  "export_validation": {
+    "success": true,
+    "height_m": 2.050000026419356,
+    "feet_y": 0.0,
+    "custom_tints_preserved": {
+      "Skin": [
+        0.3049873140591091,
+        0.13286832154414627,
+        0.0722718506743852,
+        1
+      ],
+      "Iris": [
+        0.3139887133649649,
+        0.22696587349938613,
+        0.4019777798219466,
+        1
+      ],
+      "Hair": [
+        0.5583403896257968,
+        0.6307571363387763,
+        0.5906188409113381,
+        1
+      ],
+      "OutfitAccent": [
+        0.3371636150376657,
+        0.15592646369776456,
+        0.1912016827303171,
+        1
+      ]
+    },
+    "preset": {
+      "version": 1,
+      "race": "elf",
+      "silhouette": "b",
+      "heightCm": 205,
+      "skin": "copper",
+      "hairStyle": "braid",
+      "hairColor": "silver",
+      "eyeColor": "violet",
+      "outfitColor": "wine"
+    },
+    "file_bytes": 3712304
+  }
+}

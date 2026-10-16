@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "id": "human-a",
+      "fbxRoundTrip": "passed",
+      "bones": 26,
+      "meshes": 4,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.4901161193847656e-07,
+      "boundsBlenderZUp": [
+        [
+          -0.3558572828769684,
+          -0.20792120695114136,
+          4.442515637492761e-05
+        ],
+        [
+          0.3852609694004059,
+          0.22644995152950287,
+          1.7503089904785156
+        ]
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "maxVertexDisplacementMeters": 0.02404469832773585,
+          "loopPositionErrorMeters": 0.0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.2,
+          "maxVertexDisplacementMeters": 0.2770895725062579,
+          "loopPositionErrorMeters": 0.0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.8,
+          "maxVertexDisplacementMeters": 0.41913466742619837,
+          "loopPositionErrorMeters": 0.0
+        }
+      ]
+    },
+    {
+      "id": "human-b",
+      "fbxRoundTrip": "passed",
+      "bones": 26,
+      "meshes": 4,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.564621925354004e-07,
+      "boundsBlenderZUp": [
+        [
+          -0.35643479228019714,
+          -0.2250470221042633,
+          1.3621849426215249e-08
+        ],
+        [
+          0.31665176153182983,
+          0.27227112650871277,
+          1.75
+        ]
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "maxVertexDisplacementMeters": 0.04918483880285114,
+          "loopPositionErrorMeters": 0.0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.2,
+          "maxVertexDisplacementMeters": 0.270083735388149,
+          "loopPositionErrorMeters": 0.0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.8,
+          "maxVertexDisplacementMeters": 0.44085346480928855,
+          "loopPositionErrorMeters": 0.0
+        }
+      ]
+    },
+    {
+      "id": "elf-a",
+      "fbxRoundTrip": "passed",
+      "bones": 26,
+      "meshes": 4,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.5847035683691502e-07,
+      "boundsBlenderZUp": [
+        [
+          -0.3461523950099945,
+          -0.20879051089286804,
+          4.6953384298831224e-05
+        ],
+        [
+          0.37469398975372314,
+          0.22742046415805817,
+          1.850324273109436
+        ]
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "maxVertexDisplacementMeters": 0.025414126512639874,
+          "loopPositionErrorMeters": 0.0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.2,
+          "maxVertexDisplacementMeters": 0.2748810309284195,
+          "loopPositionErrorMeters": 0.0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.8,
+          "maxVertexDisplacementMeters": 0.4285834129288486,
+          "loopPositionErrorMeters": 0.0
+        }
+      ]
+    },
+    {
+      "id": "elf-b",
+      "fbxRoundTrip": "passed",
+      "bones": 26,
+      "meshes": 4,
+      "maxInfluences": 4,
+      "maxWeightSumError": 1.5029218047857285e-07,
+      "boundsBlenderZUp": [
+        [
+          -0.34665679931640625,
+          -0.22600749135017395,
+          1.2940787108561835e-08
+        ],
+        [
+          0.3079679012298584,
+          0.27364614605903625,
+          1.850000023841858
+        ]
+      ],
+      "clips": [
+        {
+          "name": "Idle",
+          "durationSeconds": 4.0,
+          "maxVertexDisplacementMeters": 0.05149139893413358,
+          "loopPositionErrorMeters": 0.0
+        },
+        {
+          "name": "Walk",
+          "durationSeconds": 1.2,
+          "maxVertexDisplacementMeters": 0.27020731306456386,
+          "loopPositionErrorMeters": 0.0
+        },
+        {
+          "name": "Run",
+          "durationSeconds": 0.8,
+          "maxVertexDisplacementMeters": 0.4501798134740327,
+          "loopPositionErrorMeters": 0.0
+        }
+      ]
+    }
+  ]
+}

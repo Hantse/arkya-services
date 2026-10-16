@@ -1,0 +1,20 @@
+{
+  "id": "eventail-mystique",
+  "shape": "eventail",
+  "material": "mystique",
+  "label": "Touffe éventail · Mystique",
+  "glb": "assets/eventail-mystique/eventail-mystique.glb",
+  "blend": "assets/eventail-mystique/eventail-mystique.blend",
+  "preview": "assets/eventail-mystique/eventail-mystique-preview.png",
+  "height": 0.45,
+  "width": 0.8411,
+  "depth": 0.5835,
+  "triangles": 10668,
+  "blades": 42,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

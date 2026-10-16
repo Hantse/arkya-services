@@ -1,0 +1,31 @@
+{
+  "scene": "ancients",
+  "portrait": false,
+  "engine": "Cycles",
+  "samples": 128,
+  "resolution": [
+    2160,
+    1440
+  ],
+  "blender": "4.5.14 LTS",
+  "objects": 1650,
+  "meshes": 1616,
+  "camera": "Camera_Refined",
+  "images": [
+    {
+      "name": "TEX-rain_body_diffuse.1001.png",
+      "packed": true,
+      "source": "TILED"
+    },
+    {
+      "name": "TEX-rain_body_roughness.1001.png",
+      "packed": true,
+      "source": "TILED"
+    },
+    {
+      "name": "TEX-rain_eyes.png.000",
+      "packed": true,
+      "source": "FILE"
+    }
+  ]
+}

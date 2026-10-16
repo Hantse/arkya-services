@@ -1,0 +1,723 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-15T16:05:08.2900795Z",
+  "unity": "6000.6.6f1",
+  "graphicsApi": "Direct3D12",
+  "resolution": [
+    1280,
+    960
+  ],
+  "format": "ARGB32 sRGB",
+  "lodBias": 2.0,
+  "cameraFieldOfView": 35.0,
+  "automaticLevelCases": 33,
+  "cullingCases": 11,
+  "elapsedSeconds": 11.1343587,
+  "cases": [
+    {
+      "name": "Arbre reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 26210,
+      "difference": {
+        "MaskPixels": 26210,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Arbre reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 4241,
+      "difference": {
+        "MaskPixels": 4241,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Arbre reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 397,
+      "difference": {
+        "MaskPixels": 397,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Arbre reference",
+      "kind": "culling",
+      "projectedHeight": 0.00720000034,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 7,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Buisson reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 38949,
+      "difference": {
+        "MaskPixels": 38949,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Buisson reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 6167,
+      "difference": {
+        "MaskPixels": 6167,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Buisson reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 365,
+      "difference": {
+        "MaskPixels": 365,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Buisson reference",
+      "kind": "culling",
+      "projectedHeight": 0.018,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 37,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Champignon reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 42953,
+      "difference": {
+        "MaskPixels": 42953,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Champignon reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 6513,
+      "difference": {
+        "MaskPixels": 6513,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Champignon reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 564,
+      "difference": {
+        "MaskPixels": 564,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Champignon reference",
+      "kind": "culling",
+      "projectedHeight": 0.022499999,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 48,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Cristal reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 44489,
+      "difference": {
+        "MaskPixels": 44489,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Cristal reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 7002,
+      "difference": {
+        "MaskPixels": 7002,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Cristal reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 494,
+      "difference": {
+        "MaskPixels": 494,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Cristal reference",
+      "kind": "culling",
+      "projectedHeight": 0.0134999994,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 30,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Fleur reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 43644,
+      "difference": {
+        "MaskPixels": 43644,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Fleur reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 6624,
+      "difference": {
+        "MaskPixels": 6624,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Fleur reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 541,
+      "difference": {
+        "MaskPixels": 541,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Fleur reference",
+      "kind": "culling",
+      "projectedHeight": 0.022499999,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 61,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Herbe reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 16852,
+      "difference": {
+        "MaskPixels": 16852,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Herbe reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 2749,
+      "difference": {
+        "MaskPixels": 2749,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Herbe reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 294,
+      "difference": {
+        "MaskPixels": 294,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Herbe reference",
+      "kind": "culling",
+      "projectedHeight": 0.022499999,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 24,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Mana reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 12566,
+      "difference": {
+        "MaskPixels": 12566,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Mana reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 1958,
+      "difference": {
+        "MaskPixels": 1958,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Mana reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 179,
+      "difference": {
+        "MaskPixels": 179,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Mana reference",
+      "kind": "culling",
+      "projectedHeight": 0.0134999994,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 8,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Minerai reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 51322,
+      "difference": {
+        "MaskPixels": 51322,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Minerai reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 8065,
+      "difference": {
+        "MaskPixels": 8065,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Minerai reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 634,
+      "difference": {
+        "MaskPixels": 634,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Minerai reference",
+      "kind": "culling",
+      "projectedHeight": 0.0134999994,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 32,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Pierre reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 59759,
+      "difference": {
+        "MaskPixels": 59759,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Pierre reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 9301,
+      "difference": {
+        "MaskPixels": 9301,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Pierre reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 736,
+      "difference": {
+        "MaskPixels": 736,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Pierre reference",
+      "kind": "culling",
+      "projectedHeight": 0.0134999994,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 39,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Souche reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 26342,
+      "difference": {
+        "MaskPixels": 26342,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Souche reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 3878,
+      "difference": {
+        "MaskPixels": 3878,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Souche reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 301,
+      "difference": {
+        "MaskPixels": 301,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Souche reference",
+      "kind": "culling",
+      "projectedHeight": 0.0134999994,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 22,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Tronc reference",
+      "kind": "automatic",
+      "expectedLevel": 0,
+      "projectedHeight": 0.5,
+      "foregroundPixels": 20995,
+      "difference": {
+        "MaskPixels": 20995,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Tronc reference",
+      "kind": "automatic",
+      "expectedLevel": 1,
+      "projectedHeight": 0.2,
+      "foregroundPixels": 3298,
+      "difference": {
+        "MaskPixels": 3298,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Tronc reference",
+      "kind": "automatic",
+      "expectedLevel": 2,
+      "projectedHeight": 0.06,
+      "foregroundPixels": 234,
+      "difference": {
+        "MaskPixels": 234,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    },
+    {
+      "name": "Tronc reference",
+      "kind": "culling",
+      "projectedHeight": 0.0134999994,
+      "positiveControlFadeMode": "None",
+      "automaticFadeMode": "CrossFade",
+      "forcedVisiblePixels": 11,
+      "difference": {
+        "MaskPixels": 0,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "passed": true
+    }
+  ],
+  "crossfadeSamples": [
+    {
+      "name": "Arbre",
+      "fromLevel": 0,
+      "toLevel": 1,
+      "projectedHeight": 0.371,
+      "bandFraction": 0.5,
+      "toNear": {
+        "MaskPixels": 14656,
+        "ChangedPixels": 3456,
+        "MaximumChannelDifference": 92,
+        "MeanAbsolute": 2.7974663391557497
+      },
+      "toFar": {
+        "MaskPixels": 14663,
+        "ChangedPixels": 4140,
+        "MaximumChannelDifference": 84,
+        "MeanAbsolute": 3.3983268544408829
+      },
+      "endpointDifference": {
+        "MaskPixels": 14678,
+        "ChangedPixels": 6636,
+        "MaximumChannelDifference": 96,
+        "MeanAbsolute": 5.5919970931552889
+      },
+      "repeatNoise": {
+        "MaskPixels": 14625,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "automaticForegroundPixels": 14625,
+      "nearForegroundPixels": 14522,
+      "farForegroundPixels": 14467,
+      "observedMix": true,
+      "hasCoverage": true,
+      "stable": true
+    },
+    {
+      "name": "Mana",
+      "fromLevel": 0,
+      "toLevel": 1,
+      "projectedHeight": 0.371,
+      "bandFraction": 0.5,
+      "toNear": {
+        "MaskPixels": 6879,
+        "ChangedPixels": 464,
+        "MaximumChannelDifference": 114,
+        "MeanAbsolute": 0.71822454814168724
+      },
+      "toFar": {
+        "MaskPixels": 6879,
+        "ChangedPixels": 522,
+        "MaximumChannelDifference": 140,
+        "MeanAbsolute": 0.8592818723651694
+      },
+      "endpointDifference": {
+        "MaskPixels": 6870,
+        "ChangedPixels": 349,
+        "MaximumChannelDifference": 140,
+        "MeanAbsolute": 0.6880640465793304
+      },
+      "repeatNoise": {
+        "MaskPixels": 6879,
+        "ChangedPixels": 0,
+        "MaximumChannelDifference": 0,
+        "MeanAbsolute": 0.0
+      },
+      "automaticForegroundPixels": 6879,
+      "nearForegroundPixels": 6870,
+      "farForegroundPixels": 6857,
+      "observedMix": true,
+      "hasCoverage": true,
+      "stable": true
+    }
+  ],
+  "failures": [],
+  "note": "Frozen animation and a fixed camera per comparison. RGB differences use a foreground mask against an empty render, including shadows. Automatic LODs are compared with forced endpoints outside blend bands; crossfade is observed as a stable nonempty image distinct from both endpoints. Cull tests sit at 90% of the final threshold and disable fading only for their forced-LOD2 positive control; the automatic render retains the original crossfade mode. Higher capture resolution keeps that control visible at LOD bias 2. This is not an FPS benchmark or proof for every viewpoint."
+}

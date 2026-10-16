@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "caseCount": 5,
+  "results": [
+    {
+      "FullName": "Arkya.World.Environment.Tests.OceanWaveMathTests.BoundaryAndShallowWaterTransitionsAreContinuous",
+      "Status": "Passed",
+      "Duration": 0.0027077,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.World.Environment.Tests.OceanWaveMathTests.DryLandAndZeroDepthStayStill",
+      "Status": "Passed",
+      "Duration": 0.0005236,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.World.Environment.Tests.OceanWaveMathTests.VioletWavesHaveMoreReliefAtTheSamePointAndClock",
+      "Status": "Passed",
+      "Duration": 0.0003192,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.World.Environment.Tests.OceanWaveMathTests.WaveHeightsRemainInsideTheAuthoredAmplitudeBudgets",
+      "Status": "Passed",
+      "Duration": 0.0049422,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.World.Environment.Tests.OceanWaveMathTests.ZeroSpeedFreezesTheWaveAndPatchEdgesMeetTheFlatOcean",
+      "Status": "Passed",
+      "Duration": 0.0004861,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "dresse-mystique",
+  "shape": "dresse",
+  "material": "mystique",
+  "label": "Buisson dressé · Mystique",
+  "glb": "assets/dresse-mystique/dresse-mystique.glb",
+  "blend": "assets/dresse-mystique/dresse-mystique.blend",
+  "preview": "assets/dresse-mystique/dresse-mystique-preview.png",
+  "height": 1.8,
+  "width": 1.2362,
+  "depth": 1.1086,
+  "triangles": 36904,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}

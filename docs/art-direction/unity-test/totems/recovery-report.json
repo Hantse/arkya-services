@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "unity": "6000.6.6f1",
+  "projectReopened": true,
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "dirty": false,
+  "playing": false,
+  "compiling": false,
+  "shaderErrors": [],
+  "removedOptionalGalleryAssets": [
+    {
+      "path": "Assets/Arkya/Totems/Scenes/TotemGallery.unity",
+      "deleted": true
+    },
+    {
+      "path": "Assets/Arkya/Totems/Scenes",
+      "deleted": true
+    },
+    {
+      "path": "Assets/Arkya/Totems/Materials/GalleryFloor.mat",
+      "deleted": true
+    },
+    {
+      "path": "Assets/Arkya/Totems/Materials/GalleryPedestal.mat",
+      "deleted": true
+    }
+  ],
+  "prefabCount": 26
+}

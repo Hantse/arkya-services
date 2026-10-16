@@ -1,0 +1,19 @@
+{
+  "id": "rosette-corail",
+  "shape": "rosette",
+  "material": "corail",
+  "label": "Rosette basse · Corail abricot",
+  "glb": "assets/rosette-corail/rosette-corail.glb",
+  "blend": "assets/rosette-corail/rosette-corail.blend",
+  "preview": "assets/rosette-corail/rosette-corail-preview.png",
+  "height": 0.2,
+  "width": 0.3319,
+  "depth": 0.283,
+  "triangles": 6784,
+  "texture_resolution": [
+    2048,
+    2048
+  ],
+  "opaque": true,
+  "pivot": "centre au sol"
+}
