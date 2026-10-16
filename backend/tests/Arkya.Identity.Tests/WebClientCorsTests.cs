@@ -98,7 +98,8 @@ public sealed class WebClientCorsTests
     public async Task InvalidOriginConfigurationFailsStartup(string origin)
     {
         await using var factory = new IdentityFactory { WebClientOrigins = [origin] };
-        Assert.Throws<OptionsValidationException>(() => factory.BrowserClient());
+        var error = Assert.Throws<OptionsValidationException>(() => factory.BrowserClient());
+        Assert.Equal(typeof(WebClientOptions), error.OptionsType);
     }
 
     [Theory]
@@ -113,7 +114,8 @@ public sealed class WebClientCorsTests
         await using var factory = new IdentityFactory { WebClientOrigins = [origin], EnvironmentName = environment };
         if (!allowed)
         {
-            Assert.Throws<OptionsValidationException>(() => factory.BrowserClient());
+            var error = Assert.Throws<OptionsValidationException>(() => factory.BrowserClient());
+            Assert.Equal(typeof(WebClientOptions), error.OptionsType);
             return;
         }
         using var client = factory.BrowserClient();

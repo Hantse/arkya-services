@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
 
 namespace Arkya.Identity.Tests;
 
@@ -151,6 +152,32 @@ internal sealed class IdentityFactory : WebApplicationFactory<global::Program>
     public MutableTimeProvider Clock { get; } = new();
     public FakeDiscordIdentityClient Discord { get; } = new();
     public FakeDiscordSocialClient Social { get; } = new();
+
+    protected override IHost CreateHost(IHostBuilder builder)
+    {
+        var observerReady = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        builder.ConfigureServices(services => services.AddSingleton<IHostLifetime>(new StartupGateLifetime(observerReady.Task)));
+        var host = builder.Build();
+        try
+        {
+            // Register the factory's startup observer before validation can fail and app.Run disposes the host.
+            var startup = host.StartAsync();
+            observerReady.SetResult();
+            startup.GetAwaiter().GetResult();
+            return host;
+        }
+        catch
+        {
+            host.Dispose();
+            throw;
+        }
+    }
+
+    private sealed class StartupGateLifetime(Task observerReady) : IHostLifetime
+    {
+        public Task WaitForStartAsync(CancellationToken cancellationToken) => observerReady.WaitAsync(cancellationToken);
+        public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
+    }
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
