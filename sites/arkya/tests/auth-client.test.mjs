@@ -1,0 +1,362 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { webcrypto, createHash } from 'node:crypto';
+import { createAuthClient } from '../dist/auth-client.mjs';
+
+const API = 'https://identity.arkya.online';
+const SITE = 'https://arkya.online';
+const KEY = 'arkya-session-v1';
+const START = Date.parse('2026-10-16T12:00:00Z');
+const ID = '197d1fa3-83c2-45cb-bb26-f4b574e88ee8';
+const CHALLENGE_ID = '5f91daa3df9047cb8a893f577bf50892';
+const TOKEN = 'S'.repeat(43);
+
+function memoryStorage(initial = {}) {
+  const data = new Map(Object.entries(initial));
+  return { getItem: (key) => data.get(key) ?? null, setItem: (key, value) => data.set(key, value), removeItem: (key) => data.delete(key), data };
+}
+
+function json(value, status = 200, headers = {}) {
+  return new Response(JSON.stringify(value), { status, headers: { 'Content-Type': 'application/json', ...headers } });
+}
+
+function challenge(overrides = {}) {
+  return { challengeId: CHALLENGE_ID, authorizationUrl: `${API}/v1/auth/discord/authorize/${CHALLENGE_ID}`,
+    expiresAt: new Date(START + 300000).toISOString(), pollIntervalSeconds: 5, ...overrides };
+}
+
+function account(overrides = {}) {
+  return { accountId: ID, displayName: 'Explorateur', sessionToken: TOKEN,
+    expiresAt: new Date(START + 3600000).toISOString(), ...overrides };
+}
+
+function stored(overrides = {}) {
+  return JSON.stringify({ version: 1, apiOrigin: API, ...account(), ...overrides });
+}
+
+function fixture({ responses = [], storage = memoryStorage(), ...options } = {}) {
+  let time = START;
+  const calls = [];
+  const fetchImpl = async (url, init) => {
+    calls.push({ url, init });
+    const next = responses.shift();
+    if (typeof next === 'function') return next(url, init);
+    if (next instanceof Error) throw next;
+    assert.ok(next, `Unexpected request: ${url}`);
+    return next;
+  };
+  const client = createAuthClient({ baseUrl: API, siteOrigin: SITE, cryptoImpl: webcrypto,
+    now: () => time, storage, fetchImpl, ...options });
+  return { client, calls, storage, advance: (ms) => { time += ms; } };
+}
+
+test('public configuration only accepts a safe HTTPS origin', () => {
+  const bad = [undefined, '', 'no url', 'http://identity.arkya.online', 'https://user:pass@identity.arkya.online',
+    `${API}/prefix`, `${API}?`, `${API}#`, `${API}/?x=y`, `${API}/#a`, ` ${API}`, `${API}\\foo`,
+    'https://localhost:7141', 'https://localhost.:7141', 'https://login.localhost',
+    'https://127.0.0.1', 'https://2130706433', 'https://0x7f000001', 'https://10.1.2.3', 'https://172.16.1.1',
+    'https://172.31.255.255', 'https://192.168.1.1', 'https://169.254.169.254', 'https://100.64.0.1',
+    'https://[::1]', 'https://[fd00::1]', 'https://[fe80::1]', 'https://[::ffff:127.0.0.1]'];
+  for (const baseUrl of bad) assert.equal(fixture({ baseUrl }).client.available, false, String(baseUrl));
+  for (const baseUrl of [API, `${API}/`, 'https://identity.arkya.online:8443', 'https://203.0.113.10']) {
+    assert.equal(fixture({ baseUrl }).client.available, true, baseUrl);
+  }
+});
+
+test('development permits local Identity only from a loopback site', () => {
+  for (const baseUrl of ['https://localhost:7141', 'http://127.0.0.1:7141', 'http://[::1]:7141']) {
+    assert.equal(fixture({ baseUrl, siteOrigin: 'http://127.0.0.1:51806' }).client.available, true);
+  }
+  assert.equal(fixture({ baseUrl: 'http://identity.arkya.online', siteOrigin: 'http://localhost:51806' }).client.available, false);
+  assert.equal(fixture({ baseUrl: 'https://localhost:7141', siteOrigin: 'https://127.evil.test' }).client.available, false);
+  assert.equal(fixture({ baseUrl: 'http://127.evil.test', siteOrigin: 'http://localhost:51806' }).client.available, false);
+});
+
+test('unconfigured client fails closed without a request', async () => {
+  const { client, calls } = fixture({ baseUrl: '' });
+  assert.equal(await client.restore(), null);
+  assert.equal(client.session(), null);
+  await assert.rejects(client.begin(), { code: 'unavailable' });
+  await assert.rejects(client.poll(), { code: 'unavailable' });
+  assert.deepEqual(await client.logout(), { revoked: false });
+  assert.equal(calls.length, 0);
+});
+
+test('S256 proof is random, bound to its verifier and not in public return values or storage', async () => {
+  const { client, calls, storage, advance } = fixture({ responses: [json(challenge()), json({ status: 'pending' }, 202)] });
+  const started = await client.begin();
+  assert.deepEqual(Object.keys(started).sort(), ['authorizationUrl', 'expiresAt', 'pollIntervalSeconds']);
+  assert.deepEqual(await client.poll(), { status: 'pending', pollIntervalSeconds: 5 });
+  assert.equal(calls.length, 1);
+  advance(5000);
+  await client.poll();
+  const proof = JSON.parse(calls[0].init.body);
+  const exchange = JSON.parse(calls[1].init.body);
+  assert.equal(Object.keys(proof).join(), 'codeChallenge');
+  assert.match(exchange.codeVerifier, /^[A-Za-z0-9_-]{43}$/);
+  assert.equal(Buffer.from(exchange.codeVerifier, 'base64url').length, 32);
+  assert.equal(proof.codeChallenge, createHash('sha256').update(exchange.codeVerifier).digest('base64url'));
+  assert.equal(exchange.challengeId, CHALLENGE_ID);
+  assert.equal(storage.data.size, 0);
+  assert.ok(!JSON.stringify(started).includes(exchange.codeVerifier));
+  assert.equal(client.session(), null);
+});
+
+test('requests omit cookies/referrer, disable redirects and caching, and include cancellation', async () => {
+  const { client, calls } = fixture({ responses: [json(challenge())] });
+  await client.begin();
+  const { url, init } = calls[0];
+  assert.equal(url, `${API}/v1/auth/discord/challenges`);
+  assert.equal(init.method, 'POST');
+  assert.equal(init.credentials, 'omit');
+  assert.equal(init.redirect, 'error');
+  assert.equal(init.cache, 'no-store');
+  assert.equal(init.referrerPolicy, 'no-referrer');
+  assert.equal(init.referrer, '');
+  assert.ok(init.signal instanceof AbortSignal);
+  assert.equal(init.headers.Authorization, undefined);
+});
+
+test('challenge validation rejects foreign and disguised authorization URLs', async () => {
+  const urls = [`https://evil.test/v1/auth/discord/authorize/${CHALLENGE_ID}`,
+    `${API}/v1/auth/discord/callback`, `${API}/v1/auth/discord/authorize/other`,
+    `${API}/v1/auth/discord/authorize/${CHALLENGE_ID}?next=evil`, `${API}/v1/auth/discord/authorize/${CHALLENGE_ID}#evil`,
+    `https://name@identity.arkya.online/v1/auth/discord/authorize/${CHALLENGE_ID}`,
+    `${API}/v1/auth/discord/authorize/../authorize/${CHALLENGE_ID}`];
+  for (const authorizationUrl of urls) {
+    const { client } = fixture({ responses: [json(challenge({ authorizationUrl }))] });
+    await assert.rejects(client.begin(), { code: 'invalid_response' });
+    assert.equal((await client.poll()).status, 'expired');
+  }
+});
+
+test('challenge validation rejects malformed IDs, interval and excessive or expired lifetime', async () => {
+  for (const overrides of [{ challengeId: '../x' }, { challengeId: null }, { challengeId: [CHALLENGE_ID] }, { pollIntervalSeconds: 0 },
+    { pollIntervalSeconds: 4 }, { pollIntervalSeconds: '5' }, { pollIntervalSeconds: 5.5 },
+    { expiresAt: 'bad' }, { expiresAt: START + 1000 }, { expiresAt: new Date(START).toISOString() },
+    { expiresAt: new Date(START + 331000).toISOString() }]) {
+    const { client } = fixture({ responses: [json(challenge(overrides))] });
+    await assert.rejects(client.begin(), { code: 'invalid_response' });
+  }
+});
+
+test('polling respects intervals and Retry-After without sending early requests', async () => {
+  const { client, calls, advance } = fixture({ responses: [json(challenge()), json({ status: 'pending' }, 202, { 'Retry-After': '10' }), json(account())] });
+  await client.begin();
+  advance(4999);
+  assert.equal((await client.poll()).status, 'pending');
+  assert.equal(calls.length, 1);
+  advance(1);
+  assert.deepEqual(await client.poll(), { status: 'pending', pollIntervalSeconds: 10 });
+  advance(9999);
+  assert.equal((await client.poll()).status, 'pending');
+  assert.equal(calls.length, 2);
+  advance(1);
+  assert.equal((await client.poll()).status, 'authenticated');
+  assert.equal(calls.length, 3);
+});
+
+test('a successful exchange stores only the Arkya session with origin and expiry', async () => {
+  const { client, storage, advance } = fixture({ responses: [json(challenge()), json({ ...account(), accessToken: 'never-copy-this-discord-token' })] });
+  await client.begin();
+  advance(5000);
+  const result = await client.poll();
+  assert.equal(result.status, 'authenticated');
+  assert.deepEqual(result.session, { accountId: ID, displayName: 'Explorateur', expiresAt: account().expiresAt });
+  assert.deepEqual(client.session(), result.session);
+  assert.ok(!JSON.stringify(result).includes(TOKEN));
+  assert.ok(!JSON.stringify(client.session()).includes('Token'));
+  const saved = JSON.parse(storage.getItem(KEY));
+  assert.deepEqual(saved, JSON.parse(stored()));
+  assert.ok(!storage.getItem(KEY).includes('never-copy-this'));
+  result.session.displayName = 'modified externally';
+  assert.equal(client.session().displayName, 'Explorateur');
+});
+
+test('expired challenges stop polling locally and server 410 becomes an expired result', async () => {
+  const local = fixture({ responses: [json(challenge())] });
+  await local.client.begin();
+  local.advance(300000);
+  assert.equal((await local.client.poll()).status, 'expired');
+  assert.equal(local.calls.length, 1);
+  const remote = fixture({ responses: [json(challenge()), json({ code: 'challenge_expired_or_consumed' }, 410)] });
+  await remote.client.begin();
+  remote.advance(5000);
+  assert.equal((await remote.client.poll()).status, 'expired');
+  assert.equal(remote.client.session(), null);
+});
+
+test('bad proof and nonpending 202 fail closed and expose no response details', async () => {
+  for (const response of [json({ code: 'private token from server' }, 400), json({ status: 'completed' }, 202)]) {
+    const { client, advance } = fixture({ responses: [json(challenge()), response] });
+    await client.begin();
+    advance(5000);
+    await assert.rejects(client.poll(), (error) => {
+      assert.ok(['rejected', 'invalid_response'].includes(error.code));
+      assert.ok(!error.message.includes('private token'));
+      return true;
+    });
+    assert.equal(client.session(), null);
+    assert.equal((await client.poll()).status, 'expired');
+  }
+});
+
+test('exchange rejects malformed sessions and lifetimes above eight hours', async () => {
+  for (const overrides of [{ accountId: 'discord-user-id' }, { accountId: null }, { accountId: [ID] }, { displayName: '' },
+    { displayName: '\nprivate' }, { displayName: 'X'.repeat(129) }, { sessionToken: 'short' }, { sessionToken: [TOKEN] },
+    { expiresAt: new Date(START + 5000).toISOString() }, { expiresAt: new Date(START + 8 * 3600000 + 6000).toISOString() }]) {
+    const { client, storage, advance } = fixture({ responses: [json(challenge()), json(account(overrides))] });
+    await client.begin();
+    advance(5000);
+    await assert.rejects(client.poll(), { code: 'invalid_response' });
+    assert.equal(client.session(), null);
+    assert.equal(storage.getItem(KEY), null);
+  }
+});
+
+test('restore verifies a stored bearer with /me before exposing the account', async () => {
+  const storage = memoryStorage({ [KEY]: stored() });
+  const { client, calls } = fixture({ storage, responses: [json(account({ displayName: 'Nouveau nom' }))] });
+  assert.equal(client.session(), null);
+  const result = await client.restore();
+  assert.equal(result.displayName, 'Nouveau nom');
+  assert.equal(calls[0].url, `${API}/v1/auth/me`);
+  assert.equal(calls[0].init.headers.Authorization, `Bearer ${TOKEN}`);
+  assert.equal(calls[0].init.method, 'GET');
+  assert.ok(!JSON.stringify(result).includes(TOKEN));
+});
+
+test('restore removes expired, malformed, foreign-origin and unversioned storage without a request', async () => {
+  for (const value of ['{', 'null', stored({ apiOrigin: 'https://evil.test' }), stored({ version: 2 }),
+    stored({ expiresAt: new Date(START).toISOString() }), stored({ sessionToken: 'wrong' }),
+    stored({ expiresAt: new Date(START + 9 * 3600000).toISOString() })]) {
+    const { client, calls, storage } = fixture({ storage: memoryStorage({ [KEY]: value }) });
+    assert.equal(await client.restore(), null);
+    assert.equal(client.session(), null);
+    assert.equal(calls.length, 0);
+    if (value !== 'null') assert.equal(storage.getItem(KEY), null);
+  }
+});
+
+test('restore clears a rejected session and account mismatches', async () => {
+  const rejected = fixture({ storage: memoryStorage({ [KEY]: stored() }), responses: [new Response(null, { status: 401 })] });
+  assert.equal(await rejected.client.restore(), null);
+  assert.equal(rejected.storage.getItem(KEY), null);
+  const mismatch = fixture({ storage: memoryStorage({ [KEY]: stored() }), responses: [json(account({ accountId: '297d1fa3-83c2-45cb-bb26-f4b574e88ee8' }))] });
+  await assert.rejects(mismatch.client.restore(), { code: 'invalid_response' });
+  assert.equal(mismatch.client.session(), null);
+  assert.equal(mismatch.storage.getItem(KEY), null);
+});
+
+test('restore does not allow the server response to extend a saved session', async () => {
+  const { client, storage } = fixture({ storage: memoryStorage({ [KEY]: stored() }),
+    responses: [json(account({ expiresAt: new Date(START + 7200000).toISOString() }))] });
+  await assert.rejects(client.restore(), { code: 'invalid_response' });
+  assert.equal(client.session(), null);
+  assert.equal(storage.getItem(KEY), null);
+});
+
+test('a failed restore keeps the credential for retry but never claims authentication', async () => {
+  const { client, storage } = fixture({ storage: memoryStorage({ [KEY]: stored() }), responses: [new Error('secret network data'), json(account())] });
+  await assert.rejects(client.restore(), { code: 'network', message: 'network' });
+  assert.equal(client.session(), null);
+  assert.ok(storage.getItem(KEY));
+  assert.equal((await client.restore()).accountId, ID);
+});
+
+test('blocked browser storage falls back to memory, including revocation', async () => {
+  const blocked = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); }, removeItem() { throw new Error('blocked'); } };
+  const { client, advance } = fixture({ storage: blocked, responses: [json(challenge()), json(account()), new Response(null, { status: 204 })] });
+  assert.equal(await client.restore(), null);
+  await client.begin();
+  advance(5000);
+  assert.equal((await client.poll()).status, 'authenticated');
+  assert.equal(client.session().accountId, ID);
+  assert.deepEqual(await client.logout(), { revoked: true });
+  assert.equal(client.session(), null);
+});
+
+test('logout revokes the bearer and always clears the local session', async () => {
+  for (const response of [new Response(null, { status: 204 }), new Response(null, { status: 401 }), new Error('offline')]) {
+    const { client, calls, storage } = fixture({ storage: memoryStorage({ [KEY]: stored() }), responses: [json(account()), response] });
+    await client.restore();
+    const result = await client.logout();
+    assert.equal(result.revoked, !(response instanceof Error));
+    assert.equal(client.session(), null);
+    assert.equal(storage.getItem(KEY), null);
+    assert.equal(calls[1].url, `${API}/v1/auth/logout`);
+    assert.equal(calls[1].init.method, 'POST');
+    assert.equal(calls[1].init.headers.Authorization, `Bearer ${TOKEN}`);
+    assert.equal(calls[1].init.body, undefined);
+  }
+});
+
+test('session expiry is checked on every public read', async () => {
+  const { client, storage, advance } = fixture({ storage: memoryStorage({ [KEY]: stored() }), responses: [json(account())] });
+  await client.restore();
+  advance(3600000);
+  assert.equal(client.session(), null);
+  assert.equal(storage.getItem(KEY), null);
+});
+
+test('cancel leaves an authenticated session intact and discards a pending proof', async () => {
+  const { client, calls } = fixture({ storage: memoryStorage({ [KEY]: stored() }), responses: [json(account()), json(challenge())] });
+  await client.restore();
+  await client.begin();
+  client.cancel();
+  assert.equal(client.session().accountId, ID);
+  assert.equal((await client.poll()).status, 'expired');
+  assert.equal(calls.length, 2);
+});
+
+test('concurrent polls share one exchange and cancellation ignores a late reply', async () => {
+  let finish;
+  const { client, calls, advance, storage } = fixture({ responses: [json(challenge()), () => new Promise((resolve) => { finish = resolve; })] });
+  await client.begin();
+  advance(5000);
+  const first = client.poll();
+  const second = client.poll();
+  assert.equal(calls.length, 2);
+  client.cancel();
+  assert.equal(calls[1].init.signal.aborted, true);
+  finish(json(account()));
+  await assert.rejects(first, { code: 'cancelled' });
+  await assert.rejects(second, { code: 'cancelled' });
+  assert.equal(client.session(), null);
+  assert.equal(storage.getItem(KEY), null);
+});
+
+test('logout cannot be undone by an in-flight restore', async () => {
+  let finish;
+  const { client, storage } = fixture({ storage: memoryStorage({ [KEY]: stored() }),
+    responses: [() => new Promise((resolve) => { finish = resolve; }), new Response(null, { status: 204 })] });
+  const restoring = client.restore();
+  assert.deepEqual(await client.logout(), { revoked: true });
+  finish(json(account()));
+  await assert.rejects(restoring, { code: 'cancelled' });
+  assert.equal(client.session(), null);
+  assert.equal(storage.getItem(KEY), null);
+});
+
+test('malformed JSON and response redirects are rejected without accepting a challenge', async () => {
+  const redirected = json(challenge());
+  Object.defineProperty(redirected, 'redirected', { value: true });
+  const wrongEndpoint = json(challenge());
+  Object.defineProperty(wrongEndpoint, 'url', { value: `${API}/unexpected` });
+  for (const response of [redirected, wrongEndpoint, new Response('not JSON', { headers: { 'Content-Type': 'application/json' } }), new Response('<h1>login</h1>')]) {
+    const { client } = fixture({ responses: [response] });
+    await assert.rejects(client.begin(), { code: 'invalid_response' });
+    assert.equal(client.session(), null);
+  }
+});
+
+test('a transient exchange error can be retried after the minimum interval', async () => {
+  const { client, advance, calls } = fixture({ responses: [json(challenge()), new Error('offline'), json(account())] });
+  await client.begin();
+  advance(5000);
+  await assert.rejects(client.poll(), { code: 'network' });
+  assert.equal((await client.poll()).status, 'pending');
+  assert.equal(calls.length, 2);
+  advance(5000);
+  assert.equal((await client.poll()).status, 'authenticated');
+});

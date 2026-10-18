@@ -63,7 +63,8 @@ public static class GatewayExtensions
                     if (header.Equals("Forwarded", StringComparison.OrdinalIgnoreCase)
                         || header.StartsWith("X-Forwarded-", StringComparison.OrdinalIgnoreCase)
                         || header.StartsWith("X-Original-", StringComparison.OrdinalIgnoreCase)
-                        || header.Equals("X-Arkya-Service-Key", StringComparison.OrdinalIgnoreCase))
+                        || header.Equals("X-Arkya-Service-Key", StringComparison.OrdinalIgnoreCase)
+                        || header.Equals("X-Arkya-Dedicated-Key", StringComparison.OrdinalIgnoreCase))
                         transform.ProxyRequest.Headers.Remove(header);
                 }
                 var request = transform.HttpContext.Request;

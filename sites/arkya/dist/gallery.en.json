@@ -1,0 +1,2431 @@
+{
+  "cailloux-01-galet-01-gris-bleu": {
+    "title": "Compact pebble · Blue-grey stone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Compact pebble",
+      "Blue-grey stone",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-nodule-fer": {
+    "title": "Nodule · Steel-toned iron",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Nodule",
+      "Steel-toned iron",
+      "3D render"
+    ]
+  },
+  "cristaux-eclat-azur": {
+    "title": "Shard · Azure",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Shard",
+      "Azure",
+      "3D render"
+    ]
+  },
+  "buissons-coussin-sylvestre": {
+    "title": "Low cushion · Forest green",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Low cushion",
+      "Forest green",
+      "3D render"
+    ]
+  },
+  "herbes-rase-prairie": {
+    "title": "Short tuft · Green meadow",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Short tuft",
+      "Green meadow",
+      "3D render"
+    ]
+  },
+  "champignons-boutons-corail": {
+    "title": "Button mushroom colony · Cream coral",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Button mushroom colony",
+      "Cream coral",
+      "3D render"
+    ]
+  },
+  "fleurs-rosette-corail": {
+    "title": "Low rosette · Apricot coral",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Low rosette",
+      "Apricot coral",
+      "3D render"
+    ]
+  },
+  "souches-basse-moussu": {
+    "title": "Low stump · Ancient moss",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Low stump",
+      "Ancient moss",
+      "3D render"
+    ]
+  },
+  "troncs-couches-billot-moussu": {
+    "title": "Short log · Ancient moss",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Short log",
+      "Ancient moss",
+      "3D render"
+    ]
+  },
+  "mares-de-mana-mare-bleue": {
+    "title": "Mana pool · Azure blue mana",
+    "collection": "Mana pools",
+    "description": "A painted surface with matching wisps and droplets. Still preview of an animated model.",
+    "origin": "Blender render",
+    "tags": [
+      "Mana pools",
+      "Mana pool",
+      "Azure blue mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-azur": {
+    "title": "Summoned axe · Azure mana · 0 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "structures-fondation-chaume": {
+    "title": "Foundation · Thatch",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Foundation",
+      "Thatch",
+      "3D render"
+    ]
+  },
+  "reference-reference-moussu": {
+    "title": "Reference tree · Ancient moss",
+    "collection": "Trees · V3 materials",
+    "description": "Approved V3 painted finish: the reference for the forms and surfaces of Arkya’s objects.",
+    "origin": "Blender render",
+    "tags": [
+      "Trees · V3 materials",
+      "Reference tree",
+      "Ancient moss",
+      "3D render"
+    ]
+  },
+  "gameplay-aube": {
+    "title": "Realms of Dawn · gameplay view",
+    "collection": "World explorations",
+    "description": "Pale stone, terracotta, teal fabrics and warm light. Generated gameplay simulation; this is not a Unity screenshot.",
+    "origin": "Generated concept",
+    "tags": [
+      "concept",
+      "gameplay",
+      "third person"
+    ]
+  },
+  "gameplay-ether": {
+    "title": "Aether Cities · gameplay view",
+    "collection": "World explorations",
+    "description": "Ivory, bronze, coral and turquoise create a luminous fantasy world. Generated gameplay simulation; this is not a Unity screenshot.",
+    "origin": "Generated concept",
+    "tags": [
+      "concept",
+      "gameplay",
+      "third person"
+    ]
+  },
+  "gameplay-anciens": {
+    "title": "Lands of the Ancients · gameplay view",
+    "collection": "World explorations",
+    "description": "Carved wood, an enveloping forest and the warm lights of inhabited places. Generated gameplay simulation; this is not a Unity screenshot.",
+    "origin": "Generated concept",
+    "tags": [
+      "concept",
+      "gameplay",
+      "third person"
+    ]
+  },
+  "hud-cuivre-v3": {
+    "title": "HUD V3 · Ink & copper",
+    "collection": "HUD V3",
+    "description": "A generated mockup over a Unity forest background: a simplified HUD, compact party display, objectives without a panel and two action bars. Interface not implemented.",
+    "origin": "Generated concept",
+    "tags": [
+      "HUD",
+      "V3",
+      "Ink & copper",
+      "mockup"
+    ]
+  },
+  "hud-carnet-v3": {
+    "title": "HUD V3 · Explorer’s journal",
+    "collection": "HUD V3",
+    "description": "A generated mockup over a Unity forest background: a simplified HUD, compact party display, objectives without a panel and two action bars. Interface not implemented.",
+    "origin": "Generated concept",
+    "tags": [
+      "HUD",
+      "V3",
+      "Explorer’s journal",
+      "mockup"
+    ]
+  },
+  "hud-mana-v3": {
+    "title": "HUD V3 · Mana stone",
+    "collection": "HUD V3",
+    "description": "A generated mockup over a Unity forest background: a simplified HUD, compact party display, objectives without a panel and two action bars. Interface not implemented.",
+    "origin": "Generated concept",
+    "tags": [
+      "HUD",
+      "V3",
+      "Mana stone",
+      "mockup"
+    ]
+  },
+  "atelier-humain": {
+    "title": "Origins workshop · Human",
+    "collection": "Origins workshop",
+    "description": "A customizable study: silhouette, height, skin, hair, eyes and fabric. Art proposal from the appearance viewer.",
+    "origin": "Appearance workshop screenshot",
+    "tags": [
+      "character",
+      "Human",
+      "appearance"
+    ]
+  },
+  "atelier-elfe": {
+    "title": "Origins workshop · Elf",
+    "collection": "Origins workshop",
+    "description": "A customizable study: silhouette, height, skin, hair, eyes and fabric. Art proposal from the appearance viewer.",
+    "origin": "Appearance workshop screenshot",
+    "tags": [
+      "character",
+      "Elf",
+      "appearance"
+    ]
+  },
+  "ile-overview": {
+    "title": "The starter island · overview",
+    "collection": "Starter island · Unity",
+    "description": "The prototype terrain and its exploration route for levels 1 to 6. Actual engine screenshot; environment in development.",
+    "origin": "Unity screenshot",
+    "tags": [
+      "island",
+      "Unity",
+      "prototype"
+    ]
+  },
+  "ile-environment-forest-day": {
+    "title": "The forest floor · daylight",
+    "collection": "Starter island · Unity",
+    "description": "Painted trees shape the landscape of the Unity prototype. Actual engine screenshot; environment in development.",
+    "origin": "Unity screenshot",
+    "tags": [
+      "island",
+      "Unity",
+      "prototype"
+    ]
+  },
+  "ile-environment-refuge-day": {
+    "title": "The refuge · daylight",
+    "collection": "Starter island · Unity",
+    "description": "A modular shelter in the prototype’s forest. Actual engine screenshot; environment in development.",
+    "origin": "Unity screenshot",
+    "tags": [
+      "island",
+      "Unity",
+      "prototype"
+    ]
+  },
+  "cailloux-01-galet-02-gres-chaud": {
+    "title": "Compact pebble · Warm sandstone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Compact pebble",
+      "Warm sandstone",
+      "3D render"
+    ]
+  },
+  "cailloux-01-galet-03-moussu": {
+    "title": "Compact pebble · Mossy stone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Compact pebble",
+      "Mossy stone",
+      "3D render"
+    ]
+  },
+  "cailloux-02-bloc-oblique-01-gris-bleu": {
+    "title": "Slanted block · Blue-grey stone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Slanted block",
+      "Blue-grey stone",
+      "3D render"
+    ]
+  },
+  "cailloux-02-bloc-oblique-02-gres-chaud": {
+    "title": "Slanted block · Warm sandstone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Slanted block",
+      "Warm sandstone",
+      "3D render"
+    ]
+  },
+  "cailloux-02-bloc-oblique-03-moussu": {
+    "title": "Slanted block · Mossy stone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Slanted block",
+      "Mossy stone",
+      "3D render"
+    ]
+  },
+  "cailloux-03-rocher-large-01-gris-bleu": {
+    "title": "Broad rock · Blue-grey stone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Broad rock",
+      "Blue-grey stone",
+      "3D render"
+    ]
+  },
+  "cailloux-03-rocher-large-02-gres-chaud": {
+    "title": "Broad rock · Warm sandstone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Broad rock",
+      "Warm sandstone",
+      "3D render"
+    ]
+  },
+  "cailloux-03-rocher-large-03-moussu": {
+    "title": "Broad rock · Mossy stone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Broad rock",
+      "Mossy stone",
+      "3D render"
+    ]
+  },
+  "cailloux-04-affleurement-01-gris-bleu": {
+    "title": "Outcrop · Blue-grey stone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Outcrop",
+      "Blue-grey stone",
+      "3D render"
+    ]
+  },
+  "cailloux-04-affleurement-02-gres-chaud": {
+    "title": "Outcrop · Warm sandstone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Outcrop",
+      "Warm sandstone",
+      "3D render"
+    ]
+  },
+  "cailloux-04-affleurement-03-moussu": {
+    "title": "Outcrop · Mossy stone",
+    "collection": "Stones",
+    "description": "Matte stone, weathered forms and softened edges.",
+    "origin": "Blender render",
+    "tags": [
+      "Stones",
+      "Outcrop",
+      "Mossy stone",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-nodule-cuivre": {
+    "title": "Nodule · Patinated copper",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Nodule",
+      "Patinated copper",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-nodule-or": {
+    "title": "Nodule · Stylized gold",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Nodule",
+      "Stylized gold",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-bloc-fendu-fer": {
+    "title": "Split block · Steel-toned iron",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Split block",
+      "Steel-toned iron",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-bloc-fendu-cuivre": {
+    "title": "Split block · Patinated copper",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Split block",
+      "Patinated copper",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-bloc-fendu-or": {
+    "title": "Split block · Stylized gold",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Split block",
+      "Stylized gold",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-filon-oblique-fer": {
+    "title": "Slanted vein · Steel-toned iron",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Slanted vein",
+      "Steel-toned iron",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-filon-oblique-cuivre": {
+    "title": "Slanted vein · Patinated copper",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Slanted vein",
+      "Patinated copper",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-filon-oblique-or": {
+    "title": "Slanted vein · Stylized gold",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Slanted vein",
+      "Stylized gold",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-affleurement-fer": {
+    "title": "Outcrop · Steel-toned iron",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Outcrop",
+      "Steel-toned iron",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-affleurement-cuivre": {
+    "title": "Outcrop · Patinated copper",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Outcrop",
+      "Patinated copper",
+      "3D render"
+    ]
+  },
+  "roches-metalliferes-affleurement-or": {
+    "title": "Outcrop · Stylized gold",
+    "collection": "Ore-bearing rocks",
+    "description": "Metal veins and inclusions embedded in painted rock.",
+    "origin": "Blender render",
+    "tags": [
+      "Ore-bearing rocks",
+      "Outcrop",
+      "Stylized gold",
+      "3D render"
+    ]
+  },
+  "cristaux-eclat-amethyste": {
+    "title": "Shard · Amethyst",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Shard",
+      "Amethyst",
+      "3D render"
+    ]
+  },
+  "cristaux-eclat-ambre": {
+    "title": "Shard · Amber",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Shard",
+      "Amber",
+      "3D render"
+    ]
+  },
+  "cristaux-bouquet-azur": {
+    "title": "Cluster · Azure",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Cluster",
+      "Azure",
+      "3D render"
+    ]
+  },
+  "cristaux-bouquet-amethyste": {
+    "title": "Cluster · Amethyst",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Cluster",
+      "Amethyst",
+      "3D render"
+    ]
+  },
+  "cristaux-bouquet-ambre": {
+    "title": "Cluster · Amber",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Cluster",
+      "Amber",
+      "3D render"
+    ]
+  },
+  "cristaux-geode-azur": {
+    "title": "Open geode · Azure",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Open geode",
+      "Azure",
+      "3D render"
+    ]
+  },
+  "cristaux-geode-amethyste": {
+    "title": "Open geode · Amethyst",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Open geode",
+      "Amethyst",
+      "3D render"
+    ]
+  },
+  "cristaux-geode-ambre": {
+    "title": "Open geode · Amber",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Open geode",
+      "Amber",
+      "3D render"
+    ]
+  },
+  "cristaux-maitresse-azur": {
+    "title": "Main formation · Azure",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Main formation",
+      "Azure",
+      "3D render"
+    ]
+  },
+  "cristaux-maitresse-amethyste": {
+    "title": "Main formation · Amethyst",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Main formation",
+      "Amethyst",
+      "3D render"
+    ]
+  },
+  "cristaux-maitresse-ambre": {
+    "title": "Main formation · Amber",
+    "collection": "Crystals",
+    "description": "Colourful formations with carefully shaped edges and a restrained glow.",
+    "origin": "Blender render",
+    "tags": [
+      "Crystals",
+      "Main formation",
+      "Amber",
+      "3D render"
+    ]
+  },
+  "buissons-coussin-automnal": {
+    "title": "Low cushion · Autumnal",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Low cushion",
+      "Autumnal",
+      "3D render"
+    ]
+  },
+  "buissons-coussin-mystique": {
+    "title": "Low cushion · Mystic",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Low cushion",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "buissons-rond-sylvestre": {
+    "title": "Round bush · Forest green",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Round bush",
+      "Forest green",
+      "3D render"
+    ]
+  },
+  "buissons-rond-automnal": {
+    "title": "Round bush · Autumnal",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Round bush",
+      "Autumnal",
+      "3D render"
+    ]
+  },
+  "buissons-rond-mystique": {
+    "title": "Round bush · Mystic",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Round bush",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "buissons-etale-sylvestre": {
+    "title": "Spreading bush · Forest green",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Spreading bush",
+      "Forest green",
+      "3D render"
+    ]
+  },
+  "buissons-etale-automnal": {
+    "title": "Spreading bush · Autumnal",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Spreading bush",
+      "Autumnal",
+      "3D render"
+    ]
+  },
+  "buissons-etale-mystique": {
+    "title": "Spreading bush · Mystic",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Spreading bush",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "buissons-dresse-sylvestre": {
+    "title": "Upright bush · Forest green",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Upright bush",
+      "Forest green",
+      "3D render"
+    ]
+  },
+  "buissons-dresse-automnal": {
+    "title": "Upright bush · Autumnal",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Upright bush",
+      "Autumnal",
+      "3D render"
+    ]
+  },
+  "buissons-dresse-mystique": {
+    "title": "Upright bush · Mystic",
+    "collection": "Bushes",
+    "description": "Clusters of curved leaves, subtle veins and painted shadows.",
+    "origin": "Blender render",
+    "tags": [
+      "Bushes",
+      "Upright bush",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "herbes-rase-doree": {
+    "title": "Short tuft · Golden grass",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Short tuft",
+      "Golden grass",
+      "3D render"
+    ]
+  },
+  "herbes-rase-mystique": {
+    "title": "Short tuft · Mystic",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Short tuft",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "herbes-eventail-prairie": {
+    "title": "Fan-shaped tuft · Green meadow",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Fan-shaped tuft",
+      "Green meadow",
+      "3D render"
+    ]
+  },
+  "herbes-eventail-doree": {
+    "title": "Fan-shaped tuft · Golden grass",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Fan-shaped tuft",
+      "Golden grass",
+      "3D render"
+    ]
+  },
+  "herbes-eventail-mystique": {
+    "title": "Fan-shaped tuft · Mystic",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Fan-shaped tuft",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "herbes-courbee-prairie": {
+    "title": "Curved tuft · Green meadow",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Curved tuft",
+      "Green meadow",
+      "3D render"
+    ]
+  },
+  "herbes-courbee-doree": {
+    "title": "Curved tuft · Golden grass",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Curved tuft",
+      "Golden grass",
+      "3D render"
+    ]
+  },
+  "herbes-courbee-mystique": {
+    "title": "Curved tuft · Mystic",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Curved tuft",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "herbes-haute-prairie": {
+    "title": "Tall grass · Green meadow",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Tall grass",
+      "Green meadow",
+      "3D render"
+    ]
+  },
+  "herbes-haute-doree": {
+    "title": "Tall grass · Golden grass",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Tall grass",
+      "Golden grass",
+      "3D render"
+    ]
+  },
+  "herbes-haute-mystique": {
+    "title": "Tall grass · Mystic",
+    "collection": "Grass tufts",
+    "description": "Curved blades and broad colour variations that remain readable at a distance.",
+    "origin": "Blender render",
+    "tags": [
+      "Grass tufts",
+      "Tall grass",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "champignons-boutons-sous-bois": {
+    "title": "Button mushroom colony · Woodland honey",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Button mushroom colony",
+      "Woodland honey",
+      "3D render"
+    ]
+  },
+  "champignons-boutons-mystique": {
+    "title": "Button mushroom colony · Boreal mystic",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Button mushroom colony",
+      "Boreal mystic",
+      "3D render"
+    ]
+  },
+  "champignons-amanite-corail": {
+    "title": "Domed amanita · Cream coral",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Domed amanita",
+      "Cream coral",
+      "3D render"
+    ]
+  },
+  "champignons-amanite-sous-bois": {
+    "title": "Domed amanita · Woodland honey",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Domed amanita",
+      "Woodland honey",
+      "3D render"
+    ]
+  },
+  "champignons-amanite-mystique": {
+    "title": "Domed amanita · Boreal mystic",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Domed amanita",
+      "Boreal mystic",
+      "3D render"
+    ]
+  },
+  "champignons-chanterelles-corail": {
+    "title": "Fan-shaped chanterelles · Cream coral",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Fan-shaped chanterelles",
+      "Cream coral",
+      "3D render"
+    ]
+  },
+  "champignons-chanterelles-sous-bois": {
+    "title": "Fan-shaped chanterelles · Woodland honey",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Fan-shaped chanterelles",
+      "Woodland honey",
+      "3D render"
+    ]
+  },
+  "champignons-chanterelles-mystique": {
+    "title": "Fan-shaped chanterelles · Boreal mystic",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Fan-shaped chanterelles",
+      "Boreal mystic",
+      "3D render"
+    ]
+  },
+  "champignons-parasol-corail": {
+    "title": "Ancient parasol · Cream coral",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Ancient parasol",
+      "Cream coral",
+      "3D render"
+    ]
+  },
+  "champignons-parasol-sous-bois": {
+    "title": "Ancient parasol · Woodland honey",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Ancient parasol",
+      "Woodland honey",
+      "3D render"
+    ]
+  },
+  "champignons-parasol-mystique": {
+    "title": "Ancient parasol · Boreal mystic",
+    "collection": "Mushrooms",
+    "description": "Sculpted caps, soft edges and painted gradients.",
+    "origin": "Blender render",
+    "tags": [
+      "Mushrooms",
+      "Ancient parasol",
+      "Boreal mystic",
+      "3D render"
+    ]
+  },
+  "fleurs-rosette-ivoire": {
+    "title": "Low rosette · Golden ivory",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Low rosette",
+      "Golden ivory",
+      "3D render"
+    ]
+  },
+  "fleurs-rosette-mystique": {
+    "title": "Low rosette · Mystic",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Low rosette",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "fleurs-bouquet-corail": {
+    "title": "Meadow bouquet · Apricot coral",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Meadow bouquet",
+      "Apricot coral",
+      "3D render"
+    ]
+  },
+  "fleurs-bouquet-ivoire": {
+    "title": "Meadow bouquet · Golden ivory",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Meadow bouquet",
+      "Golden ivory",
+      "3D render"
+    ]
+  },
+  "fleurs-bouquet-mystique": {
+    "title": "Meadow bouquet · Mystic",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Meadow bouquet",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "fleurs-clochettes-corail": {
+    "title": "Bellflower stem · Apricot coral",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Bellflower stem",
+      "Apricot coral",
+      "3D render"
+    ]
+  },
+  "fleurs-clochettes-ivoire": {
+    "title": "Bellflower stem · Golden ivory",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Bellflower stem",
+      "Golden ivory",
+      "3D render"
+    ]
+  },
+  "fleurs-clochettes-mystique": {
+    "title": "Bellflower stem · Mystic",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Bellflower stem",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "fleurs-etoilee-corail": {
+    "title": "Large star lily · Apricot coral",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Large star lily",
+      "Apricot coral",
+      "3D render"
+    ]
+  },
+  "fleurs-etoilee-ivoire": {
+    "title": "Large star lily · Golden ivory",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Large star lily",
+      "Golden ivory",
+      "3D render"
+    ]
+  },
+  "fleurs-etoilee-mystique": {
+    "title": "Large star lily · Mystic",
+    "collection": "Flowers",
+    "description": "Sculpted petals, flowing foliage and woodland palettes.",
+    "origin": "Blender render",
+    "tags": [
+      "Flowers",
+      "Large star lily",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "souches-basse-mystique": {
+    "title": "Low stump · Mystic",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Low stump",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "souches-basse-brule": {
+    "title": "Low stump · Burnt wood",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Low stump",
+      "Burnt wood",
+      "3D render"
+    ]
+  },
+  "souches-tordue-moussu": {
+    "title": "Twisted stump · Ancient moss",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Twisted stump",
+      "Ancient moss",
+      "3D render"
+    ]
+  },
+  "souches-tordue-mystique": {
+    "title": "Twisted stump · Mystic",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Twisted stump",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "souches-tordue-brule": {
+    "title": "Twisted stump · Burnt wood",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Twisted stump",
+      "Burnt wood",
+      "3D render"
+    ]
+  },
+  "souches-creuse-moussu": {
+    "title": "Hollow stump · Ancient moss",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Hollow stump",
+      "Ancient moss",
+      "3D render"
+    ]
+  },
+  "souches-creuse-mystique": {
+    "title": "Hollow stump · Mystic",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Hollow stump",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "souches-creuse-brule": {
+    "title": "Hollow stump · Burnt wood",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Hollow stump",
+      "Burnt wood",
+      "3D render"
+    ]
+  },
+  "souches-brisee-moussu": {
+    "title": "Old broken stump · Ancient moss",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Old broken stump",
+      "Ancient moss",
+      "3D render"
+    ]
+  },
+  "souches-brisee-mystique": {
+    "title": "Old broken stump · Mystic",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Old broken stump",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "souches-brisee-brule": {
+    "title": "Old broken stump · Burnt wood",
+    "collection": "Stumps",
+    "description": "Gnarled roots, painted wood and sculpted hollows.",
+    "origin": "Blender render",
+    "tags": [
+      "Stumps",
+      "Old broken stump",
+      "Burnt wood",
+      "3D render"
+    ]
+  },
+  "troncs-couches-billot-mystique": {
+    "title": "Short log · Mystic",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Short log",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "troncs-couches-billot-brule": {
+    "title": "Short log · Burnt wood",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Short log",
+      "Burnt wood",
+      "3D render"
+    ]
+  },
+  "troncs-couches-noueux-moussu": {
+    "title": "Gnarled log · Ancient moss",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Gnarled log",
+      "Ancient moss",
+      "3D render"
+    ]
+  },
+  "troncs-couches-noueux-mystique": {
+    "title": "Gnarled log · Mystic",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Gnarled log",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "troncs-couches-noueux-brule": {
+    "title": "Gnarled log · Burnt wood",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Gnarled log",
+      "Burnt wood",
+      "3D render"
+    ]
+  },
+  "troncs-couches-creux-moussu": {
+    "title": "Hollow log · Ancient moss",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Hollow log",
+      "Ancient moss",
+      "3D render"
+    ]
+  },
+  "troncs-couches-creux-mystique": {
+    "title": "Hollow log · Mystic",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Hollow log",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "troncs-couches-creux-brule": {
+    "title": "Hollow log · Burnt wood",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Hollow log",
+      "Burnt wood",
+      "3D render"
+    ]
+  },
+  "troncs-couches-fourchu-moussu": {
+    "title": "Large forked log · Ancient moss",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Large forked log",
+      "Ancient moss",
+      "3D render"
+    ]
+  },
+  "troncs-couches-fourchu-mystique": {
+    "title": "Large forked log · Mystic",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Large forked log",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "troncs-couches-fourchu-brule": {
+    "title": "Large forked log · Burnt wood",
+    "collection": "Fallen logs",
+    "description": "Bark based on the V3 reference, with growth rings on the cut ends.",
+    "origin": "Blender render",
+    "tags": [
+      "Fallen logs",
+      "Large forked log",
+      "Burnt wood",
+      "3D render"
+    ]
+  },
+  "mares-de-mana-mare-orange": {
+    "title": "Mana pool · Amber orange mana",
+    "collection": "Mana pools",
+    "description": "A painted surface with matching wisps and droplets. Still preview of an animated model.",
+    "origin": "Blender render",
+    "tags": [
+      "Mana pools",
+      "Mana pool",
+      "Amber orange mana",
+      "3D render"
+    ]
+  },
+  "mares-de-mana-mare-verte": {
+    "title": "Mana pool · Emerald green mana",
+    "collection": "Mana pools",
+    "description": "A painted surface with matching wisps and droplets. Still preview of an animated model.",
+    "origin": "Blender render",
+    "tags": [
+      "Mana pools",
+      "Mana pool",
+      "Emerald green mana",
+      "3D render"
+    ]
+  },
+  "mares-de-mana-allongee-bleu": {
+    "title": "Small elongated pool · Azure blue mana",
+    "collection": "Mana pools",
+    "description": "A painted surface with matching wisps and droplets. Still preview of an animated model.",
+    "origin": "Blender render",
+    "tags": [
+      "Mana pools",
+      "Small elongated pool",
+      "Azure blue mana",
+      "3D render"
+    ]
+  },
+  "mares-de-mana-allongee-orange": {
+    "title": "Small elongated pool · Amber orange mana",
+    "collection": "Mana pools",
+    "description": "A painted surface with matching wisps and droplets. Still preview of an animated model.",
+    "origin": "Blender render",
+    "tags": [
+      "Mana pools",
+      "Small elongated pool",
+      "Amber orange mana",
+      "3D render"
+    ]
+  },
+  "mares-de-mana-allongee-vert": {
+    "title": "Small elongated pool · Emerald green mana",
+    "collection": "Mana pools",
+    "description": "A painted surface with matching wisps and droplets. Still preview of an animated model.",
+    "origin": "Blender render",
+    "tags": [
+      "Mana pools",
+      "Small elongated pool",
+      "Emerald green mana",
+      "3D render"
+    ]
+  },
+  "mares-de-mana-lobee-bleu": {
+    "title": "Large lobed pool · Azure blue mana",
+    "collection": "Mana pools",
+    "description": "A painted surface with matching wisps and droplets. Still preview of an animated model.",
+    "origin": "Blender render",
+    "tags": [
+      "Mana pools",
+      "Large lobed pool",
+      "Azure blue mana",
+      "3D render"
+    ]
+  },
+  "mares-de-mana-lobee-orange": {
+    "title": "Large lobed pool · Amber orange mana",
+    "collection": "Mana pools",
+    "description": "A painted surface with matching wisps and droplets. Still preview of an animated model.",
+    "origin": "Blender render",
+    "tags": [
+      "Mana pools",
+      "Large lobed pool",
+      "Amber orange mana",
+      "3D render"
+    ]
+  },
+  "mares-de-mana-lobee-vert": {
+    "title": "Large lobed pool · Emerald green mana",
+    "collection": "Mana pools",
+    "description": "A painted surface with matching wisps and droplets. Still preview of an animated model.",
+    "origin": "Blender render",
+    "tags": [
+      "Mana pools",
+      "Large lobed pool",
+      "Emerald green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-azur-sockets-1": {
+    "title": "Summoned axe · Azure mana · 1 socket",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-azur-sockets-2": {
+    "title": "Summoned axe · Azure mana · 2 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-azur-sockets-3": {
+    "title": "Summoned axe · Azure mana · 3 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-orange": {
+    "title": "Summoned axe · Orange mana · 0 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-orange-sockets-1": {
+    "title": "Summoned axe · Orange mana · 1 socket",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-orange-sockets-2": {
+    "title": "Summoned axe · Orange mana · 2 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-orange-sockets-3": {
+    "title": "Summoned axe · Orange mana · 3 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-vert": {
+    "title": "Summoned axe · Green mana · 0 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-vert-sockets-1": {
+    "title": "Summoned axe · Green mana · 1 socket",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-vert-sockets-2": {
+    "title": "Summoned axe · Green mana · 2 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-hache-vert-sockets-3": {
+    "title": "Summoned axe · Green mana · 3 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned axe",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-azur": {
+    "title": "Summoned pickaxe · Azure mana · 0 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-azur-sockets-1": {
+    "title": "Summoned pickaxe · Azure mana · 1 socket",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-azur-sockets-2": {
+    "title": "Summoned pickaxe · Azure mana · 2 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-azur-sockets-3": {
+    "title": "Summoned pickaxe · Azure mana · 3 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-orange": {
+    "title": "Summoned pickaxe · Orange mana · 0 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-orange-sockets-1": {
+    "title": "Summoned pickaxe · Orange mana · 1 socket",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-orange-sockets-2": {
+    "title": "Summoned pickaxe · Orange mana · 2 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-orange-sockets-3": {
+    "title": "Summoned pickaxe · Orange mana · 3 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-vert": {
+    "title": "Summoned pickaxe · Green mana · 0 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-vert-sockets-1": {
+    "title": "Summoned pickaxe · Green mana · 1 socket",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-vert-sockets-2": {
+    "title": "Summoned pickaxe · Green mana · 2 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-pioche-vert-sockets-3": {
+    "title": "Summoned pickaxe · Green mana · 3 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned pickaxe",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-azur": {
+    "title": "Summoned sickle · Azure mana · 0 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-azur-sockets-1": {
+    "title": "Summoned sickle · Azure mana · 1 socket",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-azur-sockets-2": {
+    "title": "Summoned sickle · Azure mana · 2 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-azur-sockets-3": {
+    "title": "Summoned sickle · Azure mana · 3 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Azure mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-orange": {
+    "title": "Summoned sickle · Orange mana · 0 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-orange-sockets-1": {
+    "title": "Summoned sickle · Orange mana · 1 socket",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-orange-sockets-2": {
+    "title": "Summoned sickle · Orange mana · 2 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-orange-sockets-3": {
+    "title": "Summoned sickle · Orange mana · 3 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Orange mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-vert": {
+    "title": "Summoned sickle · Green mana · 0 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-vert-sockets-1": {
+    "title": "Summoned sickle · Green mana · 1 socket",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-vert-sockets-2": {
+    "title": "Summoned sickle · Green mana · 2 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "outils-invoques-faucille-vert-sockets-3": {
+    "title": "Summoned sickle · Green mana · 3 sockets",
+    "collection": "Summoned tools",
+    "description": "A harvesting tool with a mana core and floating fragments. Art proposal, still preview.",
+    "origin": "Blender render",
+    "tags": [
+      "Summoned tools",
+      "Summoned sickle",
+      "Green mana",
+      "3D render"
+    ]
+  },
+  "structures-fondation-bois": {
+    "title": "Foundation · Wood",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Foundation",
+      "Wood",
+      "3D render"
+    ]
+  },
+  "structures-fondation-pierre": {
+    "title": "Foundation · Stone",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Foundation",
+      "Stone",
+      "3D render"
+    ]
+  },
+  "structures-mur-plein-chaume": {
+    "title": "Solid wall · Thatch",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Solid wall",
+      "Thatch",
+      "3D render"
+    ]
+  },
+  "structures-mur-plein-bois": {
+    "title": "Solid wall · Wood",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Solid wall",
+      "Wood",
+      "3D render"
+    ]
+  },
+  "structures-mur-plein-pierre": {
+    "title": "Solid wall · Stone",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Solid wall",
+      "Stone",
+      "3D render"
+    ]
+  },
+  "structures-mur-fenetre-chaume": {
+    "title": "Wall with window · Thatch",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Wall with window",
+      "Thatch",
+      "3D render"
+    ]
+  },
+  "structures-mur-fenetre-bois": {
+    "title": "Wall with window · Wood",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Wall with window",
+      "Wood",
+      "3D render"
+    ]
+  },
+  "structures-mur-fenetre-pierre": {
+    "title": "Wall with window · Stone",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Wall with window",
+      "Stone",
+      "3D render"
+    ]
+  },
+  "structures-mur-porte-chaume": {
+    "title": "Wall with door · Thatch",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Wall with door",
+      "Thatch",
+      "3D render"
+    ]
+  },
+  "structures-mur-porte-bois": {
+    "title": "Wall with door · Wood",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Wall with door",
+      "Wood",
+      "3D render"
+    ]
+  },
+  "structures-mur-porte-pierre": {
+    "title": "Wall with door · Stone",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Wall with door",
+      "Stone",
+      "3D render"
+    ]
+  },
+  "structures-plafond-chaume": {
+    "title": "Ceiling · Thatch",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Ceiling",
+      "Thatch",
+      "3D render"
+    ]
+  },
+  "structures-plafond-bois": {
+    "title": "Ceiling · Wood",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Ceiling",
+      "Wood",
+      "3D render"
+    ]
+  },
+  "structures-plafond-pierre": {
+    "title": "Ceiling · Stone",
+    "collection": "Modular structures",
+    "description": "A painted building piece for grid-based assembly. Art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "Modular structures",
+      "Ceiling",
+      "Stone",
+      "3D render"
+    ]
+  },
+  "reference-reference-mystique": {
+    "title": "Reference tree · Mystic",
+    "collection": "Trees · V3 materials",
+    "description": "Approved V3 painted finish: the reference for the forms and surfaces of Arkya’s objects.",
+    "origin": "Blender render",
+    "tags": [
+      "Trees · V3 materials",
+      "Reference tree",
+      "Mystic",
+      "3D render"
+    ]
+  },
+  "reference-reference-brule": {
+    "title": "Reference tree · Burnt",
+    "collection": "Trees · V3 materials",
+    "description": "Approved V3 painted finish: the reference for the forms and surfaces of Arkya’s objects.",
+    "origin": "Blender render",
+    "tags": [
+      "Trees · V3 materials",
+      "Reference tree",
+      "Burnt",
+      "3D render"
+    ]
+  },
+  "arbre-forme-jeune": {
+    "title": "Young tree",
+    "collection": "Trees · silhouettes",
+    "description": "A slender young tree with a compact, upright crown and subtle buttress roots. Approved silhouette; material from the first shape study.",
+    "origin": "Blender render",
+    "tags": [
+      "Trees",
+      "silhouette",
+      "3D render"
+    ]
+  },
+  "arbre-forme-etale": {
+    "title": "Spreading tree",
+    "collection": "Trees · silhouettes",
+    "description": "A spreading form, short trunk and broad umbrella-shaped crown. Approved silhouette; material from the first shape study.",
+    "origin": "Blender render",
+    "tags": [
+      "Trees",
+      "silhouette",
+      "3D render"
+    ]
+  },
+  "arbre-forme-elance": {
+    "title": "Slender tree",
+    "collection": "Trees · silhouettes",
+    "description": "A slender trunk, high first forks and a narrow crown. Approved silhouette; material from the first shape study.",
+    "origin": "Blender render",
+    "tags": [
+      "Trees",
+      "silhouette",
+      "3D render"
+    ]
+  },
+  "arbre-forme-venerable": {
+    "title": "Venerable tree",
+    "collection": "Trees · silhouettes",
+    "description": "A massive tree with strong buttress roots and a broad, curved, gently twisted crown. Approved silhouette; material from the first shape study.",
+    "origin": "Blender render",
+    "tags": [
+      "Trees",
+      "silhouette",
+      "3D render"
+    ]
+  },
+  "concept-aube": {
+    "title": "Realms of Dawn",
+    "collection": "World explorations",
+    "description": "Pale stone, terracotta, teal fabrics and warm light. Generated concept board; neither the lore nor the final rendering has been approved.",
+    "origin": "Generated concept",
+    "tags": [
+      "concept",
+      "palette",
+      "environment"
+    ]
+  },
+  "concept-ether": {
+    "title": "Aether Cities",
+    "collection": "World explorations",
+    "description": "Ivory, bronze, coral and turquoise create a luminous fantasy world. Generated concept board; neither the lore nor the final rendering has been approved.",
+    "origin": "Generated concept",
+    "tags": [
+      "concept",
+      "palette",
+      "environment"
+    ]
+  },
+  "concept-anciens": {
+    "title": "Lands of the Ancients",
+    "collection": "World explorations",
+    "description": "Carved wood, an enveloping forest and the warm lights of inhabited places. Generated concept board; neither the lore nor the final rendering has been approved.",
+    "origin": "Generated concept",
+    "tags": [
+      "concept",
+      "palette",
+      "environment"
+    ]
+  },
+  "blender-02-cites-ether": {
+    "title": "Aether Cities · V3 Blender study",
+    "collection": "Blender studies",
+    "description": "A composition and material study rendered in Blender Cycles. The game’s rendering remains in development.",
+    "origin": "Blender render",
+    "tags": [
+      "Blender",
+      "environment",
+      "V3"
+    ]
+  },
+  "personnage-02-cites-ether": {
+    "title": "Aether Cities · V3 character",
+    "collection": "Character studies",
+    "description": "A study of silhouette, clothing and equipment. Character adapted from Blender Studio’s Rain and Snow bases.",
+    "origin": "Blender render",
+    "tags": [
+      "character",
+      "costume",
+      "Blender"
+    ]
+  },
+  "blender-03-terres-anciens": {
+    "title": "Lands of the Ancients · V3 Blender study",
+    "collection": "Blender studies",
+    "description": "A composition and material study rendered in Blender Cycles. The game’s rendering remains in development.",
+    "origin": "Blender render",
+    "tags": [
+      "Blender",
+      "environment",
+      "V3"
+    ]
+  },
+  "personnage-03-terres-anciens": {
+    "title": "Lands of the Ancients · V3 character",
+    "collection": "Character studies",
+    "description": "A study of silhouette, clothing and equipment. Character adapted from Blender Studio’s Rain and Snow bases.",
+    "origin": "Blender render",
+    "tags": [
+      "character",
+      "costume",
+      "Blender"
+    ]
+  },
+  "ui-directions": {
+    "title": "Three interface styles",
+    "collection": "UI directions",
+    "description": "An initial comparison board for the Ink & copper, Explorer’s journal and Mana stone directions.",
+    "origin": "Generated concept",
+    "tags": [
+      "UI",
+      "components",
+      "concept"
+    ]
+  },
+  "rig-human-a-idle-1": {
+    "title": "Human · idle pose",
+    "collection": "Animated characters",
+    "description": "Preview of a pose from the game rig. Animation and presentation integration is ongoing; the appearance remains an art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "character",
+      "animation",
+      "rig"
+    ]
+  },
+  "rig-human-b-idle-1": {
+    "title": "Female human · idle pose",
+    "collection": "Animated characters",
+    "description": "Preview of a pose from the game rig. Animation and presentation integration is ongoing; the appearance remains an art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "character",
+      "animation",
+      "rig"
+    ]
+  },
+  "rig-human-a-walk-10": {
+    "title": "Human · walking",
+    "collection": "Animated characters",
+    "description": "Preview of a pose from the game rig. Animation and presentation integration is ongoing; the appearance remains an art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "character",
+      "animation",
+      "rig"
+    ]
+  },
+  "rig-human-b-run-19": {
+    "title": "Female human · running",
+    "collection": "Animated characters",
+    "description": "Preview of a pose from the game rig. Animation and presentation integration is ongoing; the appearance remains an art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "character",
+      "animation",
+      "rig"
+    ]
+  },
+  "rig-elf-a-run-7-braid": {
+    "title": "Elf · running with braided hair",
+    "collection": "Animated characters",
+    "description": "Preview of a pose from the game rig. Animation and presentation integration is ongoing; the appearance remains an art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "character",
+      "animation",
+      "rig"
+    ]
+  },
+  "rig-elf-b-walk-28-long": {
+    "title": "Elf · walking with long hair",
+    "collection": "Animated characters",
+    "description": "Preview of a pose from the game rig. Animation and presentation integration is ongoing; the appearance remains an art proposal.",
+    "origin": "Blender render",
+    "tags": [
+      "character",
+      "animation",
+      "rig"
+    ]
+  },
+  "ile-arrival": {
+    "title": "The arrival point",
+    "collection": "Starter island · Unity",
+    "description": "A first look at the terrain and path in the Unity prototype. Actual engine screenshot; environment in development.",
+    "origin": "Unity screenshot",
+    "tags": [
+      "island",
+      "Unity",
+      "prototype"
+    ]
+  },
+  "ile-environment-refuge-dusk": {
+    "title": "The refuge · dusk",
+    "collection": "Starter island · Unity",
+    "description": "The day and night cycle changes the sky and the refuge’s lighting. Actual engine screenshot; environment in development.",
+    "origin": "Unity screenshot",
+    "tags": [
+      "island",
+      "Unity",
+      "prototype"
+    ]
+  },
+  "ile-environment-moon-and-stars": {
+    "title": "The moon and stars",
+    "collection": "Starter island · Unity",
+    "description": "The Unity prototype’s night sky and its visual cycle. Actual engine screenshot; environment in development.",
+    "origin": "Unity screenshot",
+    "tags": [
+      "island",
+      "Unity",
+      "prototype"
+    ]
+  },
+  "ile-weather-storm-lightning-coast": {
+    "title": "The storm-battered coast",
+    "collection": "Starter island · Unity",
+    "description": "Rain, cloud cover and lightning bring the prototype to life. Actual engine screenshot; environment in development.",
+    "origin": "Unity screenshot",
+    "tags": [
+      "island",
+      "Unity",
+      "prototype"
+    ]
+  },
+  "ile-boundary-water-boiling-night": {
+    "title": "The violet ocean · at night",
+    "collection": "Starter island · Unity",
+    "description": "The boiling ocean marks the island boundary in the Unity prototype. Actual engine screenshot; environment in development.",
+    "origin": "Unity screenshot",
+    "tags": [
+      "island",
+      "Unity",
+      "prototype"
+    ]
+  }
+}

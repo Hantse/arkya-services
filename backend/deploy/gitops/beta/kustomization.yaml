@@ -1,0 +1,91 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- namespaces.yaml
+- storage.yaml
+- services.yaml
+- deployments.yaml
+- network-policies.yaml
+- ingress.yaml
+configMapGenerator:
+- name: arkya-identity-config
+  namespace: arkya-identity
+  envs:
+  - config/identity.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+- name: arkya-gateway-config
+  namespace: arkya-identity
+  envs:
+  - config/gateway.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+- name: arkya-characters-config
+  namespace: arkya-identity
+  envs:
+  - config/characters.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+- name: arkya-content-config
+  namespace: arkya-operations
+  envs:
+  - config/content.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+- name: arkya-realms-config
+  namespace: arkya-operations
+  envs:
+  - config/realms.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+- name: arkya-admin-config
+  namespace: arkya-operations
+  envs:
+  - config/admin.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+- name: arkya-backend-config
+  namespace: arkya-operations
+  envs:
+  - config/backend.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+- name: arkya-frontend-config
+  namespace: arkya-identity
+  envs:
+  - config/frontend.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+images:
+- name: ghcr.io/hantse/arkya-services-identity
+  newName: ghcr.io/hantse/arkya-services-identity
+  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+- name: ghcr.io/hantse/arkya-services-gateway
+  newName: ghcr.io/hantse/arkya-services-gateway
+  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+- name: ghcr.io/hantse/arkya-services-characters
+  newName: ghcr.io/hantse/arkya-services-characters
+  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+- name: ghcr.io/hantse/arkya-services-content
+  newName: ghcr.io/hantse/arkya-services-content
+  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+- name: ghcr.io/hantse/arkya-services-realms
+  newName: ghcr.io/hantse/arkya-services-realms
+  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+- name: ghcr.io/hantse/arkya-services-admin
+  newName: ghcr.io/hantse/arkya-services-admin
+  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+- name: ghcr.io/hantse/arkya-services-backend
+  newName: ghcr.io/hantse/arkya-services-backend
+  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+- name: ghcr.io/hantse/arkya-services-frontend
+  newName: ghcr.io/hantse/arkya-services-frontend
+  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2

@@ -64,6 +64,8 @@ public sealed class IdentityEndpointTests
         using var internalClient = factory.BrowserClient();
         using var missingKey = await internalClient.PostAsJsonAsync("/internal/sessions/introspect", new { sessionToken = session.SessionToken });
         Assert.Equal(HttpStatusCode.Forbidden, missingKey.StatusCode);
+        var sessionReference = IdentityService.Hash(session.SessionToken);
+        Assert.Equal(HttpStatusCode.Forbidden, (await internalClient.PostAsJsonAsync("/internal/sessions/introspect-reference", new { sessionReference })).StatusCode);
         internalClient.DefaultRequestHeaders.Add("X-Arkya-Service-Key", "incorrect-service-key");
         using var wrongKey = await internalClient.PostAsJsonAsync("/internal/sessions/introspect", new { sessionToken = session.SessionToken });
         Assert.Equal(HttpStatusCode.Forbidden, wrongKey.StatusCode);
@@ -72,6 +74,12 @@ public sealed class IdentityEndpointTests
         using var valid = await internalClient.PostAsJsonAsync("/internal/sessions/introspect", new { sessionToken = session.SessionToken });
         Assert.Equal(HttpStatusCode.OK, valid.StatusCode);
         Assert.Equal(session.AccountId, (await valid.Content.ReadFromJsonAsync<AccountSessionResponse>())!.AccountId);
+        using var referenced = await internalClient.PostAsJsonAsync("/internal/sessions/introspect-reference", new { sessionReference });
+        Assert.Equal(HttpStatusCode.OK, referenced.StatusCode);
+        Assert.Equal(session.AccountId, (await referenced.Content.ReadFromJsonAsync<AccountSessionResponse>())!.AccountId);
+        foreach (var invalidReference in new[] { session.SessionToken, sessionReference + "\n", new string('F', 64), new string('x', 64) })
+            Assert.Equal(HttpStatusCode.Unauthorized, (await internalClient.PostAsJsonAsync("/internal/sessions/introspect-reference", new { sessionReference = invalidReference })).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await internalClient.PostAsJsonAsync("/internal/sessions/introspect-reference", new { sessionReference, sessionToken = session.SessionToken })).StatusCode);
 
         using var logout = await browser.PostAsync("/v1/auth/logout", null);
         Assert.Equal(HttpStatusCode.NoContent, logout.StatusCode);
@@ -79,6 +87,7 @@ public sealed class IdentityEndpointTests
         Assert.Equal(HttpStatusCode.Unauthorized, revoked.StatusCode);
         using var introspectedRevocation = await internalClient.PostAsJsonAsync("/internal/sessions/introspect", new { sessionToken = session.SessionToken });
         Assert.Equal(HttpStatusCode.Unauthorized, introspectedRevocation.StatusCode);
+        Assert.Equal(HttpStatusCode.Unauthorized, (await internalClient.PostAsJsonAsync("/internal/sessions/introspect-reference", new { sessionReference })).StatusCode);
         Assert.Empty(factory.Store.Sessions);
     }
 

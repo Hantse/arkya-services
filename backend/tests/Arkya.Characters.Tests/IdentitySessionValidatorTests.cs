@@ -2,12 +2,37 @@ using System.Net;
 using System.Net.Http.Json;
 using Arkya.Characters.Api.Application;
 using Arkya.Characters.Api.Infrastructure.Identity;
+using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
 
 namespace Arkya.Characters.Tests;
 
 public sealed class IdentitySessionValidatorTests
 {
+    [Fact]
+    public async Task ReferenceValidationSendsOnlyDigestWithServiceAuthentication()
+    {
+        var reference = SessionReference.Create("opaque-session-kept-out-of-request");
+        var calls = 0;
+        using var client = new HttpClient(new StubHandler(async (request, cancellationToken) =>
+        {
+            calls++;
+            Assert.Equal("/internal/sessions/introspect-reference", request.RequestUri!.AbsolutePath);
+            Assert.Null(request.Headers.Authorization);
+            Assert.Equal(CharactersFactory.IdentityKey, request.Headers.GetValues("X-Arkya-Service-Key").Single());
+            var body = await request.Content!.ReadAsStringAsync(cancellationToken);
+            Assert.Contains(reference, body);
+            Assert.DoesNotContain("opaque-session", body);
+            Assert.DoesNotContain("sessionToken", body);
+            return new(HttpStatusCode.Unauthorized);
+        })) { BaseAddress = new Uri("https://identity.example/") };
+        var validator = Create(client);
+        Assert.Equal(SessionValidationStatus.Invalid, (await validator.ValidateReferenceAsync("bad-reference", default)).Status);
+        Assert.Equal(0, calls);
+        Assert.Equal(SessionValidationStatus.Invalid, (await validator.ValidateReferenceAsync(reference, default)).Status);
+        Assert.Equal(1, calls);
+    }
+
     [Fact]
     public async Task UpstreamTimeoutReturnsUnavailable()
     {

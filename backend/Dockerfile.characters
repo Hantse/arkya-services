@@ -1,0 +1,34 @@
+# syntax=docker/dockerfile:1
+
+# Refresh these verified multi-architecture digests when taking .NET security updates.
+ARG SDK_IMAGE=mcr.microsoft.com/dotnet/sdk:10.0-noble@sha256:0d99ebf1ccad15037b5c98c9fe8979d6b8dbac23812feae2277a0b277b5c5ffa
+ARG RUNTIME_IMAGE=mcr.microsoft.com/dotnet/aspnet:10.0-noble@sha256:d5633778c754e89a386882eddf8dbee6942447a8a4b8267c19cf1e1158d0b0ac
+
+FROM --platform=$BUILDPLATFORM ${SDK_IMAGE} AS build
+ARG TARGETARCH
+WORKDIR /source
+
+# Keep dependency restore cached until a project reference or package changes.
+COPY src/Arkya.Characters.Api/Arkya.Characters.Api.csproj src/Arkya.Characters.Api/
+COPY src/Arkya.ServiceDefaults/Arkya.ServiceDefaults.csproj src/Arkya.ServiceDefaults/
+RUN dotnet restore src/Arkya.Characters.Api/Arkya.Characters.Api.csproj --arch ${TARGETARCH}
+
+COPY src/Arkya.Characters.Api/ src/Arkya.Characters.Api/
+COPY src/Arkya.ServiceDefaults/ src/Arkya.ServiceDefaults/
+RUN dotnet publish src/Arkya.Characters.Api/Arkya.Characters.Api.csproj \
+    --no-restore --configuration Release --arch ${TARGETARCH} \
+    --self-contained false /p:UseAppHost=false --output /app/publish
+
+FROM ${RUNTIME_IMAGE} AS final
+WORKDIR /app
+ENV ASPNETCORE_ENVIRONMENT=Production \
+    ASPNETCORE_HTTP_PORTS=8080 \
+    DOTNET_EnableDiagnostics=0 \
+    TMPDIR=/tmp
+
+COPY --from=build /app/publish/ ./
+
+# Kubernetes mounts writable /tmp; service credentials stay in deployment Secrets.
+USER 1654:1654
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "Arkya.Characters.Api.dll"]

@@ -5,6 +5,7 @@ using Arkya.Characters.Api.Application;
 using Arkya.Characters.Api.Domain;
 using Arkya.Characters.Api.Infrastructure.Identity;
 using Arkya.Characters.Api.Infrastructure.Persistence;
+using Arkya.ServiceDefaults;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
@@ -58,6 +59,17 @@ internal sealed class MemoryCharacterRepository : ICharacterRepository
             return Task.FromResult(true);
         }
     }
+
+    public Task<bool> TryBindRealmAsync(Guid characterId, Guid accountId, string realmId, CancellationToken cancellationToken)
+    {
+        lock (gate)
+        {
+            var index = characters.FindIndex(value => value.Id == characterId && value.AccountId == accountId && (value.RealmId is null || value.RealmId == realmId));
+            if (index < 0) return Task.FromResult(false);
+            characters[index] = characters[index] with { RealmId = realmId };
+            return Task.FromResult(true);
+        }
+    }
 }
 
 internal sealed class IdentityStub : HttpMessageHandler
@@ -70,11 +82,13 @@ internal sealed class IdentityStub : HttpMessageHandler
     {
         Calls++;
         Assert.Equal(HttpMethod.Post, request.Method);
-        Assert.Equal("/internal/sessions/introspect", request.RequestUri!.AbsolutePath);
+        Assert.Contains(request.RequestUri!.AbsolutePath, new[] { "/internal/sessions/introspect", "/internal/sessions/introspect-reference" });
         Assert.Equal(CharactersFactory.IdentityKey, request.Headers.GetValues("X-Arkya-Service-Key").Single());
         Assert.Null(request.Headers.Authorization);
         var body = await request.Content!.ReadFromJsonAsync<JsonElement>(cancellationToken);
-        var token = body.GetProperty("sessionToken").GetString();
+        var token = request.RequestUri.AbsolutePath.EndsWith("-reference", StringComparison.Ordinal)
+            ? new[] { "alice", "bob" }.SingleOrDefault(value => SessionReference.Create(value) == body.GetProperty("sessionReference").GetString())
+            : body.GetProperty("sessionToken").GetString();
         if (token == "offline")
             throw new HttpRequestException("Identity unavailable.");
         if (token == "service-rejected")
@@ -99,6 +113,7 @@ internal sealed class CharactersFactory : WebApplicationFactory<Arkya.Characters
     public IdentityStub Identity { get; } = new();
     public string EnvironmentName { get; init; } = "Development";
     public IReadOnlyDictionary<string, string?> AdditionalConfiguration { get; init; } = new Dictionary<string, string?>();
+    public Action<IServiceCollection>? ConfigureTestServices { get; init; }
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -124,6 +139,9 @@ internal sealed class CharactersFactory : WebApplicationFactory<Arkya.Characters
             services.AddSingleton<TimeProvider, FixedTimeProvider>();
             services.AddHttpClient<ISessionValidator, IdentitySessionValidator>()
                 .ConfigurePrimaryHttpMessageHandler(() => Identity);
+            services.AddHttpClient<ISessionReferenceValidator, IdentitySessionValidator>()
+                .ConfigurePrimaryHttpMessageHandler(() => Identity);
+            ConfigureTestServices?.Invoke(services);
         });
     }
 

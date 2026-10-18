@@ -4,13 +4,13 @@ Cette tranche ajoute `Arkya.Realms.Api` et l'écran **Realms** d'`Arkya.Admin`. 
 
 ## Images
 
-Le workflow [Operations images](../../../.github/workflows/operations-images.yml) teste Realms/Admin et construit les deux images. Une modification de la branche par défaut publie `ghcr.io/<owner>/<repository>-admin` et `-realms` ; le résumé donne les digests. Les autres branches et pull requests construisent sans publication.
+Le workflow commun [Services images](../../../.github/workflows/services-images.yml) teste tout le backend, la vitrine et les contrats de déploiement, puis construit huit images. Sur la branche par défaut, il publie notamment `ghcr.io/hantse/arkya-services-admin` et `-realms`, pour Linux AMD64 et ARM64. Après réussite de toutes les publications, leurs digests sont épinglés ensemble dans la [source GitOps bêta](../gitops/README.md) pour Argo CD. Les autres branches et pull requests construisent sans publication.
 
 Construction locale depuis `backend/`, avec un moteur Docker Linux :
 
 ```powershell
-docker build -f Dockerfile.operations --target admin -t arkya-admin:local .
-docker build -f Dockerfile.operations --target realms -t arkya-realms:local .
+docker build -f Dockerfile.service --build-arg APPLICATION=Arkya.Admin -t arkya-admin:local .
+docker build -f Dockerfile.service --build-arg APPLICATION=Arkya.Realms.Api -t arkya-realms:local .
 ```
 
 Les images ASP.NET sont distinctes de l'image Unity dedicated. Cette dernière doit être publiée séparément ; aucun chemin vers un build Windows n'est accepté comme image de conteneur Linux.
@@ -26,7 +26,7 @@ Copy-Item cluster.example.json .local/cluster.json
 
 Renseigner les digests Admin, Realms et dedicated. `operationsNamespace` héberge les deux applications ; `gatewayNamespace` désigne le namespace existant de YARP. `trustedGatewayPodNetworks` doit correspondre aux véritables sources des pods gateway. Le CIDR `10.42.0.0/16` est un exemple k3s à vérifier.
 
-Un `deployment.targets` associe `id`, `displayName` et `namespace`. Chaque namespace cible est réservé à un realm. `deployment.profiles` décrit l'image par digest et jusqu'à 16 serveurs nommés avec leur port UDP non privilégié et leurs arguments. `environmentSecretName` et `imagePullSecretName` sont facultatifs ; ces Secrets doivent déjà exister dans chaque namespace cible utilisé.
+Un `deployment.targets` associe `id`, `displayName` et `namespace`. Chaque namespace cible est réservé à un realm. `deployment.profiles` décrit l'image par digest et jusqu'à 16 serveurs nommés avec leur port non privilégié et leurs arguments. Le transport est `Udp` par défaut. Le profil distinct `WebSocket` utilise TCP et exige `publicEndpoint` WSS, protocole `1` et build `arkya-web-beta-v1` ; voir [la préparation web bêta](../web-beta/README.md). `environmentSecretName` et `imagePullSecretName` sont facultatifs ; ces Secrets doivent déjà exister dans chaque namespace cible utilisé.
 
 Le profil est figé lors de la création du realm. Modifier le JSON ne met pas à jour les realms existants. Ajouter une autre cible pour créer un autre realm ; ne pas réaffecter le namespace d'un realm existant.
 
@@ -35,7 +35,9 @@ Le contrat fourni au conteneur est :
 ```text
 ARKYA_REALM_ID=<identifiant stable>
 ARKYA_SERVER_ID=<identifiant du processus/area>
-ARKYA_GAME_PORT=<port UDP>
+ARKYA_GAME_PORT=<port UDP ou TCP>
+ARKYA_GAME_TRANSPORT=<Udp ou WebSocket>
+ARKYA_BUILD_ID=<identifiant compatible>
 ```
 
 L'entrypoint de l'image doit consommer ces valeurs ou traduire les `args` du profil vers sa configuration Unity. Le prototype local actuel ne consomme pas automatiquement ce nouveau contrat. La communication entre areas, les versions de contenu, l'accès aux services et les secrets de jeu doivent être pris en charge par l'image approuvée. Le déployeur ne fabrique pas une topologie de simulation à partir du nombre de réplicas.
@@ -65,7 +67,7 @@ Admin possède un PVC de clés Data Protection, un réplica et une stratégie `R
 
 Le fichier `.local/operations.json` est une List Kubernetes : namespace d'exploitation, compte de service, ConfigMaps, PVC, deux Deployments, deux Services ClusterIP, NetworkPolicies, namespaces cibles et leurs Role/RoleBinding. Le script ne contacte pas le cluster. Le rôle du déployeur autorise seulement `get/create` sur Services et Deployments ; aucune permission cluster-wide, suppression ou modification de workload existant.
 
-Les NetworkPolicies limitent Admin aux pods gateway et Realms aux pods Admin. L'egress n'est pas restreint par ces manifests : MongoDB, DNS et l'API Kubernetes doivent rester joignables. Les namespaces dédiés doivent recevoir les règles réseau adaptées à leurs flux UDP et interservices avant une utilisation publique.
+Les NetworkPolicies limitent Admin aux pods gateway et Realms aux pods Admin. L'option `charactersNamespace` autorise aussi les pods Characters explicitement identifiés pour le catalogue et référence le secret `arkya-operations-secrets/realms-catalog-key`. L'egress n'est pas restreint par ces manifests : MongoDB, DNS et l'API Kubernetes doivent rester joignables. Les namespaces dédiés doivent recevoir les règles réseau adaptées à leurs flux UDP/TCP et interservices avant une utilisation publique.
 
 Après avoir choisi le contexte, relu le fichier et provisionné les secrets dans les namespaces correspondants :
 
@@ -134,7 +136,7 @@ dotnet test backend/tests/Arkya.Gateway.Tests/Arkya.Gateway.Tests.csproj
 ./backend/deploy/gateway/Test-AdminRendering.ps1
 ```
 
-Les dépendances des tests HTTP sont simulées ; les tests de transport TLS utilisent de véritables connexions locales et certificats de test. Pour activer le test MongoDB, définir `ARKYA_TEST_MONGO` avec une URI de test : il crée une base temporaire `arkya_realms_test_*` puis la supprime. Le workflow Operations fournit un MongoDB éphémère et active ce test.
+Les dépendances des tests HTTP sont simulées ; les tests de transport TLS utilisent de véritables connexions locales et certificats de test. Pour activer le test MongoDB, définir `ARKYA_TEST_MONGO` avec une URI de test : il crée une base temporaire `arkya_realms_test_*` puis la supprime. Le workflow Services images appelle Backend CI, qui fournit un MongoDB éphémère et active ce test.
 
 Validation du 16 octobre 2026 : 29 tests Realms, 74 tests Admin et 81 tests Gateway réussis, un test MongoDB réel ignoré localement faute de serveur. Les manifests et les rejets de configurations invalides ont été contrôlés hors ligne. Le parcours navigateur création → fiche → demande de déploiement a été vérifié avec une API simulée, sur ordinateur et mobile ; les publications .NET Release ont été vérifiées.
 

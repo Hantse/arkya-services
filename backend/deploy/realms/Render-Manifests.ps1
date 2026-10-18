@@ -39,6 +39,8 @@ function Assert-IntegerRange($Value, [int] $Minimum, [int] $Maximum, [string] $F
 }
 Assert-Name $config.operationsNamespace 'operationsNamespace'
 Assert-Name $config.gatewayNamespace 'gatewayNamespace'
+$gameCatalogEnabled = $config.ContainsKey('charactersNamespace') -and ![string]::IsNullOrEmpty($config.charactersNamespace)
+if ($gameCatalogEnabled) { Assert-Name $config.charactersNamespace 'charactersNamespace' }
 if ($config.operationsNamespace -eq $config.gatewayNamespace -or $config.operationsNamespace -eq 'default' -or $config.operationsNamespace.StartsWith('kube-')) {
     throw 'Use a dedicated operations namespace, separate from the gateway and Kubernetes system namespaces.'
 }
@@ -99,7 +101,19 @@ foreach ($profile in $config.deployment.profiles) {
     foreach ($server in $profile.servers) {
         Assert-Id $server.id 'server.id'
         Assert-IntegerRange $server.port 1024 65535 'server.port'
-        if ($ports.ContainsKey($server.port) -or $serverIds.ContainsKey($server.id)) { throw 'Server IDs and unprivileged UDP ports must be unique within a profile.' }
+        if ($ports.ContainsKey($server.port) -or $serverIds.ContainsKey($server.id)) { throw 'Server IDs and unprivileged ports must be unique within a profile.' }
+        $transport = if ($server.ContainsKey('transport')) { $server.transport } else { 'Udp' }
+        if ($transport -cnotin @('Udp', 'WebSocket')) { throw 'server.transport must be Udp or WebSocket.' }
+        if ($server.ContainsKey('protocolVersion') -and $server.protocolVersion -ne 1) { throw 'server.protocolVersion must be 1.' }
+        if ($server.ContainsKey('buildId') -and $server.buildId -cne 'arkya-web-beta-v1') { throw 'server.buildId must be arkya-web-beta-v1.' }
+        if ($transport -eq 'WebSocket') {
+            $endpoint = $null
+            if ($server.publicEndpoint -isnot [string] -or $server.publicEndpoint -match '\s|\\' -or
+                ![Uri]::TryCreate($server.publicEndpoint, [UriKind]::Absolute, [ref]$endpoint) -or
+                $endpoint.Scheme -ne 'wss' -or !$endpoint.Host -or $endpoint.UserInfo -or $endpoint.Query -or $endpoint.Fragment) {
+                throw 'WebSocket servers require an explicit WSS publicEndpoint without credentials, query or fragment.'
+            }
+        } elseif ($server.publicEndpoint) { throw 'UDP servers cannot publish a WebSocket endpoint.' }
         if ($server.ContainsKey('args')) {
             if ($server.args -isnot [array] -or $server.args.Count -gt 64) { throw 'server.args must be an array of at most 64 strings.' }
             foreach ($argument in $server.args) {
@@ -152,6 +166,9 @@ foreach ($app in @('admin', 'realms')) {
     } else {
         $env += @{ name = 'RealmsAdmin__Key'; valueFrom = @{ secretKeyRef = @{ name = 'arkya-operations-secrets'; key = 'realms-admin-key' } } }
         $env += @{ name = 'Mongo__ConnectionString'; valueFrom = @{ secretKeyRef = @{ name = 'arkya-realms-mongo'; key = 'connection-string' } } }
+        if ($gameCatalogEnabled) {
+            $env += @{ name = 'GameAccess__ServiceKey'; valueFrom = @{ secretKeyRef = @{ name = 'arkya-operations-secrets'; key = 'realms-catalog-key' } } }
+        }
     }
     $mounts = @(@{ name = 'config'; mountPath = '/app/appsettings.Production.json'; subPath = 'appsettings.Production.json'; readOnly = $true }, @{ name = 'tmp'; mountPath = '/tmp' })
     $volumes = @(@{ name = 'config'; configMap = @{ name = "$name-config" } }, @{ name = 'tmp'; emptyDir = @{} })
@@ -194,9 +211,13 @@ foreach ($app in @('admin', 'realms')) {
     $source = if ($isAdmin) {
         @{ namespaceSelector = @{ matchLabels = @{ 'kubernetes.io/metadata.name' = $config.gatewayNamespace } }; podSelector = @{ matchLabels = @{ 'app.kubernetes.io/name' = 'arkya-gateway' } } }
     } else { @{ podSelector = @{ matchLabels = @{ app = 'arkya-admin' } } } }
+    $sources = @($source)
+    if (!$isAdmin -and $gameCatalogEnabled) {
+        $sources += @{ namespaceSelector = @{ matchLabels = @{ 'kubernetes.io/metadata.name' = $config.charactersNamespace } }; podSelector = @{ matchLabels = @{ 'app.kubernetes.io/name' = 'arkya-characters' } } }
+    }
     Add-Resource networking.k8s.io/v1 NetworkPolicy "$name-ingress" $ops @{ spec = @{
         podSelector = @{ matchLabels = @{ app = $name } }; policyTypes = @('Ingress')
-        ingress = @(@{ from = @($source); ports = @(@{ protocol = 'TCP'; port = $port }) })
+        ingress = @(@{ from = $sources; ports = @(@{ protocol = 'TCP'; port = $port }) })
     } }
 }
 foreach ($target in $config.deployment.targets) {

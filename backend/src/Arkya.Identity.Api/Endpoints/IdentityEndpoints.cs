@@ -77,6 +77,13 @@ public static class IdentityEndpoints
             var session = await service.ValidateSessionAsync(request.SessionToken, ct);
             return session is null ? Results.Unauthorized() : Results.Ok(ToResponse(session));
         });
+        app.MapPost("/internal/sessions/introspect-reference", async (SessionReferenceRequest request, HttpContext context,
+            ServiceKeyValidator keys, IdentityService service, CancellationToken ct) =>
+        {
+            if (!keys.IsValid(context.Request.Headers[ServiceKeyValidator.HeaderName])) return Results.StatusCode(403);
+            var session = await service.ValidateSessionReferenceAsync(request.SessionReference, ct);
+            return session is null ? Results.Unauthorized() : Results.Ok(ToResponse(session));
+        });
     }
 
     private static AccountSessionResponse ToResponse(Session session) => new(session.AccountId, session.DisplayName, session.ExpiresAt);

@@ -8,6 +8,26 @@ namespace Arkya.Gateway.Tests;
 public sealed class GatewayProxyTests
 {
     [Theory]
+    [InlineData("GET", "/v1/realms")]
+    [InlineData("POST", "/v1/characters/ab1890c5-9930-4ac0-bafd-cd15a48bceca/admissions")]
+    public async Task Game_routes_forward_to_characters_without_dedicated_credentials(string method, string path)
+    {
+        await using var identity = await Downstream.StartAsync("identity");
+        await using var characters = await Downstream.StartAsync("characters");
+        await using var factory = new GatewayFactory(identity.Address, characters.Address);
+        using var client = factory.Client();
+        using var request = new HttpRequestMessage(new HttpMethod(method), path);
+        request.Headers.Add("X-Arkya-Dedicated-Key", "must-not-reach-public-downstream");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", "player-session");
+        var response = await client.SendAsync(request);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var received = Assert.Single(characters.Requests);
+        Assert.False(received.Headers.ContainsKey("X-Arkya-Dedicated-Key"));
+        Assert.Equal("Bearer player-session", received.Headers["Authorization"]);
+        Assert.Equal(HttpStatusCode.NotFound, (await client.PostAsync("/internal/game/admissions/consume", null)).StatusCode);
+    }
+
+    [Theory]
     [InlineData("POST", "/v1/auth/discord/challenges")]
     [InlineData("GET", "/v1/auth/discord/authorize/0123456789abcdef0123456789abcdef")]
     [InlineData("GET", "/v1/auth/discord/callback")]
@@ -84,6 +104,7 @@ public sealed class GatewayProxyTests
 
     [Theory]
     [InlineData("/internal/sessions/introspect")]
+    [InlineData("/internal/sessions/introspect-reference")]
     [InlineData("/internal/characters/11111111-1111-1111-1111-111111111111/resolve")]
     [InlineData("/admin")]
     [InlineData("/dev/auth/login")]

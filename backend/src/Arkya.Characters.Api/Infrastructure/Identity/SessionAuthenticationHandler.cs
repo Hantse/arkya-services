@@ -2,6 +2,7 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 using Arkya.Characters.Api.Application;
+using Arkya.ServiceDefaults;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
@@ -36,7 +37,9 @@ public sealed class SessionAuthenticationHandler(IOptionsMonitor<AuthenticationS
         var session = result.Session!;
         var identity = new ClaimsIdentity([
             new Claim(ClaimTypes.NameIdentifier, session.AccountId.ToString("D")),
-            new Claim(ClaimTypes.Name, session.DisplayName)
+            new Claim(ClaimTypes.Name, session.DisplayName),
+            new Claim(SessionReference.ClaimType, SessionReference.Create(header.Parameter)),
+            new Claim("arkya:session-expires-at", session.ExpiresAt.ToString("O", System.Globalization.CultureInfo.InvariantCulture))
         ], SchemeName);
         return AuthenticateResult.Success(new AuthenticationTicket(new ClaimsPrincipal(identity), SchemeName));
     }

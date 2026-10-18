@@ -57,7 +57,8 @@ public sealed class DeploymentProfile
         Servers.Select(server => server.Port).Distinct().Count() == Servers.Length;
 
     public ProfileSnapshot Snapshot() => new(Id, Image,
-        Servers.Select(server => new ServerDefinition(server.Id, server.Port, server.Args.ToArray())).ToArray(),
+        Servers.Select(server => new ServerDefinition(server.Id, server.Port, server.Args.ToArray())
+        { Transport = server.Transport, PublicEndpoint = server.PublicEndpoint, ProtocolVersion = server.ProtocolVersion, BuildId = server.BuildId }).ToArray(),
         string.IsNullOrEmpty(EnvironmentSecretName) ? null : EnvironmentSecretName,
         string.IsNullOrEmpty(ImagePullSecretName) ? null : ImagePullSecretName);
 }
@@ -67,6 +68,12 @@ public sealed class DeploymentServer
     public string Id { get; set; } = "";
     public int Port { get; set; }
     public string[] Args { get; set; } = [];
+    public string Transport { get; set; } = "Udp";
+    public string? PublicEndpoint { get; set; }
+    public int ProtocolVersion { get; set; } = Arkya.ServiceDefaults.GameProtocol.Version;
+    public string BuildId { get; set; } = Arkya.ServiceDefaults.GameProtocol.BuildId;
     public bool IsValid() => DeploymentOptions.ValidId(Id) && Port is >= 1024 and <= 65535 &&
+        (Transport == "Udp" && string.IsNullOrEmpty(PublicEndpoint) || Transport == "WebSocket" &&
+            Arkya.ServiceDefaults.GameProtocol.ValidEndpoint(PublicEndpoint) && ProtocolVersion == Arkya.ServiceDefaults.GameProtocol.Version && BuildId == Arkya.ServiceDefaults.GameProtocol.BuildId) &&
         Args is { Length: <= 64 } && Args.All(arg => arg is not null && arg.Length <= 512 && !arg.Contains('\0'));
 }

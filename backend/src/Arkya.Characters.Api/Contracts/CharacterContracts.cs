@@ -2,7 +2,7 @@ using Arkya.Characters.Api.Domain;
 
 namespace Arkya.Characters.Api.Contracts;
 
-public sealed record CreateCharacterRequest(string? Name, CharacterAppearanceRequest? Appearance = null);
+public sealed record CreateCharacterRequest(string? Name, CharacterAppearanceRequest? Appearance = null, string? RealmId = null);
 public sealed record CharacterAppearanceRequest(int Version, string? Race, string? Silhouette, int HeightCm,
     string? Skin, string? HairStyle, string? HairColor, string? EyeColor, string? OutfitColor)
 {
@@ -21,11 +21,11 @@ public sealed record CharacterAppearanceResponse(int Version, string Race, strin
 public sealed record ResolveCharacterRequest(string? SessionToken);
 
 public sealed record CharacterResponse(Guid Id, string Name, int Level, DateTimeOffset CreatedAt,
-    CharacterAppearanceResponse Appearance)
+    CharacterAppearanceResponse Appearance, string? RealmId = null)
 {
     public static CharacterResponse From(Character character) =>
         new(character.Id, character.Name, character.Level, character.CreatedAt,
-            CharacterAppearanceResponse.From(character.Appearance));
+            CharacterAppearanceResponse.From(character.Appearance), character.RealmId);
 }
 
 public sealed record ResolvedCharacterResponse(Guid AccountId, CharacterResponse Character, DateTimeOffset SessionExpiresAt);

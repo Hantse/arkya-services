@@ -14,11 +14,12 @@ public sealed class CharacterDocument
     public int Level { get; set; }
     public DateTime CreatedAt { get; set; }
     public CharacterAppearanceDocument? Appearance { get; set; }
+    public string? RealmId { get; set; }
 
     public Character ToDomain() => new(Guid.Parse(Id), Guid.Parse(AccountId), Name, NormalizedName,
         Level, new DateTimeOffset(DateTime.SpecifyKind(CreatedAt, DateTimeKind.Utc)))
     {
-        Appearance = ReadAppearance()
+        Appearance = ReadAppearance(), RealmId = RealmId
     };
 
     private CharacterAppearance ReadAppearance()
@@ -26,7 +27,7 @@ public sealed class CharacterDocument
         // Version 1 characters predate customization and retain a stable visual identity.
         if (SchemaVersion == 1 && Appearance is null)
             return CharacterAppearance.Default;
-        if (SchemaVersion != 2 || Appearance is null)
+        if (SchemaVersion is not (2 or 3) || Appearance is null)
             throw new InvalidDataException("Unsupported or incomplete character document schema.");
         var appearance = Appearance.ToDomain();
         if (appearance.Validate().Count > 0)
@@ -36,13 +37,13 @@ public sealed class CharacterDocument
 
     public static CharacterDocument From(Character character) => new()
     {
-        SchemaVersion = 2,
+        SchemaVersion = character.RealmId is null ? 2 : 3,
         Id = character.Id.ToString("D"),
         AccountId = character.AccountId.ToString("D"),
         Name = character.Name,
         NormalizedName = character.NormalizedName,
         Level = character.Level,
         CreatedAt = character.CreatedAt.UtcDateTime,
-        Appearance = CharacterAppearanceDocument.From(character.Appearance)
+        Appearance = CharacterAppearanceDocument.From(character.Appearance), RealmId = character.RealmId
     };
 }

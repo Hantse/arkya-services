@@ -1,0 +1,87 @@
+name: Backend CI
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backend-ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  DOTNET_NOLOGO: 'true'
+  DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+
+jobs:
+  validate:
+    name: Build and test all services
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      mongo:
+        image: mongo:8.0
+        ports:
+          - 27017/tcp
+        options: >-
+          --health-cmd "mongosh --quiet --eval 'quit(db.adminCommand({ping:1}).ok ? 0 : 1)'"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - name: Check out backend and root configuration
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: backend
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Select every versioned backend project
+        id: solution
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $projectPaths = @(git -C $env:GITHUB_WORKSPACE ls-files -- ':(glob)backend/**/*.csproj')
+          if ($LASTEXITCODE -ne 0) { throw 'Cannot list versioned backend projects.' }
+          if ($projectPaths.Count -eq 0) { throw 'No versioned backend projects found.' }
+          $absoluteProjectPaths = @($projectPaths | ForEach-Object { Join-Path $env:GITHUB_WORKSPACE $_ })
+          $solutionDirectory = Join-Path $env:RUNNER_TEMP 'arkya-backend-ci'
+          dotnet new sln --format slnx --name Arkya.Backend.CI --output $solutionDirectory
+          if ($LASTEXITCODE -ne 0) { throw 'Cannot create the temporary backend solution.' }
+          $solutionPath = Join-Path $solutionDirectory 'Arkya.Backend.CI.slnx'
+          dotnet sln $solutionPath add @absoluteProjectPaths
+          if ($LASTEXITCODE -ne 0) { throw 'Cannot add backend projects to the temporary solution.' }
+          Add-Content -LiteralPath $env:GITHUB_OUTPUT -Value "path=$solutionPath" -Encoding utf8
+          Write-Output "Selected $($projectPaths.Count) versioned backend projects."
+
+      - name: Restore every backend project
+        run: dotnet restore "${{ steps.solution.outputs.path }}"
+
+      - name: Build all projects in Release
+        run: dotnet build "${{ steps.solution.outputs.path }}" --configuration Release --no-restore
+
+      - name: Run all tests including MongoDB persistence and service flows
+        env:
+          ARKYA_TEST_MONGO: mongodb://127.0.0.1:${{ job.services.mongo.ports['27017'] }}/
+        run: >-
+          dotnet test "${{ steps.solution.outputs.path }}" --configuration Release --no-build --no-restore
+          --logger trx --logger "console;verbosity=normal"
+          --results-directory "${{ github.workspace }}/artifacts/backend-tests"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: backend-test-results
+          path: artifacts/backend-tests/**/*.trx
+          if-no-files-found: ignore
+          retention-days: 14

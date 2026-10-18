@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111d28">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Connectez-vous à Arkya avec Discord pour retrouver votre compte et lancer le jeu." data-i18n-content="meta.description">
+  <meta property="og:locale" content="fr_FR">
+  <title data-i18n="page.title">Arkya — Connexion Discord</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="account.css">
+  <script src="account-copy.js" defer></script>
+  <script src="auth-config.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="account.js" type="module"></script>
+</head>
+<body class="account-page">
+  <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
+  <header class="account-header section-shell"><a class="brand" href="/?lang=fr" data-language-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a><a class="account-back" href="/?lang=fr" data-language-link data-i18n="account.back">Retour au site</a><div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div></header>
+  <main id="contenu" class="account-main section-shell">
+    <div class="account-intro"><p class="eyebrow" data-i18n="account.eyebrow">VOTRE LIEN AVEC ARKYA</p><h1 data-i18n-html="account.title">Un monde.<br>Votre <em>compte.</em></h1><p data-i18n="account.intro">Discord vous permet de retrouver le même compte Arkya sur le site et dans le jeu, lorsque les services sont disponibles.</p><div class="account-privacy-note"><span aria-hidden="true">◇</span><p data-i18n="account.scope">Seuls votre identifiant Discord et votre nom affiché sont utilisés pour vous identifier. Arkya ne demande pas l’accès à vos messages, à vos serveurs ou à votre adresse e-mail Discord.</p></div><a class="text-link" href="privacy.html?lang=fr" data-language-link data-i18n="account.dataLink">Comprendre l’utilisation de mes données ↗</a></div>
+    <section class="account-panel" aria-labelledby="account-panel-title">
+      <div class="account-emblem" aria-hidden="true"><svg viewBox="0 0 36 44"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg></div>
+      <h2 id="account-panel-title" data-i18n="account.panelTitle">Bienvenue dans Arkya</h2>
+      <p id="auth-status" class="auth-status" role="status" aria-live="polite" data-i18n="account.loading">Vérification de la connexion…</p>
+      <div id="auth-unavailable" hidden><span class="status proposal" data-i18n="account.unavailableBadge">Connexion en préparation</span><p data-i18n="account.unavailable">Le parcours de connexion est préparé. Il sera activé après le déploiement des services et la vérification de la connexion Discord. Vous pouvez déjà découvrir l’univers, les classes et les créations sans compte.</p><a class="button secondary" href="classes.html?lang=fr" data-language-link data-i18n="account.classes">Découvrir les classes</a><p><a class="text-link" href="development.html?lang=fr" data-language-link data-i18n="account.progress">Suivre l’avancement ↗</a></p></div>
+      <div id="auth-login"><button type="button" id="discord-login" class="button discord-button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5c4-2 8-2 12 0 2 3 3 7 3 11l-5 2-1-2H9l-1 2-5-2C3 12 4 8 6 5Z"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg><span data-i18n="account.login">Continuer avec Discord</span></button><p class="account-session-note" data-i18n="account.sessionNote">La session est conservée dans cet onglet jusqu’à sa fermeture, votre déconnexion ou son expiration, au plus tard après huit heures.</p></div>
+      <div id="auth-pending" hidden><div class="pending-indicator" aria-hidden="true"></div><p data-i18n="account.pending">Autorisez la connexion dans l’onglet Discord, puis revenez ici. Cette page se mettra à jour automatiquement.</p><a id="auth-open-discord" class="button secondary" target="_blank" rel="noopener noreferrer" data-i18n="account.openDiscord">Ouvrir l’autorisation Discord ↗</a><button type="button" id="auth-cancel" class="account-text-button" data-i18n="account.cancel">Annuler la connexion</button></div>
+      <div id="auth-profile" hidden><p class="eyebrow" data-i18n="account.connected">CONNECTÉ À ARKYA</p><p id="account-name" class="account-name"></p><p id="account-expiry" class="account-session-note"></p><a class="button primary" href="play.html?lang=fr" data-language-link data-i18n="nav.play">Jouer</a><a class="button secondary" href="/?lang=fr#collection" data-language-link data-i18n="account.atlas">Explorer l’atlas</a><button type="button" id="auth-logout" class="account-text-button" data-i18n="account.logout">Se déconnecter</button></div>
+      <div class="account-policy"><p data-i18n="account.policies">Avant de vous connecter, consultez les informations suivantes :</p><a href="terms.html?lang=fr" data-language-link data-i18n="footer.terms">Conditions d’utilisation</a><a href="privacy.html?lang=fr" data-language-link data-i18n="footer.privacy">Politique de confidentialité</a></div>
+      <noscript><p lang="fr">Activez JavaScript pour utiliser la connexion Discord. Les pages d’information restent accessibles sans connexion.</p><p lang="en">Enable JavaScript to sign in with Discord. Information pages remain available without signing in.</p></noscript>
+    </section>
+  </main>
+  <footer class="account-footer section-shell"><p>Pyxion Sarl-S · Arkya</p><a href="mailto:support@arkya.online">support@arkya.online</a><a href="/?lang=fr" data-language-link data-i18n="account.back">Retour au site</a></footer>
+</body>
+</html>

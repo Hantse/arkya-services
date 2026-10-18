@@ -1,0 +1,120 @@
+name: Frontend CI
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frontend-ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  viewers:
+    name: Documentation viewers
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: docs
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.x'
+          package-manager-cache: false
+      - name: Check JavaScript syntax
+        shell: bash
+        run: |
+          mkdir -p output/ci/frontend
+          : > output/ci/frontend/syntax.log
+          mapfile -d '' sources < <(git ls-files -z -- 'docs/**/*.js' 'docs/**/*.mjs' 'docs/**/*.cjs' ':!:docs/**/*.min.js')
+          if (( ${#sources[@]} == 0 )); then
+            echo 'No viewer JavaScript sources found.' >&2
+            exit 1
+          fi
+          status=0
+          for source in "${sources[@]}"; do
+            printf 'Checking %s\n' "$source" | tee -a output/ci/frontend/syntax.log
+            if ! node --check "$source" >> output/ci/frontend/syntax.log 2>&1; then
+              status=1
+            fi
+          done
+          cat output/ci/frontend/syntax.log
+          exit "$status"
+      - name: Run viewer tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          mkdir -p output/ci/frontend
+          mapfile -d '' tests < <(git ls-files -z -- 'docs/**/*.test.js' 'docs/**/*.test.mjs' 'docs/**/*.test.cjs')
+          if (( ${#tests[@]} == 0 )); then
+            echo 'No viewer tests found.' >&2
+            exit 1
+          fi
+          node --test --test-reporter=spec --test-reporter-destination=stdout \
+            --test-reporter=junit --test-reporter-destination=output/ci/frontend/tests.xml \
+            "${tests[@]}" | tee output/ci/frontend/tests.log
+      - name: Save verification results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: frontend-viewer-results
+          path: output/ci/frontend/
+          if-no-files-found: warn
+          retention-days: 14
+
+  site:
+    name: Static site and client contracts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
+        working-directory: sites/arkya
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: sites/arkya
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.x'
+          package-manager-cache: false
+      - name: Check JavaScript syntax
+        run: |
+          mkdir -p output/ci
+          : > output/ci/syntax.log
+          mapfile -d '' sources < <(find dist tests -type f \( -name '*.js' -o -name '*.mjs' -o -name '*.cjs' \) -print0)
+          sources+=(serve.mjs)
+          status=0
+          for source in "${sources[@]}"; do
+            printf 'Checking %s\n' "$source" | tee -a output/ci/syntax.log
+            if ! node --check "$source" >> output/ci/syntax.log 2>&1; then
+              status=1
+            fi
+          done
+          cat output/ci/syntax.log
+          exit "$status"
+      - name: Run all frontend client tests
+        if: ${{ !cancelled() }}
+        run: |
+          mkdir -p output/ci
+          mapfile -d '' tests < <(find tests -type f -name '*.test.mjs' -print0)
+          if (( ${#tests[@]} == 0 )); then
+            echo 'No frontend client tests found.' >&2
+            exit 1
+          fi
+          node --test --test-reporter=spec --test-reporter-destination=stdout \
+            --test-reporter=junit --test-reporter-destination=output/ci/tests.xml \
+            "${tests[@]}" | tee output/ci/tests.log
+      - name: Save verification results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: site-frontend-results
+          path: sites/arkya/output/ci/
+          if-no-files-found: warn
+          retention-days: 14

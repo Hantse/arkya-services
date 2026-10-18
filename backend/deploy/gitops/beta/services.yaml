@@ -1,0 +1,159 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-identity
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-identity
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: arkya-identity
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: https
+    port: 8443
+    targetPort: https
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-gateway
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-gateway
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: arkya-gateway
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  loadBalancerIP: 192.168.100.218
+  externalTrafficPolicy: Local
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-characters
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-characters
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: arkya-characters
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: https
+    port: 8443
+    targetPort: https
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-content
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-content
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: arkya-content
+  ports:
+  - name: https
+    port: 8443
+    targetPort: https
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-realms
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-realms
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: arkya-realms
+  ports:
+  - name: https
+    port: 8443
+    targetPort: https
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-admin
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-admin
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: arkya-admin
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-backend
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-backend
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: arkya-backend
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-frontend
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-frontend
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: arkya-frontend
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http

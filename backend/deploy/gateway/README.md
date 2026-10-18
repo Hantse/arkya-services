@@ -81,6 +81,7 @@ YARP relaie une liste de routes et de méthodes explicites, sans suppression de 
 | `GET /v1/auth/me`, `POST /v1/auth/logout` | Identity |
 | `GET /health` | Gateway elle-même |
 | `GET/POST /v1/characters`, `GET /v1/characters/{guid}`, `GET /v1/characters/appearance-options` | Characters, seulement si activé |
+| `GET /v1/realms`, `POST /v1/characters/{guid}/admissions` | Characters, seulement si activé ; session Arkya requise |
 
 Les prérequêtes `OPTIONS` des appels API sont transmises au service concerné, qui conserve sa politique CORS. Sur le domaine API, `/internal`, les routes d'administration, de développement, Social SDK et les sondes détaillées ne sont pas publiés. Un nouveau sous-service demande une route explicite dans `GatewayRoutes.cs`, sa destination et son filtrage réseau ; aucun chemin générique ne donne accès à toutes ses API.
 
@@ -96,7 +97,7 @@ Le test `./Test-AdminRendering.ps1` vérifie cette configuration sans contacter 
 
 Characters existe dans le code mais ce dossier ne le déploie pas. Après avoir déployé son Service interne, renseigner par exemple `charactersAddress` avec `http://arkya-characters.arkya-identity.svc.cluster.local:8080/` **si ce nom et ce port correspondent au Service créé**, puis régénérer. Le renderer active alors `Gateway__CharactersEnabled=true` et sa destination YARP ; sans adresse, ces routes n'existent pas.
 
-Pour HTTP privé, configurer Characters avec les CIDR réels des pods gateway dans `ProxyTrust__KnownNetworks`, autoriser le Host `api.arkya.online` et limiter son ingress réseau aux pods gateway. Sinon, utiliser une destination HTTPS avec un certificat valide ; la gateway ne désactive pas la validation des certificats. Le service doit également pouvoir introspecter les sessions auprès d'Identity via son transport interne authentifié. Le profil Identity initial n'autorise que la gateway : prévoir les accès réseau internes et TLS nécessaires à Characters avant de l'activer, sans rendre `/internal` public. Characters est actuellement utilisé par le client Unity et ne possède pas de politique CORS. Des appels depuis le site nécessiteraient d'ajouter au service une politique limitée aux origines autorisées.
+Pour HTTP privé, configurer Characters avec les CIDR réels des pods gateway dans `ProxyTrust__KnownNetworks`, autoriser le Host `api.arkya.online` et limiter son ingress réseau aux pods gateway. Sinon, utiliser une destination HTTPS avec un certificat valide ; la gateway ne désactive pas la validation des certificats. Le service doit également pouvoir introspecter les sessions auprès d'Identity via son transport interne authentifié. Le profil Identity initial n'autorise que la gateway : prévoir les accès réseau internes et TLS nécessaires à Characters avant de l'activer, sans rendre `/internal` public. Pour le client web, Characters et Identity disposent de la politique `WebClient:AllowedOrigins` : renseigner l'origine HTTPS exacte du site dans les deux services. Characters doit aussi joindre le catalogue interne Realms ; les clés interservices et dedicated restent privées. Voir le [guide bêta web](../../../docs/WEB_BETA.md).
 
 ## Appliquer et vérifier
 

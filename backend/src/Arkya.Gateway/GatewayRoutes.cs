@@ -21,6 +21,8 @@ public static class GatewayRoutes
             routes.Add(Route("characters-list-create", "characters", "/v1/characters", "GET", "POST", "OPTIONS"));
             routes.Add(Route("characters-get", "characters", "/v1/characters/{id:guid}", "GET", "OPTIONS"));
             routes.Add(Route("characters-appearance", "characters", "/v1/characters/appearance-options", "GET", "OPTIONS"));
+            routes.Add(Route("game-realms", "characters", "/v1/realms", "GET", "OPTIONS"));
+            routes.Add(Route("character-admission", "characters", "/v1/characters/{id:guid}/admissions", "POST", "OPTIONS"));
         }
         if (adminHost is not null)
         {

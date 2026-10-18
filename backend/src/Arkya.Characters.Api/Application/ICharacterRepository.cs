@@ -8,4 +8,5 @@ public interface ICharacterRepository
     Task<IReadOnlyList<Character>> ListOwnedAsync(Guid accountId, CancellationToken cancellationToken);
     Task<Character?> FindOwnedAsync(Guid characterId, Guid accountId, CancellationToken cancellationToken);
     Task<bool> TryAddAsync(Character character, CancellationToken cancellationToken);
+    Task<bool> TryBindRealmAsync(Guid characterId, Guid accountId, string realmId, CancellationToken cancellationToken);
 }

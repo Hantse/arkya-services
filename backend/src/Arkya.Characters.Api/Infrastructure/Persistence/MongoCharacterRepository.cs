@@ -35,6 +35,14 @@ public sealed class MongoCharacterRepository(IMongoClient client, IOptions<Mongo
     public Task<bool> ExistsAsync(Guid characterId, CancellationToken cancellationToken) =>
         characters.Find(character => character.Id == characterId.ToString("D")).AnyAsync(cancellationToken);
 
+    public async Task<bool> TryBindRealmAsync(Guid characterId, Guid accountId, string realmId, CancellationToken cancellationToken)
+    {
+        var result = await characters.UpdateOneAsync(value => value.Id == characterId.ToString("D") &&
+            value.AccountId == accountId.ToString("D") && (value.RealmId == null || value.RealmId == realmId),
+            Builders<CharacterDocument>.Update.Set(value => value.RealmId, realmId), cancellationToken: cancellationToken);
+        return result.MatchedCount == 1;
+    }
+
     public async Task<Character?> FindOwnedAsync(Guid characterId, Guid accountId, CancellationToken cancellationToken)
     {
         var document = await characters.Find(character => character.Id == characterId.ToString("D") &&

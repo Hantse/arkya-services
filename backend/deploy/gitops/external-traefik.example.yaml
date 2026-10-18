@@ -1,0 +1,61 @@
+# Merge with the VM's existing file provider; this file is not an Argo resource.
+# Keep the existing certificate configuration for these public domains.
+# Replace CLUSTER_INGRESS_PRIVATE_IP with the cluster Traefik entrypoint,
+# which must be reachable from the VM and must NOT occupy 192.168.100.218.
+http:
+  routers:
+    arkya-api:
+      rule: Host(`api.arkya.online`)
+      entryPoints: [websecure]
+      service: arkya-gateway
+      tls: {}
+      observability:
+        accessLogs: false
+        tracing: false
+    arkya-admin:
+      rule: Host(`admin.arkya.online`)
+      entryPoints: [websecure]
+      service: arkya-gateway
+      tls: {}
+      observability:
+        accessLogs: false
+        tracing: false
+    arkya-site:
+      rule: Host(`arkya.online`)
+      entryPoints: [websecure]
+      service: arkya-cluster-site
+      tls: {}
+      observability:
+        accessLogs: false
+        tracing: false
+    arkya-game:
+      rule: Host(`beta-game.arkya.online`)
+      entryPoints: [websecure]
+      service: arkya-cluster-game
+      tls: {}
+      observability:
+        accessLogs: false
+        tracing: false
+  services:
+    arkya-gateway:
+      loadBalancer:
+        passHostHeader: true
+        servers:
+          - url: http://192.168.100.218:80
+    arkya-cluster-site:
+      loadBalancer:
+        passHostHeader: true
+        serversTransport: arkya-site-tls
+        servers:
+          - url: https://CLUSTER_INGRESS_PRIVATE_IP:443
+    arkya-cluster-game:
+      loadBalancer:
+        passHostHeader: true
+        serversTransport: arkya-game-tls
+        servers:
+          - url: https://CLUSTER_INGRESS_PRIVATE_IP:443
+  serversTransports:
+    arkya-site-tls:
+      serverName: arkya.online
+    arkya-game-tls:
+      serverName: beta-game.arkya.online

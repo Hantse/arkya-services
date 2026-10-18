@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: arkya-beta
+  namespace: argocd
+spec:
+  description: Arkya beta services and Unity deployment from their owning repositories.
+  sourceRepos:
+  - https://github.com/Hantse/arkya-services.git
+  - https://github.com/Hantse/arkya-mmorpg.git
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: arkya-identity
+  - server: https://kubernetes.default.svc
+    namespace: arkya-operations
+  - server: https://kubernetes.default.svc
+    namespace: arkya-realm-beta-web
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: Service
+  - group: ''
+    kind: PersistentVolumeClaim
+  - group: apps
+    kind: Deployment
+  - group: networking.k8s.io
+    kind: NetworkPolicy
+  - group: networking.k8s.io
+    kind: Ingress

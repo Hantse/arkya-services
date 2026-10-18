@@ -18,7 +18,7 @@ public sealed class CharacterService(ICharacterRepository repository, TimeProvid
         CreateAsync(accountId, name, null, cancellationToken);
 
     public async Task<CreateCharacterResult> CreateAsync(Guid accountId, string? name, CharacterAppearance? appearance,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken, string? realmId = null)
     {
         if (!CharacterName.TryCreate(name, out var characterName))
             return new(CreateCharacterStatus.InvalidName);
@@ -29,7 +29,7 @@ public sealed class CharacterService(ICharacterRepository repository, TimeProvid
             return new(CreateCharacterStatus.InvalidAppearance, Errors: errors);
 
         var character = new Character(Guid.NewGuid(), accountId, characterName!.Value,
-            characterName.NormalizedValue, 1, timeProvider.GetUtcNow()) { Appearance = appearance };
+            characterName.NormalizedValue, 1, timeProvider.GetUtcNow()) { Appearance = appearance, RealmId = realmId };
         return await repository.TryAddAsync(character, cancellationToken)
             ? new(CreateCharacterStatus.Created, character)
             : new(CreateCharacterStatus.NameTaken);

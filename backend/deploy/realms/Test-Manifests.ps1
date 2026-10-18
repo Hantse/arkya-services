@@ -55,6 +55,12 @@ try { & (Join-Path $PSScriptRoot 'Render-Manifests.ps1') -Configuration $configP
 Assert-Check $rejected 'Mutable image tags must be rejected.'
 
 $invalidOptions = @(
+    @{ name = 'unknown transport'; change = { param($value) $value.deployment.profiles[0].servers[0].transport = 'Tcp' } },
+    @{ name = 'insecure game endpoint'; change = { param($value) $value.deployment.profiles[0].servers[0].transport = 'WebSocket'; $value.deployment.profiles[0].servers[0].publicEndpoint = 'ws://game.example/' } },
+    @{ name = 'credential game endpoint'; change = { param($value) $value.deployment.profiles[0].servers[0].transport = 'WebSocket'; $value.deployment.profiles[0].servers[0].publicEndpoint = 'wss://user@game.example/' } },
+    @{ name = 'UDP with web endpoint'; change = { param($value) $value.deployment.profiles[0].servers[0].publicEndpoint = 'wss://game.example/' } },
+    @{ name = 'wrong game build'; change = { param($value) $value.deployment.profiles[0].servers[0].buildId = 'other' } },
+    @{ name = 'wrong game protocol'; change = { param($value) $value.deployment.profiles[0].servers[0].protocolVersion = 2 } },
     @{ name = 'short target ID'; change = { param($value) $value.deployment.targets[0].id = 'eu' } },
     @{ name = 'numeric leading profile ID'; change = { param($value) $value.deployment.profiles[0].id = '1test' } },
     @{ name = 'long server ID'; change = { param($value) $value.deployment.profiles[0].servers[0].id = 'a' * 32 } },
@@ -103,6 +109,20 @@ foreach ($case in $invalidOptions) {
 }
 
 # Optional values and bounds must also remain deployable when intentionally selected.
+$config = $baselineJson | ConvertFrom-Json -AsHashtable
+$config.charactersNamespace = 'arkya-characters'
+$config.deployment.profiles[0].servers[0].transport = 'WebSocket'
+$config.deployment.profiles[0].servers[0].publicEndpoint = 'wss://beta-game.arkya.online/'
+Save-Config
+& (Join-Path $PSScriptRoot 'Render-Manifests.ps1') -Configuration $configPath -OutputDirectory $directory | Out-Null
+$webManifest = Get-Content -LiteralPath (Join-Path $directory 'operations.json') -Raw | ConvertFrom-Json -AsHashtable
+$webIngress = $webManifest.items | Where-Object { $_.kind -eq 'NetworkPolicy' -and $_.metadata.name -eq 'arkya-realms-ingress' }
+$charactersSource = $webIngress.spec.ingress[0].from[1]
+Assert-Check ($charactersSource.namespaceSelector.matchLabels['kubernetes.io/metadata.name'] -eq 'arkya-characters') 'Catalogue access must select the explicit Characters namespace.'
+Assert-Check ($charactersSource.podSelector.matchLabels['app.kubernetes.io/name'] -eq 'arkya-characters') 'Catalogue access must select Characters pods only.'
+$webRealms = $webManifest.items | Where-Object { $_.kind -eq 'Deployment' -and $_.metadata.name -eq 'arkya-realms' }
+$catalogKey = $webRealms.spec.template.spec.containers[0].env | Where-Object name -eq 'GameAccess__ServiceKey'
+Assert-Check ($catalogKey.valueFrom.secretKeyRef.key -eq 'realms-catalog-key') 'Catalogue must use its own secret reference.'
 $config = $baselineJson | ConvertFrom-Json -AsHashtable
 $config.deployment.profiles[0].environmentSecretName = $null
 $config.deployment.profiles[0].imagePullSecretName = ''

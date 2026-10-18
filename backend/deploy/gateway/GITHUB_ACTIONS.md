@@ -1,10 +1,10 @@
 # Construire et publier Gateway avec GitHub Actions
 
-Le workflow [Gateway image](../../../.github/workflows/gateway-image.yml) teste `Arkya.Gateway`, construit [Dockerfile.gateway](../../Dockerfile.gateway) et publie une image **Linux AMD64 et ARM64** dans GitHub Container Registry. Il utilise les mêmes versions épinglées de .NET et des actions que le workflow Identity, avec un cache de build séparé. La gateway ne nécessite pas de MongoDB pour ses tests.
+Le workflow [Services images](../../../.github/workflows/services-images.yml) remplace les publications séparées. Après les tests backend/frontend et les vérifications des manifests et de la vitrine conteneurisée, il construit huit images **Linux AMD64 et ARM64**. La gateway utilise [Dockerfile.service](../../Dockerfile.service) avec `APPLICATION=Arkya.Gateway` et un cache de build séparé. Ses tests propres ne nécessitent pas MongoDB ; la suite commune utilise un MongoDB 8.0 jetable.
 
 ## Lancer le workflow
 
-Versionner le workflow à la racine du dépôt GitHub qui contient `backend/`, ainsi que le Dockerfile, `.dockerignore`, les sources Gateway/ServiceDefaults et les tests Gateway. Après son arrivée sur la branche par défaut, ouvrir **Actions → Gateway image → Run workflow** et sélectionner cette branche.
+Versionner les workflows et les sources à la racine de `Hantse/arkya-services`, qui contient le backend et la vitrine. Après leur arrivée sur la branche par défaut, ouvrir **Actions → Services images → Run workflow** et sélectionner cette branche.
 
 | Événement | Résultat |
 | --- | --- |
@@ -22,15 +22,15 @@ Le job de publication reçoit `packages: write` et utilise le `GITHUB_TOKEN` tem
 Le nom découle du dépôt GitHub, en minuscules :
 
 ```text
-ghcr.io/<proprietaire>/<depot>-gateway:sha-<commit-complet>
+ghcr.io/hantse/arkya-services-gateway:sha-<commit-complet>
 ```
 
-Le résumé du job **Publish to GHCR** fournit le tag et la référence `image@sha256:…`. Copier cette dernière dans le champ `image` de `backend/deploy/gateway/.local/cluster.json`, puis suivre le [guide de déploiement](README.md). Préférer le digest : relancer le même commit peut remplacer son tag SHA. Aucun tag `latest` n’est produit.
+Le résumé du job **Image gateway** fournit la référence `image@sha256:…`. Après publication de toutes les images, le job de promotion épingle leurs digests dans `backend/deploy/gitops/beta/kustomization.yaml`. Les preuves JSON restent disponibles 30 jours dans `service-image-gateway` et `services-release`. Le `GITHUB_TOKEN` permet ce commit ciblé dans le même dépôt, sans PAT. Un déploiement manuel peut toujours copier le digest dans `backend/deploy/gateway/.local/cluster.json` et suivre le [guide historique](README.md). Aucun tag `latest` n'est produit.
 
 Un nouveau package GHCR est privé par défaut. Pour une image privée, créer ou réutiliser un Secret `kubernetes.io/dockerconfigjson` dans le namespace **`arkya-identity`**, avec un compte autorisé à lire le package et un PAT classique limité à `read:packages`. Reporter son nom dans `imagePullSecretName` ; le Secret déjà utilisé pour Identity peut servir si son compte a accès aux deux packages. Le `GITHUB_TOKEN` de la CI expire et ne convient pas pour les téléchargements permanents du cluster. Ne pas enregistrer le PAT dans Git ni dans le JSON du cluster.
 
 Pour une image volontairement publique, rendre le package public dans GitHub puis laisser `imagePullSecretName` vide. Si la publication répond `denied` pour un package préexistant, autoriser le dépôt dans **Manage Actions access** de ce package.
 
-Le workflow publie uniquement l’image Gateway ; il ne déploie pas le cluster et ne modifie ni DNS ni Traefik. Le workflow Identity reste indépendant.
+La [source GitOps bêta](../gitops/README.md) est ensuite suivie par Argo CD. Les Secrets, les certificats et les accès au registre doivent être provisionnés dans le cluster ; publier une image ne confirme pas le fonctionnement du parcours Discord.
 
 Références : [publication Docker avec GitHub Actions](https://docs.github.com/en/actions/tutorials/publish-packages/publish-docker-images), [accès à GHCR](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).

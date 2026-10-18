@@ -1,6 +1,6 @@
 # Construire et publier Identity avec GitHub Actions
 
-Le workflow [Identity image](../../../.github/workflows/identity-image.yml) construit `backend/Dockerfile.identity` et publie dans **GitHub Container Registry (GHCR)**. Le contexte Docker est `backend/` ; le checkout sélectionne ce dossier.
+Le workflow [Services images](../../../.github/workflows/services-images.yml) teste l'ensemble du backend et de la vitrine, puis construit huit images dans **GitHub Container Registry (GHCR)**. Identity utilise `backend/Dockerfile.service` avec `APPLICATION=Arkya.Identity.Api` et le contexte `backend/`. L'ancien workflow Identity autonome est remplacé par cette chaîne commune.
 
 ## Déclenchement et résultat
 
@@ -8,31 +8,31 @@ Le workflow [Identity image](../../../.github/workflows/identity-image.yml) cons
 | --- | --- |
 | Push sur la branche par défaut, avec modification du backend ou du workflow | Tests, build et publication GHCR |
 | Pull request ou push sur une autre branche, avec les mêmes modifications | Tests et build, sans publication |
-| **Actions → Identity image → Run workflow**, branche par défaut | Tests, build et publication GHCR |
+| **Actions → Services images → Run workflow**, branche par défaut | Tests, build, publication GHCR et promotion GitOps |
 | Lancement manuel sur une autre branche | Tests et build, sans publication |
 
 La branche par défaut est détectée automatiquement : aucun nom `main` ou `master` n’est imposé. Les tags Git ne déclenchent pas le workflow. Les filtres couvrent aussi les fichiers de configuration .NET/NuGet à la racine. Ne pas rendre ce workflow filtré obligatoire pour toutes les pull requests : une PR ne touchant que Unity ne le déclenche pas.
 
-Les tests Identity s’exécutent en Release avec un MongoDB 8.0 jetable, ce qui active aussi les trois tests de persistance. Ils n’accèdent ni au MongoDB de production ni à Discord. Un échec empêche le build et la publication. Buildx construit ensuite **Linux AMD64 et ARM64** par compilation croisée, sans QEMU.
+Les tests de tous les projets backend s'exécutent en Release avec un MongoDB 8.0 jetable ; les tests Identity n'accèdent ni au MongoDB de production ni à Discord. Les tests frontend, les contrats des manifests et le démarrage du conteneur de vitrine sont aussi obligatoires. Un échec empêche la publication. Buildx construit ensuite **Linux AMD64 et ARM64** par compilation croisée, sans QEMU.
 
 L’image prend automatiquement ce nom, en minuscules :
 
 ```text
-ghcr.io/<proprietaire>/<depot>-identity:sha-<commit-complet>
+ghcr.io/hantse/arkya-services-identity:sha-<commit-complet>
 ```
 
-Par exemple, un dépôt `MonOrganisation/Arkya` publie `ghcr.io/monorganisation/arkya-identity`. Le résumé du job **Publish to GHCR** donne le tag et la référence **`image@sha256:…`** à copier dans le champ `image` de `.local/cluster.json`. Préférer le digest pour déployer exactement l’image vérifiée : un relancement sur le même commit peut remplacer son tag SHA. Aucun tag `latest` n’est utilisé.
+Le résumé du job **Image identity** donne la référence **`image@sha256:…`**. Après publication des huit images, la promotion remplace ensemble leurs digests dans `backend/deploy/gitops/beta/kustomization.yaml`, source suivie par Argo CD. Les artifacts `service-image-identity` et `services-release` conservent la preuve JSON pendant 30 jours. Les tags SHA servent de repères ; seuls les digests sont déployés. Aucun tag `latest` n'est utilisé.
 
 ## Première exécution
 
-1. Versionner `.github/workflows/identity-image.yml` à la **racine du dépôt GitHub contenant `backend/`**, avec le Dockerfile, `.dockerignore`, les sources Identity/ServiceDefaults et les tests Identity. Le dépôt séparé `sites/arkya` héberge la vitrine et n’est pas la destination de ce workflow.
+1. Versionner `.github/workflows/services-images.yml`, ses workflows réutilisables et les sources dans le dépôt `Hantse/arkya-services`. La vitrine `sites/arkya/` appartient au même dépôt.
 2. Autoriser GitHub Actions et les actions GitHub/Docker utilisées si l’organisation applique une liste d’autorisation. Le job de publication demande `contents: read` et `packages: write` ; la politique de l’organisation doit permettre la publication de packages.
-3. Une fois le workflow présent sur la branche par défaut, ouvrir **Actions → Identity image → Run workflow**, sélectionner cette branche et lancer. Un push modifiant les chemins surveillés déclenche aussi la publication.
-4. Après réussite, récupérer le digest dans le résumé et l’utiliser avec le profil Identity `gateway` décrit dans le [guide YARP](../gateway/README.md). L’image Gateway est publiée par son propre workflow.
+3. Une fois le workflow présent sur la branche par défaut, ouvrir **Actions → Services images → Run workflow**, sélectionner cette branche et lancer. Un push modifiant les chemins surveillés déclenche aussi la publication.
+4. Vérifier les huit jobs d'images puis le job de promotion GitOps. La [source bêta](../gitops/README.md) décrit les prérequis Argo CD, certificats et Secrets ; leur présence dans le cluster reste nécessaire au démarrage des services.
 
 **Aucun secret GitHub personnalisé n’est nécessaire pour publier.** Le workflow utilise le `GITHUB_TOKEN` temporaire fourni par GitHub. Les secrets Discord, la connexion MongoDB, les clés de service et le kubeconfig ne sont pas transmis au build : ils restent dans la configuration de déploiement.
 
-Le checkout ne conserve pas ses identifiants Git. Les actions sont épinglées à des commits complets, avec leur version en commentaire ; actualiser ces références lors des mises à jour. Seul le job de publication dispose de `packages: write`. Les pull requests utilisent l’événement `pull_request`, sans connexion à GHCR et sans écriture du cache partagé.
+Les checkouts de test et de build ne conservent pas leurs identifiants Git. Les actions sont épinglées à des commits complets. Les jobs d'images reçoivent `packages: write` ; seul le job final de promotion reçoit `contents: write` pour son commit ciblé, attribué au bot GitHub. Les pull requests n'ouvrent aucune session GHCR et ne publient ni image ni cache partagé. Aucun PAT n'est requis pour publier ou promouvoir dans ce dépôt.
 
 Si un package du même nom existe déjà et que le push répond `denied`, vérifier ses paramètres **Manage Actions access** : ce dépôt doit avoir le droit d’écrire le package. Une publication initiale depuis ce workflow associe automatiquement le package au dépôt ; le label OCI `source` indique aussi cette association.
 
@@ -51,10 +51,10 @@ Depuis `backend/deploy/identity`, après avoir renseigné le digest et les autre
 ./Render-Manifests.ps1 -Configuration .local/cluster.json
 ```
 
-Le workflow publie l’image ; l’application des manifests et la vérification de la connexion Discord suivent le [guide de déploiement YARP](../gateway/README.md). Il ne change ni Traefik, ni le DNS, ni le cluster.
+Pour un déploiement manuel historique, utiliser le digest dans le champ `image` de `.local/cluster.json`, puis suivre le [guide YARP](../gateway/README.md). La chaîne actuelle publie puis actualise GitOps ; elle ne crée pas les secrets du cluster et ne vérifie pas une connexion réelle Discord.
 
 ## Vérification de la préparation
 
-Le 16 octobre 2026, le workflow passe `actionlint 1.7.12` et les tests Identity en Release donnent **144 réussites, trois tests MongoDB ignorés localement** faute de `ARKYA_TEST_MONGO`. Ces trois tests sont activés dans la CI grâce au service MongoDB jetable. Les références des actions ont été vérifiées auprès de leurs dépôts officiels. Le build Docker complet, les tests MongoDB sur le runner et le push GHCR restent à confirmer lors de la première exécution GitHub : aucun workflow distant ni push d’image n’a été exécuté pendant cette préparation.
+Consulter le [guide CI commun](../../../docs/CI.md) et les runs GitHub Actions pour distinguer les vérifications locales de la publication distante. La promotion refuse les releases partielles, les digests de commits différents et une génération dépassée par de nouveaux changements de source.
 
 Références : [publication avec GitHub Actions](https://docs.github.com/en/actions/tutorials/publish-packages/publish-docker-images), [accès au Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry), [compilation Docker multiplateforme](https://docs.docker.com/build/building/multi-platform/).

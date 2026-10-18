@@ -22,9 +22,9 @@ public static class CharacterEndpoints
                 skin = CharacterAppearanceCatalog.Skin, hair = CharacterAppearanceCatalog.Hair,
                 eyes = CharacterAppearanceCatalog.Eyes, outfit = CharacterAppearanceCatalog.Outfit
             }
-        })).AllowAnonymous();
+        })).AllowAnonymous().RequireCors(BrowserClientOptions.Policy);
 
-        var characters = app.MapGroup("/v1/characters").RequireAuthorization();
+        var characters = app.MapGroup("/v1/characters").RequireAuthorization().RequireCors(BrowserClientOptions.Policy);
         characters.MapGet("", async (ClaimsPrincipal user, CharacterService service, CancellationToken cancellationToken) =>
         {
             var owned = await service.ListOwnedAsync(AccountId(user), cancellationToken);
@@ -38,10 +38,13 @@ public static class CharacterEndpoints
             return character is null ? Results.NotFound() : Results.Ok(CharacterResponse.From(character));
         });
 
-        characters.MapPost("", async (CreateCharacterRequest request, ClaimsPrincipal user, CharacterService service,
+        characters.MapPost("", async (CreateCharacterRequest request, ClaimsPrincipal user, CharacterService service, GameAdmissionService game,
             CancellationToken cancellationToken) =>
         {
-            var result = await service.CreateAsync(AccountId(user), request.Name, request.Appearance?.ToDomain(), cancellationToken);
+            if (request.RealmId is not null && (!GameProtocol.ValidId(request.RealmId) ||
+                !(await game.CatalogAsync(cancellationToken)).Realms.Any(value => value.RealmId == request.RealmId)))
+                return Results.Json(new { code = "invalid_realm" }, statusCode: 400);
+            var result = await service.CreateAsync(AccountId(user), request.Name, request.Appearance?.ToDomain(), cancellationToken, request.RealmId);
             return result.Status switch
             {
                 CreateCharacterStatus.Created => Results.Created($"/v1/characters/{result.Character!.Id:D}",

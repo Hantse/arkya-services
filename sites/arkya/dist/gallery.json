@@ -1,0 +1,4191 @@
+[
+  {
+    "id": "cailloux-01-galet-01-gris-bleu",
+    "title": "Galet compact · Pierre gris bleu",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-01-galet-01-gris-bleu.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/01-galet/01-gris-bleu/01-galet-01-gris-bleu-preview.png",
+    "tags": [
+      "Cailloux",
+      "Galet compact",
+      "Pierre gris bleu",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "roches-metalliferes-nodule-fer",
+    "title": "Nodule · Fer acier",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-nodule-fer.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/nodule/nodule-fer-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Nodule",
+      "Fer acier",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "cristaux-eclat-azur",
+    "title": "Éclat · Azur",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-eclat-azur.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/eclat-azur/eclat-azur-preview.png",
+    "tags": [
+      "Cristaux",
+      "Éclat",
+      "Azur",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "buissons-coussin-sylvestre",
+    "title": "Coussin bas · Vert sylvestre",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-coussin-sylvestre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/coussin-sylvestre/coussin-sylvestre-preview.png",
+    "tags": [
+      "Buissons",
+      "Coussin bas",
+      "Vert sylvestre",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "herbes-rase-prairie",
+    "title": "Touffe rase · Prairie verte",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-rase-prairie.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/rase-prairie/rase-prairie-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Touffe rase",
+      "Prairie verte",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "champignons-boutons-corail",
+    "title": "Colonie de boutons · Corail crème",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-boutons-corail.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/boutons-corail/boutons-corail-preview.png",
+    "tags": [
+      "Champignons",
+      "Colonie de boutons",
+      "Corail crème",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "fleurs-rosette-corail",
+    "title": "Rosette basse · Corail abricot",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-rosette-corail.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/rosette-corail/rosette-corail-preview.png",
+    "tags": [
+      "Fleurs",
+      "Rosette basse",
+      "Corail abricot",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "souches-basse-moussu",
+    "title": "Souche basse · Ancien moussu",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-basse-moussu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/basse-moussu/basse-moussu-preview.png",
+    "tags": [
+      "Souches",
+      "Souche basse",
+      "Ancien moussu",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "troncs-couches-billot-moussu",
+    "title": "Billot court · Ancien moussu",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-billot-moussu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/billot-moussu/billot-moussu-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Billot court",
+      "Ancien moussu",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "mares-de-mana-mare-bleue",
+    "title": "Mare de mana · Mana bleu azur",
+    "category": "magie",
+    "collection": "Mares de mana",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Surface peinte, volutes et gouttes assorties. Aperçu fixe d’un modèle animé.",
+    "image": "assets/mares-de-mana-mare-bleue.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/mares-de-mana/assets/mare-bleue/mare-bleue-preview.png",
+    "tags": [
+      "Mares de mana",
+      "Mare de mana",
+      "Mana bleu azur",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "outils-invoques-hache-azur",
+    "title": "Hache invoquée · Mana azur · 0 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-azur.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-azur/hache-azur-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "structures-fondation-chaume",
+    "title": "Fondation · Chaume",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-fondation-chaume.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/fondation-chaume/fondation-chaume-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Fondation",
+      "Chaume",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "reference-reference-moussu",
+    "title": "Arbre de référence · Ancien moussu",
+    "category": "vegetation",
+    "collection": "Arbres · matières V3",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Finition peinte V3 approuvée : la référence de volumes et de surfaces pour les objets d’Arkya.",
+    "image": "assets/reference-reference-moussu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/references/arbre-peint-v3/03-moussu/03-moussu-preview.png",
+    "tags": [
+      "Arbres · matières V3",
+      "Arbre de référence",
+      "Ancien moussu",
+      "rendu 3D"
+    ],
+    "featured": true
+  },
+  {
+    "id": "gameplay-aube",
+    "title": "Royaumes de l’Aube · vue de gameplay",
+    "category": "univers",
+    "collection": "Explorations d’univers",
+    "status": "exploration",
+    "origin": "Concept généré",
+    "description": "Pierre claire, terre cuite, tissus bleu canard et lumière chaleureuse. Simulation de gameplay générée ; ce n’est pas une capture Unity.",
+    "image": "assets/gameplay-aube.webp",
+    "width": 1672,
+    "height": 941,
+    "source": "docs/art-direction/01-royaumes-aube-gameplay.png",
+    "tags": [
+      "concept",
+      "gameplay",
+      "troisième personne"
+    ],
+    "featured": true
+  },
+  {
+    "id": "gameplay-ether",
+    "title": "Cités d’Éther · vue de gameplay",
+    "category": "univers",
+    "collection": "Explorations d’univers",
+    "status": "exploration",
+    "origin": "Concept généré",
+    "description": "Ivoire, bronze, corail et turquoise composent une fantasy lumineuse. Simulation de gameplay générée ; ce n’est pas une capture Unity.",
+    "image": "assets/gameplay-ether.webp",
+    "width": 1672,
+    "height": 941,
+    "source": "docs/art-direction/02-cites-ether-gameplay.png",
+    "tags": [
+      "concept",
+      "gameplay",
+      "troisième personne"
+    ],
+    "featured": true
+  },
+  {
+    "id": "gameplay-anciens",
+    "title": "Terres des Anciens · vue de gameplay",
+    "category": "univers",
+    "collection": "Explorations d’univers",
+    "status": "exploration",
+    "origin": "Concept généré",
+    "description": "Bois sculpté, forêt enveloppante et lumières chaudes des lieux habités. Simulation de gameplay générée ; ce n’est pas une capture Unity.",
+    "image": "assets/gameplay-anciens.webp",
+    "width": 1672,
+    "height": 941,
+    "source": "docs/art-direction/03-terres-anciens-gameplay.png",
+    "tags": [
+      "concept",
+      "gameplay",
+      "troisième personne"
+    ],
+    "featured": true
+  },
+  {
+    "id": "hud-cuivre-v3",
+    "title": "HUD V3 · Encre & cuivre",
+    "category": "interfaces",
+    "collection": "HUD V3",
+    "status": "proposal",
+    "origin": "Concept généré",
+    "description": "Maquette générée sur un fond de la forêt Unity : HUD allégé, groupe compact, objectifs sans panneau et deux barres d’action. Interface non implémentée.",
+    "image": "assets/hud-cuivre-v3.webp",
+    "width": 1586,
+    "height": 992,
+    "source": "docs/art-direction/ui/hud/01-encre-cuivre-v3.png",
+    "tags": [
+      "HUD",
+      "V3",
+      "Encre & cuivre",
+      "maquette"
+    ],
+    "featured": true
+  },
+  {
+    "id": "hud-carnet-v3",
+    "title": "HUD V3 · Carnet d’exploration",
+    "category": "interfaces",
+    "collection": "HUD V3",
+    "status": "proposal",
+    "origin": "Concept généré",
+    "description": "Maquette générée sur un fond de la forêt Unity : HUD allégé, groupe compact, objectifs sans panneau et deux barres d’action. Interface non implémentée.",
+    "image": "assets/hud-carnet-v3.webp",
+    "width": 1586,
+    "height": 992,
+    "source": "docs/art-direction/ui/hud/02-carnet-exploration-v3.png",
+    "tags": [
+      "HUD",
+      "V3",
+      "Carnet d’exploration",
+      "maquette"
+    ],
+    "featured": true
+  },
+  {
+    "id": "hud-mana-v3",
+    "title": "HUD V3 · Pierre de mana",
+    "category": "interfaces",
+    "collection": "HUD V3",
+    "status": "proposal",
+    "origin": "Concept généré",
+    "description": "Maquette générée sur un fond de la forêt Unity : HUD allégé, groupe compact, objectifs sans panneau et deux barres d’action. Interface non implémentée.",
+    "image": "assets/hud-mana-v3.webp",
+    "width": 1586,
+    "height": 992,
+    "source": "docs/art-direction/ui/hud/03-pierre-mana-v3.png",
+    "tags": [
+      "HUD",
+      "V3",
+      "Pierre de mana",
+      "maquette"
+    ],
+    "featured": true
+  },
+  {
+    "id": "atelier-humain",
+    "title": "Atelier des origines · Humain",
+    "category": "personnages",
+    "collection": "Atelier des origines",
+    "status": "proposal",
+    "origin": "Capture de l’atelier d’apparence",
+    "description": "Étude personnalisable : silhouette, taille, peau, cheveux, regard et étoffe. Proposition artistique issue du viewer d’apparence.",
+    "image": "assets/atelier-humain.webp",
+    "width": 1440,
+    "height": 1144,
+    "source": "docs/art-direction/resources/personnages/humain-atelier.png",
+    "tags": [
+      "personnage",
+      "Humain",
+      "apparence"
+    ],
+    "featured": true,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "atelier-elfe",
+    "title": "Atelier des origines · Elfe",
+    "category": "personnages",
+    "collection": "Atelier des origines",
+    "status": "proposal",
+    "origin": "Capture de l’atelier d’apparence",
+    "description": "Étude personnalisable : silhouette, taille, peau, cheveux, regard et étoffe. Proposition artistique issue du viewer d’apparence.",
+    "image": "assets/atelier-elfe.webp",
+    "width": 1440,
+    "height": 1144,
+    "source": "docs/art-direction/resources/personnages/elfe-atelier.png",
+    "tags": [
+      "personnage",
+      "Elfe",
+      "apparence"
+    ],
+    "featured": true,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "ile-overview",
+    "title": "L’île de départ · vue d’ensemble",
+    "category": "univers",
+    "collection": "Île de départ · Unity",
+    "status": "prototype",
+    "origin": "Capture Unity",
+    "description": "Le terrain du prototype et son parcours d’exploration de niveaux 1 à 6. Capture réelle du moteur ; environnement en développement.",
+    "image": "assets/ile-overview.webp",
+    "width": 1600,
+    "height": 1067,
+    "source": "docs/world/starter-island/overview.png",
+    "tags": [
+      "île",
+      "Unity",
+      "prototype"
+    ],
+    "featured": true
+  },
+  {
+    "id": "ile-environment-forest-day",
+    "title": "Le sous-bois · lumière du jour",
+    "category": "univers",
+    "collection": "Île de départ · Unity",
+    "status": "prototype",
+    "origin": "Capture Unity",
+    "description": "Les arbres peints composent le paysage du prototype Unity. Capture réelle du moteur ; environnement en développement.",
+    "image": "assets/ile-environment-forest-day.webp",
+    "width": 1600,
+    "height": 1000,
+    "source": "docs/world/starter-island/environment/forest-day.png",
+    "tags": [
+      "île",
+      "Unity",
+      "prototype"
+    ],
+    "featured": true
+  },
+  {
+    "id": "ile-environment-refuge-day",
+    "title": "Le refuge · lumière du jour",
+    "category": "univers",
+    "collection": "Île de départ · Unity",
+    "status": "prototype",
+    "origin": "Capture Unity",
+    "description": "Un abri modulaire au milieu de la forêt du prototype. Capture réelle du moteur ; environnement en développement.",
+    "image": "assets/ile-environment-refuge-day.webp",
+    "width": 1600,
+    "height": 1000,
+    "source": "docs/world/starter-island/environment/refuge-day.png",
+    "tags": [
+      "île",
+      "Unity",
+      "prototype"
+    ],
+    "featured": true
+  },
+  {
+    "id": "cailloux-01-galet-02-gres-chaud",
+    "title": "Galet compact · Grès chaud",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-01-galet-02-gres-chaud.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/01-galet/02-gres-chaud/01-galet-02-gres-chaud-preview.png",
+    "tags": [
+      "Cailloux",
+      "Galet compact",
+      "Grès chaud",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-01-galet-03-moussu",
+    "title": "Galet compact · Pierre moussue",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-01-galet-03-moussu.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/01-galet/03-moussu/01-galet-03-moussu-preview.png",
+    "tags": [
+      "Cailloux",
+      "Galet compact",
+      "Pierre moussue",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-02-bloc-oblique-01-gris-bleu",
+    "title": "Bloc oblique · Pierre gris bleu",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-02-bloc-oblique-01-gris-bleu.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/02-bloc-oblique/01-gris-bleu/02-bloc-oblique-01-gris-bleu-preview.png",
+    "tags": [
+      "Cailloux",
+      "Bloc oblique",
+      "Pierre gris bleu",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-02-bloc-oblique-02-gres-chaud",
+    "title": "Bloc oblique · Grès chaud",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-02-bloc-oblique-02-gres-chaud.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/02-bloc-oblique/02-gres-chaud/02-bloc-oblique-02-gres-chaud-preview.png",
+    "tags": [
+      "Cailloux",
+      "Bloc oblique",
+      "Grès chaud",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-02-bloc-oblique-03-moussu",
+    "title": "Bloc oblique · Pierre moussue",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-02-bloc-oblique-03-moussu.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/02-bloc-oblique/03-moussu/02-bloc-oblique-03-moussu-preview.png",
+    "tags": [
+      "Cailloux",
+      "Bloc oblique",
+      "Pierre moussue",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-03-rocher-large-01-gris-bleu",
+    "title": "Rocher large · Pierre gris bleu",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-03-rocher-large-01-gris-bleu.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/03-rocher-large/01-gris-bleu/03-rocher-large-01-gris-bleu-preview.png",
+    "tags": [
+      "Cailloux",
+      "Rocher large",
+      "Pierre gris bleu",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-03-rocher-large-02-gres-chaud",
+    "title": "Rocher large · Grès chaud",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-03-rocher-large-02-gres-chaud.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/03-rocher-large/02-gres-chaud/03-rocher-large-02-gres-chaud-preview.png",
+    "tags": [
+      "Cailloux",
+      "Rocher large",
+      "Grès chaud",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-03-rocher-large-03-moussu",
+    "title": "Rocher large · Pierre moussue",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-03-rocher-large-03-moussu.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/03-rocher-large/03-moussu/03-rocher-large-03-moussu-preview.png",
+    "tags": [
+      "Cailloux",
+      "Rocher large",
+      "Pierre moussue",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-04-affleurement-01-gris-bleu",
+    "title": "Affleurement · Pierre gris bleu",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-04-affleurement-01-gris-bleu.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/04-affleurement/01-gris-bleu/04-affleurement-01-gris-bleu-preview.png",
+    "tags": [
+      "Cailloux",
+      "Affleurement",
+      "Pierre gris bleu",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-04-affleurement-02-gres-chaud",
+    "title": "Affleurement · Grès chaud",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-04-affleurement-02-gres-chaud.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/04-affleurement/02-gres-chaud/04-affleurement-02-gres-chaud-preview.png",
+    "tags": [
+      "Cailloux",
+      "Affleurement",
+      "Grès chaud",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cailloux-04-affleurement-03-moussu",
+    "title": "Affleurement · Pierre moussue",
+    "category": "mineraux",
+    "collection": "Cailloux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pierre mate, volumes usés et arêtes adoucies.",
+    "image": "assets/cailloux-04-affleurement-03-moussu.webp",
+    "width": 900,
+    "height": 900,
+    "source": "docs/art-direction/resources/cailloux/04-affleurement/03-moussu/04-affleurement-03-moussu-preview.png",
+    "tags": [
+      "Cailloux",
+      "Affleurement",
+      "Pierre moussue",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-nodule-cuivre",
+    "title": "Nodule · Cuivre patiné",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-nodule-cuivre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/nodule/nodule-cuivre-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Nodule",
+      "Cuivre patiné",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-nodule-or",
+    "title": "Nodule · Or stylisé",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-nodule-or.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/nodule/nodule-or-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Nodule",
+      "Or stylisé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-bloc-fendu-fer",
+    "title": "Bloc fendu · Fer acier",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-bloc-fendu-fer.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/bloc-fendu/bloc-fendu-fer-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Bloc fendu",
+      "Fer acier",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-bloc-fendu-cuivre",
+    "title": "Bloc fendu · Cuivre patiné",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-bloc-fendu-cuivre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/bloc-fendu/bloc-fendu-cuivre-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Bloc fendu",
+      "Cuivre patiné",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-bloc-fendu-or",
+    "title": "Bloc fendu · Or stylisé",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-bloc-fendu-or.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/bloc-fendu/bloc-fendu-or-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Bloc fendu",
+      "Or stylisé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-filon-oblique-fer",
+    "title": "Filon oblique · Fer acier",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-filon-oblique-fer.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/filon-oblique/filon-oblique-fer-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Filon oblique",
+      "Fer acier",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-filon-oblique-cuivre",
+    "title": "Filon oblique · Cuivre patiné",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-filon-oblique-cuivre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/filon-oblique/filon-oblique-cuivre-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Filon oblique",
+      "Cuivre patiné",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-filon-oblique-or",
+    "title": "Filon oblique · Or stylisé",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-filon-oblique-or.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/filon-oblique/filon-oblique-or-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Filon oblique",
+      "Or stylisé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-affleurement-fer",
+    "title": "Affleurement · Fer acier",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-affleurement-fer.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/affleurement/affleurement-fer-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Affleurement",
+      "Fer acier",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-affleurement-cuivre",
+    "title": "Affleurement · Cuivre patiné",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-affleurement-cuivre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/affleurement/affleurement-cuivre-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Affleurement",
+      "Cuivre patiné",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "roches-metalliferes-affleurement-or",
+    "title": "Affleurement · Or stylisé",
+    "category": "mineraux",
+    "collection": "Roches métallifères",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Filons et inclusions métalliques intégrés à une roche peinte.",
+    "image": "assets/roches-metalliferes-affleurement-or.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/roches-metalliferes/assets/affleurement/affleurement-or-preview.png",
+    "tags": [
+      "Roches métallifères",
+      "Affleurement",
+      "Or stylisé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-eclat-amethyste",
+    "title": "Éclat · Améthyste",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-eclat-amethyste.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/eclat-amethyste/eclat-amethyste-preview.png",
+    "tags": [
+      "Cristaux",
+      "Éclat",
+      "Améthyste",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-eclat-ambre",
+    "title": "Éclat · Ambre",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-eclat-ambre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/eclat-ambre/eclat-ambre-preview.png",
+    "tags": [
+      "Cristaux",
+      "Éclat",
+      "Ambre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-bouquet-azur",
+    "title": "Bouquet · Azur",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-bouquet-azur.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/bouquet-azur/bouquet-azur-preview.png",
+    "tags": [
+      "Cristaux",
+      "Bouquet",
+      "Azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-bouquet-amethyste",
+    "title": "Bouquet · Améthyste",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-bouquet-amethyste.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/bouquet-amethyste/bouquet-amethyste-preview.png",
+    "tags": [
+      "Cristaux",
+      "Bouquet",
+      "Améthyste",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-bouquet-ambre",
+    "title": "Bouquet · Ambre",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-bouquet-ambre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/bouquet-ambre/bouquet-ambre-preview.png",
+    "tags": [
+      "Cristaux",
+      "Bouquet",
+      "Ambre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-geode-azur",
+    "title": "Géode ouverte · Azur",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-geode-azur.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/geode-azur/geode-azur-preview.png",
+    "tags": [
+      "Cristaux",
+      "Géode ouverte",
+      "Azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-geode-amethyste",
+    "title": "Géode ouverte · Améthyste",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-geode-amethyste.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/geode-amethyste/geode-amethyste-preview.png",
+    "tags": [
+      "Cristaux",
+      "Géode ouverte",
+      "Améthyste",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-geode-ambre",
+    "title": "Géode ouverte · Ambre",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-geode-ambre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/geode-ambre/geode-ambre-preview.png",
+    "tags": [
+      "Cristaux",
+      "Géode ouverte",
+      "Ambre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-maitresse-azur",
+    "title": "Formation maîtresse · Azur",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-maitresse-azur.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/maitresse-azur/maitresse-azur-preview.png",
+    "tags": [
+      "Cristaux",
+      "Formation maîtresse",
+      "Azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-maitresse-amethyste",
+    "title": "Formation maîtresse · Améthyste",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-maitresse-amethyste.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/maitresse-amethyste/maitresse-amethyste-preview.png",
+    "tags": [
+      "Cristaux",
+      "Formation maîtresse",
+      "Améthyste",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "cristaux-maitresse-ambre",
+    "title": "Formation maîtresse · Ambre",
+    "category": "mineraux",
+    "collection": "Cristaux",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Formations colorées aux arêtes travaillées et à la lumière contenue.",
+    "image": "assets/cristaux-maitresse-ambre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/cristaux/assets/maitresse-ambre/maitresse-ambre-preview.png",
+    "tags": [
+      "Cristaux",
+      "Formation maîtresse",
+      "Ambre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-coussin-automnal",
+    "title": "Coussin bas · Automnal",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-coussin-automnal.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/coussin-automnal/coussin-automnal-preview.png",
+    "tags": [
+      "Buissons",
+      "Coussin bas",
+      "Automnal",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-coussin-mystique",
+    "title": "Coussin bas · Mystique",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-coussin-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/coussin-mystique/coussin-mystique-preview.png",
+    "tags": [
+      "Buissons",
+      "Coussin bas",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-rond-sylvestre",
+    "title": "Buisson rond · Vert sylvestre",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-rond-sylvestre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/rond-sylvestre/rond-sylvestre-preview.png",
+    "tags": [
+      "Buissons",
+      "Buisson rond",
+      "Vert sylvestre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-rond-automnal",
+    "title": "Buisson rond · Automnal",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-rond-automnal.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/rond-automnal/rond-automnal-preview.png",
+    "tags": [
+      "Buissons",
+      "Buisson rond",
+      "Automnal",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-rond-mystique",
+    "title": "Buisson rond · Mystique",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-rond-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/rond-mystique/rond-mystique-preview.png",
+    "tags": [
+      "Buissons",
+      "Buisson rond",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-etale-sylvestre",
+    "title": "Buisson étalé · Vert sylvestre",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-etale-sylvestre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/etale-sylvestre/etale-sylvestre-preview.png",
+    "tags": [
+      "Buissons",
+      "Buisson étalé",
+      "Vert sylvestre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-etale-automnal",
+    "title": "Buisson étalé · Automnal",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-etale-automnal.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/etale-automnal/etale-automnal-preview.png",
+    "tags": [
+      "Buissons",
+      "Buisson étalé",
+      "Automnal",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-etale-mystique",
+    "title": "Buisson étalé · Mystique",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-etale-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/etale-mystique/etale-mystique-preview.png",
+    "tags": [
+      "Buissons",
+      "Buisson étalé",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-dresse-sylvestre",
+    "title": "Buisson dressé · Vert sylvestre",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-dresse-sylvestre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/dresse-sylvestre/dresse-sylvestre-preview.png",
+    "tags": [
+      "Buissons",
+      "Buisson dressé",
+      "Vert sylvestre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-dresse-automnal",
+    "title": "Buisson dressé · Automnal",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-dresse-automnal.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/dresse-automnal/dresse-automnal-preview.png",
+    "tags": [
+      "Buissons",
+      "Buisson dressé",
+      "Automnal",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "buissons-dresse-mystique",
+    "title": "Buisson dressé · Mystique",
+    "category": "vegetation",
+    "collection": "Buissons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Masses de feuilles courbées, nervures discrètes et ombres peintes.",
+    "image": "assets/buissons-dresse-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/buissons/assets/dresse-mystique/dresse-mystique-preview.png",
+    "tags": [
+      "Buissons",
+      "Buisson dressé",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-rase-doree",
+    "title": "Touffe rase · Herbe dorée",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-rase-doree.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/rase-doree/rase-doree-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Touffe rase",
+      "Herbe dorée",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-rase-mystique",
+    "title": "Touffe rase · Mystique",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-rase-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/rase-mystique/rase-mystique-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Touffe rase",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-eventail-prairie",
+    "title": "Touffe éventail · Prairie verte",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-eventail-prairie.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/eventail-prairie/eventail-prairie-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Touffe éventail",
+      "Prairie verte",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-eventail-doree",
+    "title": "Touffe éventail · Herbe dorée",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-eventail-doree.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/eventail-doree/eventail-doree-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Touffe éventail",
+      "Herbe dorée",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-eventail-mystique",
+    "title": "Touffe éventail · Mystique",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-eventail-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/eventail-mystique/eventail-mystique-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Touffe éventail",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-courbee-prairie",
+    "title": "Touffe courbée · Prairie verte",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-courbee-prairie.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/courbee-prairie/courbee-prairie-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Touffe courbée",
+      "Prairie verte",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-courbee-doree",
+    "title": "Touffe courbée · Herbe dorée",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-courbee-doree.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/courbee-doree/courbee-doree-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Touffe courbée",
+      "Herbe dorée",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-courbee-mystique",
+    "title": "Touffe courbée · Mystique",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-courbee-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/courbee-mystique/courbee-mystique-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Touffe courbée",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-haute-prairie",
+    "title": "Hautes herbes · Prairie verte",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-haute-prairie.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/haute-prairie/haute-prairie-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Hautes herbes",
+      "Prairie verte",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-haute-doree",
+    "title": "Hautes herbes · Herbe dorée",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-haute-doree.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/haute-doree/haute-doree-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Hautes herbes",
+      "Herbe dorée",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "herbes-haute-mystique",
+    "title": "Hautes herbes · Mystique",
+    "category": "vegetation",
+    "collection": "Touffes d’herbe",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Brins courbés et grandes variations de couleur lisibles à distance.",
+    "image": "assets/herbes-haute-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/herbes/assets/haute-mystique/haute-mystique-preview.png",
+    "tags": [
+      "Touffes d’herbe",
+      "Hautes herbes",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-boutons-sous-bois",
+    "title": "Colonie de boutons · Miel des sous-bois",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-boutons-sous-bois.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/boutons-sous-bois/boutons-sous-bois-preview.png",
+    "tags": [
+      "Champignons",
+      "Colonie de boutons",
+      "Miel des sous-bois",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-boutons-mystique",
+    "title": "Colonie de boutons · Mystique boréal",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-boutons-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/boutons-mystique/boutons-mystique-preview.png",
+    "tags": [
+      "Champignons",
+      "Colonie de boutons",
+      "Mystique boréal",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-amanite-corail",
+    "title": "Amanite bombée · Corail crème",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-amanite-corail.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/amanite-corail/amanite-corail-preview.png",
+    "tags": [
+      "Champignons",
+      "Amanite bombée",
+      "Corail crème",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-amanite-sous-bois",
+    "title": "Amanite bombée · Miel des sous-bois",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-amanite-sous-bois.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/amanite-sous-bois/amanite-sous-bois-preview.png",
+    "tags": [
+      "Champignons",
+      "Amanite bombée",
+      "Miel des sous-bois",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-amanite-mystique",
+    "title": "Amanite bombée · Mystique boréal",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-amanite-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/amanite-mystique/amanite-mystique-preview.png",
+    "tags": [
+      "Champignons",
+      "Amanite bombée",
+      "Mystique boréal",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-chanterelles-corail",
+    "title": "Chanterelles en éventail · Corail crème",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-chanterelles-corail.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/chanterelles-corail/chanterelles-corail-preview.png",
+    "tags": [
+      "Champignons",
+      "Chanterelles en éventail",
+      "Corail crème",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-chanterelles-sous-bois",
+    "title": "Chanterelles en éventail · Miel des sous-bois",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-chanterelles-sous-bois.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/chanterelles-sous-bois/chanterelles-sous-bois-preview.png",
+    "tags": [
+      "Champignons",
+      "Chanterelles en éventail",
+      "Miel des sous-bois",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-chanterelles-mystique",
+    "title": "Chanterelles en éventail · Mystique boréal",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-chanterelles-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/chanterelles-mystique/chanterelles-mystique-preview.png",
+    "tags": [
+      "Champignons",
+      "Chanterelles en éventail",
+      "Mystique boréal",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-parasol-corail",
+    "title": "Parasol ancien · Corail crème",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-parasol-corail.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/parasol-corail/parasol-corail-preview.png",
+    "tags": [
+      "Champignons",
+      "Parasol ancien",
+      "Corail crème",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-parasol-sous-bois",
+    "title": "Parasol ancien · Miel des sous-bois",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-parasol-sous-bois.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/parasol-sous-bois/parasol-sous-bois-preview.png",
+    "tags": [
+      "Champignons",
+      "Parasol ancien",
+      "Miel des sous-bois",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "champignons-parasol-mystique",
+    "title": "Parasol ancien · Mystique boréal",
+    "category": "vegetation",
+    "collection": "Champignons",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Chapeaux sculptés, rebords doux et dégradés peints.",
+    "image": "assets/champignons-parasol-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/champignons/assets/parasol-mystique/parasol-mystique-preview.png",
+    "tags": [
+      "Champignons",
+      "Parasol ancien",
+      "Mystique boréal",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-rosette-ivoire",
+    "title": "Rosette basse · Ivoire doré",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-rosette-ivoire.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/rosette-ivoire/rosette-ivoire-preview.png",
+    "tags": [
+      "Fleurs",
+      "Rosette basse",
+      "Ivoire doré",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-rosette-mystique",
+    "title": "Rosette basse · Mystique",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-rosette-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/rosette-mystique/rosette-mystique-preview.png",
+    "tags": [
+      "Fleurs",
+      "Rosette basse",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-bouquet-corail",
+    "title": "Bouquet de prairie · Corail abricot",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-bouquet-corail.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/bouquet-corail/bouquet-corail-preview.png",
+    "tags": [
+      "Fleurs",
+      "Bouquet de prairie",
+      "Corail abricot",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-bouquet-ivoire",
+    "title": "Bouquet de prairie · Ivoire doré",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-bouquet-ivoire.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/bouquet-ivoire/bouquet-ivoire-preview.png",
+    "tags": [
+      "Fleurs",
+      "Bouquet de prairie",
+      "Ivoire doré",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-bouquet-mystique",
+    "title": "Bouquet de prairie · Mystique",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-bouquet-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/bouquet-mystique/bouquet-mystique-preview.png",
+    "tags": [
+      "Fleurs",
+      "Bouquet de prairie",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-clochettes-corail",
+    "title": "Hampe de clochettes · Corail abricot",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-clochettes-corail.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/clochettes-corail/clochettes-corail-preview.png",
+    "tags": [
+      "Fleurs",
+      "Hampe de clochettes",
+      "Corail abricot",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-clochettes-ivoire",
+    "title": "Hampe de clochettes · Ivoire doré",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-clochettes-ivoire.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/clochettes-ivoire/clochettes-ivoire-preview.png",
+    "tags": [
+      "Fleurs",
+      "Hampe de clochettes",
+      "Ivoire doré",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-clochettes-mystique",
+    "title": "Hampe de clochettes · Mystique",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-clochettes-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/clochettes-mystique/clochettes-mystique-preview.png",
+    "tags": [
+      "Fleurs",
+      "Hampe de clochettes",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-etoilee-corail",
+    "title": "Grand lis étoilé · Corail abricot",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-etoilee-corail.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/etoilee-corail/etoilee-corail-preview.png",
+    "tags": [
+      "Fleurs",
+      "Grand lis étoilé",
+      "Corail abricot",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-etoilee-ivoire",
+    "title": "Grand lis étoilé · Ivoire doré",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-etoilee-ivoire.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/etoilee-ivoire/etoilee-ivoire-preview.png",
+    "tags": [
+      "Fleurs",
+      "Grand lis étoilé",
+      "Ivoire doré",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fleurs-etoilee-mystique",
+    "title": "Grand lis étoilé · Mystique",
+    "category": "vegetation",
+    "collection": "Fleurs",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Pétales modelés, feuillages souples et palettes de sous-bois.",
+    "image": "assets/fleurs-etoilee-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/fleurs/assets/etoilee-mystique/etoilee-mystique-preview.png",
+    "tags": [
+      "Fleurs",
+      "Grand lis étoilé",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-basse-mystique",
+    "title": "Souche basse · Mystique",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-basse-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/basse-mystique/basse-mystique-preview.png",
+    "tags": [
+      "Souches",
+      "Souche basse",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-basse-brule",
+    "title": "Souche basse · Bois brûlé",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-basse-brule.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/basse-brule/basse-brule-preview.png",
+    "tags": [
+      "Souches",
+      "Souche basse",
+      "Bois brûlé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-tordue-moussu",
+    "title": "Souche tordue · Ancien moussu",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-tordue-moussu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/tordue-moussu/tordue-moussu-preview.png",
+    "tags": [
+      "Souches",
+      "Souche tordue",
+      "Ancien moussu",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-tordue-mystique",
+    "title": "Souche tordue · Mystique",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-tordue-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/tordue-mystique/tordue-mystique-preview.png",
+    "tags": [
+      "Souches",
+      "Souche tordue",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-tordue-brule",
+    "title": "Souche tordue · Bois brûlé",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-tordue-brule.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/tordue-brule/tordue-brule-preview.png",
+    "tags": [
+      "Souches",
+      "Souche tordue",
+      "Bois brûlé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-creuse-moussu",
+    "title": "Souche creuse · Ancien moussu",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-creuse-moussu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/creuse-moussu/creuse-moussu-preview.png",
+    "tags": [
+      "Souches",
+      "Souche creuse",
+      "Ancien moussu",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-creuse-mystique",
+    "title": "Souche creuse · Mystique",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-creuse-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/creuse-mystique/creuse-mystique-preview.png",
+    "tags": [
+      "Souches",
+      "Souche creuse",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-creuse-brule",
+    "title": "Souche creuse · Bois brûlé",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-creuse-brule.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/creuse-brule/creuse-brule-preview.png",
+    "tags": [
+      "Souches",
+      "Souche creuse",
+      "Bois brûlé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-brisee-moussu",
+    "title": "Vieille souche brisée · Ancien moussu",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-brisee-moussu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/brisee-moussu/brisee-moussu-preview.png",
+    "tags": [
+      "Souches",
+      "Vieille souche brisée",
+      "Ancien moussu",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-brisee-mystique",
+    "title": "Vieille souche brisée · Mystique",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-brisee-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/brisee-mystique/brisee-mystique-preview.png",
+    "tags": [
+      "Souches",
+      "Vieille souche brisée",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "souches-brisee-brule",
+    "title": "Vieille souche brisée · Bois brûlé",
+    "category": "vegetation",
+    "collection": "Souches",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Racines noueuses, bois peint et cavités modelées.",
+    "image": "assets/souches-brisee-brule.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/souches/assets/brisee-brule/brisee-brule-preview.png",
+    "tags": [
+      "Souches",
+      "Vieille souche brisée",
+      "Bois brûlé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-billot-mystique",
+    "title": "Billot court · Mystique",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-billot-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/billot-mystique/billot-mystique-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Billot court",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-billot-brule",
+    "title": "Billot court · Bois brûlé",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-billot-brule.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/billot-brule/billot-brule-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Billot court",
+      "Bois brûlé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-noueux-moussu",
+    "title": "Tronc noueux · Ancien moussu",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-noueux-moussu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/noueux-moussu/noueux-moussu-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Tronc noueux",
+      "Ancien moussu",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-noueux-mystique",
+    "title": "Tronc noueux · Mystique",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-noueux-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/noueux-mystique/noueux-mystique-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Tronc noueux",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-noueux-brule",
+    "title": "Tronc noueux · Bois brûlé",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-noueux-brule.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/noueux-brule/noueux-brule-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Tronc noueux",
+      "Bois brûlé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-creux-moussu",
+    "title": "Tronc creux · Ancien moussu",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-creux-moussu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/creux-moussu/creux-moussu-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Tronc creux",
+      "Ancien moussu",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-creux-mystique",
+    "title": "Tronc creux · Mystique",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-creux-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/creux-mystique/creux-mystique-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Tronc creux",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-creux-brule",
+    "title": "Tronc creux · Bois brûlé",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-creux-brule.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/creux-brule/creux-brule-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Tronc creux",
+      "Bois brûlé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-fourchu-moussu",
+    "title": "Grand tronc fourchu · Ancien moussu",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-fourchu-moussu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/fourchu-moussu/fourchu-moussu-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Grand tronc fourchu",
+      "Ancien moussu",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-fourchu-mystique",
+    "title": "Grand tronc fourchu · Mystique",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-fourchu-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/fourchu-mystique/fourchu-mystique-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Grand tronc fourchu",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "troncs-couches-fourchu-brule",
+    "title": "Grand tronc fourchu · Bois brûlé",
+    "category": "vegetation",
+    "collection": "Troncs couchés",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Écorce issue de la référence V3 et cernes sur les coupes de bois.",
+    "image": "assets/troncs-couches-fourchu-brule.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/troncs-couches/assets/fourchu-brule/fourchu-brule-preview.png",
+    "tags": [
+      "Troncs couchés",
+      "Grand tronc fourchu",
+      "Bois brûlé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "mares-de-mana-mare-orange",
+    "title": "Mare de mana · Mana orange ambré",
+    "category": "magie",
+    "collection": "Mares de mana",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Surface peinte, volutes et gouttes assorties. Aperçu fixe d’un modèle animé.",
+    "image": "assets/mares-de-mana-mare-orange.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/mares-de-mana/assets/mare-orange/mare-orange-preview.png",
+    "tags": [
+      "Mares de mana",
+      "Mare de mana",
+      "Mana orange ambré",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "mares-de-mana-mare-verte",
+    "title": "Mare de mana · Mana vert émeraude",
+    "category": "magie",
+    "collection": "Mares de mana",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Surface peinte, volutes et gouttes assorties. Aperçu fixe d’un modèle animé.",
+    "image": "assets/mares-de-mana-mare-verte.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/mares-de-mana/assets/mare-verte/mare-verte-preview.png",
+    "tags": [
+      "Mares de mana",
+      "Mare de mana",
+      "Mana vert émeraude",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "mares-de-mana-allongee-bleu",
+    "title": "Petite mare allongée · Mana bleu azur",
+    "category": "magie",
+    "collection": "Mares de mana",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Surface peinte, volutes et gouttes assorties. Aperçu fixe d’un modèle animé.",
+    "image": "assets/mares-de-mana-allongee-bleu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/mares-de-mana/assets/allongee-bleu/allongee-bleu-preview.png",
+    "tags": [
+      "Mares de mana",
+      "Petite mare allongée",
+      "Mana bleu azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "mares-de-mana-allongee-orange",
+    "title": "Petite mare allongée · Mana orange ambré",
+    "category": "magie",
+    "collection": "Mares de mana",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Surface peinte, volutes et gouttes assorties. Aperçu fixe d’un modèle animé.",
+    "image": "assets/mares-de-mana-allongee-orange.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/mares-de-mana/assets/allongee-orange/allongee-orange-preview.png",
+    "tags": [
+      "Mares de mana",
+      "Petite mare allongée",
+      "Mana orange ambré",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "mares-de-mana-allongee-vert",
+    "title": "Petite mare allongée · Mana vert émeraude",
+    "category": "magie",
+    "collection": "Mares de mana",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Surface peinte, volutes et gouttes assorties. Aperçu fixe d’un modèle animé.",
+    "image": "assets/mares-de-mana-allongee-vert.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/mares-de-mana/assets/allongee-vert/allongee-vert-preview.png",
+    "tags": [
+      "Mares de mana",
+      "Petite mare allongée",
+      "Mana vert émeraude",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "mares-de-mana-lobee-bleu",
+    "title": "Grande mare à lobes · Mana bleu azur",
+    "category": "magie",
+    "collection": "Mares de mana",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Surface peinte, volutes et gouttes assorties. Aperçu fixe d’un modèle animé.",
+    "image": "assets/mares-de-mana-lobee-bleu.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/mares-de-mana/assets/lobee-bleu/lobee-bleu-preview.png",
+    "tags": [
+      "Mares de mana",
+      "Grande mare à lobes",
+      "Mana bleu azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "mares-de-mana-lobee-orange",
+    "title": "Grande mare à lobes · Mana orange ambré",
+    "category": "magie",
+    "collection": "Mares de mana",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Surface peinte, volutes et gouttes assorties. Aperçu fixe d’un modèle animé.",
+    "image": "assets/mares-de-mana-lobee-orange.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/mares-de-mana/assets/lobee-orange/lobee-orange-preview.png",
+    "tags": [
+      "Mares de mana",
+      "Grande mare à lobes",
+      "Mana orange ambré",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "mares-de-mana-lobee-vert",
+    "title": "Grande mare à lobes · Mana vert émeraude",
+    "category": "magie",
+    "collection": "Mares de mana",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Surface peinte, volutes et gouttes assorties. Aperçu fixe d’un modèle animé.",
+    "image": "assets/mares-de-mana-lobee-vert.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/mares-de-mana/assets/lobee-vert/lobee-vert-preview.png",
+    "tags": [
+      "Mares de mana",
+      "Grande mare à lobes",
+      "Mana vert émeraude",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-azur-sockets-1",
+    "title": "Hache invoquée · Mana azur · 1 socket",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-azur-sockets-1.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-azur-sockets-1/hache-azur-sockets-1-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-azur-sockets-2",
+    "title": "Hache invoquée · Mana azur · 2 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-azur-sockets-2.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-azur-sockets-2/hache-azur-sockets-2-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-azur-sockets-3",
+    "title": "Hache invoquée · Mana azur · 3 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-azur-sockets-3.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-azur-sockets-3/hache-azur-sockets-3-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-orange",
+    "title": "Hache invoquée · Mana orange · 0 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-orange.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-orange/hache-orange-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-orange-sockets-1",
+    "title": "Hache invoquée · Mana orange · 1 socket",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-orange-sockets-1.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-orange-sockets-1/hache-orange-sockets-1-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-orange-sockets-2",
+    "title": "Hache invoquée · Mana orange · 2 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-orange-sockets-2.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-orange-sockets-2/hache-orange-sockets-2-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-orange-sockets-3",
+    "title": "Hache invoquée · Mana orange · 3 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-orange-sockets-3.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-orange-sockets-3/hache-orange-sockets-3-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-vert",
+    "title": "Hache invoquée · Mana vert · 0 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-vert.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-vert/hache-vert-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-vert-sockets-1",
+    "title": "Hache invoquée · Mana vert · 1 socket",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-vert-sockets-1.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-vert-sockets-1/hache-vert-sockets-1-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-vert-sockets-2",
+    "title": "Hache invoquée · Mana vert · 2 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-vert-sockets-2.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-vert-sockets-2/hache-vert-sockets-2-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-hache-vert-sockets-3",
+    "title": "Hache invoquée · Mana vert · 3 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-hache-vert-sockets-3.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/hache-vert-sockets-3/hache-vert-sockets-3-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Hache invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-azur",
+    "title": "Pioche invoquée · Mana azur · 0 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-azur.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-azur/pioche-azur-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-azur-sockets-1",
+    "title": "Pioche invoquée · Mana azur · 1 socket",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-azur-sockets-1.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-azur-sockets-1/pioche-azur-sockets-1-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-azur-sockets-2",
+    "title": "Pioche invoquée · Mana azur · 2 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-azur-sockets-2.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-azur-sockets-2/pioche-azur-sockets-2-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-azur-sockets-3",
+    "title": "Pioche invoquée · Mana azur · 3 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-azur-sockets-3.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-azur-sockets-3/pioche-azur-sockets-3-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-orange",
+    "title": "Pioche invoquée · Mana orange · 0 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-orange.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-orange/pioche-orange-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-orange-sockets-1",
+    "title": "Pioche invoquée · Mana orange · 1 socket",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-orange-sockets-1.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-orange-sockets-1/pioche-orange-sockets-1-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-orange-sockets-2",
+    "title": "Pioche invoquée · Mana orange · 2 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-orange-sockets-2.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-orange-sockets-2/pioche-orange-sockets-2-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-orange-sockets-3",
+    "title": "Pioche invoquée · Mana orange · 3 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-orange-sockets-3.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-orange-sockets-3/pioche-orange-sockets-3-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-vert",
+    "title": "Pioche invoquée · Mana vert · 0 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-vert.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-vert/pioche-vert-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-vert-sockets-1",
+    "title": "Pioche invoquée · Mana vert · 1 socket",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-vert-sockets-1.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-vert-sockets-1/pioche-vert-sockets-1-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-vert-sockets-2",
+    "title": "Pioche invoquée · Mana vert · 2 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-vert-sockets-2.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-vert-sockets-2/pioche-vert-sockets-2-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-pioche-vert-sockets-3",
+    "title": "Pioche invoquée · Mana vert · 3 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-pioche-vert-sockets-3.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/pioche-vert-sockets-3/pioche-vert-sockets-3-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Pioche invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-azur",
+    "title": "Faucille invoquée · Mana azur · 0 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-azur.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-azur/faucille-azur-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-azur-sockets-1",
+    "title": "Faucille invoquée · Mana azur · 1 socket",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-azur-sockets-1.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-azur-sockets-1/faucille-azur-sockets-1-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-azur-sockets-2",
+    "title": "Faucille invoquée · Mana azur · 2 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-azur-sockets-2.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-azur-sockets-2/faucille-azur-sockets-2-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-azur-sockets-3",
+    "title": "Faucille invoquée · Mana azur · 3 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-azur-sockets-3.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-azur-sockets-3/faucille-azur-sockets-3-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana azur",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-orange",
+    "title": "Faucille invoquée · Mana orange · 0 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-orange.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-orange/faucille-orange-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-orange-sockets-1",
+    "title": "Faucille invoquée · Mana orange · 1 socket",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-orange-sockets-1.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-orange-sockets-1/faucille-orange-sockets-1-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-orange-sockets-2",
+    "title": "Faucille invoquée · Mana orange · 2 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-orange-sockets-2.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-orange-sockets-2/faucille-orange-sockets-2-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-orange-sockets-3",
+    "title": "Faucille invoquée · Mana orange · 3 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-orange-sockets-3.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-orange-sockets-3/faucille-orange-sockets-3-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana orange",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-vert",
+    "title": "Faucille invoquée · Mana vert · 0 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-vert.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-vert/faucille-vert-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-vert-sockets-1",
+    "title": "Faucille invoquée · Mana vert · 1 socket",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-vert-sockets-1.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-vert-sockets-1/faucille-vert-sockets-1-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-vert-sockets-2",
+    "title": "Faucille invoquée · Mana vert · 2 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-vert-sockets-2.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-vert-sockets-2/faucille-vert-sockets-2-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "outils-invoques-faucille-vert-sockets-3",
+    "title": "Faucille invoquée · Mana vert · 3 sockets",
+    "category": "magie",
+    "collection": "Outils invoqués",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Outil de récolte au cœur de mana et aux fragments en suspension. Proposition artistique, aperçu fixe.",
+    "image": "assets/outils-invoques-faucille-vert-sockets-3.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/outils-invoques/assets/faucille-vert-sockets-3/faucille-vert-sockets-3-preview.png",
+    "tags": [
+      "Outils invoqués",
+      "Faucille invoquée",
+      "Mana vert",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-fondation-bois",
+    "title": "Fondation · Bois",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-fondation-bois.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/fondation-bois/fondation-bois-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Fondation",
+      "Bois",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-fondation-pierre",
+    "title": "Fondation · Pierre",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-fondation-pierre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/fondation-pierre/fondation-pierre-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Fondation",
+      "Pierre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-mur-plein-chaume",
+    "title": "Mur plein · Chaume",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-mur-plein-chaume.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/mur-plein-chaume/mur-plein-chaume-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Mur plein",
+      "Chaume",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-mur-plein-bois",
+    "title": "Mur plein · Bois",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-mur-plein-bois.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/mur-plein-bois/mur-plein-bois-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Mur plein",
+      "Bois",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-mur-plein-pierre",
+    "title": "Mur plein · Pierre",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-mur-plein-pierre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/mur-plein-pierre/mur-plein-pierre-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Mur plein",
+      "Pierre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-mur-fenetre-chaume",
+    "title": "Mur avec fenêtre · Chaume",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-mur-fenetre-chaume.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/mur-fenetre-chaume/mur-fenetre-chaume-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Mur avec fenêtre",
+      "Chaume",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-mur-fenetre-bois",
+    "title": "Mur avec fenêtre · Bois",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-mur-fenetre-bois.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/mur-fenetre-bois/mur-fenetre-bois-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Mur avec fenêtre",
+      "Bois",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-mur-fenetre-pierre",
+    "title": "Mur avec fenêtre · Pierre",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-mur-fenetre-pierre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/mur-fenetre-pierre/mur-fenetre-pierre-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Mur avec fenêtre",
+      "Pierre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-mur-porte-chaume",
+    "title": "Mur avec porte · Chaume",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-mur-porte-chaume.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/mur-porte-chaume/mur-porte-chaume-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Mur avec porte",
+      "Chaume",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-mur-porte-bois",
+    "title": "Mur avec porte · Bois",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-mur-porte-bois.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/mur-porte-bois/mur-porte-bois-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Mur avec porte",
+      "Bois",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-mur-porte-pierre",
+    "title": "Mur avec porte · Pierre",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-mur-porte-pierre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/mur-porte-pierre/mur-porte-pierre-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Mur avec porte",
+      "Pierre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-plafond-chaume",
+    "title": "Plafond · Chaume",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-plafond-chaume.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/plafond-chaume/plafond-chaume-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Plafond",
+      "Chaume",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-plafond-bois",
+    "title": "Plafond · Bois",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-plafond-bois.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/plafond-bois/plafond-bois-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Plafond",
+      "Bois",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "structures-plafond-pierre",
+    "title": "Plafond · Pierre",
+    "category": "architecture",
+    "collection": "Structures modulaires",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Pièce de construction peinte pour un assemblage sur grille. Proposition artistique.",
+    "image": "assets/structures-plafond-pierre.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/structures/assets/plafond-pierre/plafond-pierre-preview.png",
+    "tags": [
+      "Structures modulaires",
+      "Plafond",
+      "Pierre",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "reference-reference-mystique",
+    "title": "Arbre de référence · Mystique",
+    "category": "vegetation",
+    "collection": "Arbres · matières V3",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Finition peinte V3 approuvée : la référence de volumes et de surfaces pour les objets d’Arkya.",
+    "image": "assets/reference-reference-mystique.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/references/arbre-peint-v3/01-mystique/01-mystique-preview.png",
+    "tags": [
+      "Arbres · matières V3",
+      "Arbre de référence",
+      "Mystique",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "reference-reference-brule",
+    "title": "Arbre de référence · Brûlé",
+    "category": "vegetation",
+    "collection": "Arbres · matières V3",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Finition peinte V3 approuvée : la référence de volumes et de surfaces pour les objets d’Arkya.",
+    "image": "assets/reference-reference-brule.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/resources/references/arbre-peint-v3/02-brule/02-brule-preview.png",
+    "tags": [
+      "Arbres · matières V3",
+      "Arbre de référence",
+      "Brûlé",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "arbre-forme-jeune",
+    "title": "Arbre jeune",
+    "category": "vegetation",
+    "collection": "Arbres · silhouettes",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Jeune arbre fin, houppier compact et vertical, contreforts discrets. Silhouette approuvée ; matière de la première étude de forme.",
+    "image": "assets/arbre-forme-jeune.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/arbre-de-base/declinaisons/formes/01-jeune/01-jeune-preview.png",
+    "tags": [
+      "Arbres",
+      "silhouette",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "arbre-forme-etale",
+    "title": "Arbre étalé",
+    "category": "vegetation",
+    "collection": "Arbres · silhouettes",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Port étalé, tronc court et large couronne en ombrelle. Silhouette approuvée ; matière de la première étude de forme.",
+    "image": "assets/arbre-forme-etale.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/arbre-de-base/declinaisons/formes/02-etale/02-etale-preview.png",
+    "tags": [
+      "Arbres",
+      "silhouette",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "arbre-forme-elance",
+    "title": "Arbre élancé",
+    "category": "vegetation",
+    "collection": "Arbres · silhouettes",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Tronc élancé, premières fourches hautes et houppier étroit. Silhouette approuvée ; matière de la première étude de forme.",
+    "image": "assets/arbre-forme-elance.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/arbre-de-base/declinaisons/formes/03-elance/03-elance-preview.png",
+    "tags": [
+      "Arbres",
+      "silhouette",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "arbre-forme-venerable",
+    "title": "Arbre vénérable",
+    "category": "vegetation",
+    "collection": "Arbres · silhouettes",
+    "status": "approved",
+    "origin": "Rendu Blender",
+    "description": "Arbre massif, contreforts puissants, grande couronne courbe et modérément vrillée. Silhouette approuvée ; matière de la première étude de forme.",
+    "image": "assets/arbre-forme-venerable.webp",
+    "width": 1000,
+    "height": 1000,
+    "source": "docs/art-direction/arbre-de-base/declinaisons/formes/04-venerable/04-venerable-preview.png",
+    "tags": [
+      "Arbres",
+      "silhouette",
+      "rendu 3D"
+    ],
+    "featured": false
+  },
+  {
+    "id": "concept-aube",
+    "title": "Royaumes de l’Aube",
+    "category": "univers",
+    "collection": "Explorations d’univers",
+    "status": "exploration",
+    "origin": "Concept généré",
+    "description": "Pierre claire, terre cuite, tissus bleu canard et lumière chaleureuse. Planche conceptuelle générée, sans validation du lore ou du rendu final.",
+    "image": "assets/concept-aube.webp",
+    "width": 1536,
+    "height": 1024,
+    "source": "docs/art-direction/01-royaumes-aube.png",
+    "tags": [
+      "concept",
+      "palette",
+      "environnement"
+    ],
+    "featured": false
+  },
+  {
+    "id": "concept-ether",
+    "title": "Cités d’Éther",
+    "category": "univers",
+    "collection": "Explorations d’univers",
+    "status": "exploration",
+    "origin": "Concept généré",
+    "description": "Ivoire, bronze, corail et turquoise composent une fantasy lumineuse. Planche conceptuelle générée, sans validation du lore ou du rendu final.",
+    "image": "assets/concept-ether.webp",
+    "width": 1536,
+    "height": 1024,
+    "source": "docs/art-direction/02-cites-ether.png",
+    "tags": [
+      "concept",
+      "palette",
+      "environnement"
+    ],
+    "featured": false
+  },
+  {
+    "id": "concept-anciens",
+    "title": "Terres des Anciens",
+    "category": "univers",
+    "collection": "Explorations d’univers",
+    "status": "exploration",
+    "origin": "Concept généré",
+    "description": "Bois sculpté, forêt enveloppante et lumières chaudes des lieux habités. Planche conceptuelle générée, sans validation du lore ou du rendu final.",
+    "image": "assets/concept-anciens.webp",
+    "width": 1536,
+    "height": 1024,
+    "source": "docs/art-direction/03-terres-anciens.png",
+    "tags": [
+      "concept",
+      "palette",
+      "environnement"
+    ],
+    "featured": false
+  },
+  {
+    "id": "blender-02-cites-ether",
+    "title": "Cités d’Éther · étude Blender V3",
+    "category": "architecture",
+    "collection": "Études Blender",
+    "status": "exploration",
+    "origin": "Rendu Blender",
+    "description": "Étude de composition et de matières calculée dans Blender Cycles. Le rendu du jeu reste en développement.",
+    "image": "assets/blender-02-cites-ether.webp",
+    "width": 1600,
+    "height": 900,
+    "source": "docs/art-direction/blender/02-cites-ether-v3-render.png",
+    "tags": [
+      "Blender",
+      "environnement",
+      "V3"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "personnage-02-cites-ether",
+    "title": "Cités d’Éther · personnage V3",
+    "category": "personnages",
+    "collection": "Études de personnages",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Étude de silhouette, de vêtements et d’équipement. Personnage adapté des bases Rain et Snow de Blender Studio.",
+    "image": "assets/personnage-02-cites-ether.webp",
+    "width": 1050,
+    "height": 1400,
+    "source": "docs/art-direction/blender/02-cites-ether-character-v3.png",
+    "tags": [
+      "personnage",
+      "costume",
+      "Blender"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "blender-03-terres-anciens",
+    "title": "Terres des Anciens · étude Blender V3",
+    "category": "architecture",
+    "collection": "Études Blender",
+    "status": "exploration",
+    "origin": "Rendu Blender",
+    "description": "Étude de composition et de matières calculée dans Blender Cycles. Le rendu du jeu reste en développement.",
+    "image": "assets/blender-03-terres-anciens.webp",
+    "width": 1600,
+    "height": 900,
+    "source": "docs/art-direction/blender/03-terres-anciens-v3-render.png",
+    "tags": [
+      "Blender",
+      "environnement",
+      "V3"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "personnage-03-terres-anciens",
+    "title": "Terres des Anciens · personnage V3",
+    "category": "personnages",
+    "collection": "Études de personnages",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Étude de silhouette, de vêtements et d’équipement. Personnage adapté des bases Rain et Snow de Blender Studio.",
+    "image": "assets/personnage-03-terres-anciens.webp",
+    "width": 1050,
+    "height": 1400,
+    "source": "docs/art-direction/blender/03-terres-anciens-character-v3.png",
+    "tags": [
+      "personnage",
+      "costume",
+      "Blender"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "ui-directions",
+    "title": "Trois langages d’interface",
+    "category": "interfaces",
+    "collection": "Directions UI",
+    "status": "exploration",
+    "origin": "Concept généré",
+    "description": "Première planche comparative des pistes Encre & cuivre, Carnet d’exploration et Pierre de mana.",
+    "image": "assets/ui-directions.webp",
+    "width": 1536,
+    "height": 1024,
+    "source": "docs/art-direction/ui/ui-directions-01.png",
+    "tags": [
+      "UI",
+      "composants",
+      "concept"
+    ],
+    "featured": false
+  },
+  {
+    "id": "rig-human-a-idle-1",
+    "title": "Humain · posture au repos",
+    "category": "personnages",
+    "collection": "Personnages animés",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Aperçu d’une pose du rig de jeu. Les animations et la présentation sont en cours d’intégration ; l’apparence reste une proposition artistique.",
+    "image": "assets/rig-human-a-idle-1.webp",
+    "width": 800,
+    "height": 900,
+    "source": "docs/art-direction/resources/personnages/game/previews/human-a-idle-1.png",
+    "tags": [
+      "personnage",
+      "animation",
+      "rig"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "rig-human-b-idle-1",
+    "title": "Humaine · posture au repos",
+    "category": "personnages",
+    "collection": "Personnages animés",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Aperçu d’une pose du rig de jeu. Les animations et la présentation sont en cours d’intégration ; l’apparence reste une proposition artistique.",
+    "image": "assets/rig-human-b-idle-1.webp",
+    "width": 800,
+    "height": 900,
+    "source": "docs/art-direction/resources/personnages/game/previews/human-b-idle-1.png",
+    "tags": [
+      "personnage",
+      "animation",
+      "rig"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "rig-human-a-walk-10",
+    "title": "Humain · marche",
+    "category": "personnages",
+    "collection": "Personnages animés",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Aperçu d’une pose du rig de jeu. Les animations et la présentation sont en cours d’intégration ; l’apparence reste une proposition artistique.",
+    "image": "assets/rig-human-a-walk-10.webp",
+    "width": 800,
+    "height": 900,
+    "source": "docs/art-direction/resources/personnages/game/previews/human-a-walk-10.png",
+    "tags": [
+      "personnage",
+      "animation",
+      "rig"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "rig-human-b-run-19",
+    "title": "Humaine · course",
+    "category": "personnages",
+    "collection": "Personnages animés",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Aperçu d’une pose du rig de jeu. Les animations et la présentation sont en cours d’intégration ; l’apparence reste une proposition artistique.",
+    "image": "assets/rig-human-b-run-19.webp",
+    "width": 800,
+    "height": 900,
+    "source": "docs/art-direction/resources/personnages/game/previews/human-b-run-19.png",
+    "tags": [
+      "personnage",
+      "animation",
+      "rig"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "rig-elf-a-run-7-braid",
+    "title": "Elfe · course et cheveux tressés",
+    "category": "personnages",
+    "collection": "Personnages animés",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Aperçu d’une pose du rig de jeu. Les animations et la présentation sont en cours d’intégration ; l’apparence reste une proposition artistique.",
+    "image": "assets/rig-elf-a-run-7-braid.webp",
+    "width": 800,
+    "height": 900,
+    "source": "docs/art-direction/resources/personnages/game/previews/elf-a-run-7-braid.png",
+    "tags": [
+      "personnage",
+      "animation",
+      "rig"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "rig-elf-b-walk-28-long",
+    "title": "Elfe · marche et cheveux longs",
+    "category": "personnages",
+    "collection": "Personnages animés",
+    "status": "proposal",
+    "origin": "Rendu Blender",
+    "description": "Aperçu d’une pose du rig de jeu. Les animations et la présentation sont en cours d’intégration ; l’apparence reste une proposition artistique.",
+    "image": "assets/rig-elf-b-walk-28-long.webp",
+    "width": 800,
+    "height": 900,
+    "source": "docs/art-direction/resources/personnages/game/previews/elf-b-walk-28-long.png",
+    "tags": [
+      "personnage",
+      "animation",
+      "rig"
+    ],
+    "featured": false,
+    "credit": {
+      "creator": "Blender Studio / Blender Foundation",
+      "sources": [
+        "https://studio.blender.org/characters/rain/v2/",
+        "https://studio.blender.org/characters/snow/v4/"
+      ],
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+    }
+  },
+  {
+    "id": "ile-arrival",
+    "title": "Le point d’arrivée",
+    "category": "univers",
+    "collection": "Île de départ · Unity",
+    "status": "prototype",
+    "origin": "Capture Unity",
+    "description": "Une première lecture du terrain et du chemin dans le prototype Unity. Capture réelle du moteur ; environnement en développement.",
+    "image": "assets/ile-arrival.webp",
+    "width": 1600,
+    "height": 1067,
+    "source": "docs/world/starter-island/arrival.png",
+    "tags": [
+      "île",
+      "Unity",
+      "prototype"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ile-environment-refuge-dusk",
+    "title": "Le refuge · crépuscule",
+    "category": "univers",
+    "collection": "Île de départ · Unity",
+    "status": "prototype",
+    "origin": "Capture Unity",
+    "description": "Le cycle jour et nuit modifie le ciel et l’éclairage du refuge. Capture réelle du moteur ; environnement en développement.",
+    "image": "assets/ile-environment-refuge-dusk.webp",
+    "width": 1600,
+    "height": 1000,
+    "source": "docs/world/starter-island/environment/refuge-dusk.png",
+    "tags": [
+      "île",
+      "Unity",
+      "prototype"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ile-environment-moon-and-stars",
+    "title": "La lune et les étoiles",
+    "category": "univers",
+    "collection": "Île de départ · Unity",
+    "status": "prototype",
+    "origin": "Capture Unity",
+    "description": "Le ciel nocturne du prototype Unity et son cycle de présentation. Capture réelle du moteur ; environnement en développement.",
+    "image": "assets/ile-environment-moon-and-stars.webp",
+    "width": 1600,
+    "height": 1000,
+    "source": "docs/world/starter-island/environment/moon-and-stars.png",
+    "tags": [
+      "île",
+      "Unity",
+      "prototype"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ile-weather-storm-lightning-coast",
+    "title": "La côte sous l’orage",
+    "category": "univers",
+    "collection": "Île de départ · Unity",
+    "status": "prototype",
+    "origin": "Capture Unity",
+    "description": "La pluie, la couverture nuageuse et les éclairs animent le prototype. Capture réelle du moteur ; environnement en développement.",
+    "image": "assets/ile-weather-storm-lightning-coast.webp",
+    "width": 1600,
+    "height": 1000,
+    "source": "docs/world/starter-island/weather/storm-lightning-coast.png",
+    "tags": [
+      "île",
+      "Unity",
+      "prototype"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ile-boundary-water-boiling-night",
+    "title": "L’océan violet · la nuit",
+    "category": "univers",
+    "collection": "Île de départ · Unity",
+    "status": "prototype",
+    "origin": "Capture Unity",
+    "description": "L’océan bouillonnant marque la limite de l’île dans le prototype Unity. Capture réelle du moteur ; environnement en développement.",
+    "image": "assets/ile-boundary-water-boiling-night.webp",
+    "width": 1600,
+    "height": 1000,
+    "source": "docs/world/starter-island/boundary-water/boiling-night.png",
+    "tags": [
+      "île",
+      "Unity",
+      "prototype"
+    ],
+    "featured": false
+  }
+]

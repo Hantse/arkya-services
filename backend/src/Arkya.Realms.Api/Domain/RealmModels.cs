@@ -9,7 +9,13 @@ public static class RealmStatus
     public const string Failed = "Failed";
 }
 
-public sealed record ServerDefinition(string Id, int Port, string[] Args);
+public sealed record ServerDefinition(string Id, int Port, string[] Args)
+{
+    public string Transport { get; init; } = "Udp";
+    public string? PublicEndpoint { get; init; }
+    public int ProtocolVersion { get; init; } = Arkya.ServiceDefaults.GameProtocol.Version;
+    public string BuildId { get; init; } = Arkya.ServiceDefaults.GameProtocol.BuildId;
+}
 public sealed record ProfileSnapshot(string Id, string Image, ServerDefinition[] Servers,
     string? EnvironmentSecretName, string? ImagePullSecretName);
 public sealed record ServerObservation(string Id, int ReadyReplicas, string? Address);

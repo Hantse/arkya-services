@@ -1,0 +1,3703 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/prepare-assets.py",
+  "sourceRoot": "repository",
+  "note": "Curated current artwork and all catalogue resource previews; legacy iterations and texture maps omitted. Artistic status follows checked-in documentation.",
+  "counts": {
+    "records": 205,
+    "featured": 24,
+    "byStatus": {
+      "approved": 124,
+      "proposal": 64,
+      "exploration": 9,
+      "prototype": 8
+    },
+    "byCategory": {
+      "mineraux": 36,
+      "vegetation": 79,
+      "magie": 45,
+      "architecture": 17,
+      "univers": 14,
+      "interfaces": 4,
+      "personnages": 10
+    },
+    "files": 219,
+    "bytes": 9328074
+  },
+  "aliases": {
+    "hero": "gameplay-anciens",
+    "aube": "gameplay-aube",
+    "ether": "gameplay-ether",
+    "anciens": "gameplay-anciens",
+    "tree": "reference-reference-moussu",
+    "tree-moussu": "reference-reference-moussu",
+    "tree-mystique": "reference-reference-mystique",
+    "tree-brule": "reference-reference-brule",
+    "character": "personnage-03-terres-anciens",
+    "world": "ile-environment-forest-day",
+    "interface": "hud-cuivre-v3",
+    "hud-cuivre": "hud-cuivre-v3",
+    "hud-carnet": "hud-carnet-v3",
+    "hud-mana": "hud-mana-v3"
+  },
+  "characterAttribution": {
+    "creator": "Blender Studio / Blender Foundation",
+    "sources": [
+      "https://studio.blender.org/characters/rain/v2/",
+      "https://studio.blender.org/characters/snow/v4/"
+    ],
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+  },
+  "images": [
+    {
+      "image": "assets/cailloux-01-galet-01-gris-bleu.webp",
+      "source": "docs/art-direction/resources/cailloux/01-galet/01-gris-bleu/01-galet-01-gris-bleu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "8c9ee46ca6f2765f11a6f2ed6546bee752e6b86ae8629e9035a535e0d80a0e18",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 22142,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-01-galet-02-gres-chaud.webp",
+      "source": "docs/art-direction/resources/cailloux/01-galet/02-gres-chaud/01-galet-02-gres-chaud-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "dad5acbd56f62a4b2249f304ec7f636de1f8ea8b532864174ffbacbc47845dbe",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 24482,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-01-galet-03-moussu.webp",
+      "source": "docs/art-direction/resources/cailloux/01-galet/03-moussu/01-galet-03-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "bdad88d603c355cf496996a74dcad10d3530060512943b069e073e9b7f4e5aee",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 23560,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-02-bloc-oblique-01-gris-bleu.webp",
+      "source": "docs/art-direction/resources/cailloux/02-bloc-oblique/01-gris-bleu/02-bloc-oblique-01-gris-bleu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b8c06f0cdd4f29a617eb4074e3c65b55ce861f1fb9dd163cbf074d3685ab14bd",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 20882,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-02-bloc-oblique-02-gres-chaud.webp",
+      "source": "docs/art-direction/resources/cailloux/02-bloc-oblique/02-gres-chaud/02-bloc-oblique-02-gres-chaud-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "bbc327867457050f207ccf37f9d3f34c0b4e37501b302c4593dff73e42a99e5b",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 23082,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-02-bloc-oblique-03-moussu.webp",
+      "source": "docs/art-direction/resources/cailloux/02-bloc-oblique/03-moussu/02-bloc-oblique-03-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "0042910b126d39d332c868a2eaa68f9c04b3f3dbb48342df7ca2915439ff409b",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 22446,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-03-rocher-large-01-gris-bleu.webp",
+      "source": "docs/art-direction/resources/cailloux/03-rocher-large/01-gris-bleu/03-rocher-large-01-gris-bleu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "0fe897f772614662c0b68197d41df699dd3875b15173785aed59383bf3aa2929",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 18192,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-03-rocher-large-02-gres-chaud.webp",
+      "source": "docs/art-direction/resources/cailloux/03-rocher-large/02-gres-chaud/03-rocher-large-02-gres-chaud-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "ffc69ae6bb69458c2735cab01e92c3ccf40c2e555a7db639af650526d40aa4e5",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 19792,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-03-rocher-large-03-moussu.webp",
+      "source": "docs/art-direction/resources/cailloux/03-rocher-large/03-moussu/03-rocher-large-03-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "0c3ae5d5637e8b021bcbc9c2977a3d959afa8c3ebbc2236bbc724ce74f334f29",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 19036,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-04-affleurement-01-gris-bleu.webp",
+      "source": "docs/art-direction/resources/cailloux/04-affleurement/01-gris-bleu/04-affleurement-01-gris-bleu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "3c28bc3d2a4db37802b40be55bc47360466b2674cc283ba1e44c9a4d7b24f31c",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 17772,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-04-affleurement-02-gres-chaud.webp",
+      "source": "docs/art-direction/resources/cailloux/04-affleurement/02-gres-chaud/04-affleurement-02-gres-chaud-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "dfd1ae3401138e580eb95e01beff05ee3e5f724baa5201a5830e20860102a0f0",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 19642,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cailloux-04-affleurement-03-moussu.webp",
+      "source": "docs/art-direction/resources/cailloux/04-affleurement/03-moussu/04-affleurement-03-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "c3d7f53048f1b70fcbba1c205fadc6599c287270a934c4211d5f689199786c87",
+      "sourceDimensions": [
+        900,
+        900
+      ],
+      "outputDimensions": [
+        900,
+        900
+      ],
+      "bytes": 19808,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-nodule-fer.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/nodule/nodule-fer-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f95e2327b5bd4d0b307f158bfd7323c9ace7828141cfeb8a12be64568ed65f8e",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 24576,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-nodule-cuivre.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/nodule/nodule-cuivre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "1fc5590d343e595099b275bda0ba96d41de3cde91c4360fd20c0f00275597239",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 24034,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-nodule-or.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/nodule/nodule-or-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "7ba6bcd80add931eba81da852139292bdc77271bffe99b41d9873300c2552cf9",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 26498,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-bloc-fendu-fer.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/bloc-fendu/bloc-fendu-fer-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "48beb0571317d7cf5c2f09bb37af503a23fda127857913a9fc82087886b6fe02",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 30098,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-bloc-fendu-cuivre.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/bloc-fendu/bloc-fendu-cuivre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "81fc541a39499fce20bd05aea800dcca8c6e7c5dee06c11e34801531e50284b3",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 30548,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-bloc-fendu-or.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/bloc-fendu/bloc-fendu-or-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "272f6d2754ca787346fdf3b91b18856d0a73e9ad3cc61edad114047acfece676",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 34442,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-filon-oblique-fer.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/filon-oblique/filon-oblique-fer-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "1c815fb98763cb956d1556d0dc5601ebb07231d692f60a5c42f9287ca9da1e89",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 19688,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-filon-oblique-cuivre.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/filon-oblique/filon-oblique-cuivre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "972544e7859a731c99bca8496e0a23a2e315e3eb19176ac897b62bc6aff74237",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 20092,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-filon-oblique-or.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/filon-oblique/filon-oblique-or-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b26d4afa391994ee002aa7841bf901254022cf44c2eb5a4702ba2e3edfae16d4",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 22124,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-affleurement-fer.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/affleurement/affleurement-fer-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "1da6147856ef308becc8fca37a01bd376b21be004741ad19ceff23d5ce631ef4",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 33152,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-affleurement-cuivre.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/affleurement/affleurement-cuivre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "09847da9895026f2dd8bab5e12f0934b927d2cb5a396b94ad109902b7dbcd1eb",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 33378,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/roches-metalliferes-affleurement-or.webp",
+      "source": "docs/art-direction/resources/roches-metalliferes/assets/affleurement/affleurement-or-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "6c8b4d8a3308121d9cc01384381c16e02ee3de7ef0f4e76482432d740583059d",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 37298,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-eclat-azur.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/eclat-azur/eclat-azur-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "63f1bb6c996e4f778c01cfe0cf17c94af839487dfd7ac1aba65a4f1e0539e847",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 14484,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-eclat-amethyste.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/eclat-amethyste/eclat-amethyste-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "dee7de5f57c019b1fabed967664371cf0d194e5957e8bcdf01757016f0d7d0f9",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 13810,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-eclat-ambre.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/eclat-ambre/eclat-ambre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "847443ea7dd9cc5a54d4e30cc802acfdeb9e9926e656eba051b76ffe69ebf26c",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 14692,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-bouquet-azur.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/bouquet-azur/bouquet-azur-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "6662378b9d4158d3370ad7e0c1939325d119a1cac130f9d9c0c77824caea48c7",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 19862,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-bouquet-amethyste.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/bouquet-amethyste/bouquet-amethyste-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "e78740da91315407494141c2a59f07bd173d841db1aed7a16ad9485912666a17",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18510,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-bouquet-ambre.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/bouquet-ambre/bouquet-ambre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "74197d5e6d91ee229efae2bf0a0aa4752b2f6ea278e21d82a5adf82150725373",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 20014,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-geode-azur.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/geode-azur/geode-azur-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "345c9bdcb1c69991510260d6e82097e4dfec4cb75f0ae8ee54e5100ea66605e1",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 23144,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-geode-amethyste.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/geode-amethyste/geode-amethyste-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f362fa59b4086ae0708d3f64ef256a536b7167ee4c04b004f1f246a273b50491",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 21612,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-geode-ambre.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/geode-ambre/geode-ambre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b82c57409323a607146e7a69265ef077b6da69956971241e45c71d0facca7c50",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 23114,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-maitresse-azur.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/maitresse-azur/maitresse-azur-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "18403af86e7f336fdb25e016a2e3e63e5e54476d550d918de62ad16e62a14e49",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18628,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-maitresse-amethyste.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/maitresse-amethyste/maitresse-amethyste-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "26339699cfa18da3c6fe7096c198542b5f7c2cd3781b278821ddbe63a2a2d15f",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 17290,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/cristaux-maitresse-ambre.webp",
+      "source": "docs/art-direction/resources/cristaux/assets/maitresse-ambre/maitresse-ambre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "71490a5da77cbd0ea27efb310bf9ceb0cb48da97850566fd921addf1d7fc17c3",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18864,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-coussin-sylvestre.webp",
+      "source": "docs/art-direction/resources/buissons/assets/coussin-sylvestre/coussin-sylvestre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "fe9b4fa845acb53d84068d591afa45709aabb2d478b8bdd112117b98efe1a329",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 25022,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-coussin-automnal.webp",
+      "source": "docs/art-direction/resources/buissons/assets/coussin-automnal/coussin-automnal-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "08ca312dcabf65f7f3a26bfdd321ec3408a81e82699c442461c0572a633509d7",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 28538,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-coussin-mystique.webp",
+      "source": "docs/art-direction/resources/buissons/assets/coussin-mystique/coussin-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "43e3655bd4714ee4860e737bc0ac04a1997c1b8ed7cbc7b7d75c4b614e75b9e5",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 24316,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-rond-sylvestre.webp",
+      "source": "docs/art-direction/resources/buissons/assets/rond-sylvestre/rond-sylvestre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "35ba9f133926652a8f29d1c59f4c9db97d04904d6d202142d6d80ac59ae239ab",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 37900,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-rond-automnal.webp",
+      "source": "docs/art-direction/resources/buissons/assets/rond-automnal/rond-automnal-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "a343a86f1fb3e25acd4f609a55b2916138e16c9aab219d5a2bb8b6cb973f2dcd",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 43416,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-rond-mystique.webp",
+      "source": "docs/art-direction/resources/buissons/assets/rond-mystique/rond-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "d1377580f58470cf3a653bc5aef09c2c507194b09d8af136200f6976c092c614",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 37828,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-etale-sylvestre.webp",
+      "source": "docs/art-direction/resources/buissons/assets/etale-sylvestre/etale-sylvestre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "018844d25573782b41d5a11dd129ba5aa4fa72b93fa38bdafbe0e23a7ce094e4",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 32128,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-etale-automnal.webp",
+      "source": "docs/art-direction/resources/buissons/assets/etale-automnal/etale-automnal-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "23758f01b9ec3241f85ae37eb482c5e4b5f025d85f2a6ead92ffef45bb1331bc",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 36616,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-etale-mystique.webp",
+      "source": "docs/art-direction/resources/buissons/assets/etale-mystique/etale-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "616b11d7d47d759080dc6ca510c96613837e3d759cab47e7850be1e428c6b1c5",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 31248,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-dresse-sylvestre.webp",
+      "source": "docs/art-direction/resources/buissons/assets/dresse-sylvestre/dresse-sylvestre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b3885f8a4564982ae86eccd440d5d1e52993a7d3bd376a1448387054110e30cf",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 37668,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-dresse-automnal.webp",
+      "source": "docs/art-direction/resources/buissons/assets/dresse-automnal/dresse-automnal-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "e541859757a3595c047938472e0bba51b672ae48fc18212e8994b1cde44e5427",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 43676,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/buissons-dresse-mystique.webp",
+      "source": "docs/art-direction/resources/buissons/assets/dresse-mystique/dresse-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f14861a49b0e78c6eadfd0dfca64eefdb9c9699168ac4ba090e0e88597547507",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 36404,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-rase-prairie.webp",
+      "source": "docs/art-direction/resources/herbes/assets/rase-prairie/rase-prairie-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "15152bd9f537af43c9f0f179839f3e506b8d56d7bb02f88c93bbe5d56fef4589",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12656,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-rase-doree.webp",
+      "source": "docs/art-direction/resources/herbes/assets/rase-doree/rase-doree-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "352b393344be300692965acd943c0c3c854cf8b9ac672995564c84c4bca02ec3",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12396,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-rase-mystique.webp",
+      "source": "docs/art-direction/resources/herbes/assets/rase-mystique/rase-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "271e21748c71821d3e744d3aade17f7f6657d6799f6423886adec06491809724",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12746,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-eventail-prairie.webp",
+      "source": "docs/art-direction/resources/herbes/assets/eventail-prairie/eventail-prairie-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "66760004695e1ae5c8f573c21b9759f38cbdb5ee66417ecfdb948e39dd07ea5b",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 16232,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-eventail-doree.webp",
+      "source": "docs/art-direction/resources/herbes/assets/eventail-doree/eventail-doree-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "9ce5a99340a229107d1caca36537323a6b5a69b2093cd33c651d5bb020b7f0ab",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 15648,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-eventail-mystique.webp",
+      "source": "docs/art-direction/resources/herbes/assets/eventail-mystique/eventail-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "0c2860856d8e6132d66269ebf7983be0f8cfa471bdcef3d4347c3c22ff2bd096",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 15918,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-courbee-prairie.webp",
+      "source": "docs/art-direction/resources/herbes/assets/courbee-prairie/courbee-prairie-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b848b6015142f0c4ae93bb1adba901017622813ba1acedc3b3349ac5ad2b51ab",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 30634,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-courbee-doree.webp",
+      "source": "docs/art-direction/resources/herbes/assets/courbee-doree/courbee-doree-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "31cf89f144008aae9588636a0662bac63b27c4c5616081901d41682b1a526232",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 29830,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-courbee-mystique.webp",
+      "source": "docs/art-direction/resources/herbes/assets/courbee-mystique/courbee-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "7abe7e1a43a9736c9f544255947f42605ea9fad9fc5e3eadc555b8b695ae917d",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 29648,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-haute-prairie.webp",
+      "source": "docs/art-direction/resources/herbes/assets/haute-prairie/haute-prairie-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "c92bb0f400ac19ecfca2beafc6dce94c6b2ee37c3d85ed98e0b2276208afdd88",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 19960,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-haute-doree.webp",
+      "source": "docs/art-direction/resources/herbes/assets/haute-doree/haute-doree-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "9281e1efa91fd2755bceedc1f17baacd5ea93d487d27dda281af9e3ffb65eb59",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18794,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/herbes-haute-mystique.webp",
+      "source": "docs/art-direction/resources/herbes/assets/haute-mystique/haute-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "708957542ba712df8b6a7efb79182438fdcdff8533603574f22e93459d5ce5fd",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 19618,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-boutons-corail.webp",
+      "source": "docs/art-direction/resources/champignons/assets/boutons-corail/boutons-corail-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "9d62653f8023dce74c4e20c0a01fc0e6e475763b34ad6fb3bec89299a5e07f61",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12482,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-boutons-sous-bois.webp",
+      "source": "docs/art-direction/resources/champignons/assets/boutons-sous-bois/boutons-sous-bois-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "e8e174a675b593cdfcfab561b0d4431d1221c194526b823c18328791c123cf6a",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10966,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-boutons-mystique.webp",
+      "source": "docs/art-direction/resources/champignons/assets/boutons-mystique/boutons-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "e1a22b191c0d8b8dcdd2315bef31734de4a0a76bd467bf6f629b68e3dc77f0bd",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11310,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-amanite-corail.webp",
+      "source": "docs/art-direction/resources/champignons/assets/amanite-corail/amanite-corail-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "48486b81bd2d1bef3fd63e06e0561b4524e59ce4b5ee68d7c3d550af61a424b8",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10466,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-amanite-sous-bois.webp",
+      "source": "docs/art-direction/resources/champignons/assets/amanite-sous-bois/amanite-sous-bois-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "88ac6e69a7ad9a341b075c98a2e516802a808c10b461b654a19c5c3008c9c784",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 9434,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-amanite-mystique.webp",
+      "source": "docs/art-direction/resources/champignons/assets/amanite-mystique/amanite-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "1b85d121cd5958f18d0bdc35e0e3e156e60db1b80b55e77458e698a1684babe1",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 9660,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-chanterelles-corail.webp",
+      "source": "docs/art-direction/resources/champignons/assets/chanterelles-corail/chanterelles-corail-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "37ca924d753934ef10b70b7f9cda0f25954ccf3da9b2a3a6819b9a1e1feb1a0c",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11414,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-chanterelles-sous-bois.webp",
+      "source": "docs/art-direction/resources/champignons/assets/chanterelles-sous-bois/chanterelles-sous-bois-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "d4789c3addb542eb461b2b160c7e7f851502dfaaefb3b14c4919a9ec21949b9a",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10912,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-chanterelles-mystique.webp",
+      "source": "docs/art-direction/resources/champignons/assets/chanterelles-mystique/chanterelles-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "8fb54799cf257875c4726b2e52bbf4f2acd3856e4efcfd810f5500dd6911bc60",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11028,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-parasol-corail.webp",
+      "source": "docs/art-direction/resources/champignons/assets/parasol-corail/parasol-corail-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "fee7fc0b772d1aaf64a9b988607e3517362259366ea2feeb5e851be99895d1e5",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12276,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-parasol-sous-bois.webp",
+      "source": "docs/art-direction/resources/champignons/assets/parasol-sous-bois/parasol-sous-bois-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "cd51f2553078530f7ddc24add915ac990363cd66fb2c77199efff85f36492ce4",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11254,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/champignons-parasol-mystique.webp",
+      "source": "docs/art-direction/resources/champignons/assets/parasol-mystique/parasol-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "7cbb6c01b1de7f95157f89da21b4e85acdbdb0e5156ad3ef17d0c6c527353462",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11406,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-rosette-corail.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/rosette-corail/rosette-corail-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "15812a2280cb7751dd90fc57563d712f21b7596e557a5a2e634957c230594f7d",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 13556,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-rosette-ivoire.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/rosette-ivoire/rosette-ivoire-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "86758e45cc8c6b6f64e0ffbc0111ae817b397e9dbb7dae471dc967a516ba9ec5",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12638,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-rosette-mystique.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/rosette-mystique/rosette-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "4ce95d9e7342d7ecb28d9b2eb4c3a16bc7ae850a48b1876a97e6c0c41684e4f5",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12508,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-bouquet-corail.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/bouquet-corail/bouquet-corail-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "1c17eb9eb4306954800cc3f3d07f40de8cd7aec432ebbdc1abf1d72f9aa7e5c1",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 20328,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-bouquet-ivoire.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/bouquet-ivoire/bouquet-ivoire-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "811a117ea06f90d7fde39770e3d92a89ccd5d10796ed830c8b3bd00336f9dcee",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18628,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-bouquet-mystique.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/bouquet-mystique/bouquet-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "8efa7d4433e3bbdc2c815bad4fbf5270554a0fe62abdc68f1102bd898a0a8b88",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18732,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-clochettes-corail.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/clochettes-corail/clochettes-corail-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b5d4eac51f154a88fe042b507596bf626e42ea4525c395f40e87226bc014f780",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 13662,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-clochettes-ivoire.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/clochettes-ivoire/clochettes-ivoire-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "1421bc935e5165b04b74bad04535e90dea8612755d9a4a6cabcc67488cf99243",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12586,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-clochettes-mystique.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/clochettes-mystique/clochettes-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "acd5c27fe37edd165c31e5643582bdacabbb5e7a96464ee2d80475f9ddf369bf",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12734,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-etoilee-corail.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/etoilee-corail/etoilee-corail-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "01c197e655e5ecd7c4fa28194896bc279b3682898182ffc8477272bff56a698b",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 16760,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-etoilee-ivoire.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/etoilee-ivoire/etoilee-ivoire-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "87360d7628eaf4c822c96ed828c77cdd02fc2dc60471ece83bf685fee5a47650",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 15738,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/fleurs-etoilee-mystique.webp",
+      "source": "docs/art-direction/resources/fleurs/assets/etoilee-mystique/etoilee-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "d42e78c12e8c38dc989c6cac19d872403c40d3a172cef832115576db58ab702c",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 15580,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-basse-moussu.webp",
+      "source": "docs/art-direction/resources/souches/assets/basse-moussu/basse-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "471e5538bb0bf6ab9c5f7db40b192bb1b9a50b598ae33468faabb601ebe4ec39",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 14132,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-basse-mystique.webp",
+      "source": "docs/art-direction/resources/souches/assets/basse-mystique/basse-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "d5d6ec4c9e1b9eb7a2d90e42338e25d2dab8fe0a057054948c1c76a15d40ff9a",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 14374,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-basse-brule.webp",
+      "source": "docs/art-direction/resources/souches/assets/basse-brule/basse-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b174a45a0066190873884db72488a61448922008995fa910da65ddb6d28d6e13",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 14798,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-tordue-moussu.webp",
+      "source": "docs/art-direction/resources/souches/assets/tordue-moussu/tordue-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "4b9c2559a4a6438be708e444c1072382f158581a7a93f9f25e384c29b0557f57",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18610,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-tordue-mystique.webp",
+      "source": "docs/art-direction/resources/souches/assets/tordue-mystique/tordue-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "475f19dbd62bc8ecfeb8894dd29982c56187053ce395e12489cf5990285939b3",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18786,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-tordue-brule.webp",
+      "source": "docs/art-direction/resources/souches/assets/tordue-brule/tordue-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "555beb5cc7c80ab47bdb2b21ac625ea8a66125b5e54a0041bb53d3caee529873",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18600,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-creuse-moussu.webp",
+      "source": "docs/art-direction/resources/souches/assets/creuse-moussu/creuse-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "d89d68adbd4eba06542f526d34c9b8fae2ed4e46c74390b9e719e75af97a4fa1",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 21400,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-creuse-mystique.webp",
+      "source": "docs/art-direction/resources/souches/assets/creuse-mystique/creuse-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "287e5ce2b3f51fae0d85b767fcc1a774565eb297f411be00d0ae39bfe676dadc",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 21796,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-creuse-brule.webp",
+      "source": "docs/art-direction/resources/souches/assets/creuse-brule/creuse-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "50350f9bbb8550dc65a56d87d31e1dbd5fc1cde176747f6a2054a53280097cd4",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 21660,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-brisee-moussu.webp",
+      "source": "docs/art-direction/resources/souches/assets/brisee-moussu/brisee-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "d95f6a8b3496451e2342589daa55f56ad3090cc8bffc5fc661f59ac3cc292eac",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 24686,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-brisee-mystique.webp",
+      "source": "docs/art-direction/resources/souches/assets/brisee-mystique/brisee-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "00c60e3200595e6fb5d7fbd7aaaeb3212a73c233d461ce652561fc7f1dc0d9f6",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 25076,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/souches-brisee-brule.webp",
+      "source": "docs/art-direction/resources/souches/assets/brisee-brule/brisee-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "649f983af8f93161db37f1bc9dc1d76cdd288593a497a17265d0c0cc45310592",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 25004,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-billot-moussu.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/billot-moussu/billot-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "48a974a9547a8ffc53d251ef7958da55fc52d8d92becd4746637c3678cd57032",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 18564,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-billot-mystique.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/billot-mystique/billot-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "fbad835ac09641e84faa660e0e5ff6742e36114116594459f27f3140b2c4b5ff",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 16398,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-billot-brule.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/billot-brule/billot-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "dabf0061e0abd12cd8a3e7467aedc597652b31d611684e55c6ba7d9eb5d78b7b",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 17534,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-noueux-moussu.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/noueux-moussu/noueux-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "48d56c5567bb0d0f0749767be3938fb4fc57f956a5cda04150e54d868963feb8",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 13512,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-noueux-mystique.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/noueux-mystique/noueux-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "c62acb5310174ed068c8cf729ee0cb1ca14ee28169012df599b017d252accf9a",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11772,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-noueux-brule.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/noueux-brule/noueux-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "80956197811ea390a1a0b733ac4ab6ffee13c268638a373004b9a09867f7d903",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12408,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-creux-moussu.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/creux-moussu/creux-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f3f449fad8f97909104632dbaaa14aaa5ec2e9a38b588c2abdf1fcbbc5fcbca7",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12894,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-creux-mystique.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/creux-mystique/creux-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "ca4c6a618cf96fddd098886ef487b731e899a7c560a72de97a8a4db28d94badd",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11338,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-creux-brule.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/creux-brule/creux-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "10e43241359ddca9c40d7bab8bbf02df71763ca916fef5c4fb9e20b0e510885e",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11940,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-fourchu-moussu.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/fourchu-moussu/fourchu-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "4219510b03f75dd728382251b0ff12a410272ae38714ee1e4182f04f97544de3",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11850,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-fourchu-mystique.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/fourchu-mystique/fourchu-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f7139be66f98975228d36809ab750cb2687682034d61f780a93afd9438087165",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10178,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/troncs-couches-fourchu-brule.webp",
+      "source": "docs/art-direction/resources/troncs-couches/assets/fourchu-brule/fourchu-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "7452d705560cca24d426f19d9ad2a9ad13a1d8039739fcab8a6598fbfa072666",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10746,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/mares-de-mana-mare-bleue.webp",
+      "source": "docs/art-direction/resources/mares-de-mana/assets/mare-bleue/mare-bleue-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f4c5b682bc6b9519418dbb350e203f0c45b8ab3e8ff34a4d887472885dc87b3c",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 13598,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/mares-de-mana-mare-orange.webp",
+      "source": "docs/art-direction/resources/mares-de-mana/assets/mare-orange/mare-orange-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "fb803cde80e814090df9ccd0b77d6f7bd71d9107774aac43b888bbe946e58543",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 13892,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/mares-de-mana-mare-verte.webp",
+      "source": "docs/art-direction/resources/mares-de-mana/assets/mare-verte/mare-verte-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "67cab959d586969f799b1a1869da6c41dd58e40c4397a033321d700ec1233124",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12734,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/mares-de-mana-allongee-bleu.webp",
+      "source": "docs/art-direction/resources/mares-de-mana/assets/allongee-bleu/allongee-bleu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "ef8f24f84d28aa2ffa01ba83c165adea5852827440b906e9cdf3093754d725e2",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 9702,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/mares-de-mana-allongee-orange.webp",
+      "source": "docs/art-direction/resources/mares-de-mana/assets/allongee-orange/allongee-orange-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "7443349b1164589d85671287903383133dd96a3446ad347b5ed0c4df6f5ae84c",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 9842,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/mares-de-mana-allongee-vert.webp",
+      "source": "docs/art-direction/resources/mares-de-mana/assets/allongee-vert/allongee-vert-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "955e972c7b8022053ca95462dd34bb3c792d4986a66c03fbd1e3074c16dcfa04",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 9372,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/mares-de-mana-lobee-bleu.webp",
+      "source": "docs/art-direction/resources/mares-de-mana/assets/lobee-bleu/lobee-bleu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "923fd1cc98d37ed018f1cbc4ee86510acbc9ee4c733d0b25099ffc75763fe2b6",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 14058,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/mares-de-mana-lobee-orange.webp",
+      "source": "docs/art-direction/resources/mares-de-mana/assets/lobee-orange/lobee-orange-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f5187ac6a89ef803d2b5c7bab53fbc7c482778a3d3afb7ac7b5e63ea566c7ff3",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 14352,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/mares-de-mana-lobee-vert.webp",
+      "source": "docs/art-direction/resources/mares-de-mana/assets/lobee-vert/lobee-vert-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f4aa6adaad7f487ddb6549154a789c4ec113775542db4d26116891b674866bb0",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12968,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-azur.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-azur/hache-azur-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "202d0db2fed4960e8622911356922a92248a1396dc532de25c2a04218e878782",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10518,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-azur-sockets-1.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-azur-sockets-1/hache-azur-sockets-1-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "1f01b4905c15869b70d36103870dbca99a9761e7e53b12bd5bc2cf083db5d2cb",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10860,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-azur-sockets-2.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-azur-sockets-2/hache-azur-sockets-2-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "e0062b72eea81c0ee59e70c8445db4efe6a3c89ba96a8f23fbc89f049331c66f",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11278,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-azur-sockets-3.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-azur-sockets-3/hache-azur-sockets-3-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "a6e121dbd1383ea0e9a91be9d42f5c35fb648c61df08ae01606871098fba70f5",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11798,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-orange.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-orange/hache-orange-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "593fafd067a2115d5f4a2d8528e68ddc036f99950094b5e9ec93216df38d12d6",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11148,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-orange-sockets-1.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-orange-sockets-1/hache-orange-sockets-1-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "ab0ac74831bbef9c06010796c3d7d1c24a18686693f9a17f1be85a60034cfb25",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11510,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-orange-sockets-2.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-orange-sockets-2/hache-orange-sockets-2-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "01bac05b77c4101b03116c25864cc33bd48fb0eb7c4948872cb3500d11c331fe",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11870,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-orange-sockets-3.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-orange-sockets-3/hache-orange-sockets-3-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "374a6a83d795ff24094b9707233e428771def670a11fbafa51fb92baa96922e1",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12236,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-vert.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-vert/hache-vert-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "49e63046a9e8cdebaf5fe94525bc537a842a46baf1eb54ea6bbf1d8598ca3ed5",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10386,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-vert-sockets-1.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-vert-sockets-1/hache-vert-sockets-1-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "3a37b2166f7b7a854e991c51a93c979ec27ba819ce74ed8ed295575d5c6904a6",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10782,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-vert-sockets-2.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-vert-sockets-2/hache-vert-sockets-2-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "a5a0090bc0478c595788c693c48c6ab11094f2ab57284747d02b68ea37ef8b4b",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11174,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-hache-vert-sockets-3.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/hache-vert-sockets-3/hache-vert-sockets-3-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "c51ecdf9a0a1a0f416d3c4395e25179555e766cb3cf707b181911b5c1a528be8",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11672,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-azur.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-azur/pioche-azur-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "38482829a4da3b629d6f7b869e6d7a9152b61833034ae5481164bc1d55446173",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 9820,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-azur-sockets-1.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-azur-sockets-1/pioche-azur-sockets-1-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "8906fbaaf66f63cb9062f70cbac90cdd3571cc291cf42c00d26aa644e823fe65",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10124,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-azur-sockets-2.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-azur-sockets-2/pioche-azur-sockets-2-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "5a6999acd030b550b500e5839b33be5287cb890e59883498914e51c09bd999ff",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10382,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-azur-sockets-3.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-azur-sockets-3/pioche-azur-sockets-3-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "bd4d3b5f872c424d056b133d083ad468a3f2e13ea9f46290037f9fcbd4f7be7f",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10536,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-orange.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-orange/pioche-orange-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "9ed33df9a03cf484553f7180afc8a9aba1b025239ab824a7a7cd1a34868fe6c1",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 9868,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-orange-sockets-1.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-orange-sockets-1/pioche-orange-sockets-1-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "850e83f3a5ee00190d05f22285edbd05907e893dee3a2755f0bdfb85fa5bbb76",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10150,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-orange-sockets-2.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-orange-sockets-2/pioche-orange-sockets-2-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b4da84528bfaa781806c8797297842fd73feb53e5068de145c7d5f0a7dc90dca",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10294,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-orange-sockets-3.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-orange-sockets-3/pioche-orange-sockets-3-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "7183dd5359d465387a831cd57c087205af1ec2752b817b126df82fc1c4a094ba",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10452,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-vert.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-vert/pioche-vert-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "fcad9e485e7f9686a578022e74987b2ccd33b22c5aedcd77f1c9f537844e1e3c",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 9864,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-vert-sockets-1.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-vert-sockets-1/pioche-vert-sockets-1-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "e6a7f4bdeb89e3c3397f9c40cd8991da726c86bee36919e495a2d7ab0d31ef30",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 9942,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-vert-sockets-2.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-vert-sockets-2/pioche-vert-sockets-2-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "9573b6014e006b7657393fa48e04f6e34855974b67b6fe008a07a577f5013f17",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10154,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-pioche-vert-sockets-3.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/pioche-vert-sockets-3/pioche-vert-sockets-3-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "1cd0fa7f6edc6119ca4ea4744973b6f49a9415cb1964d29a2e4972e9df481bf6",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10374,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-azur.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-azur/faucille-azur-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "44e72033c6ad6b37c6d546a22f5945888a540cc3e8108f05a0406e7fb33adfb1",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10918,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-azur-sockets-1.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-azur-sockets-1/faucille-azur-sockets-1-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "24bf148bcd9d2cd9f3ee56873581ce8095cd9f4a898ea97bbcfd299be93075e9",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11504,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-azur-sockets-2.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-azur-sockets-2/faucille-azur-sockets-2-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "983de5d217ee6615b9b01f95b492c9b1261919468454c018f55eb7f48b58cd84",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11866,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-azur-sockets-3.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-azur-sockets-3/faucille-azur-sockets-3-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "4903f3dd1954fd286c438bacbbfe72d451dd044c403863ee82ce000a0991c272",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12276,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-orange.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-orange/faucille-orange-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "bc2567c9d83fcc837c8d6344230131542369877969cb20c81cf4f52742ed06cd",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11242,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-orange-sockets-1.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-orange-sockets-1/faucille-orange-sockets-1-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f7ddae37a1cfcfcf753405411670652d7efdfdbde981dbff98d97ee639540eaf",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11628,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-orange-sockets-2.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-orange-sockets-2/faucille-orange-sockets-2-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "e47533c2389bc6a3376dc425f40428c308313615696a07e15d07fef906a39a51",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12016,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-orange-sockets-3.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-orange-sockets-3/faucille-orange-sockets-3-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "94217690bc3e865a532350a383396ac9567eb9a6a8d0ad3c6dbb94b2f6568e0a",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12460,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-vert.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-vert/faucille-vert-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "6ea03b032cadb10532ff97321274e2dd3cc00fcd29be716f9cca6deaa13cbab2",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10990,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-vert-sockets-1.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-vert-sockets-1/faucille-vert-sockets-1-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "976c75edc6870f8a69e800987daa09a10b035be7331355c65bd280bbba76580b",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11304,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-vert-sockets-2.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-vert-sockets-2/faucille-vert-sockets-2-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b1c3a452455c64f87fa2b68c82172ce333f0c1e79a85cb89a2032a1c350d32c3",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11754,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/outils-invoques-faucille-vert-sockets-3.webp",
+      "source": "docs/art-direction/resources/outils-invoques/assets/faucille-vert-sockets-3/faucille-vert-sockets-3-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "46391ab4cd392264922568ee0f1ac148b07bf308062818185ff232dbe64be33a",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 12100,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-fondation-chaume.webp",
+      "source": "docs/art-direction/resources/structures/assets/fondation-chaume/fondation-chaume-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "ce29793ed34e35722d6f9fd85711502635e8f2b577739eb112859cc5d4337d5b",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 43262,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-fondation-bois.webp",
+      "source": "docs/art-direction/resources/structures/assets/fondation-bois/fondation-bois-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "c64cd449436c752b3d7e41f9ce2d1e73620bc7d1348b417224b9248e43ac96a0",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 28330,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-fondation-pierre.webp",
+      "source": "docs/art-direction/resources/structures/assets/fondation-pierre/fondation-pierre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "fc4b5443d819a370227d5f8212e47a74e71e89a8e619303148182d8cb82ca6d6",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 24170,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-mur-plein-chaume.webp",
+      "source": "docs/art-direction/resources/structures/assets/mur-plein-chaume/mur-plein-chaume-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "a82ff840be7e0ca564b71e81a8343b4f1f02b33c9439bf4f905cc04cefa3025c",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 39204,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-mur-plein-bois.webp",
+      "source": "docs/art-direction/resources/structures/assets/mur-plein-bois/mur-plein-bois-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "ed48ef79be553cf74fcd511e40a38e4799e0ea1282a968f36158fda5164fc878",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 25470,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-mur-plein-pierre.webp",
+      "source": "docs/art-direction/resources/structures/assets/mur-plein-pierre/mur-plein-pierre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "d6c48f8aefb194faf74c8189520f7485be0a5469b57b5f63f2cab10be99dc7bf",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 27550,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-mur-fenetre-chaume.webp",
+      "source": "docs/art-direction/resources/structures/assets/mur-fenetre-chaume/mur-fenetre-chaume-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "9eb0bcbb71595f92ac5609028c756cccec7b82beb349eeb955193d5528f3398c",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 33226,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-mur-fenetre-bois.webp",
+      "source": "docs/art-direction/resources/structures/assets/mur-fenetre-bois/mur-fenetre-bois-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "569e8740d7d694294f789db757196687c45ffd9589a1bd77c6c008568b3cbd3e",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 24986,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-mur-fenetre-pierre.webp",
+      "source": "docs/art-direction/resources/structures/assets/mur-fenetre-pierre/mur-fenetre-pierre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b296fcb7324cb16cd0dddc4f165730468e84d270c728dea691187dff1eee8d17",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 24640,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-mur-porte-chaume.webp",
+      "source": "docs/art-direction/resources/structures/assets/mur-porte-chaume/mur-porte-chaume-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b72601992427019aef91f19d6d6471f3c96ddb8fcbd1fc9a501999becc745276",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 10846,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-mur-porte-bois.webp",
+      "source": "docs/art-direction/resources/structures/assets/mur-porte-bois/mur-porte-bois-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "55b731e83cbe2e1252fa757f9314f875633e1aa5c3d8b3fa90205057c5b2421f",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 8820,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-mur-porte-pierre.webp",
+      "source": "docs/art-direction/resources/structures/assets/mur-porte-pierre/mur-porte-pierre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "0489d9a74638f28254eb9a0f5dcc28232dac115103f274892b39ecfdd0267e1d",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 11174,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-plafond-chaume.webp",
+      "source": "docs/art-direction/resources/structures/assets/plafond-chaume/plafond-chaume-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "4cd464b7769241afa6f7364c55c93f783619aff0c590b077513e6e0a992aad55",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 23530,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-plafond-bois.webp",
+      "source": "docs/art-direction/resources/structures/assets/plafond-bois/plafond-bois-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "3b9aa78a7d458ed5db136fe66e21688f8a74052906243ad2f78867185a9663d1",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 16882,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/structures-plafond-pierre.webp",
+      "source": "docs/art-direction/resources/structures/assets/plafond-pierre/plafond-pierre-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "8f35ca97b994068bcf8cb08cee761279b1b382a7f95aa71d7ddab095ccafd1b5",
+      "sourceDimensions": [
+        1000,
+        1000
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 13126,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/reference-reference-moussu.webp",
+      "source": "docs/art-direction/resources/references/arbre-peint-v3/03-moussu/03-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "88b6174abb4ded65187f6103ae7624ab93a0603f0e479fd3fa597069634db325",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 72004,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/reference-reference-mystique.webp",
+      "source": "docs/art-direction/resources/references/arbre-peint-v3/01-mystique/01-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "ccaa11b6ea112a8e347edb6b2234971cd417840c8f18c8adf0ede66d132e234b",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 71262,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/reference-reference-brule.webp",
+      "source": "docs/art-direction/resources/references/arbre-peint-v3/02-brule/02-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "37b47f20bf7834635bc3df81cf47200458a882382375fba737c91e02336d1926",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 72924,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/arbre-forme-jeune.webp",
+      "source": "docs/art-direction/arbre-de-base/declinaisons/formes/01-jeune/01-jeune-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "203545537d862bfe809fa9af5db9bb69be0d9e9e58c89ed9976fb2db3c6f99a0",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 53230,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/arbre-forme-etale.webp",
+      "source": "docs/art-direction/arbre-de-base/declinaisons/formes/02-etale/02-etale-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "fe5bb1e0bfd8d0103bd4db99ce9f62bf66d5b91c5e8aeb29d44d731162312905",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 64120,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/arbre-forme-elance.webp",
+      "source": "docs/art-direction/arbre-de-base/declinaisons/formes/03-elance/03-elance-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "120fe00e77bba4f684b3088eba8eebf00201cec3523b603d723e9bd5f8cf92e6",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 38868,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/arbre-forme-venerable.webp",
+      "source": "docs/art-direction/arbre-de-base/declinaisons/formes/04-venerable/04-venerable-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "5623a8ffd769ef316165da52bb99b8c07abfffb3da8d2ee170658b0b30e194f9",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 76862,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/concept-aube.webp",
+      "source": "docs/art-direction/01-royaumes-aube.png",
+      "origin": "Concept généré",
+      "sourceSha256": "b89e724604e95671786c5acb46aa7e51c980a90544f316bc4d881d87040ed185",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "outputDimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 213540,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/gameplay-aube.webp",
+      "source": "docs/art-direction/01-royaumes-aube-gameplay.png",
+      "origin": "Concept généré",
+      "sourceSha256": "ad909e6c6846c0b64c7a9d82f3a244cc14155b9eef9b26d040716d59b56adbd2",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "outputDimensions": [
+        1672,
+        941
+      ],
+      "bytes": 295450,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/concept-ether.webp",
+      "source": "docs/art-direction/02-cites-ether.png",
+      "origin": "Concept généré",
+      "sourceSha256": "4fba01ec7e35921bb9fc5bf776f985b2502d384699853e00512416ba9cf8af14",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "outputDimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 179724,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/gameplay-ether.webp",
+      "source": "docs/art-direction/02-cites-ether-gameplay.png",
+      "origin": "Concept généré",
+      "sourceSha256": "04e00764bbc295f474e9cd2c1d682fed0975d2b4d1c6c99d243331ada991c63a",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "outputDimensions": [
+        1672,
+        941
+      ],
+      "bytes": 271324,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/concept-anciens.webp",
+      "source": "docs/art-direction/03-terres-anciens.png",
+      "origin": "Concept généré",
+      "sourceSha256": "7bf4bb292b04b732a659603e699c9aa039487074ddabbc080c0269c3eed549e8",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "outputDimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 197324,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/gameplay-anciens.webp",
+      "source": "docs/art-direction/03-terres-anciens-gameplay.png",
+      "origin": "Concept généré",
+      "sourceSha256": "06f98d60d3ad6e718fa45973d2e47c05a38d88f32757352ee8aab9a98295df98",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "outputDimensions": [
+        1672,
+        941
+      ],
+      "bytes": 319996,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/blender-02-cites-ether.webp",
+      "source": "docs/art-direction/blender/02-cites-ether-v3-render.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "e32378dff83a8b6763b4d520fcf48ca0337b44df112b6c1e218bd5e47ad09157",
+      "sourceDimensions": [
+        2560,
+        1440
+      ],
+      "outputDimensions": [
+        1600,
+        900
+      ],
+      "bytes": 144190,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/personnage-02-cites-ether.webp",
+      "source": "docs/art-direction/blender/02-cites-ether-character-v3.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "5c12e69b16001753fbe48ce2692c7438a08598f6d02969f09e095a6e5ce51b3f",
+      "sourceDimensions": [
+        1350,
+        1800
+      ],
+      "outputDimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 34162,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/blender-03-terres-anciens.webp",
+      "source": "docs/art-direction/blender/03-terres-anciens-v3-render.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "b75fdded6c55293c196685bc5880cfed058142e90b387e6d86457ba30cebdfa5",
+      "sourceDimensions": [
+        2560,
+        1440
+      ],
+      "outputDimensions": [
+        1600,
+        900
+      ],
+      "bytes": 236652,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/personnage-03-terres-anciens.webp",
+      "source": "docs/art-direction/blender/03-terres-anciens-character-v3.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "eb0bfedcfbdbd3729b7bd154b7af488b2fc4e6387fa25b4c90151023d6d440f5",
+      "sourceDimensions": [
+        1350,
+        1800
+      ],
+      "outputDimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 27738,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/ui-directions.webp",
+      "source": "docs/art-direction/ui/ui-directions-01.png",
+      "origin": "Concept généré",
+      "sourceSha256": "5142fabceaa4773a3685fee2ea1eb2266728c3f1957d652b0b941638b03a0f3c",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "outputDimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 163894,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/hud-cuivre-v3.webp",
+      "source": "docs/art-direction/ui/hud/01-encre-cuivre-v3.png",
+      "origin": "Concept généré",
+      "sourceSha256": "ae532c7afac9ef780f8a7ca6005462c3d9d5c829b88f8ac75932219b7f55628b",
+      "sourceDimensions": [
+        1586,
+        992
+      ],
+      "outputDimensions": [
+        1586,
+        992
+      ],
+      "bytes": 164952,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/hud-carnet-v3.webp",
+      "source": "docs/art-direction/ui/hud/02-carnet-exploration-v3.png",
+      "origin": "Concept généré",
+      "sourceSha256": "27fd680bfe064b82204627fdce986e22e23fb13d116f69fb6041c51a87679601",
+      "sourceDimensions": [
+        1586,
+        992
+      ],
+      "outputDimensions": [
+        1586,
+        992
+      ],
+      "bytes": 172008,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/hud-mana-v3.webp",
+      "source": "docs/art-direction/ui/hud/03-pierre-mana-v3.png",
+      "origin": "Concept généré",
+      "sourceSha256": "73375d647feee57c9fb2096889a56ab4ac5d9d2bc642f9444b725542fc0c4179",
+      "sourceDimensions": [
+        1586,
+        992
+      ],
+      "outputDimensions": [
+        1586,
+        992
+      ],
+      "bytes": 164798,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/atelier-humain.webp",
+      "source": "docs/art-direction/resources/personnages/humain-atelier.png",
+      "origin": "Capture de l’atelier d’apparence",
+      "sourceSha256": "f4100ad6d5a81480b23c1f251e13bca84d866fb04e0ddcb827737ab171084141",
+      "sourceDimensions": [
+        1440,
+        1144
+      ],
+      "outputDimensions": [
+        1440,
+        1144
+      ],
+      "bytes": 55952,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/atelier-elfe.webp",
+      "source": "docs/art-direction/resources/personnages/elfe-atelier.png",
+      "origin": "Capture de l’atelier d’apparence",
+      "sourceSha256": "4aafdb6bb542910ab1939ecd22f8d720848fd13d786c9725aebf5970d1e89b40",
+      "sourceDimensions": [
+        1440,
+        1144
+      ],
+      "outputDimensions": [
+        1440,
+        1144
+      ],
+      "bytes": 53898,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/rig-human-a-idle-1.webp",
+      "source": "docs/art-direction/resources/personnages/game/previews/human-a-idle-1.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "202715a18ea3339ac3279fb3f269968dc18e04bdd9622d16bdfdd663065a5d90",
+      "sourceDimensions": [
+        800,
+        900
+      ],
+      "outputDimensions": [
+        800,
+        900
+      ],
+      "bytes": 14434,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/rig-human-b-idle-1.webp",
+      "source": "docs/art-direction/resources/personnages/game/previews/human-b-idle-1.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "2005d9851f0eabb274b3fb29ed0dcc0066ebb2612242f0c9311f25964daee31c",
+      "sourceDimensions": [
+        800,
+        900
+      ],
+      "outputDimensions": [
+        800,
+        900
+      ],
+      "bytes": 14008,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/rig-human-a-walk-10.webp",
+      "source": "docs/art-direction/resources/personnages/game/previews/human-a-walk-10.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "e0c90cb6429f57ca2f5f33e6380322742f28caf8d4b0758d8b6060e34288c99d",
+      "sourceDimensions": [
+        800,
+        900
+      ],
+      "outputDimensions": [
+        800,
+        900
+      ],
+      "bytes": 14374,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/rig-human-b-run-19.webp",
+      "source": "docs/art-direction/resources/personnages/game/previews/human-b-run-19.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "97397916fe45f3aa0256b4263b5d0970965a0eb42d96c81e2f74c3fad909bf6f",
+      "sourceDimensions": [
+        800,
+        900
+      ],
+      "outputDimensions": [
+        800,
+        900
+      ],
+      "bytes": 13264,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/rig-elf-a-run-7-braid.webp",
+      "source": "docs/art-direction/resources/personnages/game/previews/elf-a-run-7-braid.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "f4b513add0e6d15840c14fbabee76c4d2703d7ed114d740848a7f5ad0cf95194",
+      "sourceDimensions": [
+        800,
+        900
+      ],
+      "outputDimensions": [
+        800,
+        900
+      ],
+      "bytes": 14634,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/rig-elf-b-walk-28-long.webp",
+      "source": "docs/art-direction/resources/personnages/game/previews/elf-b-walk-28-long.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "76ee3aa801bf70fd5897ff9bf6357c6fa8df4565517a0b5ebdc6238f53619764",
+      "sourceDimensions": [
+        800,
+        900
+      ],
+      "outputDimensions": [
+        800,
+        900
+      ],
+      "bytes": 14504,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      }
+    },
+    {
+      "image": "assets/ile-overview.webp",
+      "source": "docs/world/starter-island/overview.png",
+      "origin": "Capture Unity",
+      "sourceSha256": "aaf5962d1f6511b7327931f00a51271e99b234ef11ea7b92b3559eb3be64d781",
+      "sourceDimensions": [
+        1800,
+        1200
+      ],
+      "outputDimensions": [
+        1600,
+        1067
+      ],
+      "bytes": 60478,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/ile-arrival.webp",
+      "source": "docs/world/starter-island/arrival.png",
+      "origin": "Capture Unity",
+      "sourceSha256": "372b23e7517bdbb54ffb6a5c1d4d43cf9654bcafcf38fc40e081ced45608aaa2",
+      "sourceDimensions": [
+        1800,
+        1200
+      ],
+      "outputDimensions": [
+        1600,
+        1067
+      ],
+      "bytes": 113700,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/ile-environment-forest-day.webp",
+      "source": "docs/world/starter-island/environment/forest-day.png",
+      "origin": "Capture Unity",
+      "sourceSha256": "8aa7fa636fafc67ec4d58a78918ca18a64feef3d0fc3834a182991962366607f",
+      "sourceDimensions": [
+        1600,
+        1000
+      ],
+      "outputDimensions": [
+        1600,
+        1000
+      ],
+      "bytes": 154938,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/ile-environment-refuge-day.webp",
+      "source": "docs/world/starter-island/environment/refuge-day.png",
+      "origin": "Capture Unity",
+      "sourceSha256": "5b1d8456cfc3a2f20dae887276c7713e42345bd3b44ef214d127b334431012e7",
+      "sourceDimensions": [
+        1600,
+        1000
+      ],
+      "outputDimensions": [
+        1600,
+        1000
+      ],
+      "bytes": 185742,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/ile-environment-refuge-dusk.webp",
+      "source": "docs/world/starter-island/environment/refuge-dusk.png",
+      "origin": "Capture Unity",
+      "sourceSha256": "db60ee2e616f2b342ebefa3a3c27bcd14de2dce408d00b2435842010c4be6082",
+      "sourceDimensions": [
+        1600,
+        1000
+      ],
+      "outputDimensions": [
+        1600,
+        1000
+      ],
+      "bytes": 69444,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/ile-environment-moon-and-stars.webp",
+      "source": "docs/world/starter-island/environment/moon-and-stars.png",
+      "origin": "Capture Unity",
+      "sourceSha256": "8a1ce47985eda6f8826ff947d8547d6030664314f0a431cefcbbe639681eaa07",
+      "sourceDimensions": [
+        1600,
+        1000
+      ],
+      "outputDimensions": [
+        1600,
+        1000
+      ],
+      "bytes": 57450,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/ile-weather-storm-lightning-coast.webp",
+      "source": "docs/world/starter-island/weather/storm-lightning-coast.png",
+      "origin": "Capture Unity",
+      "sourceSha256": "d179769637db2150c4b4d5fa5a13451f14b8ec2d0a153199038c3d8a73f8b6ee",
+      "sourceDimensions": [
+        1600,
+        1000
+      ],
+      "outputDimensions": [
+        1600,
+        1000
+      ],
+      "bytes": 13324,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/ile-boundary-water-boiling-night.webp",
+      "source": "docs/world/starter-island/boundary-water/boiling-night.png",
+      "origin": "Capture Unity",
+      "sourceSha256": "cb9a7f6700ee7187dd12e5e3ccfd4acdbd3c00d57ded27ac508e98487a7b2ea5",
+      "sourceDimensions": [
+        1600,
+        1000
+      ],
+      "outputDimensions": [
+        1600,
+        1000
+      ],
+      "bytes": 61836,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching."
+    },
+    {
+      "image": "assets/hero.webp",
+      "source": "docs/art-direction/03-terres-anciens-gameplay.png",
+      "origin": "Concept généré",
+      "sourceSha256": "06f98d60d3ad6e718fa45973d2e47c05a38d88f32757352ee8aab9a98295df98",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "outputDimensions": [
+        1672,
+        941
+      ],
+      "bytes": 319996,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/gameplay-anciens.webp"
+    },
+    {
+      "image": "assets/aube.webp",
+      "source": "docs/art-direction/01-royaumes-aube-gameplay.png",
+      "origin": "Concept généré",
+      "sourceSha256": "ad909e6c6846c0b64c7a9d82f3a244cc14155b9eef9b26d040716d59b56adbd2",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "outputDimensions": [
+        1672,
+        941
+      ],
+      "bytes": 295450,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/gameplay-aube.webp"
+    },
+    {
+      "image": "assets/ether.webp",
+      "source": "docs/art-direction/02-cites-ether-gameplay.png",
+      "origin": "Concept généré",
+      "sourceSha256": "04e00764bbc295f474e9cd2c1d682fed0975d2b4d1c6c99d243331ada991c63a",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "outputDimensions": [
+        1672,
+        941
+      ],
+      "bytes": 271324,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/gameplay-ether.webp"
+    },
+    {
+      "image": "assets/anciens.webp",
+      "source": "docs/art-direction/03-terres-anciens-gameplay.png",
+      "origin": "Concept généré",
+      "sourceSha256": "06f98d60d3ad6e718fa45973d2e47c05a38d88f32757352ee8aab9a98295df98",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "outputDimensions": [
+        1672,
+        941
+      ],
+      "bytes": 319996,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/gameplay-anciens.webp"
+    },
+    {
+      "image": "assets/tree.webp",
+      "source": "docs/art-direction/resources/references/arbre-peint-v3/03-moussu/03-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "88b6174abb4ded65187f6103ae7624ab93a0603f0e479fd3fa597069634db325",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 72004,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/reference-reference-moussu.webp"
+    },
+    {
+      "image": "assets/tree-moussu.webp",
+      "source": "docs/art-direction/resources/references/arbre-peint-v3/03-moussu/03-moussu-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "88b6174abb4ded65187f6103ae7624ab93a0603f0e479fd3fa597069634db325",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 72004,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/reference-reference-moussu.webp"
+    },
+    {
+      "image": "assets/tree-mystique.webp",
+      "source": "docs/art-direction/resources/references/arbre-peint-v3/01-mystique/01-mystique-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "ccaa11b6ea112a8e347edb6b2234971cd417840c8f18c8adf0ede66d132e234b",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 71262,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/reference-reference-mystique.webp"
+    },
+    {
+      "image": "assets/tree-brule.webp",
+      "source": "docs/art-direction/resources/references/arbre-peint-v3/02-brule/02-brule-preview.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "37b47f20bf7834635bc3df81cf47200458a882382375fba737c91e02336d1926",
+      "sourceDimensions": [
+        1100,
+        1100
+      ],
+      "outputDimensions": [
+        1000,
+        1000
+      ],
+      "bytes": 72924,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/reference-reference-brule.webp"
+    },
+    {
+      "image": "assets/character.webp",
+      "source": "docs/art-direction/blender/03-terres-anciens-character-v3.png",
+      "origin": "Rendu Blender",
+      "sourceSha256": "eb0bfedcfbdbd3729b7bd154b7af488b2fc4e6387fa25b4c90151023d6d440f5",
+      "sourceDimensions": [
+        1350,
+        1800
+      ],
+      "outputDimensions": [
+        1050,
+        1400
+      ],
+      "bytes": 27738,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "credit": {
+        "creator": "Blender Studio / Blender Foundation",
+        "sources": [
+          "https://studio.blender.org/characters/rain/v2/",
+          "https://studio.blender.org/characters/snow/v4/"
+        ],
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Adaptations Arkya : proportions, oreilles elfiques, coiffures, poses, vêtements et accessoires fantasy, surfaces peintes et matériaux."
+      },
+      "aliasOf": "assets/personnage-03-terres-anciens.webp"
+    },
+    {
+      "image": "assets/world.webp",
+      "source": "docs/world/starter-island/environment/forest-day.png",
+      "origin": "Capture Unity",
+      "sourceSha256": "8aa7fa636fafc67ec4d58a78918ca18a64feef3d0fc3834a182991962366607f",
+      "sourceDimensions": [
+        1600,
+        1000
+      ],
+      "outputDimensions": [
+        1600,
+        1000
+      ],
+      "bytes": 154938,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/ile-environment-forest-day.webp"
+    },
+    {
+      "image": "assets/interface.webp",
+      "source": "docs/art-direction/ui/hud/01-encre-cuivre-v3.png",
+      "origin": "Concept généré",
+      "sourceSha256": "ae532c7afac9ef780f8a7ca6005462c3d9d5c829b88f8ac75932219b7f55628b",
+      "sourceDimensions": [
+        1586,
+        992
+      ],
+      "outputDimensions": [
+        1586,
+        992
+      ],
+      "bytes": 164952,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/hud-cuivre-v3.webp"
+    },
+    {
+      "image": "assets/hud-cuivre.webp",
+      "source": "docs/art-direction/ui/hud/01-encre-cuivre-v3.png",
+      "origin": "Concept généré",
+      "sourceSha256": "ae532c7afac9ef780f8a7ca6005462c3d9d5c829b88f8ac75932219b7f55628b",
+      "sourceDimensions": [
+        1586,
+        992
+      ],
+      "outputDimensions": [
+        1586,
+        992
+      ],
+      "bytes": 164952,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/hud-cuivre-v3.webp"
+    },
+    {
+      "image": "assets/hud-carnet.webp",
+      "source": "docs/art-direction/ui/hud/02-carnet-exploration-v3.png",
+      "origin": "Concept généré",
+      "sourceSha256": "27fd680bfe064b82204627fdce986e22e23fb13d116f69fb6041c51a87679601",
+      "sourceDimensions": [
+        1586,
+        992
+      ],
+      "outputDimensions": [
+        1586,
+        992
+      ],
+      "bytes": 172008,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/hud-carnet-v3.webp"
+    },
+    {
+      "image": "assets/hud-mana.webp",
+      "source": "docs/art-direction/ui/hud/03-pierre-mana-v3.png",
+      "origin": "Concept généré",
+      "sourceSha256": "73375d647feee57c9fb2096889a56ab4ac5d9d2bc642f9444b725542fc0c4179",
+      "sourceDimensions": [
+        1586,
+        992
+      ],
+      "outputDimensions": [
+        1586,
+        992
+      ],
+      "bytes": 164798,
+      "operation": "Proportional downscale and WebP encoding; no crop or retouching.",
+      "aliasOf": "assets/hud-mana-v3.webp"
+    }
+  ]
+}

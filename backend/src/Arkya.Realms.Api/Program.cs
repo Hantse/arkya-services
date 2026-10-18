@@ -41,6 +41,9 @@ public partial class Program
         builder.Services.AddSingleton<RealmsAdminKeyValidator>();
         builder.Services.AddSingleton<IRealmRepository, MongoRealmRepository>();
         builder.Services.AddSingleton<RealmService>();
+        builder.Services.AddOptions<GameEntryOptions>().BindConfiguration("GameAccess")
+            .Validate(value => value.IsValid(builder.Environment.IsDevelopment()), "Game entry configuration is invalid.").ValidateOnStart();
+        builder.Services.AddSingleton<GameEntryService>();
         builder.Services.AddHostedService<RealmStoreInitializer>();
         builder.Services.AddHttpClient<IRealmDeployer, KubernetesRealmDeployer>(client => client.Timeout = TimeSpan.FromSeconds(10))
             .ConfigurePrimaryHttpMessageHandler(services =>
@@ -92,6 +95,12 @@ public partial class Program
         app.MapGet("/health/ready", async (IRealmRepository repository, CancellationToken cancellationToken) =>
             await repository.IsAvailableAsync(cancellationToken) ? Results.Ok(new { status = "ready" }) : Results.StatusCode(503));
         app.MapRealmEndpoints();
+        app.MapGet("/internal/realms/entries", async (HttpContext context, GameEntryService entries, CancellationToken cancellationToken) =>
+        {
+            var key = context.Request.Headers["X-Arkya-Service-Key"];
+            return key.Count == 1 && entries.Authorize(key[0])
+                ? Results.Ok(await entries.ListAsync(cancellationToken)) : Results.StatusCode(403);
+        });
         app.Run();
     }
 }

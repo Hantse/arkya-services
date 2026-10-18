@@ -10,7 +10,8 @@ Le [backoffice de déploiement des realms sur k3s](deploy/realms/README.md) ajou
 | --- | --- | --- | --- |
 | `Arkya.Gateway` | `https://localhost:7140` | YARP : entrée publique commune pour Identity et Characters | Aucune |
 | `Arkya.Identity.Api` | `https://localhost:7141` | Discord, comptes, sessions | `arkya_identity` |
-| `Arkya.Characters.Api` | `https://localhost:7142` | Création et lecture des personnages ; résolution interne | `arkya_characters` |
+| `Arkya.Characters.Api` | `https://localhost:7142` | Personnages, admissions, baux et position serveur persistante | `arkya_characters` |
+| `Arkya.Realms.Api` | `https://localhost:7144` | Déploiement et catalogue interne des destinations approuvées | `arkya_realms` |
 | `Arkya.Backend.Api` | `http://localhost:5062` | Ancien bootstrap Unity : annuaire mock et connexion dev | Mémoire uniquement |
 
 Les bases restent sous la responsabilité exclusive de leur service, même si elles partagent le même MongoDB local. Characters valide une session via Identity ; il ne lit pas ses collections. Les DTO publics ne contiennent pas les documents de persistance.
@@ -109,6 +110,7 @@ La connexion du compte Arkya utilise OAuth2 Authorization Code avec le seul scop
 | `GET /v1/auth/me` | `Authorization: Bearer <sessionToken>` | `200` : `accountId`, `displayName`, `expiresAt` ; sinon `401` |
 | `POST /v1/auth/logout` | Même bearer | `204` : session révoquée ; sinon `401` |
 | `POST /internal/sessions/introspect` | Clé de service + `{ "sessionToken": "..." }` | `200` : même identité que `/me` ; `403` mauvaise clé ; `401` session invalide |
+| `POST /internal/sessions/introspect-reference` | Même clé + `{ "sessionReference": "<SHA256 hex64>" }` | Validation privée par empreinte : même identité/expiration, sans bearer ; `401` si expirée/révoquée |
 
 Le client génère un vérificateur aléatoire de 43 à 128 caractères autorisés (`A-Z`, `a-z`, `0-9`, `-`, `.`, `_`, `~`) et calcule `base64url(SHA256(ASCII(codeVerifier)))`, sans padding. Le `codeChallenge` S256 comporte 43 caractères. Ce protocole de remise est propre à Arkya et ne suppose pas de PKCE dans l'API Discord.
 
@@ -196,7 +198,7 @@ Les routes de personnages exigent un bearer Arkya valide. Seul le catalogue d'ap
 | `GET /v1/characters/{id}` | Bearer | `200` : personnage ; `404` absent ou autre propriétaire |
 | `POST /internal/characters/{id}/resolve` | Clé de service + `{ "sessionToken": "..." }` | `200` : `accountId`, `character`, `sessionExpiresAt` ; `403` mauvaise clé ; `401` session invalide ; `404` personnage non accessible |
 
-Un personnage public contient `id` (GUID), `name`, `level`, `createdAt` et `appearance`. L'apparence complète est retournée par la création, la liste, la lecture individuelle et la résolution interne. Le nom est nettoyé des espaces autour, puis doit comporter de 3 à 20 lettres ASCII `A-Z`/`a-z`. Son unicité globale, insensible à la casse, est protégée par un index MongoDB ; deux créations concurrentes ne peuvent pas obtenir le même nom. Le niveau initial `1` est imposé côté service. Les champs JSON inconnus, par exemple `accountId` ou `level` dans une création, sont refusés, y compris dans `appearance`.
+Un personnage public contient `id` (GUID), `name`, `level`, `createdAt`, `appearance` et `realmId` (nullable). L'apparence complète est retournée par la création, la liste, la lecture individuelle et la résolution interne. Le nom est nettoyé des espaces autour, puis doit comporter de 3 à 20 lettres ASCII `A-Z`/`a-z`. Son unicité globale, insensible à la casse, est protégée par un index MongoDB ; deux créations concurrentes ne peuvent pas obtenir le même nom. Le niveau initial `1` est imposé côté service. Les champs JSON inconnus, par exemple `accountId` ou `level` dans une création, sont refusés, y compris dans `appearance`.
 
 Contrat de création avec personnalisation :
 
@@ -219,7 +221,7 @@ Contrat de création avec personnalisation :
 
 Le service valide une liste fermée d'identifiants, sensible à la casse, issue du [manifeste artistique](../docs/art-direction/resources/personnages/manifest.json). Les races sont `human` et `elf`, les silhouettes `a` et `b`, les coiffures `short`, `long` et `braid`. `heightCm` est un entier : 160–195 pour un humain, 170–205 pour un elfe. Les huit teints, huit couleurs de cheveux, six couleurs d'yeux et quatre couleurs de tenue sont exposés avec leurs libellés et couleurs hexadécimales dans le catalogue. Le client envoie leurs identifiants, jamais une couleur libre ni un chemin d'asset. Une apparence partielle, une version inconnue ou une option hors catalogue donne `400` avec des erreurs `appearance.<champ>` ; elle n'est pas enregistrée. Ces choix sont cosmétiques et ne déterminent ni les statistiques ni le déplacement.
 
-Pour préserver les anciens clients, `appearance` omis ou `null` donne le profil stable `human/a/175/warm/short/brown/green/sage`, version 1. MongoDB écrit les nouveaux personnages avec `SchemaVersion = 2` et un sous-document `Appearance`. Les documents historiques de schéma 1 sans apparence sont lus avec ce même profil par défaut ; leur identité, propriétaire et niveau ne changent pas. La conversion en document de persistance écrit le schéma 2. Aucun lot de migration destructif n'est nécessaire ; les schémas inconnus ou les apparences corrompues d'un document actuel ne sont pas remplacés silencieusement.
+Pour préserver les anciens clients, `appearance` omis ou `null` donne le profil stable `human/a/175/warm/short/brown/green/sage`, version 1. MongoDB écrit les nouveaux personnages avec `SchemaVersion = 2` et un sous-document `Appearance`, ou le schéma 3 si un realm est choisi à la création. Les documents historiques de schéma 1 sans apparence sont lus avec ce même profil par défaut ; leur identité, propriétaire et niveau ne changent pas. La liaison atomique ultérieure ajoute `RealmId` sans réécrire les autres champs ni le schéma historique. Aucun lot de migration destructif n'est nécessaire ; les schémas inconnus ou les apparences corrompues d'un document actuel ne sont pas remplacés silencieusement.
 
 Le catalogue répond sous la forme `{ version, defaults, races, silhouettes, hairStyles, palettes }`. Une race contient `{ id, label, height: { min, max, default } }`, une silhouette/coiffure `{ id, label }`, et chaque palette (`skin`, `hair`, `eyes`, `outfit`) est une liste de `{ id, label, hex }`. Il ne contient aucune donnée de compte et n'effectue pas d'introspection Identity.
 
@@ -235,7 +237,45 @@ Invoke-RestMethod -Method Post -Uri 'https://localhost:7141/v1/auth/logout' -Hea
 
 Choisir un autre nom si `Aeloria` existe déjà. Le compte ne dispose pas encore d'un quota de personnages ; suppression, renommage et modification d'apparence après création restent à définir. La progression de quêtes utilise ses routes internes dédiées.
 
-La résolution interne vérifie aussi le propriétaire. Elle ne délivre ni ticket d'admission ni bail de personnage et ne prévient pas les connexions simultanées. Le serveur dédié ne doit pas la traiter comme une preuve d'admission au monde.
+La résolution interne historique vérifie le propriétaire, mais seule la consommation d'un ticket d'admission ci-dessous donne le droit de créer un acteur dans le monde.
+
+## Admission et jeu web bêta
+
+Le [contrat HTTP exact](../docs/WEB_BETA_CONTRACT.md) définit le catalogue authentifié `GET /v1/realms`, l'émission `POST /v1/characters/{id}/admissions`, puis les routes privées `/internal/game/...` utilisées par le dedicated. La gateway expose le catalogue et l'admission lorsque Characters est activé ; elle bloque les routes privées et retire la clé dedicated des requêtes publiques.
+
+La création accepte un `realmId` facultatif. S'il est absent, la première admission lie atomiquement le personnage au realm choisi ; cette liaison reste ensuite immuable. Le catalogue vient du vrai service Realms et refuse une destination non compatible ou sans identité dedicated configurée. `GameAccess:StandaloneEntries` dans Realms permet un serveur réel lancé hors Kubernetes ; une entrée doit être activée explicitement par l'opérateur. Les profils Kubernetes conservent UDP par défaut et acceptent un profil `WebSocket` distinct avec une URL WSS approuvée.
+
+Characters conserve seulement l'empreinte SHA-256 d'un ticket aléatoire de 256 bits, valable 60 secondes au maximum. La consommation atomique crée un bail exclusif de 90 secondes, borné par l'expiration de session, renouvelé par le serveur. `X-Arkya-Dedicated-Key` est lié dans Characters à un couple realm/serveur précis. L'époque d'autorité et la révision protègent la sauvegarde de position contre un ancien serveur ou une écriture concurrente. Seul le dedicated fournit position et direction ; le client ne peut pas appeler ces écritures. La collection `game_leases` conserve aussi la dernière position durable et n'a donc pas de TTL destructif.
+
+Configurer dans Characters `Realms:BaseUrl`, `Realms:ServiceKey`, `GameAccess:DedicatedServers` et la liste exacte `WebClient:AllowedOrigins`, en complément d'Identity/Mongo. Les origines autorisées doivent inclure celle de la page qui héberge réellement Unity, qui peut différer de la vitrine. Le bearer Arkya reste en mémoire. Les clés dedicated et interservices restent dans les secrets serveur. Voir [la préparation WSS et des services](deploy/web-beta/README.md) pour les valeurs et les frontières réseau.
+
+La déconnexion de la page ferme Unity et le dedicated libère son bail. Characters conserve une référence hachée de session calculée après authentification, puis la revalide auprès d'Identity à la consommation, au heartbeat et à la sauvegarde, sans cache et avec un timeout HTTP de cinq secondes. Un logout refuse ainsi un ticket en attente et les prochaines opérations du bail, même si le client a été modifié ; le dedicated déconnecte lors du refus définitif. Les expirations ne peuvent jamais dépasser la borne de session initiale. Release reste permis après révocation pour libérer proprement le personnage. Les anciens enregistrements sans référence doivent être libérés/expirés puis réadmis ; leur état sauvegardé est conservé. La rotation des clés demande actuellement un redémarrage des services concernés.
+
+### Fixture locale avec les vrais services
+
+PowerShell 7.4 et MongoDB réel sont requis. La fixture lance les vrais Identity, Characters et Realms ; elle sème explicitement un compte/session dans trois bases de test isolées, puis crée deux personnages par les routes authentifiées. Elle ne contacte pas Discord et n'ajoute aucun contournement d'authentification en production.
+
+```powershell
+# Depuis la racine du dépôt ; utiliser exclusivement une instance MongoDB de test.
+$env:ARKYA_TEST_MONGO = 'mongodb://127.0.0.1:27029'
+$fixtureDirectory = Join-Path $env:LOCALAPPDATA 'Arkya/WebBetaTests/my-run'
+./backend/tools/Start-WebBetaFixture.ps1 -Action Start -Directory $fixtureDirectory
+# Émettre les tickets juste avant le test Unity (validité 60 secondes).
+./backend/tools/Start-WebBetaFixture.ps1 -Action Tickets -Directory $fixtureDirectory
+$env:ARKYA_WEB_BETA_TICKETS_FILE = Join-Path $fixtureDirectory 'tickets.json'
+# Après le test Unity et sa déconnexion : vérifier les deux sauvegardes et l'absence de bail actif.
+./backend/tools/Start-WebBetaFixture.ps1 -Action VerifyState -Directory $fixtureDirectory
+# Après arrêt du dedicated/client : révoquer la fixture et supprimer ses bases isolées.
+./backend/tools/Start-WebBetaFixture.ps1 -Action Stop -Directory $fixtureDirectory
+```
+
+Le fichier `tickets.json` contient les vrais DTO et une clé serveur ; il reste hors dépôt dans un dossier privé et ne doit pas être affiché ou copié dans un résultat de test. L'endpoint local par défaut est `ws://127.0.0.1:17943/` ; définir `ARKYA_TEST_GAME_ENDPOINT` avant `Start` pour en choisir un autre. La fixture ne lance pas Unity et ne remplace pas le test WSS public. `Restart` recompile/redémarre les API en conservant les mêmes bases, personnages et session, après arrêt des clients. `Stop` vérifie l'identité des processus avant de les terminer, supprime uniquement les bases préfixées de cette fixture, puis ses fichiers de session et de tickets.
+
+`VerifyState` lit seulement les deux états dans la base MongoDB isolée : révision et époque positives, coordonnées finies, aucun bail actif. Il ne réémet ni ne consomme de ticket et échoue si une assertion manque. Sa sortie contient uniquement le nombre d'états, les révisions, époques et positions non secrètes. Cette lecture de test ne crée aucune route de développement dans les API de production.
+
+La session semée expire après deux heures. Pour un long scénario local, une prolongation explicite peut faire partie de la préparation du test : intervenir uniquement dans la base Identity portant le préfixe isolé de la fixture, vérifier simultanément l'empreinte du jeton, le compte et l'expiration précédente, puis exiger exactement une mise à jour conditionnelle. Conserver le jeton et les clés ; ne modifier ni leases ni personnages. Vérifier ensuite la nouvelle expiration par le vrai `GET /v1/auth/me` et recharger le navigateur. Consigner l'ancienne/nouvelle expiration et le nombre de documents modifiés sans afficher de secret. Cette opération de setup ne teste pas OAuth et n'est pas une fonction de renouvellement proposée par l'API ; elle n'augmente pas les bornes de session déjà enregistrées dans les leases existantes.
+
+Pour vérifier la révocation, créer une **autre fixture isolée**, puis lancer `-Action VerifyRevocation`. Ce scénario consomme un ticket, sauvegarde, renouvelle, appelle le vrai logout et vérifie les refus du second ticket, du heartbeat, de la sauvegarde et des accès publics ; il exige aussi la libération du bail et la conservation de l'état. Il révoque volontairement la session de cette fixture, qu'il faut ensuite nettoyer avec `Stop`. Le paramètre `-BuildConfiguration Release` permet de construire/lancer cette seconde fixture sans verrouiller les binaires Debug d'un autre test ; utiliser la même configuration pour ses commandes suivantes.
 
 ## API locale historique
 
@@ -260,8 +300,8 @@ dotnet test Arkya.Backend.slnx
 
 Les tests de persistance MongoDB peuvent être activés avec une instance joignable et l'URI dans `ARKYA_TEST_MONGO` avant `dotnet test`. Ils utilisent des bases de test isolées ; ne jamais fournir une base de production. Sans cette variable, ces scénarios d'intégration ne sont pas exécutés. `Arkya.Backend.Flow.Tests` vérifie aussi le parcours entre les deux API et MongoDB : autorisation Discord simulée, session, création, résolution par le serveur et révocation.
 
-Les tests automatisés n'autorisent pas une vraie application Discord. Une validation réelle du fournisseur nécessite ses identifiants, le callback déclaré et un passage manuel dans le navigateur. Le client Unity et un serveur dédié ne sont pas intégrés ni vérifiés par cette tranche backend.
+Les tests automatisés n'autorisent pas une vraie application Discord. Une validation réelle du fournisseur nécessite ses identifiants, le callback déclaré et un passage manuel dans le navigateur. La fixture ci-dessus permet de vérifier Unity et un dedicated contre de vrais services, sans prétendre vérifier OAuth ni le TLS du domaine public.
 
-Avant ouverture publique, compléter l'admission du serveur, les identités et la rotation des clés de service, les politiques de compte et une confirmation utilisateur du challenge dans le navigateur pour limiter l'approbation d'un lien de connexion transmis par un tiers. Le cookie de corrélation lie le callback à un navigateur ; il ne prouve pas à lui seul que ce navigateur appartient à l'initiateur natif du challenge.
+Avant ouverture publique, provisionner et valider les destinations WSS, les identités et la rotation des clés de service, les politiques de compte et une confirmation utilisateur du challenge dans le navigateur pour limiter l'approbation d'un lien de connexion transmis par un tiers. Le cookie de corrélation lie le callback à un navigateur ; il ne prouve pas à lui seul que ce navigateur appartient à l'initiateur natif du challenge.
 
 Le transport courant est HTTP JSON. Le passage à gRPC unary pour les appels internes dépendra de mesures sur le build Unity dédié ; le streaming attend un besoin d'événements concret. Les écritures de persistance ne doivent pas suivre chaque tick Netcode.

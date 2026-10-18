@@ -1,0 +1,241 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-gateway
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-gateway
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-gateway
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 192.168.100.0/24
+    ports:
+    - protocol: TCP
+      port: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-frontend
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-frontend
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-frontend
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: traefik
+    ports:
+    - protocol: TCP
+      port: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-identity
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-identity
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-identity
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-identity
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-gateway
+    ports:
+    - protocol: TCP
+      port: 8080
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-identity
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-characters
+    ports:
+    - protocol: TCP
+      port: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-characters
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-characters
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-characters
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-identity
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-gateway
+    ports:
+    - protocol: TCP
+      port: 8080
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-realm-beta-web
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-web-dedicated
+    ports:
+    - protocol: TCP
+      port: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-admin
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-admin
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-admin
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-identity
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-gateway
+    ports:
+    - protocol: TCP
+      port: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-content
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-content
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-content
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-operations
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-admin
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-realm-beta-web
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-web-dedicated
+    ports:
+    - protocol: TCP
+      port: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-realms
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-realms
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-realms
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-operations
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-admin
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-identity
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-characters
+    ports:
+    - protocol: TCP
+      port: 8443
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-backend
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-backend
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-backend
+  policyTypes:
+  - Ingress
+  ingress: []

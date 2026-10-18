@@ -150,6 +150,11 @@ public sealed partial class IdentityService(
             : Task.FromResult<Session?>(null);
     }
 
+    public Task<Session?> ValidateSessionReferenceAsync(string? reference, CancellationToken cancellationToken) =>
+        Arkya.ServiceDefaults.SessionReference.IsValid(reference)
+            ? store.GetSessionAsync(reference!, clock.GetUtcNow().UtcDateTime, cancellationToken)
+            : Task.FromResult<Session?>(null);
+
     public Task RevokeAsync(string token, CancellationToken cancellationToken) => store.RevokeSessionAsync(Hash(token), cancellationToken);
     public static string CodeChallenge(string verifier) => WebEncoders.Base64UrlEncode(SHA256.HashData(Encoding.ASCII.GetBytes(verifier)));
     public static string Hash(string value) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value)));

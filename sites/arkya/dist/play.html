@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111d28">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Connectez-vous avec Discord pour lancer la bêta web d’Arkya et retrouver vos personnages." data-i18n-content="meta.description">
+  <meta property="og:locale" content="fr_FR">
+  <title data-i18n="page.title">Arkya — Jouer</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="play.css">
+  <script src="play-copy.js" defer></script>
+  <script src="auth-config.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="play.js" type="module"></script>
+</head>
+<body class="play-page">
+  <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
+  <header class="play-header section-shell">
+    <a class="brand" href="/?lang=fr" data-language-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
+    <nav aria-label="Navigation principale" data-i18n-aria-label="nav.main"><a href="development.html?lang=fr" data-language-link data-i18n="nav.development">Avancement</a><a href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a></nav>
+    <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+  </header>
+  <main id="contenu" class="play-main section-shell">
+    <div class="play-intro"><div><p class="eyebrow" data-i18n="play.eyebrow">ARKYA · BÊTA WEB</p><h1 data-i18n-html="play.title">Votre aventure<br>prend <em>forme.</em></h1></div><p data-i18n="play.intro">Connectez-vous avec Discord, puis créez ou sélectionnez votre personnage dans le jeu. L’accès au monde dépend des serveurs bêta disponibles.</p></div>
+    <section class="game-frame" aria-label="Jeu Arkya" data-i18n-aria-label="play.canvas">
+      <canvas id="unity-canvas" width="1280" height="720" tabindex="-1" aria-label="Jeu Arkya" data-i18n-aria-label="play.canvas" aria-hidden="true"></canvas>
+      <div class="game-cover" id="game-cover">
+        <p class="eyebrow" data-i18n="play.gate">LE VOYAGE COMMENCE ICI</p>
+        <h2 id="game-heading" data-i18n="play.checkingTitle">Un instant…</h2>
+        <p id="game-status" role="status" aria-live="polite" data-i18n="play.checking">Vérification de votre connexion…</p>
+        <progress id="game-progress" max="1" value="0" hidden aria-label="Chargement du jeu" data-i18n-aria-label="play.loadingTitle"></progress>
+        <a id="game-sign-in" class="button primary" href="account.html?returnTo=play.html&amp;lang=fr" hidden data-i18n="play.login">Continuer avec Discord</a>
+        <button id="game-retry" class="button secondary" type="button" hidden data-i18n="play.retry">Réessayer</button>
+      </div>
+      <noscript><p>Activez JavaScript pour vous connecter et lancer le jeu. / Enable JavaScript to sign in and launch the game.</p></noscript>
+    </section>
+    <div class="game-toolbar"><p id="game-caption" data-i18n="play.caption">Bêta en développement · clavier et souris</p><div><button id="game-fullscreen" type="button" disabled data-i18n="play.fullscreen">Plein écran</button><button id="game-logout" type="button" hidden data-i18n="play.logout">Se déconnecter</button></div></div>
+    <div class="play-notes"><p data-i18n="play.controls">Cliquez dans le jeu pour le contrôler. Déplacement : ZQSD / WASD ou flèches · Maj : courir · Espace : sauter · clic droit : caméra · molette : zoom.</p><p data-i18n="play.session">La session reste dans cet onglet. À sa fermeture, à la déconnexion ou à l’expiration, reconnectez-vous pour reprendre.</p></div>
+  </main>
+  <footer class="play-footer section-shell"><p>Pyxion Sarl-S · Arkya</p><a href="privacy.html?lang=fr" data-language-link data-i18n="footer.privacy">Politique de confidentialité</a><a href="terms.html?lang=fr" data-language-link data-i18n="footer.terms">Conditions d’utilisation</a><a href="/?lang=fr#credits" data-language-link data-i18n="footer.credits">Crédits & images</a></footer>
+</body>
+</html>

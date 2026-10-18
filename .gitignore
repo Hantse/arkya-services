@@ -1,6 +1,5 @@
 # Independently managed nested repositories
 /Unity3D/
-/sites/arkya/
 
 # Unity generated folders
 /My project/[Ll]ibrary/
@@ -66,6 +65,7 @@ logs/
 # Local builds, runtime reports and isolated validation checkouts
 /artifacts/
 /output/
+/sites/arkya/dist/game/
 /.playwright-cli/
 /.codex/
 

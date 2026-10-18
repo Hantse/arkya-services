@@ -1,0 +1,246 @@
+"""Render real Kustomize overlays and verify the beta's deployment contracts.
+
+Requires kubectl (or KUBECTL) and PyYAML. Never contacts a Kubernetes cluster.
+"""
+
+import argparse
+import ipaddress
+import os
+from pathlib import Path
+import re
+import subprocess
+from urllib.parse import urlparse
+
+import yaml
+
+
+ROOT = Path(__file__).resolve().parent
+IDENTITY = "arkya-identity"
+OPERATIONS = "arkya-operations"
+GAME = "arkya-realm-beta-web"
+NAMESPACES = {IDENTITY, OPERATIONS}
+APPS = {"identity", "gateway", "characters", "content", "admin", "realms", "backend", "frontend"}
+PUBLIC_APPS = {"frontend"}
+TLS_APPS = {"identity", "characters", "content", "realms"}
+IMAGE_PREFIX = "ghcr.io/hantse/arkya-services-"
+
+
+def require(condition, message):
+    if not condition:
+        raise AssertionError(message)
+
+
+def render(path):
+    result = subprocess.run(
+        [os.environ.get("KUBECTL", "kubectl"), "kustomize", str(path)],
+        check=True, capture_output=True, text=True, encoding="utf-8",
+    )
+    return [document for document in yaml.safe_load_all(result.stdout) if document]
+
+
+def identity(document):
+    metadata = document["metadata"]
+    return document["kind"], metadata.get("namespace", ""), metadata["name"]
+
+
+def index(documents):
+    indexed = {}
+    for document in documents:
+        key = identity(document)
+        require(key not in indexed, f"Duplicate resource {key}")
+        indexed[key] = document
+    return indexed
+
+
+def namespace(app):
+    return IDENTITY if app in {"identity", "gateway", "characters", "frontend"} else OPERATIONS
+
+
+def peer_app(peer):
+    ns = peer.get("namespaceSelector", {}).get("matchLabels", {}).get("kubernetes.io/metadata.name")
+    app = peer.get("podSelector", {}).get("matchLabels", {}).get("app.kubernetes.io/name")
+    require(ns and app, "Network peers must bind both an exact namespace and pod label")
+    return ns, app
+
+
+def check_services(documents, require_digests):
+    resources = index(documents)
+    require(not any(d["kind"] == "Secret" for d in documents), "Secrets must be provisioned outside Git")
+    require({d["metadata"]["name"] for d in documents if d["kind"] == "Namespace"} == NAMESPACES,
+            "Services must own only the two service namespaces")
+    deployments = {d["metadata"]["name"]: d for d in documents if d["kind"] == "Deployment"}
+    require(set(deployments) == {"arkya-" + app for app in APPS}, "Every service must have one Deployment")
+    require(len([d for d in documents if d["kind"] == "Service"]) == len(APPS), "Service coverage is incomplete")
+    configs = {}
+    for app in sorted(APPS):
+        name, ns = "arkya-" + app, namespace(app)
+        deployment = deployments[name]
+        require(deployment["metadata"]["namespace"] == ns, f"Wrong namespace for {name}")
+        pod = deployment["spec"]["template"]["spec"]
+        require(pod["automountServiceAccountToken"] is False, f"{name} must not control Kubernetes")
+        require(pod["securityContext"]["runAsNonRoot"] is True, f"{name} must run without root")
+        container, = pod["containers"]
+        require(container["securityContext"]["readOnlyRootFilesystem"] is True, f"Writable root for {name}")
+        require(container["securityContext"]["allowPrivilegeEscalation"] is False, f"Escalation enabled for {name}")
+        require(container["securityContext"]["capabilities"]["drop"] == ["ALL"], f"Unnecessary capabilities in {name}")
+        require(container.get("startupProbe") and container.get("readinessProbe") and container.get("livenessProbe"),
+                f"{name} must have startup/readiness/liveness probes")
+        image = container["image"]
+        image_pattern = re.escape(IMAGE_PREFIX + app)
+        suffix = r"@sha256:[0-9a-f]{64}" if require_digests else r"(?:@sha256:[0-9a-f]{64}|:sha-[0-9a-f]{40})"
+        require(re.fullmatch(image_pattern + suffix, image), f"Unpinned or missing release image for {name}: {image}")
+        config_name, = [entry["configMapRef"]["name"] for entry in container["envFrom"] if "configMapRef" in entry]
+        require(config_name.startswith(name + "-config-"), f"Config changes must roll {name}'s pod")
+        config = resources[("ConfigMap", ns, config_name)]["data"]
+        configs[app] = config
+        if app != "frontend":
+            require(config["ASPNETCORE_ENVIRONMENT"] == "Production", f"Development auth enabled in {name}")
+        if app not in {"gateway", "frontend", "backend"}:
+            require({"secretRef": {"name": name + "-secrets"}} in container["envFrom"], f"Missing secret for {name}")
+            require("Mongo__ConnectionString" not in config, f"Mongo credentials embedded in {name}'s ConfigMap")
+        service = resources[("Service", ns, name)]
+        if app == "gateway":
+            require(service["spec"].get("type") == "LoadBalancer" and service["spec"].get("loadBalancerIP") == "192.168.100.218",
+                    "The existing gateway LoadBalancer address must be preserved")
+            require(service["spec"].get("externalTrafficPolicy") == "Local", "Gateway must preserve the external proxy's source")
+        else:
+            require(service["spec"].get("type") == "ClusterIP", f"{name} exposes a service outside ingress")
+        require(service["spec"]["selector"] == deployment["spec"]["selector"]["matchLabels"], f"Broken selector for {name}")
+        require(all(deployment["spec"]["template"]["metadata"]["labels"].get(k) == v
+                    for k, v in service["spec"]["selector"].items()), f"Service misses {name}'s pods")
+        ports = {port["name"]: port["containerPort"] for port in container["ports"]}
+        for port in service["spec"]["ports"]:
+            require(port["targetPort"] in ports, f"Unbound service port in {name}")
+            expected_port = 80 if app == "gateway" else ports[port["targetPort"]]
+            require(port["port"] == expected_port, f"Wrong service destination in {name}")
+            require(port["targetPort"] != "management", f"Management port exposed by {name}'s Service")
+        policy = resources[("NetworkPolicy", ns, name)]["spec"]
+        require(policy["podSelector"]["matchLabels"] == service["spec"]["selector"], f"Policy misses {name}'s pods")
+        for rule in policy["ingress"]:
+            if app == "gateway":
+                require(rule["from"] == [{"ipBlock": {"cidr": configs["gateway"]["ProxyTrust__KnownNetworks__0"]}}],
+                        "Gateway ingress and forwarded-header trust must use the same external proxy network")
+                require(rule["ports"] == [{"protocol": "TCP", "port": 8080}], "Gateway may only accept its public HTTP port")
+                continue
+            peers = {peer_app(peer) for peer in rule["from"]}
+            if app in PUBLIC_APPS:
+                require(peers == {("kube-system", "traefik")}, f"{name} bypasses the approved ingress")
+            if app in TLS_APPS:
+                port, = rule["ports"]
+                if port["port"] == 8080:
+                    require(peers == {(IDENTITY, "arkya-gateway")}, f"{name} accepts unauthenticated HTTP peers")
+                else:
+                    require(port["port"] == 8443, f"Unexpected internal port for {name}")
+                    require(not peers.intersection({("kube-system", "traefik")}), f"Internal {name} routes exposed publicly")
+        for key, value in config.items():
+            if "KnownNetworks__" in key:
+                require(ipaddress.ip_network(value).prefixlen > 0, f"Universal forwarded-header trust for {name}")
+            require(not any(secret in key for secret in ("ServiceKey", "Password", "ClientSecret", "AdminKey")) and not key.endswith("__Key"),
+                    f"Secret configuration {key} belongs in a Secret")
+        if app in TLS_APPS:
+            require(config["Kestrel__Endpoints__Internal__Url"] == "https://0.0.0.0:8443", f"Internal TLS absent for {name}")
+            require(any(v.get("secret", {}).get("secretName") == name + "-tls" for v in pod["volumes"]),
+                    f"TLS keypair missing for {name}")
+        if app in {"characters", "admin"}:
+            require(config["SSL_CERT_FILE"] == "/etc/arkya/internal-ca/ca.crt", f"Private CA trust missing in {name}")
+    require(resources[("NetworkPolicy", OPERATIONS, "arkya-backend")]["spec"]["ingress"] == [],
+            "Historical development API must remain isolated")
+    require(configs["realms"]["Deployment__Enabled"] == "false", "Realms and Argo must not manage the same workload")
+    require(configs["realms"]["GameAccess__StandaloneEntries__0__Enabled"] in {"false", "true"}, "Missing admission activation switch")
+    require(configs["realms"]["GameAccess__StandaloneEntries__0__RealmId"] == configs["characters"]["GameAccess__DedicatedServers__0__RealmId"] == "beta-web", "Realm identity mismatch")
+    require(configs["realms"]["GameAccess__StandaloneEntries__0__ServerId"] == configs["characters"]["GameAccess__DedicatedServers__0__ServerId"] == "island", "Dedicated identity mismatch")
+    require(configs["realms"]["GameAccess__StandaloneEntries__0__BuildId"] == "arkya-web-beta-v1", "Game build mismatch")
+    require(configs["realms"]["GameAccess__StandaloneEntries__0__ProtocolVersion"] == "1", "Protocol mismatch")
+    require(configs["gateway"]["Gateway__CharactersEnabled"] == "true" and configs["gateway"]["Gateway__AdminEnabled"] == "true", "Gateway misses services")
+    for app, key in [("characters", "Identity__BaseUrl"), ("characters", "Realms__BaseUrl"),
+                     ("admin", "ContentApi__BaseUrl"), ("admin", "RealmsApi__BaseUrl")]:
+        url = urlparse(configs[app][key])
+        require(url.scheme == "https" and url.port == 8443 and url.path == "/", f"Unsafe internal URL {app}:{key}")
+        service_name, service_ns, *_ = url.hostname.split(".")
+        require(("Service", service_ns, service_name) in resources, f"Missing internal destination for {app}:{key}")
+    for app in {"identity", "admin"}:
+        pvc = resources[("PersistentVolumeClaim", namespace(app), "arkya-" + app + "-keys")]
+        require("Prune=false" in pvc["metadata"]["annotations"]["argocd.argoproj.io/sync-options"], "Key storage must survive pruning")
+        require(deployments["arkya-" + app]["spec"]["strategy"]["type"] == "Recreate", "RWO keys require a single pod during rollout")
+    for ingress in (d for d in documents if d["kind"] == "Ingress"):
+        require(ingress["metadata"]["namespace"] == IDENTITY, "Public route outside the gateway namespace")
+        require(ingress["spec"]["ingressClassName"] == "traefik" and ingress["spec"].get("tls"), "Public ingress requires TLS")
+        require(ingress["metadata"]["annotations"]["traefik.ingress.kubernetes.io/router.observability.accesslogs"] == "false", "OAuth callback access logging must be disabled")
+        for rule in ingress["spec"]["rules"]:
+            require(rule["host"] in ingress["spec"]["tls"][0]["hosts"], "TLS host mismatch")
+            for path in rule["http"]["paths"]:
+                require(path["backend"]["service"]["name"] in {"arkya-gateway", "arkya-frontend"}, "A private API is routed publicly")
+    return configs
+
+
+def check_bootstrap(documents):
+    resources = index(documents)
+    application, = [d for d in documents if d["kind"] == "Application"]
+    project, = [d for d in documents if d["kind"] == "AppProject"]
+    require("automated" not in application["spec"].get("syncPolicy", {}), "Bootstrap must await the operator's first sync")
+    sources = {(s["repoURL"], s["path"], s["targetRevision"]) for s in application["spec"]["sources"]}
+    require(sources == {
+        ("https://github.com/Hantse/arkya-services.git", "backend/deploy/gitops/beta", "master"),
+        ("https://github.com/Hantse/arkya-mmorpg.git", "deploy/gitops/beta", "main"),
+    }, "Argo must reconcile both owning repositories")
+    require({d["namespace"] for d in project["spec"]["destinations"]} == NAMESPACES | {GAME}, "Argo namespace allowlist mismatch")
+    require({s[0] for s in sources} == set(project["spec"]["sourceRepos"]), "Argo source allowlist mismatch")
+    require(project["spec"]["clusterResourceWhitelist"] == [{"group": "", "kind": "Namespace"}], "Unnecessary cluster-wide Argo permissions")
+    require(len(resources) == 2, "Unexpected bootstrap resources")
+
+
+def check_unity(service_documents, unity_path, configs, require_digests):
+    unity_documents = render(unity_path)
+    index(service_documents + unity_documents)
+    resources = index(unity_documents)
+    for name, port in [("arkya-web-client", 8080), ("arkya-web-dedicated", 17943)]:
+        service = resources[("Service", GAME, name)]
+        require(any(p["port"] == port for p in service["spec"]["ports"]), f"Unity service contract mismatch: {name}")
+        deployment = resources[("Deployment", GAME, name)]
+        container, = deployment["spec"]["template"]["spec"]["containers"]
+        require(service["spec"]["selector"] == deployment["spec"]["selector"]["matchLabels"], f"Unity service selector mismatch: {name}")
+        require(container.get("readinessProbe") and container.get("livenessProbe"), f"Unity health probes missing: {name}")
+        if require_digests:
+            image_name = "ghcr.io/hantse/arkya-mmorpg-" + ("web-client" if name.endswith("client") else "dedicated")
+            require(re.fullmatch(re.escape(image_name) + r"@sha256:[0-9a-f]{64}", container["image"]),
+                    f"Unpublished Unity release image for {name}")
+    dedicated = resources[("Deployment", GAME, "arkya-web-dedicated")]
+    require(dedicated["spec"]["strategy"]["type"] == "Recreate", "A realm identity must not have two dedicated writers during rollout")
+    game_container, = dedicated["spec"]["template"]["spec"]["containers"]
+    game_env = {entry["name"]: entry for entry in game_container["env"]}
+    require(game_env["ARKYA_REALM_ID"]["value"] == configs["characters"]["GameAccess__DedicatedServers__0__RealmId"], "Unity/Characters realm mismatch")
+    require(game_env["ARKYA_SERVER_ID"]["value"] == configs["characters"]["GameAccess__DedicatedServers__0__ServerId"], "Unity/Characters server mismatch")
+    require(game_env["ARKYA_DEDICATED_KEY"]["valueFrom"]["secretKeyRef"] == {"name": "arkya-beta-dedicated", "key": "ARKYA_DEDICATED_KEY"},
+            "Dedicated credentials must come from its own Secret")
+    characters_url = urlparse(game_env["ARKYA_CHARACTERS_URL"]["value"])
+    require(characters_url.scheme == "https" and characters_url.hostname == "arkya-characters.arkya-identity.svc.cluster.local" and characters_url.port == 8443,
+            "Dedicated must validate the internal Characters TLS endpoint")
+    require(game_env["SSL_CERT_FILE"]["value"] == "/etc/arkya/internal-ca/ca.crt", "Unity private CA configuration missing")
+    require(game_container["readinessProbe"]["exec"]["command"] == ["test", "-f", "/tmp/arkya-ready"], "Dedicated readiness must wait for Unity terrain and listener")
+    endpoint = urlparse(configs["realms"]["GameAccess__StandaloneEntries__0__Endpoint"])
+    require(endpoint.scheme == "wss", "Game endpoint must use WSS")
+    ingress_hosts = {r["host"] for d in unity_documents if d["kind"] == "Ingress" for r in d["spec"]["rules"]}
+    require(endpoint.hostname in ingress_hosts, "Realms advertises a host absent from the Unity WSS ingress")
+    return len(unity_documents)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--require-digests", action="store_true", help="Reject bootstrap tags; required before first sync")
+    parser.add_argument("--unity-path", type=Path, help="Also render the local Unity deploy/gitops/beta overlay")
+    args = parser.parse_args()
+    documents = render(ROOT / "beta")
+    configs = check_services(documents, args.require_digests)
+    check_bootstrap(render(ROOT / "bootstrap"))
+    unity_count = 0
+    if args.unity_path:
+        unity_count = check_unity(documents, args.unity_path, configs, args.require_digests)
+    print(f"Validated {len(documents)} rendered service resources, 8 deployments, TLS/network/storage contracts and the Argo bootstrap.")
+    if unity_count:
+        print(f"Validated {unity_count} Unity resources and the combined service/admission/WSS contracts.")
+    if not args.require_digests:
+        print("Image availability is separate: run again with --require-digests after the publication/promotion workflows.")
+
+
+if __name__ == "__main__":
+    main()

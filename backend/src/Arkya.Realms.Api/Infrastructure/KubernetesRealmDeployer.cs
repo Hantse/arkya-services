@@ -126,8 +126,10 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             ["env"] = new JsonArray(
                 new JsonObject { ["name"] = "ARKYA_REALM_ID", ["value"] = realm.RealmId },
                 new JsonObject { ["name"] = "ARKYA_SERVER_ID", ["value"] = server.Id },
-                new JsonObject { ["name"] = "ARKYA_GAME_PORT", ["value"] = server.Port.ToString(System.Globalization.CultureInfo.InvariantCulture) }),
-            ["ports"] = new JsonArray(new JsonObject { ["name"] = "game", ["containerPort"] = server.Port, ["protocol"] = "UDP" }),
+                new JsonObject { ["name"] = "ARKYA_GAME_PORT", ["value"] = server.Port.ToString(System.Globalization.CultureInfo.InvariantCulture) },
+                new JsonObject { ["name"] = "ARKYA_GAME_TRANSPORT", ["value"] = server.Transport },
+                new JsonObject { ["name"] = "ARKYA_BUILD_ID", ["value"] = server.BuildId }),
+            ["ports"] = new JsonArray(new JsonObject { ["name"] = "game", ["containerPort"] = server.Port, ["protocol"] = server.Transport == "WebSocket" ? "TCP" : "UDP" }),
             ["resources"] = new JsonObject
             {
                 ["requests"] = new JsonObject { ["cpu"] = "250m", ["memory"] = "256Mi" },
@@ -139,6 +141,15 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
                 ["capabilities"] = new JsonObject { ["drop"] = new JsonArray("ALL") }
             }
         };
+        if (server.Transport == "WebSocket")
+        {
+            ((JsonArray)container["env"]!).Add(new JsonObject { ["name"] = "ARKYA_READY_FILE", ["value"] = "/tmp/arkya-ready" });
+            container["readinessProbe"] = new JsonObject
+            {
+                ["exec"] = new JsonObject { ["command"] = new JsonArray("test", "-f", "/tmp/arkya-ready") },
+                ["periodSeconds"] = 2, ["timeoutSeconds"] = 1, ["failureThreshold"] = 2
+            };
+        }
         if (server.Args.Length > 0) container["args"] = new JsonArray(server.Args.Select(value => (JsonNode?)JsonValue.Create(value)).ToArray());
         if (realm.Profile.EnvironmentSecretName is { } secret)
             container["envFrom"] = new JsonArray(new JsonObject { ["secretRef"] = new JsonObject { ["name"] = secret } });
@@ -171,7 +182,7 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         ["spec"] = new JsonObject
         {
             ["type"] = "LoadBalancer", ["selector"] = Labels(realm, server),
-            ["ports"] = new JsonArray(new JsonObject { ["name"] = "game", ["port"] = server.Port, ["targetPort"] = server.Port, ["protocol"] = "UDP" })
+            ["ports"] = new JsonArray(new JsonObject { ["name"] = "game", ["port"] = server.Port, ["targetPort"] = server.Port, ["protocol"] = server.Transport == "WebSocket" ? "TCP" : "UDP" })
         }
     };
 

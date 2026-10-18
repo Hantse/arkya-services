@@ -4,4 +4,5 @@ public sealed record Character(Guid Id, Guid AccountId, string Name, string Norm
     int Level, DateTimeOffset CreatedAt)
 {
     public CharacterAppearance Appearance { get; init; } = CharacterAppearance.Default;
+    public string? RealmId { get; init; }
 }

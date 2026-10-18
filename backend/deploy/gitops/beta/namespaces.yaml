@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-identity
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-20'
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-operations
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-20'
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false

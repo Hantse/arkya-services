@@ -8,3 +8,8 @@ public interface ISessionValidator
 {
     Task<SessionValidationResult> ValidateAsync(string sessionToken, CancellationToken cancellationToken);
 }
+
+public interface ISessionReferenceValidator
+{
+    Task<SessionValidationResult> ValidateReferenceAsync(string sessionReference, CancellationToken cancellationToken);
+}

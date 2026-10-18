@@ -1,0 +1,873 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-identity
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-identity
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-identity
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: arkya-identity
+        app.kubernetes.io/part-of: arkya
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      automountServiceAccountToken: false
+      imagePullSecrets:
+      - name: arkya-ghcr
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        fsGroup: 1654
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: identity
+        image: ghcr.io/hantse/arkya-services-identity
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        envFrom:
+        - configMapRef:
+            name: arkya-identity-config
+        - secretRef:
+            name: arkya-identity-secrets
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: https
+          containerPort: 8443
+        - name: management
+          containerPort: 8081
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: temporary
+          mountPath: /tmp
+        - name: tls
+          mountPath: /etc/arkya/tls
+          readOnly: true
+        - name: keys
+          mountPath: /var/lib/arkya/keys
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: management
+            httpHeaders:
+            - name: Host
+              value: api.arkya.online
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: management
+            httpHeaders:
+            - name: Host
+              value: api.arkya.online
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /health/ready
+            port: management
+            httpHeaders:
+            - name: Host
+              value: api.arkya.online
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 60
+      volumes:
+      - name: temporary
+        emptyDir:
+          sizeLimit: 64Mi
+      - name: tls
+        secret:
+          secretName: arkya-identity-tls
+          defaultMode: 288
+      - name: keys
+        persistentVolumeClaim:
+          claimName: arkya-identity-keys
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-gateway
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-gateway
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-gateway
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: arkya-gateway
+        app.kubernetes.io/part-of: arkya
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      automountServiceAccountToken: false
+      imagePullSecrets:
+      - name: arkya-ghcr
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        fsGroup: 1654
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: gateway
+        image: ghcr.io/hantse/arkya-services-gateway
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        envFrom:
+        - configMapRef:
+            name: arkya-gateway-config
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: management
+          containerPort: 8081
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: temporary
+          mountPath: /tmp
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: management
+            httpHeaders:
+            - name: Host
+              value: api.arkya.online
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: management
+            httpHeaders:
+            - name: Host
+              value: api.arkya.online
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /health/ready
+            port: management
+            httpHeaders:
+            - name: Host
+              value: api.arkya.online
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 60
+      volumes:
+      - name: temporary
+        emptyDir:
+          sizeLimit: 64Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-characters
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-characters
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-characters
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: arkya-characters
+        app.kubernetes.io/part-of: arkya
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      automountServiceAccountToken: false
+      imagePullSecrets:
+      - name: arkya-ghcr
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        fsGroup: 1654
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: characters
+        image: ghcr.io/hantse/arkya-services-characters
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        envFrom:
+        - configMapRef:
+            name: arkya-characters-config
+        - secretRef:
+            name: arkya-characters-secrets
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: https
+          containerPort: 8443
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: temporary
+          mountPath: /tmp
+        - name: tls
+          mountPath: /etc/arkya/tls
+          readOnly: true
+        - name: internal-ca
+          mountPath: /etc/arkya/internal-ca
+          readOnly: true
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: https
+            scheme: HTTPS
+            httpHeaders:
+            - name: Host
+              value: arkya-characters.arkya-identity.svc.cluster.local
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: https
+            scheme: HTTPS
+            httpHeaders:
+            - name: Host
+              value: arkya-characters.arkya-identity.svc.cluster.local
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /health
+            port: https
+            scheme: HTTPS
+            httpHeaders:
+            - name: Host
+              value: arkya-characters.arkya-identity.svc.cluster.local
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 60
+      volumes:
+      - name: temporary
+        emptyDir:
+          sizeLimit: 64Mi
+      - name: tls
+        secret:
+          secretName: arkya-characters-tls
+          defaultMode: 288
+      - name: internal-ca
+        secret:
+          secretName: arkya-internal-ca
+          items:
+          - key: ca.crt
+            path: ca.crt
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-content
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-content
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-content
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: arkya-content
+        app.kubernetes.io/part-of: arkya
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      automountServiceAccountToken: false
+      imagePullSecrets:
+      - name: arkya-ghcr
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        fsGroup: 1654
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: content
+        image: ghcr.io/hantse/arkya-services-content
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        envFrom:
+        - configMapRef:
+            name: arkya-content-config
+        - secretRef:
+            name: arkya-content-secrets
+        ports:
+        - name: https
+          containerPort: 8443
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: temporary
+          mountPath: /tmp
+        - name: tls
+          mountPath: /etc/arkya/tls
+          readOnly: true
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: https
+            scheme: HTTPS
+            httpHeaders:
+            - name: Host
+              value: arkya-content.arkya-operations.svc.cluster.local
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: https
+            scheme: HTTPS
+            httpHeaders:
+            - name: Host
+              value: arkya-content.arkya-operations.svc.cluster.local
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /health
+            port: https
+            scheme: HTTPS
+            httpHeaders:
+            - name: Host
+              value: arkya-content.arkya-operations.svc.cluster.local
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 60
+      volumes:
+      - name: temporary
+        emptyDir:
+          sizeLimit: 64Mi
+      - name: tls
+        secret:
+          secretName: arkya-content-tls
+          defaultMode: 288
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-realms
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-realms
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-realms
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: arkya-realms
+        app.kubernetes.io/part-of: arkya
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      automountServiceAccountToken: false
+      imagePullSecrets:
+      - name: arkya-ghcr
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        fsGroup: 1654
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: realms
+        image: ghcr.io/hantse/arkya-services-realms
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        envFrom:
+        - configMapRef:
+            name: arkya-realms-config
+        - secretRef:
+            name: arkya-realms-secrets
+        ports:
+        - name: https
+          containerPort: 8443
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: temporary
+          mountPath: /tmp
+        - name: tls
+          mountPath: /etc/arkya/tls
+          readOnly: true
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: https
+            scheme: HTTPS
+            httpHeaders:
+            - name: Host
+              value: arkya-realms.arkya-operations.svc.cluster.local
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: https
+            scheme: HTTPS
+            httpHeaders:
+            - name: Host
+              value: arkya-realms.arkya-operations.svc.cluster.local
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /health/ready
+            port: https
+            scheme: HTTPS
+            httpHeaders:
+            - name: Host
+              value: arkya-realms.arkya-operations.svc.cluster.local
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 60
+      volumes:
+      - name: temporary
+        emptyDir:
+          sizeLimit: 64Mi
+      - name: tls
+        secret:
+          secretName: arkya-realms-tls
+          defaultMode: 288
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-admin
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-admin
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-admin
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: arkya-admin
+        app.kubernetes.io/part-of: arkya
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      automountServiceAccountToken: false
+      imagePullSecrets:
+      - name: arkya-ghcr
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        fsGroup: 1654
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: admin
+        image: ghcr.io/hantse/arkya-services-admin
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        envFrom:
+        - configMapRef:
+            name: arkya-admin-config
+        - secretRef:
+            name: arkya-admin-secrets
+        ports:
+        - name: http
+          containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: temporary
+          mountPath: /tmp
+        - name: internal-ca
+          mountPath: /etc/arkya/internal-ca
+          readOnly: true
+        - name: keys
+          mountPath: /var/lib/arkya/keys
+        readinessProbe:
+          tcpSocket:
+            port: http
+          periodSeconds: 5
+        livenessProbe:
+          tcpSocket:
+            port: http
+          periodSeconds: 10
+        startupProbe:
+          tcpSocket:
+            port: http
+          periodSeconds: 5
+          failureThreshold: 60
+      volumes:
+      - name: temporary
+        emptyDir:
+          sizeLimit: 64Mi
+      - name: internal-ca
+        secret:
+          secretName: arkya-internal-ca
+          items:
+          - key: ca.crt
+            path: ca.crt
+      - name: keys
+        persistentVolumeClaim:
+          claimName: arkya-admin-keys
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-backend
+  namespace: arkya-operations
+  labels:
+    app.kubernetes.io/name: arkya-backend
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: arkya-backend
+        app.kubernetes.io/part-of: arkya
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      automountServiceAccountToken: false
+      imagePullSecrets:
+      - name: arkya-ghcr
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        fsGroup: 1654
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: backend
+        image: ghcr.io/hantse/arkya-services-backend
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        envFrom:
+        - configMapRef:
+            name: arkya-backend-config
+        ports:
+        - name: http
+          containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: temporary
+          mountPath: /tmp
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: http
+            httpHeaders:
+            - name: Host
+              value: arkya-backend.arkya-operations.svc.cluster.local
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+            httpHeaders:
+            - name: Host
+              value: arkya-backend.arkya-operations.svc.cluster.local
+          periodSeconds: 10
+        startupProbe:
+          httpGet:
+            path: /health
+            port: http
+            httpHeaders:
+            - name: Host
+              value: arkya-backend.arkya-operations.svc.cluster.local
+          periodSeconds: 5
+          failureThreshold: 60
+      volumes:
+      - name: temporary
+        emptyDir:
+          sizeLimit: 64Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-frontend
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/name: arkya-frontend
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-frontend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: arkya-frontend
+        app.kubernetes.io/part-of: arkya
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      automountServiceAccountToken: false
+      imagePullSecrets:
+      - name: arkya-ghcr
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        fsGroup: 101
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: frontend
+        image: ghcr.io/hantse/arkya-services-frontend
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        envFrom:
+        - configMapRef:
+            name: arkya-frontend-config
+        ports:
+        - name: http
+          containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: '1'
+            memory: 512Mi
+        volumeMounts:
+        - name: temporary
+          mountPath: /tmp
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+            httpHeaders:
+            - name: Host
+              value: arkya-frontend.arkya-identity.svc.cluster.local
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+            httpHeaders:
+            - name: Host
+              value: arkya-frontend.arkya-identity.svc.cluster.local
+          periodSeconds: 10
+        startupProbe:
+          httpGet:
+            path: /healthz
+            port: http
+            httpHeaders:
+            - name: Host
+              value: arkya-frontend.arkya-identity.svc.cluster.local
+          periodSeconds: 5
+          failureThreshold: 60
+      volumes:
+      - name: temporary
+        emptyDir:
+          sizeLimit: 64Mi

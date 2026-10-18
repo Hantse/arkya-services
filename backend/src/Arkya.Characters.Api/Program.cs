@@ -16,6 +16,23 @@ public partial class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddArkyaServiceDefaults(builder.Configuration);
         builder.Services.AddArkyaProxyTrust(builder.Configuration);
+        builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 16384);
+        builder.Services.AddOptions<BrowserClientOptions>().BindConfiguration("WebClient")
+            .Validate(value => value.IsValid(builder.Environment.IsDevelopment()), "Browser origins must be exact HTTPS origins.").ValidateOnStart();
+        builder.Services.AddCors();
+        builder.Services.AddOptions<Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions>().Configure<IOptions<BrowserClientOptions>>((cors, web) =>
+            cors.AddPolicy(BrowserClientOptions.Policy, policy => policy.WithOrigins(web.Value.AllowedOrigins)
+                .WithMethods("GET", "POST").WithHeaders("Authorization", "Content-Type")));
+        builder.Services.AddOptions<RealmClientOptions>().BindConfiguration("Realms")
+            .Validate(value => value.IsValid(builder.Environment.IsDevelopment()), "Realm catalogue URL/key configuration is invalid.").ValidateOnStart();
+        builder.Services.AddOptions<CharacterGameAccessOptions>().BindConfiguration("GameAccess")
+            .Validate(value => value.IsValid(), "Dedicated identities require unique keys and realm/server bindings.").ValidateOnStart();
+        builder.Services.AddSingleton<DedicatedKeyValidator>();
+        builder.Services.AddSingleton<MongoGameLeaseStore>();
+        builder.Services.AddSingleton<IGameLeaseStore>(services => services.GetRequiredService<MongoGameLeaseStore>());
+        builder.Services.AddScoped<GameAdmissionService>();
+        builder.Services.AddHttpClient<IGameRealmCatalog, GameRealmClient>(client => client.Timeout = TimeSpan.FromSeconds(5))
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false }).RemoveAllLoggers();
         builder.Services.ConfigureHttpJsonOptions(options =>
             options.SerializerOptions.UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow);
         builder.Services.Configure<RouteHandlerOptions>(options => options.ThrowOnBadRequest = false);
@@ -38,6 +55,12 @@ public partial class Program
             client.BaseAddress = new Uri(options.BaseUrl.TrimEnd('/') + "/");
             client.Timeout = TimeSpan.FromSeconds(5);
         }).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
+        builder.Services.AddHttpClient<ISessionReferenceValidator, IdentitySessionValidator>((services, client) =>
+        {
+            var options = services.GetRequiredService<IOptions<IdentityOptions>>().Value;
+            client.BaseAddress = new Uri(options.BaseUrl.TrimEnd('/') + "/");
+            client.Timeout = TimeSpan.FromSeconds(5);
+        }).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false }).RemoveAllLoggers();
         builder.Services.AddAuthentication(SessionAuthenticationHandler.SchemeName)
             .AddScheme<AuthenticationSchemeOptions, SessionAuthenticationHandler>(SessionAuthenticationHandler.SchemeName, _ => { });
         builder.Services.AddAuthorization();
@@ -45,11 +68,14 @@ public partial class Program
         var app = builder.Build();
         app.UseArkyaProxyTrust();
         app.UseArkyaServiceDefaults();
+        app.UseRouting();
+        app.UseCors();
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "characters" })).AllowAnonymous();
         app.MapCharacterEndpoints();
         app.MapCharacterQuestEndpoints();
+        app.MapGameAdmissionEndpoints();
         app.Run();
     }
 }

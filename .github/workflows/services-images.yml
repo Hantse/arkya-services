@@ -1,0 +1,263 @@
+name: Services images
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'backend/**'
+      - '!backend/deploy/gitops/beta/kustomization.yaml'
+      - 'sites/arkya/**'
+      - 'docs/**'
+      - 'scripts/ci/**'
+      - '.github/workflows/**'
+      - 'global.json'
+      - 'NuGet.Config'
+      - 'nuget.config'
+      - 'Directory.*'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'sites/arkya/**'
+      - 'docs/**'
+      - 'scripts/ci/**'
+      - '.github/workflows/**'
+      - 'global.json'
+      - 'NuGet.Config'
+      - 'nuget.config'
+      - 'Directory.*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: services-images-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  backend:
+    uses: ./.github/workflows/backend-ci.yml
+
+  frontend:
+    uses: ./.github/workflows/frontend-ci.yml
+
+  packaging:
+    name: Check packaging and deployment contracts
+    needs: [backend, frontend]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        env:
+          GIT_CONFIG_COUNT: '1'
+          GIT_CONFIG_KEY_0: lfs.fetchinclude
+          GIT_CONFIG_VALUE_0: sites/arkya/dist/**
+        with:
+          persist-credentials: false
+          lfs: true
+          sparse-checkout: |
+            backend
+            sites/arkya
+            scripts/ci
+      - name: Verify public site assets are hydrated
+        run: python3 scripts/ci/Check-SiteAssets.py sites/arkya/dist
+      - name: Set up deployment validation tools
+        shell: bash
+        run: |
+          python3 -m pip install --disable-pip-version-check PyYAML==6.0.3
+          curl --fail --silent --show-error --location https://dl.k8s.io/release/v1.35.9/bin/linux/amd64/kubectl -o "$RUNNER_TEMP/kubectl"
+          curl --fail --silent --show-error --location https://dl.k8s.io/release/v1.35.9/bin/linux/amd64/kubectl.sha256 -o "$RUNNER_TEMP/kubectl.sha256"
+          printf '%s  %s\n' "$(cat "$RUNNER_TEMP/kubectl.sha256")" "$RUNNER_TEMP/kubectl" | sha256sum --check
+          chmod +x "$RUNNER_TEMP/kubectl"
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+      - name: Every deployable project must have an image
+        shell: bash
+        env:
+          APPLICATIONS: Arkya.Identity.Api Arkya.Gateway Arkya.Characters.Api Arkya.Content.Api Arkya.Admin Arkya.Realms.Api Arkya.Backend.Api
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          applications = {path.stem for path in Path('backend/src').rglob('*.csproj') if ET.parse(path).getroot().get('Sdk') == 'Microsoft.NET.Sdk.Web'}
+          expected = set(os.environ['APPLICATIONS'].split())
+          assert applications == expected, f'Update the image matrix for deployable projects: missing={applications - expected}, obsolete={expected - applications}'
+          PY
+      - name: Validate image promotion safety
+        run: python3 -m unittest discover -s scripts/ci -p 'test_*.py' -v
+      - name: Validate beta manifests
+        run: python3 backend/deploy/gitops/Test-Manifests.py
+      - name: Validate operations manifest renderer
+        shell: pwsh
+        run: ./backend/deploy/realms/Test-Manifests.ps1
+      - name: Start site without a game server
+        shell: bash
+        run: |
+          docker build --file sites/arkya/Dockerfile --tag arkya-frontend-ci sites/arkya
+          container=$(docker run --detach --read-only --tmpfs /tmp:rw,mode=1777 --user 101:101 --publish 127.0.0.1:18080:8080 arkya-frontend-ci)
+          trap 'docker logs "$container"; docker rm --force "$container"' EXIT
+          curl --fail --silent --show-error --retry 15 --retry-all-errors --retry-delay 1 http://127.0.0.1:18080/healthz
+          curl --fail --silent --show-error http://127.0.0.1:18080/play.html > /dev/null
+          curl --fail --silent --show-error --head http://127.0.0.1:18080/auth-client.mjs | grep -i 'Content-Type: application/javascript'
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:18080/game/build-config.json)" = 502
+          curl --fail --silent --show-error http://127.0.0.1:18080/ > /dev/null
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:18080/missing.html)" = 404
+
+  images:
+    name: Image ${{ matrix.name }}
+    needs: [backend, frontend, packaging]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: identity, application: Arkya.Identity.Api, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: gateway, application: Arkya.Gateway, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: characters, application: Arkya.Characters.Api, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: content, application: Arkya.Content.Api, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: admin, application: Arkya.Admin, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: realms, application: Arkya.Realms.Api, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: backend, application: Arkya.Backend.Api, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: frontend, application: '', context: sites/arkya, dockerfile: sites/arkya/Dockerfile }
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        env:
+          GIT_CONFIG_COUNT: '1'
+          GIT_CONFIG_KEY_0: lfs.fetchinclude
+          GIT_CONFIG_VALUE_0: sites/arkya/dist/**
+        with:
+          persist-credentials: false
+          lfs: ${{ matrix.name == 'frontend' }}
+          sparse-checkout: |
+            backend
+            sites/arkya
+            scripts/ci
+      - name: Verify public site assets are hydrated
+        if: matrix.name == 'frontend'
+        run: python3 scripts/ci/Check-SiteAssets.py sites/arkya/dist
+      - name: Select immutable image tag
+        id: image
+        shell: bash
+        env:
+          SUFFIX: ${{ matrix.name }}
+        run: echo "name=ghcr.io/${GITHUB_REPOSITORY,,}-$SUFFIX" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Authenticate GHCR
+        if: github.event_name != 'pull_request' && github.repository == 'Hantse/arkya-services' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build both platforms and publish only the default branch
+        id: build
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: ${{ matrix.context }}
+          file: ${{ matrix.dockerfile }}
+          platforms: linux/amd64,linux/arm64
+          build-args: APPLICATION=${{ matrix.application }}
+          push: ${{ github.event_name != 'pull_request' && github.repository == 'Hantse/arkya-services' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+          tags: ${{ steps.image.outputs.name }}:sha-${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+          provenance: mode=min
+          cache-from: type=gha,scope=services-${{ matrix.name }}
+          cache-to: ${{ github.event_name != 'pull_request' && format('type=gha,mode=max,scope=services-{0}', matrix.name) || '' }}
+      - name: Record published digest
+        if: github.event_name != 'pull_request' && github.repository == 'Hantse/arkya-services' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        shell: bash
+        env:
+          SERVICE: ${{ matrix.name }}
+          IMAGE: ${{ steps.image.outputs.name }}
+          DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          mkdir -p artifacts/images
+          python3 - <<'PY'
+          import json, os, re
+          from pathlib import Path
+          assert re.fullmatch(r'sha256:[a-f0-9]{64}', os.environ['DIGEST']), 'No published image digest'
+          result = dict(schemaVersion=1, service=os.environ['SERVICE'], image=os.environ['IMAGE'], digest=os.environ['DIGEST'], sourceCommit=os.environ['GITHUB_SHA'], platforms=['linux/amd64', 'linux/arm64'])
+          Path(f"artifacts/images/{result['service']}.json").write_text(json.dumps(result, indent=2) + '\n')
+          PY
+          printf 'Published `%s@%s`\n' "$IMAGE" "$DIGEST" >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve digest evidence
+        if: github.event_name != 'pull_request' && github.repository == 'Hantse/arkya-services' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: service-image-${{ matrix.name }}
+          path: artifacts/images/*.json
+          if-no-files-found: error
+          retention-days: 30
+
+  promote:
+    name: Promote the complete release to Argo CD
+    needs: images
+    if: github.event_name != 'pull_request' && github.repository == 'Hantse/arkya-services' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+          sparse-checkout: |
+            backend/deploy/gitops
+            scripts/ci
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          pattern: service-image-*
+          path: ${{ runner.temp }}/service-images
+          merge-multiple: true
+      - name: Validate all digests and update the GitOps source
+        shell: bash
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          python3 -m pip install --disable-pip-version-check PyYAML==6.0.3
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          assert_current_source() {
+            if ! git diff --quiet "$GITHUB_SHA" HEAD -- . ':(exclude)backend/deploy/gitops/beta/kustomization.yaml'; then
+              echo '::error::Newer source or deployment configuration exists. Let its tested release finish; do not promote an older generation.'
+              exit 1
+            fi
+          }
+          git pull --rebase origin "$DEFAULT_BRANCH"
+          git merge-base --is-ancestor "$GITHUB_SHA" HEAD
+          assert_current_source
+          python3 scripts/ci/Promote-ServiceImages.py \
+            --artifact-directory "$RUNNER_TEMP/service-images" --source-commit "$GITHUB_SHA" \
+            --kustomization backend/deploy/gitops/beta/kustomization.yaml \
+            --release-file "$RUNNER_TEMP/service-images/release.json"
+          git add -- backend/deploy/gitops/beta/kustomization.yaml
+          if git diff --cached --quiet; then
+            echo 'The complete release is already pinned.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git commit -m "ci: promote service images ${GITHUB_SHA:0:12} [skip ci]"
+          for attempt in 1 2 3; do
+            assert_current_source
+            if git push origin "HEAD:$DEFAULT_BRANCH"; then
+              echo 'All service and site digests promoted; Argo CD can reconcile the beta overlay.' >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            git pull --rebase origin "$DEFAULT_BRANCH"
+          done
+          echo '::error::Cannot push the GitOps promotion without overwriting concurrent changes.'
+          exit 1
+      - name: Preserve complete release evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: services-release
+          path: ${{ runner.temp }}/service-images/*.json
+          if-no-files-found: warn
+          retention-days: 30
