@@ -43,6 +43,10 @@ def identity(document):
     return document["kind"], metadata.get("namespace", ""), metadata["name"]
 
 
+def sync_wave(document):
+    return int(document["metadata"].get("annotations", {}).get("argocd.argoproj.io/sync-wave", "0"))
+
+
 def index(documents):
     indexed = {}
     for document in documents:
@@ -162,6 +166,12 @@ def check_services(documents, require_digests):
         pvc = resources[("PersistentVolumeClaim", namespace(app), "arkya-" + app + "-keys")]
         require("Prune=false" in pvc["metadata"]["annotations"]["argocd.argoproj.io/sync-options"], "Key storage must survive pruning")
         require(deployments["arkya-" + app]["spec"]["strategy"]["type"] == "Recreate", "RWO keys require a single pod during rollout")
+        consumers = [deployment for deployment in deployments.values()
+                     if deployment["metadata"]["namespace"] == pvc["metadata"]["namespace"] and
+                     any(volume.get("persistentVolumeClaim", {}).get("claimName") == pvc["metadata"]["name"]
+                         for volume in deployment["spec"]["template"]["spec"].get("volumes", []))]
+        require(consumers and sync_wave(pvc) == min(sync_wave(consumer) for consumer in consumers),
+                f"{pvc['metadata']['name']} must share its first consumer's sync wave: WaitForFirstConsumer binding otherwise deadlocks Argo")
     for ingress in (d for d in documents if d["kind"] == "Ingress"):
         require(ingress["metadata"]["namespace"] == IDENTITY, "Public route outside the gateway namespace")
         require(ingress["spec"]["ingressClassName"] == "traefik" and ingress["spec"].get("tls"), "Public ingress requires TLS")

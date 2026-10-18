@@ -7,7 +7,8 @@ metadata:
     app.kubernetes.io/name: arkya-identity-keys
     app.kubernetes.io/part-of: arkya
   annotations:
-    argocd.argoproj.io/sync-wave: '-10'
+    # WaitForFirstConsumer binding needs its consuming pod in the same wave.
+    argocd.argoproj.io/sync-wave: '0'
     argocd.argoproj.io/sync-options: Prune=false,Delete=false
 spec:
   accessModes:
@@ -25,7 +26,8 @@ metadata:
     app.kubernetes.io/name: arkya-admin-keys
     app.kubernetes.io/part-of: arkya
   annotations:
-    argocd.argoproj.io/sync-wave: '-10'
+    # WaitForFirstConsumer binding needs its consuming pod in the same wave.
+    argocd.argoproj.io/sync-wave: '0'
     argocd.argoproj.io/sync-options: Prune=false,Delete=false
 spec:
   accessModes:

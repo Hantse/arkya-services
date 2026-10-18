@@ -42,7 +42,11 @@ utilisateur de base, ni données d'amorçage.
 Les PVC de clés Data Protection Identity/Admin et les namespaces portent
 `Prune=false,Delete=false`. Les déploiements utilisant ces volumes RWO gardent
 un seul réplica avec la stratégie `Recreate`. Le StorageClass par défaut du
-cluster doit fournir des volumes persistants d'au moins 1 Gio. Pour reprendre
+cluster doit fournir des volumes persistants d'au moins 1 Gio. Les PVC sont
+dans la même vague de sync que leurs premiers Deployments consommateurs :
+avec `WaitForFirstConsumer`, Kubernetes attend un pod pour lier le volume,
+et une vague PVC antérieure ferait attendre Argo indéfiniment avant de créer
+ce pod. Pour reprendre
 un déploiement existant, vérifier les noms/claims/volumes et leur propriété
 avant sync ; ne pas supprimer les PVC pour résoudre une erreur de propriété.
 
