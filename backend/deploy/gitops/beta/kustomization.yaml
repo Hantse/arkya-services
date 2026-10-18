@@ -67,25 +67,25 @@ configMapGenerator:
 images:
 - name: ghcr.io/hantse/arkya-services-identity
   newName: ghcr.io/hantse/arkya-services-identity
-  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+  digest: sha256:84a9f889908cbbdb799397995677d03d638bd0f622b1cdbd30e27fbedc4837c2
 - name: ghcr.io/hantse/arkya-services-gateway
   newName: ghcr.io/hantse/arkya-services-gateway
-  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+  digest: sha256:3465c2cde48b8275cdf8be2a8b97f6852671430f5447e303de4a7144f81a9989
 - name: ghcr.io/hantse/arkya-services-characters
   newName: ghcr.io/hantse/arkya-services-characters
-  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+  digest: sha256:eca93e00784bc3ef64108a61c8b6ad38fde623702586c9870e882bbaa5b3b55b
 - name: ghcr.io/hantse/arkya-services-content
   newName: ghcr.io/hantse/arkya-services-content
-  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+  digest: sha256:0246c4d87cbd6b3dc34d9456f92d36084b646ded36e72ee536a0c59be1566e2b
 - name: ghcr.io/hantse/arkya-services-realms
   newName: ghcr.io/hantse/arkya-services-realms
-  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+  digest: sha256:dbd3a32da1a3ce16fe558d6598765f827ffa6c778a0c4ca3c5dd156c40deb36f
 - name: ghcr.io/hantse/arkya-services-admin
   newName: ghcr.io/hantse/arkya-services-admin
-  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+  digest: sha256:48e3c8712d816f9e583c6b102ed208da5374f189463a863948c564ca72c0082a
 - name: ghcr.io/hantse/arkya-services-backend
   newName: ghcr.io/hantse/arkya-services-backend
-  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+  digest: sha256:80253f28ca3dee491299a49c93d1e807847222d89905a5127156d77385bc6dfc
 - name: ghcr.io/hantse/arkya-services-frontend
   newName: ghcr.io/hantse/arkya-services-frontend
-  newTag: sha-fcf05a32da564698d4201c028f49c95bfd5f5ff2
+  digest: sha256:638c556c8f42213f24f1e3aa3f71cc0794ccb2951b0d8ec423f1a9b21da213cc
