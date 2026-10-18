@@ -49,8 +49,8 @@ avant sync ; ne pas supprimer les PVC pour résoudre une erreur de propriété.
 ## Paramètres non secrets
 
 Relire les fichiers `beta/config/*.env`, `beta/ingress.yaml` et le dossier
-Unity `deploy/gitops/beta` avant de créer l'Application. Les valeurs initiales
-sont les domaines proposés pour cette bêta :
+Unity `deploy/gitops/beta` avant de créer l'Application. Le domaine confirmé
+est `arkya.online`, avec les sous-domaines de cette bêta :
 
 | Usage | Valeur |
 | --- | --- |
@@ -182,9 +182,10 @@ l'absence de ressources concurrentes. `--require-digests` refuse les tags
 d'amorçage. Ce contrôle hors ligne ne prouve ni la disponibilité des images,
 ni les droits Kubernetes, ni la résolution DNS/TLS de l'environnement réel.
 
-Le namespace de contrôle Argo CD initial est `argocd` ; adapter
-`bootstrap/project.yaml` et `bootstrap/application.yaml` si l'installation
-utilise un autre namespace. Enregistrer les deux dépôts privés dans Argo CD
+Le namespace de contrôle Argo CD confirmé est `arkya` ; l'AppProject et
+l'Application du bootstrap ciblent cette installation. Les namespaces des
+workloads restent distincts (`arkya-identity`, `arkya-operations` et
+`arkya-realm-beta-web`). Enregistrer les deux dépôts privés dans Argo CD
 avec des accès en lecture. L'AppProject limite les ressources cluster aux
 Namespaces et les workloads aux trois namespaces Arkya. Un opérateur Argo
 autorisé doit créer l'AppProject et l'Application rendus par `bootstrap/`.

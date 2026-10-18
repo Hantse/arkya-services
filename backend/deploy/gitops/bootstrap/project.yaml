@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: arkya-beta
-  namespace: argocd
+  namespace: arkya
 spec:
   description: Arkya beta services and Unity deployment from their owning repositories.
   sourceRepos:

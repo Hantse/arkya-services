@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: arkya-beta
-  namespace: argocd
+  namespace: arkya
 spec:
   project: arkya-beta
   sources:
