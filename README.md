@@ -45,7 +45,7 @@ arkya/
 - The root repository is [arkya-services](https://github.com/Hantse/arkya-services) (`master`), containing backend services, documentation and art sources.
 - `Unity3D/` is ignored by the root repository. The Unity project has its own repository, [arkya-mmorpg](https://github.com/Hantse/arkya-mmorpg) (`main`), at `Unity3D/Arkya/`; commit and push it separately.
 - Install Git LFS before cloning either repository, then run `git lfs pull` inside each checkout to download binary assets. Text sources and Unity `.meta` files remain in regular Git.
-- `sites/arkya/` is versioned in this services repository and shares its frontend CI; public publication remains managed by the Sites publishing workflow.
+- `sites/arkya/` is versioned in this services repository. Its CI publishes the frontend image to GHCR for the Argo CD beta deployment; manual Sites publication remains available separately.
 - Local build outputs, validation checkouts, browser captures and machine configuration are ignored; approved art sources and documentation captures remain versioned.
 
 - Keep Unity-generated folders out of source control.
