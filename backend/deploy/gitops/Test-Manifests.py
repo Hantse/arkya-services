@@ -147,6 +147,9 @@ def check_services(documents, require_digests):
                     f"TLS keypair missing for {name}")
         if app in {"characters", "admin"}:
             require(config["SSL_CERT_FILE"] == "/etc/arkya/internal-ca/ca.crt", f"Private CA trust missing in {name}")
+        if app == "admin":
+            require(not config.get("RealmsApi__CertificateAuthorityFile"),
+                    "Admin must use SSL_CERT_FILE's full CA bundle: its Realms custom CA override loads only the first certificate")
     require(resources[("NetworkPolicy", OPERATIONS, "arkya-backend")]["spec"]["ingress"] == [],
             "Historical development API must remain isolated")
     require(configs["realms"]["Deployment__Enabled"] == "false", "Realms and Argo must not manage the same workload")

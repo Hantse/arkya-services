@@ -27,8 +27,10 @@ désactive son déployeur Kubernetes et aucun jeton de compte de service n'est
 monté dans les applications. Le catalogue Realms annonce une entrée
 `StandaloneEntries` pour `beta-web/island`, protocole `1`, build
 `arkya-web-beta-v1`. Son activation est initialement **false** ; l'opérateur
-la passe à **true** dans `beta/config/realms.env` après le contrôle public
-WSS/admission. Les anciens profils déployés depuis Admin restent un autre
+la passe à **true** dans `beta/config/realms.env` pour une validation contrôlée,
+après les contrôles de santé et de transport public. L'admission exige cette
+activation ; suivre la procédure en fin de document avant l'ouverture publique.
+Les anciens profils déployés depuis Admin restent un autre
 mode d'exploitation : ne pas les utiliser pour les workloads de cette
 Application.
 
@@ -117,7 +119,7 @@ ressources Namespace avant ce provisioning ; Argo CD peut ensuite les adopter.
 | `arkya-operations` | `arkya-content-secrets` | `Mongo__ConnectionString`, `ContentAdmin__Key`, `ServiceAuthentication__Key` |
 | `arkya-operations` | `arkya-realms-secrets` | `Mongo__ConnectionString`, `RealmsAdmin__Key`, `GameAccess__ServiceKey` |
 | `arkya-operations` | `arkya-admin-secrets` | `Admin__Password`, `ContentApi__AdminKey`, `RealmsApi__AdminKey` |
-| `arkya-realm-beta-web` | `arkya-beta-dedicated` | Contrat du dépôt Unity : URL HTTPS Characters et `ARKYA_DEDICATED_KEY` |
+| `arkya-realm-beta-web` | `arkya-beta-dedicated` | `ARKYA_DEDICATED_KEY` ; l'URL HTTPS Characters est fixée dans le Deployment Unity |
 | Les trois namespaces | `arkya-ghcr` | Secret type `kubernetes.io/dockerconfigjson`, lecture des packages GHCR privés |
 | `arkya-identity`, `arkya-realm-beta-web` | `arkya-public-tls` | `tls.crt`, `tls.key`, certificat public couvrant respectivement le site et le jeu ; les certificats API/backoffice restent sur la VM Traefik |
 | `arkya-identity` | `arkya-identity-tls`, `arkya-characters-tls` | `tls.crt`, `tls.key`, certificats de serveur interne |
@@ -149,6 +151,10 @@ Kestrel charge les fichiers PEM `tls.crt`/`tls.key` sur 8443, suivant sa
 Inclure les intermédiaires dans `tls.crt`. Characters/Admin montent la CA
 privée et définissent `SSL_CERT_FILE` ; .NET sous Linux consulte les
 [emplacements OpenSSL de confiance](https://learn.microsoft.com/en-us/dotnet/standard/security/cross-platform-cryptography).
+Laisser `RealmsApi__CertificateAuthorityFile` absent ou vide dans Admin : son
+transport spécifique charge uniquement le premier certificat du fichier,
+alors que `SSL_CERT_FILE` conserve la confiance du bundle complet pour
+Realms et Content. Ne pas réintroduire cet override sur le bundle partagé.
 Le player Unity doit aussi faire confiance à cette CA selon son image et son
 runtime ; aucune validation de certificat n'est désactivée. Préserver les CA
 publiques si le bundle remplace le magasin par défaut.
@@ -195,17 +201,25 @@ Namespaces et les workloads aux trois namespaces Arkya. Un opérateur Argo
 autorisé doit créer l'AppProject et l'Application rendus par `bootstrap/`.
 La création de ces deux ressources n'effectue pas le premier sync.
 
-Avant activation du catalogue, exécuter dans l'environnement réel le
+Avec le catalogue encore désactivé, exécuter dans l'environnement réel le
 `dry-run=server`, le sync manuel, puis vérifier :
 
 1. santé Argo des huit services et des deux workloads Unity ;
 2. DNS, certificats, callback Discord et CORS depuis l'origine du site ;
-3. chargement du vrai WebGL via `/game/`, connexion WSS et admission réelle ;
-4. déplacement, sauvegarde/reconnexion, révocation et refus d'un ticket rejoué ;
-5. arrêt du dedicated avec sauvegarde/libération de la lease avant redémarrage.
+3. chargement du vrai WebGL via `/game/` et accès au transport WSS public.
 
-Ensuite passer l'entrée standalone à `true` par commit et sync. La readiness
-du dedicated repose sur le fichier écrit par Unity après terrain/collisions
+Passer ensuite `GameAccess__StandaloneEntries__0__Enabled=true` par commit et
+sync pour effectuer le smoke d'admission réelle. Ce commutateur rend l'entrée
+disponible pour tous les joueurs authentifiés ; prévoir cette validation
+avant l'ouverture publique. Vérifier alors :
+
+1. authentification, choix de personnage et admission dans le dedicated ;
+2. déplacement, sauvegarde/reconnexion, révocation et refus d'un ticket rejoué ;
+3. arrêt du dedicated avec sauvegarde/libération de la lease avant redémarrage.
+
+Si cette validation échoue, remettre immédiatement le commutateur à `false`
+par commit et sync, puis corriger avant l'ouverture. La readiness du dedicated
+repose sur le fichier écrit par Unity après terrain/collisions
 et écoute ; elle ne certifie pas son accessibilité WSS publique. Revenir aux
 digests précédents dans Git puis sync permet un retour applicatif ; cela
 n'annule aucune mutation déjà persistée dans MongoDB.
