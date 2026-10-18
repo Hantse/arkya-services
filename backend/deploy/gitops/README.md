@@ -201,6 +201,22 @@ Namespaces et les workloads aux trois namespaces Arkya. Un opérateur Argo
 autorisé doit créer l'AppProject et l'Application rendus par `bootstrap/`.
 La création de ces deux ressources n'effectue pas le premier sync.
 
+Après provisioning des prérequis et promotion des dix digests, depuis le
+dépôt services et une session Argo connectée au bon serveur :
+
+```powershell
+$arkyaKubeContext = 'CONTEXTE_K3S_A_RENSEIGNER'
+kubectl --context $arkyaKubeContext apply --dry-run=server -k backend/deploy/gitops/bootstrap
+kubectl --context $arkyaKubeContext apply -k backend/deploy/gitops/bootstrap
+argocd app get arkya-beta --app-namespace arkya --refresh
+argocd app diff arkya-beta --app-namespace arkya
+argocd app sync arkya-beta --app-namespace arkya --timeout 900
+argocd app wait arkya-beta --app-namespace arkya --sync --health --timeout 900
+```
+
+Remplacer le contexte avant exécution. Examiner le diff avant ce premier
+sync ; il ne demande pas de prune des ressources existantes.
+
 Avec le catalogue encore désactivé, exécuter dans l'environnement réel le
 `dry-run=server`, le sync manuel, puis vérifier :
 

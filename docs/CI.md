@@ -44,7 +44,7 @@ client Windows, le client WebGL et le vrai dedicated Linux de l'île via
 Unity 6000.6.6f1 utilise un runner Windows x64 licencié avec les modules Windows
 Mono, WebGL IL2CPP et Linux Dedicated Server Mono. La cible Linux est compilée
 sur Windows, puis empaquetée et contrôlée sur Ubuntu Actions. La variable
-`UNITY_WINDOWS_EDITOR_PATH` indique l'exécutable. Le [guide Unity](../Unity3D/Arkya/ci/README.md)
+`UNITY_WINDOWS_EDITOR_PATH` indique l'exécutable. Le [guide Unity](https://github.com/Hantse/arkya-mmorpg/blob/main/ci/README.md)
 décrit le runner éphémère, les commandes et les artefacts. Les contributions
 de forks doivent être revues puis importées sur une branche de confiance.
 
@@ -64,18 +64,42 @@ digests promus. Les pipelines ne possèdent pas de kubeconfig et ne modifient
 ni le cluster, ni le DNS, ni les secrets.
 
 Argo possède les workloads de cette bêta ; le déployeur Kubernetes de Realms
-est désactivé pour éviter une double propriété. Le catalogue reste désactivé
-jusqu'au contrôle public WSS/admission par l'opérateur. La gateway conserve
+est désactivé pour éviter une double propriété. Le catalogue est initialement
+désactivé ; après les contrôles de santé, TLS et WSS, l'opérateur l'active par
+Git et sync pour valider l'admission et la persistance avant ouverture. La gateway conserve
 son LoadBalancer `192.168.100.218:80`. Le site et WSS utilisent le Traefik du
 cluster, avec une route joignable depuis la VM externe.
 
-## Vérification locale du 18 octobre 2026
+## Vérification du 18 octobre 2026
 
 Les sept suites backend ont passé 502 tests, aucun ignoré, avec MongoDB
 temporaire. `actionlint`, les tests de promotion et le rendu Kustomize vérifient
 la configuration. Les runs distants et les commits de digests sont les preuves
 de livraison. Un build vert ne valide pas l'OAuth public, les certificats du
 cluster ni une admission WSS réelle après déploiement.
+
+- [Services : livraison réussie](https://github.com/Hantse/arkya-services/actions/runs/39126104197) :
+  502 tests backend, 94 tests frontend, huit images GHCR AMD64/ARM64 et
+  leurs digests promus dans Git.
+- [Unity : tests, trois builds et publications réussis](https://github.com/Hantse/arkya-mmorpg/actions/runs/39130130384) :
+  421 tests EditMode et trois PlayMode passent ; une fixture API réelle est
+  explicitement ignorée faute de `ARKYA_WEB_BETA_TICKETS_FILE`. Windows,
+  WebGL et le vrai dedicated Linux Server sont construits sans erreur.
+  Le dedicated a nécessité une relance avec un seul worker Burst pour
+  respecter la mémoire engagée du runner. Des warnings Unity subsistent.
+  Les deux conteneurs ont passé leur smoke et sont publiés.
+- [Unity : reprise de promotion réussie](https://github.com/Hantse/arkya-mmorpg/actions/runs/39138336158) :
+  le run précédent reste rouge pour sa seule étape de promotion, qui
+  cherchait les JSON à la racine au lieu de `release/`. Le correctif et la
+  reprise vérifiée sont poussés. Les huit jobs réussis et l'absence de
+  changement des entrées de compilation sont contrôlés avant de promouvoir
+  les images du SHA original `24b2f84c6763559d01b63918621f87a425d46b31`.
+
+Les dix références GHCR ont été contrôlées par digest. Les 45 ressources
+rendues passent le contrat combiné services/Unity avec `--require-digests`.
+Le namespace de contrôle Argo est `arkya` et le site cible `arkya.online`.
+Le bootstrap et les commandes de sync sont prêts ; aucun sync de cluster ni
+test public WSS/admission n'a été effectué depuis cette session.
 
 La vitrine est intégrée au dépôt des services. Son ancien Git local est
 sauvegardé sous `artifacts/ci-validation/site-repository-backup-20261018/git`,
