@@ -70,7 +70,7 @@ Git et sync pour valider l'admission et la persistance avant ouverture. La gatew
 son LoadBalancer `192.168.100.218:80`. Le site et WSS utilisent le Traefik du
 cluster, avec une route joignable depuis la VM externe.
 
-## Vérification du 18 octobre 2026
+## Vérifications des 18 et 19 octobre 2026
 
 Les sept suites backend ont passé 502 tests, aucun ignoré, avec MongoDB
 temporaire. `actionlint`, les tests de promotion et le rendu Kustomize vérifient
@@ -97,9 +97,17 @@ cluster ni une admission WSS réelle après déploiement.
 
 Les dix références GHCR ont été contrôlées par digest. Les 45 ressources
 rendues passent le contrat combiné services/Unity avec `--require-digests`.
-Le namespace de contrôle Argo est `arkya` et le site cible `arkya.online`.
+Le namespace de contrôle Argo est `argocd` et le site cible `arkya.online`.
 Le bootstrap et les commandes de sync sont prêts ; aucun sync de cluster ni
 test public WSS/admission n'a été effectué depuis cette session.
+
+Le parent `arkya-services` utilise le projet administratif `arkya-bootstrap`,
+appliqué séparément depuis `backend/deploy/gitops/bootstrap-project.yaml`.
+Il crée le projet runtime et l'application multi-source `arkya-beta` dans
+`argocd`. Le projet runtime reste limité aux workloads et ne peut pas créer
+ces objets Argo. Les sources enfants utilisent les deux URL SSH GitHub pour
+les deploy keys enregistrées dans Argo CD. Voir la procédure GitOps avant
+de relancer le parent puis l'enfant.
 
 La vitrine est intégrée au dépôt des services. Son ancien Git local est
 sauvegardé sous `artifacts/ci-validation/site-repository-backup-20261018/git`,

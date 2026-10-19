@@ -2,12 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: arkya-beta
-  namespace: arkya
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '-1'
 spec:
   description: Arkya beta services and Unity deployment from their owning repositories.
   sourceRepos:
-  - https://github.com/Hantse/arkya-services.git
-  - https://github.com/Hantse/arkya-mmorpg.git
+  - git@github.com:Hantse/arkya-services.git
+  - git@github.com:Hantse/arkya-mmorpg.git
   destinations:
   - server: https://kubernetes.default.svc
     namespace: arkya-identity

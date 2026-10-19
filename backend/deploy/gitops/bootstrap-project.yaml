@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: arkya-bootstrap
+  namespace: argocd
+spec:
+  description: Administrative bootstrap of the Arkya project and multi-source application.
+  sourceRepos:
+  - https://github.com/Hantse/arkya-services.git
+  - git@github.com:Hantse/arkya-services.git
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: argocd
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+  - group: argoproj.io
+    kind: AppProject
+  - group: argoproj.io
+    kind: Application

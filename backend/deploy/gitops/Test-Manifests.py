@@ -186,20 +186,39 @@ def check_services(documents, require_digests):
     return configs
 
 
-def check_bootstrap(documents):
+def check_bootstrap(documents, bootstrap_project):
     resources = index(documents)
     application, = [d for d in documents if d["kind"] == "Application"]
     project, = [d for d in documents if d["kind"] == "AppProject"]
+    require(application["metadata"]["namespace"] == project["metadata"]["namespace"] == "argocd",
+            "Argo control resources must target the installed argocd namespace")
+    require(application["spec"]["project"] == project["metadata"]["name"] == "arkya-beta",
+            "The workload application must use the workload project")
+    require(sync_wave(project) < sync_wave(application), "The workload project must sync before its application")
     require("automated" not in application["spec"].get("syncPolicy", {}), "Bootstrap must await the operator's first sync")
     sources = {(s["repoURL"], s["path"], s["targetRevision"]) for s in application["spec"]["sources"]}
     require(sources == {
-        ("https://github.com/Hantse/arkya-services.git", "backend/deploy/gitops/beta", "master"),
-        ("https://github.com/Hantse/arkya-mmorpg.git", "deploy/gitops/beta", "main"),
+        ("git@github.com:Hantse/arkya-services.git", "backend/deploy/gitops/beta", "master"),
+        ("git@github.com:Hantse/arkya-mmorpg.git", "deploy/gitops/beta", "main"),
     }, "Argo must reconcile both owning repositories")
     require({d["namespace"] for d in project["spec"]["destinations"]} == NAMESPACES | {GAME}, "Argo namespace allowlist mismatch")
     require({s[0] for s in sources} == set(project["spec"]["sourceRepos"]), "Argo source allowlist mismatch")
     require(project["spec"]["clusterResourceWhitelist"] == [{"group": "", "kind": "Namespace"}], "Unnecessary cluster-wide Argo permissions")
+    require(not any(item["group"] in {"argoproj.io", "*"} for item in project["spec"]["namespaceResourceWhitelist"]),
+            "The workload project must not administer Argo control resources")
     require(len(resources) == 2, "Unexpected bootstrap resources")
+    require(identity(bootstrap_project) == ("AppProject", "argocd", "arkya-bootstrap"),
+            "The parent needs a distinct administrative bootstrap project")
+    administrative = bootstrap_project["spec"]
+    require(set(administrative["sourceRepos"]) == {
+        "https://github.com/Hantse/arkya-services.git", "git@github.com:Hantse/arkya-services.git"},
+            "Bootstrap must be limited to the owning services repository")
+    require(administrative["destinations"] == [{"server": "https://kubernetes.default.svc", "namespace": "argocd"}],
+            "Bootstrap must target only the Argo control namespace")
+    require(administrative["clusterResourceWhitelist"] == [], "Bootstrap must not create cluster resources")
+    require({(item["group"], item["kind"]) for item in administrative["namespaceResourceWhitelist"]} == {
+        ("argoproj.io", "AppProject"), ("argoproj.io", "Application")},
+            "Bootstrap must administer only Argo projects and applications")
 
 
 def check_unity(service_documents, unity_path, configs, require_digests):
@@ -244,7 +263,7 @@ def main():
     args = parser.parse_args()
     documents = render(ROOT / "beta")
     configs = check_services(documents, args.require_digests)
-    check_bootstrap(render(ROOT / "bootstrap"))
+    check_bootstrap(render(ROOT / "bootstrap"), yaml.safe_load((ROOT / "bootstrap-project.yaml").read_text(encoding="utf-8")))
     unity_count = 0
     if args.unity_path:
         unity_count = check_unity(documents, args.unity_path, configs, args.require_digests)

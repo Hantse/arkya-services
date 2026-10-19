@@ -192,30 +192,65 @@ l'absence de ressources concurrentes. `--require-digests` refuse les tags
 d'amorçage. Ce contrôle hors ligne ne prouve ni la disponibilité des images,
 ni les droits Kubernetes, ni la résolution DNS/TLS de l'environnement réel.
 
-Le namespace de contrôle Argo CD confirmé est `arkya` ; l'AppProject et
-l'Application du bootstrap ciblent cette installation. Les namespaces des
-workloads restent distincts (`arkya-identity`, `arkya-operations` et
-`arkya-realm-beta-web`). Enregistrer les deux dépôts privés dans Argo CD
-avec des accès en lecture. L'AppProject limite les ressources cluster aux
-Namespaces et les workloads aux trois namespaces Arkya. Un opérateur Argo
-autorisé doit créer l'AppProject et l'Application rendus par `bootstrap/`.
-La création de ces deux ressources n'effectue pas le premier sync.
+L'installation observée utilise le namespace de contrôle `argocd`.
+Les objets Application et AppProject du bootstrap s'y trouvent ; les
+workloads restent dans `arkya-identity`, `arkya-operations` et
+`arkya-realm-beta-web`.
+
+Deux projets Argo ont des rôles distincts :
+
+| Application | Projet | Source / destination |
+| --- | --- | --- |
+| Parent existant `arkya-services` | `arkya-bootstrap` | Dépôt services, `backend/deploy/gitops/bootstrap`, destination `argocd` |
+| Enfant `arkya-beta` | `arkya-beta` | Deux sources de workloads, trois namespaces applicatifs |
+
+`bootstrap-project.yaml` doit être appliqué par un opérateur avant le sync
+du parent. Il est hors de `bootstrap/` pour ne pas dépendre de sa propre
+autorisation. Ce projet autorise uniquement les types Application/AppProject
+dans `argocd`, depuis le dépôt services (URL HTTPS ou SSH exacte), sans
+ressource cluster. Il reste administratif : l'écriture d'AppProjects dans
+Argo doit être réservée aux mainteneurs de confiance du dépôt.
+
+Le projet runtime `arkya-beta` autorise les Namespaces et les types de
+workloads nécessaires. Il n'autorise pas Application/AppProject et ne doit
+pas être affecté au parent. L'ancien message « resource argoproj.io:AppProject
+is not permitted in project arkya-beta » révèle cette confusion de rôles.
+Le projet runtime est créé en vague -1, avant l'application enfant en vague 0.
+
+Enregistrer ces deux dépôts dans Argo avec leurs deploy keys en lecture seule :
+
+- `git@github.com:Hantse/arkya-services.git`
+- `git@github.com:Hantse/arkya-mmorpg.git`
+
+Les connexions doivent être Successful et disponibles au projet `arkya-beta`.
+Le credential du dépôt services doit aussi être disponible à `arkya-bootstrap`
+si le parent utilise une connexion limitée à un projet. Les URL SSH des
+sources doivent correspondre aux connexions enregistrées ; une connexion
+HTTPS distincte n'utilise pas automatiquement une deploy key SSH.
 
 Après provisioning des prérequis et promotion des dix digests, depuis le
 dépôt services et une session Argo connectée au bon serveur :
 
-```powershell
-$arkyaKubeContext = 'CONTEXTE_K3S_A_RENSEIGNER'
-kubectl --context $arkyaKubeContext apply --dry-run=server -k backend/deploy/gitops/bootstrap
-kubectl --context $arkyaKubeContext apply -k backend/deploy/gitops/bootstrap
-argocd app get arkya-beta --app-namespace arkya --refresh
-argocd app diff arkya-beta --app-namespace arkya
-argocd app sync arkya-beta --app-namespace arkya --timeout 900
-argocd app wait arkya-beta --app-namespace arkya --sync --health --timeout 900
+```bash
+kubectl -n argocd apply --dry-run=server -f backend/deploy/gitops/bootstrap-project.yaml
+kubectl -n argocd apply -f backend/deploy/gitops/bootstrap-project.yaml
+kubectl -n argocd patch application arkya-services --type=merge \
+  -p '{"spec":{"project":"arkya-bootstrap","destination":{"namespace":"argocd"}}}'
+argocd app get arkya-services --app-namespace argocd --hard-refresh
+argocd app diff arkya-services --app-namespace argocd
+argocd app sync arkya-services --app-namespace argocd --timeout 300
+argocd app get arkya-beta --app-namespace argocd --hard-refresh
+argocd app diff arkya-beta --app-namespace argocd
+argocd app sync arkya-beta --app-namespace argocd --timeout 900
+argocd app wait arkya-beta --app-namespace argocd --sync --health --timeout 900
 ```
 
-Remplacer le contexte avant exécution. Examiner le diff avant ce premier
-sync ; il ne demande pas de prune des ressources existantes.
+Choisir le bon contexte Kubernetes avant exécution. Examiner les diffs avant
+les syncs ; ces commandes ne demandent pas de prune. Le namespace `argocd`
+existe déjà : le parent n'a pas à créer un namespace de contrôle.
+L'application enfant reste en synchronisation manuelle. Si les ressources
+bootstrap sont créées directement avec `kubectl apply -k bootstrap/`, il
+faut aussi disposer des droits administratifs ; aucun sync workload n'en découle.
 
 Avec le catalogue encore désactivé, exécuter dans l'environnement réel le
 `dry-run=server`, le sync manuel, puis vérifier :
