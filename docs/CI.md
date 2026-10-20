@@ -17,6 +17,13 @@ Release temporaire et exécute toutes les suites avec MongoDB jetable. Le
 frontend vérifie les sources et tous les tests Node des viewers et du site
 avec Node.js 24 LTS. Les rapports TRX/JUnit sont conservés 14 jours.
 
+Les tests backend utilisent temporairement `ubuntu-22.04` : le runner
+`ubuntu24/20261018.339` emploie un noyau `7.0.0-1017-azure` sur lequel
+MongoDB `8.0.34` refuse de démarrer ([incident MongoDB](https://jira.mongodb.org/browse/SERVER-125742)).
+Le runner 22.04 utilise le noyau 6.8 compatible. Le job conserve MongoDB 8
+et toutes les suites ; réévaluer ce choix lorsque l'image MongoDB publiée
+prend en charge le noyau du runner 24.04.
+
 Les huit images Linux AMD64/ARM64 sont :
 
 - `ghcr.io/hantse/arkya-services-identity`

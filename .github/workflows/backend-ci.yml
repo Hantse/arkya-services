@@ -18,7 +18,8 @@ env:
 jobs:
   validate:
     name: Build and test all services
-    runs-on: ubuntu-24.04
+    # Keep MongoDB 8 tests on a compatible kernel: mongodb.org SERVER-121912.
+    runs-on: ubuntu-22.04
     timeout-minutes: 20
     services:
       mongo:
