@@ -1,0 +1,53 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+- inference.yaml
+configMapGenerator:
+- name: arkya-inference-config
+  namespace: arkya-beta
+  envs:
+  - inference.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+# CI promotes this pin atomically with the other service images.
+images:
+- name: ghcr.io/hantse/arkya-services-inference
+  newTag: pending-publication
+patches:
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-gateway-config
+      namespace: arkya-beta
+    data:
+      Gateway__InferenceEnabled: 'true'
+      ReverseProxy__Clusters__inference__Destinations__primary__Address: http://arkya-inference.arkya-beta.svc.cluster.local:8080/
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-admin-config
+      namespace: arkya-beta
+    data:
+      InferenceApi__Enabled: 'true'
+      InferenceApi__BaseUrl: http://arkya-inference.arkya-beta.svc.cluster.local:8080/
+      InferenceApi__AllowClusterHttp: 'true'
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-admin
+      namespace: arkya-beta
+    spec:
+      template:
+        spec:
+          containers:
+          - name: admin
+            env:
+            - name: InferenceOperator__KeySeed
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-admin-secrets
+                  key: ContentApi__AdminKey

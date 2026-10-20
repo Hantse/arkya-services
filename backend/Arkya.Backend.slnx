@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Arkya.Inference.Api/Arkya.Inference.Api.csproj" />
     <Project Path="src/Arkya.Reports.Mcp/Arkya.Reports.Mcp.csproj" />
     <Project Path="src/Arkya.Admin/Arkya.Admin.csproj" />
     <Project Path="src/Arkya.Realms.Api/Arkya.Realms.Api.csproj" />
@@ -11,6 +12,7 @@
     <Project Path="src/Arkya.Characters.Api/Arkya.Characters.Api.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/Arkya.Inference.Tests/Arkya.Inference.Tests.csproj" />
     <Project Path="tests/Arkya.Content.Tests/Arkya.Content.Tests.csproj" />
     <Project Path="tests/Arkya.Identity.Tests/Arkya.Identity.Tests.csproj" />
     <Project Path="tests/Arkya.Gateway.Tests/Arkya.Gateway.Tests.csproj" />

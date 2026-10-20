@@ -42,7 +42,8 @@ public static class GatewayExtensions
             var publicHosts = options.AdminEnabled || options.FrontendEnabled
                 ? options.PublicApiHosts(finalConfiguration) : null;
             var routes = GatewayRoutes.Create(options.CharactersEnabled, options.AdminEnabled ? options.AdminHost : null,
-                publicHosts, options.FrontendEnabled ? options.FrontendHost : null, options.RealmGameEnabled);
+                publicHosts, options.FrontendEnabled ? options.FrontendHost : null, options.RealmGameEnabled,
+                options.InferenceEnabled);
             var configured = finalConfiguration.GetSection("ReverseProxy:Clusters").Get<Dictionary<string, ClusterConfig>>()
                 ?? throw new InvalidOperationException("ReverseProxy:Clusters must be configured.");
             if (options.AdminEnabled)
@@ -74,7 +75,10 @@ public static class GatewayExtensions
                         || header.StartsWith("X-Forwarded-", StringComparison.OrdinalIgnoreCase)
                         || header.StartsWith("X-Original-", StringComparison.OrdinalIgnoreCase)
                         || header.Equals("X-Arkya-Service-Key", StringComparison.OrdinalIgnoreCase)
-                        || header.Equals("X-Arkya-Dedicated-Key", StringComparison.OrdinalIgnoreCase))
+                        || header.Equals("X-Arkya-Admin-Key", StringComparison.OrdinalIgnoreCase)
+                        || header.Equals("X-Arkya-Dedicated-Key", StringComparison.OrdinalIgnoreCase)
+                        || header.Equals("X-Arkya-Reports-Admin-Key", StringComparison.OrdinalIgnoreCase)
+                        || header.Equals("X-Arkya-Admin-Actor", StringComparison.OrdinalIgnoreCase))
                         transform.ProxyRequest.Headers.Remove(header);
                 }
                 var request = transform.HttpContext.Request;

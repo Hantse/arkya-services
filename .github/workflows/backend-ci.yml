@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: backend-ci-${{ github.ref }}
+  group: backend-ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
@@ -71,6 +71,14 @@ jobs:
 
       - name: Build all projects in Release
         run: dotnet build "${{ steps.solution.outputs.path }}" --configuration Release --no-restore
+
+      - name: Set up the inference agent test runtime
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13.7'
+
+      - name: Validate the inference agent contracts and worker pool
+        run: python3 -m unittest discover -s tools/inference-agent/tests -v
 
       - name: Run all tests including MongoDB persistence and service flows
         env:

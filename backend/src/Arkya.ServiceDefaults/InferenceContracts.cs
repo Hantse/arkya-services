@@ -1,22 +1,29 @@
 namespace Arkya.ServiceDefaults.Inference;
 
-public static class InferenceModels
-{
-    public const string Lfm = "hf.co/LiquidAI/LFM2.5-1.2B-Instruct-GGUF:Q4_K_M";
-}
-
 public sealed record CreateInferenceAgentRequest(string AgentId, string DisplayName,
-    int InitialWorkers = 3, int ThreadsPerWorker = 4, int MaxWorkers = 6);
+    int InitialWorkers = 3, int ThreadsPerWorker = 4, int MaxWorkers = 6,
+    string ModelId = InferenceModels.DefaultModelId);
 
 // Returned only at creation. Operators must keep this credential out of logs and URLs.
 public sealed record CreateInferenceAgentResponse(InferenceAgentSummary Agent, string AgentToken);
 
-public sealed record AddInferenceWorkerRequest(int Threads = 4);
+public sealed record InferenceEnrollmentGrantResponse(string Token, DateTimeOffset ExpiresAt);
 
-public sealed record InferenceWorkerDesired(string WorkerId, int Threads);
+public sealed record RegisterInferenceAgentRequest(string AgentId, string DisplayName, string AgentToken,
+    int InitialWorkers = 3, int ThreadsPerWorker = 4, int MaxWorkers = 6,
+    string ModelId = InferenceModels.DefaultModelId);
+
+public sealed record InferenceModelOption(string ModelId, string Label, string OllamaModel);
+
+public sealed record AddInferenceWorkerRequest(int Threads = 4, string ModelId = InferenceModels.DefaultModelId);
+
+public sealed record UpdateInferenceWorkerRequest(int Threads, string ModelId);
+
+public sealed record InferenceWorkerDesired(string WorkerId, int Threads,
+    string ModelId = InferenceModels.DefaultModelId);
 
 public sealed record InferenceWorkerObserved(string WorkerId, string State, int? Pid, int Port,
-    int Threads, string? LastError);
+    int Threads, string? LastError, string ModelId = InferenceModels.DefaultModelId);
 
 public sealed record InferenceAgentSummary(int SchemaVersion, string AgentId, string DisplayName,
     long Revision, int MaxWorkers, int ThreadsPerWorker, DateTimeOffset CreatedAt,

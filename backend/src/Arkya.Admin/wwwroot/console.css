@@ -155,3 +155,7 @@ label { font-size: 11px; }
     .deployment-steps { gap: 18px; }
     .action-grid { gap: 14px; }
 }
+
+.inference-table th:first-child { min-width: 100px; width: 100px; }
+.inference-worker-form select { min-width: 200px; }
+.inference-worker-form .field { margin-bottom: 12px; }

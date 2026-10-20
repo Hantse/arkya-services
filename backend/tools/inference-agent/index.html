@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Maëlle · Une rencontre à Aubefont — Arkya</title>
+  <style>
+    :root {
+      --ink: #233e4c;
+      --blue: #385969;
+      --sage: #8faa94;
+      --mist: #e9efec;
+      --paper: #f3f5ed;
+      --gold: #c8ad76;
+      --line: #cfdbd5;
+      --muted: #58716e;
+      --error: #914c40;
+      --display: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      --body: "Segoe UI", Candara, Arial, sans-serif;
+      --utility: Consolas, "Courier New", monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--mist);
+      font: 15px/1.55 var(--body);
+    }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled, input:disabled, select:disabled { cursor: wait; }
+    button:disabled { opacity: .55; }
+    button, input, label { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+    button, input { touch-action: manipulation; }
+    .shell { width: min(1112px, calc(100% - 64px)); margin: 0 auto; padding: 36px 0 28px; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+    .brand { display: flex; flex: 0 0 auto; align-items: center; gap: 12px; }
+    .brand-mark { width: 29px; height: 40px; color: var(--blue); }
+    .wordmark { font: 22px/1 var(--display); letter-spacing: .2em; }
+    .masthead-note { min-width: 0; margin: 0; color: var(--muted); font-size: 12px; white-space: normal; overflow-wrap: break-word; }
+    .encounter {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 18px 48px #233e4c0c;
+    }
+    .place { display: flex; flex-direction: column; background: var(--blue); color: var(--paper); }
+    .place-art { position: relative; padding: 26px 24px 0; }
+    .window { display: block; width: 100%; height: auto; }
+    .place-copy { padding: 22px 28px 28px; }
+    .eyebrow { margin: 0 0 7px; font-size: 10px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; }
+    .place .eyebrow { color: #c4d2c9; }
+    .place h2 { margin: 0; font: 30px/1.2 var(--display); }
+    .place-description { color: #d2dcd5; font-size: 13px; margin: 10px 0 0; }
+    .memory-panel { margin-top: auto; border-top: 1px solid #ffffff21; padding: 24px 28px 25px; background: #233e4c38; }
+    .memory-label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13px; line-height: 1.55; }
+    .memory-label input { flex: 0 0 auto; width: 16px; height: 16px; margin: 3px 0 0; accent-color: var(--sage); }
+    .memory-help { margin: 10px 0 0 26px; font-size: 11px; line-height: 1.5; color: #b9cdc3; }
+    .dialogue { padding: 28px 34px 26px; min-width: 0; }
+    .dialogue-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    .identity { display: flex; align-items: center; gap: 14px; }
+    .initial { display: grid; place-items: center; flex: 0 0 auto; width: 46px; height: 52px; border: 1px solid #9db4a5; border-radius: 24px 24px 8px 8px; font: italic 24px var(--display); background: #e3ebdf; color: var(--blue); }
+    h1 { margin: 0; font: 34px/1.12 var(--display); font-weight: 400; }
+    .role { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+    .reset { display: flex; align-items: center; gap: 6px; padding: 8px 0 8px 8px; color: var(--muted); border: 0; background: none; font-size: 11px; }
+    .reset:hover { color: var(--ink); }
+    .reset svg { width: 15px; height: 15px; }
+    .conversation {
+      height: 252px;
+      overflow: auto;
+      overflow-anchor: none;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      scrollbar-color: #bdcec2 transparent;
+      padding: 22px 6px 16px 0;
+      margin: 0 -6px 0 0;
+    }
+    .message { margin: 0 0 20px; }
+    .speaker { display: block; margin-bottom: 7px; font-size: 10px; color: var(--muted); font-weight: 600; letter-spacing: .035em; }
+    .message p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 20px/1.5 var(--display); }
+    .message.user { margin-left: 45px; padding: 12px 16px; border-radius: 12px 12px 3px 12px; background: #e4ebe3; }
+    .message.user .speaker { margin-bottom: 3px; }
+    .message.user p { font: 14px/1.6 var(--body); }
+    .authored { font-weight: 400; opacity: .85; }
+    .pending { display: flex; align-items: center; gap: 9px; min-height: 24px; color: var(--muted); font-size: 12px; }
+    .pending[hidden] { display: none; }
+    .pending-dot { width: 6px; height: 6px; border-radius: 100%; background: var(--sage); animation: breathe 1.4s ease-in-out infinite; }
+    .pending-time { margin-left: auto; font-family: var(--utility); font-size: 11px; }
+    .answer-area { border-top: 1px solid var(--line); padding-top: 17px; }
+    .answer-label { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
+    .choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .choice { display: flex; align-items: center; gap: 10px; min-height: 63px; border: 1px solid #c4d2c8; border-radius: 9px; padding: 12px 10px; color: var(--ink); background: #edf1e9; text-align: left; font-size: 12px; line-height: 1.4; transition: background .15s, border-color .15s; }
+    .choice:hover:not(:disabled) { background: #e0e9dd; border-color: #8faa94; }
+    .choice svg { width: 19px; height: 19px; flex: 0 0 auto; color: #62816d; }
+    .question-form { margin-top: 15px; }
+    .question-label { display: block; margin-bottom: 7px; font-size: 12px; color: var(--muted); }
+    .question-row { display: flex; gap: 8px; }
+    .question-input { width: 100%; min-width: 0; height: 45px; border: 1px solid #bdcfc4; border-radius: 8px; background: #ffffff75; padding: 0 13px; color: var(--ink); font-size: 13px; }
+    .question-input::placeholder { color: #778780; }
+    .send { display: flex; align-items: center; justify-content: center; gap: 8px; flex: 0 0 auto; border: 1px solid var(--blue); border-radius: 8px; padding: 0 16px; background: var(--blue); color: var(--paper); font-size: 12px; }
+    .send:hover:not(:disabled) { background: var(--ink); }
+    .send svg { width: 14px; height: 14px; }
+    .input-footnote { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 7px 0 0; color: var(--muted); font-size: 10px; }
+    .counter { font-family: var(--utility); }
+    .error { margin: 12px 0 0; color: var(--error); font-size: 12px; line-height: 1.5; }
+    .error[hidden] { display: none; }
+    .instrument-panel { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 21px 2px 0; }
+    .engine { max-width: 370px; }
+    .model-label { display: block; margin: 0 0 6px; font-size: 11px; color: var(--muted); }
+    .model-select { display: block; width: 100%; max-width: 315px; min-height: 36px; padding: 7px 30px 7px 10px; border: 1px solid #bdcfc4; border-radius: 7px; background: var(--paper); color: var(--ink); font-size: 12px; }
+    .model-select:disabled { opacity: .65; }
+    .model-help { margin: 6px 0 12px; color: var(--muted); font-size: 10px; }
+    .engine-label { display: flex; align-items: center; gap: 7px; margin: 0 0 4px; font-size: 11px; color: var(--muted); }
+    .engine-light { width: 5px; height: 5px; border-radius: 100%; background: #96aaa1; }
+    .engine-light.ready { background: #588065; }
+    .engine-light.offline { background: #a26657; }
+    .engine-name { margin: 0; font: 11px/1.5 var(--utility); color: var(--ink); overflow-wrap: anywhere; }
+    .measurements { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 22px; }
+    .metric { min-width: 75px; }
+    .metric dt { color: var(--muted); font-size: 10px; }
+    .metric dd { margin: 5px 0 0; font: 14px/1 var(--utility); color: var(--ink); }
+    .measurement-wrap { text-align: right; }
+    dl { margin: 0; }
+    .metric-note { margin: 10px 0 0; color: var(--muted); font-size: 10px; }
+    .site-note { margin: 24px 0 0; border-top: 1px solid #cfdbd5; padding-top: 13px; color: #70847d; font-size: 10px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    @keyframes breathe { 50% { opacity: .35; } }
+    @media (max-width: 900px) {
+      .shell { width: min(800px, calc(100% - 40px)); padding-top: 25px; }
+      .encounter { grid-template-columns: 220px minmax(0, 1fr); }
+      .place-art { padding: 22px 18px 0; }
+      .place-copy, .memory-panel { padding: 22px; }
+      .dialogue { padding: 25px 23px 23px; }
+      .choice { flex-direction: column; align-items: flex-start; gap: 7px; padding: 10px; font-size: 11px; }
+      .reset span { display: none; }
+      .conversation { height: 265px; }
+    }
+    @media (max-width: 650px) {
+      .shell { width: auto; margin-inline: 14px; padding-top: 18px; }
+      .masthead { margin-bottom: 18px; gap: 12px; }
+      .masthead-note { flex: 0 1 145px; max-width: 145px; text-align: right; font-size: 10px; }
+      .wordmark { font-size: 19px; }
+      .brand-mark { width: 23px; height: 32px; }
+      .encounter { grid-template-columns: minmax(0, 1fr); border-radius: 14px; }
+      .place { display: grid; grid-template-columns: minmax(0, 1fr) 118px; }
+      .place-art { grid-column: 2; grid-row: 1; padding: 16px 18px 0 0; height: 124px; overflow: hidden; }
+      .place-copy { grid-column: 1; grid-row: 1; padding: 22px 20px; }
+      .place h2 { font-size: 26px; }
+      .place-description { font-size: 11px; margin-top: 5px; }
+      .place .eyebrow { font-size: 9px; }
+      .memory-panel { grid-column: 1 / -1; padding: 13px 20px; }
+      .memory-label { font-size: 11px; align-items: center; }
+      .memory-label input { margin: 0; }
+      .memory-help { display: none; }
+      .dialogue { padding: 21px 20px 20px; }
+      .dialogue-header { padding-bottom: 17px; }
+      h1 { font-size: 30px; }
+      .initial { width: 40px; height: 46px; }
+      .conversation { height: 220px; padding-top: 18px; }
+      .message p { font-size: 19px; }
+      .choice { min-height: 78px; }
+      .question-row { gap: 6px; }
+      .send { padding: 0 12px; }
+      .send span { display: none; }
+      .instrument-panel { flex-direction: column; gap: 16px; padding-top: 18px; }
+      .measurement-wrap { text-align: left; width: 100%; }
+      .measurements { justify-content: space-between; }
+      .site-note { margin-top: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div class="brand" aria-label="Arkya">
+        <svg class="brand-mark" viewBox="0 0 30 42" aria-hidden="true" fill="none">
+          <path d="M15 2 2 28h9v12m4-38 13 26h-9v12M15 12v24M8 22h14" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        <span class="wordmark" aria-hidden="true">ARKYA</span>
+      </div>
+      <p class="masthead-note">Essai local · aucune transaction en jeu</p>
+    </header>
+
+    <section class="encounter" aria-labelledby="npc-name">
+      <aside class="place" aria-label="Lieu et souvenir du personnage">
+        <div class="place-art" aria-hidden="true">
+          <svg class="window" viewBox="0 0 232 267" fill="none">
+            <defs>
+              <clipPath id="arch"><path d="M8 257V116a108 108 0 0 1 216 0v141Z"/></clipPath>
+            </defs>
+            <g clip-path="url(#arch)">
+              <path fill="#2c4858" d="M0 0h232v267H0z"/>
+              <path fill="#c8ad76" opacity=".8" d="M170 50a17 17 0 1 0 19 24 18 18 0 0 1-19-24Z"/>
+              <circle cx="65" cy="74" r="1.2" fill="#c1d1c6"/>
+              <circle cx="142" cy="39" r=".9" fill="#c1d1c6"/>
+              <circle cx="193" cy="102" r="1" fill="#c1d1c6"/>
+              <path fill="#547363" d="M-10 175c40-39 66-56 110-29s86-16 144-37v153H-10Z"/>
+              <path fill="#75927b" d="M-2 198c39-25 62-31 99-17s103-12 151-35v125H-2Z"/>
+              <path fill="#91a991" d="M45 270c42-36 39-61 73-70h23c-31 31-10 47-26 70Z"/>
+              <path fill="#b5b89a" d="M58 173h119v59H58z"/>
+              <path fill="#d1c2a0" d="M71 158h106v71H71z"/>
+              <path fill="#2d4650" d="m49 176 53-51 90 51Z"/>
+              <path fill="#577364" d="m103 125 33 51h56Z"/>
+              <path fill="#869b81" d="M152 130h13v29h-13z"/>
+              <path fill="#344d4e" d="M105 196a10 10 0 0 1 20 0v36h-20Z"/>
+              <path fill="#d6bd7c" d="M80 187h12v18H80zm61 0h17v18h-17z"/>
+              <path d="M86 187v18m55-9h17m-8-9v18" stroke="#7c8066" stroke-width="2"/>
+              <path d="M173 188h14v8" stroke="#2c4858" stroke-width="2"/>
+              <path fill="#c8ad76" d="M181 197h10v13h-10z"/>
+              <path fill="#cad0b6" opacity=".18" d="m185 203-18 35h39Z"/>
+              <path fill="#355749" d="M20 220c-16-5-15-21-6-30-14-13-7-30 6-33-1-20 18-25 28-14 15 0 20 15 13 26 10 12 7 25-6 30 0 12-14 20-35 21Z"/>
+              <path d="M35 179v75m0-40-13-13m13-7 12-14" stroke="#29483f" stroke-width="4"/>
+              <path fill="#547363" d="M-4 252c43-11 48-1 71 6H-4zm150 13c18-27 55-23 97-29v29Z"/>
+            </g>
+            <path d="M8 257V116a108 108 0 0 1 216 0v141H8Z" stroke="#b1c2ac" stroke-opacity=".5"/>
+            <path d="M0 263h232" stroke="#b1c2ac" stroke-opacity=".7"/>
+          </svg>
+        </div>
+        <div class="place-copy">
+          <p class="eyebrow">Une halte au village</p>
+          <h2>Aubefont</h2>
+          <p class="place-description">La lumière de l’auberge<br>veille encore.</p>
+        </div>
+        <div class="memory-panel">
+          <label class="memory-label">
+            <input id="remember" type="checkbox" aria-describedby="memory-help">
+            <span>Maëlle se souvient de ma livraison de bois</span>
+          </label>
+          <p class="memory-help" id="memory-help">Souvenir vérifié fourni au modèle. Changer ce réglage recommence la conversation.</p>
+        </div>
+      </aside>
+
+      <div class="dialogue">
+        <header class="dialogue-header">
+          <div class="identity">
+            <span class="initial" aria-hidden="true">M</span>
+            <div>
+              <h1 id="npc-name">Maëlle</h1>
+              <p class="role">Aubergiste à Aubefont</p>
+            </div>
+          </div>
+          <button class="reset" id="reset" type="button" title="Recommencer la conversation" aria-label="Recommencer la conversation">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 7a6 6 0 1 1-.1 6M4 3v4h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Recommencer</span>
+          </button>
+        </header>
+
+        <div id="conversation" class="conversation" role="log" aria-label="Conversation avec Maëlle" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
+        <div class="pending" id="pending" hidden>
+          <span class="pending-dot" aria-hidden="true"></span>
+          <span>Maëlle prépare sa réponse…</span>
+          <span class="pending-time" id="pending-time" aria-hidden="true">0 s</span>
+        </div>
+
+        <div class="answer-area">
+          <p class="answer-label">Que lui dites-vous ?</p>
+          <div class="choices" id="choices" aria-label="Trois réponses proposées">
+            <button class="choice" type="button" data-choice="rent_room">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 18V7m18 11V9M3 15h18M6 8h5v5H6zM12 10h6a3 3 0 0 1 3 3v2M3 18v2m18-2v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Louer une chambre</span>
+            </button>
+            <button class="choice" type="button" data-choice="buy_meal">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11h18a9 9 0 0 1-18 0Zm4 9h10M9 8c-3-2 3-3 0-5m6 5c-3-2 3-3 0-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Commander une soupe</span>
+            </button>
+            <button class="choice" type="button" data-choice="ask_news">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v12H9l-5 4V4Zm4 4h8m-8 4h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Demander les nouvelles</span>
+            </button>
+          </div>
+          <form class="question-form" id="question-form">
+            <label class="question-label" for="question">Autre question…</label>
+            <div class="question-row">
+              <input class="question-input" id="question" name="question" type="text" maxlength="300" autocomplete="off" placeholder="Tu te souviens de moi ?" aria-describedby="question-help question-count">
+              <button class="send" id="send" type="submit" aria-label="Poser la question" disabled>
+                <span>Demander</span>
+                <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h11M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <p class="input-footnote"><span id="question-help">Une question courte, dans l’univers du village.</span><span class="counter" id="question-count">0 / 300</span></p>
+          </form>
+          <p class="error" id="error" role="alert" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="instrument-panel" aria-label="Moteur local et mesures réelles">
+      <div class="engine">
+        <label class="model-label" for="model-select">Modèle CPU</label>
+        <select class="model-select" id="model-select" aria-describedby="model-help">
+
+          <option value="pool" selected>Pool CPU · premier moteur disponible</option>
+        </select>
+        <p class="model-help" id="model-help">Le backoffice choisit le modèle et les threads de chaque moteur.</p>
+        <p class="engine-label"><span class="engine-light" id="engine-light" aria-hidden="true"></span><span id="engine-mode">Moteur local · connexion…</span></p>
+        <p class="engine-name" id="engine-name">Vérification du modèle</p>
+      </div>
+      <div class="measurement-wrap">
+        <dl class="measurements">
+          <div class="metric"><dt>Réponse complète</dt><dd id="wall-time">—</dd></div>
+          <div class="metric"><dt>Premier token</dt><dd id="first-token">—</dd></div>
+          <div class="metric"><dt>Débit de génération</dt><dd id="decode-rate">—</dd></div>
+        </dl>
+        <p class="metric-note" id="metric-note">Les mesures apparaîtront après votre premier échange.</p>
+      </div>
+    </section>
+    <p class="site-note">Prototype de dialogue · historique conservé uniquement dans cette page · le bouton Recommencer efface le contexte de conversation.</p>
+    <p class="sr-only" id="announcement" role="status" aria-live="polite"></p>
+  </main>
+
+  <script>
+    "use strict";
+    const byId = id => document.getElementById(id);
+    const conversation = byId("conversation");
+    const questionInput = byId("question");
+    const modelSelect = byId("model-select");
+    const choiceButtons = [...document.querySelectorAll(".choice")];
+    const defaults = [
+      { id: "rent_room", label: "Louer une chambre" },
+      { id: "buy_meal", label: "Commander une soupe" },
+      { id: "ask_news", label: "Demander les nouvelles" }
+    ];
+    const numberFormat = new Intl.NumberFormat("fr-BE", { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+    let history = [];
+    let currentChoices = defaults.map(choice => ({ ...choice }));
+    let busy = false;
+    let scrollFrame = 0;
+    let selectedModel = "pool";
+    let statusRequest = 0;
+    let cpuOnly = null;
+
+    function scrollConversation() {
+      conversation.scrollTop = conversation.scrollHeight;
+      cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => {
+        conversation.scrollTop = conversation.scrollHeight;
+      });
+    }
+
+    function appendMessage(role, content, authored = false) {
+      const article = document.createElement("article");
+      article.className = "message " + role;
+      const speaker = document.createElement("span");
+      speaker.className = "speaker";
+      speaker.textContent = role === "user" ? "Vous" : "Maëlle";
+      if (authored) {
+        const label = document.createElement("span");
+        label.className = "authored";
+        label.textContent = " · texte d’accueil préparé";
+        speaker.append(label);
+      }
+      const text = document.createElement("p");
+      text.textContent = content;
+      article.append(speaker, text);
+      conversation.append(article);
+      scrollConversation();
+    }
+
+    function updateChoices(choices) {
+      currentChoices = choices.map(choice => ({ id: choice.id, label: choice.label }));
+      choiceButtons.forEach((button, index) => {
+        button.dataset.choice = currentChoices[index].id;
+        button.querySelector("span").textContent = currentChoices[index].label;
+      });
+    }
+
+    function updateInput() {
+      byId("question-count").textContent = questionInput.value.length + " / 300";
+      byId("send").disabled = busy || !questionInput.value.trim();
+    }
+
+    function setBusy(value) {
+      busy = value;
+      conversation.setAttribute("aria-busy", String(value));
+      byId("pending").hidden = !value;
+      choiceButtons.forEach(button => { button.disabled = value; });
+      questionInput.disabled = value;
+      byId("remember").disabled = value;
+      byId("reset").disabled = value;
+      modelSelect.disabled = value;
+      updateInput();
+    }
+
+    function clearMetrics() {
+      ["wall-time", "first-token", "decode-rate"].forEach(id => { byId(id).textContent = "—"; });
+      byId("metric-note").textContent = "Les mesures apparaîtront après votre premier échange.";
+    }
+
+    function resetConversation(announce = false) {
+      if (busy) return;
+      history = [];
+      conversation.replaceChildren();
+      appendMessage("assistant", "Entrez donc, voyageur. Une chambre, quelque chose de chaud, ou les nouvelles du village ?", true);
+      updateChoices(defaults);
+      questionInput.value = "";
+      updateInput();
+      clearMetrics();
+      byId("error").hidden = true;
+      if (announce) byId("announcement").textContent = "Nouvelle conversation. " + (byId("remember").checked ? "Le souvenir de la livraison de bois est activé." : "Aucun souvenir de livraison n’est fourni.");
+    }
+
+    function metric(value, suffix) {
+      return typeof value === "number" && Number.isFinite(value) && value >= 0
+        ? numberFormat.format(value) + suffix
+        : "—";
+    }
+
+    function showMetrics(result) {
+      const metrics = result.metrics || {};
+      byId("wall-time").textContent = metric(metrics.wall_seconds, " s");
+      byId("first-token").textContent = metric(metrics.first_token_seconds, " s");
+      byId("decode-rate").textContent = metric(metrics.decode_tokens_per_second, " tok/s");
+      byId("metric-note").textContent = result.format_valid === true
+        ? "Dernière réponse · format conforme"
+        : result.format_valid === false
+          ? "Dernière réponse · format à vérifier"
+          : "Mesures réelles de la dernière réponse";
+      byId("metric-note").textContent += " · " + (result.model || "Modèle inconnu") + " · moteur " + (result.worker_id || "—") + " · attente " + metric(metrics.queue_seconds, " s");
+    }
+
+    async function sendQuestion(question, fromInput = false) {
+      question = question.trim().slice(0, 300);
+      if (!question || busy) return;
+      const requestedModel = selectedModel;
+      byId("error").hidden = true;
+      byId("announcement").textContent = "Question envoyée. Maëlle prépare sa réponse.";
+      appendMessage("user", question);
+      setBusy(true);
+      const started = performance.now();
+      byId("pending-time").textContent = "0 s";
+      const elapsedTimer = setInterval(() => {
+        byId("pending-time").textContent = Math.floor((performance.now() - started) / 1000) + " s";
+      }, 1000);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 90000);
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            model_id: requestedModel,
+            question,
+            remember: byId("remember").checked,
+            history
+          }),
+          signal: controller.signal
+        });
+        if (!response.ok) {
+          throw new Error(response.status === 429
+            ? "Le moteur est occupé. Patientez un instant, puis réessayez."
+            : "Le moteur n’a pas pu répondre (HTTP " + response.status + "). Réessayez dans un instant.");
+        }
+        const result = await response.json();
+
+        if (typeof result.reply !== "string" || !result.reply.trim()) {
+          throw new Error("La réponse reçue est vide. Réessayez votre question.");
+        }
+        statusRequest++;
+        byId("engine-name").textContent = typeof result.model === "string" ? result.model : modelSelect.selectedOptions[0].textContent;
+        byId("engine-mode").textContent = cpuOnly === true ? "Moteur local · CPU uniquement" : "Moteur local · mode CPU non confirmé";
+        byId("engine-light").className = "engine-light ready";
+        appendMessage("assistant", result.reply);
+        history.push({ role: "user", content: question }, { role: "assistant", content: result.reply });
+        history = history.slice(-8);
+        if (Array.isArray(result.choices) && result.choices.length === 3 &&
+            result.choices.every(choice => choice && typeof choice.id === "string" && typeof choice.label === "string")) {
+          updateChoices(result.choices);
+        } else {
+          updateChoices(defaults);
+        }
+        showMetrics(result);
+        if (fromInput) questionInput.value = "";
+        byId("announcement").textContent = "Maëlle a répondu.";
+      } catch (error) {
+        byId("error").textContent = error.name === "AbortError"
+          ? "Le moteur met trop de temps à répondre. Réessayez votre question."
+          : error instanceof TypeError
+            ? "Le serveur local est inaccessible. Vérifiez qu’il fonctionne, puis réessayez."
+            : error.message || "La réponse n’a pas pu être lue. Réessayez votre question.";
+        byId("error").hidden = false;
+        byId("announcement").textContent = "La question n’a pas reçu de réponse.";
+      } finally {
+        clearTimeout(timeout);
+        clearInterval(elapsedTimer);
+        setBusy(false);
+        scrollConversation();
+        if (fromInput) questionInput.focus({ preventScroll: true });
+      }
+    }
+
+    async function loadStatus() {
+      const requestedModel = selectedModel;
+      const request = ++statusRequest;
+      const requestedLabel = modelSelect.selectedOptions[0].textContent;
+      cpuOnly = null;
+      byId("engine-mode").textContent = "Moteur local · vérification…";
+      byId("engine-name").textContent = "Modèle demandé : " + requestedLabel;
+      byId("engine-light").className = "engine-light";
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 12000);
+      try {
+        const response = await fetch("/api/status?model=" + encodeURIComponent(requestedModel), { signal: controller.signal, cache: "no-store" });
+        if (!response.ok) throw new Error("Status unavailable");
+        const status = await response.json();
+        if (request !== statusRequest || selectedModel !== requestedModel) return;
+
+        cpuOnly = status.cpu_only === true;
+        byId("engine-name").textContent = typeof status.model === "string" ? status.model : "Modèle non renseigné";
+        byId("engine-mode").textContent = status.cpu_only === true ? "Moteur local · CPU uniquement" : "Moteur local · mode CPU non confirmé";
+        byId("engine-light").className = status.ready_workers > 0 ? "engine-light ready" : "engine-light";
+        const workers = Array.isArray(status.workers) ? status.workers : [];
+        byId("model-help").textContent = workers.length
+          ? workers.map(w => w.workerId + " : " + w.modelId + " · " + w.state + " (" + w.threads + " threads)").join(" · ")
+          : "En attente des moteurs ou de la première connexion au backoffice…";
+        byId("engine-mode").textContent = "CPU uniquement · " + workers.filter(w => w.state === "ready").length
+          + " libre(s), " + workers.filter(w => w.state === "busy").length + " occupé(s)";
+      } catch {
+        if (request !== statusRequest || selectedModel !== requestedModel) return;
+        byId("engine-mode").textContent = "Moteur local · état indisponible";
+        byId("engine-name").textContent = "Modèle demandé : " + requestedLabel;
+        byId("engine-light").className = "engine-light offline";
+      } finally {
+        clearTimeout(timeout);
+      }
+    }
+
+    choiceButtons.forEach((button, index) => {
+      button.addEventListener("click", () => sendQuestion(currentChoices[index].label));
+    });
+    byId("question-form").addEventListener("submit", event => {
+      event.preventDefault();
+      sendQuestion(questionInput.value, true);
+    });
+    questionInput.addEventListener("input", updateInput);
+    byId("reset").addEventListener("click", () => {
+      resetConversation(true);
+      questionInput.focus({ preventScroll: true });
+    });
+    byId("remember").addEventListener("change", () => resetConversation(true));
+    modelSelect.addEventListener("change", () => {
+      if (busy || !["qwen", "lfm"].includes(modelSelect.value)) return;
+      selectedModel = modelSelect.value;
+      resetConversation(true);
+      byId("announcement").textContent = "Nouvelle conversation avec " + modelSelect.selectedOptions[0].textContent + ".";
+      loadStatus();
+    });
+    window.addEventListener("resize", scrollConversation);
+    resetConversation();
+    loadStatus();
+    setInterval(() => { if (!busy) loadStatus(); }, 5000);
+  </script>
+</body>
+</html>

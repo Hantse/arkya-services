@@ -309,3 +309,9 @@ Les tests automatisés n'autorisent pas une vraie application Discord. Une valid
 Avant ouverture publique, provisionner et valider les destinations WSS, les identités et la rotation des clés de service, les politiques de compte et une confirmation utilisateur du challenge dans le navigateur pour limiter l'approbation d'un lien de connexion transmis par un tiers. Le cookie de corrélation lie le callback à un navigateur ; il ne prouve pas à lui seul que ce navigateur appartient à l'initiateur natif du challenge.
 
 Le transport courant est HTTP JSON. Le passage à gRPC unary pour les appels internes dépendra de mesures sur le build Unity dédié ; le streaming attend un besoin d'événements concret. Les écritures de persistance ne doivent pas suivre chaque tick Netcode.
+
+## Agents Windows et workers LFM
+
+`Arkya.Inference.Api` ajoute un registre MongoDB de machines d'inférence. La page **Agents LFM** d'Admin fournit une clé d'installation temporaire : le script Windows enregistre automatiquement la machine et protège son jeton permanent localement. L'opérateur peut ajouter, supprimer ou modifier les workers, choisir LFM ou Qwen et régler leurs threads. L'agent reçoit les commandes par heartbeat sortant et remplace uniquement le worker modifié après son dialogue en cours. Le package comprend la démo PNJ locale et les scripts d'installation/démarrage automatique.
+
+Les instructions, la configuration du service et la vérification se trouvent dans [INFERENCE_AGENTS.md](../docs/INFERENCE_AGENTS.md). Sources du package : [`tools/inference-agent/`](tools/inference-agent/README.md). Le composant GitOps [`deploy/gitops/inference-control/`](deploy/gitops/inference-control/README.md) complète le profil Admin existant ; la CI publie et promeut son image avec Admin/Gateway avant son activation par Argo.

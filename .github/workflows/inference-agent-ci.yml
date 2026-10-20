@@ -1,0 +1,44 @@
+name: Windows inference agent
+
+on:
+  push:
+    paths:
+      - 'backend/tools/inference-agent/**'
+      - 'backend/src/Arkya.ServiceDefaults/InferenceModels.json'
+      - '.github/workflows/inference-agent-ci.yml'
+  pull_request:
+    paths:
+      - 'backend/tools/inference-agent/**'
+      - 'backend/src/Arkya.ServiceDefaults/InferenceModels.json'
+      - '.github/workflows/inference-agent-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-2025
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            backend/tools/inference-agent
+            backend/src/Arkya.ServiceDefaults
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13.7'
+      - name: Test pool, credentials, process ownership and crash recovery
+        run: python -m unittest discover -s backend/tools/inference-agent/tests -v
+      - name: Parse scripts with Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          foreach ($script in Get-ChildItem backend/tools/inference-agent -Filter '*.ps1') {
+            $parseTokens = $null
+            $parseErrors = $null
+            $null = [Management.Automation.Language.Parser]::ParseFile($script.FullName, [ref]$parseTokens, [ref]$parseErrors)
+            if ($parseErrors.Count -ne 0) { throw "Invalid Windows PowerShell script: $($script.Name)" }
+          }

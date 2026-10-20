@@ -18,7 +18,9 @@ public sealed class InferenceEndpointTests
 
     [Theory]
     [InlineData("Create")]
+    [InlineData("PrepareInstallation")]
     [InlineData("AddWorker")]
+    [InlineData("UpdateWorker")]
     [InlineData("DeleteWorker")]
     [InlineData("DeleteAgent")]
     public async Task EveryMutationRequiresAntiforgery(string handler)
@@ -42,8 +44,11 @@ public sealed class InferenceEndpointTests
         var html = await browser.GetStringAsync("/Inference");
         Assert.Contains("La gestion de l’inférence est désactivée", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain("handler=Create", html);
+        Assert.DoesNotContain("handler=PrepareInstallation", html);
         var form = CreateForm(AdminFactory.Input(html, "__RequestVerificationToken"));
         Assert.Equal(HttpStatusCode.NotFound, (await browser.PostAsync("/Inference?handler=Create", AdminFactory.Form(form))).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await browser.PostAsync("/Inference?handler=PrepareInstallation", AdminFactory.Form(form))).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await browser.PostAsync("/Inference?handler=UpdateWorker", AdminFactory.Form(form))).StatusCode);
         Assert.Empty(factory.Inference.Calls);
     }
 
@@ -56,6 +61,7 @@ public sealed class InferenceEndpointTests
         await AdminFactory.Login(browser);
         var form = CreateForm(await AdminFactory.Token(browser, "/Inference"));
         form["Input.DisplayName"] = "  <script>alert('x')</script>  ";
+        form["Input.ModelId"] = "qwen35-08b";
         form["Input.Model"] = "unapproved-model";
         using var result = await browser.PostAsync("/Inference?handler=Create", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, result.StatusCode);
@@ -67,10 +73,12 @@ public sealed class InferenceEndpointTests
         Assert.DoesNotContain("<script>", html);
         Assert.DoesNotContain(InferenceFactory.AdminKey, html);
         Assert.DoesNotContain(factory.Inference.EnrollmentToken, result.Headers.ToString());
-        Assert.Contains("./Install-Agent.ps1 -BackendUrl 'https://api.arkya.online' -AgentId 'cpu-bureau'", WebUtility.HtmlDecode(html));
+        Assert.Contains("./Install-Agent.ps1 -BackendUrl 'https://api.arkya.online' -AgentId 'cpu-bureau' -AgentToken (Read-Host 'Jeton de cet agent' -AsSecureString)", WebUtility.HtmlDecode(html));
         var call = Assert.Single(factory.Inference.Calls, call => call.Method == HttpMethod.Post);
-        Assert.Equal(5, call.Body!.Value.EnumerateObject().Count());
+        Assert.Equal(6, call.Body!.Value.EnumerateObject().Count());
         Assert.Equal("<script>alert('x')</script>", call.Body.Value.GetProperty("displayName").GetString());
+        Assert.Equal("qwen35-08b", call.Body.Value.GetProperty("modelId").GetString());
+        Assert.All(factory.Inference.Agent.DesiredWorkers, worker => Assert.Equal("qwen35-08b", worker.ModelId));
         var subsequent = await browser.GetStringAsync("/Inference");
         Assert.DoesNotContain(factory.Inference.EnrollmentToken, WebUtility.HtmlDecode(subsequent));
         Assert.DoesNotContain("id=\"agent-token\"", subsequent);
@@ -94,6 +102,173 @@ public sealed class InferenceEndpointTests
     }
 
     [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task InstallationGrantIsOnlyDisplayedInItsNoStorePostWithoutCreatingAnAgent(bool reloadFails)
+    {
+        await using var factory = new InferenceFactory();
+        factory.Inference.EnrollmentToken = "installation-<script>secret</script>&12345";
+        factory.Inference.FailListAfterGrant = reloadFails;
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var token = await AdminFactory.Token(browser, "/Inference");
+        var originalAgent = factory.Inference.Agent;
+        using var result = await browser.PostAsync("/Inference?handler=PrepareInstallation", AdminFactory.Form(new()
+        {
+            ["__RequestVerificationToken"] = token, ["Input.DisplayName"] = "", ["Input.InitialWorkers"] = "invalid"
+        }));
+        Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+        Assert.True(result.Headers.CacheControl?.NoStore);
+        Assert.Null(result.Headers.Location);
+        var html = await result.Content.ReadAsStringAsync();
+        var decoded = WebUtility.HtmlDecode(html);
+        Assert.Contains(factory.Inference.EnrollmentToken, decoded);
+        Assert.DoesNotContain(factory.Inference.EnrollmentToken, html);
+        Assert.DoesNotContain("<script>", html);
+        Assert.DoesNotContain("name=\"installation-token\"", html);
+        Assert.Contains("20/10/2026 à 12:15:00 UTC", decoded);
+        Assert.Contains(".\\Install.cmd -BackendUrl https://api.arkya.online", decoded);
+        Assert.DoesNotContain("-AgentId", decoded);
+        Assert.DoesNotContain("validation-summary-errors", html);
+        Assert.DoesNotContain(factory.Inference.EnrollmentToken, result.Headers.ToString());
+        Assert.DoesNotContain(InferenceFactory.AdminKey, html);
+        var issuance = Assert.Single(factory.Inference.Calls, call => call.Method != HttpMethod.Get);
+        Assert.Equal(HttpMethod.Post, issuance.Method);
+        Assert.Equal("/admin/inference/enrollment-grants", issuance.Path);
+        Assert.Null(issuance.Body);
+        Assert.Equal(originalAgent, factory.Inference.Agent);
+        factory.Inference.ReadError = null;
+        var subsequent = await browser.GetStringAsync("/Inference");
+        Assert.DoesNotContain(factory.Inference.EnrollmentToken, WebUtility.HtmlDecode(subsequent));
+        Assert.DoesNotContain("id=\"installation-token\"", subsequent);
+    }
+
+    [Fact]
+    public async Task UpdateValidatesItsOwnFieldsAndShowsPendingModelAndThreadChanges()
+    {
+        await using var factory = new InferenceFactory();
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var token = await AdminFactory.Token(browser, "/Inference");
+        var result = await browser.PostAsync("/Inference?handler=UpdateWorker", AdminFactory.Form(new()
+        {
+            ["__RequestVerificationToken"] = token, ["agentId"] = InferenceStub.AgentId,
+            ["workerId"] = "worker-one", ["threads"] = "8", ["modelId"] = "qwen35-08b",
+            ["Input.DisplayName"] = "", ["Input.ThreadsPerWorker"] = "invalid", ["Input.ModelId"] = "unknown"
+        }));
+        Assert.Equal(HttpStatusCode.Redirect, result.StatusCode);
+        var call = Assert.Single(factory.Inference.Calls, call => call.Method != HttpMethod.Get);
+        Assert.Equal(HttpMethod.Patch, call.Method);
+        Assert.Equal("/admin/inference/agents/cpu-bureau/workers/worker-one", call.Path);
+        Assert.Equal(2, call.Body!.Value.EnumerateObject().Count());
+        Assert.Equal(8, call.Body.Value.GetProperty("threads").GetInt32());
+        Assert.Equal("qwen35-08b", call.Body.Value.GetProperty("modelId").GetString());
+        var desired = Assert.Single(factory.Inference.Agent.DesiredWorkers);
+        Assert.Equal("worker-one", desired.WorkerId);
+        Assert.Equal("qwen35-08b", desired.ModelId);
+        var html = await browser.GetStringAsync("/Inference");
+        var decoded = WebUtility.HtmlDecode(html);
+        Assert.Contains("Redémarrage demandé", decoded);
+        Assert.Contains("8 threads demandés", decoded);
+        Assert.Contains("4 threads observés", decoded);
+        Assert.Contains("Qwen3.5", decoded);
+        Assert.Contains("LFM2.5", decoded);
+        factory.Inference.Agent = factory.Inference.Agent with
+        {
+            ObservedWorkers = [factory.Inference.Agent.ObservedWorkers[0] with { Threads = 8, ModelId = "qwen35-08b" }]
+        };
+        Assert.DoesNotContain("Redémarrage demandé", WebUtility.HtmlDecode(await browser.GetStringAsync("/Inference")));
+    }
+
+    [Theory]
+    [InlineData("AddWorker", "modelId", "")]
+    [InlineData("AddWorker", "modelId", "unknown")]
+    [InlineData("UpdateWorker", "modelId", "unknown")]
+    [InlineData("UpdateWorker", "threads", "0")]
+    [InlineData("UpdateWorker", "threads", "25")]
+    [InlineData("UpdateWorker", "threads", "invalid")]
+    [InlineData("UpdateWorker", "workerId", "../elsewhere")]
+    public async Task InvalidWorkerEditsNeverReachTheWriteApi(string handler, string name, string value)
+    {
+        await using var factory = new InferenceFactory();
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var form = new Dictionary<string, string>
+        {
+            ["__RequestVerificationToken"] = await AdminFactory.Token(browser, "/Inference"),
+            ["agentId"] = InferenceStub.AgentId, ["workerId"] = "worker-one", ["threads"] = "4", ["modelId"] = "lfm"
+        };
+        form[name] = value;
+        Assert.Equal(HttpStatusCode.BadRequest, (await browser.PostAsync("/Inference?handler=" + handler, AdminFactory.Form(form))).StatusCode);
+        Assert.DoesNotContain(factory.Inference.Calls, call => call.Method != HttpMethod.Get);
+    }
+
+    [Theory]
+    [InlineData("Create")]
+    [InlineData("AddWorker")]
+    [InlineData("UpdateWorker")]
+    public async Task UnavailableModelCatalogKeepsObservationsButPreventsModelWrites(string handler)
+    {
+        await using var factory = new InferenceFactory();
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var token = await AdminFactory.Token(browser, "/Inference");
+        factory.Inference.ModelsError = HttpStatusCode.ServiceUnavailable;
+        var form = CreateForm(token);
+        form["agentId"] = InferenceStub.AgentId;
+        form["workerId"] = "worker-one";
+        form["threads"] = "4";
+        form["modelId"] = "lfm";
+        var result = await browser.PostAsync("/Inference?handler=" + handler, AdminFactory.Form(form));
+        Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+        var html = await result.Content.ReadAsStringAsync();
+        Assert.Contains("Le catalogue de modèles est indisponible", WebUtility.HtmlDecode(html));
+        Assert.Contains("CPU Bureau", html);
+        Assert.Contains("handler=DeleteWorker", html);
+        Assert.Contains("name=\"modelId\" required disabled=\"disabled\"", html);
+        Assert.DoesNotContain(factory.Inference.Calls, call => call.Method != HttpMethod.Get);
+    }
+
+    [Fact]
+    public async Task EmptyModelCatalogIsUnavailableAndModelLabelsAreHtmlEncoded()
+    {
+        await using var factory = new InferenceFactory();
+        factory.Inference.Models = [new("lfm", "<script>catalogue</script>", "private-runtime-name")];
+        factory.Inference.Agent = factory.Inference.Agent with
+        {
+            ObservedWorkers = [factory.Inference.Agent.ObservedWorkers[0] with { ModelId = "<script>observed</script>" }]
+        };
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var html = await browser.GetStringAsync("/Inference");
+        Assert.Contains("<script>catalogue</script>", WebUtility.HtmlDecode(html));
+        Assert.Contains("<script>observed</script>", WebUtility.HtmlDecode(html));
+        Assert.DoesNotContain("<script>", html);
+        factory.Inference.Models = [];
+        Assert.Contains("Le catalogue de modèles est indisponible", WebUtility.HtmlDecode(await browser.GetStringAsync("/Inference")));
+    }
+
+    [Theory]
+    [InlineData("Create", HttpStatusCode.OK)]
+    [InlineData("AddWorker", HttpStatusCode.BadRequest)]
+    [InlineData("UpdateWorker", HttpStatusCode.BadRequest)]
+    public async Task SelectedModelMustBelongToTheLiveServiceCatalog(string handler, HttpStatusCode expected)
+    {
+        await using var factory = new InferenceFactory();
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var form = CreateForm(await AdminFactory.Token(browser, "/Inference"));
+        factory.Inference.Models = [new("lfm", "LFM uniquement", "lfm-runtime")];
+        form["Input.ModelId"] = "qwen35-08b";
+        form["agentId"] = InferenceStub.AgentId;
+        form["workerId"] = "worker-one";
+        form["threads"] = "4";
+        form["modelId"] = "qwen35-08b";
+        Assert.Equal(expected, (await browser.PostAsync("/Inference?handler=" + handler, AdminFactory.Form(form))).StatusCode);
+        Assert.DoesNotContain(factory.Inference.Calls, call => call.Method != HttpMethod.Get);
+    }
+
+    [Theory]
     [InlineData("Input.AgentId", "../other")]
     [InlineData("Input.AgentId", "UPPERCASE")]
     [InlineData("Input.DisplayName", "")]
@@ -102,6 +277,8 @@ public sealed class InferenceEndpointTests
     [InlineData("Input.InitialWorkers", "7")]
     [InlineData("Input.ThreadsPerWorker", "25")]
     [InlineData("Input.MaxWorkers", "13")]
+    [InlineData("Input.ModelId", "unknown")]
+    [InlineData("Input.ModelId", "")]
     public async Task InvalidCreationDoesNotReachTheWriteApi(string name, string value)
     {
         await using var factory = new InferenceFactory();
@@ -155,7 +332,7 @@ public sealed class InferenceEndpointTests
     }
 
     [Fact]
-    public async Task WorkerFormsSendOnlyIdentityAndThreadCountThenRedirect()
+    public async Task WorkerFormsSendSelectedModelAndThreadCountThenRedirect()
     {
         await using var factory = new InferenceFactory();
         using var browser = factory.Browser();
@@ -163,12 +340,13 @@ public sealed class InferenceEndpointTests
         var token = await AdminFactory.Token(browser, "/Inference");
         var add = await browser.PostAsync("/Inference?handler=AddWorker", AdminFactory.Form(new()
         {
-            ["__RequestVerificationToken"] = token, ["agentId"] = InferenceStub.AgentId, ["threads"] = "5", ["model"] = "unapproved"
+            ["__RequestVerificationToken"] = token, ["agentId"] = InferenceStub.AgentId, ["threads"] = "5", ["modelId"] = "qwen35-08b", ["model"] = "unapproved"
         }));
         Assert.Equal(HttpStatusCode.Redirect, add.StatusCode);
         var call = Assert.Single(factory.Inference.Calls, call => call.Method == HttpMethod.Post);
         Assert.Equal(5, call.Body!.Value.GetProperty("threads").GetInt32());
-        Assert.Single(call.Body.Value.EnumerateObject());
+        Assert.Equal(2, call.Body.Value.EnumerateObject().Count());
+        Assert.Equal("qwen35-08b", call.Body.Value.GetProperty("modelId").GetString());
         var remove = await browser.PostAsync("/Inference?handler=DeleteWorker", AdminFactory.Form(new()
         {
             ["__RequestVerificationToken"] = token, ["agentId"] = InferenceStub.AgentId, ["workerId"] = "worker-one"
@@ -234,6 +412,6 @@ public sealed class InferenceEndpointTests
     {
         ["__RequestVerificationToken"] = token, ["Input.AgentId"] = InferenceStub.AgentId,
         ["Input.DisplayName"] = "CPU Bureau", ["Input.InitialWorkers"] = "3",
-        ["Input.ThreadsPerWorker"] = "4", ["Input.MaxWorkers"] = "6"
+        ["Input.ThreadsPerWorker"] = "4", ["Input.MaxWorkers"] = "6", ["Input.ModelId"] = "lfm"
     };
 }

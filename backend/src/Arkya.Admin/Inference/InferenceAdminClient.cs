@@ -17,14 +17,24 @@ public sealed class InferenceAdminClient(HttpClient client, IOptions<InferenceAp
     public Task<InferenceAgentSummary[]> ListAsync(CancellationToken ct) =>
         ReadAsync<InferenceAgentSummary[]>(HttpMethod.Get, "admin/inference/agents", null, ct);
 
+    public Task<InferenceModelOption[]> ModelsAsync(CancellationToken ct) =>
+        ReadAsync<InferenceModelOption[]>(HttpMethod.Get, "admin/inference/models", null, ct);
+
+    public Task<InferenceEnrollmentGrantResponse> PrepareInstallationAsync(CancellationToken ct) =>
+        ReadAsync<InferenceEnrollmentGrantResponse>(HttpMethod.Post, "admin/inference/enrollment-grants", null, ct);
+
     public Task<InferenceAgentSummary> GetAsync(string agentId, CancellationToken ct) =>
         ReadAsync<InferenceAgentSummary>(HttpMethod.Get, AgentPath(agentId), null, ct);
 
     public Task<CreateInferenceAgentResponse> CreateAsync(CreateInferenceAgentRequest agent, CancellationToken ct) =>
         ReadAsync<CreateInferenceAgentResponse>(HttpMethod.Post, "admin/inference/agents", agent, ct);
 
-    public Task AddWorkerAsync(string agentId, int threads, CancellationToken ct) =>
-        MutateAsync(HttpMethod.Post, AgentPath(agentId) + "/workers", new AddInferenceWorkerRequest(threads), ct);
+    public Task AddWorkerAsync(string agentId, int threads, CancellationToken ct, string modelId = InferenceModels.DefaultModelId) =>
+        MutateAsync(HttpMethod.Post, AgentPath(agentId) + "/workers", new AddInferenceWorkerRequest(threads, modelId), ct);
+
+    public Task UpdateWorkerAsync(string agentId, string workerId, int threads, string modelId, CancellationToken ct) =>
+        MutateAsync(HttpMethod.Patch, AgentPath(agentId) + "/workers/" + Uri.EscapeDataString(workerId),
+            new UpdateInferenceWorkerRequest(threads, modelId), ct);
 
     public Task DeleteWorkerAsync(string agentId, string workerId, CancellationToken ct) =>
         MutateAsync(HttpMethod.Delete, AgentPath(agentId) + "/workers/" + Uri.EscapeDataString(workerId), null, ct);
@@ -72,7 +82,7 @@ public sealed class InferenceAdminClient(HttpClient client, IOptions<InferenceAp
         if (response.IsSuccessStatusCode) return;
         throw new InferenceApiException(response.StatusCode, response.StatusCode switch
         {
-            HttpStatusCode.BadRequest => "Vérifiez l’identifiant, le nom et les limites de workers et de threads.",
+            HttpStatusCode.BadRequest => "Vérifiez l’identifiant, le nom, le modèle et les limites de workers et de threads.",
             HttpStatusCode.Conflict => "La configuration a changé ou une limite est atteinte. Actualisez avant de réessayer ; une machine doit être vide pour être supprimée.",
             HttpStatusCode.NotFound => "Cette machine ou ce worker n’existe plus. Actualisez la liste.",
             HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "L’accès à l’inférence a été refusé. Vérifiez la configuration de l’administration.",

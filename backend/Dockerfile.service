@@ -8,7 +8,7 @@ ARG APPLICATION
 WORKDIR /source
 COPY src/ src/
 RUN case "${APPLICATION}" in \
-      Arkya.Identity.Api|Arkya.Gateway|Arkya.Characters.Api|Arkya.Content.Api|Arkya.Admin|Arkya.Realms.Api|Arkya.Backend.Api) ;; \
+      Arkya.Identity.Api|Arkya.Gateway|Arkya.Characters.Api|Arkya.Content.Api|Arkya.Admin|Arkya.Realms.Api|Arkya.Backend.Api|Arkya.Inference.Api) ;; \
       *) echo 'Select a supported APPLICATION build argument.' >&2; exit 1 ;; \
     esac \
     && dotnet restore "src/${APPLICATION}/${APPLICATION}.csproj" --arch "${TARGETARCH}" \

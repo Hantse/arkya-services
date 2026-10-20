@@ -6,6 +6,7 @@ on:
     paths:
       - 'backend/**'
       - '!backend/deploy/gitops/beta/kustomization.yaml'
+      - '!backend/deploy/gitops/inference-control/kustomization.yaml'
       - 'sites/arkya/**'
       - 'docs/**'
       - 'scripts/ci/**'
@@ -73,7 +74,7 @@ jobs:
       - name: Every deployable project must have an image
         shell: bash
         env:
-          APPLICATIONS: Arkya.Identity.Api Arkya.Gateway Arkya.Characters.Api Arkya.Content.Api Arkya.Admin Arkya.Realms.Api Arkya.Backend.Api
+          APPLICATIONS: Arkya.Identity.Api Arkya.Gateway Arkya.Characters.Api Arkya.Content.Api Arkya.Admin Arkya.Realms.Api Arkya.Backend.Api Arkya.Inference.Api
         run: |
           python3 - <<'PY'
           import os
@@ -87,6 +88,8 @@ jobs:
         run: python3 -m unittest discover -s scripts/ci -p 'test_*.py' -v
       - name: Validate beta manifests
         run: python3 backend/deploy/gitops/Test-Manifests.py
+      - name: Validate the inference component and activation preview
+        run: python3 backend/deploy/gitops/inference-control/Test-Manifests.py
       - name: Validate operations manifest renderer
         shell: pwsh
         run: ./backend/deploy/realms/Test-Manifests.ps1
@@ -122,6 +125,7 @@ jobs:
           - { name: admin, application: Arkya.Admin, context: backend, dockerfile: backend/Dockerfile.service }
           - { name: realms, application: Arkya.Realms.Api, context: backend, dockerfile: backend/Dockerfile.service }
           - { name: backend, application: Arkya.Backend.Api, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: inference, application: Arkya.Inference.Api, context: backend, dockerfile: backend/Dockerfile.service }
           - { name: frontend, application: '', context: sites/arkya, dockerfile: sites/arkya/Dockerfile }
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -225,10 +229,16 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           assert_current_source() {
-            if ! git diff --quiet "$GITHUB_SHA" HEAD -- . ':(exclude)backend/deploy/gitops/beta/kustomization.yaml'; then
+            if ! git diff --quiet "$GITHUB_SHA" HEAD -- . \
+              ':(exclude)backend/deploy/gitops/beta/kustomization.yaml' \
+              ':(exclude)backend/deploy/gitops/inference-control/kustomization.yaml'; then
               echo '::error::Newer source or deployment configuration exists. Let its tested release finish; do not promote an older generation.'
               exit 1
             fi
+            python3 scripts/ci/Promote-ServiceImages.py \
+              --assert-source-commit "$GITHUB_SHA" \
+              --kustomization backend/deploy/gitops/beta/kustomization.yaml \
+              --inference-kustomization backend/deploy/gitops/inference-control/kustomization.yaml
           }
           git pull --rebase origin "$DEFAULT_BRANCH"
           git merge-base --is-ancestor "$GITHUB_SHA" HEAD
@@ -236,8 +246,9 @@ jobs:
           python3 scripts/ci/Promote-ServiceImages.py \
             --artifact-directory "$RUNNER_TEMP/service-images" --source-commit "$GITHUB_SHA" \
             --kustomization backend/deploy/gitops/beta/kustomization.yaml \
+            --inference-kustomization backend/deploy/gitops/inference-control/kustomization.yaml \
             --release-file "$RUNNER_TEMP/service-images/release.json"
-          git add -- backend/deploy/gitops/beta/kustomization.yaml
+          git add -- backend/deploy/gitops/beta/kustomization.yaml backend/deploy/gitops/inference-control/kustomization.yaml
           if git diff --cached --quiet; then
             echo 'The complete release is already pinned.' >> "$GITHUB_STEP_SUMMARY"
             exit 0
@@ -246,7 +257,7 @@ jobs:
           for attempt in 1 2 3; do
             assert_current_source
             if git push origin "HEAD:$DEFAULT_BRANCH"; then
-              echo 'All service and site digests promoted; Argo CD can reconcile the beta overlay.' >> "$GITHUB_STEP_SUMMARY"
+              echo 'All nine service and site digests promoted together; Argo CD can reconcile activated components.' >> "$GITHUB_STEP_SUMMARY"
               exit 0
             fi
             git pull --rebase origin "$DEFAULT_BRANCH"
