@@ -270,7 +270,8 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             pod["securityContext"]!["runAsNonRoot"] = true;
             pod["securityContext"]!["runAsUser"] = 1654;
             pod["securityContext"]!["runAsGroup"] = 1654;
-            pod["nodeSelector"] = new JsonObject { ["kubernetes.io/arch"] = "amd64" };
+            pod["securityContext"]!["fsGroup"] = 1654;
+            pod["nodeSelector"] = new JsonObject { ["kubernetes.io/os"] = "linux", ["kubernetes.io/arch"] = "amd64" };
             pod["volumes"] = new JsonArray(new JsonObject { ["name"] = "tmp", ["emptyDir"] = new JsonObject { ["medium"] = "Memory", ["sizeLimit"] = "512Mi" } });
         }
         if (realm.Profile.ImagePullSecretName is { } pullSecret)

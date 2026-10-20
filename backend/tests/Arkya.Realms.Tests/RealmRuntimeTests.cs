@@ -54,6 +54,8 @@ public sealed class RealmRuntimeTests
         Assert.DoesNotContain(runtime.DedicatedKeySeed, manifest.ToJsonString());
         Assert.DoesNotContain("DEDICATED_KEY", System.Text.Json.JsonSerializer.Serialize(realm));
         Assert.Equal(1654, pod["securityContext"]!["runAsUser"]!.GetValue<int>());
+        Assert.Equal(1654, pod["securityContext"]!["fsGroup"]!.GetValue<int>());
+        Assert.Equal("linux", pod["nodeSelector"]!["kubernetes.io/os"]!.GetValue<string>());
         Assert.True(container["securityContext"]!["readOnlyRootFilesystem"]!.GetValue<bool>());
         Assert.Equal("6Gi", container["resources"]!["limits"]!["memory"]!.GetValue<string>());
         Assert.Equal("/tmp", container["volumeMounts"]![0]!["mountPath"]!.GetValue<string>());
