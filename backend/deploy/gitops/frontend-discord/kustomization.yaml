@@ -1,0 +1,99 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../beta
+# Inherit the release digests promoted by CI; keep a single image source.
+patches:
+- target:
+    kind: Deployment
+    name: arkya-(characters|content|realms|admin|backend)
+  patch: |-
+    $patch: delete
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: unused
+- target:
+    kind: Service
+    name: arkya-(characters|content|realms|admin|backend)
+  patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: unused
+- target:
+    kind: NetworkPolicy
+    name: arkya-(characters|content|realms|admin|backend)
+  patch: |-
+    $patch: delete
+    apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: unused
+- target:
+    kind: ConfigMap
+    name: arkya-(characters|content|realms|admin|backend)-config
+  patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: unused
+- patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: arkya-operations
+- patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: arkya-admin-keys
+      namespace: arkya-operations
+- patch: |-
+    $patch: delete
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: arkya-frontend
+      namespace: arkya-identity
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-gateway-config
+      namespace: arkya-identity
+    data:
+      AllowedHosts: api.arkya.online
+      Gateway__CharactersEnabled: 'false'
+      Gateway__AdminEnabled: 'false'
+- patch: |-
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: arkya-frontend
+      namespace: arkya-identity
+    spec:
+      type: LoadBalancer
+      externalTrafficPolicy: Local
+      ports:
+      - $patch: replace
+      - name: http
+        port: 80
+        targetPort: http
+- target:
+    kind: NetworkPolicy
+    name: arkya-frontend
+  patch: |-
+    - op: replace
+      path: /spec/ingress
+      value:
+      - from:
+        - ipBlock:
+            cidr: 192.168.100.0/24
+        ports:
+        - protocol: TCP
+          port: 8080

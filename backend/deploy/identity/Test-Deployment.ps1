@@ -3,12 +3,13 @@
 param(
     [switch] $PrepareWebsiteConfig,
     [ValidateSet('https://identity.arkya.online', 'https://api.arkya.online')]
-    [string] $Origin = 'https://identity.arkya.online'
+    [string] $Origin = 'https://identity.arkya.online',
+    [ValidateSet('https://arkya.online', 'https://arkya-atlas.easykrill33.chatgpt.site')]
+    [string] $SiteOrigin = 'https://arkya-atlas.easykrill33.chatgpt.site'
 )
 
 $ErrorActionPreference = 'Stop'
 $expectedService = if ($Origin -eq 'https://api.arkya.online') { 'arkya-gateway' } else { 'arkya-identity' }
-$siteOrigin = 'https://arkya-atlas.easykrill33.chatgpt.site'
 $handler = [Net.Http.HttpClientHandler]::new()
 $handler.AllowAutoRedirect = $false
 $handler.UseCookies = $false
@@ -71,7 +72,7 @@ try {
     Assert-Check ($pending.Status -eq 202 -and ($pending.Body | ConvertFrom-Json).status -eq 'pending') 'Challenge polling did not return the expected pending state.'
     Assert-Cors $pending
     Assert-Check ($pending.Headers['Access-Control-Expose-Headers'] -match 'Retry-After') 'Retry-After must be exposed to the browser.'
-    Write-Output 'HTTPS, public routes, CORS, MongoDB challenge creation and polling passed. No Discord account was connected.'
+    Write-Output "HTTPS, public routes, CORS for $SiteOrigin, MongoDB challenge creation and polling passed. No Discord account was connected."
     if ($PrepareWebsiteConfig) {
         $directory = Join-Path $PSScriptRoot '.local'
         New-Item -ItemType Directory -Path $directory -Force | Out-Null

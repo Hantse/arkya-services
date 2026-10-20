@@ -4,6 +4,7 @@ Requires kubectl (or KUBECTL) and PyYAML. Never contacts a Kubernetes cluster.
 """
 
 import argparse
+from copy import deepcopy
 import ipaddress
 import os
 from pathlib import Path
@@ -186,7 +187,73 @@ def check_services(documents, require_digests):
     return configs
 
 
-def check_bootstrap(documents, bootstrap_project):
+def check_frontend_discord(documents, beta_documents):
+    resources, beta = index(documents), index(beta_documents)
+    expected_keys = {
+        ("Namespace", "", IDENTITY),
+        ("PersistentVolumeClaim", IDENTITY, "arkya-identity-keys"),
+    }
+    for key in expected_keys:
+        require(resources[key] == beta[key], f"Frontend/Discord must preserve {key}, including storage protection")
+    gateway_config = next(d["data"] for d in documents if d["kind"] == "ConfigMap"
+                          and d["metadata"]["name"].startswith("arkya-gateway-config-"))
+    for app in ("identity", "gateway", "frontend"):
+        name = "arkya-" + app
+        key = ("Deployment", IDENTITY, name)
+        deployment, original = resources[key], beta[key]
+        container, = deployment["spec"]["template"]["spec"]["containers"]
+        original_container, = original["spec"]["template"]["spec"]["containers"]
+        config_name, = [e["configMapRef"]["name"] for e in container["envFrom"] if "configMapRef" in e]
+        original_config_name, = [e["configMapRef"]["name"] for e in original_container["envFrom"] if "configMapRef" in e]
+        require(re.fullmatch(re.escape(name + "-config-") + r"[a-z0-9]{10}", config_name),
+                f"Frontend/Discord requires a generated ConfigMap hash for {name}")
+        config_key = ("ConfigMap", IDENTITY, config_name)
+        expected_keys.add(config_key)
+        expected = deepcopy(beta[("ConfigMap", IDENTITY, original_config_name)])
+        expected["metadata"]["name"] = config_name
+        if app == "gateway":
+            expected["data"].update(AllowedHosts="api.arkya.online",
+                                    Gateway__CharactersEnabled="false", Gateway__AdminEnabled="false")
+        require(resources[config_key] == expected, f"Unexpected frontend/Discord configuration for {name}")
+        require((config_name != original_config_name) == (app == "gateway"),
+                f"Frontend/Discord must roll only the changed gateway configuration: {name}")
+        expected = deepcopy(original)
+        for entry in expected["spec"]["template"]["spec"]["containers"][0]["envFrom"]:
+            if "configMapRef" in entry:
+                entry["configMapRef"]["name"] = config_name
+        require(deployment == expected,
+                f"Frontend/Discord must inherit {name}'s promoted image, security, probes and storage unchanged")
+        for kind in ("Deployment", "Service", "NetworkPolicy"):
+            expected_keys.add((kind, IDENTITY, name))
+        service_key = ("Service", IDENTITY, name)
+        expected = deepcopy(beta[service_key])
+        if app == "frontend":
+            expected["spec"].update(type="LoadBalancer", externalTrafficPolicy="Local",
+                                    ports=[{"name": "http", "port": 80, "targetPort": "http"}])
+            reserved_ip = resources[service_key]["spec"].get("loadBalancerIP")
+            if reserved_ip:
+                address = ipaddress.ip_address(reserved_ip)
+                require(address.version == 4 and address.is_private and not address.is_loopback
+                        and not address.is_link_local and not address.is_multicast
+                        and not address.is_unspecified and reserved_ip != "192.168.100.218",
+                        "Frontend needs a distinct private IP; availability must be checked on the cluster")
+                expected["spec"]["loadBalancerIP"] = reserved_ip
+            require({"name": "http", "containerPort": 8080} in container["ports"],
+                    "Frontend LoadBalancer must reach HTTP on container port 8080")
+        require(resources[service_key] == expected, f"Unexpected frontend/Discord Service for {name}")
+        policy_key = ("NetworkPolicy", IDENTITY, name)
+        expected = deepcopy(beta[policy_key])
+        if app == "frontend":
+            expected["spec"]["ingress"] = [{
+                "from": [{"ipBlock": {"cidr": gateway_config["ProxyTrust__KnownNetworks__0"]}}],
+                "ports": [{"protocol": "TCP", "port": 8080}],
+            }]
+        require(resources[policy_key] == expected, f"Unexpected frontend/Discord network policy for {name}")
+    require(len(resources) == 14 and set(resources) == expected_keys,
+            "Frontend/Discord must contain only 3 workloads/configs/services/policies, Identity namespace and PVC")
+
+
+def check_bootstrap(documents, bootstrap_project, *, frontend_discord=False):
     resources = index(documents)
     application, = [d for d in documents if d["kind"] == "Application"]
     project, = [d for d in documents if d["kind"] == "AppProject"]
@@ -194,18 +261,35 @@ def check_bootstrap(documents, bootstrap_project):
             "Argo control resources must target the installed argocd namespace")
     require(application["spec"]["project"] == project["metadata"]["name"] == "arkya-beta",
             "The workload application must use the workload project")
+    require(application["metadata"]["name"] == "arkya-beta",
+            "Deployment profiles must retain one owning application")
     require(sync_wave(project) < sync_wave(application), "The workload project must sync before its application")
     require("automated" not in application["spec"].get("syncPolicy", {}), "Bootstrap must await the operator's first sync")
     sources = {(s["repoURL"], s["path"], s["targetRevision"]) for s in application["spec"]["sources"]}
-    require(sources == {
+    expected_sources = {
         ("git@github.com:Hantse/arkya-services.git", "backend/deploy/gitops/beta", "master"),
         ("git@github.com:Hantse/arkya-mmorpg.git", "deploy/gitops/beta", "main"),
-    }, "Argo must reconcile both owning repositories")
-    require({d["namespace"] for d in project["spec"]["destinations"]} == NAMESPACES | {GAME}, "Argo namespace allowlist mismatch")
+    }
+    expected_namespaces = NAMESPACES | {GAME}
+    if frontend_discord:
+        expected_sources = {
+            ("git@github.com:Hantse/arkya-services.git", "backend/deploy/gitops/frontend-discord", "master"),
+        }
+        expected_namespaces = {IDENTITY}
+        require("FailOnSharedResource=true" in application["spec"]["syncPolicy"]["syncOptions"],
+                "Frontend/Discord must reject conflicting resource ownership")
+    require(sources == expected_sources and len(application["spec"]["sources"]) == len(expected_sources),
+            "Argo sources must match the selected deployment profile")
+    require(application["spec"]["destination"] == {"server": "https://kubernetes.default.svc", "namespace": IDENTITY},
+            "Workloads must target the existing cluster and Identity namespace")
+    require({(d["server"], d["namespace"]) for d in project["spec"]["destinations"]} ==
+            {("https://kubernetes.default.svc", ns) for ns in expected_namespaces}, "Argo namespace allowlist mismatch")
     require({s[0] for s in sources} == set(project["spec"]["sourceRepos"]), "Argo source allowlist mismatch")
     require(project["spec"]["clusterResourceWhitelist"] == [{"group": "", "kind": "Namespace"}], "Unnecessary cluster-wide Argo permissions")
-    require(not any(item["group"] in {"argoproj.io", "*"} for item in project["spec"]["namespaceResourceWhitelist"]),
-            "The workload project must not administer Argo control resources")
+    require({(item["group"], item["kind"]) for item in project["spec"]["namespaceResourceWhitelist"]} == {
+        ("", "ConfigMap"), ("", "Service"), ("", "PersistentVolumeClaim"), ("apps", "Deployment"),
+        ("networking.k8s.io", "NetworkPolicy"), ("networking.k8s.io", "Ingress")},
+            "The workload project must allow only its declared workload types")
     require(len(resources) == 2, "Unexpected bootstrap resources")
     require(identity(bootstrap_project) == ("AppProject", "argocd", "arkya-bootstrap"),
             "The parent needs a distinct administrative bootstrap project")
@@ -263,11 +347,16 @@ def main():
     args = parser.parse_args()
     documents = render(ROOT / "beta")
     configs = check_services(documents, args.require_digests)
-    check_bootstrap(render(ROOT / "bootstrap"), yaml.safe_load((ROOT / "bootstrap-project.yaml").read_text(encoding="utf-8")))
+    bootstrap_project = yaml.safe_load((ROOT / "bootstrap-project.yaml").read_text(encoding="utf-8"))
+    check_bootstrap(render(ROOT / "bootstrap"), bootstrap_project)
+    frontend_documents = render(ROOT / "frontend-discord")
+    check_frontend_discord(frontend_documents, documents)
+    check_bootstrap(render(ROOT / "bootstrap-frontend-discord"), bootstrap_project, frontend_discord=True)
     unity_count = 0
     if args.unity_path:
         unity_count = check_unity(documents, args.unity_path, configs, args.require_digests)
     print(f"Validated {len(documents)} rendered service resources, 8 deployments, TLS/network/storage contracts and the Argo bootstrap.")
+    print(f"Validated {len(frontend_documents)} frontend/Discord resources, 3 inherited deployments and the single-source Argo bootstrap.")
     if unity_count:
         print(f"Validated {unity_count} Unity resources and the combined service/admission/WSS contracts.")
     if not args.require_digests:

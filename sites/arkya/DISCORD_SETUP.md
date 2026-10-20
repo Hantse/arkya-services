@@ -2,7 +2,73 @@
 
 La vitrine est publique et bilingue. Le parcours de connexion et le lancement du client Unity sont raccordés dans le frontend : `dist/auth-config.js` désigne les vrais services. Cette configuration ne garantit pas leur disponibilité. L’entrée publique prévue est **`https://api.arkya.online`**, portée par une gateway YARP qui transmet les requêtes à Identity dans k3s. Le domaine `arkya.online` est acheté chez Gandi ; le Traefik externe gérera HTTPS et le certificat.
 
-Les manifests Gateway et Identity ainsi que leurs deux workflows GitHub Actions sont préparés. Les premières publications d’images, l’application au cluster, le DNS, la configuration Traefik et Discord, puis une connexion réelle restent à réaliser. Cette mise à jour du site n’active aucun de ces services. La [page d’avancement](dist/development.html) présente cet état en FR/EN.
+Les manifests GitOps référencent maintenant les images par digest. Cela ne confirme pas leur disponibilité ni leur déploiement : l’état réel du cluster, HTTPS, la configuration Discord et une connexion réelle restent à vérifier. Cette configuration du site n’active aucun de ces services.
+
+## Déploiement progressif — étape 1 : frontend et connexion Discord
+
+La cible est `https://arkya.online` avec l’API `https://api.arkya.online`.
+Cette étape utilise uniquement le frontend, Gateway et Identity, ainsi que
+la base MongoDB d’Identity. Les personnages, le backoffice et les players
+Unity appartiennent aux étapes suivantes. Le frontend peut démarrer sans
+le service Unity ; le lancement du jeu reste indisponible dans ce périmètre.
+
+Utiliser le [profil frontend-discord](../../backend/deploy/gitops/frontend-discord/README.md),
+inspiré du dépôt `arksaas-infra` : deux LoadBalancers privés pour frontend et
+Gateway, Identity en ClusterIP, une seule source Argo. Traefik existe déjà
+et reste hors du périmètre de ce déploiement.
+
+Relever d’abord l’état des ressources depuis le contexte du cluster Arkya :
+
+```bash
+kubectl config current-context
+kubectl -n argocd get applications
+kubectl -n arkya-identity get deployments,pods,services,ingresses,pvc
+kubectl get services -A -o wide
+```
+
+Les prérequis du profil existant sont, dans `arkya-identity` :
+
+- `arkya-identity-secrets`, avec `Mongo__ConnectionString`, `Discord__ClientId`,
+  `Discord__ClientSecret` et `ServiceAuthentication__Key` ;
+- `arkya-ghcr` pour les images privées ;
+- `arkya-identity-tls` pour le listener HTTPS interne déclaré dans Identity ;
+- le PVC `arkya-identity-keys` pour les clés persistantes, créé par le profil.
+
+Les trois Deployments ont également leurs ConfigMaps, Services et
+NetworkPolicies. La Gateway conserve le LoadBalancer `192.168.100.218` ;
+l'adresse privée du frontend est allouée par le cluster ou réservée après
+vérification de disponibilité. Ce profil ne crée aucun ingress ni certificat
+public. Le parent Argo doit utiliser `bootstrap-frontend-discord`, qui
+configure la même Application `arkya-beta` ; suivre la procédure du profil
+avant le sync pour éviter une seconde propriété ou un déploiement complet.
+
+Le callback à enregistrer dans Discord est exactement
+`https://api.arkya.online/v1/auth/discord/callback`.
+
+Depuis la racine du dépôt, vérifier l’origine réellement utilisée :
+
+```powershell
+./backend/deploy/identity/Test-Deployment.ps1 -Origin https://api.arkya.online -SiteOrigin https://arkya.online
+```
+
+Ce contrôle vérifie HTTPS, CORS, les routes publiques/privées, puis crée un
+challenge temporaire MongoDB et vérifie son polling. Il ne connecte aucun
+compte Discord. `dist/auth-config.js` pointe déjà vers la Gateway : aucune
+régénération de ce fichier n’est nécessaire pour cette étape. Le paramètre
+`-SiteOrigin` conserve par défaut l’ancienne origine Sites pour les commandes
+historiques.
+
+Le critère de fin est une connexion Discord réelle depuis
+`https://arkya.online/account.html`, la restauration du compte après
+rechargement, puis la déconnexion avec refus de l’ancienne session.
+
+**Constat du 20 octobre 2026 depuis le poste de travail :** les deux domaines
+résolvent vers `77.42.49.61`, mais présentent `CN=TRAEFIK DEFAULT CERT`.
+La validation TLS refuse le nom et la chaîne du certificat. L’API Kubernetes
+du contexte local à `https://5.135.64.45:6443` ne répond pas ; aucun état
+des workloads n’a donc pu être confirmé et aucune ressource distante n’a été
+modifiée. Les 92 tests Node du frontend passent, sans valider la connexion
+Discord publique.
 
 ## URL à renseigner dans Discord dès maintenant
 

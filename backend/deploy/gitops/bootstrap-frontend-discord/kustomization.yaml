@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../bootstrap
+# Replace the source of the same Application, never create a second owner.
+patches:
+- target:
+    kind: Application
+    name: arkya-beta
+  patch: |-
+    - op: replace
+      path: /spec/sources
+      value:
+      - repoURL: git@github.com:Hantse/arkya-services.git
+        targetRevision: master
+        path: backend/deploy/gitops/frontend-discord
+    - op: add
+      path: /spec/syncPolicy/syncOptions/-
+      value: FailOnSharedResource=true
+- target:
+    kind: AppProject
+    name: arkya-beta
+  patch: |-
+    - op: replace
+      path: /spec/description
+      value: Arkya frontend and Discord login deployment.
+    - op: replace
+      path: /spec/sourceRepos
+      value:
+      - git@github.com:Hantse/arkya-services.git
+    - op: replace
+      path: /spec/destinations
+      value:
+      - server: https://kubernetes.default.svc
+        namespace: arkya-identity

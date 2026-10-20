@@ -34,6 +34,14 @@ L’entrée publique préparée est maintenant **`api.arkya.online`**, avec [une
 
 La confiance dans les en-têtes HTTPS est contrôlée séparément à chaque saut : réseau source Traefik dans la gateway, réseau des pods gateway dans Identity/Characters. YARP remplace les en-têtes transférés à partir du contexte normalisé. Les liaisons HTTP Traefik→gateway et gateway→Identity sont limitées aux réseaux privés autorisés ; les API internes interservices conservent leurs exigences TLS et clés de service. Les NetworkPolicies limitent l’entrée dans Identity aux pods gateway. Le port de gestion séparé expose les sondes kubelet : la readiness Identity teste MongoDB, celle de la gateway teste seulement son propre processus. Identity conserve son réplica et son volume de clés Data Protection. Le routage Characters s’active lorsque sa destination et ses dépendances sont déployées ; aucun déploiement Characters n’est inventé par ces manifests. Ces fichiers restent à appliquer au cluster.
 
+Le [profil initial frontend et Discord](../backend/deploy/gitops/frontend-discord/README.md)
+reprend le modèle `arksaas-infra` : frontend et gateway sur deux LoadBalancers
+privés, Identity en ClusterIP et Traefik existant géré séparément. Il hérite
+des images de la bêta, mais ne rend que ces trois services ; les routes Admin
+et Characters sont désactivées. Son bootstrap configure la même Application
+Argo avec une seule source. La bêta complète conserve son profil distinct,
+avec ingress site et deuxième source Unity.
+
 ## Client et serveur dédié Unity
 
 La [conception du combat et des classes](GAMEPLAY_CLASSES.md) prévoit Warrior, Scout, Mage, Cleric et Druid, une classe active à la fois, des sorts hérités des autres classes et un rating de niveau global. Elle distingue les règles confirmées des choix encore ouverts ; ce système de progression n'est pas encore implémenté.
