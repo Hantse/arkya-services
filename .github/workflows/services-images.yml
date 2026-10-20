@@ -60,6 +60,7 @@ jobs:
             backend
             sites/arkya
             scripts/ci
+            .github/workflows
       - name: Verify public site assets are hydrated
         run: python3 scripts/ci/Check-SiteAssets.py sites/arkya/dist
       - name: Set up deployment validation tools
