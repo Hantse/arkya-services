@@ -1,7 +1,9 @@
 const STORAGE_KEY = 'arkya-session-v1';
+const PENDING_KEY = 'arkya-discord-pending-v1';
 const MIN_POLL_SECONDS = 5;
 const MAX_SESSION_MS = 8 * 60 * 60 * 1000;
 const MAX_CHALLENGE_MS = 5 * 60 * 1000 + 30 * 1000;
+const MAX_WEB_CHALLENGE_MS = 5 * 60 * 1000;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const SECRET = /^[A-Za-z0-9_-]{43}$/;
 
@@ -81,6 +83,21 @@ function base64Url(bytes) {
   return btoa(String.fromCharCode(...bytes)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
+function webReturnUrl(value, siteOrigin) {
+  try {
+    const target = new URL(value);
+    const site = new URL(siteOrigin);
+    if (typeof value !== 'string' || target.href !== value || target.origin !== site.origin ||
+      target.username || target.password || target.pathname !== '/account.html' || target.hash ||
+      (target.protocol !== 'https:' && !(target.protocol === 'http:' && isLoopback(target.hostname)))) return null;
+    const params = target.searchParams;
+    if ([...params.keys()].some(key => !['lang', 'returnTo'].includes(key)) ||
+      params.getAll('lang').length !== 1 || !['fr', 'en'].includes(params.get('lang')) ||
+      params.getAll('returnTo').length > 1 || (params.has('returnTo') && params.get('returnTo') !== 'play.html')) return null;
+    return target.href;
+  } catch { return null; }
+}
+
 /** Arkya Identity transport. Discord credentials never enter this client. */
 export function createAuthClient({
   baseUrl,
@@ -135,10 +152,55 @@ export function createAuthClient({
     return verified && record ? publicSession(record) : null;
   }
 
-  function cancel() {
+  function suspend() {
     loginRevision += 1;
     pending = null;
     for (const controller of loginRequests) controller.abort();
+  }
+
+  function cancel() {
+    suspend();
+    try { storage?.removeItem(PENDING_KEY); } catch { /* No new navigation can start without writable storage. */ }
+  }
+
+  function persistPending(value) {
+    try {
+      if (!storage) throw new Error();
+      const serialized = JSON.stringify(value);
+      storage.setItem(PENDING_KEY, serialized);
+      if (storage.getItem(PENDING_KEY) !== serialized) throw new Error();
+    } catch {
+      cancel();
+      throw authError('storage_unavailable');
+    }
+  }
+
+  function resume({ returnUrl } = {}) {
+    let raw;
+    try { raw = storage?.getItem(PENDING_KEY); }
+    catch { throw authError('storage_unavailable'); }
+    if (!raw) return null;
+    try {
+      const value = JSON.parse(raw);
+      if (!available || !value || value.version !== 1 || value.apiOrigin !== origin ||
+        !webReturnUrl(value.returnUrl, siteOrigin) || value.returnUrl !== returnUrl ||
+        typeof value.challengeId !== 'string' || !/^[0-9a-f]{32}$/i.test(value.challengeId) ||
+        typeof value.codeVerifier !== 'string' || !SECRET.test(value.codeVerifier) ||
+        !Number.isInteger(value.createdAt) || value.createdAt > now() ||
+        !Number.isInteger(value.expires) || value.expires <= value.createdAt ||
+        value.expires > value.createdAt + MAX_WEB_CHALLENGE_MS ||
+        (value.nextPollAt !== undefined && (!Number.isInteger(value.nextPollAt) ||
+          value.nextPollAt < value.createdAt || value.nextPollAt > value.expires + 300000)) ||
+        !Number.isInteger(value.interval) || value.interval < MIN_POLL_SECONDS || value.interval > 300) throw authError('invalid_response');
+      if (now() >= value.expires) throw authError('expired');
+      loginRevision += 1;
+      for (const controller of loginRequests) controller.abort();
+      pending = { ...value, nextPollAt: value.nextPollAt ?? now(), revision: loginRevision, inFlight: null };
+      return { expiresAt: new Date(value.expires).toISOString(), pollIntervalSeconds: value.interval };
+    } catch (error) {
+      cancel();
+      throw authError(error?.code === 'expired' ? 'expired' : 'invalid_response');
+    }
   }
 
   async function request(path, { method = 'GET', body, token, controllers = loginRequests } = {}) {
@@ -200,23 +262,38 @@ export function createAuthClient({
     }
   }
 
-  async function begin() {
+  async function begin({ returnUrl } = {}) {
     if (!available) throw authError('unavailable');
     cancel();
+    if (returnUrl !== undefined && !webReturnUrl(returnUrl, siteOrigin)) throw authError('invalid_response');
+    if (returnUrl !== undefined) {
+      // Fail before leaving the page if this tab cannot retain its proof.
+      persistPending({ probe: true });
+      try { storage.removeItem(PENDING_KEY); } catch { cancel(); throw authError('storage_unavailable'); }
+    }
     const revision = loginRevision;
+    const createdAt = now();
     const verifier = base64Url(cryptoImpl.getRandomValues(new Uint8Array(32)));
     const digest = await cryptoImpl.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
     if (revision !== loginRevision) throw authError('cancelled');
-    const response = await request('/v1/auth/discord/challenges', { method: 'POST', body: { codeChallenge: base64Url(new Uint8Array(digest)) } });
+    const response = await request('/v1/auth/discord/challenges', { method: 'POST', body: {
+      codeChallenge: base64Url(new Uint8Array(digest)), ...(returnUrl !== undefined ? { returnUrl } : {}),
+    } });
     if (revision !== loginRevision) throw authError('cancelled');
     if (response.status !== 200) throw failedResponse(response.status);
     const value = response.data;
     if (!value || typeof value !== 'object' || typeof value.challengeId !== 'string' || !/^[0-9a-f]{32}$/i.test(value.challengeId) ||
       !Number.isInteger(value.pollIntervalSeconds) || value.pollIntervalSeconds < MIN_POLL_SECONDS || value.pollIntervalSeconds > 300 ||
       value.authorizationUrl !== `${origin}/v1/auth/discord/authorize/${value.challengeId}`) throw authError('invalid_response');
-    const expires = expiry(value.expiresAt, now(), MAX_CHALLENGE_MS);
+    if (returnUrl !== undefined && value.returnUrl !== returnUrl) throw authError('return_unavailable');
+    const serverExpires = expiry(value.expiresAt, now(), MAX_CHALLENGE_MS);
+    const expires = returnUrl === undefined ? serverExpires : Math.min(serverExpires, createdAt + MAX_WEB_CHALLENGE_MS);
+    if (expires <= now()) throw authError('expired');
     pending = { challengeId: value.challengeId, codeVerifier: verifier, expires,
-      interval: value.pollIntervalSeconds, nextPollAt: now() + value.pollIntervalSeconds * 1000, revision, inFlight: null };
+      interval: value.pollIntervalSeconds, nextPollAt: now() + value.pollIntervalSeconds * 1000, revision, inFlight: null,
+      ...(returnUrl !== undefined ? { returnUrl, createdAt } : {}) };
+    if (returnUrl !== undefined) persistPending({ version: 1, apiOrigin: origin, returnUrl, createdAt,
+      challengeId: pending.challengeId, codeVerifier: verifier, expires, interval: pending.interval });
     return { authorizationUrl: value.authorizationUrl, expiresAt: new Date(expires).toISOString(), pollIntervalSeconds: value.pollIntervalSeconds };
   }
 
@@ -244,16 +321,27 @@ export function createAuthClient({
           const retry = Number(response.retryAfter);
           if (Number.isInteger(retry) && retry >= MIN_POLL_SECONDS && retry <= 300) challenge.interval = Math.max(challenge.interval, retry);
           challenge.nextPollAt = now() + challenge.interval * 1000;
+          if (challenge.returnUrl) persistPending({ version: 1, apiOrigin: origin, returnUrl: challenge.returnUrl,
+            createdAt: challenge.createdAt, challengeId: challenge.challengeId, codeVerifier: challenge.codeVerifier,
+            expires: challenge.expires, interval: challenge.interval, nextPollAt: challenge.nextPollAt });
           return { status: 'pending', pollIntervalSeconds: challenge.interval };
         }
         if (response.status !== 200) throw failedResponse(response.status);
-        const value = validateSession(response.data, now(), true);
-        sessionRevision += 1;
+        let value = validateSession(response.data, now(), true);
+        const savedRevision = ++sessionRevision;
+        if (challenge.returnUrl) {
+          const identityResponse = await request('/v1/auth/me', { token: value.sessionToken });
+          if (challenge.revision !== loginRevision || savedRevision !== sessionRevision) throw authError('cancelled');
+          if (identityResponse.status !== 200) throw failedResponse(identityResponse.status);
+          const identity = validateSession(identityResponse.data, now(), false);
+          if (identity.accountId !== value.accountId || Date.parse(identity.expiresAt) > Date.parse(value.expiresAt)) throw authError('invalid_response');
+          value = { ...identity, sessionToken: value.sessionToken };
+        }
         saveSession(value);
         cancel();
         return { status: 'authenticated', pollIntervalSeconds: MIN_POLL_SECONDS, session: session() };
       } catch (error) {
-        if (challenge.revision === loginRevision && error.code !== 'network') cancel();
+        if (challenge.revision === loginRevision && (challenge.returnUrl || error.code !== 'network')) cancel();
         throw error;
       } finally {
         challenge.inFlight = null;
@@ -287,5 +375,5 @@ export function createAuthClient({
     finally { payload.sessionToken = ''; }
   }
 
-  return Object.freeze({ available, restore, begin, poll, cancel, logout, session, withGameSession });
+  return Object.freeze({ available, restore, begin, resume, poll, suspend, cancel, logout, session, withGameSession });
 }

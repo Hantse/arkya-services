@@ -145,14 +145,18 @@ window.ArkyaAuthConfig = Object.freeze({
 });
 ```
 
-Le nom de la propriété `identityBaseUrl` reste inchangé : sa valeur désigne désormais l’origine publique de la gateway, sans chemin ni slash final. Le navigateur ouvre l’autorisation dans un autre onglet, échange la preuve S256 avec Identity à travers YARP puis valide la session via `/v1/auth/me`. Le secret et les échanges Discord restent sur le backend. Une session Arkya dure au maximum huit heures pour ce client web ; conserver `Sessions__Lifetime=08:00:00` ou une durée inférieure. La session n’est pas partagée entre origines de vitrine.
+Le nom de la propriété `identityBaseUrl` reste inchangé : sa valeur désigne désormais l’origine publique de la gateway, sans chemin ni slash final. Le navigateur ouvre Discord dans le même onglet. Avant de quitter le site, il conserve le challenge et sa preuve S256 dans `sessionStorage`, liés à l’origine API et à leur expiration. Identity vérifie le callback puis redirige vers `account.html`, où le site reprend l’échange et valide la session via `/v1/auth/me`. La preuve est effacée après connexion, annulation ou expiration ; aucun jeton, code Discord ou vérificateur n’est ajouté à l’URL de retour.
+
+Le frontend fournit un `returnUrl` limité à la page Compte, avec éventuellement `lang=fr|en` et `returnTo=play.html`. Identity exige une origine figurant dans `WebClient:AllowedOrigins`, stocke cette destination dans le challenge et ne l’utilise qu’après validation de l’état et du cookie de corrélation. Le retour natif sans `returnUrl` conserve sa réponse historique. Le callback à enregistrer dans Discord reste `https://api.arkya.online/v1/auth/discord/callback` ; la page Compte n’est pas un nouveau callback Discord. Les images frontend et Identity doivent inclure ce contrat ; un backend plus ancien provoque une erreur visible avant la navigation.
+
+Le secret et les échanges Discord restent sur le backend. Une session Arkya dure au maximum huit heures pour ce client web ; conserver `Sessions__Lifetime=08:00:00` ou une durée inférieure. La session n’est pas partagée entre origines de vitrine. Le stockage de session doit être disponible pour la connexion dans le même onglet.
 
 Au moment de l’activation, mettre à jour les états FR/EN de la page d’avancement et les textes de confidentialité qui annoncent la connexion future, puis renseigner le prestataire, le lieu d’hébergement et les transferts éventuels du backend réellement retenu. Prévoir le traitement des demandes d’accès/suppression reçues sur support@arkya.online : aucune suppression automatique de compte n’est implémentée. Republier via le même projet Sites, en préservant l’accès public, puis vérifier le parcours réel ci-dessous. Si cette vérification échoue, ne pas annoncer la bêta disponible ; conserver l’erreur explicite ou désactiver volontairement l’origine après décision de l’exploitant.
 
 ## Vérifier l’activation réelle
 
 1. Depuis une fenêtre sans session ChatGPT, ouvrir la vitrine et les deux pages juridiques.
-2. Ouvrir la page de compte et lancer Discord. Vérifier l’application affichée, autoriser avec son propre compte puis constater le retour connecté sur la vitrine.
+2. Ouvrir la page de compte et lancer Discord. Vérifier l’application affichée, autoriser avec son propre compte puis constater le retour connecté sur la vitrine dans le même onglet, sans page à fermer.
 3. Recharger et naviguer vers les classes : le nom doit être restauré après validation serveur. Aucun jeton ne doit apparaître dans les URL.
 4. Se déconnecter ; l’ancienne session doit être refusée par `/v1/auth/me`. Tester aussi le refus Discord et l’annulation depuis la page de compte.
 5. Vérifier les deux langues et le comportement lorsque le backend est temporairement indisponible.

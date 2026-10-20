@@ -7,12 +7,17 @@ const t = (key) => window.ArkyaPageTranslations[language()][key];
 let mode = 'checking';
 let message = 'account.loading';
 let timer;
-let popup;
 let attempt = 0;
 let deadline = 0;
-let authorizationUrl = '';
-let popupBlocked = false;
+let navigatingToDiscord = false;
 let error = false;
+
+function accountReturnUrl() {
+  const target = new URL('/account.html', location.origin);
+  target.searchParams.set('lang', language() === 'en' ? 'en' : 'fr');
+  if (gameReturnPath(location.search, language())) target.searchParams.set('returnTo', 'play.html');
+  return target.href;
+}
 
 function returnToGame() {
   const target = gameReturnPath(location.search, language());
@@ -31,11 +36,9 @@ function render() {
   if (mode === 'pending' && deadline) {
     const seconds = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
     text += ` ${t('auth.remaining')} ${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}.`;
-    if (popupBlocked) text += ` ${t('auth.popup')}`;
   }
   $('#auth-status').textContent = text;
   $('#auth-status').classList.toggle('is-error', error);
-  $('#auth-open-discord').setAttribute('href', authorizationUrl || '#');
   if (user) {
     $('#account-name').textContent = user.displayName;
     $('#account-expiry').textContent = `${t('auth.expires')} ${new Intl.DateTimeFormat(language(), { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(user.expiresAt))}`;
@@ -45,41 +48,37 @@ function render() {
   }
 }
 
-function closePopup() {
-  try { if (popup && !popup.closed) popup.close(); } catch { /* The authorization tab may already be closed. */ }
-  popup = null;
-}
-
 function reportError(reason) {
   mode = 'idle';
   error = true;
-  const code = ['unavailable', 'network', 'rejected', 'expired', 'invalid_response'].includes(reason?.code) ? reason.code : 'invalid_response';
+  navigatingToDiscord = false;
+  const code = ['unavailable', 'network', 'rejected', 'expired', 'invalid_response', 'storage_unavailable', 'return_unavailable'].includes(reason?.code) ? reason.code : 'invalid_response';
   message = `auth.${code}`;
   auth.cancel();
-  authorizationUrl = '';
-  closePopup();
   render();
+}
+
+async function pollAttempt(run) {
+  if (run !== attempt) return;
+  if (Date.now() >= deadline) { reportError({ code: 'expired' }); return; }
+  try {
+    const result = await auth.poll();
+    if (run !== attempt) return;
+    if (result.status === 'authenticated') {
+      mode = 'signed-in'; message = 'auth.connected'; error = false;
+      announceSession(); render();
+      returnToGame();
+    } else if (result.status === 'pending') {
+      render(); schedulePoll(run, result.pollIntervalSeconds);
+    } else {
+      reportError({ code: 'expired' });
+    }
+  } catch (reason) { if (run === attempt) reportError(reason); }
 }
 
 function schedulePoll(run, seconds = 5) {
   clearTimeout(timer);
-  timer = setTimeout(async () => {
-    if (run !== attempt) return;
-    if (Date.now() >= deadline) { reportError({ code: 'expired' }); return; }
-    try {
-      const result = await auth.poll();
-      if (run !== attempt) return;
-      if (result.status === 'authenticated') {
-        mode = 'signed-in'; message = 'auth.connected'; error = false;
-        authorizationUrl = ''; closePopup(); announceSession(); render();
-        returnToGame();
-      } else if (result.status === 'pending') {
-        render(); schedulePoll(run, result.pollIntervalSeconds);
-      } else {
-        reportError({ code: 'expired' });
-      }
-    } catch (reason) { if (run === attempt) reportError(reason); }
-  }, Math.max(5, Number(seconds) || 5) * 1000);
+  timer = setTimeout(() => pollAttempt(run), Math.max(5, Number(seconds) || 5) * 1000);
 }
 
 $('#discord-login').addEventListener('click', async () => {
@@ -87,30 +86,23 @@ $('#discord-login').addEventListener('click', async () => {
   const run = ++attempt;
   clearTimeout(timer);
   mode = 'starting'; message = 'auth.starting'; error = false; render();
-  // Create the tab during the click, before awaiting the API, to avoid popup blocking.
-  popup = window.open('about:blank', '_blank');
-  popupBlocked = !popup;
-  if (popup) popup.opener = null;
   try {
-    const result = await auth.begin();
+    const result = await auth.begin({ returnUrl: accountReturnUrl() });
     if (run !== attempt) return;
-    authorizationUrl = result.authorizationUrl;
     deadline = new Date(result.expiresAt).getTime();
-    if (popup) {
-      try { popup.location.replace(authorizationUrl); } catch { popupBlocked = true; closePopup(); }
-    }
     mode = 'pending'; message = 'auth.pending'; render();
-    schedulePoll(run, result.pollIntervalSeconds);
+    navigatingToDiscord = true;
+    location.assign(result.authorizationUrl);
   } catch (reason) { if (run === attempt) reportError(reason); }
 });
 
 $('#auth-cancel').addEventListener('click', () => {
-  ++attempt; clearTimeout(timer); auth.cancel(); closePopup(); authorizationUrl = '';
+  ++attempt; clearTimeout(timer); auth.cancel(); navigatingToDiscord = false;
   mode = 'idle'; message = 'auth.cancelled'; error = false; render();
 });
 
 $('#auth-logout').addEventListener('click', async () => {
-  ++attempt; clearTimeout(timer); closePopup();
+  ++attempt; clearTimeout(timer);
   mode = 'logging-out'; message = 'auth.logout'; error = false; render();
   let revoked = false;
   try { revoked = (await auth.logout()).revoked; } catch { /* Local state is cleared by the auth client. */ }
@@ -124,17 +116,44 @@ window.addEventListener('arkya:sessionchange', () => {
   render();
 });
 window.addEventListener('pagehide', () => {
-  ++attempt; clearTimeout(timer); auth.cancel(); closePopup();
-  if (['starting', 'pending'].includes(mode)) {
+  ++attempt; clearTimeout(timer);
+  // Keep the tab's short-lived proof through Discord navigation and page reloads.
+  auth.suspend();
+  if (!navigatingToDiscord && ['starting', 'pending'].includes(mode)) {
     mode = 'idle'; message = 'auth.cancelled'; error = false;
-    authorizationUrl = ''; deadline = 0; render();
+    deadline = 0; render();
   }
 });
 
-ready.then(() => {
+async function initialize() {
+  const run = ++attempt;
+  clearTimeout(timer);
+  navigatingToDiscord = false;
+  if (auth.available && !auth.session()) {
+    try {
+      const resumed = auth.resume({ returnUrl: accountReturnUrl() });
+      if (resumed) {
+        mode = 'pending'; message = 'auth.pending'; error = false;
+        deadline = Date.parse(resumed.expiresAt);
+        render();
+        await pollAttempt(run);
+        return;
+      }
+    } catch (reason) { if (run === attempt) reportError(reason); return; }
+  }
+  auth.cancel();
   mode = auth.session() ? 'signed-in' : 'idle';
   message = !auth.available ? 'auth.unavailable' : auth.session() ? 'auth.connected' : 'auth.idle';
+  announceSession();
   render();
   returnToGame();
-}, reportError);
+}
+
+window.addEventListener('pageshow', event => {
+  if (event.persisted) {
+    mode = 'checking'; message = 'account.loading'; render();
+    auth.restore().then(initialize, reportError);
+  }
+});
+ready.then(initialize, reportError);
 render();

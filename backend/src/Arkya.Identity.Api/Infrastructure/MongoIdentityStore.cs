@@ -41,7 +41,7 @@ public sealed class MongoIdentityStore : IIdentityStore
     public Task CreateChallengeAsync(LoginChallenge challenge, CancellationToken cancellationToken) =>
         challenges.InsertOneAsync(new ChallengeDocument
         {
-            Id = challenge.Id, CodeChallenge = challenge.CodeChallenge, ExpiresAt = challenge.ExpiresAt
+            Id = challenge.Id, CodeChallenge = challenge.CodeChallenge, ExpiresAt = challenge.ExpiresAt, ReturnUrl = challenge.ReturnUrl
         }, cancellationToken: cancellationToken);
 
     public async Task<LoginChallenge?> GetChallengeAsync(string id, CancellationToken cancellationToken) =>
@@ -126,7 +126,8 @@ public sealed class MongoIdentityStore : IIdentityStore
         public string? BrowserNonceHash { get; set; }
         public string? AccountId { get; set; }
         public string? DisplayName { get; set; }
-        public LoginChallenge ToDomain() => new(Id, CodeChallenge, ExpiresAt, Status, StateHash, BrowserNonceHash, AccountId, DisplayName);
+        [BsonIgnoreIfNull] public string? ReturnUrl { get; set; }
+        public LoginChallenge ToDomain() => new(Id, CodeChallenge, ExpiresAt, Status, StateHash, BrowserNonceHash, AccountId, DisplayName, ReturnUrl);
     }
 
     private sealed class AccountDocument

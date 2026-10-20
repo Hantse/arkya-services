@@ -231,10 +231,10 @@ internal sealed record StartedLogin(ChallengeResult Challenge, string Verifier, 
 
 internal static class LoginFlow
 {
-    public static async Task<StartedLogin> StartAsync(HttpClient browser)
+    public static async Task<StartedLogin> StartAsync(HttpClient browser, string? returnUrl = null)
     {
         var verifier = WebEncoders.Base64UrlEncode(RandomNumberGenerator.GetBytes(32));
-        using var response = await browser.PostAsJsonAsync("/v1/auth/discord/challenges", new { codeChallenge = IdentityService.CodeChallenge(verifier) });
+        using var response = await browser.PostAsJsonAsync("/v1/auth/discord/challenges", new { codeChallenge = IdentityService.CodeChallenge(verifier), returnUrl });
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var challenge = (await response.Content.ReadFromJsonAsync<ChallengeResult>())!;
         using var authorization = await browser.GetAsync(new Uri(challenge.AuthorizationUrl).PathAndQuery);

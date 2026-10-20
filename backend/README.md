@@ -103,9 +103,9 @@ La connexion du compte Arkya utilise OAuth2 Authorization Code avec le seul scop
 
 | Route Identity | Entrée | Réponse principale |
 | --- | --- | --- |
-| `POST /v1/auth/discord/challenges` | `{ "codeChallenge": "<S256>" }` | `200` : `challengeId`, `authorizationUrl`, `expiresAt`, `pollIntervalSeconds` |
+| `POST /v1/auth/discord/challenges` | `{ "codeChallenge": "<S256>", "returnUrl": "<page Compte autorisée, facultatif>" }` | `200` : `challengeId`, `authorizationUrl`, `expiresAt`, `pollIntervalSeconds`, `returnUrl` si fourni |
 | `GET /v1/auth/discord/authorize/{challengeId}` | Navigation vers `authorizationUrl` | Cookie de corrélation et redirection Discord |
-| `GET /v1/auth/discord/callback` | Retour navigateur `code` + `state`, ou erreur fournisseur | Page texte de réussite (`200`) ou refus (`400`) |
+| `GET /v1/auth/discord/callback` | Retour navigateur `code` + `state`, ou erreur fournisseur | Redirection vers le `returnUrl` du challenge après validation de l’état et du cookie ; sinon réponse texte historique (`200` ou `400`) |
 | `POST /v1/auth/discord/exchange` | `{ "challengeId": "...", "codeVerifier": "..." }` | `202` en attente ; `200` : `accountId`, `displayName`, `sessionToken`, `expiresAt` |
 | `GET /v1/auth/me` | `Authorization: Bearer <sessionToken>` | `200` : `accountId`, `displayName`, `expiresAt` ; sinon `401` |
 | `POST /v1/auth/logout` | Même bearer | `204` : session révoquée ; sinon `401` |
@@ -115,6 +115,8 @@ La connexion du compte Arkya utilise OAuth2 Authorization Code avec le seul scop
 Le client génère un vérificateur aléatoire de 43 à 128 caractères autorisés (`A-Z`, `a-z`, `0-9`, `-`, `.`, `_`, `~`) et calcule `base64url(SHA256(ASCII(codeVerifier)))`, sans padding. Le `codeChallenge` S256 comporte 43 caractères. Ce protocole de remise est propre à Arkya et ne suppose pas de PKCE dans l'API Discord.
 
 Un challenge expire après cinq minutes. `authorizationUrl` pointe vers l'origine fixe `Discord:PublicBaseUrl`, puis le navigateur est redirigé vers Discord. L'état OAuth et le cookie `Secure`, `HttpOnly`, `SameSite=Lax` lient le callback au navigateur initiateur. L'état et l'échange sont consommés une seule fois. Le callback ne met pas la session Arkya dans l'URL.
+
+Pour le site, `returnUrl` est facultatif et limité à une origine exacte de `WebClient:AllowedOrigins`, chemin `/account.html`, avec seulement les paramètres facultatifs `lang=fr|en` et `returnTo=play.html`, sans doublon ni fragment. Une destination invalide est refusée avant création du challenge. Le retour est persisté avec le challenge et utilisé uniquement après consommation valide de l’état OAuth et du cookie, y compris lors d’un refus Discord ou d’une erreur du fournisseur. Aucun code, état, jeton ou vérificateur n’est ajouté à cette redirection. Les clients natifs qui omettent ce champ conservent leur parcours existant.
 
 Un échange en attente renvoie `{ "status": "pending" }`, `202` et `Retry-After: 5` ; attendre au moins cinq secondes entre les tentatives. Un challenge encore présent mais expiré, déjà consommé ou refusé renvoie `410`. Un challenge inconnu, notamment après son nettoyage TTL, ou un mauvais vérificateur renvoie `400`. Si la réponse de l'échange réussi est perdue, recommencer une connexion : le jeton n'est pas récupérable une seconde fois.
 
@@ -146,7 +148,7 @@ La session opaque est aléatoire ; MongoDB conserve son empreinte et son expirat
 
 ### Connexion depuis la vitrine web
 
-La vitrine réutilise Identity et les mêmes comptes Arkya que le client Unity : création de challenge, autorisation Discord dans un onglet, échange avec preuve S256, puis bearer Arkya pour `/me` et `/logout`. Aucun secret Discord ni clé de service ne doit entrer dans les fichiers statiques du site. Le navigateur n'appelle pas les routes Social SDK pour cette connexion.
+La vitrine réutilise Identity et les mêmes comptes Arkya que le client Unity : création de challenge, autorisation Discord dans le même onglet, retour automatique sur la page Compte, échange avec preuve S256 puis validation du bearer Arkya par `/me`. Le challenge web est conservé temporairement dans `sessionStorage` pour survivre à la navigation ; il est lié à l’origine API et effacé après utilisation ou annulation. Aucun secret Discord ni clé de service ne doit entrer dans les fichiers statiques du site. Le navigateur n'appelle pas les routes Social SDK pour cette connexion.
 
 La configuration `WebClient:AllowedOrigins` est une liste vide par défaut : aucun accès navigateur interorigine n'est alors autorisé. Pour la vitrine actuellement publiée, définir cette configuration non secrète côté Identity :
 

@@ -5,6 +5,28 @@ public sealed class WebClientOptions
     public const string CorsPolicyName = "arkya-web-client";
     public string[] AllowedOrigins { get; init; } = [];
 
+    public bool IsAllowedReturnUrl(string value)
+    {
+        if (value.Length > 512) return false;
+        foreach (var origin in AllowedOrigins)
+        {
+            var accountUrl = $"{origin}/account.html";
+            if (value.Equals(accountUrl, StringComparison.Ordinal)) return true;
+            if (!value.StartsWith(accountUrl + "?", StringComparison.Ordinal)) continue;
+
+            // The return page accepts only these navigation choices, never an arbitrary target.
+            var parameters = value[(accountUrl.Length + 1)..].Split('&');
+            var names = new HashSet<string>(StringComparer.Ordinal);
+            return parameters.All(parameter => parameter switch
+            {
+                "lang=fr" or "lang=en" => names.Add("lang"),
+                "returnTo=play.html" => names.Add("returnTo"),
+                _ => false
+            });
+        }
+        return false;
+    }
+
     public bool HasValidOrigins(bool development)
     {
         return AllowedOrigins is not null && AllowedOrigins.All(value =>

@@ -13,7 +13,9 @@ public static class IdentityEndpoints
         var auth = app.MapGroup("/v1/auth").RequireRateLimiting("auth");
         auth.MapPost("/discord/challenges", async (ChallengeRequest request, IdentityService service, CancellationToken ct) =>
         {
-            var result = await service.CreateChallengeAsync(request.CodeChallenge, ct);
+            if (!service.IsAllowedReturnUrl(request.ReturnUrl))
+                return Results.BadRequest(new { code = "invalid_return_url" });
+            var result = await service.CreateChallengeAsync(request.CodeChallenge, ct, request.ReturnUrl);
             return result is null ? Results.BadRequest(new { code = "invalid_code_challenge" }) : Results.Ok(result);
         }).RequireCors(WebClientOptions.CorsPolicyName);
         auth.MapGet("/discord/authorize/{id}", async (string id, HttpContext context, IdentityService service, CancellationToken ct) =>
@@ -32,10 +34,11 @@ public static class IdentityEndpoints
         });
         auth.MapGet("/discord/callback", async (HttpContext context, IdentityService service, CancellationToken ct) =>
         {
-            var ok = await service.CompleteBrowserAsync(context.Request.Query["state"], context.Request.Query["code"], context.Request.Query["error"],
+            var completion = await service.CompleteBrowserWithReturnAsync(context.Request.Query["state"], context.Request.Query["code"], context.Request.Query["error"],
                 name => context.Request.Cookies[name], ct);
-            return Results.Content(ok ? "Connexion autorisée. Vous pouvez retourner dans Arkya." : "Connexion refusée ou expirée. Relancez la connexion depuis Arkya.",
-                "text/plain; charset=utf-8", statusCode: ok ? 200 : 400);
+            if (completion.ReturnUrl is not null) return Results.Redirect(completion.ReturnUrl);
+            return Results.Content(completion.Succeeded ? "Connexion autorisée. Vous pouvez retourner dans Arkya." : "Connexion refusée ou expirée. Relancez la connexion depuis Arkya.",
+                "text/plain; charset=utf-8", statusCode: completion.Succeeded ? 200 : 400);
         });
         auth.MapPost("/discord/exchange", async (ExchangeRequest request, HttpContext context, IdentityService service, CancellationToken ct) =>
         {

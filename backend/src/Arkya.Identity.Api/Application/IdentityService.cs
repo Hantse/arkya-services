@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using Arkya.Identity.Api.Domain;
 using Microsoft.AspNetCore.WebUtilities;
@@ -31,24 +32,30 @@ public sealed class SessionOptions
     public TimeSpan Lifetime { get; init; } = TimeSpan.FromHours(8);
 }
 
-public sealed record ChallengeResult(string ChallengeId, string AuthorizationUrl, DateTime ExpiresAt, int PollIntervalSeconds = 5);
+public sealed record ChallengeResult(string ChallengeId, string AuthorizationUrl, DateTime ExpiresAt, int PollIntervalSeconds = 5,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] string? ReturnUrl = null);
 public sealed record SessionResult(string AccountId, string DisplayName, string SessionToken, DateTime ExpiresAt);
 public sealed record ExchangeResult(string Status, SessionResult? Session = null);
 public sealed record BrowserAuthorization(string RedirectUrl, string CookieName, string CookieValue);
+public sealed record BrowserCompletion(bool Succeeded, string? ReturnUrl = null);
 
 public sealed partial class IdentityService(
     IIdentityStore store, IDiscordIdentityClient discord, TimeProvider clock,
-    IOptions<DiscordOptions> discordOptions, IOptions<SessionOptions> sessionOptions)
+    IOptions<DiscordOptions> discordOptions, IOptions<SessionOptions> sessionOptions, IOptions<WebClientOptions> webClientOptions)
 {
-    public async Task<ChallengeResult?> CreateChallengeAsync(string? codeChallenge, CancellationToken cancellationToken)
+    public bool IsAllowedReturnUrl(string? returnUrl) => returnUrl is null || webClientOptions.Value.IsAllowedReturnUrl(returnUrl);
+
+    public async Task<ChallengeResult?> CreateChallengeAsync(string? codeChallenge, CancellationToken cancellationToken, string? returnUrl = null)
     {
-        if (codeChallenge is null || !ChallengePattern().IsMatch(codeChallenge))
+        if (codeChallenge is null || !ChallengePattern().IsMatch(codeChallenge) || !IsAllowedReturnUrl(returnUrl))
         {
             return null;
         }
-        var challenge = new LoginChallenge(Guid.NewGuid().ToString("N"), codeChallenge, clock.GetUtcNow().UtcDateTime.AddMinutes(5));
+        var challenge = new LoginChallenge(Guid.NewGuid().ToString("N"), codeChallenge, clock.GetUtcNow().UtcDateTime.AddMinutes(5),
+            ReturnUrl: returnUrl);
         await store.CreateChallengeAsync(challenge, cancellationToken);
-        return new(challenge.Id, $"{discordOptions.Value.PublicBaseUrl.TrimEnd('/')}/v1/auth/discord/authorize/{challenge.Id}", challenge.ExpiresAt);
+        return new(challenge.Id, $"{discordOptions.Value.PublicBaseUrl.TrimEnd('/')}/v1/auth/discord/authorize/{challenge.Id}",
+            challenge.ExpiresAt, ReturnUrl: returnUrl);
     }
 
     public async Task<BrowserAuthorization?> StartBrowserAsync(string id, CancellationToken cancellationToken)
@@ -69,45 +76,51 @@ public sealed partial class IdentityService(
     }
 
     public async Task<bool> CompleteBrowserAsync(string? state, string? code, string? error,
+        Func<string, string?> readCookie, CancellationToken cancellationToken) =>
+        (await CompleteBrowserWithReturnAsync(state, code, error, readCookie, cancellationToken)).Succeeded;
+
+    public async Task<BrowserCompletion> CompleteBrowserWithReturnAsync(string? state, string? code, string? error,
         Func<string, string?> readCookie, CancellationToken cancellationToken)
     {
         if (state is null || !ChallengePattern().IsMatch(state))
         {
-            return false;
+            return new(false);
         }
         var candidate = await store.FindStateAsync(Hash(state), cancellationToken);
         if (candidate is null)
         {
-            return false;
+            return new(false);
         }
         var nonce = readCookie(CookieName(candidate.Id));
         if (nonce is null || !ChallengePattern().IsMatch(nonce))
         {
-            return false;
+            return new(false);
         }
         var claimed = await store.ClaimStateAsync(Hash(state), Hash(nonce), clock.GetUtcNow().UtcDateTime, cancellationToken);
         if (claimed is null)
         {
-            return false;
+            return new(false);
         }
+        // Only a callback claimed with the browser's nonce may use its persisted return URL.
+        var returnUrl = IsAllowedReturnUrl(claimed.ReturnUrl) ? claimed.ReturnUrl : null;
         if (!string.IsNullOrEmpty(error) || string.IsNullOrEmpty(code) || code.Length > 2048)
         {
             await store.CompleteChallengeAsync(claimed.Id, null, cancellationToken);
-            return false;
+            return new(false, returnUrl);
         }
         try
         {
             var user = await discord.ExchangeCodeAsync(code, cancellationToken);
             var account = await store.UpsertAccountAsync(user.Id, user.DisplayName, clock.GetUtcNow().UtcDateTime, cancellationToken);
             await store.CompleteChallengeAsync(claimed.Id, account, cancellationToken);
-            return true;
+            return new(true, returnUrl);
         }
         catch (Exception exception) when (exception is HttpRequestException or InvalidDataException or TaskCanceledException)
         {
             // A claimed callback cannot be replayed after a provider failure.
             using var cleanup = new CancellationTokenSource(TimeSpan.FromSeconds(5));
             await store.CompleteChallengeAsync(claimed.Id, null, cleanup.Token);
-            return false;
+            return new(false, returnUrl);
         }
     }
 

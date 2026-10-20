@@ -6,6 +6,8 @@ import { createAuthClient } from '../dist/auth-client.mjs';
 const API = 'https://identity.arkya.online';
 const SITE = 'https://arkya.online';
 const KEY = 'arkya-session-v1';
+const PENDING_KEY = 'arkya-discord-pending-v1';
+const RETURN_URL = `${SITE}/account.html?lang=en&returnTo=play.html`;
 const START = Date.parse('2026-10-16T12:00:00Z');
 const ID = '197d1fa3-83c2-45cb-bb26-f4b574e88ee8';
 const CHALLENGE_ID = '5f91daa3df9047cb8a893f577bf50892';
@@ -359,4 +361,159 @@ test('a transient exchange error can be retried after the minimum interval', asy
   assert.equal(calls.length, 2);
   advance(5000);
   assert.equal((await client.poll()).status, 'authenticated');
+});
+
+test('same-tab login retains the proof through a reload, exchanges immediately and verifies /me', async () => {
+  const storage = memoryStorage();
+  const first = fixture({ storage, responses: [json(challenge({ returnUrl: RETURN_URL }))] });
+  const result = await first.client.begin({ returnUrl: RETURN_URL });
+  const saved = JSON.parse(storage.getItem(PENDING_KEY));
+  assert.equal(saved.apiOrigin, API);
+  assert.equal(saved.returnUrl, RETURN_URL);
+  assert.equal(saved.expires - saved.createdAt, 300000);
+  assert.equal(JSON.parse(first.calls[0].init.body).returnUrl, RETURN_URL);
+  assert.equal(JSON.parse(first.calls[0].init.body).codeChallenge, createHash('sha256').update(saved.codeVerifier).digest('base64url'));
+  assert.ok(!JSON.stringify(result).includes(saved.codeVerifier));
+  assert.ok(!RETURN_URL.includes(saved.challengeId));
+  assert.ok(!result.authorizationUrl.includes(saved.codeVerifier));
+
+  let finishIdentity;
+  const returned = fixture({ storage, responses: [json(account()), () => new Promise(resolve => { finishIdentity = resolve; })] });
+  assert.deepEqual(returned.client.resume({ returnUrl: RETURN_URL }), {
+    expiresAt: challenge().expiresAt, pollIntervalSeconds: 5,
+  });
+  const completing = returned.client.poll();
+  while (!finishIdentity) await new Promise(resolve => setImmediate(resolve));
+  assert.equal(returned.calls[0].url, `${API}/v1/auth/discord/exchange`);
+  assert.equal(JSON.parse(returned.calls[0].init.body).codeVerifier, saved.codeVerifier);
+  assert.equal(returned.calls[1].url, `${API}/v1/auth/me`);
+  assert.equal(returned.calls[1].init.headers.Authorization, `Bearer ${TOKEN}`);
+  assert.equal(returned.client.session(), null);
+  assert.equal(storage.getItem(KEY), null);
+  finishIdentity(json(account()));
+  assert.equal((await completing).status, 'authenticated');
+  assert.equal(returned.client.session().accountId, ID);
+  assert.equal(storage.getItem(PENDING_KEY), null);
+  assert.equal(returned.client.resume({ returnUrl: RETURN_URL }), null);
+  assert.ok(!JSON.stringify(returned.calls.map(call => call.url)).includes(saved.codeVerifier));
+  assert.ok(!JSON.stringify(returned.calls.map(call => call.url)).includes(TOKEN));
+});
+
+test('same-tab login requires writable session storage before requesting a challenge', async () => {
+  for (const storage of [null, { getItem() { throw Error(); }, setItem() { throw Error(); }, removeItem() {} },
+    { getItem() { return null; }, setItem() {}, removeItem() {} }]) {
+    const { client, calls } = fixture({ storage });
+    await assert.rejects(client.begin({ returnUrl: RETURN_URL }), { code: 'storage_unavailable' });
+    assert.equal(calls.length, 0);
+    assert.equal(client.session(), null);
+  }
+});
+
+test('suspension retains a web proof and preserves server polling delays across reloads', async () => {
+  const first = fixture({ responses: [json(challenge({ returnUrl: RETURN_URL })),
+    json({ status: 'pending' }, 202, { 'Retry-After': '10' })] });
+  await first.client.begin({ returnUrl: RETURN_URL });
+  first.client.suspend();
+  assert.ok(first.storage.getItem(PENDING_KEY));
+  first.client.resume({ returnUrl: RETURN_URL });
+  assert.deepEqual(await first.client.poll(), { status: 'pending', pollIntervalSeconds: 10 });
+  first.client.suspend();
+  const returned = fixture({ storage: first.storage, responses: [json(account()), json(account())] });
+  returned.client.resume({ returnUrl: RETURN_URL });
+  assert.deepEqual(await returned.client.poll(), { status: 'pending', pollIntervalSeconds: 10 });
+  returned.advance(9999);
+  assert.equal((await returned.client.poll()).status, 'pending');
+  assert.equal(returned.calls.length, 0);
+  returned.advance(1);
+  assert.equal((await returned.client.poll()).status, 'authenticated');
+  assert.equal(returned.calls.length, 2);
+});
+
+test('same-tab login refuses old servers that do not confirm the exact return URL', async () => {
+  for (const returnUrl of [undefined, 'https://evil.example/account.html?lang=en', `${SITE}/account.html?lang=fr`]) {
+    const { client, storage } = fixture({ responses: [json(challenge({ returnUrl }))] });
+    await assert.rejects(client.begin({ returnUrl: RETURN_URL }), { code: 'return_unavailable' });
+    assert.equal(storage.getItem(PENDING_KEY), null);
+    assert.equal((await client.poll()).status, 'expired');
+  }
+});
+
+test('same-tab return URL is restricted to this site account page and safe language/game parameters', async () => {
+  for (const returnUrl of ['https://evil.example/account.html?lang=en', `${SITE}/play.html?lang=en`,
+    `${SITE}/account.html?lang=de`, `${SITE}/account.html?lang=en&lang=fr`,
+    `${SITE}/account.html?lang=en&returnTo=https://evil.example`, `${SITE}/account.html?lang=en#fragment`,
+    `${SITE}/account.html?lang=en&code=secret`, `${SITE}/account.html?lang=en&returnTo=play.html&returnTo=play.html`,
+    `${SITE}/account.html?lang=en&sessionToken=secret`]) {
+    const { client, calls } = fixture();
+    await assert.rejects(client.begin({ returnUrl }), { code: 'invalid_response' });
+    assert.equal(calls.length, 0);
+  }
+  for (const returnUrl of [RETURN_URL, `${SITE}/account.html?lang=fr`]) {
+    const { client } = fixture({ responses: [json(challenge({ returnUrl }))] });
+    assert.ok((await client.begin({ returnUrl })).authorizationUrl);
+  }
+});
+
+test('resume rejects and removes expired, corrupt, foreign-origin and wrong-return proofs', async () => {
+  const first = fixture({ responses: [json(challenge({ returnUrl: RETURN_URL }))] });
+  await first.client.begin({ returnUrl: RETURN_URL });
+  const valid = JSON.parse(first.storage.getItem(PENDING_KEY));
+  const invalid = ['{', 'null', [], { ...valid, apiOrigin: 'https://evil.example' },
+    { ...valid, returnUrl: `${SITE}/account.html?lang=fr` }, { ...valid, version: 2 },
+    { ...valid, codeVerifier: 'short' }, { ...valid, challengeId: '../x' }, { ...valid, interval: 0 },
+    { ...valid, createdAt: START + 1 }, { ...valid, expires: START + 300001 },
+    { ...valid, expires: START - 1 }];
+  for (const value of invalid) {
+    const storage = memoryStorage({ [PENDING_KEY]: typeof value === 'string' ? value : JSON.stringify(value) });
+    const { client, calls } = fixture({ storage });
+    assert.throws(() => client.resume({ returnUrl: RETURN_URL }), { code: 'invalid_response' });
+    assert.equal(storage.getItem(PENDING_KEY), null);
+    assert.equal(calls.length, 0);
+  }
+  const expired = fixture({ storage: first.storage });
+  expired.advance(300000);
+  assert.throws(() => expired.client.resume({ returnUrl: RETURN_URL }), { code: 'expired' });
+  assert.equal(first.storage.getItem(PENDING_KEY), null);
+});
+
+test('web proof is removed after cancellation, denial, malformed reply, or exchange failure', async () => {
+  for (const response of [json({}, 410), json({}, 400), json({ status: 'wrong' }, 202), new Error('offline')]) {
+    const { client, storage } = fixture({ responses: [json(challenge({ returnUrl: RETURN_URL })), response] });
+    await client.begin({ returnUrl: RETURN_URL });
+    client.resume({ returnUrl: RETURN_URL });
+    try { await client.poll(); } catch {}
+    assert.equal(storage.getItem(PENDING_KEY), null);
+    assert.equal(client.session(), null);
+  }
+  const { client, storage } = fixture({ responses: [json(challenge({ returnUrl: RETURN_URL }))] });
+  await client.begin({ returnUrl: RETURN_URL });
+  client.cancel();
+  assert.equal(storage.getItem(PENDING_KEY), null);
+  assert.equal(client.resume({ returnUrl: RETURN_URL }), null);
+});
+
+test('web session is never exposed when /me rejects it, disagrees, fails or completes after cancellation', async () => {
+  for (const response of [json({}, 401), json(account({ accountId: '297d1fa3-83c2-45cb-bb26-f4b574e88ee8' })),
+    json(account({ expiresAt: new Date(START + 7200000).toISOString() })), new Error('offline')]) {
+    const { client, storage } = fixture({ responses: [json(challenge({ returnUrl: RETURN_URL })), json(account()), response] });
+    await client.begin({ returnUrl: RETURN_URL });
+    client.resume({ returnUrl: RETURN_URL });
+    await assert.rejects(client.poll());
+    assert.equal(client.session(), null);
+    assert.equal(storage.getItem(PENDING_KEY), null);
+    assert.equal(storage.getItem(KEY), null);
+  }
+  let finish;
+  const { client, storage } = fixture({ responses: [json(challenge({ returnUrl: RETURN_URL })), json(account()),
+    () => new Promise(resolve => { finish = resolve; })] });
+  await client.begin({ returnUrl: RETURN_URL });
+  client.resume({ returnUrl: RETURN_URL });
+  const completing = client.poll();
+  while (!finish) await new Promise(resolve => setImmediate(resolve));
+  client.cancel();
+  finish(json(account()));
+  await assert.rejects(completing, { code: 'cancelled' });
+  assert.equal(client.session(), null);
+  assert.equal(storage.getItem(PENDING_KEY), null);
+  assert.equal(storage.getItem(KEY), null);
 });

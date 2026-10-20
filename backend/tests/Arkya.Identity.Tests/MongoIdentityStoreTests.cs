@@ -11,6 +11,34 @@ namespace Arkya.Identity.Tests;
 public sealed class MongoIdentityStoreTests
 {
     [MongoFact]
+    public async Task ReturnUrlSurvivesStateClaimsAndLegacyDocumentsRemainReadable()
+    {
+        await using var database = await TestDatabase.CreateAsync();
+        var now = DateTime.UtcNow;
+        var challenge = new LoginChallenge(Guid.NewGuid().ToString("N"), IdentityService.CodeChallenge(new string('v', 43)),
+            now.AddHours(1), ReturnUrl: "https://arkya.online/account.html?lang=fr&returnTo=play.html");
+        await database.Store.CreateChallengeAsync(challenge, CancellationToken.None);
+        Assert.Equal(challenge.ReturnUrl, (await database.Store.GetChallengeAsync(challenge.Id, CancellationToken.None))!.ReturnUrl);
+        Assert.True(await database.Store.StartBrowserAsync(challenge.Id, "web-state", "web-nonce", now, CancellationToken.None));
+        Assert.Equal(challenge.ReturnUrl, (await database.Store.FindStateAsync("web-state", CancellationToken.None))!.ReturnUrl);
+        Assert.Equal(challenge.ReturnUrl, (await database.Store.ClaimStateAsync("web-state", "web-nonce", now, CancellationToken.None))!.ReturnUrl);
+        await database.Store.CompleteChallengeAsync(challenge.Id, new("account", "123", "Player"), CancellationToken.None);
+        Assert.Equal(challenge.ReturnUrl,
+            (await database.Store.RedeemChallengeAsync(challenge.Id, challenge.CodeChallenge, now, CancellationToken.None))!.ReturnUrl);
+
+        var legacyId = Guid.NewGuid().ToString("N");
+        await database.Collection("login_challenges").InsertOneAsync(new BsonDocument
+        {
+            ["_id"] = legacyId, ["SchemaVersion"] = 1, ["CodeChallenge"] = challenge.CodeChallenge,
+            ["ExpiresAt"] = now.AddHours(1), ["Status"] = (int)ChallengeStatus.Pending
+        });
+        var legacy = (await database.Store.GetChallengeAsync(legacyId, CancellationToken.None))!;
+        Assert.Null(legacy.ReturnUrl);
+        Assert.True(await database.Store.StartBrowserAsync(legacyId, "legacy-state", "legacy-nonce", now, CancellationToken.None));
+        Assert.Null((await database.Store.ClaimStateAsync("legacy-state", "legacy-nonce", now, CancellationToken.None))!.ReturnUrl);
+    }
+
+    [MongoFact]
     public async Task IndexesAndConcurrentFirstLoginsPreserveOneAccountPerDiscordIdentity()
     {
         await using var database = await TestDatabase.CreateAsync();

@@ -1,7 +1,7 @@
 // Run with playwright-cli run-code --filename tests/play.browser.mjs against serve.mjs.
 // API/build fixtures exist only inside this browser test and are never published.
 async (page) => {
-  const base = 'http://127.0.0.1:51806';
+  const base = new URL(page.url()).origin;
   const api = 'https://api.arkya.online';
   const checks = [];
   const errors = [];
@@ -37,6 +37,7 @@ async (page) => {
   let authChecks = 0;
   let buildReads = 0;
   let revoked = false;
+  let returnUrl;
   const user = () => ({ accountId: '197d1fa3-83c2-45cb-bb26-f4b574e88ee8', displayName: 'QA Explorer', expiresAt: new Date(expiry).toISOString() });
   const token = 'Q'.repeat(43);
   const response = (route, data, status = 200) => route.fulfill({ status, contentType: 'application/json', headers: {
@@ -50,9 +51,16 @@ async (page) => {
     if (request.method() === 'OPTIONS') { await response(route, {}); return; }
     if (path.endsWith('/challenges')) {
       expiry = Date.now() + 3600000;
+      returnUrl = request.postDataJSON().returnUrl;
+      check(returnUrl === `${base}/account.html?lang=en&returnTo=play.html` ||
+        returnUrl === `${base}/account.html?lang=fr`, 'Challenge includes only the local account return and safe navigation parameters');
       await response(route, { challengeId: 'a'.repeat(32), authorizationUrl: `${api}/v1/auth/discord/authorize/${'a'.repeat(32)}`,
-        expiresAt: new Date(Date.now() + 300000).toISOString(), pollIntervalSeconds: 5 });
-    } else if (path.includes('/authorize/')) await route.fulfill({ contentType: 'text/html', body: '<p>Isolated QA authorization fixture.</p>' });
+        expiresAt: new Date(Date.now() + 300000).toISOString(), pollIntervalSeconds: 5, returnUrl });
+    } else if (path.includes('/authorize/')) {
+      check(request.isNavigationRequest(), 'Authorization is a document navigation');
+      check(page.context().pages().length === 1, 'Discord login does not create a popup or extra tab');
+      await route.fulfill({ status: 302, headers: { Location: returnUrl }, body: '' });
+    }
     else if (path.endsWith('/exchange')) await response(route, { ...user(), sessionToken: token });
     else if (path.endsWith('/me')) {
       authChecks++;
@@ -95,6 +103,7 @@ async (page) => {
     await page.locator('#discord-login:not([disabled])').click();
     await page.locator('.game-frame.is-playing').waitFor({ timeout: 20000 });
     check(page.url() === `${base}/play.html?lang=en`, 'Successful account flow returns to the game in the same tab');
+    check(await page.evaluate(() => sessionStorage.getItem('arkya-discord-pending-v1') === null), 'Completed return removes the saved login proof');
     check(authChecks >= 3, 'Page restore, load gate and handoff each verify /me');
     check(await page.evaluate(() => window.__qaBridge.join() === 'AcceptSiteSession'), 'Fixture engine receives exactly one session import');
     check(!page.url().includes(token), 'Session is absent from the URL');

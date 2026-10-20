@@ -7,4 +7,4 @@ public sealed record LoginChallenge(
     string Id, string CodeChallenge, DateTime ExpiresAt,
     ChallengeStatus Status = ChallengeStatus.Pending,
     string? StateHash = null, string? BrowserNonceHash = null,
-    string? AccountId = null, string? DisplayName = null);
+    string? AccountId = null, string? DisplayName = null, string? ReturnUrl = null);

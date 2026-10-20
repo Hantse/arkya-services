@@ -124,6 +124,8 @@ Le protocole Arkya relie le client natif au navigateur :
 
 La preuve S256 appartient au protocole de remise Arkya ; elle ne présume pas d'un support PKCE chez Discord. Une session Arkya est un jeton opaque aléatoire dont seule l'empreinte est persistée. Sa durée par défaut est de huit heures. Expiration et révocation sont vérifiées lors des lectures, indépendamment du nettoyage différé par index TTL MongoDB.
 
+Le site effectue la connexion dans le même onglet. Il conserve temporairement le challenge et son vérificateur dans `sessionStorage`, puis fournit un `returnUrl` limité à sa page Compte et à une origine autorisée. Identity persiste ce retour avec le challenge et redirige après validation de l’état et du cookie de corrélation. Le site reprend l’échange, efface la preuve et vérifie `/me` avant d’afficher le compte. La langue et l’éventuel retour vers Jouer sont conservés ; aucun jeton ou vérificateur ne transite dans l’URL. Les clients natifs sans `returnUrl` conservent le parcours décrit ci-dessus.
+
 `GET /v1/auth/me` et `POST /v1/auth/logout` reçoivent la session via `Authorization: Bearer`. Les services utilisent `POST /internal/sessions/introspect`, protégé par une clé de service. Characters demande cette validation à Identity pour chaque accès authentifié ; une panne Identity empêche l'accès plutôt que d'accepter une identité non vérifiée.
 
 ### Social Discord
