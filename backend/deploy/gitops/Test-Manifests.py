@@ -205,8 +205,11 @@ def check_frontend_discord(documents, beta_documents):
     require(resources[("PersistentVolumeClaim", FRONTEND_NAMESPACE, "arkya-identity-keys")] ==
             relocated("PersistentVolumeClaim", "arkya-identity-keys"),
             "Frontend/Discord must preserve Identity key storage protection in the beta namespace")
-    gateway_config = next(d["data"] for d in documents if d["kind"] == "ConfigMap"
-                          and d["metadata"]["name"].startswith("arkya-gateway-config-"))
+    load_balancers = [d for d in documents if d["kind"] == "Service"
+                     and d["spec"].get("type") == "LoadBalancer"]
+    require(len(load_balancers) == 1 and load_balancers[0]["metadata"]["name"] == "arkya-gateway"
+            and load_balancers[0]["spec"].get("loadBalancerIP") == "192.168.100.218",
+            "Frontend/Discord must expose only YARP through the existing LoadBalancer")
     for app in ("identity", "gateway", "frontend"):
         name = "arkya-" + app
         key = ("Deployment", FRONTEND_NAMESPACE, name)
@@ -224,9 +227,16 @@ def check_frontend_discord(documents, beta_documents):
         if app == "identity":
             expected["data"]["AllowedHosts"] = (
                 f"api.arkya.online;arkya-identity;arkya-identity.{FRONTEND_NAMESPACE}.svc.cluster.local")
+            for suffix in ("Url", "Certificate__Path", "Certificate__KeyPath"):
+                del expected["data"]["Kestrel__Endpoints__Internal__" + suffix]
+            require(not any(key.startswith("Kestrel__Endpoints__Internal__")
+                            for key in resources[config_key]["data"]),
+                    "Frontend/Discord terminates TLS at Traefik; Identity must not require an internal certificate")
         if app == "gateway":
-            expected["data"].update(AllowedHosts="api.arkya.online",
+            expected["data"].update(AllowedHosts="api.arkya.online;arkya.online",
                                     Gateway__CharactersEnabled="false", Gateway__AdminEnabled="false",
+                                    Gateway__FrontendEnabled="true", Gateway__FrontendHost="arkya.online",
+                                    Gateway__FrontendAddress=f"http://arkya-frontend.{FRONTEND_NAMESPACE}.svc.cluster.local:8080/",
                                     Gateway__AdminAddress=f"http://arkya-admin.{FRONTEND_NAMESPACE}.svc.cluster.local:8080/")
             for destination in ("identity", "characters"):
                 expected["data"][f"ReverseProxy__Clusters__{destination}__Destinations__primary__Address"] = (
@@ -235,10 +245,17 @@ def check_frontend_discord(documents, beta_documents):
         require((config_name != original_config_name) == (app in {"identity", "gateway"}),
                 f"Frontend/Discord must roll the changed Identity and gateway configurations: {name}")
         expected = relocated("Deployment", name)
+        if app == "gateway":
+            expected["metadata"].setdefault("annotations", {})["argocd.argoproj.io/sync-wave"] = "-1"
         expected_container, = expected["spec"]["template"]["spec"]["containers"]
         for entry in expected_container["envFrom"]:
             if "configMapRef" in entry:
                 entry["configMapRef"]["name"] = config_name
+        if app == "identity":
+            expected_container["ports"] = [p for p in expected_container["ports"] if p["name"] != "https"]
+            expected_container["volumeMounts"] = [v for v in expected_container["volumeMounts"] if v["name"] != "tls"]
+            pod = expected["spec"]["template"]["spec"]
+            pod["volumes"] = [v for v in pod["volumes"] if v["name"] != "tls"]
         if app == "frontend":
             for probe in ("startupProbe", "readinessProbe", "livenessProbe"):
                 expected_container[probe]["httpGet"]["httpHeaders"] = [{
@@ -250,29 +267,23 @@ def check_frontend_discord(documents, beta_documents):
             expected_keys.add((kind, FRONTEND_NAMESPACE, name))
         service_key = ("Service", FRONTEND_NAMESPACE, name)
         expected = relocated("Service", name)
+        if app == "identity":
+            expected["spec"]["ports"] = [p for p in expected["spec"]["ports"] if p["name"] != "https"]
         if app == "frontend":
-            expected["spec"].update(type="LoadBalancer", externalTrafficPolicy="Local",
-                                    ports=[{"name": "http", "port": 80, "targetPort": "http"}])
-            reserved_ip = resources[service_key]["spec"].get("loadBalancerIP")
-            if reserved_ip:
-                address = ipaddress.ip_address(reserved_ip)
-                require(address.version == 4 and address.is_private and not address.is_loopback
-                        and not address.is_link_local and not address.is_multicast
-                        and not address.is_unspecified and reserved_ip != "192.168.100.218",
-                        "Frontend needs a distinct private IP; availability must be checked on the cluster")
-                expected["spec"]["loadBalancerIP"] = reserved_ip
-            require({"name": "http", "containerPort": 8080} in container["ports"],
-                    "Frontend LoadBalancer must reach HTTP on container port 8080")
+            expected["metadata"]["annotations"]["argocd.argoproj.io/sync-wave"] = "0"
+            require(resources[service_key]["spec"]["type"] == "ClusterIP"
+                    and resources[service_key]["spec"]["ports"] == [
+                        {"name": "http", "port": 8080, "targetPort": "http"}]
+                    and {"name": "http", "containerPort": 8080} in container["ports"],
+                    "YARP must reach the internal frontend over HTTP on port 8080")
         require(resources[service_key] == expected, f"Unexpected frontend/Discord Service for {name}")
         policy_key = ("NetworkPolicy", FRONTEND_NAMESPACE, name)
         expected = relocated("NetworkPolicy", name)
-        if app == "identity":
-            for rule in expected["spec"]["ingress"]:
-                for peer in rule["from"]:
-                    peer["namespaceSelector"]["matchLabels"]["kubernetes.io/metadata.name"] = FRONTEND_NAMESPACE
         if app == "frontend":
+            expected["metadata"]["annotations"]["argocd.argoproj.io/sync-wave"] = "0"
+        if app in {"identity", "frontend"}:
             expected["spec"]["ingress"] = [{
-                "from": [{"ipBlock": {"cidr": gateway_config["ProxyTrust__KnownNetworks__0"]}}],
+                "from": [{"podSelector": {"matchLabels": {"app.kubernetes.io/name": "arkya-gateway"}}}],
                 "ports": [{"protocol": "TCP", "port": 8080}],
             }]
         require(resources[policy_key] == expected, f"Unexpected frontend/Discord network policy for {name}")

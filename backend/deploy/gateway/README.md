@@ -14,6 +14,14 @@ flowchart LR
 
 La gateway et Identity partagent le namespace existant `arkya-identity`. Identity conserve ses secrets, sa base et son PVC de clés ; la gateway est sans état et sans secret applicatif. Ses deux réplicas utilisent le port 8080 pour les requêtes et le port 8081 uniquement pour les sondes kubelet. Le Service LoadBalancer ne publie que 80 → 8080. Aucun Ingress Kubernetes, certificat ou cert-manager n'est ajouté.
 
+Pour l'étape frontend et Discord, le [profil GitOps dédié](../gitops/frontend-discord/README.md)
+déploie les trois composants dans `arkya-beta`, derrière ce seul LoadBalancer.
+`Gateway__FrontendEnabled=true`, `Gateway__FrontendHost=arkya.online` et
+`Gateway__FrontendAddress=http://arkya-frontend.arkya-beta.svc.cluster.local:8080/`
+activent le routage du site. `AllowedHosts` contient `api.arkya.online;arkya.online`.
+Les routes API restent séparées du domaine frontend. Ce routage est désactivé
+par défaut dans les autres profils.
+
 ## Préparer les images et les manifests
 
 Publier les images avec les workflows [Gateway image](GITHUB_ACTIONS.md) et [Identity image](../identity/GITHUB_ACTIONS.md), puis utiliser leurs digests. Identity doit inclure la prise en charge du profil derrière la gateway.

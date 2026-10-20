@@ -3,7 +3,9 @@
 Pour le déploiement progressif **frontend et connexion Discord seulement**,
 utiliser le [profil `frontend-discord`](frontend-discord/README.md), inspiré
 de `arksaas-infra`. L'Application `arkya-services` pointe directement vers ce
-profil avec une seule source et trois services dans `arkya-beta`.
+profil avec une seule source et trois services dans `arkya-beta`. Un seul
+LoadBalancer `192.168.100.218:80` expose YARP, qui route le domaine du site
+vers le frontend et le domaine API vers Identity, tous deux en ClusterIP.
 Traefik reste géré séparément.
 La suite de ce document décrit la bêta complète.
 

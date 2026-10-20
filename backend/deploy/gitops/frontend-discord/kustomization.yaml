@@ -75,6 +75,39 @@ patches:
       namespace: arkya-identity
     data:
       AllowedHosts: api.arkya.online;arkya-identity;arkya-identity.arkya-beta.svc.cluster.local
+      Kestrel__Endpoints__Internal__Url: null
+      Kestrel__Endpoints__Internal__Certificate__Path: null
+      Kestrel__Endpoints__Internal__Certificate__KeyPath: null
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-identity
+      namespace: arkya-identity
+    spec:
+      template:
+        spec:
+          containers:
+          - name: identity
+            ports:
+            - containerPort: 8443
+              $patch: delete
+            volumeMounts:
+            - mountPath: /etc/arkya/tls
+              $patch: delete
+          volumes:
+          - name: tls
+            $patch: delete
+- patch: |-
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: arkya-identity
+      namespace: arkya-identity
+    spec:
+      ports:
+      - port: 8443
+        $patch: delete
 - patch: |-
     apiVersion: v1
     kind: ConfigMap
@@ -82,26 +115,31 @@ patches:
       name: arkya-gateway-config
       namespace: arkya-identity
     data:
-      AllowedHosts: api.arkya.online
+      AllowedHosts: api.arkya.online;arkya.online
       Gateway__CharactersEnabled: 'false'
       Gateway__AdminEnabled: 'false'
+      Gateway__FrontendEnabled: 'true'
+      Gateway__FrontendHost: arkya.online
+      Gateway__FrontendAddress: http://arkya-frontend.arkya-beta.svc.cluster.local:8080/
       Gateway__AdminAddress: http://arkya-admin.arkya-beta.svc.cluster.local:8080/
       ReverseProxy__Clusters__identity__Destinations__primary__Address: http://arkya-identity.arkya-beta.svc.cluster.local:8080/
       ReverseProxy__Clusters__characters__Destinations__primary__Address: http://arkya-characters.arkya-beta.svc.cluster.local:8080/
+# Finish the gateway rollout before retiring the previous direct frontend access.
 - patch: |-
-    apiVersion: v1
-    kind: Service
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
-      name: arkya-frontend
+      name: arkya-gateway
       namespace: arkya-identity
-    spec:
-      type: LoadBalancer
-      externalTrafficPolicy: Local
-      ports:
-      - $patch: replace
-      - name: http
-        port: 80
-        targetPort: http
+      annotations:
+        argocd.argoproj.io/sync-wave: '-1'
+- target:
+    kind: Service|NetworkPolicy
+    name: arkya-frontend
+  patch: |-
+    - op: replace
+      path: /metadata/annotations/argocd.argoproj.io~1sync-wave
+      value: '0'
 - target:
     kind: NetworkPolicy
     name: arkya-frontend
@@ -110,8 +148,9 @@ patches:
       path: /spec/ingress
       value:
       - from:
-        - ipBlock:
-            cidr: 192.168.100.0/24
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: arkya-gateway
         ports:
         - protocol: TCP
           port: 8080
@@ -120,11 +159,15 @@ patches:
     name: arkya-identity
   patch: |-
     - op: replace
-      path: /spec/ingress/0/from/0/namespaceSelector/matchLabels/kubernetes.io~1metadata.name
-      value: arkya-beta
-    - op: replace
-      path: /spec/ingress/1/from/0/namespaceSelector/matchLabels/kubernetes.io~1metadata.name
-      value: arkya-beta
+      path: /spec/ingress
+      value:
+      - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: arkya-gateway
+        ports:
+        - protocol: TCP
+          port: 8080
 - target:
     kind: Deployment
     name: arkya-frontend

@@ -13,8 +13,9 @@ Unity appartiennent aux étapes suivantes. Le frontend peut démarrer sans
 le service Unity ; le lancement du jeu reste indisponible dans ce périmètre.
 
 Utiliser le [profil frontend-discord](../../backend/deploy/gitops/frontend-discord/README.md),
-inspiré du dépôt `arksaas-infra` : deux LoadBalancers privés pour frontend et
-Gateway, Identity en ClusterIP, une seule source Argo. Traefik existe déjà
+avec une seule source Argo et un unique LoadBalancer privé devant YARP.
+YARP route `arkya.online` vers le frontend et `api.arkya.online` vers les
+routes publiques d'Identity ; les deux Services sont en ClusterIP. Traefik existe déjà
 et reste hors du périmètre de ce déploiement.
 
 Relever d’abord l’état des ressources depuis le contexte du cluster Arkya :
@@ -31,18 +32,22 @@ Les prérequis du profil existant sont, dans `arkya-beta` :
 - `arkya-identity-secrets`, avec `Mongo__ConnectionString`, `Discord__ClientId`,
   `Discord__ClientSecret` et `ServiceAuthentication__Key` ;
 - `arkya-ghcr` pour les images privées ;
-- `arkya-identity-tls` pour le listener HTTPS interne déclaré dans Identity ;
 - le PVC `arkya-identity-keys` pour les clés persistantes, créé par le profil.
 
 Les trois Deployments ont également leurs ConfigMaps, Services et
-NetworkPolicies. La Gateway conserve le LoadBalancer `192.168.100.218` ;
-l'adresse privée du frontend est allouée par le cluster ou réservée après
-vérification de disponibilité. Ce profil ne crée aucun ingress ni certificat
+NetworkPolicies. La Gateway conserve le LoadBalancer `192.168.100.218:80` ;
+le frontend est joint uniquement depuis YARP sur son Service interne au
+port 8080. Ce profil ne crée aucun ingress ni certificat
 public. L'Application Argo `arkya-services` utilise directement le chemin
 `backend/deploy/gitops/frontend-discord`, le projet `arkya-beta` et la
 destination `arkya-beta`. Mettre à jour les destinations autorisées du projet
 avec le manifest indiqué dans le guide. Suivre la procédure du profil avant le sync
 si une ancienne application enfant a déjà été créée.
+
+TLS est terminé par le Traefik existant. Les liaisons privées
+Traefik → YARP → Identity utilisent HTTP ; ce profil retire le listener
+TLS interne d'Identity et n'exige pas de Secret `arkya-identity-tls`.
+Le callback Discord et les origines publiques restent en HTTPS.
 
 Le callback à enregistrer dans Discord est exactement
 `https://api.arkya.online/v1/auth/discord/callback`.

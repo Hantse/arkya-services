@@ -2,16 +2,31 @@
 
 Ce profil reprend le modèle de `arksaas-infra` : Argo CD lit un environnement
 Kustomize directement depuis l'Application `arkya-services`, sans parent
-ni application enfant. Le frontend et la gateway exposent chacun un LoadBalancer privé,
-Identity reste en ClusterIP et MongoDB est fourni par l'infrastructure.
+ni application enfant. Un seul LoadBalancer privé expose YARP ; le frontend
+et Identity restent en ClusterIP. MongoDB est fourni par l'infrastructure.
 Traefik est déjà en place et reste géré par l'exploitant ; ce profil ne crée
 ni ingress, ni configuration Traefik, ni certificat public.
 
 | Composant | Exposition | Rôle |
 | --- | --- | --- |
-| `arkya-frontend` | LoadBalancer, port 80 → 8080 | Site `https://arkya.online` |
-| `arkya-gateway` | LoadBalancer `192.168.100.218`, port 80 → 8080 | API `https://api.arkya.online` |
-| `arkya-identity` | ClusterIP, ports 8080 et 8443 | Discord, comptes et sessions MongoDB |
+| `arkya-frontend` | ClusterIP, port 8080 | Site `https://arkya.online`, joint par YARP |
+| `arkya-gateway` | Unique LoadBalancer `192.168.100.218`, port 80 → 8080 | Routage du site et de l'API selon le domaine |
+| `arkya-identity` | ClusterIP, HTTP port 8080 | Discord, comptes et sessions MongoDB |
+
+```text
+Traefik existant → http://192.168.100.218:80 → YARP
+  Host arkya.online     → arkya-frontend:8080
+  Host api.arkya.online → routes publiques autorisées → arkya-identity:8080
+```
+
+YARP relaie les requêtes sans redirection du navigateur vers les Services.
+Le Host public est conservé. Les chemins API inconnus ou internes sur
+`api.arkya.online` restent refusés ; ils ne retombent pas sur le frontend.
+TLS est terminé par Traefik. YARP et Identity utilisent HTTP sur le réseau
+privé, avec les en-têtes HTTPS acceptés uniquement depuis leurs proxys de
+confiance. Identity n'ouvre pas de listener TLS et ne monte aucun certificat
+dans ce profil. Les URL publiques, le callback Discord et les cookies
+sécurisés restent en HTTPS.
 
 Le rendu contient **13 ressources, dont trois Deployments**, dans le seul
 namespace `arkya-beta`. Les routes Characters et Admin sont désactivées.
@@ -41,17 +56,14 @@ Ces commandes sont en lecture seule. Relever les LoadBalancers existants,
 notamment celui d'Arkya et les `.210`/`.211` utilisés par ArkSaas dans le dépôt
 de référence. Ne pas réutiliser leurs adresses.
 
-Le frontend n'impose pas d'IP : le contrôleur LoadBalancer du cluster doit
-lui allouer une **adresse privée joignable depuis le proxy existant**. Si le
-cluster exige une réservation, ajouter l'adresse libre confirmée au Service
-dans ce profil avant le sync. Ne pas inventer une adresse à partir du dépôt
-de référence. Le seul ServiceLB de k3s ne garantit pas une VIP dédiée ;
-vérifier le contrôleur et le pool réellement utilisés.
+La gateway conserve l'adresse `192.168.100.218`. Le frontend utilise seulement
+son Service interne `arkya-frontend.arkya-beta.svc.cluster.local:8080`.
+La NetworkPolicy frontend accepte uniquement les pods `arkya-gateway`
+du même namespace.
 
-Les NetworkPolicies frontend/gateway autorisent actuellement le LAN
-`192.168.100.0/24`, comme la confiance proxy de la gateway. Adapter ces trois
-valeurs ensemble si la source réseau réelle diffère. `externalTrafficPolicy:
-Local` préserve cette source.
+La NetworkPolicy et la confiance proxy de la gateway autorisent actuellement
+le LAN `192.168.100.0/24`. Adapter ces deux valeurs ensemble si la source
+réseau réelle diffère. `externalTrafficPolicy: Local` préserve cette source.
 
 Ce profil sert au premier déploiement progressif. Si la bêta complète ou un
 ancien ingress est déjà actif, examiner son état avant de changer de source :
@@ -68,17 +80,14 @@ Dans `arkya-beta`, prévoir :
 | --- | --- |
 | Secret `arkya-identity-secrets` | `Mongo__ConnectionString`, `Discord__ClientId`, `Discord__ClientSecret`, `ServiceAuthentication__Key` |
 | Secret `arkya-ghcr` | Lecture des packages GHCR privés |
-| Secret `arkya-identity-tls` | `tls.crt` et `tls.key` pour le listener HTTPS interne déjà déclaré dans Identity |
 | Stockage par défaut | PVC `arkya-identity-keys`, 1 Gio RWO, créé par le profil |
 
 Créer le namespace s'il manque avant de provisionner les Secrets. Le compte
 MongoDB est limité à `arkya_identity`, avec les droits de création des index.
 S'il existe déjà, ne pas le recréer : les Secrets sont provisionnés dans
 le namespace existant.
-La clé de service a entre 32 et 512 caractères. Le certificat interne reste
-nécessaire au démarrage d'Identity même si la connexion web passe par le
-listener HTTP privé depuis la gateway.
-Son nom DNS interne est `arkya-identity.arkya-beta.svc.cluster.local`.
+La clé de service a entre 32 et 512 caractères.
+Le nom DNS interne est `arkya-identity.arkya-beta.svc.cluster.local`.
 Les Secrets et PVC sont propres au namespace : des ressources éventuellement
 créées dans `arkya-identity` ne sont pas déplacées automatiquement. Vérifier
 leur état avant toute migration et conserver les volumes existants.
@@ -153,6 +162,18 @@ namespace operations. Synchroniser manuellement **sans prune** après
 provisioning des prérequis. Les volumes ne doivent jamais être supprimés
 pour résoudre une adoption. L'auto-sync avec prune/self-heal peut être activé
 après validation du premier déploiement et résolution des anciennes propriétés.
+
+Pour passer de l'ancien profil à deux LoadBalancers à ce profil, publier
+d'abord l'image Gateway prenant en charge `Gateway__FrontendEnabled`,
+`Gateway__FrontendHost` et `Gateway__FrontendAddress`, puis attendre sa
+promotion par la CI dans `beta/kustomization.yaml`. Activer ensuite ce
+profil : le Service frontend passe en ClusterIP, sans suppression du Service
+ni de ses pods. La gateway se déploie en vague `-1`, puis le Service frontend
+et sa NetworkPolicy en vague `0`, avec les autres Deployments. La bascule
+attend ainsi la gateway prête sans dépendre de la santé d'Identity.
+Les deux domaines publics utilisent la même destination
+privée YARP. Un simple changement de ConfigMap avec l'ancienne image Gateway
+ne suffit pas à ajouter le routage du frontend.
 
 Après mise à jour depuis la révision qui déclarait explicitement le Namespace,
 faire un Hard Refresh. L'état désiré contient les 13 ressources ci-dessus.

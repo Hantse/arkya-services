@@ -35,8 +35,12 @@ L’entrée publique préparée est maintenant **`api.arkya.online`**, avec [une
 La confiance dans les en-têtes HTTPS est contrôlée séparément à chaque saut : réseau source Traefik dans la gateway, réseau des pods gateway dans Identity/Characters. YARP remplace les en-têtes transférés à partir du contexte normalisé. Les liaisons HTTP Traefik→gateway et gateway→Identity sont limitées aux réseaux privés autorisés ; les API internes interservices conservent leurs exigences TLS et clés de service. Les NetworkPolicies limitent l’entrée dans Identity aux pods gateway. Le port de gestion séparé expose les sondes kubelet : la readiness Identity teste MongoDB, celle de la gateway teste seulement son propre processus. Identity conserve son réplica et son volume de clés Data Protection. Le routage Characters s’active lorsque sa destination et ses dépendances sont déployées ; aucun déploiement Characters n’est inventé par ces manifests. Ces fichiers restent à appliquer au cluster.
 
 Le [profil initial frontend et Discord](../backend/deploy/gitops/frontend-discord/README.md)
-reprend le modèle `arksaas-infra` : frontend et gateway sur deux LoadBalancers
-privés, Identity en ClusterIP et Traefik existant géré séparément. Il hérite
+utilise un seul LoadBalancer privé `192.168.100.218:80` devant YARP :
+`arkya.online` rejoint le frontend en ClusterIP et `api.arkya.online`
+rejoint les routes publiques d'Identity, également en ClusterIP.
+TLS est terminé par Traefik, qui reste géré séparément ; ce profil utilise
+HTTP privé vers YARP et Identity, sans listener TLS ni certificat dans les pods.
+Le profil hérite
 des images de la bêta, mais ne rend que ces trois services ; les routes Admin
 et Characters sont désactivées. L'Application Argo `arkya-services` pointe
 directement vers ce profil, avec destination `arkya-beta` et une seule
