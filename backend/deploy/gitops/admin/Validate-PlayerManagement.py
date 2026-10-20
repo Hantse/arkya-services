@@ -1,6 +1,7 @@
 """Validate the in-place Admin/Identity/Characters profile without cluster access."""
 
 from copy import deepcopy
+import argparse
 import importlib.util
 from pathlib import Path
 import re
@@ -27,7 +28,76 @@ def ingress(*apps, nodes=False):
     return [{"from": peers, "ports": [{"protocol": "TCP", "port": 8080}]}]
 
 
-def check_profile(documents, frontend_documents=None, beta_documents=None):
+def without_inference_component(documents, require_digests):
+    """Validate the exact additive component before checking the unchanged seven-service profile."""
+    component_root = ROOT.parent / "inference-control"
+    component = checks.yaml.safe_load((component_root / "kustomization.yaml").read_text(encoding="utf-8"))
+    require(component["kind"] == "Component" and "namespace" not in component,
+            "Inference must not transform its parent's namespaces")
+    resources = checks.index(documents)
+    deployment = resources[("Deployment", NS, "arkya-inference")]
+    pod = deployment["spec"]["template"]["spec"]
+    container, = pod["containers"]
+    config_name, = [entry["configMapRef"]["name"] for entry in container["envFrom"]]
+    require(re.fullmatch(r"arkya-inference-config-[a-z0-9]{10}", config_name), "Inference configuration must trigger a rollout")
+    config = resources[("ConfigMap", NS, config_name)]
+    require(config["data"] == dict(line.split("=", 1) for line in
+            (component_root / "inference.env").read_text(encoding="utf-8").splitlines() if line and not line.startswith("#")),
+            "Unexpected Inference configuration")
+    require(config["data"]["Mongo__DatabaseName"] == "arkya_inference" and
+            not any(any(part in key for part in ("ConnectionString", "ServiceKey", "Password", "ClientSecret", "AdminKey", "KeySeed"))
+                    or key.endswith("__Key") for key in config["data"]), "Inference must preserve its database and keep credentials out of ConfigMaps")
+    seed = secret_env("InferenceOperator__KeySeed", "arkya-admin-secrets", "ContentApi__AdminKey")
+    require(container["env"] == [secret_env("Mongo__ConnectionString", "arkya-content-secrets", "Mongo__ConnectionString"), seed],
+            "Inference must use only the two approved existing Secret keys")
+    require(pod["automountServiceAccountToken"] is False and "serviceAccountName" not in pod and
+            pod["securityContext"]["runAsNonRoot"] is True and
+            container["securityContext"] == {"allowPrivilegeEscalation": False, "readOnlyRootFilesystem": True,
+                                               "capabilities": {"drop": ["ALL"]}}, "Inference must retain its restricted process permissions")
+    pins = [entry for entry in component["images"] if entry["name"] == "ghcr.io/hantse/arkya-services-inference"]
+    pin, = pins
+    expected_image = pin["name"] + ("@" + pin["digest"] if "digest" in pin else ":" + pin["newTag"])
+    require(container["image"] == expected_image, "Inference must inherit its separately promoted image pin")
+    if require_digests:
+        require(re.fullmatch(r"ghcr\.io/hantse/arkya-services-inference@sha256:[0-9a-f]{64}", expected_image),
+                f"Unpublished image: {expected_image}")
+    owned = checks.yaml.safe_load_all((component_root / "inference.yaml").read_text(encoding="utf-8"))
+    owned_keys = set()
+    for expected in owned:
+        key = checks.identity(expected)
+        owned_keys.add(key)
+        if expected["kind"] == "Deployment":
+            expected_container, = expected["spec"]["template"]["spec"]["containers"]
+            expected_container["image"] = expected_image
+            expected_container["envFrom"][0]["configMapRef"]["name"] = config_name
+        require(resources.get(key) == expected, f"Unexpected Inference resource: {key}")
+    require(owned_keys == {(kind, NS, "arkya-inference") for kind in ("Deployment", "Service", "NetworkPolicy")},
+            "Inference must add exactly one private workload, service and policy")
+    require(resources[("Service", NS, "arkya-inference")]["spec"]["type"] == "ClusterIP" and
+            resources[("NetworkPolicy", NS, "arkya-inference")]["spec"]["ingress"] == ingress("gateway", "admin"),
+            "Inference must accept only private Gateway and Admin traffic")
+    owned_keys.add(("ConfigMap", NS, config_name))
+    normalized = deepcopy([document for document in documents if checks.identity(document) not in owned_keys])
+    admin_container, = next(document for document in normalized if checks.identity(document) ==
+                            ("Deployment", NS, "arkya-admin"))["spec"]["template"]["spec"]["containers"]
+    require(admin_container.get("env", []).count(seed) == 1, "Admin needs exactly one approved Inference seed reference")
+    admin_container["env"].remove(seed)
+    destination = f"http://arkya-inference.{NS}.svc.cluster.local:8080/"
+    expected_modules = {
+        "arkya-admin": {"InferenceApi__Enabled": "true", "InferenceApi__AllowClusterHttp": "true", "InferenceApi__BaseUrl": destination},
+        "arkya-gateway": {"Gateway__InferenceEnabled": "true", "ReverseProxy__Clusters__inference__Destinations__primary__Address": destination}}
+    for app, expected_values in expected_modules.items():
+        config, = [document["data"] for document in normalized if document["kind"] == "ConfigMap" and
+                   document["metadata"]["name"].startswith(app + "-config-")]
+        require(all(config.get(key) == value for key, value in expected_values.items()), f"Invalid {app} Inference activation")
+        for key in expected_values:
+            del config[key]
+    return normalized
+
+
+def check_profile(documents, frontend_documents=None, beta_documents=None, require_digests=False):
+    if any(document["kind"] == "Deployment" and document["metadata"]["name"] == "arkya-inference" for document in documents):
+        documents = without_inference_component(documents, require_digests)
     frontend_documents = frontend_documents or checks.render(ROOT.parent / "frontend-discord")
     beta_documents = beta_documents or checks.render(ROOT.parent / "beta")
     resources, frontend, beta = map(checks.index, (documents, frontend_documents, beta_documents))
@@ -174,9 +244,13 @@ def check_profile(documents, frontend_documents=None, beta_documents=None):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--require-digests", action="store_true")
+    args = parser.parse_args()
     documents = checks.render(ROOT)
-    check_profile(documents)
-    print(f"Admin player management: {len(documents)} resources, 7 applications, private API links, purpose-separated key seeds and existing frontend/PVC preservation validated offline.")
+    check_profile(documents, require_digests=args.require_digests)
+    count = sum(document["kind"] == "Deployment" for document in documents)
+    print(f"Admin player management: {len(documents)} resources, {count} applications, private API links, purpose-separated key seeds and existing frontend/PVC preservation validated offline.")
 
 
 if __name__ == "__main__":

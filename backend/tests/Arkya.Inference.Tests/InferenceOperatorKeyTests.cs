@@ -23,14 +23,25 @@ public sealed class InferenceOperatorKeyTests
     }
 
     [Fact]
-    public void ServiceRejectsAmbiguousOrOversizedSeedConfiguration()
+    public void SeedResolverRejectsAmbiguousOrOversizedConfigurationWithoutExposingValues()
     {
-        using var ambiguous = new InferenceFactory();
-        ambiguous.Settings["InferenceOperator:KeySeed"] = Seed;
-        Assert.Throws<InvalidOperationException>(() => ambiguous.Client());
-        using var oversized = new InferenceFactory();
-        oversized.Settings["InferenceAdmin:Key"] = "";
-        oversized.Settings["InferenceOperator:KeySeed"] = new string('a', 513);
-        Assert.Throws<InvalidOperationException>(() => oversized.Client());
+        var ambiguous = new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string?>
+        {
+            ["InferenceOperator:KeySeed"] = Seed,
+            ["InferenceAdmin:Key"] = InferenceFactory.AdminKey
+        }).Build();
+        var ambiguity = Assert.Throws<InvalidOperationException>(() =>
+            InferenceOperatorKeys.ResolveInference(ambiguous, ambiguous["InferenceAdmin:Key"]!));
+        Assert.Equal("Configure either InferenceAdmin:Key or InferenceOperator:KeySeed, never both.", ambiguity.Message);
+        Assert.DoesNotContain(Seed, ambiguity.Message);
+        Assert.DoesNotContain(InferenceFactory.AdminKey, ambiguity.Message);
+
+        var oversizedSeed = new string('a', 513);
+        var oversized = new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string?>
+            { ["InferenceOperator:KeySeed"] = oversizedSeed }).Build();
+        var invalidSize = Assert.Throws<InvalidOperationException>(() =>
+            InferenceOperatorKeys.ResolveInference(oversized, ""));
+        Assert.Equal("InferenceOperator:KeySeed requires 32 to 512 printable characters.", invalidSize.Message);
+        Assert.DoesNotContain(oversizedSeed, invalidSize.Message);
     }
 }

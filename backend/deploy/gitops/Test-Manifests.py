@@ -292,12 +292,12 @@ def check_frontend_discord(documents, beta_documents):
             "Frontend/Discord must contain only 3 workloads/configs/services/policies and Identity PVC in arkya-beta")
 
 
-def check_admin(documents, frontend_documents, beta_documents):
+def check_admin(documents, frontend_documents, beta_documents, require_digests=False):
     if any(item["kind"] == "Deployment" and item["metadata"]["name"] == "arkya-characters" for item in documents):
         validator_spec = importlib.util.spec_from_file_location("arkya_player_management", ROOT / "admin" / "Validate-PlayerManagement.py")
         validator = importlib.util.module_from_spec(validator_spec)
         validator_spec.loader.exec_module(validator)
-        return validator.check_profile(documents, frontend_documents, beta_documents)
+        return validator.check_profile(documents, frontend_documents, beta_documents, require_digests)
     resources, frontend, beta = index(documents), index(frontend_documents), index(beta_documents)
     apps = {"identity", "gateway", "frontend", "admin", "content", "realms"}
     require(len(resources) == 26 and
@@ -573,7 +573,7 @@ def main():
         frontend_documents, yaml.safe_load((ROOT / "bootstrap/project.yaml").read_text(encoding="utf-8")))
     check_bootstrap(render(ROOT / "bootstrap-frontend-discord"), bootstrap_project, frontend_discord=True)
     admin_documents = render(ROOT / "admin")
-    check_admin(admin_documents, frontend_documents, documents)
+    check_admin(admin_documents, frontend_documents, documents, args.require_digests)
     check_direct_application(
         yaml.safe_load((ROOT / "admin.application.example.yaml").read_text(encoding="utf-8")),
         admin_documents, yaml.safe_load((ROOT / "bootstrap/project.yaml").read_text(encoding="utf-8")),

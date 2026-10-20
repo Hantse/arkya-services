@@ -1,5 +1,6 @@
 """Validate the additive Inference component against Admin without contacting Kubernetes."""
 import argparse
+import importlib.util
 import os
 from pathlib import Path
 import re
@@ -38,6 +39,11 @@ def main():
                 "components": [Path(os.path.relpath(ROOT, preview)).as_posix()]
             }), encoding="utf-8")
             objects = render(preview)
+    # Exercise the same complete Admin contract before first activation and after it.
+    admin_spec = importlib.util.spec_from_file_location("arkya_admin_contract", ADMIN / "Validate-PlayerManagement.py")
+    admin_checks = importlib.util.module_from_spec(admin_spec)
+    admin_spec.loader.exec_module(admin_checks)
+    admin_checks.check_profile(objects, require_digests=args.require_digests)
     by_key = {(item["kind"], item["metadata"].get("namespace", ""), item["metadata"]["name"]): item for item in objects}
     assert len(by_key) == len(objects), "Duplicate Kubernetes resource"
     component = yaml.safe_load((ROOT / "kustomization.yaml").read_text(encoding="utf-8"))
