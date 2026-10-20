@@ -1,0 +1,4 @@
+spec:
+  source:
+    path: backend/deploy/gitops/admin
+    targetRevision: master

@@ -22,6 +22,7 @@ public partial class Program
             options.SerializerOptions.RespectRequiredConstructorParameters = true;
         });
         builder.Services.AddArkyaProxyTrust(builder.Configuration);
+        builder.Services.AddArkyaInternalHttp(builder.Configuration);
         builder.Services.AddOptions<MongoOptions>().Bind(builder.Configuration.GetSection("Mongo"))
             .Validate(value => !string.IsNullOrWhiteSpace(value.ConnectionString) && !string.IsNullOrWhiteSpace(value.DatabaseName),
                 "Mongo connection string and database name are required.").ValidateOnStart();
@@ -54,12 +55,13 @@ public partial class Program
         builder.Services.AddSingleton<RealmReconciler>();
         builder.Services.AddHostedService<RealmDeploymentWorker>();
         var app = builder.Build();
+        app.UseArkyaInternalHttp();
         app.UseArkyaProxyTrust();
         app.Use(async (context, next) =>
         {
             context.Response.Headers.CacheControl = "no-store";
             context.Response.Headers["X-Content-Type-Options"] = "nosniff";
-            if (!app.Environment.IsDevelopment() && !context.Request.IsHttps)
+            if (!app.Environment.IsDevelopment() && !context.Request.IsHttps && !context.IsArkyaInternalHttpAllowed())
             {
                 context.Response.StatusCode = 400;
                 return;

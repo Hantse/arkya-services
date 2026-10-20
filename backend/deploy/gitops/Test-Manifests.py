@@ -291,7 +291,155 @@ def check_frontend_discord(documents, beta_documents):
             "Frontend/Discord must contain only 3 workloads/configs/services/policies and Identity PVC in arkya-beta")
 
 
-def check_direct_frontend_application(application, workload_documents, project):
+def check_admin(documents, frontend_documents, beta_documents):
+    resources, frontend, beta = index(documents), index(frontend_documents), index(beta_documents)
+    apps = {"identity", "gateway", "frontend", "admin", "content", "realms"}
+    require(len(resources) == 26 and
+            {d["kind"] for d in documents} == {
+                "Deployment", "ConfigMap", "Service", "NetworkPolicy", "PersistentVolumeClaim"},
+            "Admin must render only six workloads/configs/services/policies and two key PVCs")
+    require(all(d["metadata"].get("namespace") == FRONTEND_NAMESPACE for d in documents),
+            "Every Admin profile resource must remain in arkya-beta")
+    require({d["metadata"]["name"] for d in documents if d["kind"] == "Deployment"} ==
+            {"arkya-" + app for app in apps},
+            "Admin must not deploy Characters, the legacy backend or Unity")
+    configs = {}
+    config_names = {}
+    for app in sorted(apps):
+        name = "arkya-" + app
+        deployment = resources[("Deployment", FRONTEND_NAMESPACE, name)]
+        pod = deployment["spec"]["template"]["spec"]
+        container, = pod["containers"]
+        original = beta[("Deployment", namespace(app), name)]
+        original_pod = original["spec"]["template"]["spec"]
+        original_container, = original_pod["containers"]
+        require(container["image"] == original_container["image"],
+                f"Admin must inherit the CI-promoted image for {name}")
+        require(pod["automountServiceAccountToken"] is False and "serviceAccountName" not in pod,
+                f"{name} must not acquire Kubernetes credentials")
+        require(pod["securityContext"] == original_pod["securityContext"] and
+                container["securityContext"] == original_container["securityContext"] and
+                container["resources"] == original_container["resources"],
+                f"Admin must preserve {name}'s security and resource limits")
+        expected_secrets = [] if app in {"frontend", "gateway"} else [name + "-secrets"]
+        require([e["secretRef"]["name"] for e in container["envFrom"] if "secretRef" in e] == expected_secrets,
+                f"Incorrect application secret reference for {name}")
+        require(not any("secret" in v for v in pod["volumes"]),
+                f"{name} must not require an internal TLS certificate or CA secret")
+        require(not any(p["containerPort"] == 8443 for p in container["ports"]),
+                f"{name} must not expose a TLS listener")
+        config_name, = [e["configMapRef"]["name"] for e in container["envFrom"] if "configMapRef" in e]
+        require(re.fullmatch(re.escape(name + "-config-") + r"[a-z0-9]{10}", config_name),
+                f"{name} must roll when its generated config changes")
+        config_names[app] = config_name
+        config = resources[("ConfigMap", FRONTEND_NAMESPACE, config_name)]["data"]
+        configs[app] = config
+        require(not any("Certificate" in key or key == "SSL_CERT_FILE" for key in config),
+                f"TLS terminates at Traefik; {name} must not need certificate settings")
+        for key in config:
+            require(not any(secret in key for secret in (
+                "ConnectionString", "ServiceKey", "Password", "ClientSecret", "AdminKey")) and
+                not key.endswith("__Key"), f"{name} config must not contain credentials")
+        service = resources[("Service", FRONTEND_NAMESPACE, name)]
+        require(service["spec"]["selector"] == deployment["spec"]["selector"]["matchLabels"] and
+                all(pod_value == deployment["spec"]["template"]["metadata"]["labels"].get(label)
+                    for label, pod_value in service["spec"]["selector"].items()),
+                f"{name} Service must select its deployment")
+        require(service["spec"]["ports"] == [{
+            "name": "http", "port": 80 if app == "gateway" else 8080, "targetPort": "http",
+        }], f"Unexpected public or management service port in {name}")
+        require(service["spec"]["type"] == ("LoadBalancer" if app == "gateway" else "ClusterIP"),
+                "Only YARP may expose the application's LoadBalancer")
+        policy = resources[("NetworkPolicy", FRONTEND_NAMESPACE, name)]["spec"]
+        require(policy["podSelector"]["matchLabels"] == service["spec"]["selector"] and
+                policy["policyTypes"] == ["Ingress"], f"NetworkPolicy must select {name}")
+        if app != "gateway":
+            peer = "arkya-admin" if app in {"content", "realms"} else "arkya-gateway"
+            require(policy["ingress"] == [{
+                "from": [{"podSelector": {"matchLabels": {"app.kubernetes.io/name": peer}}}],
+                "ports": [{"protocol": "TCP", "port": 8080}],
+            }], f"{name} must allow only {peer} in the same namespace")
+        if app in {"content", "realms"}:
+            require(config["ASPNETCORE_HTTP_PORTS"] == "8080" and
+                    {v for k, v in config.items() if k.startswith("InternalHttp__AllowedNetworks__")} ==
+                    {"10.42.0.0/16", "192.168.100.0/24"},
+                    f"{name} must accept private pod and kubelet peers explicitly")
+            require(not any(k.startswith("Kestrel__Endpoints__") for k in config),
+                    f"{name} must not retain an inherited TLS endpoint")
+            require(not any(k.startswith("ProxyTrust__") for k in config),
+                    f"{name} must validate its direct private peer without trusting forwarded headers")
+            internal_host = f"{name}.{FRONTEND_NAMESPACE}.svc.cluster.local"
+            require(config["AllowedHosts"] == f"{name};{internal_host}", f"Incorrect host validation for {name}")
+            for probe in ("startupProbe", "readinessProbe", "livenessProbe"):
+                health = container[probe]["httpGet"]
+                expected_path = "/health" if app == "content" else (
+                    "/health/live" if probe == "livenessProbe" else "/health/ready")
+                require(health == {
+                    "path": expected_path, "port": "http", "scheme": "HTTP",
+                    "httpHeaders": [{"name": "Host", "value": internal_host}],
+                }, f"{name} must expose usable private HTTP health probes")
+    # Switching profiles must leave the running frontend and Discord resources unchanged.
+    for key, document in frontend.items():
+        if key[0] == "ConfigMap" and key[2].startswith("arkya-gateway-config-"):
+            expected = deepcopy(document)
+            expected["metadata"]["name"] = config_names["gateway"]
+            expected["data"].update(
+                AllowedHosts="api.arkya.online;arkya.online;admin.arkya.online",
+                Gateway__AdminEnabled="true")
+            require(resources[identity(expected)] == expected, "Admin must only enable its host in YARP")
+        elif key == ("Deployment", FRONTEND_NAMESPACE, "arkya-gateway"):
+            expected = deepcopy(document)
+            expected["spec"]["template"]["spec"]["containers"][0]["envFrom"] = [
+                {"configMapRef": {"name": config_names["gateway"]}}]
+            require(resources[key] == expected, "YARP may only roll its updated configuration")
+        else:
+            require(resources[key] == document, f"Admin must preserve the working frontend/Discord resource: {key}")
+    for app in ("identity", "admin"):
+        name = "arkya-" + app
+        key = ("PersistentVolumeClaim", FRONTEND_NAMESPACE, name + "-keys")
+        expected = deepcopy(beta[("PersistentVolumeClaim", namespace(app), name + "-keys")])
+        expected["metadata"]["namespace"] = FRONTEND_NAMESPACE
+        require(resources[key] == expected, f"{name} key PVC must survive prune and application deletion")
+        deployment = resources[("Deployment", FRONTEND_NAMESPACE, name)]
+        require(deployment["spec"]["replicas"] == 1 and deployment["spec"]["strategy"]["type"] == "Recreate",
+                f"{name} must keep one owner of its RWO key volume")
+        require(sync_wave(resources[key]) == sync_wave(deployment),
+                f"{name} key PVC must bind in its consumer's sync wave")
+        require({"name": "keys", "persistentVolumeClaim": {"claimName": name + "-keys"}} in
+                deployment["spec"]["template"]["spec"]["volumes"], f"{name} must persist its keys")
+    require(configs["admin"]["AllowedHosts"] ==
+            "admin.arkya.online;arkya-admin;arkya-admin.arkya-beta.svc.cluster.local",
+            "Admin must accept its public host and private service name")
+    require(configs["admin"]["Admin__DiscordEnabled"] == "true" and
+            {k: v for k, v in configs["admin"].items() if k.startswith("Admin__AllowedDiscordUserIds__")} ==
+            {"Admin__AllowedDiscordUserIds__0": "195861708248449024"} and
+            configs["admin"]["Discord__PublicBaseUrl"] == "https://admin.arkya.online",
+            "Admin must require Discord login and authorize only the confirmed operator's immutable Discord ID")
+    require("Admin__Password" not in configs["admin"] and "Discord__ClientId" not in configs["admin"] and
+            "Discord__ClientSecret" not in configs["admin"],
+            "Admin Discord credentials must come from its application Secret, with no password login configuration")
+    require(configs["gateway"]["Gateway__AdminHost"] == "admin.arkya.online" and
+            configs["gateway"]["Gateway__AdminAddress"] ==
+            f"http://arkya-admin.{FRONTEND_NAMESPACE}.svc.cluster.local:8080/",
+            "YARP must route only the Admin host to its private service")
+    require(configs["admin"]["ProxyTrust__KnownNetworks__0"] == "10.42.0.0/16" and
+            configs["admin"]["ProxyTrust__ForwardLimit"] == "1",
+            "Admin must recover the public HTTPS scheme only from the private gateway hop")
+    for module in ("Content", "Realms"):
+        prefix = module + "Api__"
+        require(configs["admin"][prefix + "Enabled"] == "true" and
+                configs["admin"][prefix + "AllowClusterHttp"] == "true" and
+                configs["admin"][prefix + "BaseUrl"] ==
+                f"http://arkya-{module.lower()}.{FRONTEND_NAMESPACE}.svc.cluster.local:8080/",
+                f"Admin must activate the private {module} module")
+    require(configs["realms"]["Deployment__Enabled"] == "false" and
+            configs["realms"]["GameAccess__StandaloneEntries__0__Enabled"] == "false",
+            "Admin services must not activate an undeployed dedicated or a Kubernetes deployment controller")
+    require(not any(k.startswith(("Deployment__Targets__", "Deployment__Profiles__")) for k in configs["realms"]),
+            "Dedicated deployment profiles belong to their later deployment step")
+
+
+def check_direct_application(application, workload_documents, project, profile="frontend-discord"):
     require(identity(application) == ("Application", "argocd", "arkya-services"),
             "The direct profile must use the existing arkya-services application")
     spec = application["spec"]
@@ -299,7 +447,7 @@ def check_direct_frontend_application(application, workload_documents, project):
             "The direct application must use the workload project")
     require("sources" not in spec and spec["source"] == {
         "repoURL": "git@github.com:Hantse/arkya-services.git",
-        "path": "backend/deploy/gitops/frontend-discord", "targetRevision": "master"},
+        "path": f"backend/deploy/gitops/{profile}", "targetRevision": "master"},
             "The direct application must point at workloads, not the bootstrap")
     require(spec["source"]["repoURL"] in project["spec"]["sourceRepos"],
             "The workload project must allow the direct application's source")
@@ -414,15 +562,22 @@ def main():
     check_bootstrap(render(ROOT / "bootstrap"), bootstrap_project)
     frontend_documents = render(ROOT / "frontend-discord")
     check_frontend_discord(frontend_documents, documents)
-    check_direct_frontend_application(
+    check_direct_application(
         yaml.safe_load((ROOT / "frontend-discord.application.example.yaml").read_text(encoding="utf-8")),
         frontend_documents, yaml.safe_load((ROOT / "bootstrap/project.yaml").read_text(encoding="utf-8")))
     check_bootstrap(render(ROOT / "bootstrap-frontend-discord"), bootstrap_project, frontend_discord=True)
+    admin_documents = render(ROOT / "admin")
+    check_admin(admin_documents, frontend_documents, documents)
+    check_direct_application(
+        yaml.safe_load((ROOT / "admin.application.example.yaml").read_text(encoding="utf-8")),
+        admin_documents, yaml.safe_load((ROOT / "bootstrap/project.yaml").read_text(encoding="utf-8")),
+        profile="admin")
     unity_count = 0
     if args.unity_path:
         unity_count = check_unity(documents, args.unity_path, configs, args.require_digests)
     print(f"Validated {len(documents)} rendered service resources, 8 deployments, TLS/network/storage contracts and the Argo bootstrap.")
     print(f"Validated {len(frontend_documents)} frontend/Discord resources, 3 inherited deployments, the direct Argo application and optional bootstrap.")
+    print(f"Validated {len(admin_documents)} Admin resources, 6 inherited deployments, private HTTP modules, existing frontend preservation and direct Argo application.")
     if unity_count:
         print(f"Validated {unity_count} Unity resources and the combined service/admission/WSS contracts.")
     if not args.require_digests:

@@ -7,11 +7,19 @@
     <div class="eyebrow">ARKYA / ADMINISTRATION</div>
     <h1>Administrer Arkya</h1>
     <p class="intro">Préparez les mondes, déployez les serveurs et publiez les quêtes.</p>
-    <form method="post" class="panel login-panel">
+    <form method="post" asp-page-handler="@(Model.DiscordEnabled ? "Discord" : null)" class="panel login-panel">
         <input type="hidden" asp-for="ReturnUrl" />
         @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
-        <label asp-for="Password">Mot de passe administrateur</label>
-        <input asp-for="Password" type="password" autocomplete="current-password" required maxlength="512" />
-        <button type="submit" class="button primary">Se connecter <span aria-hidden="true">→</span></button>
+        @if (Model.DiscordEnabled)
+        {
+            <p>Connectez-vous avec le compte Discord autorisé à administrer Arkya.</p>
+            <button type="submit" class="button primary">Continuer avec Discord <span aria-hidden="true">→</span></button>
+        }
+        else
+        {
+            <label asp-for="Password">Mot de passe administrateur</label>
+            <input asp-for="Password" type="password" autocomplete="current-password" required maxlength="512" />
+            <button type="submit" class="button primary">Se connecter <span aria-hidden="true">→</span></button>
+        }
     </form>
 </div>

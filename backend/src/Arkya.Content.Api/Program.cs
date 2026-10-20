@@ -16,6 +16,7 @@ public partial class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = MaximumRequestBodyBytes);
         builder.Services.AddArkyaServiceDefaults(builder.Configuration);
+        builder.Services.AddArkyaInternalHttp(builder.Configuration);
         builder.Services.ConfigureHttpJsonOptions(options =>
         {
             options.SerializerOptions.UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow;
@@ -34,6 +35,7 @@ public partial class Program
         builder.Services.AddScoped<ContentService>();
 
         var app = builder.Build();
+        app.UseArkyaInternalHttp();
         app.UseArkyaServiceDefaults();
         app.Use(async (context, next) =>
         {

@@ -1,0 +1,211 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../private-base
+patches:
+- target:
+    kind: Deployment
+    name: arkya-(characters|backend)
+  patch: |-
+    $patch: delete
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: unused
+- target:
+    kind: Service
+    name: arkya-(characters|backend)
+  patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: unused
+- target:
+    kind: NetworkPolicy
+    name: arkya-(characters|backend)
+  patch: |-
+    $patch: delete
+    apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: unused
+- target:
+    kind: ConfigMap
+    name: arkya-(characters|backend)-config
+  patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: unused
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-gateway-config
+      namespace: arkya-beta
+    data:
+      AllowedHosts: api.arkya.online;arkya.online;admin.arkya.online
+      Gateway__AdminEnabled: 'true'
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-admin-config
+      namespace: arkya-beta
+    data:
+      AllowedHosts: admin.arkya.online;arkya-admin;arkya-admin.arkya-beta.svc.cluster.local
+      Admin__DiscordEnabled: 'true'
+      Admin__AllowedDiscordUserIds__0: '195861708248449024'
+      Discord__PublicBaseUrl: https://admin.arkya.online
+      ContentApi__AllowClusterHttp: 'true'
+      ContentApi__BaseUrl: http://arkya-content.arkya-beta.svc.cluster.local:8080/
+      RealmsApi__AllowClusterHttp: 'true'
+      RealmsApi__BaseUrl: http://arkya-realms.arkya-beta.svc.cluster.local:8080/
+      SSL_CERT_FILE: null
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-content-config
+      namespace: arkya-beta
+    data:
+      AllowedHosts: arkya-content;arkya-content.arkya-beta.svc.cluster.local
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-realms-config
+      namespace: arkya-beta
+    data:
+      AllowedHosts: arkya-realms;arkya-realms.arkya-beta.svc.cluster.local
+      Deployment__Enabled: 'false'
+      GameAccess__StandaloneEntries__0__Enabled: 'false'
+- target:
+    kind: ConfigMap
+    name: arkya-(content|realms)-config
+  patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: unused
+    data:
+      ASPNETCORE_HTTP_PORTS: '8080'
+      InternalHttp__AllowedNetworks__0: 10.42.0.0/16
+      InternalHttp__AllowedNetworks__1: 192.168.100.0/24
+      Kestrel__Endpoints__Internal__Url: null
+      Kestrel__Endpoints__Internal__Certificate__Path: null
+      Kestrel__Endpoints__Internal__Certificate__KeyPath: null
+- target:
+    kind: Deployment
+    name: arkya-(content|realms)
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/ports
+      value:
+      - name: http
+        containerPort: 8080
+    - op: remove
+      path: /spec/template/spec/containers/0/volumeMounts/1
+    - op: remove
+      path: /spec/template/spec/volumes/1
+    - op: replace
+      path: /spec/template/spec/containers/0/readinessProbe/httpGet/port
+      value: http
+    - op: replace
+      path: /spec/template/spec/containers/0/livenessProbe/httpGet/port
+      value: http
+    - op: replace
+      path: /spec/template/spec/containers/0/startupProbe/httpGet/port
+      value: http
+    - op: replace
+      path: /spec/template/spec/containers/0/readinessProbe/httpGet/scheme
+      value: HTTP
+    - op: replace
+      path: /spec/template/spec/containers/0/livenessProbe/httpGet/scheme
+      value: HTTP
+    - op: replace
+      path: /spec/template/spec/containers/0/startupProbe/httpGet/scheme
+      value: HTTP
+- target:
+    kind: Deployment
+    name: arkya-content
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/readinessProbe/httpGet/httpHeaders/0/value
+      value: arkya-content.arkya-beta.svc.cluster.local
+    - op: replace
+      path: /spec/template/spec/containers/0/livenessProbe/httpGet/httpHeaders/0/value
+      value: arkya-content.arkya-beta.svc.cluster.local
+    - op: replace
+      path: /spec/template/spec/containers/0/startupProbe/httpGet/httpHeaders/0/value
+      value: arkya-content.arkya-beta.svc.cluster.local
+- target:
+    kind: Deployment
+    name: arkya-realms
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/readinessProbe/httpGet/httpHeaders/0/value
+      value: arkya-realms.arkya-beta.svc.cluster.local
+    - op: replace
+      path: /spec/template/spec/containers/0/livenessProbe/httpGet/httpHeaders/0/value
+      value: arkya-realms.arkya-beta.svc.cluster.local
+    - op: replace
+      path: /spec/template/spec/containers/0/startupProbe/httpGet/httpHeaders/0/value
+      value: arkya-realms.arkya-beta.svc.cluster.local
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-admin
+      namespace: arkya-beta
+    spec:
+      template:
+        spec:
+          containers:
+          - name: admin
+            volumeMounts:
+            - mountPath: /etc/arkya/internal-ca
+              $patch: delete
+          volumes:
+          - name: internal-ca
+            $patch: delete
+- target:
+    kind: Service
+    name: arkya-(content|realms)
+  patch: |-
+    - op: replace
+      path: /spec/ports
+      value:
+      - name: http
+        port: 8080
+        targetPort: http
+- target:
+    kind: NetworkPolicy
+    name: arkya-admin
+  patch: |-
+    - op: replace
+      path: /spec/ingress
+      value:
+      - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: arkya-gateway
+        ports:
+        - protocol: TCP
+          port: 8080
+- target:
+    kind: NetworkPolicy
+    name: arkya-(content|realms)
+  patch: |-
+    - op: replace
+      path: /spec/ingress
+      value:
+      - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: arkya-admin
+        ports:
+        - protocol: TCP
+          port: 8080

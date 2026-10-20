@@ -6,6 +6,8 @@ Identity et Characters établissent le parcours compte/personnage en ASP.NET Cor
 
 Le [backoffice de déploiement des realms sur k3s](deploy/realms/README.md) ajoute `Arkya.Realms.Api` et l'écran **Realms** d'`Arkya.Admin` : définitions dans `arkya_realms`, demandes durables et observation Kubernetes. Le module est activé explicitement dans Admin. Le backend de déploiement reste interne ; seul le backoffice peut être publié sur son domaine via la gateway. Voir [l'architecture réseau et le périmètre](../docs/REALM_DEPLOYMENT.md).
 
+Après le frontend et Discord, le [profil Argo `admin`](deploy/gitops/admin/README.md) ajoute Admin, Content et Realms dans `arkya-beta`, sur le même YARP. Les deux modules sont activés ; l'exécution des dedicateds attend leurs profils et autorisations. Ce profil termine TLS dans Traefik et active explicitement HTTP privé pour les échanges Admin/API, avec contrôle du pair réseau et clés distinctes. L'admin utilise Discord avec une liste explicite d'identifiants utilisateur autorisés, distincte de la connexion joueur.
+
 | Application | Adresse locale | Responsabilité | Base MongoDB |
 | --- | --- | --- | --- |
 | `Arkya.Gateway` | `https://localhost:7140` | YARP : entrée publique commune pour Identity et Characters | Aucune |

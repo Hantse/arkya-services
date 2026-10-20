@@ -1,8 +1,11 @@
 using System.Threading.RateLimiting;
 using Arkya.Admin.Content;
 using Arkya.Admin.Realms;
+using Arkya.Admin.Authentication;
 using Arkya.ServiceDefaults;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Options;
@@ -22,12 +25,20 @@ public partial class Program
         var keysPath = builder.Configuration["DataProtection:KeysPath"];
         if (!string.IsNullOrEmpty(keysPath)) protection.PersistKeysToFileSystem(new DirectoryInfo(keysPath));
         builder.Services.AddOptions<AdminOptions>().BindConfiguration("Admin")
-            .Validate(o => o.Password.Length is >= 16 and <= 512, "Admin:Password must contain 16 to 512 characters.")
+            .Validate(o => o.DiscordEnabled || o.Password.Length is >= 16 and <= 512, "Admin:Password must contain 16 to 512 characters.")
+            .Validate(o => !o.DiscordEnabled || o.AllowedDiscordUserIds is { Length: > 0 and <= 100 } &&
+                o.AllowedDiscordUserIds.All(AdminDiscordAuthentication.IsDiscordId) &&
+                o.AllowedDiscordUserIds.Distinct(StringComparer.Ordinal).Count() == o.AllowedDiscordUserIds.Length,
+                "Admin:AllowedDiscordUserIds must contain distinct Discord user IDs when Discord login is enabled.")
+            .ValidateOnStart();
+        builder.Services.AddOptions<AdminDiscordOptions>().BindConfiguration("Discord")
+            .Validate<IOptions<AdminOptions>>((o, admin) => !admin.Value.DiscordEnabled || o.IsValid(),
+                "Discord requires a client ID, secret and an HTTPS public origin.")
             .ValidateOnStart();
         builder.Services.AddOptions<ContentApiOptions>().BindConfiguration("ContentApi")
             .Validate(o => !o.Enabled || o.AdminKey.Length is >= 32 and <= 512, "ContentApi:AdminKey must contain 32 to 512 characters.")
-            .Validate(o => !o.Enabled || ContentApiOptions.IsSafe(o.BaseUrl, builder.Environment.IsDevelopment()),
-                "ContentApi:BaseUrl must use HTTPS, or loopback HTTP in Development.")
+            .Validate(o => !o.Enabled || ContentApiOptions.IsSafe(o.BaseUrl, builder.Environment.IsDevelopment(), o.AllowClusterHttp),
+                "ContentApi:BaseUrl requires HTTPS, Development loopback HTTP, or explicitly enabled Kubernetes service HTTP.")
             .ValidateOnStart();
         builder.Services.AddHttpClient<ContentAdminClient>((services, client) =>
         {
@@ -37,8 +48,8 @@ public partial class Program
         }).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
         builder.Services.AddOptions<RealmsApiOptions>().BindConfiguration("RealmsApi")
             .Validate(o => !o.Enabled || o.AdminKey.Length is >= 32 and <= 512, "RealmsApi:AdminKey must contain 32 to 512 characters.")
-            .Validate(o => !o.Enabled || ContentApiOptions.IsSafe(o.BaseUrl, builder.Environment.IsDevelopment()),
-                "RealmsApi:BaseUrl must use HTTPS, or loopback HTTP in Development.")
+            .Validate(o => !o.Enabled || ContentApiOptions.IsSafe(o.BaseUrl, builder.Environment.IsDevelopment(), o.AllowClusterHttp),
+                "RealmsApi:BaseUrl requires HTTPS, Development loopback HTTP, or explicitly enabled Kubernetes service HTTP.")
             .Validate(o => !o.Enabled || string.IsNullOrEmpty(o.CertificateAuthorityFile) || Path.IsPathFullyQualified(o.CertificateAuthorityFile),
                 "RealmsApi:CertificateAuthorityFile must be an absolute path.").ValidateOnStart();
         builder.Services.AddHttpClient<RealmsAdminClient>((services, client) =>
@@ -51,16 +62,54 @@ public partial class Program
             var options = services.GetRequiredService<IOptions<RealmsApiOptions>>().Value;
             return RealmsHttpTransport.Create(options.Enabled ? options.CertificateAuthorityFile : "");
         });
-        builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+        var authentication = builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
         {
             options.LoginPath = "/Login";
             options.Cookie.Name = "Arkya.Admin";
             options.Cookie.HttpOnly = true;
-            options.Cookie.SameSite = SameSiteMode.Strict;
+            options.Cookie.SameSite = builder.Configuration.GetValue<bool>("Admin:DiscordEnabled") ? SameSiteMode.Lax : SameSiteMode.Strict;
             options.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
                 ? CookieSecurePolicy.SameAsRequest : CookieSecurePolicy.Always;
             options.ExpireTimeSpan = TimeSpan.FromHours(2);
             options.SlidingExpiration = false;
+            options.Events.OnValidatePrincipal = async context =>
+            {
+                var admin = context.HttpContext.RequestServices.GetRequiredService<IOptionsMonitor<AdminOptions>>().CurrentValue;
+                if (admin.DiscordEnabled && !AdminDiscordAuthentication.IsAuthorized(admin, context.Principal))
+                {
+                    context.RejectPrincipal();
+                    await context.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                }
+            };
+        });
+        authentication.AddOAuth<OAuthOptions, AdminDiscordHandler>(AdminDiscordAuthentication.Scheme, options =>
+        {
+            var enabled = builder.Configuration.GetValue<bool>("Admin:DiscordEnabled");
+            var discord = builder.Configuration.GetSection("Discord").Get<AdminDiscordOptions>() ?? new();
+            options.ClientId = enabled ? discord.ClientId : "disabled";
+            options.ClientSecret = enabled ? discord.ClientSecret : "disabled";
+            options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.CallbackPath = AdminDiscordAuthentication.CallbackPath;
+            options.AuthorizationEndpoint = "https://discord.com/oauth2/authorize";
+            options.TokenEndpoint = "https://discord.com/api/oauth2/token";
+            options.UserInformationEndpoint = "https://discord.com/api/v10/users/@me";
+            options.Scope.Add("identify");
+            options.SaveTokens = false;
+            options.RemoteAuthenticationTimeout = TimeSpan.FromMinutes(5);
+            options.BackchannelTimeout = TimeSpan.FromSeconds(10);
+            options.Backchannel = new HttpClient(new HttpClientHandler { AllowAutoRedirect = false })
+            {
+                Timeout = TimeSpan.FromSeconds(10),
+                MaxResponseContentBufferSize = 16 * 1024
+            };
+            options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.Always;
+            options.CorrelationCookie.SameSite = SameSiteMode.None;
+            options.Events.OnRemoteFailure = context =>
+            {
+                context.HandleResponse();
+                context.Response.Redirect("/Login?error=discord");
+                return Task.CompletedTask;
+            };
         });
         builder.Services.AddAntiforgery(options =>
         {
@@ -92,7 +141,8 @@ public partial class Program
             context.Response.Headers.CacheControl = "no-store";
             context.Response.Headers["Referrer-Policy"] = "no-referrer";
             context.Response.Headers["X-Content-Type-Options"] = "nosniff";
-            context.Response.Headers["Content-Security-Policy"] = "default-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'";
+            context.Response.Headers["Content-Security-Policy"] = "default-src 'self'; style-src 'self'; script-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" +
+                (context.RequestServices.GetRequiredService<IOptions<AdminOptions>>().Value.DiscordEnabled ? " https://discord.com" : "");
             if (!app.Environment.IsDevelopment() && !context.Request.IsHttps)
             {
                 context.Response.StatusCode = 400;
@@ -114,6 +164,8 @@ public partial class Program
 public sealed class AdminOptions
 {
     public string Password { get; init; } = "";
+    public bool DiscordEnabled { get; init; }
+    public string[] AllowedDiscordUserIds { get; init; } = [];
 }
 
 public sealed class AdminDataProtectionOptions

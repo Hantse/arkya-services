@@ -77,14 +77,19 @@ internal sealed class RealmFactory(bool enabled = true, bool production = false)
 {
     public const string AdminKey = "realm-administrator-test-key-123456789";
     public MemoryRealmRepository Repository { get; } = new();
+    public Dictionary<string, string?> Settings { get; } = [];
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment(production ? "Production" : "Development");
-        builder.ConfigureAppConfiguration((_, configuration) => configuration.AddInMemoryCollection(new Dictionary<string, string?>
+        builder.ConfigureAppConfiguration((_, configuration) =>
         {
-            ["RealmsAdmin:Key"] = AdminKey,
-            ["Mongo:DatabaseName"] = "arkya_realms_tests"
-        }));
+            configuration.AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["RealmsAdmin:Key"] = AdminKey,
+                ["Mongo:DatabaseName"] = "arkya_realms_tests"
+            });
+            configuration.AddInMemoryCollection(Settings);
+        });
         builder.ConfigureServices(services =>
         {
             services.RemoveAll<IRealmRepository>();

@@ -73,21 +73,26 @@ internal sealed class MemoryContentRepository : IContentRepository
     private static PublishedCatalog Copy(PublishedCatalog catalog) => catalog with { Quests = catalog.Quests.ToArray() };
 }
 
-internal sealed class ContentFactory : WebApplicationFactory<Arkya.Content.Api.Program>
+internal sealed class ContentFactory(bool production = false) : WebApplicationFactory<Arkya.Content.Api.Program>
 {
     public const string AdminKey = "content-administrator-test-key-123456789";
     public const string ServiceKey = "content-dedicated-server-test-key-123456";
+    public Dictionary<string, string?> Settings { get; } = [];
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        builder.UseEnvironment("Development");
-        builder.ConfigureAppConfiguration((_, configuration) => configuration.AddInMemoryCollection(new Dictionary<string, string?>
+        builder.UseEnvironment(production ? "Production" : "Development");
+        builder.ConfigureAppConfiguration((_, configuration) =>
         {
-            ["ContentAdmin:Key"] = AdminKey,
-            ["ServiceAuthentication:Key"] = ServiceKey,
-            ["Mongo:ConnectionString"] = "mongodb://localhost:27017",
-            ["Mongo:DatabaseName"] = "arkya_content_tests"
-        }));
+            configuration.AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["ContentAdmin:Key"] = AdminKey,
+                ["ServiceAuthentication:Key"] = ServiceKey,
+                ["Mongo:ConnectionString"] = "mongodb://localhost:27017",
+                ["Mongo:DatabaseName"] = "arkya_content_tests"
+            });
+            configuration.AddInMemoryCollection(Settings);
+        });
         builder.ConfigureServices(services =>
         {
             services.Remove(services.Single(descriptor => descriptor.ImplementationType == typeof(ContentStoreInitializer)));

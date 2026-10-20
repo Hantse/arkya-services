@@ -40,7 +40,7 @@ public static class ServiceExtensions
             context.Response.Headers.CacheControl = "no-store";
             context.Response.Headers["Referrer-Policy"] = "no-referrer";
             context.Response.Headers["X-Content-Type-Options"] = "nosniff";
-            if (!app.Environment.IsDevelopment() && !context.Request.IsHttps)
+            if (!app.Environment.IsDevelopment() && !context.Request.IsHttps && !context.IsArkyaInternalHttpAllowed())
             {
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;
                 return;

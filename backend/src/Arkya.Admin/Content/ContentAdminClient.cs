@@ -1,5 +1,6 @@
 using System.Net;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using Microsoft.Extensions.Options;
 
 namespace Arkya.Admin.Content;
@@ -9,10 +10,14 @@ public sealed class ContentApiOptions
     public bool Enabled { get; init; } = true;
     public string BaseUrl { get; init; } = "http://localhost:5143";
     public string AdminKey { get; init; } = "";
+    public bool AllowClusterHttp { get; init; }
 
-    public static bool IsSafe(string value, bool development) => Uri.TryCreate(value, UriKind.Absolute, out var uri)
+    public static bool IsSafe(string value, bool development, bool allowClusterHttp = false) => Uri.TryCreate(value, UriKind.Absolute, out var uri)
         && string.IsNullOrEmpty(uri.UserInfo) && string.IsNullOrEmpty(uri.Query) && string.IsNullOrEmpty(uri.Fragment)
-        && (uri.Scheme == "https" || development && uri.Scheme == "http" && uri.IsLoopback);
+        && (uri.Scheme == "https" || development && uri.Scheme == "http" && uri.IsLoopback ||
+            allowClusterHttp && uri.Scheme == "http" && Regex.IsMatch(value,
+                @"\Ahttp://[a-z](?:[a-z0-9-]{0,61}[a-z0-9])?\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.svc\.cluster\.local(?::[1-9][0-9]{0,4})?/?\z",
+                RegexOptions.CultureInvariant));
 }
 
 public sealed record QuestDefinition(string QuestId, string Title, string Description, string EnemyId, int RequiredKills);

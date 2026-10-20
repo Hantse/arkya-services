@@ -2,6 +2,13 @@
 
 La cible reprend le schéma fourni le 16 octobre 2026 : une VM Traefik reçoit les domaines Arkya, une gateway YARP dessert les applications web, et les serveurs dédiés d'un realm appellent les services de jeu par une gateway interne. Le premier parcours implémenté est l'administration des déploiements k3s.
 
+Pour l'installation progressive actuelle, le [profil Argo `admin`](../backend/deploy/gitops/admin/README.md)
+ajoute les modules Quêtes et Realms sur `admin.arkya.online`, avec les six
+applications dans `arkya-beta` et un seul LoadBalancer YARP. Il autorise
+explicitement HTTP privé entre Admin et ses API ; la topologie HTTPS interne
+décrite ci-dessous reste disponible dans le profil bêta complet. Le déployeur
+de dedicateds n'est activé qu'à une étape ultérieure.
+
 ## Topologie et responsabilités
 
 ```mermaid

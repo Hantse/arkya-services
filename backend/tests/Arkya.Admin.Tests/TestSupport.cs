@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.OAuth;
+using Arkya.Admin.Authentication;
 
 namespace Arkya.Admin.Tests;
 
@@ -58,6 +60,7 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
     public const string RealmsAdminKey = "realms-outbound-test-admin-key-12345";
     public ContentStub Content { get; } = new();
     public RealmsStub Realms { get; } = new();
+    public DiscordStub Discord { get; } = new();
     public Dictionary<string, string?> Settings { get; } = [];
     public string EnvironmentName { get; set; } = "Development";
 
@@ -80,6 +83,8 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
         {
             services.AddHttpClient<ContentAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Content);
             services.AddHttpClient<RealmsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Realms);
+            services.Configure<OAuthOptions>(AdminDiscordAuthentication.Scheme, options =>
+                options.Backchannel = new HttpClient(Discord) { MaxResponseContentBufferSize = 16 * 1024 });
         });
     }
 

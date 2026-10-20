@@ -91,6 +91,18 @@ Le prototype actuel emploie des identifiants de test et deux areas fixes sur loo
 
 ## Services ASP.NET Core
 
+Le [profil de déploiement progressif Admin](../backend/deploy/gitops/admin/README.md)
+ajoute Admin, Content et Realms au frontend/Identity/YARP dans `arkya-beta`.
+`admin.arkya.online` utilise le même LoadBalancer et le routage YARP.
+Le HTTPS public est terminé par Traefik ; Admin appelle Content/Realms
+en HTTP privé, avec activation explicite limitée aux noms Kubernetes.
+Les API vérifient le pair réseau direct contre une liste de réseaux privés,
+en plus de leurs clés d'authentification ; les NetworkPolicies limitent
+leurs entrées aux pods Admin. Les exigences HTTPS des autres profils
+restent inchangées. Les modules Quêtes et Realms sont disponibles, tandis
+que le déployeur Kubernetes et l'admission de jeu restent désactivés
+jusqu'à la configuration des dedicateds.
+
 | Projet | Responsabilité | Données possédées |
 | --- | --- | --- |
 | `Arkya.Gateway` | Reverse proxy YARP, routes publiques Identity/Characters et backoffice facultatif sur un domaine distinct ; aucune API interne/dev | Aucune donnée métier |
@@ -156,7 +168,7 @@ La tranche V1 prend en charge un seul type d'ennemi, `prototype-monster`, et un 
 
 Characters possède séparément la collection `character_quests`. Une entrée conserve l'identifiant de quête, sa version acceptée, son objectif, sa progression et sa révision. Une nouvelle publication ne remplace pas l'objectif déjà accepté. Les routes internes requièrent un personnage existant et une clé de service ; elles refusent la régression, le changement de règles et les révisions concurrentes. Elles font confiance au dedicated authentifié pour les définitions soumises. Aucun endpoint joueur n'accepte un compteur de morts.
 
-L'administration initiale utilise un mot de passe opérateur, un cookie et une protection antiforgery ; sa clé de publication reste côté serveur et diffère de la clé de lecture du dedicated. La gestion des administrateurs dans Identity et les droits par utilisateur restent à intégrer. Les récompenses, le raccordement des quêtes à l’admission web, l'outbox durable et la reprise après crash ne sont pas couverts. Le guide [contenu des quêtes](QUEST_CONTENT.md) précise les contrats, la configuration et le test de bout en bout.
+L'administration conserve un cookie et une protection antiforgery ; sa clé de publication reste côté serveur et diffère de la clé de lecture du dedicated. Le profil progressif utilise Discord avec une allowlist d'IDs utilisateur immuables, vérifiés côté serveur ; seul ce contrôle accorde le rôle administrateur. Son callback `/signin-discord` est distinct de celui d'Identity. Les autres profils peuvent conserver le mot de passe opérateur historique. Une administration centralisée des rôles dans Identity reste à intégrer. Les récompenses, le raccordement des quêtes à l’admission web, l'outbox durable et la reprise après crash ne sont pas couverts. Le guide [contenu des quêtes](QUEST_CONTENT.md) précise les contrats, la configuration et le test de bout en bout.
 
 ### Parcours de développement existant
 

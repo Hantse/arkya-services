@@ -7,6 +7,10 @@ profil avec une seule source et trois services dans `arkya-beta`. Un seul
 LoadBalancer `192.168.100.218:80` expose YARP, qui route le domaine du site
 vers le frontend et le domaine API vers Identity, tous deux en ClusterIP.
 Traefik reste géré séparément.
+L'étape suivante est le [profil `admin`](admin/README.md) : il conserve cette
+entrée et ajoute Admin, Content et Realms dans `arkya-beta`, avec HTTP privé
+entre services et les deux modules du backoffice activés. Le lancement des
+dedicateds reste une étape ultérieure.
 La suite de ce document décrit la bêta complète.
 
 Ce dossier contient les ressources déclaratives des huit applications backend

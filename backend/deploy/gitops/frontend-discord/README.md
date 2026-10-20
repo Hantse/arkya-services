@@ -33,6 +33,10 @@ namespace `arkya-beta`. Les routes Characters et Admin sont désactivées.
 Les services de jeu et le backoffice ne sont pas déployés ; le bouton Jouer
 ne permet pas encore de lancer une partie.
 
+Pour ajouter le backoffice avec les modules Quêtes et Realms, suivre
+l'[étape 2 — admin](../admin/README.md). Ce profil conserve le namespace,
+le LoadBalancer, les ressources existantes et la même Application Argo.
+
 Comme dans `arksaas-infra`, aucun objet `Namespace` n'est versionné dans ce
 profil. L'option Argo `CreateNamespace=true` crée la destination au besoin ;
 un namespace déjà présent est réutilisé. Le profil ne gère pas sa suppression.
