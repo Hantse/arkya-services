@@ -253,6 +253,28 @@ def check_frontend_discord(documents, beta_documents):
             "Frontend/Discord must contain only 3 workloads/configs/services/policies, Identity namespace and PVC")
 
 
+def check_direct_frontend_application(application, workload_documents, project):
+    require(identity(application) == ("Application", "argocd", "arkya-services"),
+            "The direct profile must use the existing arkya-services application")
+    spec = application["spec"]
+    require(spec["project"] == project["metadata"]["name"] == "arkya-beta",
+            "The direct application must use the workload project")
+    require("sources" not in spec and spec["source"] == {
+        "repoURL": "git@github.com:Hantse/arkya-services.git",
+        "path": "backend/deploy/gitops/frontend-discord", "targetRevision": "master"},
+            "The direct application must point at workloads, not the bootstrap")
+    require(spec["source"]["repoURL"] in project["spec"]["sourceRepos"],
+            "The workload project must allow the direct application's source")
+    require(spec["destination"] == {"server": "https://kubernetes.default.svc", "namespace": IDENTITY}
+            and spec["destination"] in project["spec"]["destinations"],
+            "The direct application's destination must be allowed by its project")
+    require(all(d["metadata"].get("namespace", IDENTITY) == IDENTITY for d in workload_documents),
+            "The direct destination must match the explicit workload namespaces")
+    require("automated" not in spec["syncPolicy"] and {
+        "CreateNamespace=true", "FailOnSharedResource=true"}.issubset(spec["syncPolicy"]["syncOptions"]),
+            "The direct application must start manually and detect competing ownership")
+
+
 def check_bootstrap(documents, bootstrap_project, *, frontend_discord=False):
     resources = index(documents)
     application, = [d for d in documents if d["kind"] == "Application"]
@@ -351,12 +373,15 @@ def main():
     check_bootstrap(render(ROOT / "bootstrap"), bootstrap_project)
     frontend_documents = render(ROOT / "frontend-discord")
     check_frontend_discord(frontend_documents, documents)
+    check_direct_frontend_application(
+        yaml.safe_load((ROOT / "frontend-discord.application.example.yaml").read_text(encoding="utf-8")),
+        frontend_documents, yaml.safe_load((ROOT / "bootstrap/project.yaml").read_text(encoding="utf-8")))
     check_bootstrap(render(ROOT / "bootstrap-frontend-discord"), bootstrap_project, frontend_discord=True)
     unity_count = 0
     if args.unity_path:
         unity_count = check_unity(documents, args.unity_path, configs, args.require_digests)
     print(f"Validated {len(documents)} rendered service resources, 8 deployments, TLS/network/storage contracts and the Argo bootstrap.")
-    print(f"Validated {len(frontend_documents)} frontend/Discord resources, 3 inherited deployments and the single-source Argo bootstrap.")
+    print(f"Validated {len(frontend_documents)} frontend/Discord resources, 3 inherited deployments, the direct Argo application and optional bootstrap.")
     if unity_count:
         print(f"Validated {unity_count} Unity resources and the combined service/admission/WSS contracts.")
     if not args.require_digests:

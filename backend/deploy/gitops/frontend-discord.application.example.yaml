@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arkya-services
+  namespace: argocd
+spec:
+  project: arkya-beta
+  source:
+    repoURL: git@github.com:Hantse/arkya-services.git
+    path: backend/deploy/gitops/frontend-discord
+    targetRevision: master
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arkya-identity
+  # Keep the first deployment manual while provisioning its prerequisites.
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
+    - FailOnSharedResource=true
+  revisionHistoryLimit: 3

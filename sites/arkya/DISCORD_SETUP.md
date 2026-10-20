@@ -38,9 +38,10 @@ Les trois Deployments ont également leurs ConfigMaps, Services et
 NetworkPolicies. La Gateway conserve le LoadBalancer `192.168.100.218` ;
 l'adresse privée du frontend est allouée par le cluster ou réservée après
 vérification de disponibilité. Ce profil ne crée aucun ingress ni certificat
-public. Le parent Argo doit utiliser `bootstrap-frontend-discord`, qui
-configure la même Application `arkya-beta` ; suivre la procédure du profil
-avant le sync pour éviter une seconde propriété ou un déploiement complet.
+public. L'Application Argo `arkya-services` utilise directement le chemin
+`backend/deploy/gitops/frontend-discord`, le projet `arkya-beta` et la
+destination `arkya-identity`. Suivre la procédure du profil avant le sync
+si une ancienne application enfant a déjà été créée.
 
 Le callback à enregistrer dans Discord est exactement
 `https://api.arkya.online/v1/auth/discord/callback`.

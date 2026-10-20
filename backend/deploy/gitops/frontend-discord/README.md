@@ -1,7 +1,8 @@
 # Étape 1 — frontend et connexion Discord
 
 Ce profil reprend le modèle de `arksaas-infra` : Argo CD lit un environnement
-Kustomize, le frontend et la gateway exposent chacun un LoadBalancer privé,
+Kustomize directement depuis l'Application `arkya-services`, sans parent
+ni application enfant. Le frontend et la gateway exposent chacun un LoadBalancer privé,
 Identity reste en ClusterIP et MongoDB est fourni par l'infrastructure.
 Traefik est déjà en place et reste géré par l'exploitant ; ce profil ne crée
 ni ingress, ni configuration Traefik, ni certificat public.
@@ -83,29 +84,58 @@ Depuis la racine du dépôt :
 ```bash
 python backend/deploy/gitops/Test-Manifests.py --require-digests
 kubectl kustomize backend/deploy/gitops/frontend-discord
-kubectl kustomize backend/deploy/gitops/bootstrap-frontend-discord
 ```
 
 Ces contrôles sont hors cluster. Ils ne prouvent pas que les images sont
 accessibles depuis les nœuds, ni que les Secrets existent.
 
 Les fichiers doivent être commités et poussés sur `arkya-services/master`
-avant qu'Argo puisse les lire. Dans le parent existant **`arkya-services`**,
-sélectionner le chemin **`backend/deploy/gitops/bootstrap-frontend-discord`**
-au lieu de `backend/deploy/gitops/bootstrap`. Le projet du parent reste
-`arkya-bootstrap`, destination `argocd`, selon le [guide bootstrap](../README.md).
+avant qu'Argo puisse les lire. Configurer directement l'Application existante
+**`arkya-services`** avec le [manifest d'exemple](../frontend-discord.application.example.yaml) :
 
-Le bootstrap alternatif configure **la même Application `arkya-beta`** avec
-une seule source, `backend/deploy/gitops/frontend-discord`, branche `master`.
-Il ne faut pas créer une seconde Application propriétaire des mêmes ressources.
-Modifier uniquement l'enfant serait temporaire : un sync du parent remettrait
-la bêta complète. L'URL SSH de la source doit correspondre à la connexion
-du dépôt déjà enregistrée dans Argo.
+| Champ | Valeur |
+| --- | --- |
+| Project | `arkya-beta` |
+| Repository | `git@github.com:Hantse/arkya-services.git` |
+| Path | `backend/deploy/gitops/frontend-discord` |
+| Revision | `master` |
+| Destination server | `https://kubernetes.default.svc` |
+| Destination namespace | `arkya-identity` |
+| Sync | Manuel pour la première configuration |
 
-Examiner le diff du parent puis le synchroniser. Examiner ensuite celui
-d'`arkya-beta` : trois Deployments, aucun workload Unity, aucun namespace
-operations. Synchroniser manuellement **sans prune** pour ce premier passage.
-Les volumes ne doivent jamais être supprimés pour résoudre une adoption.
+Le projet Argo `arkya-beta` autorise ce dépôt et ce namespace ; son
+[manifest existant](../bootstrap/project.yaml) peut être appliqué séparément
+s'il manque. L'URL SSH conserve la connexion du dépôt déjà enregistrée
+dans Argo. Le namespace de destination correspond aux namespaces explicites
+des manifests ; changer seulement ce champ ne renomme pas leurs ressources.
+
+Le chemin `frontend-discord` rend uniquement les workloads. Les chemins
+`bootstrap` et `bootstrap-frontend-discord` restent des alternatives pour
+une organisation parent/enfant ; **ils ne sont pas utilisés dans ce mode direct**.
+L'objet Application est conservé par Argo dans son namespace de contrôle,
+mais sa destination et tous les pods applicatifs sont dans `arkya-identity`.
+
+Si l'ancienne configuration bootstrap a déjà été synchronisée, vérifier
+avant le premier sync direct :
+
+```bash
+kubectl -n argocd get appproject arkya-beta
+kubectl -n argocd get application arkya-beta --ignore-not-found
+```
+
+Une ancienne application enfant doit rester sans synchronisation pendant
+l'examen de ses ressources. Ne pas laisser deux applications gérer les
+mêmes workloads. `FailOnSharedResource=true` bloque une propriété concurrente.
+Les anciens objets Application/AppProject peuvent apparaître comme candidats
+au prune : ne pas les supprimer pendant cette transition, notamment le projet
+`arkya-beta` utilisé par l'application directe.
+
+Enregistrer d'abord la configuration directe avec l'auto-sync désactivé.
+Examiner ensuite le diff : trois Deployments, aucun workload Unity, aucun
+namespace operations. Synchroniser manuellement **sans prune** après
+provisioning des prérequis. Les volumes ne doivent jamais être supprimés
+pour résoudre une adoption. L'auto-sync avec prune/self-heal peut être activé
+après validation du premier déploiement et résolution des anciennes propriétés.
 
 ```bash
 kubectl -n arkya-identity rollout status deployment/arkya-identity --timeout=180s
