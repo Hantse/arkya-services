@@ -5,7 +5,7 @@ namespace Arkya.Gateway;
 public static class GatewayRoutes
 {
     public static IReadOnlyList<RouteConfig> Create(bool charactersEnabled, string? adminHost = null,
-        IReadOnlyList<string>? publicHosts = null)
+        IReadOnlyList<string>? publicHosts = null, string? frontendHost = null)
     {
         var routes = new List<RouteConfig>
         {
@@ -24,14 +24,24 @@ public static class GatewayRoutes
             routes.Add(Route("game-realms", "characters", "/v1/realms", "GET", "OPTIONS"));
             routes.Add(Route("character-admission", "characters", "/v1/characters/{id:guid}/admissions", "POST", "OPTIONS"));
         }
+        if (adminHost is not null || frontendHost is not null)
+            routes = routes.Select(route => route with { Match = route.Match with { Hosts = publicHosts } }).ToList();
         if (adminHost is not null)
         {
-            routes = routes.Select(route => route with { Match = route.Match with { Hosts = publicHosts } }).ToList();
             routes.Add(new RouteConfig
             {
                 RouteId = "admin",
                 ClusterId = "admin",
                 Match = new RouteMatch { Hosts = [adminHost], Path = "/{**path}" }
+            });
+        }
+        if (frontendHost is not null)
+        {
+            routes.Add(new RouteConfig
+            {
+                RouteId = "frontend",
+                ClusterId = "frontend",
+                Match = new RouteMatch { Hosts = [frontendHost], Path = "/{**path}" }
             });
         }
         return routes;

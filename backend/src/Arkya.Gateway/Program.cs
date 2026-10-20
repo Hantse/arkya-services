@@ -17,9 +17,13 @@ public partial class Program
         var app = builder.Build();
         app.UseArkyaProxyTrust();
         app.UseGatewayManagement();
+        var gateway = app.Services.GetRequiredService<IOptions<GatewayOptions>>().Value;
         app.Use(async (context, next) =>
         {
-            context.Response.Headers.CacheControl = "no-store";
+            // The frontend owns caching for its static assets and deployment configuration.
+            if (!gateway.FrontendEnabled
+                || !context.Request.Host.Host.Equals(gateway.FrontendHost, StringComparison.OrdinalIgnoreCase))
+                context.Response.Headers.CacheControl = "no-store";
             context.Response.Headers["Referrer-Policy"] = "no-referrer";
             context.Response.Headers["X-Content-Type-Options"] = "nosniff";
             if (!app.Environment.IsDevelopment() && !context.Request.IsHttps)
@@ -30,10 +34,8 @@ public partial class Program
             await next(context);
         });
         var health = app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "arkya-gateway" }));
-        var gateway = app.Services.GetRequiredService<IOptions<GatewayOptions>>().Value;
-        if (gateway.AdminEnabled)
-            health.RequireHost(GatewayOptions.AllowedHosts(app.Configuration)
-                .Where(host => !host.Equals(gateway.AdminHost, StringComparison.OrdinalIgnoreCase)).ToArray());
+        if (gateway.AdminEnabled || gateway.FrontendEnabled)
+            health.RequireHost(gateway.PublicApiHosts(app.Configuration));
         app.MapReverseProxy();
         app.Run();
     }

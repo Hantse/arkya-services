@@ -9,8 +9,11 @@ public sealed class GatewayOptions
     public bool AdminEnabled { get; set; }
     public string AdminHost { get; set; } = "backoffice.arkya.online";
     public string AdminAddress { get; set; } = "";
+    public bool FrontendEnabled { get; set; }
+    public string FrontendHost { get; set; } = "arkya.online";
+    public string FrontendAddress { get; set; } = "";
 
-    public static bool IsAdminHostValid(string? host) => host is { Length: <= 253 }
+    public static bool IsWebHostValid(string? host) => host is { Length: <= 253 }
         && Regex.IsMatch(host, @"\A[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+\z")
         && !IPAddress.TryParse(host, out _)
         && !host.Equals("api.arkya.online", StringComparison.OrdinalIgnoreCase);
@@ -26,10 +29,16 @@ public sealed class GatewayOptions
     public static string[] AllowedHosts(IConfiguration configuration) =>
         (configuration["AllowedHosts"] ?? "").Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
+    public string[] PublicApiHosts(IConfiguration configuration) => AllowedHosts(configuration)
+        .Where(host => (!AdminEnabled || !host.Equals(AdminHost, StringComparison.OrdinalIgnoreCase))
+            && (!FrontendEnabled || !host.Equals(FrontendHost, StringComparison.OrdinalIgnoreCase)))
+        .ToArray();
+
     public bool HasExplicitAllowedHosts(IConfiguration configuration)
     {
         var hosts = AllowedHosts(configuration);
-        return hosts.Contains(AdminHost, StringComparer.OrdinalIgnoreCase)
+        return (!AdminEnabled || hosts.Contains(AdminHost, StringComparer.OrdinalIgnoreCase))
+            && (!FrontendEnabled || hosts.Contains(FrontendHost, StringComparer.OrdinalIgnoreCase))
             && hosts.Contains("api.arkya.online", StringComparer.OrdinalIgnoreCase)
             && hosts.All(host => !host.Contains('*'));
     }

@@ -14,12 +14,20 @@ public static class GatewayExtensions
     public static IServiceCollection AddGateway(this IServiceCollection services)
     {
         services.AddOptions<GatewayOptions>().BindConfiguration("Gateway")
-            .Validate(options => !options.AdminEnabled || GatewayOptions.IsAdminHostValid(options.AdminHost),
+            .Validate(options => !options.AdminEnabled || GatewayOptions.IsWebHostValid(options.AdminHost),
                 "Gateway:AdminHost must be an exact DNS hostname distinct from api.arkya.online.")
             .Validate(options => !options.AdminEnabled || GatewayOptions.IsOriginValid(options.AdminAddress),
                 "Gateway:AdminAddress must be an HTTP(S) origin without credentials, path prefix, query or fragment.")
-            .Validate<IConfiguration>((options, configuration) => !options.AdminEnabled || options.HasExplicitAllowedHosts(configuration),
-                "AllowedHosts must explicitly include api.arkya.online and Gateway:AdminHost, without wildcard hosts.")
+            .Validate(options => !options.FrontendEnabled || GatewayOptions.IsWebHostValid(options.FrontendHost),
+                "Gateway:FrontendHost must be an exact DNS hostname distinct from api.arkya.online.")
+            .Validate(options => !options.FrontendEnabled || GatewayOptions.IsOriginValid(options.FrontendAddress),
+                "Gateway:FrontendAddress must be an HTTP(S) origin without credentials, path prefix, query or fragment.")
+            .Validate(options => !options.AdminEnabled || !options.FrontendEnabled
+                || !string.Equals(options.AdminHost, options.FrontendHost, StringComparison.OrdinalIgnoreCase),
+                "Gateway:FrontendHost and Gateway:AdminHost must be distinct when both routes are enabled.")
+            .Validate<IConfiguration>((options, configuration) => (!options.AdminEnabled && !options.FrontendEnabled)
+                || options.HasExplicitAllowedHosts(configuration),
+                "AllowedHosts must explicitly include api.arkya.online and each enabled frontend/admin host, without wildcard hosts.")
             .ValidateOnStart();
         services.AddOptions<GatewayManagementOptions>().BindConfiguration("Management")
             .Validate(options => options.Port == 0 || options.Port is >= 1024 and <= 65535,
@@ -29,21 +37,16 @@ public static class GatewayExtensions
         {
             var finalConfiguration = provider.GetRequiredService<IConfiguration>();
             var options = provider.GetRequiredService<IOptions<GatewayOptions>>().Value;
-            var publicHosts = options.AdminEnabled ? GatewayOptions.AllowedHosts(finalConfiguration)
-                .Where(host => !host.Equals(options.AdminHost, StringComparison.OrdinalIgnoreCase)).ToArray() : null;
-            var routes = GatewayRoutes.Create(options.CharactersEnabled, options.AdminEnabled ? options.AdminHost : null, publicHosts);
+            var publicHosts = options.AdminEnabled || options.FrontendEnabled
+                ? options.PublicApiHosts(finalConfiguration) : null;
+            var routes = GatewayRoutes.Create(options.CharactersEnabled, options.AdminEnabled ? options.AdminHost : null,
+                publicHosts, options.FrontendEnabled ? options.FrontendHost : null);
             var configured = finalConfiguration.GetSection("ReverseProxy:Clusters").Get<Dictionary<string, ClusterConfig>>()
                 ?? throw new InvalidOperationException("ReverseProxy:Clusters must be configured.");
             if (options.AdminEnabled)
-                configured["admin"] = new ClusterConfig
-                {
-                    ClusterId = "admin",
-                    Destinations = new Dictionary<string, DestinationConfig>
-                    {
-                        ["primary"] = new() { Address = new Uri(options.AdminAddress).AbsoluteUri }
-                    },
-                    HttpRequest = new() { ActivityTimeout = TimeSpan.FromSeconds(30) }
-                };
+                configured["admin"] = OriginCluster("admin", options.AdminAddress);
+            if (options.FrontendEnabled)
+                configured["frontend"] = OriginCluster("frontend", options.FrontendAddress);
             var clusters = routes.Select(route => route.ClusterId!).Distinct(StringComparer.Ordinal)
                 .Select(id => configured.TryGetValue(id, out var cluster)
                     ? cluster with { ClusterId = id }
@@ -76,6 +79,16 @@ public static class GatewayExtensions
         });
         return services;
     }
+
+    private static ClusterConfig OriginCluster(string id, string address) => new()
+    {
+        ClusterId = id,
+        Destinations = new Dictionary<string, DestinationConfig>
+        {
+            ["primary"] = new() { Address = new Uri(address).AbsoluteUri }
+        },
+        HttpRequest = new() { ActivityTimeout = TimeSpan.FromSeconds(30) }
+    };
 
     public static WebApplication UseGatewayManagement(this WebApplication app)
     {
