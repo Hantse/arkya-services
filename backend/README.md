@@ -1,8 +1,18 @@
 # Backend Arkya
 
+La [console d'administration](../docs/ADMIN_CONSOLE.md) regroupe le dashboard,
+les comptes et accès bêta, la modération, les personnages et les déploiements
+k3s. Le [profil facultatif admin-console](deploy/gitops/admin-console/README.md)
+raccorde les API privées sur la topologie bêta complète.
+
 Identity et Characters établissent le parcours compte/personnage en ASP.NET Core .NET 10. Content et l'administration web ajoutent l'édition de quêtes, leur publication versionnée et le chargement par le dedicated. Characters conserve la progression autoritaire. Voir [le guide des quêtes](../docs/QUEST_CONTENT.md), [l'architecture](../docs/ARCHITECTURE.md) et la [décision de découpage](../docs/decisions/0002-backend-services.md).
 
 ## Services et propriété des données
+
+Les [bugs (F8) et suggestions (F9)](../docs/BUG_REPORTS.md) ajoutent `Arkya.Reports.Api`
+(`arkya_reports`), le suivi dans Admin et un MCP administrateur protégé
+sur `/mcp/reports`. Le [composant Reports](deploy/gitops/reports-control/README.md)
+complète le profil Admin existant ; la CI promeut son digest avec les autres services.
 
 Le [backoffice de déploiement des realms sur k3s](deploy/realms/README.md) ajoute `Arkya.Realms.Api` et l'écran **Realms** d'`Arkya.Admin` : définitions dans `arkya_realms`, demandes durables et observation Kubernetes. Le module est activé explicitement dans Admin. Le backend de déploiement reste interne ; seul le backoffice peut être publié sur son domaine via la gateway. Voir [l'architecture réseau et le périmètre](../docs/REALM_DEPLOYMENT.md).
 

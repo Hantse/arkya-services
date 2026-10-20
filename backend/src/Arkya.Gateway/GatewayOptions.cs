@@ -8,6 +8,7 @@ public sealed class GatewayOptions
     public bool CharactersEnabled { get; set; }
     public bool RealmGameEnabled { get; set; }
     public string RealmGameAddress { get; set; } = "";
+    public bool ReportsEnabled { get; set; }
     public bool InferenceEnabled { get; set; }
     public bool AdminEnabled { get; set; }
     public string AdminHost { get; set; } = "backoffice.arkya.online";

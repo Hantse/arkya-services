@@ -52,7 +52,6 @@ def main():
     declared = list(yaml.safe_load_all((ROOT / "inference.yaml").read_text(encoding="utf-8")))
     assert {item["kind"] for item in declared} == {"Deployment", "Service", "NetworkPolicy"}
     assert all(item["metadata"]["namespace"] == NS and item["metadata"]["name"] == "arkya-inference" for item in declared)
-    assert not any("reports" in item["metadata"]["name"] for item in objects), "Reports must remain optional"
     if not already_active:
         before = {(item["kind"], item["metadata"].get("namespace", ""), item["metadata"]["name"])
                   for item in active if item["kind"] != "ConfigMap"}
@@ -104,7 +103,7 @@ def main():
             if item["kind"] == "Deployment":
                 image = item["spec"]["template"]["spec"]["containers"][0]["image"]
                 assert re.fullmatch(r"ghcr\.io/hantse/arkya-services-[a-z]+@sha256:[0-9a-f]{64}", image), f"Unpublished image: {image}"
-    print(f"Validated {len(objects)} objects: additive Inference, existing secret references, no Reports ({'active' if already_active else 'preview'}).")
+    print(f"Validated {len(objects)} objects: additive Inference, existing secret references, optional Reports coexistence ({'active' if already_active else 'preview'}).")
 
 
 if __name__ == "__main__":

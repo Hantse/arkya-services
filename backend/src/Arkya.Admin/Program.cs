@@ -68,6 +68,7 @@ public partial class Program
             return RealmsHttpTransport.Create(options.Enabled ? options.CertificateAuthorityFile : "");
         });
         builder.Services.AddOptions<ReportsApiOptions>().BindConfiguration("ReportsApi")
+            .PostConfigure(options => options.AdminKey = ReportsOperatorKeys.ResolveAdmin(builder.Configuration, options.AdminKey))
             .Validate(o => !o.Enabled || o.AdminKey.Length is >= 32 and <= 512, "ReportsApi:AdminKey must contain 32 to 512 characters.")
             .Validate(o => !o.Enabled || ContentApiOptions.IsSafe(o.BaseUrl, builder.Environment.IsDevelopment(), o.AllowClusterHttp),
                 "ReportsApi:BaseUrl requires HTTPS, Development loopback HTTP, or explicitly enabled Kubernetes service HTTP.")
@@ -88,7 +89,7 @@ public partial class Program
         builder.Services.AddPlayerAdministration(builder.Configuration, builder.Environment);
         builder.Services.AddSingleton(TimeProvider.System);
         builder.Services.AddScoped<OperationsDashboard>();
-        builder.Services.AddHostedReportsMcp();
+        builder.Services.AddHostedReportsMcp(builder.Configuration);
         var authentication = builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
         {
             options.LoginPath = "/Login";

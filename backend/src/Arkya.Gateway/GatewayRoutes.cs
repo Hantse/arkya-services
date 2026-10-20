@@ -6,7 +6,7 @@ public static class GatewayRoutes
 {
     public static IReadOnlyList<RouteConfig> Create(bool charactersEnabled, string? adminHost = null,
         IReadOnlyList<string>? publicHosts = null, string? frontendHost = null, bool realmGameEnabled = false,
-        bool inferenceEnabled = false)
+        bool inferenceEnabled = false, bool reportsEnabled = false)
     {
         var routes = new List<RouteConfig>
         {
@@ -24,6 +24,11 @@ public static class GatewayRoutes
             routes.Add(Route("characters-appearance", "characters", "/v1/characters/appearance-options", "GET", "OPTIONS"));
             routes.Add(Route("game-realms", "characters", "/v1/realms", "GET", "OPTIONS"));
             routes.Add(Route("character-admission", "characters", "/v1/characters/{id:guid}/admissions", "POST", "OPTIONS"));
+        }
+        if (reportsEnabled)
+        {
+            routes.Add(Route("reports-list-create", "reports", "/v1/bug-reports", "GET", "POST", "OPTIONS"));
+            routes.Add(Route("reports-get", "reports", "/v1/bug-reports/{id:guid}", "GET", "OPTIONS"));
         }
         if (inferenceEnabled)
         {

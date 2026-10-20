@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using Arkya.Admin.Mcp;
 using Arkya.Admin.Realms;
+using Arkya.ServiceDefaults;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
 using ModelContextProtocol.AspNetCore;
@@ -14,7 +15,7 @@ namespace Arkya.Admin.Reports;
 public sealed class AdminMcpOptions
 {
     public bool Enabled { get; init; }
-    public string Key { get; init; } = "";
+    public string Key { get; set; } = "";
 }
 
 public static class HostedReportsMcp
@@ -23,9 +24,10 @@ public static class HostedReportsMcp
     internal const string Scheme = "ReportsMcpBearer";
     private const string Policy = "ReportsMcp";
 
-    public static IServiceCollection AddHostedReportsMcp(this IServiceCollection services)
+    public static IServiceCollection AddHostedReportsMcp(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddOptions<AdminMcpOptions>().BindConfiguration("AdminMcp")
+            .PostConfigure(options => options.Key = ReportsOperatorKeys.ResolveMcp(configuration, options.Key))
             .Validate(options => !options.Enabled || options.Key is { Length: >= 32 and <= 512 } &&
                 !options.Key.Any(char.IsControl) && !string.IsNullOrWhiteSpace(options.Key),
                 "AdminMcp:Key must contain 32 to 512 printable characters.")

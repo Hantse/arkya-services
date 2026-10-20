@@ -11,7 +11,7 @@ import tempfile
 import yaml
 
 BASE_SERVICES = ("identity", "gateway", "characters", "content", "admin", "realms", "backend", "frontend")
-SERVICES = (*BASE_SERVICES, "inference")
+SERVICES = (*BASE_SERVICES, "inference", "reports")
 IMAGE_PREFIX = "ghcr.io/hantse/arkya-services-"
 
 
@@ -44,10 +44,11 @@ def source_without_release_pins(text: str, expected_services: tuple):
     return document
 
 
-def assert_source_current(source_commit: str, kustomization: Path, inference_kustomization: Path):
+def assert_source_current(source_commit: str, kustomization: Path, inference_kustomization: Path, reports_kustomization: Path):
     if not re.fullmatch(r"[a-f0-9]{40}", source_commit):
         raise ValueError("A full source commit SHA is required.")
-    for path, services in ((kustomization, BASE_SERVICES), (inference_kustomization, ("inference",))):
+    for path, services in ((kustomization, BASE_SERVICES), (inference_kustomization, ("inference",)),
+                           (reports_kustomization, ("reports",))):
         tested = source_without_release_pins(read_git_source(source_commit, path), services)
         latest = source_without_release_pins(read_git_source("HEAD", path), services)
         if tested != latest:
@@ -55,9 +56,9 @@ def assert_source_current(source_commit: str, kustomization: Path, inference_kus
 
 
 def promote(artifact_directory: Path, source_commit: str, kustomization: Path, release_file: Path,
-            inference_kustomization: Path):
-    if len({path.resolve() for path in (kustomization, inference_kustomization, release_file)}) != 3:
-        raise ValueError("The two GitOps sources and the release evidence must be distinct files.")
+            inference_kustomization: Path, reports_kustomization: Path):
+    if len({path.resolve() for path in (kustomization, inference_kustomization, reports_kustomization, release_file)}) != 4:
+        raise ValueError("The three GitOps sources and the release evidence must be distinct files.")
     if not re.fullmatch(r"[a-f0-9]{40}", source_commit):
         raise ValueError("A full source commit SHA is required.")
     paths = sorted(artifact_directory.glob("*.json"))
@@ -78,11 +79,13 @@ def promote(artifact_directory: Path, source_commit: str, kustomization: Path, r
         release.append(image)
 
     by_name = {image["image"]: image for image in release}
-    # Validate both sources before staging any writes. Git publishes both pins in one commit.
+    # Validate every source before staging any writes. Git publishes all pins in one commit.
     beta_text = prepare_source(kustomization, BASE_SERVICES, by_name)
     inference_text = prepare_source(inference_kustomization, ("inference",), by_name)
+    reports_text = prepare_source(reports_kustomization, ("reports",), by_name)
     evidence = json.dumps({"schemaVersion": 1, "sourceCommit": source_commit, "images": release}, indent=2) + "\n"
-    replace_files({kustomization: beta_text, inference_kustomization: inference_text, release_file: evidence})
+    replace_files({kustomization: beta_text, inference_kustomization: inference_text,
+                   reports_kustomization: reports_text, release_file: evidence})
     return release
 
 
@@ -157,16 +160,18 @@ if __name__ == "__main__":
     parser.add_argument("--artifact-directory", type=Path)
     parser.add_argument("--kustomization", type=Path, required=True)
     parser.add_argument("--inference-kustomization", type=Path, required=True)
+    parser.add_argument("--reports-kustomization", type=Path, required=True)
     parser.add_argument("--release-file", type=Path)
     arguments = parser.parse_args()
     if arguments.assert_source_commit:
         if arguments.artifact_directory or arguments.release_file:
             parser.error("Source verification does not accept output or artifact paths.")
-        assert_source_current(arguments.assert_source_commit, arguments.kustomization, arguments.inference_kustomization)
+        assert_source_current(arguments.assert_source_commit, arguments.kustomization, arguments.inference_kustomization,
+                              arguments.reports_kustomization)
         print("The tested deployment configuration is unchanged; only release pins may differ.")
     else:
         if not arguments.artifact_directory or not arguments.release_file:
             parser.error("Promotion requires --artifact-directory and --release-file.")
         promoted = promote(arguments.artifact_directory, arguments.source_commit, arguments.kustomization,
-                           arguments.release_file, arguments.inference_kustomization)
+                           arguments.release_file, arguments.inference_kustomization, arguments.reports_kustomization)
         print(f"Pinned all {len(promoted)} service and site images from {arguments.source_commit}.")

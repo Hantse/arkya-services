@@ -95,7 +95,85 @@ def without_inference_component(documents, require_digests):
     return normalized
 
 
+def without_reports_component(documents, require_digests):
+    """Check Reports and remove only its declared additions from the parent profile."""
+    component_root = ROOT.parent / "reports-control"
+    component = checks.yaml.safe_load((component_root / "kustomization.yaml").read_text(encoding="utf-8"))
+    require(component["kind"] == "Component" and "namespace" not in component and
+            component["resources"] == ["reports.yaml"] and "secretGenerator" not in component,
+            "Reports must remain additive without namespace or Secret generation")
+    resources = checks.index(documents)
+    deployment = resources[("Deployment", NS, "arkya-reports")]
+    pod = deployment["spec"]["template"]["spec"]
+    container, = pod["containers"]
+    config_name, = [entry["configMapRef"]["name"] for entry in container["envFrom"]]
+    require(re.fullmatch(r"arkya-reports-config-[a-z0-9]{10}", config_name), "Reports configuration must trigger a rollout")
+    config = resources[("ConfigMap", NS, config_name)]
+    require(config["data"] == dict(line.split("=", 1) for line in
+            (component_root / "reports.env").read_text(encoding="utf-8").splitlines() if line and not line.startswith("#")),
+            "Unexpected Reports configuration")
+    require(config["data"]["Mongo__DatabaseName"] == "arkya_reports" and
+            not any(any(part in key for part in ("ConnectionString", "ServiceKey", "Password", "ClientSecret", "AdminKey", "KeySeed"))
+                    or key.endswith("__Key") for key in config["data"]), "Reports credentials must stay out of ConfigMaps")
+    seed = secret_env("ReportsOperator__KeySeed", "arkya-admin-secrets", "ContentApi__AdminKey")
+    require(container["env"] == [secret_env("Mongo__ConnectionString", "arkya-content-secrets", "Mongo__ConnectionString"),
+                                secret_env("Identity__ServiceKey", "arkya-identity-secrets", "ServiceAuthentication__Key"), seed],
+            "Reports must reference exactly the approved existing Secret keys")
+    pin, = component["images"]
+    require(pin["name"] == "ghcr.io/hantse/arkya-services-reports", "Reports must own only its image pin")
+    expected_image = pin["name"] + ("@" + pin["digest"] if "digest" in pin else ":" + pin["newTag"])
+    require(container["image"] == expected_image, "Reports must inherit its separately promoted image pin")
+    if require_digests:
+        require(re.fullmatch(r"ghcr\.io/hantse/arkya-services-reports@sha256:[0-9a-f]{64}", expected_image),
+                f"Unpublished image: {expected_image}")
+    owned_keys = set()
+    for expected in checks.yaml.safe_load_all((component_root / "reports.yaml").read_text(encoding="utf-8")):
+        key = checks.identity(expected)
+        owned_keys.add(key)
+        if expected["kind"] == "Deployment":
+            expected_container, = expected["spec"]["template"]["spec"]["containers"]
+            expected_container["image"] = expected_image
+            expected_container["envFrom"][0]["configMapRef"]["name"] = config_name
+        require(resources.get(key) == expected, f"Unexpected Reports resource: {key}")
+    require(owned_keys == {(kind, NS, "arkya-reports") for kind in ("Deployment", "Service", "NetworkPolicy")},
+            "Reports must add exactly one private workload, service and policy")
+    require(resources[("Service", NS, "arkya-reports")]["spec"]["type"] == "ClusterIP" and
+            resources[("NetworkPolicy", NS, "arkya-reports")]["spec"]["ingress"] == ingress("gateway", "admin"),
+            "Reports must accept only private Gateway and Admin traffic")
+    require(pod["automountServiceAccountToken"] is False and "serviceAccountName" not in pod and
+            pod["securityContext"]["runAsNonRoot"] is True and
+            container["securityContext"] == {"allowPrivilegeEscalation": False, "readOnlyRootFilesystem": True,
+                                               "capabilities": {"drop": ["ALL"]}} and
+            container["readinessProbe"]["httpGet"]["path"] == "/health/ready", "Reports must retain secure runtime and dependency readiness")
+    owned_keys.add(("ConfigMap", NS, config_name))
+    normalized = deepcopy([document for document in documents if checks.identity(document) not in owned_keys])
+    admin_container, = next(document for document in normalized if checks.identity(document) ==
+                            ("Deployment", NS, "arkya-admin"))["spec"]["template"]["spec"]["containers"]
+    require(admin_container.get("env", []).count(seed) == 1, "Admin needs exactly one Reports seed reference")
+    admin_container["env"].remove(seed)
+    destination = f"http://arkya-reports.{NS}.svc.cluster.local:8080/"
+    expected_modules = {
+        "arkya-admin": {"ReportsApi__Enabled": "true", "ReportsApi__AllowClusterHttp": "true",
+                        "ReportsApi__BaseUrl": destination, "AdminMcp__Enabled": "true"},
+        "arkya-gateway": {"Gateway__ReportsEnabled": "true", "ReverseProxy__Clusters__reports__Destinations__primary__Address": destination},
+        "arkya-identity": {"InternalHttp__AllowedNetworks__1": "192.168.100.0/24"}}
+    for app, expected_values in expected_modules.items():
+        config, = [document["data"] for document in normalized if document["kind"] == "ConfigMap" and
+                   document["metadata"]["name"].startswith(app + "-config-")]
+        require(all(config.get(key) == value for key, value in expected_values.items()), f"Invalid {app} Reports activation")
+        for key in expected_values:
+            del config[key]
+    identity_policy = next(document for document in normalized if checks.identity(document) ==
+                           ("NetworkPolicy", NS, "arkya-identity"))["spec"]["ingress"]
+    reports_ingress, = ingress("reports")
+    require(identity_policy.count(reports_ingress) == 1, "Identity must admit exactly one private Reports peer")
+    identity_policy.remove(reports_ingress)
+    return normalized
+
+
 def check_profile(documents, frontend_documents=None, beta_documents=None, require_digests=False):
+    if any(document["kind"] == "Deployment" and document["metadata"]["name"] == "arkya-reports" for document in documents):
+        documents = without_reports_component(documents, require_digests)
     if any(document["kind"] == "Deployment" and document["metadata"]["name"] == "arkya-inference" for document in documents):
         documents = without_inference_component(documents, require_digests)
     frontend_documents = frontend_documents or checks.render(ROOT.parent / "frontend-discord")

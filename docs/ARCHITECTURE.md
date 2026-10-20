@@ -109,6 +109,7 @@ jusqu'à la configuration des dedicateds.
 | `Arkya.Identity.Api` | Connexion Discord, identité Arkya, création, validation et révocation des sessions | Comptes, challenges de connexion, sessions dans `arkya_identity` |
 | `Arkya.Characters.Api` | Personnages du compte, validation d’apparence, liaison au realm, admission, leases et sauvegarde autoritaire de position | Personnages, admissions et état persistant dans `arkya_characters` |
 | `Arkya.Content.Api` | Brouillons de quêtes, validation et publication de catalogues immuables | Révisions et publications dans `arkya_content` |
+| `Arkya.Reports.Api` | Bugs (F8) et suggestions (F9) avec capture, type immuable, statuts, tags et révisions de triage | Rapports et PNG bornés dans `arkya_reports` |
 | `Arkya.Admin` | Interface web authentifiée pour éditer/publier le contenu et créer/déployer/suivre les realms | Aucune donnée métier ; appels serveur vers Content et Realms |
 | `Arkya.Realms.Api` | Catalogue opérateur des realms, demandes de déploiement durables et observation des dedicated k3s | Définitions, profils figés et état des opérations dans `arkya_realms` |
 | `Arkya.Backend.Api` | Ancien parcours local : annuaire de serveurs mock et connexion de développement | Sessions de développement en mémoire |
@@ -117,6 +118,13 @@ jusqu'à la configuration des dedicateds.
 `Arkya.Realms.Api` fournit le catalogue opérateur et le déploiement de processus dédiés dans des namespaces k3s préautorisés. Son catalogue interne de destinations est désormais exposé aux joueurs authentifiés par Characters. Characters lie atomiquement le personnage à un `realmId` et délivre un ticket seulement pour une destination compatible et activée. Les noms de personnages restent globalement uniques ; l’identité du compte et l’appartenance au realm sont vérifiées côté services.
 
 Les nouvelles API ciblent .NET 10. Chaque service sépare contrats HTTP, règles applicatives et adaptateurs de persistance. Les documents MongoDB restent internes. Un `accountId` Arkya est stable et distinct de l'identifiant Discord ; Characters conserve cette référence sans lire la base Identity.
+
+Les [bugs et suggestions](BUG_REPORTS.md) utilisent la session Identity du joueur.
+Admin présente les captures et le suivi, et expose le MCP facultatif `/mcp/reports`
+avec une clé distincte des clés de service. Les outils MCP filtrent par type,
+tag et statut et appliquent les mises à jour avec contrôle de révision.
+Le [composant Reports](../backend/deploy/gitops/reports-control/README.md)
+s'intègre au profil Admin et à la promotion CI des images.
 
 La gateway conserve l’authentification et les règles métier dans les services. Son allowlist de routes API est explicite : connexion web Identity et endpoints publics Characters. Un routage Admin facultatif dessert exclusivement son domaine configuré, distinct de `api.arkya.online` ; les API Content et Realms restent internes. Les routes Social SDK restent hors de cette exposition web. Les futures routes doivent être ajoutées volontairement et testées. Les workflows GitHub Actions construisent et publient séparément les images Identity, Gateway, Admin et Realms dans GHCR.
 

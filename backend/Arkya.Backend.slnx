@@ -1,8 +1,10 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/Arkya.Inference.Api/Arkya.Inference.Api.csproj" />
-    <Project Path="src/Arkya.Reports.Mcp/Arkya.Reports.Mcp.csproj" />
     <Project Path="src/Arkya.Admin/Arkya.Admin.csproj" />
+    <Project Path="src/Arkya.Admin.Mcp/Arkya.Admin.Mcp.csproj" />
+    <Project Path="src/Arkya.Reports.Api/Arkya.Reports.Api.csproj" />
+    <Project Path="src/Arkya.Reports.Mcp/Arkya.Reports.Mcp.csproj" />
     <Project Path="src/Arkya.Realms.Api/Arkya.Realms.Api.csproj" />
     <Project Path="src/Arkya.Backend.Api/Arkya.Backend.Api.csproj" />
     <Project Path="src/Arkya.ServiceDefaults/Arkya.ServiceDefaults.csproj" />
@@ -18,6 +20,8 @@
     <Project Path="tests/Arkya.Gateway.Tests/Arkya.Gateway.Tests.csproj" />
     <Project Path="tests/Arkya.Characters.Tests/Arkya.Characters.Tests.csproj" />
     <Project Path="tests/Arkya.Admin.Tests/Arkya.Admin.Tests.csproj" />
+    <Project Path="tests/Arkya.Admin.Mcp.Tests/Arkya.Admin.Mcp.Tests.csproj" />
+    <Project Path="tests/Arkya.Reports.Tests/Arkya.Reports.Tests.csproj" />
     <Project Path="tests/Arkya.Realms.Tests/Arkya.Realms.Tests.csproj" />
     <Project Path="tests/Arkya.Backend.Flow.Tests/Arkya.Backend.Flow.Tests.csproj" />
   </Folder>

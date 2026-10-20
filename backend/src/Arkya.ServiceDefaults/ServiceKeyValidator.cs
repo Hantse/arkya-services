@@ -6,7 +6,7 @@ namespace Arkya.ServiceDefaults;
 
 public sealed class ServiceAuthenticationOptions
 {
-    public string Key { get; init; } = "";
+    public string Key { get; set; } = "";
 }
 
 public sealed class ServiceKeyValidator(IOptions<ServiceAuthenticationOptions> options)
