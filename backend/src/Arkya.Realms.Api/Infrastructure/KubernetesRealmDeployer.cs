@@ -14,6 +14,7 @@ namespace Arkya.Realms.Api.Infrastructure;
 public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<DeploymentOptions> configured,
     IOptions<RealmRuntimeOptions>? runtime = null) : IRealmDeployer
 {
+    private const string DedicatedSecretName = "arkya-dedicated";
     private readonly DeploymentOptions options = configured.Value;
     private readonly RealmRuntimeOptions runtimeOptions = runtime?.Value ?? new();
 
@@ -24,6 +25,8 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             throw new DeploymentFailure("target_unavailable");
         if (runtimeOptions.RegistryDockerConfigFile.Length > 0)
             await EnsureRegistrySecretAsync(realm, cancellationToken);
+        if (runtimeOptions.DedicatedKeySeed.Length > 0)
+            await EnsureDedicatedSecretAsync(realm, cancellationToken);
         var results = new List<ServerObservation>();
         foreach (var server in realm.Profile.Servers)
         {
@@ -53,6 +56,25 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         var name = realm.Profile.ImagePullSecretName;
         if (name != "arkya-ghcr") throw new DeploymentFailure("runtime_configuration_invalid");
         var dockerConfig = await ReadRegistryCredentialsAsync(cancellationToken);
+        await EnsureOwnedSecretAsync(realm, name, "kubernetes.io/dockerconfigjson",
+            new JsonObject { [".dockerconfigjson"] = Convert.ToBase64String(Encoding.UTF8.GetBytes(dockerConfig)) },
+            "registry_credentials_invalid", cancellationToken);
+    }
+
+    private Task EnsureDedicatedSecretAsync(RealmRecord realm, CancellationToken cancellationToken)
+    {
+        if (!runtimeOptions.IsValid()) throw new DeploymentFailure("runtime_configuration_invalid");
+        var data = new JsonObject();
+        foreach (var server in realm.Profile.Servers)
+            data[server.Id] = Convert.ToBase64String(Encoding.UTF8.GetBytes(
+                RealmRuntimeKeys.DeriveDedicatedKey(runtimeOptions.DedicatedKeySeed, realm.RealmId, server.Id)));
+        return EnsureOwnedSecretAsync(realm, DedicatedSecretName, "Opaque", data,
+            "runtime_configuration_invalid", cancellationToken);
+    }
+
+    private async Task EnsureOwnedSecretAsync(RealmRecord realm, string name, string type, JsonObject data,
+        string invalidResponseCode, CancellationToken cancellationToken)
+    {
         var desired = new JsonObject
         {
             ["apiVersion"] = "v1", ["kind"] = "Secret",
@@ -66,8 +88,8 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
                     ["arkya.online/deployment-id"] = realm.DeploymentIdentity
                 }
             },
-            ["type"] = "kubernetes.io/dockerconfigjson",
-            ["data"] = new JsonObject { [".dockerconfigjson"] = Convert.ToBase64String(Encoding.UTF8.GetBytes(dockerConfig)) }
+            ["type"] = type,
+            ["data"] = data
         };
         var collection = $"api/v1/namespaces/{realm.Namespace}/secrets";
         var resource = $"{collection}/{name}";
@@ -87,9 +109,9 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
                 }
             }
         }
-        catch (JsonException) { throw new DeploymentFailure("registry_credentials_invalid"); }
+        catch (JsonException) { throw new DeploymentFailure(invalidResponseCode); }
         if (existing["metadata"] is not JsonObject metadata)
-            throw new DeploymentFailure("registry_credentials_invalid");
+            throw new DeploymentFailure(invalidResponseCode);
         if (metadata["deletionTimestamp"] is not null)
             throw new DeploymentFailure("resource_deleting");
         if (!ContainsDesired(desired["metadata"]!["labels"], metadata["labels"]))
@@ -252,7 +274,11 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             if (!runtime.IsValid()) throw new DeploymentFailure("runtime_configuration_invalid");
             var environment = (JsonArray)container["env"]!;
             environment.Add(new JsonObject { ["name"] = "ARKYA_CHARACTERS_URL", ["value"] = runtime.CharactersBaseUrl });
-            environment.Add(new JsonObject { ["name"] = "ARKYA_DEDICATED_KEY", ["value"] = RealmRuntimeKeys.DeriveDedicatedKey(runtime.DedicatedKeySeed, realm.RealmId, server.Id) });
+            environment.Add(new JsonObject
+            {
+                ["name"] = "ARKYA_DEDICATED_KEY",
+                ["valueFrom"] = new JsonObject { ["secretKeyRef"] = new JsonObject { ["name"] = DedicatedSecretName, ["key"] = server.Id } }
+            });
             if (runtime.AllowClusterHttp)
                 environment.Add(new JsonObject { ["name"] = "ARKYA_ALLOW_CLUSTER_HTTP", ["value"] = "1" });
         }

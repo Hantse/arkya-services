@@ -6,12 +6,109 @@ using System.Text.Json.Nodes;
 using Arkya.Realms.Api.Application;
 using Arkya.Realms.Api.Domain;
 using Arkya.Realms.Api.Infrastructure;
+using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
 
 namespace Arkya.Realms.Tests;
 
 public sealed class KubernetesDeployerTests
 {
+    [Fact]
+    public async Task DedicatedKeysAreCreatedInAnOwnedSecretBeforeWorkloadsAndNeverAppearInDeploymentData()
+    {
+        using var cluster = new FakeCluster();
+        var runtime = DedicatedRuntime();
+        var realm = Fixtures.Realm();
+        var first = realm.Profile.Servers[0];
+        realm = realm with { Profile = realm.Profile with { Servers = [first, first with { Id = "second-island", Port = first.Port + 1 }] } };
+        await cluster.Deployer(runtime).ReconcileAsync(realm, default);
+        Assert.Equal("arkya-dedicated", cluster.CreatedNames.First());
+        var secret = Assert.Single(cluster.Resources.Values, resource => resource["kind"]!.GetValue<string>() == "Secret");
+        Assert.Equal("Opaque", secret["type"]!.GetValue<string>());
+        Assert.Equal(realm.RealmId, secret["metadata"]!["labels"]!["arkya.online/realm-id"]!.GetValue<string>());
+        Assert.Equal(realm.DeploymentIdentity, secret["metadata"]!["labels"]!["arkya.online/deployment-id"]!.GetValue<string>());
+        Assert.Null(secret["metadata"]!["labels"]!["arkya.online/server-id"]);
+        Assert.Equal(2, secret["data"]!.AsObject().Count);
+        foreach (var server in realm.Profile.Servers)
+        {
+            var key = RealmRuntimeKeys.DeriveDedicatedKey(runtime.DedicatedKeySeed, realm.RealmId, server.Id);
+            var encoded = secret["data"]![server.Id]!.GetValue<string>();
+            Assert.Equal(key, Encoding.UTF8.GetString(Convert.FromBase64String(encoded)));
+            var deployment = Assert.Single(cluster.Resources.Values, resource => resource["kind"]!.GetValue<string>() == "Deployment" &&
+                resource["metadata"]!["labels"]!["arkya.online/server-id"]!.GetValue<string>() == server.Id);
+            var environment = deployment["spec"]!["template"]!["spec"]!["containers"]![0]!["env"]!.AsArray();
+            var credential = Assert.Single(environment, value => value!["name"]!.GetValue<string>() == "ARKYA_DEDICATED_KEY")!;
+            Assert.Null(credential["value"]);
+            Assert.Equal("arkya-dedicated", credential["valueFrom"]!["secretKeyRef"]!["name"]!.GetValue<string>());
+            Assert.Equal(server.Id, credential["valueFrom"]!["secretKeyRef"]!["key"]!.GetValue<string>());
+            Assert.DoesNotContain(key, deployment.ToJsonString());
+            Assert.DoesNotContain(encoded, deployment.ToJsonString());
+            Assert.DoesNotContain(runtime.DedicatedKeySeed, deployment.ToJsonString());
+            Assert.DoesNotContain(key, System.Text.Json.JsonSerializer.Serialize(realm));
+        }
+        await cluster.Deployer(runtime).ReconcileAsync(realm, default);
+        Assert.Equal(5, cluster.CreateCount);
+        Assert.All(cluster.Methods, method => Assert.True(method == HttpMethod.Get || method == HttpMethod.Post));
+    }
+
+    [Fact]
+    public async Task RegistryAndDedicatedSecretsAreBothReadyBeforeTheFirstDeployment()
+    {
+        using var credentials = new RegistryFile();
+        using var cluster = new FakeCluster();
+        var runtime = DedicatedRuntime();
+        runtime.RegistryDockerConfigFile = credentials.Path;
+        await cluster.Deployer(runtime).ReconcileAsync(RegistryRealm(), default);
+        Assert.Equal(new[] { "arkya-ghcr", "arkya-dedicated" }, cluster.CreatedNames.Take(2));
+        Assert.Equal("Deployment", cluster.CreatedKinds[2]);
+        await cluster.Deployer(runtime).ReconcileAsync(RegistryRealm(), default);
+        Assert.Equal(4, cluster.CreateCount);
+    }
+
+    [Fact]
+    public async Task DedicatedCreateConflictsRequireOwnedMatchingSecretsBeforeAnyWorkload()
+    {
+        using var owned = new FakeCluster { ConflictOnCreate = true };
+        await owned.Deployer(DedicatedRuntime()).ReconcileAsync(Fixtures.Realm(), default);
+        Assert.Equal(3, owned.CreateCount);
+        using var foreign = new FakeCluster { ConflictOnCreate = true, ForeignConflict = true };
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => foreign.Deployer(DedicatedRuntime()).ReconcileAsync(Fixtures.Realm(), default));
+        Assert.Equal("resource_ownership_conflict", error.Code);
+        Assert.Equal("arkya-dedicated", Assert.Single(foreign.CreatedNames));
+    }
+
+    [Theory]
+    [InlineData("data")]
+    [InlineData("type")]
+    [InlineData("labels")]
+    public async Task DedicatedSecretDriftIsRejectedWithoutOverwritesOrCredentialDisclosure(string field)
+    {
+        using var cluster = new FakeCluster();
+        var realm = Fixtures.Realm();
+        var runtime = DedicatedRuntime();
+        await cluster.Deployer(runtime).ReconcileAsync(realm, default);
+        var secret = Assert.Single(cluster.Resources.Values, resource => resource["kind"]!.GetValue<string>() == "Secret");
+        if (field == "data") secret["data"]![realm.Profile.Servers[0].Id] = "different-private-dedicated-data";
+        else if (field == "type") secret["type"] = "kubernetes.io/dockerconfigjson";
+        else secret["metadata"]!["labels"] = new JsonObject();
+        var before = secret.ToJsonString();
+        cluster.Methods.Clear();
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => cluster.Deployer(runtime).ReconcileAsync(realm, default));
+        Assert.Equal(field == "labels" ? "resource_ownership_conflict" : "resource_configuration_drift", error.Code);
+        Assert.Equal(3, cluster.CreateCount);
+        Assert.Equal(HttpMethod.Get, Assert.Single(cluster.Methods));
+        Assert.Equal(before, secret.ToJsonString());
+        Assert.DoesNotContain(runtime.DedicatedKeySeed, error.ToString());
+        Assert.DoesNotContain("private-dedicated-data", error.ToString());
+        Assert.DoesNotContain(RealmRuntimeKeys.DeriveDedicatedKey(runtime.DedicatedKeySeed, realm.RealmId, realm.Profile.Servers[0].Id), error.ToString());
+    }
+
+    private static RealmRuntimeOptions DedicatedRuntime() => new()
+    {
+        DedicatedKeySeed = "dedicated-runtime-seed-only-visible-to-service",
+        CharactersBaseUrl = "https://characters.example/"
+    };
+
     [Fact]
     public async Task RegistryCredentialsAreCopiedBeforeWorkloadsWithOnlyGhcrAndReusedWithoutWrites()
     {
@@ -311,6 +408,7 @@ public sealed class KubernetesDeployerTests
         public List<string> Tokens { get; } = [];
         public int CreateCount { get; private set; }
         public List<string> CreatedKinds { get; } = [];
+        public List<string> CreatedNames { get; } = [];
         public bool ConflictOnCreate { get; init; }
         public bool ForeignConflict { get; init; }
         public HttpStatusCode? Error { get; set; }
@@ -349,6 +447,7 @@ public sealed class KubernetesDeployerTests
             CreateCount++;
             var body = JsonNode.Parse(await request.Content!.ReadAsStringAsync(cancellationToken))!.AsObject();
             CreatedKinds.Add(body["kind"]!.GetValue<string>());
+            CreatedNames.Add(body["metadata"]!["name"]!.GetValue<string>());
             if (ForeignConflict) body["metadata"]!["labels"]!["arkya.online/deployment-id"] = "foreign";
             Add(body);
             return ConflictOnCreate ? new(HttpStatusCode.Conflict) : Json(HttpStatusCode.Created, body);
