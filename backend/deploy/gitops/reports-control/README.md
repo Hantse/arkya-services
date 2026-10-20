@@ -8,6 +8,12 @@ L'activation se fait en deux commits : publier d'abord le code et le composant s
 
 Le composant utilise uniquement ces références existantes :
 
+Le profil Admin inclut désormais Reports et Inference. La première promotion est
+`be344fc` (source `4c3b9cc`, après intégration Reports `5915299`) : les dix images
+ont été publiées avant l'activation du composant. Les validations locales avec
+`--require-digests` couvrent les 39 objets du profil composé. La disponibilité
+effective est à vérifier sur les endpoints publics après la synchronisation Argo CD.
+
 | Processus | Variable | Secret / clé |
 | --- | --- | --- |
 | Reports | `Mongo__ConnectionString` | `arkya-content-secrets` / `Mongo__ConnectionString` |

@@ -106,3 +106,19 @@ Après ajout du raccordement aux secrets existants et de l'export Codex :
 **318/318 Admin**, **170/170 Gateway**, **14/14 MCP** passent dans le worktree
 de publication. Reports : **68 réussis, 4 Mongo ignorés** faute d'instance
 sur ce second passage ; la CI conserve l'exécution MongoDB réelle obligatoire.
+
+## Publication GitOps — 21 octobre 2026
+
+Le code Services est publié dans `5915299` et le client Unity dans `88f3e8f`.
+La CI [Services images](https://github.com/Hantse/arkya-services/actions/runs/39507370833)
+a publié les dix images puis inscrit leurs digests dans `be344fc`, depuis
+`4c3b9cc` qui inclut le changement Reports et une correction Realms concurrente.
+La première exécution a volontairement refusé de promouvoir une source dépassée.
+
+Le composant Reports est maintenant ajouté au profil Admin existant, avec
+Inference. Le rendu composé contient **39 objets** ; les contrats et les digests
+ont été validés sans accès Kubernetes. La synchronisation reste assurée par Argo CD.
+La disponibilité publique et la connexion Codex restent à vérifier après sync.
+
+La [CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/39507179874)
+construit séparément les clients et le dedicated à partir du commit publié.
