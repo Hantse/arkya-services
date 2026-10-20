@@ -17,6 +17,9 @@ patches:
     - op: add
       path: /spec/syncPolicy/syncOptions/-
       value: FailOnSharedResource=true
+    - op: replace
+      path: /spec/destination/namespace
+      value: arkya-beta
 - target:
     kind: AppProject
     name: arkya-beta
@@ -32,4 +35,4 @@ patches:
       path: /spec/destinations
       value:
       - server: https://kubernetes.default.svc
-        namespace: arkya-identity
+        namespace: arkya-beta

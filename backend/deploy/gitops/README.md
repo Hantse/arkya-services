@@ -3,7 +3,7 @@
 Pour le déploiement progressif **frontend et connexion Discord seulement**,
 utiliser le [profil `frontend-discord`](frontend-discord/README.md), inspiré
 de `arksaas-infra`. L'Application `arkya-services` pointe directement vers ce
-profil avec une seule source et trois services dans `arkya-identity`.
+profil avec une seule source et trois services dans `arkya-beta`.
 Traefik reste géré séparément.
 La suite de ce document décrit la bêta complète.
 

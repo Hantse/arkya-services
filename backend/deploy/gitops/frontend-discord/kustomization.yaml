@@ -1,5 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: arkya-beta
 resources:
 - ../beta
 # Inherit the release digests promoted by CI; keep a single image source.
@@ -62,6 +63,21 @@ patches:
       namespace: arkya-identity
 - patch: |-
     apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: arkya-identity
+      labels:
+        app.kubernetes.io/name: arkya-beta
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-identity-config
+      namespace: arkya-identity
+    data:
+      AllowedHosts: api.arkya.online;arkya-identity;arkya-identity.arkya-beta.svc.cluster.local
+- patch: |-
+    apiVersion: v1
     kind: ConfigMap
     metadata:
       name: arkya-gateway-config
@@ -70,6 +86,9 @@ patches:
       AllowedHosts: api.arkya.online
       Gateway__CharactersEnabled: 'false'
       Gateway__AdminEnabled: 'false'
+      Gateway__AdminAddress: http://arkya-admin.arkya-beta.svc.cluster.local:8080/
+      ReverseProxy__Clusters__identity__Destinations__primary__Address: http://arkya-identity.arkya-beta.svc.cluster.local:8080/
+      ReverseProxy__Clusters__characters__Destinations__primary__Address: http://arkya-characters.arkya-beta.svc.cluster.local:8080/
 - patch: |-
     apiVersion: v1
     kind: Service
@@ -97,3 +116,26 @@ patches:
         ports:
         - protocol: TCP
           port: 8080
+- target:
+    kind: NetworkPolicy
+    name: arkya-identity
+  patch: |-
+    - op: replace
+      path: /spec/ingress/0/from/0/namespaceSelector/matchLabels/kubernetes.io~1metadata.name
+      value: arkya-beta
+    - op: replace
+      path: /spec/ingress/1/from/0/namespaceSelector/matchLabels/kubernetes.io~1metadata.name
+      value: arkya-beta
+- target:
+    kind: Deployment
+    name: arkya-frontend
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/readinessProbe/httpGet/httpHeaders/0/value
+      value: arkya-frontend.arkya-beta.svc.cluster.local
+    - op: replace
+      path: /spec/template/spec/containers/0/livenessProbe/httpGet/httpHeaders/0/value
+      value: arkya-frontend.arkya-beta.svc.cluster.local
+    - op: replace
+      path: /spec/template/spec/containers/0/startupProbe/httpGet/httpHeaders/0/value
+      value: arkya-frontend.arkya-beta.svc.cluster.local

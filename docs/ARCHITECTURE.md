@@ -39,7 +39,7 @@ reprend le modèle `arksaas-infra` : frontend et gateway sur deux LoadBalancers
 privés, Identity en ClusterIP et Traefik existant géré séparément. Il hérite
 des images de la bêta, mais ne rend que ces trois services ; les routes Admin
 et Characters sont désactivées. L'Application Argo `arkya-services` pointe
-directement vers ce profil, avec destination `arkya-identity` et une seule
+directement vers ce profil, avec destination `arkya-beta` et une seule
 source. La bêta complète conserve son profil distinct,
 avec ingress site et deuxième source Unity.
 

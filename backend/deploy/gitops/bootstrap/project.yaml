@@ -12,6 +12,8 @@ spec:
   - git@github.com:Hantse/arkya-mmorpg.git
   destinations:
   - server: https://kubernetes.default.svc
+    namespace: arkya-beta
+  - server: https://kubernetes.default.svc
     namespace: arkya-identity
   - server: https://kubernetes.default.svc
     namespace: arkya-operations

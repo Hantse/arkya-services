@@ -17,6 +17,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent
 IDENTITY = "arkya-identity"
+FRONTEND_NAMESPACE = "arkya-beta"
 OPERATIONS = "arkya-operations"
 GAME = "arkya-realm-beta-web"
 NAMESPACES = {IDENTITY, OPERATIONS}
@@ -190,43 +191,68 @@ def check_services(documents, require_digests):
 def check_frontend_discord(documents, beta_documents):
     resources, beta = index(documents), index(beta_documents)
     expected_keys = {
-        ("Namespace", "", IDENTITY),
-        ("PersistentVolumeClaim", IDENTITY, "arkya-identity-keys"),
+        ("Namespace", "", FRONTEND_NAMESPACE),
+        ("PersistentVolumeClaim", FRONTEND_NAMESPACE, "arkya-identity-keys"),
     }
-    for key in expected_keys:
-        require(resources[key] == beta[key], f"Frontend/Discord must preserve {key}, including storage protection")
+    expected = deepcopy(beta[("Namespace", "", IDENTITY)])
+    expected["metadata"]["name"] = FRONTEND_NAMESPACE
+    expected["metadata"]["labels"]["app.kubernetes.io/name"] = FRONTEND_NAMESPACE
+    require(resources[("Namespace", "", FRONTEND_NAMESPACE)] == expected,
+            "Frontend/Discord must own only the dedicated beta namespace with deletion protection")
+
+    def relocated(kind, name):
+        expected = deepcopy(beta[(kind, IDENTITY, name)])
+        expected["metadata"]["namespace"] = FRONTEND_NAMESPACE
+        return expected
+
+    require(resources[("PersistentVolumeClaim", FRONTEND_NAMESPACE, "arkya-identity-keys")] ==
+            relocated("PersistentVolumeClaim", "arkya-identity-keys"),
+            "Frontend/Discord must preserve Identity key storage protection in the beta namespace")
     gateway_config = next(d["data"] for d in documents if d["kind"] == "ConfigMap"
                           and d["metadata"]["name"].startswith("arkya-gateway-config-"))
     for app in ("identity", "gateway", "frontend"):
         name = "arkya-" + app
-        key = ("Deployment", IDENTITY, name)
-        deployment, original = resources[key], beta[key]
+        key = ("Deployment", FRONTEND_NAMESPACE, name)
+        deployment, original = resources[key], beta[("Deployment", IDENTITY, name)]
         container, = deployment["spec"]["template"]["spec"]["containers"]
         original_container, = original["spec"]["template"]["spec"]["containers"]
         config_name, = [e["configMapRef"]["name"] for e in container["envFrom"] if "configMapRef" in e]
         original_config_name, = [e["configMapRef"]["name"] for e in original_container["envFrom"] if "configMapRef" in e]
         require(re.fullmatch(re.escape(name + "-config-") + r"[a-z0-9]{10}", config_name),
                 f"Frontend/Discord requires a generated ConfigMap hash for {name}")
-        config_key = ("ConfigMap", IDENTITY, config_name)
+        config_key = ("ConfigMap", FRONTEND_NAMESPACE, config_name)
         expected_keys.add(config_key)
-        expected = deepcopy(beta[("ConfigMap", IDENTITY, original_config_name)])
+        expected = relocated("ConfigMap", original_config_name)
         expected["metadata"]["name"] = config_name
+        if app == "identity":
+            expected["data"]["AllowedHosts"] = (
+                f"api.arkya.online;arkya-identity;arkya-identity.{FRONTEND_NAMESPACE}.svc.cluster.local")
         if app == "gateway":
             expected["data"].update(AllowedHosts="api.arkya.online",
-                                    Gateway__CharactersEnabled="false", Gateway__AdminEnabled="false")
+                                    Gateway__CharactersEnabled="false", Gateway__AdminEnabled="false",
+                                    Gateway__AdminAddress=f"http://arkya-admin.{FRONTEND_NAMESPACE}.svc.cluster.local:8080/")
+            for destination in ("identity", "characters"):
+                expected["data"][f"ReverseProxy__Clusters__{destination}__Destinations__primary__Address"] = (
+                    f"http://arkya-{destination}.{FRONTEND_NAMESPACE}.svc.cluster.local:8080/")
         require(resources[config_key] == expected, f"Unexpected frontend/Discord configuration for {name}")
-        require((config_name != original_config_name) == (app == "gateway"),
-                f"Frontend/Discord must roll only the changed gateway configuration: {name}")
-        expected = deepcopy(original)
-        for entry in expected["spec"]["template"]["spec"]["containers"][0]["envFrom"]:
+        require((config_name != original_config_name) == (app in {"identity", "gateway"}),
+                f"Frontend/Discord must roll the changed Identity and gateway configurations: {name}")
+        expected = relocated("Deployment", name)
+        expected_container, = expected["spec"]["template"]["spec"]["containers"]
+        for entry in expected_container["envFrom"]:
             if "configMapRef" in entry:
                 entry["configMapRef"]["name"] = config_name
+        if app == "frontend":
+            for probe in ("startupProbe", "readinessProbe", "livenessProbe"):
+                expected_container[probe]["httpGet"]["httpHeaders"] = [{
+                    "name": "Host", "value": f"arkya-frontend.{FRONTEND_NAMESPACE}.svc.cluster.local",
+                }]
         require(deployment == expected,
-                f"Frontend/Discord must inherit {name}'s promoted image, security, probes and storage unchanged")
+                f"Frontend/Discord must preserve {name}'s image, security and storage with beta DNS and config references")
         for kind in ("Deployment", "Service", "NetworkPolicy"):
-            expected_keys.add((kind, IDENTITY, name))
-        service_key = ("Service", IDENTITY, name)
-        expected = deepcopy(beta[service_key])
+            expected_keys.add((kind, FRONTEND_NAMESPACE, name))
+        service_key = ("Service", FRONTEND_NAMESPACE, name)
+        expected = relocated("Service", name)
         if app == "frontend":
             expected["spec"].update(type="LoadBalancer", externalTrafficPolicy="Local",
                                     ports=[{"name": "http", "port": 80, "targetPort": "http"}])
@@ -241,8 +267,12 @@ def check_frontend_discord(documents, beta_documents):
             require({"name": "http", "containerPort": 8080} in container["ports"],
                     "Frontend LoadBalancer must reach HTTP on container port 8080")
         require(resources[service_key] == expected, f"Unexpected frontend/Discord Service for {name}")
-        policy_key = ("NetworkPolicy", IDENTITY, name)
-        expected = deepcopy(beta[policy_key])
+        policy_key = ("NetworkPolicy", FRONTEND_NAMESPACE, name)
+        expected = relocated("NetworkPolicy", name)
+        if app == "identity":
+            for rule in expected["spec"]["ingress"]:
+                for peer in rule["from"]:
+                    peer["namespaceSelector"]["matchLabels"]["kubernetes.io/metadata.name"] = FRONTEND_NAMESPACE
         if app == "frontend":
             expected["spec"]["ingress"] = [{
                 "from": [{"ipBlock": {"cidr": gateway_config["ProxyTrust__KnownNetworks__0"]}}],
@@ -250,7 +280,7 @@ def check_frontend_discord(documents, beta_documents):
             }]
         require(resources[policy_key] == expected, f"Unexpected frontend/Discord network policy for {name}")
     require(len(resources) == 14 and set(resources) == expected_keys,
-            "Frontend/Discord must contain only 3 workloads/configs/services/policies, Identity namespace and PVC")
+            "Frontend/Discord must contain only 3 workloads/configs/services/policies and Identity PVC in arkya-beta")
 
 
 def check_direct_frontend_application(application, workload_documents, project):
@@ -265,10 +295,10 @@ def check_direct_frontend_application(application, workload_documents, project):
             "The direct application must point at workloads, not the bootstrap")
     require(spec["source"]["repoURL"] in project["spec"]["sourceRepos"],
             "The workload project must allow the direct application's source")
-    require(spec["destination"] == {"server": "https://kubernetes.default.svc", "namespace": IDENTITY}
+    require(spec["destination"] == {"server": "https://kubernetes.default.svc", "namespace": FRONTEND_NAMESPACE}
             and spec["destination"] in project["spec"]["destinations"],
             "The direct application's destination must be allowed by its project")
-    require(all(d["metadata"].get("namespace", IDENTITY) == IDENTITY for d in workload_documents),
+    require(all(d["metadata"].get("namespace", FRONTEND_NAMESPACE) == FRONTEND_NAMESPACE for d in workload_documents),
             "The direct destination must match the explicit workload namespaces")
     require("automated" not in spec["syncPolicy"] and {
         "CreateNamespace=true", "FailOnSharedResource=true"}.issubset(spec["syncPolicy"]["syncOptions"]),
@@ -292,18 +322,20 @@ def check_bootstrap(documents, bootstrap_project, *, frontend_discord=False):
         ("git@github.com:Hantse/arkya-services.git", "backend/deploy/gitops/beta", "master"),
         ("git@github.com:Hantse/arkya-mmorpg.git", "deploy/gitops/beta", "main"),
     }
-    expected_namespaces = NAMESPACES | {GAME}
+    expected_namespaces = NAMESPACES | {GAME, FRONTEND_NAMESPACE}
+    destination_namespace = IDENTITY
     if frontend_discord:
         expected_sources = {
             ("git@github.com:Hantse/arkya-services.git", "backend/deploy/gitops/frontend-discord", "master"),
         }
-        expected_namespaces = {IDENTITY}
+        expected_namespaces = {FRONTEND_NAMESPACE}
+        destination_namespace = FRONTEND_NAMESPACE
         require("FailOnSharedResource=true" in application["spec"]["syncPolicy"]["syncOptions"],
                 "Frontend/Discord must reject conflicting resource ownership")
     require(sources == expected_sources and len(application["spec"]["sources"]) == len(expected_sources),
             "Argo sources must match the selected deployment profile")
-    require(application["spec"]["destination"] == {"server": "https://kubernetes.default.svc", "namespace": IDENTITY},
-            "Workloads must target the existing cluster and Identity namespace")
+    require(application["spec"]["destination"] == {"server": "https://kubernetes.default.svc", "namespace": destination_namespace},
+            "Workloads must target the existing cluster and the selected profile's namespace")
     require({(d["server"], d["namespace"]) for d in project["spec"]["destinations"]} ==
             {("https://kubernetes.default.svc", ns) for ns in expected_namespaces}, "Argo namespace allowlist mismatch")
     require({s[0] for s in sources} == set(project["spec"]["sourceRepos"]), "Argo source allowlist mismatch")

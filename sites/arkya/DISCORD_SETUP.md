@@ -22,11 +22,11 @@ Relever d’abord l’état des ressources depuis le contexte du cluster Arkya :
 ```bash
 kubectl config current-context
 kubectl -n argocd get applications
-kubectl -n arkya-identity get deployments,pods,services,ingresses,pvc
+kubectl -n arkya-beta get deployments,pods,services,ingresses,pvc
 kubectl get services -A -o wide
 ```
 
-Les prérequis du profil existant sont, dans `arkya-identity` :
+Les prérequis du profil existant sont, dans `arkya-beta` :
 
 - `arkya-identity-secrets`, avec `Mongo__ConnectionString`, `Discord__ClientId`,
   `Discord__ClientSecret` et `ServiceAuthentication__Key` ;
@@ -40,7 +40,8 @@ l'adresse privée du frontend est allouée par le cluster ou réservée après
 vérification de disponibilité. Ce profil ne crée aucun ingress ni certificat
 public. L'Application Argo `arkya-services` utilise directement le chemin
 `backend/deploy/gitops/frontend-discord`, le projet `arkya-beta` et la
-destination `arkya-identity`. Suivre la procédure du profil avant le sync
+destination `arkya-beta`. Mettre à jour les destinations autorisées du projet
+avec le manifest indiqué dans le guide. Suivre la procédure du profil avant le sync
 si une ancienne application enfant a déjà été créée.
 
 Le callback à enregistrer dans Discord est exactement

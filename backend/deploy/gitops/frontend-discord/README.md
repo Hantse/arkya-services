@@ -14,21 +14,22 @@ ni ingress, ni configuration Traefik, ni certificat public.
 | `arkya-identity` | ClusterIP, ports 8080 et 8443 | Discord, comptes et sessions MongoDB |
 
 Le rendu contient **14 ressources, dont trois Deployments**, dans le seul
-namespace `arkya-identity`. Les routes Characters et Admin sont désactivées.
+namespace `arkya-beta`. Les routes Characters et Admin sont désactivées.
 Les services de jeu et le backoffice ne sont pas déployés ; le bouton Jouer
 ne permet pas encore de lancer une partie.
 
 Le profil hérite de `../beta` et de ses digests publiés par la CI. Il ne
 duplique ni les images, ni les workloads. Aucun ImageUpdater supplémentaire
 n'est nécessaire. Les noms, le PVC Identity et les protections des pods
-restent ceux de la bêta.
+restent ceux de la bêta, dans le namespace `arkya-beta`. Les DNS internes,
+les sondes et les sélecteurs réseau sont adaptés à ce namespace.
 
 ## 1. Relever l'état depuis le terminal d'administration
 
 ```bash
 kubectl config current-context
 kubectl -n argocd get applications
-kubectl -n arkya-identity get deployments,pods,services,ingresses,pvc
+kubectl -n arkya-beta get deployments,pods,services,ingresses,pvc
 kubectl get services -A -o wide
 ```
 
@@ -57,7 +58,7 @@ sera une étape distincte, à coordonner avec l'exploitant du proxy.
 
 ## 2. Fournir les prérequis hors Git
 
-Dans `arkya-identity`, prévoir :
+Dans `arkya-beta`, prévoir :
 
 | Ressource | Contenu / condition |
 | --- | --- |
@@ -71,6 +72,10 @@ MongoDB est limité à `arkya_identity`, avec les droits de création des index.
 La clé de service a entre 32 et 512 caractères. Le certificat interne reste
 nécessaire au démarrage d'Identity même si la connexion web passe par le
 listener HTTP privé depuis la gateway.
+Son nom DNS interne est `arkya-identity.arkya-beta.svc.cluster.local`.
+Les Secrets et PVC sont propres au namespace : des ressources éventuellement
+créées dans `arkya-identity` ne sont pas déplacées automatiquement. Vérifier
+leur état avant toute migration et conserver les volumes existants.
 
 Le callback de l'application Discord reste :
 `https://api.arkya.online/v1/auth/discord/callback`.
@@ -100,12 +105,18 @@ avant qu'Argo puisse les lire. Configurer directement l'Application existante
 | Path | `backend/deploy/gitops/frontend-discord` |
 | Revision | `master` |
 | Destination server | `https://kubernetes.default.svc` |
-| Destination namespace | `arkya-identity` |
+| Destination namespace | `arkya-beta` |
 | Sync | Manuel pour la première configuration |
 
-Le projet Argo `arkya-beta` autorise ce dépôt et ce namespace ; son
-[manifest existant](../bootstrap/project.yaml) peut être appliqué séparément
-s'il manque. L'URL SSH conserve la connexion du dépôt déjà enregistrée
+Le projet Argo `arkya-beta` autorise ce dépôt et ce namespace ; appliquer son
+[manifest actualisé](../bootstrap/project.yaml) pour ajouter cette destination
+si le projet avait déjà été créé :
+
+```powershell
+kubectl -n argocd apply -f D:\Repositories\arkya\backend\deploy\gitops\bootstrap\project.yaml
+```
+
+L'URL SSH conserve la connexion du dépôt déjà enregistrée
 dans Argo. Le namespace de destination correspond aux namespaces explicites
 des manifests ; changer seulement ce champ ne renomme pas leurs ressources.
 
@@ -113,7 +124,7 @@ Le chemin `frontend-discord` rend uniquement les workloads. Les chemins
 `bootstrap` et `bootstrap-frontend-discord` restent des alternatives pour
 une organisation parent/enfant ; **ils ne sont pas utilisés dans ce mode direct**.
 L'objet Application est conservé par Argo dans son namespace de contrôle,
-mais sa destination et tous les pods applicatifs sont dans `arkya-identity`.
+mais sa destination et tous les pods applicatifs sont dans `arkya-beta`.
 
 Si l'ancienne configuration bootstrap a déjà été synchronisée, vérifier
 avant le premier sync direct :
@@ -138,10 +149,10 @@ pour résoudre une adoption. L'auto-sync avec prune/self-heal peut être activé
 après validation du premier déploiement et résolution des anciennes propriétés.
 
 ```bash
-kubectl -n arkya-identity rollout status deployment/arkya-identity --timeout=180s
-kubectl -n arkya-identity rollout status deployment/arkya-gateway --timeout=180s
-kubectl -n arkya-identity rollout status deployment/arkya-frontend --timeout=180s
-kubectl -n arkya-identity get services arkya-frontend arkya-gateway -o wide
+kubectl -n arkya-beta rollout status deployment/arkya-identity --timeout=180s
+kubectl -n arkya-beta rollout status deployment/arkya-gateway --timeout=180s
+kubectl -n arkya-beta rollout status deployment/arkya-frontend --timeout=180s
+kubectl -n arkya-beta get services arkya-frontend arkya-gateway -o wide
 ```
 
 ## 4. Valider la connexion

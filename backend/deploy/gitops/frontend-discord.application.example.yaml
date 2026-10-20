@@ -11,7 +11,7 @@ spec:
     targetRevision: master
   destination:
     server: https://kubernetes.default.svc
-    namespace: arkya-identity
+    namespace: arkya-beta
   # Keep the first deployment manual while provisioning its prerequisites.
   syncPolicy:
     syncOptions:
