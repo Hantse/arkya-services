@@ -17,6 +17,9 @@ patches:
     - op: add
       path: /spec/syncPolicy/syncOptions/-
       value: FailOnSharedResource=true
+    - op: add
+      path: /spec/syncPolicy/syncOptions/-
+      value: CreateNamespace=true
     - op: replace
       path: /spec/destination/namespace
       value: arkya-beta

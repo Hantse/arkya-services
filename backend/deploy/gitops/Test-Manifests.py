@@ -191,14 +191,11 @@ def check_services(documents, require_digests):
 def check_frontend_discord(documents, beta_documents):
     resources, beta = index(documents), index(beta_documents)
     expected_keys = {
-        ("Namespace", "", FRONTEND_NAMESPACE),
         ("PersistentVolumeClaim", FRONTEND_NAMESPACE, "arkya-identity-keys"),
     }
-    expected = deepcopy(beta[("Namespace", "", IDENTITY)])
-    expected["metadata"]["name"] = FRONTEND_NAMESPACE
-    expected["metadata"]["labels"]["app.kubernetes.io/name"] = FRONTEND_NAMESPACE
-    require(resources[("Namespace", "", FRONTEND_NAMESPACE)] == expected,
-            "Frontend/Discord must own only the dedicated beta namespace with deletion protection")
+    require(all(d["kind"] != "Namespace" and d["metadata"].get("namespace") == FRONTEND_NAMESPACE
+                for d in documents),
+            "Frontend/Discord must render only namespaced resources; namespace creation belongs to Argo")
 
     def relocated(kind, name):
         expected = deepcopy(beta[(kind, IDENTITY, name)])
@@ -279,7 +276,7 @@ def check_frontend_discord(documents, beta_documents):
                 "ports": [{"protocol": "TCP", "port": 8080}],
             }]
         require(resources[policy_key] == expected, f"Unexpected frontend/Discord network policy for {name}")
-    require(len(resources) == 14 and set(resources) == expected_keys,
+    require(len(resources) == 13 and set(resources) == expected_keys,
             "Frontend/Discord must contain only 3 workloads/configs/services/policies and Identity PVC in arkya-beta")
 
 
@@ -330,8 +327,9 @@ def check_bootstrap(documents, bootstrap_project, *, frontend_discord=False):
         }
         expected_namespaces = {FRONTEND_NAMESPACE}
         destination_namespace = FRONTEND_NAMESPACE
-        require("FailOnSharedResource=true" in application["spec"]["syncPolicy"]["syncOptions"],
-                "Frontend/Discord must reject conflicting resource ownership")
+        require({"FailOnSharedResource=true", "CreateNamespace=true"}.issubset(
+            application["spec"]["syncPolicy"]["syncOptions"]),
+            "Frontend/Discord must use Argo namespace creation and reject conflicting resource ownership")
     require(sources == expected_sources and len(application["spec"]["sources"]) == len(expected_sources),
             "Argo sources must match the selected deployment profile")
     require(application["spec"]["destination"] == {"server": "https://kubernetes.default.svc", "namespace": destination_namespace},

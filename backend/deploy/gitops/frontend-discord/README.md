@@ -13,10 +13,14 @@ ni ingress, ni configuration Traefik, ni certificat public.
 | `arkya-gateway` | LoadBalancer `192.168.100.218`, port 80 → 8080 | API `https://api.arkya.online` |
 | `arkya-identity` | ClusterIP, ports 8080 et 8443 | Discord, comptes et sessions MongoDB |
 
-Le rendu contient **14 ressources, dont trois Deployments**, dans le seul
+Le rendu contient **13 ressources, dont trois Deployments**, dans le seul
 namespace `arkya-beta`. Les routes Characters et Admin sont désactivées.
 Les services de jeu et le backoffice ne sont pas déployés ; le bouton Jouer
 ne permet pas encore de lancer une partie.
+
+Comme dans `arksaas-infra`, aucun objet `Namespace` n'est versionné dans ce
+profil. L'option Argo `CreateNamespace=true` crée la destination au besoin ;
+un namespace déjà présent est réutilisé. Le profil ne gère pas sa suppression.
 
 Le profil hérite de `../beta` et de ses digests publiés par la CI. Il ne
 duplique ni les images, ni les workloads. Aucun ImageUpdater supplémentaire
@@ -69,6 +73,8 @@ Dans `arkya-beta`, prévoir :
 
 Créer le namespace s'il manque avant de provisionner les Secrets. Le compte
 MongoDB est limité à `arkya_identity`, avec les droits de création des index.
+S'il existe déjà, ne pas le recréer : les Secrets sont provisionnés dans
+le namespace existant.
 La clé de service a entre 32 et 512 caractères. Le certificat interne reste
 nécessaire au démarrage d'Identity même si la connexion web passe par le
 listener HTTP privé depuis la gateway.
@@ -147,6 +153,11 @@ namespace operations. Synchroniser manuellement **sans prune** après
 provisioning des prérequis. Les volumes ne doivent jamais être supprimés
 pour résoudre une adoption. L'auto-sync avec prune/self-heal peut être activé
 après validation du premier déploiement et résolution des anciennes propriétés.
+
+Après mise à jour depuis la révision qui déclarait explicitement le Namespace,
+faire un Hard Refresh. L'état désiré contient les 13 ressources ci-dessus.
+Si Argo conserve une ancienne entrée Namespace suivie, ne pas la supprimer
+par prune ; le namespace existant reste nécessaire aux services.
 
 ```bash
 kubectl -n arkya-beta rollout status deployment/arkya-identity --timeout=180s

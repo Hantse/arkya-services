@@ -62,12 +62,11 @@ patches:
       name: arkya-frontend
       namespace: arkya-identity
 - patch: |-
+    $patch: delete
     apiVersion: v1
     kind: Namespace
     metadata:
       name: arkya-identity
-      labels:
-        app.kubernetes.io/name: arkya-beta
 - patch: |-
     apiVersion: v1
     kind: ConfigMap
