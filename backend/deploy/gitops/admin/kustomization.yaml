@@ -2,10 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../private-base
+- player-management-network-policy.yaml
 patches:
 - target:
     kind: Deployment
-    name: arkya-(characters|backend)
+    name: arkya-backend
   patch: |-
     $patch: delete
     apiVersion: apps/v1
@@ -14,7 +15,7 @@ patches:
       name: unused
 - target:
     kind: Service
-    name: arkya-(characters|backend)
+    name: arkya-backend
   patch: |-
     $patch: delete
     apiVersion: v1
@@ -23,7 +24,7 @@ patches:
       name: unused
 - target:
     kind: NetworkPolicy
-    name: arkya-(characters|backend)
+    name: arkya-backend
   patch: |-
     $patch: delete
     apiVersion: networking.k8s.io/v1
@@ -32,7 +33,7 @@ patches:
       name: unused
 - target:
     kind: ConfigMap
-    name: arkya-(characters|backend)-config
+    name: arkya-backend-config
   patch: |-
     $patch: delete
     apiVersion: v1
@@ -63,6 +64,43 @@ patches:
       ContentApi__BaseUrl: http://arkya-content.arkya-beta.svc.cluster.local:8080/
       RealmsApi__AllowClusterHttp: 'true'
       RealmsApi__BaseUrl: http://arkya-realms.arkya-beta.svc.cluster.local:8080/
+      IdentityAdminApi__Enabled: 'true'
+      IdentityAdminApi__AllowClusterHttp: 'true'
+      IdentityAdminApi__BaseUrl: http://arkya-identity.arkya-beta.svc.cluster.local:8080/
+      CharactersAdminApi__Enabled: 'true'
+      CharactersAdminApi__AllowClusterHttp: 'true'
+      CharactersAdminApi__BaseUrl: http://arkya-characters.arkya-beta.svc.cluster.local:8080/
+      SSL_CERT_FILE: null
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-identity-config
+      namespace: arkya-beta
+    data:
+      Administration__Enabled: 'true'
+      Administration__AllowClusterHttp: 'true'
+      InternalHttp__AllowedNetworks__0: 10.42.0.0/16
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-characters-config
+      namespace: arkya-beta
+    data:
+      AllowedHosts: arkya-characters;arkya-characters.arkya-beta.svc.cluster.local
+      ASPNETCORE_HTTP_PORTS: '8080'
+      Identity__BaseUrl: http://arkya-identity.arkya-beta.svc.cluster.local:8080/
+      Identity__AllowClusterHttp: 'true'
+      Realms__BaseUrl: ''
+      GameAccess__RequireBetaAccess: 'true'
+      GameAccess__DedicatedServers__0__RealmId: null
+      GameAccess__DedicatedServers__0__ServerId: null
+      InternalHttp__AllowedNetworks__0: 10.42.0.0/16
+      InternalHttp__AllowedNetworks__1: 192.168.100.0/24
+      Kestrel__Endpoints__Internal__Url: null
+      Kestrel__Endpoints__Internal__Certificate__Path: null
+      Kestrel__Endpoints__Internal__Certificate__KeyPath: null
       SSL_CERT_FILE: null
 - patch: |-
     apiVersion: v1
@@ -99,7 +137,7 @@ patches:
       Kestrel__Endpoints__Internal__Certificate__KeyPath: null
 - target:
     kind: Deployment
-    name: arkya-(content|realms)
+    name: arkya-(characters|content|realms)
   patch: |-
     - op: replace
       path: /spec/template/spec/containers/0/ports
@@ -128,6 +166,75 @@ patches:
     - op: replace
       path: /spec/template/spec/containers/0/startupProbe/httpGet/scheme
       value: HTTP
+- target:
+    kind: Deployment
+    name: arkya-characters
+  patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-characters
+    spec:
+      template:
+        spec:
+          containers:
+          - name: characters
+            envFrom:
+            - configMapRef:
+                name: arkya-characters-config
+            env:
+            - name: Mongo__ConnectionString
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-content-secrets
+                  key: Mongo__ConnectionString
+            - name: Identity__ServiceKey
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-identity-secrets
+                  key: ServiceAuthentication__Key
+            - name: PlayerAdministration__CharactersKeySeed
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-admin-secrets
+                  key: RealmsApi__AdminKey
+            volumeMounts:
+            - name: internal-ca
+              mountPath: /etc/arkya/internal-ca
+              $patch: delete
+          volumes:
+          - name: internal-ca
+            $patch: delete
+- target:
+    kind: Deployment
+    name: arkya-characters
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/readinessProbe/httpGet/httpHeaders/0/value
+      value: arkya-characters.arkya-beta.svc.cluster.local
+    - op: replace
+      path: /spec/template/spec/containers/0/livenessProbe/httpGet/httpHeaders/0/value
+      value: arkya-characters.arkya-beta.svc.cluster.local
+    - op: replace
+      path: /spec/template/spec/containers/0/startupProbe/httpGet/httpHeaders/0/value
+      value: arkya-characters.arkya-beta.svc.cluster.local
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-identity
+      namespace: arkya-beta
+    spec:
+      template:
+        spec:
+          containers:
+          - name: identity
+            env:
+            - name: PlayerAdministration__IdentityKeySeed
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-admin-secrets
+                  key: ContentApi__AdminKey
 - target:
     kind: Deployment
     name: arkya-content
@@ -165,6 +272,17 @@ patches:
         spec:
           containers:
           - name: admin
+            env:
+            - name: PlayerAdministration__IdentityKeySeed
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-admin-secrets
+                  key: ContentApi__AdminKey
+            - name: PlayerAdministration__CharactersKeySeed
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-admin-secrets
+                  key: RealmsApi__AdminKey
             volumeMounts:
             - mountPath: /etc/arkya/internal-ca
               $patch: delete
@@ -173,7 +291,7 @@ patches:
             $patch: delete
 - target:
     kind: Service
-    name: arkya-(content|realms)
+    name: arkya-(characters|content|realms)
   patch: |-
     - op: replace
       path: /spec/ports
@@ -181,6 +299,22 @@ patches:
       - name: http
         port: 8080
         targetPort: http
+- target:
+    kind: NetworkPolicy
+    name: arkya-characters
+  patch: |-
+    - op: replace
+      path: /spec/ingress
+      value:
+      - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: arkya-admin
+        - ipBlock:
+            cidr: 192.168.100.0/24
+        ports:
+        - protocol: TCP
+          port: 8080
 - target:
     kind: NetworkPolicy
     name: arkya-admin

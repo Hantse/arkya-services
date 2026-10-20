@@ -4,6 +4,7 @@ Requires kubectl (or KUBECTL) and PyYAML. Never contacts a Kubernetes cluster.
 """
 
 import argparse
+import importlib.util
 from copy import deepcopy
 import ipaddress
 import os
@@ -292,6 +293,11 @@ def check_frontend_discord(documents, beta_documents):
 
 
 def check_admin(documents, frontend_documents, beta_documents):
+    if any(item["kind"] == "Deployment" and item["metadata"]["name"] == "arkya-characters" for item in documents):
+        validator_spec = importlib.util.spec_from_file_location("arkya_player_management", ROOT / "admin" / "Validate-PlayerManagement.py")
+        validator = importlib.util.module_from_spec(validator_spec)
+        validator_spec.loader.exec_module(validator)
+        return validator.check_profile(documents, frontend_documents, beta_documents)
     resources, frontend, beta = index(documents), index(frontend_documents), index(beta_documents)
     apps = {"identity", "gateway", "frontend", "admin", "content", "realms"}
     require(len(resources) == 26 and
@@ -577,7 +583,8 @@ def main():
         unity_count = check_unity(documents, args.unity_path, configs, args.require_digests)
     print(f"Validated {len(documents)} rendered service resources, 8 deployments, TLS/network/storage contracts and the Argo bootstrap.")
     print(f"Validated {len(frontend_documents)} frontend/Discord resources, 3 inherited deployments, the direct Argo application and optional bootstrap.")
-    print(f"Validated {len(admin_documents)} Admin resources, 6 inherited deployments, private HTTP modules, existing frontend preservation and direct Argo application.")
+    admin_deployments = sum(item["kind"] == "Deployment" for item in admin_documents)
+    print(f"Validated {len(admin_documents)} Admin resources, {admin_deployments} deployments, private HTTP modules, existing frontend preservation and direct Argo application.")
     if unity_count:
         print(f"Validated {unity_count} Unity resources and the combined service/admission/WSS contracts.")
     if not args.require_digests:
