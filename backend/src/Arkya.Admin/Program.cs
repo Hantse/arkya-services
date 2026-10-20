@@ -1,7 +1,11 @@
 using System.Threading.RateLimiting;
 using Arkya.Admin.Content;
 using Arkya.Admin.Realms;
+using Arkya.Admin.Inference;
+using Arkya.Admin.Reports;
 using Arkya.Admin.Authentication;
+using Arkya.Admin.Accounts;
+using Arkya.Admin.Operations;
 using Arkya.ServiceDefaults;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
@@ -17,6 +21,7 @@ public partial class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        PlayerAdministrationKeys.ConfigureAdmin(builder.Configuration);
         builder.Services.AddArkyaProxyTrust(builder.Configuration);
         builder.Services.AddOptions<AdminDataProtectionOptions>().BindConfiguration("DataProtection")
             .Validate(o => string.IsNullOrEmpty(o.KeysPath) || Path.IsPathFullyQualified(o.KeysPath),
@@ -62,6 +67,28 @@ public partial class Program
             var options = services.GetRequiredService<IOptions<RealmsApiOptions>>().Value;
             return RealmsHttpTransport.Create(options.Enabled ? options.CertificateAuthorityFile : "");
         });
+        builder.Services.AddOptions<ReportsApiOptions>().BindConfiguration("ReportsApi")
+            .Validate(o => !o.Enabled || o.AdminKey.Length is >= 32 and <= 512, "ReportsApi:AdminKey must contain 32 to 512 characters.")
+            .Validate(o => !o.Enabled || ContentApiOptions.IsSafe(o.BaseUrl, builder.Environment.IsDevelopment(), o.AllowClusterHttp),
+                "ReportsApi:BaseUrl requires HTTPS, Development loopback HTTP, or explicitly enabled Kubernetes service HTTP.")
+            .Validate(o => !o.Enabled || string.IsNullOrEmpty(o.CertificateAuthorityFile) || Path.IsPathFullyQualified(o.CertificateAuthorityFile),
+                "ReportsApi:CertificateAuthorityFile must be an absolute path.").ValidateOnStart();
+        builder.Services.AddHttpClient<ReportsAdminClient>((services, client) =>
+        {
+            var options = services.GetRequiredService<IOptions<ReportsApiOptions>>().Value;
+            if (options.Enabled) client.BaseAddress = new Uri(options.BaseUrl.TrimEnd('/') + "/");
+            client.Timeout = TimeSpan.FromSeconds(10);
+            client.MaxResponseContentBufferSize = 8 * 1024 * 1024;
+        }).ConfigurePrimaryHttpMessageHandler(services =>
+        {
+            var options = services.GetRequiredService<IOptions<ReportsApiOptions>>().Value;
+            return RealmsHttpTransport.Create(options.Enabled ? options.CertificateAuthorityFile : "");
+        });
+        builder.Services.AddInferenceAdministration(builder.Configuration, builder.Environment);
+        builder.Services.AddPlayerAdministration(builder.Configuration, builder.Environment);
+        builder.Services.AddSingleton(TimeProvider.System);
+        builder.Services.AddScoped<OperationsDashboard>();
+        builder.Services.AddHostedReportsMcp();
         var authentication = builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
         {
             options.LoginPath = "/Login";
@@ -151,12 +178,14 @@ public partial class Program
             await next();
         });
         app.UseStaticFiles();
+        app.UseHostedReportsMcpAccess();
         app.UseRouting();
         app.UseRateLimiter();
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "admin" })).AllowAnonymous();
         app.MapRazorPages();
+        app.MapHostedReportsMcp();
         app.Run();
     }
 }

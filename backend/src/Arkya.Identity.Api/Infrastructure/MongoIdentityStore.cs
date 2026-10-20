@@ -4,6 +4,8 @@ using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
+using MongoDB.Bson;
+using System.Text.RegularExpressions;
 
 namespace Arkya.Identity.Api.Infrastructure;
 
@@ -25,6 +27,8 @@ public sealed class MongoIdentityStore : IIdentityStore
     {
         await accounts.Indexes.CreateOneAsync(new CreateIndexModel<AccountDocument>(Builders<AccountDocument>.IndexKeys.Ascending(x => x.DiscordId),
             new CreateIndexOptions { Unique = true, Name = "discord_id_unique" }), cancellationToken: cancellationToken);
+        await accounts.Indexes.CreateOneAsync(new CreateIndexModel<AccountDocument>(Builders<AccountDocument>.IndexKeys.Ascending(x => x.DisplayName).Ascending(x => x.Id),
+            new CreateIndexOptions { Name = "account_admin_name" }), cancellationToken: cancellationToken);
         await challenges.Indexes.CreateManyAsync([
             new(Builders<ChallengeDocument>.IndexKeys.Ascending(x => x.ExpiresAt), new CreateIndexOptions { ExpireAfter = TimeSpan.Zero, Name = "challenge_expiry" }),
             new(Builders<ChallengeDocument>.IndexKeys.Ascending(x => x.StateHash), new CreateIndexOptions<ChallengeDocument>
@@ -68,7 +72,8 @@ public sealed class MongoIdentityStore : IIdentityStore
     public Task CompleteChallengeAsync(string id, Account? account, CancellationToken cancellationToken) =>
         challenges.UpdateOneAsync(x => x.Id == id && x.Status == ChallengeStatus.Processing,
             Builders<ChallengeDocument>.Update.Set(x => x.Status, account is null ? ChallengeStatus.Failed : ChallengeStatus.Completed)
-                .Set(x => x.AccountId, account?.Id).Set(x => x.DisplayName, account?.DisplayName), cancellationToken: cancellationToken);
+                .Set(x => x.AccountId, account?.Id).Set(x => x.DisplayName, account?.DisplayName)
+                .Set(x => x.AccountSessionVersion, account?.SessionVersion ?? 0), cancellationToken: cancellationToken);
 
     public async Task<LoginChallenge?> RedeemChallengeAsync(string id, string codeChallenge, DateTime now, CancellationToken cancellationToken) =>
         (await challenges.FindOneAndUpdateAsync(x => x.Id == id && x.CodeChallenge == codeChallenge && x.Status == ChallengeStatus.Completed && x.ExpiresAt > now,
@@ -77,7 +82,9 @@ public sealed class MongoIdentityStore : IIdentityStore
     public async Task<Account> UpsertAccountAsync(string discordId, string displayName, DateTime now, CancellationToken cancellationToken)
     {
         var update = Builders<AccountDocument>.Update.SetOnInsert(x => x.Id, Guid.NewGuid().ToString("D"))
-            .SetOnInsert(x => x.SchemaVersion, 1).SetOnInsert(x => x.CreatedAt, now)
+            .SetOnInsert(x => x.SchemaVersion, 2).SetOnInsert(x => x.CreatedAt, now)
+            .SetOnInsert(x => x.Revision, 0).SetOnInsert(x => x.SessionVersion, 0)
+            .SetOnInsert(x => x.IsBanned, false).SetOnInsert(x => x.HasBetaAccess, false)
             .Set(x => x.DiscordId, discordId).Set(x => x.DisplayName, displayName).Set(x => x.LastLoginAt, now);
         AccountDocument account;
         try
@@ -92,24 +99,67 @@ public sealed class MongoIdentityStore : IIdentityStore
                 Builders<AccountDocument>.Update.Set(x => x.DisplayName, displayName).Set(x => x.LastLoginAt, now),
                 new() { ReturnDocument = ReturnDocument.After }, cancellationToken);
         }
-        return new(account.Id, account.DiscordId, account.DisplayName);
+        return account.ToDomain();
     }
 
     public async Task<Account?> GetAccountAsync(string accountId, CancellationToken cancellationToken)
     {
         var account = await accounts.Find(value => value.Id == accountId).FirstOrDefaultAsync(cancellationToken);
-        return account is null ? null : new(account.Id, account.DiscordId, account.DisplayName);
+        return account?.ToDomain();
+    }
+
+    public async Task<(IReadOnlyList<Account> Items, long Total)> ListAccountsAsync(string? search, int page, int pageSize, CancellationToken cancellationToken)
+    {
+        var filters = Builders<AccountDocument>.Filter;
+        var filter = filters.Empty;
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            var literal = new BsonRegularExpression(Regex.Escape(search), "i");
+            filter = filters.Or(filters.Eq(x => x.Id, search), filters.Eq(x => x.DiscordId, search), filters.Regex(x => x.DisplayName, literal));
+        }
+        var total = await accounts.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+        var result = await accounts.Find(filter).SortBy(x => x.DisplayName).ThenBy(x => x.Id)
+            .Skip((page - 1) * pageSize).Limit(pageSize).ToListAsync(cancellationToken);
+        return (result.Select(account => account.ToDomain()).ToArray(), total);
+    }
+
+    public async Task<Account?> AdministerAccountAsync(string accountId, long expectedRevision, string action, bool? hasBetaAccess,
+        string reason, string actor, DateTime now, CancellationToken cancellationToken)
+    {
+        var filters = Builders<AccountDocument>.Filter;
+        var revision = expectedRevision == 0
+            ? filters.Or(filters.Eq(x => x.Revision, 0), filters.Exists(x => x.Revision, false))
+            : filters.Eq(x => x.Revision, expectedRevision);
+        var updates = Builders<AccountDocument>.Update;
+        var update = updates.Inc(x => x.Revision, 1).Set(x => x.SchemaVersion, 2).Set(x => x.UpdatedAt, now)
+            .PushEach(x => x.AdministrationHistory, [new AccountAdministrationChange(expectedRevision + 1, now, actor, action, reason)], slice: -100);
+        update = action switch
+        {
+            "ban" => update.Set(x => x.IsBanned, true).Set(x => x.BanReason, reason).Inc(x => x.SessionVersion, 1),
+            "unban" => update.Set(x => x.IsBanned, false).Set(x => x.BanReason, null),
+            "beta-access" when hasBetaAccess.HasValue => update.Set(x => x.HasBetaAccess, hasBetaAccess.Value),
+            _ => throw new ArgumentException("Unknown account administration action.", nameof(action))
+        };
+        var account = await accounts.FindOneAndUpdateAsync(filters.Eq(x => x.Id, accountId) & revision, update,
+            new() { ReturnDocument = ReturnDocument.After }, cancellationToken);
+        // SessionVersion is the durable revocation barrier, including concurrent session creation.
+        if (account is not null && action == "ban")
+            await sessions.DeleteManyAsync(Builders<SessionDocument>.Filter.Eq(x => x.AccountId, accountId) &
+                (Builders<SessionDocument>.Filter.Lt(x => x.SessionVersion, account.SessionVersion) |
+                 Builders<SessionDocument>.Filter.Exists(x => x.SessionVersion, false)), cancellationToken);
+        return account?.ToDomain();
     }
 
     public Task CreateSessionAsync(Session session, CancellationToken cancellationToken) => sessions.InsertOneAsync(new SessionDocument
     {
-        TokenHash = session.TokenHash, AccountId = session.AccountId, DisplayName = session.DisplayName, ExpiresAt = session.ExpiresAt
+        TokenHash = session.TokenHash, AccountId = session.AccountId, DisplayName = session.DisplayName, ExpiresAt = session.ExpiresAt,
+        SessionVersion = session.SessionVersion
     }, cancellationToken: cancellationToken);
 
     public async Task<Session?> GetSessionAsync(string tokenHash, DateTime now, CancellationToken cancellationToken)
     {
         var result = await sessions.Find(x => x.TokenHash == tokenHash && x.ExpiresAt > now).FirstOrDefaultAsync(cancellationToken);
-        return result is null ? null : new(result.TokenHash, result.AccountId, result.DisplayName, result.ExpiresAt);
+        return result is null ? null : new(result.TokenHash, result.AccountId, result.DisplayName, result.ExpiresAt, result.SessionVersion);
     }
 
     public Task RevokeSessionAsync(string tokenHash, CancellationToken cancellationToken) =>
@@ -126,8 +176,9 @@ public sealed class MongoIdentityStore : IIdentityStore
         public string? BrowserNonceHash { get; set; }
         public string? AccountId { get; set; }
         public string? DisplayName { get; set; }
+        public long AccountSessionVersion { get; set; }
         [BsonIgnoreIfNull] public string? ReturnUrl { get; set; }
-        public LoginChallenge ToDomain() => new(Id, CodeChallenge, ExpiresAt, Status, StateHash, BrowserNonceHash, AccountId, DisplayName, ReturnUrl);
+        public LoginChallenge ToDomain() => new(Id, CodeChallenge, ExpiresAt, Status, StateHash, BrowserNonceHash, AccountId, DisplayName, ReturnUrl, AccountSessionVersion);
     }
 
     private sealed class AccountDocument
@@ -138,6 +189,15 @@ public sealed class MongoIdentityStore : IIdentityStore
         public string DisplayName { get; set; } = "";
         public DateTime CreatedAt { get; set; }
         public DateTime LastLoginAt { get; set; }
+        public bool IsBanned { get; set; }
+        public string? BanReason { get; set; }
+        public bool HasBetaAccess { get; set; }
+        public long Revision { get; set; }
+        public long SessionVersion { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public AccountAdministrationChange[] AdministrationHistory { get; set; } = [];
+        public Account ToDomain() => new(Id, DiscordId, DisplayName, IsBanned, BanReason, HasBetaAccess, Revision,
+            CreatedAt, UpdatedAt == default ? (LastLoginAt == default ? CreatedAt : LastLoginAt) : UpdatedAt, SessionVersion);
     }
 
     private sealed class SessionDocument
@@ -147,6 +207,7 @@ public sealed class MongoIdentityStore : IIdentityStore
         public string AccountId { get; set; } = "";
         public string DisplayName { get; set; } = "";
         public DateTime ExpiresAt { get; set; }
+        public long SessionVersion { get; set; }
     }
 }
 

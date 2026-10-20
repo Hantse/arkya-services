@@ -14,11 +14,12 @@ public sealed class RealmsApiOptions
     public string CertificateAuthorityFile { get; init; } = "";
 }
 
-public sealed record RealmServer(string Id, int Port, int ReadyReplicas, int DesiredReplicas, string? Address);
+public sealed record RealmServer(string Id, int Port, int ReadyReplicas, int DesiredReplicas, string? Address,
+    string Transport = "Udp", string? PublicEndpoint = null);
 public sealed record RealmSummary(string RealmId, string DisplayName, string TargetId, string Namespace,
     string ProfileId, string Image, long Revision, string Status, string? LastError, DateTimeOffset UpdatedAt, RealmServer[] Servers);
 public sealed record RealmTarget(string Id, string DisplayName, string Namespace);
-public sealed record RealmProfileServer(string Id, int Port);
+public sealed record RealmProfileServer(string Id, int Port, string Transport = "Udp", string? PublicEndpoint = null);
 public sealed record RealmProfile(string Id, string DisplayName, string Image, RealmProfileServer[] Servers);
 public sealed record RealmDeploymentOptions(RealmTarget[] Targets, RealmProfile[] Profiles, bool DeploymentEnabled);
 public sealed record CreateRealmRequest(string RealmId, string DisplayName, string TargetId, string ProfileId);

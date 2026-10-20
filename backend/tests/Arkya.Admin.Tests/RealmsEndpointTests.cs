@@ -61,7 +61,7 @@ public sealed class RealmsEndpointTests
         factory.Settings["ContentApi:BaseUrl"] = "";
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        Assert.Contains("L'atelier de quêtes est désactivé", WebUtility.HtmlDecode(await browser.GetStringAsync("/")));
+        Assert.Contains("L'atelier de quêtes est désactivé", WebUtility.HtmlDecode(await browser.GetStringAsync("/Quests")));
         Assert.Empty(factory.Content.Calls);
         Assert.Contains("Mondes enregistrés", WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms")));
     }

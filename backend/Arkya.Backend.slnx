@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Arkya.Reports.Mcp/Arkya.Reports.Mcp.csproj" />
     <Project Path="src/Arkya.Admin/Arkya.Admin.csproj" />
     <Project Path="src/Arkya.Realms.Api/Arkya.Realms.Api.csproj" />
     <Project Path="src/Arkya.Backend.Api/Arkya.Backend.Api.csproj" />

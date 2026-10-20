@@ -9,6 +9,18 @@ namespace Arkya.Realms.Tests;
 
 public sealed class GameEntryTests
 {
+    [Fact]
+    public void OperatorSummaryPreservesWebSocketTransportAndPublicEndpoint()
+    {
+        var realm = Fixtures.Realm(RealmStatus.Ready);
+        var server = realm.Profile.Servers[0] with { Transport = "WebSocket", PublicEndpoint = "wss://game.example/" };
+        realm = realm with { Profile = realm.Profile with { Servers = [server] } };
+        var summary = Arkya.Realms.Api.Contracts.RealmSummary.From(realm);
+        var destination = Assert.Single(summary.Servers);
+        Assert.Equal("WebSocket", destination.Transport);
+        Assert.Equal("wss://game.example/", destination.PublicEndpoint);
+    }
+
     [Theory]
     [InlineData("wss://game.example/", false, true)]
     [InlineData("ws://game.example/", true, false)]

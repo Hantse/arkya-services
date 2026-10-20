@@ -9,6 +9,7 @@ public sealed class ClusterHttpTests
     [Theory]
     [InlineData("ContentApi")]
     [InlineData("RealmsApi")]
+    [InlineData("ReportsApi")]
     public async Task ProductionRequiresExplicitClusterHttpOptIn(string section)
     {
         const string url = "http://arkya-service.arkya-beta.svc.cluster.local:8080/";
@@ -24,9 +25,15 @@ public sealed class ClusterHttpTests
         allowed.Settings[$"{section}:AllowClusterHttp"] = "true";
         using var browser = allowed.Browser();
         await AdminFactory.Login(browser);
-        Assert.Equal(HttpStatusCode.OK, (await browser.GetAsync(section == "ContentApi" ? "/" : "/Realms")).StatusCode);
-        Assert.NotEmpty(section == "ContentApi" ? allowed.Content.Calls.Select(call => call.Path) :
-            allowed.Realms.Calls.Select(call => call.Path));
+        var page = section switch { "ContentApi" => "/Quests", "RealmsApi" => "/Realms", _ => "/BugReports" };
+        Assert.Equal(HttpStatusCode.OK, (await browser.GetAsync(page)).StatusCode);
+        var calls = section switch
+        {
+            "ContentApi" => allowed.Content.Calls.Select(call => call.Path),
+            "RealmsApi" => allowed.Realms.Calls.Select(call => call.Path),
+            _ => allowed.Reports.Calls.Select(call => call.Uri.AbsolutePath)
+        };
+        Assert.NotEmpty(calls);
     }
 
     [Theory]

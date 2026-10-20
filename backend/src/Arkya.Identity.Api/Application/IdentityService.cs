@@ -112,6 +112,11 @@ public sealed partial class IdentityService(
         {
             var user = await discord.ExchangeCodeAsync(code, cancellationToken);
             var account = await store.UpsertAccountAsync(user.Id, user.DisplayName, clock.GetUtcNow().UtcDateTime, cancellationToken);
+            if (account.IsBanned)
+            {
+                await store.CompleteChallengeAsync(claimed.Id, null, cancellationToken);
+                return new(false, returnUrl);
+            }
             await store.CompleteChallengeAsync(claimed.Id, account, cancellationToken);
             return new(true, returnUrl);
         }
@@ -150,23 +155,41 @@ public sealed partial class IdentityService(
         {
             return new("expired");
         }
+        var account = await store.GetAccountAsync(redeemed.AccountId!, cancellationToken);
+        if (account is null || account.IsBanned) return new("banned");
+        // A ban also invalidates completed OAuth challenges, even after an unban.
+        if (account.SessionVersion != redeemed.AccountSessionVersion) return new("expired");
         var token = RandomSecret();
         var expiresAt = now.Add(sessionOptions.Value.Lifetime);
-        await store.CreateSessionAsync(new(Hash(token), redeemed.AccountId!, redeemed.DisplayName!, expiresAt), cancellationToken);
-        return new("completed", new(redeemed.AccountId!, redeemed.DisplayName!, token, expiresAt));
+        var session = new Session(Hash(token), account.Id, account.DisplayName, expiresAt, account.SessionVersion);
+        await store.CreateSessionAsync(session, cancellationToken);
+        if (await ValidateStoredSessionAsync(session, cancellationToken) is null)
+        {
+            await store.RevokeSessionAsync(session.TokenHash, cancellationToken);
+            return new("banned");
+        }
+        return new("completed", new(account.Id, account.DisplayName, token, expiresAt));
     }
 
-    public Task<Session?> ValidateSessionAsync(string? token, CancellationToken cancellationToken)
+    public async Task<Session?> ValidateSessionAsync(string? token, CancellationToken cancellationToken)
     {
-        return token is not null && ChallengePattern().IsMatch(token)
-            ? store.GetSessionAsync(Hash(token), clock.GetUtcNow().UtcDateTime, cancellationToken)
-            : Task.FromResult<Session?>(null);
+        if (token is null || !ChallengePattern().IsMatch(token)) return null;
+        return await ValidateStoredSessionAsync(await store.GetSessionAsync(Hash(token), clock.GetUtcNow().UtcDateTime, cancellationToken), cancellationToken);
     }
 
-    public Task<Session?> ValidateSessionReferenceAsync(string? reference, CancellationToken cancellationToken) =>
-        Arkya.ServiceDefaults.SessionReference.IsValid(reference)
-            ? store.GetSessionAsync(reference!, clock.GetUtcNow().UtcDateTime, cancellationToken)
-            : Task.FromResult<Session?>(null);
+    public async Task<Session?> ValidateSessionReferenceAsync(string? reference, CancellationToken cancellationToken)
+    {
+        if (!Arkya.ServiceDefaults.SessionReference.IsValid(reference)) return null;
+        return await ValidateStoredSessionAsync(await store.GetSessionAsync(reference!, clock.GetUtcNow().UtcDateTime, cancellationToken), cancellationToken);
+    }
+
+    private async Task<Session?> ValidateStoredSessionAsync(Session? session, CancellationToken cancellationToken)
+    {
+        if (session is null) return null;
+        var account = await store.GetAccountAsync(session.AccountId, cancellationToken);
+        return account is null || account.IsBanned || account.SessionVersion != session.SessionVersion ? null :
+            session with { DisplayName = account.DisplayName, HasBetaAccess = account.HasBetaAccess };
+    }
 
     public Task RevokeAsync(string token, CancellationToken cancellationToken) => store.RevokeSessionAsync(Hash(token), cancellationToken);
     public static string CodeChallenge(string verifier) => WebEncoders.Base64UrlEncode(SHA256.HashData(Encoding.ASCII.GetBytes(verifier)));

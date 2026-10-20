@@ -91,7 +91,8 @@ internal sealed class MemoryIdentityStore : IIdentityStore
         lock (gate)
         {
             if (challenges.TryGetValue(id, out var challenge) && challenge.Status == ChallengeStatus.Processing)
-                challenges[id] = challenge with { Status = account is null ? ChallengeStatus.Failed : ChallengeStatus.Completed, AccountId = account?.Id, DisplayName = account?.DisplayName };
+                challenges[id] = challenge with { Status = account is null ? ChallengeStatus.Failed : ChallengeStatus.Completed, AccountId = account?.Id,
+                    DisplayName = account?.DisplayName, AccountSessionVersion = account?.SessionVersion ?? 0 };
         }
         return Task.CompletedTask;
     }
@@ -113,7 +114,7 @@ internal sealed class MemoryIdentityStore : IIdentityStore
         {
             var account = accounts.TryGetValue(discordId, out var existing)
                 ? existing with { DisplayName = displayName }
-                : new(Guid.NewGuid().ToString(), discordId, displayName);
+                : new(Guid.NewGuid().ToString(), discordId, displayName, CreatedAt: now, UpdatedAt: now);
             accounts[discordId] = account;
             return Task.FromResult(account);
         }
@@ -122,6 +123,39 @@ internal sealed class MemoryIdentityStore : IIdentityStore
     public Task<Account?> GetAccountAsync(string accountId, CancellationToken cancellationToken)
     {
         lock (gate) return Task.FromResult(accounts.Values.SingleOrDefault(account => account.Id == accountId));
+    }
+
+    public Task<(IReadOnlyList<Account> Items, long Total)> ListAccountsAsync(string? search, int page, int pageSize, CancellationToken cancellationToken)
+    {
+        lock (gate)
+        {
+            var filtered = accounts.Values.Where(account => string.IsNullOrEmpty(search) || account.Id == search || account.DiscordId == search ||
+                account.DisplayName.Contains(search, StringComparison.OrdinalIgnoreCase)).OrderBy(account => account.DisplayName).ThenBy(account => account.Id).ToArray();
+            return Task.FromResult<(IReadOnlyList<Account>, long)>((filtered.Skip((page - 1) * pageSize).Take(pageSize).ToArray(), filtered.LongLength));
+        }
+    }
+
+    public Task<Account?> AdministerAccountAsync(string accountId, long expectedRevision, string action, bool? hasBetaAccess,
+        string reason, string actor, DateTime now, CancellationToken cancellationToken)
+    {
+        lock (gate)
+        {
+            var account = accounts.Values.SingleOrDefault(value => value.Id == accountId);
+            if (account is null || account.Revision != expectedRevision) return Task.FromResult<Account?>(null);
+            var updated = account with { Revision = account.Revision + 1, UpdatedAt = now };
+            updated = action switch
+            {
+                "ban" => updated with { IsBanned = true, BanReason = reason, SessionVersion = account.SessionVersion + 1 },
+                "unban" => updated with { IsBanned = false, BanReason = null },
+                "beta-access" => updated with { HasBetaAccess = hasBetaAccess!.Value },
+                _ => throw new ArgumentException(action)
+            };
+            accounts[account.DiscordId] = updated;
+            if (action == "ban")
+                foreach (var hash in sessions.Values.Where(value => value.AccountId == accountId && value.SessionVersion < updated.SessionVersion).Select(value => value.TokenHash).ToArray())
+                    sessions.Remove(hash);
+            return Task.FromResult<Account?>(updated);
+        }
     }
 
     public Task CreateSessionAsync(Session session, CancellationToken cancellationToken)

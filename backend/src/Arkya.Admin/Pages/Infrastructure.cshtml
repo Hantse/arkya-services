@@ -1,0 +1,43 @@
+@page "/Infrastructure"
+@model InfrastructureModel
+@using Arkya.Admin.Realms
+@{
+    ViewData["Title"] = "Infrastructure k3s";
+}
+<header class="page-header"><div><div class="eyebrow">INFRASTRUCTURE / K3S</div><h1>Déployer un realm</h1><p class="intro">Un profil, une cible et tous les serveurs dédiés du monde.</p></div><a class="button secondary" asp-page="/Infrastructure">Actualiser</a></header>
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error</div> }
+@if (!Model.Enabled)
+{
+    <div class="panel empty-state"><h2>Connecter le service Realms</h2><p>Activez RealmsApi avec son adresse privée et sa clé administrateur pour lire les cibles et préparer les déploiements.</p></div>
+}
+else if (Model.Loaded)
+{
+    <div class="infrastructure-banner panel"><div><span class="realm-status @(Model.Options.DeploymentEnabled ? "ready" : "pending")">@(Model.Options.DeploymentEnabled ? "Déployeur activé" : "Déployeur désactivé")</span><p>@(Model.Options.DeploymentEnabled ? "Les demandes créent les workloads sur les namespaces autorisés." : "La préparation des realms reste disponible. Activez le déployeur dans Realms après configuration du cluster.")</p></div><a class="button primary" asp-page="/Realms" asp-fragment="create-heading">Préparer un realm</a></div>
+    <ol class="deployment-steps" aria-label="Parcours de déploiement">
+        <li><strong>Choisir la cible</strong><span>Un namespace k3s préautorisé, réservé à un realm.</span></li>
+        <li><strong>Vérifier le profil</strong><span>Image Linux figée par digest, processus et ports.</span></li>
+        <li><strong>Créer puis déployer</strong><span>La fiche du realm déclenche la demande persistante.</span></li>
+        <li><strong>Contrôler les serveurs</strong><span>Suivre les réplicas, endpoints et erreurs du cluster.</span></li>
+    </ol>
+    <section class="dashboard-section" aria-labelledby="targets-heading"><div class="section-heading"><h2 id="targets-heading">Cibles de déploiement</h2><span class="muted">@Model.Options.Targets.Length cible(s)</span></div>
+    @if (Model.Options.Targets.Length == 0) { <div class="panel empty-state"><h3>Aucune cible configurée</h3><p>Ajoutez un namespace et ses droits au service Realms.</p></div> }
+    else
+    {
+        <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Namespaces disponibles pour les realms</caption><thead><tr><th scope="col">Cible</th><th scope="col">Namespace</th><th scope="col">Affectation</th></tr></thead><tbody>
+        @foreach (var target in Model.Options.Targets)
+        {
+            var assigned = Model.Realms.FirstOrDefault(realm => realm.TargetId == target.Id);
+            <tr><th scope="row">@target.DisplayName<small class="mono">@target.Id</small></th><td class="mono">@target.Namespace</td><td>@if (assigned is null) { <span class="realm-status ready">Disponible</span> } else { <a asp-page="/Realm" asp-route-realmId="@assigned.RealmId">@assigned.DisplayName</a> }</td></tr>
+        }
+        </tbody></table></div>
+    }
+    </section>
+    <section class="dashboard-section" aria-labelledby="profiles-heading"><div class="section-heading"><h2 id="profiles-heading">Profils de realm</h2><span class="muted">@Model.Options.Profiles.Length profil(s)</span></div>
+    @if (Model.Options.Profiles.Length == 0) { <div class="panel empty-state"><h3>Aucun profil configuré</h3><p>Publiez une image Linux dedicated, puis ajoutez son digest et les serveurs du realm dans la configuration Realms.</p></div> }
+    @foreach (var profile in Model.Options.Profiles)
+    {
+        <details class="panel deployment-profile"><summary><strong>@profile.DisplayName</strong><span class="mono">@profile.Id</span><span class="badge">@profile.Servers.Length serveur(s)</span></summary><div class="profile-body"><label>Image immuable</label><code class="image-digest">@profile.Image</code><ul class="profile-servers">@foreach (var server in profile.Servers) { <li><strong class="mono">@server.Id</strong><span class="mono">@(server.Transport == "WebSocket" ? "WebSocket / TCP" : "UDP") @server.Port</span>@if (server.PublicEndpoint is not null) { <code class="image-digest">@server.PublicEndpoint</code> }</li> }</ul></div></details>
+    }
+    </section>
+    <aside class="workflow-note"><strong>Périmètre du déploiement</strong><p>Une demande déploie tous les dedicateds du profil avec leurs Services. Le cluster, les namespaces, les secrets, les routes TLS/WSS et les services partagés Identity, Characters et MongoDB sont provisionnés par l'exploitation. La fiche du realm affiche l'état observé et permet une nouvelle tentative après un échec.</p></aside>
+}

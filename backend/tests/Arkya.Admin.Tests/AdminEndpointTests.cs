@@ -8,8 +8,8 @@ namespace Arkya.Admin.Tests;
 public sealed class AdminEndpointTests
 {
     [Theory]
-    [InlineData("/")]
-    [InlineData("/?handler=Download&version=95f1b50c-85ba-49a6-9b75-e12745472cf4")]
+    [InlineData("/Quests")]
+    [InlineData("/Quests?handler=Download&version=95f1b50c-85ba-49a6-9b75-e12745472cf4")]
     public async Task EditorAndDownloadRequireTheAdminCookie(string route)
     {
         await using var factory = new AdminFactory();
@@ -55,7 +55,7 @@ public sealed class AdminEndpointTests
         Assert.Contains("httponly", cookie);
         Assert.Contains("samesite=strict", cookie);
         AdminFactory.NoSecrets(cookie);
-        using var index = await browser.GetAsync("/");
+        using var index = await browser.GetAsync("/Quests");
         Assert.Equal(HttpStatusCode.OK, index.StatusCode);
         var html = await index.Content.ReadAsStringAsync();
         Assert.Contains("La menace du bois", html);
@@ -110,7 +110,7 @@ public sealed class AdminEndpointTests
         await using var factory = new AdminFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        using var response = await browser.PostAsync("/?handler=" + handler, AdminFactory.Form(new() { ["Revision"] = "3" }));
+        using var response = await browser.PostAsync("/Quests?handler=" + handler, AdminFactory.Form(new() { ["Revision"] = "3" }));
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         Assert.Empty(factory.Content.Calls);
     }
@@ -122,13 +122,13 @@ public sealed class AdminEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var token = await AdminFactory.Token(browser);
-        using var saved = await browser.PostAsync("/?handler=Save", AdminFactory.Form(AdminFactory.QuestForm(token)));
+        using var saved = await browser.PostAsync("/Quests?handler=Save", AdminFactory.Form(AdminFactory.QuestForm(token)));
         Assert.Equal(HttpStatusCode.Redirect, saved.StatusCode);
         var call = Assert.Single(factory.Content.Calls, call => call.Method == HttpMethod.Put);
         var body = call.Body!.Value.Deserialize<ContentDraft>(new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
         Assert.Equal(3, body.Revision);
         Assert.Equal(new QuestDefinition("new-adventure", "Une nouvelle aventure", "Une description conservée.", "prototype-monster", 8), Assert.Single(body.Quests));
-        using var index = await browser.GetAsync("/");
+        using var index = await browser.GetAsync("/Quests");
         var html = await index.Content.ReadAsStringAsync();
         Assert.Contains("Brouillon enregistré", WebUtility.HtmlDecode(html));
         Assert.Equal("4", AdminFactory.Input(html, "Revision"));
@@ -145,7 +145,7 @@ public sealed class AdminEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var token = await AdminFactory.Token(browser);
-        using var response = await browser.PostAsync("/?handler=Save", AdminFactory.Form(AdminFactory.QuestForm(token, "Titre conservé", kills)));
+        using var response = await browser.PostAsync("/Quests?handler=Save", AdminFactory.Form(AdminFactory.QuestForm(token, "Titre conservé", kills)));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var html = await response.Content.ReadAsStringAsync();
         Assert.Equal("Titre conservé", AdminFactory.Input(html, "Quests[0].Title"));
@@ -167,7 +167,7 @@ public sealed class AdminEndpointTests
         await AdminFactory.Login(browser);
         var token = await AdminFactory.Token(browser);
         factory.Content.WriteError = status;
-        using var response = await browser.PostAsync("/?handler=Save", AdminFactory.Form(AdminFactory.QuestForm(token, "Titre conservé", "8", "2")));
+        using var response = await browser.PostAsync("/Quests?handler=Save", AdminFactory.Form(AdminFactory.QuestForm(token, "Titre conservé", "8", "2")));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var html = await response.Content.ReadAsStringAsync();
         Assert.Contains(message, WebUtility.HtmlDecode(html));
@@ -186,7 +186,7 @@ public sealed class AdminEndpointTests
         var token = await AdminFactory.Token(browser);
         for (var attempt = 0; attempt < 2; attempt++)
         {
-            using var published = await browser.PostAsync("/?handler=Publish", AdminFactory.Form(new()
+            using var published = await browser.PostAsync("/Quests?handler=Publish", AdminFactory.Form(new()
             {
                 ["__RequestVerificationToken"] = token, ["Revision"] = "3",
                 ["Quests[0].Title"] = "Unsaved form must not be published", ["Quests[0].RequiredKills"] = "-10"
@@ -220,7 +220,7 @@ public sealed class AdminEndpointTests
             ["__RequestVerificationToken"] = token
         };
         if (revision is not null) form["Revision"] = revision;
-        using var response = await browser.PostAsync("/?handler=Publish", AdminFactory.Form(form));
+        using var response = await browser.PostAsync("/Quests?handler=Publish", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         Assert.DoesNotContain(factory.Content.Calls, call => call.Method != HttpMethod.Get);
     }
@@ -232,7 +232,7 @@ public sealed class AdminEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var token = await AdminFactory.Token(browser);
-        using var added = await browser.PostAsync("/?handler=Add", AdminFactory.Form(AdminFactory.QuestForm(token, "Une saisie conservée")));
+        using var added = await browser.PostAsync("/Quests?handler=Add", AdminFactory.Form(AdminFactory.QuestForm(token, "Une saisie conservée")));
         var html = await added.Content.ReadAsStringAsync();
         Assert.Equal("Une saisie conservée", AdminFactory.Input(html, "Quests[0].Title"));
         Assert.Equal("3", AdminFactory.Input(html, "Quests[1].RequiredKills"));
@@ -242,7 +242,7 @@ public sealed class AdminEndpointTests
         form["Quests[1].Description"] = "Seconde description";
         form["Quests[1].RequiredKills"] = "9";
         form["index"] = "0";
-        using var removed = await browser.PostAsync("/?handler=Remove", AdminFactory.Form(form));
+        using var removed = await browser.PostAsync("/Quests?handler=Remove", AdminFactory.Form(form));
         html = await removed.Content.ReadAsStringAsync();
         Assert.Equal("Seconde aventure", AdminFactory.Input(html, "Quests[0].Title"));
         Assert.Equal("9", AdminFactory.Input(html, "Quests[0].RequiredKills"));
@@ -256,7 +256,7 @@ public sealed class AdminEndpointTests
         await using var factory = new AdminFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        using var response = await browser.GetAsync("/?handler=Download&version=" + ContentStub.Version);
+        using var response = await browser.GetAsync("/Quests?handler=Download&version=" + ContentStub.Version);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.Equal("application/json", response.Content.Headers.ContentType!.MediaType);
         Assert.Contains($"arkya-content-{ContentStub.Version}.json", response.Content.Headers.ContentDisposition!.ToString());
@@ -266,7 +266,7 @@ public sealed class AdminEndpointTests
         Assert.Equal(3, Assert.Single(catalog.Quests).RequiredKills);
         AdminFactory.NoSecrets(json);
         Assert.Equal(HttpStatusCode.NotFound,
-            (await browser.GetAsync("/?handler=Download&version=" + Guid.NewGuid())).StatusCode);
+            (await browser.GetAsync("/Quests?handler=Download&version=" + Guid.NewGuid())).StatusCode);
     }
 
     [Fact]
@@ -278,10 +278,10 @@ public sealed class AdminEndpointTests
         var token = await AdminFactory.Token(browser);
         Assert.Equal(HttpStatusCode.Redirect, (await browser.GetAsync("/Logout")).StatusCode);
         Assert.Equal(HttpStatusCode.BadRequest, (await browser.PostAsync("/Logout", AdminFactory.Form(new()))).StatusCode);
-        Assert.Equal(HttpStatusCode.OK, (await browser.GetAsync("/")).StatusCode);
+        Assert.Equal(HttpStatusCode.OK, (await browser.GetAsync("/Quests")).StatusCode);
         using var logout = await browser.PostAsync("/Logout", AdminFactory.Form(new() { ["__RequestVerificationToken"] = token }));
         Assert.Equal(HttpStatusCode.Redirect, logout.StatusCode);
         Assert.Equal("/Login", logout.Headers.Location!.OriginalString);
-        Assert.Equal(HttpStatusCode.Redirect, (await browser.GetAsync("/")).StatusCode);
+        Assert.Equal(HttpStatusCode.Redirect, (await browser.GetAsync("/Quests")).StatusCode);
     }
 }

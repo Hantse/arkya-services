@@ -6,25 +6,46 @@
     <title>@ViewData["Title"] · Arkya</title>
     <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
     <link rel="stylesheet" href="~/admin.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/console.css" asp-append-version="true" />
 </head>
 <body>
     <a class="skip-link" href="#main">Aller au contenu</a>
     <div class="app-shell">
         <aside class="sidebar" aria-label="Administration Arkya">
-            <a class="brand" asp-page="/Realms"><span class="brand-mark" aria-hidden="true">A</span><span>ARKYA<small>Administration du monde</small></span></a>
-            <div class="sidebar-section">UNIVERS</div>
-            <nav class="world-navigation" aria-label="Univers">
-                <a class="nav-item" asp-page="/Realms" aria-current="@(ViewContext.RouteData.Values["page"]?.ToString() is "/Realms" or "/Realm" ? "page" : null)"><span aria-hidden="true">◇</span> Realms</a>
-                <a class="nav-item" asp-page="/Index" aria-current="@(ViewContext.RouteData.Values["page"]?.ToString() == "/Index" ? "page" : null)"><span aria-hidden="true">≡</span> Quêtes</a>
-            </nav>
-            <div class="sidebar-bottom"><span class="status-dot" aria-hidden="true"></span> Administration du monde
+            <a class="brand" asp-page="/Dashboard"><span class="brand-mark" aria-hidden="true">A</span><span>ARKYA<small>Console d'exploitation</small></span></a>
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                var page = ViewContext.RouteData.Values["page"]?.ToString();
+                <nav class="admin-navigation" aria-label="Menu principal">
+                    <a class="nav-item" asp-page="/Dashboard" aria-current="@(page == "/Dashboard" ? "page" : null)"><span aria-hidden="true">▦</span> Dashboard</a>
+                    <details class="nav-group" open>
+                        <summary>Communauté</summary>
+                        <a class="nav-item" asp-page="/Accounts" aria-current="@(page is "/Accounts" or "/Account" ? "page" : null)">Comptes et accès</a>
+                        <a class="nav-item" asp-page="/Players" aria-current="@(page == "/Players" ? "page" : null)">Joueurs en ligne</a>
+                        <a class="nav-item" asp-page="/Characters" aria-current="@(page == "/Characters" ? "page" : null)">Personnages</a>
+                    </details>
+                    <details class="nav-group" open>
+                        <summary>Infrastructure</summary>
+                        <a class="nav-item" asp-page="/Infrastructure" aria-current="@(page == "/Infrastructure" ? "page" : null)">Déploiement k3s</a>
+                        <a class="nav-item" asp-page="/Realms" aria-current="@(page is "/Realms" or "/Realm" ? "page" : null)">Realms et serveurs</a>
+                        <a class="nav-item" asp-page="/Dashboard" asp-fragment="services">État des services</a>
+                        <a class="nav-item" asp-page="/Inference" aria-current="@(page == "/Inference" ? "page" : null)">Agents LFM</a>
+                    </details>
+                    <details class="nav-group" open>
+                        <summary>Contenu et support</summary>
+                        <a class="nav-item" asp-page="/Index" aria-current="@(page == "/Index" ? "page" : null)">Quêtes</a>
+                        <a class="nav-item" asp-page="/BugReports" aria-current="@(page is "/BugReports" or "/BugReport" ? "page" : null)">Signalements</a>
+                    </details>
+                </nav>
+            }
+            <div class="sidebar-bottom">Console opérateur
                 @if (User.Identity?.IsAuthenticated == true)
                 {
                     <form method="post" asp-page="/Logout"><button class="logout" type="submit">Se déconnecter</button></form>
                 }
             </div>
         </aside>
-        <main id="main" class="main-content" tabindex="-1">@RenderBody()</main>
+        <main id="main" class="main-content" tabindex="-1"><div class="console-bar"><span>ARKYA / ADMINISTRATION</span><span>Accès opérateur</span></div>@RenderBody()</main>
     </div>
 </body>
 </html>

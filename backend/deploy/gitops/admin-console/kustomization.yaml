@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../beta
+- player-api-network-policy.yaml
+patches:
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-admin-config
+      namespace: arkya-operations
+    data:
+      IdentityAdminApi__Enabled: 'true'
+      IdentityAdminApi__BaseUrl: https://arkya-identity.arkya-identity.svc.cluster.local:8443/
+      IdentityAdminApi__AllowClusterHttp: 'false'
+      IdentityAdminApi__CertificateAuthorityFile: /etc/arkya/internal-ca/ca.crt
+      CharactersAdminApi__Enabled: 'true'
+      CharactersAdminApi__BaseUrl: https://arkya-characters.arkya-identity.svc.cluster.local:8443/
+      CharactersAdminApi__AllowClusterHttp: 'false'
+      CharactersAdminApi__CertificateAuthorityFile: /etc/arkya/internal-ca/ca.crt
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-identity-config
+      namespace: arkya-identity
+    data:
+      Administration__Enabled: 'true'
+      Administration__AllowClusterHttp: 'false'
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-characters-config
+      namespace: arkya-identity
+    data:
+      GameAccess__RequireBetaAccess: 'true'

@@ -1,0 +1,148 @@
+@page
+@model InferenceModel
+@using Arkya.Admin.Inference
+@{
+    ViewData["Title"] = "Inférence";
+}
+<header class="page-header">
+    <div><div class="eyebrow">PNJ / INFÉRENCE CPU</div><h1>Machines d’inférence</h1><p class="intro">Enregistrez vos machines et gérez leurs workers LFM.</p></div>
+    <a class="button secondary" asp-page="/Inference">Actualiser</a>
+</header>
+@if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Inference">Réessayer</a></div> }
+@if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
+@if (Model.Created is { } created)
+{
+    <section class="panel report-form" aria-labelledby="enrollment-heading">
+        <div class="section-heading"><h2 id="enrollment-heading">Connecter @created.Agent.DisplayName</h2><span class="badge">Jeton affiché une seule fois</span></div>
+        <div class="field">
+            <label for="agent-token">Jeton de cette machine</label>
+            <textarea id="agent-token" readonly rows="3" autocomplete="off" spellcheck="false" class="mono" aria-describedby="agent-token-help">@created.AgentToken</textarea>
+            <small id="agent-token-help">Conservez-le maintenant. Il ne sera plus affiché après avoir quitté cette réponse. Il sert uniquement à authentifier cet agent.</small>
+        </div>
+        <p>Depuis le dossier de l’agent sur la machine à connecter, lancez :</p>
+        <p class="report-description"><code>./Install-Agent.ps1 -BackendUrl 'https://api.arkya.online' -AgentId '@created.Agent.AgentId'</code></p>
+        <small>À l’invite sécurisée, collez le jeton ci-dessus. La commande récupérera les @created.Agent.DesiredWorkers.Length worker(s) demandés ; elle ne contient aucun secret.</small>
+    </section>
+}
+@if (!Model.Enabled)
+{
+    <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h2>La gestion de l’inférence est désactivée</h2><p>Activez la connexion au service Inference dans la configuration de l’administration.</p></div>
+}
+else if (Model.Loaded)
+{
+    <div class="realms-workspace">
+        <section aria-labelledby="agents-heading">
+            <div class="section-heading"><h2 id="agents-heading">Machines enregistrées</h2><span class="muted">@Model.Agents.Length machine(s)</span></div>
+            @if (Model.Agents.Length == 0)
+            {
+                <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h3>Connecter une première machine</h3><p>Créez son agent, puis lancez l’installation sur cette machine avec le jeton fourni.</p></div>
+            }
+            @foreach (var agent in Model.Agents)
+            {
+                <details class="panel catalog-entry" open>
+                    <summary>
+                        <strong>@agent.DisplayName</strong>
+                        <span class="realm-status @(agent.Online ? "ready" : "draft")">@(agent.Online ? "En ligne" : agent.LastSeenAt is null ? "À connecter" : "Hors ligne")</span>
+                        <span class="muted">@agent.ObservedWorkers.Length observé(s) / @agent.DesiredWorkers.Length demandé(s)</span>
+                    </summary>
+                    <div class="catalog-detail">
+                        <dl class="realm-facts">
+                            <div><dt>Agent / machine</dt><dd><span class="mono">@agent.AgentId</span> · @(agent.MachineName ?? "Nom de machine non reçu")</dd></div>
+                            <div><dt>Dernier contact</dt><dd>@(agent.LastSeenAt?.ToUniversalTime().ToString("dd/MM/yyyy HH:mm:ss 'UTC'") ?? "Aucun contact reçu")</dd></div>
+                            <div><dt>Matériel remonté</dt><dd>@(agent.LogicalProcessors?.ToString() ?? "—") processeurs logiques · @(agent.TotalMemoryMb?.ToString("N0") ?? "—") Mio de mémoire</dd></div>
+                            <div><dt>Modèle / version de l’agent</dt><dd>LFM2.5-1.2B · Q4_K_M · CPU uniquement<small>@(agent.Version ?? "Version non reçue")</small></dd></div>
+                            <div><dt>Budget demandé</dt><dd>@agent.DesiredWorkers.Sum(worker => worker.Threads) threads · @agent.DesiredWorkers.Length / @agent.MaxWorkers workers<small>@agent.ThreadsPerWorker threads par défaut pour un nouveau worker.</small></dd></div>
+                            @if (agent.DemoPort is { } port) { <div><dt>Démo locale</dt><dd>Port @port sur cette machine</dd></div> }
+                        </dl>
+                        @if (!agent.Online)
+                        {
+                            <div class="workflow-note"><strong>En attente du prochain contact</strong><p>Les créations et suppressions restent enregistrées. L’agent les appliquera lorsqu’il se reconnectera ; les observations ci-dessous peuvent être anciennes.</p></div>
+                        }
+                        @if (agent.LastError is not null)
+                        {
+                            <div class="alert error" role="status">L’agent signale une erreur. Consultez ses journaux locaux, puis actualisez cette page.</div>
+                        }
+                        <div class="table-scroll">
+                            <table class="realm-table">
+                                <caption class="sr-only">Workers de @agent.DisplayName : configuration demandée et dernière observation</caption>
+                                <thead><tr><th scope="col">Worker</th><th scope="col">Threads</th><th scope="col">Dernier état observé</th><th scope="col">Action</th></tr></thead>
+                                <tbody>
+                                @foreach (var worker in agent.DesiredWorkers)
+                                {
+                                    var observed = agent.ObservedWorkers.FirstOrDefault(item => item.WorkerId == worker.WorkerId);
+                                    <tr>
+                                        <th scope="row" class="mono report-description">@worker.WorkerId</th>
+                                        <td>@worker.Threads<small>demandés</small>@if (observed is not null && observed.Threads != worker.Threads) { <small>@observed.Threads observés</small> }</td>
+                                        <td>
+                                            @if (observed is null)
+                                            {
+                                                <span class="realm-status pending">Démarrage demandé</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="realm-status @(agent.Online ? InferencePresentation.StateClass(observed.State) : "draft")">@InferencePresentation.StateLabel(observed.State)</span>
+                                                <small>PID @(observed.Pid?.ToString() ?? "—") · port @observed.Port</small>
+                                                @if (observed.LastError is not null) { <small>Erreur signalée ; consultez les journaux de la machine.</small> }
+                                            }
+                                        </td>
+                                        <td>
+                                            <form method="post" asp-page-handler="DeleteWorker">
+                                                <input type="hidden" name="agentId" value="@agent.AgentId" />
+                                                <input type="hidden" name="workerId" value="@worker.WorkerId" />
+                                                <button type="submit" class="text-button danger" aria-label="Supprimer le worker @worker.WorkerId de @agent.DisplayName">Supprimer</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                                @foreach (var observed in agent.ObservedWorkers.Where(worker => !agent.DesiredWorkers.Any(desired => desired.WorkerId == worker.WorkerId)))
+                                {
+                                    <tr>
+                                        <th scope="row" class="mono report-description">@observed.WorkerId</th>
+                                        <td>@observed.Threads<small>observés</small></td>
+                                        <td><span class="realm-status pending">Arrêt demandé</span><small>Dernière observation : @InferencePresentation.StateLabel(observed.State)</small></td>
+                                        <td><span class="muted">En attente de l’agent</span></td>
+                                    </tr>
+                                }
+                                @if (agent.DesiredWorkers.Length == 0 && agent.ObservedWorkers.Length == 0)
+                                {
+                                    <tr><td colspan="4">Aucun worker sur cette machine.</td></tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                        <form method="post" asp-page-handler="AddWorker" class="workflow-note">
+                            <input type="hidden" name="agentId" value="@agent.AgentId" />
+                            <label for="threads-@agent.AgentId">Threads du nouveau worker</label>
+                            <div class="objective-fields">
+                                <input id="threads-@agent.AgentId" name="threads" type="number" min="1" max="24" value="@agent.ThreadsPerWorker" required />
+                                <button type="submit" class="button secondary" disabled="@(agent.DesiredWorkers.Length >= agent.MaxWorkers || agent.DesiredWorkers.Sum(worker => worker.Threads) >= 96)">Ajouter un worker LFM</button>
+                            </div>
+                            <small>La limite est de @agent.MaxWorkers workers pour cette machine et de 96 threads demandés au total.</small>
+                        </form>
+                        @if (agent.DesiredWorkers.Length == 0 && agent.ObservedWorkers.Length == 0)
+                        {
+                            <form method="post" asp-page-handler="DeleteAgent" class="editor-actions">
+                                <input type="hidden" name="agentId" value="@agent.AgentId" />
+                                <button type="submit" class="text-button danger">Supprimer cette machine vide</button>
+                            </form>
+                        }
+                    </div>
+                </details>
+            }
+            <div class="workflow-note"><strong>Une machine, plusieurs workers</strong><p>Chaque agent supervise ses processus LFM. Les actions enregistrent la configuration attendue ; « Prêt » provient du dernier état envoyé par l’agent.</p></div>
+        </section>
+        <aside aria-labelledby="create-heading">
+            <div class="section-heading"><h2 id="create-heading">Enregistrer une machine</h2></div>
+            <form method="post" asp-page-handler="Create" class="panel realm-form">
+                <div class="field"><label asp-for="Input.DisplayName">Nom de la machine</label><input asp-for="Input.DisplayName" maxlength="80" placeholder="Serveur CPU du bureau" required /></div>
+                <div class="field"><label asp-for="Input.AgentId">Identifiant permanent</label><input asp-for="Input.AgentId" class="mono" minlength="3" maxlength="48" pattern="[a-z][a-z0-9\-]*[a-z0-9]" placeholder="cpu-bureau" required aria-describedby="agent-id-help" /><small id="agent-id-help">3 à 48 caractères : minuscules, chiffres et tirets, avec une lettre au début.</small></div>
+                <div class="field"><label asp-for="Input.InitialWorkers">Workers au démarrage</label><input asp-for="Input.InitialWorkers" type="number" min="0" max="12" required /></div>
+                <div class="field"><label asp-for="Input.ThreadsPerWorker">Threads par worker</label><input asp-for="Input.ThreadsPerWorker" type="number" min="1" max="24" required /></div>
+                <div class="field"><label asp-for="Input.MaxWorkers">Maximum de workers</label><input asp-for="Input.MaxWorkers" type="number" min="1" max="12" required /></div>
+                <button class="button primary full-width" type="submit">Créer l’agent de cette machine</button>
+                <small>Modèle fixe : LFM2.5-1.2B · Q4_K_M. Le jeton de connexion sera affiché une fois ; aucun processus ne démarre avant l’installation de l’agent sur la machine.</small>
+            </form>
+        </aside>
+    </div>
+}

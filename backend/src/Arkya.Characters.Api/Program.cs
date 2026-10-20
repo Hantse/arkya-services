@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using Arkya.Characters.Api.Application;
 using Arkya.Characters.Api.Endpoints;
+using Arkya.Characters.Api.Infrastructure;
 using Arkya.Characters.Api.Infrastructure.Identity;
 using Arkya.Characters.Api.Infrastructure.Persistence;
 using Arkya.ServiceDefaults;
@@ -11,10 +12,14 @@ namespace Arkya.Characters.Api;
 
 public partial class Program
 {
+    private static readonly object SecureTransport = new();
+
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        PlayerAdministrationKeys.ConfigureCharacters(builder.Configuration);
         builder.Services.AddArkyaServiceDefaults(builder.Configuration);
+        builder.Services.AddArkyaInternalHttp(builder.Configuration);
         builder.Services.AddArkyaProxyTrust(builder.Configuration);
         builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 16384);
         builder.Services.AddOptions<BrowserClientOptions>().BindConfiguration("WebClient")
@@ -28,6 +33,14 @@ public partial class Program
         builder.Services.AddOptions<CharacterGameAccessOptions>().BindConfiguration("GameAccess")
             .Validate(value => value.IsValid(), "Dedicated identities require unique keys and realm/server bindings.").ValidateOnStart();
         builder.Services.AddSingleton<DedicatedKeyValidator>();
+        builder.Services.AddOptions<CharacterAdminOptions>().BindConfiguration("AdminAuthentication")
+            .Validate(options => options.Key.Length == 0 || options.Key.Length is >= 32 and <= 512,
+                "AdminAuthentication:Key must be empty to disable administration, or contain 32 to 512 characters.")
+            .Validate(options => options.Key.Length == 0 || options.Key != builder.Configuration["ServiceAuthentication:Key"] &&
+                options.Key != builder.Configuration["Identity:ServiceKey"], "The character administrator key must differ from service keys.")
+            .ValidateOnStart();
+        builder.Services.AddSingleton<CharacterAdminKeyValidator>();
+        builder.Services.AddSingleton<ICharacterAdminRepository, MongoCharacterAdminRepository>();
         builder.Services.AddSingleton<MongoGameLeaseStore>();
         builder.Services.AddSingleton<IGameLeaseStore>(services => services.GetRequiredService<MongoGameLeaseStore>());
         builder.Services.AddScoped<GameAdmissionService>();
@@ -38,7 +51,7 @@ public partial class Program
         builder.Services.Configure<RouteHandlerOptions>(options => options.ThrowOnBadRequest = false);
         builder.Services.AddOptions<IdentityOptions>().Bind(builder.Configuration.GetSection("Identity"))
             .Validate(options => IdentityOptions.HasSafeBaseUrl(options, builder.Environment.IsDevelopment()),
-                "Identity:BaseUrl must use HTTPS, or loopback HTTP in Development.")
+                "Identity:BaseUrl requires HTTPS, Development loopback HTTP, or explicit AllowClusterHttp with a Kubernetes service FQDN.")
             .Validate(options => options.ServiceKey.Length is >= 32 and <= 512,
                 "Identity:ServiceKey must contain 32 to 512 characters.")
             .ValidateOnStart();
@@ -66,8 +79,24 @@ public partial class Program
         builder.Services.AddAuthorization();
 
         var app = builder.Build();
+        app.UseArkyaInternalHttp(context => context.Request.Path.StartsWithSegments("/admin/characters") || context.Request.Path == "/health");
+        app.Use((context, next) =>
+        {
+            context.Items[SecureTransport] = context.Request.IsHttps;
+            return next(context);
+        });
         app.UseArkyaProxyTrust();
         app.UseArkyaServiceDefaults();
+        app.Use(async (context, next) =>
+        {
+            if (context.Request.Path.StartsWithSegments("/admin/characters") && !app.Environment.IsDevelopment() &&
+                context.Items[SecureTransport] is not true && !context.IsArkyaInternalHttpAllowed())
+            {
+                context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                return;
+            }
+            await next(context);
+        });
         app.UseRouting();
         app.UseCors();
         app.UseAuthentication();
@@ -76,6 +105,7 @@ public partial class Program
         app.MapCharacterEndpoints();
         app.MapCharacterQuestEndpoints();
         app.MapGameAdmissionEndpoints();
+        app.MapCharacterAdminEndpoints();
         app.Run();
     }
 }

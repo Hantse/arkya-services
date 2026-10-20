@@ -40,7 +40,7 @@ public sealed class IdentitySessionValidator(HttpClient client, IOptions<Identit
             var session = await response.Content.ReadFromJsonAsync<PlayerSession>(deadline.Token);
             if (session is null || session.AccountId == Guid.Empty || string.IsNullOrWhiteSpace(session.DisplayName))
                 return new(SessionValidationStatus.Unavailable);
-            return session.ExpiresAt <= timeProvider.GetUtcNow()
+            return session.IsBanned || session.ExpiresAt <= timeProvider.GetUtcNow()
                 ? new(SessionValidationStatus.Invalid)
                 : new(SessionValidationStatus.Valid, session);
         }

@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Arkya.Characters.Api.Contracts;
 using Arkya.ServiceDefaults;
+using Microsoft.Extensions.Options;
 
 namespace Arkya.Characters.Api.Application;
 
@@ -22,7 +23,8 @@ public interface IGameLeaseStore
 public sealed record GameResult<T>(T? Value = default, string? Error = null, int Status = 200);
 
 public sealed class GameAdmissionService(ICharacterRepository characters, IGameLeaseStore leases,
-    IGameRealmCatalog realms, DedicatedKeyValidator servers, TimeProvider clock, ISessionReferenceValidator sessions)
+    IGameRealmCatalog realms, DedicatedKeyValidator servers, TimeProvider clock, ISessionReferenceValidator sessions,
+    IOptions<CharacterGameAccessOptions> options)
 {
     public const int TicketSeconds = 60;
     public const int LeaseSeconds = 90;
@@ -45,6 +47,18 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
             return new(Error: "incompatible_client", Status: 400);
         var now = clock.GetUtcNow();
         if (sessionExpiresAt <= now) return new(Error: "session_expired", Status: 401);
+        if (options.Value.RequireBetaAccess)
+        {
+            var validation = await sessions.ValidateReferenceAsync(sessionReference, cancellationToken);
+            if (validation.Status == SessionValidationStatus.Unavailable) return new(Error: "dependency_unavailable", Status: 503);
+            if (validation.Status != SessionValidationStatus.Valid || validation.Session is not { } session ||
+                session.IsBanned || session.AccountId != accountId || session.ExpiresAt <= clock.GetUtcNow())
+                return new(Error: "session_expired", Status: 401);
+            if (!session.HasBetaAccess) return new(Error: "beta_access_required", Status: 403);
+            sessionExpiresAt = Min(sessionExpiresAt, session.ExpiresAt);
+            now = clock.GetUtcNow();
+            if (sessionExpiresAt <= now) return new(Error: "session_expired", Status: 401);
+        }
         var character = await characters.FindOwnedAsync(characterId, accountId, cancellationToken);
         if (character is null) return new(Error: "character_not_found", Status: 404);
         if (character.RealmId is not null && character.RealmId != request.RealmId) return new(Error: "realm_mismatch", Status: 409);
@@ -163,7 +177,8 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
         if (!SessionReference.IsValid(value.SessionReference)) return new(SessionValidationStatus.Invalid);
         var result = await sessions.ValidateReferenceAsync(value.SessionReference!, cancellationToken);
         if (result.Status != SessionValidationStatus.Valid) return result;
-        return result.Session is { } session && session.AccountId == value.AccountId && session.ExpiresAt > clock.GetUtcNow()
+        return result.Session is { } session && !session.IsBanned && session.AccountId == value.AccountId && session.ExpiresAt > clock.GetUtcNow() &&
+            (!options.Value.RequireBetaAccess || session.HasBetaAccess)
             ? result : new(SessionValidationStatus.Invalid);
     }
 

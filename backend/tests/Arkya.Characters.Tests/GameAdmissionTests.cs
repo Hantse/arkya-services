@@ -50,12 +50,13 @@ internal sealed class TestSessionReferences(TimeProvider clock, Guid accountId) 
     public DateTimeOffset? ExpiresAt { get; set; }
     public Action? AfterValidation { get; set; }
     public int Calls { get; private set; }
+    public bool HasBetaAccess { get; set; }
     public Task<SessionValidationResult> ValidateReferenceAsync(string sessionReference, CancellationToken cancellationToken)
     {
         Assert.True(SessionReference.IsValid(sessionReference));
         Calls++;
         var result = new SessionValidationResult(Status, Status == SessionValidationStatus.Valid
-            ? new(AccountId, "Test player", ExpiresAt ?? clock.GetUtcNow().AddHours(1)) : null);
+            ? new(AccountId, "Test player", ExpiresAt ?? clock.GetUtcNow().AddHours(1), HasBetaAccess) : null);
         AfterValidation?.Invoke();
         return Task.FromResult(result);
     }
@@ -69,14 +70,36 @@ public sealed class GameAdmissionTests
     private static readonly string Reference = SessionReference.Create("test-session-reference");
     private static DedicatedKeyValidator Keys() => new(Options.Create(new CharacterGameAccessOptions { DedicatedServers = [Server,
         new() { RealmId = "other-realm", ServerId = "starter-island", Key = "other-dedicated-key-with-thirty-two-characters" }] }));
-    private static async Task<(GameAdmissionService Service, Character Character, GameClock Clock, IGameLeaseStore Store, TestSessionReferences Sessions)> Setup(IGameLeaseStore? store = null)
+    private static async Task<(GameAdmissionService Service, Character Character, GameClock Clock, IGameLeaseStore Store, TestSessionReferences Sessions)> Setup(IGameLeaseStore? store = null, bool requireBetaAccess = false)
     {
         var characters = new MemoryCharacterRepository();
         var clock = new GameClock();
         var character = (await new CharacterService(characters, clock).CreateAsync(Account, "Aelys", default)).Character!;
         store ??= new MemoryGameLeaseStore();
         var sessions = new TestSessionReferences(clock, Account);
-        return (new(characters, store, new TestGameCatalog(), Keys(), clock, sessions), character, clock, store, sessions);
+        return (new(characters, store, new TestGameCatalog(), Keys(), clock, sessions,
+            Options.Create(new CharacterGameAccessOptions { RequireBetaAccess = requireBetaAccess })), character, clock, store, sessions);
+    }
+
+    [Fact]
+    public async Task OptionalBetaGateProtectsIssueConsumeHeartbeatAndStateWithoutChangingTheDevelopmentDefault()
+    {
+        var f = await Setup(requireBetaAccess: true);
+        Assert.Equal("beta_access_required", (await f.Service.IssueAsync(f.Character.Id, Account, f.Clock.Now.AddHours(1), Reference, Request, default)).Error);
+        Assert.Null(await f.Store.FindCharacterAsync(f.Character.Id, default));
+        f.Sessions.HasBetaAccess = true;
+        var ticket = (await f.Service.IssueAsync(f.Character.Id, Account, f.Clock.Now.AddHours(1), Reference, Request, default)).Value!;
+        f.Sessions.HasBetaAccess = false;
+        Assert.Equal("admission_rejected", (await f.Service.ConsumeAsync(Server, new(ticket.Ticket), default)).Error);
+        f.Sessions.HasBetaAccess = true;
+        var lease = (await f.Service.ConsumeAsync(Server, new(ticket.Ticket), default)).Value!;
+        f.Sessions.HasBetaAccess = false;
+        var before = await f.Store.FindCharacterAsync(f.Character.Id, default);
+        Assert.Equal("lease_rejected", (await f.Service.HeartbeatAsync(f.Character.Id, Server, new(lease.LeaseId, lease.AuthorityEpoch), default)).Error);
+        Assert.Equal("lease_rejected", (await f.Service.SaveAsync(f.Character.Id, Server,
+            new(lease.LeaseId, lease.AuthorityEpoch, 0, new(1, 2, 3), new(0, 1)), default)).Error);
+        Assert.Equal(before, await f.Store.FindCharacterAsync(f.Character.Id, default));
+        Assert.True(await f.Service.ReleaseAsync(f.Character.Id, Server, new(lease.LeaseId, lease.AuthorityEpoch), default));
     }
 
     [Fact]

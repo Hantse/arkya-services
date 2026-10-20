@@ -13,7 +13,7 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
     public DeploymentOptionsResponse GetOptions() => new(
         options.Targets.Select(target => new TargetSummary(target.Id, target.DisplayName, target.Namespace)).ToArray(),
         options.Profiles.Select(profile => new ProfileSummary(profile.Id, profile.DisplayName, profile.Image,
-            profile.Servers.Select(server => new ProfileServerSummary(server.Id, server.Port)).ToArray())).ToArray(), options.Enabled);
+            profile.Servers.Select(server => new ProfileServerSummary(server.Id, server.Port, server.Transport, server.PublicEndpoint)).ToArray())).ToArray(), options.Enabled);
 
     public async Task<RealmResult> CreateAsync(CreateRealmRequest request, CancellationToken cancellationToken)
     {

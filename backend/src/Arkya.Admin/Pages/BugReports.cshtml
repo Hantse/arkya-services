@@ -1,0 +1,48 @@
+@page
+@model BugReportsModel
+@using Arkya.Admin.Reports
+@using Arkya.ServiceDefaults.Reports
+@{
+    ViewData["Title"] = "Bugs et suggestions";
+}
+<header class="page-header">
+    <div><div class="eyebrow">ASSISTANCE / SIGNALEMENTS</div><h1>Bugs et suggestions</h1><p class="intro">Consultez les captures des joueurs et suivez leurs bugs et leurs idées.</p></div>
+    <a class="button secondary" asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind" asp-route-offset="@Model.Offset" asp-route-limit="@Model.Limit">Actualiser</a>
+</header>
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind">Réessayer</a></div> }
+@if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
+@if (!Model.Enabled)
+{
+    <div class="panel empty-state"><h2>La gestion des signalements est désactivée</h2><p>Activez la connexion au service Reports dans la configuration de l'administration pour consulter les bugs et suggestions.</p></div>
+}
+else
+{
+    <form method="get" class="panel report-filters">
+        <div class="field"><label asp-for="Kind">Type</label><select asp-for="Kind"><option value="">Tous les types</option>@foreach (var kind in BugReportKinds.All) { <option value="@kind">@BugReportPresentation.KindLabel(kind)</option> }</select></div>
+        <div class="field"><label asp-for="Tag">Tag</label><input asp-for="Tag" maxlength="32" placeholder="urgent" /></div>
+        <div class="field"><label asp-for="Status">Statut</label><select asp-for="Status"><option value="">Tous les statuts</option>@foreach (var status in BugReportStatuses.All) { <option value="@status">@BugReportPresentation.StatusLabel(status, Model.Kind)</option> }</select></div>
+        <input type="hidden" asp-for="Limit" />
+        <button type="submit" class="button primary">Filtrer</button><a class="text-link" asp-page="/BugReports">Effacer les filtres</a>
+    </form>
+    @if (Model.Reports is { } reports)
+    {
+        <div class="section-heading"><h2>Signalements</h2><span class="muted">@reports.Total rapport(s)</span></div>
+        @if (reports.Items.Length == 0)
+        {
+            <div class="panel empty-state"><h3>Aucun rapport sur cette page</h3><p>Les nouveaux signalements apparaîtront ici. Vous pouvez ajuster les filtres ou revenir à la première page.</p><a class="text-link" asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind">Première page</a></div>
+        }
+        else
+        {
+            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Bugs et suggestions</caption><thead><tr><th scope="col">Rapport</th><th scope="col">Type</th><th scope="col">Statut et tags</th><th scope="col">Reçu le</th></tr></thead><tbody>
+            @foreach (var report in reports.Items)
+            {
+                <tr><th scope="row"><a asp-page="/BugReport" asp-route-id="@report.Id">@report.Title</a><small>@report.Scene · @report.ClientVersion</small></th><td><span class="badge">@BugReportPresentation.KindLabel(report.Kind)</span></td><td><span class="realm-status @BugReportPresentation.StatusClass(report.Status)">@BugReportPresentation.StatusLabel(report.Status, report.Kind)</span><div class="report-tags">@foreach (var tag in report.Tags) { <a class="badge" asp-page="/BugReports" asp-route-tag="@tag" asp-route-kind="@Model.Kind" asp-route-status="@Model.Status">@tag</a> }</div></td><td><time datetime="@report.CreatedAt.ToString("O")">@report.CreatedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></td></tr>
+            }
+            </tbody></table></div>
+        }
+        <nav class="report-pagination" aria-label="Pages des signalements">
+            @if (Model.HasPrevious) { <a class="button secondary" asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind" asp-route-offset="@Math.Max(0, Model.Offset - Model.Limit)" asp-route-limit="@Model.Limit">Précédents</a> }
+            @if (Model.HasNext) { <a class="button secondary" asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind" asp-route-offset="@(Model.Offset + Model.Limit)" asp-route-limit="@Model.Limit">Suivants</a> }
+        </nav>
+    }
+}

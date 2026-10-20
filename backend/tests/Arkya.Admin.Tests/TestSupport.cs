@@ -4,6 +4,8 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using Arkya.Admin.Content;
 using Arkya.Admin.Realms;
+using Arkya.Admin.Reports;
+using Arkya.Admin.Mcp;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
@@ -58,8 +60,11 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
     public const string Password = "admin-test-password-for-http-tests";
     public const string AdminKey = "content-outbound-test-admin-key-1234";
     public const string RealmsAdminKey = "realms-outbound-test-admin-key-12345";
+    public const string ReportsAdminKey = "reports-outbound-test-admin-key-12345";
+    public const string McpKey = "mcp-inbound-test-key-kept-separate-12345";
     public ContentStub Content { get; } = new();
     public RealmsStub Realms { get; } = new();
+    public ReportsStub Reports { get; } = new();
     public DiscordStub Discord { get; } = new();
     public Dictionary<string, string?> Settings { get; } = [];
     public string EnvironmentName { get; set; } = "Development";
@@ -75,7 +80,10 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
                 ["ContentApi:BaseUrl"] = "https://content.example/",
                 ["ContentApi:AdminKey"] = AdminKey,
                 ["RealmsApi:BaseUrl"] = "https://realms.example/",
-                ["RealmsApi:AdminKey"] = RealmsAdminKey
+                ["RealmsApi:AdminKey"] = RealmsAdminKey,
+                ["ReportsApi:BaseUrl"] = "https://reports.example/",
+                ["ReportsApi:AdminKey"] = ReportsAdminKey,
+                ["AdminMcp:Key"] = McpKey
             });
             configuration.AddInMemoryCollection(Settings);
         });
@@ -83,6 +91,8 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
         {
             services.AddHttpClient<ContentAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Content);
             services.AddHttpClient<RealmsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Realms);
+            services.AddHttpClient<ReportsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Reports);
+            services.AddHttpClient<ReportsMcpClient>().ConfigurePrimaryHttpMessageHandler(() => Reports);
             services.Configure<OAuthOptions>(AdminDiscordAuthentication.Scheme, options =>
                 options.Backchannel = new HttpClient(Discord) { MaxResponseContentBufferSize = 16 * 1024 });
         });
@@ -93,7 +103,7 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
         BaseAddress = new Uri("https://localhost"), AllowAutoRedirect = false, HandleCookies = true
     });
 
-    public static async Task<string> Token(HttpClient browser, string path = "/")
+    public static async Task<string> Token(HttpClient browser, string path = "/Quests")
     {
         using var response = await browser.GetAsync(path);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -134,6 +144,8 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
         Assert.DoesNotContain(Password, response);
         Assert.DoesNotContain(AdminKey, response);
         Assert.DoesNotContain(RealmsAdminKey, response);
+        Assert.DoesNotContain(ReportsAdminKey, response);
+        Assert.DoesNotContain(McpKey, response);
         Assert.DoesNotContain("private upstream details", response);
     }
 }

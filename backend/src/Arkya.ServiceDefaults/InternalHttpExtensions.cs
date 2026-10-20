@@ -46,13 +46,14 @@ public static class InternalHttpExtensions
         return services;
     }
 
-    public static WebApplication UseArkyaInternalHttp(this WebApplication app)
+    public static WebApplication UseArkyaInternalHttp(this WebApplication app, Func<HttpContext, bool>? allowedPath = null)
     {
         var options = app.Services.GetRequiredService<IOptions<InternalHttpOptions>>().Value;
         // Capture the transport peer before forwarded headers can replace RemoteIpAddress.
         app.Use((context, next) =>
         {
-            context.Features.Set(new InternalHttpConnection(options.Allows(context.Connection.RemoteIpAddress)));
+            context.Features.Set(new InternalHttpConnection(options.Allows(context.Connection.RemoteIpAddress) &&
+                (allowedPath is null || allowedPath(context))));
             return next(context);
         });
         return app;

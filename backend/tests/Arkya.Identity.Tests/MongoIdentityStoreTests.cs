@@ -64,7 +64,7 @@ public sealed class MongoIdentityStoreTests
         Assert.Equal("New Name", changed.DisplayName);
         Assert.Equal(changed, await database.Store.GetAccountAsync(changed.Id, CancellationToken.None));
         Assert.Null(await database.Store.GetAccountAsync(Guid.NewGuid().ToString(), CancellationToken.None));
-        Assert.Equal(1, (await accounts.Find(FilterDefinition<BsonDocument>.Empty).SingleAsync())["SchemaVersion"].AsInt32);
+        Assert.Equal(2, (await accounts.Find(FilterDefinition<BsonDocument>.Empty).SingleAsync())["SchemaVersion"].AsInt32);
     }
 
     [MongoFact]
@@ -109,6 +109,68 @@ public sealed class MongoIdentityStoreTests
         await database.Store.RevokeSessionAsync(session.TokenHash, CancellationToken.None);
         Assert.Null(await database.Store.GetSessionAsync(session.TokenHash, now, CancellationToken.None));
         Assert.Equal(0, await database.Collection("sessions").CountDocumentsAsync(FilterDefinition<BsonDocument>.Empty));
+    }
+
+    [MongoFact]
+    public async Task LegacyAccountsCanBeAdministeredAtomicallyWithPersistedAuditAndSessionRevocation()
+    {
+        await using var database = await TestDatabase.CreateAsync();
+        var now = DateTimeOffset.FromUnixTimeMilliseconds(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()).UtcDateTime;
+        var accountId = Guid.NewGuid().ToString("D");
+        await database.Collection("accounts").InsertOneAsync(new BsonDocument
+        {
+            ["_id"] = accountId, ["SchemaVersion"] = 1, ["DiscordId"] = "987654321", ["DisplayName"] = "Legacy [player]",
+            ["CreatedAt"] = now.AddDays(-1), ["LastLoginAt"] = now
+        });
+        var legacy = (await database.Store.GetAccountAsync(accountId, default))!;
+        Assert.False(legacy.HasBetaAccess);
+        Assert.False(legacy.IsBanned);
+        Assert.Equal(0, legacy.Revision);
+        Assert.Equal(0, legacy.SessionVersion);
+        Assert.Equal(now, legacy.UpdatedAt);
+        var found = await database.Store.ListAccountsAsync("[player]", 1, 25, default);
+        Assert.Equal(1, found.Total);
+        Assert.Equal(accountId, Assert.Single(found.Items).Id);
+        Assert.Empty((await database.Store.ListAccountsAsync(".*", 1, 25, default)).Items);
+
+        // Schema-one sessions had no epoch field and must also be physically removed.
+        await database.Collection("sessions").InsertOneAsync(new BsonDocument
+        {
+            ["_id"] = IdentityService.Hash("legacy-session"), ["SchemaVersion"] = 1, ["AccountId"] = accountId,
+            ["DisplayName"] = legacy.DisplayName, ["ExpiresAt"] = now.AddHours(1)
+        });
+        var attempts = await Task.WhenAll(Enumerable.Range(0, 8).Select(_ => database.Store.AdministerAccountAsync(
+            accountId, 0, "ban", null, "Abuse report confirmed", "admin:discord:123", now, default)));
+        var banned = Assert.Single(attempts, account => account is not null)!;
+        Assert.True(banned.IsBanned);
+        Assert.Equal(1, banned.Revision);
+        Assert.Equal(1, banned.SessionVersion);
+        Assert.Equal("Abuse report confirmed", banned.BanReason);
+        Assert.Equal(0, await database.Collection("sessions").CountDocumentsAsync(FilterDefinition<BsonDocument>.Empty));
+        Assert.Null(await database.Store.AdministerAccountAsync(accountId, 0, "unban", null, "Stale revision", "admin:discord:123", now, default));
+
+        var granted = (await database.Store.AdministerAccountAsync(accountId, 1, "beta-access", true,
+            "Beta approved", "admin:discord:456", now.AddMinutes(1), default))!;
+        Assert.True(granted.HasBetaAccess);
+        Assert.True(granted.IsBanned);
+        var unbanned = (await database.Store.AdministerAccountAsync(accountId, 2, "unban", null,
+            "Appeal accepted", "admin:discord:456", now.AddMinutes(2), default))!;
+        Assert.False(unbanned.IsBanned);
+        Assert.Null(unbanned.BanReason);
+        Assert.Equal(1, unbanned.SessionVersion);
+        var persisted = await database.Collection("accounts").Find(new BsonDocument("_id", accountId)).SingleAsync();
+        Assert.Equal(2, persisted["SchemaVersion"].AsInt32);
+        Assert.Equal(3, persisted["Revision"].ToInt64());
+        var history = persisted["AdministrationHistory"].AsBsonArray;
+        Assert.Equal(3, history.Count);
+        Assert.Equal("admin:discord:123", history[0]["Actor"].AsString);
+        Assert.Equal("ban", history[0]["Action"].AsString);
+        Assert.Equal("Appeal accepted", history[2]["Reason"].AsString);
+        // A subsequent Discord login must not reset moderation or entitlement state.
+        var refreshed = await database.Store.UpsertAccountAsync("987654321", "New Discord Name", now.AddMinutes(3), default);
+        Assert.Equal(3, refreshed.Revision);
+        Assert.True(refreshed.HasBetaAccess);
+        Assert.Equal(1, refreshed.SessionVersion);
     }
 
     private sealed class TestDatabase(MongoClient client, string name, MongoIdentityStore store) : IAsyncDisposable

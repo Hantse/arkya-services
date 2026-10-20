@@ -11,6 +11,7 @@ public static class RuntimeExtensions
 {
     public static IServiceCollection AddIdentityRuntime(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddArkyaInternalHttp(configuration);
         services.AddArkyaProxyTrust(configuration, "ReverseProxy");
         services.AddOptions<ManagementOptions>().BindConfiguration("Management")
             .Validate(o => o.IsValid(), "Management port must be zero (disabled) or 1024-65535, with a readiness timeout between 100 milliseconds and ten seconds.")
@@ -28,6 +29,9 @@ public static class RuntimeExtensions
 
     public static WebApplication UseIdentityRuntime(this WebApplication app)
     {
+        var administration = app.Services.GetRequiredService<IOptions<AdministrationOptions>>().Value;
+        app.UseArkyaInternalHttp(context => context.Request.Path.StartsWithSegments("/internal/sessions") ||
+            (administration.Enabled && administration.AllowClusterHttp && context.Request.Path.StartsWithSegments("/admin/accounts")));
         app.UseArkyaProxyTrust();
 
         var management = app.Services.GetRequiredService<IOptions<ManagementOptions>>().Value;

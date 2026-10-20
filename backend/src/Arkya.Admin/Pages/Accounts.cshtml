@@ -1,0 +1,31 @@
+@page
+@model AccountsModel
+@{
+    ViewData["Title"] = "Comptes";
+}
+<header class="page-header"><div><div class="eyebrow">JOUEURS / COMPTES</div><h1>Comptes</h1><p class="intro">Identité, modération et accès à la bêta.</p></div><a class="button secondary" asp-page="/Accounts" asp-route-search="@Model.Search" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize">Actualiser</a></header>
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Accounts">Réessayer</a></div> }
+@if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
+@if (!Model.Enabled)
+{
+    <div class="panel empty-state"><h2>La gestion des comptes est désactivée</h2><p>Configurez la connexion privée à Identity pour consulter les comptes, gérer les bannissements et les accès à la bêta.</p></div>
+}
+else
+{
+    <form method="get" class="panel filter-bar"><div class="field"><label asp-for="Search">Rechercher un compte</label><input asp-for="Search" maxlength="100" placeholder="Nom, ID Arkya ou ID Discord" /></div><div class="field"><label asp-for="PageSize">Résultats par page</label><select asp-for="PageSize"><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></div><button type="submit" class="button primary">Rechercher</button><a asp-page="/Accounts" class="button secondary">Effacer</a></form>
+    @if (Model.Accounts is { } accounts)
+    {
+        <div class="section-heading"><h2>Répertoire des comptes</h2><span class="muted">@accounts.Total compte(s)</span></div>
+        @if (accounts.Items.Count == 0) { <div class="panel empty-state"><h3>Aucun compte sur cette page</h3><p>Modifiez la recherche ou revenez à la première page.</p><a asp-page="/Accounts" asp-route-search="@Model.Search">Première page</a></div> }
+        else
+        {
+            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Comptes et autorisations</caption><thead><tr><th scope="col">Compte</th><th scope="col">Discord</th><th scope="col">Statut</th><th scope="col">Bêta</th><th scope="col">Création UTC</th></tr></thead><tbody>
+            @foreach (var account in accounts.Items)
+            {
+                <tr><th scope="row"><a asp-page="/Account" asp-route-id="@account.AccountId">@account.DisplayName</a><small class="mono">@account.AccountId</small></th><td class="mono">@account.DiscordUserId</td><td><span class="realm-status @(account.IsBanned ? "failed" : "ready")">@(account.IsBanned ? "Banni" : "Actif")</span></td><td><span class="realm-status @(account.HasBetaAccess ? "ready" : "draft")">@(account.HasBetaAccess ? "Accordée" : "Non accordée")</span></td><td>@account.CreatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm")</td></tr>
+            }
+            </tbody></table></div>
+        }
+        <nav class="pagination" aria-label="Pagination des comptes">@if (Model.PageNumber > 1) { <a class="button secondary" asp-page="/Accounts" asp-route-search="@Model.Search" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize">Précédents</a> }<span class="muted">Page @accounts.Page</span>@if (Model.HasNext) { <a class="button secondary" asp-page="/Accounts" asp-route-search="@Model.Search" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize">Suivants</a> }</nav>
+    }
+}

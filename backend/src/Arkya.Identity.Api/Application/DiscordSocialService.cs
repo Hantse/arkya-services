@@ -65,13 +65,18 @@ public sealed partial class DiscordSocialService(
         return await CompleteAsync(session, account, grant, cancellationToken);
     }
 
-    private async Task<Account> GetAccountAsync(Session session, CancellationToken cancellationToken) =>
-        await store.GetAccountAsync(session.AccountId, cancellationToken) ?? throw new DiscordSocialException("invalid_session", 401);
+    private async Task<Account> GetAccountAsync(Session session, CancellationToken cancellationToken)
+    {
+        var account = await store.GetAccountAsync(session.AccountId, cancellationToken);
+        return account is null || account.IsBanned || account.SessionVersion != session.SessionVersion
+            ? throw new DiscordSocialException("invalid_session", 401) : account;
+    }
 
     private async Task<DiscordSocialTokenResponse> CompleteAsync(Session session, Account account, DiscordSocialGrant grant, CancellationToken cancellationToken)
     {
         if (grant.DiscordUserId != account.DiscordId)
             throw new DiscordSocialException("discord_account_mismatch", 403);
+        await GetAccountAsync(session, cancellationToken);
         if (await store.GetSessionAsync(session.TokenHash, clock.GetUtcNow().UtcDateTime, cancellationToken) is null)
             throw new DiscordSocialException("invalid_session", 401);
 

@@ -1,0 +1,52 @@
+using System.Net;
+using Arkya.Admin.Reports;
+using Microsoft.Extensions.Options;
+
+namespace Arkya.Admin.Tests;
+
+public sealed class ReportsClientTests
+{
+    [Fact]
+    public async Task ScreenshotDeadlineIncludesReadingTheBodyAfterResponseHeaders()
+    {
+        using var client = new HttpClient(new StalledResponse())
+        {
+            BaseAddress = new Uri("https://reports.example/"),
+            Timeout = TimeSpan.FromMilliseconds(100)
+        };
+        var reports = new ReportsAdminClient(client, Options.Create(new ReportsApiOptions
+        {
+            Enabled = true, AdminKey = AdminFactory.ReportsAdminKey
+        }));
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => reports.ScreenshotAsync(ReportsStub.Id, default));
+    }
+
+    private sealed class StalledResponse : HttpMessageHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var content = new StreamContent(new StalledBody());
+            content.Headers.ContentType = new("image/png");
+            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = content });
+        }
+    }
+
+    private sealed class StalledBody : Stream
+    {
+        public override bool CanRead => true;
+        public override bool CanSeek => false;
+        public override bool CanWrite => false;
+        public override long Length => throw new NotSupportedException();
+        public override long Position { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
+        public override int Read(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+        public override async ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
+        {
+            await Task.Delay(Timeout.InfiniteTimeSpan, cancellationToken);
+            return 0;
+        }
+        public override void Flush() => throw new NotSupportedException();
+        public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
+        public override void SetLength(long value) => throw new NotSupportedException();
+        public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+    }
+}

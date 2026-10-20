@@ -1,6 +1,7 @@
 namespace Arkya.Characters.Api.Application;
 
-public sealed record PlayerSession(Guid AccountId, string DisplayName, DateTimeOffset ExpiresAt);
+public sealed record PlayerSession(Guid AccountId, string DisplayName, DateTimeOffset ExpiresAt,
+    bool HasBetaAccess = false, bool IsBanned = false);
 public enum SessionValidationStatus { Valid, Invalid, Unavailable }
 public sealed record SessionValidationResult(SessionValidationStatus Status, PlayerSession? Session = null);
 

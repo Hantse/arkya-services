@@ -9,6 +9,22 @@ namespace Arkya.Characters.Tests;
 
 public sealed class IdentitySessionValidatorTests
 {
+    [Theory]
+    [InlineData(false, false, SessionValidationStatus.Valid)]
+    [InlineData(true, false, SessionValidationStatus.Valid)]
+    [InlineData(true, true, SessionValidationStatus.Invalid)]
+    public async Task IdentityEntitlementIsPreservedAndBannedPayloadsFailClosed(bool beta, bool banned, SessionValidationStatus expected)
+    {
+        using var client = new HttpClient(new StubHandler((_, _) => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK)
+        {
+            Content = JsonContent.Create(new { accountId = Guid.NewGuid(), displayName = "Alice",
+                expiresAt = FixedTimeProvider.Now.AddHours(1), hasBetaAccess = beta, isBanned = banned })
+        }))) { BaseAddress = new Uri("https://identity.example/") };
+        var result = await Create(client).ValidateAsync("token", default);
+        Assert.Equal(expected, result.Status);
+        if (expected == SessionValidationStatus.Valid) Assert.Equal(beta, result.Session!.HasBetaAccess);
+    }
+
     [Fact]
     public async Task ReferenceValidationSendsOnlyDigestWithServiceAuthentication()
     {
@@ -84,6 +100,21 @@ public sealed class IdentitySessionValidatorTests
     public void IdentityTransportRequiresHttpsOutsideLocalDevelopment(string baseUrl, bool development, bool valid)
     {
         Assert.Equal(valid, IdentityOptions.HasSafeBaseUrl(new IdentityOptions { BaseUrl = baseUrl }, development));
+    }
+
+    [Theory]
+    [InlineData("http://arkya-identity.arkya-beta.svc.cluster.local:8080/", true, true)]
+    [InlineData("http://arkya-identity.arkya-beta.svc.cluster.local:8080/", false, false)]
+    [InlineData("http://identity.example/", true, false)]
+    [InlineData("http://192.168.100.1/", true, false)]
+    [InlineData("http://localhost:8080/", true, false)]
+    [InlineData("http://user:password@arkya-identity.arkya-beta.svc.cluster.local/", true, false)]
+    [InlineData("http://arkya-identity.arkya-beta.svc.cluster.local/path", true, false)]
+    [InlineData("http://arkya-identity.arkya-beta.svc.cluster.local/?query=1", true, false)]
+    [InlineData("http://arkya-identity.arkya-beta.svc.cluster.local/#fragment", true, false)]
+    public void PrivateClusterHttpRequiresAnExplicitOptInAndAnExactServiceName(string baseUrl, bool optIn, bool valid)
+    {
+        Assert.Equal(valid, IdentityOptions.HasSafeBaseUrl(new IdentityOptions { BaseUrl = baseUrl, AllowClusterHttp = optIn }, false));
     }
 
     private static IdentitySessionValidator Create(HttpClient client) => new(client,

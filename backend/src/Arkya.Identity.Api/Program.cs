@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+PlayerAdministrationKeys.ConfigureIdentity(builder.Configuration);
 builder.Services.AddArkyaServiceDefaults(builder.Configuration);
 builder.Services.AddIdentityRuntime(builder.Configuration);
 builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.UnmappedMemberHandling = System.Text.Json.Serialization.JsonUnmappedMemberHandling.Disallow);
@@ -35,6 +36,10 @@ builder.Services.AddHostedService<IdentityIndexInitializer>();
 builder.Services.AddHttpClient<IDiscordIdentityClient, DiscordIdentityClient>(client => client.Timeout = TimeSpan.FromSeconds(15))
     .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
 builder.Services.AddScoped<IdentityService>();
+builder.Services.AddOptions<AdministrationOptions>().BindConfiguration("Administration")
+    .Validate(options => options.IsValid(), "Administration:AdminKey must contain 32 to 512 characters when enabled.").ValidateOnStart();
+builder.Services.AddSingleton<AccountAdminKeyValidator>();
+builder.Services.AddScoped<AccountAdministration>();
 builder.Services.AddDataProtection().SetApplicationName("Arkya.Identity");
 builder.Services.AddHttpClient<IDiscordSocialClient, DiscordSocialClient>(client => client.Timeout = TimeSpan.FromSeconds(15))
     .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false })
@@ -53,6 +58,7 @@ app.UseRouting();
 app.UseCors();
 app.UseRateLimiter();
 app.MapIdentityEndpoints();
+app.MapAccountAdminEndpoints();
 app.MapDiscordSocialEndpoints();
 app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "arkya-identity" }));
 app.Run();

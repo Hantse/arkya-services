@@ -16,11 +16,11 @@
             <div class="panel realm-topology"><div class="realm-root"><span class="realm-node" aria-hidden="true">◇</span><div><strong>@realm.DisplayName</strong><small class="mono">@realm.RealmId</small></div></div><ul class="realm-servers">
             @foreach (var server in realm.Servers)
             {
-                <li><div><strong class="mono">@server.Id</strong><small>UDP @server.Port · @server.ReadyReplicas / @server.DesiredReplicas réplica(s) prêt(s)</small></div><code class="server-address">@(string.IsNullOrWhiteSpace(server.Address) ? "Adresse en attente" : server.Address)</code></li>
+                <li><div><strong class="mono">@server.Id</strong><small>@(server.Transport == "WebSocket" ? "WebSocket / TCP" : "UDP") @server.Port · @server.ReadyReplicas / @server.DesiredReplicas réplica(s) prêt(s)</small>@if (server.PublicEndpoint is not null) { <small class="mono">@server.PublicEndpoint</small> }</div><code class="server-address">@(string.IsNullOrWhiteSpace(server.Address) ? "Adresse en attente" : server.Address)</code></li>
             }
             </ul></div>
             @if (realm.Status == "Failed") { <div class="alert error realm-alert" role="alert">@RealmPresentation.FailureMessage(realm.LastError)</div> }
-            <div class="workflow-note"><strong>Déploiement prêt ≠ ouverture aux joueurs</strong><p>La disponibilité affichée concerne les ressources du cluster. L'admission des joueurs et le raccordement des personnages à ce realm restent à intégrer.</p></div>
+            <div class="workflow-note"><strong>Vérifier l'entrée en jeu</strong><p>La disponibilité affichée concerne les ressources du cluster. Vérifiez aussi l'admission des joueurs, les secrets du dedicated et la route publique WSS ou UDP avec un client réel.</p></div>
         </section>
         <aside aria-labelledby="configuration-heading">
             <div class="section-heading"><h2 id="configuration-heading">Configuration</h2><span class="badge">Révision @realm.Revision</span></div>

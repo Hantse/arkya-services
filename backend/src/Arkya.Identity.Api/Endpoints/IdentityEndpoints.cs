@@ -51,6 +51,7 @@ public static class IdentityEndpoints
             return result.Status switch
             {
                 "completed" => Results.Ok(result.Session),
+                "banned" => Results.Json(new { code = "account_banned" }, statusCode: 403),
                 "expired" => Results.Json(new { code = "challenge_expired_or_consumed" }, statusCode: 410),
                 _ => Results.BadRequest(new { code = "invalid_exchange" })
             };
@@ -89,7 +90,7 @@ public static class IdentityEndpoints
         });
     }
 
-    private static AccountSessionResponse ToResponse(Session session) => new(session.AccountId, session.DisplayName, session.ExpiresAt);
+    private static AccountSessionResponse ToResponse(Session session) => new(session.AccountId, session.DisplayName, session.ExpiresAt, session.HasBetaAccess);
     private static string? ReadBearer(HttpContext context) => AuthenticationHeaderValue.TryParse(context.Request.Headers.Authorization, out var header)
         && header.Scheme.Equals("Bearer", StringComparison.OrdinalIgnoreCase) ? header.Parameter : null;
 }

@@ -24,6 +24,7 @@ public sealed class DedicatedServerIdentity
 
 public sealed class CharacterGameAccessOptions
 {
+    public bool RequireBetaAccess { get; set; }
     public DedicatedServerIdentity[] DedicatedServers { get; set; } = [];
     public bool IsValid() => DedicatedServers is not null && DedicatedServers.Length <= 100 &&
         DedicatedServers.All(value => value is not null && GameProtocol.ValidId(value.RealmId) && GameProtocol.ValidId(value.ServerId) && value.Key.Length is >= 32 and <= 512) &&

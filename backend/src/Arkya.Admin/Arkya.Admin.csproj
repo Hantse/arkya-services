@@ -6,6 +6,8 @@
     <UserSecretsId>arkya-admin-local</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="ModelContextProtocol.AspNetCore" Version="2.2.0" />
     <ProjectReference Include="../Arkya.ServiceDefaults/Arkya.ServiceDefaults.csproj" />
+    <ProjectReference Include="../Arkya.Reports.Mcp/Arkya.Reports.Mcp.csproj" />
   </ItemGroup>
 </Project>

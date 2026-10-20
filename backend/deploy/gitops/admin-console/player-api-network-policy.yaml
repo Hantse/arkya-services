@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-admin-player-apis
+  namespace: arkya-identity
+  labels:
+    app.kubernetes.io/part-of: arkya
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchExpressions:
+    - key: app.kubernetes.io/name
+      operator: In
+      values:
+      - arkya-identity
+      - arkya-characters
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-operations
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-admin
+    ports:
+    - protocol: TCP
+      port: 8443
