@@ -71,11 +71,12 @@ bruité dépassant le budget initial, la capture avant apparition du formulaire,
 l’absence d’autorisation anonyme, l’annulation pendant une capture et la
 préservation des couleurs sans appliquer deux fois la correction gamma.
 
-`BugReportRuntimeTests` vérifie le raccourci, la capture réellement rendue, le
-blocage des entrées, la fermeture et une seconde ouverture en Play Mode. Il
-refuse d’écraser des scènes non sauvegardées et nécessite un éditeur avec rendu,
-hors batchmode. Le lancer dans une copie de validation lorsque le projet
-principal contient du travail de scène non sauvegardé.
+`BugReportRuntimeTests` vérifie F8/F9, le type du formulaire, le blocage des
+entrées, la fermeture et une seconde ouverture en Play Mode. Dans un Editor
+avec rendu, il vérifie aussi la capture réelle. En batchmode, il vérifie le
+message d'échec de capture et l'envoi désactivé, sans ignorer le test. Il refuse
+d’écraser des scènes non sauvegardées : utiliser une copie de validation lorsque
+le projet principal contient du travail de scène non sauvegardé.
 
 Pour conserver les images de cette vérification, définir
 `ARKYA_BUG_REPORT_TEST_OUTPUT` sur un dossier local d’artefacts avant de lancer

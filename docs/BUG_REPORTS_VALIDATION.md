@@ -136,5 +136,11 @@ ce qui confirme son activation et sa protection dans la Gateway.
 La CI Services a exécuté **1 172 tests .NET**, **21 tests Python Inference**
 et **28 tests de promotion/workflow**, tous réussis, avant les dix images.
 
-La [CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/39507179874)
-construit séparément les clients et le dedicated à partir du commit publié.
+La première [CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/39507179874)
+a compilé le client et obtenu **459 tests EditMode réussis, 0 en échec, 2 ignorés**.
+Le contrôle CI a refusé le second test ignoré : le nouveau test de capture
+exigeait un Editor avec rendu. Le correctif `3c4cc6e` conserve les assertions
+de vraie capture hors batchmode et exerce F8/F9 ainsi que le chemin d'erreur
+de capture en batchmode, sans assouplir le validateur CI.
+La [nouvelle CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/39509174961)
+vérifie ce correctif puis construit séparément les clients et le dedicated.
