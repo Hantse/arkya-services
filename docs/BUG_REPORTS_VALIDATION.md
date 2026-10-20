@@ -118,7 +118,23 @@ La première exécution a volontairement refusé de promouvoir une source dépas
 Le composant Reports est maintenant ajouté au profil Admin existant, avec
 Inference. Le rendu composé contient **39 objets** ; les contrats et les digests
 ont été validés sans accès Kubernetes. La synchronisation reste assurée par Argo CD.
-La disponibilité publique et la connexion Codex restent à vérifier après sync.
+L'activation est publiée dans `ffbbe18`. Après synchronisation, le dashboard
+Admin indique **6/6 services disponibles**. Le MCP refuse un appel anonyme
+avec HTTP 401 et le challenge Bearer attendu. Une session administrateur a
+permis de télécharger puis d'installer la configuration dans le fichier local
+ignoré `.codex/config.toml`, protégé par une ACL utilisateur ; aucune clé n'a
+été publiée. `codex mcp get` confirme le serveur activé et son URL hébergée.
+
+Le protocole MCP réel a ensuite réussi `initialize` (2025-03-26), `tools/list`
+avec les cinq outils, `list_bug_reports` et `list_suggestions` sans erreur
+(deux listes vides). Aucun rapport de test n'a été créé dans l'environnement.
+Le catalogue d'outils du chat déjà ouvert ne s'est pas rechargé à chaud ; une
+réouverture du chat ou une reconnexion MCP peut être nécessaire.
+La route publique joueur `/v1/bug-reports` répond aussi HTTP 401 sans session,
+ce qui confirme son activation et sa protection dans la Gateway.
+
+La CI Services a exécuté **1 172 tests .NET**, **21 tests Python Inference**
+et **28 tests de promotion/workflow**, tous réussis, avant les dix images.
 
 La [CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/39507179874)
 construit séparément les clients et le dedicated à partir du commit publié.

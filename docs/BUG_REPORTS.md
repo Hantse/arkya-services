@@ -154,8 +154,8 @@ La configuration hébergée est dans
 [`admin-mcp.hosted.config.example.toml`](../backend/tools/admin-mcp.hosted.config.example.toml).
 Après déploiement, fusionner ce bloc dans `.codex/config.toml`, fournir
 `ARKYA_ADMIN_MCP_TOKEN` au processus Codex depuis le gestionnaire de secrets,
-puis recharger les connexions MCP. La configuration de ce poste est préparée
-mais désactivée tant que le service hébergé et le token ne sont pas disponibles.
+puis recharger les connexions MCP. Une connexion ajoutée pendant un chat peut
+nécessiter sa réouverture pour charger les nouveaux outils.
 La [documentation officielle de connexion MCP](https://developers.openai.com/codex/mcp)
 décrit les configurations par projet et le bearer issu d'une variable
 d'environnement. Ne pas versionner le token ni le coller dans le chat.
