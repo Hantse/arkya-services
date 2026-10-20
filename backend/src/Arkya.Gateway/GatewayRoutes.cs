@@ -5,7 +5,7 @@ namespace Arkya.Gateway;
 public static class GatewayRoutes
 {
     public static IReadOnlyList<RouteConfig> Create(bool charactersEnabled, string? adminHost = null,
-        IReadOnlyList<string>? publicHosts = null, string? frontendHost = null)
+        IReadOnlyList<string>? publicHosts = null, string? frontendHost = null, bool realmGameEnabled = false)
     {
         var routes = new List<RouteConfig>
         {
@@ -26,6 +26,16 @@ public static class GatewayRoutes
         }
         if (adminHost is not null || frontendHost is not null)
             routes = routes.Select(route => route with { Match = route.Match with { Hosts = publicHosts } }).ToList();
+        if (realmGameEnabled)
+        {
+            routes.Add(new RouteConfig
+            {
+                RouteId = "realm-game-beta-web",
+                ClusterId = "realm-game",
+                Match = new RouteMatch { Hosts = ["api.arkya.online"], Path = "/game/beta-web/{**path}", Methods = ["GET"] },
+                Transforms = [new Dictionary<string, string> { ["PathRemovePrefix"] = "/game/beta-web" }]
+            });
+        }
         if (adminHost is not null)
         {
             routes.Add(new RouteConfig

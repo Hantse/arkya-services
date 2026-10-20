@@ -31,6 +31,16 @@ public partial class Program
         builder.Services.AddOptions<RealmClientOptions>().BindConfiguration("Realms")
             .Validate(value => value.IsValid(builder.Environment.IsDevelopment()), "Realm catalogue URL/key configuration is invalid.").ValidateOnStart();
         builder.Services.AddOptions<CharacterGameAccessOptions>().BindConfiguration("GameAccess")
+            .Configure<IConfiguration>((value, configuration) =>
+            {
+                if (configuration["RealmRuntime:DedicatedKeySeed"] is null) return;
+                // Options are also created by startup validation; keep derived credentials in a local copy.
+                using var runtime = new ConfigurationManager();
+                runtime.AddInMemoryCollection(configuration.GetSection("RealmRuntime").AsEnumerable()
+                    .Concat(configuration.GetSection("GameAccess").AsEnumerable()));
+                RealmRuntimeKeys.ConfigureCharacters(runtime);
+                runtime.GetSection("GameAccess").Bind(value);
+            })
             .Validate(value => value.IsValid(), "Dedicated identities require unique keys and realm/server bindings.").ValidateOnStart();
         builder.Services.AddSingleton<DedicatedKeyValidator>();
         builder.Services.AddOptions<CharacterAdminOptions>().BindConfiguration("AdminAuthentication")
@@ -79,7 +89,9 @@ public partial class Program
         builder.Services.AddAuthorization();
 
         var app = builder.Build();
-        app.UseArkyaInternalHttp(context => context.Request.Path.StartsWithSegments("/admin/characters") || context.Request.Path == "/health");
+        var gameAccess = app.Services.GetRequiredService<IOptions<CharacterGameAccessOptions>>().Value;
+        app.UseArkyaInternalHttp(context => context.Request.Path.StartsWithSegments("/admin/characters") || context.Request.Path == "/health" ||
+            gameAccess.AllowPrivateHttp && context.Request.Path.StartsWithSegments("/internal/game"));
         app.Use((context, next) =>
         {
             context.Items[SecureTransport] = context.Request.IsHttps;
@@ -89,7 +101,7 @@ public partial class Program
         app.UseArkyaServiceDefaults();
         app.Use(async (context, next) =>
         {
-            if (context.Request.Path.StartsWithSegments("/admin/characters") && !app.Environment.IsDevelopment() &&
+            if ((context.Request.Path.StartsWithSegments("/admin/characters") || context.Request.Path.StartsWithSegments("/internal/game")) && !app.Environment.IsDevelopment() &&
                 context.Items[SecureTransport] is not true && !context.IsArkyaInternalHttpAllowed())
             {
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;

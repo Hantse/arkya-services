@@ -67,6 +67,22 @@ public sealed class RealmsEndpointTests
     }
 
     [Fact]
+    public async Task ReservedTargetPrefillsItsRealmAndRejectsAnIncompatibleId()
+    {
+        await using var factory = EnabledFactory();
+        factory.Realms.Options = factory.Realms.Options with { Targets = [new("test-cluster", "Bêta", "arkya-beta-realm", "beta-web")] };
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var html = await browser.GetStringAsync("/Realms");
+        Assert.Equal("beta-web", AdminFactory.Input(html, "Input.RealmId"));
+        var token = AdminFactory.Input(html, "__RequestVerificationToken");
+        using var result = await browser.PostAsync("/Realms?handler=Create", AdminFactory.Form(CreateForm(token)));
+        Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+        Assert.Contains("Cette cible est réservée au realm beta-web", WebUtility.HtmlDecode(await result.Content.ReadAsStringAsync()));
+        Assert.DoesNotContain(factory.Realms.Calls, call => call.Method == HttpMethod.Post);
+    }
+
+    [Fact]
     public async Task CreateSendsOnlyValidatedConfigurationAndRedirectsToTheRealm()
     {
         await using var factory = EnabledFactory();

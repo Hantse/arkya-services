@@ -30,6 +30,8 @@ public partial class Program
             .Validate(value => value.Key is { Length: >= 32 and <= 512 }, "RealmsAdmin:Key must contain 32 to 512 characters.").ValidateOnStart();
         builder.Services.AddOptions<DeploymentOptions>().Bind(builder.Configuration.GetSection("Deployment"))
             .Validate(value => value.IsValid(), "Deployment configuration requires unique allowlisted namespaces, valid profiles and digest-pinned images.").ValidateOnStart();
+        builder.Services.AddOptions<RealmRuntimeOptions>().BindConfiguration("RealmRuntime")
+            .Validate(value => value.IsValid(), "Realm runtime requires a dedicated key seed and an explicitly allowed Characters endpoint.").ValidateOnStart();
         builder.Services.AddSingleton<IMongoClient>(services =>
         {
             var settings = MongoClientSettings.FromConnectionString(services.GetRequiredService<IOptions<MongoOptions>>().Value.ConnectionString);

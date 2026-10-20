@@ -11,7 +11,7 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
     private readonly DeploymentOptions options = configured.Value;
 
     public DeploymentOptionsResponse GetOptions() => new(
-        options.Targets.Select(target => new TargetSummary(target.Id, target.DisplayName, target.Namespace)).ToArray(),
+        options.Targets.Select(target => new TargetSummary(target.Id, target.DisplayName, target.Namespace, target.RealmId)).ToArray(),
         options.Profiles.Select(profile => new ProfileSummary(profile.Id, profile.DisplayName, profile.Image,
             profile.Servers.Select(server => new ProfileServerSummary(server.Id, server.Port, server.Transport, server.PublicEndpoint)).ToArray())).ToArray(), options.Enabled);
 
@@ -22,6 +22,7 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         var target = options.Targets.SingleOrDefault(value => value.Id == request.TargetId);
         var profile = options.Profiles.SingleOrDefault(value => value.Id == request.ProfileId);
         if (target is null || profile is null) return new(Error: "invalid_configuration_choice");
+        if (target.RealmId is not null && target.RealmId != request.RealmId) return new(Error: "target_realm_mismatch");
         var realm = new RealmRecord(request.RealmId, request.DisplayName, target.Id, target.Namespace, profile.Snapshot(),
             Guid.NewGuid().ToString("N"), 0, 0, null, RealmStatus.Draft, null, clock.GetUtcNow(), null, []);
         return await repository.TryCreateAsync(realm, cancellationToken) ? new(realm) : new(Error: "realm_or_target_exists");
@@ -36,7 +37,8 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         if (realm.RequestedFromRevision == expectedRevision) return new(realm);
         if (expectedRevision < 0 || expectedRevision == long.MaxValue || realm.Revision != expectedRevision ||
             realm.Status is not (RealmStatus.Draft or RealmStatus.Failed)) return new(Error: "revision_conflict");
-        if (!options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace))
+        if (!options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace &&
+            (target.RealmId is null || target.RealmId == realm.RealmId)))
             return new(Error: "target_unavailable");
         var requested = realm with
         {

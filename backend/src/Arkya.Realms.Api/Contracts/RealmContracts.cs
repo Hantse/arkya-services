@@ -19,7 +19,7 @@ public sealed record RealmSummary(string RealmId, string DisplayName, string Tar
                 realm.Status == RealmStatus.Draft ? 0 : 1, observation?.Address, server.Transport, server.PublicEndpoint);
         }).ToArray());
 }
-public sealed record TargetSummary(string Id, string DisplayName, string Namespace);
+public sealed record TargetSummary(string Id, string DisplayName, string Namespace, string? RealmId = null);
 public sealed record ProfileServerSummary(string Id, int Port, string Transport = "Udp", string? PublicEndpoint = null);
 public sealed record ProfileSummary(string Id, string DisplayName, string Image, ProfileServerSummary[] Servers);
 public sealed record DeploymentOptionsResponse(TargetSummary[] Targets, ProfileSummary[] Profiles, bool DeploymentEnabled);

@@ -6,6 +6,8 @@ namespace Arkya.Gateway;
 public sealed class GatewayOptions
 {
     public bool CharactersEnabled { get; set; }
+    public bool RealmGameEnabled { get; set; }
+    public string RealmGameAddress { get; set; } = "";
     public bool AdminEnabled { get; set; }
     public string AdminHost { get; set; } = "backoffice.arkya.online";
     public string AdminAddress { get; set; } = "";
@@ -25,6 +27,10 @@ public sealed class GatewayOptions
         && uri.Scheme is "http" or "https" && uri.Host.Length > 0
         && uri.UserInfo.Length == 0 && uri.Query.Length == 0 && uri.Fragment.Length == 0
         && uri.AbsolutePath == "/";
+
+    public static bool IsRealmGameOriginValid(string? address) => IsOriginValid(address)
+        && Regex.IsMatch(address!, @"\Ahttp://[a-z](?:[a-z0-9-]{0,61}[a-z0-9])?\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.svc\.cluster\.local(?::[1-9][0-9]{0,4})?/?\z",
+            RegexOptions.CultureInvariant);
 
     public static string[] AllowedHosts(IConfiguration configuration) =>
         (configuration["AllowedHosts"] ?? "").Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);

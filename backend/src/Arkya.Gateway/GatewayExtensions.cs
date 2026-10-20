@@ -14,6 +14,8 @@ public static class GatewayExtensions
     public static IServiceCollection AddGateway(this IServiceCollection services)
     {
         services.AddOptions<GatewayOptions>().BindConfiguration("Gateway")
+            .Validate(options => !options.RealmGameEnabled || GatewayOptions.IsRealmGameOriginValid(options.RealmGameAddress),
+                "Gateway:RealmGameAddress must be an HTTP Kubernetes service origin without credentials, path prefix, query or fragment.")
             .Validate(options => !options.AdminEnabled || GatewayOptions.IsWebHostValid(options.AdminHost),
                 "Gateway:AdminHost must be an exact DNS hostname distinct from api.arkya.online.")
             .Validate(options => !options.AdminEnabled || GatewayOptions.IsOriginValid(options.AdminAddress),
@@ -40,13 +42,18 @@ public static class GatewayExtensions
             var publicHosts = options.AdminEnabled || options.FrontendEnabled
                 ? options.PublicApiHosts(finalConfiguration) : null;
             var routes = GatewayRoutes.Create(options.CharactersEnabled, options.AdminEnabled ? options.AdminHost : null,
-                publicHosts, options.FrontendEnabled ? options.FrontendHost : null);
+                publicHosts, options.FrontendEnabled ? options.FrontendHost : null, options.RealmGameEnabled);
             var configured = finalConfiguration.GetSection("ReverseProxy:Clusters").Get<Dictionary<string, ClusterConfig>>()
                 ?? throw new InvalidOperationException("ReverseProxy:Clusters must be configured.");
             if (options.AdminEnabled)
                 configured["admin"] = OriginCluster("admin", options.AdminAddress);
             if (options.FrontendEnabled)
                 configured["frontend"] = OriginCluster("frontend", options.FrontendAddress);
+            if (options.RealmGameEnabled)
+                configured["realm-game"] = OriginCluster("realm-game", options.RealmGameAddress) with
+                {
+                    HttpRequest = new() { ActivityTimeout = TimeSpan.FromMinutes(2) }
+                };
             var clusters = routes.Select(route => route.ClusterId!).Distinct(StringComparer.Ordinal)
                 .Select(id => configured.TryGetValue(id, out var cluster)
                     ? cluster with { ClusterId = id }

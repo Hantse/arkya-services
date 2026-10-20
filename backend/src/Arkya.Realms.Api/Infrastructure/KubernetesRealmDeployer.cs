@@ -6,23 +6,29 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Arkya.Realms.Api.Application;
 using Arkya.Realms.Api.Domain;
+using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
 
 namespace Arkya.Realms.Api.Infrastructure;
 
-public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<DeploymentOptions> configured) : IRealmDeployer
+public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<DeploymentOptions> configured,
+    IOptions<RealmRuntimeOptions>? runtime = null) : IRealmDeployer
 {
     private readonly DeploymentOptions options = configured.Value;
+    private readonly RealmRuntimeOptions runtimeOptions = runtime?.Value ?? new();
 
     public async Task<ServerObservation[]> ReconcileAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
-        if (!options.Enabled || !options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace))
+        if (!options.Enabled || !options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace &&
+            (target.RealmId is null || target.RealmId == realm.RealmId)))
             throw new DeploymentFailure("target_unavailable");
+        if (runtimeOptions.RegistryDockerConfigFile.Length > 0)
+            await EnsureRegistrySecretAsync(realm, cancellationToken);
         var results = new List<ServerObservation>();
         foreach (var server in realm.Profile.Servers)
         {
             var deployment = await EnsureAsync($"apis/apps/v1/namespaces/{realm.Namespace}/deployments",
-                DeploymentManifest(realm, server), cancellationToken);
+                DeploymentManifest(realm, server, runtimeOptions), cancellationToken);
             var service = await EnsureAsync($"api/v1/namespaces/{realm.Namespace}/services",
                 ServiceManifest(realm, server), cancellationToken);
             if (deployment["status"]?["conditions"] is JsonArray conditions && conditions.Any(condition =>
@@ -35,11 +41,98 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             var ready = observed >= generation && available == 1 && updated == 1 ? 1 : 0;
             var ingress = (service["status"]?["loadBalancer"]?["ingress"] as JsonArray)?.FirstOrDefault();
             var address = ingress?["ip"]?.GetValue<string>() ?? ingress?["hostname"]?.GetValue<string>();
+            if (server.Transport == "WebSocket") address = server.PublicEndpoint;
             if (address is { Length: > 253 } || address?.Any(char.IsControl) == true) address = null;
             results.Add(new(server.Id, ready, address));
         }
         return results.ToArray();
     }
+
+    private async Task EnsureRegistrySecretAsync(RealmRecord realm, CancellationToken cancellationToken)
+    {
+        var name = realm.Profile.ImagePullSecretName;
+        if (name != "arkya-ghcr") throw new DeploymentFailure("runtime_configuration_invalid");
+        var dockerConfig = await ReadRegistryCredentialsAsync(cancellationToken);
+        var desired = new JsonObject
+        {
+            ["apiVersion"] = "v1", ["kind"] = "Secret",
+            ["metadata"] = new JsonObject
+            {
+                ["name"] = name, ["namespace"] = realm.Namespace,
+                ["labels"] = new JsonObject
+                {
+                    ["app.kubernetes.io/managed-by"] = "arkya-realms",
+                    ["arkya.online/realm-id"] = realm.RealmId,
+                    ["arkya.online/deployment-id"] = realm.DeploymentIdentity
+                }
+            },
+            ["type"] = "kubernetes.io/dockerconfigjson",
+            ["data"] = new JsonObject { [".dockerconfigjson"] = Convert.ToBase64String(Encoding.UTF8.GetBytes(dockerConfig)) }
+        };
+        var collection = $"api/v1/namespaces/{realm.Namespace}/secrets";
+        var resource = $"{collection}/{name}";
+        JsonObject? existing;
+        try
+        {
+            existing = await GetAsync(resource, cancellationToken);
+            if (existing is null)
+            {
+                using var response = await SendAsync(HttpMethod.Post, collection, desired, cancellationToken);
+                if (response.StatusCode == HttpStatusCode.Conflict)
+                    existing = await GetAsync(resource, cancellationToken) ?? throw new DeploymentFailure("resource_conflict");
+                else
+                {
+                    RequireSuccess(response);
+                    existing = await ReadAsync(response, cancellationToken);
+                }
+            }
+        }
+        catch (JsonException) { throw new DeploymentFailure("registry_credentials_invalid"); }
+        if (existing["metadata"] is not JsonObject metadata)
+            throw new DeploymentFailure("registry_credentials_invalid");
+        if (metadata["deletionTimestamp"] is not null)
+            throw new DeploymentFailure("resource_deleting");
+        if (!ContainsDesired(desired["metadata"]!["labels"], metadata["labels"]))
+            throw new DeploymentFailure("resource_ownership_conflict");
+        if (!JsonNode.DeepEquals(desired["type"], existing["type"]) || !JsonNode.DeepEquals(desired["data"], existing["data"]))
+            throw new DeploymentFailure("resource_configuration_drift");
+    }
+
+    private async Task<string> ReadRegistryCredentialsAsync(CancellationToken cancellationToken)
+    {
+        const int limit = 65536;
+        try
+        {
+            await using var stream = new FileStream(runtimeOptions.RegistryDockerConfigFile, FileMode.Open, FileAccess.Read,
+                FileShare.Read, 4096, FileOptions.Asynchronous | FileOptions.SequentialScan);
+            if (stream.Length > limit) throw new DeploymentFailure("registry_credentials_invalid");
+            using var contents = new MemoryStream();
+            var chunk = new byte[4096];
+            int count;
+            while ((count = await stream.ReadAsync(chunk.AsMemory(), cancellationToken)) > 0)
+            {
+                if (contents.Length + count > limit) throw new DeploymentFailure("registry_credentials_invalid");
+                contents.Write(chunk, 0, count);
+            }
+            var root = JsonNode.Parse(contents.GetBuffer().AsSpan(0, (int)contents.Length), documentOptions:
+                new JsonDocumentOptions { MaxDepth = 16 });
+            if (root is not JsonObject document || document["auths"] is not JsonObject auths ||
+                auths["ghcr.io"] is not JsonObject credentials || !HasRegistryCredentials(credentials))
+                throw new DeploymentFailure("registry_credentials_invalid");
+            return new JsonObject { ["auths"] = new JsonObject { ["ghcr.io"] = credentials.DeepClone() } }.ToJsonString();
+        }
+        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException)
+        {
+            throw new DeploymentFailure("registry_credentials_unreadable");
+        }
+        catch (Exception exception) when (exception is JsonException or ArgumentException or InvalidOperationException)
+        {
+            throw new DeploymentFailure("registry_credentials_invalid");
+        }
+    }
+
+    private static bool HasRegistryCredentials(JsonObject credentials) => credentials["auth"] is JsonValue property &&
+        property.TryGetValue<string>(out var text) && !string.IsNullOrWhiteSpace(text) && !text.Any(char.IsControl);
 
     private async Task<JsonObject> EnsureAsync(string collection, JsonObject desired, CancellationToken cancellationToken)
     {
@@ -118,7 +211,7 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         ["arkya.online/deployment-id"] = realm.DeploymentIdentity
     };
 
-    public static JsonObject DeploymentManifest(RealmRecord realm, ServerDefinition server)
+    public static JsonObject DeploymentManifest(RealmRecord realm, ServerDefinition server, RealmRuntimeOptions? runtime = null)
     {
         var container = new JsonObject
         {
@@ -144,11 +237,24 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         if (server.Transport == "WebSocket")
         {
             ((JsonArray)container["env"]!).Add(new JsonObject { ["name"] = "ARKYA_READY_FILE", ["value"] = "/tmp/arkya-ready" });
+            container["resources"]!["requests"] = new JsonObject { ["cpu"] = "500m", ["memory"] = "1Gi" };
+            container["resources"]!["limits"]!["memory"] = "6Gi";
+            container["securityContext"]!["readOnlyRootFilesystem"] = true;
+            container["volumeMounts"] = new JsonArray(new JsonObject { ["name"] = "tmp", ["mountPath"] = "/tmp" });
             container["readinessProbe"] = new JsonObject
             {
                 ["exec"] = new JsonObject { ["command"] = new JsonArray("test", "-f", "/tmp/arkya-ready") },
                 ["periodSeconds"] = 2, ["timeoutSeconds"] = 1, ["failureThreshold"] = 2
             };
+        }
+        if (runtime is { DedicatedKeySeed.Length: > 0 })
+        {
+            if (!runtime.IsValid()) throw new DeploymentFailure("runtime_configuration_invalid");
+            var environment = (JsonArray)container["env"]!;
+            environment.Add(new JsonObject { ["name"] = "ARKYA_CHARACTERS_URL", ["value"] = runtime.CharactersBaseUrl });
+            environment.Add(new JsonObject { ["name"] = "ARKYA_DEDICATED_KEY", ["value"] = RealmRuntimeKeys.DeriveDedicatedKey(runtime.DedicatedKeySeed, realm.RealmId, server.Id) });
+            if (runtime.AllowClusterHttp)
+                environment.Add(new JsonObject { ["name"] = "ARKYA_ALLOW_CLUSTER_HTTP", ["value"] = "1" });
         }
         if (server.Args.Length > 0) container["args"] = new JsonArray(server.Args.Select(value => (JsonNode?)JsonValue.Create(value)).ToArray());
         if (realm.Profile.EnvironmentSecretName is { } secret)
@@ -159,6 +265,14 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             ["securityContext"] = new JsonObject { ["seccompProfile"] = new JsonObject { ["type"] = "RuntimeDefault" } },
             ["containers"] = new JsonArray(container)
         };
+        if (server.Transport == "WebSocket")
+        {
+            pod["securityContext"]!["runAsNonRoot"] = true;
+            pod["securityContext"]!["runAsUser"] = 1654;
+            pod["securityContext"]!["runAsGroup"] = 1654;
+            pod["nodeSelector"] = new JsonObject { ["kubernetes.io/arch"] = "amd64" };
+            pod["volumes"] = new JsonArray(new JsonObject { ["name"] = "tmp", ["emptyDir"] = new JsonObject { ["medium"] = "Memory", ["sizeLimit"] = "512Mi" } });
+        }
         if (realm.Profile.ImagePullSecretName is { } pullSecret)
             pod["imagePullSecrets"] = new JsonArray(new JsonObject { ["name"] = pullSecret });
         return new JsonObject
@@ -167,7 +281,7 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             ["metadata"] = new JsonObject { ["name"] = ResourceName(realm, server), ["namespace"] = realm.Namespace, ["labels"] = Labels(realm, server) },
             ["spec"] = new JsonObject
             {
-                ["replicas"] = 1, ["revisionHistoryLimit"] = 1, ["progressDeadlineSeconds"] = 240,
+                ["replicas"] = 1, ["revisionHistoryLimit"] = 1, ["progressDeadlineSeconds"] = server.Transport == "WebSocket" ? 600 : 240,
                 ["strategy"] = new JsonObject { ["type"] = "Recreate" },
                 ["selector"] = new JsonObject { ["matchLabels"] = Labels(realm, server) },
                 ["template"] = new JsonObject { ["metadata"] = new JsonObject { ["labels"] = Labels(realm, server) }, ["spec"] = pod }
@@ -181,7 +295,7 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         ["metadata"] = new JsonObject { ["name"] = ResourceName(realm, server), ["namespace"] = realm.Namespace, ["labels"] = Labels(realm, server) },
         ["spec"] = new JsonObject
         {
-            ["type"] = "LoadBalancer", ["selector"] = Labels(realm, server),
+            ["type"] = server.Transport == "WebSocket" ? "ClusterIP" : "LoadBalancer", ["selector"] = Labels(realm, server),
             ["ports"] = new JsonArray(new JsonObject { ["name"] = "game", ["port"] = server.Port, ["targetPort"] = server.Port, ["protocol"] = server.Transport == "WebSocket" ? "TCP" : "UDP" })
         }
     };

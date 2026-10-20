@@ -19,7 +19,8 @@ public sealed class DeploymentOptions
         Uri.TryCreate(ApiServer, UriKind.Absolute, out var uri) && uri.Scheme == "https" &&
         string.IsNullOrEmpty(uri.UserInfo) && string.IsNullOrEmpty(uri.Query) && string.IsNullOrEmpty(uri.Fragment) && uri.AbsolutePath == "/" &&
         !string.IsNullOrWhiteSpace(TokenFile) && !string.IsNullOrWhiteSpace(CertificateAuthorityFile) &&
-        Targets.All(target => target is not null && ValidId(target.Id) && ValidNamespace(target.Namespace) && ValidName(target.DisplayName)) &&
+        Targets.All(target => target is not null && ValidId(target.Id) && ValidNamespace(target.Namespace) && ValidName(target.DisplayName) &&
+            (target.RealmId is null || ValidId(target.RealmId))) &&
         Targets.Select(target => target.Id).Distinct().Count() == Targets.Length &&
         Targets.Select(target => target.Namespace).Distinct().Count() == Targets.Length &&
         Profiles.All(profile => profile is not null && profile.IsValid()) &&
@@ -38,6 +39,7 @@ public sealed class DeploymentTarget
     public string Id { get; set; } = "";
     public string DisplayName { get; set; } = "";
     public string Namespace { get; set; } = "";
+    public string? RealmId { get; set; }
 }
 
 public sealed class DeploymentProfile

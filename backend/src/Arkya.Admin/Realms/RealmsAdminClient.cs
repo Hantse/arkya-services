@@ -18,7 +18,7 @@ public sealed record RealmServer(string Id, int Port, int ReadyReplicas, int Des
     string Transport = "Udp", string? PublicEndpoint = null);
 public sealed record RealmSummary(string RealmId, string DisplayName, string TargetId, string Namespace,
     string ProfileId, string Image, long Revision, string Status, string? LastError, DateTimeOffset UpdatedAt, RealmServer[] Servers);
-public sealed record RealmTarget(string Id, string DisplayName, string Namespace);
+public sealed record RealmTarget(string Id, string DisplayName, string Namespace, string? RealmId = null);
 public sealed record RealmProfileServer(string Id, int Port, string Transport = "Udp", string? PublicEndpoint = null);
 public sealed record RealmProfile(string Id, string DisplayName, string Image, RealmProfileServer[] Servers);
 public sealed record RealmDeploymentOptions(RealmTarget[] Targets, RealmProfile[] Profiles, bool DeploymentEnabled);
@@ -103,6 +103,9 @@ public static class RealmPresentation
         "resource_ownership_conflict" => "Une ressource existante appartient à un autre propriétaire. Vérifiez les noms et les étiquettes dans le namespace cible.",
         "resource_configuration_drift" => "Les ressources du cluster diffèrent de la configuration enregistrée. Rétablissez la configuration attendue avant de réessayer.",
         "cluster_credentials_invalid" => "Les identifiants du cluster sont invalides. Vérifiez le jeton du compte de service.",
+        "registry_credentials_unreadable" => "Les identifiants GHCR sont illisibles. Vérifiez le montage du Secret de registre dans Realms.",
+        "registry_credentials_invalid" => "Les identifiants GHCR sont invalides. Vérifiez le fichier Docker du Secret de registre.",
+        "runtime_configuration_invalid" => "Le profil dédié est incompatible avec la configuration du runtime ou du registre.",
         "cluster_access_denied" => "Le cluster a refusé l'accès. Vérifiez le compte de service et ses droits dans le namespace cible.",
         "target_namespace_missing" => "Le namespace cible n'existe pas. Créez-le et configurez ses droits avant de réessayer.",
         "cluster_resource_rejected" => "Le cluster a refusé les ressources demandées. Vérifiez le profil et les contraintes du namespace cible.",

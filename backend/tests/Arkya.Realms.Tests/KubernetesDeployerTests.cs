@@ -13,6 +13,171 @@ namespace Arkya.Realms.Tests;
 public sealed class KubernetesDeployerTests
 {
     [Fact]
+    public async Task RegistryCredentialsAreCopiedBeforeWorkloadsWithOnlyGhcrAndReusedWithoutWrites()
+    {
+        using var credentials = new RegistryFile("""
+            {"auths":{"ghcr.io":{"auth":"synthetic-ghcr-auth"},"other.example":{"auth":"unrelated-registry-secret"}},"credsStore":"must-not-be-copied"}
+            """);
+        using var cluster = new FakeCluster();
+        var realm = RegistryRealm();
+        await cluster.Deployer(credentials.Options()).ReconcileAsync(realm, default);
+        Assert.Equal("Secret", cluster.CreatedKinds.First());
+        Assert.Equal(3, cluster.CreateCount);
+        var secret = Assert.Single(cluster.Resources.Values, resource => resource["kind"]!.GetValue<string>() == "Secret");
+        Assert.Equal("arkya-ghcr", secret["metadata"]!["name"]!.GetValue<string>());
+        Assert.Equal(realm.Namespace, secret["metadata"]!["namespace"]!.GetValue<string>());
+        Assert.Equal("arkya-realms", secret["metadata"]!["labels"]!["app.kubernetes.io/managed-by"]!.GetValue<string>());
+        Assert.Equal(realm.DeploymentIdentity, secret["metadata"]!["labels"]!["arkya.online/deployment-id"]!.GetValue<string>());
+        Assert.Null(secret["metadata"]!["labels"]!["arkya.online/server-id"]);
+        Assert.Equal("kubernetes.io/dockerconfigjson", secret["type"]!.GetValue<string>());
+        var dockerConfig = Encoding.UTF8.GetString(Convert.FromBase64String(secret["data"]![".dockerconfigjson"]!.GetValue<string>()));
+        var root = JsonNode.Parse(dockerConfig)!;
+        Assert.Equal("ghcr.io", Assert.Single(root["auths"]!.AsObject()).Key);
+        Assert.DoesNotContain("unrelated-registry-secret", dockerConfig);
+        Assert.DoesNotContain("credsStore", dockerConfig);
+        Assert.DoesNotContain("synthetic-ghcr-auth", System.Text.Json.JsonSerializer.Serialize(realm));
+        Assert.DoesNotContain("synthetic-ghcr-auth", System.Text.Json.JsonSerializer.Serialize(
+            new RealmService(new MemoryRealmRepository(), Options.Create(Fixtures.Options()), new TestClock()).GetOptions()));
+        await cluster.Deployer(credentials.Options()).ReconcileAsync(realm, default);
+        Assert.Equal(3, cluster.CreateCount);
+        Assert.All(cluster.Methods, method => Assert.True(method == HttpMethod.Get || method == HttpMethod.Post));
+    }
+
+    [Fact]
+    public async Task RegistryCreateConflictsRecheckOwnershipBeforeAnyWorkloadIsCreated()
+    {
+        using var credentials = new RegistryFile();
+        using var owned = new FakeCluster { ConflictOnCreate = true };
+        await owned.Deployer(credentials.Options()).ReconcileAsync(RegistryRealm(), default);
+        Assert.Equal(3, owned.CreateCount);
+        using var foreign = new FakeCluster { ConflictOnCreate = true, ForeignConflict = true };
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => foreign.Deployer(credentials.Options()).ReconcileAsync(RegistryRealm(), default));
+        Assert.Equal("resource_ownership_conflict", error.Code);
+        Assert.Equal(1, foreign.CreateCount);
+        Assert.Equal("Secret", Assert.Single(foreign.CreatedKinds));
+    }
+
+    [Theory]
+    [InlineData("data")]
+    [InlineData("type")]
+    [InlineData("labels")]
+    public async Task RegistryDriftOrForeignOwnershipNeverOverwritesTheSecretOrReachesWorkloads(string field)
+    {
+        using var credentials = new RegistryFile();
+        using var cluster = new FakeCluster();
+        var realm = RegistryRealm();
+        await cluster.Deployer(credentials.Options()).ReconcileAsync(realm, default);
+        var secret = Assert.Single(cluster.Resources.Values, resource => resource["kind"]!.GetValue<string>() == "Secret");
+        if (field == "data") secret["data"]![".dockerconfigjson"] = "different-private-registry-data";
+        else if (field == "type") secret["type"] = "Opaque";
+        else secret["metadata"]!["labels"] = new JsonObject();
+        var before = secret.ToJsonString();
+        cluster.Methods.Clear();
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => cluster.Deployer(credentials.Options()).ReconcileAsync(realm, default));
+        Assert.Equal(field == "labels" ? "resource_ownership_conflict" : "resource_configuration_drift", error.Code);
+        Assert.Equal(3, cluster.CreateCount);
+        Assert.Equal(before, secret.ToJsonString());
+        Assert.Equal(HttpMethod.Get, Assert.Single(cluster.Methods));
+        Assert.DoesNotContain("private-registry-data", error.ToString());
+        Assert.DoesNotContain("synthetic-ghcr-auth", error.ToString());
+    }
+
+    [Theory]
+    [InlineData("{\"sensitive-secret\":")]
+    [InlineData("{\"auths\":{\"other.example\":{\"auth\":\"sensitive-secret\"}}}")]
+    [InlineData("{\"auths\":{\"ghcr.io\":null}}")]
+    [InlineData("{\"auths\":{\"ghcr.io\":{}}}")]
+    [InlineData("{\"auths\":{\"ghcr.io\":{\"auth\":\"\"}}}")]
+    [InlineData("{\"auths\":{\"ghcr.io\":{\"auth\":123}}}")]
+    public async Task InvalidRegistryJsonFailsBeforeCallingKubernetesWithoutLeakingValues(string json)
+    {
+        using var credentials = new RegistryFile(json);
+        using var cluster = new FakeCluster();
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => cluster.Deployer(credentials.Options()).ReconcileAsync(RegistryRealm(), default));
+        Assert.Equal("registry_credentials_invalid", error.Code);
+        Assert.Empty(cluster.Methods);
+        Assert.DoesNotContain("sensitive-secret", error.ToString());
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task RegistryJsonSizeAndDepthAreBoundedBeforeAnyClusterRequest(bool oversized)
+    {
+        var json = oversized ? new string('x', 65537) : new string('[', 17) + "0" + new string(']', 17);
+        using var credentials = new RegistryFile(json);
+        using var cluster = new FakeCluster();
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => cluster.Deployer(credentials.Options()).ReconcileAsync(RegistryRealm(), default));
+        Assert.Equal("registry_credentials_invalid", error.Code);
+        Assert.Empty(cluster.Methods);
+    }
+
+    [Fact]
+    public async Task UnreadableRegistryFileHasARedactedFailureAndNeverCallsTheCluster()
+    {
+        using var credentials = new RegistryFile();
+        File.Delete(credentials.Path);
+        using var cluster = new FakeCluster();
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => cluster.Deployer(credentials.Options()).ReconcileAsync(RegistryRealm(), default));
+        Assert.Equal("registry_credentials_unreadable", error.Code);
+        Assert.DoesNotContain(credentials.Path, error.ToString());
+        Assert.Empty(cluster.Methods);
+    }
+
+    [Fact]
+    public async Task ConfiguredRegistryCopyRequiresTheExactRbacAllowedSecretName()
+    {
+        using var credentials = new RegistryFile();
+        using var cluster = new FakeCluster();
+        var realm = RegistryRealm();
+        realm = realm with { Profile = realm.Profile with { ImagePullSecretName = "another-registry-secret" } };
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => cluster.Deployer(credentials.Options()).ReconcileAsync(realm, default));
+        Assert.Equal("runtime_configuration_invalid", error.Code);
+        Assert.Empty(cluster.Methods);
+    }
+
+    [Fact]
+    public async Task ClusterErrorsDuringRegistryCopyDiscardThePrivateResponseBody()
+    {
+        using var credentials = new RegistryFile();
+        using var cluster = new FakeCluster { Error = HttpStatusCode.Forbidden };
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => cluster.Deployer(credentials.Options()).ReconcileAsync(RegistryRealm(), default));
+        Assert.Equal("cluster_access_denied", error.Code);
+        Assert.DoesNotContain("sensitive", error.ToString());
+        Assert.Equal(0, cluster.CreateCount);
+    }
+
+    private static RealmRecord RegistryRealm()
+    {
+        var realm = Fixtures.Realm();
+        return realm with { Profile = realm.Profile with { ImagePullSecretName = "arkya-ghcr" } };
+    }
+
+    private sealed class RegistryFile : IDisposable
+    {
+        public string Path { get; } = System.IO.Path.GetTempFileName();
+        public RegistryFile(string json = "{\"auths\":{\"ghcr.io\":{\"auth\":\"synthetic-ghcr-auth\"}}}") => File.WriteAllText(Path, json);
+        public RealmRuntimeOptions Options() => new() { RegistryDockerConfigFile = Path };
+        public void Dispose() => File.Delete(Path);
+    }
+
+    [Fact]
+    public async Task WebSocketReadinessUsesThePublicRouteWithoutWaitingForALoadBalancer()
+    {
+        using var cluster = new FakeCluster();
+        var realm = Fixtures.Realm();
+        var server = realm.Profile.Servers[0] with { Transport = "WebSocket", PublicEndpoint = "wss://api.arkya.online/game/beta-web/" };
+        realm = realm with { Profile = realm.Profile with { Servers = [server] } };
+        await cluster.Deployer().ReconcileAsync(realm, default);
+        var deployment = cluster.Resources.Values.Single(value => value["kind"]!.GetValue<string>() == "Deployment");
+        deployment["status"] = new JsonObject { ["observedGeneration"] = 1, ["availableReplicas"] = 1, ["updatedReplicas"] = 1 };
+        var result = Assert.Single(await cluster.Deployer().ReconcileAsync(realm, default));
+        Assert.Equal(1, result.ReadyReplicas);
+        Assert.Equal(server.PublicEndpoint, result.Address);
+        Assert.Equal(2, cluster.CreateCount);
+    }
+
+    [Fact]
     public async Task RestartReusesOwnedResourcesAndReReadsRotatedToken()
     {
         using var cluster = new FakeCluster();
@@ -145,6 +310,7 @@ public sealed class KubernetesDeployerTests
         public List<HttpMethod> Methods { get; } = [];
         public List<string> Tokens { get; } = [];
         public int CreateCount { get; private set; }
+        public List<string> CreatedKinds { get; } = [];
         public bool ConflictOnCreate { get; init; }
         public bool ForeignConflict { get; init; }
         public HttpStatusCode? Error { get; set; }
@@ -159,11 +325,16 @@ public sealed class KubernetesDeployerTests
             options.TokenFile = TokenFile;
             return options;
         }
-        public KubernetesRealmDeployer Deployer() => new(Client, Microsoft.Extensions.Options.Options.Create(Options()));
+        public KubernetesRealmDeployer Deployer(RealmRuntimeOptions? runtime = null) => new(Client,
+            Microsoft.Extensions.Options.Options.Create(Options()), Microsoft.Extensions.Options.Options.Create(runtime ?? new()));
         public void Add(JsonObject resource)
         {
             var api = resource["kind"]!.GetValue<string>() == "Deployment" ? "/apis/apps/v1" : "/api/v1";
-            var type = resource["kind"]!.GetValue<string>() == "Deployment" ? "deployments" : "services";
+            var type = resource["kind"]!.GetValue<string>() switch
+            {
+                "Deployment" => "deployments", "Service" => "services", "Secret" => "secrets",
+                _ => throw new InvalidOperationException("Unexpected resource kind.")
+            };
             Resources[$"{api}/namespaces/{resource["metadata"]!["namespace"]!.GetValue<string>()}/{type}/{resource["metadata"]!["name"]!.GetValue<string>()}"] = resource;
         }
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -177,6 +348,7 @@ public sealed class KubernetesDeployerTests
             if (request.Method != HttpMethod.Post) throw new InvalidOperationException("Only GET/POST expected.");
             CreateCount++;
             var body = JsonNode.Parse(await request.Content!.ReadAsStringAsync(cancellationToken))!.AsObject();
+            CreatedKinds.Add(body["kind"]!.GetValue<string>());
             if (ForeignConflict) body["metadata"]!["labels"]!["arkya.online/deployment-id"] = "foreign";
             Add(body);
             return ConflictOnCreate ? new(HttpStatusCode.Conflict) : Json(HttpStatusCode.Created, body);

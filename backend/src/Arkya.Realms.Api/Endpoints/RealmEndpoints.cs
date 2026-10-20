@@ -40,6 +40,7 @@ public static class RealmEndpoints
     {
         "invalid_realm" => "Realm ID must contain 3 to 31 lowercase letters, digits or hyphens; display name must contain 1 to 80 characters.",
         "invalid_configuration_choice" => "Select an available deployment target and profile.",
+        "target_realm_mismatch" => "This deployment target is reserved for its configured realm ID.",
         "realm_or_target_exists" => "This realm ID or target namespace is already reserved.",
         "realm_not_found" => "Realm not found.",
         "deployment_disabled" => "Realm deployment is disabled in service configuration.",
@@ -47,7 +48,7 @@ public static class RealmEndpoints
         _ => "The realm has changed or is already deploying. Reload its status."
     }), statusCode: code switch
     {
-        "invalid_realm" or "invalid_configuration_choice" => 400,
+        "invalid_realm" or "invalid_configuration_choice" or "target_realm_mismatch" => 400,
         "realm_not_found" => 404,
         _ => 409
     });

@@ -15,7 +15,17 @@ public sealed class RealmsModel(RealmsAdminClient realms) : PageModel
     public string? Error { get; private set; }
     [TempData] public string? Notice { get; set; }
 
-    public async Task OnGetAsync(CancellationToken ct) => await LoadAsync(ct);
+    public async Task OnGetAsync(CancellationToken ct)
+    {
+        await LoadAsync(ct);
+        if (Options.Targets is [{ RealmId: { } realmId } target])
+        {
+            Input.RealmId = realmId;
+            Input.TargetId = target.Id;
+            Input.DisplayName = target.DisplayName;
+        }
+        if (Options.Profiles is [var profile]) Input.ProfileId = profile.Id;
+    }
 
     public async Task<IActionResult> OnPostCreateAsync(CancellationToken ct)
     {
@@ -24,6 +34,8 @@ public sealed class RealmsModel(RealmsAdminClient realms) : PageModel
         if (!Loaded) return Page();
         if (!Options.Targets.Any(target => target.Id == Input.TargetId))
             ModelState.AddModelError("Input.TargetId", "Choisissez une cible disponible.");
+        if (Options.Targets.SingleOrDefault(target => target.Id == Input.TargetId)?.RealmId is { } requiredId && Input.RealmId != requiredId)
+            ModelState.AddModelError("Input.RealmId", $"Cette cible est réservée au realm {requiredId}.");
         if (!Options.Profiles.Any(profile => profile.Id == Input.ProfileId))
             ModelState.AddModelError("Input.ProfileId", "Choisissez un profil disponible.");
         if (Input.DisplayName?.Any(char.IsControl) == true) ModelState.AddModelError("Input.DisplayName", "Le nom ne peut pas contenir de caractères de contrôle.");

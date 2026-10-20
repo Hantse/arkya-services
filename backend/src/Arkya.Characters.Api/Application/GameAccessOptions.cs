@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
 
@@ -9,10 +10,14 @@ public sealed class RealmClientOptions
 {
     public string BaseUrl { get; set; } = "";
     public string ServiceKey { get; set; } = "";
+    public bool AllowClusterHttp { get; set; }
     public bool IsValid(bool development) => BaseUrl.Length == 0 && ServiceKey.Length == 0 ||
         ServiceKey.Length is >= 32 and <= 512 && Uri.TryCreate(BaseUrl, UriKind.Absolute, out var uri) &&
         uri.AbsolutePath == "/" && uri.Query.Length == 0 && uri.Fragment.Length == 0 && uri.UserInfo.Length == 0 &&
-        (uri.Scheme == "https" || development && uri.Scheme == "http" && uri.Host is "localhost" or "127.0.0.1");
+        (uri.Scheme == "https" || development && uri.Scheme == "http" && uri.IsLoopback ||
+            AllowClusterHttp && uri.Scheme == "http" && Regex.IsMatch(BaseUrl,
+                @"\Ahttp://[a-z](?:[a-z0-9-]{0,61}[a-z0-9])?\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.svc\.cluster\.local(?::[1-9][0-9]{0,4})?/?\z",
+                RegexOptions.CultureInvariant));
 }
 
 public sealed class DedicatedServerIdentity
@@ -25,6 +30,7 @@ public sealed class DedicatedServerIdentity
 public sealed class CharacterGameAccessOptions
 {
     public bool RequireBetaAccess { get; set; }
+    public bool AllowPrivateHttp { get; set; }
     public DedicatedServerIdentity[] DedicatedServers { get; set; } = [];
     public bool IsValid() => DedicatedServers is not null && DedicatedServers.Length <= 100 &&
         DedicatedServers.All(value => value is not null && GameProtocol.ValidId(value.RealmId) && GameProtocol.ValidId(value.ServerId) && value.Key.Length is >= 32 and <= 512) &&
