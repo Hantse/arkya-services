@@ -4,7 +4,7 @@ metadata:
   name: arkya-web-client
   namespace: arkya-beta
   annotations:
-    arkya.online/source-revision: 3c4cc6e9e3887f92bc704aff0ad1ea6069bc1841
+    arkya.online/source-revision: fd77651a2121832d5c1c955e28280d5a6258b01a
 spec:
   replicas: 1
   revisionHistoryLimit: 2
@@ -16,7 +16,7 @@ spec:
       labels:
         app.kubernetes.io/name: arkya-web-client
       annotations:
-        arkya.online/source-revision: 3c4cc6e9e3887f92bc704aff0ad1ea6069bc1841
+        arkya.online/source-revision: fd77651a2121832d5c1c955e28280d5a6258b01a
     spec:
       nodeSelector:
         kubernetes.io/os: linux

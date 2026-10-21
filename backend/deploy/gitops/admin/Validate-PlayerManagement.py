@@ -15,6 +15,7 @@ NS = "arkya-beta"
 REALM_NS = "arkya-beta-realm"
 REALM_ADDRESS = f"http://arkya-beta-web-island.{REALM_NS}.svc.cluster.local:17943/"
 GAME_ENDPOINT = "wss://api.arkya.online/game/beta-web/"
+DEDICATED_IMAGE_PATTERN = r"ghcr\.io/hantse/arkya-mmorpg-dedicated@sha256:[0-9a-f]{64}"
 APPS = {"identity", "gateway", "frontend", "admin", "content", "realms", "characters"}
 require = checks.require
 control_spec = importlib.util.spec_from_file_location("arkya_realm_control", ROOT.parent / "realm-control" / "Validate-Manifests.py")
@@ -35,6 +36,24 @@ def ingress(*apps, nodes=False):
     if nodes:
         peers.append({"ipBlock": {"cidr": "192.168.100.0/24"}})
     return [{"from": peers, "ports": [{"protocol": "TCP", "port": 8080}]}]
+
+
+def check_image_release(realms, image):
+    prefix = "Deployment__ImageReleases"
+    release = {key: value for key, value in realms.items() if key.casefold().startswith(prefix.casefold())}
+    if not release:
+        return
+    keys = {field: prefix + "__0__" + field for field in ("RealmId", "ProfileId", "Version", "PreviousImage")}
+    require(set(release) == set(keys.values()),
+            "Image releases must contain exactly one beta-web intention with only RealmId, ProfileId, Version and PreviousImage")
+    require(release[keys["RealmId"]] == "beta-web" and release[keys["ProfileId"]] == "beta-web",
+            "The image release must target only the approved beta-web realm and profile")
+    version = release[keys["Version"]]
+    require(isinstance(version, str) and re.fullmatch(r"[1-9][0-9]{0,18}", version) and int(version) <= 9223372036854775807,
+            "The image release version must be a canonical positive Int64 decimal")
+    previous = release[keys["PreviousImage"]]
+    require(isinstance(previous, str) and re.fullmatch(DEDICATED_IMAGE_PATTERN, previous) and previous != image,
+            "The image release must name a distinct previous dedicated image pinned by immutable digest")
 
 
 def without_inference_component(documents, require_digests):
@@ -375,12 +394,13 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
         "The only deployment target must bind beta-web to the exact user-approved namespace")
     profile = {k.removeprefix("Deployment__Profiles__"): v for k, v in realms.items() if k.startswith("Deployment__Profiles__")}
     image = profile.pop("0__Image", "")
-    require(re.fullmatch(r"ghcr\.io/hantse/arkya-mmorpg-dedicated@sha256:[0-9a-f]{64}", image) and profile == {
+    require(re.fullmatch(DEDICATED_IMAGE_PATTERN, image) and profile == {
         "0__Id": "beta-web", "0__DisplayName": "Île bêta · serveur WebSocket", "0__Servers__0__Id": "island",
         "0__ImagePullSecretName": "arkya-ghcr",
         "0__Servers__0__Port": "17943", "0__Servers__0__Transport": "WebSocket", "0__Servers__0__PublicEndpoint": GAME_ENDPOINT,
         "0__Servers__0__ProtocolVersion": "1", "0__Servers__0__BuildId": "arkya-web-beta-v1"},
         "The beta profile must pin its dedicated image and match the private listener and public WSS destination")
+    check_image_release(realms, image)
     policy = resources[("NetworkPolicy", NS, "arkya-identity-player-management")]["spec"]
     require(policy == {"podSelector": {"matchLabels": {"app.kubernetes.io/name": "arkya-identity"}},
                        "policyTypes": ["Ingress"], "ingress": ingress("admin", "characters")},

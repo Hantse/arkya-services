@@ -4,6 +4,21 @@ Le parcours implémenté est `connexion Discord sur le site → session Arkya �
 
 Le [contrat HTTP version 1](WEB_BETA_CONTRACT.md) fixe les DTO, les erreurs et les garanties de concurrence. La [configuration backend](../backend/README.md), le [guide du site](../sites/arkya/README.md) et le [déploiement des realms](REALM_DEPLOYMENT.md) complètent ce document.
 
+L'atelier actuel affiche « Un visage. Une histoire. », avec les onglets
+**Apparence** et **Nom & aventure**, les vues portrait/corps entier et un
+cadrage adapté au panneau disponible. Les palettes incluent `magenta` pour
+les cheveux et `jade` pour les étoffes ; Identity ne possède pas ces choix.
+Le client, le catalogue Characters et le dedicated doivent tous accepter
+ces identifiants avant l'activation publique de cette version.
+
+Le manifest WebGL expose `sourceRevision` lors d'un build CI. Ce SHA permet
+de reconnaître le client réellement servi ; `buildId` conserve son rôle
+de contrat réseau. Dans l'installation Admin à une seule source Argo, les
+images Unity publiées doivent être sélectionnées ensemble dans le composant
+[client statique](../backend/deploy/gitops/web-client-control/README.md) et
+le profil dedicated. La release versionnée décrite dans le guide Realms
+met à jour les realms déjà créés ; changer seulement le profil ne suffit pas.
+
 ## Parcours et autorité
 
 1. Le site vérifie sa session par `GET /v1/auth/me`, charge le vrai build et transmet la session en mémoire à `ArkyaWebSession.AcceptSiteSession`. La remise ne contient ni jeton Discord ni secret de service. Unity vérifie également la session auprès d’Identity.
@@ -82,6 +97,16 @@ La lease dure au plus 90 secondes et ne dépasse jamais la session Arkya. Une le
 Le logout du site ferme le client Unity et entraîne la fermeture de sa connexion. Characters vérifie aussi la référence hachée de session auprès d’Identity lors de la consommation du ticket, du renouvellement et de la sauvegarde. Une session révoquée est donc refusée au prochain appel, même pour un client modifié ; la libération reste possible. L’expiration absolue de session reste une borne du bail. Un crash peut perdre les changements depuis la dernière sauvegarde acceptée. La bêta ne promet ni migration multi-area de cette lease ni reprise transactionnelle de combat/inventaire.
 
 ## Validation
+
+Le 21 octobre 2026, la [CI Unity de `fd77651`](https://github.com/Hantse/arkya-mmorpg/actions/runs/39591280771)
+valide le checkout publié de l'atelier et de l'île : **514 tests EditMode**
+et **3 tests PlayMode** réussis, aucun échec. Le seul test EditMode ignoré
+est `CharacterRemoteNetworkTests.RealServicesAdmitTwoOwnersRejectInvalidAndReplayedTicketsAndReleaseLeases`,
+qui exige la fixture réelle `ARKYA_WEB_BETA_TICKETS_FILE`. Ces suites ne
+prouvent donc pas l'admission avec une session Discord sur le site public.
+Les trois builds (Windows, dedicated Linux et WebGL), la santé et l'arrêt
+des deux conteneurs ont ensuite réussi. Les neuf jobs sont verts ; la
+promotion Unity `aa8fbc9` publie une paire d'images issue de cette même source.
 
 État constaté le 18 octobre 2026, également consigné dans [WEB_BETA_VALIDATION.json](WEB_BETA_VALIDATION.json) :
 

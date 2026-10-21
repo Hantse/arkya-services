@@ -149,8 +149,12 @@ patches:
       Deployment__Targets__0__RealmId: beta-web
       Deployment__Profiles__0__Id: beta-web
       Deployment__Profiles__0__DisplayName: Île bêta · serveur WebSocket
-      Deployment__Profiles__0__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:174c0f3ecd1b533f90df0ab13446b1cad9826688ea3f8e12ef97cbd6043c46ce
+      Deployment__Profiles__0__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:7da7ef5df8bcb011cbce9ab6fa8dc244481162c7274299539ec021e485dd70da
       Deployment__Profiles__0__ImagePullSecretName: arkya-ghcr
+      Deployment__ImageReleases__0__RealmId: beta-web
+      Deployment__ImageReleases__0__ProfileId: beta-web
+      Deployment__ImageReleases__0__Version: '1'
+      Deployment__ImageReleases__0__PreviousImage: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:174c0f3ecd1b533f90df0ab13446b1cad9826688ea3f8e12ef97cbd6043c46ce
       Deployment__Profiles__0__Servers__0__Id: island
       Deployment__Profiles__0__Servers__0__Port: '17943'
       Deployment__Profiles__0__Servers__0__Transport: WebSocket

@@ -22,9 +22,9 @@ indépendants ; ce composant ne doit pas être ajouté à cette ancienne variant
 
 `kustomization.yaml` sélectionne explicitement l'image Unity déjà publiée
 `ghcr.io/hantse/arkya-mmorpg-web-client`, par digest immuable
-`sha256:e2ff0826d02716de3d9e24e386e67e83e640c94bedef72b4a2c1dcb7d00bf516`.
+`sha256:f523c1b5ddc88a321ac7708a8dcec1b59469ee01390270c53df74d573b63e07a`.
 L'annotation `arkya.online/source-revision` conserve la révision associée dans
-le manifest Unity promu : `3c4cc6e9e3887f92bc704aff0ad1ea6069bc1841`.
+le manifest Unity promu : `fd77651a2121832d5c1c955e28280d5a6258b01a`.
 Ce composant n'effectue aucun build Unity.
 
 La CI des services ne promeut pas cette image. Après une livraison Unity
@@ -32,6 +32,16 @@ vérifiée, actualiser volontairement le digest, les annotations de révision
 du Deployment et du pod, ainsi que les valeurs attendues du validateur.
 Conserver le protocole et le `buildId` compatibles avec le dedicated et
 Characters ; le démarrage Nginx ne valide pas l'admission en jeu.
+
+La [livraison Unity du 21 octobre](https://github.com/Hantse/arkya-mmorpg/actions/runs/39591280771)
+a validé les tests, les trois builds et la santé puis l'arrêt des deux
+conteneurs avant la promotion `aa8fbc9`. Elle contient le nouvel atelier
+« Un visage. Une histoire. » et l'île actuelle.
+Le profil Admin sélectionne le dedicated associé,
+`sha256:7da7ef5df8bcb011cbce9ab6fa8dc244481162c7274299539ec021e485dd70da`.
+L'intention `Deployment:ImageReleases` de version `1` autorise uniquement
+la transition du realm `beta-web` depuis l'ancienne image épinglée ;
+voir le [guide Realms](../../../../docs/REALM_DEPLOYMENT.md).
 
 ## Vérification
 
@@ -58,3 +68,5 @@ de compression ajouté. Le vrai WebGL ouvert sur `/game/index.html` affiche
 la création de personnage ; aucune erreur console relevée, avec le seul
 avertissement FSR déjà connu. Cette vérification sans session joueur ne
 couvre pas la connexion Discord ni l'admission WSS dans le realm.
+Elle concerne la version publiée `3c4cc6e`, antérieure à l'atelier de
+personnage et à l'île présents dans le checkout local du 21 octobre.

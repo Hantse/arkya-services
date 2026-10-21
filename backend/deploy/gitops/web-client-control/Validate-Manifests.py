@@ -16,8 +16,8 @@ require = checks.require
 NAMESPACE = "arkya-beta"
 NAME = "arkya-web-client"
 IMAGE = "ghcr.io/hantse/arkya-mmorpg-web-client"
-DIGEST = "sha256:e2ff0826d02716de3d9e24e386e67e83e640c94bedef72b4a2c1dcb7d00bf516"
-REVISION = "3c4cc6e9e3887f92bc704aff0ad1ea6069bc1841"
+DIGEST = "sha256:f523c1b5ddc88a321ac7708a8dcec1b59469ee01390270c53df74d573b63e07a"
+REVISION = "fd77651a2121832d5c1c955e28280d5a6258b01a"
 LABELS = {"app.kubernetes.io/name": NAME}
 
 
