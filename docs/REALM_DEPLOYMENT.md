@@ -61,6 +61,10 @@ Les états affichés sont `Draft` (brouillon), `Pending` (en attente), `Deployin
 
 La gateway normalise le schéma effectif `wss` en `https` après vérification
 du proxy approuvé : Traefik utilise ce schéma lors de l'upgrade WebSocket.
+Ce comportement est explicite dans le
+[middleware Traefik](https://github.com/traefik/traefik/blob/master/pkg/middlewares/forwardedheaders/forwarded_header.go),
+alors qu'[ASP.NET `IsHttps`](https://github.com/dotnet/aspnetcore/blob/v10.0.10/src/Http/Http/src/Internal/DefaultHttpRequest.cs)
+compare uniquement le schéma `https`.
 La garde HTTPS reste active ; `ws`, HTTP direct et les en-têtes d'un proxy
 non approuvé sont refusés. Le test utilise le vrai pipeline de production,
 Kestrel et un échange WebSocket binaire ; l'admission du dedicated reste

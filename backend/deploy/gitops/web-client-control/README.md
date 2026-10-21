@@ -79,3 +79,13 @@ Le vrai WebGL affiche le nouvel atelier, le personnage actuel et les
 palettes magenta/jade. Aucun message console de niveau erreur ; le seul
 avertissement concerne encore la passe FSR inutilisée.
 Ce chargement autonome sans session ne valide pas l'admission Discord.
+
+Le contrôle WSS a ensuite révélé un HTTP 400 de la gateway. Le correctif
+`ca2a3d3`, vérifié par 176 tests Gateway et la
+[CI des services](https://github.com/Hantse/arkya-services/actions/runs/39608548550),
+normalise le schéma de confiance `wss` avant la garde HTTPS.
+Après la promotion `dba05d4`, la route publique répond **101 Switching
+Protocols** à 15:38, puis le client standard .NET confirme l'état `Open`
+à 15:39. Ces probes vérifient TLS et l'upgrade, sans envoyer de ticket ou
+d'identité joueur. Le digest effectif du realm et l'admission avec un
+compte Discord restent non attestés faute de session Admin/joueur.

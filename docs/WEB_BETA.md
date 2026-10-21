@@ -112,6 +112,11 @@ atelier dans un vrai navigateur. Les quatre fichiers du build répondent
 HTTP 200 avec leur cache et leur type attendus ; voir la
 [vérification du client statique](../backend/deploy/gitops/web-client-control/README.md).
 Ce chargement autonome ne couvre pas l'admission avec un compte Discord.
+La gateway corrigée dans `ca2a3d3` passe 176 tests, dont le vrai pipeline
+Production derrière un proxy approuvé. Après la CI et la promotion des
+services, l'upgrade WSS public passe de HTTP 400 à **101** à 15:38, puis
+le client .NET ouvre également la connexion à 15:39. L'admission avec
+une session Discord et le digest effectif du realm restent à vérifier.
 
 État constaté le 18 octobre 2026, également consigné dans [WEB_BETA_VALIDATION.json](WEB_BETA_VALIDATION.json) :
 
