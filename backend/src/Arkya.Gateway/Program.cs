@@ -20,6 +20,9 @@ public partial class Program
         var gateway = app.Services.GetRequiredService<IOptions<GatewayOptions>>().Value;
         app.Use(async (context, next) =>
         {
+            // Traefik reports secure upgrades as wss; proxy trust has already been applied.
+            if (context.Request.Scheme.Equals("wss", StringComparison.OrdinalIgnoreCase))
+                context.Request.Scheme = "https";
             // The frontend owns caching for its static assets and deployment configuration.
             if (!gateway.FrontendEnabled
                 || !context.Request.Host.Host.Equals(gateway.FrontendHost, StringComparison.OrdinalIgnoreCase))

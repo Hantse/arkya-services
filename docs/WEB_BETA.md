@@ -107,6 +107,11 @@ prouvent donc pas l'admission avec une session Discord sur le site public.
 Les trois builds (Windows, dedicated Linux et WebGL), la santé et l'arrêt
 des deux conteneurs ont ensuite réussi. Les neuf jobs sont verts ; la
 promotion Unity `aa8fbc9` publie une paire d'images issue de cette même source.
+À 15:19 (Bruxelles), le client public expose `fd77651` et affiche le nouvel
+atelier dans un vrai navigateur. Les quatre fichiers du build répondent
+HTTP 200 avec leur cache et leur type attendus ; voir la
+[vérification du client statique](../backend/deploy/gitops/web-client-control/README.md).
+Ce chargement autonome ne couvre pas l'admission avec un compte Discord.
 
 État constaté le 18 octobre 2026, également consigné dans [WEB_BETA_VALIDATION.json](WEB_BETA_VALIDATION.json) :
 

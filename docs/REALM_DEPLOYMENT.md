@@ -59,6 +59,13 @@ Les états affichés sont `Draft` (brouillon), `Pending` (en attente), `Deployin
 
 ### Garanties et limites
 
+La gateway normalise le schéma effectif `wss` en `https` après vérification
+du proxy approuvé : Traefik utilise ce schéma lors de l'upgrade WebSocket.
+La garde HTTPS reste active ; `ws`, HTTP direct et les en-têtes d'un proxy
+non approuvé sont refusés. Le test utilise le vrai pipeline de production,
+Kestrel et un échange WebSocket binaire ; l'admission du dedicated reste
+une vérification distincte.
+
 - Une cible et son namespace ne peuvent appartenir qu'à un realm ; MongoDB impose l'unicité. Le profil est copié dans la définition pour éviter qu'un changement de configuration modifie un realm existant.
 - La demande porte `expectedRevision`. Un rejeu avec la même révision retrouve la demande déjà enregistrée ; une autre modification concurrente est refusée. Le worker utilise une version interne distincte pour ses observations.
 - Les noms de ressources sont déterministes et portent une identité de déploiement persistante. Une ressource étrangère ou une configuration modifiée manuellement provoque une erreur ; le service ne l'écrase pas.

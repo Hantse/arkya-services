@@ -70,3 +70,12 @@ avertissement FSR déjà connu. Cette vérification sans session joueur ne
 couvre pas la connexion Discord ni l'admission WSS dans le realm.
 Elle concerne la version publiée `3c4cc6e`, antérieure à l'atelier de
 personnage et à l'île présents dans le checkout local du 21 octobre.
+
+À 15:19 (Bruxelles), après la sélection `92d05d6` et la promotion des
+services `76e83b5`, le manifest public expose bien la source `fd77651`.
+Les quatre payloads répondent HTTP 200 ; les fichiers compressés
+`.unityweb` restent binaires, sans `Content-Encoding` HTTP ajouté.
+Le vrai WebGL affiche le nouvel atelier, le personnage actuel et les
+palettes magenta/jade. Aucun message console de niveau erreur ; le seul
+avertissement concerne encore la passe FSR inutilisée.
+Ce chargement autonome sans session ne valide pas l'admission Discord.

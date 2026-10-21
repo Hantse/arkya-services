@@ -80,8 +80,10 @@ public sealed class RealmGameProxyTests
         Assert.Equal(HttpStatusCode.NotFound, (await client.GetAsync(path)).StatusCode);
     }
 
-    [Fact]
-    public async Task Websocket_upgrade_and_binary_game_messages_cross_the_gateway_with_the_prefix_removed()
+    [Theory]
+    [InlineData("https")]
+    [InlineData("wss")]
+    public async Task Trusted_secure_websocket_upgrade_crosses_the_production_gateway_with_the_prefix_removed(string forwardedScheme)
     {
         using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(15));
         var builder = WebApplication.CreateBuilder();
@@ -90,10 +92,12 @@ public sealed class RealmGameProxyTests
         builder.Logging.ClearProviders();
         await using var downstream = builder.Build();
         var received = new ConcurrentQueue<string>();
+        var forwarded = new ConcurrentQueue<string>();
         downstream.UseWebSockets();
         downstream.Run(async context =>
         {
             received.Enqueue(context.Request.Path);
+            forwarded.Enqueue(context.Request.Headers["X-Forwarded-Proto"].ToString());
             if (!context.WebSockets.IsWebSocketRequest)
             {
                 context.Response.StatusCode = 400;
@@ -107,18 +111,13 @@ public sealed class RealmGameProxyTests
         });
         await downstream.StartAsync(timeout.Token);
         var address = downstream.Services.GetRequiredService<IServer>().Features.Get<IServerAddressesFeature>()!.Addresses.Single();
-        var gatewayBuilder = WebApplication.CreateBuilder(new WebApplicationOptions { EnvironmentName = "Development" });
-        gatewayBuilder.WebHost.UseUrls("http://127.0.0.1:0");
-        gatewayBuilder.Configuration.AddInMemoryCollection(Settings());
-        gatewayBuilder.Logging.ClearProviders();
-        gatewayBuilder.Services.AddGateway();
-        UseTestRealmDestination(gatewayBuilder.Services, address + "/");
-        await using var gateway = gatewayBuilder.Build();
-        gateway.MapReverseProxy();
-        await gateway.StartAsync(timeout.Token);
+        await using var gateway = new RealmGameFactory(address + "/", trustedProxy: true);
+        gateway.UseKestrel(0);
+        using var client = gateway.CreateClient();
         var gatewayAddress = gateway.Services.GetRequiredService<IServer>().Features.Get<IServerAddressesFeature>()!.Addresses.Single();
         using var socket = new ClientWebSocket();
         socket.Options.SetRequestHeader("Host", "api.arkya.online");
+        socket.Options.SetRequestHeader("X-Forwarded-Proto", forwardedScheme);
         await socket.ConnectAsync(new Uri(gatewayAddress.Replace("http://", "ws://", StringComparison.Ordinal) + "/game/beta-web/"), timeout.Token);
         var payload = Encoding.UTF8.GetBytes("netcode-game-packet");
         await socket.SendAsync(payload.AsMemory(), WebSocketMessageType.Binary, true, timeout.Token);
@@ -127,7 +126,32 @@ public sealed class RealmGameProxyTests
         Assert.Equal(WebSocketMessageType.Binary, result.MessageType);
         Assert.Equal(payload, response[..result.Count]);
         Assert.Equal("/", Assert.Single(received));
+        Assert.Equal("https", Assert.Single(forwarded));
         await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "done", timeout.Token);
+    }
+
+    [Theory]
+    [InlineData(null, true)]
+    [InlineData("http", true)]
+    [InlineData("ws", true)]
+    [InlineData("https", false)]
+    [InlineData("wss", false)]
+    public async Task Insecure_or_untrusted_websocket_upgrade_is_rejected_before_the_dedicated(string? forwardedScheme, bool trustedProxy)
+    {
+        await using var downstream = await Downstream.StartAsync("dedicated");
+        await using var gateway = new RealmGameFactory(downstream.Address, trustedProxy);
+        gateway.UseKestrel(0);
+        using var client = gateway.CreateClient();
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/game/beta-web/");
+        request.Headers.Host = "api.arkya.online";
+        request.Headers.Add("Connection", "Upgrade");
+        request.Headers.Add("Upgrade", "websocket");
+        request.Headers.Add("Sec-WebSocket-Version", "13");
+        request.Headers.Add("Sec-WebSocket-Key", "dGhlIHNhbXBsZSBub25jZQ==");
+        if (forwardedScheme is not null) request.Headers.Add("X-Forwarded-Proto", forwardedScheme);
+        using var response = await client.SendAsync(request);
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.Empty(downstream.Requests);
     }
 
     private static Dictionary<string, string?> Settings() => new()
@@ -156,12 +180,17 @@ public sealed class RealmGameProxyTests
         });
     }
 
-    private sealed class RealmGameFactory : WebApplicationFactory<Program>
+    private sealed class RealmGameFactory(string? downstreamAddress = null, bool trustedProxy = false) : WebApplicationFactory<Program>
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.UseEnvironment("Production");
-            builder.ConfigureAppConfiguration((_, configuration) => configuration.AddInMemoryCollection(Settings()));
+            var settings = Settings();
+            settings["ProxyTrust:KnownProxies:0"] = trustedProxy ? "127.0.0.1" : "203.0.113.10";
+            settings["ProxyTrust:KnownProxies:1"] = trustedProxy ? "::1" : "2001:db8::10";
+            builder.ConfigureAppConfiguration((_, configuration) => configuration.AddInMemoryCollection(settings));
+            if (downstreamAddress is not null)
+                builder.ConfigureServices(services => UseTestRealmDestination(services, downstreamAddress));
         }
     }
 }
