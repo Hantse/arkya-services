@@ -94,9 +94,43 @@ Pour la production, fournir les domaines/certificats réels, secrets de déploie
 
 La lease dure au plus 90 secondes et ne dépasse jamais la session Arkya. Une lease expirée ou un refus d’autorité arrête la simulation du personnage. À la reconnexion, le serveur vérifie les coordonnées sauvegardées, les replace sur le terrain ou la surface de nage et revient au point d’arrivée si la position est invalide ou obstruée. Le client ne fournit jamais cet état.
 
+Une sauvegarde restaurable possède une révision strictement positive. Unity
+`JsonUtility` matérialise un `state:null` ou absent en objets de valeur zéro :
+tester uniquement la nullité envoyait les nouveaux personnages à `(0, 0)`,
+dans l'océan, au lieu de l'Anse de l'Éveil. Le serveur exige désormais cette
+révision et un emplacement dont le corps entier tient dans l'empreinte du
+terrain. Une ancienne sauvegarde à l'origine retrouve donc l'arrivée sèche,
+sans effacer le personnage ni remettre sa révision persistante à zéro. Les
+sauvegardes de nage valides à l'intérieur du terrain conservent leur position.
+
+`CharacterSpawnRulesTests` couvre ces règles et les données non finies,
+limites et obstacles. `CharacterAdmissionNetworkTests` traverse HTTP JSON,
+l'admission du vrai serveur WebSocket, la réplication vers quatre clients et
+la libération des leases. Son API est explicitement une fixture locale ; le
+test des vraies API et de leur authentification reste séparé.
+
 Le logout du site ferme le client Unity et entraîne la fermeture de sa connexion. Characters vérifie aussi la référence hachée de session auprès d’Identity lors de la consommation du ticket, du renouvellement et de la sauvegarde. Une session révoquée est donc refusée au prochain appel, même pour un client modifié ; la libération reste possible. L’expiration absolue de session reste une borne du bail. Un crash peut perdre les changements depuis la dernière sauvegarde acceptée. La bêta ne promet ni migration multi-area de cette lease ni reprise transactionnelle de combat/inventaire.
 
 ## Validation
+
+Le correctif de spawn `ef90ae8` passe **543 tests EditMode** et **3 tests
+PlayMode** dans la [CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/39619856892),
+dont les 29 nouvelles régressions. Le seul test ignoré reste celui exigeant
+`ARKYA_WEB_BETA_TICKETS_FILE`. Les 28 règles et le test à quatre clients
+passent également dans l'Editor via MCP. Sur le vrai Terrain chargé,
+l'absence d'état et une ancienne sauvegarde d'origine reviennent à
+`(405, 33.6876, 350)`, au-dessus du niveau marin `28`, sans collider dans le
+gabarit du personnage. La scène initiale est restaurée hors Play Mode et
+reste non modifiée. Des diagnostics Netcode de regroupement de ticks sont
+présents lors du test Editor à quatre clients ; ces contrôles ne mesurent
+pas les performances du serveur public.
+
+Les trois builds (WebGL, Windows, Dedicated Linux) et les contrôles de
+démarrage puis d'arrêt des deux images passent dans cette même CI. La
+promotion `ba8fdb2` associe les images immuables de la source `ef90ae8` ;
+le profil Admin sélectionne cette paire et porte la release de `beta-web`
+à la version `2`, depuis le dedicated `7da7ef5`. Le reconciler existant
+applique cette intention après synchronisation Argo CD.
 
 Le 21 octobre 2026, la [CI Unity de `fd77651`](https://github.com/Hantse/arkya-mmorpg/actions/runs/39591280771)
 valide le checkout publié de l'atelier et de l'île : **514 tests EditMode**

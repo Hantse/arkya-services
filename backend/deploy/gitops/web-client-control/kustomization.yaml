@@ -5,4 +5,4 @@ resources:
 images:
 - name: ghcr.io/hantse/arkya-mmorpg-web-client
   newName: ghcr.io/hantse/arkya-mmorpg-web-client
-  digest: sha256:f523c1b5ddc88a321ac7708a8dcec1b59469ee01390270c53df74d573b63e07a
+  digest: sha256:efdb1cc439cb93324015693e8204a08c0428382a3a29d17e522631ced3d80e83

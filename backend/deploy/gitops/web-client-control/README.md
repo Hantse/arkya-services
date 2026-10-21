@@ -22,9 +22,9 @@ indépendants ; ce composant ne doit pas être ajouté à cette ancienne variant
 
 `kustomization.yaml` sélectionne explicitement l'image Unity déjà publiée
 `ghcr.io/hantse/arkya-mmorpg-web-client`, par digest immuable
-`sha256:f523c1b5ddc88a321ac7708a8dcec1b59469ee01390270c53df74d573b63e07a`.
+`sha256:efdb1cc439cb93324015693e8204a08c0428382a3a29d17e522631ced3d80e83`.
 L'annotation `arkya.online/source-revision` conserve la révision associée dans
-le manifest Unity promu : `fd77651a2121832d5c1c955e28280d5a6258b01a`.
+le manifest Unity promu : `ef90ae8fae56047807e3b30cc79f179c66af3465`.
 Ce composant n'effectue aucun build Unity.
 
 La CI des services ne promeut pas cette image. Après une livraison Unity
@@ -33,14 +33,16 @@ du Deployment et du pod, ainsi que les valeurs attendues du validateur.
 Conserver le protocole et le `buildId` compatibles avec le dedicated et
 Characters ; le démarrage Nginx ne valide pas l'admission en jeu.
 
-La [livraison Unity du 21 octobre](https://github.com/Hantse/arkya-mmorpg/actions/runs/39591280771)
+La [livraison Unity du 21 octobre](https://github.com/Hantse/arkya-mmorpg/actions/runs/39619856892)
 a validé les tests, les trois builds et la santé puis l'arrêt des deux
-conteneurs avant la promotion `aa8fbc9`. Elle contient le nouvel atelier
-« Un visage. Une histoire. » et l'île actuelle.
+conteneurs avant la promotion `ba8fdb2`. Elle conserve le nouvel atelier
+« Un visage. Une histoire. » et l'île actuelle, et corrige l'arrivée à
+l'origine océanique lorsque l'état sauvegardé est absent ou déjà corrompu.
 Le profil Admin sélectionne le dedicated associé,
-`sha256:7da7ef5df8bcb011cbce9ab6fa8dc244481162c7274299539ec021e485dd70da`.
-L'intention `Deployment:ImageReleases` de version `1` autorise uniquement
-la transition du realm `beta-web` depuis l'ancienne image épinglée ;
+`sha256:a8fed3c9eb50312f970989f93af8c23c19881ab4d833f45197cfd1e931cbe74c`.
+L'intention `Deployment:ImageReleases` de version `2` autorise uniquement
+la transition du realm `beta-web` depuis le dedicated `7da7ef5` de la
+release précédente ;
 voir le [guide Realms](../../../../docs/REALM_DEPLOYMENT.md).
 
 ## Vérification
