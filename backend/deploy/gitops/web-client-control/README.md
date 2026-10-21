@@ -91,3 +91,15 @@ Protocols** à 15:38, puis le client standard .NET confirme l'état `Open`
 à 15:39. Ces probes vérifient TLS et l'upgrade, sans envoyer de ticket ou
 d'identité joueur. Le digest effectif du realm et l'admission avec un
 compte Discord restent non attestés faute de session Admin/joueur.
+
+À 18:42 (Bruxelles), après la sélection GitOps `dba4c5e`, le manifest
+public expose `ef90ae8`. Les quatre payloads répondent HTTP 200 avec leurs
+types et caches attendus, sans `Content-Encoding` ajouté ; l'upgrade WSS
+répond 101. Le vrai WebGL charge l'atelier actuel, sans erreur console,
+avec le seul avertissement FSR déjà connu. Le rendu Kustomize change le
+nom hashé de la configuration référencée dans le pod Realms, ce qui
+déclenche son rollout et la lecture de la release 2 après synchronisation.
+Ces observations ne vérifient ni le digest effectif du pod dédié ni une
+admission avec un compte Discord ; la réparation du spawn est validée
+dans l'Editor et la CI, avec les limites décrites dans le
+[guide bêta](../../../../docs/WEB_BETA.md).

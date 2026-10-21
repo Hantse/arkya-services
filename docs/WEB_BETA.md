@@ -132,6 +132,15 @@ le profil Admin sélectionne cette paire et porte la release de `beta-web`
 à la version `2`, depuis le dedicated `7da7ef5`. Le reconciler existant
 applique cette intention après synchronisation Argo CD.
 
+Après la sélection GitOps `dba4c5e`, le manifest public expose `ef90ae8`
+à 18:42 (Bruxelles). Les quatre payloads répondent 200 avec les bons types
+et caches, l'upgrade WSS répond 101 et le vrai WebGL affiche l'atelier
+actuel. Aucune erreur console navigateur, seul l'avertissement FSR connu.
+Les six validateurs GitOps passent hors cluster ; le hash de configuration
+change dans le template Realms, ce qui provoque son rollout sans rebuild
+des services. Le digest effectif du pod dédié et l'admission avec un
+compte Discord restent non attestés sans session Admin/joueur.
+
 Le 21 octobre 2026, la [CI Unity de `fd77651`](https://github.com/Hantse/arkya-mmorpg/actions/runs/39591280771)
 valide le checkout publié de l'atelier et de l'île : **514 tests EditMode**
 et **3 tests PlayMode** réussis, aucun échec. Le seul test EditMode ignoré
