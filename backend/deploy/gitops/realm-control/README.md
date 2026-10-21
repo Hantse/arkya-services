@@ -105,6 +105,25 @@ Avant de créer le Deployment, Realms valide puis provisionne le Secret
 logs, API ou profils MongoDB. Le Secret cible reste détenu par Realms ;
 aucun Secret déclaratif ni droit Argo sur le type Secret n'est ajouté.
 
+## Secret GHCR et livraison GitOps
+
+Le flux de livraison est **modification des YAML → push Git → synchronisation
+automatique Argo CD**. Aucun script local de création de Secret, kubeconfig
+ou accès SSH n'est demandé pour préparer et publier ces manifests.
+
+[`registry-secret.example.yaml`](registry-secret.example.yaml) décrit le Secret
+source attendu : `arkya-beta/arkya-ghcr`, type `kubernetes.io/dockerconfigjson`,
+clé `.dockerconfigjson`, entrée JSON `auths.ghcr.io.auth`. La valeur `auth` est
+la représentation base64 UTF-8 de `utilisateur:PAT`, avec un droit de lecture
+`read:packages`. Elle reste vide dans l'exemple.
+
+Ce modèle est exclu de Kustomize et ne doit pas être synchronisé tel quel.
+La valeur réelle doit être fournie par la gestion des secrets de l'infrastructure,
+sans commiter un jeton ou son encodage base64. Aucun contrôleur de secrets
+chiffrés n'est déclaré dans ce dépôt ; ce modèle ne suppose donc pas la présence
+de Sealed Secrets ou d'External Secrets. Le namespace cible du realm conserve
+les Secrets créés par Realms. Le rendu applicatif reste à 48 ressources.
+
 ### État observé le 21 octobre 2026 à 00:40 UTC
 
 Argo a terminé la synchronisation des 48 ressources de `a635317`
@@ -128,8 +147,8 @@ python D:\Repositories\arkya\backend\deploy\gitops\realm-control\Validate-Manife
 kubectl kustomize D:\Repositories\arkya\backend\deploy\gitops\admin
 ```
 
-Après synchronisation, vérifier le rôle réel avec `kubectl auth can-i`,
-la validité de la route TLS sans afficher de secret, puis
+Après synchronisation Argo et disponibilité du Secret source,
+vérifier la route TLS puis
 créer et lancer **`beta-web`** avec le profil de l'île depuis l'admin.
 Le Service stable n'a aucun endpoint tant que le dedicated n'a pas
 terminé le chargement du terrain et créé `/tmp/arkya-ready`.

@@ -150,8 +150,9 @@ Secret à copier manuellement, certificat, Ingress ou LoadBalancer n'est
 requis dans le realm. Le **Secret source `arkya-ghcr` dans `arkya-beta` doit
 être provisionné avant le rollout Realms** ; une référence de registre dans
 un Deployment ne prouve pas sa présence. Le [guide runtime](REALM_RUNTIME.md#provisionner-le-registre-source)
-décrit le script opérateur à contexte explicite et PAT limité exactement à
-`read:packages`, sans écrasement. Realms reçoit en lecture seule son Docker
+décrit le modèle YAML du Secret source, à alimenter par la gestion des secrets
+de l'infrastructure avec un PAT de lecture `read:packages`. Le déploiement
+applicatif reste un push Git suivi de la synchronisation Argo. Realms reçoit en lecture seule son Docker
 config, le valide et crée `arkya-ghcr` dans la cible
 avant le Deployment. Les identifiants ne passent ni dans Git, ni dans les
 logs, API ou profils MongoDB. Aucun droit Argo sur les Secrets n'est ajouté.

@@ -34,50 +34,23 @@ de registre ni aucune clé dedicated n'est versionné.
 
 ## Provisionner le registre source
 
-Le [script opérateur](../backend/deploy/gitops/realm-control/Provision-RegistrySecret.ps1)
-fonctionne avec Windows PowerShell 5.1 et PowerShell 7. Il requiert `kubectl` et un contexte Kubernetes explicite disposant
-des accès nécessaires. Il vérifie les deux namespaces `arkya-beta` et
-`arkya-beta-realm`, ainsi que le nom, le label et l'image du Deployment
-`arkya-realms`. La connexion Kubernetes doit vérifier TLS. Il refuse de
-remplacer un Secret existant.
+Le contrat est fourni par le [modèle YAML du Secret GHCR](../backend/deploy/gitops/realm-control/registry-secret.example.yaml).
+Il fixe le nom `arkya-ghcr`, le namespace source `arkya-beta`, le type
+`kubernetes.io/dockerconfigjson` et la clé `.dockerconfigjson`. Le JSON
+contient l'entrée `auths.ghcr.io.auth`, encodage base64 UTF-8 de
+`utilisateur:PAT` avec un droit de lecture `read:packages`.
 
-`-Context` reprend exactement un nom enregistre dans le kubeconfig, visible
-avec `kubectl config get-contexts -o name`. Le script verifie d'abord cette
-liste locale, avant tout appel au cluster ou lecture du PAT. Un nom absent
-est refuse avec la liste disponible ; aucun contexte n'est selectionne ni
-modifie automatiquement. Si le cluster voulu n'apparait pas, fournir son
-fichier avec `-KubeConfig`, puis choisir un contexte de ce fichier. Le nom
-affiche dans Argo CD ne cree pas de contexte local. Les erreurs Kubernetes
-indiquent leur etape et une cause expurgee (reseau, TLS, authentification ou
-permissions), sans afficher le stderr brut ni un contenu de Secret.
+La valeur `auth` reste vide dans le modèle, qui est exclu du rendu Kustomize.
+La gestion des secrets de l'infrastructure doit fournir le Secret renseigné
+par son flux de livraison ; aucun identifiant, même encodé en base64, ne doit
+être commité ici. Aucun mécanisme de secrets chiffrés n'est déclaré dans ce
+dépôt : le modèle ne suppose pas l'installation d'un contrôleur supplémentaire.
 
-Utiliser un **PAT GitHub classique limité exactement à `read:packages`**,
-autorisé à lire le package privé `hantse/arkya-mmorpg-dedicated`. Toute autre
-portée, y compris une portée supplémentaire de lecture, est refusée. Le script
-contrôle les portées GitHub puis lit uniquement les métadonnées du digest
-dedicated épinglé. Il crée exclusivement `arkya-beta/arkya-ghcr` en envoyant
-le JSON en mémoire à l'entrée standard de `kubectl create` ; aucune valeur
-privée ne passe par ses arguments, un fichier temporaire ou sa sortie.
-
-Exemple à adapter avec le contexte et le digest approuvés :
-
-```powershell
-& ./backend/deploy/gitops/realm-control/Provision-RegistrySecret.ps1 `
-  -Contexte 'CONTEXTE_ARKYA' `
-  -KubeConfig 'C:\prive\kubeconfig.yaml' `
-  -GitHubUser 'COMPTE_GITHUB' `
-  -DedicatedImageDigest 'sha256:REMPLACER_PAR_64_CARACTERES_HEXADECIMAUX' `
-  -TokenFilePath 'C:\prive\ghcr-read-packages.txt'
-```
-
-Le fichier du PAT fourni doit être déjà présent, privé et hors dépôt ; le script
-accepte UTF-8 avec ou sans BOM ainsi que UTF-16 avec BOM, et ne crée aucun
-fichier d'identifiant. Sans `-TokenFilePath`, le
-script demande une saisie masquée. `-KubeConfig` est facultatif si le fichier
-habituel contient le contexte choisi. Ne pas réutiliser un credential Docker
-ou Git plus large. La création du Secret source ne prouve pas le rollout
-Realms, la copie vers le realm ni l'admission d'un joueur : vérifier ensuite
-ces étapes dans l'environnement réel.
+Les manifests applicatifs sont validés hors cluster, poussés dans Git puis
+appliqués par Argo. Aucune procédure locale de connexion au cluster n'est
+requise pour préparer cette livraison. Le Secret source reste nécessaire au
+rollout Realms ; un modèle vide ou une synchronisation des workloads ne
+prouve pas que l'image privée est téléchargeable ni qu'un joueur peut entrer.
 
 La livraison suit Git puis Argo CD. Les manifests et le correctif de permissions
 de l'AppProject sont décrits dans
