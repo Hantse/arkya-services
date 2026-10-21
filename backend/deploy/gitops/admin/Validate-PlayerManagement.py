@@ -20,6 +20,9 @@ require = checks.require
 control_spec = importlib.util.spec_from_file_location("arkya_realm_control", ROOT.parent / "realm-control" / "Validate-Manifests.py")
 control = importlib.util.module_from_spec(control_spec)
 control_spec.loader.exec_module(control)
+web_spec = importlib.util.spec_from_file_location("arkya_web_client_control", ROOT.parent / "web-client-control" / "Validate-Manifests.py")
+web = importlib.util.module_from_spec(web_spec)
+web_spec.loader.exec_module(web)
 
 
 def secret_env(name, secret, key):
@@ -178,6 +181,9 @@ def without_reports_component(documents, require_digests):
 
 
 def check_profile(documents, frontend_documents=None, beta_documents=None, require_digests=False):
+    web_documents = [document for document in documents if document["metadata"]["name"] == "arkya-web-client"]
+    web.check_profile(web_documents)
+    documents = [document for document in documents if document not in web_documents]
     if any(document["kind"] == "Deployment" and document["metadata"]["name"] == "arkya-reports" for document in documents):
         documents = without_reports_component(documents, require_digests)
     if any(document["kind"] == "Deployment" and document["metadata"]["name"] == "arkya-inference" for document in documents):
@@ -296,16 +302,17 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
                     "path": path, "port": "http", "scheme": "HTTP",
                     "httpHeaders": [{"name": "Host", "value": host}]}, f"Incorrect {name} health probe")
 
-    # Preserve frontend, Discord, Identity storage and public gateway routing exactly.
+    # Preserve the running frontend, allowing only its explicit WebGL upstream.
     for key, document in frontend.items():
         expected = deepcopy(document)
-        app = "gateway" if "arkya-gateway" in key[2] else "identity" if "arkya-identity" in key[2] else None
+        app = next((name for name in ("gateway", "identity", "frontend") if "arkya-" + name in key[2]), None)
         if key[0] == "ConfigMap" and app:
             expected["metadata"]["name"] = config_names[app]
             expected["data"].update(
                 {"AllowedHosts": "api.arkya.online;arkya.online;admin.arkya.online", "Gateway__AdminEnabled": "true",
                  "Gateway__CharactersEnabled": "true", "Gateway__RealmGameEnabled": "true", "Gateway__RealmGameAddress": REALM_ADDRESS}
-                if app == "gateway" else {"Administration__Enabled": "true", "Administration__AllowClusterHttp": "true",
+                if app == "gateway" else {"ARKYA_UNITY_UPSTREAM": f"arkya-web-client.{NS}.svc.cluster.local:8080"}
+                if app == "frontend" else {"Administration__Enabled": "true", "Administration__AllowClusterHttp": "true",
                                              "InternalHttp__AllowedNetworks__0": "10.42.0.0/16"})
         elif key[0] == "Deployment" and app:
             container = expected["spec"]["template"]["spec"]["containers"][0]

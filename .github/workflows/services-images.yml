@@ -90,6 +90,8 @@ jobs:
         run: python3 -m unittest discover -s scripts/ci -p 'test_*.py' -v
       - name: Validate beta manifests
         run: python3 backend/deploy/gitops/Test-Manifests.py
+      - name: Validate the static WebGL client component
+        run: python3 backend/deploy/gitops/web-client-control/Validate-Manifests.py
       - name: Validate the inference component and activation preview
         run: python3 backend/deploy/gitops/inference-control/Test-Manifests.py
       - name: Validate the reports component and coexistence preview
@@ -97,18 +99,11 @@ jobs:
       - name: Validate operations manifest renderer
         shell: pwsh
         run: ./backend/deploy/realms/Test-Manifests.ps1
-      - name: Start site without a game server
+      - name: Verify site availability and the WebGL reverse proxy
         shell: bash
         run: |
           docker build --file sites/arkya/Dockerfile --tag arkya-frontend-ci sites/arkya
-          container=$(docker run --detach --read-only --tmpfs /tmp:rw,mode=1777 --user 101:101 --publish 127.0.0.1:18080:8080 arkya-frontend-ci)
-          trap 'docker logs "$container"; docker rm --force "$container"' EXIT
-          curl --fail --silent --show-error --retry 15 --retry-all-errors --retry-delay 1 http://127.0.0.1:18080/healthz
-          curl --fail --silent --show-error http://127.0.0.1:18080/play.html > /dev/null
-          curl --fail --silent --show-error --head http://127.0.0.1:18080/auth-client.mjs | grep -i 'Content-Type: application/javascript'
-          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:18080/game/build-config.json)" = 502
-          curl --fail --silent --show-error http://127.0.0.1:18080/ > /dev/null
-          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:18080/missing.html)" = 404
+          python3 scripts/ci/Test-FrontendProxy.py --image arkya-frontend-ci
 
   images:
     name: Image ${{ matrix.name }}

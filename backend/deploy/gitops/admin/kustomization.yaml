@@ -3,11 +3,20 @@ kind: Kustomization
 components:
 - ../inference-control
 - ../reports-control
+- ../web-client-control
 resources:
 - ../private-base
 - ../realm-control
 - player-management-network-policy.yaml
 patches:
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-frontend-config
+      namespace: arkya-beta
+    data:
+      ARKYA_UNITY_UPSTREAM: arkya-web-client.arkya-beta.svc.cluster.local:8080
 - target:
     kind: Deployment
     name: arkya-backend

@@ -8,11 +8,17 @@ existante **`arkya-beta`**. Le composant `../realm-control` prépare
 Les composants `../inference-control` et `../reports-control` déjà actifs
 portent le total à neuf services ; leurs activations et pins d'image sont
 conservées.
+Le composant `../web-client-control` ajoute le serveur statique WebGL dans
+`arkya-beta`, portant le total à dix applications. Le frontend configure
+`ARKYA_UNITY_UPSTREAM=arkya-web-client.arkya-beta.svc.cluster.local:8080` pour
+servir `/game/`. Un realm actif ne remplace pas ce téléchargement. Le digest
+du client provient d'une livraison Unity publiée ; voir les
+[règles de mise à jour et vérifications](../web-client-control/README.md).
 Le profil initial `frontend-discord` conserve son rendu et reste utilisable.
 
 ```text
 Traefik existant → http://192.168.100.218:80 → YARP
-  arkya.online       → frontend
+  arkya.online       → frontend → /game/ → client WebGL statique
   api.arkya.online   → Identity
     /v1/realms      → Characters → catalogue Realms
     /v1/characters  → Characters (session joueur, droits et propriété)

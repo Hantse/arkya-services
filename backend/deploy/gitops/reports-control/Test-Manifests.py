@@ -30,7 +30,9 @@ def render_preview(components):
             else:
                 rebased_resources.append(relative(value))
         source["resources"] = rebased_resources
-        source["components"] = [relative("../" + value + "-control") for value in components]
+        source["components"] = [relative(value) for value in source.get("components", [])
+                                if value not in ("../reports-control", "../inference-control")]
+        source["components"] += [relative("../" + value + "-control") for value in components]
         # The Admin profile uses local env files; copies keep Kustomize's loader boundary intact.
         for generator in source.get("configMapGenerator", []):
             for name in generator.get("envs", []):
