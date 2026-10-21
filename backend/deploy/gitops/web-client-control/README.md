@@ -47,3 +47,14 @@ Après synchronisation, vérifier publiquement `/game/build-config.json`
 (HTTP 200 et type JSON), les fichiers qu'il référence, puis le vrai chargement
 WebGL et l'admission WSS. Ces contrôles publics restent distincts du rendu
 hors cluster et de la santé du realm.
+
+## Vérification publique — 21 octobre 2026
+
+La [CI de la correction](https://github.com/Hantse/arkya-services/actions/runs/39583358091)
+a réussi, y compris le test Docker du proxy, puis promu les images dans
+`8d115ed`. À 12:22 (Bruxelles), le manifest public est passé de 502 à 200 JSON.
+Les quatre payloads répondent 200 avec leurs types attendus, sans en-tête
+de compression ajouté. Le vrai WebGL ouvert sur `/game/index.html` affiche
+la création de personnage ; aucune erreur console relevée, avec le seul
+avertissement FSR déjà connu. Cette vérification sans session joueur ne
+couvre pas la connexion Discord ni l'admission WSS dans le realm.
