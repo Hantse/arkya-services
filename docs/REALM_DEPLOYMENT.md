@@ -64,10 +64,76 @@ Les états affichés sont `Draft` (brouillon), `Pending` (en attente), `Deployin
 - Les noms de ressources sont déterministes et portent une identité de déploiement persistante. Une ressource étrangère ou une configuration modifiée manuellement provoque une erreur ; le service ne l'écrase pas.
 - Le worker peut créer une ressource absente, y compris après sa suppression externe. Cela relance un processus ; aucune reprise d'état de simulation n'est promise. Désactiver `Deployment:Enabled` avant une intervention de maintenance externe qui doit conserver un serveur arrêté.
 - Le worker observe aussi les realms prêts. Une perte de disponibilité quitte l'état prêt. Une erreur définitive ou un délai dépassé demande une nouvelle tentative depuis le backoffice après correction de sa cause.
-- Les namespaces et droits sont provisionnés par l'exploitation. Le compte de service a seulement `get/create` sur Deployments et Services dans ces namespaces, `get` sur les seuls Secrets `arkya-ghcr` et `arkya-dedicated`, et `create` sur les Secrets. Kubernetes ne limite pas `create` par nom ; Realms impose les noms fixes, la cible autorisée et l'identité du realm avant tout appel. Aucun droit de liste, modification ou suppression de Secret ni accès aux autres namespaces n'est accordé. Le Secret de registre source `arkya-beta/arkya-ghcr` doit être provisionné avant le rollout Realms ; voir le [contrat YAML du Secret](REALM_RUNTIME.md#provisionner-le-registre-source).
+- Les namespaces et droits sont provisionnés par l'exploitation. Le compte de service a `get/create/patch` sur Deployments et `get/create` sur Services dans ces namespaces, `get` sur les seuls Secrets `arkya-ghcr` et `arkya-dedicated`, et `create` sur les Secrets. `patch` est utilisé uniquement pour l'image d'un Deployment possédé, sur intention GitOps explicite décrite ci-dessous. Kubernetes ne limite pas `create` par nom ; Realms impose les noms fixes, la cible autorisée et l'identité du realm avant tout appel. Aucun droit de liste, modification ou suppression de Secret ni accès aux autres namespaces n'est accordé. Le Secret de registre source `arkya-beta/arkya-ghcr` doit être provisionné avant le rollout Realms ; voir le [contrat YAML du Secret](REALM_RUNTIME.md#provisionner-le-registre-source).
 - Il n'y a pas encore de suppression, d'arrêt, de mise à jour d'image ni d'autoscaling depuis le backoffice. Ces actions devront intégrer le drain, les sauvegardes et l'autorité des joueurs connectés.
 
 Les comptes restent globaux. Le rattachement `realmId` des personnages, les tickets d'admission et le catalogue public de sélection restent à implémenter suivant la [décision 0003](decisions/0003-realms-and-area-authority.md). Le nouveau catalogue est réservé aux opérateurs.
+
+### Mettre à jour une image par GitOps
+
+Changer seulement `Deployment:Profiles[*]:Image` conserve volontairement l'image
+figée des realms existants. Une release d'image doit ajouter une intention
+`Deployment:ImageReleases`, vide par défaut. Pour `beta-web`, le ConfigMap
+Realms du profil Argo `admin` porte les clés suivantes ; remplacer les deux
+digests par ceux vérifiés de la release précédente et de la nouvelle CI :
+
+```yaml
+Deployment__Profiles__0__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:<nouveau-digest>
+Deployment__ImageReleases__0__RealmId: beta-web
+Deployment__ImageReleases__0__ProfileId: beta-web
+Deployment__ImageReleases__0__Version: '1'
+Deployment__ImageReleases__0__PreviousImage: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:<digest-actuel>
+```
+
+La version est un entier positif strictement croissant par realm. Le nouveau
+digest vient exclusivement du profil autorisé, et la cible doit être liée
+explicitement au même `RealmId`. La topologie, les arguments, le protocole,
+les identifiants, les références de secrets et le namespace restent identiques.
+Une intention qui ne correspond pas au profil figé, à l'image précédente ou
+à une version déjà enregistrée est ignorée sans écriture ni déploiement.
+
+Publier ensemble les images client/dedicated issues du même commit CI, puis
+committer les pins et cette intention dans le YAML suivi par Argo CD. Le
+changement de ConfigMap généré provoque le redémarrage de Realms. Aucun
+`kubectl` ni changement direct de MongoDB n'est nécessaire. Mettre également
+à jour Characters lorsque le catalogue d'apparence est étendu : l'ancien
+dedicated valide ce catalogue et refuse les nouvelles options inconnues.
+
+Le worker attend un realm `Ready` (ou un ancien realm `Failed` sans release
+précédente), puis persiste par comparaison
+de version l'image et son intention avant de toucher Kubernetes. Cette
+écriture retire le realm du catalogue prêt pour interrompre les nouvelles
+admissions pendant la transition. Un rejeu conserve la même révision ; un
+processus obsolète ne peut remplacer une définition plus récente.
+
+Le patch Kubernetes vérifie le nom déterministe, le namespace, les labels de
+propriété et la configuration attendue complète. Seuls l'ancien digest
+annoncé et l'annotation `arkya.online/image-release` peuvent changer. Le
+`resourceVersion` est testé atomiquement avec l'ancienne image ; l'annotation
+de version doit encore correspondre à la transition précédente. Ce verrou
+empêche un ancien worker de rejouer une release après un retour volontaire à
+un digest historique. Toute autre dérive est refusée, sans modification des
+Services ni des Secrets existants.
+
+La stratégie demeure `Recreate`, une seule réplique et 30 secondes de grâce :
+le dedicated reçoit `SIGTERM` pour sauvegarder et libérer ses leases avant
+le lancement de son remplaçant. Une interruption des connexions est donc
+attendue. Après le patch, la readiness précédente est écartée ; la nouvelle
+génération doit être observée avec une réplique disponible et l'image
+attendue. Le digest prêt est conservé dans `ServerObservation.ReadyImage`.
+L'intention persistée reprend après redémarrage ; une release en échec est
+revérifiée avec la même intention, sans changer de révision à chaque essai.
+
+Conserver l'intention courante dans Git après réussite. Une configuration
+retirée, contradictoire ou de version inférieure ne gère plus un realm déjà
+promu et ne le rétrograde pas. Pour revenir à un digest historique, publier
+une nouvelle version supérieure avec l'image actuelle comme `PreviousImage`.
+Attendre la fin de la release courante avant d'en publier une nouvelle.
+Une transition précédente encore en échec ne peut être remplacée par une
+version supérieure : restaurer d'abord son intention et terminer sa reprise.
+Les validations unitaires couvrent les contrats et le faux cluster ; une
+admission dans le vrai client et un arrêt avec lease active restent les
+vérifications de déploiement à effectuer sur chaque nouvelle paire.
 
 ## Contrats d'administration
 

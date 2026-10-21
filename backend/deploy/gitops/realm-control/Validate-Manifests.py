@@ -31,11 +31,11 @@ def check_profile(documents):
             "Kubernetes credentials must be explicitly projected only into Realms")
     role = resources[("Role", NS, "arkya-realm-deployer")]
     require(role["rules"] == [
-        {"apiGroups": ["apps"], "resources": ["deployments"], "verbs": ["get", "create"]},
+        {"apiGroups": ["apps"], "resources": ["deployments"], "verbs": ["get", "create", "patch"]},
         {"apiGroups": [""], "resources": ["services"], "verbs": ["get", "create"]},
         {"apiGroups": [""], "resources": ["secrets"], "resourceNames": ["arkya-ghcr", "arkya-dedicated"], "verbs": ["get"]},
         {"apiGroups": [""], "resources": ["secrets"], "verbs": ["create"]},
-    ], "Realms may create/observe workloads and provision only the fixed registry/dedicated Secrets without listing or updating credentials")
+    ], "Realms may create/observe workloads, patch owned Deployment images and provision only the fixed registry/dedicated Secrets without listing or updating credentials")
     binding = resources[("RoleBinding", NS, "arkya-realm-deployer")]
     require(binding["subjects"] == [{"kind": "ServiceAccount", "namespace": OPERATIONS,
                                      "name": "arkya-realm-deployer"}] and

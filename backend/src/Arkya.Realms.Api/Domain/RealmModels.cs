@@ -18,9 +18,17 @@ public sealed record ServerDefinition(string Id, int Port, string[] Args)
 }
 public sealed record ProfileSnapshot(string Id, string Image, ServerDefinition[] Servers,
     string? EnvironmentSecretName, string? ImagePullSecretName);
-public sealed record ServerObservation(string Id, int ReadyReplicas, string? Address);
+public sealed record ServerObservation(string Id, int ReadyReplicas, string? Address)
+{
+    public string? ReadyImage { get; init; }
+}
+
+public sealed record RealmImageTransition(long Version, string PreviousImage, string Image, long PreviousVersion = 0);
 
 public sealed record RealmRecord(string RealmId, string DisplayName, string TargetId, string Namespace,
     ProfileSnapshot Profile, string DeploymentIdentity, long Revision, long Version, long? RequestedFromRevision,
     string Status, string? LastError, DateTimeOffset UpdatedAt, DateTimeOffset? DeploymentStartedAt,
-    ServerObservation[] Servers);
+    ServerObservation[] Servers)
+{
+    public RealmImageTransition? ImageRelease { get; init; }
+}

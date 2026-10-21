@@ -72,13 +72,15 @@ internal sealed class RealmDocument
     public DateTime UpdatedAt { get; set; }
     public DateTime? DeploymentStartedAt { get; set; }
     public ServerObservation[] Servers { get; set; } = [];
+    public RealmImageTransition? ImageRelease { get; set; }
 
     public RealmRecord ToRecord()
     {
         if (SchemaVersion != 1) throw new InvalidOperationException("Unsupported realm schema version.");
         return new(RealmId, DisplayName, TargetId, Namespace, Profile, DeploymentIdentity, Revision, Version,
             RequestedFromRevision, Status, LastError, new DateTimeOffset(UpdatedAt, TimeSpan.Zero),
-            DeploymentStartedAt is { } started ? new DateTimeOffset(started, TimeSpan.Zero) : null, Servers);
+            DeploymentStartedAt is { } started ? new DateTimeOffset(started, TimeSpan.Zero) : null, Servers)
+            { ImageRelease = ImageRelease };
     }
 
     public static RealmDocument From(RealmRecord realm) => new()
@@ -86,7 +88,8 @@ internal sealed class RealmDocument
         RealmId = realm.RealmId, DisplayName = realm.DisplayName, TargetId = realm.TargetId, Namespace = realm.Namespace,
         Profile = realm.Profile, DeploymentIdentity = realm.DeploymentIdentity, Revision = realm.Revision, Version = realm.Version,
         RequestedFromRevision = realm.RequestedFromRevision, Status = realm.Status, LastError = realm.LastError,
-        UpdatedAt = realm.UpdatedAt.UtcDateTime, DeploymentStartedAt = realm.DeploymentStartedAt?.UtcDateTime, Servers = realm.Servers
+        UpdatedAt = realm.UpdatedAt.UtcDateTime, DeploymentStartedAt = realm.DeploymentStartedAt?.UtcDateTime, Servers = realm.Servers,
+        ImageRelease = realm.ImageRelease
     };
 }
 

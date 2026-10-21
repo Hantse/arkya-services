@@ -15,6 +15,7 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
     IOptions<RealmRuntimeOptions>? runtime = null) : IRealmDeployer
 {
     private const string DedicatedSecretName = "arkya-dedicated";
+    private const string ImageReleaseAnnotation = "arkya.online/image-release";
     private readonly DeploymentOptions options = configured.Value;
     private readonly RealmRuntimeOptions runtimeOptions = runtime?.Value ?? new();
 
@@ -23,6 +24,8 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         if (!options.Enabled || !options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace &&
             (target.RealmId is null || target.RealmId == realm.RealmId)))
             throw new DeploymentFailure("target_unavailable");
+        if (realm.ImageRelease is not null && !RealmImageReleases.Authorizes(options, realm))
+            throw new DeploymentFailure("image_release_conflict");
         if (runtimeOptions.RegistryDockerConfigFile.Length > 0)
             await EnsureRegistrySecretAsync(realm, cancellationToken);
         if (runtimeOptions.DedicatedKeySeed.Length > 0)
@@ -31,7 +34,7 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         foreach (var server in realm.Profile.Servers)
         {
             var deployment = await EnsureAsync($"apis/apps/v1/namespaces/{realm.Namespace}/deployments",
-                DeploymentManifest(realm, server, runtimeOptions), cancellationToken);
+                DeploymentManifest(realm, server, runtimeOptions), cancellationToken, realm);
             var service = await EnsureAsync($"api/v1/namespaces/{realm.Namespace}/services",
                 ServiceManifest(realm, server), cancellationToken);
             if (deployment["status"]?["conditions"] is JsonArray conditions && conditions.Any(condition =>
@@ -46,7 +49,7 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             var address = ingress?["ip"]?.GetValue<string>() ?? ingress?["hostname"]?.GetValue<string>();
             if (server.Transport == "WebSocket") address = server.PublicEndpoint;
             if (address is { Length: > 253 } || address?.Any(char.IsControl) == true) address = null;
-            results.Add(new(server.Id, ready, address));
+            results.Add(new(server.Id, ready, address) { ReadyImage = ready == 1 ? realm.Profile.Image : null });
         }
         return results.ToArray();
     }
@@ -156,7 +159,8 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
     private static bool HasRegistryCredentials(JsonObject credentials) => credentials["auth"] is JsonValue property &&
         property.TryGetValue<string>(out var text) && !string.IsNullOrWhiteSpace(text) && !text.Any(char.IsControl);
 
-    private async Task<JsonObject> EnsureAsync(string collection, JsonObject desired, CancellationToken cancellationToken)
+    private async Task<JsonObject> EnsureAsync(string collection, JsonObject desired, CancellationToken cancellationToken,
+        RealmRecord? realm = null)
     {
         var resource = $"{collection}/{desired["metadata"]!["name"]!.GetValue<string>()}";
         var existing = await GetAsync(resource, cancellationToken);
@@ -173,11 +177,65 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         }
         if (existing["metadata"]?["deletionTimestamp"] is not null)
             throw new DeploymentFailure("resource_deleting");
-        if (!ContainsDesired(desired["metadata"]!["labels"], existing["metadata"]?["labels"]))
+        if (!MatchesOwnership(desired, existing))
             throw new DeploymentFailure("resource_ownership_conflict");
-        if (!ContainsDesired(desired["spec"], existing["spec"]))
-            throw new DeploymentFailure("resource_configuration_drift");
+        if (realm?.ImageRelease is { } release)
+        {
+            if (!RealmImageReleases.Authorizes(options, realm)) throw new DeploymentFailure("image_release_conflict");
+            if (ContainsDesired(desired["spec"], existing["spec"]))
+            {
+                if (ReleaseVersion(existing) != release.Version) throw new DeploymentFailure("image_release_conflict");
+            }
+            else
+            {
+                var previous = desired["spec"]!.DeepClone();
+                previous["template"]!["spec"]!["containers"]![0]!["image"] = release.PreviousImage;
+                if (!ContainsDesired(previous, existing["spec"]) || ReleaseVersion(existing) != release.PreviousVersion)
+                    throw new DeploymentFailure("resource_configuration_drift");
+                existing = await ReplaceImageAsync(resource, desired, existing, release, cancellationToken);
+            }
+        }
+        else if (!ContainsDesired(desired["spec"], existing["spec"])) throw new DeploymentFailure("resource_configuration_drift");
         return existing;
+    }
+
+    private static bool MatchesOwnership(JsonObject desired, JsonObject actual) =>
+        JsonNode.DeepEquals(desired["metadata"]!["name"], actual["metadata"]?["name"]) &&
+        JsonNode.DeepEquals(desired["metadata"]!["namespace"], actual["metadata"]?["namespace"]) &&
+        ContainsDesired(desired["metadata"]!["labels"], actual["metadata"]?["labels"]);
+
+    private static long ReleaseVersion(JsonObject deployment)
+    {
+        var value = deployment["metadata"]?["annotations"]?[ImageReleaseAnnotation];
+        if (value is null) return 0;
+        return value is JsonValue scalar && scalar.TryGetValue<string>(out var text) &&
+            long.TryParse(text, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out var version) && version > 0
+            ? version : -1;
+    }
+
+    private async Task<JsonObject> ReplaceImageAsync(string resource, JsonObject desired, JsonObject existing,
+        RealmImageTransition release, CancellationToken cancellationToken)
+    {
+        var resourceVersion = existing["metadata"]?["resourceVersion"]?.GetValue<string>();
+        if (string.IsNullOrWhiteSpace(resourceVersion)) throw new DeploymentFailure("resource_configuration_drift");
+        var annotations = existing["metadata"]?["annotations"]?.DeepClone().AsObject() ?? new JsonObject();
+        annotations[ImageReleaseAnnotation] = release.Version.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        var patch = new JsonArray(
+            new JsonObject { ["op"] = "test", ["path"] = "/metadata/resourceVersion", ["value"] = resourceVersion },
+            new JsonObject { ["op"] = "test", ["path"] = "/spec/template/spec/containers/0/image", ["value"] = release.PreviousImage },
+            new JsonObject { ["op"] = "replace", ["path"] = "/spec/template/spec/containers/0/image", ["value"] = release.Image },
+            new JsonObject { ["op"] = "add", ["path"] = "/metadata/annotations", ["value"] = annotations });
+        using var response = await SendAsync(HttpMethod.Patch, resource, patch, cancellationToken, "application/json-patch+json");
+        if (response.StatusCode is HttpStatusCode.Conflict or HttpStatusCode.UnprocessableEntity)
+            throw new DeploymentFailure("resource_conflict");
+        RequireSuccess(response);
+        var updated = await ReadAsync(response, cancellationToken);
+        if (!MatchesOwnership(desired, updated)) throw new DeploymentFailure("resource_ownership_conflict");
+        if (!ContainsDesired(desired["spec"], updated["spec"]) || ReleaseVersion(updated) != release.Version)
+            throw new DeploymentFailure("resource_configuration_drift");
+        // The PATCH response may still carry readiness for the previous generation.
+        updated.Remove("status");
+        return updated;
     }
 
     private async Task<JsonObject?> GetAsync(string resource, CancellationToken cancellationToken)
@@ -188,14 +246,15 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         return await ReadAsync(response, cancellationToken);
     }
 
-    private async Task<HttpResponseMessage> SendAsync(HttpMethod method, string path, JsonObject? body, CancellationToken cancellationToken)
+    private async Task<HttpResponseMessage> SendAsync(HttpMethod method, string path, JsonNode? body, CancellationToken cancellationToken,
+        string mediaType = "application/json")
     {
         // Projected service-account tokens are rotated by Kubernetes.
         var token = (await File.ReadAllTextAsync(options.TokenFile, cancellationToken)).Trim();
         if (token.Length is < 1 or > 32768 || token.Any(char.IsWhiteSpace)) throw new DeploymentFailure("cluster_credentials_invalid");
         using var request = new HttpRequestMessage(method, new Uri(new Uri(options.ApiServer.TrimEnd('/') + "/"), path));
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-        if (body is not null) request.Content = new StringContent(body.ToJsonString(), Encoding.UTF8, "application/json");
+        if (body is not null) request.Content = new StringContent(body.ToJsonString(), Encoding.UTF8, mediaType);
         return await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
     }
 
@@ -302,10 +361,13 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         }
         if (realm.Profile.ImagePullSecretName is { } pullSecret)
             pod["imagePullSecrets"] = new JsonArray(new JsonObject { ["name"] = pullSecret });
+        var metadata = new JsonObject { ["name"] = ResourceName(realm, server), ["namespace"] = realm.Namespace, ["labels"] = Labels(realm, server) };
+        if (realm.ImageRelease is { } release)
+            metadata["annotations"] = new JsonObject { [ImageReleaseAnnotation] = release.Version.ToString(System.Globalization.CultureInfo.InvariantCulture) };
         return new JsonObject
         {
             ["apiVersion"] = "apps/v1", ["kind"] = "Deployment",
-            ["metadata"] = new JsonObject { ["name"] = ResourceName(realm, server), ["namespace"] = realm.Namespace, ["labels"] = Labels(realm, server) },
+            ["metadata"] = metadata,
             ["spec"] = new JsonObject
             {
                 ["replicas"] = 1, ["revisionHistoryLimit"] = 1, ["progressDeadlineSeconds"] = server.Transport == "WebSocket" ? 600 : 240,
