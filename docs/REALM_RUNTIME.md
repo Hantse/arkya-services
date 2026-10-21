@@ -41,6 +41,16 @@ des accès nécessaires. Il vérifie les deux namespaces `arkya-beta` et
 `arkya-realms`. La connexion Kubernetes doit vérifier TLS. Il refuse de
 remplacer un Secret existant.
 
+`-Context` reprend exactement un nom enregistre dans le kubeconfig, visible
+avec `kubectl config get-contexts -o name`. Le script verifie d'abord cette
+liste locale, avant tout appel au cluster ou lecture du PAT. Un nom absent
+est refuse avec la liste disponible ; aucun contexte n'est selectionne ni
+modifie automatiquement. Si le cluster voulu n'apparait pas, fournir son
+fichier avec `-KubeConfig`, puis choisir un contexte de ce fichier. Le nom
+affiche dans Argo CD ne cree pas de contexte local. Les erreurs Kubernetes
+indiquent leur etape et une cause expurgee (reseau, TLS, authentification ou
+permissions), sans afficher le stderr brut ni un contenu de Secret.
+
 Utiliser un **PAT GitHub classique limité exactement à `read:packages`**,
 autorisé à lire le package privé `hantse/arkya-mmorpg-dedicated`. Toute autre
 portée, y compris une portée supplémentaire de lecture, est refusée. Le script

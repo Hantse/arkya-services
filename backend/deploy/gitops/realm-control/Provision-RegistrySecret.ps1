@@ -26,7 +26,7 @@ function Assert-ReadOnlyPackageScopes([string] $Scopes) {
     }
 }
 
-function Invoke-PrivateKubectl([string[]] $Arguments, [string] $InputText = $null) {
+function Invoke-PrivateKubectl([string[]] $Arguments, [string] $InputText = $null, [string] $Operation = 'appel kubectl') {
     $start = [Diagnostics.ProcessStartInfo]::new()
     $start.FileName = $kubectlPath
     $start.UseShellExecute = $false
@@ -46,6 +46,7 @@ function Invoke-PrivateKubectl([string[]] $Arguments, [string] $InputText = $nul
     }
     $process = [Diagnostics.Process]::new()
     $process.StartInfo = $start
+    $failureReason = "Le processus kubectl n'a pas pu aboutir."
     try {
         $previousInputEncoding = $null
         try {
@@ -67,12 +68,31 @@ function Invoke-PrivateKubectl([string[]] $Arguments, [string] $InputText = $nul
             finally { [Array]::Clear($inputBytes, 0, $inputBytes.Length) }
         }
         $process.StandardInput.Close()
-        if (!$process.WaitForExit(30000)) { $process.Kill(); throw 'kubectl timeout' }
-        [void]$errors.GetAwaiter().GetResult()
-        if ($process.ExitCode -ne 0) { throw 'kubectl failure' }
+        if (!$process.WaitForExit(30000)) {
+            $failureReason = 'Le delai de 30 secondes est depasse.'
+            $process.Kill()
+            throw 'kubectl timeout'
+        }
+        $errorText = $errors.GetAwaiter().GetResult()
+        if ($process.ExitCode -ne 0) {
+            $failureReason = switch -Regex ($errorText) {
+                '(?i)alreadyexists|already exists' { 'La ressource existe deja ; aucun ecrasement ne sera effectue.'; break }
+                '(?i)unauthorized|must be logged in|provide credentials' { "L'authentification Kubernetes a ete refusee ou a expire."; break }
+                '(?i)forbidden' { 'Les permissions Kubernetes ne permettent pas cette operation.'; break }
+                '(?i)x509|certificate|tls handshake' { "La verification TLS du cluster a echoue. Verifiez la CA du kubeconfig."; break }
+                '(?i)notfound|not found' { "La ressource requise n'existe pas dans le cluster choisi."; break }
+                '(?i)timed out|deadline exceeded|connection refused|no such host|network is unreachable|connectex|dial tcp' { "L'API Kubernetes est injoignable depuis cette machine."; break }
+                default { 'kubectl a refuse cette operation.' }
+            }
+            throw 'kubectl failure'
+        }
         return $output.GetAwaiter().GetResult().Trim()
     }
-    catch { throw "La vérification ou création Kubernetes a échoué. Aucun contenu de Secret ni erreur brute n'est affiché." }
+    catch {
+        $failure = [InvalidOperationException]::new("Echec Kubernetes ($Operation) : $failureReason")
+        $failure.Data['Arkya.SafeKubectlDiagnostic'] = $failure.Message
+        throw $failure
+    }
     finally { $process.Dispose() }
 }
 
@@ -127,10 +147,17 @@ $secretName = 'arkya-ghcr'
 $repository = 'hantse/arkya-mmorpg-dedicated'
 if ($Context -match '\p{C}') { throw 'Le nom de contexte est invalide.' }
 $kubectlPath = (Get-Command kubectl -CommandType Application -ErrorAction Stop).Source
-$kubectlArguments = @('--context', $Context, '--request-timeout=15s')
+$kubectlArguments = @('--request-timeout=15s')
 if ($KubeConfig) { $kubectlArguments += @('--kubeconfig', $KubeConfig) }
 
-$configuration = Invoke-PrivateKubectl @('config', 'view', '--minify', '--output=json') | ConvertFrom-Json
+$contextNames = @((Invoke-PrivateKubectl -Arguments @('config', 'get-contexts', '--output=name') -Operation 'lecture des contextes locaux') -split '\r?\n' |
+    Where-Object { ![string]::IsNullOrWhiteSpace($_) })
+if ($contextNames -cnotcontains $Context) {
+    $availableContexts = if ($contextNames.Count) { $contextNames -join ', ' } else { '(aucun)' }
+    throw "Le contexte Kubernetes '$Context' est absent du kubeconfig utilise. Contextes disponibles : $availableContexts. Indiquez le fichier du cluster avec -KubeConfig. Aucun appel au cluster ni lecture du PAT n'a ete effectue."
+}
+$kubectlArguments += @('--context', $Context)
+$configuration = Invoke-PrivateKubectl -Arguments @('config', 'view', '--minify', '--output=json') -Operation 'lecture du contexte selectionne' | ConvertFrom-Json
 if (@($configuration.contexts).Count -ne 1 -or $configuration.contexts[0].name -ne $Context -or @($configuration.clusters).Count -ne 1) {
     throw 'Choisissez explicitement un contexte Arkya existant.'
 }
@@ -142,12 +169,12 @@ if ($endpoint.Scheme -ne 'https' -or $endpoint.UserInfo -or $endpoint.Query -or 
 }
 Write-Output "Contexte : $Context ; API : $($endpoint.AbsoluteUri) ; namespace : $namespace."
 foreach ($requiredNamespace in @($namespace, 'arkya-beta-realm')) {
-    if ((Invoke-PrivateKubectl @('get', 'namespace', $requiredNamespace, '--output=name')) -ne "namespace/$requiredNamespace") {
+    if ((Invoke-PrivateKubectl -Arguments @('get', 'namespace', $requiredNamespace, '--output=name') -Operation "verification du namespace $requiredNamespace") -ne "namespace/$requiredNamespace") {
         throw 'Un namespace Arkya requis est absent.'
     }
 }
-$deployment = Invoke-PrivateKubectl @('get', 'deployment', 'arkya-realms', '--namespace', $namespace,
-    '--output=jsonpath={.metadata.name}{"|"}{.metadata.labels.app\.kubernetes\.io/name}{"|"}{.spec.template.spec.containers[*].image}')
+$deployment = Invoke-PrivateKubectl -Arguments @('get', 'deployment', 'arkya-realms', '--namespace', $namespace,
+    '--output=jsonpath={.metadata.name}{"|"}{.metadata.labels.app\.kubernetes\.io/name}{"|"}{.spec.template.spec.containers[*].image}') -Operation 'verification du Deployment Realms'
 $fields = $deployment.Split('|')
 if ($fields.Count -ne 3 -or $fields[0] -ne 'arkya-realms' -or $fields[1] -ne 'arkya-realms' -or
     $fields[2] -notmatch '^ghcr\.io/hantse/arkya-services-realms@sha256:[a-f0-9]{64}$') {
@@ -222,11 +249,14 @@ try {
         data = @{ '.dockerconfigjson' = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($dockerJson)) }
     } | ConvertTo-Json -Depth 5 -Compress
     $stage = 'création exclusive du Secret arkya-ghcr dans arkya-beta'
-    $created = Invoke-PrivateKubectl @('create', '--namespace', $namespace, '--filename=-', '--output=name') $secretJson
+    $created = Invoke-PrivateKubectl -Arguments @('create', '--namespace', $namespace, '--filename=-', '--output=name') -InputText $secretJson -Operation 'creation du Secret de registre'
     if ($created -ne 'secret/arkya-ghcr') { throw 'Unexpected Kubernetes create response' }
     Write-Output 'Secret arkya-ghcr créé dans arkya-beta.'
 }
-catch { throw "Échec : $stage. Aucune valeur privée ni erreur brute n’est affichée ; aucun Secret existant n’a été écrasé." }
+catch {
+    $safeDetail = if ($_.Exception.Data.Contains('Arkya.SafeKubectlDiagnostic')) { ' ' + $_.Exception.Data['Arkya.SafeKubectlDiagnostic'] } else { '' }
+    throw "Échec : $stage.$safeDetail Aucune valeur privée ni erreur brute n’est affichée ; aucun Secret existant n’a été écrasé."
+}
 finally {
     if ($authBytes) { [Array]::Clear($authBytes, 0, $authBytes.Length) }
     if ($request) { $request.Headers.Clear(); $request.Dispose() }
