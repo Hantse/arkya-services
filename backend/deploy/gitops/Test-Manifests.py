@@ -511,8 +511,9 @@ def check_bootstrap(documents, bootstrap_project, *, frontend_discord=False):
     require({(item["group"], item["kind"]) for item in project["spec"]["namespaceResourceWhitelist"]} == {
         ("", "ConfigMap"), ("", "Service"), ("", "PersistentVolumeClaim"), ("apps", "Deployment"),
         ("networking.k8s.io", "NetworkPolicy"), ("networking.k8s.io", "Ingress"),
-        ("", "ServiceAccount"), ("rbac.authorization.k8s.io", "Role"), ("rbac.authorization.k8s.io", "RoleBinding")},
-            "The workload project must allow only its declared workload types")
+        ("", "ServiceAccount"), ("", "Pod"), ("apps", "ReplicaSet"),
+        ("rbac.authorization.k8s.io", "Role"), ("rbac.authorization.k8s.io", "RoleBinding")},
+            "The workload project must allow declared workloads and their observable Pod/ReplicaSet children")
     require(len(resources) == 2, "Unexpected bootstrap resources")
     require(identity(bootstrap_project) == ("AppProject", "argocd", "arkya-bootstrap"),
             "The parent needs a distinct administrative bootstrap project")

@@ -66,8 +66,11 @@ l'activation de ce profil. Argo CD applique les changements sans commande
 `kubectl apply`, sans nouvelle Application et sans modifier les PVC existants.
 Les étapes d'installation ci-dessous restent utiles pour un nouveau cluster.
 
-L'activation utilise uniquement des Secrets déjà provisionnés. Aucun Secret
-ni identifiant n'est écrit dans Git. Seul Realms reçoit le compte de service
+Le profil réutilise les Secrets interservices déjà provisionnés et requiert
+aussi le Secret de registre `arkya-ghcr` dans `arkya-beta`. Une référence
+dans un Deployment ne prouve pas que ce Secret existe ; son absence a été
+constatée pendant le rollout décrit ci-dessous. Aucun Secret ni identifiant
+n'est écrit dans Git. Seul Realms reçoit le compte de service
 `arkya-realm-deployer` et un jeton projeté renouvelable, sans montage
 automatique. Le rôle cible autorise seulement `get/create` sur les
 Deployments et Services du namespace du realm. Il permet aussi de lire
@@ -126,8 +129,8 @@ persistée ni dans Git, ni dans les logs, ni dans le profil MongoDB et reste
 absente des DTO administrateur. La nouvelle image Unity
 doit accepter l'opt-in HTTP privé de cluster ; l'ancien digest ne doit pas
 être utilisé pour lancer ce profil. Aucun Secret n'est requis dans le
-namespace cible à copier manuellement. Realms seul reçoit le fichier
-`.dockerconfigjson` du Secret existant `arkya-ghcr`, monté en lecture seule,
+namespace cible à copier manuellement. Realms attend le fichier
+`.dockerconfigjson` du Secret source `arkya-ghcr`, monté en lecture seule,
 puis provisionne ce même nom dans le namespace approuvé avant le Deployment.
 Le profil référence `ImagePullSecretName=arkya-ghcr`. Les identifiants du
 registre n'apparaissent ni dans Git, ni dans les logs, DTO ou profils MongoDB.
@@ -312,3 +315,29 @@ existants ; aucun nouveau domaine, certificat ou Ingress n'est nécessaire.
 Voir le [composant realm](../realm-control/README.md) pour le RBAC et les
 sélecteurs réseau. Une route prête ne valide pas à elle seule l'admission
 d'un client réel.
+
+Dans Argo CD 3.3.9, `namespaceResourceWhitelist` filtre également les enfants
+de l'arbre : autoriser Deployment seul masque ReplicaSet et Pod. L'ajout
+diagnostic du 21 octobre 2026 vers 00:33 UTC autorise ces deux types dans le
+projet existant, sans modifier le rôle Realms, les Secrets, les applications
+ou les namespaces autorisés. Il est conservé séparément dans
+`../realm-control/project-observability.patch.yaml`, avec un test exact de
+l'ancienne liste de neuf types avant deux ajouts. Le patch historique du
+20 octobre reste intact.
+
+Vérifier la révision courante dans le manifeste **Live** du Deployment :
+`observedGeneration`, `updatedReplicas` et conditions `Progressing` et
+`ReplicaFailure`, puis le ReplicaSet et le Pod courants. Un ancien replica
+disponible peut encore répondre pendant qu'une nouvelle révision échoue.
+
+## État observé le 21 octobre 2026 à 00:40 UTC
+
+Argo a synchronisé les 48 ressources de `a635317` avec le résultat
+**SyncSucceeded**. Les nouvelles configurations Characters et Gateway sont
+**Healthy**. Le nouveau pod Realms est bloqué en **FailedMount** : le Secret
+source **`arkya-ghcr` est absent de `arkya-beta`**. Les références de registre
+déjà présentes dans les manifests ne prouvaient pas son provisionnement.
+L'ancien pod Realms reste Ready ; cette disponibilité ne valide pas le
+nouveau déployeur. L'activation complète et le lancement du dedicated
+restent à vérifier après provisionnement du Secret source et réussite du
+rollout Realms.

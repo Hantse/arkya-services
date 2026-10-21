@@ -56,6 +56,33 @@ vivant. Modifier ce modèle ne met pas à jour le projet vivant en l'absence
 de propriétaire Git correspondant ; ne pas l'appliquer pour remplacer la
 configuration réelle.
 
+## Observation des rollouts dans Argo
+
+Argo CD **3.3.9** filtre aussi les enfants du Deployment selon
+`namespaceResourceWhitelist`. Sans `Pod` et `apps/ReplicaSet`, l'arbre et
+la vue Pods restent vides même si Kubernetes les a créés. Ouvrir un nom de
+ReplicaSet directement ne contourne pas ce filtre : l'API exige qu'il
+appartienne à l'arbre autorisé de l'Application.
+
+L'ajout de ces deux types a été appliqué et relu dans Argo pour le diagnostic
+du **21 octobre 2026 vers 00:33 UTC**, séparément de la correction du 20 octobre.
+`project-observability.patch.yaml` conserve trois opérations : test de la
+liste vivante exacte de neuf types, puis ajout de `Pod` et `ReplicaSet`.
+La liste vivante compte désormais onze types, dans cet ordre d'ajout.
+Il n'altère ni les autres listes, ni la limite Namespace, ni le rôle Realms,
+ni les droits sur les Secrets. L'allowlist du projet n'est pas un droit de
+lecture distinct : elle autorise également Argo à appliquer ces types.
+Ce composant ne déclare aucun Pod ou ReplicaSet ; ils restent créés par
+les contrôleurs Kubernetes des Deployments.
+
+Pour diagnostiquer un rollout, examiner le manifeste **Live** du Deployment
+et ses événements : `metadata.generation`, `status.observedGeneration`,
+`updatedReplicas`, puis les conditions `ReplicaFailure` et `Progressing`.
+Un replica ancien disponible ou une API répondant ne prouve pas que la
+nouvelle révision est prête. Une fois les enfants visibles, consulter le
+ReplicaSet courant, l'état des conteneurs et les événements/logs du Pod.
+Voir le [filtrage dans le contrôleur Argo 3.3.9](https://github.com/argoproj/argo-cd/blob/v3.3.9/controller/appcontroller.go#L580-L595).
+
 La clé dédiée est dérivée par Realms à partir d'une graine existante.
 Avant les workloads, Realms crée le Secret Opaque fixe `arkya-dedicated`
 dans le namespace du realm ; ses entrées sont indexées par ID de serveur
@@ -69,14 +96,25 @@ Le profil fixe `ARKYA_CHARACTERS_URL` sur Characters en HTTP privé, avec
 une autorisation explicite du transport dans le nouveau dedicated. La
 validation se limite aux origines Kubernetes autorisées ; les autres
 destinations conservent HTTPS. L'image privée est épinglée par digest.
-Le Secret de registre existant `arkya-ghcr` de `arkya-beta` est monté en
-lecture seule uniquement dans Realms, via
+Le profil requiert le Secret de registre source `arkya-ghcr` dans
+`arkya-beta`, à monter en lecture seule uniquement dans Realms, via
 `RealmRuntime__RegistryDockerConfigFile=/var/run/secrets/arkya-registry/config.json`.
 Avant de créer le Deployment, Realms valide puis provisionne le Secret
 `arkya-ghcr` dans le namespace autorisé et le référence comme
 `ImagePullSecretName`. Les identifiants ne passent ni dans Git, ni dans les
 logs, API ou profils MongoDB. Le Secret cible reste détenu par Realms ;
 aucun Secret déclaratif ni droit Argo sur le type Secret n'est ajouté.
+
+### État observé le 21 octobre 2026 à 00:40 UTC
+
+Argo a terminé la synchronisation des 48 ressources de `a635317`
+(`SyncSucceeded`) ; Characters et Gateway utilisent leur nouvelle
+configuration Healthy. Le nouveau pod Realms est toutefois en FailedMount,
+car **`arkya-ghcr` n'existe pas dans le namespace source `arkya-beta`**.
+Ses références antérieures dans les Deployments ne prouvaient pas sa
+présence. L'ancien pod Realms reste Ready. La nouvelle copie des Secrets
+vers la cible et le lancement du dedicated ne sont donc pas encore validés ;
+le Secret source doit être provisionné puis le rollout Realms réussir.
 
 Le TLS public utilise le certificat existant de `api.arkya.online`.
 Le namespace cible ne requiert aucun certificat, Ingress, Secret à copier

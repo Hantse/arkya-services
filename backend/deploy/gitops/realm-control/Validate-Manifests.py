@@ -92,6 +92,16 @@ def check_project_patch():
             "The owning project must already permit Namespace creation")
     require(all(part in project["spec"] for part in ("destinations", "namespaceResourceWhitelist")),
             "The project patch must target existing lists")
+    observations = yaml.safe_load((ROOT / "project-observability.patch.yaml").read_text(encoding="utf-8"))
+    initial_whitelist = [{"group": group, "kind": kind} for group, kind in [
+        ("", "ConfigMap"), ("", "Service"), ("", "PersistentVolumeClaim"), ("apps", "Deployment"),
+        ("networking.k8s.io", "NetworkPolicy"), ("networking.k8s.io", "Ingress"), ("", "ServiceAccount"),
+        ("rbac.authorization.k8s.io", "Role"), ("rbac.authorization.k8s.io", "RoleBinding")]]
+    require(observations == [
+        {"op": "test", "path": "/spec/namespaceResourceWhitelist", "value": initial_whitelist},
+        {"op": "add", "path": "/spec/namespaceResourceWhitelist/-", "value": {"group": "", "kind": "Pod"}},
+        {"op": "add", "path": "/spec/namespaceResourceWhitelist/-", "value": {"group": "apps", "kind": "ReplicaSet"}},
+    ], "The observability patch must guard the exact observed list and append only Pod and ReplicaSet")
 
 
 if __name__ == "__main__":
