@@ -110,9 +110,47 @@ deux PVC de clés et Discord. Il ajoute Characters, les connexions privées
 Admin vers Identity/Characters et les règles réseau correspondantes. La
 connexion MongoDB Content existante est utilisée avec la base distincte
 `arkya_characters` ; le principal de cette installation dispose déjà des droits
-nécessaires. Ce profil ne requiert ni nouveau Secret ni permission Kubernetes.
-Les routes publiques Characters et les dedicateds restent désactivés. Le
-profil complet ne doit pas être appliqué à l'aveugle par-dessus l'installation.
+nécessaires. Le profil active l'allowlist publique exacte Characters pour
+le catalogue, les personnages et l'admission : session joueur, propriété,
+ban et accès bêta restent contrôlés par les services. Les routes `/admin`
+et `/internal/game` restent absentes du routage public. Il active également
+le déployeur Realms pour `beta-web`, dans le namespace réservé
+`arkya-beta-realm`, avec un seul dedicated `island` en WebSocket/TCP `17943`.
+La gateway existante publie uniquement la route de jeu
+`wss://api.arkya.online/game/beta-web/` vers son Service privé stable.
+
+Le compte de service projeté est monté seulement dans Realms. Son rôle dans
+le namespace cible autorise `get/create` sur Deployments et Services,
+`get` sur les seuls Secrets `arkya-ghcr` et `arkya-dedicated`, et `create` sur les Secrets. Kubernetes
+ne limite pas `create` par nom ; Realms valide le nom fixe et le namespace.
+Il n'a aucun droit de liste, modification ou suppression de Secret ni accès
+à un autre namespace. Les ressources de contrôle sont
+déclarées dans [realm-control](../backend/deploy/gitops/realm-control/README.md).
+L'Application Argo vivante s'appelle `arkya-beta`, suit le chemin `admin`
+sur `master` et utilise le projet `arkya-beta`. Les permissions du projet
+ont été corrigées et vérifiées dans Argo le 20 octobre 2026 à 21:15 UTC
+(23:15 à Bruxelles) : destination du realm et types RBAC autorisés,
+interdiction globale cluster retirée et seul Namespace `arkya-beta-realm`
+autorisé par nom. Aucun propriétaire Git actif du projet n'a été observé.
+Le modèle bootstrap générique reste plus large pour son installation
+multi-namespace et n'actualise pas automatiquement ce projet réel. Le patch
+historique de huit opérations garde des préconditions et ne doit pas être
+rejoué sur la configuration déjà corrigée.
+
+Realms et Characters reçoivent la graine dédiée depuis un Secret existant et
+dérivent une clé liée au couple `beta-web/island`. Avant les workloads, Realms
+provisionne le Secret Opaque fixe `arkya-dedicated`, indexé par ID de serveur.
+Le Deployment reçoit `ARKYA_DEDICATED_KEY` par `secretKeyRef` vers l'entrée
+`island`, sans valeur de clé dans sa configuration. La clé reste absente de
+Git, des logs, du profil MongoDB et des DTO.
+Le nouveau dedicated autorise explicitement HTTP privé vers l'origine
+Characters Kubernetes complète. Characters exige sa clé, contrôle le pair
+direct et réserve ce transport aux routes internes de jeu. Aucun nouveau
+Secret à copier manuellement, certificat, Ingress ou LoadBalancer n'est
+requis dans le realm. Realms reçoit en lecture seule le Docker config du
+Secret de registre existant, le valide et crée `arkya-ghcr` dans la cible
+avant le Deployment. Les identifiants ne passent ni dans Git, ni dans les
+logs, API ou profils MongoDB. Aucun droit Argo sur les Secrets n'est ajouté.
 
 Infrastructure utilise le déployeur existant : choisir cible/profil, créer la
 définition, relire la fiche, puis déclencher le déploiement. Tous les dedicateds

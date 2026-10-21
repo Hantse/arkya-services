@@ -460,8 +460,13 @@ def check_direct_application(application, workload_documents, project, profile="
     require(spec["destination"] == {"server": "https://kubernetes.default.svc", "namespace": FRONTEND_NAMESPACE}
             and spec["destination"] in project["spec"]["destinations"],
             "The direct application's destination must be allowed by its project")
-    require(all(d["metadata"].get("namespace", FRONTEND_NAMESPACE) == FRONTEND_NAMESPACE for d in workload_documents),
-            "The direct destination must match the explicit workload namespaces")
+    allowed_namespaces = {item["namespace"] for item in project["spec"]["destinations"]
+                          if item["server"] == spec["destination"]["server"]}
+    expected_namespaces = {FRONTEND_NAMESPACE, "arkya-beta-realm"} if profile == "admin" else {FRONTEND_NAMESPACE}
+    require(expected_namespaces.issubset(allowed_namespaces) and
+            all(d["metadata"].get("namespace") in expected_namespaces or
+                d["kind"] == "Namespace" and d["metadata"]["name"] in expected_namespaces for d in workload_documents),
+            "The direct profile may use only its explicit project-approved namespaces")
     require("automated" not in spec["syncPolicy"] and {
         "CreateNamespace=true", "FailOnSharedResource=true"}.issubset(spec["syncPolicy"]["syncOptions"]),
             "The direct application must start manually and detect competing ownership")
@@ -484,7 +489,7 @@ def check_bootstrap(documents, bootstrap_project, *, frontend_discord=False):
         ("git@github.com:Hantse/arkya-services.git", "backend/deploy/gitops/beta", "master"),
         ("git@github.com:Hantse/arkya-mmorpg.git", "deploy/gitops/beta", "main"),
     }
-    expected_namespaces = NAMESPACES | {GAME, FRONTEND_NAMESPACE}
+    expected_namespaces = NAMESPACES | {GAME, FRONTEND_NAMESPACE, "arkya-beta-realm"}
     destination_namespace = IDENTITY
     if frontend_discord:
         expected_sources = {
@@ -505,7 +510,8 @@ def check_bootstrap(documents, bootstrap_project, *, frontend_discord=False):
     require(project["spec"]["clusterResourceWhitelist"] == [{"group": "", "kind": "Namespace"}], "Unnecessary cluster-wide Argo permissions")
     require({(item["group"], item["kind"]) for item in project["spec"]["namespaceResourceWhitelist"]} == {
         ("", "ConfigMap"), ("", "Service"), ("", "PersistentVolumeClaim"), ("apps", "Deployment"),
-        ("networking.k8s.io", "NetworkPolicy"), ("networking.k8s.io", "Ingress")},
+        ("networking.k8s.io", "NetworkPolicy"), ("networking.k8s.io", "Ingress"),
+        ("", "ServiceAccount"), ("rbac.authorization.k8s.io", "Role"), ("rbac.authorization.k8s.io", "RoleBinding")},
             "The workload project must allow only its declared workload types")
     require(len(resources) == 2, "Unexpected bootstrap resources")
     require(identity(bootstrap_project) == ("AppProject", "argocd", "arkya-bootstrap"),

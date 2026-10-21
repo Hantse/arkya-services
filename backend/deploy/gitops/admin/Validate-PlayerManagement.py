@@ -1,4 +1,4 @@
-"""Validate the in-place Admin/Identity/Characters profile without cluster access."""
+"""Validate Admin, player APIs and the scoped realm deployer without cluster access."""
 
 from copy import deepcopy
 import argparse
@@ -12,8 +12,14 @@ spec = importlib.util.spec_from_file_location("arkya_manifest_checks", ROOT.pare
 checks = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(checks)
 NS = "arkya-beta"
+REALM_NS = "arkya-beta-realm"
+REALM_ADDRESS = f"http://arkya-beta-web-island.{REALM_NS}.svc.cluster.local:17943/"
+GAME_ENDPOINT = "wss://api.arkya.online/game/beta-web/"
 APPS = {"identity", "gateway", "frontend", "admin", "content", "realms", "characters"}
 require = checks.require
+control_spec = importlib.util.spec_from_file_location("arkya_realm_control", ROOT.parent / "realm-control" / "Validate-Manifests.py")
+control = importlib.util.module_from_spec(control_spec)
+control_spec.loader.exec_module(control)
 
 
 def secret_env(name, secret, key):
@@ -179,13 +185,19 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
     frontend_documents = frontend_documents or checks.render(ROOT.parent / "frontend-discord")
     beta_documents = beta_documents or checks.render(ROOT.parent / "beta")
     resources, frontend, beta = map(checks.index, (documents, frontend_documents, beta_documents))
-    require(len(resources) == 31 and {d["kind"] for d in documents} == {
-        "Deployment", "ConfigMap", "Service", "NetworkPolicy", "PersistentVolumeClaim"},
-        "Admin must render seven applications and two key PVCs, with no new resource kinds or declarative Secret")
-    require(all(d["metadata"].get("namespace") == NS for d in documents),
-            "Every resource must remain in the existing arkya-beta namespace")
+    require(len(resources) == 40 and {d["kind"] for d in documents} == {
+        "Deployment", "ConfigMap", "Service", "NetworkPolicy", "PersistentVolumeClaim",
+        "Namespace", "ServiceAccount", "Role", "RoleBinding"},
+        "Admin must render seven applications, two preserved PVCs and nine scoped realm resources without a Secret or Ingress")
+    control_documents = checks.render(ROOT.parent / "realm-control")
+    for key, document in control.check_profile(control_documents).items():
+        require(resources.get(key) == document, f"Realm control resource was changed by the Admin overlay: {key}")
+    control.check_project_patch()
+    require(all(d["metadata"].get("namespace") in {NS, REALM_NS} or
+                d["kind"] == "Namespace" and d["metadata"]["name"] == REALM_NS for d in documents),
+            "Resources must remain within the services namespace and the one approved realm namespace")
     for kind in ("Deployment", "Service", "ConfigMap"):
-        names = {d["metadata"]["name"] for d in documents if d["kind"] == kind}
+        names = {d["metadata"]["name"] for d in documents if d["kind"] == kind and d["metadata"].get("namespace") == NS}
         expected = {"arkya-" + app for app in APPS}
         require(names == expected if kind != "ConfigMap" else
                 all(any(name.startswith(prefix + "-config-") for prefix in expected) for name in names)
@@ -197,7 +209,10 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
     characters_env = [
         secret_env("Mongo__ConnectionString", "arkya-content-secrets", "Mongo__ConnectionString"),
         secret_env("Identity__ServiceKey", "arkya-identity-secrets", "ServiceAuthentication__Key"),
-        secret_env("PlayerAdministration__CharactersKeySeed", "arkya-admin-secrets", "RealmsApi__AdminKey")]
+        secret_env("PlayerAdministration__CharactersKeySeed", "arkya-admin-secrets", "RealmsApi__AdminKey"),
+        secret_env("RealmRuntime__DedicatedKeySeed", "arkya-admin-secrets", "RealmsApi__AdminKey"),
+        secret_env("Realms__ServiceKey", "arkya-realms-secrets", "GameAccess__ServiceKey")]
+    realms_env = [secret_env("RealmRuntime__DedicatedKeySeed", "arkya-admin-secrets", "RealmsApi__AdminKey")]
     for app in sorted(APPS):
         name = "arkya-" + app
         deployment = resources[("Deployment", NS, name)]
@@ -208,8 +223,19 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
         require(container["image"] == original_container["image"] and
                 re.fullmatch(r"ghcr\.io/hantse/arkya-services-" + app + r"@sha256:[0-9a-f]{64}", container["image"]),
                 f"{name} must inherit its CI-promoted digest")
-        require(pod["automountServiceAccountToken"] is False and "serviceAccountName" not in pod,
-                f"{name} must not acquire Kubernetes credentials")
+        require(pod["automountServiceAccountToken"] is False,
+                f"{name} must not receive the automatic Kubernetes credential volume")
+        projected = [volume for volume in pod["volumes"] if "projected" in volume]
+        if app == "realms":
+            require(pod.get("serviceAccountName") == "arkya-realm-deployer" and projected == [{
+                "name": "kubernetes-api", "projected": {"defaultMode": 288, "sources": [
+                    {"serviceAccountToken": {"expirationSeconds": 3600, "path": "token"}},
+                    {"configMap": {"name": "kube-root-ca.crt", "items": [{"key": "ca.crt", "path": "ca.crt"}]}}
+                ]}}] and {"name": "kubernetes-api", "mountPath": "/var/run/secrets/arkya-kubernetes", "readOnly": True}
+                in container["volumeMounts"], "Realms must receive only its explicit rotating Kubernetes token and CA")
+        else:
+            require("serviceAccountName" not in pod and not projected,
+                    f"{name} must not acquire Kubernetes credentials")
         require(pod["securityContext"] == original_pod["securityContext"] and
                 container["securityContext"] == original_container["securityContext"] and
                 container["resources"] == original_container["resources"],
@@ -217,20 +243,28 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
         expected_secrets = [] if app in {"frontend", "gateway", "characters"} else [name + "-secrets"]
         require([e["secretRef"]["name"] for e in container["envFrom"] if "secretRef" in e] == expected_secrets,
                 f"{name} must preserve existing envFrom credentials; Characters uses exact key references")
-        expected_env = {"identity": identity_env, "admin": admin_env, "characters": characters_env}.get(app, [])
+        expected_env = {"identity": identity_env, "admin": admin_env, "characters": characters_env, "realms": realms_env}.get(app, [])
         require(container.get("env", []) == expected_env, f"Incorrect explicit Secret references in {name}")
-        require(not any("secret" in volume for volume in pod["volumes"]) and
+        secret_volumes = [volume for volume in pod["volumes"] if "secret" in volume]
+        registry_volume = {"name": "registry-credentials", "secret": {
+            "secretName": "arkya-ghcr", "defaultMode": 288,
+            "items": [{"key": ".dockerconfigjson", "path": "config.json"}]}}
+        require(secret_volumes == ([registry_volume] if app == "realms" else []) and
                 not any(port["containerPort"] == 8443 for port in container["ports"]),
-                f"{name} must not require TLS certificates or CA mounts")
+                f"{name} must retain only the exact Realms registry credential mount and no listener TLS credentials")
+        if app == "realms":
+            require({"name": "registry-credentials", "mountPath": "/var/run/secrets/arkya-registry", "readOnly": True}
+                    in container["volumeMounts"], "The registry Docker configuration must be read-only and mounted only in Realms")
         config_name, = [e["configMapRef"]["name"] for e in container["envFrom"] if "configMapRef" in e]
         require(re.fullmatch(re.escape(name + "-config-") + r"[a-z0-9]{10}", config_name),
                 f"{name} configuration must trigger a rollout")
         config_names[app] = config_name
         config = resources[("ConfigMap", NS, config_name)]["data"]
         configs[app] = config
-        require(not any("Certificate" in key or key == "SSL_CERT_FILE" for key in config),
-                f"{name} must not retain certificate configuration")
-        require(not any(any(part in key for part in ("ConnectionString", "ServiceKey", "Password", "ClientSecret", "AdminKey"))
+        require(not any(("Certificate" in key and not (app == "realms" and key == "Deployment__CertificateAuthorityFile"))
+                        or key == "SSL_CERT_FILE" for key in config),
+                f"{name} must not retain listener certificate configuration")
+        require(not any(any(part in key for part in ("ConnectionString", "ServiceKey", "Password", "ClientSecret", "AdminKey", "KeySeed"))
                         or key.endswith("__Key") for key in config), f"Credentials found in {name} ConfigMap")
         service = resources[("Service", NS, name)]["spec"]
         labels = deployment["spec"]["template"]["metadata"]["labels"]
@@ -244,7 +278,7 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
         require(policy["podSelector"] == {"matchLabels": service["selector"]} and policy["policyTypes"] == ["Ingress"],
                 f"NetworkPolicy selector mismatch for {name}")
         if app != "gateway":
-            expected = ingress("admin", nodes=True) if app == "characters" else ingress(
+            expected = ingress("admin", "gateway", nodes=True) if app == "characters" else ingress(
                 "admin" if app in {"content", "realms"} else "gateway")
             require(policy["ingress"] == expected, f"Unexpected ingress in {name}")
         if app in {"content", "realms", "characters"}:
@@ -254,7 +288,8 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
             require(not any(k.startswith("Kestrel__Endpoints__Internal__") for k in config),
                     f"Inherited TLS listener remains in {name}")
             host = f"{name}.{NS}.svc.cluster.local"
-            require(config["AllowedHosts"] == f"{name};{host}", f"Unexpected private hosts in {name}")
+            expected_hosts = ("api.arkya.online;" if app == "characters" else "") + f"{name};{host}"
+            require(config["AllowedHosts"] == expected_hosts, f"Unexpected public/private hosts in {name}")
             for probe in ("startupProbe", "readinessProbe", "livenessProbe"):
                 path = "/health" if app != "realms" else ("/health/live" if probe == "livenessProbe" else "/health/ready")
                 require(container[probe]["httpGet"] == {
@@ -268,7 +303,8 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
         if key[0] == "ConfigMap" and app:
             expected["metadata"]["name"] = config_names[app]
             expected["data"].update(
-                {"AllowedHosts": "api.arkya.online;arkya.online;admin.arkya.online", "Gateway__AdminEnabled": "true"}
+                {"AllowedHosts": "api.arkya.online;arkya.online;admin.arkya.online", "Gateway__AdminEnabled": "true",
+                 "Gateway__CharactersEnabled": "true", "Gateway__RealmGameEnabled": "true", "Gateway__RealmGameAddress": REALM_ADDRESS}
                 if app == "gateway" else {"Administration__Enabled": "true", "Administration__AllowClusterHttp": "true",
                                              "InternalHttp__AllowedNetworks__0": "10.42.0.0/16"})
         elif key[0] == "Deployment" and app:
@@ -302,18 +338,42 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
         require(admin[module + "__Enabled"] == "true" and admin[module + "__AllowClusterHttp"] == "true" and
                 admin[module + "__BaseUrl"] == f"http://arkya-{app}.{NS}.svc.cluster.local:8080/",
                 f"{module} must use its explicitly-enabled private service")
-    require(configs["gateway"]["Gateway__CharactersEnabled"] == "false", "Characters must remain outside public YARP routing")
+    require(configs["gateway"]["Gateway__CharactersEnabled"] == "true",
+            "The existing exact player route allowlist must expose Characters and admission through Gateway")
+    require(configs["gateway"]["Gateway__RealmGameEnabled"] == "true" and
+            configs["gateway"]["Gateway__RealmGameAddress"] == REALM_ADDRESS,
+            "The existing Gateway must proxy only the configured beta game's private WebSocket Service")
     characters = configs["characters"]
     require(characters["Identity__BaseUrl"] == f"http://arkya-identity.{NS}.svc.cluster.local:8080/" and
             characters["Identity__AllowClusterHttp"] == "true" and characters["GameAccess__RequireBetaAccess"] == "true",
             "Characters must use private Identity introspection and enforce beta rights")
-    require(characters["Realms__BaseUrl"] == "" and
+    require(characters["Realms__BaseUrl"] == f"http://arkya-realms.{NS}.svc.cluster.local:8080/" and
+            characters["Realms__AllowClusterHttp"] == "true" and characters["GameAccess__AllowPrivateHttp"] == "true" and
+            characters["RealmRuntime__RealmId"] == "beta-web" and characters["RealmRuntime__ServerId"] == "island" and
             not any(k.startswith("GameAccess__DedicatedServers__") for k in characters),
-            "This profile must not invent dedicated identities or enable an undeployed game flow")
-    require(configs["realms"]["Deployment__Enabled"] == "false" and
-            configs["realms"]["GameAccess__StandaloneEntries__0__Enabled"] == "false" and
-            not any(k.startswith(("Deployment__Targets__", "Deployment__Profiles__")) for k in configs["realms"]),
-            "Dedicated deployment requires real targets and profiles before activation")
+            "Characters must use the private Realms catalogue and derive its exact dedicated identity from the existing seed")
+    realms = configs["realms"]
+    require(realms["Deployment__Enabled"] == "true" and
+            realms["Deployment__DeploymentTimeoutSeconds"] == "900" and
+            realms["GameAccess__StandaloneEntries__0__Enabled"] == "false" and
+            realms["Deployment__ApiServer"] == "https://kubernetes.default.svc" and
+            realms["Deployment__TokenFile"] == "/var/run/secrets/arkya-kubernetes/token" and
+            realms["Deployment__CertificateAuthorityFile"] == "/var/run/secrets/arkya-kubernetes/ca.crt" and
+            realms["RealmRuntime__RegistryDockerConfigFile"] == "/var/run/secrets/arkya-registry/config.json" and
+            realms["RealmRuntime__CharactersBaseUrl"] == f"http://arkya-characters.{NS}.svc.cluster.local:8080/" and
+            realms["RealmRuntime__AllowClusterHttp"] == "true",
+            "Realms must deploy through verified Kubernetes TLS with explicitly configured private Characters transport")
+    require({k.removeprefix("Deployment__Targets__"): v for k, v in realms.items() if k.startswith("Deployment__Targets__")} == {
+        "0__Id": "beta-web", "0__DisplayName": "Bêta web", "0__Namespace": REALM_NS, "0__RealmId": "beta-web"},
+        "The only deployment target must bind beta-web to the exact user-approved namespace")
+    profile = {k.removeprefix("Deployment__Profiles__"): v for k, v in realms.items() if k.startswith("Deployment__Profiles__")}
+    image = profile.pop("0__Image", "")
+    require(re.fullmatch(r"ghcr\.io/hantse/arkya-mmorpg-dedicated@sha256:[0-9a-f]{64}", image) and profile == {
+        "0__Id": "beta-web", "0__DisplayName": "Île bêta · serveur WebSocket", "0__Servers__0__Id": "island",
+        "0__ImagePullSecretName": "arkya-ghcr",
+        "0__Servers__0__Port": "17943", "0__Servers__0__Transport": "WebSocket", "0__Servers__0__PublicEndpoint": GAME_ENDPOINT,
+        "0__Servers__0__ProtocolVersion": "1", "0__Servers__0__BuildId": "arkya-web-beta-v1"},
+        "The beta profile must pin its dedicated image and match the private listener and public WSS destination")
     policy = resources[("NetworkPolicy", NS, "arkya-identity-player-management")]["spec"]
     require(policy == {"podSelector": {"matchLabels": {"app.kubernetes.io/name": "arkya-identity"}},
                        "policyTypes": ["Ingress"], "ingress": ingress("admin", "characters")},
@@ -328,7 +388,7 @@ def main():
     documents = checks.render(ROOT)
     check_profile(documents, require_digests=args.require_digests)
     count = sum(document["kind"] == "Deployment" for document in documents)
-    print(f"Admin player management: {len(documents)} resources, {count} applications, private API links, purpose-separated key seeds and existing frontend/PVC preservation validated offline.")
+    print(f"Admin realm deployment: {len(documents)} resources, {count} applications, scoped Kubernetes credentials, private APIs, WSS routing and existing frontend/PVC preservation validated offline.")
 
 
 if __name__ == "__main__":

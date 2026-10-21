@@ -19,6 +19,8 @@ spec:
     namespace: arkya-operations
   - server: https://kubernetes.default.svc
     namespace: arkya-realm-beta-web
+  - server: https://kubernetes.default.svc
+    namespace: arkya-beta-realm
   clusterResourceWhitelist:
   - group: ''
     kind: Namespace
@@ -29,6 +31,12 @@ spec:
     kind: Service
   - group: ''
     kind: PersistentVolumeClaim
+  - group: ''
+    kind: ServiceAccount
+  - group: rbac.authorization.k8s.io
+    kind: Role
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
   - group: apps
     kind: Deployment
   - group: networking.k8s.io

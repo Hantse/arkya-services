@@ -1,0 +1,20 @@
+# Realms owns the dedicated Deployment and its generated Service. This stable
+# Service keeps the YARP route independent of the generated deployment ID.
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-beta-web-island
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/managed-by: arkya-realms
+    arkya.online/realm-id: beta-web
+    arkya.online/server-id: island
+  ports:
+  - name: game
+    port: 17943
+    targetPort: 17943
+    protocol: TCP

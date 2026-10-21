@@ -5,6 +5,7 @@ components:
 - ../reports-control
 resources:
 - ../private-base
+- ../realm-control
 - player-management-network-policy.yaml
 patches:
 - target:
@@ -52,6 +53,9 @@ patches:
     data:
       AllowedHosts: api.arkya.online;arkya.online;admin.arkya.online
       Gateway__AdminEnabled: 'true'
+      Gateway__CharactersEnabled: 'true'
+      Gateway__RealmGameEnabled: 'true'
+      Gateway__RealmGameAddress: http://arkya-beta-web-island.arkya-beta-realm.svc.cluster.local:17943/
 - patch: |-
     apiVersion: v1
     kind: ConfigMap
@@ -91,12 +95,16 @@ patches:
       name: arkya-characters-config
       namespace: arkya-beta
     data:
-      AllowedHosts: arkya-characters;arkya-characters.arkya-beta.svc.cluster.local
+      AllowedHosts: api.arkya.online;arkya-characters;arkya-characters.arkya-beta.svc.cluster.local
       ASPNETCORE_HTTP_PORTS: '8080'
       Identity__BaseUrl: http://arkya-identity.arkya-beta.svc.cluster.local:8080/
       Identity__AllowClusterHttp: 'true'
-      Realms__BaseUrl: ''
+      Realms__BaseUrl: http://arkya-realms.arkya-beta.svc.cluster.local:8080/
+      Realms__AllowClusterHttp: 'true'
       GameAccess__RequireBetaAccess: 'true'
+      GameAccess__AllowPrivateHttp: 'true'
+      RealmRuntime__RealmId: beta-web
+      RealmRuntime__ServerId: island
       GameAccess__DedicatedServers__0__RealmId: null
       GameAccess__DedicatedServers__0__ServerId: null
       InternalHttp__AllowedNetworks__0: 10.42.0.0/16
@@ -121,7 +129,28 @@ patches:
       namespace: arkya-beta
     data:
       AllowedHosts: arkya-realms;arkya-realms.arkya-beta.svc.cluster.local
-      Deployment__Enabled: 'false'
+      Deployment__Enabled: 'true'
+      Deployment__DeploymentTimeoutSeconds: '900'
+      Deployment__ApiServer: https://kubernetes.default.svc
+      Deployment__TokenFile: /var/run/secrets/arkya-kubernetes/token
+      Deployment__CertificateAuthorityFile: /var/run/secrets/arkya-kubernetes/ca.crt
+      Deployment__Targets__0__Id: beta-web
+      Deployment__Targets__0__DisplayName: Bêta web
+      Deployment__Targets__0__Namespace: arkya-beta-realm
+      Deployment__Targets__0__RealmId: beta-web
+      Deployment__Profiles__0__Id: beta-web
+      Deployment__Profiles__0__DisplayName: Île bêta · serveur WebSocket
+      Deployment__Profiles__0__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:174c0f3ecd1b533f90df0ab13446b1cad9826688ea3f8e12ef97cbd6043c46ce
+      Deployment__Profiles__0__ImagePullSecretName: arkya-ghcr
+      Deployment__Profiles__0__Servers__0__Id: island
+      Deployment__Profiles__0__Servers__0__Port: '17943'
+      Deployment__Profiles__0__Servers__0__Transport: WebSocket
+      Deployment__Profiles__0__Servers__0__PublicEndpoint: wss://api.arkya.online/game/beta-web/
+      Deployment__Profiles__0__Servers__0__ProtocolVersion: '1'
+      Deployment__Profiles__0__Servers__0__BuildId: arkya-web-beta-v1
+      RealmRuntime__CharactersBaseUrl: http://arkya-characters.arkya-beta.svc.cluster.local:8080/
+      RealmRuntime__AllowClusterHttp: 'true'
+      RealmRuntime__RegistryDockerConfigFile: /var/run/secrets/arkya-registry/config.json
       GameAccess__StandaloneEntries__0__Enabled: 'false'
 - target:
     kind: ConfigMap
@@ -201,6 +230,16 @@ patches:
                 secretKeyRef:
                   name: arkya-admin-secrets
                   key: RealmsApi__AdminKey
+            - name: RealmRuntime__DedicatedKeySeed
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-admin-secrets
+                  key: RealmsApi__AdminKey
+            - name: Realms__ServiceKey
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-realms-secrets
+                  key: GameAccess__ServiceKey
             volumeMounts:
             - name: internal-ca
               mountPath: /etc/arkya/internal-ca
@@ -251,6 +290,54 @@ patches:
     - op: replace
       path: /spec/template/spec/containers/0/startupProbe/httpGet/httpHeaders/0/value
       value: arkya-content.arkya-beta.svc.cluster.local
+- target:
+    kind: Deployment
+    name: arkya-realms
+  patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-realms
+    spec:
+      template:
+        spec:
+          serviceAccountName: arkya-realm-deployer
+          automountServiceAccountToken: false
+          containers:
+          - name: realms
+            env:
+            - name: RealmRuntime__DedicatedKeySeed
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-admin-secrets
+                  key: RealmsApi__AdminKey
+            volumeMounts:
+            - name: kubernetes-api
+              mountPath: /var/run/secrets/arkya-kubernetes
+              readOnly: true
+            - name: registry-credentials
+              mountPath: /var/run/secrets/arkya-registry
+              readOnly: true
+          volumes:
+          - name: kubernetes-api
+            projected:
+              defaultMode: 288
+              sources:
+              - serviceAccountToken:
+                  path: token
+                  expirationSeconds: 3600
+              - configMap:
+                  name: kube-root-ca.crt
+                  items:
+                  - key: ca.crt
+                    path: ca.crt
+          - name: registry-credentials
+            secret:
+              secretName: arkya-ghcr
+              defaultMode: 288
+              items:
+              - key: .dockerconfigjson
+                path: config.json
 - target:
     kind: Deployment
     name: arkya-realms
@@ -313,6 +400,9 @@ patches:
         - podSelector:
             matchLabels:
               app.kubernetes.io/name: arkya-admin
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: arkya-gateway
         - ipBlock:
             cidr: 192.168.100.0/24
         ports:

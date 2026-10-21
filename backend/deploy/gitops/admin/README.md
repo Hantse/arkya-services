@@ -2,14 +2,21 @@
 
 Ce profil ajoute `Arkya.Admin`, `Arkya.Content.Api`, `Arkya.Realms.Api` et
 `Arkya.Characters.Api` au frontend, à Identity et à YARP déjà déployés.
-Les sept applications restent
-dans **`arkya-beta`**, sous l'Application Argo existante **`arkya-services`**.
+Les sept applications cœur restent dans **`arkya-beta`**, sous l'Application Argo
+existante **`arkya-beta`**. Le composant `../realm-control` prépare
+**`arkya-beta-realm`** pour l'île dédiée.
+Les composants `../inference-control` et `../reports-control` déjà actifs
+portent le total à neuf services ; leurs activations et pins d'image sont
+conservées.
 Le profil initial `frontend-discord` conserve son rendu et reste utilisable.
 
 ```text
 Traefik existant → http://192.168.100.218:80 → YARP
   arkya.online       → frontend
   api.arkya.online   → Identity
+    /v1/realms      → Characters → catalogue Realms
+    /v1/characters  → Characters (session joueur, droits et propriété)
+    /game/beta-web/  → YARP WebSocket → île beta-web/island
   admin.arkya.online → Admin → Content (arkya_content)
                             → Realms  (arkya_realms)
                             → Identity (comptes, bans, droits bêta)
@@ -18,10 +25,13 @@ Traefik existant → http://192.168.100.218:80 → YARP
 
 Un seul LoadBalancer est utilisé. Les autres Services sont en ClusterIP.
 Traefik termine le HTTPS public ; les communications internes de ce profil
-utilisent HTTP privé. Aucun certificat ni CA n'est monté dans les pods.
-Le profil ne crée pas d'Ingress, de Namespace, de rôle Kubernetes, de
-serveur Unity ni d'API de développement. Characters reste privé :
-`Gateway__CharactersEnabled=false` conserve son absence du routage public.
+utilisent HTTP privé. Realms vérifie le TLS Kubernetes avec la CA projetée
+du cluster. Aucun certificat TLS applicatif n'est requis. Le profil prépare
+le namespace du realm et son RBAC ; le serveur Unity est lancé depuis
+l'admin. Aucun Ingress, Secret ou endpoint de développement n'est ajouté.
+`Gateway__CharactersEnabled=true` active l'allowlist exacte des routes joueur
+Characters : catalogue, personnages et demandes d'admission authentifiées.
+Les routes administrateur et `/internal/game` restent absentes de la gateway.
 
 L'admin utilise **Discord**, un cookie sécurisé et des formulaires antiforgery.
 Seul le compte `hatya_leash`, identifié par son ID Discord permanent
@@ -37,10 +47,11 @@ Les modules Admin sont activés :
 - **Quêtes** : lecture, édition et publication via Content, dans sa base
   MongoDB `arkya_content`.
 - **Realms** : accès à l'API et au catalogue opérateur persistant dans
-  `arkya_realms`. Le lancement des dedicateds reste une étape distincte :
-  `Deployment__Enabled=false`, aucun profil/image/cible Kubernetes n'est
-  inventé, et aucune destination de jeu n'est annoncée active. Sans cible
-  et profil configurés, l'interface ne permet pas encore de créer un realm.
+  `arkya_realms`. `Deployment__Enabled=true` active la cible `beta-web`,
+  réservée au realm `beta-web` dans `arkya-beta-realm`. Le profil homonyme
+  épingle l'image Linux et lance `island` sur TCP `17943`. La route WSS
+  passe par `wss://api.arkya.online/game/beta-web/` ; le catalogue ne la
+  marque prête qu'après la disponibilité réelle du dedicated.
 - **Dashboard et joueurs** : état des services, realms et présence,
   recherche des comptes et personnages, bans/unbans et droits bêta.
   Identity possède les mutations de compte ; Characters conserve les
@@ -48,7 +59,7 @@ Les modules Admin sont activés :
 
 ## Mise à jour de l'installation existante par Git
 
-L'Application `arkya-services` suit déjà `backend/deploy/gitops/admin` sur
+L'Application vivante `arkya-beta` suit déjà `backend/deploy/gitops/admin` sur
 `master`, avec synchronisation automatique. Publier d'abord le code, attendre
 la CI et la promotion des digests dans `beta/kustomization.yaml`, puis pousser
 l'activation de ce profil. Argo CD applique les changements sans commande
@@ -56,8 +67,28 @@ l'activation de ce profil. Argo CD applique les changements sans commande
 Les étapes d'installation ci-dessous restent utiles pour un nouveau cluster.
 
 L'activation utilise uniquement des Secrets déjà provisionnés. Aucun Secret
-ni identifiant n'est écrit dans Git ; aucun Job ni droit Kubernetes nouveau
-n'est nécessaire. Le code dérive des clés HMAC distinctes par usage à partir
+ni identifiant n'est écrit dans Git. Seul Realms reçoit le compte de service
+`arkya-realm-deployer` et un jeton projeté renouvelable, sans montage
+automatique. Le rôle cible autorise seulement `get/create` sur les
+Deployments et Services du namespace du realm. Il permet aussi de lire
+les seuls Secrets `arkya-ghcr` et `arkya-dedicated`, et de les créer : Kubernetes ne peut
+limiter `create` par nom, ce contrôle est fixé dans Realms. Aucun droit
+de liste, modification ou suppression des Secrets n'est accordé.
+Le projet Argo vivant doit
+autoriser cette destination, `ServiceAccount`, `Role` et `RoleBinding`.
+Ces permissions ont été corrigées et vérifiées dans l'interface Argo le
+**20 octobre 2026 à 21:15 UTC** (23:15 à Bruxelles). L'interdiction globale
+cluster du projet vivant a été retirée ; son seul type cluster autorisé
+est maintenant Namespace avec le nom exact `arkya-beta-realm`. Aucun
+propriétaire Git actif de ce projet n'a été observé. Le modèle générique
+`../bootstrap/project.yaml` reste destiné à une installation complète avec
+plusieurs namespaces ; il ne remplace pas cette configuration réelle.
+Le patch historique gardé dans `../realm-control/project-access.patch.yaml`
+contient huit opérations et teste l'état initial avant sa modification.
+Il échoue volontairement si la correction est déjà appliquée ou si l'état
+diffère. Aucun AppProject n'est ajouté aux ressources des workloads.
+
+Le code dérive des clés HMAC distinctes par usage à partir
 de deux clés administrateur existantes, avec les mêmes graines côté client
 Admin et côté API :
 
@@ -67,8 +98,11 @@ Admin et côté API :
 | `PlayerAdministration__CharactersKeySeed` dans Admin et Characters | `arkya-admin-secrets` | `RealmsApi__AdminKey` |
 | `Identity__ServiceKey` dans Characters | `arkya-identity-secrets` | `ServiceAuthentication__Key` |
 | `Mongo__ConnectionString` dans Characters | `arkya-content-secrets` | `Mongo__ConnectionString` |
+| `RealmRuntime__DedicatedKeySeed` dans Realms et Characters | `arkya-admin-secrets` | `RealmsApi__AdminKey` |
+| `Realms__ServiceKey` dans Characters | `arkya-realms-secrets` | `GameAccess__ServiceKey` |
 
-Les clés administrateur Identity/Characters et la clé interne Characters
+Les clés administrateur Identity/Characters, la clé interne Characters et
+la clé dédiée liée au couple `beta-web/island`
 restent distinctes de leurs graines et entre elles. Elles sont stables tant
 que les graines restent identiques ; une rotation des clés source exige donc
 le redémarrage coordonné des consommateurs. Aucune valeur n'est affichée.
@@ -80,15 +114,29 @@ Admin appelle les deux API sur leurs noms complets
 `arkya-characters.arkya-beta.svc.cluster.local:8080`. L'exception HTTP est
 activée explicitement sur les clients et vérifie le pair réseau direct côté
 API. Les NetworkPolicies conservent Gateway → Identity et ajoutent seulement
-Admin → Identity/Characters et Characters → Identity. Characters autorise
-aussi les sondes kubelet du réseau `192.168.100.0/24`. Les identités dedicated
-héritées du profil bêta sont retirées, et le catalogue joueur Realms reste
-désactivé tant que ses cibles et dedicateds ne sont pas réellement déployés.
+Gateway → Characters, Admin → Identity/Characters, Characters → Identity/Realms et
+dedicated → Characters. Gateway seul peut joindre le port `17943` du realm.
+Characters autorise aussi les sondes kubelet du réseau `192.168.100.0/24`.
+Les identités dedicated explicites héritées sont retirées ; Characters
+dérive à la place la clé dédiée du couple configuré. Avant les workloads,
+Realms provisionne le Secret Opaque fixe `arkya-dedicated`, avec une entrée
+`island`. Le Deployment référence cette entrée via `secretKeyRef` ; sa
+configuration ne contient aucune clé dédiée en clair. Cette clé n'est
+persistée ni dans Git, ni dans les logs, ni dans le profil MongoDB et reste
+absente des DTO administrateur. La nouvelle image Unity
+doit accepter l'opt-in HTTP privé de cluster ; l'ancien digest ne doit pas
+être utilisé pour lancer ce profil. Aucun Secret n'est requis dans le
+namespace cible à copier manuellement. Realms seul reçoit le fichier
+`.dockerconfigjson` du Secret existant `arkya-ghcr`, monté en lecture seule,
+puis provisionne ce même nom dans le namespace approuvé avant le Deployment.
+Le profil référence `ImagePullSecretName=arkya-ghcr`. Les identifiants du
+registre n'apparaissent ni dans Git, ni dans les logs, DTO ou profils MongoDB.
 
 Contrôle hors cluster avant le push :
 
 ```powershell
 python D:\Repositories\arkya\backend\deploy\gitops\admin\Validate-PlayerManagement.py
+python D:\Repositories\arkya\backend\deploy\gitops\realm-control\Validate-Manifests.py
 python D:\Repositories\arkya\backend\deploy\gitops\Test-Manifests.py --require-digests
 ```
 
@@ -170,12 +218,12 @@ python D:\Repositories\arkya\backend\deploy\gitops\Test-Manifests.py --require-d
 kubectl kustomize D:\Repositories\arkya\backend\deploy\gitops\admin
 ```
 
-Dans **`arkya-services`**, conserver le dépôt, le projet `arkya-beta` et
+Dans l'Application vivante **`arkya-beta`**, conserver le dépôt, le projet `arkya-beta` et
 la destination `arkya-beta`. Changer uniquement la source avec ce patch,
 qui conserve aussi la politique de synchronisation existante :
 
 ```powershell
-kubectl -n argocd patch application arkya-services --type merge --patch-file D:\Repositories\arkya\backend\deploy\gitops\admin\activate.patch.yaml
+kubectl -n argocd patch application arkya-beta --type merge --patch-file D:\Repositories\arkya\backend\deploy\gitops\admin\activate.patch.yaml
 ```
 
 Ou modifier ces champs dans l'interface Argo :
@@ -185,16 +233,21 @@ path: backend/deploy/gitops/admin
 targetRevision: master
 ```
 
-Le fichier `../admin.application.example.yaml` documente cette configuration.
-Il ne faut pas créer une seconde Application qui posséderait les mêmes
+Le fichier `../admin.application.example.yaml` reste un exemple optionnel
+nommé `arkya-services`, distinct du nom réel `arkya-beta`. Ne pas le créer
+dans l'installation existante : une seconde Application posséderait les mêmes
 ressources. Si la synchronisation automatique est active, le changement
 de chemin peut lancer immédiatement le déploiement : fournir les secrets
 avant cette bascule.
 
-Le rendu ajoute quatre Deployments, leurs ConfigMaps/Services/NetworkPolicies
-et le PVC Admin. Le LB et les noms des ressources déjà en service sont
-conservés. Examiner le diff, puis synchroniser. Content et Realms restent
-strictement internes ; YARP n'expose pas leurs API administrateur.
+Le rendu contient neuf Deployments applicatifs, dont Inference et Reports conservés,
+deux PVC de clés préservés et neuf ressources de contrôle du realm, soit
+48 objets. Le LB et les noms
+des ressources déjà en service sont conservés. Examiner le diff, puis
+laisser Argo synchroniser. Content et Realms restent strictement internes ;
+YARP n'expose aucune API administrateur des services. Les routes joueur
+Characters exigent une session et les contrôles de propriété ; l'admission
+exige aussi l'accès bêta, un compte non banni et un dedicated prêt.
 
 ## 5. Vérifier les applications
 
@@ -237,5 +290,25 @@ Content et Realms n'acceptent HTTP qu'avec une allowlist explicite
 nœuds `192.168.100.0/24` pour les sondes kubelet de cette installation.
 Cette décision utilise le pair réseau réel, pas une IP déclarée dans
 un en-tête. Les clés API restent obligatoires. Leurs NetworkPolicies
-n'acceptent les appels applicatifs que des pods Admin du même namespace.
+n'acceptent les appels applicatifs que des pods Admin du même namespace,
+avec un accès supplémentaire Characters → Realms pour le catalogue joueur.
 Les autres profils conservent leurs exigences HTTPS par défaut.
+
+## Lancer l'île bêta
+
+Dans **Infrastructure → Realms**, créer `beta-web` avec la cible et le profil
+`beta-web`, puis lancer le déploiement. Le namespace est lié à cet ID ;
+une autre identité est refusée pour cette cible. Le dedicated utilise
+`ARKYA_ALLOW_CLUSTER_HTTP=1` vers l'origine Characters Kubernetes complète,
+avec une clé liée à son realm et serveur. Characters limite ce transport
+privé aux routes `/internal/game`, au réseau direct autorisé et à la clé
+dédiée. Les bans et droits bêta restent appliqués à l'admission et aux leases.
+
+Le suivi attend jusqu'à 900 secondes pour le téléchargement et le démarrage
+de l'image. La readiness Unity attend le terrain et le listener réels.
+La gateway transmet uniquement `/game/beta-web/` et retire le préfixe avant
+le listener WebSocket Unity. Elle réutilise le certificat et le LoadBalancer
+existants ; aucun nouveau domaine, certificat ou Ingress n'est nécessaire.
+Voir le [composant realm](../realm-control/README.md) pour le RBAC et les
+sélecteurs réseau. Une route prête ne valide pas à elle seule l'admission
+d'un client réel.
