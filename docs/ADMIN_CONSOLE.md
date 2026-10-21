@@ -147,8 +147,12 @@ Le nouveau dedicated autorise explicitement HTTP privé vers l'origine
 Characters Kubernetes complète. Characters exige sa clé, contrôle le pair
 direct et réserve ce transport aux routes internes de jeu. Aucun nouveau
 Secret à copier manuellement, certificat, Ingress ou LoadBalancer n'est
-requis dans le realm. Realms reçoit en lecture seule le Docker config du
-Secret de registre existant, le valide et crée `arkya-ghcr` dans la cible
+requis dans le realm. Le **Secret source `arkya-ghcr` dans `arkya-beta` doit
+être provisionné avant le rollout Realms** ; une référence de registre dans
+un Deployment ne prouve pas sa présence. Le [guide runtime](REALM_RUNTIME.md#provisionner-le-registre-source)
+décrit le script opérateur à contexte explicite et PAT limité exactement à
+`read:packages`, sans écrasement. Realms reçoit en lecture seule son Docker
+config, le valide et crée `arkya-ghcr` dans la cible
 avant le Deployment. Les identifiants ne passent ni dans Git, ni dans les
 logs, API ou profils MongoDB. Aucun droit Argo sur les Secrets n'est ajouté.
 
