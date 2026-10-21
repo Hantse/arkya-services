@@ -35,7 +35,7 @@ de registre ni aucune clé dedicated n'est versionné.
 ## Provisionner le registre source
 
 Le [script opérateur](../backend/deploy/gitops/realm-control/Provision-RegistrySecret.ps1)
-requiert PowerShell 7.2 ou ultérieur, `kubectl` et un contexte Kubernetes explicite disposant
+fonctionne avec Windows PowerShell 5.1 et PowerShell 7. Il requiert `kubectl` et un contexte Kubernetes explicite disposant
 des accès nécessaires. Il vérifie les deux namespaces `arkya-beta` et
 `arkya-beta-realm`, ainsi que le nom, le label et l'image du Deployment
 `arkya-realms`. La connexion Kubernetes doit vérifier TLS. Il refuse de
@@ -52,7 +52,7 @@ privée ne passe par ses arguments, un fichier temporaire ou sa sortie.
 Exemple à adapter avec le contexte et le digest approuvés :
 
 ```powershell
-pwsh -File ./backend/deploy/gitops/realm-control/Provision-RegistrySecret.ps1 `
+& ./backend/deploy/gitops/realm-control/Provision-RegistrySecret.ps1 `
   -Contexte 'CONTEXTE_ARKYA' `
   -KubeConfig 'C:\prive\kubeconfig.yaml' `
   -GitHubUser 'COMPTE_GITHUB' `
@@ -61,7 +61,8 @@ pwsh -File ./backend/deploy/gitops/realm-control/Provision-RegistrySecret.ps1 `
 ```
 
 Le fichier du PAT fourni doit être déjà présent, privé et hors dépôt ; le script
-ne crée aucun fichier d'identifiant. Sans `-TokenFilePath`, le
+accepte UTF-8 avec ou sans BOM ainsi que UTF-16 avec BOM, et ne crée aucun
+fichier d'identifiant. Sans `-TokenFilePath`, le
 script demande une saisie masquée. `-KubeConfig` est facultatif si le fichier
 habituel contient le contexte choisi. Ne pas réutiliser un credential Docker
 ou Git plus large. La création du Secret source ne prouve pas le rollout

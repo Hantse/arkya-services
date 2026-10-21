@@ -1,4 +1,4 @@
-#requires -Version 7.2
+﻿#requires -Version 5.1
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)][Alias('Contexte')][ValidateNotNullOrEmpty()][string] $Context,
@@ -10,6 +10,13 @@ param(
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
+Add-Type -AssemblyName System.Net.Http
+
+function ConvertTo-WindowsProcessArgument([string] $Value) {
+    $escaped = $Value -replace '(\\*)"', '$1$1\"'
+    $escaped = $escaped -replace '(\\+)$', '$1$1'
+    return '"' + $escaped + '"'
+}
 
 function Assert-ReadOnlyPackageScopes([string] $Scopes) {
     $values = @($Scopes.Split(',') | ForEach-Object { $_.Trim().ToLowerInvariant() } |
@@ -27,17 +34,40 @@ function Invoke-PrivateKubectl([string[]] $Arguments, [string] $InputText = $nul
     $start.RedirectStandardOutput = $true
     $start.RedirectStandardError = $true
     $start.RedirectStandardInput = $true
-    $start.StandardInputEncoding = [Text.UTF8Encoding]::new($false)
-    foreach ($argument in ($kubectlArguments + $Arguments)) { $start.ArgumentList.Add($argument) }
+    if ($start.PSObject.Properties.Name -contains 'StandardInputEncoding') {
+        $start.StandardInputEncoding = [Text.UTF8Encoding]::new($false)
+    }
+    $allArguments = $kubectlArguments + $Arguments
+    if ($start.PSObject.Properties.Name -contains 'ArgumentList') {
+        foreach ($argument in $allArguments) { $start.ArgumentList.Add($argument) }
+    }
+    else {
+        $start.Arguments = ($allArguments | ForEach-Object { ConvertTo-WindowsProcessArgument $_ }) -join ' '
+    }
     $process = [Diagnostics.Process]::new()
     $process.StartInfo = $start
     try {
-        [void]$process.Start()
+        $previousInputEncoding = $null
+        try {
+            if ($start.PSObject.Properties.Name -notcontains 'StandardInputEncoding') {
+                # .NET Framework takes the child stdin encoding from the console.
+                $previousInputEncoding = [Console]::InputEncoding
+                [Console]::InputEncoding = [Text.UTF8Encoding]::new($false)
+            }
+            [void]$process.Start()
+        }
+        finally {
+            if ($previousInputEncoding) { [Console]::InputEncoding = $previousInputEncoding }
+        }
         $output = $process.StandardOutput.ReadToEndAsync()
         $errors = $process.StandardError.ReadToEndAsync()
-        if ($InputText) { $process.StandardInput.Write($InputText) }
+        if ($InputText) {
+            $inputBytes = [Text.Encoding]::UTF8.GetBytes($InputText)
+            try { $process.StandardInput.BaseStream.Write($inputBytes, 0, $inputBytes.Length) }
+            finally { [Array]::Clear($inputBytes, 0, $inputBytes.Length) }
+        }
         $process.StandardInput.Close()
-        if (!$process.WaitForExit(30000)) { $process.Kill($true); throw 'kubectl timeout' }
+        if (!$process.WaitForExit(30000)) { $process.Kill(); throw 'kubectl timeout' }
         [void]$errors.GetAwaiter().GetResult()
         if ($process.ExitCode -ne 0) { throw 'kubectl failure' }
         return $output.GetAwaiter().GetResult().Trim()
@@ -59,7 +89,20 @@ function Read-RegistryToken {
                 $count += $read
             }
             if ($count -gt 4096) { throw 'oversized token file' }
-            return [Text.UTF8Encoding]::new($false, $true).GetString($buffer, 0, $count).Trim()
+            $encoding = [Text.UTF8Encoding]::new($false, $true)
+            $offset = 0
+            if ($count -ge 3 -and $buffer[0] -eq 0xef -and $buffer[1] -eq 0xbb -and $buffer[2] -eq 0xbf) {
+                $offset = 3
+            }
+            elseif ($count -ge 2 -and $buffer[0] -eq 0xff -and $buffer[1] -eq 0xfe) {
+                $encoding = [Text.UnicodeEncoding]::new($false, $false, $true)
+                $offset = 2
+            }
+            elseif ($count -ge 2 -and $buffer[0] -eq 0xfe -and $buffer[1] -eq 0xff) {
+                $encoding = [Text.UnicodeEncoding]::new($true, $false, $true)
+                $offset = 2
+            }
+            return $encoding.GetString($buffer, $offset, ($count - $offset)).Trim()
         }
         catch { throw 'Le fichier privé du PAT est illisible ou invalide ; son chemin et son contenu restent masqués.' }
         finally {
