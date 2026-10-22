@@ -6,19 +6,30 @@ puis lance son exécutable. La publication autonome inclut .NET et ne demande
 pas de droits administrateur. La connexion Discord et l’admission restent
 gérées par le client Unity ; le launcher ne reçoit aucun secret de service.
 
-Le code et le package du launcher sont prêts. **Aucune adresse publique de
-distribution ni nouvelle version Windows du jeu n’est inventée.** Il reste à
-construire le vrai client, publier son ZIP et son manifeste sur un hébergement
-HTTPS maîtrisé, puis configurer ce canal dans le launcher. Le launcher peut
-ouvrir une version déjà installée si le serveur de distribution est indisponible.
-Cela ne rend pas les services de jeu accessibles hors ligne.
+Le launcher distribué depuis la page [Jouer](https://arkya.online/play.html)
+utilise le canal `https://arkya.online/downloads/windows/latest-win-x64.json`.
+Les archives versionnées sont hébergées dans les publications GitHub du dépôt
+`Hantse/arkya-services`. Le manifeste public contient les tailles et l’empreinte
+SHA-256 du ZIP réellement construit. Le launcher peut ouvrir une version déjà
+installée si le serveur de distribution est indisponible. Cela ne rend pas les
+services de jeu accessibles hors ligne.
+
+L’accueil rassemble une capture du jeu, les actualités et les notes de version,
+avec une barre d’installation et de lancement toujours accessible. Les onglets
+**Actualités** et **Notes de version** chargent les dernières publications
+françaises depuis `https://api.arkya.online/v1/content/posts`. Leur contenu est
+administré dans **Admin → Publications** ; voir [le guide](PUBLICATIONS.md).
+Les articles sont affichés en texte brut. Une panne de ce flux ne bloque ni
+l’installation ni le lancement ; les notes du manifeste restent disponibles
+dans le panneau de version. Les paramètres de distribution sont accessibles
+par la roue dentée en bas de la barre latérale.
 
 ## Utilisation
 
 1. Extraire `Arkya-Launcher-win-x64.zip` puis ouvrir `Arkya.Launcher.exe`.
 2. Si le canal n’est pas préconfiguré, renseigner l’adresse HTTPS du manifeste
    fournie par l’équipe Arkya dans **Paramètres de distribution**.
-3. Choisir **Vérifier les mises à jour**, **Installer le jeu**, puis **Jouer**.
+3. La version est vérifiée au démarrage. Choisir **Installer le jeu**, puis **Jouer**.
 4. Une future version propose **Mettre à jour**. Une opération peut être annulée.
 
 Le jeu est installé dans `%LOCALAPPDATA%\Arkya\Game`. La préférence de canal
@@ -59,6 +70,17 @@ Le build exploitable se trouve dans
 ce client avec les vrais services. Le launcher ne modifie pas son parcours
 d’authentification ou de jeu et ne transforme pas l’essai local natif en une
 admission publique sur un serveur dédié.
+
+Pour un client Windows destiné aux joueurs, fournir au processus Unity
+`ARKYA_CLIENT_IDENTITY_URL=https://api.arkya.online` et
+`ARKYA_CLIENT_CHARACTERS_URL=https://api.arkya.online`.
+`ARKYA_CLIENT_REPORTS_URL` est facultatif et reprend l’origine Characters
+si absent. Le pipeline Windows applique temporairement ces origines HTTPS
+publiques aux paramètres du client et restaure ensuite le fichier source
+exact. Il refuse HTTP, localhost, identifiants, chemins, query et fragments.
+Les origines effectivement intégrées figurent dans `build.json`.
+Sans ces variables, le pipeline conserve la configuration de développement
+du projet : ne pas publier un tel build s’il pointe encore vers localhost.
 
 ## Produire la version distribuable du jeu
 
@@ -132,7 +154,8 @@ dotnet test launcher/Arkya.Launcher.slnx -c Release
 
 Le script produit une application autonome `win-x64` et son ZIP. Si
 `ManifestUrl` est omis, le launcher demande le canal dans ses paramètres ;
-aucun appel vers un domaine supposé n’est effectué. Les dossiers de sortie
+aucun téléchargement du jeu ne peut commencer sans ce canal. Le flux public
+d’actualités reste indépendant de ce réglage. Les dossiers de sortie
 existants sont refusés pour préserver une publication antérieure.
 
 La publication utilise le déploiement autonome en fichier unique avec
@@ -147,6 +170,8 @@ qui ne sont jamais exécutées. Ils couvrent installation/mise à jour, maintien
 de l’ancienne version, SHA-256, tailles annoncées et streaming, annulation,
 verrou concurrent, état local corrompu, contenu Unity incomplet, traversées de
 chemin, liens, noms Windows réservés, doublons et redirections vers HTTP.
+Le flux de publications est aussi vérifié : contrats, texte brut, absence
+d’authentification, bornes de taille et erreurs réseau.
 
 Une capture du vrai rendu WPF est possible sans afficher de fenêtre :
 

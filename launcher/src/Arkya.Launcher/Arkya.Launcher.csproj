@@ -9,6 +9,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Resource Include="Assets/world.jpg" />
     <ProjectReference Include="../Arkya.Launcher.Core/Arkya.Launcher.Core.csproj" />
     <None Update="launcher-settings.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>

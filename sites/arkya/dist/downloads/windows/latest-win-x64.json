@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.0-beta.20261023",
+  "platform": "win-x64",
+  "packageUrl": "https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23/Arkya-0.1.0-beta.20261023-win-x64.zip",
+  "packageSize": 472070050,
+  "unpackedSize": 2041639083,
+  "sha256": "1d113281d06160dece3e25c082e8cae28186b0637bd685609f31f2e494db8c0c",
+  "executable": "Arkya.exe",
+  "releaseNotes": "Bêta Windows : création de personnage avec la base Valkyrie et exploration de la première île. Version de test."
+}

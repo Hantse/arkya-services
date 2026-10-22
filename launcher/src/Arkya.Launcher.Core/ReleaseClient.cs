@@ -9,6 +9,7 @@ public sealed class ReleaseClient(HttpClient httpClient)
     public static HttpClient CreateHttpClient() => new(new HttpClientHandler
     {
         AllowAutoRedirect = false,
+        UseCookies = false,
         AutomaticDecompression = DecompressionMethods.None
     }) { Timeout = Timeout.InfiniteTimeSpan };
 
