@@ -1,6 +1,14 @@
 # Création de personnage dans Unity
 
-La scène `Assets/Arkya/Characters/Scenes/CharacterCreation.unity`, dans le projet actif `Unity3D/Arkya/` avec Unity **6000.6.6f1**, fournit l'écran de création et de sélection en jeu. L'interface UI Toolkit personnalise un personnage animé, ouvre la connexion Discord dans le navigateur système et enregistre les choix auprès de Characters. Le bouton **Explorer l’île** ouvre désormais la [première exploration jouable de l’Île de l’Aube](world/STARTER_ISLAND_PLAYABLE.md), avec un serveur Netcode local.
+La scène `Assets/Arkya/Characters/Scenes/CharacterCreation.unity`, dans le projet actif `Unity3D/Arkya/` avec Unity **6000.6.6f1**, accueille le joueur lancé depuis le launcher Windows. L’interface UI Toolkit ouvre la connexion Discord dans le navigateur système, puis charge les royaumes, les personnages et le dernier royaume confirmé par le serveur. L’essai Netcode local reste réservé à l’Editor sans connexion de compte.
+
+## Entrée native par royaume — 23 octobre 2026
+
+Sans personnage ou sans historique de connexion confirmé, le jeu affiche le choix du royaume avant la création. Un compte déjà connu retrouve son dernier royaume disponible et son dernier personnage, sans lancer automatiquement la partie. **Changer de royaume** reste disponible. Un royaume fermé, supprimé ou incompatible ramène au choix avec une explication ; aucune partie locale ne remplace un serveur indisponible.
+
+La liste affiche les personnages du royaume choisi. Les nouveaux personnages sont liés à ce royaume dès leur création ; seuls les personnages historiques sans royaume peuvent encore être rattachés lors de leur première admission. **Jouer** demande un ticket et ouvre le client natif WebSocket vers le dédié. Le souvenir du dernier royaume provient de `GET /v1/characters/entry-context`, enregistré uniquement après consommation réussie d’un ticket côté dédié. La déconnexion et une session invalide effacent le contexte du compte en mémoire. Voir le [contrat d’entrée](CHARACTER_ENTRY.md).
+
+Le build Windows initial `0.1.0-beta.20261023` ne contient pas ce parcours. Sa disponibilité dans le launcher dépend de la publication d’un nouveau build validé, puis du manifeste de distribution.
 
 ## Ouvrir et essayer
 
@@ -8,7 +16,7 @@ La scène `Assets/Arkya/Characters/Scenes/CharacterCreation.unity`, dans le proj
 2. Ouvrir `Assets/Arkya/Characters/Scenes/CharacterCreation.unity` puis lancer **Play**.
 3. Choisir la race, la silhouette, la taille, la coiffure et les couleurs. Les boutons de rotation, portrait et animation permettent d'examiner le résultat.
 4. Utiliser **Explorer l’île**, disponible sans compte ni backend. Déplacer le personnage avec **ZQSD**, **WASD** ou les **flèches** ; maintenir **Maj** pour courir, le **clic droit** pour orienter la caméra et la **molette** pour zoomer. Le retour à la création arrête les deux mondes réseau et décharge l’île, en conservant l’apparence.
-5. Pour conserver un personnage sur son compte, configurer les services ci-dessous, se connecter avec Discord, saisir un nom et lancer la création. La liste du compte permet ensuite de retrouver son apparence enregistrée.
+5. Pour conserver un personnage sur son compte, configurer les services ci-dessous, se connecter avec Discord et choisir un royaume disponible. Saisir un nom et lancer la création. Après confirmation du serveur, **Jouer** demande l’entrée sur le dédié de ce royaume.
 6. Après connexion Arkya, ouvrir **Amis Discord** depuis la création ou l'essai local pour activer les amis, la présence et les invitations à un salon social. La configuration du portail et les limites figurent dans le [guide Discord Social SDK](DISCORD_SOCIAL.md). Le chat, la voix et l'admission au monde ne font pas partie de ce panneau.
 
 Le nom contient de 3 à 20 lettres ASCII, sans espace intérieur ni accent, et doit être unique sans distinction de casse. Une erreur de nom, de session ou de service est affichée dans l'écran. Le profil en cours d'édition reste un aperçu tant que Characters n'a pas confirmé son enregistrement.
@@ -63,7 +71,7 @@ Les URL ne contiennent ni chemin, ni identifiant, ni secret. Le client conserve 
 
 `CharacterServiceClient` génère un vérificateur aléatoire et envoie son empreinte S256 à Identity. Il ouvre l'URL d'autorisation validée dans le navigateur système, puis interroge l'échange en respectant l'intervalle d'attente. Le protocole S256 est celui de remise Arkya entre client natif et backend ; les jetons Discord de ce login restent dans Identity. L'autorisation Social SDK est un second flux PKCE dont Identity vérifie le compte. Le bouton de déconnexion coupe le social, demande la révocation de la session Arkya et efface ses jetons locaux. L'expiration Arkya coupe également le social côté client.
 
-La création envoie `name` et `appearance` à `POST /v1/characters` avec la session Arkya. Characters déduit le propriétaire de l'introspection Identity, impose le niveau initial et contrôle les identifiants et bornes autorisés. La réponse confirmée contient l'identifiant du personnage et l'apparence enregistrée. La liste, la lecture individuelle et la résolution interne retournent la même apparence.
+La création envoie `name`, `appearance` et le `realmId` choisi à `POST /v1/characters` avec la session Arkya. Characters déduit le propriétaire de l'introspection Identity, impose le niveau initial et contrôle les identifiants et bornes autorisés. La réponse confirmée contient l'identifiant du personnage, son royaume et l'apparence enregistrée. La liste, la lecture individuelle et la résolution interne retournent la même apparence.
 
 ```json
 {
@@ -87,7 +95,7 @@ Le catalogue serveur en lecture seule se trouve à `GET /v1/characters/appearanc
 
 La marche vaut 2,2 m/s et la course 4,4 m/s. L’exploration actuelle suit le relief de l’île et ses obstacles ; l’ancienne arène de 7 m reste utilisée par les tests de locomotion isolés. Les snapshots sont transmis à 20 Hz et le client interpole le ghost avant de déplacer le visuel et de choisir l'animation. Le mode local ne possède pas de prédiction client. Il ne modifie pas les mondes du prototype d'areas déjà présents. Quitter l'essai détruit ses connexions et ses mondes.
 
-Cet essai ne réserve aucun personnage persistant et n'émet aucun ticket d'admission. Un profil créé dans MongoDB peut être relu puis utilisé visuellement sur l’île locale ; son admission dans un realm ou un serveur dédié reste à intégrer. Les modifications de l'aperçu ne remplacent pas l'apparence d'un personnage enregistré : aucune route de modification après création n'est fournie. Voir le [guide jouable](world/STARTER_ISLAND_PLAYABLE.md) pour les limites de collision, les commandes et la validation actuelle.
+Cet essai réservé à l’Editor sans compte ne réserve aucun personnage persistant et n’émet aucun ticket d’admission. Le joueur Windows authentifié utilise l’admission au dédié décrite plus haut. Les modifications de l’aperçu ne remplacent pas l’apparence d’un personnage enregistré : aucune route de modification après création n’est fournie. Voir le [guide jouable](world/STARTER_ISLAND_PLAYABLE.md) pour les limites de collision, les commandes et les validations historiques.
 
 ## Assets, reconstruction et build
 
