@@ -159,3 +159,10 @@ label { font-size: 11px; }
 .inference-table th:first-child { min-width: 100px; width: 100px; }
 .inference-worker-form select { min-width: 200px; }
 .inference-worker-form .field { margin-bottom: 12px; }
+
+.realm-partition-map { margin: 22px 0; padding: 18px; border: 1px solid var(--border, #dce3ed); border-radius: 6px; }
+.realm-partition-map figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 14px; }
+.realm-partition-map svg { display: block; width: 100%; height: 320px; margin-bottom: 12px; overflow: visible; }
+.realm-partition-cell rect { fill: #edf3fb; stroke: #52677e; stroke-width: 1.5px; vector-effect: non-scaling-stroke; }
+.realm-partition-cell:nth-child(even) rect { fill: #e0ebf5; }
+.realm-partition-cell text { fill: #223b56; text-anchor: middle; dominant-baseline: central; font-family: "Cascadia Code", Consolas, monospace; }

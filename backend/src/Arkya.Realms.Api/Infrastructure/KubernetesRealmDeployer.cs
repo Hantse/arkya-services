@@ -16,16 +16,22 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
 {
     private const string DedicatedSecretName = "arkya-dedicated";
     private const string ImageReleaseAnnotation = "arkya.online/image-release";
+    private const string RestartAnnotation = "arkya.online/restart-revision";
     private readonly DeploymentOptions options = configured.Value;
     private readonly RealmRuntimeOptions runtimeOptions = runtime?.Value ?? new();
 
     public async Task<ServerObservation[]> ReconcileAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
+        if (realm.Profile.Topology is not null && !realm.Profile.TopologyRuntimeSupported)
+            throw new DeploymentFailure("topology_runtime_unsupported");
         if (!options.Enabled || !options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace &&
             (target.RealmId is null || target.RealmId == realm.RealmId)))
             throw new DeploymentFailure("target_unavailable");
         if (realm.ImageRelease is not null && !RealmImageReleases.Authorizes(options, realm))
             throw new DeploymentFailure("image_release_conflict");
+        if (realm.Restart is { } restart && (restart.Revision <= 0 || restart.PreviousRevision < 0 ||
+            restart.PreviousRevision >= restart.Revision || restart.Revision > realm.Revision))
+            throw new DeploymentFailure("restart_conflict");
         if (runtimeOptions.RegistryDockerConfigFile.Length > 0)
             await EnsureRegistrySecretAsync(realm, cancellationToken);
         if (runtimeOptions.DedicatedKeySeed.Length > 0)
@@ -49,7 +55,11 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             var address = ingress?["ip"]?.GetValue<string>() ?? ingress?["hostname"]?.GetValue<string>();
             if (server.Transport == "WebSocket") address = server.PublicEndpoint;
             if (address is { Length: > 253 } || address?.Any(char.IsControl) == true) address = null;
-            results.Add(new(server.Id, ready, address) { ReadyImage = ready == 1 ? realm.Profile.Image : null });
+            results.Add(new(server.Id, ready, address)
+            {
+                ReadyImage = ready == 1 ? realm.Profile.Image : null,
+                ReadyRestartRevision = ready == 1 ? realm.Restart?.Revision : null
+            });
         }
         return results.ToArray();
     }
@@ -179,24 +189,74 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             throw new DeploymentFailure("resource_deleting");
         if (!MatchesOwnership(desired, existing))
             throw new DeploymentFailure("resource_ownership_conflict");
+        var configuration = desired;
+        var restartRequired = false;
+        if (realm?.Restart is { } restart)
+        {
+            var actualRevision = RestartRevision(existing);
+            if (actualRevision != restart.Revision && actualRevision != restart.PreviousRevision)
+                throw new DeploymentFailure("restart_conflict");
+            restartRequired = actualRevision != restart.Revision;
+            if (restartRequired)
+            {
+                configuration = desired.DeepClone().AsObject();
+                var annotations = configuration["spec"]!["template"]!["metadata"]!["annotations"]!.AsObject();
+                if (restart.PreviousRevision == 0) configuration["spec"]!["template"]!["metadata"]!.AsObject().Remove("annotations");
+                else annotations[RestartAnnotation] = restart.PreviousRevision.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            }
+        }
         if (realm?.ImageRelease is { } release)
         {
             if (!RealmImageReleases.Authorizes(options, realm)) throw new DeploymentFailure("image_release_conflict");
-            if (ContainsDesired(desired["spec"], existing["spec"]))
+            if (ContainsDesired(configuration["spec"], existing["spec"]))
             {
                 if (ReleaseVersion(existing) != release.Version) throw new DeploymentFailure("image_release_conflict");
             }
             else
             {
-                var previous = desired["spec"]!.DeepClone();
+                var previous = configuration["spec"]!.DeepClone();
                 previous["template"]!["spec"]!["containers"]![0]!["image"] = release.PreviousImage;
                 if (!ContainsDesired(previous, existing["spec"]) || ReleaseVersion(existing) != release.PreviousVersion)
                     throw new DeploymentFailure("resource_configuration_drift");
-                existing = await ReplaceImageAsync(resource, desired, existing, release, cancellationToken);
+                existing = await ReplaceImageAsync(resource, configuration, existing, release, cancellationToken);
             }
         }
-        else if (!ContainsDesired(desired["spec"], existing["spec"])) throw new DeploymentFailure("resource_configuration_drift");
+        else if (!ContainsDesired(configuration["spec"], existing["spec"])) throw new DeploymentFailure("resource_configuration_drift");
+        if (restartRequired)
+            existing = await RestartAsync(resource, desired, existing, realm!.Restart!, cancellationToken);
         return existing;
+    }
+
+    private static long RestartRevision(JsonObject deployment)
+    {
+        var value = deployment["spec"]?["template"]?["metadata"]?["annotations"]?[RestartAnnotation];
+        if (value is null) return 0;
+        return value is JsonValue scalar && scalar.TryGetValue<string>(out var text) &&
+            long.TryParse(text, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out var revision) && revision > 0
+            ? revision : -1;
+    }
+
+    private async Task<JsonObject> RestartAsync(string resource, JsonObject desired, JsonObject existing,
+        RealmRestartTransition restart, CancellationToken cancellationToken)
+    {
+        var resourceVersion = existing["metadata"]?["resourceVersion"]?.GetValue<string>();
+        if (string.IsNullOrWhiteSpace(resourceVersion)) throw new DeploymentFailure("resource_configuration_drift");
+        var annotations = existing["spec"]?["template"]?["metadata"]?["annotations"]?.DeepClone().AsObject() ?? new JsonObject();
+        annotations[RestartAnnotation] = restart.Revision.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        var patch = new JsonArray(
+            new JsonObject { ["op"] = "test", ["path"] = "/metadata/resourceVersion", ["value"] = resourceVersion },
+            new JsonObject { ["op"] = "add", ["path"] = "/spec/template/metadata/annotations", ["value"] = annotations });
+        using var response = await SendAsync(HttpMethod.Patch, resource, patch, cancellationToken, "application/json-patch+json");
+        if (response.StatusCode is HttpStatusCode.Conflict or HttpStatusCode.UnprocessableEntity)
+            throw new DeploymentFailure("resource_conflict");
+        RequireSuccess(response);
+        var updated = await ReadAsync(response, cancellationToken);
+        if (!MatchesOwnership(desired, updated)) throw new DeploymentFailure("resource_ownership_conflict");
+        if (!ContainsDesired(desired["spec"], updated["spec"]) || RestartRevision(updated) != restart.Revision ||
+            ReleaseVersion(updated) != ReleaseVersion(existing))
+            throw new DeploymentFailure("resource_configuration_drift");
+        updated.Remove("status");
+        return updated;
     }
 
     private static bool MatchesOwnership(JsonObject desired, JsonObject actual) =>
@@ -284,13 +344,22 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         return $"ar-{realm.RealmId[..Math.Min(20, realm.RealmId.Length)]}-{server.Id[..Math.Min(16, server.Id.Length)]}-{hash}";
     }
 
-    private static JsonObject Labels(RealmRecord realm, ServerDefinition server) => new()
+    private static JsonObject Labels(RealmRecord realm, ServerDefinition server)
     {
-        ["app.kubernetes.io/managed-by"] = "arkya-realms",
-        ["arkya.online/realm-id"] = realm.RealmId,
-        ["arkya.online/server-id"] = server.Id,
-        ["arkya.online/deployment-id"] = realm.DeploymentIdentity
-    };
+        var labels = new JsonObject
+        {
+            ["app.kubernetes.io/managed-by"] = "arkya-realms",
+            ["arkya.online/realm-id"] = realm.RealmId,
+            ["arkya.online/server-id"] = server.Id,
+            ["arkya.online/deployment-id"] = realm.DeploymentIdentity
+        };
+        if (realm.Profile.Topology is not null)
+        {
+            labels["arkya.online/server-kind"] = server.Kind.ToLowerInvariant();
+            if (server.IslandId is not null) labels["arkya.online/island-id"] = server.IslandId;
+        }
+        return labels;
+    }
 
     public static JsonObject DeploymentManifest(RealmRecord realm, ServerDefinition server, RealmRuntimeOptions? runtime = null)
     {
@@ -315,6 +384,25 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
                 ["capabilities"] = new JsonObject { ["drop"] = new JsonArray("ALL") }
             }
         };
+        if (realm.Profile.Topology is { } topology)
+        {
+            var environment = (JsonArray)container["env"]!;
+            AddEnvironment("ARKYA_SERVER_KIND", server.Kind);
+            AddEnvironment("ARKYA_REALM_TOPOLOGY", JsonSerializer.Serialize(topology, new JsonSerializerOptions(JsonSerializerDefaults.Web)));
+            if (server.IslandId is not null) AddEnvironment("ARKYA_ISLAND_ID", server.IslandId);
+            if (server.PartitionIndex is { } index) AddEnvironment("ARKYA_PARTITION_INDEX", index.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            if (server.PartitionCount is { } count) AddEnvironment("ARKYA_PARTITION_COUNT", count.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            if (server.Bounds is { } bounds)
+            {
+                AddEnvironment("ARKYA_AREA_BOUNDS", JsonSerializer.Serialize(bounds, new JsonSerializerOptions(JsonSerializerDefaults.Web)));
+                var neighbors = realm.Profile.Servers.Where(other => other.Id != server.Id && other.Kind == DedicatedKind.Island &&
+                    other.IslandId == server.IslandId && other.Bounds is { } otherBounds && IslandPartitioning.AreNeighbors(bounds, otherBounds))
+                    .Select(other => other.Id).ToArray();
+                AddEnvironment("ARKYA_AREA_NEIGHBORS", JsonSerializer.Serialize(neighbors));
+            }
+
+            void AddEnvironment(string name, string value) => environment.Add(new JsonObject { ["name"] = name, ["value"] = value });
+        }
         if (server.Transport == "WebSocket")
         {
             ((JsonArray)container["env"]!).Add(new JsonObject { ["name"] = "ARKYA_READY_FILE", ["value"] = "/tmp/arkya-ready" });
@@ -364,6 +452,9 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
         var metadata = new JsonObject { ["name"] = ResourceName(realm, server), ["namespace"] = realm.Namespace, ["labels"] = Labels(realm, server) };
         if (realm.ImageRelease is { } release)
             metadata["annotations"] = new JsonObject { [ImageReleaseAnnotation] = release.Version.ToString(System.Globalization.CultureInfo.InvariantCulture) };
+        var templateMetadata = new JsonObject { ["labels"] = Labels(realm, server) };
+        if (realm.Restart is { } restart)
+            templateMetadata["annotations"] = new JsonObject { [RestartAnnotation] = restart.Revision.ToString(System.Globalization.CultureInfo.InvariantCulture) };
         return new JsonObject
         {
             ["apiVersion"] = "apps/v1", ["kind"] = "Deployment",
@@ -373,7 +464,7 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
                 ["replicas"] = 1, ["revisionHistoryLimit"] = 1, ["progressDeadlineSeconds"] = server.Transport == "WebSocket" ? 600 : 240,
                 ["strategy"] = new JsonObject { ["type"] = "Recreate" },
                 ["selector"] = new JsonObject { ["matchLabels"] = Labels(realm, server) },
-                ["template"] = new JsonObject { ["metadata"] = new JsonObject { ["labels"] = Labels(realm, server) }, ["spec"] = pod }
+                ["template"] = new JsonObject { ["metadata"] = templateMetadata, ["spec"] = pod }
             }
         };
     }

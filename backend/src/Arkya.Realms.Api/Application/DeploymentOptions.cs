@@ -48,6 +48,7 @@ public sealed class RealmImageRelease
     public string ProfileId { get; set; } = "";
     public long Version { get; set; }
     public string PreviousImage { get; set; } = "";
+    public bool Automatic { get; set; } = true;
     public bool IsValid() => DeploymentOptions.ValidId(RealmId) && DeploymentOptions.ValidId(ProfileId) &&
         Version > 0 && DeploymentOptions.ValidImage(PreviousImage);
 }
@@ -68,13 +69,16 @@ public sealed class DeploymentProfile
     public DeploymentServer[] Servers { get; set; } = [];
     public string? EnvironmentSecretName { get; set; }
     public string? ImagePullSecretName { get; set; }
+    public string? TopologyTemplateServerId { get; set; }
+    public string? TopologyPublicEndpointTemplate { get; set; }
 
     public bool IsValid() => DeploymentOptions.ValidId(Id) && DeploymentOptions.ValidName(DisplayName) &&
         DeploymentOptions.ValidImage(Image) &&
         DeploymentOptions.ValidSecret(EnvironmentSecretName) && DeploymentOptions.ValidSecret(ImagePullSecretName) &&
         Servers is { Length: >= 1 and <= 16 } && Servers.All(server => server is not null && server.IsValid()) &&
         Servers.Select(server => server.Id).Distinct().Count() == Servers.Length &&
-        Servers.Select(server => server.Port).Distinct().Count() == Servers.Length;
+        Servers.Select(server => server.Port).Distinct().Count() == Servers.Length &&
+        RealmTopologyBuilder.ValidTemplate(this);
 
     public ProfileSnapshot Snapshot() => new(Id, Image,
         Servers.Select(server => new ServerDefinition(server.Id, server.Port, server.Args.ToArray())

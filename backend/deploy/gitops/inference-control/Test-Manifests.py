@@ -102,7 +102,7 @@ def main():
         for item in objects:
             if item["kind"] == "Deployment":
                 image = item["spec"]["template"]["spec"]["containers"][0]["image"]
-                assert re.fullmatch(r"ghcr\.io/hantse/arkya-services-[a-z]+@sha256:[0-9a-f]{64}", image), f"Unpublished image: {image}"
+                assert re.fullmatch(r"ghcr\.io/hantse/(?:arkya-services-[a-z]+|arkya-mmorpg-web-client)@sha256:[0-9a-f]{64}", image), f"Unpublished image: {image}"
     print(f"Validated {len(objects)} objects: additive Inference, existing secret references, optional Reports coexistence ({'active' if already_active else 'preview'}).")
 
 

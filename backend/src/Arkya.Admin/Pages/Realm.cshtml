@@ -1,13 +1,15 @@
 @page "/Realms/{realmId}"
 @model RealmModel
 @using Arkya.Admin.Realms
+@using System.Globalization
 @{
     ViewData["Title"] = Model.Realm?.DisplayName ?? "Realm";
 }
 <a class="text-link" asp-page="/Realms">← Tous les realms</a>
-<header class="page-header realm-header"><div><div class="eyebrow">UNIVERS / DÉPLOIEMENT</div><h1>@(Model.Realm?.DisplayName ?? "Realm")</h1><p class="intro">Configuration enregistrée et état des serveurs.</p></div><a class="button secondary" asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]">Actualiser</a></header>
+<header class="page-header realm-header"><div><div class="eyebrow">UNIVERS / EXPLOITATION</div><h1>@(Model.Realm?.DisplayName ?? "Realm")</h1><p class="intro">Serveurs, mises à jour et actions en jeu.</p></div><a class="button secondary" asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]">Actualiser</a></header>
 @if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
 @if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error</div> }
+@if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
 @if (Model.Realm is { } realm)
 {
     <div class="realms-workspace">
@@ -16,18 +18,76 @@
             <div class="panel realm-topology"><div class="realm-root"><span class="realm-node" aria-hidden="true">◇</span><div><strong>@realm.DisplayName</strong><small class="mono">@realm.RealmId</small></div></div><ul class="realm-servers">
             @foreach (var server in realm.Servers)
             {
-                <li><div><strong class="mono">@server.Id</strong><small>@(server.Transport == "WebSocket" ? "WebSocket / TCP" : "UDP") @server.Port · @server.ReadyReplicas / @server.DesiredReplicas réplica(s) prêt(s)</small>@if (server.PublicEndpoint is not null) { <small class="mono">@server.PublicEndpoint</small> }</div><code class="server-address">@(string.IsNullOrWhiteSpace(server.Address) ? "Adresse en attente" : server.Address)</code></li>
+                <li><div><strong class="mono">@server.Id</strong>@if (realm.Topology is not null) { <small>@RealmPresentation.ServerKindLabel(server.Kind)@if (server.IslandId is not null) { <span> · @server.IslandId · partition @(server.PartitionIndex + 1) / @server.PartitionCount</span> }</small> }<small>@(server.Transport == "WebSocket" ? "WebSocket / TCP" : "UDP") @server.Port · @server.ReadyReplicas / @server.DesiredReplicas réplica(s) prêt(s)</small>@if (server.PublicEndpoint is not null) { <small class="mono">@server.PublicEndpoint</small> }</div><code class="server-address">@(string.IsNullOrWhiteSpace(server.Address) ? "Adresse en attente" : server.Address)</code></li>
             }
             </ul></div>
+            @if (realm.Topology is { } topology)
+            {
+                <div class="panel realm-topology realm-plan-table">
+                    <h3>Plan du realm</h3>
+                    <div class="table-scroll"><table class="realm-table"><caption class="sr-only">Îles et nombre de serveurs dédiés</caption><thead><tr><th scope="col">Île</th><th scope="col">Dédiés</th><th scope="col">Dimensions X × Z</th><th scope="col">Origine X / Z</th></tr></thead><tbody>
+                    @foreach (var island in topology.Islands)
+                    {
+                        <tr><th scope="row" class="mono">@island.IslandId</th><td>@island.DedicatedCount</td><td>@island.Width × @island.Depth</td><td>@island.OriginX / @island.OriginZ</td></tr>
+                    }
+                    <tr><th scope="row">Pool d’instances</th><td>@topology.InstanceDedicatedCount</td><td colspan="2">Simulation isolée</td></tr>
+                    <tr><th scope="row">Pool de raids</th><td>@topology.RaidDedicatedCount</td><td colspan="2">Simulation isolée</td></tr>
+                    </tbody></table></div>
+                    <small>Les dédiés d’une île partagent son espace. Les pools d’instances et de raids sont distincts.</small>
+                    @foreach (var island in topology.Islands)
+                    {
+                        var areas = realm.Servers.Where(server => server.IslandId == island.IslandId && server.Bounds is not null).OrderBy(server => server.PartitionIndex).ToArray();
+                        <figure class="realm-partition-map">
+                            <figcaption><strong>@island.IslandId</strong><small>@island.Width × @island.Depth · @areas.Length dédié(s)</small></figcaption>
+                            <svg viewBox="0 0 @island.Width.ToString(CultureInfo.InvariantCulture) @island.Depth.ToString(CultureInfo.InvariantCulture)" role="img" aria-label="Découpage de @island.IslandId en @areas.Length partitions">
+                            @foreach (var area in areas)
+                            {
+                                var bounds = area.Bounds!;
+                                var x = bounds.MinX - island.OriginX;
+                                var z = bounds.MinZ - island.OriginZ;
+                                var width = bounds.MaxX - bounds.MinX;
+                                var depth = bounds.MaxZ - bounds.MinZ;
+                                var label = area.PartitionIndex is >= 0 and < 26 ? ((char)('A' + area.PartitionIndex.Value)).ToString() : (area.PartitionIndex + 1).ToString();
+                                <g class="realm-partition-cell">
+                                    <title>@area.Id : (@bounds.MinX, @bounds.MinZ) → (@bounds.MaxX, @bounds.MaxZ)</title>
+                                    <rect x="@x.ToString(CultureInfo.InvariantCulture)" y="@z.ToString(CultureInfo.InvariantCulture)" width="@width.ToString(CultureInfo.InvariantCulture)" height="@depth.ToString(CultureInfo.InvariantCulture)" />
+                                    <text x="@((x + width / 2).ToString(CultureInfo.InvariantCulture))" y="@((z + depth / 2).ToString(CultureInfo.InvariantCulture))" font-size="@((Math.Min(width, depth) * 0.22).ToString(CultureInfo.InvariantCulture))">@label</text>
+                                </g>
+                            }
+                            </svg>
+                            <small>Origine : @island.OriginX / @island.OriginZ · X vers la droite, Z vers le bas.</small>
+                        </figure>
+                    }
+                    @if (realm.Servers.Any(server => server.Bounds is not null))
+                    {
+                        <h3>Limites des partitions (X / Z)</h3>
+                        <div class="table-scroll"><table class="realm-table"><caption class="sr-only">Coordonnées des zones de chaque serveur dédié</caption><thead><tr><th scope="col">Dédié</th><th scope="col">Minimum X / Z</th><th scope="col">Maximum X / Z</th></tr></thead><tbody>
+                        @foreach (var server in realm.Servers.Where(server => server.Bounds is not null))
+                        {
+                            <tr><th scope="row" class="mono">@server.Id</th><td>@server.Bounds!.MinX / @server.Bounds.MinZ</td><td>@server.Bounds.MaxX / @server.Bounds.MaxZ</td></tr>
+                        }
+                        </tbody></table></div>
+                    }
+                </div>
+                <div class="workflow-note"><strong>Continuité entre les partitions</strong><p>Le plan est enregistré. L’admission des joueurs, les transferts d’autorité et la synchronisation des frontières nécessitent encore le raccordement et la validation du runtime multi-dédié.</p></div>
+                @if (!realm.TopologyRuntimeSupported)
+                {
+                    <div class="alert error realm-alert" role="alert">Ce profil permet d’enregistrer le plan, mais son runtime ne prend pas en charge ce déploiement. Le déploiement est bloqué jusqu’à la configuration d’un profil compatible.</div>
+                }
+            }
             @if (realm.Status == "Failed") { <div class="alert error realm-alert" role="alert">@RealmPresentation.FailureMessage(realm.LastError)</div> }
             <div class="workflow-note"><strong>Vérifier l'entrée en jeu</strong><p>La disponibilité affichée concerne les ressources du cluster. Vérifiez aussi l'admission des joueurs, les secrets du dedicated et la route publique WSS ou UDP avec un client réel.</p></div>
         </section>
         <aside aria-labelledby="configuration-heading">
             <div class="section-heading"><h2 id="configuration-heading">Configuration</h2><span class="badge">Révision @realm.Revision</span></div>
             <div class="panel publish-panel"><dl class="realm-facts"><div><dt>Cible</dt><dd>@realm.TargetId</dd></div><div><dt>Namespace</dt><dd class="mono">@realm.Namespace</dd></div><div><dt>Profil</dt><dd>@realm.ProfileId</dd></div><div><dt>Image des serveurs</dt><dd class="mono">@realm.Image</dd></div><div><dt>Dernier changement d'état</dt><dd><time datetime="@realm.UpdatedAt.ToString("O")">@realm.UpdatedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></dd></div></dl>
+            @if (realm.Status == "Draft")
+            {
+                <a class="button secondary full-width" asp-page="/Realms" asp-route-editRealmId="@realm.RealmId">Modifier le plan</a>
+            }
             @if (RealmPresentation.CanDeploy(realm))
             {
-                <form method="post" asp-page-handler="Deploy" asp-route-realmId="@realm.RealmId"><input type="hidden" asp-for="ExpectedRevision" /><button class="button primary full-width" type="submit" disabled="@(!Model.DeploymentEnabled)">@(realm.Status == "Failed" ? "Relancer le déploiement" : "Déployer ce realm")</button></form>
+                <form method="post" asp-page-handler="Deploy" asp-route-realmId="@realm.RealmId"><input type="hidden" asp-for="ExpectedRevision" /><button class="button primary full-width" type="submit" disabled="@(!Model.DeploymentEnabled || realm.Topology is not null && !realm.TopologyRuntimeSupported)">@(realm.Status == "Failed" ? "Relancer le déploiement" : "Déployer ce realm")</button></form>
                 <small>Cette action crée les ressources du realm sur la cible configurée.</small>
             }
             else if (realm.Status is "Pending" or "Deploying") { <p>Déploiement en cours. Actualisez la page pour consulter son avancement.</p> }
@@ -35,4 +95,5 @@
             </div>
         </aside>
     </div>
+    <partial name="_RealmOperations" model="Model" />
 }

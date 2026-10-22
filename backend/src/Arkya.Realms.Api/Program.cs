@@ -14,7 +14,7 @@ public partial class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 8192);
+        builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 32768);
         builder.Services.ConfigureHttpJsonOptions(options =>
         {
             options.SerializerOptions.UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow;
@@ -44,6 +44,9 @@ public partial class Program
         builder.Services.AddSingleton<RealmsAdminKeyValidator>();
         builder.Services.AddSingleton<IRealmRepository, MongoRealmRepository>();
         builder.Services.AddSingleton<RealmService>();
+        builder.Services.AddSingleton<IRealmCommandRepository, MongoRealmCommandRepository>();
+        builder.Services.AddSingleton<RealmCommandService>();
+        builder.Services.AddSingleton<RealmConfigurationService>();
         builder.Services.AddOptions<GameEntryOptions>().BindConfiguration("GameAccess")
             .Validate(value => value.IsValid(builder.Environment.IsDevelopment()), "Game entry configuration is invalid.").ValidateOnStart();
         builder.Services.AddSingleton<GameEntryService>();
@@ -68,7 +71,7 @@ public partial class Program
                 context.Response.StatusCode = 400;
                 return;
             }
-            if (context.Request.ContentLength > 8192)
+            if (context.Request.ContentLength > 32768)
             {
                 context.Response.StatusCode = 413;
                 return;
@@ -99,6 +102,8 @@ public partial class Program
         app.MapGet("/health/ready", async (IRealmRepository repository, CancellationToken cancellationToken) =>
             await repository.IsAvailableAsync(cancellationToken) ? Results.Ok(new { status = "ready" }) : Results.StatusCode(503));
         app.MapRealmEndpoints();
+        app.MapRealmCommandEndpoints();
+        app.MapRealmConfigurationEndpoints();
         app.MapGet("/internal/realms/entries", async (HttpContext context, GameEntryService entries, CancellationToken cancellationToken) =>
         {
             var key = context.Request.Headers["X-Arkya-Service-Key"];

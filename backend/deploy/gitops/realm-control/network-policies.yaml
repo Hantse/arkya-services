@@ -82,3 +82,29 @@ spec:
     ports:
     - port: 8080
       protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-realms-dedicated-commands
+  namespace: arkya-beta
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-realms
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-beta-realm
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/managed-by: arkya-realms
+          arkya.online/realm-id: beta-web
+          arkya.online/server-id: island
+    ports:
+    - port: 8080
+      protocol: TCP

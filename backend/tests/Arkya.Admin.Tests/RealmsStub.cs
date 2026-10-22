@@ -13,6 +13,12 @@ internal sealed class RealmsStub : HttpMessageHandler
     public RealmDeploymentOptions Options { get; set; } = new([new("test-cluster", "Cluster de test", "arkya-realms")],
         [new("island-test", "Île de départ", "registry.example/arkya/server@sha256:" + new string('a', 64), [new("area-one", 7777), new("area-two", 7778)])], true);
     public List<ContentCall> Calls { get; } = [];
+    public List<string?> Actors { get; } = [];
+    public RealmOperationsOptions OperationsOptions { get; set; } = new(true, true,
+        "registry.example/arkya/server@sha256:" + new string('b', 64), 2, null);
+    public RealmCommands Commands { get; set; } = new([new("area-one", DateTimeOffset.UtcNow, true, ["announce", "kick", "save"])], []);
+    public RealmConfiguration Configuration { get; set; } = new(0, 1, 1, null, null, []);
+    public HttpStatusCode? ConfigurationReadError { get; set; }
     public HttpStatusCode? WriteError { get; set; }
     public HttpStatusCode? ReadError { get; set; }
     public bool InvalidJson { get; set; }
@@ -25,27 +31,67 @@ internal sealed class RealmsStub : HttpMessageHandler
         JsonElement? body = request.Content is null ? null : await request.Content.ReadFromJsonAsync<JsonElement>(cancellationToken);
         var call = new ContentCall(request.Method, request.RequestUri!.AbsolutePath, body);
         Calls.Add(call);
+        Actors.Add(request.Headers.TryGetValues("X-Arkya-Admin-Actor", out var actors) ? Assert.Single(actors) : null);
         var error = request.Method == HttpMethod.Get ? ReadError : WriteError;
         if (error.HasValue) return new(error.Value) { Content = new StringContent("private upstream details " + AdminFactory.RealmsAdminKey) };
         if (InvalidJson) return new(HttpStatusCode.OK) { Content = new StringContent("private upstream details " + AdminFactory.RealmsAdminKey) };
         if (request.Method == HttpMethod.Get)
+        {
+            if (call.Path.EndsWith("/configuration") && ConfigurationReadError is { } configurationError)
+                return new(configurationError) { Content = new StringContent("private upstream details " + AdminFactory.RealmsAdminKey) };
             return call.Path switch
             {
                 "/admin/realms" => Json(new[] { Realm }),
                 "/admin/realms/options" => Json(Options),
                 "/admin/realms/terres-aube" => Json(Realm),
+                "/admin/realms/terres-aube/operations-options" => Json(OperationsOptions),
+                "/admin/realms/terres-aube/commands" => Json(Commands),
+                "/admin/realms/terres-aube/configuration" => Json(Configuration),
                 _ => new(HttpStatusCode.NotFound)
             };
+        }
+        if (request.Method == HttpMethod.Put && call.Path == "/admin/realms/terres-aube/configuration")
+        {
+            var submitted = body!.Value.Deserialize<UpdateRealmConfiguration>(new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
+            if (submitted.ExpectedRevision != Configuration.Revision) return new(HttpStatusCode.Conflict);
+            var now = DateTimeOffset.UtcNow;
+            var change = new RealmConfigurationChange(Configuration.Revision + 1, Configuration.Revision, submitted.XpMultiplier,
+                submitted.HarvestMultiplier, Configuration.XpMultiplier, Configuration.HarvestMultiplier, now, Actors[^1]!, submitted.Reason);
+            Configuration = new(change.Revision, submitted.XpMultiplier, submitted.HarvestMultiplier, now, Actors[^1]!, [.. Configuration.History, change]);
+            return Json(Configuration);
+        }
         if (request.Method == HttpMethod.Post && call.Path == "/admin/realms")
         {
             var submitted = body!.Value.Deserialize<CreateRealmRequest>(new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
-            Realm = Realm with { RealmId = submitted.RealmId, DisplayName = submitted.DisplayName, TargetId = submitted.TargetId, ProfileId = submitted.ProfileId };
+            Realm = Realm with { RealmId = submitted.RealmId, DisplayName = submitted.DisplayName, TargetId = submitted.TargetId, ProfileId = submitted.ProfileId, Topology = submitted.Topology };
             return Json(Realm, HttpStatusCode.Created);
+        }
+        if (request.Method == HttpMethod.Put && call.Path == "/admin/realms/terres-aube/topology")
+        {
+            var submitted = body!.Value;
+            if (Realm.Status != "Draft" || submitted.GetProperty("expectedRevision").GetInt64() != Realm.Revision)
+                return new(HttpStatusCode.Conflict);
+            Realm = Realm with { Revision = Realm.Revision + 1, ProfileId = submitted.GetProperty("profileId").GetString()!,
+                Topology = submitted.GetProperty("topology").Deserialize<RealmTopology>(new JsonSerializerOptions(JsonSerializerDefaults.Web)) };
+            return Json(Realm);
         }
         if (request.Method == HttpMethod.Post && call.Path == "/admin/realms/terres-aube/deploy")
         {
             Realm = Realm with { Revision = Realm.Revision + 1, Status = "Pending" };
             return Json(Realm, HttpStatusCode.Accepted);
+        }
+        if (request.Method == HttpMethod.Post && (call.Path.EndsWith("/restart") || call.Path.EndsWith("/update")))
+        {
+            Realm = Realm with { Revision = Realm.Revision + 1, Status = "Pending" };
+            return Json(Realm, HttpStatusCode.Accepted);
+        }
+        if (request.Method == HttpMethod.Post && call.Path == "/admin/realms/terres-aube/commands")
+        {
+            var submitted = body!.Value.Deserialize<RealmCommandRequest>(new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
+            var command = new RealmCommand(submitted.RequestId, submitted.ServerId, submitted.Type, submitted.Message,
+                submitted.CharacterId, "Pending", Actors[^1]!, submitted.Reason, DateTimeOffset.UtcNow, DateTimeOffset.UtcNow.AddMinutes(2), null, null, null);
+            Commands = Commands with { Commands = [command, .. Commands.Commands] };
+            return Json(command, HttpStatusCode.Accepted);
         }
         return new(HttpStatusCode.NotFound);
     }

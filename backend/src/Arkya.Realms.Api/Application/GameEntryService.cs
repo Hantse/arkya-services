@@ -44,8 +44,11 @@ public sealed class GameEntryService(IRealmRepository realms, IOptions<GameEntry
         {
             // A deployed realm must never be silently overridden by standalone configuration.
             entries.RemoveAll(value => value.RealmId == realm.RealmId);
-            var server = realm.Profile.Servers.FirstOrDefault(value => value.Transport == "WebSocket" &&
-                GameProtocol.ValidEndpoint(value.PublicEndpoint) && value.ProtocolVersion == GameProtocol.Version && value.BuildId == GameProtocol.BuildId);
+            // The current admission contract has one destination and cannot select an island or transfer authority.
+            if (realm.Profile.Topology is not null) continue;
+            var destinations = realm.Profile.Servers.Where(value => value.Transport == "WebSocket" &&
+                GameProtocol.ValidEndpoint(value.PublicEndpoint) && value.ProtocolVersion == GameProtocol.Version && value.BuildId == GameProtocol.BuildId).ToArray();
+            var server = destinations.Length == 1 ? destinations[0] : null;
             if (server is not null) entries.Add(new(realm.RealmId, realm.DisplayName, realm.Status == RealmStatus.Ready,
                 server.Id, server.PublicEndpoint!, server.ProtocolVersion, server.BuildId));
         }

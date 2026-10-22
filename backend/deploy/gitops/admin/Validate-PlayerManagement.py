@@ -210,10 +210,10 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
     frontend_documents = frontend_documents or checks.render(ROOT.parent / "frontend-discord")
     beta_documents = beta_documents or checks.render(ROOT.parent / "beta")
     resources, frontend, beta = map(checks.index, (documents, frontend_documents, beta_documents))
-    require(len(resources) == 40 and {d["kind"] for d in documents} == {
+    require(len(resources) == 41 and {d["kind"] for d in documents} == {
         "Deployment", "ConfigMap", "Service", "NetworkPolicy", "PersistentVolumeClaim",
         "Namespace", "ServiceAccount", "Role", "RoleBinding"},
-        "Admin must render seven applications, two preserved PVCs and nine scoped realm resources without a Secret or Ingress")
+        "Admin must render seven applications, two preserved PVCs and ten scoped realm resources without a Secret or Ingress")
     control_documents = checks.render(ROOT.parent / "realm-control")
     for key, document in control.check_profile(control_documents).items():
         require(resources.get(key) == document, f"Realm control resource was changed by the Admin overlay: {key}")

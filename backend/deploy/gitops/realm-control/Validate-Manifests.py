@@ -22,7 +22,7 @@ GAME = {
 
 def check_profile(documents):
     resources = checks.index(documents)
-    require(len(resources) == 9, "Unexpected realm control resources")
+    require(len(resources) == 10, "Unexpected realm control resources")
     require(not any(item["kind"] in {"Secret", "Deployment", "Ingress", "ClusterRole", "ClusterRoleBinding"}
                     for item in documents), "Realm GitOps must not own dedicated workloads, credentials, TLS ingress or cluster-wide RBAC")
     namespace = resources[("Namespace", "", NS)]
@@ -68,6 +68,14 @@ def check_profile(documents):
             catalogue["ingress"] == [{"from": [{"podSelector": {"matchLabels": {
                 "app.kubernetes.io/name": "arkya-characters"}}}], "ports": [{"port": 8080, "protocol": "TCP"}]}],
             "Player realm discovery must remain internal to Characters")
+    commands = resources[("NetworkPolicy", OPERATIONS, "arkya-realms-dedicated-commands")]["spec"]
+    require(commands == {
+        "podSelector": {"matchLabels": {"app.kubernetes.io/name": "arkya-realms"}},
+        "policyTypes": ["Ingress"],
+        "ingress": [{"from": [{"namespaceSelector": {"matchLabels": {
+            "kubernetes.io/metadata.name": NS}}, "podSelector": {"matchLabels": GAME}}],
+            "ports": [{"port": 8080, "protocol": "TCP"}]}],
+    }, "Only the exact dedicated realm/server may poll the internal Realms command API")
     return resources
 
 

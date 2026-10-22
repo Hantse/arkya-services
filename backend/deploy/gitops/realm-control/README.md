@@ -12,8 +12,10 @@ dans `arkya-beta-realm` autorise `get/create/patch` sur les Deployments et
 la lecture des seuls Secrets `arkya-ghcr` et `arkya-dedicated`, et leur création. Kubernetes
 ne permet pas de limiter `create` par nom : le code Realms fixe et valide le
 nom fixe et le namespace avant cet appel. Le patch est limité dans le code
-à une transition d'image versionnée sur un Deployment possédé, avec tests de
-concurrence ; voir les [releases GitOps](../../../../docs/REALM_DEPLOYMENT.md#mettre-à-jour-une-image-par-gitops).
+à une transition d'image versionnée ou à l'annotation de redémarrage d'un
+Deployment possédé, avec tests de concurrence ; voir les
+[releases GitOps](../../../../docs/REALM_DEPLOYMENT.md#mettre-à-jour-une-image-par-gitops)
+et les [actions d'exploitation](../../../../docs/REALM_OPERATIONS.md).
 Aucun droit `list`, `update` ou `delete`, autre namespace ou objet du cluster
 n'est accordé.
 Le pod Realms reçoit explicitement un jeton projeté et la CA Kubernetes ;

@@ -6,10 +6,10 @@
 }
 <header class="page-header">
     <div><div class="eyebrow">UNIVERS / DÉPLOIEMENT</div><h1>Realms</h1><p class="intro">Préparez chaque monde et suivez ses serveurs dédiés.</p></div>
-    <a class="button secondary" asp-page="/Realms">Actualiser</a>
+    <a class="button secondary" asp-page="/Realms" asp-route-editRealmId="@Model.EditRealmId">Actualiser</a>
 </header>
 @if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
-@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Realms">Réessayer</a></div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Realms" asp-route-editRealmId="@Model.EditRealmId">Réessayer</a></div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
 @if (!Model.Enabled)
 {
@@ -36,13 +36,51 @@ else if (Model.Loaded)
             <div class="workflow-note"><strong>Prêt à l'échelle de l'infrastructure</strong><p>L'état « Déploiement prêt » décrit les ressources du cluster. Vérifiez ensuite l'admission et les routes publiques avec un client de jeu réel.</p></div>
         </section>
         <aside aria-labelledby="create-heading">
-            <div class="section-heading"><h2 id="create-heading">Préparer un realm</h2></div>
-            <form method="post" asp-page-handler="Create" class="panel realm-form">
+            <div class="section-heading"><h2 id="create-heading">@(Model.IsEditing ? "Modifier le plan du realm" : "Préparer un realm")</h2></div>
+            <form method="post" asp-page-handler="@(Model.IsEditing ? "SaveTopology" : "Create")" class="panel realm-form">
+                @if (Model.IsEditing)
+                {
+                    <input type="hidden" asp-for="EditRealmId" /><input type="hidden" asp-for="ExpectedRevision" />
+                    <input type="hidden" asp-for="Input.RealmId" /><input type="hidden" asp-for="Input.DisplayName" /><input type="hidden" asp-for="Input.TargetId" />
+                    <p class="realm-edit-identity"><strong>@Model.Input.DisplayName</strong><small>@Model.Input.RealmId · @Model.Input.TargetId · révision @Model.ExpectedRevision</small></p>
+                }
+                else
+                {
                 <div class="field"><label asp-for="Input.DisplayName">Nom du monde</label><input asp-for="Input.DisplayName" maxlength="80" placeholder="Les Terres d'Aube" required /></div>
                 <div class="field"><label asp-for="Input.RealmId">Identifiant permanent</label><input asp-for="Input.RealmId" class="mono" minlength="3" maxlength="31" pattern="[a-z][a-z0-9\-]{1,29}[a-z0-9]" placeholder="terres-aube" required aria-describedby="realm-id-help" /><small id="realm-id-help">3 à 31 caractères : minuscules, chiffres et tirets.</small></div>
                 <div class="field"><label asp-for="Input.TargetId">Cible de déploiement</label><select asp-for="Input.TargetId" required><option value="">Choisir une cible</option>@foreach (var target in Model.Options.Targets) { <option value="@target.Id">@target.DisplayName · @target.Namespace</option> }</select></div>
+                }
                 <div class="field"><label asp-for="Input.ProfileId">Profil de serveurs</label><select asp-for="Input.ProfileId" required><option value="">Choisir un profil</option>@foreach (var profile in Model.Options.Profiles) { <option value="@profile.Id">@profile.DisplayName · @profile.Servers.Length serveur(s)</option> }</select></div>
-                <button class="button primary full-width" type="submit" disabled="@(Model.Options.Targets.Length == 0 || Model.Options.Profiles.Length == 0)">Créer le realm</button>
+                <fieldset class="realm-plan">
+                    <legend>Répartition des dédiés</legend>
+                    <label class="realm-plan-toggle"><input asp-for="Input.ConfigureTopology" /> Configurer les îles, instances et raids</label>
+                    <small>Décochez pour utiliser la répartition fixe du profil sélectionné.</small>
+                    <small>Chaque île constitue un monde continu ; ses dédiés sont des partitions de ce monde. Les serveurs d’instances et de raids forment des pools séparés.</small>
+                    @for (var index = 0; index < Model.Input.Islands.Count; index++)
+                    {
+                        <div class="realm-island-input">
+                            <div class="field"><label asp-for="Input.Islands[index].IslandId">Identifiant de l’île</label><input asp-for="Input.Islands[index].IslandId" class="mono" maxlength="20" placeholder="starter-island" /><small>3 à 20 caractères. Ajoutez aussi les futures îles.</small></div>
+                            <div class="field"><label asp-for="Input.Islands[index].DedicatedCount">Dédiés de cette île</label><input asp-for="Input.Islands[index].DedicatedCount" type="number" min="1" max="64" /></div>
+                            <div class="realm-island-dimensions">
+                                <div class="field"><label asp-for="Input.Islands[index].Width">Largeur (X)</label><input asp-for="Input.Islands[index].Width" type="number" min="1" max="1000000" step="any" /></div>
+                                <div class="field"><label asp-for="Input.Islands[index].Depth">Profondeur (Z)</label><input asp-for="Input.Islands[index].Depth" type="number" min="1" max="1000000" step="any" /></div>
+                                <div class="field"><label asp-for="Input.Islands[index].OriginX">Origine X</label><input asp-for="Input.Islands[index].OriginX" type="number" min="-10000000" max="10000000" step="any" /></div>
+                                <div class="field"><label asp-for="Input.Islands[index].OriginZ">Origine Z</label><input asp-for="Input.Islands[index].OriginZ" type="number" min="-10000000" max="10000000" step="any" /></div>
+                            </div>
+                            <small>Coordonnées du monde Unity X/Z. Une île de 1 000 × 1 000 avec 4 dédiés produit quatre zones de 500 × 500.</small>
+                            <button class="text-button danger" type="submit" asp-page-handler="RemoveIsland" name="removeIslandIndex" value="@index" formnovalidate>Retirer cette île</button>
+                        </div>
+                    }
+                    <button class="button secondary full-width" type="submit" asp-page-handler="AddIsland" formnovalidate disabled="@(Model.Input.Islands.Count >= 32)">Ajouter une île</button>
+                    <div class="field"><label asp-for="Input.InstanceDedicatedCount">Serveurs d’instances</label><input asp-for="Input.InstanceDedicatedCount" type="number" min="0" max="64" /></div>
+                    <div class="field"><label asp-for="Input.RaidDedicatedCount">Serveurs de raids</label><input asp-for="Input.RaidDedicatedCount" type="number" min="0" max="64" /></div>
+                    <small>32 îles et 256 dédiés maximum par realm. La création conserve ce plan. Le déploiement nécessite un profil compatible ; l’admission et la synchronisation entre partitions restent à intégrer et à valider.</small>
+                    @foreach (var profile in Model.Options.Profiles.Where(profile => !profile.TopologySupported))
+                    {
+                        <small>@profile.DisplayName : enregistrement du plan disponible, déploiement de cette topologie indisponible.</small>
+                    }
+                </fieldset>
+                <button class="button primary full-width" type="submit" disabled="@(Model.Options.Targets.Length == 0 || Model.Options.Profiles.Length == 0 || Model.IsEditing && Model.ExpectedRevision is null)">@(Model.IsEditing ? "Enregistrer le plan" : "Créer le realm")</button>
                 <small>La création enregistre la configuration. Le déploiement se lance depuis la fiche du realm.</small>
             </form>
             @if (!Model.Options.DeploymentEnabled) { <div class="workflow-note"><strong>Déploiement désactivé</strong><p>Vous pouvez préparer les realms. L'activation du déploiement appartient à la configuration du service.</p></div> }

@@ -73,23 +73,31 @@ internal sealed class RealmDocument
     public DateTime? DeploymentStartedAt { get; set; }
     public ServerObservation[] Servers { get; set; } = [];
     public RealmImageTransition? ImageRelease { get; set; }
+    public RealmRestartTransition? Restart { get; set; }
+    public RealmOperation[] Operations { get; set; } = [];
+    public RealmRuntimeConfiguration? RuntimeConfiguration { get; set; } = new();
 
     public RealmRecord ToRecord()
     {
-        if (SchemaVersion != 1) throw new InvalidOperationException("Unsupported realm schema version.");
-        return new(RealmId, DisplayName, TargetId, Namespace, Profile, DeploymentIdentity, Revision, Version,
+        if (SchemaVersion is not (1 or 2)) throw new InvalidOperationException("Unsupported realm schema version.");
+        var profile = SchemaVersion == 1 ? Profile with
+        {
+            Servers = Profile.Servers.Select(server => server with { Kind = server.Kind ?? DedicatedKind.Dedicated }).ToArray()
+        } : Profile;
+        return new(RealmId, DisplayName, TargetId, Namespace, profile, DeploymentIdentity, Revision, Version,
             RequestedFromRevision, Status, LastError, new DateTimeOffset(UpdatedAt, TimeSpan.Zero),
             DeploymentStartedAt is { } started ? new DateTimeOffset(started, TimeSpan.Zero) : null, Servers)
-            { ImageRelease = ImageRelease };
+            { ImageRelease = ImageRelease, Restart = Restart, Operations = Operations, RuntimeConfiguration = RuntimeConfiguration ?? new() };
     }
 
     public static RealmDocument From(RealmRecord realm) => new()
     {
+        SchemaVersion = realm.Profile.Topology is null ? 1 : 2,
         RealmId = realm.RealmId, DisplayName = realm.DisplayName, TargetId = realm.TargetId, Namespace = realm.Namespace,
         Profile = realm.Profile, DeploymentIdentity = realm.DeploymentIdentity, Revision = realm.Revision, Version = realm.Version,
         RequestedFromRevision = realm.RequestedFromRevision, Status = realm.Status, LastError = realm.LastError,
         UpdatedAt = realm.UpdatedAt.UtcDateTime, DeploymentStartedAt = realm.DeploymentStartedAt?.UtcDateTime, Servers = realm.Servers,
-        ImageRelease = realm.ImageRelease
+        ImageRelease = realm.ImageRelease, Restart = realm.Restart, Operations = realm.Operations, RuntimeConfiguration = realm.RuntimeConfiguration
     };
 }
 

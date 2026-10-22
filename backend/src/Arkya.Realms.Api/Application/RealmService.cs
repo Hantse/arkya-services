@@ -13,7 +13,8 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
     public DeploymentOptionsResponse GetOptions() => new(
         options.Targets.Select(target => new TargetSummary(target.Id, target.DisplayName, target.Namespace, target.RealmId)).ToArray(),
         options.Profiles.Select(profile => new ProfileSummary(profile.Id, profile.DisplayName, profile.Image,
-            profile.Servers.Select(server => new ProfileServerSummary(server.Id, server.Port, server.Transport, server.PublicEndpoint)).ToArray())).ToArray(), options.Enabled);
+            profile.Servers.Select(server => new ProfileServerSummary(server.Id, server.Port, server.Transport, server.PublicEndpoint)).ToArray())
+            { TopologySupported = RealmTopologyBuilder.RuntimeSupported(profile) }).ToArray(), options.Enabled);
 
     public async Task<RealmResult> CreateAsync(CreateRealmRequest request, CancellationToken cancellationToken)
     {
@@ -23,9 +24,34 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         var profile = options.Profiles.SingleOrDefault(value => value.Id == request.ProfileId);
         if (target is null || profile is null) return new(Error: "invalid_configuration_choice");
         if (target.RealmId is not null && target.RealmId != request.RealmId) return new(Error: "target_realm_mismatch");
-        var realm = new RealmRecord(request.RealmId, request.DisplayName, target.Id, target.Namespace, profile.Snapshot(),
+        if (request.Topology is not null && !RealmTopologyBuilder.IsValid(request.Topology)) return new(Error: "invalid_topology");
+        ProfileSnapshot snapshot;
+        try { snapshot = RealmTopologyBuilder.Snapshot(profile, request.RealmId, request.Topology); }
+        catch (ArgumentException) { return new(Error: "invalid_topology_endpoint"); }
+        var realm = new RealmRecord(request.RealmId, request.DisplayName, target.Id, target.Namespace, snapshot,
             Guid.NewGuid().ToString("N"), 0, 0, null, RealmStatus.Draft, null, clock.GetUtcNow(), null, []);
         return await repository.TryCreateAsync(realm, cancellationToken) ? new(realm) : new(Error: "realm_or_target_exists");
+    }
+
+    public async Task<RealmResult> UpdateTopologyAsync(string id, UpdateRealmTopologyRequest request, CancellationToken cancellationToken)
+    {
+        var realm = await repository.FindAsync(id, cancellationToken);
+        if (realm is null) return new(Error: "realm_not_found");
+        if (realm.Status != RealmStatus.Draft) return new(Error: "topology_edit_unavailable");
+        if (request.ExpectedRevision < 0 || request.ExpectedRevision == long.MaxValue || realm.Revision != request.ExpectedRevision)
+            return new(Error: "revision_conflict");
+        var profile = options.Profiles.SingleOrDefault(value => value.Id == request.ProfileId);
+        if (profile is null) return new(Error: "invalid_configuration_choice");
+        if (request.Topology is not null && !RealmTopologyBuilder.IsValid(request.Topology)) return new(Error: "invalid_topology");
+        ProfileSnapshot snapshot;
+        try { snapshot = RealmTopologyBuilder.Snapshot(profile, realm.RealmId, request.Topology); }
+        catch (ArgumentException) { return new(Error: "invalid_topology_endpoint"); }
+        var next = realm with
+        {
+            Profile = snapshot,
+            Revision = realm.Revision + 1, Version = realm.Version + 1, UpdatedAt = clock.GetUtcNow()
+        };
+        return await repository.TryReplaceAsync(next, realm.Version, cancellationToken) ? new(next) : new(Error: "revision_conflict");
     }
 
     public async Task<RealmResult> RequestDeploymentAsync(string id, long expectedRevision, CancellationToken cancellationToken)
@@ -33,6 +59,7 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         if (!options.Enabled) return new(Error: "deployment_disabled");
         var realm = await repository.FindAsync(id, cancellationToken);
         if (realm is null) return new(Error: "realm_not_found");
+        if (realm.Profile.Topology is not null && !realm.Profile.TopologyRuntimeSupported) return new(Error: "topology_runtime_unsupported");
         // A response lost after the durable write may safely be retried with its original revision.
         if (realm.RequestedFromRevision == expectedRevision) return new(realm);
         if (expectedRevision < 0 || expectedRevision == long.MaxValue || realm.Revision != expectedRevision ||
@@ -49,4 +76,88 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         var current = await repository.FindAsync(id, cancellationToken);
         return current?.RequestedFromRevision == expectedRevision ? new(current) : new(Error: "revision_conflict");
     }
+
+    public RealmOperationsOptions GetOperationsOptions(RealmRecord realm)
+    {
+        var reason = !options.Enabled ? "deployment_disabled" : !TargetAvailable(realm) ? "target_unavailable" :
+            realm.Profile.Topology is not null && !realm.Profile.TopologyRuntimeSupported ? "topology_runtime_unsupported" :
+            realm.Status is not (RealmStatus.Ready or RealmStatus.Failed) ? "operation_in_progress" : null;
+        var release = RealmImageReleases.Find(options, realm.RealmId);
+        var profile = release is null ? null : RealmImageReleases.AllowedProfile(options, realm, release);
+        var retry = realm.Status == RealmStatus.Failed && realm.ImageRelease?.Version == release?.Version &&
+            RealmImageReleases.Authorizes(options, realm);
+        var update = profile is not null && release is not null &&
+            (retry || realm.Profile.Image == release.PreviousImage && profile.Image != realm.Profile.Image &&
+                release.Version > (realm.ImageRelease?.Version ?? 0) &&
+                (realm.ImageRelease is null || realm.Status == RealmStatus.Ready));
+        var restart = (realm.ImageRelease is null || RealmImageReleases.Authorizes(options, realm)) &&
+            !(update && !retry && release!.Automatic);
+        return new(reason is null && restart, reason is null && update,
+            update ? profile!.Image : null, update ? release!.Version : null,
+            reason ?? (update ? null : "no_approved_update"));
+    }
+
+    public Task<RealmResult> RequestRestartAsync(string id, RestartRealmRequest request, string? actor,
+        CancellationToken cancellationToken) => RequestOperationAsync(id, "Restart", request.ExpectedRevision,
+            request.Reason, null, actor, cancellationToken);
+
+    public Task<RealmResult> RequestUpdateAsync(string id, UpdateRealmRequest request, string? actor,
+        CancellationToken cancellationToken) => RequestOperationAsync(id, "Update", request.ExpectedRevision,
+            request.Reason, request.ExpectedImage, actor, cancellationToken);
+
+    private async Task<RealmResult> RequestOperationAsync(string id, string kind, long expectedRevision, string? reason,
+        string? expectedImage, string? actor, CancellationToken cancellationToken)
+    {
+        if (!ValidAuditText(actor, 128)) return new(Error: "invalid_operator");
+        if (!ValidAuditText(reason, 500)) return new(Error: "invalid_operation_reason");
+        if (kind == "Update" && !DeploymentOptions.ValidImage(expectedImage)) return new(Error: "invalid_update_image");
+        if (!options.Enabled) return new(Error: "deployment_disabled");
+        var realm = await repository.FindAsync(id, cancellationToken);
+        if (realm is null) return new(Error: "realm_not_found");
+        if (IsRetry(realm)) return new(realm);
+        if (expectedRevision < 0 || expectedRevision == long.MaxValue || realm.Revision != expectedRevision)
+            return new(Error: "revision_conflict");
+        var available = GetOperationsOptions(realm);
+        if (kind == "Restart" ? !available.CanRestart : !available.CanUpdate)
+            return new(Error: available.UnavailableReason ?? "operation_unavailable");
+        if (kind == "Update" && available.UpdateImage != expectedImage) return new(Error: "approved_image_changed");
+        var now = clock.GetUtcNow();
+        var revision = realm.Revision + 1;
+        var next = realm with
+        {
+            Revision = revision, Version = realm.Version + 1, RequestedFromRevision = null,
+            Status = RealmStatus.Pending, LastError = null, UpdatedAt = now, DeploymentStartedAt = now,
+            Servers = realm.Profile.Servers.Select(server => new ServerObservation(server.Id, 0, null)).ToArray()
+        };
+        if (kind == "Restart") next = next with
+        {
+            Restart = realm.Status == RealmStatus.Failed && realm.Restart is { Completed: false }
+                ? realm.Restart : new(revision, realm.Restart?.Revision ?? 0)
+        };
+        else if (realm.Profile.Image != available.UpdateImage)
+        {
+            var release = RealmImageReleases.Find(options, realm.RealmId)!;
+            next = next with
+            {
+                Profile = realm.Profile with { Image = available.UpdateImage! },
+                ImageRelease = new(release.Version, release.PreviousImage, available.UpdateImage!, realm.ImageRelease?.Version ?? 0)
+            };
+        }
+        next = next with { Operations = realm.Operations.Append(new RealmOperation(kind, revision, expectedRevision,
+            actor!, reason!, now, null, RealmStatus.Pending, null, realm.Profile.Image, next.Profile.Image)).TakeLast(100).ToArray() };
+        if (await repository.TryReplaceAsync(next, realm.Version, cancellationToken)) return new(next);
+        var current = await repository.FindAsync(id, cancellationToken);
+        return current is not null && IsRetry(current) ? new(current) : new(Error: "revision_conflict");
+
+        bool IsRetry(RealmRecord current) => current.Operations.Any(operation => operation.ExpectedRevision == expectedRevision &&
+            operation.Kind == kind && operation.RequestedBy == actor && operation.Reason == reason &&
+            (kind != "Update" || operation.Image == expectedImage));
+    }
+
+    private bool TargetAvailable(RealmRecord realm) => options.Targets.Any(target => target.Id == realm.TargetId &&
+        target.Namespace == realm.Namespace && (target.RealmId is null || target.RealmId == realm.RealmId));
+
+    private static bool ValidAuditText(string? value, int limit) => value is { Length: > 0 } && value.Length <= limit &&
+        value == value.Trim() && !value.Any(char.IsControl);
+
 }
