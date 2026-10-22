@@ -32,6 +32,35 @@ par la roue dentée en bas de la barre latérale.
 3. La version est vérifiée au démarrage. Choisir **Installer le jeu**, puis **Jouer**.
 4. Une future version propose **Mettre à jour**. Une opération peut être annulée.
 
+La page publique ne charge plus de lecteur Unity dans le navigateur. Son bouton
+**Installer le launcher** télécharge l’archive Windows ; le bouton **Jouer** du
+launcher ouvre ensuite le client natif. Le compte reste accessible sur le site.
+
+## Entrée dans les royaumes
+
+Après la connexion Discord dans le client Windows, le jeu consulte les
+personnages du compte, les royaumes disponibles et
+`GET /v1/characters/entry-context`. Un compte sans personnage choisit d’abord
+son royaume. Pour un compte déjà joué, le client retrouve le dernier royaume
+dont le serveur a accepté une admission, puis affiche les personnages de ce
+royaume. Le choix d’un autre royaume reste accessible.
+
+L’historique ne retient que les personnages encore détenus par le compte.
+S’il n’en reste aucun, ou si le dernier royaume n’est plus disponible ou
+compatible, le client revient au choix du royaume. Un clic sur un royaume ou
+une tentative de connexion échouée ne
+remplace pas cet historique : seul le backend l’enregistre après consommation
+réussie du ticket par un serveur dédié. Il est associé au compte, indépendamment
+du PC et du launcher.
+
+Ce parcours nécessite un client construit avec ces changements. La publication
+initiale `0.1.0-beta.20261023` reste une exploration locale ; modifier le site ou
+le backend ne met pas à jour ce binaire. Une nouvelle archive Windows validée
+doit être publiée sous une version distincte avant de changer le manifeste du
+canal. Voir [le contrat d’entrée](CHARACTER_ENTRY.md) pour l’historique et
+[le contrat d’admission](WEB_BETA_CONTRACT.md) pour le transport et les contrôles
+côté serveur.
+
 Le jeu est installé dans `%LOCALAPPDATA%\Arkya\Game`. La préférence de canal
 reste dans `launcher-preferences.json`. `ARKYA_LAUNCHER_MANIFEST_URL` permet
 une configuration locale prioritaire ; sinon la préférence locale précède

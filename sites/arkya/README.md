@@ -1,6 +1,6 @@
 # Arkya — site vitrine et atlas visuel
 
-Vitrine bilingue français / anglais du projet et de ses directions artistiques. Les fichiers servis sont dans `dist/` : HTML, CSS, JavaScript et images WebP. La consultation publique ne demande aucun build, compte, backend ou dépendance JavaScript externe. La connexion Discord nécessite le service Identity ; la page Jouer exige une session vérifiée et charge le vrai client Unity web.
+Vitrine bilingue français / anglais du projet et de ses directions artistiques. Les fichiers servis sont dans `dist/` : HTML, CSS, JavaScript et images WebP. La consultation publique ne demande aucun build, compte, backend ou dépendance JavaScript externe. La connexion Discord nécessite le service Identity. La page Installer le launcher distribue le launcher Windows sans exiger de session : le jeu se lance depuis le launcher.
 
 ## Lancer localement
 
@@ -38,7 +38,7 @@ Les liens de page marqués `data-language-link` conservent explicitement la lang
 
 Les pages `dist/terms.html` et `dist/privacy.html` présentent les Conditions d’utilisation et la Politique de confidentialité en FR/EN, avec **Pyxion Sarl-S** comme éditeur/responsable et **support@arkya.online** comme contact. Le français est présent dans le HTML ; `legal-copy.js` fournit les traductions et `legal.js` les interactions. Les liens sont accessibles depuis les pieds de page et l’écran de connexion. Ces textes décrivent la vitrine actuelle et la future connexion séparément ; revoir la politique lors de l’activation d’Identity.
 
-`dist/account.html`, `account-copy.js`, `account.js` et `account.css` composent l’écran de compte. La connexion Discord utilise le même onglet : `auth-client.mjs` conserve temporairement la preuve S256 dans `sessionStorage`, puis Identity renvoie le navigateur sur la page Compte. Le site reprend l’échange et valide `/me` avant d’afficher le compte ou de retourner à Jouer. La destination de retour conserve seulement la langue et l’éventuel `returnTo=play.html`. Si le stockage de session est indisponible, la connexion affiche une erreur avant de quitter le site. `common.js` restaure la session et met à jour la navigation. Le bearer Arkya reste lié à l’origine API et n’est jamais placé dans une URL. La déconnexion appelle le backend puis efface l’état local même si le serveur ne répond pas.
+`dist/account.html`, `account-copy.js`, `account.js` et `account.css` composent l’écran de compte. La connexion Discord utilise le même onglet : `auth-client.mjs` conserve temporairement la preuve S256 dans `sessionStorage`, puis Identity renvoie le navigateur sur la page Compte. Le site reprend l’échange et valide `/me` avant d’afficher le compte ou de retourner à la page du launcher. La destination de retour conserve seulement la langue et l’éventuel `returnTo=play.html`. Si le stockage de session est indisponible, la connexion affiche une erreur avant de quitter le site. `common.js` restaure la session et met à jour la navigation. Le bearer Arkya reste lié à l’origine API et n’est jamais placé dans une URL. La déconnexion appelle le backend puis efface l’état local même si le serveur ne répond pas.
 
 **Configuration de cette révision :** `dist/auth-config.js` pointe Identity et Characters sur `https://api.arkya.online` via YARP. Une panne DNS, HTTP ou CORS est une erreur visible ; aucun compte ni monde local n’est simulé. La disponibilité publique des services et le parcours Discord réel restent à vérifier avant de considérer la bêta utilisable. Le [guide de raccordement Discord](DISCORD_SETUP.md) fournit le callback actualisé et les contrôles d’activation. L’achat du domaine chez Gandi ne déplace pas la vitrine vers `arkya.online`.
 
@@ -53,51 +53,56 @@ JavaScript. Le domaine `arkya.online` et l’API `api.arkya.online` sont compati
 avec SameSite=Lax ; la vitrine historique sur un domaine tiers ne bénéficie pas
 de cette persistance. [Contrats, migration et limites Unity](../../docs/AUTH_SESSIONS.md).
 
-Le jeu web déjà chargé garde l’échéance de son bearer initial, même si le site
-renouvelle son propre accès ; recharger Jouer importe le nouvel accès.
+## Installer et lancer Arkya sur Windows
 
-## Jouer dans le navigateur
+`dist/play.html` est la page de téléchargement du launcher, en français et en anglais.
+Les liens **Installer le launcher** de l’accueil, des menus et du compte y mènent
+en conservant la langue. Le bouton principal télécharge l’archive ZIP publique
+`Arkya-Launcher-win-x64.zip` ; la page explique son extraction, l’ouverture de
+`Arkya.Launcher.exe`, **Installer le jeu**, puis **Jouer**. Le téléchargement
+reste disponible sans compte, sans JavaScript et lorsque Identity est indisponible.
+La connexion Discord dans le jeu est distincte de celle du site.
 
-`dist/play.html` conserve l’apparence du site et les deux langues. Les liens **Jouer** mènent au contrôle de session ; sans session, le bouton Discord mène à `account.html?returnTo=play.html`. La seule destination de retour autorisée est exactement `play.html`, avec la langue courante. La création et la sélection des personnages restent dans Unity.
+La page ne contient plus de canvas, de contrôle plein écran ni de bootstrap Unity.
+Elle charge seulement les traductions et la navigation de compte partagée.
+Aucun manifest, payload WebGL, admission ou transfert de session vers Unity n’est
+chargé depuis cette page, même si une session de site existe. Le renouvellement
+du compte web continue dans `common.js` sans conditionner le téléchargement.
 
-Le shell attend une réponse positive de `/v1/auth/me` avant de télécharger le manifest ou le loader Unity. Il revalide encore la session après le chargement. `auth.withGameSession(callback)` remet synchroniquement au bridge premier parti un payload `{sessionToken, expiresAt, accountId, displayName, identityBaseUrl, charactersBaseUrl}`. Le callback appelle `SendMessage('ArkyaWebSession', 'AcceptSiteSession', JSON)` ; son objet temporaire est effacé ensuite. Il n’existe ni getter de bearer ni instance de jeu globale, et aucun jeton n’est placé dans une URL. Unity doit lui aussi vérifier `/me` avant d’utiliser la session.
+Le manifeste de mise à jour Windows reste servi par
+`dist/downloads/windows/latest-win-x64.json`. Les archives et leur publication
+sont décrites dans le [guide du launcher](../../docs/WINDOWS_LAUNCHER.md).
+Modifier le lien de téléchargement lorsque la release du launcher change ;
+les mises à jour du jeu passent par le manifeste.
 
-L’expiration, la perte de session, la déconnexion, une revalidation refusée ou inaccessible et les événements Unity `arkya:logout` / `arkya:session-rejected` arrêtent le jeu : canvas masqué, `ClearSiteSession`, puis `Quit`. Une revalidation serveur a lieu chaque minute et au retour visible sur la page. L’onglet conserve la session Arkya selon les règles existantes ; fermer le jeu ne supprime pas le compte. Le dedicated doit vérifier indépendamment l’admission : le contrôle du site ne protège pas à lui seul les fichiers statiques ou les serveurs.
+Les modules et tests du client WebGL historique restent conservés pour les
+contrats et outils de build ; ils ne sont plus importés par les pages publiques.
+Le scénario `tests/play-real.mjs` décrit ce parcours historique et ne s’applique
+plus à `play.html`. Les captures et validations datées ci-dessous sont des
+archives, pas le comportement actuel du site.
 
-Préparer le build réel depuis ce dossier avec :
+Vérification : `node --test tests/*.test.mjs`, puis `tests/play.browser.mjs`
+avec Playwright CLI sur le serveur local. Ce scénario vérifie le téléchargement
+sans session et en panne API, les deux langues, les formats mobile/bureau,
+l’absence de chargement Unity et le retour de connexion d’un ancien lien
+`account.html?returnTo=play.html` vers la nouvelle page. Les scénarios
+`account.browser.mjs` et `refresh.browser.mjs` couvrent les sessions web.
 
-```powershell
-node prepare-unity-build.mjs "D:/chemin/vers/Builds/WebBeta"
-```
+## Vérification du passage au launcher — 23 octobre 2026
 
-Le script lit le build Unity complet sans le modifier et remplace seulement `dist/game/`, après préparation réussie dans un dossier temporaire. Les quatre payloads Unity (`loaderUrl`, `dataUrl`, `frameworkUrl`, `codeUrl`) dépassant 4 Mio sont découpés en morceaux d’au plus **4 194 304 octets**, nommés par leur SHA-256. Les fichiers complets correspondants ne restent pas dans la sortie. Les crédits, petits fichiers et `StreamingAssets` sont conservés ; l’index Unity autonome est retiré, puisque le point d’entrée est `play.html`. Un futur fichier auxiliaire ou `StreamingAssets` dépassant 4 Mio provoque une erreur explicite : il faut le répartir dans le build Unity avant cette préparation. Aucun fichier volumineux ni chemin de streaming cassé n’est livré silencieusement.
-
-Aucun build de remplacement n’est livré. Le fichier `game/build-config.json` conserve le contrat Unity suivant (les noms ci-dessous illustrent le format, ils ne remplacent pas les fichiers générés) :
-
-```json
-{
-  "schemaVersion": 1,
-  "buildId": "arkya-web-beta-v1",
-  "loaderUrl": "Build/Arkya.loader.js",
-  "dataUrl": "Build/Arkya.data.unityweb",
-  "frameworkUrl": "Build/Arkya.framework.js.unityweb",
-  "codeUrl": "Build/Arkya.wasm.unityweb",
-  "streamingAssetsUrl": "StreamingAssets",
-  "companyName": "Arkya",
-  "productName": "Arkya",
-  "productVersion": "beta-v1"
-}
-```
-
-La préparation ajoute `chunkedFiles`, indexé par les clés Unity concernées. Chaque entrée contient `size`, le SHA-256 du fichier complet et un tableau ordonné `chunks`. Chaque morceau déclare `index`, `offset`, `size`, `sha256` et `url: "chunks/<sha256>.bin"`. La version du schéma reste 1 ; un build complet local sans ce champ demeure utilisable. Ne pas recopier les gros payloads complets après la préparation.
-
-Après validation de session, `unity-payloads.mjs` télécharge les morceaux séquentiellement, sans cookies ni bearer. Il vérifie leurs chemins, tailles, index, offsets et SHA-256, puis l’empreinte du fichier assemblé. Les octets restent ceux du build précompressé : Unity reçoit les URL Blob et effectue sa décompression habituelle. L’assemblage utilise un tampon de fichier et un tampon de morceau au maximum, sans conserver toutes les réponses. Le chargeur révoque les URL Blob après `Quit`, une erreur ou l’annulation du chargement ; la perte de session annule les téléchargements en cours. Il n’installe aucun service worker. Ces empreintes détectent un contenu corrompu ; elles ne remplacent pas l’admission serveur ni la confiance dans l’origine du site.
-
-Les chemins sont relatifs au manifest, sur la même origine et confinés à `game/`. Les paramètres d’URL, remontées de dossier et scripts externes sont refusés. Choix initial : WebGL 2, sans threads, gzip avec **Decompression Fallback** Unity (`.unityweb`), car l’hébergement statique Sites ne fournit pas de configuration d’en-têtes de compression. `serve.mjs` sert `.wasm` avec `application/wasm` et les `.unityweb` en binaire sans `Content-Encoding`. Ne pas copier des `.gz`/`.br` qui nécessiteraient des en-têtes absents.
-
-Le serveur bêta dédié est un processus séparé ; il ne s’exécute pas dans Sites. Les routes Characters/Realms/admission et leur CORS doivent être disponibles sur les vraies API. Voir le [contrat de bêta web](../../docs/WEB_BETA_CONTRACT.md). Un build manquant, un navigateur sans WebGL 2 ou un service inaccessible affiche une erreur précise ; aucun fallback hors ligne n’est prévu.
-
-Vérification locale : `node --test tests/*.test.mjs`. Les réponses et instances factices sont limitées aux tests, hors de `dist/`. La validation Unity et l’authentification réelle sont des vérifications séparées.
+- **109 tests Node passent**, dont les contrats d’authentification et de refresh conservés.
+- **107 contrôles Edge/Playwright passent** sur la page d’installation et ses liens :
+  français/anglais, largeurs 320 à 1440 px, compte anonyme ou connecté, panne Identity,
+  retour d’un ancien lien de connexion, téléchargement sans JavaScript, absence de
+  canvas, de chargement Unity et d’admission depuis le site.
+- **17 contrôles compte et 15 contrôles refresh passent** avec les fixtures isolées.
+  Ils ne constituent pas une nouvelle connexion Discord réelle.
+- Rendus inspectés sur bureau et mobile, dont l’accueil sans chevauchement du
+  nouveau bouton et de la légende artistique. Captures dans
+  `output/playwright/arkya-launcher-download-{desktop,mobile}.png` et
+  `arkya-launcher-home-mobile.png` à la racine du dépôt.
+- La vérification ne relance pas le binaire Windows ; son build et sa validation
+  restent décrits dans le guide de distribution.
 
 ## Actualiser l’avancement
 

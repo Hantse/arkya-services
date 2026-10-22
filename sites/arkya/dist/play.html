@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111d28">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="Connectez-vous avec Discord pour lancer la bêta web d’Arkya et retrouver vos personnages." data-i18n-content="meta.description">
+  <meta name="description" content="Téléchargez le launcher Arkya pour installer, mettre à jour et lancer la bêta Windows." data-i18n-content="meta.description">
   <meta property="og:locale" content="fr_FR">
-  <title data-i18n="page.title">Arkya — Jouer</title>
+  <title data-i18n="page.title">Arkya — Installer le launcher</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/world.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="play.css">
   <script src="play-copy.js" defer></script>
   <script src="auth-config.js" defer></script>
   <script src="i18n.js" defer></script>
-  <script src="play.js" type="module"></script>
+  <script src="common.js" type="module"></script>
 </head>
 <body class="play-page">
   <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
@@ -24,24 +25,26 @@
     <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
   </header>
   <main id="contenu" class="play-main section-shell">
-    <div class="play-intro"><div><p class="eyebrow" data-i18n="play.eyebrow">ARKYA · BÊTA WEB</p><h1 data-i18n-html="play.title">Votre aventure<br>prend <em>forme.</em></h1></div><p data-i18n="play.intro">Connectez-vous avec Discord, puis créez ou sélectionnez votre personnage dans le jeu. L’accès au monde dépend des serveurs bêta disponibles.</p></div>
-    <section class="game-frame" aria-label="Jeu Arkya" data-i18n-aria-label="play.canvas">
-      <canvas id="unity-canvas" width="1280" height="720" tabindex="-1" aria-label="Jeu Arkya" data-i18n-aria-label="play.canvas" aria-hidden="true"></canvas>
-      <div class="game-cover" id="game-cover">
-        <p class="eyebrow" data-i18n="play.gate">LE VOYAGE COMMENCE ICI</p>
-        <h2 id="game-heading" data-i18n="play.checkingTitle">Un instant…</h2>
-        <p id="game-status" role="status" aria-live="polite" data-i18n="play.checking">Vérification de votre connexion…</p>
-        <progress id="game-progress" max="1" value="0" hidden aria-label="Chargement du jeu" data-i18n-aria-label="play.loadingTitle"></progress>
-        <a id="game-sign-in" class="button primary" href="account.html?returnTo=play.html&amp;lang=fr" hidden data-i18n="play.login">Continuer avec Discord</a>
-        <button id="game-retry" class="button secondary" type="button" hidden data-i18n="play.retry">Réessayer</button>
+    <section class="launcher-hero" aria-labelledby="launcher-title">
+      <img class="launcher-landscape" src="assets/world.webp" alt="" width="1400" height="800" fetchpriority="high">
+      <div class="launcher-hero-copy">
+        <p class="eyebrow" data-i18n="windows.eyebrow">ARKYA · BÊTA WINDOWS</p>
+        <h1 id="launcher-title" data-i18n-html="windows.title">L’aventure,<br>sur <em>votre PC.</em></h1>
+        <p class="launcher-intro" data-i18n="windows.intro">Votre point de départ pour Arkya. Installez le jeu, retrouvez les actualités et lancez votre prochaine aventure depuis le launcher.</p>
+        <a id="launcher-download" class="button primary" href="https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23/Arkya-Launcher-win-x64.zip" aria-describedby="launcher-format"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg><span data-i18n="windows.download">Installer le launcher</span></a>
+        <p id="launcher-format" class="launcher-requirements" data-i18n="windows.requirements">Windows 64 bits · archive ZIP · clavier et souris</p>
+        <a class="launcher-help" href="#installation" data-i18n="windows.help">Comment l’installer ↓</a>
       </div>
-      <noscript><p>Activez JavaScript pour vous connecter et lancer le jeu. / Enable JavaScript to sign in and launch the game.</p></noscript>
+      <p class="launcher-caption" data-i18n="windows.caption">L’ÎLE DE DÉPART · CAPTURE DU JEU EN DÉVELOPPEMENT</p>
     </section>
-    <div class="game-toolbar"><p id="game-caption" data-i18n="play.caption">Bêta en développement · clavier et souris</p><div><button id="game-fullscreen" type="button" disabled data-i18n="play.fullscreen">Plein écran</button><button id="game-logout" type="button" hidden data-i18n="play.logout">Se déconnecter</button></div></div>
-    <div class="play-notes"><p data-i18n="play.controls">Cliquez dans le jeu pour le contrôler. Déplacement : ZQSD / WASD ou flèches · Maj : courir · Espace : sauter · clic droit : caméra · molette : zoom.</p><p data-i18n="play.session">Votre connexion est conservée jusqu’à 30 jours sur ce navigateur. Après une longue partie, rechargez la page pour renouveler la session du jeu.</p></div>
-    <section class="windows-download" aria-labelledby="windows-title">
-      <div><p class="eyebrow" data-i18n="windows.eyebrow">ARKYA SUR WINDOWS</p><h2 id="windows-title" data-i18n="windows.title">L’île, sur votre PC.</h2><p data-i18n="windows.intro">Installez la bêta Windows avec le launcher Arkya. Il télécharge le jeu, vérifie les fichiers et vous propose les mises à jour.</p></div>
-      <div class="windows-download-action"><a class="button primary" href="https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23/Arkya-Launcher-win-x64.zip" data-i18n="windows.download">Télécharger le launcher</a><p data-i18n="windows.requirements">Windows 64 bits · clavier et souris</p><p data-i18n="windows.instructions">Extrayez le ZIP, ouvrez Arkya.Launcher.exe, puis cliquez sur Installer le jeu.</p></div>
+    <section class="launcher-installation" id="installation" aria-labelledby="installation-title">
+      <div class="installation-heading"><p class="eyebrow" data-i18n="windows.stepsEyebrow">VOTRE PREMIER VOYAGE</p><h2 id="installation-title" data-i18n="windows.stepsTitle">Trois étapes. Puis l’aventure.</h2></div>
+      <ol class="installation-steps">
+        <li><span class="step-number" aria-hidden="true">01</span><div><h3 data-i18n="windows.step1Title">Téléchargez le launcher</h3><p data-i18n="windows.step1">Enregistrez l’archive ZIP sur votre PC Windows, puis extrayez tout son contenu dans un dossier.</p></div></li>
+        <li><span class="step-number" aria-hidden="true">02</span><div><h3 data-i18n="windows.step2Title">Installez le jeu</h3><p data-i18n="windows.step2">Ouvrez Arkya.Launcher.exe et cliquez sur « Installer le jeu ». Le launcher télécharge et vérifie les fichiers pour vous.</p></div></li>
+        <li><span class="step-number" aria-hidden="true">03</span><div><h3 data-i18n="windows.step3Title">Lancez Arkya</h3><p data-i18n="windows.step3">Cliquez sur « Jouer » dans le launcher, puis connectez-vous avec Discord dans le jeu pour retrouver votre compte.</p></div></li>
+      </ol>
+      <div class="launcher-note"><p data-i18n="windows.note">Pour vos prochaines sessions, ouvrez simplement le launcher. Il vous propose les mises à jour disponibles avant de jouer.</p><a href="development.html?lang=fr" data-language-link data-i18n="windows.progress">Suivre l’avancement ↗</a></div>
     </section>
   </main>
   <footer class="play-footer section-shell"><p>Pyxion Sarl-S · Arkya</p><a href="privacy.html?lang=fr" data-language-link data-i18n="footer.privacy">Politique de confidentialité</a><a href="terms.html?lang=fr" data-language-link data-i18n="footer.terms">Conditions d’utilisation</a><a href="/?lang=fr#credits" data-language-link data-i18n="footer.credits">Crédits & images</a></footer>
