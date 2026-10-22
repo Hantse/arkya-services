@@ -9,9 +9,15 @@ async (page) => {
   const check = (value, label) => { if (!value) throw new Error(label); checks.push(label); };
   page.on('pageerror', error => errors.push(error.message));
   page.on('request', request => requests.push(request.url()));
+  const anonymousRefresh = route => route.fulfill({ status: 401, headers: {
+    'Access-Control-Allow-Origin': base, 'Access-Control-Allow-Credentials': 'true',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Arkya-Refresh',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  } });
+  await page.context().route(`${api}/v1/auth/refresh`, anonymousRefresh);
   await page.goto(`${base}/play.html?lang=fr`);
   await page.locator('#game-sign-in').waitFor({ state: 'visible' });
-  check(!requests.some(url => url.startsWith(api) || url.includes('/game/')), 'Signed-out production page loads neither API credentials nor Unity files');
+  check(!requests.some(url => (url.startsWith(api) && !url.endsWith('/refresh')) || url.includes('/game/')), 'Signed-out page checks refresh but loads no Unity files');
   for (const lang of ['en', 'fr']) {
     await page.getByRole('button', { name: lang === 'en' ? 'English' : 'Français', exact: true }).click();
     check((await page.locator('#game-sign-in').getAttribute('href')).endsWith(`lang=${lang}`), `${lang}: sign-in return retains language`);
@@ -41,13 +47,14 @@ async (page) => {
   const user = () => ({ accountId: '197d1fa3-83c2-45cb-bb26-f4b574e88ee8', displayName: 'QA Explorer', expiresAt: new Date(expiry).toISOString() });
   const token = 'Q'.repeat(43);
   const response = (route, data, status = 200) => route.fulfill({ status, contentType: 'application/json', headers: {
-    'Access-Control-Allow-Origin': base, 'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+    'Access-Control-Allow-Origin': base, 'Access-Control-Allow-Headers': 'Authorization, Content-Type, X-Arkya-Refresh',
+    'Access-Control-Allow-Credentials': 'true',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
   }, body: JSON.stringify(data) });
   const apiRoute = async route => {
-    if (scenario === 'unavailable') { await route.abort(); return; }
     const request = route.request();
     const path = new URL(request.url()).pathname;
+    if (scenario === 'unavailable' && !path.endsWith('/refresh')) { await route.abort(); return; }
     if (request.method() === 'OPTIONS') { await response(route, {}); return; }
     if (path.endsWith('/challenges')) {
       expiry = Date.now() + 3600000;
@@ -66,7 +73,8 @@ async (page) => {
       authChecks++;
       check(request.headers().authorization === `Bearer ${token}`, 'Fixture /me receives the stored Arkya session in Authorization');
       await response(route, user(), revoked ? 401 : 200);
-    } else if (path.endsWith('/logout')) { revoked = true; await route.fulfill({ status: 204, headers: { 'Access-Control-Allow-Origin': base } }); }
+    } else if (path.endsWith('/refresh')) await response(route, {}, 401);
+    else if (path.endsWith('/logout')) { revoked = true; await route.fulfill({ status: 204, headers: { 'Access-Control-Allow-Origin': base, 'Access-Control-Allow-Credentials': 'true' } }); }
     else await response(route, {}, 404);
   };
   const gameRoute = async route => {
@@ -138,6 +146,7 @@ async (page) => {
     await page.goto('about:blank');
     for (const child of page.context().pages()) if (child !== page) await child.close();
     await page.context().unroute(`${api}/**`, apiRoute);
+    await page.context().unroute(`${api}/v1/auth/refresh`, anonymousRefresh);
     await page.unroute(`${base}/game/**`, gameRoute);
   }
   return { checks: checks.length, results: checks, errors };

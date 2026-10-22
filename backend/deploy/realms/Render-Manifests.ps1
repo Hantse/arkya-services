@@ -151,6 +151,8 @@ Add-Resource v1 ConfigMap arkya-admin-config $ops @{ data = @{
         ContentApi = @{ Enabled = $false }
         RealmsApi = @{ Enabled = $true; BaseUrl = "https://${appHost}:8443"; CertificateAuthorityFile = '/realm-ca/ca.crt' }
         DataProtection = @{ KeysPath = '/var/lib/arkya/keys' }
+        Mongo = @{ DatabaseName = 'arkya_admin' }
+        AdminSessions = @{ AccessLifetime = '00:30:00'; RefreshLifetime = '30.00:00:00' }
         ProxyTrust = @{ KnownNetworks = $config.trustedGatewayPodNetworks; ForwardLimit = 1 }
     } | ConvertTo-Json -Depth 10)
 } }
@@ -161,6 +163,7 @@ foreach ($app in @('admin', 'realms')) {
     $isAdmin = $app -eq 'admin'; $name = "arkya-$app"; $port = if ($isAdmin) { 8080 } else { 8443 }
     $env = @(@{ name = 'ASPNETCORE_ENVIRONMENT'; value = 'Production' })
     if ($isAdmin) {
+        $env += @{ name = 'Mongo__ConnectionString'; valueFrom = @{ secretKeyRef = @{ name = 'arkya-admin-mongo'; key = 'connection-string' } } }
         $env += @{ name = 'Admin__Password'; valueFrom = @{ secretKeyRef = @{ name = 'arkya-operations-secrets'; key = 'admin-password' } } }
         $env += @{ name = 'RealmsApi__AdminKey'; valueFrom = @{ secretKeyRef = @{ name = 'arkya-operations-secrets'; key = 'realms-admin-key' } } }
     } else {

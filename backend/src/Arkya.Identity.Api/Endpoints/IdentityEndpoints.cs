@@ -3,6 +3,7 @@ using Arkya.Identity.Api.Application;
 using Arkya.Identity.Api.Contracts;
 using Arkya.Identity.Api.Domain;
 using Arkya.ServiceDefaults;
+using Microsoft.Extensions.Options;
 
 namespace Arkya.Identity.Api.Endpoints;
 
@@ -40,13 +41,20 @@ public static class IdentityEndpoints
             return Results.Content(completion.Succeeded ? "Connexion autorisée. Vous pouvez retourner dans Arkya." : "Connexion refusée ou expirée. Relancez la connexion depuis Arkya.",
                 "text/plain; charset=utf-8", statusCode: completion.Succeeded ? 200 : 400);
         });
-        auth.MapPost("/discord/exchange", async (ExchangeRequest request, HttpContext context, IdentityService service, CancellationToken ct) =>
+        auth.MapPost("/discord/exchange", async (ExchangeRequest request, HttpContext context, IdentityService service,
+            IOptions<WebClientOptions> webClient, TimeProvider clock, CancellationToken ct) =>
         {
-            var result = await service.ExchangeAsync(request.ChallengeId, request.CodeVerifier, ct);
+            if (request.UseRefreshCookie && !RefreshCookie.IsAllowedRequest(context, webClient.Value)) return Results.StatusCode(403);
+            var result = await service.ExchangeAsync(request.ChallengeId, request.CodeVerifier, ct, request.UseRefreshCookie);
             if (result.Status == "pending")
             {
                 context.Response.Headers.RetryAfter = "5";
                 return Results.Json(new { status = "pending" }, statusCode: 202);
+            }
+            if (result.Status == "completed" && result.RefreshToken is { } token)
+            {
+                await service.RevokeRefreshAsync(context.Request.Cookies[RefreshCookie.Name], ct);
+                RefreshCookie.Write(context, token, result.Session!.RefreshExpiresAt!.Value, clock);
             }
             return result.Status switch
             {
@@ -56,14 +64,35 @@ public static class IdentityEndpoints
                 _ => Results.BadRequest(new { code = "invalid_exchange" })
             };
         }).RequireCors(WebClientOptions.CorsPolicyName);
+        auth.MapPost("/refresh", async (HttpContext context, IdentityService service, IOptions<WebClientOptions> webClient,
+            TimeProvider clock, CancellationToken ct) =>
+        {
+            if (!RefreshCookie.IsAllowedRequest(context, webClient.Value)) return Results.StatusCode(403);
+            var result = await service.RefreshAsync(context.Request.Cookies[RefreshCookie.Name], ct);
+            if (result.Status != "completed")
+            {
+                RefreshCookie.Delete(context);
+                return Results.Unauthorized();
+            }
+            RefreshCookie.Write(context, result.RefreshToken!, result.Session!.RefreshExpiresAt!.Value, clock);
+            return Results.Ok(result.Session);
+        }).RequireCors(WebClientOptions.CorsPolicyName);
         auth.MapGet("/me", async (HttpContext context, IdentityService service, CancellationToken ct) =>
         {
             var session = await service.ValidateSessionAsync(ReadBearer(context), ct);
             return session is null ? Results.Unauthorized() : Results.Ok(ToResponse(session));
         }).RequireCors(WebClientOptions.CorsPolicyName);
-        auth.MapPost("/logout", async (HttpContext context, IdentityService service, CancellationToken ct) =>
+        auth.MapPost("/logout", async (HttpContext context, IdentityService service, IOptions<WebClientOptions> webClient, CancellationToken ct) =>
         {
             var token = ReadBearer(context);
+            if (context.Request.Cookies.ContainsKey(RefreshCookie.Name) || context.Request.Headers.ContainsKey(RefreshCookie.HeaderName))
+            {
+                if (!RefreshCookie.IsAllowedRequest(context, webClient.Value)) return Results.StatusCode(403);
+                await service.RevokeRefreshAsync(context.Request.Cookies[RefreshCookie.Name], ct);
+                if (token is not null) await service.RevokeAsync(token, ct);
+                RefreshCookie.Delete(context);
+                return Results.NoContent();
+            }
             if (await service.ValidateSessionAsync(token, ct) is null)
             {
                 return Results.Unauthorized();

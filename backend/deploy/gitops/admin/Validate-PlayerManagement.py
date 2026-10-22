@@ -229,7 +229,8 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
                 and len(names) == len(expected), f"Unexpected {kind} coverage")
     configs, config_names = {}, {}
     identity_env = [secret_env("PlayerAdministration__IdentityKeySeed", "arkya-admin-secrets", "ContentApi__AdminKey")]
-    admin_env = [secret_env("PlayerAdministration__IdentityKeySeed", "arkya-admin-secrets", "ContentApi__AdminKey"),
+    admin_env = [secret_env("Mongo__ConnectionString", "arkya-content-secrets", "Mongo__ConnectionString"),
+                 secret_env("PlayerAdministration__IdentityKeySeed", "arkya-admin-secrets", "ContentApi__AdminKey"),
                  secret_env("PlayerAdministration__CharactersKeySeed", "arkya-admin-secrets", "RealmsApi__AdminKey")]
     characters_env = [
         secret_env("Mongo__ConnectionString", "arkya-content-secrets", "Mongo__ConnectionString"),
@@ -353,6 +354,10 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
                 deployment["spec"]["template"]["spec"]["volumes"], f"{name} must retain its key volume")
 
     admin = configs["admin"]
+    require(admin.get("Mongo__DatabaseName") == "arkya_admin" and "Mongo__ConnectionString" not in admin and
+            admin.get("AdminSessions__AccessLifetime") == "00:30:00" and
+            admin.get("AdminSessions__RefreshLifetime") == "30.00:00:00",
+            "Admin sessions must use their own database and bounded expiry with the existing private Mongo connection")
     require(admin["AllowedHosts"] == "admin.arkya.online;arkya-admin;arkya-admin.arkya-beta.svc.cluster.local" and
             admin["Admin__DiscordEnabled"] == "true" and admin["Discord__PublicBaseUrl"] == "https://admin.arkya.online" and
             {k: v for k, v in admin.items() if k.startswith("Admin__AllowedDiscordUserIds__")} ==

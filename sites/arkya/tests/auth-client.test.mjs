@@ -12,6 +12,7 @@ const START = Date.parse('2026-10-16T12:00:00Z');
 const ID = '197d1fa3-83c2-45cb-bb26-f4b574e88ee8';
 const CHALLENGE_ID = '5f91daa3df9047cb8a893f577bf50892';
 const TOKEN = 'S'.repeat(43);
+const NEXT_TOKEN = 'N'.repeat(43);
 
 function memoryStorage(initial = {}) {
   const data = new Map(Object.entries(initial));
@@ -51,6 +52,76 @@ function fixture({ responses = [], storage = memoryStorage(), ...options } = {})
     now: () => time, storage, fetchImpl, ...options });
   return { client, calls, storage, advance: (ms) => { time += ms; } };
 }
+
+test('refresh restores a new tab with an HttpOnly cookie and never exposes a refresh secret', async () => {
+  const { client, calls, storage } = fixture({ responses: [json(account({ sessionToken: NEXT_TOKEN, refreshExpiresAt: '2026-11-15T12:00:00Z' }))] });
+  assert.equal((await client.restore()).accountId, ID);
+  assert.equal(calls[0].url, `${API}/v1/auth/refresh`);
+  assert.equal(calls[0].init.credentials, 'include');
+  assert.equal(calls[0].init.headers['X-Arkya-Refresh'], '1');
+  assert.equal(calls[0].init.headers.Authorization, undefined);
+  assert.deepEqual(JSON.parse(calls[0].init.body), {});
+  assert.equal('refreshToken' in JSON.parse(storage.getItem(KEY)), false);
+  assert.equal('sessionToken' in client.session(), false);
+});
+
+test('access about to expire is rotated once for concurrent restore requests', async () => {
+  let finish;
+  const { client, calls, storage } = fixture({ storage: memoryStorage({ [KEY]: stored({ expiresAt: new Date(START + 30000).toISOString() }) }),
+    responses: [() => new Promise(resolve => { finish = resolve; })] });
+  const first = client.restore();
+  const second = client.restore();
+  assert.equal(calls.length, 1);
+  finish(json(account({ sessionToken: NEXT_TOKEN })));
+  const result = await Promise.all([first, second]);
+  assert.deepEqual(result[0], result[1]);
+  assert.equal(JSON.parse(storage.getItem(KEY)).sessionToken, NEXT_TOKEN);
+  assert.equal(calls[0].url, `${API}/v1/auth/refresh`);
+});
+
+test('refresh serializes shared cookie mutations with a browser lock', async () => {
+  const names = [];
+  const locks = { async request(name, action) { names.push(name); return action(); } };
+  const { client } = fixture({ locks, responses: [json(account()), new Response(null, { status: 204 })] });
+  await client.restore();
+  await client.logout();
+  assert.deepEqual(names, [`arkya-refresh:${API}`, `arkya-refresh:${API}`]);
+});
+
+test('a rejected access token can recover through refresh, but a different account is refused', async () => {
+  for (const accountId of [ID, '297d1fa3-83c2-45cb-bb26-f4b574e88ee8']) {
+    const { client, calls } = fixture({ storage: memoryStorage({ [KEY]: stored() }),
+      responses: [new Response(null, { status: 401 }), json(account({ sessionToken: NEXT_TOKEN, accountId }))] });
+    if (accountId === ID) assert.equal((await client.restore()).accountId, ID);
+    else { await assert.rejects(client.restore(), { code: 'invalid_response' }); assert.equal(client.session(), null); }
+    assert.equal(calls.length, 2);
+  }
+});
+
+test('logout revokes the cookie even after access storage has expired or disappeared', async () => {
+  const { client, calls } = fixture({ responses: [new Response(null, { status: 204 })] });
+  assert.deepEqual(await client.logout(), { revoked: true });
+  assert.equal(calls[0].init.credentials, 'include');
+  assert.equal(calls[0].init.headers['X-Arkya-Refresh'], '1');
+  assert.equal(calls[0].init.headers.Authorization, undefined);
+});
+
+test('logout wins over a late refresh response', async () => {
+  let finish;
+  const { client } = fixture({ responses: [() => new Promise(resolve => { finish = resolve; }), new Response(null, { status: 204 })] });
+  const refreshing = client.restore();
+  await client.logout();
+  finish(json(account()));
+  await assert.rejects(refreshing, { code: 'cancelled' });
+  assert.equal(client.session(), null);
+});
+
+test('refresh outages do not claim authentication and can be retried', async () => {
+  const { client } = fixture({ responses: [new Response(null, { status: 503 }), json(account())] });
+  await assert.rejects(client.restore(), { code: 'network' });
+  assert.equal(client.session(), null);
+  assert.equal((await client.restore()).accountId, ID);
+});
 
 test('public configuration only accepts a safe HTTPS origin', () => {
   const bad = [undefined, '', 'no url', 'http://identity.arkya.online', 'https://user:pass@identity.arkya.online',
@@ -228,20 +299,22 @@ test('restore verifies a stored bearer with /me before exposing the account', as
   assert.ok(!JSON.stringify(result).includes(TOKEN));
 });
 
-test('restore removes expired, malformed, foreign-origin and unversioned storage without a request', async () => {
+test('restore discards unsafe access storage before trying the origin-bound refresh cookie', async () => {
   for (const value of ['{', 'null', stored({ apiOrigin: 'https://evil.test' }), stored({ version: 2 }),
     stored({ expiresAt: new Date(START).toISOString() }), stored({ sessionToken: 'wrong' }),
     stored({ expiresAt: new Date(START + 9 * 3600000).toISOString() })]) {
-    const { client, calls, storage } = fixture({ storage: memoryStorage({ [KEY]: value }) });
+    const { client, calls, storage } = fixture({ storage: memoryStorage({ [KEY]: value }), responses: [new Response(null, { status: 401 })] });
     assert.equal(await client.restore(), null);
     assert.equal(client.session(), null);
-    assert.equal(calls.length, 0);
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].url, `${API}/v1/auth/refresh`);
+    assert.equal(calls[0].init.headers.Authorization, undefined);
     if (value !== 'null') assert.equal(storage.getItem(KEY), null);
   }
 });
 
 test('restore clears a rejected session and account mismatches', async () => {
-  const rejected = fixture({ storage: memoryStorage({ [KEY]: stored() }), responses: [new Response(null, { status: 401 })] });
+  const rejected = fixture({ storage: memoryStorage({ [KEY]: stored() }), responses: [new Response(null, { status: 401 }), new Response(null, { status: 401 })] });
   assert.equal(await rejected.client.restore(), null);
   assert.equal(rejected.storage.getItem(KEY), null);
   const mismatch = fixture({ storage: memoryStorage({ [KEY]: stored() }), responses: [json(account({ accountId: '297d1fa3-83c2-45cb-bb26-f4b574e88ee8' }))] });
@@ -268,7 +341,7 @@ test('a failed restore keeps the credential for retry but never claims authentic
 
 test('blocked browser storage falls back to memory, including revocation', async () => {
   const blocked = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); }, removeItem() { throw new Error('blocked'); } };
-  const { client, advance } = fixture({ storage: blocked, responses: [json(challenge()), json(account()), new Response(null, { status: 204 })] });
+  const { client, advance } = fixture({ storage: blocked, responses: [new Response(null, { status: 401 }), json(challenge()), json(account()), new Response(null, { status: 204 })] });
   assert.equal(await client.restore(), null);
   await client.begin();
   advance(5000);

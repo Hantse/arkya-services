@@ -68,6 +68,8 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
     public DiscordStub Discord { get; } = new();
     public Dictionary<string, string?> Settings { get; } = [];
     public string EnvironmentName { get; set; } = "Development";
+    public AdminTestTime Clock { get; } = new();
+    public MemoryAdminSessionStore Sessions { get; set; } = new();
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -89,6 +91,7 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
         });
         builder.ConfigureServices(services =>
         {
+            services.AddTestSessions(Sessions, Clock);
             services.AddHttpClient<ContentAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Content);
             services.AddHttpClient<RealmsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Realms);
             services.AddHttpClient<ReportsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Reports);

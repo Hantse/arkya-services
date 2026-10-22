@@ -19,6 +19,10 @@ public interface IIdentityStore
     Task CreateSessionAsync(Session session, CancellationToken cancellationToken);
     Task<Session?> GetSessionAsync(string tokenHash, DateTime now, CancellationToken cancellationToken);
     Task RevokeSessionAsync(string tokenHash, CancellationToken cancellationToken);
+    Task CreateRefreshSessionAsync(RefreshSession session, CancellationToken cancellationToken);
+    Task<RefreshSession?> GetRefreshSessionAsync(string id, CancellationToken cancellationToken);
+    Task<RefreshSession?> RotateRefreshSessionAsync(string id, string tokenHash, string replacementHash, DateTime now, CancellationToken cancellationToken);
+    Task RevokeRefreshSessionAsync(string id, CancellationToken cancellationToken);
 }
 
 public interface IDiscordIdentityClient

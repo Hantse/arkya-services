@@ -129,7 +129,10 @@ internal sealed class InferenceFactory : WebApplicationFactory<Arkya.Admin.Progr
             configuration.AddInMemoryCollection(Settings);
         });
         builder.ConfigureServices(services =>
-            services.AddHttpClient<InferenceAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Inference));
+        {
+            services.AddTestSessions();
+            services.AddHttpClient<InferenceAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Inference);
+        });
     }
 
     public HttpClient Browser() => CreateClient(new WebApplicationFactoryClientOptions

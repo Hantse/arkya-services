@@ -1,5 +1,11 @@
 # Architecture Arkya
 
+Les [sessions renouvelables](AUTH_SESSIONS.md) conservent la séparation joueur/admin :
+Identity possède les familles de refresh des joueurs ; Admin possède désormais
+ses sessions dans `arkya_admin`, avec allowlist revérifiée, rotation et révocation.
+Le [launcher Windows](WINDOWS_LAUNCHER.md) distribue des builds Unity complets
+via manifeste HTTPS, archive vérifiée et installation dans le profil utilisateur.
+
 Arkya utilise Unity DOTS (Data-Oriented Technology Stack) pour la simulation temps réel et Netcode for Entities pour le multijoueur sous autorité serveur. La simulation, exécutée par un serveur dédié Unity, est séparée des services ASP.NET Core qui possèdent les comptes et les données persistantes. La décision sur ces services est détaillée dans [0002 — Services backend](decisions/0002-backend-services.md).
 
 ## Vue d'ensemble
@@ -110,7 +116,7 @@ jusqu'à la configuration des dedicateds.
 | `Arkya.Characters.Api` | Personnages du compte, validation d’apparence, liaison au realm, admission, leases et sauvegarde autoritaire de position | Personnages, admissions et état persistant dans `arkya_characters` |
 | `Arkya.Content.Api` | Brouillons de quêtes, validation et publication de catalogues immuables | Révisions et publications dans `arkya_content` |
 | `Arkya.Reports.Api` | Bugs (F8) et suggestions (F9) avec capture, type immuable, statuts, tags et révisions de triage | Rapports et PNG bornés dans `arkya_reports` |
-| `Arkya.Admin` | Interface web authentifiée pour éditer/publier le contenu et créer/déployer/suivre les realms | Aucune donnée métier ; appels serveur vers Content et Realms |
+| `Arkya.Admin` | Interface web authentifiée pour éditer/publier le contenu et créer/déployer/suivre les realms | Sessions d’administration dans `arkya_admin` ; données métier via les autres services |
 | `Arkya.Realms.Api` | Catalogue opérateur des realms, demandes de déploiement durables et observation des dedicated k3s | Définitions, profils figés et état des opérations dans `arkya_realms` |
 | `Arkya.Backend.Api` | Ancien parcours local : annuaire de serveurs mock et connexion de développement | Sessions de développement en mémoire |
 | `Arkya.ServiceDefaults` | Bibliothèque technique commune : options MongoDB et authentification des appels de service | Aucune donnée métier |

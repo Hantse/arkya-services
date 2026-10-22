@@ -1,0 +1,81 @@
+<Window x:Class="Arkya.Launcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Arkya — Launcher" Width="1040" Height="740" MinWidth="900" MinHeight="700"
+        WindowStartupLocation="CenterScreen" Background="#101C1D" Foreground="#EEEBDD"
+        FontFamily="Segoe UI" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="310" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+        <Border Background="#1C302D" BorderBrush="#3E5147" BorderThickness="0,0,1,0">
+            <Grid ClipToBounds="True">
+                <Canvas VerticalAlignment="Bottom" Height="440" IsHitTestVisible="False">
+                    <Ellipse Width="130" Height="130" Fill="#B2AE7D" Opacity="0.55" Canvas.Left="78" Canvas.Top="0" />
+                    <Path Fill="#354B41" Data="M -80,420 L 75,105 145,230 228,120 370,420 Z" />
+                    <Path Fill="#294038" Data="M -100,440 L 45,220 116,315 188,215 360,440 Z" />
+                    <Path Fill="#182D29" Data="M -70,440 L 40,335 110,375 244,275 380,440 Z" />
+                    <Path Fill="#102420" Data="M 200,440 L 243,330 225,330 253,285 281,330 262,330 305,440 Z" />
+                </Canvas>
+                <StackPanel Margin="34,44,30,0" VerticalAlignment="Top">
+                    <TextBlock Text="A R K Y A" FontFamily="Georgia" FontSize="36" Foreground="#E3CEA0" />
+                    <TextBlock Text="UN MONDE À EXPLORER" FontSize="11" Margin="3,14,0,0" Foreground="#B3C0AA" />
+                    <Border Height="1" Background="#5F6D56" Margin="0,32,42,24" />
+                    <TextBlock Text="Votre prochaine&#x0a;aventure commence ici." FontFamily="Georgia" FontSize="25" LineHeight="34" TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel VerticalAlignment="Bottom" Margin="34,0,30,32">
+                    <TextBlock Text="WINDOWS · 64 BITS" FontSize="11" Foreground="#B3C0AA" />
+                    <TextBlock Text="Installez, mettez à jour et rejoignez Arkya." FontSize="13" TextWrapping="Wrap" Margin="0,10,0,0" />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Grid.Column="1" Margin="36,34,36,28">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" />
+                <RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <TextBlock Text="LE LAUNCHER" FontSize="11" Foreground="#ADA98C" />
+                <TextBlock Text="Bienvenue sur Arkya" FontFamily="Georgia" FontSize="29" Margin="0,10,0,8" />
+                <TextBlock Text="Le jeu, toujours prêt pour votre prochaine session." FontSize="14" Foreground="#AFBCB3" />
+            </StackPanel>
+            <Border Grid.Row="1" BorderBrush="#3A4C43" BorderThickness="1" CornerRadius="5" Padding="18" Margin="0,26,0,20" Background="#192927">
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="VOTRE INSTALLATION" FontSize="10" Foreground="#ADA98C" />
+                        <TextBlock x:Name="InstalledLabel" Text="Aucune version installée" FontSize="17" Margin="0,8,0,0" />
+                        <TextBlock x:Name="AvailableLabel" Text="Sélectionnez un canal de distribution." Foreground="#AFBCB3" Margin="0,6,0,0" TextWrapping="Wrap" />
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Text="◆" FontSize="26" Foreground="#C9B581" VerticalAlignment="Center" Margin="16,0,0,0" />
+                </Grid>
+            </Border>
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="AU FIL DES VERSIONS" FontSize="10" Foreground="#ADA98C" Margin="0,0,0,10" />
+                    <TextBlock x:Name="ReleaseNotes" Text="Les nouveautés de la prochaine version apparaîtront ici après vérification." TextWrapping="Wrap" Foreground="#BCC5BB" FontSize="14" LineHeight="23" />
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Grid.Row="3">
+                <TextBlock x:Name="StatusLabel" Text="Ajoutez l’adresse de distribution officielle pour installer le jeu." TextWrapping="Wrap" FontSize="13" Margin="0,0,0,10" AutomationProperties.LiveSetting="Polite" />
+                <ProgressBar x:Name="Progress" Height="5" Minimum="0" Maximum="100" Foreground="#C9B581" Background="#293B33" BorderThickness="0" />
+                <Grid Margin="0,18,0,0">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="12" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                    <Button x:Name="InstallButton" Content="Installer le jeu" Click="Install_Click" IsEnabled="False" />
+                    <Button x:Name="PlayButton" Grid.Column="2" Content="Jouer" Background="#C9B581" Foreground="#16251F" BorderBrush="#C9B581" FontWeight="SemiBold" Click="Play_Click" IsEnabled="False" />
+                </Grid>
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                    <Button x:Name="CheckButton" Content="Vérifier les mises à jour" Click="Check_Click" Padding="4,8" Background="Transparent" BorderThickness="0" Foreground="#B8C4B7" HorizontalAlignment="Left" />
+                    <Button x:Name="CancelButton" Grid.Column="1" Content="Annuler" Click="Cancel_Click" Padding="10,8" Visibility="Collapsed" />
+                </Grid>
+            </StackPanel>
+            <Expander x:Name="SettingsPanel" Grid.Row="4" Header="Paramètres de distribution" Foreground="#AFBCB3" Margin="0,20,0,14" IsExpanded="True">
+                <StackPanel Margin="0,12,0,0">
+                    <Label Content="Adresse HTTPS du manifeste officiel" Target="{Binding ElementName=ManifestAddress}" Foreground="#AFBCB3" Padding="0,0,0,6" FontSize="12" />
+                    <TextBox x:Name="ManifestAddress" AutomationProperties.Name="Adresse HTTPS du manifeste officiel" ToolTip="Utilisez uniquement une adresse fournie par l’équipe Arkya." />
+                    <TextBlock Text="Utilisez uniquement l’adresse fournie par l’équipe Arkya." Foreground="#8F9E93" FontSize="11" Margin="0,6,0,0" />
+                </StackPanel>
+            </Expander>
+            <TextBlock x:Name="LocationLabel" Grid.Row="5" Foreground="#8F9E93" FontSize="10" TextTrimming="CharacterEllipsis" />
+        </Grid>
+    </Grid>
+</Window>

@@ -30,12 +30,15 @@ public sealed class DiscordOptions
 public sealed class SessionOptions
 {
     public TimeSpan Lifetime { get; init; } = TimeSpan.FromHours(8);
+    public TimeSpan RefreshAccessLifetime { get; init; } = TimeSpan.FromHours(8);
+    public TimeSpan RefreshLifetime { get; init; } = TimeSpan.FromDays(30);
 }
 
 public sealed record ChallengeResult(string ChallengeId, string AuthorizationUrl, DateTime ExpiresAt, int PollIntervalSeconds = 5,
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] string? ReturnUrl = null);
-public sealed record SessionResult(string AccountId, string DisplayName, string SessionToken, DateTime ExpiresAt);
-public sealed record ExchangeResult(string Status, SessionResult? Session = null);
+public sealed record SessionResult(string AccountId, string DisplayName, string SessionToken, DateTime ExpiresAt,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] DateTime? RefreshExpiresAt = null);
+public sealed record ExchangeResult(string Status, SessionResult? Session = null, [property: JsonIgnore] string? RefreshToken = null);
 public sealed record BrowserAuthorization(string RedirectUrl, string CookieName, string CookieValue);
 public sealed record BrowserCompletion(bool Succeeded, string? ReturnUrl = null);
 
@@ -129,7 +132,7 @@ public sealed partial class IdentityService(
         }
     }
 
-    public async Task<ExchangeResult> ExchangeAsync(string? id, string? verifier, CancellationToken cancellationToken)
+    public async Task<ExchangeResult> ExchangeAsync(string? id, string? verifier, CancellationToken cancellationToken, bool issueRefreshToken = false)
     {
         if (string.IsNullOrWhiteSpace(id) || id.Length > 64 || verifier is null || !VerifierPattern().IsMatch(verifier))
         {
@@ -159,16 +162,63 @@ public sealed partial class IdentityService(
         if (account is null || account.IsBanned) return new("banned");
         // A ban also invalidates completed OAuth challenges, even after an unban.
         if (account.SessionVersion != redeemed.AccountSessionVersion) return new("expired");
+        RefreshSession? refreshSession = null;
+        string? refreshToken = null;
+        if (issueRefreshToken)
+        {
+            var refreshId = Guid.NewGuid().ToString("N");
+            refreshToken = NewRefreshToken(refreshId);
+            refreshSession = new(refreshId, account.Id, account.SessionVersion, Hash(refreshToken), now.Add(sessionOptions.Value.RefreshLifetime), []);
+            await store.CreateRefreshSessionAsync(refreshSession, cancellationToken);
+        }
+        return await IssueSessionAsync(account, refreshSession, refreshToken, now, cancellationToken);
+    }
+
+    public async Task<ExchangeResult> RefreshAsync(string? refreshToken, CancellationToken cancellationToken)
+    {
+        var refresh = await FindRefreshSessionAsync(refreshToken, cancellationToken);
+        var now = clock.GetUtcNow().UtcDateTime;
+        if (refresh is null || refresh.Revoked || refresh.ExpiresAt <= now) return new("invalid");
+        var tokenHash = Hash(refreshToken!);
+        if (refresh.TokenHash != tokenHash || refresh.UsedTokenHashes.Length >= RefreshSession.MaximumRotations)
+        {
+            // A known consumed token proves replay; a guessed secret cannot revoke a family.
+            await store.RevokeRefreshSessionAsync(refresh.Id, cancellationToken);
+            return new("invalid");
+        }
+        var account = await store.GetAccountAsync(refresh.AccountId, cancellationToken);
+        if (account is null || account.IsBanned || account.SessionVersion != refresh.SessionVersion)
+        {
+            await store.RevokeRefreshSessionAsync(refresh.Id, cancellationToken);
+            return new("invalid");
+        }
+        var replacement = NewRefreshToken(refresh.Id);
+        var rotated = await store.RotateRefreshSessionAsync(refresh.Id, tokenHash, Hash(replacement), now, cancellationToken);
+        if (rotated is null)
+        {
+            // A concurrent winner consumed this same token. Invalidate both branches.
+            await store.RevokeRefreshSessionAsync(refresh.Id, cancellationToken);
+            return new("invalid");
+        }
+        return await IssueSessionAsync(account, rotated, replacement, now, cancellationToken);
+    }
+
+    private async Task<ExchangeResult> IssueSessionAsync(Account account, RefreshSession? refresh,
+        string? refreshToken, DateTime now, CancellationToken cancellationToken)
+    {
         var token = RandomSecret();
-        var expiresAt = now.Add(sessionOptions.Value.Lifetime);
-        var session = new Session(Hash(token), account.Id, account.DisplayName, expiresAt, account.SessionVersion);
+        var expiresAt = now.Add(refresh is null ? sessionOptions.Value.Lifetime : sessionOptions.Value.RefreshAccessLifetime);
+        if (refresh is not null && expiresAt > refresh.ExpiresAt) expiresAt = refresh.ExpiresAt;
+        var session = new Session(Hash(token), account.Id, account.DisplayName, expiresAt, account.SessionVersion,
+            RefreshSessionId: refresh?.Id);
         await store.CreateSessionAsync(session, cancellationToken);
         if (await ValidateStoredSessionAsync(session, cancellationToken) is null)
         {
             await store.RevokeSessionAsync(session.TokenHash, cancellationToken);
+            if (refresh is not null) await store.RevokeRefreshSessionAsync(refresh.Id, cancellationToken);
             return new("banned");
         }
-        return new("completed", new(account.Id, account.DisplayName, token, expiresAt));
+        return new("completed", new(account.Id, account.DisplayName, token, expiresAt, refresh?.ExpiresAt), refreshToken);
     }
 
     public async Task<Session?> ValidateSessionAsync(string? token, CancellationToken cancellationToken)
@@ -186,12 +236,41 @@ public sealed partial class IdentityService(
     private async Task<Session?> ValidateStoredSessionAsync(Session? session, CancellationToken cancellationToken)
     {
         if (session is null) return null;
+        if (session.RefreshSessionId is { } refreshId)
+        {
+            var refresh = await store.GetRefreshSessionAsync(refreshId, cancellationToken);
+            if (refresh is null || refresh.Revoked || refresh.ExpiresAt <= clock.GetUtcNow().UtcDateTime ||
+                refresh.AccountId != session.AccountId || refresh.SessionVersion != session.SessionVersion) return null;
+        }
         var account = await store.GetAccountAsync(session.AccountId, cancellationToken);
         return account is null || account.IsBanned || account.SessionVersion != session.SessionVersion ? null :
             session with { DisplayName = account.DisplayName, HasBetaAccess = account.HasBetaAccess };
     }
 
-    public Task RevokeAsync(string token, CancellationToken cancellationToken) => store.RevokeSessionAsync(Hash(token), cancellationToken);
+    public async Task RevokeAsync(string token, CancellationToken cancellationToken)
+    {
+        if (!ChallengePattern().IsMatch(token)) return;
+        var session = await store.GetSessionAsync(Hash(token), clock.GetUtcNow().UtcDateTime, cancellationToken);
+        if (session?.RefreshSessionId is { } refreshId) await store.RevokeRefreshSessionAsync(refreshId, cancellationToken);
+        await store.RevokeSessionAsync(Hash(token), cancellationToken);
+    }
+
+    public async Task RevokeRefreshAsync(string? token, CancellationToken cancellationToken)
+    {
+        var refresh = await FindRefreshSessionAsync(token, cancellationToken);
+        if (refresh is not null) await store.RevokeRefreshSessionAsync(refresh.Id, cancellationToken);
+    }
+
+    private async Task<RefreshSession?> FindRefreshSessionAsync(string? token, CancellationToken cancellationToken)
+    {
+        if (token is null || !RefreshTokenPattern().IsMatch(token)) return null;
+        var refresh = await store.GetRefreshSessionAsync(token[..32], cancellationToken);
+        if (refresh is null) return null;
+        var hash = Hash(token);
+        return refresh.TokenHash == hash || refresh.UsedTokenHashes.Contains(hash, StringComparer.Ordinal) ? refresh : null;
+    }
+
+    private static string NewRefreshToken(string id) => $"{id}.{RandomSecret()}";
     public static string CodeChallenge(string verifier) => WebEncoders.Base64UrlEncode(SHA256.HashData(Encoding.ASCII.GetBytes(verifier)));
     public static string Hash(string value) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
     public static string CookieName(string id) => $"arkya.discord.{id}";
@@ -199,6 +278,8 @@ public sealed partial class IdentityService(
 
     [GeneratedRegex("\\A[A-Za-z0-9_-]{43}\\z", RegexOptions.CultureInvariant)]
     private static partial Regex ChallengePattern();
+    [GeneratedRegex("\\A[a-f0-9]{32}\\.[A-Za-z0-9_-]{43}\\z", RegexOptions.CultureInvariant)]
+    private static partial Regex RefreshTokenPattern();
     [GeneratedRegex("\\A[A-Za-z0-9._~-]{43,128}\\z", RegexOptions.CultureInvariant)]
     private static partial Regex VerifierPattern();
 }

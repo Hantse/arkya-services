@@ -72,6 +72,24 @@ l'activation de ce profil. Argo CD applique les changements sans commande
 `kubectl apply`, sans nouvelle Application et sans modifier les PVC existants.
 Les étapes d'installation ci-dessous restent utiles pour un nouveau cluster.
 
+Les refresh tokens Admin utilisent la connexion MongoDB déjà fournie par
+`arkya-content-secrets/Mongo__ConnectionString`, selon le même mécanisme que
+Characters, Inference et Reports. Le Deployment la référence explicitement ;
+il n'est pas nécessaire d'ajouter un champ à `arkya-admin-secrets`, de créer un
+Secret ou un utilisateur MongoDB, ni de modifier les credentials existants.
+La base reste propre à Admin : `Mongo__DatabaseName=arkya_admin`, collection
+`admin_sessions`. L'application crée son index TTL au démarrage, puis renouvelle
+les accès de 30 minutes jusqu'à la limite absolue de 30 jours. Les anciennes
+sessions demandent une reconnexion. Voir les [sessions Admin](../../../../docs/ADMIN_SESSIONS.md).
+
+Cette réutilisation conserve les privilèges du compte MongoDB partagé existant,
+qui sont plus larges qu'un compte dédié à `arkya_admin` ; la séparation des bases
+ne constitue donc pas une isolation des credentials. Une future réduction des
+droits devra coordonner la distribution d'un compte dédié avec la gestion des
+secrets de l'installation. La présente mise à jour passe uniquement par le
+dépôt, les tests CI, la publication/promotion des images et la synchronisation
+automatique existante, sans intervention directe sur le cluster.
+
 Le profil réutilise les Secrets interservices déjà provisionnés et requiert
 aussi le Secret de registre `arkya-ghcr` dans `arkya-beta`. Une référence
 dans un Deployment ne prouve pas que ce Secret existe ; son absence a été
@@ -107,6 +125,7 @@ Admin et côté API :
 | `PlayerAdministration__CharactersKeySeed` dans Admin et Characters | `arkya-admin-secrets` | `RealmsApi__AdminKey` |
 | `Identity__ServiceKey` dans Characters | `arkya-identity-secrets` | `ServiceAuthentication__Key` |
 | `Mongo__ConnectionString` dans Characters | `arkya-content-secrets` | `Mongo__ConnectionString` |
+| `Mongo__ConnectionString` dans Admin | `arkya-content-secrets` | `Mongo__ConnectionString` |
 | `RealmRuntime__DedicatedKeySeed` dans Realms et Characters | `arkya-admin-secrets` | `RealmsApi__AdminKey` |
 | `Realms__ServiceKey` dans Characters | `arkya-realms-secrets` | `GameAccess__ServiceKey` |
 
@@ -115,8 +134,10 @@ la clé dédiée liée au couple `beta-web/island`
 restent distinctes de leurs graines et entre elles. Elles sont stables tant
 que les graines restent identiques ; une rotation des clés source exige donc
 le redémarrage coordonné des consommateurs. Aucune valeur n'est affichée.
-Characters utilise la base `arkya_characters` ; la connexion MongoDB partagée
-doit disposer des droits d'écriture et de création d'index dans cette base.
+Characters utilise la base `arkya_characters` et Admin la base `arkya_admin` ;
+la connexion MongoDB partagée doit disposer des droits de lecture, d'écriture
+et de création d'index dans ces bases. Les collections métier restent propres
+à chaque service.
 
 Admin appelle les deux API sur leurs noms complets
 `arkya-identity.arkya-beta.svc.cluster.local:8080` et

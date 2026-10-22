@@ -51,6 +51,7 @@ Aucun secret n'est généré ou écrit dans les manifests. Dans `operationsNames
 | Secret | Clés requises |
 | --- | --- |
 | `arkya-operations-secrets` | `admin-password` (16–512 caractères), `realms-admin-key` (32–512 caractères aléatoires) |
+| `arkya-admin-mongo` | `connection-string` : utilisateur limité à la base `arkya_admin`, avec lecture, écriture et création d'index |
 | `arkya-realms-mongo` | `connection-string` : utilisateur limité à la base `arkya_realms` |
 | `arkya-realms-tls` | `tls.crt`, `tls.key`, `ca.crt` pour le lien Admin → Realms |
 | Secret de registre facultatif | Nom fixé par `imagePullSecretName`, credentials de lecture des images |
@@ -58,6 +59,14 @@ Aucun secret n'est généré ou écrit dans les manifests. Dans `operationsNames
 Le certificat Realms doit couvrir `arkya-realms.<operationsNamespace>.svc` et être signé par la CA de `ca.crt`. Fournir la chaîne intermédiaire nécessaire dans `tls.crt`. La CA est montée dans Admin et définie par `RealmsApi:CertificateAuthorityFile` ; le nom du serveur reste vérifié. Sans cette option, le client utilise les autorités système. La CA privée n'emploie pas de vérification CRL/OCSP ; gérer sa rotation et des certificats à durée bornée. Les clés TLS ne sont montées que dans Realms.
 
 Admin possède un PVC de clés Data Protection, un réplica et une stratégie `Recreate`. Les Secrets sont lus au démarrage : redémarrer les applications lors de leur rotation. Les ConfigMaps montées par `subPath` nécessitent également un redémarrage après modification. Les Secrets de jeu et de registre référencés par les profils appartiennent aux namespaces cibles ; le déployeur n'a pas le droit de les lire via l'API Kubernetes.
+
+Admin conserve ses sessions dans `arkya_admin`, collection `admin_sessions`.
+Préparer `arkya-admin-mongo` avant la première mise à jour qui active les refresh
+tokens : le démarrage vérifie MongoDB et crée l'index TTL. L'accès dure 30 minutes,
+avec renouvellement automatique jusqu'à la limite absolue de 30 jours ; une
+panne de stockage refuse l'accès. Les anciens cookies demandent une reconnexion.
+Voir le [contrat des sessions administrateur](../../../docs/ADMIN_SESSIONS.md)
+pour la rotation, la révocation et les durées configurables.
 
 ## Générer et appliquer
 
@@ -117,6 +126,8 @@ dotnet dev-certs https --trust
 $realmsKey = [Convert]::ToBase64String([Security.Cryptography.RandomNumberGenerator]::GetBytes(32))
 dotnet user-secrets set 'Mongo:ConnectionString' 'mongodb://<user>:<password>@localhost:27017/?authSource=admin' --project src/Arkya.Realms.Api
 dotnet user-secrets set 'RealmsAdmin:Key' $realmsKey --project src/Arkya.Realms.Api
+dotnet user-secrets set 'Mongo:ConnectionString' 'mongodb://<admin-session-user>:<password>@localhost:27017/?authSource=admin' --project src/Arkya.Admin
+dotnet user-secrets set 'Mongo:DatabaseName' 'arkya_admin' --project src/Arkya.Admin
 dotnet user-secrets set 'Admin:Password' '<mot-de-passe-operateur-16-caracteres-minimum>' --project src/Arkya.Admin
 dotnet user-secrets set 'ContentApi:Enabled' 'false' --project src/Arkya.Admin
 dotnet user-secrets set 'RealmsApi:Enabled' 'true' --project src/Arkya.Admin
@@ -125,6 +136,11 @@ dotnet run --project src/Arkya.Realms.Api --launch-profile https
 ```
 
 Dans un autre terminal, lancer `dotnet run --project src/Arkya.Admin`, puis ouvrir `http://localhost:5183/Realms`. Realms écoute sur `https://localhost:7144`. Les valeurs restent hors du dépôt. Ajouter les cibles et profils de l'exemple dans la section `Deployment` des user-secrets de Realms pour créer un brouillon ; aucune cible n'est inventée par défaut. Laisser `Deployment:Enabled=false` pour travailler sans accès Kubernetes. Le stockage local utilise lui aussi MongoDB, sans remplacement silencieux par de la mémoire.
+
+L'utilisateur MongoDB d'Admin doit disposer de droits de lecture, d'écriture et
+de création d'index sur `arkya_admin`. Il ne doit pas recevoir les credentials
+Realms pour accéder à ses données métier. Les deux bases peuvent partager le
+même serveur MongoDB de développement.
 
 Depuis la racine du dépôt :
 
@@ -136,7 +152,7 @@ dotnet test backend/tests/Arkya.Gateway.Tests/Arkya.Gateway.Tests.csproj
 ./backend/deploy/gateway/Test-AdminRendering.ps1
 ```
 
-Les dépendances des tests HTTP sont simulées ; les tests de transport TLS utilisent de véritables connexions locales et certificats de test. Pour activer le test MongoDB, définir `ARKYA_TEST_MONGO` avec une URI de test : il crée une base temporaire `arkya_realms_test_*` puis la supprime. Le workflow Services images appelle Backend CI, qui fournit un MongoDB éphémère et active ce test.
+Les dépendances des tests HTTP sont simulées ; les tests de transport TLS utilisent de véritables connexions locales et certificats de test. Pour activer les tests MongoDB, définir `ARKYA_TEST_MONGO` avec une URI de test : ils créent des bases temporaires `arkya_realms_test_*` et `arkya_admin_test_*`, puis les suppriment. Le workflow Services images appelle Backend CI, qui fournit un MongoDB éphémère et active ces tests.
 
 Validation du 16 octobre 2026 : 29 tests Realms, 74 tests Admin et 81 tests Gateway réussis, un test MongoDB réel ignoré localement faute de serveur. Les manifests et les rejets de configurations invalides ont été contrôlés hors ligne. Le parcours navigateur création → fiche → demande de déploiement a été vérifié avec une API simulée, sur ordinateur et mobile ; les publications .NET Release ont été vérifiées.
 

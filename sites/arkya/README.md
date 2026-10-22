@@ -42,6 +42,20 @@ Les pages `dist/terms.html` et `dist/privacy.html` présentent les Conditions d�
 
 **Configuration de cette révision :** `dist/auth-config.js` pointe Identity et Characters sur `https://api.arkya.online` via YARP. Une panne DNS, HTTP ou CORS est une erreur visible ; aucun compte ni monde local n’est simulé. La disponibilité publique des services et le parcours Discord réel restent à vérifier avant de considérer la bêta utilisable. Le [guide de raccordement Discord](DISCORD_SETUP.md) fournit le callback actualisé et les contrôles d’activation. L’achat du domaine chez Gandi ne déplace pas la vitrine vers `arkya.online`.
 
+## Sessions renouvelables
+
+Le site demande désormais un cookie de renouvellement HttpOnly à Identity.
+Le bearer reste dans sessionStorage (8 heures par défaut) ; le cookie permet de
+retrouver la connexion pendant 30 jours absolus, y compris dans un nouvel onglet.
+Les rotations et la déconnexion sont sérialisées entre onglets avec Web Locks.
+La déconnexion révoque toute la famille ; aucun refresh token n’est accessible au
+JavaScript. Le domaine `arkya.online` et l’API `api.arkya.online` sont compatibles
+avec SameSite=Lax ; la vitrine historique sur un domaine tiers ne bénéficie pas
+de cette persistance. [Contrats, migration et limites Unity](../../docs/AUTH_SESSIONS.md).
+
+Le jeu web déjà chargé garde l’échéance de son bearer initial, même si le site
+renouvelle son propre accès ; recharger Jouer importe le nouvel accès.
+
 ## Jouer dans le navigateur
 
 `dist/play.html` conserve l’apparence du site et les deux langues. Les liens **Jouer** mènent au contrôle de session ; sans session, le bouton Discord mène à `account.html?returnTo=play.html`. La seule destination de retour autorisée est exactement `play.html`, avec la langue courante. La création et la sélection des personnages restent dans Unity.

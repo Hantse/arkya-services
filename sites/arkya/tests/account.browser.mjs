@@ -21,7 +21,8 @@ async (page) => {
   const user = { accountId: '197d1fa3-83c2-45cb-bb26-f4b574e88ee8', displayName: 'QA Explorer', expiresAt: expiry };
   const response = (route, data, status = 200, headers = {}) => route.fulfill({
     status, contentType: 'application/json', headers: {
-      'Access-Control-Allow-Origin': base, 'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+      'Access-Control-Allow-Origin': base, 'Access-Control-Allow-Headers': 'Authorization, Content-Type, X-Arkya-Refresh',
+      'Access-Control-Allow-Credentials': 'true',
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', ...headers,
     }, body: JSON.stringify(data),
   });
@@ -43,7 +44,8 @@ async (page) => {
       else if (scenario === 'pending') await response(route, { status: 'pending' }, 202, { 'Retry-After': '5' });
       else await response(route, { ...user, sessionToken: token });
     } else if (path.endsWith('/me')) await response(route, user);
-    else if (path.endsWith('/logout')) await route.fulfill({ status: 204, headers: { 'Access-Control-Allow-Origin': base } });
+    else if (path.endsWith('/refresh')) await response(route, {}, 401);
+    else if (path.endsWith('/logout')) await route.fulfill({ status: 204, headers: { 'Access-Control-Allow-Origin': base, 'Access-Control-Allow-Credentials': 'true' } });
     else await response(route, {}, 404);
   };
   const reset = async () => {

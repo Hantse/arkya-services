@@ -1,5 +1,9 @@
 # Backend Arkya
 
+Le site et l’admin disposent de [sessions renouvelables](../docs/AUTH_SESSIONS.md),
+avec cookies HttpOnly, rotation et révocation. Admin nécessite désormais sa propre
+base de sessions `arkya_admin` ; provisionner sa connexion MongoDB avant déploiement.
+
 La [console d'administration](../docs/ADMIN_CONSOLE.md) regroupe le dashboard,
 les comptes et accès bêta, la modération, les personnages et les déploiements
 k3s. Le [profil facultatif admin-console](deploy/gitops/admin-console/README.md)
@@ -120,7 +124,8 @@ La connexion du compte Arkya utilise OAuth2 Authorization Code avec le seul scop
 | `GET /v1/auth/discord/callback` | Retour navigateur `code` + `state`, ou erreur fournisseur | Redirection vers le `returnUrl` du challenge après validation de l’état et du cookie ; sinon réponse texte historique (`200` ou `400`) |
 | `POST /v1/auth/discord/exchange` | `{ "challengeId": "...", "codeVerifier": "..." }` | `202` en attente ; `200` : `accountId`, `displayName`, `sessionToken`, `expiresAt` |
 | `GET /v1/auth/me` | `Authorization: Bearer <sessionToken>` | `200` : `accountId`, `displayName`, `expiresAt` ; sinon `401` |
-| `POST /v1/auth/logout` | Même bearer | `204` : session révoquée ; sinon `401` |
+| `POST /v1/auth/refresh` | Cookie `arkya.refresh`, `Origin` autorisé et `X-Arkya-Refresh: 1` | `200` : nouvel accès, cookie remplacé ; `401` expiré/révoqué ; `403` origine/en-tête refusé |
+| `POST /v1/auth/logout` | Bearer natif, ou cookie + origine/en-tête refresh navigateur | `204` : session/famille révoquée et cookie supprimé ; sinon `401`/`403` |
 | `POST /internal/sessions/introspect` | Clé de service + `{ "sessionToken": "..." }` | `200` : même identité que `/me` ; `403` mauvaise clé ; `401` session invalide |
 | `POST /internal/sessions/introspect-reference` | Même clé + `{ "sessionReference": "<SHA256 hex64>" }` | Validation privée par empreinte : même identité/expiration, sans bearer ; `401` si expirée/révoquée |
 

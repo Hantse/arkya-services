@@ -11,6 +11,42 @@ namespace Arkya.Identity.Tests;
 public sealed class MongoIdentityStoreTests
 {
     [MongoFact]
+    public async Task RefreshRotationIsAtomicAndHonorsExpiryRevocationAndBoundedReplayHistory()
+    {
+        await using var database = await TestDatabase.CreateAsync();
+        var now = DateTimeOffset.FromUnixTimeMilliseconds(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()).UtcDateTime;
+        var refresh = new RefreshSession(Guid.NewGuid().ToString("N"), "account", 1, IdentityService.Hash("first"), now.AddDays(30), []);
+        await database.Store.CreateRefreshSessionAsync(refresh, default);
+        var attempts = await Task.WhenAll(Enumerable.Range(0, 8).Select(index => database.Store.RotateRefreshSessionAsync(
+            refresh.Id, refresh.TokenHash, IdentityService.Hash($"next-{index}"), now, default)));
+        var rotated = Assert.Single(attempts, result => result is not null)!;
+        Assert.Equal(refresh.TokenHash, Assert.Single(rotated.UsedTokenHashes));
+        Assert.NotEqual(refresh.TokenHash, rotated.TokenHash);
+        Assert.Equal(refresh.ExpiresAt, rotated.ExpiresAt);
+        Assert.Null(await database.Store.RotateRefreshSessionAsync(refresh.Id, refresh.TokenHash, "replay", now, default));
+        Assert.Null(await database.Store.RotateRefreshSessionAsync(refresh.Id, rotated.TokenHash, "expired", refresh.ExpiresAt, default));
+        await database.Store.RevokeRefreshSessionAsync(refresh.Id, default);
+        Assert.True((await database.Store.GetRefreshSessionAsync(refresh.Id, default))!.Revoked);
+        Assert.Null(await database.Store.RotateRefreshSessionAsync(refresh.Id, rotated.TokenHash, "revoked", now, default));
+
+        var limited = refresh with { Id = Guid.NewGuid().ToString("N"), UsedTokenHashes = Enumerable.Repeat("hash", RefreshSession.MaximumRotations).ToArray() };
+        await database.Store.CreateRefreshSessionAsync(limited, default);
+        Assert.Null(await database.Store.RotateRefreshSessionAsync(limited.Id, limited.TokenHash, "overflow", now, default));
+        var persisted = await database.Collection("refresh_sessions").Find(new BsonDocument("_id", refresh.Id)).SingleAsync();
+        Assert.Equal(rotated.TokenHash, persisted["TokenHash"].AsString);
+        Assert.False(persisted.Contains("RefreshToken"));
+        Assert.Equal(1, persisted["SchemaVersion"].AsInt32);
+        var indexes = await (await database.Collection("refresh_sessions").Indexes.ListAsync()).ToListAsync();
+        Assert.Equal(0, Assert.Single(indexes, index => index["name"] == "refresh_expiry")["expireAfterSeconds"].ToInt32());
+        Assert.Contains(indexes, index => index["name"] == "account_refresh_sessions");
+
+        var access = new Session(IdentityService.Hash("access"), refresh.AccountId, "Player", now.AddHours(8), refresh.SessionVersion,
+            RefreshSessionId: refresh.Id);
+        await database.Store.CreateSessionAsync(access, default);
+        Assert.Equal(access, await database.Store.GetSessionAsync(access.TokenHash, now, default));
+    }
+
+    [MongoFact]
     public async Task ReturnUrlSurvivesStateClaimsAndLegacyDocumentsRemainReadable()
     {
         await using var database = await TestDatabase.CreateAsync();

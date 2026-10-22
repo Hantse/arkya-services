@@ -56,6 +56,9 @@ arkya/
 
 ## Useful Documents
 
+- [Sessions renouvelables du site et de l’admin](docs/AUTH_SESSIONS.md).
+- [Launcher Windows : installation, mises à jour et distribution](docs/WINDOWS_LAUNCHER.md).
+
 - [Site vitrine et atlas visuel des directions artistiques](sites/arkya/README.md).
 - `AGENTS.md`: working rules for coding agents and collaborators.
 - `docs/ARCHITECTURE.md`: target system architecture.

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 
 namespace Arkya.Admin;
 
@@ -88,6 +89,24 @@ public partial class Program
         builder.Services.AddInferenceAdministration(builder.Configuration, builder.Environment);
         builder.Services.AddPlayerAdministration(builder.Configuration, builder.Environment);
         builder.Services.AddSingleton(TimeProvider.System);
+        builder.Services.AddOptions<AdminSessionOptions>().BindConfiguration("AdminSessions")
+            .Validate(o => o.AccessLifetime >= TimeSpan.FromMinutes(5) && o.AccessLifetime <= TimeSpan.FromHours(2) &&
+                o.RefreshLifetime > o.AccessLifetime && o.RefreshLifetime <= TimeSpan.FromDays(90),
+                "Admin sessions require 5 minutes to 2 hours access and a longer refresh lifetime of at most 90 days.")
+            .ValidateOnStart();
+        builder.Services.AddOptions<MongoOptions>().BindConfiguration("Mongo")
+            .Validate(o => !string.IsNullOrWhiteSpace(o.ConnectionString) && !string.IsNullOrWhiteSpace(o.DatabaseName),
+                "Mongo connection string and database name are required for administrator sessions.").ValidateOnStart();
+        builder.Services.AddSingleton<IMongoClient>(services =>
+        {
+            var settings = MongoClientSettings.FromConnectionString(services.GetRequiredService<IOptions<MongoOptions>>().Value.ConnectionString);
+            settings.ServerSelectionTimeout = TimeSpan.FromSeconds(5);
+            return new MongoClient(settings);
+        });
+        builder.Services.AddSingleton<MongoAdminSessionStore>();
+        builder.Services.AddSingleton<IAdminSessionStore>(services => services.GetRequiredService<MongoAdminSessionStore>());
+        builder.Services.AddHostedService<AdminSessionIndexInitializer>();
+        builder.Services.AddScoped<AdminSessions>();
         builder.Services.AddScoped<OperationsDashboard>();
         builder.Services.AddHostedReportsMcp(builder.Configuration);
         var authentication = builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
@@ -98,18 +117,14 @@ public partial class Program
             options.Cookie.SameSite = builder.Configuration.GetValue<bool>("Admin:DiscordEnabled") ? SameSiteMode.Lax : SameSiteMode.Strict;
             options.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
                 ? CookieSecurePolicy.SameAsRequest : CookieSecurePolicy.Always;
-            options.ExpireTimeSpan = TimeSpan.FromHours(2);
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
             options.SlidingExpiration = false;
-            options.Events.OnValidatePrincipal = async context =>
-            {
-                var admin = context.HttpContext.RequestServices.GetRequiredService<IOptionsMonitor<AdminOptions>>().CurrentValue;
-                if (admin.DiscordEnabled && !AdminDiscordAuthentication.IsAuthorized(admin, context.Principal))
-                {
-                    context.RejectPrincipal();
-                    await context.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                }
-            };
+            options.Events.OnSigningIn = context => context.HttpContext.RequestServices.GetRequiredService<AdminSessions>().SigningInAsync(context);
+            options.Events.OnValidatePrincipal = context => context.HttpContext.RequestServices.GetRequiredService<AdminSessions>().ValidatePrincipalAsync(context);
+            options.Events.OnSigningOut = context => context.HttpContext.RequestServices.GetRequiredService<AdminSessions>().SigningOutAsync(context);
         });
+        builder.Services.AddOptions<CookieAuthenticationOptions>(CookieAuthenticationDefaults.AuthenticationScheme)
+            .Configure<TimeProvider>((options, time) => options.TimeProvider = time);
         authentication.AddOAuth<OAuthOptions, AdminDiscordHandler>(AdminDiscordAuthentication.Scheme, options =>
         {
             var enabled = builder.Configuration.GetValue<bool>("Admin:DiscordEnabled");
@@ -182,7 +197,21 @@ public partial class Program
         app.UseHostedReportsMcpAccess();
         app.UseRouting();
         app.UseRateLimiter();
+        app.Use(async (context, next) =>
+        {
+            try { await next(); }
+            catch (Exception exception) when (exception is MongoException or TimeoutException && !context.Response.HasStarted)
+            {
+                context.Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
+                await context.Response.WriteAsync("Le service de session est temporairement indisponible.", context.RequestAborted);
+            }
+        });
         app.UseAuthentication();
+        app.Use(async (context, next) =>
+        {
+            await context.RequestServices.GetRequiredService<AdminSessions>().RenewAsync(context);
+            await next();
+        });
         app.UseAuthorization();
         app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "admin" })).AllowAnonymous();
         app.MapRazorPages();

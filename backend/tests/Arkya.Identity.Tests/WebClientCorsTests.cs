@@ -14,6 +14,7 @@ public sealed class WebClientCorsTests
     [InlineData("/v1/auth/discord/exchange", "POST")]
     [InlineData("/v1/auth/me", "GET")]
     [InlineData("/v1/auth/logout", "POST")]
+    [InlineData("/v1/auth/refresh", "POST")]
     public async Task ConfiguredSiteCanPreflightOnlyRequiredMethodsAndHeaders(string path, string method)
     {
         await using var factory = new IdentityFactory { WebClientOrigins = [SiteOrigin] };
@@ -23,8 +24,8 @@ public sealed class WebClientCorsTests
         Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         Assert.Equal(SiteOrigin, Assert.Single(response.Headers.GetValues("Access-Control-Allow-Origin")));
         Assert.Equal(["GET", "POST"], HeaderItems(response, "Access-Control-Allow-Methods"));
-        Assert.Equal(["authorization", "content-type"], HeaderItems(response, "Access-Control-Allow-Headers").Select(value => value.ToLowerInvariant()).Order().ToArray());
-        Assert.False(response.Headers.Contains("Access-Control-Allow-Credentials"));
+        Assert.Equal(["authorization", "content-type", "x-arkya-refresh"], HeaderItems(response, "Access-Control-Allow-Headers").Select(value => value.ToLowerInvariant()).Order().ToArray());
+        Assert.Equal("true", Assert.Single(response.Headers.GetValues("Access-Control-Allow-Credentials")));
     }
 
     [Theory]
@@ -66,7 +67,7 @@ public sealed class WebClientCorsTests
     }
 
     [Fact]
-    public async Task PendingExchangeExposesRetryAfterWithoutCookieCredentials()
+    public async Task PendingExchangeExposesRetryAfterWithoutIssuingACookie()
     {
         await using var factory = new IdentityFactory { WebClientOrigins = [SiteOrigin] };
         using var client = factory.BrowserClient(cookies: false);
@@ -80,7 +81,7 @@ public sealed class WebClientCorsTests
         Assert.Equal(SiteOrigin, Assert.Single(pending.Headers.GetValues("Access-Control-Allow-Origin")));
         Assert.Contains("Retry-After", HeaderItems(pending, "Access-Control-Expose-Headers"));
         Assert.Equal(TimeSpan.FromSeconds(5), pending.Headers.RetryAfter!.Delta);
-        Assert.False(pending.Headers.Contains("Access-Control-Allow-Credentials"));
+        Assert.False(pending.Headers.Contains("Set-Cookie"));
     }
 
     [Theory]

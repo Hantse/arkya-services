@@ -52,6 +52,9 @@ public sealed class AdminRuntimeTests
     [InlineData("DataProtection:KeysPath", "relative/keys")]
     [InlineData("ProxyTrust:KnownNetworks:0", "0.0.0.0/0")]
     [InlineData("RealmsApi:CertificateAuthorityFile", "relative/ca.pem")]
+    [InlineData("Mongo:DatabaseName", "")]
+    [InlineData("AdminSessions:AccessLifetime", "00:00:01")]
+    [InlineData("AdminSessions:RefreshLifetime", "91.00:00:00")]
     public void InvalidDeploymentConfigurationFailsStartup(string key, string value)
     {
         using var factory = new AdminFactory { EnvironmentName = "Production" };

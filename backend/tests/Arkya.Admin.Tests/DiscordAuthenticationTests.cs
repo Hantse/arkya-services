@@ -262,6 +262,27 @@ public sealed class DiscordAuthenticationTests
         Assert.Equal(HttpStatusCode.Redirect, (await browser.GetAsync("/Realms")).StatusCode);
     }
 
+    [Fact]
+    public async Task ExpiredDiscordCookieRenewsWithoutProviderTokensAndCannotBypassAllowlistRemoval()
+    {
+        await using var factory = Factory();
+        using var browser = factory.Browser();
+        using var challenge = await ChallengeAsync(browser);
+        using var callback = await browser.GetAsync(Callback(challenge));
+        factory.Clock.Advance(TimeSpan.FromHours(3));
+        using var renewed = await browser.GetAsync("/Realms");
+        Assert.Equal(HttpStatusCode.OK, renewed.StatusCode);
+        Assert.Contains(renewed.Headers.GetValues("Set-Cookie"), value => value.StartsWith(AdminSessions.RefreshCookie + "="));
+        Assert.Equal(1, factory.Discord.TokenCalls);
+        Assert.Equal(1, factory.Discord.UserCalls);
+        var configuration = factory.Services.GetRequiredService<IConfiguration>();
+        configuration["Admin:AllowedDiscordUserIds:0"] = DiscordStub.OtherId;
+        ((IConfigurationRoot)configuration).Reload();
+        factory.Clock.Advance(TimeSpan.FromHours(3));
+        Assert.Equal(HttpStatusCode.Redirect, (await browser.GetAsync("/Realms")).StatusCode);
+        Assert.Empty(factory.Sessions.All);
+    }
+
     [Theory]
     [InlineData("Admin:AllowedDiscordUserIds:0", "")]
     [InlineData("Admin:AllowedDiscordUserIds:0", "hatya_leash")]

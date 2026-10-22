@@ -376,6 +376,11 @@ patches:
           containers:
           - name: admin
             env:
+            - name: Mongo__ConnectionString
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-content-secrets
+                  key: Mongo__ConnectionString
             - name: PlayerAdministration__IdentityKeySeed
               valueFrom:
                 secretKeyRef:

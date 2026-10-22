@@ -4,6 +4,7 @@ const MIN_POLL_SECONDS = 5;
 const MAX_SESSION_MS = 8 * 60 * 60 * 1000;
 const MAX_CHALLENGE_MS = 5 * 60 * 1000 + 30 * 1000;
 const MAX_WEB_CHALLENGE_MS = 5 * 60 * 1000;
+const REFRESH_AHEAD_MS = 60 * 1000;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const SECRET = /^[A-Za-z0-9_-]{43}$/;
 
@@ -107,6 +108,7 @@ export function createAuthClient({
   cryptoImpl = globalThis.crypto,
   now = Date.now,
   siteOrigin = globalThis.location?.origin,
+  locks = globalThis.navigator?.locks,
 } = {}) {
   const origin = apiOrigin(baseUrl, siteOrigin);
   const charactersOrigin = apiOrigin(charactersBaseUrl, siteOrigin);
@@ -116,6 +118,7 @@ export function createAuthClient({
   let sessionRevision = 0;
   let record = null;
   let verified = false;
+  let restoring = null;
   const loginRequests = new Set();
   const sessionRequests = new Set();
 
@@ -203,7 +206,7 @@ export function createAuthClient({
     }
   }
 
-  async function request(path, { method = 'GET', body, token, controllers = loginRequests } = {}) {
+  async function request(path, { method = 'GET', body, token, refreshCookie = false, controllers = loginRequests } = {}) {
     if (!available) throw authError('unavailable');
     const controller = new AbortController();
     controllers.add(controller);
@@ -211,10 +214,11 @@ export function createAuthClient({
     try {
       const expectedUrl = `${origin}${path}`;
       const response = await fetchImpl(expectedUrl, {
-        method, mode: 'cors', credentials: 'omit', cache: 'no-store', redirect: 'error',
+        method, mode: 'cors', credentials: refreshCookie ? 'include' : 'omit', cache: 'no-store', redirect: 'error',
         referrer: '', referrerPolicy: 'no-referrer', signal: controller.signal,
         headers: { Accept: 'application/json', ...(body ? { 'Content-Type': 'application/json' } : {}),
-          ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          ...(refreshCookie ? { 'X-Arkya-Refresh': '1' } : {}) },
         ...(body ? { body: JSON.stringify(body) } : {}),
       });
       if (response.redirected || (response.url && response.url !== expectedUrl) ||
@@ -237,18 +241,40 @@ export function createAuthClient({
     return authError(status >= 500 || status === 429 ? 'network' : 'rejected');
   }
 
-  async function restore() {
+  function withRefreshLock(action) {
+    // The HttpOnly cookie is shared across tabs; serialize its one-use rotations.
+    return locks?.request ? locks.request(`arkya-refresh:${origin}`, action) : action();
+  }
+
+  async function refresh(revision, expectedAccountId) {
+    return withRefreshLock(async () => {
+      if (revision !== sessionRevision) throw authError('cancelled');
+      const response = await request('/v1/auth/refresh', { method: 'POST', body: {}, refreshCookie: true, controllers: sessionRequests });
+      if (revision !== sessionRevision) throw authError('cancelled');
+      if (response.status === 401) { clearSession(); return null; }
+      if (response.status !== 200) throw failedResponse(response.status);
+      try {
+        const value = validateSession(response.data, now(), true);
+        if (expectedAccountId && value.accountId !== expectedAccountId) throw authError('invalid_response');
+        saveSession(value);
+        return session();
+      } catch (error) { clearSession(); throw error; }
+    });
+  }
+
+  async function restoreSession() {
     if (!available) return null;
     const revision = ++sessionRevision;
     verified = false;
     const saved = readSession();
-    if (!saved) return null;
+    if (!saved) return refresh(revision);
     record = saved;
+    if (Date.parse(saved.expiresAt) - now() <= REFRESH_AHEAD_MS) return refresh(revision, saved.accountId);
     const response = await request('/v1/auth/me', { token: saved.sessionToken, controllers: sessionRequests });
     if (revision !== sessionRevision) throw authError('cancelled');
     if (response.status === 401) {
       clearSession();
-      return null;
+      return refresh(revision, saved.accountId);
     }
     if (response.status !== 200) throw failedResponse(response.status);
     try {
@@ -260,6 +286,11 @@ export function createAuthClient({
       clearSession();
       throw error;
     }
+  }
+
+  function restore() {
+    if (!restoring) restoring = restoreSession().finally(() => { restoring = null; });
+    return restoring;
   }
 
   async function begin({ returnUrl } = {}) {
@@ -309,8 +340,11 @@ export function createAuthClient({
     challenge.nextPollAt = now() + challenge.interval * 1000;
     challenge.inFlight = (async () => {
       try {
-        const response = await request('/v1/auth/discord/exchange', { method: 'POST',
-          body: { challengeId: challenge.challengeId, codeVerifier: challenge.codeVerifier } });
+        const response = await withRefreshLock(() => {
+          if (challenge.revision !== loginRevision) throw authError('cancelled');
+          return request('/v1/auth/discord/exchange', { method: 'POST', refreshCookie: true,
+            body: { challengeId: challenge.challengeId, codeVerifier: challenge.codeVerifier, useRefreshCookie: true } });
+        });
         if (challenge.revision !== loginRevision) throw authError('cancelled');
         if (response.status === 410 || now() >= challenge.expires) {
           cancel();
@@ -356,9 +390,10 @@ export function createAuthClient({
     for (const controller of sessionRequests) controller.abort();
     const saved = available ? readSession() : null;
     clearSession();
-    if (!saved) return { revoked: false };
+    if (!available) return { revoked: false };
     try {
-      const response = await request('/v1/auth/logout', { method: 'POST', token: saved.sessionToken, controllers: sessionRequests });
+      const response = await withRefreshLock(() => request('/v1/auth/logout', { method: 'POST', token: saved?.sessionToken,
+        refreshCookie: true, controllers: sessionRequests }));
       return { revoked: response.status === 204 || response.status === 401 };
     } catch { return { revoked: false }; }
   }
