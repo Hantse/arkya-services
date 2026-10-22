@@ -49,7 +49,7 @@ function fixture({ responses = [], storage = memoryStorage(), ...options } = {})
     return next;
   };
   const client = createAuthClient({ baseUrl: API, siteOrigin: SITE, cryptoImpl: webcrypto,
-    now: () => time, storage, fetchImpl, ...options });
+    now: () => time, storage, fetchImpl, locks: null, ...options });
   return { client, calls, storage, advance: (ms) => { time += ms; } };
 }
 
@@ -114,6 +114,32 @@ test('logout wins over a late refresh response', async () => {
   finish(json(account()));
   await assert.rejects(refreshing, { code: 'cancelled' });
   assert.equal(client.session(), null);
+});
+
+test('logout aborts refresh before acquiring the shared cookie lock', { timeout: 5000 }, async () => {
+  let queued = Promise.resolve();
+  const serialLocks = { request(_name, action) {
+    const result = queued.then(action);
+    queued = result.catch(() => {});
+    return result;
+  } };
+  for (const locks of [serialLocks, globalThis.navigator?.locks].filter(Boolean)) {
+    let started;
+    let refreshSignal;
+    const requestStarted = new Promise(resolve => { started = resolve; });
+    const { client, calls } = fixture({ locks, responses: [(_url, { signal }) => new Promise((_resolve, reject) => {
+      refreshSignal = signal;
+      signal.addEventListener('abort', () => reject(signal.reason), { once: true });
+      started();
+    }), new Response(null, { status: 204 })] });
+    const refreshing = assert.rejects(client.restore(), { code: 'network' });
+    await requestStarted;
+    assert.deepEqual(await client.logout(), { revoked: true });
+    await refreshing;
+    assert.equal(refreshSignal.aborted, true);
+    assert.deepEqual(calls.map(({ url }) => url), [`${API}/v1/auth/refresh`, `${API}/v1/auth/logout`]);
+    assert.equal(client.session(), null);
+  }
 });
 
 test('refresh outages do not claim authentication and can be retried', async () => {
