@@ -34,6 +34,7 @@
                     <details class="nav-group" open>
                         <summary>Contenu et support</summary>
                         <a class="nav-item" asp-page="/Index" aria-current="@(page == "/Index" ? "page" : null)">Quêtes</a>
+                        <a class="nav-item" asp-page="/Publications" aria-current="@(page is "/Publications" or "/Publication" ? "page" : null)">Actualités et versions</a>
                         <a class="nav-item" asp-page="/BugReports" aria-current="@(page is "/BugReports" or "/BugReport" ? "page" : null)">Signalements</a>
                     </details>
                 </nav>

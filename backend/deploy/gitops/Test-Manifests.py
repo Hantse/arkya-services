@@ -292,6 +292,16 @@ def check_frontend_discord(documents, beta_documents):
             "Frontend/Discord must contain only 3 workloads/configs/services/policies and Identity PVC in arkya-beta")
 
 
+def check_content_publication_feed(configs):
+    gateway = configs["gateway"]
+    prefix = "ReverseProxy__Clusters__content__"
+    require(gateway.get("Gateway__ContentEnabled") == "true" and
+            {key: value for key, value in gateway.items() if key.startswith(prefix)} == {
+                prefix + "Destinations__primary__Address":
+                f"http://arkya-content.{FRONTEND_NAMESPACE}.svc.cluster.local:8080/"},
+            "Public publications must use only the existing private Content service through Gateway")
+
+
 def check_admin(documents, frontend_documents, beta_documents, require_digests=False):
     if any(item["kind"] == "Deployment" and item["metadata"]["name"] == "arkya-characters" for item in documents):
         validator_spec = importlib.util.spec_from_file_location("arkya_player_management", ROOT / "admin" / "Validate-PlayerManagement.py")

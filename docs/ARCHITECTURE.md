@@ -111,10 +111,10 @@ jusqu'à la configuration des dedicateds.
 
 | Projet | Responsabilité | Données possédées |
 | --- | --- | --- |
-| `Arkya.Gateway` | Reverse proxy YARP, routes publiques Identity/Characters et backoffice facultatif sur un domaine distinct ; aucune API interne/dev | Aucune donnée métier |
+| `Arkya.Gateway` | Reverse proxy YARP, routes publiques explicitement autorisées dont Identity, Characters et publications Content ; backoffice sur un domaine distinct | Aucune donnée métier |
 | `Arkya.Identity.Api` | Connexion Discord, identité Arkya, création, validation et révocation des sessions | Comptes, challenges de connexion, sessions dans `arkya_identity` |
 | `Arkya.Characters.Api` | Personnages du compte, validation d’apparence, liaison au realm, admission, leases et sauvegarde autoritaire de position | Personnages, admissions et état persistant dans `arkya_characters` |
-| `Arkya.Content.Api` | Brouillons de quêtes, validation et publication de catalogues immuables | Révisions et publications dans `arkya_content` |
+| `Arkya.Content.Api` | Brouillons de quêtes, catalogues immuables, actualités et notes de version publiables | Catalogues et `content_posts` dans `arkya_content` |
 | `Arkya.Reports.Api` | Bugs (F8) et suggestions (F9) avec capture, type immuable, statuts, tags et révisions de triage | Rapports et PNG bornés dans `arkya_reports` |
 | `Arkya.Admin` | Interface web authentifiée pour éditer/publier le contenu et créer/déployer/suivre les realms | Sessions d’administration dans `arkya_admin` ; données métier via les autres services |
 | `Arkya.Realms.Api` | Catalogue opérateur des realms, demandes de déploiement durables et observation des dedicated k3s | Définitions, profils figés et état des opérations dans `arkya_realms` |
@@ -132,7 +132,7 @@ tag et statut et appliquent les mises à jour avec contrôle de révision.
 Le [composant Reports](../backend/deploy/gitops/reports-control/README.md)
 s'intègre au profil Admin et à la promotion CI des images.
 
-La gateway conserve l’authentification et les règles métier dans les services. Son allowlist de routes API est explicite : connexion web Identity et endpoints publics Characters. Un routage Admin facultatif dessert exclusivement son domaine configuré, distinct de `api.arkya.online` ; les API Content et Realms restent internes. Les routes Social SDK restent hors de cette exposition web. Les futures routes doivent être ajoutées volontairement et testées. Les workflows GitHub Actions construisent et publient séparément les images Identity, Gateway, Admin et Realms dans GHCR.
+La gateway conserve l’authentification et les règles métier dans les services. Son allowlist de routes API est explicite : elle inclut la connexion Identity, les endpoints joueurs activés et les lectures de publications Content. `Gateway:ContentEnabled` expose seulement `GET /v1/content/posts` et `GET /v1/content/posts/{id}`, avec `OPTIONS`. Un routage Admin facultatif dessert exclusivement son domaine configuré, distinct de `api.arkya.online` ; la gestion Content, les catalogues de quêtes du dedicated et les API Realms restent internes. Les routes Social SDK restent hors de cette exposition web. Les futures routes doivent être ajoutées volontairement et testées. Le workflow `Services images` vérifie les services, publie leurs images et promeut ensemble les dix digests dans GitOps.
 
 Un même processus MongoDB peut héberger les deux bases en développement. Chaque service reste seul propriétaire de sa base : pas de jointure entre bases ni de lecture directe des collections d'un autre service. En déploiement, fournir des comptes MongoDB limités à leur base ; les identifiants administrateur du Compose servent uniquement au développement local.
 
@@ -171,6 +171,21 @@ L'apparence version 1 contient `race`, `silhouette`, `heightCm`, `skin`, `hairSt
 La résolution ne donne pas un droit d'entrée en jeu : elle ne réserve pas un personnage, ne crée pas de bail et n'empêche pas deux connexions simultanées. Les contrats précis, les règles de nommage et les exemples sont dans le [guide backend](../backend/README.md).
 
 La bêta ajoute `realmId` aux personnages et les routes authentifiées `GET /v1/realms` et `POST /v1/characters/{id}/admissions`. Un personnage historique sans realm est lié atomiquement à sa première admission valide ; le client ne peut ensuite changer ce realm. Le dedicated consomme le ticket une seule fois avec une clé liée à son identité, puis reçoit une lease de 90 secondes au plus et une époque d’autorité. Les sauvegardes exigent la lease, l’époque et la révision attendue. Le [contrat web](WEB_BETA_CONTRACT.md) précise les DTO, expirations et garanties de rejeu.
+
+### Actualités et notes de version
+
+Content conserve les articles en texte brut dans `content_posts`, avec ID stable,
+schéma, révision, brouillon et snapshot publié facultatif. L'Admin utilise ses
+contrôles de session, antiforgery et sa clé Content privée. La publication et la
+dépublication exigent la révision attendue ; une édition conserve le snapshot
+public précédent jusqu'à une nouvelle publication. Les notes de version portent
+une `gameVersion`, tandis que les actualités restent distinctes.
+
+Le launcher et le site peuvent consulter le feed anonyme publié, filtré par type
+et langue avec pagination bornée. Le routage public ne donne accès ni aux
+brouillons ni aux mutations. Aucun article n'est prépublié au démarrage ; une
+indisponibilité de Content est distinguée d'un feed vide. Le [guide des
+publications](PUBLICATIONS.md) décrit les contrats et le backoffice.
 
 ### Contenu et progression des quêtes
 

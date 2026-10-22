@@ -304,8 +304,12 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
         require(policy["podSelector"] == {"matchLabels": service["selector"]} and policy["policyTypes"] == ["Ingress"],
                 f"NetworkPolicy selector mismatch for {name}")
         if app != "gateway":
-            expected = ingress("admin", "gateway", nodes=True) if app == "characters" else ingress(
-                "admin" if app in {"content", "realms"} else "gateway")
+            if app == "characters":
+                expected = ingress("admin", "gateway", nodes=True)
+            elif app == "content":
+                expected = ingress("admin", "gateway")
+            else:
+                expected = ingress("admin" if app == "realms" else "gateway")
             require(policy["ingress"] == expected, f"Unexpected ingress in {name}")
         if app in {"content", "realms", "characters"}:
             require(config["ASPNETCORE_HTTP_PORTS"] == "8080" and
@@ -314,7 +318,7 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
             require(not any(k.startswith("Kestrel__Endpoints__Internal__") for k in config),
                     f"Inherited TLS listener remains in {name}")
             host = f"{name}.{NS}.svc.cluster.local"
-            expected_hosts = ("api.arkya.online;" if app == "characters" else "") + f"{name};{host}"
+            expected_hosts = ("api.arkya.online;" if app in {"characters", "content"} else "") + f"{name};{host}"
             require(config["AllowedHosts"] == expected_hosts, f"Unexpected public/private hosts in {name}")
             for probe in ("startupProbe", "readinessProbe", "livenessProbe"):
                 path = "/health" if app != "realms" else ("/health/live" if probe == "livenessProbe" else "/health/ready")
@@ -330,7 +334,9 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
             expected["metadata"]["name"] = config_names[app]
             expected["data"].update(
                 {"AllowedHosts": "api.arkya.online;arkya.online;admin.arkya.online", "Gateway__AdminEnabled": "true",
-                 "Gateway__CharactersEnabled": "true", "Gateway__RealmGameEnabled": "true", "Gateway__RealmGameAddress": REALM_ADDRESS}
+                 "Gateway__CharactersEnabled": "true", "Gateway__ContentEnabled": "true",
+                 "ReverseProxy__Clusters__content__Destinations__primary__Address": f"http://arkya-content.{NS}.svc.cluster.local:8080/",
+                 "Gateway__RealmGameEnabled": "true", "Gateway__RealmGameAddress": REALM_ADDRESS}
                 if app == "gateway" else {"ARKYA_UNITY_UPSTREAM": f"arkya-web-client.{NS}.svc.cluster.local:8080"}
                 if app == "frontend" else {"Administration__Enabled": "true", "Administration__AllowClusterHttp": "true",
                                              "InternalHttp__AllowedNetworks__0": "10.42.0.0/16"})
@@ -371,6 +377,7 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
                 f"{module} must use its explicitly-enabled private service")
     require(configs["gateway"]["Gateway__CharactersEnabled"] == "true",
             "The existing exact player route allowlist must expose Characters and admission through Gateway")
+    checks.check_content_publication_feed(configs)
     require(configs["gateway"]["Gateway__RealmGameEnabled"] == "true" and
             configs["gateway"]["Gateway__RealmGameAddress"] == REALM_ADDRESS,
             "The existing Gateway must proxy only the configured beta game's private WebSocket Service")

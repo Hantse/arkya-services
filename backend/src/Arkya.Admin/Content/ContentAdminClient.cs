@@ -29,25 +29,28 @@ public sealed class ContentApiException(HttpStatusCode statusCode, string messag
     public HttpStatusCode StatusCode { get; } = statusCode;
 }
 
-public sealed class ContentAdminClient(HttpClient client, IOptions<ContentApiOptions> options)
+public sealed partial class ContentAdminClient(HttpClient client, IOptions<ContentApiOptions> options)
 {
+    public bool Enabled => options.Value.Enabled;
     public Task<ContentDraft> GetDraftAsync(CancellationToken ct) => SendAsync<ContentDraft>(HttpMethod.Get, "admin/content/draft", null, ct);
     public Task<ContentCatalog[]> GetCatalogsAsync(CancellationToken ct) => SendAsync<ContentCatalog[]>(HttpMethod.Get, "admin/content/catalogs", null, ct);
     public Task<ContentDraft> SaveAsync(ContentDraft draft, CancellationToken ct) => SendAsync<ContentDraft>(HttpMethod.Put, "admin/content/draft", draft, ct);
     public Task<ContentCatalog> PublishAsync(long revision, CancellationToken ct) => SendAsync<ContentCatalog>(HttpMethod.Post,
         "admin/content/catalogs", new { draftRevision = revision }, ct);
 
-    private async Task<T> SendAsync<T>(HttpMethod method, string path, object? body, CancellationToken ct)
+    private async Task<T> SendAsync<T>(HttpMethod method, string path, object? body, CancellationToken ct, bool publication = false)
     {
         if (!options.Value.Enabled)
-            throw new ContentApiException(HttpStatusCode.ServiceUnavailable, "L'atelier de quêtes est désactivé sur cette installation.");
+            throw new ContentApiException(HttpStatusCode.ServiceUnavailable, publication
+                ? "La gestion des publications est désactivée sur cette installation."
+                : "L'atelier de quêtes est désactivé sur cette installation.");
         using var request = new HttpRequestMessage(method, path);
         request.Headers.Add("X-Arkya-Admin-Key", options.Value.AdminKey);
         if (body is not null) request.Content = JsonContent.Create(body);
         using var response = await client.SendAsync(request, ct);
         if (!response.IsSuccessStatusCode)
         {
-            var message = response.StatusCode switch
+            var message = publication ? ContentPublicationPresentation.ErrorMessage(response.StatusCode) : response.StatusCode switch
             {
                 HttpStatusCode.Conflict => "Ce brouillon a changé. Rechargez la page avant d'enregistrer ou de publier.",
                 HttpStatusCode.BadRequest => "Vérifiez les champs : identifiants uniques, titre renseigné et objectif entre 1 et 10 000 ennemis.",
@@ -59,11 +62,11 @@ public sealed class ContentAdminClient(HttpClient client, IOptions<ContentApiOpt
         try
         {
             return await response.Content.ReadFromJsonAsync<T>(ct)
-                ?? throw new ContentApiException(HttpStatusCode.BadGateway, "Le catalogue a renvoyé une réponse vide.");
+                ?? throw new ContentApiException(HttpStatusCode.BadGateway, publication ? "Le service de publications a renvoyé une réponse vide." : "Le catalogue a renvoyé une réponse vide.");
         }
         catch (JsonException)
         {
-            throw new ContentApiException(HttpStatusCode.BadGateway, "Le catalogue a renvoyé une réponse invalide.");
+            throw new ContentApiException(HttpStatusCode.BadGateway, publication ? "Le service de publications a renvoyé une réponse invalide." : "Le catalogue a renvoyé une réponse invalide.");
         }
     }
 }

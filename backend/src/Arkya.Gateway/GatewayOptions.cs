@@ -6,6 +6,7 @@ namespace Arkya.Gateway;
 public sealed class GatewayOptions
 {
     public bool CharactersEnabled { get; set; }
+    public bool ContentEnabled { get; set; }
     public bool RealmGameEnabled { get; set; }
     public string RealmGameAddress { get; set; } = "";
     public bool ReportsEnabled { get; set; }

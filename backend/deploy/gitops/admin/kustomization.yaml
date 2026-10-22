@@ -63,6 +63,8 @@ patches:
       AllowedHosts: api.arkya.online;arkya.online;admin.arkya.online
       Gateway__AdminEnabled: 'true'
       Gateway__CharactersEnabled: 'true'
+      Gateway__ContentEnabled: 'true'
+      ReverseProxy__Clusters__content__Destinations__primary__Address: http://arkya-content.arkya-beta.svc.cluster.local:8080/
       Gateway__RealmGameEnabled: 'true'
       Gateway__RealmGameAddress: http://arkya-beta-web-island.arkya-beta-realm.svc.cluster.local:17943/
 - patch: |-
@@ -129,7 +131,7 @@ patches:
       name: arkya-content-config
       namespace: arkya-beta
     data:
-      AllowedHosts: arkya-content;arkya-content.arkya-beta.svc.cluster.local
+      AllowedHosts: api.arkya.online;arkya-content;arkya-content.arkya-beta.svc.cluster.local
 - patch: |-
     apiVersion: v1
     kind: ConfigMap
@@ -454,3 +456,13 @@ patches:
         ports:
         - protocol: TCP
           port: 8080
+- target:
+    kind: NetworkPolicy
+    name: arkya-content
+  patch: |-
+    - op: add
+      path: /spec/ingress/0/from/-
+      value:
+        podSelector:
+          matchLabels:
+            app.kubernetes.io/name: arkya-gateway

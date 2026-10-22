@@ -86,13 +86,20 @@ YARP relaie une liste de routes et de méthodes explicites. Les routes API conse
 | --- | --- |
 | `POST /v1/auth/discord/challenges`, `GET /v1/auth/discord/authorize/{id}` | Identity |
 | `GET /v1/auth/discord/callback`, `POST /v1/auth/discord/exchange` | Identity |
-| `GET /v1/auth/me`, `POST /v1/auth/logout` | Identity |
+| `GET /v1/auth/me`, `POST /v1/auth/refresh`, `POST /v1/auth/logout` | Identity |
 | `GET /health` | Gateway elle-même |
 | `GET/POST /v1/characters`, `GET /v1/characters/{guid}`, `GET /v1/characters/appearance-options` | Characters, seulement si activé |
 | `GET /v1/realms`, `POST /v1/characters/{guid}/admissions` | Characters, seulement si activé ; session Arkya requise |
+| `GET /v1/content/posts`, `GET /v1/content/posts/{guid}` | Content, seulement si `Gateway:ContentEnabled=true` ; publications anonymes |
 | `GET /game/beta-web/{**path}` avec upgrade WebSocket | Dedicated bêta, seulement si activé ; préfixe `/game/beta-web` retiré |
 
 Les prérequêtes `OPTIONS` des appels API sont transmises au service concerné, qui conserve sa politique CORS. Sur le domaine API, `/internal`, les routes d'administration, de développement, Social SDK et les sondes détaillées ne sont pas publiés. Un nouveau sous-service demande une route explicite dans `GatewayRoutes.cs`, sa destination et son filtrage réseau ; aucun chemin générique ne donne accès à toutes ses API.
+
+Le [feed d'actualités et de notes de version](../../../docs/PUBLICATIONS.md) lit
+uniquement les snapshots publiés. Le profil GitOps `admin` active son cluster
+Content privé, autorise le Host public et l'accès réseau Gateway vers Content.
+Les endpoints `/admin/content` et `/internal/content` restent privés ; leurs clés
+ne sont jamais transmises au launcher ou au site.
 
 Le tunnel de jeu est désactivé par défaut. `Gateway__RealmGameEnabled=true` et
 `Gateway__RealmGameAddress=http://arkya-beta-web-island.arkya-beta-realm.svc.cluster.local:17943/`

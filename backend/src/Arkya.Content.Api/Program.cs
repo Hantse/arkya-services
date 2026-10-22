@@ -33,10 +33,17 @@ public partial class Program
         builder.Services.AddSingleton<IContentRepository>(services => services.GetRequiredService<MongoContentRepository>());
         builder.Services.AddHostedService<ContentStoreInitializer>();
         builder.Services.AddScoped<ContentService>();
+        builder.Services.AddSingleton<MongoPostRepository>();
+        builder.Services.AddSingleton<IPostRepository>(services => services.GetRequiredService<MongoPostRepository>());
+        builder.Services.AddHostedService<PostStoreInitializer>();
+        builder.Services.AddScoped<PostService>();
+        builder.Services.AddCors(options => options.AddPolicy(PostEndpoints.PublicCorsPolicy,
+            policy => policy.AllowAnyOrigin().WithMethods("GET").AllowAnyHeader()));
 
         var app = builder.Build();
         app.UseArkyaInternalHttp();
         app.UseArkyaServiceDefaults();
+        app.UseCors();
         app.Use(async (context, next) =>
         {
             if (context.Request.ContentLength > MaximumRequestBodyBytes)

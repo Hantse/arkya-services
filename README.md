@@ -23,6 +23,7 @@ Arkya is a Unity3D MMORPG project using Unity DOTS (Data-Oriented Technology Sta
 - Realm deployment backoffice: `Arkya.Admin` manages persistent realm definitions through `Arkya.Realms.Api`, which creates and observes dedicated workloads in approved k3s namespaces; [architecture, scope and setup](docs/REALM_DEPLOYMENT.md). The web beta adds player admission, WebSocket destinations and Unity Linux dedicated build tooling; deploying its image and public WSS route still requires the real environment configuration.
 - Backend persistence: MongoDB, with a separate database owned by each service and local Compose setup.
 - Quest content: an ASP.NET admin edits kill objectives and publishes immutable catalogs; dedicated area servers load a pinned version at startup and save character progress through Characters. See the [quest content guide](docs/QUEST_CONTENT.md).
+- News and release notes: the admin prepares drafts and publishes version-linked notes or news through Content; the launcher reads their anonymous public feed. See the [publication contracts and guide](docs/PUBLICATIONS.md).
 - Server target: authoritative Unity dedicated server communicating with the ASP.NET Core services; initial contracts use HTTPS JSON.
 - Realm model: the web beta implements an authenticated player catalogue, immutable character realm binding and one-use admission tickets backed by character leases. Its island uses one dedicated per destination; integration with multi-area simulation remains separate.
 

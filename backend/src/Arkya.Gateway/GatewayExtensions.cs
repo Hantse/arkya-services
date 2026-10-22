@@ -43,7 +43,7 @@ public static class GatewayExtensions
                 ? options.PublicApiHosts(finalConfiguration) : null;
             var routes = GatewayRoutes.Create(options.CharactersEnabled, options.AdminEnabled ? options.AdminHost : null,
                 publicHosts, options.FrontendEnabled ? options.FrontendHost : null, options.RealmGameEnabled,
-                options.InferenceEnabled, options.ReportsEnabled);
+                options.InferenceEnabled, options.ReportsEnabled, options.ContentEnabled);
             var configured = finalConfiguration.GetSection("ReverseProxy:Clusters").Get<Dictionary<string, ClusterConfig>>()
                 ?? throw new InvalidOperationException("ReverseProxy:Clusters must be configured.");
             if (options.AdminEnabled)

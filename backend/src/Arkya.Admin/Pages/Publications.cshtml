@@ -1,0 +1,45 @@
+@page
+@model PublicationsModel
+@using Arkya.Admin.Content
+@{
+    ViewData["Title"] = "Actualités et versions";
+}
+<header class="page-header">
+    <div><div class="eyebrow">COMMUNAUTÉ / PUBLICATIONS</div><h1>Actualités et versions</h1><p class="intro">Préparez les nouvelles du jeu et les notes de chaque mise à jour.</p></div>
+    @if (Model.Enabled) { <a class="button primary" asp-page="/Publication">Créer un brouillon</a> }
+</header>
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Publications" asp-route-kind="@Model.Kind" asp-route-language="@Model.Language">Réessayer</a></div> }
+@if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
+@if (!Model.Enabled)
+{
+    <div class="panel empty-state"><h2>La gestion des publications est désactivée</h2><p>La connexion au service Content doit être activée dans la configuration de l'administration.</p></div>
+}
+else
+{
+    <form method="get" class="panel report-filters">
+        <div class="field"><label asp-for="Kind">Type</label><select asp-for="Kind"><option value="">Tous les types</option><option value="news">Actualités</option><option value="release-note">Notes de version</option></select></div>
+        <div class="field"><label asp-for="Language">Langue</label><select asp-for="Language"><option value="">Toutes les langues</option><option value="fr">Français</option><option value="en">Anglais</option></select></div>
+        <input type="hidden" asp-for="Limit" />
+        <button type="submit" class="button secondary">Filtrer</button><a class="text-link" asp-page="/Publications">Effacer les filtres</a>
+    </form>
+    @if (Model.Publications is { } posts)
+    {
+        @if (posts.Items.Length == 0)
+        {
+            <div class="panel empty-state"><h2>Aucune publication sur cette page</h2><p>Créez un brouillon ou ajustez les filtres pour retrouver une publication.</p></div>
+        }
+        else
+        {
+            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Actualités et notes de version</caption><thead><tr><th scope="col">Publication</th><th scope="col">Type et langue</th><th scope="col">Visibilité</th><th scope="col">Modifiée le</th></tr></thead><tbody>
+            @foreach (var post in posts.Items)
+            {
+                <tr><th scope="row"><a asp-page="/Publication" asp-route-id="@post.Id">@post.Title</a>@if (post.GameVersion is not null) { <small>Version @post.GameVersion</small> }</th><td>@ContentPublicationPresentation.KindLabel(post.Kind)<small>@ContentPublicationPresentation.LanguageLabel(post.Language)</small></td><td><span class="realm-status @(post.PublishedAt is null ? "pending" : "ready")">@(post.PublishedAt is null ? "Brouillon" : "Publiée")</span></td><td><time datetime="@post.UpdatedAt.ToString("O")">@post.UpdatedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></td></tr>
+            }
+            </tbody></table></div>
+        }
+        <nav class="report-pagination" aria-label="Pages des publications">
+            @if (Model.HasPrevious) { <a class="button secondary" asp-page="/Publications" asp-route-kind="@Model.Kind" asp-route-language="@Model.Language" asp-route-offset="@Math.Max(0, Model.Offset - Model.Limit)" asp-route-limit="@Model.Limit">Précédentes</a> }
+            @if (Model.HasNext) { <a class="button secondary" asp-page="/Publications" asp-route-kind="@Model.Kind" asp-route-language="@Model.Language" asp-route-offset="@(Model.Offset + Model.Limit)" asp-route-limit="@Model.Limit">Suivantes</a> }
+        </nav>
+    }
+}
