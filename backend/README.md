@@ -219,6 +219,7 @@ Les routes de personnages exigent un bearer Arkya valide. Seul le catalogue d'ap
 | --- | --- | --- |
 | `GET /v1/characters/appearance-options` | Aucune authentification | `200` : version, valeurs par défaut, races, silhouettes, coiffures et palettes autorisées |
 | `GET /v1/characters` | Bearer | `200` : tableau des personnages du compte |
+| `GET /v1/characters/entry-context` | Bearer | `200` : présence de personnages et dernier realm admis par un dedicated ; [contrat](../docs/CHARACTER_ENTRY.md) |
 | `POST /v1/characters` | Bearer + `name` et `appearance` (exemple ci-dessous) | `201` : personnage ; `400` nom ou apparence invalide ; `409` nom déjà pris |
 | `GET /v1/characters/{id}` | Bearer | `200` : personnage ; `404` absent ou autre propriétaire |
 | `POST /internal/characters/{id}/resolve` | Clé de service + `{ "sessionToken": "..." }` | `200` : `accountId`, `character`, `sessionExpiresAt` ; `403` mauvaise clé ; `401` session invalide ; `404` personnage non accessible |
@@ -271,6 +272,8 @@ Le [contrat HTTP exact](../docs/WEB_BETA_CONTRACT.md) définit le catalogue auth
 La création accepte un `realmId` facultatif. S'il est absent, la première admission lie atomiquement le personnage au realm choisi ; cette liaison reste ensuite immuable. Le catalogue vient du vrai service Realms et refuse une destination non compatible ou sans identité dedicated configurée. `GameAccess:StandaloneEntries` dans Realms permet un serveur réel lancé hors Kubernetes ; une entrée doit être activée explicitement par l'opérateur. Les profils Kubernetes conservent UDP par défaut et acceptent un profil `WebSocket` distinct avec une URL WSS approuvée.
 
 Characters conserve seulement l'empreinte SHA-256 d'un ticket aléatoire de 256 bits, valable 60 secondes au maximum. La consommation atomique crée un bail exclusif de 90 secondes, borné par l'expiration de session, renouvelé par le serveur. `X-Arkya-Dedicated-Key` est lié dans Characters à un couple realm/serveur précis. L'époque d'autorité et la révision protègent la sauvegarde de position contre un ancien serveur ou une écriture concurrente. Seul le dedicated fournit position et direction ; le client ne peut pas appeler ces écritures. La collection `game_leases` conserve aussi la dernière position durable et n'a donc pas de TTL destructif.
+
+Le [contexte d'entrée](../docs/CHARACTER_ENTRY.md) conserve également la dernière admission réussie du compte. Le dedicated enregistre `LastConnectedAt` dans la même écriture atomique que la consommation du ticket ; demander un ticket ou choisir un royaume ne modifie pas cet historique. Le client natif peut ainsi retrouver le dernier royaume après connexion, tout en proposant la sélection de royaume si le compte n'a pas de personnage, aucun historique ou une destination devenue indisponible.
 
 Configurer dans Characters `Realms:BaseUrl`, `Realms:ServiceKey`, `GameAccess:DedicatedServers` et la liste exacte `WebClient:AllowedOrigins`, en complément d'Identity/Mongo. Les origines autorisées doivent inclure celle de la page qui héberge réellement Unity, qui peut différer de la vitrine. Le bearer Arkya reste en mémoire. Les clés dedicated et interservices restent dans les secrets serveur. Voir [la préparation WSS et des services](deploy/web-beta/README.md) pour les valeurs et les frontières réseau.
 

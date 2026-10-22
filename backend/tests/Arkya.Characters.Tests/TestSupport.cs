@@ -30,6 +30,11 @@ internal sealed class MemoryCharacterRepository : ICharacterRepository
     private readonly List<Character> characters = [];
     private readonly object gate = new();
 
+    public void Remove(Guid characterId)
+    {
+        lock (gate) characters.RemoveAll(value => value.Id == characterId);
+    }
+
     public Task<bool> ExistsAsync(Guid characterId, CancellationToken cancellationToken)
     {
         lock (gate)

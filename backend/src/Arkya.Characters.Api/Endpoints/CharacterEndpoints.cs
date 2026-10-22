@@ -25,6 +25,8 @@ public static class CharacterEndpoints
         })).AllowAnonymous().RequireCors(BrowserClientOptions.Policy);
 
         var characters = app.MapGroup("/v1/characters").RequireAuthorization().RequireCors(BrowserClientOptions.Policy);
+        characters.MapGet("/entry-context", async (ClaimsPrincipal user, GameAdmissionService service,
+            CancellationToken cancellationToken) => Results.Ok(await service.EntryContextAsync(AccountId(user), cancellationToken)));
         characters.MapGet("", async (ClaimsPrincipal user, CharacterService service, CancellationToken cancellationToken) =>
         {
             var owned = await service.ListOwnedAsync(AccountId(user), cancellationToken);

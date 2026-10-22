@@ -9,6 +9,7 @@ public sealed class GatewayProxyTests
 {
     [Theory]
     [InlineData("GET", "/v1/realms")]
+    [InlineData("GET", "/v1/characters/entry-context")]
     [InlineData("POST", "/v1/characters/ab1890c5-9930-4ac0-bafd-cd15a48bceca/admissions")]
     public async Task Game_routes_forward_to_characters_without_dedicated_credentials(string method, string path)
     {
@@ -256,6 +257,7 @@ public sealed class GatewayProxyTests
     [InlineData("POST", "/v1/characters")]
     [InlineData("GET", "/v1/characters/11111111-1111-1111-1111-111111111111")]
     [InlineData("GET", "/v1/characters/appearance-options")]
+    [InlineData("GET", "/v1/characters/entry-context")]
     public async Task Character_routes_target_only_characters_when_enabled(string method, string path)
     {
         await using var identity = await Downstream.StartAsync("identity");

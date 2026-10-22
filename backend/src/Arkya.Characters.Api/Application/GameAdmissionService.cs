@@ -9,7 +9,8 @@ namespace Arkya.Characters.Api.Application;
 
 public sealed record GameLeaseRecord(Guid CharacterId, Guid AccountId, string RealmId, string ServerId,
     long Version, string? TicketHash, DateTimeOffset TicketExpiresAt, Guid LeaseId, long AuthorityEpoch,
-    DateTimeOffset LeaseExpiresAt, DateTimeOffset SessionExpiresAt, SavedWorldState? State, string? SessionReference = null);
+    DateTimeOffset LeaseExpiresAt, DateTimeOffset SessionExpiresAt, SavedWorldState? State, string? SessionReference = null,
+    DateTimeOffset? LastConnectedAt = null);
 
 public enum GameWriteCondition { None, PendingTicket, ActiveLease }
 
@@ -17,6 +18,7 @@ public interface IGameLeaseStore
 {
     Task<GameLeaseRecord?> FindCharacterAsync(Guid characterId, CancellationToken cancellationToken);
     Task<GameLeaseRecord?> FindTicketAsync(string ticketHash, CancellationToken cancellationToken);
+    Task<GameLeaseRecord?> FindLastConnectedAsync(Guid accountId, IReadOnlyCollection<Guid> characterIds, CancellationToken cancellationToken);
     Task<bool> TryWriteAsync(GameLeaseRecord record, long? expectedVersion, CancellationToken cancellationToken, GameWriteCondition condition = GameWriteCondition.None);
 }
 
@@ -29,6 +31,16 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
     public const int TicketSeconds = 60;
     public const int LeaseSeconds = 90;
     public static string HashTicket(string value) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(value)));
+
+    public async Task<CharacterEntryContextResponse> EntryContextAsync(Guid accountId, CancellationToken cancellationToken)
+    {
+        var owned = await characters.ListOwnedAsync(accountId, cancellationToken);
+        if (owned.Count == 0) return new(false, null, null, null);
+        var last = await leases.FindLastConnectedAsync(accountId, owned.Select(value => value.Id).ToArray(), cancellationToken);
+        return last is not null && owned.Any(value => value.Id == last.CharacterId && value.RealmId == last.RealmId)
+            ? new(true, last.RealmId, last.CharacterId, last.LastConnectedAt)
+            : new(true, null, null, null);
+    }
 
     public async Task<GameRealmCatalog> CatalogAsync(CancellationToken cancellationToken)
     {
@@ -79,7 +91,7 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
                 return new(Error: "character_in_use", Status: 409);
             var next = new GameLeaseRecord(characterId, accountId, entry.RealmId, entry.ServerId,
                 (current?.Version ?? 0) + 1, HashTicket(ticket), expires, Guid.Empty, current?.AuthorityEpoch ?? 0,
-                now, sessionExpiresAt, current?.State, sessionReference);
+                now, sessionExpiresAt, current?.State, sessionReference, current?.LastConnectedAt);
             if (await leases.TryWriteAsync(next, current?.Version, cancellationToken))
                 return new(new(ticket, expires, entry.Endpoint, entry.ProtocolVersion, entry.BuildId, entry.RealmId, entry.ServerId));
         }
@@ -105,7 +117,8 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
         var sessionExpiry = Min(current.SessionExpiresAt, validation.Session!.ExpiresAt);
         if (current.TicketExpiresAt <= now || sessionExpiry <= now) return new(Error: "admission_rejected", Status: 409);
         var next = current with { Version = current.Version + 1, TicketHash = null, LeaseId = Guid.NewGuid(),
-            AuthorityEpoch = current.AuthorityEpoch + 1, LeaseExpiresAt = Min(now.AddSeconds(LeaseSeconds), sessionExpiry), SessionExpiresAt = sessionExpiry };
+            AuthorityEpoch = current.AuthorityEpoch + 1, LeaseExpiresAt = Min(now.AddSeconds(LeaseSeconds), sessionExpiry),
+            SessionExpiresAt = sessionExpiry, LastConnectedAt = now };
         if (!await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.PendingTicket)) return new(Error: "admission_rejected", Status: 409);
         return new(new(current.AccountId, CharacterResponse.From(character), current.RealmId, current.ServerId,
             next.LeaseId, next.AuthorityEpoch, next.LeaseExpiresAt, next.SessionExpiresAt, next.State));

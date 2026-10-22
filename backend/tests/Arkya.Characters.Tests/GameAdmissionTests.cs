@@ -26,6 +26,9 @@ internal sealed class MemoryGameLeaseStore : IGameLeaseStore
     { lock (gate) { var value = records.GetValueOrDefault(id); AfterRead?.Invoke(); return Task.FromResult(value); } }
     public Task<GameLeaseRecord?> FindTicketAsync(string hash, CancellationToken cancellationToken)
     { lock (gate) { var value = records.Values.SingleOrDefault(value => value.TicketHash == hash); AfterRead?.Invoke(); return Task.FromResult(value); } }
+    public Task<GameLeaseRecord?> FindLastConnectedAsync(Guid accountId, IReadOnlyCollection<Guid> characterIds, CancellationToken cancellationToken)
+    { lock (gate) { return Task.FromResult(records.Values.Where(value => value.AccountId == accountId && characterIds.Contains(value.CharacterId) && value.LastConnectedAt.HasValue)
+        .OrderByDescending(value => value.LastConnectedAt).ThenBy(value => value.CharacterId.ToString("D"), StringComparer.Ordinal).FirstOrDefault()); } }
     public Task<bool> TryWriteAsync(GameLeaseRecord value, long? expectedVersion, CancellationToken cancellationToken, GameWriteCondition condition = GameWriteCondition.None)
     {
         lock (gate)

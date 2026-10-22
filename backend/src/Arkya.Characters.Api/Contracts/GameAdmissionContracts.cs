@@ -1,5 +1,7 @@
 namespace Arkya.Characters.Api.Contracts;
 
+public sealed record CharacterEntryContextResponse(bool HasCharacters, string? LastRealmId,
+    Guid? LastCharacterId, DateTimeOffset? LastConnectedAt);
 public sealed record AdmissionRequest(string? RealmId, int ProtocolVersion, string? BuildId);
 public sealed record AdmissionResponse(string Ticket, DateTimeOffset ExpiresAt, string Endpoint,
     int ProtocolVersion, string BuildId, string RealmId, string ServerId);
