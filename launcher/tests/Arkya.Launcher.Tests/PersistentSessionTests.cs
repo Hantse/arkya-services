@@ -61,6 +61,19 @@ public sealed class PersistentSessionTests : IDisposable
     }
 
     [Fact]
+    public async Task RestoreAcceptsMongoMillisecondTruncationAndPersistsTheEarlierAbsoluteExpiry()
+    {
+        if (!OperatingSystem.IsWindows()) return;
+        var storedExpiry = Now.AddDays(30).AddTicks(4567);
+        Store.Save(new LauncherRefreshCredential(Refresh, AccountId, storedExpiry));
+        using var http = Client(request => request.RequestUri!.AbsolutePath.EndsWith("native") ? Exchange() : Me());
+        var restored = await Identity(http).RestoreSessionAsync(default);
+        Assert.NotNull(restored);
+        Assert.Equal(Now.AddDays(30), Store.Load()!.ExpiresAt);
+        Assert.True(Store.Load()!.ExpiresAt < storedExpiry);
+    }
+
+    [Fact]
     public async Task LoginOptsIntoNativeRefreshAndPersistsOnlyAfterAccountVerification()
     {
         if (!OperatingSystem.IsWindows()) return;
@@ -232,15 +245,17 @@ public sealed class PersistentSessionTests : IDisposable
         Assert.Null(Store.Load());
     }
 
-    [Fact]
-    public async Task ChangedAccountOrAbsoluteExpiryInRefreshResponseCannotBePersisted()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task ChangedAccountOrExtendedAbsoluteExpiryInRefreshResponseCannotBePersisted(bool differentAccount)
     {
         if (!OperatingSystem.IsWindows()) return;
         Store.Save(Credential());
         using var http = Client(_ => Json(new
         {
-            accountId = ChallengeId, displayName = "Other", sessionToken = NextToken, expiresAt = Now.AddHours(8),
-            refreshToken = NextRefresh, refreshExpiresAt = Now.AddDays(31)
+            accountId = differentAccount ? ChallengeId : AccountId, displayName = "Other", sessionToken = NextToken, expiresAt = Now.AddHours(8),
+            refreshToken = NextRefresh, refreshExpiresAt = differentAccount ? Now.AddDays(30) : Now.AddDays(31)
         }));
         Assert.Null(await Identity(http).RestoreSessionAsync(default));
         Assert.Null(Store.Load());

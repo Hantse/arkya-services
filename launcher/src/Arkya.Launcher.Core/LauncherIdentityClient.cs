@@ -229,7 +229,7 @@ public sealed class LauncherIdentityClient
         RequireSuccess(response);
         var received = await ReadAsync<ExchangeResponse>(response, rotationTimeout.Token);
         var session = ToSession(received, requireRefresh: true);
-        if (session.AccountId != credential.AccountId || session.RefreshCredential!.ExpiresAt != credential.ExpiresAt ||
+        if (session.AccountId != credential.AccountId || session.RefreshCredential!.ExpiresAt > credential.ExpiresAt ||
             session.RefreshCredential.RefreshToken == credential.RefreshToken ||
             !session.RefreshCredential.RefreshToken.AsSpan(0, 32).SequenceEqual(credential.RefreshToken.AsSpan(0, 32)))
             throw new LauncherAuthenticationException("La réponse du service de connexion est invalide.", true);

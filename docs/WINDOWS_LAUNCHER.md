@@ -354,11 +354,13 @@ et `sha256`. Publier d’abord le setup immuable et le vérifier, puis déposer
 ce manifeste sous `dist/downloads/launcher/latest-win-x64.json`. Le manifeste
 du jeu reste indépendant sous `downloads/windows/`.
 
-Vérification de `0.4.0` : 182 tests Core et 12 tests WPF réussis ; essai
+Vérification de `0.4.0` : 184 tests Core et 12 tests WPF réussis ; essai
 réel du helper avec installateurs Inno isolés `0.3.1 → 0.4.0`, dossier
 personnalisé, attente du processus, installation silencieuse, redémarrage
 et conservation/déchiffrement de la session DPAPI. Aucun launcher installé
 chez l’utilisateur n’est remplacé par ces essais.
+Le renouvellement accepte l’arrondi des dates par MongoDB sans jamais
+prolonger la limite absolue de connexion.
 
 L’installateur peut être vérifié dans un dossier de test neuf, sans démarrer
 le launcher ni télécharger le jeu :
