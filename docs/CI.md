@@ -47,6 +47,15 @@ sont conservées 30 jours. Les commits de promotion ne rebouclent pas la CI.
 
 ## Unity et vraie bêta web
 
+Les runs Unity vont jusqu'au bout : un nouveau push n'annule plus le run
+actif ni le précédent run en attente. Le groupe de branche et les verrous de
+promotion utilisent `cancel-in-progress: false` avec `queue: max`. GitHub
+permet ainsi jusqu'à 100 exécutions en attente par groupe ; au-delà, sa limite
+s'applique ([syntaxe officielle](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#example-queueing-multiple-pending-runs)).
+Les promotions restent sérialisées et refusent les sources devenues obsolètes.
+Les agents ne doivent annuler aucun run ou job sans demande explicite de
+l'utilisateur, y compris pour libérer un runner ou privilégier un commit récent.
+
 Le workflow Unity exécute EditMode et PlayMode sans filtre, puis construit le
 client Windows, le client WebGL et le vrai dedicated Linux de l'île via
 `CharacterWebBetaBuilder`. Le prototype AreaPrototype n'est plus cette cible.

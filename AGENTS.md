@@ -123,6 +123,11 @@ After changing code:
 2. Update docs when architecture, contracts, or workflow expectations changed.
 3. Report any tests or checks that could not be run.
 
+## CI run policy
+
+- Do not cancel CI workflow runs or jobs unless the user explicitly requests cancellation. A newer commit, a long run or a desire to free a runner is not authorization to cancel. This applies to subagents too.
+- Let active runs finish and preserve queued work. Investigate failures or delays with read-only checks; do not stop runner services or terminate their processes to interrupt a run.
+
 ## Open Project Decisions
 
 - Decide the final Unity package set for Entities, Netcode for Entities, Physics, and baking workflow.
