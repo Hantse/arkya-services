@@ -192,6 +192,13 @@ ce nouveau profil. Passer un realm déjà déployé de version 2 à version 3
 demande une migration explicite de runtime ; changer seulement son image
 ne suffit pas. Cet exemple ne publie aucune route ni aucun workload.
 
+La promotion automatique du dedicated vers le GitOps bêta vérifie aussi la
+paire réseau du client WebGL déjà publié, à partir de sa révision Git figée.
+Si la nouvelle image annonce une autre paire, la vérification refuse la
+promotion avant toute modification du manifeste. La publication des artefacts
+reste possible ; leur adoption pour un nouveau profil suit la configuration
+explicite ci-dessus.
+
 ## Passage autoritaire et état durable
 
 L'entrée dans une zone source déclenche automatiquement la préparation du
