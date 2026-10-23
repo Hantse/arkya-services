@@ -1,0 +1,111 @@
+@page "/CreateRealm"
+@model RealmCreateModel
+@using Arkya.Admin.Realms
+@{
+    ViewData["Title"] = Model.IsEditing ? "Modifier le plan du realm" : "Créer un royaume";
+}
+<link rel="stylesheet" href="~/realm-create-islands.css" asp-append-version="true" />
+<a class="text-link" asp-page="/Realms">← Tous les royaumes</a>
+<header class="page-header realm-header">
+    <div><div class="eyebrow">UNIVERS / CONFIGURATION</div><h1>@(Model.IsEditing ? "Modifier le plan" : "Créer un royaume")</h1><p class="intro">Définissez le monde, sa cible et la répartition de ses serveurs dédiés.</p></div>
+    <a class="button secondary" asp-page="/Realms">Retour à la liste</a>
+</header>
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/RealmCreate" asp-route-editRealmId="@Model.EditRealmId">Réessayer</a></div> }
+@if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
+@if (!Model.Enabled)
+{
+    <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h2>La gestion des realms est désactivée</h2><p>Activez la connexion au service Realms dans la configuration de l'administration pour préparer un monde.</p></div>
+}
+else if (Model.Loaded)
+{
+    <div class="realm-create-workspace">
+        <section aria-labelledby="create-heading">
+            <div class="section-heading"><h2 id="create-heading">@(Model.IsEditing ? "Modifier le plan du realm" : "Préparer un realm")</h2></div>
+            <form method="post" asp-page-handler="@(Model.IsEditing ? "SaveTopology" : "Create")" class="panel realm-form realm-create-form">
+                @if (Model.IsEditing)
+                {
+                    <input type="hidden" asp-for="EditRealmId" /><input type="hidden" asp-for="ExpectedRevision" />
+                    <input type="hidden" asp-for="Input.RealmId" /><input type="hidden" asp-for="Input.DisplayName" /><input type="hidden" asp-for="Input.TargetId" />
+                    <p class="realm-edit-identity"><strong>@Model.Input.DisplayName</strong><small>@Model.Input.RealmId · @Model.Input.TargetId · révision @Model.ExpectedRevision</small></p>
+                }
+                else
+                {
+                <div class="field"><label asp-for="Input.DisplayName">Nom du monde</label><input asp-for="Input.DisplayName" maxlength="80" placeholder="Les Terres d'Aube" required /></div>
+                <div class="field"><label asp-for="Input.RealmId">Identifiant permanent</label><input asp-for="Input.RealmId" class="mono" minlength="3" maxlength="31" pattern="[a-z][a-z0-9\-]{1,29}[a-z0-9]" placeholder="terres-aube" required aria-describedby="realm-id-help" /><small id="realm-id-help">3 à 31 caractères : minuscules, chiffres et tirets.</small></div>
+                <div class="field"><label asp-for="Input.TargetId">Cible de déploiement</label><select asp-for="Input.TargetId" required><option value="">Choisir une cible</option>@foreach (var target in Model.Options.Targets) { <option value="@target.Id">@target.DisplayName · @target.Namespace</option> }</select></div>
+                }
+                <div class="field"><label asp-for="Input.ProfileId">Profil de serveurs</label><select asp-for="Input.ProfileId" required><option value="">Choisir un profil</option>@foreach (var profile in Model.Options.Profiles) { <option value="@profile.Id">@profile.DisplayName · @profile.Servers.Length serveur(s)</option> }</select></div>
+                <fieldset class="realm-plan" data-island-catalog-id="starter-island" data-island-catalog-image="@RealmIslandPresentation.ImagePath("starter-island")" data-island-catalog-label="@RealmIslandPresentation.Label("starter-island")" data-island-catalog-mapped="@RealmIslandPresentation.ImageMatchesPlan(new("starter-island", 1, 1536, 1536)).ToString().ToLowerInvariant()" data-partition-labels="@System.Text.Json.JsonSerializer.Serialize(Enumerable.Range(0, 64).Select(RealmIslandPresentation.PartitionLabel))">
+                    <legend>Répartition des dédiés</legend>
+                    <label class="realm-plan-toggle"><input asp-for="Input.ConfigureTopology" /> Configurer les îles, instances et raids</label>
+                    <small>Décochez pour utiliser la répartition fixe du profil sélectionné.</small>
+                    <small>Chaque île constitue un monde continu ; ses dédiés sont des partitions de ce monde. Les serveurs d’instances et de raids forment des pools séparés.</small>
+                    @for (var index = 0; index < Model.Input.Islands.Count; index++)
+                    {
+                        var island = Model.Input.Islands[index];
+                        var grid = RealmCreateModel.PreviewGrid(island);
+                        var imagePath = RealmIslandPresentation.ImagePath(island.IslandId ?? "");
+                        var imageMatchesPlan = RealmIslandPresentation.ImageMatchesPlan(new(island.IslandId ?? "", island.DedicatedCount, island.Width, island.Depth, island.OriginX, island.OriginZ));
+                        var gridSummary = grid is { } cells ? $"{cells.Columns} × {cells.Rows} = {cells.Columns * cells.Rows} dédié(s)" : "Corrigez les dimensions ou la grille pour afficher l’aperçu.";
+                        <div class="realm-island-input realm-create-island" data-island-editor>
+                            <div class="realm-create-island-controls">
+                            <div class="field"><label asp-for="Input.Islands[index].IslandId">Identifiant de l’île</label><input asp-for="Input.Islands[index].IslandId" class="mono" maxlength="20" placeholder="starter-island" data-island-id /><small>3 à 20 caractères. Ajoutez aussi les futures îles.</small></div>
+                            <label class="realm-plan-toggle"><input asp-for="Input.Islands[index].UseGrid" data-use-grid /> Choisir une grille X × Y</label>
+                            <small data-grid-legacy-note hidden="@island.UseGrid">Le nombre de dédiés existant est conservé. Cochez pour choisir explicitement une grille.</small>
+                            <div class="realm-create-grid-inputs">
+                                <div class="field"><label asp-for="Input.Islands[index].GridColumns">Colonnes X</label><input asp-for="Input.Islands[index].GridColumns" type="number" min="1" max="64" step="1" inputmode="numeric" placeholder="X" data-grid-columns /></div>
+                                <span aria-hidden="true">×</span>
+                                <div class="field"><label asp-for="Input.Islands[index].GridRows">Lignes Y</label><input asp-for="Input.Islands[index].GridRows" type="number" min="1" max="64" step="1" inputmode="numeric" placeholder="Y" data-grid-rows /></div>
+                            </div>
+                            <small>Y sur l’aperçu correspond à Z dans le monde. Une case = un dédié.</small>
+                            <div class="field realm-create-dedicated-count"><label asp-for="Input.Islands[index].DedicatedCount">Dédiés de cette île</label><input asp-for="Input.Islands[index].DedicatedCount" type="number" min="1" max="64" readonly="@island.UseGrid" data-dedicated-count /></div>
+                            <output class="realm-create-grid-summary" data-grid-summary aria-live="polite">@gridSummary</output>
+                            </div>
+                            <figure class="realm-create-island-preview">
+                                <div class="realm-create-island-map" data-island-preview role="img" aria-label="@($"{RealmIslandPresentation.Label(island.IslandId ?? "")} : {gridSummary}. X vers la droite, Y / Z vers le haut.")">
+                                    <img src="@imagePath" alt="" data-island-image hidden="@(imagePath is null)" />
+                                    <span class="realm-create-island-placeholder" data-island-placeholder hidden="@(imagePath is not null)">Visuel indisponible pour cette île</span>
+                                    <table class="realm-create-island-overlay @(grid is { } dense && (dense.Columns > 12 || dense.Rows > 12) ? "is-dense" : null)" aria-hidden="true"><tbody data-grid-cells>
+                                    @if (grid is { } preview)
+                                    {
+                                        @for (var row = preview.Rows - 1; row >= 0; row--)
+                                        {
+                                            <tr>@for (var column = 0; column < preview.Columns; column++) { <td><span>@RealmIslandPresentation.PartitionLabel(row * preview.Columns + column)</span></td> }</tr>
+                                        }
+                                    }
+                                    </tbody></table>
+                                    <span class="realm-create-map-axis realm-create-map-x" aria-hidden="true">X →</span><span class="realm-create-map-axis realm-create-map-y" aria-hidden="true">Y / Z ↑</span>
+                                </div>
+                                <figcaption><strong data-island-label>@RealmIslandPresentation.Label(island.IslandId ?? "")</strong><small data-island-image-note>@(imagePath is null ? "Aucune image de catalogue pour cet identifiant." : imageMatchesPlan ? "Carte du relief · X vers la droite, Y / Z vers le haut." : "Illustration · dimensions du plan différentes de la vue.")</small></figcaption>
+                            </figure>
+                            <details class="realm-create-island-dimensions">
+                                <summary>Dimensions et position dans le monde</summary>
+                            <div class="realm-island-dimensions">
+                                <div class="field"><label asp-for="Input.Islands[index].Width">Largeur (X)</label><input asp-for="Input.Islands[index].Width" type="number" min="1" max="1000000" step="any" data-island-width /></div>
+                                <div class="field"><label asp-for="Input.Islands[index].Depth">Profondeur (Z)</label><input asp-for="Input.Islands[index].Depth" type="number" min="1" max="1000000" step="any" data-island-depth /></div>
+                                <div class="field"><label asp-for="Input.Islands[index].OriginX">Origine X</label><input asp-for="Input.Islands[index].OriginX" type="number" min="-10000000" max="10000000" step="any" data-island-origin-x /></div>
+                                <div class="field"><label asp-for="Input.Islands[index].OriginZ">Origine Z</label><input asp-for="Input.Islands[index].OriginZ" type="number" min="-10000000" max="10000000" step="any" data-island-origin-z /></div>
+                            </div>
+                            <small>Coordonnées du monde X/Z. Une île de 1 000 × 1 000 avec une grille 2 × 2 produit quatre zones de 500 × 500.</small>
+                            </details>
+                            <button class="text-button danger" type="submit" asp-page-handler="RemoveIsland" name="removeIslandIndex" value="@index" formnovalidate>Retirer cette île</button>
+                        </div>
+                    }
+                    <button class="button secondary full-width" type="submit" asp-page-handler="AddIsland" formnovalidate disabled="@(Model.Input.Islands.Count >= 32)">Ajouter une île</button>
+                    <div class="field"><label asp-for="Input.InstanceDedicatedCount">Serveurs d’instances</label><input asp-for="Input.InstanceDedicatedCount" type="number" min="0" max="64" /></div>
+                    <div class="field"><label asp-for="Input.RaidDedicatedCount">Serveurs de raids</label><input asp-for="Input.RaidDedicatedCount" type="number" min="0" max="64" /></div>
+                    <small>32 îles et 256 dédiés maximum par realm. La création conserve ce plan. Le déploiement nécessite un profil compatible ; l’admission et la synchronisation entre partitions restent à intégrer et à valider.</small>
+                    @foreach (var profile in Model.Options.Profiles.Where(profile => !profile.TopologySupported))
+                    {
+                        <small>@profile.DisplayName : enregistrement du plan disponible, déploiement de cette topologie indisponible.</small>
+                    }
+                </fieldset>
+                <div class="realm-create-actions"><button class="button primary" type="submit" disabled="@(Model.Options.Targets.Length == 0 || Model.Options.Profiles.Length == 0 || Model.IsEditing && Model.ExpectedRevision is null)">@(Model.IsEditing ? "Enregistrer le plan" : "Créer le royaume")</button><a class="button secondary" asp-page="/Realms">Annuler</a></div>
+                <small>La création enregistre la configuration. Le déploiement se lance depuis la fiche du realm.</small>
+            </form>
+            @if (!Model.Options.DeploymentEnabled) { <div class="workflow-note"><strong>Déploiement désactivé</strong><p>Vous pouvez préparer les realms. L'activation du déploiement appartient à la configuration du service.</p></div> }
+            @if (Model.Options.Targets.Length == 0 || Model.Options.Profiles.Length == 0) { <div class="workflow-note"><strong>Configuration incomplète</strong><p>Ajoutez au moins une cible et un profil au service Realms avant de créer un monde.</p></div> }
+        </section>
+    </div>
+}
+<script src="~/realm-create-islands.js" asp-append-version="true" defer></script>

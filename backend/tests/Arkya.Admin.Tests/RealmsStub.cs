@@ -19,6 +19,7 @@ internal sealed class RealmsStub : HttpMessageHandler
     public RealmCommands Commands { get; set; } = new([new("area-one", DateTimeOffset.UtcNow, true, ["announce", "kick", "save"])], []);
     public RealmConfiguration Configuration { get; set; } = new(0, 1, 1, null, null, []);
     public HttpStatusCode? ConfigurationReadError { get; set; }
+    public HttpStatusCode? CommandsReadError { get; set; }
     public HttpStatusCode? WriteError { get; set; }
     public HttpStatusCode? ReadError { get; set; }
     public bool InvalidJson { get; set; }
@@ -39,6 +40,8 @@ internal sealed class RealmsStub : HttpMessageHandler
         {
             if (call.Path.EndsWith("/configuration") && ConfigurationReadError is { } configurationError)
                 return new(configurationError) { Content = new StringContent("private upstream details " + AdminFactory.RealmsAdminKey) };
+            if (call.Path.EndsWith("/commands") && CommandsReadError is { } commandsError)
+                return new(commandsError) { Content = new StringContent("private upstream details " + AdminFactory.RealmsAdminKey) };
             return call.Path switch
             {
                 "/admin/realms" => Json(new[] { Realm }),

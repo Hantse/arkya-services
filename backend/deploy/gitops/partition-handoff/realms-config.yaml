@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arkya-realms-config
+  namespace: arkya-beta
+data:
+  Deployment__Profiles__1__Id: beta-web-handoff
+  Deployment__Profiles__1__DisplayName: Île bêta · quatre partitions
+  # Preparation pin only. Replace with the verified protocol 2 image before activation.
+  Deployment__Profiles__1__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:50420fc55c7c7e75448e38a2e92098eb050fe84ef43dce66af4cdcc5c1da5a75
+  Deployment__Profiles__1__ImagePullSecretName: arkya-ghcr
+  Deployment__Profiles__1__TopologyTemplateServerId: island
+  Deployment__Profiles__1__TopologyPublicEndpointTemplate: wss://api.arkya.online/game/beta-web/{serverId}/
+  Deployment__Profiles__1__Servers__0__Id: island
+  Deployment__Profiles__1__Servers__0__Port: '17943'
+  Deployment__Profiles__1__Servers__0__Transport: WebSocket
+  Deployment__Profiles__1__Servers__0__PublicEndpoint: wss://api.arkya.online/game/beta-web/island/
+  Deployment__Profiles__1__Servers__0__ProtocolVersion: '2'
+  Deployment__Profiles__1__Servers__0__BuildId: arkya-partition-handoff-v1
+  Deployment__RuntimeReleases__0__RealmId: beta-web
+  Deployment__RuntimeReleases__0__ProfileId: beta-web-handoff
+  Deployment__RuntimeReleases__0__Version: '1'
+  # Placeholder. Compute from the exact production ProfileSnapshot serialization.
+  Deployment__RuntimeReleases__0__PreviousProfileSha256: '0000000000000000000000000000000000000000000000000000000000000000'
+  Deployment__RuntimeReleases__0__Automatic: 'false'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__IslandId: starter-island
+  Deployment__RuntimeReleases__0__Topology__Islands__0__DedicatedCount: '4'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__GridColumns: '2'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__GridRows: '2'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__Width: '1536'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__Depth: '1536'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__OriginX: '0'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__OriginZ: '0'
+  Deployment__RuntimeReleases__0__Topology__InstanceDedicatedCount: '0'
+  Deployment__RuntimeReleases__0__Topology__RaidDedicatedCount: '0'

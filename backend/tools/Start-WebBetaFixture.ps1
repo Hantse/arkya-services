@@ -3,7 +3,8 @@
 param(
     [ValidateSet('Start', 'Restart', 'Tickets', 'VerifyState', 'VerifyRevocation', 'Stop')][string]$Action = 'Start',
     [string]$Directory = '',
-    [ValidateSet('Debug', 'Release')][string]$BuildConfiguration = 'Debug'
+    [ValidateSet('Debug', 'Release')][string]$BuildConfiguration = 'Debug',
+    [ValidateSet(1, 4)][int]$ServerCount = 1
 )
 $ErrorActionPreference = 'Stop'
 $backend = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -53,7 +54,11 @@ if ($Action -in @('Start', 'Restart')) {
         & dotnet build $project --configuration $BuildConfiguration --verbosity quiet
         if ($LASTEXITCODE -ne 0) { throw 'Fixture service build failed.' }
     }
-    if ($Action -eq 'Start') { $null = Invoke-FixtureTool 'prepare' }
+    if ($Action -eq 'Start') {
+        $previousCount = $env:ARKYA_TEST_SERVER_COUNT
+        try { $env:ARKYA_TEST_SERVER_COUNT = [string]$ServerCount; $null = Invoke-FixtureTool 'prepare' }
+        finally { $env:ARKYA_TEST_SERVER_COUNT = $previousCount }
+    }
     $fixture = Get-Content -LiteralPath $fixturePath -Raw | ConvertFrom-Json -AsHashtable
     $launched = @()
     foreach ($service in $fixture.services.Keys) {

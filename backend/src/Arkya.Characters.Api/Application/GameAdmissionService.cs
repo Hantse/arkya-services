@@ -10,9 +10,12 @@ namespace Arkya.Characters.Api.Application;
 public sealed record GameLeaseRecord(Guid CharacterId, Guid AccountId, string RealmId, string ServerId,
     long Version, string? TicketHash, DateTimeOffset TicketExpiresAt, Guid LeaseId, long AuthorityEpoch,
     DateTimeOffset LeaseExpiresAt, DateTimeOffset SessionExpiresAt, SavedWorldState? State, string? SessionReference = null,
-    DateTimeOffset? LastConnectedAt = null);
+    DateTimeOffset? LastConnectedAt = null)
+{
+    public GameTransferRecord? Transfer { get; init; }
+}
 
-public enum GameWriteCondition { None, PendingTicket, ActiveLease }
+public enum GameWriteCondition { None, PendingTicket, ActiveLease, TransferPending }
 
 public interface IGameLeaseStore
 {
@@ -24,7 +27,7 @@ public interface IGameLeaseStore
 
 public sealed record GameResult<T>(T? Value = default, string? Error = null, int Status = 200);
 
-public sealed class GameAdmissionService(ICharacterRepository characters, IGameLeaseStore leases,
+public sealed partial class GameAdmissionService(ICharacterRepository characters, IGameLeaseStore leases,
     IGameRealmCatalog realms, DedicatedKeyValidator servers, TimeProvider clock, ISessionReferenceValidator sessions,
     IOptions<CharacterGameAccessOptions> options)
 {
@@ -46,8 +49,8 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
     {
         var catalog = await realms.ListAsync(cancellationToken);
         return new(catalog.Realms.Select(value => value with { Ready = value.Ready &&
-            value.ProtocolVersion == GameProtocol.Version && value.BuildId == GameProtocol.BuildId &&
-            servers.IsConfigured(value.RealmId, value.ServerId) }).ToArray());
+            GameProtocol.IsSupported(value.ProtocolVersion, value.BuildId) && GameTopology.IsValid(value, true) &&
+            servers.IsConfigured(value.RealmId, value.ServerId) && value.Partitions.All(partition => servers.IsConfigured(value.RealmId, partition.ServerId)) }).ToArray());
     }
 
     public async Task<GameResult<AdmissionResponse>> IssueAsync(Guid characterId, Guid accountId, DateTimeOffset sessionExpiresAt,
@@ -55,7 +58,7 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
     {
         if (!SessionReference.IsValid(sessionReference)) return new(Error: "session_expired", Status: 401);
         if (!GameProtocol.ValidId(request.RealmId)) return new(Error: "invalid_request", Status: 400);
-        if (request.ProtocolVersion != GameProtocol.Version || request.BuildId != GameProtocol.BuildId)
+        if (!GameProtocol.IsSupported(request.ProtocolVersion, request.BuildId))
             return new(Error: "incompatible_client", Status: 400);
         var now = clock.GetUtcNow();
         if (sessionExpiresAt <= now) return new(Error: "session_expired", Status: 401);
@@ -76,6 +79,8 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
         if (character.RealmId is not null && character.RealmId != request.RealmId) return new(Error: "realm_mismatch", Status: 409);
         var entry = (await CatalogAsync(cancellationToken)).Realms.SingleOrDefault(value => value.RealmId == request.RealmId && value.Ready);
         if (entry is null) return new(Error: "realm_unavailable", Status: 503);
+        if (request.ProtocolVersion != entry.ProtocolVersion || request.BuildId != entry.BuildId)
+            return new(Error: "incompatible_client", Status: 400);
         if (!await characters.TryBindRealmAsync(characterId, accountId, entry.RealmId, cancellationToken))
             return new(Error: "realm_mismatch", Status: 409);
         var ticket = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32)).TrimEnd('=').Replace('+', '-').Replace('/', '_');
@@ -89,11 +94,16 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
                 return new(Error: "realm_mismatch", Status: 409);
             if (current is not null && current.LeaseId != Guid.Empty && current.LeaseExpiresAt > now)
                 return new(Error: "character_in_use", Status: 409);
-            var next = new GameLeaseRecord(characterId, accountId, entry.RealmId, entry.ServerId,
+            var destination = current?.State is { } saved ? GameTopology.Resolve(entry, saved.IslandId, saved.Position.X, saved.Position.Z) : null;
+            if (current?.State is not null && entry.Partitions.Length > 0 && destination is null)
+                return new(Error: "realm_unavailable", Status: 503);
+            var serverId = destination?.ServerId ?? entry.ServerId;
+            var endpoint = destination?.Endpoint ?? entry.Endpoint;
+            var next = new GameLeaseRecord(characterId, accountId, entry.RealmId, serverId,
                 (current?.Version ?? 0) + 1, HashTicket(ticket), expires, Guid.Empty, current?.AuthorityEpoch ?? 0,
                 now, sessionExpiresAt, current?.State, sessionReference, current?.LastConnectedAt);
             if (await leases.TryWriteAsync(next, current?.Version, cancellationToken))
-                return new(new(ticket, expires, entry.Endpoint, entry.ProtocolVersion, entry.BuildId, entry.RealmId, entry.ServerId));
+                return new(new(ticket, expires, endpoint, entry.ProtocolVersion, entry.BuildId, entry.RealmId, serverId));
         }
         return new(Error: "character_in_use", Status: 409);
     }
@@ -105,7 +115,7 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
             return new(Error: "admission_rejected", Status: 409);
         var current = await leases.FindTicketAsync(HashTicket(request.Ticket), cancellationToken);
         var now = clock.GetUtcNow();
-        if (current is null || current.TicketExpiresAt <= now || current.SessionExpiresAt <= now ||
+        if (current is null || current.Transfer is not null || current.TicketExpiresAt <= now || current.SessionExpiresAt <= now ||
             current.RealmId != server.RealmId || current.ServerId != server.ServerId || current.LeaseId != Guid.Empty || current.AuthorityEpoch == long.MaxValue)
             return new(Error: "admission_rejected", Status: 409);
         var character = await characters.FindOwnedAsync(current.CharacterId, current.AccountId, cancellationToken);
@@ -147,13 +157,14 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
     public async Task<GameResult<SavedWorldState>> SaveAsync(Guid characterId, DedicatedServerIdentity server,
         SaveWorldStateRequest request, CancellationToken cancellationToken)
     {
-        if (request.ExpectedRevision is < 0 or long.MaxValue || !Valid(request.Position, request.Forward))
+        if (request.ExpectedRevision is < 0 or long.MaxValue || !Valid(request.Position, request.Forward) || !ValidSimulation(request.Simulation, false))
             return new(Error: "invalid_request", Status: 400);
         for (var attempt = 0; attempt < 5; attempt++)
         {
             var current = await leases.FindCharacterAsync(characterId, cancellationToken);
             var now = clock.GetUtcNow();
             if (!Owns(current, server, request.LeaseId, request.AuthorityEpoch, now)) return new(Error: "lease_rejected", Status: 409);
+            if (current!.Transfer?.Status == TransferStatus.Sealed) return new(Error: "transfer_sealed", Status: 409);
             var validation = await ValidateSessionAsync(current!, cancellationToken);
             if (validation.Status == SessionValidationStatus.Unavailable) return new(Error: "dependency_unavailable", Status: 503);
             if (validation.Status != SessionValidationStatus.Valid) return new(Error: "lease_rejected", Status: 409);
@@ -161,10 +172,12 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
             var sessionExpiry = Min(current!.SessionExpiresAt, validation.Session!.ExpiresAt);
             if (!Owns(current, server, request.LeaseId, request.AuthorityEpoch, now) || sessionExpiry <= now) return new(Error: "lease_rejected", Status: 409);
             var state = current!.State;
-            if (state is not null && state.Revision == request.ExpectedRevision + 1 && state.Position == request.Position && state.Forward == request.Forward)
+            if (state is not null && state.Revision == request.ExpectedRevision + 1 && state.Position == request.Position && state.Forward == request.Forward &&
+                (request.Simulation is null || request.Simulation == state.Simulation))
                 return new(state);
             if ((state?.Revision ?? 0) != request.ExpectedRevision) return new(Error: "state_conflict", Status: 409);
-            var nextState = new SavedWorldState(request.ExpectedRevision + 1, request.Position!, request.Forward!);
+            var nextState = new SavedWorldState(request.ExpectedRevision + 1, request.Position!, request.Forward!)
+                { Simulation = request.Simulation ?? state?.Simulation, IslandId = state?.IslandId };
             var next = current with { Version = current.Version + 1, State = nextState,
                 SessionExpiresAt = sessionExpiry, LeaseExpiresAt = Min(current.LeaseExpiresAt, sessionExpiry) };
             if (await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.ActiveLease)) return new(nextState);
@@ -179,6 +192,7 @@ public sealed class GameAdmissionService(ICharacterRepository characters, IGameL
             var current = await leases.FindCharacterAsync(characterId, cancellationToken);
             var now = clock.GetUtcNow();
             if (!Owns(current, server, request.LeaseId, request.AuthorityEpoch, now)) return false;
+            if (current!.Transfer?.Status == TransferStatus.Sealed) return false;
             var next = current! with { Version = current.Version + 1, LeaseId = Guid.Empty, LeaseExpiresAt = now };
             if (await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.ActiveLease)) return true;
         }

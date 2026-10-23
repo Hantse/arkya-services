@@ -59,7 +59,7 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         if (!options.Enabled) return new(Error: "deployment_disabled");
         var realm = await repository.FindAsync(id, cancellationToken);
         if (realm is null) return new(Error: "realm_not_found");
-        if (realm.Profile.Topology is not null && !realm.Profile.TopologyRuntimeSupported) return new(Error: "topology_runtime_unsupported");
+        if (!RealmTopologyBuilder.SnapshotSupportsRuntime(realm.Profile)) return new(Error: "topology_runtime_unsupported");
         // A response lost after the durable write may safely be retried with its original revision.
         if (realm.RequestedFromRevision == expectedRevision) return new(realm);
         if (expectedRevision < 0 || expectedRevision == long.MaxValue || realm.Revision != expectedRevision ||
@@ -80,7 +80,7 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
     public RealmOperationsOptions GetOperationsOptions(RealmRecord realm)
     {
         var reason = !options.Enabled ? "deployment_disabled" : !TargetAvailable(realm) ? "target_unavailable" :
-            realm.Profile.Topology is not null && !realm.Profile.TopologyRuntimeSupported ? "topology_runtime_unsupported" :
+            !RealmTopologyBuilder.SnapshotSupportsRuntime(realm.Profile) ? "topology_runtime_unsupported" :
             realm.Status is not (RealmStatus.Ready or RealmStatus.Failed) ? "operation_in_progress" : null;
         var release = RealmImageReleases.Find(options, realm.RealmId);
         var profile = release is null ? null : RealmImageReleases.AllowedProfile(options, realm, release);

@@ -314,6 +314,9 @@ patches:
     metadata:
       name: arkya-realms
     spec:
+      strategy:
+        type: Recreate
+        rollingUpdate: null
       template:
         spec:
           serviceAccountName: arkya-realm-deployer

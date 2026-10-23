@@ -46,6 +46,7 @@ public sealed class RealmOperationsEndpointTests
         form["Reason"] = "  Maintenance annoncée  ";
         using var response = await browser.PostAsync(Path + "?handler=" + handler, AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+        Assert.Equal(Path + "?section=maintenance", response.Headers.Location!.OriginalString);
         var call = Assert.Single(factory.Realms.Calls, call => call.Method == HttpMethod.Post);
         Assert.Equal("/admin/realms/terres-aube" + suffix, call.Path);
         Assert.Equal(4, call.Body!.Value.GetProperty("expectedRevision").GetInt64());
@@ -83,7 +84,7 @@ public sealed class RealmOperationsEndpointTests
         await using var factory = Factory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = await Form(browser);
+        var form = await Form(browser, handler is "Restart" or "Update" ? "maintenance" : "game");
         form.Remove("ExpectedRevision");
         using var response = await browser.PostAsync(Path + "?handler=" + handler, AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -117,7 +118,7 @@ public sealed class RealmOperationsEndpointTests
         await using var factory = Factory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = await Form(browser);
+        var form = await Form(browser, "game");
         form["Message"] = "  Maintenance dans cinq minutes.  ";
         form["CommandType"] = "shell";
         using var response = await browser.PostAsync(Path + "?handler=Announce", AdminFactory.Form(form));
@@ -130,8 +131,10 @@ public sealed class RealmOperationsEndpointTests
         Assert.Equal("Maintenance dans cinq minutes.", body.GetProperty("message").GetString());
         Assert.Equal("", body.GetProperty("characterId").GetString());
         Assert.Equal("admin:operator", factory.Realms.Actors[factory.Realms.Calls.IndexOf(call)]);
-        var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path));
-        Assert.Contains("en attente du serveur", html);
+        Assert.Equal(Path + "?section=game", response.Headers.Location!.OriginalString);
+        var notice = WebUtility.HtmlDecode(await browser.GetStringAsync(response.Headers.Location));
+        Assert.Contains("en attente du serveur", notice);
+        var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path + "?section=history"));
         Assert.Contains("En attente du serveur", html);
         Assert.DoesNotContain(">Exécutée<", html);
         AdminFactory.NoSecrets(html);
@@ -145,10 +148,11 @@ public sealed class RealmOperationsEndpointTests
         await using var factory = Factory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = await Form(browser);
+        var form = await Form(browser, "game");
         form["CommandType"] = type;
         using var response = await browser.PostAsync(Path + "?handler=Command", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+        Assert.Equal(Path + "?section=game", response.Headers.Location!.OriginalString);
         var body = Assert.Single(factory.Realms.Calls, call => call.Method == HttpMethod.Post).Body!.Value;
         Assert.Equal(type, body.GetProperty("type").GetString());
         Assert.Equal("", body.GetProperty("message").GetString());
@@ -168,7 +172,7 @@ public sealed class RealmOperationsEndpointTests
         await using var factory = Factory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = await Form(browser);
+        var form = await Form(browser, "game");
         form[field] = value;
         using var response = await browser.PostAsync(Path + "?handler=" + handler, AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -182,7 +186,7 @@ public sealed class RealmOperationsEndpointTests
         await using var factory = Factory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = await Form(browser);
+        var form = await Form(browser, "game");
         form["Message"] = new string('é', 201);
         using var response = await browser.PostAsync(Path + "?handler=Announce", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -196,10 +200,10 @@ public sealed class RealmOperationsEndpointTests
         factory.Realms.Commands = new([new("area-one", null, false, [])], []);
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync(Path);
+        var html = await browser.GetStringAsync(Path + "?section=game");
         Assert.Contains("Aucun serveur compatible", WebUtility.HtmlDecode(html));
         Assert.Contains("disabled=\"disabled\">Envoyer l’annonce", html);
-        var form = await Form(browser);
+        var form = await Form(browser, "game");
         using var response = await browser.PostAsync(Path + "?handler=Announce", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method == HttpMethod.Post);
@@ -216,7 +220,7 @@ public sealed class RealmOperationsEndpointTests
             now, "Failed", "private upstream details", "image-a", "image-a")] };
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync(Path);
+        var html = await browser.GetStringAsync(Path + "?section=history");
         Assert.DoesNotContain("<script>alert", html);
         Assert.DoesNotContain("<img src=x>", html);
         Assert.Contains("&lt;script&gt;", html);
@@ -225,18 +229,19 @@ public sealed class RealmOperationsEndpointTests
         AdminFactory.NoSecrets(html);
     }
 
-    private static async Task<Dictionary<string, string>> Form(HttpClient browser)
+    private static async Task<Dictionary<string, string>> Form(HttpClient browser, string section = "maintenance")
     {
-        var html = await browser.GetStringAsync(Path);
-        return new()
+        var html = await browser.GetStringAsync(Path + "?section=" + section);
+        var form = new Dictionary<string, string>
         {
             ["__RequestVerificationToken"] = AdminFactory.Input(html, "__RequestVerificationToken"),
             ["ExpectedRevision"] = AdminFactory.Input(html, "ExpectedRevision"),
-            ["ExpectedImage"] = AdminFactory.Input(html, "ExpectedImage"),
-            ["RequestId"] = AdminFactory.Input(html, "RequestId"),
             ["Reason"] = "Maintenance planifiée", ["ConfirmRealmId"] = "terres-aube",
             ["ServerId"] = "area-one", ["CommandType"] = "kick", ["Message"] = "Bonjour à tous.",
             ["CharacterId"] = "a8c8d448-9719-4404-a0ac-ef154801ce8e"
         };
+        if (section == "maintenance") form["ExpectedImage"] = AdminFactory.Input(html, "ExpectedImage");
+        else form["RequestId"] = AdminFactory.Input(html, "RequestId");
+        return form;
     }
 }

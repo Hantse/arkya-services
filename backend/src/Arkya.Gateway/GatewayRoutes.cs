@@ -6,7 +6,8 @@ public static class GatewayRoutes
 {
     public static IReadOnlyList<RouteConfig> Create(bool charactersEnabled, string? adminHost = null,
         IReadOnlyList<string>? publicHosts = null, string? frontendHost = null, bool realmGameEnabled = false,
-        bool inferenceEnabled = false, bool reportsEnabled = false, bool contentEnabled = false)
+        bool inferenceEnabled = false, bool reportsEnabled = false, bool contentEnabled = false,
+        IReadOnlyList<RealmGamePartition>? realmGamePartitions = null)
     {
         var routes = new List<RouteConfig>
         {
@@ -46,6 +47,15 @@ public static class GatewayRoutes
             routes = routes.Select(route => route with { Match = route.Match with { Hosts = publicHosts } }).ToList();
         if (realmGameEnabled)
         {
+            foreach (var partition in realmGamePartitions ?? [])
+                routes.Add(new RouteConfig
+                {
+                    RouteId = partition.ClusterId,
+                    ClusterId = partition.ClusterId,
+                    Order = -10,
+                    Match = new RouteMatch { Hosts = ["api.arkya.online"], Path = partition.PublicPath, Methods = ["GET"] },
+                    Transforms = [new Dictionary<string, string> { ["PathSet"] = "/" }]
+                });
             routes.Add(new RouteConfig
             {
                 RouteId = "realm-game-beta-web",

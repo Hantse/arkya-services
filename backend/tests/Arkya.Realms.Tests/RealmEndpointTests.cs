@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Http.Json;
+using Arkya.Realms.Api.Application;
 using Arkya.Realms.Api.Contracts;
 
 namespace Arkya.Realms.Tests;
@@ -29,11 +30,14 @@ public sealed class RealmEndpointTests
         var draft = (await created.Content.ReadFromJsonAsync<RealmSummary>())!;
         Assert.Equal(0, draft.Revision);
         Assert.Equal("Draft", draft.Status);
+        var stored = (await factory.Repository.FindAsync(draft.RealmId, default))!;
+        Assert.Equal(RealmRuntimeReleases.Fingerprint(stored.Profile), draft.ProfileSha256);
         var requested = await client.PostAsJsonAsync("/admin/realms/eu-one/deploy", new DeployRealmRequest(0));
         Assert.Equal(HttpStatusCode.Accepted, requested.StatusCode);
         var pending = (await requested.Content.ReadFromJsonAsync<RealmSummary>())!;
         Assert.Equal(1, pending.Revision);
         Assert.Equal("Pending", pending.Status);
+        Assert.Equal(draft.ProfileSha256, pending.ProfileSha256);
         var duplicate = await client.PostAsJsonAsync("/admin/realms/eu-one/deploy", new DeployRealmRequest(0));
         Assert.Equal(HttpStatusCode.Accepted, duplicate.StatusCode);
         Assert.Equal(1, (await duplicate.Content.ReadFromJsonAsync<RealmSummary>())!.Revision);

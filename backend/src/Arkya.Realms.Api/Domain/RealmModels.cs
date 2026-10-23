@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Arkya.Realms.Api.Domain;
 
 public static class RealmStatus
@@ -18,7 +20,9 @@ public static class DedicatedKind
 }
 
 public sealed record RealmIslandTopology(string IslandId, int DedicatedCount,
-    double Width = 1000, double Depth = 1000, double OriginX = 0, double OriginZ = 0);
+    double Width = 1000, double Depth = 1000, double OriginX = 0, double OriginZ = 0,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridColumns = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridRows = null);
 public sealed record AreaBounds(double MinX, double MinZ, double MaxX, double MaxZ);
 public sealed record RealmTopology(RealmIslandTopology[] Islands, int InstanceDedicatedCount = 0, int RaidDedicatedCount = 0);
 
@@ -47,6 +51,11 @@ public sealed record ServerObservation(string Id, int ReadyReplicas, string? Add
 }
 
 public sealed record RealmImageTransition(long Version, string PreviousImage, string Image, long PreviousVersion = 0);
+public sealed record RealmRuntimeTransition(long Version, ProfileSnapshot PreviousProfile,
+    RealmImageTransition? PreviousImageRelease, RealmRestartTransition? PreviousRestart)
+{
+    public bool Completed { get; init; }
+}
 public sealed record RealmRestartTransition(long Revision, long PreviousRevision)
 {
     public bool Completed { get; init; }
@@ -61,6 +70,7 @@ public sealed record RealmRecord(string RealmId, string DisplayName, string Targ
     ServerObservation[] Servers)
 {
     public RealmImageTransition? ImageRelease { get; init; }
+    public RealmRuntimeTransition? RuntimeRelease { get; init; }
     public RealmRestartTransition? Restart { get; init; }
     public RealmOperation[] Operations { get; init; } = [];
     public RealmRuntimeConfiguration RuntimeConfiguration { get; init; } = new();

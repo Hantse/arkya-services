@@ -10,7 +10,8 @@ namespace Arkya.Characters.Api.Infrastructure.Persistence;
 
 public sealed class MongoGameLeaseStore(IMongoClient client, IOptions<MongoOptions> options) : IGameLeaseStore
 {
-    private readonly IMongoCollection<GameLeaseDocument> leases = client.GetDatabase(options.Value.DatabaseName).GetCollection<GameLeaseDocument>("game_leases");
+    private readonly IMongoCollection<GameLeaseDocument> leases = client.GetDatabase(options.Value.DatabaseName).GetCollection<GameLeaseDocument>("game_leases")
+        .WithWriteConcern(WriteConcern.WMajority.With(journal: true));
     public async Task EnsureIndexesAsync(CancellationToken cancellationToken) => await leases.Indexes.CreateManyAsync([
         new CreateIndexModel<GameLeaseDocument>(Builders<GameLeaseDocument>.IndexKeys.Ascending(value => value.TicketHash),
             new CreateIndexOptions<GameLeaseDocument> { Name = "ux_admission_ticket", Unique = true,
@@ -49,6 +50,8 @@ public sealed class MongoGameLeaseStore(IMongoClient client, IOptions<MongoOptio
                 new BsonDocument("$gt", new BsonArray { expiryField, "$$NOW" }),
                 new BsonDocument("$gt", new BsonArray { "$SessionExpiresAt", "$$NOW" })
             }));
+            if (condition == GameWriteCondition.TransferPending)
+                filter &= new BsonDocument("$expr", new BsonDocument("$gt", new BsonArray { "$TransferExpiresAt", "$$NOW" }));
         }
         var result = await leases.ReplaceOneAsync(filter, document, cancellationToken: cancellationToken);
         return result.MatchedCount == 1;
@@ -57,7 +60,7 @@ public sealed class MongoGameLeaseStore(IMongoClient client, IOptions<MongoOptio
     private sealed class GameLeaseDocument
     {
         [BsonId] public string CharacterId { get; set; } = "";
-        public int SchemaVersion { get; set; } = 3;
+        public int SchemaVersion { get; set; } = 4;
         public string AccountId { get; set; } = "";
         public string RealmId { get; set; } = "";
         public string ServerId { get; set; } = "";
@@ -71,21 +74,24 @@ public sealed class MongoGameLeaseStore(IMongoClient client, IOptions<MongoOptio
         public string? SessionReference { get; set; }
         public DateTime? LastConnectedAt { get; set; }
         public SavedWorldState? State { get; set; }
+        public GameTransferRecord? Transfer { get; set; }
+        public DateTime? TransferExpiresAt { get; set; }
         public GameLeaseRecord ToRecord()
         {
-            if (SchemaVersion is not (1 or 2 or 3)) throw new InvalidDataException("Unsupported game lease schema.");
+            if (SchemaVersion is not (1 or 2 or 3 or 4)) throw new InvalidDataException("Unsupported game lease schema.");
             return new(Guid.Parse(CharacterId), Guid.Parse(AccountId), RealmId, ServerId, Version, TicketHash,
                 Utc(TicketExpiresAt), Guid.Parse(LeaseId), AuthorityEpoch, Utc(LeaseExpiresAt), Utc(SessionExpiresAt), State, SessionReference,
-                LastConnectedAt is { } lastConnectedAt ? Utc(lastConnectedAt) : null);
+                LastConnectedAt is { } lastConnectedAt ? Utc(lastConnectedAt) : null) { Transfer = Transfer };
         }
         private static DateTimeOffset Utc(DateTime value) => new(DateTime.SpecifyKind(value, DateTimeKind.Utc));
         public static GameLeaseDocument From(GameLeaseRecord value) => new()
         {
+            SchemaVersion = value.Transfer is null && value.State?.Simulation is null ? 3 : 4,
             CharacterId = value.CharacterId.ToString("D"), AccountId = value.AccountId.ToString("D"), RealmId = value.RealmId,
             ServerId = value.ServerId, Version = value.Version, TicketHash = value.TicketHash, TicketExpiresAt = value.TicketExpiresAt.UtcDateTime,
             LeaseId = value.LeaseId.ToString("D"), AuthorityEpoch = value.AuthorityEpoch, LeaseExpiresAt = value.LeaseExpiresAt.UtcDateTime,
             SessionExpiresAt = value.SessionExpiresAt.UtcDateTime, State = value.State, SessionReference = value.SessionReference,
-            LastConnectedAt = value.LastConnectedAt?.UtcDateTime
+            LastConnectedAt = value.LastConnectedAt?.UtcDateTime, Transfer = value.Transfer, TransferExpiresAt = value.Transfer?.ExpiresAt.UtcDateTime
         };
     }
 }

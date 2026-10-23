@@ -7,6 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
     <link rel="stylesheet" href="~/admin.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/console.css" asp-append-version="true" />
+    @if (ViewContext.RouteData.Values["page"]?.ToString() == "/Realm") { <link rel="stylesheet" href="~/realm-islands.css" asp-append-version="true" /> }
 </head>
 <body>
     <a class="skip-link" href="#main">Aller au contenu</a>
@@ -27,7 +28,7 @@
                     <details class="nav-group" open>
                         <summary>Infrastructure</summary>
                         <a class="nav-item" asp-page="/Infrastructure" aria-current="@(page == "/Infrastructure" ? "page" : null)">Déploiement k3s</a>
-                        <a class="nav-item" asp-page="/Realms" aria-current="@(page is "/Realms" or "/Realm" ? "page" : null)">Realms et serveurs</a>
+                        <a class="nav-item" asp-page="/Realms" aria-current="@(page is "/Realms" or "/Realm" or "/RealmCreate" ? "page" : null)">Realms et serveurs</a>
                         <a class="nav-item" asp-page="/Dashboard" asp-fragment="services">État des services</a>
                         <a class="nav-item" asp-page="/Inference" aria-current="@(page == "/Inference" ? "page" : null)">Agents LFM</a>
                     </details>

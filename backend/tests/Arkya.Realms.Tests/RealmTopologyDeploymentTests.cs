@@ -12,13 +12,45 @@ namespace Arkya.Realms.Tests;
 
 public sealed class RealmTopologyDeploymentTests
 {
-    [Fact]
-    public async Task UnsupportedTopologyCannotReachKubernetesEvenWhenItWasQueuedDirectly()
+    [Theory]
+    [InlineData(1, 0)]
+    [InlineData(0, 1)]
+    public async Task CurrentHandoffBuildPlansPoolsButCannotDeployOrAdvertiseThem(int instances, int raids)
+    {
+        var options = Fixtures.Options();
+        options.Profiles[0].TopologyTemplateServerId = options.Profiles[0].Servers[0].Id;
+        options.Profiles[0].Servers[0].ProtocolVersion = GameProtocol.HandoffVersion;
+        options.Profiles[0].Servers[0].BuildId = GameProtocol.HandoffBuildId;
+        var snapshot = RealmTopologyBuilder.Snapshot(options.Profiles[0], "eu-one", new([new("starter-island", 4)], instances, raids));
+        Assert.False(snapshot.TopologyRuntimeSupported);
+        Assert.Equal(5, snapshot.Servers.Length);
+        var realm = Fixtures.Realm(RealmStatus.Draft) with { Profile = snapshot with { TopologyRuntimeSupported = true } };
+        Assert.False(RealmTopologyBuilder.SnapshotSupportsRuntime(realm.Profile));
+        var repository = new MemoryRealmRepository();
+        await repository.TryCreateAsync(realm, default);
+        var service = new RealmService(repository, Options.Create(options), new TestClock());
+        Assert.Equal("topology_runtime_unsupported", (await service.RequestDeploymentAsync(realm.RealmId, realm.Revision, default)).Error);
+        Assert.False(service.GetOperationsOptions(realm with { Status = RealmStatus.Ready }).CanRestart);
+        using var cluster = new TopologyCluster();
+        using var client = new HttpClient(cluster);
+        var deployer = new KubernetesRealmDeployer(client, Options.Create(options));
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() => deployer.ReconcileAsync(realm, default));
+        Assert.Equal("topology_runtime_unsupported", error.Code);
+        Assert.Equal(0, cluster.RequestCount);
+        await repository.TryReplaceAsync(realm with { Status = RealmStatus.Ready, Version = realm.Version + 1 }, realm.Version, default);
+        Assert.Empty((await new GameEntryService(repository, Options.Create(new GameEntryOptions())).ListAsync(default)).Realms);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task UnsupportedTopologyCannotReachKubernetesEvenWhenItWasQueuedDirectly(bool previouslyFlaggedSupported)
     {
         var options = Fixtures.Options();
         var realm = Fixtures.Realm() with
         {
             Profile = RealmTopologyBuilder.Snapshot(options.Profiles[0], "eu-one", new([new("starter-island", 4)]))
+                with { TopologyRuntimeSupported = previouslyFlaggedSupported }
         };
         using var cluster = new TopologyCluster();
         using var client = new HttpClient(cluster);
@@ -28,13 +60,19 @@ public sealed class RealmTopologyDeploymentTests
         Assert.Equal(0, cluster.RequestCount);
     }
 
-    [Fact]
-    public async Task ApprovedTopologyCreatesSeparateAuthoritiesAndServicesWithSpatialBoundsAndIslandScopedNeighbors()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task ApprovedTopologyCreatesSeparateAuthoritiesAndServicesWithSpatialBoundsAndIslandScopedNeighbors(bool explicitGrid)
     {
         var options = Fixtures.Options();
         options.Profiles[0].TopologyTemplateServerId = options.Profiles[0].Servers[0].Id;
-        var topology = new RealmTopology([new("starter-island", 4), new("future-island", 4)], 1, 1);
+        options.Profiles[0].Servers[0].ProtocolVersion = GameProtocol.HandoffVersion;
+        options.Profiles[0].Servers[0].BuildId = GameProtocol.HandoffBuildId;
+        var topology = new RealmTopology([new("starter-island", 4, GridColumns: explicitGrid ? 1 : null, GridRows: explicitGrid ? 4 : null), new("future-island", 4)]);
         var realm = Fixtures.Realm() with { Profile = RealmTopologyBuilder.Snapshot(options.Profiles[0], "eu-one", topology) };
+        Assert.Equal(explicitGrid ? new AreaBounds(0, 0, 1000, 250) : new AreaBounds(0, 0, 500, 500),
+            realm.Profile.Servers.Single(server => server.Id == "island-starter-island-01").Bounds);
         var tokenFile = Path.GetTempFileName();
         try
         {
@@ -44,9 +82,9 @@ public sealed class RealmTopologyDeploymentTests
             using var client = new HttpClient(cluster);
             var deployer = new KubernetesRealmDeployer(client, Options.Create(options));
             var observations = await deployer.ReconcileAsync(realm, default);
-            Assert.Equal(10, observations.Length);
+            Assert.Equal(8, observations.Length);
             Assert.All(observations, observation => Assert.Equal(1, observation.ReadyReplicas));
-            Assert.Equal(20, cluster.Resources.Count);
+            Assert.Equal(16, cluster.Resources.Count);
             foreach (var server in realm.Profile.Servers)
             {
                 var deployment = Assert.Single(cluster.Resources.Values, resource => resource["kind"]!.GetValue<string>() == "Deployment" &&
@@ -60,14 +98,18 @@ public sealed class RealmTopologyDeploymentTests
                 var environment = deployment["spec"]!["template"]!["spec"]!["containers"]![0]!["env"]!.AsArray()
                     .ToDictionary(value => value!["name"]!.GetValue<string>(), value => value!["value"]!.GetValue<string>());
                 Assert.Equal(server.Kind, environment["ARKYA_SERVER_KIND"]);
-                Assert.Equal(2, JsonNode.Parse(environment["ARKYA_REALM_TOPOLOGY"])!["islands"]!.AsArray().Count);
+                var islands = JsonNode.Parse(environment["ARKYA_REALM_TOPOLOGY"])!["islands"]!.AsArray();
+                Assert.Equal(2, islands.Count);
+                var starter = Assert.Single(islands, island => island!["islandId"]!.GetValue<string>() == "starter-island")!;
+                Assert.Equal(explicitGrid ? 1 : null, starter["gridColumns"]?.GetValue<int>());
+                Assert.Equal(explicitGrid ? 4 : null, starter["gridRows"]?.GetValue<int>());
                 if (server.Kind == DedicatedKind.Island)
                 {
                     Assert.Equal(server.IslandId, environment["ARKYA_ISLAND_ID"]);
                     var bounds = JsonSerializer.Deserialize<AreaBounds>(environment["ARKYA_AREA_BOUNDS"], new JsonSerializerOptions(JsonSerializerDefaults.Web));
                     Assert.Equal(server.Bounds, bounds);
                     var neighbors = JsonSerializer.Deserialize<string[]>(environment["ARKYA_AREA_NEIGHBORS"])!;
-                    Assert.Equal(2, neighbors.Length);
+                    Assert.Equal(explicitGrid && server.IslandId == "starter-island" && server.PartitionIndex is 0 or 3 ? 1 : 2, neighbors.Length);
                     Assert.All(neighbors, neighborId => Assert.Equal(server.IslandId, realm.Profile.Servers.Single(other => other.Id == neighborId).IslandId));
                 }
                 else
@@ -79,7 +121,7 @@ public sealed class RealmTopologyDeploymentTests
             var resourceCount = cluster.Resources.Count;
             await deployer.ReconcileAsync(realm, default);
             Assert.Equal(resourceCount, cluster.Resources.Count);
-            Assert.Equal(20, cluster.CreateCount);
+            Assert.Equal(16, cluster.CreateCount);
         }
         finally { File.Delete(tokenFile); }
     }

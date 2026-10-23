@@ -33,9 +33,11 @@ def check_profile(documents):
     require(role["rules"] == [
         {"apiGroups": ["apps"], "resources": ["deployments"], "verbs": ["get", "create", "patch"]},
         {"apiGroups": [""], "resources": ["services"], "verbs": ["get", "create"]},
+        {"apiGroups": [""], "resources": ["pods"], "verbs": ["get", "list"]},
         {"apiGroups": [""], "resources": ["secrets"], "resourceNames": ["arkya-ghcr", "arkya-dedicated"], "verbs": ["get"]},
+        {"apiGroups": [""], "resources": ["secrets"], "resourceNames": ["arkya-dedicated"], "verbs": ["patch"]},
         {"apiGroups": [""], "resources": ["secrets"], "verbs": ["create"]},
-    ], "Realms may create/observe workloads, patch owned Deployment images and provision only the fixed registry/dedicated Secrets without listing or updating credentials")
+    ], "Realms may observe Pods only in its realm namespace, patch owned Deployments and the fixed arkya-dedicated Secret, and must never list credentials or grant broader mutation authority")
     binding = resources[("RoleBinding", NS, "arkya-realm-deployer")]
     require(binding["subjects"] == [{"kind": "ServiceAccount", "namespace": OPERATIONS,
                                      "name": "arkya-realm-deployer"}] and

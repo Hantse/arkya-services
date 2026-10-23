@@ -25,6 +25,24 @@ public static class RealmRuntimeKeys
         var seed = configuration[DedicatedSeedPath];
         if (seed is null) return;
         var realmId = configuration["RealmRuntime:RealmId"] ?? "";
+        var declaredServers = configuration.GetSection("RealmRuntime:ServerIds");
+        if (declaredServers.Exists())
+        {
+            var serverIds = declaredServers.GetChildren().Select(value => value.Value).ToArray();
+            if (!string.IsNullOrEmpty(configuration["RealmRuntime:ServerId"]) || serverIds.Length is < 1 or > 256 ||
+                serverIds.Any(value => !GameProtocol.ValidId(value)) || serverIds.Distinct(StringComparer.Ordinal).Count() != serverIds.Length ||
+                configuration.GetSection("GameAccess:DedicatedServers").GetChildren().Any())
+                throw new InvalidOperationException("RealmRuntime:ServerIds requires 1 to 256 unique approved server IDs and cannot be combined with ServerId or explicit dedicated identities.");
+            var keys = serverIds.Select(serverId => DeriveDedicatedKey(seed, realmId, serverId!)).ToArray();
+            for (var index = 0; index < serverIds.Length; index++)
+            {
+                var path = $"GameAccess:DedicatedServers:{index}";
+                configuration[$"{path}:RealmId"] = realmId;
+                configuration[$"{path}:ServerId"] = serverIds[index];
+                configuration[$"{path}:Key"] = keys[index];
+            }
+            return;
+        }
         var serverId = configuration["RealmRuntime:ServerId"] ?? "";
         var key = DeriveDedicatedKey(seed, realmId, serverId);
         var identities = configuration.GetSection("GameAccess:DedicatedServers").GetChildren().ToArray();

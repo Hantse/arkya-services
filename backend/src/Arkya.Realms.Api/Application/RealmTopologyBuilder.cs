@@ -30,7 +30,12 @@ public static class RealmTopologyBuilder
             ValidEndpointTemplate(profile.TopologyPublicEndpointTemplate));
     }
 
-    public static bool RuntimeSupported(DeploymentProfile profile) => profile.TopologyTemplateServerId is not null && ValidTemplate(profile);
+    public static bool RuntimeSupported(DeploymentProfile profile) => profile.TopologyTemplateServerId is not null && ValidTemplate(profile) &&
+        profile.Servers.Any(server => server.Id == profile.TopologyTemplateServerId && GameProtocol.IsHandoff(server.ProtocolVersion, server.BuildId));
+
+    public static bool SnapshotSupportsRuntime(ProfileSnapshot snapshot) => snapshot.Topology is null ||
+        snapshot.TopologyRuntimeSupported && snapshot.Topology.InstanceDedicatedCount == 0 && snapshot.Topology.RaidDedicatedCount == 0 &&
+        snapshot.Servers.All(server => server.Kind == DedicatedKind.Island && GameProtocol.IsHandoff(server.ProtocolVersion, server.BuildId));
 
     public static ProfileSnapshot Snapshot(DeploymentProfile profile, string realmId, RealmTopology? topology)
     {
@@ -51,7 +56,8 @@ public static class RealmTopologyBuilder
             servers.Add(Server($"instance-{Slot(index)}", DedicatedKind.Instance));
         for (var index = 0; index < frozen.RaidDedicatedCount; index++)
             servers.Add(Server($"raid-{Slot(index)}", DedicatedKind.Raid));
-        var snapshot = profile.Snapshot() with { Servers = servers.ToArray(), Topology = frozen, TopologyRuntimeSupported = RuntimeSupported(profile) };
+        var snapshot = profile.Snapshot() with { Servers = servers.ToArray(), Topology = frozen,
+            TopologyRuntimeSupported = RuntimeSupported(profile) && frozen.InstanceDedicatedCount == 0 && frozen.RaidDedicatedCount == 0 };
         if (snapshot.TopologyRuntimeSupported && !ValidGeneratedEndpoints(snapshot.Servers))
             throw new ArgumentException("Topology endpoints must be valid and distinct.", nameof(profile));
         return snapshot;

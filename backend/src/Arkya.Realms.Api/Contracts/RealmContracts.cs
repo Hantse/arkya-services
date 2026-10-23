@@ -26,6 +26,7 @@ public sealed record RealmSummary(string RealmId, string DisplayName, string Tar
     public RealmOperation[] Operations { get; init; } = [];
     public RealmTopology? Topology { get; init; }
     public bool TopologyRuntimeSupported { get; init; }
+    public string ProfileSha256 { get; init; } = "";
 
     public static RealmSummary From(RealmRecord realm) => new(realm.RealmId, realm.DisplayName, realm.TargetId,
         realm.Namespace, realm.Profile.Id, realm.Profile.Image, realm.Revision, realm.Status, realm.LastError,
@@ -35,7 +36,8 @@ public sealed record RealmSummary(string RealmId, string DisplayName, string Tar
             return new RealmServerSummary(server.Id, server.Port, observation?.ReadyReplicas ?? 0,
                 realm.Status == RealmStatus.Draft ? 0 : 1, observation?.Address, server.Transport, server.PublicEndpoint)
             { Kind = server.Kind, IslandId = server.IslandId, PartitionIndex = server.PartitionIndex, PartitionCount = server.PartitionCount, Bounds = server.Bounds };
-        }).ToArray()) { Operations = realm.Operations, Topology = realm.Profile.Topology, TopologyRuntimeSupported = realm.Profile.TopologyRuntimeSupported };
+        }).ToArray()) { Operations = realm.Operations, Topology = realm.Profile.Topology, TopologyRuntimeSupported = realm.Profile.TopologyRuntimeSupported,
+            ProfileSha256 = Arkya.Realms.Api.Application.RealmRuntimeReleases.Fingerprint(realm.Profile) };
 }
 public sealed record TargetSummary(string Id, string DisplayName, string Namespace, string? RealmId = null);
 public sealed record ProfileServerSummary(string Id, int Port, string Transport = "Udp", string? PublicEndpoint = null);

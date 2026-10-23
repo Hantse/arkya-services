@@ -13,6 +13,13 @@ namespace Arkya.Admin.Pages;
 
 public sealed class RealmModel(RealmsAdminClient realms) : PageModel
 {
+    [BindProperty(SupportsGet = true)] public string? Section { get; set; }
+    [BindProperty(SupportsGet = true)] public string? Island { get; set; }
+    public RealmIslandView[] Islands => Realm is null ? [] : RealmIslandPresentation.Islands(Realm);
+    public RealmIslandView? SelectedIsland => Islands.FirstOrDefault(island => island.Plan.IslandId == Island) ?? Islands.FirstOrDefault();
+    public string? ActiveAction { get; private set; }
+    public string ActiveSection => Section is "settings" or "maintenance" or "game" or "history" ? Section : "overview";
+
     [BindProperty, BindRequired, Range(0, long.MaxValue)] public long ExpectedRevision { get; set; }
     [BindProperty] public string? Reason { get; set; }
     [BindProperty] public string? ConfirmRealmId { get; set; }
@@ -44,6 +51,7 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
 
     public async Task<IActionResult> OnPostDeployAsync(string realmId, CancellationToken ct)
     {
+        Section = "maintenance";
         if (!realms.Enabled) return NotFound();
         if (!ValidId(realmId) || !ModelState.IsValid) return BadRequest();
         try
@@ -56,7 +64,7 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
             }
             await realms.DeployAsync(realmId, ExpectedRevision, ct);
             Notice = "Déploiement demandé. Actualisez cette page pour suivre son avancement.";
-            return RedirectToPage(new { realmId });
+            return RedirectToPage(new { realmId, section = ActiveSection });
         }
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct)) { Error = RealmPresentation.ErrorMessage(ex); }
         return await LoadAsync(realmId, ct);
@@ -69,6 +77,7 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
 
     public async Task<IActionResult> OnPostConfigurationAsync(string realmId, CancellationToken ct)
     {
+        Section = "settings";
         if (!realms.Enabled) return NotFound();
         // Live configuration has its own revision and does not modify deployment state.
         ModelState.Remove(nameof(ExpectedRevision));
@@ -82,7 +91,7 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
         {
             await realms.UpdateConfigurationAsync(realmId, new(ConfigurationRevision.Value, xp, harvest, Reason!), Actor(), ct);
             Notice = "Configuration enregistrée. Consultez le suivi pour vérifier sa réception par chaque serveur.";
-            return RedirectToPage(new { realmId });
+            return RedirectToPage(new { realmId, section = ActiveSection });
         }
         catch (RealmsApiException ex) when (ex.StatusCode == HttpStatusCode.Conflict)
         {
@@ -106,6 +115,8 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
 
     private async Task<IActionResult> CommandAsync(string realmId, string? type, CancellationToken ct)
     {
+        Section = "game";
+        ActiveAction = type == "announce" ? "announce" : "command";
         if (!realms.Enabled) return NotFound();
         if (!ValidId(realmId) || !ModelState.IsValid || !Guid.TryParseExact(RequestId, "D", out var requestId) || requestId == Guid.Empty)
             return BadRequest();
@@ -130,7 +141,7 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
             await realms.CommandAsync(realmId, new(requestId.ToString("D"), ExpectedRevision, ServerId!, type!,
                 type == "announce" ? Message! : "", type == "kick" ? Guid.Parse(CharacterId!).ToString("D") : "", Reason!), Actor(), ct);
             Notice = "Commande enregistrée en attente du serveur. Consultez l’historique pour vérifier son exécution.";
-            return RedirectToPage(new { realmId });
+            return RedirectToPage(new { realmId, section = ActiveSection });
         }
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct)) { Error = RealmPresentation.ErrorMessage(ex); }
         return await LoadAsync(realmId, ct);
@@ -138,6 +149,8 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
 
     private async Task<IActionResult> LifecycleAsync(string realmId, bool update, CancellationToken ct)
     {
+        Section = "maintenance";
+        ActiveAction = update ? "update" : "restart";
         if (!realms.Enabled) return NotFound();
         if (!ValidId(realmId) || !ModelState.IsValid) return BadRequest();
         ValidateReason();
@@ -152,7 +165,7 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
             else await realms.RestartAsync(realmId, ExpectedRevision, Reason!, Actor(), ct);
             Notice = update ? "Mise à jour demandée. Suivez son résultat dans l’historique des opérations."
                 : "Redémarrage demandé. Suivez son résultat dans l’historique des opérations.";
-            return RedirectToPage(new { realmId });
+            return RedirectToPage(new { realmId, section = ActiveSection });
         }
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct)) { Error = RealmPresentation.ErrorMessage(ex); }
         return await LoadAsync(realmId, ct);
@@ -178,7 +191,6 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
         try
         {
             Realm = await realms.GetAsync(realmId, ct);
-            DeploymentEnabled = (await realms.OptionsAsync(ct)).DeploymentEnabled;
             ExpectedRevision = Realm.Revision;
             // A retry must carry the current snapshot, never a stale form value.
             ModelState.Remove(nameof(ExpectedRevision));
@@ -187,27 +199,40 @@ public sealed class RealmModel(RealmsAdminClient realms) : PageModel
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct)) { Error ??= RealmPresentation.ErrorMessage(ex); }
         if (Realm is not null)
         {
-            try { OperationsOptions = await realms.OperationsOptionsAsync(realmId, ct); }
-            catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
-            { OperationsError = "Les actions serveur sont indisponibles. " + RealmPresentation.ErrorMessage(ex); }
-            try { Commands = await realms.CommandsAsync(realmId, ct); }
-            catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
-            { CommandsError = "Le contrôle en jeu est indisponible. " + RealmPresentation.ErrorMessage(ex); }
-            try
+            if (ActiveSection == "maintenance")
             {
-                Configuration = await realms.ConfigurationAsync(realmId, ct);
-                if (!preserveConfigurationInput)
+                try
                 {
-                    ConfigurationRevision = Configuration.Revision;
-                    XpMultiplier = Configuration.XpMultiplier.ToString("0.###", CultureInfo.InvariantCulture);
-                    HarvestMultiplier = Configuration.HarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture);
-                    ModelState.Remove(nameof(ConfigurationRevision));
-                    ModelState.Remove(nameof(XpMultiplier));
-                    ModelState.Remove(nameof(HarvestMultiplier));
+                    DeploymentEnabled = (await realms.OptionsAsync(ct)).DeploymentEnabled;
+                    OperationsOptions = await realms.OperationsOptionsAsync(realmId, ct);
                 }
+                catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
+                { OperationsError = "Les actions serveur sont indisponibles. " + RealmPresentation.ErrorMessage(ex); }
             }
-            catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
-            { ConfigurationError ??= "La configuration en jeu est indisponible. " + RealmPresentation.ErrorMessage(ex); }
+            if (ActiveSection is "settings" or "game" or "history")
+            {
+                try { Commands = await realms.CommandsAsync(realmId, ct); }
+                catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
+                { CommandsError = "Le contrôle en jeu est indisponible. " + RealmPresentation.ErrorMessage(ex); }
+            }
+            if (ActiveSection is "settings" or "history")
+            {
+                try
+                {
+                    Configuration = await realms.ConfigurationAsync(realmId, ct);
+                    if (!preserveConfigurationInput)
+                    {
+                        ConfigurationRevision = Configuration.Revision;
+                        XpMultiplier = Configuration.XpMultiplier.ToString("0.###", CultureInfo.InvariantCulture);
+                        HarvestMultiplier = Configuration.HarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture);
+                        ModelState.Remove(nameof(ConfigurationRevision));
+                        ModelState.Remove(nameof(XpMultiplier));
+                        ModelState.Remove(nameof(HarvestMultiplier));
+                    }
+                }
+                catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
+                { ConfigurationError ??= "La configuration en jeu est indisponible. " + RealmPresentation.ErrorMessage(ex); }
+            }
         }
         return Page();
     }

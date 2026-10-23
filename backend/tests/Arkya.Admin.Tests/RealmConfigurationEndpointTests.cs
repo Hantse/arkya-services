@@ -6,6 +6,7 @@ namespace Arkya.Admin.Tests;
 public sealed class RealmConfigurationEndpointTests
 {
     private const string Path = "/Realms/terres-aube";
+    private const string SettingsPath = Path + "?section=settings";
     private const string MutationPath = Path + "?handler=Configuration";
 
     private static AdminFactory Factory()
@@ -45,6 +46,7 @@ public sealed class RealmConfigurationEndpointTests
         form["Actor"] = "forged";
         using var response = await browser.PostAsync(MutationPath, AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+        Assert.Equal(SettingsPath, response.Headers.Location!.OriginalString);
         var call = Assert.Single(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
         Assert.Equal(HttpMethod.Put, call.Method);
         Assert.Equal("/admin/realms/terres-aube/configuration", call.Path);
@@ -55,7 +57,7 @@ public sealed class RealmConfigurationEndpointTests
         Assert.Equal(4, call.Body.Value.EnumerateObject().Count());
         Assert.Equal("admin:operator", factory.Realms.Actors[factory.Realms.Calls.IndexOf(call)]);
         Assert.Equal(42, factory.Realms.Realm.Revision);
-        var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path));
+        var html = WebUtility.HtmlDecode(await browser.GetStringAsync(SettingsPath));
         Assert.Contains("Configuration enregistrée", html);
         Assert.Contains("vérifier sa réception par chaque serveur", html);
         AdminFactory.NoSecrets(html);
@@ -119,7 +121,8 @@ public sealed class RealmConfigurationEndpointTests
         Assert.Equal("7", AdminFactory.Input(html, "ConfigurationRevision"));
         Assert.Equal("3", AdminFactory.Input(html, "XpMultiplier"));
         Assert.Equal("4.125", AdminFactory.Input(html, "HarvestMultiplier"));
-        Assert.Equal("42", AdminFactory.Input(html, "ExpectedRevision"));
+        Assert.DoesNotContain("name=\"ExpectedRevision\"", html);
+        Assert.Equal(42, factory.Realms.Realm.Revision);
         AdminFactory.NoSecrets(html);
     }
 
@@ -137,7 +140,7 @@ public sealed class RealmConfigurationEndpointTests
         factory.Realms.Commands = new([new("area-one", DateTimeOffset.UtcNow, available, ["announce"], protocol, applied)], []);
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync(Path);
+        var html = await browser.GetStringAsync(SettingsPath);
         Assert.Contains("data-configuration-state=\"" + expected + "\"", html);
         var decoded = WebUtility.HtmlDecode(html);
         Assert.Contains(expected == "applied" ? "1 / 1 serveur(s)" : "0 / 1 serveur(s)", decoded);
@@ -152,7 +155,7 @@ public sealed class RealmConfigurationEndpointTests
         factory.Realms.Commands = new([new("area-one", DateTimeOffset.UtcNow, true, ["announce"], 1, null)], []);
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync(Path);
+        var html = await browser.GetStringAsync(SettingsPath);
         Assert.Contains("0 / 2 serveur(s)", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain("data-configuration-state=\"applied\"", html);
         Assert.Equal("1", AdminFactory.Input(html, "XpMultiplier"));
@@ -167,7 +170,7 @@ public sealed class RealmConfigurationEndpointTests
         factory.Realms.Configuration = new(1, 2, 0, now, "<img src=x>", [new(1, 0, 2, 0, 1, 1, now, "<img src=x>", "<script>unsafe()</script>")]);
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync(Path);
+        var html = await browser.GetStringAsync(Path + "?section=history");
         Assert.DoesNotContain("<script>unsafe", html);
         Assert.DoesNotContain("<img src=x>", html);
         Assert.Contains("&lt;script&gt;", html);
@@ -181,16 +184,41 @@ public sealed class RealmConfigurationEndpointTests
         factory.Realms.ConfigurationReadError = HttpStatusCode.ServiceUnavailable;
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync(Path);
+        var html = await browser.GetStringAsync(SettingsPath);
         Assert.Contains("La configuration en jeu est indisponible", WebUtility.HtmlDecode(html));
-        Assert.Contains("handler=Restart", html);
+        Assert.Contains("section=maintenance", html);
         Assert.DoesNotContain("handler=Configuration", html);
+        AdminFactory.NoSecrets(html);
+        var maintenance = await browser.GetStringAsync(Path + "?section=maintenance");
+        Assert.Contains("handler=Restart", maintenance);
+        Assert.DoesNotContain("La configuration en jeu est indisponible", WebUtility.HtmlDecode(maintenance));
+        AdminFactory.NoSecrets(maintenance);
+    }
+
+    [Fact]
+    public async Task UnavailableCommandTrackingKeepsConfigurationEditableWithoutReportingFalsePendingStatus()
+    {
+        await using var factory = Factory();
+        factory.Realms.CommandsReadError = HttpStatusCode.ServiceUnavailable;
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var html = await browser.GetStringAsync(SettingsPath);
+        var decoded = WebUtility.HtmlDecode(html);
+        Assert.Contains("Le contrôle en jeu est indisponible", decoded);
+        Assert.Contains("Suivi indisponible", decoded);
+        Assert.Contains("data-configuration-state=\"unknown\"", html);
+        Assert.DoesNotContain("data-configuration-state=\"pending\"", html);
+        Assert.DoesNotContain("0 / 2 serveur(s)", decoded);
+        Assert.DoesNotContain("Aucun contact", decoded);
+        Assert.Contains("handler=Configuration", html);
+        Assert.Equal("1", AdminFactory.Input(html, "XpMultiplier"));
+        Assert.Equal("1", AdminFactory.Input(html, "HarvestMultiplier"));
         AdminFactory.NoSecrets(html);
     }
 
     private static async Task<Dictionary<string, string>> Form(HttpClient browser)
     {
-        var html = await browser.GetStringAsync(Path);
+        var html = await browser.GetStringAsync(SettingsPath);
         return new()
         {
             ["__RequestVerificationToken"] = AdminFactory.Input(html, "__RequestVerificationToken"),

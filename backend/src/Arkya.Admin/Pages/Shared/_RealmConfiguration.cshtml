@@ -5,6 +5,7 @@
 }
 <section class="account-actions" aria-labelledby="configuration-live-heading">
     <div class="section-heading"><h2 id="configuration-live-heading">Configuration en jeu</h2><span class="muted">Modifiable sans redémarrer le realm.</span></div>
+    @if (Model.CommandsError is not null) { <div class="alert error" role="alert">@Model.CommandsError</div> }
     @if (Model.ConfigurationError is not null) { <div class="alert error" role="alert">@Model.ConfigurationError</div> }
     @if (Model.Configuration is { } configuration)
     {
@@ -23,33 +24,21 @@
             </form>
             <div class="panel realm-form">
                 <h3>Suivi de la configuration</h3>
-                <dl class="realm-facts"><div><dt>Version demandée</dt><dd>@configuration.Revision</dd></div><div><dt>Derniers taux enregistrés</dt><dd>XP ×@configuration.XpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Récolte ×@configuration.HarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)</dd></div><div><dt>Confirmation des serveurs</dt><dd><span class="realm-status @(servers.Length > 0 && confirmed == servers.Length ? "ready" : "pending")">@confirmed / @servers.Length serveur(s)</span></dd></div>
+                <dl class="realm-facts"><div><dt>Version demandée</dt><dd>@configuration.Revision</dd></div><div><dt>Derniers taux enregistrés</dt><dd>XP ×@configuration.XpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Récolte ×@configuration.HarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)</dd></div><div><dt>Confirmation des serveurs</dt><dd><span class="realm-status @(servers.Length > 0 && confirmed == servers.Length ? "ready" : "pending")">@(Model.Commands is null ? "Suivi indisponible" : $"{confirmed} / {servers.Length} serveur(s)")</span></dd></div>
                 @if (configuration.UpdatedAt is { } changedAt) { <div><dt>Dernière modification</dt><dd>@changedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss 'UTC'")<small>@configuration.UpdatedBy</small></dd></div> }
                 else { <div><dt>Dernière modification</dt><dd>Valeurs initiales du realm.</dd></div> }
                 </dl>
                 <div class="workflow-note"><strong>Effets disponibles dans le jeu</strong><p>Le taux XP est enregistré et transmis pour le futur système de progression. Le taux de récolte agit lorsque le serveur propose la récolte ; l’île de la bêta ne propose pas encore cette activité. Une version confirmée indique que les réglages sont chargés par le serveur.</p></div>
             </div>
         </div>
-        <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Application de la configuration sur chaque serveur dédié</caption><thead><tr><th scope="col">Serveur</th><th scope="col">Application</th><th scope="col">Version confirmée</th><th scope="col">Dernier contact UTC</th></tr></thead><tbody>
+        <div class="panel table-scroll" tabindex="0" role="region" aria-label="Application des réglages par serveur"><table class="realm-table"><caption class="sr-only">Application de la configuration sur chaque serveur dédié</caption><thead><tr><th scope="col">Serveur</th><th scope="col">Application</th><th scope="col">Version confirmée</th><th scope="col">Dernier contact UTC</th></tr></thead><tbody>
         @foreach (var server in servers)
         {
             var runtime = server.Runtime;
-            var state = runtime?.LastSeenAt is null ? "pending" : !runtime.Available ? "unavailable" : runtime.ConfigurationVersion != 1 ? "unsupported" : runtime.AppliedConfigurationRevision == configuration.Revision ? "applied" : "pending";
-            var label = state switch { "unavailable" => "Serveur non joignable", "unsupported" => "Runtime non compatible", "applied" => "Version appliquée", _ => "En attente d’application" };
-            <tr data-configuration-state="@state"><th scope="row" class="mono">@server.Id</th><td><span class="realm-status @(state == "applied" ? "ready" : state == "unsupported" ? "failed" : "pending")">@label</span></td><td>@(runtime?.AppliedConfigurationRevision?.ToString(CultureInfo.InvariantCulture) ?? "—")</td><td>@(runtime?.LastSeenAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss") ?? "Aucun contact")</td></tr>
+            var state = Model.Commands is null ? "unknown" : runtime?.LastSeenAt is null ? "pending" : !runtime.Available ? "unavailable" : runtime.ConfigurationVersion != 1 ? "unsupported" : runtime.AppliedConfigurationRevision == configuration.Revision ? "applied" : "pending";
+            var label = state switch { "unknown" => "Suivi indisponible", "unavailable" => "Serveur non joignable", "unsupported" => "Runtime non compatible", "applied" => "Version appliquée", _ => "En attente d’application" };
+            <tr data-configuration-state="@state"><th scope="row" class="mono">@server.Id</th><td><span class="realm-status @(state == "applied" ? "ready" : state == "unsupported" ? "failed" : "pending")">@label</span></td><td>@(runtime?.AppliedConfigurationRevision?.ToString(CultureInfo.InvariantCulture) ?? "—")</td><td>@(Model.Commands is null ? "Relevé indisponible" : runtime?.LastSeenAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss") ?? "Aucun contact")</td></tr>
         }
         </tbody></table></div>
-        <details class="history panel catalog-entry"><summary><strong>Historique des multiplicateurs</strong><span class="muted">100 dernières modifications · UTC</span></summary><div class="catalog-detail">
-            @if (configuration.History.Length == 0) { <p class="muted">Aucune modification enregistrée.</p> }
-            else
-            {
-                <div class="table-scroll"><table class="realm-table"><caption class="sr-only">Historique de la configuration en jeu</caption><thead><tr><th scope="col">Version</th><th scope="col">Multiplicateurs</th><th scope="col">Opérateur / motif</th><th scope="col">Date UTC</th></tr></thead><tbody>
-                @foreach (var change in configuration.History.OrderByDescending(value => value.Revision).Take(100))
-                {
-                    <tr><th scope="row">@change.Revision</th><td>XP ×@change.XpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Récolte ×@change.HarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)<small>Avant : XP ×@change.PreviousXpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Récolte ×@change.PreviousHarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)</small></td><td>@change.UpdatedBy<small>@change.Reason</small></td><td>@change.UpdatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss")</td></tr>
-                }
-                </tbody></table></div>
-            }
-        </div></details>
     }
 </section>

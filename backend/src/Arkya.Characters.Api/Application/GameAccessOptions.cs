@@ -32,7 +32,7 @@ public sealed class CharacterGameAccessOptions
     public bool RequireBetaAccess { get; set; }
     public bool AllowPrivateHttp { get; set; }
     public DedicatedServerIdentity[] DedicatedServers { get; set; } = [];
-    public bool IsValid() => DedicatedServers is not null && DedicatedServers.Length <= 100 &&
+    public bool IsValid() => DedicatedServers is not null && DedicatedServers.Length <= 256 &&
         DedicatedServers.All(value => value is not null && GameProtocol.ValidId(value.RealmId) && GameProtocol.ValidId(value.ServerId) && value.Key.Length is >= 32 and <= 512) &&
         DedicatedServers.Select(value => value.Key).Distinct().Count() == DedicatedServers.Length &&
         DedicatedServers.Select(value => (value.RealmId, value.ServerId)).Distinct().Count() == DedicatedServers.Length;

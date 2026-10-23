@@ -12,16 +12,23 @@ namespace Arkya.Realms.Tests;
 
 public sealed class RealmTopologyTests
 {
+    private static void EnableHandoff(DeploymentProfile profile)
+    {
+        profile.TopologyTemplateServerId = "area-west";
+        profile.Servers[0].ProtocolVersion = Arkya.ServiceDefaults.GameProtocol.HandoffVersion;
+        profile.Servers[0].BuildId = Arkya.ServiceDefaults.GameProtocol.HandoffBuildId;
+    }
+
     private const string NextImage = "registry.example/arkya/dedicated@sha256:abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789";
 
     [Fact]
     public void ExpandsDistinctDedicatedOwnersForEveryIslandAndPool()
     {
         var profile = Fixtures.Options().Profiles[0];
-        profile.TopologyTemplateServerId = "area-west";
+        EnableHandoff(profile);
         var input = new RealmTopology([new("starter-island", 4), new("future-island", 2)], 2, 1);
         var snapshot = RealmTopologyBuilder.Snapshot(profile, "eu-one", input);
-        Assert.True(snapshot.TopologyRuntimeSupported);
+        Assert.False(snapshot.TopologyRuntimeSupported);
         Assert.Equal(9, snapshot.Servers.Length);
         Assert.Equal(9, snapshot.Servers.Select(server => server.Id).Distinct().Count());
         Assert.All(snapshot.Servers, server => Assert.True(DeploymentOptions.ValidId(server.Id)));
@@ -38,6 +45,30 @@ public sealed class RealmTopologyTests
         profile.Servers[0].Args[0] = "changed";
         Assert.Contains(snapshot.Topology!.Islands, island => island.IslandId == "starter-island");
         Assert.All(snapshot.Servers, server => Assert.Equal("-batchmode", server.Args[0]));
+    }
+
+    [Fact]
+    public void LegacyBuildCannotOptIntoPartitionRuntimeBySelectingATemplateAlone()
+    {
+        var profile = Fixtures.Options().Profiles[0];
+        profile.TopologyTemplateServerId = "area-west";
+        Assert.True(profile.IsValid());
+        Assert.False(RealmTopologyBuilder.RuntimeSupported(profile));
+        EnableHandoff(profile);
+        Assert.True(RealmTopologyBuilder.RuntimeSupported(profile));
+    }
+
+    [Fact]
+    public async Task APreviouslySavedSupportFlagCannotBypassTheHandoffProtocolRequirement()
+    {
+        var options = Fixtures.Options();
+        var profile = RealmTopologyBuilder.Snapshot(options.Profiles[0], "eu-one", new([new("starter-island", 4)])) with { TopologyRuntimeSupported = true };
+        var realm = Fixtures.Realm(RealmStatus.Draft) with { Profile = profile };
+        var repository = new MemoryRealmRepository();
+        await repository.TryCreateAsync(realm, default);
+        var service = new RealmService(repository, Options.Create(options), new TestClock());
+        Assert.Equal("topology_runtime_unsupported", (await service.RequestDeploymentAsync(realm.RealmId, realm.Revision, default)).Error);
+        Assert.False(service.GetOperationsOptions(realm with { Status = RealmStatus.Ready }).CanRestart);
     }
 
     [Fact]
@@ -79,7 +110,7 @@ public sealed class RealmTopologyTests
         var profile = Fixtures.Options().Profiles[0];
         profile.Servers[0].Transport = "WebSocket";
         profile.Servers[0].PublicEndpoint = "wss://play.example/realms/eu-one/starter-island";
-        profile.TopologyTemplateServerId = "area-west";
+        EnableHandoff(profile);
         Assert.False(profile.IsValid());
         profile.TopologyPublicEndpointTemplate = "wss://play.example/realms/{realmId}/{serverId}";
         Assert.True(profile.IsValid());
@@ -102,7 +133,7 @@ public sealed class RealmTopologyTests
         var profile = Fixtures.Options().Profiles[0];
         profile.Servers[0].Transport = "WebSocket";
         profile.Servers[0].PublicEndpoint = "wss://play.example/realms/eu-one/starter-island";
-        profile.TopologyTemplateServerId = "area-west";
+        EnableHandoff(profile);
         profile.TopologyPublicEndpointTemplate = "wss://play.example/{serverId}/../shared";
         Assert.False(profile.IsValid());
         profile.TopologyPublicEndpointTemplate = "wss://play.example/" + new string('a', 90) + "/{realmId}/{serverId}";
@@ -154,7 +185,7 @@ public sealed class RealmTopologyTests
     public async Task SupportedSnapshotCanBeRequestedAndLegacySnapshotsStayExact()
     {
         var options = Fixtures.Options();
-        options.Profiles[0].TopologyTemplateServerId = "area-west";
+        EnableHandoff(options.Profiles[0]);
         var repository = new MemoryRealmRepository();
         var service = new RealmService(repository, Options.Create(options), new TestClock());
         var created = await service.CreateAsync(new("eu-one", "EU", "realm-eu-one", "island-v1", new([new("starter-island", 4)])), default);
@@ -215,7 +246,7 @@ public sealed class RealmTopologyTests
         var topology = new RealmTopology([new("starter-island", 4)]);
         var created = (await service.CreateAsync(new("eu-one", "EU", "realm-eu-one", "island-v1", topology), default)).Realm!;
         Assert.False(created.Profile.TopologyRuntimeSupported);
-        options.Profiles[0].TopologyTemplateServerId = "area-west";
+        EnableHandoff(options.Profiles[0]);
         var changed = (await service.UpdateTopologyAsync("eu-one", new(0, "island-v1", topology), default)).Realm!;
         Assert.True(changed.Profile.TopologyRuntimeSupported);
         Assert.Equal(RealmStatus.Pending, (await service.RequestDeploymentAsync("eu-one", changed.Revision, default)).Realm!.Status);
@@ -240,12 +271,12 @@ public sealed class RealmTopologyTests
     public void FrozenTopologyRoundTripsBsonAndLegacyDocumentsUseSafeDefaults()
     {
         var profile = Fixtures.Options().Profiles[0];
-        profile.TopologyTemplateServerId = "area-west";
+        EnableHandoff(profile);
         var realm = Fixtures.Realm() with { Profile = RealmTopologyBuilder.Snapshot(profile, "eu-one", new([new("starter-island", 4, 1000, 1000, -200, 500)], 1, 1)) };
         var bson = RealmDocument.From(realm).ToBsonDocument();
         Assert.Equal(2, bson["SchemaVersion"].AsInt32);
         var restored = BsonSerializer.Deserialize<RealmDocument>(bson).ToRecord();
-        Assert.True(restored.Profile.TopologyRuntimeSupported);
+        Assert.False(restored.Profile.TopologyRuntimeSupported);
         Assert.Equal(realm.Profile.Topology!.Islands, restored.Profile.Topology!.Islands);
         Assert.Equal(realm.Profile.Servers.Select(server => (server.Id, server.Kind, server.Bounds)), restored.Profile.Servers.Select(server => (server.Id, server.Kind, server.Bounds)));
         var legacy = RealmDocument.From(Fixtures.Realm()).ToBsonDocument();
@@ -264,7 +295,7 @@ public sealed class RealmTopologyTests
     {
         var options = Fixtures.Options();
         var profile = options.Profiles[0];
-        profile.TopologyTemplateServerId = "area-west";
+        EnableHandoff(profile);
         options.Targets[0].RealmId = "eu-one";
         var realm = Fixtures.Realm() with { Profile = RealmTopologyBuilder.Snapshot(profile, "eu-one", new([new("starter-island", 4)])) };
         profile.Image = NextImage;

@@ -8,16 +8,24 @@ lance depuis l'admin. Aucun Deployment Unity ni Secret n'est créé ici.
 
 Le compte de service `arkya-realm-deployer` reste dans `arkya-beta`. Son rôle
 dans `arkya-beta-realm` autorise `get/create/patch` sur les Deployments et
-`get/create` sur les Services,
-la lecture des seuls Secrets `arkya-ghcr` et `arkya-dedicated`, et leur création. Kubernetes
+`get/create` sur les Services et `get/list` sur les Pods de ce seul namespace,
+la lecture des seuls Secrets `arkya-ghcr` et `arkya-dedicated`, leur création
+et le patch du seul Secret nommé `arkya-dedicated`. Kubernetes
 ne permet pas de limiter `create` par nom : le code Realms fixe et valide le
 nom fixe et le namespace avant cet appel. Le patch est limité dans le code
 à une transition d'image versionnée ou à l'annotation de redémarrage d'un
-Deployment possédé, avec tests de concurrence ; voir les
+Deployment possédé, ou à son retrait pendant une migration approuvée, avec
+tests de concurrence ; voir les
 [releases GitOps](../../../../docs/REALM_DEPLOYMENT.md#mettre-à-jour-une-image-par-gitops)
 et les [actions d'exploitation](../../../../docs/REALM_OPERATIONS.md).
-Aucun droit `list`, `update` ou `delete`, autre namespace ou objet du cluster
-n'est accordé.
+La [migration de runtime](../../../../docs/REALM_RUNTIME_RELEASES.md) remplace
+les clés dédiées seulement après vérification de l'ancien contenu exact et de
+`resourceVersion`. Elle vérifie aussi l'absence de Pods par sélecteurs exacts
+realm/serveur/identité de déploiement, avec pagination bornée. Cette lecture
+inclut les Pods en terminaison même quand les compteurs du Deployment ne les
+exposent pas. Les Pods ne sont jamais modifiés par Realms.
+Aucun droit de lister les Secrets, ni `update` ou `delete`, autre namespace
+ou objet du cluster n'est accordé.
 Le pod Realms reçoit explicitement un jeton projeté et la CA Kubernetes ;
 les autres services ne reçoivent aucun jeton.
 

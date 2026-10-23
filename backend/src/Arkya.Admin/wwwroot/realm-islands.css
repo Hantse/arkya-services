@@ -1,0 +1,83 @@
+.realm-islands-heading { margin-bottom: 12px; }
+.realm-islands-heading h2 { display: flex; align-items: center; gap: 10px; }
+.realm-islands-heading h2 span { font-size: 12px; font-weight: 400; }
+.realm-world-layout { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 18px; align-items: start; }
+.realm-island-browser { display: grid; grid-template-columns: 185px minmax(0, 1fr); min-width: 0; overflow: hidden; }
+.realm-island-list { background: #f7f9fc; border-right: 1px solid var(--line); padding: 10px; max-height: 490px; overflow: auto; }
+.realm-island-list a { display: flex; gap: 9px; padding: 10px 7px; border: 1px solid transparent; border-radius: 4px; text-decoration: none; margin-bottom: 6px; align-items: center; min-width: 0; }
+.realm-island-list a[aria-current="true"] { border-color: #a8bce4; background: #e9effe; }
+.realm-island-list a:hover { background: #edf2fa; }
+.realm-island-list img, .realm-island-thumbnail-empty { width: 36px; height: 36px; flex-shrink: 0; border-radius: 4px; object-fit: cover; }
+.realm-island-thumbnail-empty { display: grid; place-items: center; background: #e5ebf4; color: var(--muted); }
+.realm-island-list a span:last-child { min-width: 0; }
+.realm-island-list strong { display: block; font-size: 12px; overflow-wrap: anywhere; }
+.realm-island-list small { font-size: 10px; color: var(--muted); }
+.realm-island-detail { min-width: 0; padding: 17px; }
+.realm-island-detail > header { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+.realm-island-detail h3 { margin: 0 0 4px; font-size: 16px; overflow-wrap: anywhere; }
+.realm-island-detail header small { color: var(--muted); }
+.realm-island-grid-count { white-space: nowrap; font-size: 20px; font-weight: 600; text-align: right; color: var(--accent-dark); }
+.realm-island-grid-count small { display: block; font-size: 10px; font-weight: 400; }
+.realm-island-map { border: 0; margin: 14px 0 9px; padding: 0; }
+.realm-island-map svg { width: 100%; height: 300px; margin: 0; overflow: hidden; border-radius: 4px; }
+.realm-island-map-background { fill: #234457; }
+.realm-island-map .realm-partition-cell rect, .realm-island-map .realm-partition-cell:nth-child(even) rect { fill: #1032460a; stroke: #fff; stroke-width: 2px; vector-effect: non-scaling-stroke; }
+.realm-island-map .realm-partition-cell text { fill: white; stroke: #14283c; stroke-width: 3px; paint-order: stroke; vector-effect: non-scaling-stroke; font-weight: 700; }
+.realm-island-map figcaption { margin: 9px 0 0; display: flex; justify-content: space-between; gap: 8px; font-size: 10px; color: var(--muted); }
+.realm-island-map figcaption small { display: inline; font-size: inherit; margin: 0; }
+.realm-map-note { margin: 5px 0; font-size: 10px; color: var(--muted); }
+.realm-island-zones { margin-top: 12px; font-size: 11px; }
+.realm-island-zones summary { padding: 6px 0; color: var(--accent-dark); cursor: pointer; }
+.realm-island-zones .table-scroll { max-height: 220px; overflow: auto; }
+.realm-island-zones .realm-table { min-width: 360px; }
+.realm-dungeon-pools { padding: 20px 17px; }
+.realm-dungeon-pools .eyebrow { font-size: 8px; letter-spacing: .8px; margin-bottom: 8px; }
+.realm-dungeon-pools h2 { font-size: 16px; margin-bottom: 10px; }
+.realm-dungeon-pools p { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.realm-dungeon-pools dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+.realm-dungeon-pools dl > div { padding: 10px 0; border-top: 1px solid var(--line); }
+.realm-dungeon-pools dt { font-size: 11px; color: var(--muted); }
+.realm-dungeon-pools dd { font-size: 22px; margin: 5px 0 0; font-weight: 600; }
+.realm-dungeon-pools dd small { display: inline; font-size: 10px; font-weight: 400; margin: 0; }
+.realm-dungeon-pools ul { list-style: none; margin: 0; padding: 0; max-height: 160px; overflow: auto; }
+.realm-dungeon-pools li { border: 1px solid var(--line); border-radius: 3px; padding: 8px; margin-bottom: 7px; }
+.realm-dungeon-pools li strong { font-size: 10px; overflow-wrap: anywhere; }
+.realm-dungeon-pools li small { display: block; font-size: 10px; color: var(--muted); margin-top: 3px; }
+.realm-no-islands { grid-column: 1 / -1; padding: 30px; }
+.realm-no-islands p { color: var(--muted); font-size: 12px; }
+.realm-pool-servers { margin-top: 12px; font-size: 11px; }
+.realm-pool-servers summary { color: var(--accent-dark); cursor: pointer; padding: 4px 0 10px; }
+.realm-bounds-heading { margin: 18px 0 10px; }
+.realm-topology-note { padding: 10px 0 0; font-size: 11px; color: var(--muted); }
+@media (min-width: 1201px) {
+    .realm-island-detail { display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 6px 16px; align-items: start; }
+    .realm-island-detail > header { grid-column: 1 / -1; }
+    .realm-island-map { grid-column: 1; grid-row: 2 / span 3; margin-top: 12px; }
+    .realm-island-map svg { height: 270px; }
+    .realm-island-detail > .realm-map-note, .realm-island-zones { grid-column: 2; }
+    .realm-island-detail > .realm-map-note { margin-top: 14px; }
+    .realm-island-list { max-height: 390px; }
+}
+@media (max-width: 1200px) {
+    .realm-island-browser { grid-template-columns: 150px minmax(0, 1fr); }
+    .realm-world-layout { grid-template-columns: minmax(0, 1fr) 175px; gap: 12px; }
+    .realm-island-list img, .realm-island-thumbnail-empty { display: none; }
+}
+@media (max-width: 980px) {
+    .realm-world-layout { grid-template-columns: 1fr; }
+    .realm-dungeon-pools { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+    .realm-dungeon-pools .eyebrow, .realm-dungeon-pools h2, .realm-dungeon-pools > p { grid-column: 1; }
+    .realm-dungeon-pools dl { grid-column: 2; grid-row: 1 / 4; display: flex; gap: 22px; margin: 0; }
+    .realm-dungeon-pools dl > div { border: 0; }
+    .realm-dungeon-pools .realm-pool-servers, .realm-dungeon-pools > small { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+    .realm-island-browser { grid-template-columns: 1fr; }
+    .realm-island-list { display: flex; gap: 6px; border-right: 0; border-bottom: 1px solid var(--line); overflow-x: auto; max-height: none; padding: 8px; }
+    .realm-island-list a { flex: 0 0 135px; margin: 0; }
+    .realm-island-detail { padding: 14px; }
+    .realm-island-map svg { height: 270px; }
+    .realm-dungeon-pools { display: block; padding: 16px; }
+    .realm-dungeon-pools dl { display: flex; gap: 30px; margin: 10px 0; }
+    .realm-dungeon-pools p { margin: 5px 0; }
+}

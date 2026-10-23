@@ -30,6 +30,7 @@ public sealed record RealmSummary(string RealmId, string DisplayName, string Tar
 {
     public RealmTopology? Topology { get; init; }
     public bool TopologyRuntimeSupported { get; init; }
+    public string ProfileSha256 { get; init; } = "";
 }
 public sealed record RealmOperation(string Kind, long Revision, string RequestedBy, string Reason,
     DateTimeOffset RequestedAt, DateTimeOffset? CompletedAt, string Status, string? Error, string PreviousImage, string Image);
@@ -57,7 +58,9 @@ public sealed record RealmProfile(string Id, string DisplayName, string Image, R
 public sealed record RealmDeploymentOptions(RealmTarget[] Targets, RealmProfile[] Profiles, bool DeploymentEnabled);
 public sealed record AreaBounds(double MinX, double MinZ, double MaxX, double MaxZ);
 public sealed record RealmIslandTopology(string IslandId, int DedicatedCount, double Width = 1000, double Depth = 1000,
-    double OriginX = 0, double OriginZ = 0);
+    double OriginX = 0, double OriginZ = 0,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridColumns = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridRows = null);
 public sealed record RealmTopology(RealmIslandTopology[] Islands, int InstanceDedicatedCount, int RaidDedicatedCount);
 public sealed record CreateRealmRequest(string RealmId, string DisplayName, string TargetId, string ProfileId,
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] RealmTopology? Topology = null);

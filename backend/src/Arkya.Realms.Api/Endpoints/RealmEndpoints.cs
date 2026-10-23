@@ -71,7 +71,7 @@ public static class RealmEndpoints
         "approved_image_changed" => "The approved image has changed. Reload the realm before updating.",
         "operation_in_progress" or "operation_unavailable" => "This operation is unavailable while the realm is deploying or its configuration has changed.",
         "invalid_realm" => "Realm ID must contain 3 to 31 lowercase letters, digits or hyphens; display name must contain 1 to 80 characters.",
-        "invalid_topology" => "Use up to 32 unique islands with IDs of 3 to 20 lowercase letters, digits or hyphens, 1 to 64 dedicateds per island, 0 to 64 instance or raid dedicateds, and 1 to 256 dedicateds in total.",
+        "invalid_topology" => "Use up to 32 unique islands with IDs of 3 to 20 lowercase letters, digits or hyphens, 1 to 64 dedicateds per island, 0 to 64 instance or raid dedicateds, and 1 to 256 dedicateds in total. Optional gridColumns and gridRows must both be set, each from 1 to 64, and their product must equal dedicatedCount.",
         "topology_edit_unavailable" => "Only draft realms can change their profile or topology. Deployed realms require a planned migration.",
         "invalid_topology_endpoint" => "The approved endpoint template does not produce valid, distinct destinations for this topology.",
         "topology_runtime_unsupported" => "The topology draft is saved, but this profile has no explicitly approved partition, instance and raid runtime. Select a compatible profile before deploying.",

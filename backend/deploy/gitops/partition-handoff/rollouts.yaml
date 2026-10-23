@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-gateway
+  namespace: arkya-beta
+spec:
+  template:
+    metadata:
+      annotations:
+        arkya.online/partition-handoff-config-revision: prepared-v1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-characters
+  namespace: arkya-beta
+spec:
+  template:
+    metadata:
+      annotations:
+        arkya.online/partition-handoff-config-revision: prepared-v1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-realms
+  namespace: arkya-beta
+spec:
+  template:
+    metadata:
+      annotations:
+        arkya.online/partition-handoff-config-revision: prepared-v1

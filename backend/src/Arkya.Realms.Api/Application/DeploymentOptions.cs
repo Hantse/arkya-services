@@ -14,8 +14,13 @@ public sealed class DeploymentOptions
     public DeploymentTarget[] Targets { get; set; } = [];
     public DeploymentProfile[] Profiles { get; set; } = [];
     public RealmImageRelease[] ImageReleases { get; set; } = [];
+    public RealmRuntimeRelease[] RuntimeReleases { get; set; } = [];
 
-    public bool IsValid() => Targets is not null && Profiles is not null && ImageReleases is not null &&
+    public bool IsValid() => Targets is not null && Profiles is not null && ImageReleases is not null && RuntimeReleases is not null &&
+        RuntimeReleases.Length <= 100 && RuntimeReleases.All(release => release is not null && release.IsValid() &&
+            Targets.Count(target => target is not null && target.RealmId == release.RealmId) == 1 &&
+            Profiles.Any(profile => profile is not null && profile.Id == release.ProfileId)) &&
+        RuntimeReleases.Select(release => release.RealmId).Distinct().Count() == RuntimeReleases.Length &&
         Targets.Length <= 100 && Profiles.Length <= 50 && ImageReleases.Length <= 100 &&
         ReconcileIntervalSeconds is >= 2 and <= 300 && DeploymentTimeoutSeconds is >= 30 and <= 3600 &&
         Uri.TryCreate(ApiServer, UriKind.Absolute, out var uri) && uri.Scheme == "https" &&
@@ -98,6 +103,6 @@ public sealed class DeploymentServer
     public string BuildId { get; set; } = Arkya.ServiceDefaults.GameProtocol.BuildId;
     public bool IsValid() => DeploymentOptions.ValidId(Id) && Port is >= 1024 and <= 65535 &&
         (Transport == "Udp" && string.IsNullOrEmpty(PublicEndpoint) || Transport == "WebSocket" &&
-            Arkya.ServiceDefaults.GameProtocol.ValidEndpoint(PublicEndpoint) && ProtocolVersion == Arkya.ServiceDefaults.GameProtocol.Version && BuildId == Arkya.ServiceDefaults.GameProtocol.BuildId) &&
+            Arkya.ServiceDefaults.GameProtocol.ValidEndpoint(PublicEndpoint) && Arkya.ServiceDefaults.GameProtocol.IsSupported(ProtocolVersion, BuildId)) &&
         Args is { Length: <= 64 } && Args.All(arg => arg is not null && arg.Length <= 512 && !arg.Contains('\0'));
 }

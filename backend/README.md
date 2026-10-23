@@ -1,5 +1,17 @@
 # Backend Arkya
 
+Le protocole de jeu 2 ajoute le [transfert StarterIsland entre partitions](../docs/STARTER_ISLAND_HANDOFF.md) :
+préparation de la destination, scellement de l'état serveur et bascule atomique
+de la lease dans Characters. Les API conservent le protocole 1 et exigent une
+correspondance exacte entre le client et le runtime du realm. Le nouveau client
+et le dedicated doivent être publiés ensemble ; changer uniquement une image
+ne migre pas un profil de realm déjà figé.
+
+L'administration sépare la création du realm et sa fiche d'exploitation.
+La création configure une grille bornée pour chaque île ; la fiche regroupe
+aperçu, réglages, maintenance, actions en jeu et historique. Les révisions
+attendues et les contrôles d'autorisation des opérations restent obligatoires.
+
 Le site et l’admin disposent de [sessions renouvelables](../docs/AUTH_SESSIONS.md),
 avec cookies HttpOnly, rotation et révocation. Admin nécessite désormais sa propre
 base de sessions `arkya_admin` ; provisionner sa connexion MongoDB avant déploiement.

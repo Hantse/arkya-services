@@ -6,6 +6,9 @@ public static class IslandPartitioning
 {
     public static bool IsValid(RealmIslandTopology island) =>
         island.DedicatedCount is >= 1 and <= 64 &&
+        (island.GridColumns is null && island.GridRows is null ||
+            island.GridColumns is >= 1 and <= 64 && island.GridRows is >= 1 and <= 64 &&
+            island.GridColumns * island.GridRows == island.DedicatedCount) &&
         double.IsFinite(island.Width) && island.Width is >= 1 and <= 1_000_000 &&
         double.IsFinite(island.Depth) && island.Depth is >= 1 and <= 1_000_000 &&
         double.IsFinite(island.OriginX) && Math.Abs(island.OriginX) <= 10_000_000 &&
@@ -14,6 +17,21 @@ public static class IslandPartitioning
     public static AreaBounds[] Create(RealmIslandTopology island)
     {
         if (!IsValid(island)) throw new ArgumentOutOfRangeException(nameof(island));
+        var columns = island.GridColumns ?? AutomaticColumns(island);
+        var rows = island.GridRows ?? island.DedicatedCount / columns;
+        return Enumerable.Range(0, island.DedicatedCount).Select(index =>
+        {
+            var column = index % columns;
+            var row = index / columns;
+            return new AreaBounds(island.OriginX + island.Width * ((double)column / columns),
+                island.OriginZ + island.Depth * ((double)row / rows),
+                island.OriginX + island.Width * ((double)(column + 1) / columns),
+                island.OriginZ + island.Depth * ((double)(row + 1) / rows));
+        }).ToArray();
+    }
+
+    private static int AutomaticColumns(RealmIslandTopology island)
+    {
         var columns = 1;
         var bestScore = double.PositiveInfinity;
         for (var candidate = 1; candidate <= island.DedicatedCount; candidate++)
@@ -27,16 +45,7 @@ public static class IslandPartitioning
                 bestScore = score;
             }
         }
-        var rows = island.DedicatedCount / columns;
-        return Enumerable.Range(0, island.DedicatedCount).Select(index =>
-        {
-            var column = index % columns;
-            var row = index / columns;
-            return new AreaBounds(island.OriginX + island.Width * ((double)column / columns),
-                island.OriginZ + island.Depth * ((double)row / rows),
-                island.OriginX + island.Width * ((double)(column + 1) / columns),
-                island.OriginZ + island.Depth * ((double)(row + 1) / rows));
-        }).ToArray();
+        return columns;
     }
 
     public static int? FindPartition(RealmIslandTopology island, double x, double z)

@@ -19,11 +19,11 @@ public sealed class RealmsTopologyEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync("/Realms");
+        var html = await browser.GetStringAsync("/CreateRealm");
         Assert.Equal("starter-island", AdminFactory.Input(html, "Input.Islands[0].IslandId"));
         Assert.Equal("4", AdminFactory.Input(html, "Input.Islands[0].DedicatedCount"));
-        Assert.Equal("1000", AdminFactory.Input(html, "Input.Islands[0].Width"));
-        Assert.Equal("1000", AdminFactory.Input(html, "Input.Islands[0].Depth"));
+        Assert.Equal("1536", AdminFactory.Input(html, "Input.Islands[0].Width"));
+        Assert.Equal("1536", AdminFactory.Input(html, "Input.Islands[0].Depth"));
         Assert.Equal("0", AdminFactory.Input(html, "Input.Islands[0].OriginX"));
         Assert.Equal("0", AdminFactory.Input(html, "Input.Islands[0].OriginZ"));
         Assert.Contains("Input.InstanceDedicatedCount", html);
@@ -37,12 +37,12 @@ public sealed class RealmsTopologyEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = PlanForm(await AdminFactory.Token(browser, "/Realms"));
+        var form = PlanForm(await AdminFactory.Token(browser, "/CreateRealm"));
         form["Input.Islands[1].OriginX"] = "-2000";
         form["Input.Islands[1].OriginZ"] = "500";
         form["Input.Islands[1].Args"] = "injected-runtime-flag";
         form["Input.Islands[1].Image"] = "injected-runtime-image";
-        using var response = await browser.PostAsync("/Realms?handler=Create", AdminFactory.Form(form));
+        using var response = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         var call = Assert.Single(factory.Realms.Calls, call => call.Method == HttpMethod.Post);
         var submitted = call.Body!.Value.Deserialize<CreateRealmRequest>(new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
@@ -74,9 +74,9 @@ public sealed class RealmsTopologyEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = PlanForm(await AdminFactory.Token(browser, "/Realms"));
+        var form = PlanForm(await AdminFactory.Token(browser, "/CreateRealm"));
         form[field] = value;
-        using var response = await browser.PostAsync("/Realms?handler=Create", AdminFactory.Form(form));
+        using var response = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var html = await response.Content.ReadAsStringAsync();
         Assert.Contains("validation-summary-errors", html);
@@ -90,13 +90,13 @@ public sealed class RealmsTopologyEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = PlanForm(await AdminFactory.Token(browser, "/Realms"));
+        var form = PlanForm(await AdminFactory.Token(browser, "/CreateRealm"));
         for (var index = 0; index < 5; index++)
         {
             form[$"Input.Islands[{index}].IslandId"] = "island-" + index;
             form[$"Input.Islands[{index}].DedicatedCount"] = "64";
         }
-        using var response = await browser.PostAsync("/Realms?handler=Create", AdminFactory.Form(form));
+        using var response = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(form));
         Assert.Contains("256 serveurs dédiés", WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync()));
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
     }
@@ -107,14 +107,14 @@ public sealed class RealmsTopologyEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = PlanForm(await AdminFactory.Token(browser, "/Realms"));
+        var form = PlanForm(await AdminFactory.Token(browser, "/CreateRealm"));
         form["Input.Islands[1].OriginX"] = "-2000";
-        using var added = await browser.PostAsync("/Realms?handler=AddIsland", AdminFactory.Form(form));
+        using var added = await browser.PostAsync("/CreateRealm?handler=AddIsland", AdminFactory.Form(form));
         var html = await added.Content.ReadAsStringAsync();
         Assert.Equal("-2000", AdminFactory.Input(html, "Input.Islands[1].OriginX"));
         Assert.Equal("", AdminFactory.Input(html, "Input.Islands[2].IslandId"));
         form["removeIslandIndex"] = "0";
-        using var removed = await browser.PostAsync("/Realms?handler=RemoveIsland", AdminFactory.Form(form));
+        using var removed = await browser.PostAsync("/CreateRealm?handler=RemoveIsland", AdminFactory.Form(form));
         html = await removed.Content.ReadAsStringAsync();
         Assert.Equal("future-island", AdminFactory.Input(html, "Input.Islands[0].IslandId"));
         Assert.Equal("-2000", AdminFactory.Input(html, "Input.Islands[0].OriginX"));
@@ -129,7 +129,7 @@ public sealed class RealmsTopologyEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        using var response = await browser.PostAsync("/Realms?handler=" + handler, AdminFactory.Form(new()));
+        using var response = await browser.PostAsync("/CreateRealm?handler=" + handler, AdminFactory.Form(new()));
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         Assert.Empty(factory.Realms.Calls);
     }
@@ -158,7 +158,8 @@ public sealed class RealmsTopologyEndpointTests
         Assert.Contains("starter-island-00</th><td>0 / 0</td><td>500 / 500</td>", html);
         Assert.Contains("starter-island-03</th><td>500 / 500</td><td>1000 / 1000</td>", html);
         Assert.Contains("Le déploiement est bloqué", html);
-        Assert.Matches("<button[^>]+disabled=\"disabled\"[^>]*>Déployer ce realm</button>", html);
+        var maintenance = WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms/terres-aube?section=maintenance"));
+        Assert.Matches("<button[^>]+disabled=\"disabled\"[^>]*>Déployer ce realm</button>", maintenance);
         AdminFactory.NoSecrets(html);
     }
 
@@ -169,7 +170,7 @@ public sealed class RealmsTopologyEndpointTests
         factory.Realms.Realm = factory.Realms.Realm with { Topology = new([new("starter-island", 4, 1200, 800, -200, 100)], 2, 1) };
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync("/Realms?editRealmId=terres-aube");
+        var html = await browser.GetStringAsync("/CreateRealm?editRealmId=terres-aube");
         Assert.Equal("1", AdminFactory.Input(html, "ExpectedRevision"));
         Assert.Equal("1200", AdminFactory.Input(html, "Input.Islands[0].Width"));
         Assert.Equal("-200", AdminFactory.Input(html, "Input.Islands[0].OriginX"));
@@ -178,7 +179,7 @@ public sealed class RealmsTopologyEndpointTests
         form["ExpectedRevision"] = "1";
         form["Input.TargetId"] = "cannot-change-target";
         form["Input.RealmId"] = "cannot-change-identity";
-        using var response = await browser.PostAsync("/Realms?handler=SaveTopology", AdminFactory.Form(form));
+        using var response = await browser.PostAsync("/CreateRealm?handler=SaveTopology", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         var call = Assert.Single(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
         Assert.Equal(HttpMethod.Put, call.Method);
@@ -199,11 +200,11 @@ public sealed class RealmsTopologyEndpointTests
         factory.Realms.Realm = factory.Realms.Realm with { Topology = new([new("starter-island", 4)], 2, 1) };
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = PlanForm(await AdminFactory.Token(browser, "/Realms?editRealmId=terres-aube"));
+        var form = PlanForm(await AdminFactory.Token(browser, "/CreateRealm?editRealmId=terres-aube"));
         form["EditRealmId"] = "terres-aube";
         form["ExpectedRevision"] = "1";
         form["Input.ConfigureTopology"] = "false";
-        using var response = await browser.PostAsync("/Realms?handler=SaveTopology", AdminFactory.Form(form));
+        using var response = await browser.PostAsync("/CreateRealm?handler=SaveTopology", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         var call = Assert.Single(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
         Assert.Equal(JsonValueKind.Null, call.Body!.Value.GetProperty("topology").ValueKind);
@@ -216,10 +217,10 @@ public sealed class RealmsTopologyEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = PlanForm(await AdminFactory.Token(browser, "/Realms?editRealmId=terres-aube"));
+        var form = PlanForm(await AdminFactory.Token(browser, "/CreateRealm?editRealmId=terres-aube"));
         form["EditRealmId"] = "terres-aube";
         form["ExpectedRevision"] = "0";
-        using var response = await browser.PostAsync("/Realms?handler=SaveTopology", AdminFactory.Form(form));
+        using var response = await browser.PostAsync("/CreateRealm?handler=SaveTopology", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.Contains("a changé", WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync()));
         Assert.Equal(1, factory.Realms.Realm.Revision);
@@ -232,8 +233,8 @@ public sealed class RealmsTopologyEndpointTests
         factory.Realms.Realm = factory.Realms.Realm with { Status = "Ready" };
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        Assert.DoesNotContain("Modifier le plan", WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms/terres-aube")));
-        using var response = await browser.GetAsync("/Realms?editRealmId=terres-aube");
+        Assert.DoesNotContain("Modifier le plan", WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms/terres-aube?section=maintenance")));
+        using var response = await browser.GetAsync("/CreateRealm?editRealmId=terres-aube");
         Assert.Equal(HttpStatusCode.Conflict, response.StatusCode);
     }
 
@@ -243,9 +244,9 @@ public sealed class RealmsTopologyEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = PlanForm(await AdminFactory.Token(browser, "/Realms"));
+        var form = PlanForm(await AdminFactory.Token(browser, "/CreateRealm"));
         foreach (var key in form.Keys.Where(key => key.StartsWith("Input.Islands[", StringComparison.Ordinal)).ToArray()) form.Remove(key);
-        using var response = await browser.PostAsync("/Realms?handler=Create", AdminFactory.Form(form));
+        using var response = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         var call = Assert.Single(factory.Realms.Calls, call => call.Method == HttpMethod.Post);
         Assert.Equal(0, call.Body!.Value.GetProperty("topology").GetProperty("islands").GetArrayLength());
@@ -257,7 +258,7 @@ public sealed class RealmsTopologyEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        using var response = await browser.PostAsync("/Realms?handler=SaveTopology", AdminFactory.Form(new()));
+        using var response = await browser.PostAsync("/CreateRealm?handler=SaveTopology", AdminFactory.Form(new()));
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         Assert.Empty(factory.Realms.Calls);
     }

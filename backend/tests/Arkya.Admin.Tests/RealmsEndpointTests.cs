@@ -16,6 +16,7 @@ public sealed class RealmsEndpointTests
 
     [Theory]
     [InlineData("/Realms")]
+    [InlineData("/CreateRealm")]
     [InlineData("/Realms/terres-aube")]
     public async Task RealmPagesRequireAuthentication(string path)
     {
@@ -26,7 +27,7 @@ public sealed class RealmsEndpointTests
     }
 
     [Theory]
-    [InlineData("/Realms?handler=Create")]
+    [InlineData("/CreateRealm?handler=Create")]
     [InlineData("/Realms/terres-aube?handler=Deploy")]
     public async Task RealmMutationsRequireAntiforgery(string path)
     {
@@ -47,7 +48,7 @@ public sealed class RealmsEndpointTests
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms"));
         Assert.Contains("La gestion des realms est désactivée", html);
         var token = AdminFactory.Input(html, "__RequestVerificationToken");
-        Assert.Equal(HttpStatusCode.NotFound, (await browser.PostAsync("/Realms?handler=Create", AdminFactory.Form(CreateForm(token)))).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(CreateForm(token)))).StatusCode);
         Assert.Empty(factory.Realms.Calls);
         AdminFactory.NoSecrets(html);
     }
@@ -73,10 +74,10 @@ public sealed class RealmsEndpointTests
         factory.Realms.Options = factory.Realms.Options with { Targets = [new("test-cluster", "Bêta", "arkya-beta-realm", "beta-web")] };
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync("/Realms");
+        var html = await browser.GetStringAsync("/CreateRealm");
         Assert.Equal("beta-web", AdminFactory.Input(html, "Input.RealmId"));
         var token = AdminFactory.Input(html, "__RequestVerificationToken");
-        using var result = await browser.PostAsync("/Realms?handler=Create", AdminFactory.Form(CreateForm(token)));
+        using var result = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(CreateForm(token)));
         Assert.Equal(HttpStatusCode.OK, result.StatusCode);
         Assert.Contains("Cette cible est réservée au realm beta-web", WebUtility.HtmlDecode(await result.Content.ReadAsStringAsync()));
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method == HttpMethod.Post);
@@ -88,11 +89,11 @@ public sealed class RealmsEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var token = await AdminFactory.Token(browser, "/Realms");
+        var token = await AdminFactory.Token(browser, "/CreateRealm");
         var form = CreateForm(token);
         form["Input.Image"] = "attacker.example/extra-image:latest";
         form["Input.DisplayName"] = "  Les Terres d'Aube  ";
-        using var result = await browser.PostAsync("/Realms?handler=Create", AdminFactory.Form(form));
+        using var result = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.Redirect, result.StatusCode);
         Assert.Equal("/Realms/terres-aube", result.Headers.Location!.OriginalString);
         var call = Assert.Single(factory.Realms.Calls, call => call.Method == HttpMethod.Post);
@@ -119,10 +120,10 @@ public sealed class RealmsEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var token = await AdminFactory.Token(browser, "/Realms");
+        var token = await AdminFactory.Token(browser, "/CreateRealm");
         var form = CreateForm(token);
         form[field] = value;
-        using var result = await browser.PostAsync("/Realms?handler=Create", AdminFactory.Form(form));
+        using var result = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, result.StatusCode);
         var html = await result.Content.ReadAsStringAsync();
         Assert.Contains("validation-summary-errors", html);
@@ -139,7 +140,7 @@ public sealed class RealmsEndpointTests
         factory.Realms.Realm = factory.Realms.Realm with { Status = status, Revision = revision, LastError = "private upstream details " + AdminFactory.RealmsAdminKey };
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var html = await browser.GetStringAsync("/Realms/terres-aube");
+        var html = await browser.GetStringAsync("/Realms/terres-aube?section=maintenance");
         Assert.Contains(button, WebUtility.HtmlDecode(html));
         Assert.Equal(revision.ToString(), AdminFactory.Input(html, "ExpectedRevision"));
         AdminFactory.NoSecrets(html);
@@ -164,7 +165,7 @@ public sealed class RealmsEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var form = new Dictionary<string, string> { ["__RequestVerificationToken"] = await AdminFactory.Token(browser, "/Realms/terres-aube") };
+        var form = new Dictionary<string, string> { ["__RequestVerificationToken"] = await AdminFactory.Token(browser, "/Realms/terres-aube?section=maintenance") };
         if (revision is not null) form["ExpectedRevision"] = revision;
         Assert.Equal(HttpStatusCode.BadRequest, (await browser.PostAsync("/Realms/terres-aube?handler=Deploy", AdminFactory.Form(form))).StatusCode);
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
@@ -176,7 +177,7 @@ public sealed class RealmsEndpointTests
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var token = await AdminFactory.Token(browser, "/Realms/terres-aube");
+        var token = await AdminFactory.Token(browser, "/Realms/terres-aube?section=maintenance");
         factory.Realms.WriteError = HttpStatusCode.Conflict;
         factory.Realms.Realm = factory.Realms.Realm with { Revision = 3 };
         using var result = await browser.PostAsync("/Realms/terres-aube?handler=Deploy", AdminFactory.Form(new()
@@ -197,7 +198,7 @@ public sealed class RealmsEndpointTests
         factory.Realms.Options = factory.Realms.Options with { DeploymentEnabled = false };
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        var token = await AdminFactory.Token(browser, "/Realms/terres-aube");
+        var token = await AdminFactory.Token(browser, "/Realms/terres-aube?section=maintenance");
         using var result = await browser.PostAsync("/Realms/terres-aube?handler=Deploy", AdminFactory.Form(new()
         {
             ["__RequestVerificationToken"] = token, ["ExpectedRevision"] = "1"
