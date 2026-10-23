@@ -24,8 +24,8 @@ droits bêta et audit ; Characters applique le contrôle bêta à l'admission et
 aux renouvellements. Admin lit ces données métier via les API privées ; sa propre base MongoDB conserve uniquement ses sessions.
 La fiche personnage projette également les statistiques du snapshot autoritaire
 et les quêtes persistées, sans exposer le JSON de simulation brut. Les sacs,
-la banque et l'équipement restent explicitement indisponibles tant que leur
-persistance serveur n'est pas intégrée ; voir la [fiche personnage](ADMIN_CONSOLE.md#fiche-personnage).
+la banque et l'équipement sont sauvegardés atomiquement avec l'état du personnage
+et affichés dans la fiche ; voir la [persistance des possessions](CHARACTER_POSSESSIONS.md).
 
 Arkya utilise Unity DOTS (Data-Oriented Technology Stack) pour la simulation temps réel et Netcode for Entities pour le multijoueur sous autorité serveur. La simulation, exécutée par un serveur dédié Unity, est séparée des services ASP.NET Core qui possèdent les comptes et les données persistantes. La décision sur ces services est détaillée dans [0002 — Services backend](decisions/0002-backend-services.md).
 
@@ -92,7 +92,7 @@ La simulation s'appuie sur Unity DOTS : Entities (ECS), le C# Job System et Burs
 
 La [première base d'inventaire et de récolte](GAMEPLAY_FOUNDATION.md), dans `Unity3D/Arkya/Assets/Arkya/Gameplay/`, fournit des statistiques, jusqu'à 150 emplacements, le portage, les nœuds de ressources et les effets d'outils/pierres. `HarvestSystem` applique les demandes uniquement en monde serveur ; son authoring doit être placé dans une SubScene. Cette base reste indépendante de l'île et du prototype : aucune UI, RPC, association de connexion, migration d'area ou persistance n'est encore branchée. `CharacterStats.Health` concerne ces entités indépendantes ; le combat du prototype conserve son unique état de vie dans `PrototypeActor.Health`. Leur future intégration devra unifier cette propriété, sans ajouter une seconde source de vérité sur un même acteur.
 
-Le serveur dédié demande les données initiales et transmet les mutations persistantes à leurs services propriétaires. Le client ne fournit jamais un résultat de combat, un solde ou un inventaire faisant autorité. La première persistance de progression concerne les quêtes de type « tuer N ennemis » : sauvegardes regroupées, concurrence optimiste et retries idempotents. Les autres mutations de gameplay restent à définir.
+Le serveur dédié demande les données initiales et transmet les mutations persistantes à leurs services propriétaires. Le client ne fournit jamais un résultat de combat, un solde ou un inventaire faisant autorité. La première persistance de progression concerne les quêtes de type « tuer N ennemis » : sauvegardes regroupées, concurrence optimiste et retries idempotents. Les sacs, la banque et l'équipement de l'acteur admis utilisent désormais le même bail et la même révision que sa sauvegarde de monde ; les systèmes de gain et les interactions d'objets restent à raccorder.
 
 ### Création, apparence et entrée sur l’île
 
@@ -131,7 +131,7 @@ Dans l’Editor, le bouton **Explorer l’île (Editor)** charge `StarterIsland`
 
 En WebGL, `CharacterWebSessionBridge` reçoit la session du site et Unity la revalide ; aucun essai loopback n’est autorisé. Après sélection du realm/personnage, Characters délivre un ticket court. `CharacterNetworkWorlds` crée uniquement un client WebSocket ; `CharacterServerAdmissionSystem` consomme ce ticket via HTTPS avant `ConnectionApproved` et le spawn du ghost. L’identité et l’apparence répliquées viennent de la réponse serveur. Chaque ghost porte un propriétaire Netcode, tandis que la présentation interpole tous les acteurs et réserve les entrées/caméra au personnage possédé.
 
-Le dedicated charge une copie de l’île avec colliders préparés avant stripping. Il réutilise la simulation ECS de terrain et les collisions statiques Unity, renouvelle la lease toutes les 20 secondes et sauvegarde position/orientation toutes les 15 secondes ainsi qu’à la fermeture. Les écritures sont conditionnées par lease, époque et révision. Une expiration ou un refus d’autorité arrête l’acteur. Le [guide bêta web](WEB_BETA.md) conserve le parcours historique. Le [runtime de handoff StarterIsland](STARTER_ISLAND_HANDOFF.md) ajoute en version 2 une topologie de partitions et le transfert du snapshot de déplacement avec sa lease. Les quêtes, l’inventaire et le combat du prototype gameplay ne sont pas intégrés à cet acteur admis.
+Le dedicated charge une copie de l’île avec colliders préparés avant stripping. Il réutilise la simulation ECS de terrain et les collisions statiques Unity, renouvelle la lease toutes les 20 secondes et sauvegarde position/orientation toutes les 15 secondes ainsi qu’à la fermeture. Les écritures sont conditionnées par lease, époque et révision. Une expiration ou un refus d’autorité arrête l’acteur. Le [guide bêta web](WEB_BETA.md) conserve le parcours historique. Le [runtime de handoff StarterIsland](STARTER_ISLAND_HANDOFF.md) ajoute en version 2 une topologie de partitions et le transfert du snapshot de déplacement avec sa lease. Les [possessions](CHARACTER_POSSESSIONS.md) de l'acteur admis sont maintenant conservées dans ces sauvegardes et transferts ; les quêtes, interactions de récolte et le combat du prototype gameplay restent séparés.
 
 ### Realms et domaines de simulation
 

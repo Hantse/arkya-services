@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Arkya.Characters.Api.Contracts;
 using Arkya.ServiceDefaults;
+using Arkya.ServiceDefaults.Characters;
 using Microsoft.Extensions.Options;
 
 namespace Arkya.Characters.Api.Application;
@@ -162,7 +163,8 @@ public sealed partial class GameAdmissionService(ICharacterRepository characters
     public async Task<GameResult<SavedWorldState>> SaveAsync(Guid characterId, DedicatedServerIdentity server,
         SaveWorldStateRequest request, CancellationToken cancellationToken)
     {
-        if (request.ExpectedRevision is < 0 or long.MaxValue || !Valid(request.Position, request.Forward) || !ValidSimulation(request.Simulation, false))
+        if (request.ExpectedRevision is < 0 or long.MaxValue || !Valid(request.Position, request.Forward) || !ValidSimulation(request.Simulation, false) ||
+            request.Possessions is not null && !CharacterPossessionRules.IsValid(request.Possessions))
             return new(Error: "invalid_request", Status: 400);
         for (var attempt = 0; attempt < 5; attempt++)
         {
@@ -178,11 +180,13 @@ public sealed partial class GameAdmissionService(ICharacterRepository characters
             if (!Owns(current, server, request.LeaseId, request.AuthorityEpoch, now) || sessionExpiry <= now) return new(Error: "lease_rejected", Status: 409);
             var state = current!.State;
             if (state is not null && state.Revision == request.ExpectedRevision + 1 && state.Position == request.Position && state.Forward == request.Forward &&
-                (request.Simulation is null || request.Simulation == state.Simulation))
+                (request.Simulation is null || request.Simulation == state.Simulation) &&
+                (request.Possessions is null || CharacterPossessionRules.Equivalent(request.Possessions, state.Possessions)))
                 return new(state);
             if ((state?.Revision ?? 0) != request.ExpectedRevision) return new(Error: "state_conflict", Status: 409);
             var nextState = new SavedWorldState(request.ExpectedRevision + 1, request.Position!, request.Forward!)
-                { Simulation = request.Simulation ?? state?.Simulation, IslandId = state?.IslandId ?? current.Area?.AreaId };
+                { Simulation = request.Simulation ?? state?.Simulation, Possessions = request.Possessions ?? state?.Possessions,
+                    IslandId = state?.IslandId ?? current.Area?.AreaId };
             var next = current with { Version = current.Version + 1, State = nextState,
                 SessionExpiresAt = sessionExpiry, LeaseExpiresAt = Min(current.LeaseExpiresAt, sessionExpiry) };
             if (await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.ActiveLease)) return new(nextState);

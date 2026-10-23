@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Globalization;
 using Arkya.Characters.Api.Contracts;
 using Arkya.ServiceDefaults.Characters;
 
@@ -20,6 +21,7 @@ public sealed class CharacterAdminDetailService(ICharacterAdminRepository admin,
         if (lease is not null && (lease.AccountId != character.AccountId || lease.RealmId != character.RealmId)) lease = null;
         var quests = await admin.ListQuestsAsync(characterId, questPage, questPageSize, cancellationToken);
         var appearance = character.Appearance;
+        var possessions = CharacterAdminPossessionsProjection.Read(lease?.State?.Possessions);
         var world = lease?.State is { } state ? new AdminCharacterWorldState(state.Revision, lease.ServerId,
             lease.Area?.AreaId, lease.Area?.ContentId, state.IslandId, state.Position.X, state.Position.Y,
             state.Position.Z, state.Forward.X, state.Forward.Z) : null;
@@ -27,8 +29,35 @@ public sealed class CharacterAdminDetailService(ICharacterAdminRepository admin,
             appearance.HeightCm, appearance.Skin, appearance.HairStyle, appearance.HairColor, appearance.EyeColor,
             appearance.OutfitColor), now, lease?.LastConnectedAt, world,
             CharacterAdminGameplaySnapshot.Read(lease?.State?.Simulation), quests,
-            new("not_persisted"), new("not_persisted"), new("not_persisted"));
+            possessions.Bags, possessions.Bank, possessions.Equipment);
     }
+}
+
+public static class CharacterAdminPossessionsProjection
+{
+    public static (AdminCharacterSection Bags, AdminCharacterSection Bank, AdminCharacterSection Equipment)
+        Read(CharacterPossessionsSnapshot? value)
+    {
+        var status = value is null ? "not_saved" : value.SchemaVersion != CharacterPossessionRules.SchemaVersion ? "unsupported" :
+            !CharacterPossessionRules.IsValid(value) ? "invalid" : "available";
+        if (status != "available") return (new(status), new(status), new(status));
+        var tool = value!.HarvestTool;
+        return (Storage(value.Bags), Storage(value.Bank), new("available")
+        {
+            Items = value.Equipment.OrderBy(item => item.Slot, StringComparer.Ordinal)
+                .Select(item => new AdminCharacterStoredItem(item.Slot, item.ItemId, item.Quantity)).ToArray(),
+            HarvestTool = tool is null ? null : new(tool.Family, tool.Level, tool.BaseYieldBonusBps,
+                tool.YieldBonusPerLevelBps, tool.SocketCapacity,
+                tool.Stones.Select(stone => new AdminCharacterSocketedStone(stone.YieldBonusBps, stone.ResourceWeightReductionBps)).ToArray())
+        });
+    }
+
+    private static AdminCharacterSection Storage(CharacterStorageSnapshot value) => new("available")
+    {
+        SlotCapacity = value.SlotCapacity,
+        Items = value.Slots.OrderBy(item => item.Slot)
+            .Select(item => new AdminCharacterStoredItem(item.Slot.ToString(CultureInfo.InvariantCulture), item.ItemId, item.Quantity)).ToArray()
+    };
 }
 
 public static class CharacterAdminGameplaySnapshot
@@ -48,7 +77,7 @@ public static class CharacterAdminGameplaySnapshot
             var actor = document.RootElement;
             if (!Int(actor, "version", out var version)) return Unavailable("invalid");
             if (version == 1) return Unavailable("not_saved");
-            if (version != 2) return Unavailable("unsupported");
+            if (version is not (2 or 3)) return Unavailable("unsupported");
             if (!Object(actor, "gameplay", out var gameplay) || !Int(gameplay, "version", out var gameplayVersion))
                 return Unavailable("invalid");
             if (gameplayVersion != 1) return Unavailable("unsupported");

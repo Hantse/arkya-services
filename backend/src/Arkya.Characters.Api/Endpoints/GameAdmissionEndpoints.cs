@@ -21,7 +21,8 @@ public static class GameAdmissionEndpoints
             return Response(await service.IssueAsync(characterId, accountId, expiry, reference, request, cancellationToken));
         }).RequireAuthorization().RequireCors(BrowserClientOptions.Policy);
 
-        var internalApi = app.MapGroup("/internal/game").AllowAnonymous();
+        var internalApi = app.MapGroup("/internal/game").AllowAnonymous()
+            .WithMetadata(new Microsoft.AspNetCore.Mvc.RequestSizeLimitAttribute(256 * 1024));
         internalApi.AddEndpointFilter(async (context, next) =>
         {
             var values = context.HttpContext.Request.Headers["X-Arkya-Dedicated-Key"];

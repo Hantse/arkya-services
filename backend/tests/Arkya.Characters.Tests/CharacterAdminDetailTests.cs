@@ -74,14 +74,105 @@ public sealed class CharacterAdminDetailTests
         Assert.Equal(3, detail.Quests.Total);
         Assert.Equal("hunt-two", Assert.Single(detail.Quests.Items).QuestId);
         Assert.True(detail.Quests.Items[0].Completed);
-        Assert.Equal("not_persisted", detail.Bags.Status);
-        Assert.Equal("not_persisted", detail.Bank.Status);
-        Assert.Equal("not_persisted", detail.Equipment.Status);
+        Assert.Equal("not_saved", detail.Bags.Status);
+        Assert.Equal("not_saved", detail.Bank.Status);
+        Assert.Equal("not_saved", detail.Equipment.Status);
         var json = await response.Content.ReadAsStringAsync();
         foreach (var secret in new[] { "private-", "ticketHash", "leaseId", "sessionReference", "authorityEpoch", "payload" })
             Assert.DoesNotContain(secret, json, StringComparison.OrdinalIgnoreCase);
         Assert.Equal(FixedTimeProvider.Now, repository.ObservedAt);
         Assert.Equal(0, factory.Identity.Calls);
+    }
+
+    [Fact]
+    public async Task DetailReturnsTheSavedContentsAndToolWithoutExposingAuthorityCredentials()
+    {
+        var repository = new DetailRepository();
+        var lease = Lease(repository.Character);
+        var snapshot = Possessions();
+        lease = lease with { State = lease.State! with { Possessions = snapshot } };
+        await using var factory = Factory(repository, lease);
+        using var client = factory.PlayerClient(null);
+        client.DefaultRequestHeaders.Add(CharacterAdminKeyValidator.HeaderName, AdminKey);
+        var response = await client.GetAsync($"/admin/characters/{repository.Character.Id:D}");
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var detail = (await response.Content.ReadFromJsonAsync<AdminCharacterDetail>())!;
+        Assert.Equal("available", detail.Bags.Status);
+        Assert.Equal(150, detail.Bags.SlotCapacity);
+        Assert.Equal(new AdminCharacterStoredItem("0", "resource:wood", 27), detail.Bags.Items[0]);
+        Assert.Equal(new AdminCharacterStoredItem("149", "travel-rations", 3), detail.Bags.Items[1]);
+        Assert.Equal("available", detail.Bank.Status);
+        Assert.Equal(80, detail.Bank.SlotCapacity);
+        Assert.Equal(new AdminCharacterStoredItem("79", "old-copper-ring", 1), Assert.Single(detail.Bank.Items));
+        Assert.Equal("available", detail.Equipment.Status);
+        Assert.Null(detail.Equipment.SlotCapacity);
+        Assert.Equal(new AdminCharacterStoredItem("chest", "traveller-tunic", 1), detail.Equipment.Items[0]);
+        Assert.Equal(new AdminCharacterStoredItem("main-hand", "valley-sword", 1), detail.Equipment.Items[1]);
+        var tool = detail.Equipment.HarvestTool!;
+        Assert.NotNull(tool);
+        Assert.Equal("ore", tool.Family);
+        Assert.Equal(4, tool.Level);
+        Assert.Equal(1250, tool.BaseYieldBonusBps);
+        Assert.Equal(200, tool.YieldBonusPerLevelBps);
+        Assert.Equal(2, tool.SocketCapacity);
+        Assert.Equal(new AdminCharacterSocketedStone(2500, 5000), tool.Stones[0]);
+        Assert.Equal(new AdminCharacterSocketedStone(500, 250), tool.Stones[1]);
+        var json = await response.Content.ReadAsStringAsync();
+        foreach (var secret in new[] { "private-", "ticketHash", "leaseId", "sessionReference", "authorityEpoch", "payload" })
+            Assert.DoesNotContain(secret, json, StringComparison.OrdinalIgnoreCase);
+        Assert.Equal(0, factory.Identity.Calls);
+    }
+
+    [Fact]
+    public void EmptySavedContainersAreAvailableAndDistinctFromAnAbsentSnapshot()
+    {
+        var empty = new CharacterPossessionsSnapshot(1, new(150, []), new(80, []), []);
+        var saved = CharacterAdminPossessionsProjection.Read(empty);
+        Assert.All(new[] { saved.Bags, saved.Bank, saved.Equipment }, section =>
+        {
+            Assert.Equal("available", section.Status);
+            Assert.Empty(section.Items);
+            Assert.Null(section.HarvestTool);
+        });
+        Assert.Equal(150, saved.Bags.SlotCapacity);
+        Assert.Equal(80, saved.Bank.SlotCapacity);
+        Assert.Null(saved.Equipment.SlotCapacity);
+        var absent = CharacterAdminPossessionsProjection.Read(null);
+        Assert.All(new[] { absent.Bags, absent.Bank, absent.Equipment }, section =>
+        {
+            Assert.Equal("not_saved", section.Status);
+            Assert.Null(section.SlotCapacity);
+            Assert.Empty(section.Items);
+            Assert.Null(section.HarvestTool);
+        });
+    }
+
+    [Fact]
+    public void InvalidOrUnsupportedPersistedPossessionsDoNotExposePartialContents()
+    {
+        var valid = Possessions();
+        var cases = new[]
+        {
+            (valid with { SchemaVersion = 99 }, "unsupported"),
+            (valid with { Bank = new(0, []) }, "invalid"),
+            (valid with { Bags = null! }, "invalid"),
+            (valid with { Equipment = [new("head", "painted-cap", 1), new("head", "other-cap", 1)] }, "invalid"),
+            (valid with { HarvestTool = valid.HarvestTool! with { Stones = [new(0, 10001)] } }, "invalid"),
+            (JsonSerializer.Deserialize<CharacterPossessionsSnapshot>("""
+                {"schemaVersion":1,"bags":{"slotCapacity":150,"slots":[]},"bank":{"slotCapacity":80,"slots":[]}}
+                """, new JsonSerializerOptions(JsonSerializerDefaults.Web))!, "invalid")
+        };
+        foreach (var (snapshot, status) in cases)
+        {
+            var projection = CharacterAdminPossessionsProjection.Read(snapshot);
+            Assert.All(new[] { projection.Bags, projection.Bank, projection.Equipment }, section =>
+            {
+                Assert.Equal(status, section.Status);
+                Assert.Empty(section.Items);
+                Assert.Null(section.SlotCapacity);
+                Assert.Null(section.HarvestTool);
+            });
+        }
     }
 
     [Fact]
@@ -107,20 +198,28 @@ public sealed class CharacterAdminDetailTests
     public async Task SnapshotFromAnInconsistentLeaseIsNotExposed()
     {
         var repository = new DetailRepository();
-        await using var factory = Factory(repository, Lease(repository.Character) with { AccountId = Guid.NewGuid() });
+        var lease = Lease(repository.Character);
+        lease = lease with { AccountId = Guid.NewGuid(), State = lease.State! with { Possessions = Possessions() } };
+        await using var factory = Factory(repository, lease);
         using var client = factory.PlayerClient(null);
         client.DefaultRequestHeaders.Add(CharacterAdminKeyValidator.HeaderName, AdminKey);
         var detail = (await client.GetFromJsonAsync<AdminCharacterDetail>($"/admin/characters/{repository.Character.Id:D}"))!;
         Assert.Null(detail.WorldState);
         Assert.Null(detail.LastConnectedAt);
         Assert.Equal("not_saved", detail.Gameplay.Status);
+        Assert.All(new[] { detail.Bags, detail.Bank, detail.Equipment }, section =>
+        {
+            Assert.Equal("not_saved", section.Status);
+            Assert.Empty(section.Items);
+        });
     }
 
     [Theory]
     [InlineData("not-json", "invalid")]
     [InlineData("[]", "invalid")]
     [InlineData("{\"version\":1}", "not_saved")]
-    [InlineData("{\"version\":3}", "unsupported")]
+    [InlineData("{\"version\":4}", "unsupported")]
+    [InlineData("{\"version\":3}", "invalid")]
     [InlineData("{\"version\":2}", "invalid")]
     [InlineData("{\"version\":2,\"gameplay\":{\"version\":2}}", "unsupported")]
     public void InvalidUnsupportedAndHistoricalPayloadsRemainDistinct(string payload, string expected)
@@ -170,6 +269,12 @@ public sealed class CharacterAdminDetailTests
         Assert.Equal("unsupported", CharacterAdminGameplaySnapshot.Read(new(2, GameplayPayload)).Status);
         Assert.Equal("not_saved", CharacterAdminGameplaySnapshot.Read(null).Status);
     }
+
+    private static CharacterPossessionsSnapshot Possessions() => new(1,
+        new(150, [new(149, "travel-rations", 3), new(0, "resource:wood", 27)]),
+        new(80, [new(79, "old-copper-ring", 1)]),
+        [new("main-hand", "valley-sword", 1), new("chest", "traveller-tunic", 1)])
+    { HarvestTool = new("ore", 4, 1250, 200, 2, [new(2500, 5000), new(500, 250)]) };
 
     private static GameLeaseRecord Lease(Character character) => new(character.Id, character.AccountId,
         "beta-web", "island-01", 5, "private-ticket-hash", FixedTimeProvider.Now.AddSeconds(60),

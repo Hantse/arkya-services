@@ -131,8 +131,52 @@
     else
     {
         var label = CharacterModel.Sections.Single(section => section.Id == Model.Section).Label;
-        <div class="section-heading"><h2 id="character-section-heading">@label</h2><span class="realm-status draft">Unavailable</span></div>
-        <div class="panel empty-state character-storage-state"><span class="character-storage-icon" aria-hidden="true"><partial name="_AdminIcon" model='@("items")' /></span><h3>@(Model.Section == "equipment" ? "Equipped items" : Model.Section == "bank" ? "Bank contents" : "Bag contents") are not yet persisted</h3><p>The game does not yet save @(Model.Section == "equipment" ? "equipped items" : Model.Section == "bank" ? "bank contents" : "bag contents") for this character. Their contents cannot be displayed until server saving is connected.</p><p class="muted">Unavailable data does not mean this character has no items.</p></div>
+        var equipment = Model.Section == "equipment";
+        var storage = equipment ? detail.Equipment : Model.Section == "bank" ? detail.Bank : detail.Bags;
+        <div class="section-heading"><h2 id="character-section-heading">@label</h2><span class="realm-status @(storage.Status == "available" ? "ready" : "draft")">@(storage.Status == "available" ? "Saved" : "Unavailable")</span></div>
+        @if (storage.Status == "available")
+        {
+            @if (storage.SlotCapacity is { } capacity)
+            {
+                <div class="panel character-storage-summary"><strong>@storage.Items.Length / @capacity slots occupied</strong><span class="muted">@storage.Items.Sum(item => (long)item.Quantity) item(s)</span></div>
+            }
+            @if (storage.Items.Length > 0)
+            {
+                <div class="panel table-scroll"><table class="realm-table character-items"><caption class="sr-only">Saved @label.ToLowerInvariant() contents</caption><thead><tr><th scope="col">Slot</th><th scope="col">Item</th><th scope="col">Quantity</th></tr></thead><tbody>
+                @foreach (var item in equipment ? storage.Items.OrderBy(item => item.Slot) : storage.Items.OrderBy(item => int.Parse(item.Slot, System.Globalization.CultureInfo.InvariantCulture)))
+                {
+                    var itemName = CharacterModel.ItemName(item.ItemId);
+                    <tr><th scope="row">@(equipment ? CharacterModel.EquipmentSlot(item.Slot) : CharacterModel.StorageSlot(item.Slot))</th><td><strong>@itemName</strong>@if (itemName != item.ItemId) { <small class="mono">@item.ItemId</small> }</td><td>@item.Quantity</td></tr>
+                }
+                </tbody></table></div>
+            }
+            else
+            {
+                <div class="panel empty-state"><h3>@(equipment ? "No equipped items" : Model.Section == "bank" ? "Bank is empty" : "Bags are empty")</h3><p>@(equipment ? "No items occupy an equipment slot in the saved state." : "The dedicated server saved this container with no items.")</p></div>
+            }
+            @if (equipment && storage.HarvestTool is { Level: > 0 } tool)
+            {
+                <div class="section-heading"><h3>Harvest tool</h3><span class="muted">Server-owned configuration</span></div>
+                <div class="panel"><dl class="detail-grid"><div><dt>Resource family</dt><dd>@CharacterModel.ResourceFamily(tool.Family)</dd></div><div><dt>Level</dt><dd>@tool.Level</dd></div><div><dt>Base yield bonus</dt><dd>@CharacterModel.Percent(tool.BaseYieldBonusBps)</dd></div><div><dt>Yield bonus per level</dt><dd>@CharacterModel.Percent(tool.YieldBonusPerLevelBps)</dd></div><div><dt>Stones</dt><dd>@tool.Stones.Length / @tool.SocketCapacity sockets occupied</dd></div></dl></div>
+                @if (tool.Stones.Length > 0)
+                {
+                    <div class="panel table-scroll character-tool-stones"><table class="realm-table"><caption class="sr-only">Saved harvest tool stones</caption><thead><tr><th scope="col">Socket</th><th scope="col">Yield bonus</th><th scope="col">Resource weight reduction</th></tr></thead><tbody>
+                    @for (var index = 0; index < tool.Stones.Length; index++)
+                    {
+                        <tr><th scope="row">@(index + 1)</th><td>@CharacterModel.Percent(tool.Stones[index].YieldBonusBps)</td><td>@CharacterModel.Percent(tool.Stones[index].ResourceWeightReductionBps)</td></tr>
+                    }
+                    </tbody></table></div>
+                }
+            }
+            else if (equipment)
+            {
+                <p class="muted">No harvest tool is equipped in the saved state.</p>
+            }
+        }
+        else
+        {
+            <div class="panel empty-state character-storage-state"><span class="character-storage-icon" aria-hidden="true"><partial name="_AdminIcon" model='@("items")' /></span><h3>@label unavailable</h3><p>@CharacterModel.PossessionsMessage(storage.Status)</p><p class="muted">Unavailable data does not mean this character has no items.</p></div>
+        }
     }
     </section>
 }

@@ -75,12 +75,23 @@ compteurs, état en cours/terminé, version du catalogue et révision. Il est pa
 par groupes de 25, jusqu'à 100 résultats par page. Les dates d'acceptation et de
 fin ainsi qu'un journal des transitions ne sont pas enregistrés actuellement.
 
-Les sacs, la banque et l'équipement ne disposent pas encore d'un contrat de
-persistance autoritaire dans ce parcours. Ces sections affichent donc
-**Unavailable**, avec l'explication correspondante ; elles ne présentent ni
-inventaire vide ni objets fictifs. Leur contenu réel nécessitera le raccordement
-des sauvegardes serveur. La fiche n'ajoute aucune mutation de progression,
-d'objet ou d'économie.
+Les sacs, la banque et l'équipement lisent le snapshot `possessions` sauvegardé
+par le dedicated avec la position et la simulation du personnage. Les sacs et
+la banque affichent les emplacements occupés, leur capacité, les identifiants
+réels d'items et les quantités. Les numéros d'emplacement sont présentés à partir
+de 1, sans supprimer les espaces libres entre piles. L'équipement affiche les
+emplacements nommés ; l'outil de récolte et les bonus exacts de ses pierres
+possèdent leur propre bloc. Les ressources de la fondation ont des libellés
+stables ; les autres objets conservent leur identifiant sauvegardé. Le brouillon
+du catalogue d'items ne remplace jamais une définition persistée.
+
+Une sauvegarde disponible et vide est explicitement présentée comme vide.
+L'absence de snapshot (`not_saved`), un format inconnu (`unsupported`) ou
+invalide (`invalid`) affichent **Unavailable**, sans inventaire à zéro.
+L'ancien statut `not_persisted` reste lisible pendant une mise à jour des
+services. Un personnage historique doit être chargé puis sauvegardé par un
+dedicated compatible pour disposer du nouveau snapshot. La fiche n'ajoute
+aucune mutation de progression, d'objet ou d'économie.
 
 ## Navigation
 
@@ -264,6 +275,16 @@ L'écran ne reçoit ni kubeconfig, ni YAML libre, ni shell. Voir le
 RBAC et TLS. Des réplicas prêts ne prouvent pas l'admission d'un client réel.
 
 ## Vérification
+
+Le raccordement des possessions a été vérifié avec **868 tests Admin et
+328 tests Characters réussis, sans échec ni test ignoré**, sur une instance
+MongoDB locale isolée. Après l'ajustement de la limite HTTP pour le snapshot
+complet, les 41 cas de sauvegarde/projection des possessions ont également
+réussi. Les rapports sont sous `artifacts/character-possessions/test-results/`.
+Les rendus Razor non vides des trois sections ont été inspectés sur ordinateur
+et mobile ; captures sous `output/playwright/character-possessions/`.
+La validation serveur Unity est détaillée dans le
+[guide des possessions](CHARACTER_POSSESSIONS.md#vérification).
 
 La fiche personnage du 23 octobre 2026 a été vérifiée avec **825 tests Admin
 réussis, 1 ignoré**, puis **287 tests Characters réussis, 14 ignorés**, sans échec.

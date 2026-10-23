@@ -32,5 +32,13 @@ public sealed record AdminCharacterQuestPage(AdminCharacterQuest[] Items, long T
 public sealed record AdminCharacterQuest(string QuestId, Guid CatalogVersion, int RequiredKills,
     int Kills, bool Completed, long Revision);
 
-// not_persisted means that no authoritative storage contract exists; it never means empty.
-public sealed record AdminCharacterSection(string Status);
+public sealed record AdminCharacterSection(string Status)
+{
+    public int? SlotCapacity { get; init; }
+    public AdminCharacterStoredItem[] Items { get; init; } = [];
+    public AdminCharacterHarvestTool? HarvestTool { get; init; }
+}
+public sealed record AdminCharacterStoredItem(string Slot, string ItemId, int Quantity);
+public sealed record AdminCharacterHarvestTool(string Family, int Level, int BaseYieldBonusBps,
+    int YieldBonusPerLevelBps, int SocketCapacity, AdminCharacterSocketedStone[] Stones);
+public sealed record AdminCharacterSocketedStone(int YieldBonusBps, int ResourceWeightReductionBps);

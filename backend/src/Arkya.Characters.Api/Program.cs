@@ -21,7 +21,7 @@ public partial class Program
         builder.Services.AddArkyaServiceDefaults(builder.Configuration);
         builder.Services.AddArkyaInternalHttp(builder.Configuration);
         builder.Services.AddArkyaProxyTrust(builder.Configuration);
-        builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 131072);
+        builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 262144);
         builder.Services.AddOptions<BrowserClientOptions>().BindConfiguration("WebClient")
             .Validate(value => value.IsValid(builder.Environment.IsDevelopment()), "Browser origins must be exact HTTPS origins.").ValidateOnStart();
         builder.Services.AddCors();
