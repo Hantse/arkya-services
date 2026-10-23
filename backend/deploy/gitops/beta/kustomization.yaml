@@ -67,25 +67,25 @@ configMapGenerator:
 images:
 - name: ghcr.io/hantse/arkya-services-identity
   newName: ghcr.io/hantse/arkya-services-identity
-  digest: sha256:9f211b17f03760fc17821eb88e11d18056d3463e435305ce638e6cc348ee3d5b
+  digest: sha256:1fa8786245f84cd4762e1072ec80a64da6af9bbcc7369784282d046093ce2eba
 - name: ghcr.io/hantse/arkya-services-gateway
   newName: ghcr.io/hantse/arkya-services-gateway
-  digest: sha256:f35228dc2fe6450c45b930c991f3c871750754d255bfd55f06efc0635be5a5c3
+  digest: sha256:cfc2b2228c9b7d86b50233c41878fdc71eee6fd7067ae09d57dcd594ecb0dad4
 - name: ghcr.io/hantse/arkya-services-characters
   newName: ghcr.io/hantse/arkya-services-characters
-  digest: sha256:72eca5b7413af910b49fbd87077bf7fbdf2eb402b170d9b25b107a0a7a3c45bb
+  digest: sha256:0287bb4f0658e62f92e00a6347fed26bd9e7f9a25206a65fad09bd7a2a01cffc
 - name: ghcr.io/hantse/arkya-services-content
   newName: ghcr.io/hantse/arkya-services-content
-  digest: sha256:ab5b5819f911e0bb1197822dd4740790d83532aa694874c97aa04a14f7dc4c59
+  digest: sha256:b9902cb27af4f85393c65ab75b42d07238d57387769510be92b89305b73467f0
 - name: ghcr.io/hantse/arkya-services-realms
   newName: ghcr.io/hantse/arkya-services-realms
-  digest: sha256:ed8e1e6cb1b8ee9e986a8eb3f4049974f38b41361f900154b801d644492e5d1f
+  digest: sha256:287adb4a0cd894152e52490bc68daf619ec34efd4df84417ddb912df93ca4f5e
 - name: ghcr.io/hantse/arkya-services-admin
   newName: ghcr.io/hantse/arkya-services-admin
-  digest: sha256:d6b46ced80406ee574d63abc39fdfb6d488763d58f552d9a5b235d97034b011c
+  digest: sha256:efc7a3788621224362354afdbcfb489c49c1bf59e34267e4f2a724b34e65ef58
 - name: ghcr.io/hantse/arkya-services-backend
   newName: ghcr.io/hantse/arkya-services-backend
-  digest: sha256:c396fc62f3d3b7eb08f5ef0ce70faa66cde6a59d12077ccba8a9bb0bd79d9282
+  digest: sha256:380a586858d207fcf6af5f7392c0668b7595c608108026f5533cc99667066c87
 - name: ghcr.io/hantse/arkya-services-frontend
   newName: ghcr.io/hantse/arkya-services-frontend
-  digest: sha256:9e39711b9e21f782894b81e07c09b60bdd02935c2f6f07994e398e9ed1523f68
+  digest: sha256:e4a55c6d0eca1e25f4b781f26c5215d2715f15b16dd01ecdf22d3f4ace7da50e
