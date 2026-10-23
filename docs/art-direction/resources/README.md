@@ -75,6 +75,7 @@ pas recopier le motif d'écorce sur les objets minéraux.
 | Outils invoqués | Hache, pioche et faucille, 0 à 3 sockets vides | Mana bleu, orange, vert | Proposition à examiner | [36 modèles animés](outils-invoques/README.md) |
 | Structures | Fondation, mur plein, fenêtre, porte, plafond | Chaume, bois, pierre | Proposition à examiner | [15 pièces modulaires](structures/README.md) |
 | Familiers totems | Loup, renard riggés | 12 pelages par animal, 12 teintes de référence par palette | Loup V10 et renard V2 à examiner | [Atelier des totems](totems/README.md) |
+| Armes et boucliers — concepts 2D | 3 variantes × 7 catégories | Acier/cuir, bois/jade, cristal turquoise | Propositions à examiner | [21 concepts du 23 octobre](armes/concepts-2026-10-23/README.md) |
 
 Les neuf premières familles comptent **108 modèles 3D**. Les trois formes de
 mares de mana ajoutent neuf variantes colorées, soit **117 modèles 3D validés**,

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "status": "proposed-awaiting-art-review",
+  "medium": "2D concept sheets",
+  "generator": "built-in image_gen.imagegen",
+  "sheetCount": 7,
+  "conceptCount": 21,
+  "visualReview": "All seven sheets inspected; three complete concepts per sheet; labels and categories readable; one-hand/two-hand grips distinguishable; all three bowstrings visible. No major defect identified.",
+  "checks": [
+    "PNG decode and dimensions",
+    "SHA-256 matches original generated outputs",
+    "7 sheets / 21 unique concept codes",
+    "Local collection README links resolve"
+  ],
+  "sheets": [
+    {
+      "file": "01-epees-une-main.png",
+      "codes": [
+        "E1-A",
+        "E1-B",
+        "E1-C"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1806866,
+      "sha256": "d5bd77a84e7f70a001479a5949679e6652852416053e9e5fd054b2c402736932",
+      "originalOutputPreserved": true
+    },
+    {
+      "file": "02-epees-deux-mains.png",
+      "codes": [
+        "E2-A",
+        "E2-B",
+        "E2-C"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1715007,
+      "sha256": "8f8fa12d43596de1f7b4e250f6d8f29119665632055ccb63030ab72f13e07857",
+      "originalOutputPreserved": true
+    },
+    {
+      "file": "03-haches-une-main.png",
+      "codes": [
+        "H1-A",
+        "H1-B",
+        "H1-C"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2004418,
+      "sha256": "c3a6afeb53944879f9966a168375a65da6343611c28c02d8de7447a759059ae2",
+      "originalOutputPreserved": true
+    },
+    {
+      "file": "04-haches-deux-mains.png",
+      "codes": [
+        "H2-A",
+        "H2-B",
+        "H2-C"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1733853,
+      "sha256": "aa431dd6de8eb5b91e547f6738bbac452d906e0d3b2803ca6e6d77441fb781de",
+      "originalOutputPreserved": true
+    },
+    {
+      "file": "05-boucliers.png",
+      "codes": [
+        "B-A",
+        "B-B",
+        "B-C"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2243262,
+      "sha256": "d4ecf2483c5aca283da7ecfcf7c616b2e3dad4f02c8713081d8c26be35d31859",
+      "originalOutputPreserved": true
+    },
+    {
+      "file": "06-batons.png",
+      "codes": [
+        "BT-A",
+        "BT-B",
+        "BT-C"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1730672,
+      "sha256": "ae47682333425cf7aa0f4229d5e1309dcbc28baf862e22ec52034c1e6c84ccc9",
+      "originalOutputPreserved": true
+    },
+    {
+      "file": "07-arcs.png",
+      "codes": [
+        "AR-A",
+        "AR-B",
+        "AR-C"
+      ],
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1553403,
+      "sha256": "f61c5d00d7470b77dbd33e0b9cb17f5c96d73d3f9509b3e5df67c9841bdd2945",
+      "originalOutputPreserved": true
+    }
+  ]
+}
