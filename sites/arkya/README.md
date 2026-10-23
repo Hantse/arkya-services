@@ -85,7 +85,7 @@ de cette persistance. [Contrats, migration et limites Unity](../../docs/AUTH_SES
 `dist/play.html` est la page de téléchargement du launcher, en français et en anglais.
 Les liens **Installer le launcher** de l’accueil, des menus et du compte y mènent
 en conservant la langue. Le bouton principal télécharge l’installateur Windows
-`Arkya-Launcher-Setup.exe` depuis la release versionnée `launcher-v0.3.1` ; la page
+`Arkya-Launcher-Setup.exe` depuis la release versionnée `launcher-v0.4.0` ; la page
 explique l’assistant d’installation du launcher, sa connexion Discord dans le
 navigateur, puis le choix du canal et du dossier du jeu dans **Installer le jeu**,
 avant **Jouer**. Le dossier du jeu peut être choisi sur un
@@ -109,6 +109,13 @@ Les adresses sont fixées dans le launcher. Les archives et leur publication
 sont décrites dans le [guide du launcher](../../docs/WINDOWS_LAUNCHER.md).
 Modifier le lien de téléchargement lorsque la release du launcher change ;
 les mises à jour du jeu passent par le manifeste.
+
+Le launcher `0.4.0` mémorise la connexion avec la protection Windows et
+propose ses propres mises à jour. Son manifeste indépendant est servi par
+`dist/downloads/launcher/latest-win-x64.json`. Le passage initial depuis
+`0.3.1` demande l’installation de `0.4.0` ; les mises à jour suivantes sont
+proposées dans le launcher. Identity et Gateway doivent exposer les routes
+natives de renouvellement avant cette distribution.
 
 Les modules et tests du client WebGL historique restent conservés pour les
 contrats et outils de build ; ils ne sont plus importés par les pages publiques.

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "version": "0.4.0",
+  "platform": "win-x64",
+  "installerUrl": "https://github.com/Hantse/arkya-services/releases/download/launcher-v0.4.0/Arkya-Launcher-Setup.exe",
+  "installerSize": 47248297,
+  "sha256": "65993eae4915f40085d6d3b15ff2546cdf45c69116a2c82e4d9e243d185da5a2"
+}
