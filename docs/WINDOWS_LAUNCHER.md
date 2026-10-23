@@ -3,18 +3,31 @@
 `launcher/` fournit un launcher WPF .NET 10, en français, pour Windows x64.
 Il vérifie les versions disponibles, télécharge et installe un build Unity,
 puis lance son exécutable. La publication autonome inclut .NET et ne demande
-pas de droits administrateur. La connexion Discord et l’admission restent
-gérées par le client Unity ; le launcher ne reçoit aucun secret de service.
+pas de droits administrateur. Au démarrage, sa page de connexion Discord
+précède l’accès au jeu, aux actualités et aux paramètres. Le launcher ne reçoit
+aucun secret de service.
 
 Le launcher distribué depuis la page [Jouer](https://arkya.online/play.html)
-utilise le canal `https://arkya.online/downloads/windows/latest-win-x64.json`.
+propose les canaux **Bêta** et **Stable**, avec Bêta sélectionné par défaut.
+Leurs adresses sont fixées dans le code :
+
+| Canal | Manifeste officiel |
+| --- | --- |
+| Bêta | `https://arkya.online/downloads/windows/latest-win-x64.json` |
+| Stable | `https://arkya.online/downloads/windows/latest-stable-win-x64.json` |
+
+Aucun champ d’adresse, fichier de configuration ou variable d’environnement
+ne permet de remplacer ces adresses dans le launcher distribué. Les anciennes
+préférences `manifestUrl` et l’ancien `launcher-settings.json` ne sont plus
+utilisés. Choisir Stable ne réutilise jamais une publication Bêta.
+
 Les archives versionnées sont hébergées dans les publications GitHub du dépôt
 `Hantse/arkya-services`. Le manifeste public contient les tailles et l’empreinte
 SHA-256 du ZIP réellement construit. Le launcher peut ouvrir une version déjà
-installée si le serveur de distribution est indisponible. Cela ne rend pas les
-services de jeu accessibles hors ligne.
+installée si le serveur de distribution est indisponible, après connexion du
+compte. Cela ne rend pas les services de jeu accessibles hors ligne.
 
-Le launcher `0.2.0` se distribue avec un installateur Windows autonome,
+Le launcher `0.3.0` se distribue avec un installateur Windows autonome,
 `Arkya-Launcher-Setup.exe`. Il installe le launcher pour l’utilisateur courant,
 par défaut dans `%LOCALAPPDATA%\Programs\Arkya Launcher`, avec choix du dossier
 dans l’assistant, raccourci Démarrer et raccourci bureau facultatif. Le runtime
@@ -30,21 +43,38 @@ françaises depuis `https://api.arkya.online/v1/content/posts`. Leur contenu est
 administré dans **Admin → Publications** ; voir [le guide](PUBLICATIONS.md).
 Les articles sont affichés en texte brut. Une panne de ce flux ne bloque ni
 l’installation ni le lancement ; les notes du manifeste restent disponibles
-dans le panneau de version. Les paramètres de distribution sont accessibles
-par la roue dentée en bas de la barre latérale.
+dans le panneau de version. Le canal se choisit dans le launcher ; la roue
+dentée donne accès au dossier du jeu et aux informations d’installation.
+
+## Connexion au launcher
+
+Sans session, seule la page **Continuer avec Discord** est accessible.
+Elle ouvre le navigateur pour l’autorisation Discord, puis le launcher attend
+le résultat et vérifie `GET /v1/auth/me` avant d’afficher l’accueil. Le parcours
+réutilise les challenges Identity avec une preuve S256 ; le secret Discord et
+les jetons Discord restent côté serveur. Le joueur peut annuler puis recommencer.
+
+Le bearer Arkya reste en mémoire : il n’est écrit ni dans les préférences ni
+dans les arguments du jeu. Fermer le launcher exige une nouvelle connexion
+au prochain démarrage. La session est vérifiée à nouveau avant chaque
+lancement ; une expiration ou un refus ramène à la page de connexion.
+**Déconnexion** ferme immédiatement l’accès à l’accueil et demande la révocation de la session. La connexion
+du site reste indépendante.
 
 ## Utilisation
 
 1. Télécharger `Arkya-Launcher-Setup.exe` sur la page **Installer le launcher**,
    l’ouvrir, puis suivre l’assistant. Le dossier du launcher se choisit pendant
    cette installation ; aucun droit administrateur n’est demandé.
-2. Ouvrir Arkya Launcher depuis le menu Démarrer. Si le canal n’est pas préconfiguré,
-   renseigner l’adresse HTTPS du manifeste
-   fournie par l’équipe Arkya dans **Paramètres de distribution**.
-3. La version est vérifiée au démarrage. Choisir **Installer le jeu**, sélectionner
+2. Ouvrir Arkya Launcher depuis le menu Démarrer et choisir **Continuer avec
+   Discord**. Autoriser la connexion dans le navigateur, puis revenir au launcher.
+3. Choisir **Bêta** ou **Stable**. La version du canal est vérifiée.
+   Choisir **Installer le jeu**, sélectionner
    le dossier du jeu, puis attendre le téléchargement. Le jeu peut être installé
    sur un autre disque que le launcher. Choisir ensuite **Jouer**.
-4. Une future version propose **Mettre à jour**. Une opération peut être annulée.
+4. Une future version du même canal propose **Mettre à jour**. Une opération peut
+   être annulée. Aucune version Stable n’est publiée à cette révision ; ce canal
+   affiche son indisponibilité et ne propose aucun téléchargement ni lancement.
 
 La page publique ne charge plus de lecteur Unity dans le navigateur. Son bouton
 **Installer le launcher** télécharge l’installateur `.exe` Windows ; le bouton **Jouer** du
@@ -58,6 +88,14 @@ personnages du compte, les royaumes disponibles et
 son royaume. Pour un compte déjà joué, le client retrouve le dernier royaume
 dont le serveur a accepté une admission, puis affiche les personnages de ce
 royaume. Le choix d’un autre royaume reste accessible.
+
+Le build actuellement publié `0.1.0-beta.20261023.1` conserve sa propre
+connexion Discord dans le client Unity après celle du launcher. Le verrou
+d’accès du launcher ne modifie pas ce binaire. Un futur client pourra recevoir
+la session du launcher par un canal Windows privé ; le manifeste devra alors
+déclarer explicitement `launcherSessionProtocol: 1`. Sans cette capacité
+(`0` par défaut), aucun transfert de session n’est tenté. Le bearer ne transite
+jamais dans une URL, un argument de processus ou un fichier.
 
 L’historique ne retient que les personnages encore détenus par le compte.
 S’il n’en reste aucun, ou si le dernier royaume n’est plus disponible ou
@@ -103,14 +141,20 @@ Les préférences de canal et de dossier sont conservées atomiquement dans
 `%LOCALAPPDATA%\Arkya\Launcher\launcher-preferences.json`, indépendamment du dossier
 du launcher et du jeu. Le premier démarrage reprend l’ancien fichier
 `%LOCALAPPDATA%\Arkya\Game\launcher-preferences.json` et reconnaît une installation
-historique désignée par `current.json`.
-`ARKYA_LAUNCHER_MANIFEST_URL` permet
-une configuration locale prioritaire ; sinon la préférence locale précède
-`launcher-settings.json` situé près de l’exécutable. Ne renseigner que des
-canaux officiels : le propriétaire du manifeste choisit le code téléchargé.
+historique désignée par `current.json`, comme installation Bêta. Une ancienne
+préférence contenant une adresse de manifeste est ignorée ; le canal Bêta est
+retenu à sa place sans perdre le dossier choisi.
 
-Chaque version possède un dossier distinct sous `releases/`. Le fichier
-`current.json` désigne la version active. Les versions précédentes sont
+La Bêta conserve le dossier de jeu choisi, ses sous-dossiers `releases/` et son
+`current.json` historique. Stable possède une installation séparée dans
+`channels/stable/` sous ce même dossier de base, avec ses propres releases,
+pointeur actif et verrou. Changer de canal ne remplace pas l’autre installation.
+Les nouveaux pointeurs indiquent leur canal et le launcher refuse de les
+utiliser pour un autre canal ; un ancien pointeur sans canal est reconnu
+seulement pour Bêta.
+
+Chaque version possède un dossier distinct sous `releases/` dans son installation.
+Le fichier `current.json` désigne la version active. Les versions précédentes sont
 conservées ; cette première version ne comporte pas de nettoyage automatique
 ni de retour de version dans l’interface. Quitter le jeu et le launcher avant
 de supprimer manuellement une ancienne version ; conserver celle référencée
@@ -194,6 +238,20 @@ Le contrat JSON est :
 | `sha256` | SHA-256 du ZIP, 64 caractères hexadécimaux |
 | `executable` | Chemin relatif de l’exécutable `.exe`, par exemple `Arkya.exe` |
 | `releaseNotes` | Texte facultatif, 16 000 caractères maximum |
+| `launcherSessionProtocol` | Facultatif, `0` par défaut ; `1` seulement pour un client compatible avec la remise privée de session |
+
+Un canal sans version publiée sert explicitement ce marqueur, avec son nom
+minuscule exact :
+
+```json
+{ "schemaVersion": 1, "channel": "stable", "available": false }
+```
+
+Le launcher affiche **Aucune version publiée**. Il ne prend pas le manifeste
+d’un autre canal, même si une Bêta est déjà installée. Pour ouvrir Stable,
+publier et vérifier d’abord un build destiné à ce canal, puis remplacer ce
+marqueur par son manifeste complet. La Bêta actuelle reste sur son adresse
+historique pour préserver les launchers précédents et la CI de publication.
 
 Les manifestes sont limités à 64 Kio, et les archives à 200 000 entrées.
 Le launcher refuse HTTP, y compris après redirection. Il borne les délais,
@@ -231,7 +289,6 @@ dans le dépôt. Le binaire produit localement est non signé.
 dotnet test launcher/Arkya.Launcher.slnx -c Release
 ./launcher/tests/Test-ReleasePackaging.ps1
 ./launcher/scripts/Publish-Launcher.ps1 `
-  -ManifestUrl $publicManifestUrl `
   -InnoSetupCompiler $isccPath `
   -OutputDirectory './artifacts/windows-launcher-release'
 ```
@@ -243,14 +300,14 @@ au poste de build ; le joueur n’en a pas besoin.
 
 Le script produit l’application autonome `win-x64`, l’installateur
 `Arkya-Launcher-Setup.exe` et le ZIP portable `Arkya-Launcher-win-x64.zip`. La
-version de l’installateur est lue dans le projet du launcher. Si
-`ManifestUrl` est omis, le launcher demande le canal dans ses paramètres ;
-aucun téléchargement du jeu ne peut commencer sans ce canal. Le flux public
-d’actualités reste indépendant de ce réglage. Les dossiers de sortie
+version de l’installateur est lue dans le projet du launcher. Les deux canaux
+officiels sont inclus dans l’application et ne demandent aucune configuration
+d’adresse. Le flux public d’actualités reste indépendant du canal du jeu,
+mais son affichage exige la connexion au launcher. Les dossiers de sortie
 existants sont refusés pour préserver une publication antérieure.
 
 Publier d’abord l’installateur dans une release immuable, puis modifier le lien
-du site. Le lien du launcher `0.2.0` utilise la release `launcher-v0.2.0` ; les
+du site. Le lien du launcher `0.3.0` utilise la release `launcher-v0.3.0` ; les
 mises à jour du jeu continuent à suivre le manifeste Windows et restent
 indépendantes de cette version du launcher.
 
@@ -276,7 +333,22 @@ Le runtime WPF n’est pas supprimé par trimming.
 
 ## Vérification
 
-La version `0.2.0` passe **63 tests Core**, dont le choix et la mémorisation du
+La version `0.3.0` dispose d’une suite de **132 tests Core** réussis pour les canaux, la migration,
+la connexion Discord et le transfert de session. Les tests WPF chargent les vrais
+écrans dans un dispatcher STA avec un dossier de préférences temporaire et un
+transport qui interdit le réseau. Ils vérifient le verrou de connexion, les
+commandes désactivées, l’expiration avec annulation et purge du contenu, et le
+rendu aux dimensions 1280 × 830 et 1040 × 720.
+
+```powershell
+dotnet test launcher/tests/Arkya.Launcher.Tests -c Release
+dotnet test launcher/tests/Arkya.Launcher.UiTests -c Release
+```
+
+Ces scénarios ne réalisent pas une connexion Discord réelle ni une admission
+dans un royaume public.
+
+La validation historique de la version `0.2.0` comptait **63 tests Core**, dont le choix et la mémorisation du
 dossier, la migration des préférences, la conservation des anciennes
 installations et l’annulation ou le refus d’une destination. La compilation WPF
 termine sans erreur ni avertissement. L’installateur réel a été installé,

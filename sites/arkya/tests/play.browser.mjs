@@ -3,7 +3,7 @@
 async (page) => {
   const base = new URL(page.url()).origin;
   const api = 'https://api.arkya.online';
-  const installer = 'https://github.com/Hantse/arkya-services/releases/download/launcher-v0.2.0/Arkya-Launcher-Setup.exe';
+  const installer = 'https://github.com/Hantse/arkya-services/releases/download/launcher-v0.3.0/Arkya-Launcher-Setup.exe';
   const checks = [];
   const errors = [];
   const requests = [];
@@ -46,6 +46,11 @@ async (page) => {
     await page.goto(`${base}/play.html?lang=fr`);
     check(await page.locator('#launcher-download').isVisible(), 'Download is immediately available without a session');
     check(await page.locator('#launcher-download').getAttribute('href') === installer, 'Download points directly to the versioned Windows launcher EXE installer');
+    const stable = await page.request.get(`${base}/downloads/windows/latest-stable-win-x64.json`);
+    check(stable.ok() && JSON.stringify(await stable.json()) === JSON.stringify({ schemaVersion: 1, channel: 'stable', available: false }), 'Stable distribution explicitly has no published release');
+    const beta = await page.request.get(`${base}/downloads/windows/latest-win-x64.json`);
+    const betaManifest = await beta.json();
+    check(beta.ok() && betaManifest.version === '0.1.0-beta.20261023.1' && betaManifest.packageUrl.includes('/windows-beta-2026.10.23.1/'), 'The existing Beta game publication is preserved separately');
     check(await page.locator('canvas, #game-cover, #game-fullscreen, #game-sign-in').count() === 0, 'The web player and its session gate are removed');
     for (const lang of ['en', 'fr']) {
       await page.getByRole('button', { name: lang === 'en' ? 'English' : 'Français', exact: true }).click();
@@ -53,7 +58,10 @@ async (page) => {
       check((await page.locator('meta[name="description"]').getAttribute('content')).includes(lang === 'en' ? 'Windows beta' : 'bêta Windows'), `${lang}: localized Windows metadata`);
       check((await page.locator('#launcher-format').innerText()).includes(lang === 'en' ? '.exe installer' : 'installateur .exe'), `${lang}: executable installer format is clear`);
       check((await page.locator('.installation-steps li').nth(0).innerText()).includes('Arkya-Launcher-Setup.exe'), `${lang}: launcher setup wizard instructions`);
-      check((await page.locator('.installation-steps li').nth(1).innerText()).includes(lang === 'en' ? 'Choose your folder' : 'Choisissez votre dossier'), `${lang}: player chooses the game installation folder`);
+      check((await page.locator('.installation-steps li').nth(1).innerText()).includes(lang === 'en' ? 'sign in with Discord in your browser' : 'connectez-vous avec Discord dans votre navigateur'), `${lang}: launcher Discord login comes before the game library`);
+      check((await page.locator('.installation-steps li').nth(2).innerText()).includes(lang === 'en' ? 'Choose your folder' : 'Choisissez votre dossier'), `${lang}: player chooses the game installation folder`);
+      check((await page.locator('.installation-steps li').nth(2).innerText()).includes(lang === 'en' ? 'Beta channel' : 'canal Bêta'), `${lang}: installation selects the published Beta channel`);
+      check((await page.locator('.launcher-note p').innerText()).includes(lang === 'en' ? 'no Stable version has been published yet' : 'aucune version Stable n’est encore publiée'), `${lang}: unavailable Stable is distinguished from Beta`);
       check(!/ZIP|extray|extract/i.test(await page.locator('.installation-steps').innerText()), `${lang}: no obsolete archive extraction instructions`);
       check((await page.locator('.launcher-note a').getAttribute('href')).includes(`lang=${lang}`), `${lang}: local navigation retains language`);
       for (const width of [1440, 1100, 820, 390, 320]) {
@@ -105,6 +113,7 @@ async (page) => {
       check(await noScriptPage.locator('#launcher-download').getAttribute('href') === installer, 'No-script download retains the versioned EXE URL');
       check((await noScriptPage.locator('.installation-steps').innerText()).includes('Arkya-Launcher-Setup.exe'), 'Setup instructions remain readable without JavaScript');
       check((await noScriptPage.locator('.installation-steps').innerText()).includes('Choisissez votre dossier'), 'Game folder instructions remain readable without JavaScript');
+      check((await noScriptPage.locator('.installation-steps').innerText()).includes('connectez-vous avec Discord dans votre navigateur'), 'Launcher login instructions remain readable without JavaScript');
     } finally { await noScriptContext.close(); }
     check(errors.length === 0, 'No uncaught browser exceptions');
   } finally {

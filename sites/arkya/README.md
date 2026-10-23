@@ -58,12 +58,14 @@ de cette persistance. [Contrats, migration et limites Unity](../../docs/AUTH_SES
 `dist/play.html` est la page de téléchargement du launcher, en français et en anglais.
 Les liens **Installer le launcher** de l’accueil, des menus et du compte y mènent
 en conservant la langue. Le bouton principal télécharge l’installateur Windows
-`Arkya-Launcher-Setup.exe` depuis la release versionnée `launcher-v0.2.0` ; la page
-explique l’assistant d’installation du launcher, le choix du dossier du jeu dans
-**Installer le jeu**, puis **Jouer**. Le dossier du jeu peut être choisi sur un
+`Arkya-Launcher-Setup.exe` depuis la release versionnée `launcher-v0.3.0` ; la page
+explique l’assistant d’installation du launcher, sa connexion Discord dans le
+navigateur, puis le choix du canal et du dossier du jeu dans **Installer le jeu**,
+avant **Jouer**. Le dossier du jeu peut être choisi sur un
 autre disque, indépendamment du launcher. Le téléchargement
 reste disponible sans compte, sans JavaScript et lorsque Identity est indisponible.
-La connexion Discord dans le jeu est distincte de celle du site.
+La connexion Discord du launcher est distincte de celle du site. Le launcher
+affiche sa page de connexion avant d’ouvrir son accueil.
 
 La page ne contient plus de canvas, de contrôle plein écran ni de bootstrap Unity.
 Elle charge seulement les traductions et la navigation de compte partagée.
@@ -71,8 +73,12 @@ Aucun manifest, payload WebGL, admission ou transfert de session vers Unity n’
 chargé depuis cette page, même si une session de site existe. Le renouvellement
 du compte web continue dans `common.js` sans conditionner le téléchargement.
 
-Le manifeste de mise à jour Windows reste servi par
-`dist/downloads/windows/latest-win-x64.json`. Les archives et leur publication
+Le manifeste de la Bêta Windows reste servi par
+`dist/downloads/windows/latest-win-x64.json`. Le canal Stable dispose de
+`dist/downloads/windows/latest-stable-win-x64.json`, contenant explicitement
+`{ "schemaVersion": 1, "channel": "stable", "available": false }` tant qu’aucune
+Stable n’est publiée. Il n’existe aucun repli automatique de Stable vers Bêta.
+Les adresses sont fixées dans le launcher. Les archives et leur publication
 sont décrites dans le [guide du launcher](../../docs/WINDOWS_LAUNCHER.md).
 Modifier le lien de téléchargement lorsque la release du launcher change ;
 les mises à jour du jeu passent par le manifeste.
@@ -93,11 +99,13 @@ l’absence de chargement Unity et le retour de connexion d’un ancien lien
 ## Vérification du passage au launcher — 23 octobre 2026
 
 - **109 tests Node passent**, dont les contrats d’authentification et de refresh conservés.
-- **114 contrôles Edge/Playwright passent** sur la page d’installation et ses liens :
+- **123 contrôles Edge/Playwright passent** sur la page d’installation et ses liens :
   français/anglais, largeurs 320 à 1440 px, compte anonyme ou connecté, panne Identity,
   retour d’un ancien lien de connexion, téléchargement sans JavaScript, absence de
   canvas, de chargement Unity et d’admission depuis le site. Ils vérifient aussi
-  le lien `.exe`, l’assistant du launcher et le choix distinct du dossier du jeu ;
+  le lien `.exe` 0.3.0, l’assistant du launcher, la connexion Discord du launcher
+  avant l’accès à l’accueil, le choix du canal Bêta et du dossier du jeu, ainsi
+  que le marqueur Stable explicitement indisponible ;
   l’installateur lui-même n’est pas téléchargé par ce scénario navigateur.
 - **17 contrôles compte et 15 contrôles refresh passent** avec les fixtures isolées.
   Ils ne constituent pas une nouvelle connexion Discord réelle.
