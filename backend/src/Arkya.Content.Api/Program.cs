@@ -37,6 +37,10 @@ public partial class Program
         builder.Services.AddSingleton<IPostRepository>(services => services.GetRequiredService<MongoPostRepository>());
         builder.Services.AddHostedService<PostStoreInitializer>();
         builder.Services.AddScoped<PostService>();
+        builder.Services.AddSingleton<MongoItemContentRepository>();
+        builder.Services.AddSingleton<IItemContentRepository>(services => services.GetRequiredService<MongoItemContentRepository>());
+        builder.Services.AddHostedService<ItemContentStoreInitializer>();
+        builder.Services.AddScoped<ItemContentService>();
         builder.Services.AddCors(options => options.AddPolicy(PostEndpoints.PublicCorsPolicy,
             policy => policy.AllowAnyOrigin().WithMethods("GET").AllowAnyHeader()));
 

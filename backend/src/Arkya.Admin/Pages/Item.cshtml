@@ -1,0 +1,63 @@
+@page "{id?}"
+@model ItemModel
+@{
+    ViewData["Title"] = Model.ItemId is null ? "Créer un objet" : "Modifier l'objet";
+}
+<a class="text-link" asp-page="/Items">← Catalogue d'objets</a>
+<header class="page-header item-editor-header"><div><div class="eyebrow">UNIVERS / OBJETS</div><h1>@ViewData["Title"]</h1><p class="intro">Définissez l'objet et associez-lui un modèle de la bibliothèque Unity.</p></div>@if (Model.Loaded) { <span class="badge">Brouillon · Révision @Model.Revision</span> }</header>
+@if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice <a asp-page="/Items">Ouvrir le catalogue</a></div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Item" asp-route-id="@Model.ItemId">Recharger le brouillon enregistré</a></div> }
+@if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
+@if (Model.Loaded)
+{
+    <form method="post" asp-page-handler="Save" asp-route-id="@Model.ItemId" class="item-editor" data-item-editor>
+        <input type="hidden" asp-for="Revision" />
+        <input type="hidden" asp-for="Input.VisualAssetGuid" data-asset-guid />
+        <section class="panel item-fields" aria-labelledby="identity-heading">
+            <div class="section-heading"><h2 id="identity-heading">Fiche de l'objet</h2></div>
+            <div class="field"><label asp-for="Input.Name">Nom</label><input asp-for="Input.Name" maxlength="120" required placeholder="Épée d'Aubefont" /></div>
+            <div class="field"><label asp-for="Input.ItemId">Identifiant permanent</label><input asp-for="Input.ItemId" class="mono" maxlength="64" required pattern="[a-z0-9]+(-[a-z0-9]+)*" readonly="@(Model.ItemId is not null)" placeholder="epee-aubefont" /><small>Lettres minuscules, chiffres et tirets. Conservé après la création.</small></div>
+            <div class="item-field-pair">
+                <div class="field"><label asp-for="Input.Category">Type</label><select asp-for="Input.Category" data-item-category>@foreach (var category in ContentItemPresentation.Categories) { <option value="@category.Key">@category.Value</option> }</select></div>
+                <div class="field"><label asp-for="Input.Rarity">Rareté</label><select asp-for="Input.Rarity">@foreach (var rarity in ContentItemPresentation.Rarities) { <option value="@rarity.Key">@rarity.Value</option> }</select></div>
+            </div>
+            <div class="field"><label asp-for="Input.Description">Description</label><textarea asp-for="Input.Description" rows="3" maxlength="2000" placeholder="Ce que le joueur doit savoir sur cet objet…"></textarea></div>
+            <h3 class="item-field-heading">Équipement et statistiques</h3>
+            <div class="field"><label asp-for="Input.EquipmentSlot">Emplacement</label><select asp-for="Input.EquipmentSlot" data-item-slot>@foreach (var slot in ContentItemPresentation.Slots) { <option value="@slot.Key">@slot.Value</option> }</select></div>
+            <div class="item-field-pair">
+                <div class="field"><label asp-for="Input.RequiredLevel">Niveau requis</label><input asp-for="Input.RequiredLevel" type="number" min="1" max="1000" required /></div>
+                <div class="field"><label asp-for="Input.WeightGrams">Poids (grammes)</label><input asp-for="Input.WeightGrams" type="number" min="0" max="1000000" required /></div>
+                <div class="field"><label asp-for="Input.Attack">Attaque</label><input asp-for="Input.Attack" type="number" min="0" max="1000000" required /></div>
+                <div class="field"><label asp-for="Input.Defense">Défense</label><input asp-for="Input.Defense" type="number" min="0" max="1000000" required /></div>
+            </div>
+            <div class="field"><label asp-for="Input.MaxStack">Quantité maximale par emplacement</label><input asp-for="Input.MaxStack" type="number" min="1" max="9999" required data-item-stack /><small>Les armes, armures et outils utilisent un emplacement par objet (1).</small></div>
+        </section>
+        <section class="panel item-models" aria-labelledby="model-heading" data-item-assets data-assets-url="@Url.Page("/Item", "Assets")" data-thumbnail-url="@Url.Page("/Item", "Thumbnail")">
+            <div class="section-heading"><h2 id="model-heading">Modèle Unity</h2><span class="badge">Prefab · FBX · OBJ</span></div>
+            <p class="muted item-model-intro">Choisissez l'apparence de cet objet parmi les modèles exportés depuis Unity.</p>
+            <div class="item-selected-model" data-selected-asset>
+                <div class="item-selected-image" data-selected-image>
+                    @if (Model.SelectedAsset is { HasThumbnail: true } selected) { <img src="@Url.Page("/Item", "Thumbnail", new { guid = selected.Guid })" alt="" /> }
+                    else { <span aria-hidden="true">◇</span> }
+                </div>
+                <div><strong data-selected-name>@(Model.SelectedAsset?.Name ?? "Aucun modèle sélectionné")</strong><small class="mono" data-selected-path>@(Model.SelectedAsset?.AssetPath ?? Model.Input.VisualAssetGuid)</small><span class="badge" data-selected-kind hidden="@(Model.SelectedAsset is null)">@Model.SelectedAsset?.Kind.ToUpperInvariant()</span></div>
+            </div>
+            @if (Model.AssetError is not null) { <div class="alert error" role="alert">@Model.AssetError</div> }
+            <div class="item-asset-search"><div class="field"><label for="item-asset-search">Chercher un modèle</label><input id="item-asset-search" type="search" maxlength="120" placeholder="Nom ou chemin du modèle…" data-asset-search /></div><button class="button secondary" type="button" data-asset-search-button>Rechercher</button></div>
+            <p class="item-asset-status muted" role="status" data-asset-status>@(Model.Assets.Assets.Length == 0 ? "Aucun modèle disponible. Dans Unity, exportez la bibliothèque des modèles d'objets vers le backoffice." : "Sélectionnez une vignette pour associer le modèle.")</p>
+            <div class="item-asset-grid" data-asset-grid role="group" aria-label="Modèles Unity disponibles">
+                @foreach (var asset in Model.Assets.Assets)
+                {
+                    <button type="button" class="item-asset-card" aria-pressed="@(asset.Guid == Model.Input.VisualAssetGuid ? "true" : "false")" data-guid="@asset.Guid" data-name="@asset.Name" data-path="@asset.AssetPath" data-kind="@asset.Kind" data-thumbnail="@(asset.HasThumbnail ? "true" : "false")">
+                        <span class="item-asset-image">@if (asset.HasThumbnail) { <img src="@Url.Page("/Item", "Thumbnail", new { guid = asset.Guid })" alt="" loading="lazy" /> } else { <span aria-hidden="true">◇</span><small>Aperçu indisponible</small> }</span>
+                        <span class="item-asset-name">@asset.Name</span><span class="item-asset-kind">@asset.Kind.ToUpperInvariant()</span><span class="item-asset-path mono" title="@asset.AssetPath">@asset.AssetPath</span>
+                    </button>
+                }
+            </div>
+            <div class="item-asset-pagination"><button type="button" class="button secondary" data-asset-previous disabled>Précédents</button><button type="button" class="button secondary" data-asset-next disabled="@(!Model.Assets.HasMore)">Suivants</button></div>
+            <noscript><p class="alert error">Activez JavaScript pour choisir un modèle dans la bibliothèque. Vous pouvez continuer à modifier un objet qui possède déjà un modèle.</p></noscript>
+        </section>
+        <div class="panel item-save-bar"><p>Enregistrez cet objet, puis publiez le catalogue depuis la liste des objets.</p><a class="button secondary" asp-page="/Items">Retour au catalogue</a><button type="submit" class="button primary">@(Model.ItemId is null ? "Créer le brouillon" : "Enregistrer l'objet")</button></div>
+    </form>
+    <script src="~/items.js" asp-append-version="true" defer></script>
+}

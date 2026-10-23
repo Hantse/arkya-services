@@ -272,6 +272,17 @@ brouillons ni aux mutations. Aucun article n'est prépublié au démarrage ; une
 indisponibilité de Content est distinguée d'un feed vide. Le [guide des
 publications](PUBLICATIONS.md) décrit les contrats et le backoffice.
 
+### Catalogue d'items et modèles Unity
+
+Le [pipeline d'items](ITEM_CONTENT.md) utilise également Content, avec ses propres
+révisions et catalogues immuables. Unity exporte un registre de références
+visuelles (GUID, chemin, empreinte des dépendances et PNG), puis le backoffice
+associe ces modèles aux définitions d'armes, armures, outils et autres items.
+La publication fige définitions et références. L'Editor synchronise un snapshot
+publié avant le build, résout les assets locaux et bloque les modèles absents
+ou modifiés. Les clés restent hors des assets distribués. Cette distribution
+de contenu ne remplace pas les règles d'inventaire et d'équipement autoritaires.
+
 ### Contenu et progression des quêtes
 
 L'administration web ASP.NET Razor Pages édite un brouillon complet via Content. Une sauvegarde porte la révision attendue ; une édition concurrente est refusée. Une publication fige cette révision dans un catalogue identifié par UUID, avec `schemaVersion = 1`. Répéter la publication d'une même révision retourne la même version. Le dedicated n'accède jamais directement à MongoDB ni aux brouillons.

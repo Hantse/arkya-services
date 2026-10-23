@@ -28,6 +28,12 @@ L'Admin prépare, publie et dépublie les brouillons ; le launcher consulte un f
 public anonyme. Les changements non publiés restent privés et les notes de version
 portent explicitement la version du jeu concernée.
 
+Le [catalogue d'items](../docs/ITEM_CONTENT.md) ajoute les armes, armures, outils
+et autres objets : brouillons dans le backoffice, choix visuel de modèles
+exportés par Unity, publications immuables et synchronisation avant build.
+Les définitions et les vignettes appartiennent à Content ; les fichiers 3D
+et leurs dépendances restent dans le projet Unity.
+
 ## Services et propriété des données
 
 Les [bugs (F8) et suggestions (F9)](../docs/BUG_REPORTS.md) ajoutent `Arkya.Reports.Api`

@@ -19,6 +19,7 @@ public static class ContentEndpoints
                 : Results.Problem(statusCode: 403, title: "Content administrator authentication failed.");
         });
         app.MapPostEndpoints(admin);
+        app.MapItemContentEndpoints(admin);
         admin.MapGet("/draft", async (ContentService service, CancellationToken cancellationToken) =>
             Results.Ok(DraftResponse.From(await service.GetDraftAsync(cancellationToken))));
         admin.MapPut("/draft", async (SaveDraftRequest request, ContentService service, CancellationToken cancellationToken) =>

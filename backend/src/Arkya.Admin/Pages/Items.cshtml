@@ -1,0 +1,44 @@
+@page
+@model ItemsModel
+@{
+    ViewData["Title"] = "Objets";
+}
+<header class="page-header">
+    <div><div class="eyebrow">UNIVERS / CONTENU</div><h1>Objets</h1><p class="intro">Créez les armes, armures et ressources, choisissez leur modèle Unity, puis publiez le catalogue.</p></div>
+    @if (Model.Enabled) { <a class="button primary" asp-page="/Item">Créer un objet</a> }
+</header>
+@if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Items">Recharger le catalogue</a></div> }
+@if (!Model.Enabled) { <div class="panel empty-state"><h2>La gestion des objets est désactivée</h2><p>Activez la connexion au service Content pour gérer le catalogue.</p></div> }
+@if (Model.Draft is { } draft)
+{
+    <div class="item-catalog-layout">
+        <section aria-labelledby="draft-heading">
+            <div class="section-heading"><h2 id="draft-heading">Brouillon</h2><span class="badge">Révision @draft.Revision · @draft.Items.Length objet(s)</span></div>
+            @if (draft.Items.Length == 0) { <div class="panel empty-state"><h3>Un premier objet à créer</h3><p>Ajoutez une arme, une pièce d'armure ou une ressource et associez-lui un modèle de la bibliothèque Unity.</p><a class="button secondary" asp-page="/Item">Créer un objet</a></div> }
+            else
+            {
+                <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Objets du brouillon</caption><thead><tr><th scope="col">Objet</th><th scope="col">Type</th><th scope="col">Rareté</th><th scope="col">Niveau</th></tr></thead><tbody>
+                @foreach (var item in draft.Items)
+                {
+                    <tr><th scope="row"><a asp-page="/Item" asp-route-id="@item.ItemId">@item.Name</a><small class="mono">@item.ItemId</small></th><td>@ContentItemPresentation.CategoryLabel(item.Category)</td><td>@ContentItemPresentation.RarityLabel(item.Rarity)</td><td>@item.RequiredLevel</td></tr>
+                }
+                </tbody></table></div>
+            }
+        </section>
+        <aside aria-labelledby="publish-heading">
+            <div class="section-heading"><h2 id="publish-heading">Publication</h2></div>
+            <div class="panel publish-panel"><h3>Préparer la prochaine build</h3><p>Publiez les objets enregistrés pour figer leurs règles et les modèles associés.</p><dl class="publication-facts"><div><dt>Révision enregistrée</dt><dd>@draft.Revision</dd></div><div><dt>Dernière version</dt><dd class="mono">@(Model.Catalogs.FirstOrDefault()?.Version ?? "Aucune")</dd></div></dl>
+                <form method="post" asp-page-handler="Publish"><input type="hidden" name="Revision" value="@draft.Revision" /><button class="button primary full-width" type="submit" disabled="@(draft.Items.Length == 0)">Publier le catalogue</button></form>
+                <small>Dans Unity : Arkya → Items → Content pipeline. Synchronisez la version publiée avant de lancer la build.</small>
+            </div>
+        </aside>
+    </div>
+    <section class="history" aria-labelledby="history-heading"><div class="section-heading"><h2 id="history-heading">Versions publiées</h2><span class="muted">@Model.Catalogs.Length version(s)</span></div>
+        @if (Model.Catalogs.Length == 0) { <div class="panel history-empty">Aucune version publiée. Créez un objet, enregistrez-le, puis publiez le catalogue.</div> }
+        @foreach (var catalog in Model.Catalogs)
+        {
+            <details class="panel catalog-entry"><summary><span class="publication-dot" aria-hidden="true"></span><span class="catalog-version mono">@catalog.Version</span><span class="muted">@catalog.Items.Length objet(s)</span><time datetime="@catalog.PublishedAt.ToString("O")">@catalog.PublishedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time><span class="expand-label">Détails ↓</span></summary><div class="catalog-detail"><ul>@foreach (var item in catalog.Items) { <li><strong>@item.Name</strong><span>@ContentItemPresentation.CategoryLabel(item.Category) · <code>@item.ItemId</code></span></li> }</ul><a asp-page-handler="Download" asp-route-version="@catalog.Version" class="text-link">Télécharger le catalogue JSON →</a></div></details>
+        }
+    </section>
+}

@@ -212,7 +212,8 @@ public partial class Program
             context.Response.Headers.CacheControl = "no-store";
             context.Response.Headers["Referrer-Policy"] = "no-referrer";
             context.Response.Headers["X-Content-Type-Options"] = "nosniff";
-            var scriptSource = string.Equals(context.Request.Path.Value?.TrimEnd('/'), "/CreateRealm", StringComparison.OrdinalIgnoreCase) ? "'self'" : "'none'";
+            var scriptSource = string.Equals(context.Request.Path.Value?.TrimEnd('/'), "/CreateRealm", StringComparison.OrdinalIgnoreCase)
+                || context.Request.Path.StartsWithSegments("/Item", StringComparison.OrdinalIgnoreCase) ? "'self'" : "'none'";
             context.Response.Headers["Content-Security-Policy"] = "default-src 'self'; style-src 'self'; script-src " + scriptSource + "; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" +
                 (context.RequestServices.GetRequiredService<IOptions<AdminOptions>>().Value.DiscordEnabled ? " https://discord.com" : "");
             if (!app.Environment.IsDevelopment() && !context.Request.IsHttps)
