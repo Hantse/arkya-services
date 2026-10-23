@@ -114,7 +114,12 @@
                     <StackPanel MaxWidth="700" HorizontalAlignment="Left">
                         <Button Content="←  Retour au jeu" Click="CloseSettings_Click" Style="{StaticResource QuietButton}" HorizontalAlignment="Left" Padding="0,6" Margin="0,0,0,24" />
                         <TextBlock Text="Paramètres" FontFamily="Georgia" FontSize="32" Margin="0,0,0,24" />
-                        <TextBlock x:Name="LocationLabel" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,25" />
+                        <TextBlock Text="Dossier du jeu" FontWeight="SemiBold" Margin="0,0,0,10" />
+                        <DockPanel Margin="0,0,0,10" LastChildFill="True">
+                            <Button x:Name="SettingsLocationButton" DockPanel.Dock="Right" Content="Modifier…" Click="ChangeLocation_Click" Style="{StaticResource QuietButton}" Margin="16,0,0,0" />
+                            <TextBlock x:Name="LocationLabel" Foreground="{StaticResource Muted}" TextWrapping="Wrap" VerticalAlignment="Center" />
+                        </DockPanel>
+                        <TextBlock Text="Choisissez un dossier vide ou retrouvez une installation existante. Changer de dossier conserve les fichiers à leur emplacement actuel." Foreground="{StaticResource Muted}" TextWrapping="Wrap" FontSize="12" LineHeight="20" Margin="0,0,0,25" />
                         <Expander x:Name="SettingsPanel" Header="Paramètres de distribution" Foreground="{StaticResource Paper}" IsExpanded="True">
                             <StackPanel Margin="0,18,0,0">
                                 <Label Content="Adresse HTTPS du manifeste officiel" Target="{Binding ElementName=ManifestAddress}" Foreground="{StaticResource Muted}" Padding="0,0,0,8" />
@@ -132,6 +137,11 @@
                         <TextBlock x:Name="StatusLabel" Text="Vérifiez les mises à jour pour préparer votre prochaine aventure." Foreground="#B8CDD0" TextWrapping="Wrap" FontSize="12" VerticalAlignment="Center" AutomationProperties.LiveSetting="Polite" />
                     </DockPanel>
                     <ProgressBar x:Name="Progress" Height="3" Minimum="0" Maximum="100" Foreground="{StaticResource Gold}" Background="#30434B" BorderThickness="0" Margin="0,0,0,17" />
+                    <DockPanel Margin="0,0,0,12" LastChildFill="True">
+                        <Button x:Name="ChangeLocationButton" DockPanel.Dock="Right" Content="Modifier…" Click="ChangeLocation_Click" Style="{StaticResource QuietButton}" Padding="8,2" AutomationProperties.Name="Modifier le dossier d’installation du jeu" />
+                        <TextBlock Text="DOSSIER DU JEU" Foreground="{StaticResource Muted}" FontSize="9" VerticalAlignment="Center" Margin="0,0,12,0" />
+                        <TextBlock x:Name="FooterLocationLabel" Foreground="#BCCDCF" TextTrimming="CharacterEllipsis" FontSize="11" VerticalAlignment="Center" />
+                    </DockPanel>
                     <Grid>
                         <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
                         <Button x:Name="InstallButton" Content="Installer le jeu" Width="208" Height="50" Background="{StaticResource Gold}" Foreground="#18242A" BorderBrush="{StaticResource Gold}" FontSize="16" FontWeight="SemiBold" Click="Install_Click" IsEnabled="False" />

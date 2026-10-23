@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using Arkya.Launcher.Core;
+using Microsoft.Win32;
 
 namespace Arkya.Launcher;
 
@@ -14,8 +15,9 @@ public partial class MainWindow : Window
 {
     private readonly HttpClient httpClient = ReleaseClient.CreateHttpClient();
     private readonly ReleaseClient releases;
-    private readonly GameInstaller installer;
-    private readonly string preferencesPath;
+    private readonly LauncherPreferencesStore preferencesStore;
+    private GameInstallationSelection selection;
+    private bool preferencesHealthy = true;
     private GameManifest? available;
     private InstalledGame? installed;
     private CancellationTokenSource? operation;
@@ -34,20 +36,28 @@ public partial class MainWindow : Window
         InitializeComponent();
         releases = new ReleaseClient(httpClient);
         publications = new ContentFeedClient(httpClient);
-        var root = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Arkya", "Game");
-        installer = new GameInstaller(root, releases);
-        preferencesPath = SafePaths.Resolve(root, "launcher-preferences.json");
-        LocationLabel.Text = "Installation : " + root;
-        LocationLabel.ToolTip = root;
+        var arkya = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Arkya");
+        var defaults = Path.Combine(AppContext.BaseDirectory, "launcher-settings.json");
+        var defaultAddress = "https://arkya.online/downloads/windows/latest-win-x64.json";
         try
         {
-            var defaults = Path.Combine(AppContext.BaseDirectory, "launcher-settings.json");
-            var settings = File.Exists(preferencesPath) ? preferencesPath : defaults;
-            ManifestAddress.Text = Environment.GetEnvironmentVariable("ARKYA_LAUNCHER_MANIFEST_URL") ??
-                (File.Exists(settings) ? JsonSerializer.Deserialize<LauncherSettings>(File.ReadAllText(settings), GameManifest.JsonOptions)?.ManifestUrl : "") ?? "";
-            installed = installer.ReadInstalled();
+            if (File.Exists(defaults)) defaultAddress = JsonSerializer.Deserialize<LauncherSettings>(File.ReadAllText(defaults), GameManifest.JsonOptions)?.ManifestUrl ?? defaultAddress;
         }
         catch (Exception exception) when (IsExpected(exception)) { ShowError(exception); }
+        preferencesStore = new LauncherPreferencesStore(Path.Combine(arkya, "Launcher"), Path.Combine(arkya, "Game"), defaultAddress);
+        selection = new GameInstallationSelection(releases, preferencesStore, preferencesStore.Defaults, AppContext.BaseDirectory);
+        try
+        {
+            selection = new GameInstallationSelection(releases, preferencesStore, preferencesStore.Load(), AppContext.BaseDirectory);
+            installed = selection.Installer.ReadInstalled();
+        }
+        catch (Exception exception) when (IsExpected(exception))
+        {
+            preferencesHealthy = false;
+            ShowError(exception);
+        }
+        ManifestAddress.Text = Environment.GetEnvironmentVariable("ARKYA_LAUNCHER_MANIFEST_URL") ?? selection.Preferences.ManifestUrl;
+        UpdateLocation();
         ManifestAddress.TextChanged += (_, _) =>
         {
             available = null;
@@ -80,7 +90,7 @@ public partial class MainWindow : Window
         StatusLabel.Text = "Recherche de la dernière version…";
         Progress.IsIndeterminate = true;
         available = await releases.GetManifestAsync(address, token);
-        await File.WriteAllTextAsync(preferencesPath, JsonSerializer.Serialize(new LauncherSettings(address), GameManifest.JsonOptions), token);
+        if (preferencesHealthy) selection.SaveManifestUrl(address);
         AvailableLabel.Text = "Version disponible : " + available.Version + " · " + FormatBytes(available.PackageSize);
         ReleaseNotes.Text = string.IsNullOrWhiteSpace(available.ReleaseNotes) ? "Aucune note publiée pour cette version." : available.ReleaseNotes;
         StatusLabel.Text = IsCurrent ? "Votre jeu est à jour. Bonne aventure !" : "Une version du jeu est prête à être installée.";
@@ -89,8 +99,11 @@ public partial class MainWindow : Window
     private async void Install_Click(object sender, RoutedEventArgs e)
     {
         if (available is not { } manifest) return;
+        if ((!selection.Preferences.GameDirectoryConfirmed || !preferencesHealthy) && !ChooseGameDirectory()) return;
+        if (IsCurrent) return;
         await RunOperationAsync(async token =>
         {
+            GameInstallLocation.Prepare(selection.Preferences.GameDirectory, AppContext.BaseDirectory, preferencesStore.DirectoryPath);
             var timer = Stopwatch.StartNew();
             var progress = new Progress<InstallProgress>(value =>
             {
@@ -102,7 +115,7 @@ public partial class MainWindow : Window
                     ? $"{value.Message} · {FormatBytes(value.CompletedBytes)} / {FormatBytes(value.TotalBytes)}"
                     : value.Message;
             });
-            installed = await Task.Run(() => installer.InstallAsync(manifest, progress, token), token);
+            installed = await Task.Run(() => selection.Installer.InstallAsync(manifest, progress, token), token);
             StatusLabel.Text = "Installation terminée. Arkya est prêt à démarrer.";
         });
     }
@@ -112,7 +125,7 @@ public partial class MainWindow : Window
         if (installed is null || GameRunning) return;
         try
         {
-            game = installer.Launch(installed);
+            game = selection.Installer.Launch(installed);
             game.EnableRaisingEvents = true;
             game.Exited += (_, _) => Dispatcher.BeginInvoke(() =>
             {
@@ -164,6 +177,8 @@ public partial class MainWindow : Window
         PlayButton.Visibility = installed is null ? Visibility.Collapsed : Visibility.Visible;
         CheckButton.IsEnabled = !busy;
         ManifestAddress.IsEnabled = !busy;
+        ChangeLocationButton.IsEnabled = !busy && !GameRunning;
+        SettingsLocationButton.IsEnabled = !busy && !GameRunning;
         CancelButton.Visibility = busy ? Visibility.Visible : Visibility.Collapsed;
     }
 
@@ -181,6 +196,41 @@ public partial class MainWindow : Window
         ? $"{value / (1024d * 1024 * 1024):0.0} Go" : $"{value / (1024d * 1024):0.0} Mo";
 
     private void Cancel_Click(object sender, RoutedEventArgs e) => operation?.Cancel();
+
+    private void ChangeLocation_Click(object sender, RoutedEventArgs e) => ChooseGameDirectory();
+
+    private bool ChooseGameDirectory()
+    {
+        if (operation is not null || GameRunning) return false;
+        try
+        {
+            var dialog = new OpenFolderDialog
+            {
+                Title = "Choisir le dossier d’installation du jeu Arkya",
+                InitialDirectory = selection.Preferences.GameDirectory,
+                Multiselect = false
+            };
+            if (dialog.ShowDialog(this) != true) return false;
+            selection.SelectDirectory(dialog.FolderName);
+            preferencesHealthy = true;
+            installed = selection.Installed;
+            UpdateLocation();
+            UpdateButtons();
+            StatusLabel.Text = installed is null
+                ? "Dossier choisi. Cliquez sur Installer le jeu pour télécharger Arkya ici. Les autres installations sont conservées."
+                : "Installation existante retrouvée dans le dossier choisi.";
+            return true;
+        }
+        catch (Exception exception) when (IsExpected(exception)) { ShowError(exception); return false; }
+    }
+
+    private void UpdateLocation()
+    {
+        LocationLabel.Text = selection.Preferences.GameDirectory;
+        LocationLabel.ToolTip = selection.Preferences.GameDirectory;
+        FooterLocationLabel.Text = selection.Preferences.GameDirectory;
+        FooterLocationLabel.ToolTip = selection.Preferences.GameDirectory;
+    }
 
     private async Task RefreshFeedAsync()
     {
