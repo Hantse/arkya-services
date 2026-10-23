@@ -48,6 +48,40 @@ Le service Characters applique ce périmètre ; le formulaire de recherche ne
 permet pas de sélectionner un autre realm. La section En jeu conserve les
 annonces et commandes prises en charge par les serveurs.
 
+## Fiche personnage
+
+Les noms de personnages dans `/Characters`, `/Players`, la fiche compte et les
+joueurs d'un realm ouvrent `/Character/{id}`. Cette fiche en lecture seule garde
+le thème sombre de la console et propose sept sections : Overview, Statistics,
+Quest history, Bags, Bank, Equipment et Appearance. Depuis un realm, le lien
+conserve `realmId` et rejoint l'administration centrale si les sites dédiés sont
+activés. Le service Characters applique le périmètre avant de retourner la fiche.
+
+L'aperçu affiche l'identité, le propriétaire, la présence, les dates disponibles,
+le niveau historique du document et la dernière position sauvegardée. Les
+statistiques proviennent exclusivement du bloc `gameplay` du snapshot autoritaire
+persisté : vie/mana/endurance, classe active, niveaux/XP des cinq classes,
+rating et nombres de compétences apprises par rang. Le niveau historique du
+document ne remplace pas les niveaux de classe. La date affichée est l'heure de
+lecture de la fiche ; elle ne prétend pas dater la dernière sauvegarde et les
+valeurs ne constituent pas une lecture en direct du dedicated.
+
+Une absence de snapshot, un ancien snapshot sans statistiques, un format inconnu
+et une donnée invalide restent distingués. Aucun profil initial ni réserve pleine
+n'est généré par l'admin ; une vie sauvegardée à zéro est affichée à zéro.
+
+L'historique des quêtes lit `character_quests`, avec les objectifs acceptés,
+compteurs, état en cours/terminé, version du catalogue et révision. Il est paginé
+par groupes de 25, jusqu'à 100 résultats par page. Les dates d'acceptation et de
+fin ainsi qu'un journal des transitions ne sont pas enregistrés actuellement.
+
+Les sacs, la banque et l'équipement ne disposent pas encore d'un contrat de
+persistance autoritaire dans ce parcours. Ces sections affichent donc
+**Unavailable**, avec l'explication correspondante ; elles ne présentent ni
+inventaire vide ni objets fictifs. Leur contenu réel nécessitera le raccordement
+des sauvegardes serveur. La fiche n'ajoute aucune mutation de progression,
+d'objet ou d'économie.
+
 ## Navigation
 
 | Menu | Écrans et actions |
@@ -116,10 +150,17 @@ routes publiques de la gateway.
 | Identity | `POST /admin/accounts/{accountId}/beta-access` | `{expectedRevision, hasBetaAccess, reason}` |
 | Characters | `GET /admin/characters?accountId=&realmId=&search=&onlineOnly=false&page=1&pageSize=25` | Personnages, présence et total filtré ; `realmId` facultatif, appliqué par le serveur |
 | Characters | `GET /admin/characters/overview` | Totaux et présence par realm |
+| Characters | `GET /admin/characters/{characterId}?realmId=&questPage=1&questPageSize=25` | Fiche privée, snapshot de statistiques projeté, historique de quêtes paginé et disponibilité des possessions ; `404` si absent ou hors realm |
 
 Les contrats partagés sont dans `Arkya.ServiceDefaults/AccountAdminContracts.cs`
 et `CharacterAdminContracts.cs`. Les clés administrateur des deux services sont
 distinctes des clés de session/introspection et des clés dédiées.
+
+Le détail n'expose ni JSON de simulation brut, ni lease ID, ni identifiant de
+session, ni clé dédiée. Les paramètres de quêtes acceptent une page de 1 à
+100 000 et une taille de 1 à 100. Le navigateur reçoit une page `no-store` ; les
+réponses de dépendances invalides sont refusées et leurs détails internes ne
+sont pas réaffichés.
 
 ## Configuration
 
@@ -223,6 +264,18 @@ L'écran ne reçoit ni kubeconfig, ni YAML libre, ni shell. Voir le
 RBAC et TLS. Des réplicas prêts ne prouvent pas l'admission d'un client réel.
 
 ## Vérification
+
+La fiche personnage du 23 octobre 2026 a été vérifiée avec **825 tests Admin
+réussis, 1 ignoré**, puis **287 tests Characters réussis, 14 ignorés**, sans échec.
+Les tests MongoDB nécessitent `ARKYA_TEST_MONGO` ; ils n'ont pas été exécutés
+faute d'instance locale disponible. Les tests couvrent la projection privée,
+les clés séparées, le périmètre realm, les formats historiques/invalides de
+statistiques, les quêtes paginées, l'échappement HTML, les liens des quatre
+listes et l'absence de faux inventaires vides. Le rendu des pages Razor a été
+inspecté dans Edge via Playwright avec des réponses de test explicites, sur
+ordinateur et à 390 px ; ce contrôle ne constitue pas une lecture de données
+de production. Les rapports et captures locaux sont sous
+`artifacts/character-details/` et `output/playwright/character-details/`.
 
 Le 23 octobre 2026, la suite complète Admin a terminé avec **682 réussites,
 0 échec et 1 test MongoDB ignoré** sur 683 cas. Après le dernier correctif du

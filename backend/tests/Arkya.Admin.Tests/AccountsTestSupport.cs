@@ -26,6 +26,8 @@ internal sealed class AccountsStub : HttpMessageHandler
     public bool InvalidJson { get; set; }
     public string CharactersRealmId { get; set; } = "beta";
     public bool CharacterOnline { get; set; } = true;
+    public AdminCharacterDetail? CharacterDetail { get; set; }
+    public string? CharacterDetailJson { get; set; }
     public HttpStatusCode? ReadError { get; set; }
     public HttpStatusCode? WriteError { get; set; }
 
@@ -63,7 +65,30 @@ internal sealed class AccountsStub : HttpMessageHandler
         if (uri.AbsolutePath == "/admin/characters/overview") return Json(new AdminCharacterOverview(Total, 1, [new("beta", 1)]));
         if (uri.AbsolutePath == "/admin/characters") return Json(new AdminCharacterPage(Empty ? [] :
             [new(CharacterId.ToString("D"), Id.ToString("D"), "<script>character</script>", CharactersRealmId, "human", "a", DateTimeOffset.UtcNow, CharacterOnline, CharacterOnline ? DateTimeOffset.UtcNow.AddSeconds(60) : null)], Total, page, pageSize));
+        if (uri.AbsolutePath == $"/admin/characters/{CharacterId:D}")
+        {
+            if (CharacterDetailJson is not null)
+                return new(HttpStatusCode.OK) { Content = new StringContent(CharacterDetailJson, System.Text.Encoding.UTF8, "application/json") };
+            var questPage = query.TryGetValue("questPage", out var questPageValue) ? int.Parse(questPageValue.ToString()) : 1;
+            var questPageSize = query.TryGetValue("questPageSize", out var questSizeValue) ? int.Parse(questSizeValue.ToString()) : 25;
+            return Json(CharacterDetail ?? SavedCharacter(CharactersRealmId, CharacterOnline, questPage, questPageSize));
+        }
         return new(HttpStatusCode.NotFound);
+    }
+
+    public static AdminCharacterDetail SavedCharacter(string realmId = "beta", bool online = true, int questPage = 1, int questPageSize = 25)
+    {
+        var now = DateTimeOffset.Parse("2026-10-23T18:30:00Z");
+        return new(new(CharacterId.ToString("D"), Id.ToString("D"), "<script>character</script>", realmId, "human", "a",
+                now.AddDays(-2), online, online ? now.AddMinutes(1) : null), 7,
+            new(1, "human", "a", 170, "skin-1", "long-hair", "hair-1", "eyes-1", "outfit-1"), now, now.AddMinutes(-2),
+            new(3, "partition-a", "starter-island", "starter-content", null, 12.5f, 4, -8, 0, 1),
+            new("available", new(75, 100, 20, 40, 60, 80), "mage",
+                [new("warrior", 0, 0), new("scout", 0, 0), new("mage", 7, 325), new("cleric", 0, 0), new("druid", 0, 0)], 1, 0),
+            new([new("active-quest", Guid.Parse("67cf95c8-5d3c-44f5-a737-ab9c2f2412e8"), 10, 3, false, 2),
+                 new("completed-quest", Guid.Parse("67cf95c8-5d3c-44f5-a737-ab9c2f2412e8"), 5, 5, true, 4)],
+                80, questPage, questPageSize),
+            new("not_persisted"), new("not_persisted"), new("not_persisted"));
     }
 
     private static HttpResponseMessage Json<T>(T value) => new(HttpStatusCode.OK) { Content = JsonContent.Create(value) };

@@ -14,4 +14,6 @@ public interface ICharacterAdminRepository
 {
     Task<AdminCharacterPage> ListAsync(CharacterAdminQuery query, DateTimeOffset now, CancellationToken cancellationToken);
     Task<AdminCharacterOverview> OverviewAsync(DateTimeOffset now, CancellationToken cancellationToken);
+    Task<AdminCharacterSummary?> FindAsync(Guid characterId, string? realmId, DateTimeOffset now, CancellationToken cancellationToken);
+    Task<AdminCharacterQuestPage> ListQuestsAsync(Guid characterId, int page, int pageSize, CancellationToken cancellationToken);
 }

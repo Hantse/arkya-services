@@ -23,6 +23,7 @@
     @if (page == "/Realm") { <link rel="stylesheet" href="~/realm-islands.css" asp-append-version="true" /> }
     <link rel="stylesheet" href="~/dark-admin.css" asp-append-version="true" />
     @if (page is "/Items" or "/Item") { <link rel="stylesheet" href="~/items.css" asp-append-version="true" /> }
+    @if (page == "/Character") { <link rel="stylesheet" href="~/character.css" asp-append-version="true" /> }
 </head>
 <body class="@(authenticated ? "signed-in" : "signed-out")">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -73,7 +74,7 @@
                         <summary>Community</summary>
                         <a class="nav-item" asp-page="/Accounts" aria-current="@(page is "/Accounts" or "/Account" ? "page" : null)"><partial name="_AdminIcon" model='@("users")' />Accounts and access</a>
                         <a class="nav-item" asp-page="/Players" aria-current="@(page == "/Players" ? "page" : null)"><partial name="_AdminIcon" model='@("players")' />Online players</a>
-                        <a class="nav-item" asp-page="/Characters" aria-current="@(page == "/Characters" ? "page" : null)"><partial name="_AdminIcon" model='@("character")' />Characters</a>
+                        <a class="nav-item" asp-page="/Characters" aria-current="@(page is "/Characters" or "/Character" ? "page" : null)"><partial name="_AdminIcon" model='@("character")' />Characters</a>
                     </details>
                     <details class="nav-group" open>
                         <summary>Infrastructure</summary>

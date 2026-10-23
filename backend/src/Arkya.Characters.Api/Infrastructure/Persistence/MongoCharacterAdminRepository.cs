@@ -12,6 +12,51 @@ public sealed class MongoCharacterAdminRepository(IMongoClient client, IOptions<
 {
     private readonly IMongoCollection<BsonDocument> characters = client.GetDatabase(options.Value.DatabaseName)
         .GetCollection<BsonDocument>("characters");
+    private readonly IMongoCollection<CharacterQuestDocument> quests = client.GetDatabase(options.Value.DatabaseName)
+        .GetCollection<CharacterQuestDocument>("character_quests");
+
+    public async Task<AdminCharacterSummary?> FindAsync(Guid characterId, string? realmId, DateTimeOffset now,
+        CancellationToken cancellationToken)
+    {
+        var filter = new BsonDocument("_id", characterId.ToString("D"));
+        if (realmId is not null) filter["RealmId"] = realmId;
+        BsonDocument[] pipeline = [new("$match", filter), CharacterProjection(), ActiveLeaseLookup(now)];
+        var document = await characters.Aggregate<BsonDocument>(pipeline,
+            new AggregateOptions { MaxTime = TimeSpan.FromSeconds(5) }).SingleOrDefaultAsync(cancellationToken);
+        return document is null ? null : ToSummary(document);
+    }
+
+    public async Task<AdminCharacterQuestPage> ListQuestsAsync(Guid characterId, int page, int pageSize,
+        CancellationToken cancellationToken)
+    {
+        if (page is < 1 or > 100000 || pageSize is < 1 or > 100)
+            throw new ArgumentException("Invalid character quest page.");
+        BsonDocument[] pipeline =
+        [
+            new("$match", new BsonDocument("CharacterId", characterId.ToString("D"))),
+            new("$facet", new BsonDocument
+            {
+                ["Total"] = new BsonArray { new BsonDocument("$count", "Value") },
+                ["Items"] = new BsonArray
+                {
+                    new BsonDocument("$sort", new BsonDocument("QuestId", 1)),
+                    new BsonDocument("$skip", (page - 1) * pageSize), new BsonDocument("$limit", pageSize),
+                    new BsonDocument("$project", new BsonDocument
+                    {
+                        ["_id"] = 0, ["QuestId"] = 1, ["CatalogVersion"] = 1,
+                        ["RequiredKills"] = 1, ["Kills"] = 1, ["Revision"] = 1
+                    })
+                }
+            })
+        ];
+        var result = await quests.Aggregate<BsonDocument>(pipeline,
+            new AggregateOptions { MaxTime = TimeSpan.FromSeconds(5) }).SingleAsync(cancellationToken);
+        var totals = result["Total"].AsBsonArray;
+        return new(result["Items"].AsBsonArray.Select(value => new AdminCharacterQuest(value["QuestId"].AsString,
+            Guid.Parse(value["CatalogVersion"].AsString), value["RequiredKills"].AsInt32, value["Kills"].AsInt32,
+            value["Kills"].AsInt32 == value["RequiredKills"].AsInt32, value["Revision"].ToInt64())).ToArray(),
+            totals.Count == 0 ? 0 : totals[0]["Value"].ToInt64(), page, pageSize);
+    }
 
     public async Task<AdminCharacterPage> ListAsync(CharacterAdminQuery query, DateTimeOffset now, CancellationToken cancellationToken)
     {

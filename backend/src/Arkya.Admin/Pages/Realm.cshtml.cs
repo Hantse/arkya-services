@@ -30,6 +30,8 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
     public string? CharactersError { get; private set; }
     public bool HasNextCharacters => Characters is not null && (long)Characters.Page * Characters.PageSize < Characters.Total;
     public string AccountUrl(string accountId) => (sites.Enabled ? sites.AdminOrigin : "") + "/Account/" + Uri.EscapeDataString(accountId);
+    public string CharacterUrl(string characterId) => (sites.Enabled ? sites.AdminOrigin : "") + "/Character/" +
+        Uri.EscapeDataString(characterId) + "?realmId=" + Uri.EscapeDataString(Realm!.RealmId);
     public bool AccountsAreCentral => sites.Enabled;
 
     [BindProperty, BindRequired, Range(0, long.MaxValue)] public long ExpectedRevision { get; set; }

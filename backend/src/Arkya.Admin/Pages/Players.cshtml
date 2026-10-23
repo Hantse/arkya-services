@@ -22,7 +22,7 @@ else
             <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Characters with an active game lease</caption><thead><tr><th scope="col">Character</th><th scope="col">Account</th><th scope="col">Realm</th><th scope="col">Race / silhouette</th><th scope="col">Lease expiry UTC</th></tr></thead><tbody>
             @foreach (var character in characters.Items)
             {
-                <tr><th scope="row"><span class="realm-status ready">Online</span> @character.DisplayName<small class="mono">@character.CharacterId</small></th><td><a class="mono" asp-page="/Account" asp-route-id="@character.AccountId">@character.AccountId</a></td><td>@(string.IsNullOrEmpty(character.RealmId) ? "Unbound" : character.RealmId)</td><td>@character.Race / @character.Gender</td><td>@(character.LeaseExpiresAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss") ?? "—")</td></tr>
+                <tr><th scope="row"><span class="realm-status ready">Online</span> <a asp-page="/Character" asp-route-id="@character.CharacterId">@character.DisplayName</a><small class="mono">@character.CharacterId</small></th><td><a class="mono" asp-page="/Account" asp-route-id="@character.AccountId">@character.AccountId</a></td><td>@(string.IsNullOrEmpty(character.RealmId) ? "Unbound" : character.RealmId)</td><td>@character.Race / @character.Gender</td><td>@(character.LeaseExpiresAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss") ?? "—")</td></tr>
             }
             </tbody></table></div>
         }

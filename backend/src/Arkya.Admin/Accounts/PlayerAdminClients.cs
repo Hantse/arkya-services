@@ -46,6 +46,18 @@ public sealed class IdentityAdminClient(HttpClient client, IOptions<IdentityAdmi
 public sealed class CharactersAdminClient(HttpClient client, IOptions<CharactersAdminApiOptions> options)
 {
     public bool Enabled => options.Value.Enabled;
+    public async Task<AdminCharacterDetail> GetAsync(Guid id, CancellationToken ct, string? realmId = null,
+        int questPage = 1, int questPageSize = 25)
+    {
+        var scope = realmId is null ? "" : "&realmId=" + Uri.EscapeDataString(realmId);
+        var result = await PlayerAdminTransport.SendAsync<AdminCharacterDetail>(client, options.Value, "characters", HttpMethod.Get,
+            $"admin/characters/{id:D}?questPage={questPage}&questPageSize={questPageSize}{scope}", null, null, ct);
+        if (!Guid.TryParse(result.Character.CharacterId, out var returnedId) || returnedId != id ||
+            realmId is not null && result.Character.RealmId != realmId ||
+            result.Quests.Page != questPage || result.Quests.PageSize != questPageSize)
+            throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "The character service returned details for another character, realm or page. Try again shortly.");
+        return result;
+    }
     public async Task<AdminCharacterPage> ListAsync(string? accountId, string? search, int page, int pageSize, bool onlineOnly,
         CancellationToken ct, string? realmId = null)
     {
@@ -117,6 +129,7 @@ internal static class PlayerAdminTransport
         AdminCharacterOverview overview => overview.Realms is not null && overview.TotalCharacters >= 0 &&
             overview.OnlineCharacters >= 0 && overview.OnlineCharacters <= overview.TotalCharacters &&
             overview.Realms.All(realm => realm is not null && realm.RealmId is not null && realm.OnlineCharacters >= 0),
+        AdminCharacterDetail detail => CharacterDetailValidation.IsValid(detail),
         _ => false
     };
 

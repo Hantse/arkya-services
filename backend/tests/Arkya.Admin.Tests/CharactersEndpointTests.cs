@@ -22,6 +22,7 @@ public sealed class CharactersEndpointTests
         Assert.Equal(online, query["onlineOnly"].ToString());
         Assert.Contains("pageNumber=3", html);
         Assert.Contains("&lt;script&gt;character&lt;/script&gt;", html);
+        Assert.Contains($"href=\"/Character/{AccountsStub.CharacterId:D}\"", html);
         Assert.DoesNotContain("<script>character", html);
         if (page == "Players")
         {
@@ -55,5 +56,6 @@ public sealed class CharactersEndpointTests
         Assert.Equal(AccountsStub.Id.ToString("D"), QueryHelpers.ParseQuery(call.Uri.Query)["accountId"].ToString());
         Assert.Contains("accountId=" + AccountsStub.Id.ToString("D"), html);
         Assert.Contains("&lt;script&gt;character&lt;/script&gt;", html);
+        Assert.Contains($"href=\"/Character/{AccountsStub.CharacterId:D}\"", html);
     }
 }

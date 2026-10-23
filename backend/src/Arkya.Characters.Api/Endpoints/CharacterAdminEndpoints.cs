@@ -1,5 +1,6 @@
 using Arkya.Characters.Api.Application;
 using Arkya.Characters.Api.Infrastructure;
+using Arkya.ServiceDefaults;
 
 namespace Arkya.Characters.Api.Endpoints;
 
@@ -33,5 +34,16 @@ public static class CharacterAdminEndpoints
         });
         admin.MapGet("/overview", async (ICharacterAdminRepository repository, TimeProvider clock, CancellationToken cancellationToken) =>
             Results.Ok(await repository.OverviewAsync(clock.GetUtcNow(), cancellationToken)));
+        admin.MapGet("/{characterId}", async (string characterId, string? realmId, int? questPage, int? questPageSize,
+            CharacterAdminDetailService service, CancellationToken cancellationToken) =>
+        {
+            if (!Guid.TryParseExact(characterId, "D", out var id) || id == Guid.Empty ||
+                !string.IsNullOrEmpty(realmId) && !GameProtocol.ValidId(realmId) ||
+                (questPage ?? 1) is < 1 or > 100000 || (questPageSize ?? 25) is < 1 or > 100)
+                return Results.Problem(statusCode: 400, title: "Invalid character detail query.");
+            var detail = await service.GetAsync(id, string.IsNullOrEmpty(realmId) ? null : realmId,
+                questPage ?? 1, questPageSize ?? 25, cancellationToken);
+            return detail is null ? Results.NotFound() : Results.Ok(detail);
+        });
     }
 }

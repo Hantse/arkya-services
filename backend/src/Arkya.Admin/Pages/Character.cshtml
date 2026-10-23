@@ -1,0 +1,138 @@
+@page "{id:guid?}"
+@model CharacterModel
+@{
+    ViewData["Title"] = Model.Detail?.Character.DisplayName ?? "Character";
+    var detail = Model.Detail;
+}
+<header class="page-header">
+    <div><div class="eyebrow">PLAYERS / CHARACTERS / DETAILS</div><h1>@(detail?.Character.DisplayName ?? "Character")</h1><p class="intro">Saved character information, progression and possessions.</p></div>
+    <div class="realm-page-actions">
+        <a class="button secondary" asp-page="/Character" asp-route-id="@Model.Id" asp-route-section="@Model.Section" asp-route-realmId="@Model.RealmId" asp-route-questPage="@Model.QuestPage" asp-route-questPageSize="@Model.QuestPageSize">Refresh</a>
+        @if (Model.RealmId is not null)
+        {
+            <a class="button secondary" asp-page="/Realm" asp-route-realmId="@Model.RealmId" asp-route-section="players">Realm characters</a>
+        }
+        else
+        {
+            <a class="button secondary" asp-page="/Characters">All characters</a>
+        }
+    </div>
+</header>
+@if (Model.Error is not null)
+{
+    <div class="alert error" role="alert">@Model.Error <a asp-page="/Character" asp-route-id="@Model.Id" asp-route-section="@Model.Section" asp-route-realmId="@Model.RealmId" asp-route-questPage="@Model.QuestPage" asp-route-questPageSize="@Model.QuestPageSize">Reload details</a></div>
+}
+@if (detail is not null)
+{
+    var character = detail.Character;
+    var gameplay = detail.Gameplay;
+    var activeClass = gameplay.Classes.FirstOrDefault(progress => progress.ClassId == gameplay.ActiveClass);
+    <div class="panel character-summary">
+        <div class="character-identity"><span class="character-avatar" aria-hidden="true"><partial name="_AdminIcon" model='@("character")' /></span><div><strong>@character.DisplayName</strong><small class="mono">@character.CharacterId</small></div></div>
+        <dl><div><dt>Presence</dt><dd><span class="realm-status @(character.IsOnline ? "ready" : "draft")">@(character.IsOnline ? "Online" : "Offline")</span></dd></div><div><dt>Realm</dt><dd>@(string.IsNullOrEmpty(character.RealmId) ? "Unbound" : character.RealmId)</dd></div><div><dt>Active class</dt><dd>@CharacterModel.ClassName(gameplay.ActiveClass) @if (activeClass is not null) { <span>· Level @activeClass.Level</span> }</dd></div></dl>
+    </div>
+    <p class="muted character-snapshot-note">Saved data, observed @CharacterModel.Date(detail.ObservedAt) UTC. In-game changes appear after the dedicated server saves them.</p>
+    <nav class="character-tabs" aria-label="Character details">
+        @foreach (var (id, label) in CharacterModel.Sections)
+        {
+            <a asp-page="/Character" asp-route-id="@Model.Id" asp-route-section="@id" asp-route-realmId="@Model.RealmId" asp-route-questPageSize="@Model.QuestPageSize" aria-current="@(Model.Section == id ? "page" : null)">@label @if (id == "quests") { <span class="character-tab-count">@detail.Quests.Total</span> }</a>
+        }
+    </nav>
+    <section class="character-pane" data-character-section="@Model.Section" aria-labelledby="character-section-heading">
+    @if (Model.Section == "overview")
+    {
+        <div class="section-heading"><h2 id="character-section-heading">Character overview</h2><a asp-page="/Account" asp-route-id="@character.AccountId">View owning account</a></div>
+        <div class="panel"><dl class="detail-grid">
+            <div><dt>Character ID</dt><dd class="mono">@character.CharacterId</dd></div>
+            <div><dt>Account ID</dt><dd><a class="mono" asp-page="/Account" asp-route-id="@character.AccountId">@character.AccountId</a></dd></div>
+            <div><dt>Created UTC</dt><dd>@CharacterModel.Date(character.CreatedAt)</dd></div>
+            <div><dt>Last connected UTC</dt><dd>@CharacterModel.Date(detail.LastConnectedAt)</dd></div>
+            <div><dt>Race / silhouette</dt><dd>@character.Race / @character.Gender</dd></div>
+            <div><dt>Character record level</dt><dd>@detail.Level <small>Progression levels are shown under Statistics.</small></dd></div>
+            <div><dt>Lease expiry UTC</dt><dd>@CharacterModel.Date(character.LeaseExpiresAt)</dd></div>
+        </dl></div>
+        <div class="section-heading"><h3>Last saved location</h3></div>
+        @if (detail.WorldState is { } world)
+        {
+            <div class="panel"><dl class="detail-grid">
+                <div><dt>Area</dt><dd>@(world.AreaId ?? world.IslandId ?? "Not recorded")</dd></div>
+                <div><dt>Authority server</dt><dd class="mono">@world.ServerId</dd></div>
+                <div><dt>Position X / Y / Z</dt><dd class="mono">@world.X.ToString("0.##") / @world.Y.ToString("0.##") / @world.Z.ToString("0.##")</dd></div>
+                <div><dt>Direction X / Z</dt><dd class="mono">@world.ForwardX.ToString("0.###") / @world.ForwardZ.ToString("0.###")</dd></div>
+                <div><dt>Map content</dt><dd>@(world.ContentId ?? "Not recorded")</dd></div>
+                <div><dt>Save revision</dt><dd>@world.Revision</dd></div>
+            </dl></div>
+        }
+        else
+        {
+            <div class="panel empty-state"><p>No world position has been saved for this character yet.</p></div>
+        }
+    }
+    else if (Model.Section == "stats")
+    {
+        <div class="section-heading"><h2 id="character-section-heading">Statistics and progression</h2><span class="muted">Last saved state</span></div>
+        @if (gameplay.Vitals is { } vitals)
+        {
+            <div class="character-vitals">
+                @foreach (var (label, value, maximum, style) in new[] { ("Health", vitals.Health, vitals.MaxHealth, "health"), ("Mana", vitals.Mana, vitals.MaxMana, "mana"), ("Stamina", vitals.Stamina, vitals.MaxStamina, "stamina") })
+                {
+                    <div class="panel character-vital @style"><div><h3>@label</h3><strong>@value <span>/ @maximum</span></strong></div><meter min="0" max="@maximum" value="@value" aria-label="@label">@value / @maximum</meter></div>
+                }
+            </div>
+            <div class="section-heading"><h3>Class progression</h3><span class="muted">Rating @gameplay.Classes.Where(progress => progress.Level > 0).Average(progress => progress.Level).ToString("0.##")</span></div>
+            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Saved class levels and experience</caption><thead><tr><th scope="col">Class</th><th scope="col">Status</th><th scope="col">Level</th><th scope="col">Experience</th></tr></thead><tbody>
+            @foreach (var progress in gameplay.Classes)
+            {
+                <tr><th scope="row">@CharacterModel.ClassName(progress.ClassId)</th><td><span class="realm-status @(progress.ClassId == gameplay.ActiveClass ? "ready" : "draft")">@(progress.ClassId == gameplay.ActiveClass ? "Active" : progress.Level > 0 ? "Unlocked" : "Locked")</span></td><td>@(progress.Level > 0 ? progress.Level.ToString() : "—")</td><td>@CharacterModel.Experience(progress)</td></tr>
+            }
+            </tbody></table></div>
+            <dl class="panel detail-grid character-learned"><div><dt>Learned rank 1 abilities</dt><dd>@CharacterModel.RankCount(gameplay.LearnedRankOne)</dd></div><div><dt>Learned rank 2 abilities</dt><dd>@CharacterModel.RankCount(gameplay.LearnedRankTwo)</dd></div></dl>
+        }
+        else
+        {
+            <div class="panel empty-state"><h3>Statistics unavailable</h3><p>@Model.GameplayMessage</p></div>
+        }
+    }
+    else if (Model.Section == "quests")
+    {
+        var quests = detail.Quests;
+        <div class="section-heading"><h2 id="character-section-heading">Quest history</h2><span class="muted">@quests.Total quest(s)</span></div>
+        @if (quests.Items.Length == 0)
+        {
+            <div class="panel empty-state"><h3>@(quests.Total == 0 ? "No recorded quests" : "No quests on this page")</h3><p>@(quests.Total == 0 ? "No quest progress has been recorded for this character." : "Return to the first page to see this character's quests.")</p>@if (quests.Total > 0) { <a asp-page="/Character" asp-route-id="@Model.Id" asp-route-section="quests" asp-route-realmId="@Model.RealmId" asp-route-questPageSize="@Model.QuestPageSize">First page</a> }</div>
+        }
+        else
+        {
+            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Recorded active and completed quests</caption><thead><tr><th scope="col">Quest ID</th><th scope="col">Status</th><th scope="col">Objective progress</th><th scope="col">Accepted catalog version</th><th scope="col">Revision</th></tr></thead><tbody>
+            @foreach (var quest in quests.Items)
+            {
+                <tr><th scope="row">@quest.QuestId</th><td><span class="realm-status @(quest.Completed ? "ready" : "pending")">@(quest.Completed ? "Completed" : "In progress")</span></td><td>@quest.Kills / @quest.RequiredKills kills</td><td class="mono">@quest.CatalogVersion</td><td>@quest.Revision</td></tr>
+            }
+            </tbody></table></div>
+        }
+        <nav class="pagination" aria-label="Quest pagination">
+            @if (Model.QuestPage > 1) { <a class="button secondary" asp-page="/Character" asp-route-id="@Model.Id" asp-route-section="quests" asp-route-realmId="@Model.RealmId" asp-route-questPage="@(Model.QuestPage - 1)" asp-route-questPageSize="@Model.QuestPageSize">Previous</a> }
+            <span class="muted">Page @quests.Page</span>
+            @if (Model.HasNextQuests) { <a class="button secondary" asp-page="/Character" asp-route-id="@Model.Id" asp-route-section="quests" asp-route-realmId="@Model.RealmId" asp-route-questPage="@(Model.QuestPage + 1)" asp-route-questPageSize="@Model.QuestPageSize">Next</a> }
+        </nav>
+        <p class="muted">Active and completed quest records are retained with their accepted objectives. Acceptance and completion dates are not recorded yet.</p>
+    }
+    else if (Model.Section == "appearance")
+    {
+        var appearance = detail.Appearance;
+        <div class="section-heading"><h2 id="character-section-heading">Appearance</h2><span class="muted">Version @appearance.Version</span></div>
+        <div class="panel"><dl class="detail-grid">
+            <div><dt>Race</dt><dd>@appearance.Race</dd></div><div><dt>Silhouette</dt><dd>@appearance.Silhouette</dd></div>
+            <div><dt>Height</dt><dd>@appearance.HeightCm cm</dd></div><div><dt>Skin</dt><dd>@appearance.Skin</dd></div>
+            <div><dt>Hair style</dt><dd>@appearance.HairStyle</dd></div><div><dt>Hair color</dt><dd>@appearance.HairColor</dd></div>
+            <div><dt>Eye color</dt><dd>@appearance.EyeColor</dd></div><div><dt>Outfit color</dt><dd>@appearance.OutfitColor</dd></div>
+        </dl></div>
+    }
+    else
+    {
+        var label = CharacterModel.Sections.Single(section => section.Id == Model.Section).Label;
+        <div class="section-heading"><h2 id="character-section-heading">@label</h2><span class="realm-status draft">Unavailable</span></div>
+        <div class="panel empty-state character-storage-state"><span class="character-storage-icon" aria-hidden="true"><partial name="_AdminIcon" model='@("items")' /></span><h3>@(Model.Section == "equipment" ? "Equipped items" : Model.Section == "bank" ? "Bank contents" : "Bag contents") are not yet persisted</h3><p>The game does not yet save @(Model.Section == "equipment" ? "equipped items" : Model.Section == "bank" ? "bank contents" : "bag contents") for this character. Their contents cannot be displayed until server saving is connected.</p><p class="muted">Unavailable data does not mean this character has no items.</p></div>
+    }
+    </section>
+}

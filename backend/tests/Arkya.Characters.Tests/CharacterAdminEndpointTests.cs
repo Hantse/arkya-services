@@ -22,6 +22,10 @@ internal sealed class TestCharacterAdminRepository : ICharacterAdminRepository
     }
     public Task<AdminCharacterOverview> OverviewAsync(DateTimeOffset now, CancellationToken cancellationToken) =>
         Task.FromResult(new AdminCharacterOverview(12, 3, [new("beta-web", 3)]));
+    public Task<AdminCharacterSummary?> FindAsync(Guid characterId, string? realmId, DateTimeOffset now,
+        CancellationToken cancellationToken) => Task.FromResult<AdminCharacterSummary?>(null);
+    public Task<AdminCharacterQuestPage> ListQuestsAsync(Guid characterId, int page, int pageSize,
+        CancellationToken cancellationToken) => Task.FromResult(new AdminCharacterQuestPage([], 0, page, pageSize));
 }
 
 public sealed class CharacterAdminEndpointTests

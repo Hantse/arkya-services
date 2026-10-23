@@ -22,6 +22,10 @@ La [console d'administration](ADMIN_CONSOLE.md) consulte les comptes via
 Identity et les personnages/leases via Characters. Identity conserve bans,
 droits bêta et audit ; Characters applique le contrôle bêta à l'admission et
 aux renouvellements. Admin lit ces données métier via les API privées ; sa propre base MongoDB conserve uniquement ses sessions.
+La fiche personnage projette également les statistiques du snapshot autoritaire
+et les quêtes persistées, sans exposer le JSON de simulation brut. Les sacs,
+la banque et l'équipement restent explicitement indisponibles tant que leur
+persistance serveur n'est pas intégrée ; voir la [fiche personnage](ADMIN_CONSOLE.md#fiche-personnage).
 
 Arkya utilise Unity DOTS (Data-Oriented Technology Stack) pour la simulation temps réel et Netcode for Entities pour le multijoueur sous autorité serveur. La simulation, exécutée par un serveur dédié Unity, est séparée des services ASP.NET Core qui possèdent les comptes et les données persistantes. La décision sur ces services est détaillée dans [0002 — Services backend](decisions/0002-backend-services.md).
 

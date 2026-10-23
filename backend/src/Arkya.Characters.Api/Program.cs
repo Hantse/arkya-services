@@ -61,6 +61,7 @@ public partial class Program
             .ValidateOnStart();
         builder.Services.AddSingleton<CharacterAdminKeyValidator>();
         builder.Services.AddSingleton<ICharacterAdminRepository, MongoCharacterAdminRepository>();
+        builder.Services.AddScoped<CharacterAdminDetailService>();
         builder.Services.AddSingleton<MongoGameLeaseStore>();
         builder.Services.AddSingleton<IGameLeaseStore>(services => services.GetRequiredService<MongoGameLeaseStore>());
         builder.Services.AddScoped<GameAdmissionService>();

@@ -12,6 +12,55 @@ namespace Arkya.Characters.Tests;
 public sealed class MongoCharacterAdminRepositoryTests
 {
     [MongoFact]
+    public async Task DetailLookupEnforcesRealmScopeAndPaginatesOnlyTheSelectedCharactersQuests()
+    {
+        var database = "arkya_character_admin_detail_test_" + Guid.NewGuid().ToString("N");
+        var client = new MongoClient(Environment.GetEnvironmentVariable("ARKYA_TEST_MONGO"));
+        try
+        {
+            var options = Options.Create(new MongoOptions { DatabaseName = database });
+            var characters = new MongoCharacterRepository(client, options);
+            var quests = new MongoCharacterQuestRepository(client, options);
+            var leases = new MongoGameLeaseStore(client, options);
+            var admin = new MongoCharacterAdminRepository(client, options);
+            await quests.EnsureIndexesAsync(default);
+            var now = FixedTimeProvider.Now;
+            var character = new Character(Guid.NewGuid(), Guid.NewGuid(), "Aelys", "AELYS", 1, now) { RealmId = "beta-web" };
+            Assert.True(await characters.TryAddAsync(character, default));
+            var otherCharacter = Guid.NewGuid();
+            var version = Guid.NewGuid();
+            foreach (var questId in new[] { "quest-c", "quest-a", "quest-b" })
+                Assert.True(await quests.TryWriteAsync(new(character.Id, questId, version, 3,
+                    questId == "quest-b" ? 3 : 1, 1), 0, default));
+            Assert.True(await quests.TryWriteAsync(new(otherCharacter, "private-quest", version, 1, 0, 1), 0, default));
+            Assert.True(await leases.TryWriteAsync(new(character.Id, character.AccountId, "beta-web", "island-01", 1,
+                null, now.AddSeconds(60), Guid.NewGuid(), 1, now.AddSeconds(90), now.AddHours(1), null), null, default));
+
+            var summary = await admin.FindAsync(character.Id, "beta-web", now, default);
+            Assert.Equal(character.Id.ToString("D"), summary!.CharacterId);
+            Assert.True(summary.IsOnline);
+            Assert.Null(await admin.FindAsync(character.Id, "other-realm", now, default));
+            Assert.Null(await admin.FindAsync(Guid.NewGuid(), null, now, default));
+            Assert.NotNull(await admin.FindAsync(character.Id, null, now, default));
+            var first = await admin.ListQuestsAsync(character.Id, 1, 2, default);
+            Assert.Equal(3, first.Total);
+            Assert.Equal(new[] { "quest-a", "quest-b" }, first.Items.Select(value => value.QuestId));
+            Assert.True(first.Items[1].Completed);
+            Assert.All(first.Items, value => Assert.Equal(version, value.CatalogVersion));
+            var second = await admin.ListQuestsAsync(character.Id, 2, 2, default);
+            Assert.Equal(3, second.Total);
+            Assert.Equal("quest-c", Assert.Single(second.Items).QuestId);
+            var beyond = await admin.ListQuestsAsync(character.Id, 3, 2, default);
+            Assert.Equal(3, beyond.Total);
+            Assert.Empty(beyond.Items);
+            var missing = await admin.ListQuestsAsync(Guid.NewGuid(), 1, 25, default);
+            Assert.Equal(0, missing.Total);
+            Assert.Empty(missing.Items);
+        }
+        finally { await client.DropDatabaseAsync(database); }
+    }
+
+    [MongoFact]
     public async Task ListsProjectedCharactersWithAccuratePaginationAndOnlyActiveLeasesCountAsOnline()
     {
         var database = "arkya_character_admin_test_" + Guid.NewGuid().ToString("N");

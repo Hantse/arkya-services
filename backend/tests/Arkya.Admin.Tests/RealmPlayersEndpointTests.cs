@@ -39,6 +39,7 @@ public sealed class RealmPlayersEndpointTests
         Assert.Contains("80 character(s)", html);
         Assert.Contains("&lt;script&gt;character&lt;/script&gt;", html);
         Assert.DoesNotContain("<script>character", html);
+        Assert.Contains($"href=\"/Character/{AccountsStub.CharacterId:D}?realmId=terres-aube\"", html);
         foreach (var (label, page) in new[] { ("Refresh", 2), ("Previous", 1), ("Next", 3) })
         {
             var href = Href(html, label);
@@ -168,6 +169,7 @@ public sealed class RealmPlayersEndpointTests
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Dedicated + "/?section=players"));
         Assert.Contains("href=\"" + Central + "/Account/" + AccountsStub.Id.ToString("D") + "\"", html);
         Assert.Contains("Manage account in general administration", html);
+        Assert.Contains($"href=\"{Central}/Character/{AccountsStub.CharacterId:D}?realmId=terres-aube\"", html);
         Assert.Equal("terres-aube", QueryHelpers.ParseQuery(Assert.Single(factory.Upstream.Calls).Uri.Query)["realmId"].ToString());
         factory.Realms.Calls.Clear();
         factory.Upstream.Calls.Clear();
