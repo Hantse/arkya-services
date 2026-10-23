@@ -1,0 +1,169 @@
+# PNJ d’Aubefont
+
+La ville reçoit vingt PNJ fondés sur les modèles Paladin et Valkyrie : dix personnages
+fixes, six qui se déplacent autour de leur poste et quatre qui suivent une patrouille.
+Le serveur ECS possède leurs positions et valide les conversations ; le client
+présente les modèles, les animations et le panneau de dialogue. L’exploration locale
+et le dedicated utilisent ces mêmes systèmes.
+
+## Parler en jeu
+
+Approcher un PNJ à moins de **4 mètres**, puis appuyer sur **E**, cliquer son nom ou
+le bouton **Parler**. Son salut écrit s’affiche. Saisir ensuite un message et appuyer
+sur **Entrée** ou **Parler** ; **Échap** ou **Fermer** ferme le panneau.
+
+Un PNJ qui parle s’arrête et se tourne vers le personnage. Chaque ouverture,
+demande et réponse lui accorde une pause de **45 secondes**, après laquelle il
+reprend son comportement. Le panneau suspend les entrées de déplacement et de
+caméra du joueur. Le serveur refuse les conversations à travers un obstacle,
+hors de portée, pendant la mort ou un transfert d’autorité. Une demande en cours
+doit terminer avant la suivante ; le cooldown minimum est d’une seconde.
+
+La question est limitée à **200 caractères et 500 octets UTF-8**. La réponse du
+modèle est du texte simple, limité à **512 caractères**. Le client garde un petit
+historique de présentation pendant la session ; cet historique n’est pas envoyé
+au modèle ni conservé comme mémoire persistante. Si l’inférence est indisponible,
+le salut écrit reste dans le panneau et un statut d’indisponibilité permet de réessayer.
+
+## Modifier les PNJ dans Unity
+
+Hors Play Mode, sélectionner cet asset dans la fenêtre Project :
+
+```text
+Assets/Arkya/Characters/Npcs/Resources/ArkyaTownNpcs.asset
+```
+
+Son Inspector expose `Entries`, une définition par PNJ. Enregistrer l’asset après
+modification, puis relancer l’exploration pour repartir des définitions sauvegardées.
+Le catalogue est inclus dans les builds du client et du serveur : publier les
+deux ensemble après un changement de contenu. Il n’existe pas de rechargement
+de catalogue distant ni d’éditeur de PNJ dans le backoffice pour cette tranche.
+
+| Champ | Utilisation |
+| --- | --- |
+| `Id` | Entier positif unique utilisé par les ghosts et les RPC. Conserver sa valeur pour un PNJ existant. |
+| `NpcId` | Identifiant stable en minuscules, chiffres et tirets simples, de 1 à 64 caractères. |
+| `DisplayName`, `Role` | Nom et métier affichés au joueur et transmis au modèle. |
+| `Greeting` | Salut écrit immédiatement disponible sans requête d’inférence, jusqu’à 512 caractères. |
+| `Personality` | Consigne de personnage rédigée côté contenu : caractère, connaissances et façon de parler, jusqu’à 800 caractères. |
+| `InferenceProfileId` | Métadonnée stable de profil ; aucun choix de modèle distinct n’est encore associé à cet ID. |
+| `QuestIds` | Liens vers des identifiants de quêtes, au maximum 16 slugs uniques. |
+| `Home` | Point de départ en coordonnées monde ; le serveur recale la hauteur sur le Terrain. |
+| `FacingDegrees` | Orientation initiale autour de l’axe vertical. |
+| `Movement` | `Static`, `LocalWander` ou `Patrol`. |
+| `WanderRadius` | Rayon de promenade autour de `Home`, entre 0,5 et 8 mètres. |
+| `PatrolPoints` | Suite de 2 à 32 points monde pour `Patrol`, chacun à moins de 100 mètres de `Home`. |
+| `WalkSpeed` | Vitesse serveur, entre 0,3 et 2,2 m/s. |
+| `WaitSeconds` | Pause entre destinations, de 1 à 30 secondes. |
+| `VisualResource` | `ArkyaNpcs/Paladin` ou `ArkyaNpcs/Valkyrie`. |
+| `Tint`, `HeightScale`, `ModelYaw` | Teinte de tenue, échelle visuelle et correction d’orientation du modèle. |
+
+`LocalWander` choisit des destinations déterministes dans son rayon. `Patrol`
+parcourt les points dans l’ordre puis recommence. Les déplacements suivent le
+Terrain, refusent l’eau et les obstacles statiques, puis attendent avant de choisir
+la prochaine destination en cas de blocage. Ce comportement ne calcule pas un
+chemin autour des bâtiments : poser les points sur des passages ouverts et
+vérifier le trajet dans la Game View. Les PNJ ne disposent pas encore d’évitement
+mutuel, d’horaires persistants ou de navigation entre étages.
+
+Lors de l’apparition, le serveur cherche un emplacement libre proche du point
+prévu si nécessaire. Chaque point appartient à une seule partition. Un PNJ reste
+dans cette partition et n’en transfère pas l’autorité. Il n’y a pas encore de
+réplication des PNJ d’une partition voisine : près d’une frontière, le joueur voit
+les PNJ de son serveur courant, puis ceux du nouveau serveur après son handoff.
+
+Les deux prefabs de présentation sont conservés sous :
+
+```text
+Assets/Arkya/Characters/Npcs/Resources/ArkyaNpcs/Paladin.prefab
+Assets/Arkya/Characters/Npcs/Resources/ArkyaNpcs/Valkyrie.prefab
+```
+
+Les adaptations Arkya portent les matériaux URP et les animations `Idle`/`Walk`.
+Les sources fournisseur sont conservées séparément. Le root motion est désactivé :
+l’animation suit la position reçue et ne déplace jamais le PNJ. Les changements
+de couleur utilisent des propriétés de matériau par instance.
+
+## Quêtes et comportements futurs
+
+`QuestIds` prépare le raccordement des PNJ au contenu : les identifiants sont
+inclus dans le contexte serveur transmis au modèle.
+Ce champ **ne crée pas d’acceptation, de remise ou de récompense de quête**.
+Il ne modifie pas non plus la progression existante des objectifs de combat.
+Les règles de [contenu des quêtes](QUEST_CONTENT.md) et les systèmes de combat
+gardent leur autorité actuelle.
+
+Une réponse telle que « voici votre récompense » reste une phrase sans effet.
+Pour ajouter une action de quête ou un nouveau comportement, prévoir une
+commande serveur explicite, ses préconditions et ses tests. Le texte du modèle
+ne doit jamais être interprété comme une commande de gameplay.
+
+## Raccorder l’inférence
+
+Le parcours est `serveur Unity → Inference API → agent Windows 1.2 → worker local
+→ serveur Unity → client`. Les workers disponibles utilisent leur configuration
+de modèle actuelle dans Admin. Le contenu envoyé comprend `NpcId`, `DisplayName`,
+`Role`, `Personality`, le message joueur et les liens de quêtes ;
+`InferenceProfileId` n’opère pas de sélection de modèle. L’identité de compte et
+l’historique du joueur ne sont pas envoyés.
+
+Configurer l’environnement du **dedicated**, ou celui de l’**Editor** pour un
+essai local utilisant réellement un worker :
+
+```text
+ARKYA_INFERENCE_API_URL=<origine du service Inference>
+ARKYA_INFERENCE_SERVICE_KEY=<secret de service dédié>
+```
+
+Ces variables sont lues à la création du monde serveur. Ne placer aucune clé
+dans le catalogue, un prefab ou le client distribué. L’origine doit utiliser
+HTTPS ; HTTP est limité au loopback et à l’origine interne explicitement autorisée
+`arkya-inference.arkya-beta.svc.cluster.local:8080`. Aucun chemin, paramètre de
+requête ou fragment n’est accepté dans l’origine.
+
+Côté Inference, activer `NpcDialogue__Enabled=true` et fournir le même secret
+via `NpcDialogue__ServiceKey`. Un agent Windows 1.2 inscrit et un worker disponible
+sont nécessaires. Le [guide des agents d’inférence](INFERENCE_AGENTS.md#dialogues-pnj-du-jeu)
+décrit l’authentification, les routes, les limites et la configuration du
+[composant de déploiement facultatif](../backend/deploy/gitops/npc-dialogue/README.md).
+
+Unity borne à huit les demandes HTTP simultanées, attend au plus 40 secondes
+le service et expire une conversation en attente après 45 secondes côté simulation.
+Les réponses périmées, celles d’une autre connexion et celles reçues après sortie
+de portée ne rouvrent pas la conversation. Cette intégration ne conserve aucune
+mémoire persistante de PNJ et la file du service reste temporaire.
+
+## Réseau et fichiers
+
+La nouvelle paire d’admission est **`5 / arkya-town-npcs-v1`**. Les services
+reconnaissent encore les anciennes paires exactes, mais n’admettent pas un client
+4 sur un serveur 5 ou l’inverse. La publication du client et du dedicated doit
+être coordonnée. Le snapshot persistant du personnage conserve son format actuel.
+
+| Fichiers Unity, relatifs à `Unity3D/Arkya/` | Responsabilité |
+| --- | --- |
+| `Assets/Arkya/Characters/Runtime/Npcs/CharacterNpcCatalog.cs` | Définitions et validation du contenu. |
+| `Assets/Arkya/Characters/Runtime/Npcs/CharacterNpcComponents.cs` | Ghosts, données de simulation et messages de conversation. |
+| `Assets/Arkya/Characters/Runtime/Npcs/CharacterNpcSystems.cs` | Apparition, déplacement, autorisation des interactions et contrôle des réponses. |
+| `Assets/Arkya/Characters/Runtime/Npcs/CharacterNpcClient.cs` | Intentions client et réception des réponses. |
+| `Assets/Arkya/Characters/Runtime/Npcs/CharacterNpcInferenceSystem.cs` | Appels HTTP serveur vers Inference. |
+| `Assets/Arkya/Characters/Runtime/Npcs/CharacterNpcPresentation.cs` | Modèles, animations, noms et sélection. |
+| `Assets/Arkya/Characters/Runtime/UI/CharacterNpcDialoguePanel.cs` | Fenêtre de conversation. |
+
+## Vérification
+
+Les preuves Unity et les captures de cette intégration restent à renseigner
+après exécution dans l’Editor ; ce document ne constitue pas une validation
+visuelle ou une preuve de dialogue avec un worker réel.
+
+Les suites prévues sont `CharacterNpcTests` pour les règles et l’autorité,
+`CharacterNpcNetworkTests` pour les ghosts et RPC entre serveur/client réels,
+`CharacterNpcAssetTests` pour le catalogue et les prefabs, et
+`CharacterNpcDialoguePanelTests` pour la présentation du dialogue. Le test réseau
+injecte une réponse de modèle contrôlée afin de vérifier le transport ; il ne
+remplace pas le parcours HTTP avec agent et modèle en fonctionnement.
+
+Les vérifications déjà exécutées dans le dépôt lors de l’ajout du protocole
+comptent **37 tests backend** de compatibilité/admission et **3 tests Python**
+du fixture CI de topologie, tous réussis. Les résultats du service d’inférence
+et de l’agent Windows sont suivis dans leur guide dédié.

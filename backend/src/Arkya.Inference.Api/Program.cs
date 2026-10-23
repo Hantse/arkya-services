@@ -31,6 +31,8 @@ public partial class Program
                 "InferenceAdmin:Key must contain 32 to 512 characters.").ValidateOnStart();
         builder.Services.AddOptions<InferenceOptions>().BindConfiguration("Inference")
             .Validate(value => value.IsValid(), "Inference limits or heartbeat configuration are invalid.").ValidateOnStart();
+        builder.Services.AddOptions<NpcDialogueOptions>().BindConfiguration("NpcDialogue")
+            .Validate(value => value.IsValid(), "NPC dialogue configuration is invalid.").ValidateOnStart();
         builder.Services.AddSingleton<IMongoClient>(services =>
         {
             var settings = MongoClientSettings.FromConnectionString(services.GetRequiredService<IOptions<MongoOptions>>().Value.ConnectionString);
@@ -45,6 +47,7 @@ public partial class Program
         builder.Services.AddSingleton<IEnrollmentGrantRepository, MongoEnrollmentGrantRepository>();
         builder.Services.AddSingleton<InferenceService>();
         builder.Services.AddSingleton<EnrollmentService>();
+        builder.Services.AddSingleton<NpcDialogueService>();
         builder.Services.AddHostedService<InferenceStoreInitializer>();
         var app = builder.Build();
         app.UseArkyaInternalHttp();
@@ -89,6 +92,7 @@ public partial class Program
         app.MapGet("/health/ready", async (IInferenceRepository repository, CancellationToken cancellationToken) =>
             await repository.IsAvailableAsync(cancellationToken) ? Results.Ok(new { status = "ready" }) : Results.StatusCode(503));
         app.MapInferenceEndpoints();
+        app.MapNpcDialogueEndpoints();
         app.Run();
     }
 }

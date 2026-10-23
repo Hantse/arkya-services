@@ -15,6 +15,7 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
     IOptions<RealmRuntimeOptions>? runtime = null) : IRealmDeployer
 {
     private const string DedicatedSecretName = "arkya-dedicated";
+    private const string InferenceSecretName = "arkya-npc-dialogue";
     private const string ImageReleaseAnnotation = "arkya.online/image-release";
     private const string RestartAnnotation = "arkya.online/restart-revision";
     private readonly DeploymentOptions options = configured.Value;
@@ -56,7 +57,8 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
 
         // Runtime credentials must outlive draining dedicateds and belong to this deployment before cleanup.
         var secrets = new List<(string Path, JsonObject Desired, JsonObject? Existing)>();
-        foreach (var name in new[] { DedicatedSecretName, "arkya-ghcr" })
+        foreach (var name in new[] { DedicatedSecretName, "arkya-ghcr" }
+            .Concat(runtimeOptions.InferenceBaseUrl.Length > 0 ? [InferenceSecretName] : []))
         {
             var desired = new JsonObject
             {
@@ -152,6 +154,13 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
             await EnsureRegistrySecretAsync(realm, cancellationToken);
         if (runtimeOptions.DedicatedKeySeed.Length > 0)
             await EnsureDedicatedSecretAsync(realm, cancellationToken);
+        if (runtimeOptions.InferenceBaseUrl.Length > 0)
+        {
+            if (!runtimeOptions.IsValid()) throw new DeploymentFailure("runtime_configuration_invalid");
+            await EnsureOwnedSecretAsync(realm, InferenceSecretName, "Opaque", new JsonObject
+                { ["service-key"] = Convert.ToBase64String(Encoding.UTF8.GetBytes(runtimeOptions.InferenceServiceKey)) },
+                "runtime_configuration_invalid", cancellationToken);
+        }
         var results = new List<ServerObservation>();
         foreach (var server in realm.Profile.Servers)
         {
@@ -546,6 +555,15 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
             });
             if (runtime.AllowClusterHttp)
                 environment.Add(new JsonObject { ["name"] = "ARKYA_ALLOW_CLUSTER_HTTP", ["value"] = "1" });
+            if (runtime.InferenceBaseUrl.Length > 0)
+            {
+                environment.Add(new JsonObject { ["name"] = "ARKYA_INFERENCE_API_URL", ["value"] = runtime.InferenceBaseUrl });
+                environment.Add(new JsonObject
+                {
+                    ["name"] = "ARKYA_INFERENCE_SERVICE_KEY",
+                    ["valueFrom"] = new JsonObject { ["secretKeyRef"] = new JsonObject { ["name"] = InferenceSecretName, ["key"] = "service-key" } }
+                });
+            }
         }
         if (server.Args.Length > 0) container["args"] = new JsonArray(server.Args.Select(value => (JsonNode?)JsonValue.Create(value)).ToArray());
         if (realm.Profile.EnvironmentSecretName is { } secret)

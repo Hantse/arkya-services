@@ -38,7 +38,7 @@ Configuration du service :
 
 Configurer Admin : `InferenceApi__Enabled=true`, `InferenceApi__BaseUrl=<origine du service>`, `InferenceApi__AdminKey=<clé opérateur>`. Le transport est HTTPS ; le HTTP de service Kubernetes exige explicitement `InferenceApi__AllowClusterHttp=true` et les CIDR privés autorisés côté service. L'exception HTTP loopback est réservée à l'environnement Development.
 
-Configurer Gateway : `Gateway__InferenceEnabled=true` et `ReverseProxy__Clusters__inference__Destinations__primary__Address=<origine du service>`. Les routes publiques sont `POST /agent/inference/enroll`, protégée à la première inscription par une clé temporaire, et `POST /agent/inference/heartbeat`, authentifiée par le jeton propre à la machine. Les routes `/admin/inference/*` restent internes. Gateway retire les clés opérateur envoyées par le client.
+Configurer Gateway : `Gateway__InferenceEnabled=true` et `ReverseProxy__Clusters__inference__Destinations__primary__Address=<origine du service>`. Les routes publiques sont `POST /agent/inference/enroll`, protégée à la première inscription par une clé temporaire, et les POST `/agent/inference/heartbeat`, `/agent/inference/dialogues/claim` et `/agent/inference/dialogues/complete`, authentifiés par le jeton propre à la machine. Les routes `/admin/inference/*` et `/internal/inference/*` restent internes. Gateway retire les clés opérateur et de service envoyées par le client.
 
 Le composant Kubernetes [`backend/deploy/gitops/inference-control`](../backend/deploy/gitops/inference-control/README.md) s'ajoute au profil Admin existant. Il conserve la même Application Argo, les services et les volumes existants. La CI publie l'image Inference avec les huit images déjà livrées, puis promeut leurs neuf digests issus du même commit dans un seul commit GitOps. La première activation du composant intervient après cette publication.
 
@@ -119,7 +119,64 @@ Contrats ajoutés :
 
 La démo utilise un worker libre par dialogue, une requête en cours par worker et une file bornée. Trois demandes simultanées peuvent donc être exécutées par trois processus. Augmenter le nombre de processus partage les ressources CPU et mémoire de la même machine ; le débit n'augmente pas proportionnellement.
 
-Les sorties du modèle sont limitées à une réplique JSON. Les trois choix sont fournis par le programme ; le champ libre et l'historique sont bornés. La mémoire de la démo est un souvenir de test injecté au prompt. Les transactions, récompenses et souvenirs persistants des PNJ devront passer par les systèmes serveur autoritaires d'Arkya. Ce lot implémente le pilotage des machines et la démo locale ; la distribution des requêtes du serveur de jeu entre plusieurs machines reste un raccordement distinct.
+Les sorties du modèle sont limitées à une réplique JSON. Les trois choix de la démo sont fournis par le programme ; le champ libre et l'historique sont bornés. La mémoire de la démo est un souvenir de test injecté au prompt. Les transactions, récompenses et souvenirs persistants des PNJ restent sous contrôle des systèmes serveur autoritaires d'Arkya.
+
+## Dialogues PNJ du jeu
+
+Le package **1.2.0** ajoute le parcours `dedicated → Inference → agent Windows → worker local → dedicated`.
+Le dedicated fournit le profil du PNJ et le contexte des quêtes depuis son catalogue.
+Le texte joueur ne choisit ni prompt système, modèle, URL, quête ni action.
+L'agent partage ses workers avec la démo locale, à raison d'une requête en cours
+par worker. Les modèles produisent seulement une réplique ; ils n'accordent aucun
+objet, récompense, acceptation ou progression de quête.
+
+Configuration Inference : `NpcDialogue__Enabled=true`,
+`NpcDialogue__ServiceKey=<secret dédié de 32 à 512 caractères>`.
+Configuration du dedicated : `ARKYA_INFERENCE_API_URL=<origine Inference>`,
+`ARKYA_INFERENCE_SERVICE_KEY=<même secret>`. Le secret n'est jamais dans un asset
+Unity ou le client. Le [composant facultatif de déploiement](../backend/deploy/gitops/npc-dialogue/README.md)
+fournit les références de secrets, le câblage Realms et l'accès réseau privé.
+Il reste désactivé tant que les images, agents et secrets ne sont pas prêts.
+
+| Route | Accès | Contrat |
+|---|---|---|
+| `POST /internal/inference/dialogues` | `X-Arkya-Service-Key`, dedicated seulement | `{requestId,npcId,displayName,role,personality,playerMessage,questContext}` |
+| `GET /internal/inference/dialogues/{requestId}` | Même clé interne | État et réponse de la demande |
+| `POST /agent/inference/dialogues/claim` | Bearer machine | `{agentId,workerId}` → `{job:null}` ou `{job:{requestId,leaseToken,expiresAt,request}}` |
+| `POST /agent/inference/dialogues/complete` | Bearer de la machine ayant reçu le bail | `{agentId,workerId,requestId,leaseToken,reply,error}` |
+
+`requestId` est un UUID au format `N` (32 chiffres hexadécimaux). `npcId` contient
+1–64 lettres/chiffres ASCII, tirets ou soulignés. Les champs sont du texte simple
+sur une ligne : nom ≤80, rôle ≤120, personnalité ≤800, question ≤256, contexte
+des quêtes ≤1000 caractères. Le contexte est obligatoire mais peut être vide.
+Il n'y a pas d'historique persistant ni d'identifiant de compte dans ces requêtes.
+
+POST et GET retournent `{requestId,status,reply,error}` : HTTP 202 pour `pending`,
+HTTP 200 pour `completed` ou `failed`. La réplique est du texte simple de 512
+caractères maximum ; le dedicated et le client la présentent sans interpréter
+de commandes ou de balises. Répéter une demande identique renvoie le même résultat ;
+réutiliser son UUID avec un autre contenu échoue en 409. Une complétion répétée
+ne remplace pas la première réponse.
+
+La file conserve au plus **128** demandes, expire le travail à **45 secondes**,
+puis conserve le résultat jusqu'à **120 secondes** depuis sa création. Ces limites
+sont configurables par `NpcDialogue__Capacity`, `__TimeoutSeconds` et
+`__RetentionSeconds`. La saturation renvoie 429 ; aucun agent 1.2 récent et prêt
+renvoie 503 immédiatement. Un résultat expiré porte `inference_timeout` et un
+échec worker `inference_failed`. Le jeu conserve alors le salut écrit du PNJ et
+affiche une indication d'indisponibilité, tout comme après une réponse HTTP
+indisponible ou inconnue. Aucun gain ni progression ne dépend de la réponse.
+
+Un bail est lié à la machine, à sa clé permanente et au worker. Un autre worker,
+une autre machine ou une identité révoquée ne peut le compléter. Le timeout
+n'est pas relancé automatiquement sur un second worker. Les corps, prompts,
+répliques et clés ne sont pas journalisés.
+
+Le coordinateur est volontairement temporaire et exige **une seule réplique
+Inference**, sans chevauchement lors d'un redéploiement. Un redémarrage efface la
+file et laisse le salut écrit disponible. Le catalogue PNJ, le gameplay et la progression
+restent indépendants de cette file. Une queue distribuée et une mémoire de PNJ
+persistante constituent des évolutions séparées.
 
 ## Vérifier et reconstruire
 
@@ -142,3 +199,21 @@ Le changement d'un worker LFM de quatre threads vers Qwen à deux threads a ét�
 Cet essai utilise le démarrage supervisé en session utilisateur. Le redémarrage complet d'un serveur Windows avec une tâche SYSTEM n'a pas été exécuté sur la machine distante.
 
 Le package 1.1.1 précise les diagnostics d'inscription HTTP 404, 502 et 503 sans afficher de stack PowerShell. Un test supplémentaire exerce ces trois échecs puis une reprise réussie avec la même identité DPAPI. Le package 1.1 reste compatible avec le backend ; cette mise à jour améliore uniquement le diagnostic d'installation.
+
+Le raccordement PNJ du package 1.2 a été vérifié avec les suites Inference
+(63 passants, 3 intégrations Mongo ignorées faute de `ARKYA_TEST_MONGO`), Gateway
+(273), Realms (435 passants, 5 intégrations Mongo ignorées) et agent Windows
+(21 existants et 7 nouveaux tests de dialogue). Le rendu du composant facultatif
+confirme les références de secrets, les règles réseau/RBAC et la conservation
+des ressources préexistantes. Le ZIP 1.2 a également été reconstruit.
+
+Un worker LFM réel isolé, sur CPU avec quatre threads et les poids existants,
+a répondu au profil d'Aline en 10,171 s : « Je suis Aline, la garde de la ville
+d'Aubefont. Je surveille la place et accueille les visiteurs. » Pour Maëlle,
+la demande d'or et de complétion des quêtes a produit en 8,929 s : « Je ne peux
+pas vous donner d'or ni terminer vos quêtes. » Les sorties ont respecté le JSON
+et la longueur, et l'absence de mémoire GPU a été vérifiée. Ce processus détenu
+par le test a été arrêté ensuite. Cet essai valide le prompt et l'adaptateur
+du vrai modèle ; il ne remplace pas la validation du parcours complet sur les
+services déployés et les machines distantes. Aucun déploiement ni agent installé
+n'a été modifié par cette vérification.

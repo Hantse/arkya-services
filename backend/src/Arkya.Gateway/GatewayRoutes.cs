@@ -45,6 +45,8 @@ public static class GatewayRoutes
         {
             routes.Add(Route("inference-agent-heartbeat", "inference", "/agent/inference/heartbeat", "POST"));
             routes.Add(Route("inference-agent-enroll", "inference", "/agent/inference/enroll", "POST"));
+            routes.Add(Route("inference-agent-dialogue-claim", "inference", "/agent/inference/dialogues/claim", "POST"));
+            routes.Add(Route("inference-agent-dialogue-complete", "inference", "/agent/inference/dialogues/complete", "POST"));
         }
         if (adminHost is not null || frontendHost is not null)
             routes = routes.Select(route => route with { Match = route.Match with { Hosts = publicHosts } }).ToList();

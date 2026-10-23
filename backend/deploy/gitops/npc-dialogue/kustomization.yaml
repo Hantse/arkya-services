@@ -1,0 +1,59 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+- network-policy.yaml
+patches:
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-inference
+      namespace: arkya-beta
+    spec:
+      replicas: 1
+      strategy:
+        type: Recreate
+        rollingUpdate: null
+      template:
+        spec:
+          containers:
+          - name: inference
+            env:
+            - name: NpcDialogue__Enabled
+              value: 'true'
+            - name: NpcDialogue__ServiceKey
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-npc-dialogue-secrets
+                  key: service-key
+- target:
+    kind: Role
+    name: arkya-realm-deployer
+    namespace: arkya-beta-realm
+  patch: |-
+    - op: add
+      path: /rules/-
+      value:
+        apiGroups: ['']
+        resources: [secrets]
+        resourceNames: [arkya-npc-dialogue]
+        verbs: [get, delete]
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-realms
+      namespace: arkya-beta
+    spec:
+      template:
+        spec:
+          containers:
+          - name: realms
+            env:
+            - name: RealmRuntime__InferenceBaseUrl
+              value: http://arkya-inference.arkya-beta.svc.cluster.local:8080/
+            - name: RealmRuntime__InferenceServiceKey
+              valueFrom:
+                secretKeyRef:
+                  name: arkya-npc-dialogue-secrets
+                  key: service-key

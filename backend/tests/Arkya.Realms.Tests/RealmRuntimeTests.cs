@@ -11,6 +11,41 @@ namespace Arkya.Realms.Tests;
 public sealed class RealmRuntimeTests
 {
     [Theory]
+    [InlineData("https://inference.example/", false, true)]
+    [InlineData("http://arkya-inference.arkya-beta.svc.cluster.local:8080/", true, true)]
+    [InlineData("http://arkya-inference.arkya-beta.svc.cluster.local:8080/", false, false)]
+    [InlineData("http://other.example/", true, false)]
+    [InlineData("https://token@inference.example/", false, false)]
+    [InlineData("https://inference.example/path", false, false)]
+    [InlineData("https://inference.example/?secret=x", false, false)]
+    public void DialogueRuntimeRequiresBoundedSecretAndApprovedOrigin(string address, bool allowHttp, bool valid)
+    {
+        var options = new RealmRuntimeOptions { DedicatedKeySeed = new string('d', 32),
+            CharactersBaseUrl = "https://characters.example/", InferenceBaseUrl = address,
+            InferenceServiceKey = new string('i', 32), AllowClusterHttp = allowHttp };
+        Assert.Equal(valid, options.IsValid());
+        options.InferenceServiceKey = "";
+        Assert.False(options.IsValid());
+    }
+
+    [Fact]
+    public void DialogueRuntimeIsOptInAndSecretNeverAppearsInPodData()
+    {
+        var realm = Fixtures.Realm();
+        var runtime = new RealmRuntimeOptions { DedicatedKeySeed = new string('s', 32), CharactersBaseUrl = "https://characters.example/" };
+        var disabled = KubernetesRealmDeployer.DeploymentManifest(realm, realm.Profile.Servers[0], runtime);
+        Assert.DoesNotContain("ARKYA_INFERENCE", disabled.ToJsonString());
+        runtime.InferenceBaseUrl = "https://inference.example/";
+        runtime.InferenceServiceKey = new string('i', 32);
+        var manifest = KubernetesRealmDeployer.DeploymentManifest(realm, realm.Profile.Servers[0], runtime);
+        var environment = manifest["spec"]!["template"]!["spec"]!["containers"]![0]!["env"]!.AsArray()
+            .ToDictionary(value => value!["name"]!.GetValue<string>(), value => value!);
+        Assert.Equal(runtime.InferenceBaseUrl, environment["ARKYA_INFERENCE_API_URL"]["value"]!.GetValue<string>());
+        Assert.Equal("arkya-npc-dialogue", environment["ARKYA_INFERENCE_SERVICE_KEY"]["valueFrom"]!["secretKeyRef"]!["name"]!.GetValue<string>());
+        Assert.DoesNotContain(runtime.InferenceServiceKey, manifest.ToJsonString());
+    }
+
+    [Theory]
     [InlineData("https://characters.example/", false, true)]
     [InlineData("http://arkya-characters.arkya-beta.svc.cluster.local:8080/", true, true)]
     [InlineData("http://arkya-characters.arkya-beta.svc.cluster.local:8080/", false, false)]

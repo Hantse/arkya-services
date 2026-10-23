@@ -14,6 +14,41 @@ namespace Arkya.Realms.Tests;
 public sealed class KubernetesDeployerTests
 {
     [Fact]
+    public async Task EnablingDialogueOnExistingWorkloadRequiresExplicitEnvironmentRollout()
+    {
+        using var cluster = new FakeCluster();
+        var runtime = DedicatedRuntime();
+        await cluster.Deployer(runtime).ReconcileAsync(Fixtures.Realm(), default);
+        runtime.InferenceBaseUrl = "https://inference.example/";
+        runtime.InferenceServiceKey = new string('i', 32);
+        cluster.Methods.Clear();
+        var error = await Assert.ThrowsAsync<DeploymentFailure>(() =>
+            cluster.Deployer(runtime).ReconcileAsync(Fixtures.Realm(), default));
+        Assert.Equal("resource_configuration_drift", error.Code);
+        Assert.DoesNotContain(HttpMethod.Patch, cluster.Methods);
+        Assert.All(cluster.Resources.Values.Where(resource => resource["kind"]!.GetValue<string>() == "Deployment"),
+            deployment => Assert.DoesNotContain("ARKYA_INFERENCE", deployment.ToJsonString()));
+    }
+
+    [Fact]
+    public async Task DialogueSecretIsOwnedAndProvisionedBeforeDedicatedWorkloads()
+    {
+        using var cluster = new FakeCluster();
+        var runtime = DedicatedRuntime();
+        runtime.InferenceBaseUrl = "https://inference.example/";
+        runtime.InferenceServiceKey = new string('i', 32);
+        await cluster.Deployer(runtime).ReconcileAsync(Fixtures.Realm(), default);
+        Assert.Equal(new[] { "arkya-dedicated", "arkya-npc-dialogue" }, cluster.CreatedNames.Take(2));
+        var secret = Assert.Single(cluster.Resources.Values, resource => resource["metadata"]!["name"]!.GetValue<string>() == "arkya-npc-dialogue");
+        Assert.Equal(runtime.InferenceServiceKey, Encoding.UTF8.GetString(Convert.FromBase64String(secret["data"]!["service-key"]!.GetValue<string>())));
+        Assert.Equal("arkya-realms", secret["metadata"]!["labels"]!["app.kubernetes.io/managed-by"]!.GetValue<string>());
+        await cluster.Deployer(runtime).ReconcileAsync(Fixtures.Realm(), default);
+        Assert.Equal(4, cluster.CreateCount);
+        Assert.All(cluster.Resources.Values.Where(resource => resource["kind"]!.GetValue<string>() == "Deployment"),
+            deployment => Assert.DoesNotContain(runtime.InferenceServiceKey, deployment.ToJsonString()));
+    }
+
+    [Fact]
     public async Task DedicatedKeysAreCreatedInAnOwnedSecretBeforeWorkloadsAndNeverAppearInDeploymentData()
     {
         using var cluster = new FakeCluster();

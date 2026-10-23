@@ -10,6 +10,10 @@ public sealed class GameProtocolCompatibilityTests
     [InlineData(GameProtocol.HandoffVersion, GameProtocol.CharacterStatsBuildId, true, true)]
     [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId, true, true)]
     [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId, true, true)]
+    [InlineData(GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId, true, true)]
+    [InlineData(GameProtocol.TownNpcVersion, GameProtocol.DivingBuildId, false, false)]
+    [InlineData(GameProtocol.DivingVersion, GameProtocol.TownNpcBuildId, false, false)]
+    [InlineData(GameProtocol.TownNpcVersion, null, false, false)]
     [InlineData(GameProtocol.DivingVersion, GameProtocol.MultiAreaBuildId, false, false)]
     [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.DivingBuildId, false, false)]
     [InlineData(GameProtocol.DivingVersion, GameProtocol.CharacterStatsBuildId, false, false)]
@@ -33,6 +37,7 @@ public sealed class GameProtocolCompatibilityTests
     [InlineData(GameProtocol.HandoffVersion, GameProtocol.CharacterStatsBuildId)]
     [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId)]
     [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId)]
+    [InlineData(GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId)]
     public void SupportedHandoffBuildsKeepTrustedPartitionRouting(int version, string buildId)
     {
         var entry = new GameRealmEntry("beta-web", "Test realm", true, "area-west", "wss://game.example/west",

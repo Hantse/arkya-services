@@ -37,6 +37,9 @@ public sealed class DivingCompatibilityTests
     [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId, GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId, false)]
     [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId, GameProtocol.DivingVersion, GameProtocol.DivingBuildId, true)]
     [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId, GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId, true)]
+    [InlineData(GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId, GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId, true)]
+    [InlineData(GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId, GameProtocol.DivingVersion, GameProtocol.DivingBuildId, false)]
+    [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId, GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId, false)]
     public async Task AdmissionRequiresAnExactPairAndPreservesTheAuthoritativeSnapshotOnReconnect(
         int serverVersion, string serverBuild, int clientVersion, string clientBuild, bool compatible)
     {
@@ -65,7 +68,7 @@ public sealed class DivingCompatibilityTests
         Assert.Equal(serverVersion, issued.Value!.ProtocolVersion);
         Assert.Equal(serverBuild, issued.Value.BuildId);
         var lease = (await service.ConsumeAsync(server, new(issued.Value.Ticket), default)).Value!;
-        var snapshot = new ActorStateEnvelope(1, Payload(serverVersion == GameProtocol.DivingVersion ? 3 : 2, -1).ToJsonString());
+        var snapshot = new ActorStateEnvelope(1, Payload(serverVersion >= GameProtocol.DivingVersion ? 3 : 2, -1).ToJsonString());
         var saved = await service.SaveAsync(character.Id, server,
             new(lease.LeaseId, lease.AuthorityEpoch, 0, new(10, 2, 20), new(0, 1)) { Simulation = snapshot }, default);
         Assert.Null(saved.Error);

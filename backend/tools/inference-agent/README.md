@@ -118,8 +118,18 @@ appartiennent à un job Windows privé ; les scripts vérifient chemin, ligne de
 commande et date de création du PID avant de l’arrêter. Les conversations restent
 dans la page ; les logs ne contiennent ni dialogues ni credentials.
 
-Cette première version gère la capacité et la démo locale. Elle ne distribue pas les
-requêtes de joueurs distants entre machines. Le dimensionnement CPU/RAM dépend de
+Le package 1.2.0 reçoit aussi les dialogues des PNJ du jeu via deux appels HTTPS
+sortants `POST /agent/inference/dialogues/claim` et `/complete`, authentifiés avec
+le jeton de la machine. L'agent réserve un worker libre dans le même pool que la
+démo : une seule inférence par worker, sans ouvrir de port entrant. Le profil du
+PNJ et le contexte de quêtes viennent du dedicated, et remplacent le personnage
+de démonstration. Seule une réplique de 512 caractères maximum est retournée ;
+aucun outil, ordre de gameplay, gain ou transaction n'est exécuté. Un échec ou
+un délai dépassé conserve le salut écrit du PNJ et signale l'indisponibilité côté jeu.
+
+La distribution exige l'activation du service décrite dans
+`docs/INFERENCE_AGENTS.md`. Un ancien backend sans ces routes conserve la démo
+locale ; aucun dialogue distant n'est exécuté. Le dimensionnement CPU/RAM dépend de
 la machine : trois moteurs avec quatre threads chacun sont une configuration de
 départ, pas une garantie de débit. Prévoir plusieurs Go libres pour le modèle et
 ses trois instances. La licence du modèle est celle de LiquidAI et doit être

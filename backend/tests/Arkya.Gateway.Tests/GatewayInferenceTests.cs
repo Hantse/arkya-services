@@ -9,6 +9,8 @@ public sealed class GatewayInferenceTests
     [Theory]
     [InlineData("/agent/inference/heartbeat")]
     [InlineData("/agent/inference/enroll")]
+    [InlineData("/agent/inference/dialogues/claim")]
+    [InlineData("/agent/inference/dialogues/complete")]
     public async Task Enabled_agent_routes_preserve_authentication_and_strip_operator_keys(string path)
     {
         await using var downstream = await Downstream.StartAsync("inference");
@@ -29,6 +31,12 @@ public sealed class GatewayInferenceTests
     [Theory]
     [InlineData(false, "POST", "/agent/inference/heartbeat")]
     [InlineData(false, "POST", "/agent/inference/enroll")]
+    [InlineData(false, "POST", "/agent/inference/dialogues/claim")]
+    [InlineData(false, "POST", "/agent/inference/dialogues/complete")]
+    [InlineData(true, "GET", "/agent/inference/dialogues/claim")]
+    [InlineData(true, "GET", "/agent/inference/dialogues/complete")]
+    [InlineData(true, "POST", "/internal/inference/dialogues")]
+    [InlineData(true, "GET", "/internal/inference/dialogues/01f6c8ad0f5b4fa1930205eeffecfbce")]
     [InlineData(true, "GET", "/agent/inference/heartbeat")]
     [InlineData(true, "GET", "/agent/inference/enroll")]
     [InlineData(true, "POST", "/agent/inference/arbitrary")]
