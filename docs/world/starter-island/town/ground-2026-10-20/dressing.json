@@ -1,0 +1,125 @@
+{
+  "success": true,
+  "root": "Straw and market remnants - five sheltered clusters",
+  "clusters": 5,
+  "bundles": 3,
+  "looseStrawWisps": 142,
+  "visibleBundleFibers": 454,
+  "tippedBaskets": 1,
+  "triangles": 7274,
+  "renderers": 2,
+  "materialSlots": 2,
+  "newColliders": 0,
+  "newLights": 0,
+  "newBehaviours": 0,
+  "shadowCasters": 0,
+  "terrainHeightsUnchanged": true,
+  "terrainHeightHash": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "collidersUnchanged": true,
+  "colliderHash": "e0533ff3d871c72fcbe449896658f15c0c173daf1aa17e5b863fd50696fa7d14",
+  "existingTransformsUnchanged": true,
+  "sites": [
+    {
+      "name": "Bakery market court",
+      "centre": [
+        533.628,
+        50.571167,
+        533.3668
+      ],
+      "radius": 0.85,
+      "minimumDistanceFromStreetEdge": 1.28730106,
+      "distanceFromReservedHall": 27.7578621
+    },
+    {
+      "name": "Herbs and traders court",
+      "centre": [
+        560.613953,
+        51.188797,
+        512.3711
+      ],
+      "radius": 0.9,
+      "minimumDistanceFromStreetEdge": 4.68897772,
+      "distanceFromReservedHall": 56.9364281
+    },
+    {
+      "name": "Coopers sheltered working court",
+      "centre": [
+        558.8368,
+        49.5469971,
+        488.343536
+      ],
+      "radius": 0.9,
+      "minimumDistanceFromStreetEdge": 6.146122,
+      "distanceFromReservedHall": 77.80648
+    },
+    {
+      "name": "Inn sheltered rear court",
+      "centre": [
+        519.051331,
+        50.296566,
+        545.855469
+      ],
+      "radius": 0.75,
+      "minimumDistanceFromStreetEdge": 11.5529356,
+      "distanceFromReservedHall": 19.2906075
+    },
+    {
+      "name": "Herbalists drying court",
+      "centre": [
+        588.130066,
+        51.5116539,
+        538.7699
+      ],
+      "radius": 0.75,
+      "minimumDistanceFromStreetEdge": 11.4200249,
+      "distanceFromReservedHall": 61.3027077
+    }
+  ],
+  "reviewViews": [
+    {
+      "name": "bakery-straw-day",
+      "position": [
+        535.7652,
+        52.321167,
+        530.23114
+      ],
+      "target": [
+        533.628,
+        50.821167,
+        533.3668
+      ],
+      "fieldOfView": 58.0,
+      "phase": 0.4
+    },
+    {
+      "name": "cooper-straw-day",
+      "position": [
+        559.2621,
+        51.2969971,
+        492.114349
+      ],
+      "target": [
+        558.8368,
+        49.7969971,
+        488.343536
+      ],
+      "fieldOfView": 58.0,
+      "phase": 0.4
+    }
+  ],
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Dressing/Textures/Painted straw fibre grain.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Dressing/Materials/Painted ochre straw.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Dressing/Materials/Warm worn basket and binding.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Dressing/Meshes/Painted straw bundles and loose wisps.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Dressing/Meshes/Woven basket and bound straw ties.asset"
+  ],
+  "sceneSaved": false,
+  "scope": "Five original placements retained. The two standing sheaves are filled with individually curved golden reeds and uneven seed heads, without a hollow solid shell. Two owned meshes updated with native setters; materials, transforms, terrain and colliders preserved.",
+  "utc": "2026-10-20T14:07:11.4377607Z",
+  "revision": 2,
+  "positionsRetainedExactlyFromOriginalReport": true,
+  "filledReedSheaves": 2,
+  "solidSheafShells": 0,
+  "refinedAtUtc": "2026-10-20T14:13:27.8923923Z"
+}

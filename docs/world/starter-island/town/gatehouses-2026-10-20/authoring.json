@@ -1,0 +1,303 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "gates": [
+    {
+      "name": "Gate - Arrival",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gatehouse upgrade - paired slate towers",
+      "position": {
+        "x": 518.8825,
+        "y": 50.060112,
+        "z": 481.295258
+      },
+      "deckLocalHeight": 6.04521942,
+      "deckWorldHeight": 56.10533,
+      "towers": 2,
+      "towerRadius": 2.78,
+      "towerInnerRadius": 2.43,
+      "towerRiseAboveWalk": 6.6,
+      "towerPassageWidth": 3.5,
+      "towerPassageHeight": 2.65,
+      "originalArchNominalWidth": 8.5,
+      "guideSupportClearWidth": 8.66,
+      "grillePath": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gatehouse upgrade - paired slate towers/Portcullis moving grille",
+      "grilleWidth": 8.15,
+      "grilleHeight": 3.75,
+      "closedLocalPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 2.7
+      },
+      "travelHeight": 4.0,
+      "savedLocalPosition": {
+        "x": 0.0,
+        "y": 4.0,
+        "z": 2.7
+      },
+      "raisedLowestPoint": 4.05,
+      "raisedHighestPoint": 7.8,
+      "fixedPulleyHeight": 8.64522,
+      "minimumOpenChainLength": 0.645220041,
+      "retired": [
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower carved merlon",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower carved merlon",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf -1",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower carved merlon",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower carved merlon",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf 1"
+      ],
+      "exactBatchCuts": [
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Painted masonry - Warm painted defensive limestone",
+          "removedTrianglesPerSource": [
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44
+          ],
+          "sourcePaths": [
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower protective parapet"
+          ],
+          "retainedTriangles": 1648
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Painted masonry - Carved limestone coping",
+          "removedTrianglesPerSource": [
+            44,
+            44,
+            44,
+            44
+          ],
+          "sourcePaths": [
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower carved merlon",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower carved merlon",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower carved merlon",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tower carved merlon"
+          ],
+          "retainedTriangles": 1988
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Painted masonry - Painted boards V2",
+          "removedTrianglesPerSource": [
+            44,
+            44,
+            44,
+            44
+          ],
+          "sourcePaths": [
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf -1/Braced oak gate",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf -1/Gate diagonal timber brace",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf 1/Braced oak gate",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf 1/Gate diagonal timber brace"
+          ],
+          "retainedTriangles": 0
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Painted masonry - Forged dark iron",
+          "removedTrianglesPerSource": [
+            44,
+            44,
+            44,
+            44,
+            44,
+            44
+          ],
+          "sourcePaths": [
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf -1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf -1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf -1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf 1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf 1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Open oak gate leaf 1/Forged gate strap"
+          ],
+          "retainedTriangles": 176
+        }
+      ]
+    },
+    {
+      "name": "Gate - Forest",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gatehouse upgrade - paired slate towers",
+      "position": {
+        "x": 580.76,
+        "y": 50.89639,
+        "z": 565.0
+      },
+      "deckLocalHeight": 5.20894241,
+      "deckWorldHeight": 56.10533,
+      "towers": 2,
+      "towerRadius": 2.78,
+      "towerInnerRadius": 2.43,
+      "towerRiseAboveWalk": 6.6,
+      "towerPassageWidth": 3.5,
+      "towerPassageHeight": 2.65,
+      "originalArchNominalWidth": 8.5,
+      "guideSupportClearWidth": 8.66,
+      "grillePath": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gatehouse upgrade - paired slate towers/Portcullis moving grille",
+      "grilleWidth": 8.15,
+      "grilleHeight": 3.75,
+      "closedLocalPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 2.7
+      },
+      "travelHeight": 4.0,
+      "savedLocalPosition": {
+        "x": 0.0,
+        "y": 4.0,
+        "z": 2.7
+      },
+      "raisedLowestPoint": 4.05,
+      "raisedHighestPoint": 7.8,
+      "fixedPulleyHeight": 8.4,
+      "minimumOpenChainLength": 0.399999827,
+      "retired": [
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower carved merlon",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower carved merlon",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf -1",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower carved merlon",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower carved merlon",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+        "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf 1"
+      ],
+      "exactBatchCuts": [
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Painted masonry - Warm painted defensive limestone",
+          "removedTrianglesPerSource": [
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44
+          ],
+          "sourcePaths": [
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower protective parapet"
+          ],
+          "retainedTriangles": 1648
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Painted masonry - Carved limestone coping",
+          "removedTrianglesPerSource": [
+            44,
+            44,
+            44,
+            44
+          ],
+          "sourcePaths": [
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower carved merlon",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower carved merlon",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower carved merlon",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tower carved merlon"
+          ],
+          "retainedTriangles": 1988
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Painted masonry - Painted boards V2",
+          "removedTrianglesPerSource": [
+            44,
+            44,
+            44,
+            44
+          ],
+          "sourcePaths": [
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf -1/Braced oak gate",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf -1/Gate diagonal timber brace",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf 1/Braced oak gate",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf 1/Gate diagonal timber brace"
+          ],
+          "retainedTriangles": 0
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Painted masonry - Forged dark iron",
+          "removedTrianglesPerSource": [
+            44,
+            44,
+            44,
+            44,
+            44,
+            44
+          ],
+          "sourcePaths": [
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf -1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf -1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf -1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf 1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf 1/Forged gate strap",
+            "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Open oak gate leaf 1/Forged gate strap"
+          ],
+          "retainedTriangles": 176
+        }
+      ]
+    }
+  ],
+  "sourceAssetsChanged": false,
+  "terrainAndGateAnchorsUnchanged": true,
+  "retainedArchesAndWalkBridgeUnchanged": true,
+  "towerDetailedTriangles": 6032,
+  "towerDistantTriangles": 2816,
+  "newTowerCollisionMeshes": 4,
+  "movingColliders": 0,
+  "invalidMaterials": 0,
+  "newLights": 0,
+  "additionalRendererComponents": 16,
+  "scope": "Visual portcullises saved open; no authoritative mobile obstruction. Replay real ground and wall-walk movement before accepting."
+}

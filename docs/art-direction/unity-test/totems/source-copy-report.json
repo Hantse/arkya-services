@@ -1,175 +1,181 @@
 {
   "success": true,
-  "revision": "20261016T103309070262Z-totems",
-  "sourceFilesChecked": 28,
+  "revision": "20261016T150222819563Z-totems",
+  "sourceFilesChecked": 29,
   "missingMeta": [],
   "files": [
     {
-      "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\assets\\wolf.fbx",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Models\\wolf.fbx",
-      "sha256": "E06BB5BB6AFB3B45797F1F1035D3FD3236E5AF0D47EF0165BF9601E0BB843D34",
+      "source": "D:/Repositories/arkya/docs/art-direction/resources/totems/assets/wolf.fbx",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Models/wolf.fbx",
+      "sha256": "B30E1E16572CD3B6A5FE1043E52E29C36F506D753DEBD32E391437E3895CB0DC",
       "equal": true
     },
     {
-      "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\assets\\fox.fbx",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Models\\fox.fbx",
+      "source": "D:/Repositories/arkya/docs/art-direction/resources/totems/assets/fox.fbx",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Models/fox.fbx",
       "sha256": "1C5C06B0BFEE3CB01D4FD187688EA7139A4D1A6AF4C8B3516CB73F8D0B74998F",
       "equal": true
     },
     {
+      "source": "D:/Repositories/arkya/docs/art-direction/resources/totems/manifest.json",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/manifest.json",
+      "sha256": "658E40521D9ED30112BC919F6670F4875E92CFCBEB1685996241B22088A0927C",
+      "equal": true
+    },
+    {
+      "source": "D:/Repositories/arkya/docs/art-direction/resources/totems/sources/bake3d/CC-BY-4.0.txt",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/CC-BY-4.0.txt",
+      "sha256": "9BA9550AD48438D0836DDAB3DA480B3B69FFA0AAC7B7878B5A0039E7AB429411",
+      "equal": true
+    },
+    {
+      "source": "D:/Repositories/arkya/docs/art-direction/resources/totems/sources/newdlc/CC0-1.0.txt",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/CC0-1.0.txt",
+      "sha256": "A2010F343487D3F7618AFFE54F789F5487602331C0A8D03F49E9A7C547CF0499",
+      "equal": true
+    },
+    {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-abyss-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-abyss-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-abyss-basecolor.png",
       "sha256": "2B66EFC136BC1ED468B5D38242EDC310418DA0CCB1C7C74D66E942354F791CFA",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-amethyst-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-amethyst-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-amethyst-basecolor.png",
       "sha256": "C0D87BB455BAC11BB153F0FE17D6E98A636D2258CC609A8AC52F60A3C38924C0",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-copper-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-copper-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-copper-basecolor.png",
       "sha256": "DF42F4AD18C58400FF1CD8977CF5C32FAF370326EFCB6F3E8C8FE1B9E1639E8F",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-ember-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-ember-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-ember-basecolor.png",
       "sha256": "18B755A3457550B2CA356FBE283E13183774BB1CEE410988A0BE4B080450DC7D",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-frost-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-frost-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-frost-basecolor.png",
       "sha256": "ACAD71CF139FD50470E6BA2090075908B8A0B161595677767FA1247C3CB5C909",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-jade-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-jade-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-jade-basecolor.png",
       "sha256": "02AAAD01D73865F5E03E9656F698D166F87E5D52A6BE634B7482D80BC599D208",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-lunar-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-lunar-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-lunar-basecolor.png",
       "sha256": "D67576A7D9AC7AFC992AED2AABC84BFC3DCC01CD4C7AFF93527B4FCD46F9E680",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-moss-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-moss-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-moss-basecolor.png",
       "sha256": "0BE9EE8383B248919B88830FF578C1C818BA23516AC41FD4F6436EC96E014932",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-pearl-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-pearl-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-pearl-basecolor.png",
       "sha256": "DF63B8084AA15D3B84AA650B4B89029B21450BE6E6252DFB0E5126449B7E26E6",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-rose-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-rose-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-rose-basecolor.png",
       "sha256": "376DFC720CAAD93B30A38A820226E820ED403BADF7AFD086BCE3A08047F20007",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-solar-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-solar-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-solar-basecolor.png",
       "sha256": "BD2D980CD0CED6576C8DFF96957901DDA9DDB9C6F01263BF9EBA1DD74104F4F6",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-storm-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\fox-storm-basecolor.png",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/fox-storm-basecolor.png",
       "sha256": "04F2D83D9D0663E81A1E80EE0FFEB4CBAC3A0E04D320A67FB521EC2233B9F093",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-abyss-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-abyss-basecolor.png",
-      "sha256": "B4D098A8162279D8FDAAFF813BBBBE67319DC885D71935532D8B9AFD0D5B0FF5",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-abyss-basecolor.png",
+      "sha256": "7464B64EF9F724C22236F0BD5813521142945332E6555B79AADD75C0B99AB16E",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-amethyst-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-amethyst-basecolor.png",
-      "sha256": "140FD298BA91F75CA1F5C05CEDF28DE5D9E3B114FDE90D9DA393E073BCF4B813",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-amethyst-basecolor.png",
+      "sha256": "FCAA29252F98DDC4E3E9683923D918926F03B3E708EBF23082CDA502D0438CE0",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-copper-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-copper-basecolor.png",
-      "sha256": "470A0EEFD851A56583CED23F10B1A03E392A2619A5EBCEBA77E9EA5F87873721",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-copper-basecolor.png",
+      "sha256": "7007D640B32D13AD9995667FA06BF9FD55B871C2918CA07A2EEB0080C9342129",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-ember-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-ember-basecolor.png",
-      "sha256": "BA7D7D751AE020F15168C2A328693CC82E180949A142EC236501E073687437E3",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-ember-basecolor.png",
+      "sha256": "22F8D3F65243639FA0DB7C18A654E0DF17E34CC29218E5CEAC8360D641D5DBFD",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-frost-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-frost-basecolor.png",
-      "sha256": "940FEEE8139CAFD908B3F5F9E138E78BB7920AD798850C06CE4CF00095F2BE78",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-frost-basecolor.png",
+      "sha256": "C69507757D92AA96425F2E50B654195265DFFDB3EE1F0E5849E956B2B18EFAE7",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-jade-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-jade-basecolor.png",
-      "sha256": "AC983DA21F8890E95F5DF1E28322EC37063819E9FF8F841DE7A13C2FADF69766",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-jade-basecolor.png",
+      "sha256": "134917BAF7890A3B039D4BA79DA9DC369ED85F022000678DC16AB79903031B54",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-lunar-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-lunar-basecolor.png",
-      "sha256": "C867E5BE5124E314D6686168A11C9BEA1152E1F313ACEB9D5EAF8C1E145B3E0D",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-lunar-basecolor.png",
+      "sha256": "A50CC272C7228F16EF408026B1100D6BAD0985A89BDF5E287FDDE228ADF8CBAB",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-moss-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-moss-basecolor.png",
-      "sha256": "145E69FEC4B63F79BDE5AA561021A7CF4ECD3A062DD7CA5D1CF291E94966D7A8",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-moss-basecolor.png",
+      "sha256": "CE4D41ECCCCC84BD7A2E9A53A828E323C634E4BD083C786EDC706B9E646CB08A",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-pearl-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-pearl-basecolor.png",
-      "sha256": "3B08A2B3724C60729A33EC136B71C5ED992D0214E95705D4066C5F99C170C078",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-pearl-basecolor.png",
+      "sha256": "7ABF8003438C487B7CDB484139C5AFF62B5224B3291EC954165AF3B20321464F",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-rose-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-rose-basecolor.png",
-      "sha256": "1196DC69E33244692100F04640B854359914B652EA9B4A0A46EEC38104C5BB60",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-rose-basecolor.png",
+      "sha256": "1226B6C1B6E8CAAB201913BA8E0F079DEB84BD9910C936B0518DAA21E546E509",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-solar-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-solar-basecolor.png",
-      "sha256": "A0E85BC314D0CC56784C5D1F155B5A67CCC1B1DFC21E3FFD72FED4CF00134577",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-solar-basecolor.png",
+      "sha256": "EDDB76B9E5A650D22C6F0B09B1D179751A141D91E872E5764230065FA555A49D",
       "equal": true
     },
     {
       "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\wolf-storm-basecolor.png",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\Textures\\wolf-storm-basecolor.png",
-      "sha256": "F6B4C956FFFFCAA94B745C1FD6F96E5BA0CF30196529ED7AD18C3BD720DC97FA",
-      "equal": true
-    },
-    {
-      "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\manifest.json",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\manifest.json",
-      "sha256": "0BCC193D001C2873515F0EA77D7A5057CE401973A7A56CA567DE85F9F5F7DAF1",
-      "equal": true
-    },
-    {
-      "source": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\sources\\bake3d\\CC-BY-4.0.txt",
-      "target": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Totems\\CC-BY-4.0.txt",
-      "sha256": "9BA9550AD48438D0836DDAB3DA480B3B69FFA0AAC7B7878B5A0039E7AB429411",
+      "target": "D:/Repositories/arkya/Unity3D/Arkya/Assets/Arkya/Totems/Textures/wolf-storm-basecolor.png",
+      "sha256": "4CFC5969EC977A15C1F5209A387FF2B5716FB0F94DEA10D0970DB3B614B2E20B",
       "equal": true
     }
   ]

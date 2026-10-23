@@ -1,10 +1,10 @@
 {
   "success": true,
-  "checkedAtUtc": "2026-10-16T08:35:45.1100731Z",
+  "checkedAtUtc": "2026-10-19T21:23:23.4176134Z",
   "unity": "6000.6.6f1",
   "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
   "caseCount": 29,
-  "elapsedSeconds": 0.8286738,
+  "elapsedSeconds": 0.87867339999999994,
   "checks": [
     {
       "name": "Ocean surface is active and configured",
@@ -203,7 +203,7 @@
       "name": "Wave time visibly changes the real shoreline render",
       "passed": true,
       "detail": {
-        "changedPixels": 461584,
+        "changedPixels": 338958,
         "camera": {
           "x": 768.0,
           "y": 31.9175167,
@@ -220,7 +220,7 @@
       "name": "Wave time visibly changes the violet-water render",
       "passed": true,
       "detail": {
-        "changedPixels": 781794
+        "changedPixels": 759663
       }
     },
     {
@@ -366,8 +366,8 @@
       "name": "Wave validation does not leak scene roots",
       "passed": true,
       "detail": {
-        "before": 13,
-        "after": 13
+        "before": 15,
+        "after": 15
       }
     },
     {

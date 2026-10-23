@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "stage": "after-sunlit",
+  "utc": "2026-10-20T11:04:16.6761955Z",
+  "playMode": false,
+  "captures": [
+    {
+      "file": "ivy-059-close-day.png",
+      "phase": 0.32,
+      "position": {
+        "x": 540.2858,
+        "y": 53.0166626,
+        "z": 466.6152
+      },
+      "target": {
+        "x": 541.555969,
+        "y": 52.86666,
+        "z": 472.222046
+      },
+      "fieldOfView": 55.0
+    }
+  ],
+  "stateRestored": true,
+  "sceneDirtyFlagUnchanged": true,
+  "scope": "Additional after-only sunlight detail at phase .32; not a matched Before/After comparison. Presentation restored; no scene save or asset edits."
+}

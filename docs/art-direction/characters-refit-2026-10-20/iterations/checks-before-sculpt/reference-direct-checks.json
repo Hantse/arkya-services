@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "verificationMethod": "direct invocation — not Unity Test Runner",
+  "limitations": "Synchronous Test/TestCase methods only. No UnityTest coroutine, Play Mode, framework lifecycle, platform coverage or rendered layout validation is claimed.",
+  "unityVersion": "6000.6.6f1",
+  "completedUtc": "2026-10-20T20:14:32.0245532Z",
+  "durationSeconds": 1.2392512,
+  "success": false,
+  "discovered": 40,
+  "invoked": 40,
+  "passed": 36,
+  "failed": 4,
+  "skipped": 0,
+  "inconclusive": 0,
+  "sceneStatePreserved": true,
+  "originalScenes": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+      "name": "StarterIsland",
+      "wasDirty": false,
+      "roots": 18
+    },
+    {
+      "path": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+      "name": "CharacterCreation",
+      "wasDirty": false,
+      "roots": 10
+    }
+  ],
+  "excluded": [
+    "Arkya.Characters.Tests.CharacterPreviewFramingTests.LeavePlayMode: Unity coroutine lifecycle is outside direct invocation.",
+    "Arkya.Characters.Tests.CharacterPreviewFramingTests.NarrowPreviewKeepsAllAppearancesAndTallHeadgearVisibleAndCanReturnFromPortrait: Unity coroutine lifecycle is outside direct invocation."
+  ],
+  "infrastructureFailures": [],
+  "results": [
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.CloneDoesNotMutateSavedAppearance",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0099943,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndSixAnimationStates",
+      "status": "Passed",
+      "arguments": [
+        "human-a"
+      ],
+      "durationSeconds": 0.010159,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndSixAnimationStates",
+      "status": "Passed",
+      "arguments": [
+        "human-b"
+      ],
+      "durationSeconds": 0.000883,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndSixAnimationStates",
+      "status": "Passed",
+      "arguments": [
+        "elf-a"
+      ],
+      "durationSeconds": 0.0006538,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndSixAnimationStates",
+      "status": "Passed",
+      "arguments": [
+        "elf-b"
+      ],
+      "durationSeconds": 0.00063979999999999994,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.HeightLimitsMatchServer",
+      "status": "Passed",
+      "arguments": [
+        "human",
+        160,
+        195
+      ],
+      "durationSeconds": 0.000972,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.HeightLimitsMatchServer",
+      "status": "Passed",
+      "arguments": [
+        "elf",
+        170,
+        205
+      ],
+      "durationSeconds": 0.0005497,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.RejectsUnknownOptionsAndVersion",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.00066639999999999994,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "human-a",
+        "Walk"
+      ],
+      "durationSeconds": 0.0495056,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "human-b",
+        "Walk"
+      ],
+      "durationSeconds": 0.0508517,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "elf-a",
+        "Walk"
+      ],
+      "durationSeconds": 0.0235257,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "elf-b",
+        "Walk"
+      ],
+      "durationSeconds": 0.0471206,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "human-a",
+        "Run"
+      ],
+      "durationSeconds": 0.0218365,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "human-b",
+        "Run"
+      ],
+      "durationSeconds": 0.0441041,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "elf-a",
+        "Run"
+      ],
+      "durationSeconds": 0.0212198,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "elf-b",
+        "Run"
+      ],
+      "durationSeconds": 0.0382416,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "human-a",
+        "Walk"
+      ],
+      "durationSeconds": 0.26774339999999996,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Failed",
+      "arguments": [
+        "human-b",
+        "Walk"
+      ],
+      "durationSeconds": 0.0071645999999999993,
+      "messages": [
+        "NUnit.Framework.AssertionException:   LeftFoot: actual sole support is off Y=0 at 0, scale 0.9142857\r\n  Expected: less than or equal to 0.00200000009f\r\n  But was:  0.0110398978f\r\n\r\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00044] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at Arkya.Characters.Tests.CharacterLocomotionAnimationTests.CheckSupport (Arkya.Characters.Tests.CharacterLocomotionAnimationTests+Sole sole, System.Single start, System.Single end, System.Single scale, System.Int32 sampleRate) [0x00067] in D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Characters\\Tests\\Editor\\CharacterLocomotionAnimationTests.cs:255 \r\n  at Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight (System.String key, System.String motion) [0x000af] in D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Characters\\Tests\\Editor\\CharacterLocomotionAnimationTests.cs:213 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 "
+      ]
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "elf-a",
+        "Walk"
+      ],
+      "durationSeconds": 0.214922,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Failed",
+      "arguments": [
+        "elf-b",
+        "Walk"
+      ],
+      "durationSeconds": 0.0251863,
+      "messages": [
+        "NUnit.Framework.AssertionException:   LeftFoot: actual sole support is off Y=0 at 0, scale 0.9189189\r\n  Expected: less than or equal to 0.00200000009f\r\n  But was:  0.0114946915f\r\n\r\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00044] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at Arkya.Characters.Tests.CharacterLocomotionAnimationTests.CheckSupport (Arkya.Characters.Tests.CharacterLocomotionAnimationTests+Sole sole, System.Single start, System.Single end, System.Single scale, System.Int32 sampleRate) [0x00067] in D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Characters\\Tests\\Editor\\CharacterLocomotionAnimationTests.cs:255 \r\n  at Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight (System.String key, System.String motion) [0x000af] in D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Characters\\Tests\\Editor\\CharacterLocomotionAnimationTests.cs:213 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 "
+      ]
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "human-a",
+        "Run"
+      ],
+      "durationSeconds": 0.13102519999999998,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Failed",
+      "arguments": [
+        "human-b",
+        "Run"
+      ],
+      "durationSeconds": 0.0071119999999999994,
+      "messages": [
+        "NUnit.Framework.AssertionException:   LeftFoot: actual sole support is off Y=0 at 0.1, scale 0.9142857\r\n  Expected: less than or equal to 0.00200000009f\r\n  But was:  0.0033393316f\r\n\r\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00044] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at Arkya.Characters.Tests.CharacterLocomotionAnimationTests.CheckSupport (Arkya.Characters.Tests.CharacterLocomotionAnimationTests+Sole sole, System.Single start, System.Single end, System.Single scale, System.Int32 sampleRate) [0x00067] in D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Characters\\Tests\\Editor\\CharacterLocomotionAnimationTests.cs:255 \r\n  at Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight (System.String key, System.String motion) [0x000af] in D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Characters\\Tests\\Editor\\CharacterLocomotionAnimationTests.cs:213 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 "
+      ]
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "elf-a",
+        "Run"
+      ],
+      "durationSeconds": 0.1469907,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Failed",
+      "arguments": [
+        "elf-b",
+        "Run"
+      ],
+      "durationSeconds": 0.007578,
+      "messages": [
+        "NUnit.Framework.AssertionException:   LeftFoot: actual sole support is off Y=0 at 0.1, scale 0.9189189\r\n  Expected: less than or equal to 0.00200000009f\r\n  But was:  0.00350512355f\r\n\r\n  at NUnit.Framework.Assert.That[TActual] (TActual actual, NUnit.Framework.Constraints.IResolveConstraint expression, System.String message, System.Object[] args) [0x00044] in <8b63e8ac0a4746599ed207982825ae6c>:0 \r\n  at Arkya.Characters.Tests.CharacterLocomotionAnimationTests.CheckSupport (Arkya.Characters.Tests.CharacterLocomotionAnimationTests+Sole sole, System.Single start, System.Single end, System.Single scale, System.Int32 sampleRate) [0x00067] in D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Characters\\Tests\\Editor\\CharacterLocomotionAnimationTests.cs:255 \r\n  at Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight (System.String key, System.String motion) [0x000af] in D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\Characters\\Tests\\Editor\\CharacterLocomotionAnimationTests.cs:213 \r\n  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)\r\n  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 "
+      ]
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.InterruptedTransitionAndExternalPlayStillAcceptRequestedState",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.011116,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle",
+      "status": "Passed",
+      "arguments": [
+        "human-a"
+      ],
+      "durationSeconds": 0.0042434,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle",
+      "status": "Passed",
+      "arguments": [
+        "human-b"
+      ],
+      "durationSeconds": 0.0033628,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle",
+      "status": "Passed",
+      "arguments": [
+        "elf-a"
+      ],
+      "durationSeconds": 0.003955,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle",
+      "status": "Passed",
+      "arguments": [
+        "elf-b"
+      ],
+      "durationSeconds": 0.0038705999999999996,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.ReplacementRigReceivesThePreviouslyRequestedMotion",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0044259999999999994,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace",
+      "status": "Passed",
+      "arguments": [
+        "human-a"
+      ],
+      "durationSeconds": 0.010657999999999999,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace",
+      "status": "Passed",
+      "arguments": [
+        "human-b"
+      ],
+      "durationSeconds": 0.0064833999999999994,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace",
+      "status": "Passed",
+      "arguments": [
+        "elf-a"
+      ],
+      "durationSeconds": 0.0063253,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace",
+      "status": "Passed",
+      "arguments": [
+        "elf-b"
+      ],
+      "durationSeconds": 0.0064001,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick",
+      "status": "Passed",
+      "arguments": [
+        "human-a"
+      ],
+      "durationSeconds": 0.0111323,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick",
+      "status": "Passed",
+      "arguments": [
+        "human-b"
+      ],
+      "durationSeconds": 0.0097577999999999988,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick",
+      "status": "Passed",
+      "arguments": [
+        "elf-a"
+      ],
+      "durationSeconds": 0.0099058999999999987,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick",
+      "status": "Passed",
+      "arguments": [
+        "elf-b"
+      ],
+      "durationSeconds": 0.0099677999999999989,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterPreviewFramingTests.ResetRestoresTheConfiguredCameraFullViewportAndCharacterOrientation",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0027786,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterPreviewFramingTests.ViewportClipsToTheScreenAndIgnoresInvalidOrUnusableRegions",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0012452,
+      "messages": []
+    }
+  ],
+  "reportPath": "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\iterations\\checks-before-sculpt\\reference-direct-checks.json"
+}

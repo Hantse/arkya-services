@@ -1,0 +1,2251 @@
+{
+  "success": true,
+  "readOnly": true,
+  "sceneDirty": false,
+  "hall": {
+    "position": [
+      532.0,
+      50.2800522,
+      554.0
+    ],
+    "yaw": 152.102722,
+    "scale": [
+      0.99999994,
+      1.0,
+      0.99999994
+    ],
+    "colliderCount": 181,
+    "activeBoxColliders": 181,
+    "otherColliderTypes": [],
+    "renderers": 20
+  },
+  "candidates": [
+    {
+      "name": "current",
+      "position": [
+        532.0,
+        50.2800522,
+        554.0
+      ],
+      "yaw": 152.102722,
+      "scale": 0.99999994,
+      "outsideEntry": [
+        535.4343,
+        50.2056274,
+        547.513
+      ],
+      "interiorThreshold": [
+        533.544,
+        50.315052,
+        551.0835
+      ],
+      "visualBounds": {
+        "center": [
+          532.0001,
+          57.61005,
+          554.0001
+        ],
+        "size": [
+          16.34253,
+          14.659996,
+          14.6311035
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 2.21177578
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 14.0767775
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 25.1829472
+        }
+      ],
+      "wallAxisClearance": 3.70867944,
+      "wallEstimatedInnerFaceClearance": 1.50867939,
+      "foundationTerrainMinimum": 49.8174057,
+      "foundationTerrainMaximum": 50.1800537,
+      "foundationTerrainRelief": 0.362648,
+      "outsideEntryAboveTerrain": 0.0,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-537-550-1.15",
+      "position": [
+        537.0,
+        50.28628,
+        550.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.15,
+      "outsideEntry": [
+        539.887,
+        50.200695,
+        542.068054
+      ],
+      "interiorThreshold": [
+        538.2979,
+        50.32653,
+        546.433838
+      ],
+      "visualBounds": {
+        "center": [
+          537.0001,
+          58.7157822,
+          549.7915
+        ],
+        "size": [
+          18.302002,
+          16.8589935,
+          15.8911133
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 0.376498044
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 6.99025059
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 20.8949375
+        }
+      ],
+      "wallAxisClearance": 8.817749,
+      "wallEstimatedInnerFaceClearance": 6.617749,
+      "foundationTerrainMinimum": 50.0261955,
+      "foundationTerrainMaximum": 50.28628,
+      "foundationTerrainRelief": 0.26008606,
+      "outsideEntryAboveTerrain": -0.149513245,
+      "externalCollisionCount": 1,
+      "externalCollisions": [
+        {
+          "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Lantern carved post",
+          "contacts": 7
+        }
+      ],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          539.887,
+          0.0,
+          542.068054
+        ],
+        "blockers": []
+      },
+      "plausible": false
+    },
+    {
+      "name": "east-537-550-1.18",
+      "position": [
+        537.0,
+        50.2891846,
+        550.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        539.962341,
+        50.2013626,
+        541.861145
+      ],
+      "interiorThreshold": [
+        538.3318,
+        50.3304825,
+        546.3408
+      ],
+      "visualBounds": {
+        "center": [
+          537.0001,
+          58.9385834,
+          549.786
+        ],
+        "size": [
+          18.779541,
+          17.2987976,
+          16.3056641
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 0.129652381
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 6.74584
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 20.6921635
+        }
+      ],
+      "wallAxisClearance": 8.625081,
+      "wallEstimatedInnerFaceClearance": 6.42508125,
+      "foundationTerrainMinimum": 50.02118,
+      "foundationTerrainMaximum": 50.2891846,
+      "foundationTerrainRelief": 0.268005371,
+      "outsideEntryAboveTerrain": -0.154281616,
+      "externalCollisionCount": 1,
+      "externalCollisions": [
+        {
+          "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Lantern carved post",
+          "contacts": 9
+        }
+      ],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          539.962341,
+          0.0,
+          541.861145
+        ],
+        "blockers": []
+      },
+      "plausible": false
+    },
+    {
+      "name": "east-537-550-1.2",
+      "position": [
+        537.0,
+        50.2911224,
+        550.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.2,
+      "outsideEntry": [
+        540.0126,
+        50.2018127,
+        541.7232
+      ],
+      "interiorThreshold": [
+        538.3544,
+        50.3331223,
+        546.2788
+      ],
+      "visualBounds": {
+        "center": [
+          537.0001,
+          59.0871239,
+          549.782349
+        ],
+        "size": [
+          19.0979,
+          17.5920029,
+          16.5820313
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": -1.0
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 6.5829587
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 20.55695
+        }
+      ],
+      "wallAxisClearance": 8.496635,
+      "wallEstimatedInnerFaceClearance": 6.29663563,
+      "foundationTerrainMinimum": 50.0181122,
+      "foundationTerrainMaximum": 50.2911224,
+      "foundationTerrainRelief": 0.273010254,
+      "outsideEntryAboveTerrain": -0.157455444,
+      "externalCollisionCount": 1,
+      "externalCollisions": [
+        {
+          "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Lantern carved post",
+          "contacts": 3
+        }
+      ],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          540.0126,
+          0.0,
+          541.7232
+        ],
+        "blockers": []
+      },
+      "plausible": false
+    },
+    {
+      "name": "east-537-552-1.15",
+      "position": [
+        537.0,
+        50.25367,
+        552.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.15,
+      "outsideEntry": [
+        539.887,
+        50.1680832,
+        544.068054
+      ],
+      "interiorThreshold": [
+        538.2979,
+        50.29392,
+        548.433838
+      ],
+      "visualBounds": {
+        "center": [
+          537.0001,
+          58.68317,
+          551.7915
+        ],
+        "size": [
+          18.302002,
+          16.8590012,
+          15.8911133
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 2.040091
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 7.42395353
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 20.211607
+        }
+      ],
+      "wallAxisClearance": 7.04281,
+      "wallEstimatedInnerFaceClearance": 4.84280968,
+      "foundationTerrainMinimum": 49.94907,
+      "foundationTerrainMaximum": 50.25367,
+      "foundationTerrainRelief": 0.304599762,
+      "outsideEntryAboveTerrain": -0.135246277,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          539.887,
+          0.0,
+          544.068054
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-537-552-1.18",
+      "position": [
+        537.0,
+        50.25735,
+        552.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        539.962341,
+        50.16953,
+        543.861145
+      ],
+      "interiorThreshold": [
+        538.3318,
+        50.29865,
+        548.3408
+      ],
+      "visualBounds": {
+        "center": [
+          537.0001,
+          58.9067535,
+          551.786
+        ],
+        "size": [
+          18.779541,
+          17.2987976,
+          16.3056641
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 1.79324532
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 7.17708063
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 20.0088329
+        }
+      ],
+      "wallAxisClearance": 6.88501,
+      "wallEstimatedInnerFaceClearance": 4.68501,
+      "foundationTerrainMinimum": 49.94359,
+      "foundationTerrainMaximum": 50.25735,
+      "foundationTerrainRelief": 0.313762665,
+      "outsideEntryAboveTerrain": -0.13923645,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          539.962341,
+          0.0,
+          543.861145
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-537-552-1.2",
+      "position": [
+        537.0,
+        50.2598076,
+        552.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.2,
+      "outsideEntry": [
+        540.0126,
+        50.1704979,
+        543.7232
+      ],
+      "interiorThreshold": [
+        538.3544,
+        50.3018074,
+        548.2788
+      ],
+      "visualBounds": {
+        "center": [
+          537.0001,
+          59.05581,
+          551.782349
+        ],
+        "size": [
+          19.0979,
+          17.5919952,
+          16.5820313
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 1.62868714
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 7.01243
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 19.87362
+        }
+      ],
+      "wallAxisClearance": 6.77981472,
+      "wallEstimatedInnerFaceClearance": 4.579815,
+      "foundationTerrainMinimum": 49.93993,
+      "foundationTerrainMaximum": 50.2598076,
+      "foundationTerrainRelief": 0.319877625,
+      "outsideEntryAboveTerrain": -0.1418953,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          540.0126,
+          0.0,
+          543.7232
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-537-554-1.15",
+      "position": [
+        537.0,
+        50.24434,
+        554.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.15,
+      "outsideEntry": [
+        539.887,
+        50.1587524,
+        546.068054
+      ],
+      "interiorThreshold": [
+        538.2979,
+        50.2845879,
+        550.433838
+      ],
+      "visualBounds": {
+        "center": [
+          537.0001,
+          58.67384,
+          553.7915
+        ],
+        "size": [
+          18.302002,
+          16.8590012,
+          15.8911133
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 3.70371771
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 7.92991161
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 19.6037941
+        }
+      ],
+      "wallAxisClearance": 5.1119,
+      "wallEstimatedInnerFaceClearance": 2.91189981,
+      "foundationTerrainMinimum": 49.8630562,
+      "foundationTerrainMaximum": 50.24434,
+      "foundationTerrainRelief": 0.3812828,
+      "outsideEntryAboveTerrain": -0.098400116,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          539.887,
+          0.0,
+          546.068054
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-537-554-1.18",
+      "position": [
+        537.0,
+        50.24753,
+        554.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        539.962341,
+        50.15971,
+        545.861145
+      ],
+      "interiorThreshold": [
+        538.3318,
+        50.28883,
+        550.3408
+      ],
+      "visualBounds": {
+        "center": [
+          537.0001,
+          58.8969345,
+          553.786
+        ],
+        "size": [
+          18.779541,
+          17.2987976,
+          16.3056641
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 3.45683813
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 7.68297958
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 19.3898277
+        }
+      ],
+      "wallAxisClearance": 4.95409966,
+      "wallEstimatedInnerFaceClearance": 2.75409961,
+      "foundationTerrainMinimum": 49.85655,
+      "foundationTerrainMaximum": 50.24753,
+      "foundationTerrainRelief": 0.390983582,
+      "outsideEntryAboveTerrain": -0.102176666,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          539.962341,
+          0.0,
+          545.861145
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-537-554-1.2",
+      "position": [
+        537.0,
+        50.249855,
+        554.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.2,
+      "outsideEntry": [
+        540.0126,
+        50.1605453,
+        545.7232
+      ],
+      "interiorThreshold": [
+        538.3544,
+        50.2918549,
+        550.2788
+      ],
+      "visualBounds": {
+        "center": [
+          537.0001,
+          59.0458565,
+          553.782349
+        ],
+        "size": [
+          19.0979,
+          17.5920029,
+          16.5820313
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 3.29228
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 7.518329
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 19.2475929
+        }
+      ],
+      "wallAxisClearance": 4.84890461,
+      "wallEstimatedInnerFaceClearance": 2.64890456,
+      "foundationTerrainMinimum": 49.85221,
+      "foundationTerrainMaximum": 50.249855,
+      "foundationTerrainRelief": 0.397644043,
+      "outsideEntryAboveTerrain": -0.104969025,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          540.0126,
+          0.0,
+          545.7232
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-539-550-1.15",
+      "position": [
+        539.0,
+        50.30018,
+        550.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.15,
+      "outsideEntry": [
+        541.887,
+        50.214592,
+        542.068054
+      ],
+      "interiorThreshold": [
+        540.2979,
+        50.3404274,
+        546.433838
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          58.72968,
+          549.7915
+        ],
+        "size": [
+          18.302002,
+          16.8590012,
+          15.8911133
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 2.04136753
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.009886
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 19.01534
+        }
+      ],
+      "wallAxisClearance": 9.494882,
+      "wallEstimatedInnerFaceClearance": 7.294882,
+      "foundationTerrainMinimum": 50.0515823,
+      "foundationTerrainMaximum": 50.30018,
+      "foundationTerrainRelief": 0.248596191,
+      "outsideEntryAboveTerrain": -0.154880524,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          541.887,
+          0.0,
+          542.068054
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-539-550-1.18",
+      "position": [
+        539.0,
+        50.30324,
+        550.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        541.962341,
+        50.21542,
+        541.861145
+      ],
+      "interiorThreshold": [
+        540.3318,
+        50.34454,
+        546.3408
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          58.9526443,
+          549.786
+        ],
+        "size": [
+          18.779541,
+          17.2987976,
+          16.3056641
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 1.838007
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 4.764089
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 18.8125648
+        }
+      ],
+      "wallAxisClearance": 9.336012,
+      "wallEstimatedInnerFaceClearance": 7.136012,
+      "foundationTerrainMinimum": 50.046936,
+      "foundationTerrainMaximum": 50.30324,
+      "foundationTerrainRelief": 0.2563057,
+      "outsideEntryAboveTerrain": -0.1602974,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          541.962341,
+          0.0,
+          541.861145
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-539-550-1.2",
+      "position": [
+        539.0,
+        50.3052826,
+        550.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.2,
+      "outsideEntry": [
+        542.0126,
+        50.2159729,
+        541.7232
+      ],
+      "interiorThreshold": [
+        540.3544,
+        50.3472824,
+        546.2788
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          59.101284,
+          549.782349
+        ],
+        "size": [
+          19.0979,
+          17.5920029,
+          16.5820313
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 1.7024051
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 4.60024452
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 18.677351
+        }
+      ],
+      "wallAxisClearance": 9.229983,
+      "wallEstimatedInnerFaceClearance": 7.02998352,
+      "foundationTerrainMinimum": 50.04384,
+      "foundationTerrainMaximum": 50.3052826,
+      "foundationTerrainRelief": 0.2614441,
+      "outsideEntryAboveTerrain": -0.163909912,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          542.0126,
+          0.0,
+          541.7232
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-539-552-1.15",
+      "position": [
+        539.0,
+        50.2848434,
+        552.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.15,
+      "outsideEntry": [
+        541.887,
+        50.1992569,
+        544.068054
+      ],
+      "interiorThreshold": [
+        540.2979,
+        50.3250923,
+        548.433838
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          58.714344,
+          551.7915
+        ],
+        "size": [
+          18.302002,
+          16.8590012,
+          15.8911133
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 3.17886949
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.48900366
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 18.33199
+        }
+      ],
+      "wallAxisClearance": 7.56088066,
+      "wallEstimatedInnerFaceClearance": 5.360881,
+      "foundationTerrainMinimum": 49.978302,
+      "foundationTerrainMaximum": 50.2848434,
+      "foundationTerrainRelief": 0.306541443,
+      "outsideEntryAboveTerrain": -0.119697571,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          541.887,
+          0.0,
+          544.068054
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-539-552-1.18",
+      "position": [
+        539.0,
+        50.2875061,
+        552.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        541.962341,
+        50.1996841,
+        543.861145
+      ],
+      "interiorThreshold": [
+        540.3318,
+        50.328804,
+        548.3408
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          58.9369049,
+          551.786
+        ],
+        "size": [
+          18.779541,
+          17.2987976,
+          16.3056641
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 2.93327
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.242087
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 18.1292152
+        }
+      ],
+      "wallAxisClearance": 7.40189648,
+      "wallEstimatedInnerFaceClearance": 5.20189667,
+      "foundationTerrainMinimum": 49.97404,
+      "foundationTerrainMaximum": 50.2875061,
+      "foundationTerrainRelief": 0.313465118,
+      "outsideEntryAboveTerrain": -0.124706268,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          541.962341,
+          0.0,
+          543.861145
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-539-552-1.2",
+      "position": [
+        539.0,
+        50.2892838,
+        552.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.2,
+      "outsideEntry": [
+        542.0126,
+        50.1999741,
+        543.7232
+      ],
+      "interiorThreshold": [
+        540.3544,
+        50.3312836,
+        548.2788
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          59.0852852,
+          551.782349
+        ],
+        "size": [
+          19.0979,
+          17.5920029,
+          16.5820313
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 2.76970053
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.07743645
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 17.9940014
+        }
+      ],
+      "wallAxisClearance": 7.295927,
+      "wallEstimatedInnerFaceClearance": 5.09592724,
+      "foundationTerrainMinimum": 49.9711952,
+      "foundationTerrainMaximum": 50.2892838,
+      "foundationTerrainRelief": 0.318088531,
+      "outsideEntryAboveTerrain": -0.128044128,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          542.0126,
+          0.0,
+          543.7232
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-539-554-1.15",
+      "position": [
+        539.0,
+        50.31299,
+        554.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.15,
+      "outsideEntry": [
+        541.887,
+        50.2274,
+        546.068054
+      ],
+      "interiorThreshold": [
+        540.2979,
+        50.3532372,
+        550.433838
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          58.74249,
+          553.7915
+        ],
+        "size": [
+          18.302002,
+          16.8590012,
+          15.8911133
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 4.81381226
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.99496174
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 17.6789913
+        }
+      ],
+      "wallAxisClearance": 5.62682438,
+      "wallEstimatedInnerFaceClearance": 3.42682433,
+      "foundationTerrainMinimum": 49.9037781,
+      "foundationTerrainMaximum": 50.31299,
+      "foundationTerrainRelief": 0.4092102,
+      "outsideEntryAboveTerrain": -0.0464477539,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          541.887,
+          0.0,
+          546.068054
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-539-554-1.18",
+      "position": [
+        539.0,
+        50.322403,
+        554.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        541.962341,
+        50.23458,
+        545.861145
+      ],
+      "interiorThreshold": [
+        540.3318,
+        50.3637,
+        550.3408
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          58.9718,
+          553.786
+        ],
+        "size": [
+          18.779541,
+          17.2987976,
+          16.3056641
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 4.56696653
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.74804544
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 17.4687786
+        }
+      ],
+      "wallAxisClearance": 5.46784067,
+      "wallEstimatedInnerFaceClearance": 3.26784062,
+      "foundationTerrainMinimum": 49.89767,
+      "foundationTerrainMaximum": 50.322403,
+      "foundationTerrainRelief": 0.4247322,
+      "outsideEntryAboveTerrain": -0.04473877,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          541.962341,
+          0.0,
+          545.861145
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-539-554-1.2",
+      "position": [
+        539.0,
+        50.3286743,
+        554.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.2,
+      "outsideEntry": [
+        542.0126,
+        50.2393646,
+        545.7232
+      ],
+      "interiorThreshold": [
+        540.3544,
+        50.3706741,
+        550.2788
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          59.1246758,
+          553.782349
+        ],
+        "size": [
+          19.0979,
+          17.5920029,
+          16.5820313
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 4.402459
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.58337927
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 17.32915
+        }
+      ],
+      "wallAxisClearance": 5.36187124,
+      "wallEstimatedInnerFaceClearance": 3.16187119,
+      "foundationTerrainMinimum": 49.8936043,
+      "foundationTerrainMaximum": 50.3286743,
+      "foundationTerrainRelief": 0.435070038,
+      "outsideEntryAboveTerrain": -0.0437774658,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          542.0126,
+          0.0,
+          545.7232
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-541-550-1.15",
+      "position": [
+        541.0,
+        50.3259354,
+        550.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.15,
+      "outsideEntry": [
+        543.887,
+        50.24035,
+        542.068054
+      ],
+      "interiorThreshold": [
+        542.2979,
+        50.3661842,
+        546.433838
+      ],
+      "visualBounds": {
+        "center": [
+          541.0001,
+          58.7554359,
+          549.7915
+        ],
+        "size": [
+          18.302002,
+          16.8590012,
+          15.8911133
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 3.04836655
+        },
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 3.91877651
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 17.1357212
+        }
+      ],
+      "wallAxisClearance": 10.004221,
+      "wallEstimatedInnerFaceClearance": 7.804221,
+      "foundationTerrainMinimum": 50.07191,
+      "foundationTerrainMaximum": 50.3259354,
+      "foundationTerrainRelief": 0.2540245,
+      "outsideEntryAboveTerrain": -0.148212433,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          543.887,
+          0.0,
+          542.068054
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-541-550-1.18",
+      "position": [
+        541.0,
+        50.32962,
+        550.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        543.962341,
+        50.2418,
+        541.861145
+      ],
+      "interiorThreshold": [
+        542.3318,
+        50.37092,
+        546.3408
+      ],
+      "visualBounds": {
+        "center": [
+          541.0001,
+          58.97902,
+          549.786
+        ],
+        "size": [
+          18.779541,
+          17.2987976,
+          16.3056641
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 2.80148625
+        },
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 3.716023
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 16.9329472
+        }
+      ],
+      "wallAxisClearance": 9.845297,
+      "wallEstimatedInnerFaceClearance": 7.645297,
+      "foundationTerrainMinimum": 50.0679054,
+      "foundationTerrainMaximum": 50.32962,
+      "foundationTerrainRelief": 0.261714935,
+      "outsideEntryAboveTerrain": -0.153305054,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          543.962341,
+          0.0,
+          541.861145
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-541-550-1.2",
+      "position": [
+        541.0,
+        50.332077,
+        550.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.2,
+      "outsideEntry": [
+        544.0126,
+        50.2427673,
+        541.7232
+      ],
+      "interiorThreshold": [
+        542.3544,
+        50.3740768,
+        546.2788
+      ],
+      "visualBounds": {
+        "center": [
+          541.0001,
+          59.12808,
+          549.782349
+        ],
+        "size": [
+          19.0979,
+          17.5920029,
+          16.5820313
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 2.636853
+        },
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 3.580866
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 16.7977333
+        }
+      ],
+      "wallAxisClearance": 9.739252,
+      "wallEstimatedInnerFaceClearance": 7.53925228,
+      "foundationTerrainMinimum": 50.0653267,
+      "foundationTerrainMaximum": 50.332077,
+      "foundationTerrainRelief": 0.266750336,
+      "outsideEntryAboveTerrain": -0.15669632,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          544.0126,
+          0.0,
+          541.7232
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-541-552-1.15",
+      "position": [
+        541.0,
+        50.34476,
+        552.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.15,
+      "outsideEntry": [
+        543.887,
+        50.2591743,
+        544.068054
+      ],
+      "interiorThreshold": [
+        542.2979,
+        50.38501,
+        548.433838
+      ],
+      "visualBounds": {
+        "center": [
+          541.0001,
+          58.77426,
+          551.7915
+        ],
+        "size": [
+          18.302002,
+          16.8589935,
+          15.8911133
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 3.55406928
+        },
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 4.70827675
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 16.4523144
+        }
+      ],
+      "wallAxisClearance": 8.070166,
+      "wallEstimatedInnerFaceClearance": 5.870166,
+      "foundationTerrainMinimum": 50.012867,
+      "foundationTerrainMaximum": 50.34476,
+      "foundationTerrainRelief": 0.331893921,
+      "outsideEntryAboveTerrain": -0.078868866,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          543.887,
+          0.0,
+          544.068054
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-541-552-1.18",
+      "position": [
+        541.0,
+        50.354187,
+        552.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        543.962341,
+        50.2663651,
+        543.861145
+      ],
+      "interiorThreshold": [
+        542.3318,
+        50.3954849,
+        548.3408
+      ],
+      "visualBounds": {
+        "center": [
+          541.0001,
+          59.0035858,
+          551.786
+        ],
+        "size": [
+          18.779541,
+          17.2987976,
+          16.3056641
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 3.30715251
+        },
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 4.48173
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 16.2495613
+        }
+      ],
+      "wallAxisClearance": 7.91118145,
+      "wallEstimatedInnerFaceClearance": 5.71118164,
+      "foundationTerrainMinimum": 50.007164,
+      "foundationTerrainMaximum": 50.354187,
+      "foundationTerrainRelief": 0.347023,
+      "outsideEntryAboveTerrain": -0.07741165,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          543.962341,
+          0.0,
+          543.861145
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-541-552-1.2",
+      "position": [
+        541.0,
+        50.3607025,
+        552.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.2,
+      "outsideEntry": [
+        544.0126,
+        50.2713928,
+        543.7232
+      ],
+      "interiorThreshold": [
+        542.3544,
+        50.4027023,
+        548.2788
+      ],
+      "visualBounds": {
+        "center": [
+          541.0001,
+          59.1567039,
+          551.782349
+        ],
+        "size": [
+          19.0979,
+          17.5920029,
+          16.5820313
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 3.14248681
+        },
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 4.33195829
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 16.1143246
+        }
+      ],
+      "wallAxisClearance": 7.80518,
+      "wallEstimatedInnerFaceClearance": 5.60518,
+      "foundationTerrainMinimum": 50.00336,
+      "foundationTerrainMaximum": 50.3607025,
+      "foundationTerrainRelief": 0.357341766,
+      "outsideEntryAboveTerrain": -0.07620621,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          544.0126,
+          0.0,
+          543.7232
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-541-554-1.15",
+      "position": [
+        541.0,
+        50.4033775,
+        554.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.15,
+      "outsideEntry": [
+        543.887,
+        50.31779,
+        546.068054
+      ],
+      "interiorThreshold": [
+        542.2979,
+        50.4436264,
+        550.433838
+      ],
+      "visualBounds": {
+        "center": [
+          541.0001,
+          58.83288,
+          553.7915
+        ],
+        "size": [
+          18.302002,
+          16.8589935,
+          15.8911133
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 4.05996847
+        },
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 6.00351763
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 15.772913
+        }
+      ],
+      "wallAxisClearance": 6.135481,
+      "wallEstimatedInnerFaceClearance": 3.93548083,
+      "foundationTerrainMinimum": 49.9500656,
+      "foundationTerrainMaximum": 50.4033775,
+      "foundationTerrainRelief": 0.45331192,
+      "outsideEntryAboveTerrain": 0.0236969,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          543.887,
+          0.0,
+          546.068054
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-541-554-1.18",
+      "position": [
+        541.0,
+        50.41433,
+        554.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        543.962341,
+        50.3265076,
+        545.861145
+      ],
+      "interiorThreshold": [
+        542.3318,
+        50.4556274,
+        550.3408
+      ],
+      "visualBounds": {
+        "center": [
+          541.0001,
+          59.06373,
+          553.786
+        ],
+        "size": [
+          18.779541,
+          17.2987976,
+          16.3056641
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 3.81309557
+        },
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 5.758873
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 15.5676308
+        }
+      ],
+      "wallAxisClearance": 5.975984,
+      "wallEstimatedInnerFaceClearance": 3.775984,
+      "foundationTerrainMinimum": 49.94252,
+      "foundationTerrainMaximum": 50.41433,
+      "foundationTerrainRelief": 0.4718094,
+      "outsideEntryAboveTerrain": 0.028049469,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          543.962341,
+          0.0,
+          545.861145
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "east-541-554-1.2",
+      "position": [
+        541.0,
+        50.42163,
+        554.0
+      ],
+      "yaw": 160.0,
+      "scale": 1.2,
+      "outsideEntry": [
+        544.0126,
+        50.33232,
+        545.7232
+      ],
+      "interiorThreshold": [
+        542.3544,
+        50.46363,
+        550.2788
+      ],
+      "visualBounds": {
+        "center": [
+          541.0001,
+          59.2176323,
+          553.782349
+        ],
+        "size": [
+          19.0979,
+          17.5920029,
+          16.5820313
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 3.648445
+        },
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 5.59591866
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 15.4314289
+        }
+      ],
+      "wallAxisClearance": 5.86958838,
+      "wallEstimatedInnerFaceClearance": 3.66958833,
+      "foundationTerrainMinimum": 49.9374847,
+      "foundationTerrainMaximum": 50.42163,
+      "foundationTerrainRelief": 0.484146118,
+      "outsideEntryAboveTerrain": 0.0307769775,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          544.0126,
+          0.0,
+          545.7232
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "rotation-152.1027",
+      "position": [
+        539.0,
+        50.28769,
+        552.0
+      ],
+      "yaw": 152.1027,
+      "scale": 1.18,
+      "outsideEntry": [
+        543.0525,
+        50.1998672,
+        544.345337
+      ],
+      "interiorThreshold": [
+        540.8219,
+        50.3289871,
+        548.558533
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          58.937088,
+          552.0001
+        ],
+        "size": [
+          19.2839355,
+          17.2987976,
+          17.2648926
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 3.3949945
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.330349
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 17.444025
+        }
+      ],
+      "wallAxisClearance": 6.43836355,
+      "wallEstimatedInnerFaceClearance": 4.23836327,
+      "foundationTerrainMinimum": 50.0065536,
+      "foundationTerrainMaximum": 50.28769,
+      "foundationTerrainRelief": 0.281135559,
+      "outsideEntryAboveTerrain": -0.121894836,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          543.0525,
+          0.0,
+          544.345337
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "rotation-166",
+      "position": [
+        539.0,
+        50.2920074,
+        552.0
+      ],
+      "yaw": 166.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        541.0954,
+        50.2041855,
+        543.596069
+      ],
+      "interiorThreshold": [
+        539.942,
+        50.3333054,
+        548.2217
+      ],
+      "visualBounds": {
+        "center": [
+          539.0002,
+          58.9414063,
+          551.47644
+        ],
+        "size": [
+          18.1573486,
+          17.2987976,
+          15.6677246
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 2.98254657
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.29823875
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 18.4627228
+        }
+      ],
+      "wallAxisClearance": 7.484079,
+      "wallEstimatedInnerFaceClearance": 5.2840786,
+      "foundationTerrainMinimum": 49.9470444,
+      "foundationTerrainMaximum": 50.2920074,
+      "foundationTerrainRelief": 0.344963074,
+      "outsideEntryAboveTerrain": -0.119644165,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          541.0954,
+          0.0,
+          543.596069
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    },
+    {
+      "name": "rotation-170",
+      "position": [
+        539.0,
+        50.2975464,
+        552.0
+      ],
+      "yaw": 170.0,
+      "scale": 1.18,
+      "outsideEntry": [
+        540.504,
+        50.2097244,
+        543.4704
+      ],
+      "interiorThreshold": [
+        539.676147,
+        50.3388443,
+        548.165161
+      ],
+      "visualBounds": {
+        "center": [
+          539.0001,
+          58.9469452,
+          551.2731
+        ],
+        "size": [
+          17.6315918,
+          17.2987976,
+          15.1467285
+        ]
+      },
+      "closestBuildings": [
+        {
+          "name": "01 - Auberge des Lanternes",
+          "gap": 3.09410262
+        },
+        {
+          "name": "03 - Atelier des runes",
+          "gap": 5.402544
+        },
+        {
+          "name": "04 - Maison des voyageurs",
+          "gap": 18.5241776
+        }
+      ],
+      "wallAxisClearance": 6.98363447,
+      "wallEstimatedInnerFaceClearance": 4.783634,
+      "foundationTerrainMinimum": 49.93101,
+      "foundationTerrainMaximum": 50.2975464,
+      "foundationTerrainRelief": 0.3665352,
+      "outsideEntryAboveTerrain": -0.112430573,
+      "externalCollisionCount": 0,
+      "externalCollisions": [],
+      "directPlazaApproach": {
+        "from": [
+          548.0,
+          0.0,
+          529.0
+        ],
+        "to": [
+          540.504,
+          0.0,
+          543.4704
+        ],
+        "blockers": []
+      },
+      "plausible": true
+    }
+  ],
+  "externalReferences": [
+    {
+      "owner": "Island weather - clouds rain and storms",
+      "type": "WeatherEffects",
+      "property": "roofs.Array.data[29]",
+      "target": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - porch weather cover/Architecture - Painted civic blue slate"
+    },
+    {
+      "owner": "Island weather - clouds rain and storms",
+      "type": "WeatherEffects",
+      "property": "roofs.Array.data[30]",
+      "target": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - main weather cover/Architecture - Painted civic blue slate"
+    },
+    {
+      "owner": "Island weather - clouds rain and storms",
+      "type": "WeatherEffects",
+      "property": "roofs.Array.data[31]",
+      "target": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - main weather cover/Architecture - Painted civic slate highlights"
+    },
+    {
+      "owner": "Island weather - clouds rain and storms",
+      "type": "WeatherEffects",
+      "property": "roofs.Array.data[32]",
+      "target": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - main weather cover/Architecture - Painted beams V2"
+    },
+    {
+      "owner": "Island weather - clouds rain and storms",
+      "type": "WeatherEffects",
+      "property": "roofs.Array.data[33]",
+      "target": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - main weather cover/Architecture - Cream worn coping"
+    },
+    {
+      "owner": "Island weather - clouds rain and storms",
+      "type": "WeatherEffects",
+      "property": "roofs.Array.data[34]",
+      "target": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - main weather cover/Architecture - Warm ivory limewash"
+    },
+    {
+      "owner": "Island weather - clouds rain and storms",
+      "type": "WeatherEffects",
+      "property": "roofs.Array.data[35]",
+      "target": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - bell canopy/Architecture - Painted beams V2"
+    },
+    {
+      "owner": "Island weather - clouds rain and storms",
+      "type": "WeatherEffects",
+      "property": "roofs.Array.data[36]",
+      "target": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - bell canopy/Architecture - Painted civic blue slate"
+    },
+    {
+      "owner": "Island weather - clouds rain and storms",
+      "type": "WeatherEffects",
+      "property": "roofs.Array.data[37]",
+      "target": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - bell canopy/Architecture - Civic aged brass"
+    }
+  ],
+  "festoons": [
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Suspended festival lanterns",
+      "useWorldSpace": true,
+      "start": [
+        530.755,
+        54.72699,
+        541.511536
+      ],
+      "end": [
+        529.0185,
+        54.58005,
+        547.556152
+      ],
+      "bulbs": 9
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Suspended festival lanterns",
+      "useWorldSpace": true,
+      "start": [
+        555.7156,
+        53.0078735,
+        494.935669
+      ],
+      "end": [
+        562.813049,
+        52.9055138,
+        492.566223
+      ],
+      "bulbs": 9
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Suspended festival lanterns",
+      "useWorldSpace": true,
+      "start": [
+        576.9606,
+        54.23541,
+        537.282654
+      ],
+      "end": [
+        571.9448,
+        54.2094269,
+        554.5057
+      ],
+      "bulbs": 9
+    }
+  ],
+  "scope": "No transform changes. Hypothetical active hall BoxColliders queried against existing external collision; roof/body hull distances and native terrain sampled. Candidate hall collision is excluded from approach probes. Wall clearance uses the authored wall axis minus 2.2m, not a render-triangle wall contact test. No runtime movement or pathfinding claim."
+}

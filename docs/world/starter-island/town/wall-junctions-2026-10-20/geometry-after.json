@@ -1,0 +1,2863 @@
+{
+  "success": true,
+  "stage": "after",
+  "utc": "2026-10-20T10:23:48.1698887Z",
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "sceneSaved": false,
+  "checks": [
+    {
+      "name": "Joint 74 facade meets both exterior planes at three heights",
+      "passed": true,
+      "detail": {
+        "maximumRecession": 8.821487E-06,
+        "missedRays": 0,
+        "tolerance": 0.075
+      }
+    },
+    {
+      "name": "Joint 74 visible wall-walk paving continuous",
+      "passed": true,
+      "detail": {
+        "missing": 0,
+        "samples": 27
+      }
+    },
+    {
+      "name": "Joint 74 actual wall-walk collider support continuous",
+      "passed": true,
+      "detail": {
+        "missing": 0,
+        "samples": 27
+      }
+    },
+    {
+      "name": "Joint 93 facade meets both exterior planes at three heights",
+      "passed": true,
+      "detail": {
+        "maximumRecession": 0.0,
+        "missedRays": 0,
+        "tolerance": 0.075
+      }
+    },
+    {
+      "name": "Joint 93 visible wall-walk paving continuous",
+      "passed": true,
+      "detail": {
+        "missing": 0,
+        "samples": 27
+      }
+    },
+    {
+      "name": "Joint 93 actual wall-walk collider support continuous",
+      "passed": true,
+      "detail": {
+        "missing": 0,
+        "samples": 27
+      }
+    },
+    {
+      "name": "Joint 46 facade meets both exterior planes at three heights",
+      "passed": true,
+      "detail": {
+        "maximumRecession": 6.43730164E-06,
+        "missedRays": 0,
+        "tolerance": 0.075
+      }
+    },
+    {
+      "name": "Joint 46 visible wall-walk paving continuous",
+      "passed": true,
+      "detail": {
+        "missing": 0,
+        "samples": 27
+      }
+    },
+    {
+      "name": "Joint 46 actual wall-walk collider support continuous",
+      "passed": true,
+      "detail": {
+        "missing": 0,
+        "samples": 27
+      }
+    },
+    {
+      "name": "Terrain, original town colliders, lights and masonry budgets unchanged",
+      "passed": true,
+      "detail": {
+        "terrainHeightSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+        "terrainAlphamapSha256": "35c7caa2c6f0385c8283e882d1c544d0c655a581e40933b8b15a26e82e921a05",
+        "collidersSha256": "9d913f5e5458e48ada0b93592fa07c68c2753044ba89f12f54e06bf9bc8f2713",
+        "townLights": 21,
+        "activeMasonryRenderers": 24,
+        "triangles": 79552
+      }
+    },
+    {
+      "name": "The audited junction layout is unchanged",
+      "passed": true,
+      "detail": [
+        74,
+        93,
+        46
+      ]
+    },
+    {
+      "name": "Measured exterior seam recession reduced",
+      "passed": true,
+      "detail": {
+        "before": 1.92014766,
+        "after": 8.821487E-06,
+        "reduction": 1.92013884
+      }
+    },
+    {
+      "name": "Physical junction infill has an owned group and authoring report",
+      "passed": true,
+      "detail": {
+        "group": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Wall junction supports - exact masonry infill",
+        "reportPresent": true
+      }
+    },
+    {
+      "name": "All added supports are bounded static masonry infill with native support",
+      "passed": true,
+      "detail": {
+        "colliders": 14,
+        "records": 14,
+        "probes": 126,
+        "problems": []
+      }
+    },
+    {
+      "name": "Rendered masonry meshes and material shaders valid",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Referenced mesh and material metadata present",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Read-only validation preserves scene dirty state",
+      "passed": true,
+      "detail": {
+        "before": true,
+        "after": true
+      }
+    }
+  ],
+  "failures": [],
+  "facadeSamples": 81,
+  "deckSamples": 81,
+  "colliderSamples": 81,
+  "maximumRecession": 8.821487E-06,
+  "missingFacadeRays": 0,
+  "invariants": {
+    "terrainHeightSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+    "terrainAlphamapSha256": "35c7caa2c6f0385c8283e882d1c544d0c655a581e40933b8b15a26e82e921a05",
+    "collidersSha256": "9d913f5e5458e48ada0b93592fa07c68c2753044ba89f12f54e06bf9bc8f2713",
+    "townLights": 21,
+    "activeMasonryRenderers": 24,
+    "triangles": 79552
+  },
+  "junctionLayout": [
+    {
+      "id": 74,
+      "previous": 73,
+      "point": {
+        "x": 505.0,
+        "y": 56.10533,
+        "z": 490.0
+      },
+      "tangent": {
+        "x": -0.5886754,
+        "y": 0.0,
+        "z": 0.8083696
+      },
+      "outward": {
+        "x": -0.8083696,
+        "y": 0.0,
+        "z": -0.5886754
+      },
+      "angle": 29.4247189,
+      "approximateMissingExtension": 0.487666458,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 93,
+      "previous": 92,
+      "point": {
+        "x": 504.0,
+        "y": 56.10533,
+        "z": 544.0
+      },
+      "tangent": {
+        "x": 0.5211364,
+        "y": 0.0,
+        "z": 0.853473365
+      },
+      "outward": {
+        "x": -0.853473365,
+        "y": 0.0,
+        "z": 0.5211364
+      },
+      "angle": 28.47326,
+      "approximateMissingExtension": 0.4681824,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 46,
+      "previous": 45,
+      "point": {
+        "x": 579.0,
+        "y": 56.10533,
+        "z": 481.0
+      },
+      "tangent": {
+        "x": -0.8345765,
+        "y": 0.0,
+        "z": -0.5508921
+      },
+      "outward": {
+        "x": 0.5508921,
+        "y": 0.0,
+        "z": -0.8345765
+      },
+      "angle": 28.1563358,
+      "approximateMissingExtension": 0.461710721,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046",
+      "endpointDeviation": 0.0
+    }
+  ],
+  "junctions": [
+    {
+      "id": 74,
+      "ground": 50.9777222,
+      "deckHeight": 56.10533,
+      "maximumRecession": 8.821487E-06,
+      "facade": [
+        {
+          "height": 51.6777229,
+          "offset": -0.8,
+          "expected": {
+            "x": 503.802032,
+            "y": 51.6777229,
+            "z": 488.13797
+          },
+          "visible": {
+            "x": 503.802063,
+            "y": 51.6777229,
+            "z": 488.13797
+          },
+          "recession": 8.821487E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.6777229,
+          "offset": -0.6,
+          "expected": {
+            "x": 503.641846,
+            "y": 51.6777229,
+            "z": 488.268738
+          },
+          "visible": {
+            "x": 503.641846,
+            "y": 51.6777229,
+            "z": 488.268738
+          },
+          "recession": 8.106232E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.6777229,
+          "offset": -0.4,
+          "expected": {
+            "x": 503.481659,
+            "y": 51.6777229,
+            "z": 488.3995
+          },
+          "visible": {
+            "x": 503.481659,
+            "y": 51.6777229,
+            "z": 488.3995
+          },
+          "recession": 7.62939453E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.6777229,
+          "offset": -0.2,
+          "expected": {
+            "x": 503.321472,
+            "y": 51.6777229,
+            "z": 488.530243
+          },
+          "visible": {
+            "x": 503.3215,
+            "y": 51.6777229,
+            "z": 488.530243
+          },
+          "recession": 7.15255737E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.6777229,
+          "offset": 0.0,
+          "expected": {
+            "x": 503.1613,
+            "y": 51.6777229,
+            "z": 488.661
+          },
+          "visible": {
+            "x": 503.1613,
+            "y": 51.6777229,
+            "z": 488.661
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.6777229,
+          "offset": 0.2,
+          "expected": {
+            "x": 503.086,
+            "y": 51.6777229,
+            "z": 488.8536
+          },
+          "visible": {
+            "x": 503.086,
+            "y": 51.6777229,
+            "z": 488.8536
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.6777229,
+          "offset": 0.4,
+          "expected": {
+            "x": 503.010742,
+            "y": 51.6777229,
+            "z": 489.046173
+          },
+          "visible": {
+            "x": 503.0107,
+            "y": 51.6777229,
+            "z": 489.046173
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.6777229,
+          "offset": 0.6,
+          "expected": {
+            "x": 502.935455,
+            "y": 51.6777229,
+            "z": 489.23877
+          },
+          "visible": {
+            "x": 502.935425,
+            "y": 51.6777229,
+            "z": 489.23877
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.6777229,
+          "offset": 0.8,
+          "expected": {
+            "x": 502.860168,
+            "y": 51.6777229,
+            "z": 489.431366
+          },
+          "visible": {
+            "x": 502.860138,
+            "y": 51.6777229,
+            "z": 489.431366
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.71653,
+          "offset": -0.8,
+          "expected": {
+            "x": 503.802032,
+            "y": 53.71653,
+            "z": 488.13797
+          },
+          "visible": {
+            "x": 503.802063,
+            "y": 53.71653,
+            "z": 488.13797
+          },
+          "recession": 8.821487E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.71653,
+          "offset": -0.6,
+          "expected": {
+            "x": 503.641846,
+            "y": 53.71653,
+            "z": 488.268738
+          },
+          "visible": {
+            "x": 503.641846,
+            "y": 53.71653,
+            "z": 488.268738
+          },
+          "recession": 8.106232E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.71653,
+          "offset": -0.4,
+          "expected": {
+            "x": 503.481659,
+            "y": 53.71653,
+            "z": 488.3995
+          },
+          "visible": {
+            "x": 503.481659,
+            "y": 53.71653,
+            "z": 488.3995
+          },
+          "recession": 7.62939453E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.71653,
+          "offset": -0.2,
+          "expected": {
+            "x": 503.321472,
+            "y": 53.71653,
+            "z": 488.530243
+          },
+          "visible": {
+            "x": 503.3215,
+            "y": 53.71653,
+            "z": 488.530243
+          },
+          "recession": 7.15255737E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.71653,
+          "offset": 0.0,
+          "expected": {
+            "x": 503.1613,
+            "y": 53.71653,
+            "z": 488.661
+          },
+          "visible": {
+            "x": 503.1613,
+            "y": 53.71653,
+            "z": 488.661
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.71653,
+          "offset": 0.2,
+          "expected": {
+            "x": 503.086,
+            "y": 53.71653,
+            "z": 488.8536
+          },
+          "visible": {
+            "x": 503.086,
+            "y": 53.71653,
+            "z": 488.8536
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.71653,
+          "offset": 0.4,
+          "expected": {
+            "x": 503.010742,
+            "y": 53.71653,
+            "z": 489.046173
+          },
+          "visible": {
+            "x": 503.0107,
+            "y": 53.71653,
+            "z": 489.046173
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.71653,
+          "offset": 0.6,
+          "expected": {
+            "x": 502.935455,
+            "y": 53.71653,
+            "z": 489.23877
+          },
+          "visible": {
+            "x": 502.935425,
+            "y": 53.71653,
+            "z": 489.23877
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.71653,
+          "offset": 0.8,
+          "expected": {
+            "x": 502.860168,
+            "y": 53.71653,
+            "z": 489.431366
+          },
+          "visible": {
+            "x": 502.860138,
+            "y": 53.71653,
+            "z": 489.431366
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.8,
+          "expected": {
+            "x": 503.802032,
+            "y": 55.7553329,
+            "z": 488.13797
+          },
+          "visible": {
+            "x": 503.802063,
+            "y": 55.7553329,
+            "z": 488.13797
+          },
+          "recession": 8.821487E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.6,
+          "expected": {
+            "x": 503.641846,
+            "y": 55.7553329,
+            "z": 488.268738
+          },
+          "visible": {
+            "x": 503.641846,
+            "y": 55.7553329,
+            "z": 488.268738
+          },
+          "recession": 8.106232E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.4,
+          "expected": {
+            "x": 503.481659,
+            "y": 55.7553329,
+            "z": 488.3995
+          },
+          "visible": {
+            "x": 503.481659,
+            "y": 55.7553329,
+            "z": 488.3995
+          },
+          "recession": 7.62939453E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.2,
+          "expected": {
+            "x": 503.321472,
+            "y": 55.7553329,
+            "z": 488.530243
+          },
+          "visible": {
+            "x": 503.3215,
+            "y": 55.7553329,
+            "z": 488.530243
+          },
+          "recession": 7.15255737E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.0,
+          "expected": {
+            "x": 503.1613,
+            "y": 55.7553329,
+            "z": 488.661
+          },
+          "visible": {
+            "x": 503.1613,
+            "y": 55.7553329,
+            "z": 488.661
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.2,
+          "expected": {
+            "x": 503.086,
+            "y": 55.7553329,
+            "z": 488.8536
+          },
+          "visible": {
+            "x": 503.086,
+            "y": 55.7553329,
+            "z": 488.8536
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.4,
+          "expected": {
+            "x": 503.010742,
+            "y": 55.7553329,
+            "z": 489.046173
+          },
+          "visible": {
+            "x": 503.0107,
+            "y": 55.7553329,
+            "z": 489.046173
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.6,
+          "expected": {
+            "x": 502.935455,
+            "y": 55.7553329,
+            "z": 489.23877
+          },
+          "visible": {
+            "x": 502.935425,
+            "y": 55.7553329,
+            "z": 489.23877
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.8,
+          "expected": {
+            "x": 502.860168,
+            "y": 55.7553329,
+            "z": 489.431366
+          },
+          "visible": {
+            "x": 502.860138,
+            "y": 55.7553329,
+            "z": 489.431366
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        }
+      ],
+      "deck": [
+        {
+          "offset": -0.8,
+          "lateral": -1.1,
+          "at": {
+            "x": 506.360168,
+            "y": 56.10533,
+            "z": 490.000854
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.6,
+          "lateral": -1.1,
+          "at": {
+            "x": 506.242432,
+            "y": 56.10533,
+            "z": 490.162537
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.4,
+          "lateral": -1.1,
+          "at": {
+            "x": 506.1247,
+            "y": 56.10533,
+            "z": 490.324219
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.2,
+          "lateral": -1.1,
+          "at": {
+            "x": 506.006958,
+            "y": 56.10533,
+            "z": 490.48587
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.0,
+          "lateral": -1.1,
+          "at": {
+            "x": 505.889221,
+            "y": 56.10533,
+            "z": 490.647552
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.2,
+          "lateral": -1.1,
+          "at": {
+            "x": 505.771484,
+            "y": 56.10533,
+            "z": 490.809235
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.4,
+          "lateral": -1.1,
+          "at": {
+            "x": 505.653748,
+            "y": 56.10533,
+            "z": 490.9709
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.6,
+          "lateral": -1.1,
+          "at": {
+            "x": 505.536,
+            "y": 56.10533,
+            "z": 491.132568
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.8,
+          "lateral": -1.1,
+          "at": {
+            "x": 505.418274,
+            "y": 56.10533,
+            "z": 491.29425
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.8,
+          "lateral": 0.0,
+          "at": {
+            "x": 505.470947,
+            "y": 56.10533,
+            "z": 489.3533
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.6,
+          "lateral": 0.0,
+          "at": {
+            "x": 505.3532,
+            "y": 56.10533,
+            "z": 489.514984
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.4,
+          "lateral": 0.0,
+          "at": {
+            "x": 505.235474,
+            "y": 56.10533,
+            "z": 489.676666
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.2,
+          "lateral": 0.0,
+          "at": {
+            "x": 505.117737,
+            "y": 56.10533,
+            "z": 489.838318
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.0,
+          "lateral": 0.0,
+          "at": {
+            "x": 505.0,
+            "y": 56.10533,
+            "z": 490.0
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.2,
+          "lateral": 0.0,
+          "at": {
+            "x": 504.882263,
+            "y": 56.10533,
+            "z": 490.161682
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.4,
+          "lateral": 0.0,
+          "at": {
+            "x": 504.764526,
+            "y": 56.10533,
+            "z": 490.323334
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.6,
+          "lateral": 0.0,
+          "at": {
+            "x": 504.6468,
+            "y": 56.10533,
+            "z": 490.485016
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.8,
+          "lateral": 0.0,
+          "at": {
+            "x": 504.529053,
+            "y": 56.10533,
+            "z": 490.6467
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.8,
+          "lateral": 1.1,
+          "at": {
+            "x": 504.581726,
+            "y": 56.10533,
+            "z": 488.70575
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.6,
+          "lateral": 1.1,
+          "at": {
+            "x": 504.464,
+            "y": 56.10533,
+            "z": 488.867432
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.4,
+          "lateral": 1.1,
+          "at": {
+            "x": 504.346252,
+            "y": 56.10533,
+            "z": 489.0291
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.2,
+          "lateral": 1.1,
+          "at": {
+            "x": 504.228516,
+            "y": 56.10533,
+            "z": 489.190765
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053276,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.0,
+          "lateral": 1.1,
+          "at": {
+            "x": 504.110779,
+            "y": 56.10533,
+            "z": 489.352448
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Wall junction supports - exact masonry infill/Junction support 074"
+        },
+        {
+          "offset": 0.2,
+          "lateral": 1.1,
+          "at": {
+            "x": 503.993042,
+            "y": 56.10533,
+            "z": 489.51413
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.4,
+          "lateral": 1.1,
+          "at": {
+            "x": 503.8753,
+            "y": 56.10533,
+            "z": 489.675781
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.6,
+          "lateral": 1.1,
+          "at": {
+            "x": 503.757568,
+            "y": 56.10533,
+            "z": 489.837463
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.8,
+          "lateral": 1.1,
+          "at": {
+            "x": 503.639832,
+            "y": 56.10533,
+            "z": 489.999146
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.1053238,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074/Continuous stone wall and walk support"
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "ground": 50.6202774,
+      "deckHeight": 56.10533,
+      "maximumRecession": 0.0,
+      "facade": [
+        {
+          "height": 51.32028,
+          "offset": -0.8,
+          "expected": {
+            "x": 501.8192,
+            "y": 51.32028,
+            "z": 544.3942
+          },
+          "visible": {
+            "x": 501.819183,
+            "y": 51.32028,
+            "z": 544.3943
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.32028,
+          "offset": -0.6,
+          "expected": {
+            "x": 501.880127,
+            "y": 51.32028,
+            "z": 544.5914
+          },
+          "visible": {
+            "x": 501.8801,
+            "y": 51.32028,
+            "z": 544.591431
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.32028,
+          "offset": -0.4,
+          "expected": {
+            "x": 501.94104,
+            "y": 51.32028,
+            "z": 544.7886
+          },
+          "visible": {
+            "x": 501.941,
+            "y": 51.32028,
+            "z": 544.7886
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.32028,
+          "offset": -0.2,
+          "expected": {
+            "x": 502.001953,
+            "y": 51.32028,
+            "z": 544.985657
+          },
+          "visible": {
+            "x": 502.001923,
+            "y": 51.32028,
+            "z": 544.9857
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.32028,
+          "offset": 0.0,
+          "expected": {
+            "x": 502.0629,
+            "y": 51.32028,
+            "z": 545.1828
+          },
+          "visible": {
+            "x": 502.062836,
+            "y": 51.32028,
+            "z": 545.182861
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.32028,
+          "offset": 0.2,
+          "expected": {
+            "x": 502.210419,
+            "y": 51.32028,
+            "z": 545.3271
+          },
+          "visible": {
+            "x": 502.2104,
+            "y": 51.32028,
+            "z": 545.3271
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.32028,
+          "offset": 0.4,
+          "expected": {
+            "x": 502.3579,
+            "y": 51.32028,
+            "z": 545.4713
+          },
+          "visible": {
+            "x": 502.3579,
+            "y": 51.32028,
+            "z": 545.4713
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.32028,
+          "offset": 0.6,
+          "expected": {
+            "x": 502.505463,
+            "y": 51.32028,
+            "z": 545.6156
+          },
+          "visible": {
+            "x": 502.505463,
+            "y": 51.32028,
+            "z": 545.6156
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 51.32028,
+          "offset": 0.8,
+          "expected": {
+            "x": 502.653,
+            "y": 51.32028,
+            "z": 545.7598
+          },
+          "visible": {
+            "x": 502.652985,
+            "y": 51.32028,
+            "z": 545.7599
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.5378036,
+          "offset": -0.8,
+          "expected": {
+            "x": 501.8192,
+            "y": 53.5378036,
+            "z": 544.3942
+          },
+          "visible": {
+            "x": 501.819183,
+            "y": 53.5378036,
+            "z": 544.3943
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.5378036,
+          "offset": -0.6,
+          "expected": {
+            "x": 501.880127,
+            "y": 53.5378036,
+            "z": 544.5914
+          },
+          "visible": {
+            "x": 501.8801,
+            "y": 53.5378036,
+            "z": 544.591431
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.5378036,
+          "offset": -0.4,
+          "expected": {
+            "x": 501.94104,
+            "y": 53.5378036,
+            "z": 544.7886
+          },
+          "visible": {
+            "x": 501.941,
+            "y": 53.5378036,
+            "z": 544.7886
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.5378036,
+          "offset": -0.2,
+          "expected": {
+            "x": 502.001953,
+            "y": 53.5378036,
+            "z": 544.985657
+          },
+          "visible": {
+            "x": 502.001923,
+            "y": 53.5378036,
+            "z": 544.9857
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.5378036,
+          "offset": 0.0,
+          "expected": {
+            "x": 502.0629,
+            "y": 53.5378036,
+            "z": 545.1828
+          },
+          "visible": {
+            "x": 502.062836,
+            "y": 53.5378036,
+            "z": 545.182861
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.5378036,
+          "offset": 0.2,
+          "expected": {
+            "x": 502.210419,
+            "y": 53.5378036,
+            "z": 545.3271
+          },
+          "visible": {
+            "x": 502.2104,
+            "y": 53.5378036,
+            "z": 545.3271
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.5378036,
+          "offset": 0.4,
+          "expected": {
+            "x": 502.3579,
+            "y": 53.5378036,
+            "z": 545.4713
+          },
+          "visible": {
+            "x": 502.3579,
+            "y": 53.5378036,
+            "z": 545.4713
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.5378036,
+          "offset": 0.6,
+          "expected": {
+            "x": 502.505463,
+            "y": 53.5378036,
+            "z": 545.6156
+          },
+          "visible": {
+            "x": 502.505463,
+            "y": 53.5378036,
+            "z": 545.6156
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 53.5378036,
+          "offset": 0.8,
+          "expected": {
+            "x": 502.653,
+            "y": 53.5378036,
+            "z": 545.7598
+          },
+          "visible": {
+            "x": 502.652985,
+            "y": 53.5378036,
+            "z": 545.7599
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.8,
+          "expected": {
+            "x": 501.8192,
+            "y": 55.7553329,
+            "z": 544.3942
+          },
+          "visible": {
+            "x": 501.819183,
+            "y": 55.7553329,
+            "z": 544.3943
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.6,
+          "expected": {
+            "x": 501.880127,
+            "y": 55.7553329,
+            "z": 544.5914
+          },
+          "visible": {
+            "x": 501.8801,
+            "y": 55.7553329,
+            "z": 544.591431
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.4,
+          "expected": {
+            "x": 501.94104,
+            "y": 55.7553329,
+            "z": 544.7886
+          },
+          "visible": {
+            "x": 501.941,
+            "y": 55.7553329,
+            "z": 544.7886
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.2,
+          "expected": {
+            "x": 502.001953,
+            "y": 55.7553329,
+            "z": 544.985657
+          },
+          "visible": {
+            "x": 502.001923,
+            "y": 55.7553329,
+            "z": 544.9857
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.0,
+          "expected": {
+            "x": 502.0629,
+            "y": 55.7553329,
+            "z": 545.1828
+          },
+          "visible": {
+            "x": 502.062836,
+            "y": 55.7553329,
+            "z": 545.182861
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.2,
+          "expected": {
+            "x": 502.210419,
+            "y": 55.7553329,
+            "z": 545.3271
+          },
+          "visible": {
+            "x": 502.2104,
+            "y": 55.7553329,
+            "z": 545.3271
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.4,
+          "expected": {
+            "x": 502.3579,
+            "y": 55.7553329,
+            "z": 545.4713
+          },
+          "visible": {
+            "x": 502.3579,
+            "y": 55.7553329,
+            "z": 545.4713
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.6,
+          "expected": {
+            "x": 502.505463,
+            "y": 55.7553329,
+            "z": 545.6156
+          },
+          "visible": {
+            "x": 502.505463,
+            "y": 55.7553329,
+            "z": 545.6156
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.8,
+          "expected": {
+            "x": 502.653,
+            "y": 55.7553329,
+            "z": 545.7598
+          },
+          "visible": {
+            "x": 502.652985,
+            "y": 55.7553329,
+            "z": 545.7599
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        }
+      ],
+      "deck": [
+        {
+          "offset": -0.8,
+          "lateral": -1.1,
+          "at": {
+            "x": 504.5219,
+            "y": 56.10533,
+            "z": 542.743958
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.6,
+          "lateral": -1.1,
+          "at": {
+            "x": 504.626129,
+            "y": 56.10533,
+            "z": 542.9147
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.4,
+          "lateral": -1.1,
+          "at": {
+            "x": 504.730347,
+            "y": 56.10533,
+            "z": 543.0854
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.2,
+          "lateral": -1.1,
+          "at": {
+            "x": 504.8346,
+            "y": 56.10533,
+            "z": 543.256042
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.0,
+          "lateral": -1.1,
+          "at": {
+            "x": 504.9388,
+            "y": 56.10533,
+            "z": 543.426758
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.2,
+          "lateral": -1.1,
+          "at": {
+            "x": 505.04303,
+            "y": 56.10533,
+            "z": 543.5975
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.4,
+          "lateral": -1.1,
+          "at": {
+            "x": 505.147278,
+            "y": 56.10533,
+            "z": 543.7681
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.6,
+          "lateral": -1.1,
+          "at": {
+            "x": 505.2515,
+            "y": 56.10533,
+            "z": 543.938843
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.8,
+          "lateral": -1.1,
+          "at": {
+            "x": 505.3557,
+            "y": 56.10533,
+            "z": 544.109558
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.8,
+          "lateral": 0.0,
+          "at": {
+            "x": 503.5831,
+            "y": 56.10533,
+            "z": 543.3172
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.6,
+          "lateral": 0.0,
+          "at": {
+            "x": 503.687317,
+            "y": 56.10533,
+            "z": 543.4879
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.4,
+          "lateral": 0.0,
+          "at": {
+            "x": 503.791534,
+            "y": 56.10533,
+            "z": 543.6586
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.2,
+          "lateral": 0.0,
+          "at": {
+            "x": 503.895782,
+            "y": 56.10533,
+            "z": 543.8293
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.0,
+          "lateral": 0.0,
+          "at": {
+            "x": 504.0,
+            "y": 56.10533,
+            "z": 544.0
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.2,
+          "lateral": 0.0,
+          "at": {
+            "x": 504.104218,
+            "y": 56.10533,
+            "z": 544.1707
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.4,
+          "lateral": 0.0,
+          "at": {
+            "x": 504.208466,
+            "y": 56.10533,
+            "z": 544.3414
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.6,
+          "lateral": 0.0,
+          "at": {
+            "x": 504.312683,
+            "y": 56.10533,
+            "z": 544.5121
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.8,
+          "lateral": 0.0,
+          "at": {
+            "x": 504.4169,
+            "y": 56.10533,
+            "z": 544.6828
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.8,
+          "lateral": 1.1,
+          "at": {
+            "x": 502.6443,
+            "y": 56.10533,
+            "z": 543.890442
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.6,
+          "lateral": 1.1,
+          "at": {
+            "x": 502.7485,
+            "y": 56.10533,
+            "z": 544.061157
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.4,
+          "lateral": 1.1,
+          "at": {
+            "x": 502.852722,
+            "y": 56.10533,
+            "z": 544.2319
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.2,
+          "lateral": 1.1,
+          "at": {
+            "x": 502.95697,
+            "y": 56.10533,
+            "z": 544.4025
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.0,
+          "lateral": 1.1,
+          "at": {
+            "x": 503.0612,
+            "y": 56.10533,
+            "z": 544.573242
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Wall junction supports - exact masonry infill/Junction support 093"
+        },
+        {
+          "offset": 0.2,
+          "lateral": 1.1,
+          "at": {
+            "x": 503.1654,
+            "y": 56.10533,
+            "z": 544.743958
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.4,
+          "lateral": 1.1,
+          "at": {
+            "x": 503.269653,
+            "y": 56.10533,
+            "z": 544.9146
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.6,
+          "lateral": 1.1,
+          "at": {
+            "x": 503.373871,
+            "y": 56.10533,
+            "z": 545.0853
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.8,
+          "lateral": 1.1,
+          "at": {
+            "x": 503.4781,
+            "y": 56.10533,
+            "z": 545.256042
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093/Continuous stone wall and walk support"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "ground": 48.75688,
+      "deckHeight": 56.10533,
+      "maximumRecession": 6.43730164E-06,
+      "facade": [
+        {
+          "height": 49.4568825,
+          "offset": -0.8,
+          "expected": {
+            "x": 580.806641,
+            "y": 49.4568825,
+            "z": 479.71524
+          },
+          "visible": {
+            "x": 580.806641,
+            "y": 49.4568825,
+            "z": 479.715271
+          },
+          "recession": 5.24520874E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 49.4568825,
+          "offset": -0.6,
+          "expected": {
+            "x": 580.6673,
+            "y": 49.4568825,
+            "z": 479.5632
+          },
+          "visible": {
+            "x": 580.667358,
+            "y": 49.4568825,
+            "z": 479.563232
+          },
+          "recession": 5.722046E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 49.4568825,
+          "offset": -0.4,
+          "expected": {
+            "x": 580.528,
+            "y": 49.4568825,
+            "z": 479.411163
+          },
+          "visible": {
+            "x": 580.528,
+            "y": 49.4568825,
+            "z": 479.411163
+          },
+          "recession": 6.198883E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 49.4568825,
+          "offset": -0.2,
+          "expected": {
+            "x": 580.3888,
+            "y": 49.4568825,
+            "z": 479.259125
+          },
+          "visible": {
+            "x": 580.3888,
+            "y": 49.4568825,
+            "z": 479.259155
+          },
+          "recession": 6.43730164E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 49.4568825,
+          "offset": 0.0,
+          "expected": {
+            "x": 580.249451,
+            "y": 49.4568825,
+            "z": 479.1071
+          },
+          "visible": {
+            "x": 580.2495,
+            "y": 49.4568825,
+            "z": 479.1071
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 49.4568825,
+          "offset": 0.2,
+          "expected": {
+            "x": 580.054932,
+            "y": 49.4568825,
+            "z": 479.038757
+          },
+          "visible": {
+            "x": 580.054932,
+            "y": 49.4568825,
+            "z": 479.038757
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 49.4568825,
+          "offset": 0.4,
+          "expected": {
+            "x": 579.8604,
+            "y": 49.4568825,
+            "z": 478.970428
+          },
+          "visible": {
+            "x": 579.8604,
+            "y": 49.4568825,
+            "z": 478.970459
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 49.4568825,
+          "offset": 0.6,
+          "expected": {
+            "x": 579.6659,
+            "y": 49.4568825,
+            "z": 478.90213
+          },
+          "visible": {
+            "x": 579.6659,
+            "y": 49.4568825,
+            "z": 478.90213
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 49.4568825,
+          "offset": 0.8,
+          "expected": {
+            "x": 579.4713,
+            "y": 49.4568825,
+            "z": 478.8338
+          },
+          "visible": {
+            "x": 579.4713,
+            "y": 49.4568825,
+            "z": 478.8338
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 52.60611,
+          "offset": -0.8,
+          "expected": {
+            "x": 580.806641,
+            "y": 52.60611,
+            "z": 479.71524
+          },
+          "visible": {
+            "x": 580.806641,
+            "y": 52.60611,
+            "z": 479.715271
+          },
+          "recession": 5.24520874E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 52.60611,
+          "offset": -0.6,
+          "expected": {
+            "x": 580.6673,
+            "y": 52.60611,
+            "z": 479.5632
+          },
+          "visible": {
+            "x": 580.667358,
+            "y": 52.60611,
+            "z": 479.563232
+          },
+          "recession": 5.722046E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 52.60611,
+          "offset": -0.4,
+          "expected": {
+            "x": 580.528,
+            "y": 52.60611,
+            "z": 479.411163
+          },
+          "visible": {
+            "x": 580.528,
+            "y": 52.60611,
+            "z": 479.411163
+          },
+          "recession": 5.96046448E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 52.60611,
+          "offset": -0.2,
+          "expected": {
+            "x": 580.3888,
+            "y": 52.60611,
+            "z": 479.259125
+          },
+          "visible": {
+            "x": 580.3888,
+            "y": 52.60611,
+            "z": 479.259155
+          },
+          "recession": 6.43730164E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 52.60611,
+          "offset": 0.0,
+          "expected": {
+            "x": 580.249451,
+            "y": 52.60611,
+            "z": 479.1071
+          },
+          "visible": {
+            "x": 580.2495,
+            "y": 52.60611,
+            "z": 479.1071
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 52.60611,
+          "offset": 0.2,
+          "expected": {
+            "x": 580.054932,
+            "y": 52.60611,
+            "z": 479.038757
+          },
+          "visible": {
+            "x": 580.054932,
+            "y": 52.60611,
+            "z": 479.038757
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 52.60611,
+          "offset": 0.4,
+          "expected": {
+            "x": 579.8604,
+            "y": 52.60611,
+            "z": 478.970428
+          },
+          "visible": {
+            "x": 579.8604,
+            "y": 52.60611,
+            "z": 478.970459
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 52.60611,
+          "offset": 0.6,
+          "expected": {
+            "x": 579.6659,
+            "y": 52.60611,
+            "z": 478.90213
+          },
+          "visible": {
+            "x": 579.6659,
+            "y": 52.60611,
+            "z": 478.90213
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 52.60611,
+          "offset": 0.8,
+          "expected": {
+            "x": 579.4713,
+            "y": 52.60611,
+            "z": 478.8338
+          },
+          "visible": {
+            "x": 579.4713,
+            "y": 52.60611,
+            "z": 478.8338
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.8,
+          "expected": {
+            "x": 580.806641,
+            "y": 55.7553329,
+            "z": 479.71524
+          },
+          "visible": {
+            "x": 580.806641,
+            "y": 55.7553329,
+            "z": 479.715271
+          },
+          "recession": 5.24520874E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.6,
+          "expected": {
+            "x": 580.6673,
+            "y": 55.7553329,
+            "z": 479.5632
+          },
+          "visible": {
+            "x": 580.667358,
+            "y": 55.7553329,
+            "z": 479.563232
+          },
+          "recession": 5.722046E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.4,
+          "expected": {
+            "x": 580.528,
+            "y": 55.7553329,
+            "z": 479.411163
+          },
+          "visible": {
+            "x": 580.528,
+            "y": 55.7553329,
+            "z": 479.411163
+          },
+          "recession": 6.198883E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": -0.2,
+          "expected": {
+            "x": 580.3888,
+            "y": 55.7553329,
+            "z": 479.259125
+          },
+          "visible": {
+            "x": 580.3888,
+            "y": 55.7553329,
+            "z": 479.259155
+          },
+          "recession": 6.43730164E-06,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.0,
+          "expected": {
+            "x": 580.249451,
+            "y": 55.7553329,
+            "z": 479.1071
+          },
+          "visible": {
+            "x": 580.2495,
+            "y": 55.7553329,
+            "z": 479.1071
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.2,
+          "expected": {
+            "x": 580.054932,
+            "y": 55.7553329,
+            "z": 479.038757
+          },
+          "visible": {
+            "x": 580.054932,
+            "y": 55.7553329,
+            "z": 479.038757
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.4,
+          "expected": {
+            "x": 579.8604,
+            "y": 55.7553329,
+            "z": 478.970428
+          },
+          "visible": {
+            "x": 579.8604,
+            "y": 55.7553329,
+            "z": 478.970459
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.6,
+          "expected": {
+            "x": 579.6659,
+            "y": 55.7553329,
+            "z": 478.90213
+          },
+          "visible": {
+            "x": 579.6659,
+            "y": 55.7553329,
+            "z": 478.90213
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        },
+        {
+          "height": 55.7553329,
+          "offset": 0.8,
+          "expected": {
+            "x": 579.4713,
+            "y": 55.7553329,
+            "z": 478.8338
+          },
+          "visible": {
+            "x": 579.4713,
+            "y": 55.7553329,
+            "z": 478.8338
+          },
+          "recession": 0.0,
+          "surface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "passed": true
+        }
+      ],
+      "deck": [
+        {
+          "offset": -0.8,
+          "lateral": -1.1,
+          "at": {
+            "x": 579.0617,
+            "y": 56.10533,
+            "z": 482.358734
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.6,
+          "lateral": -1.1,
+          "at": {
+            "x": 578.8948,
+            "y": 56.10533,
+            "z": 482.248566
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.4,
+          "lateral": -1.1,
+          "at": {
+            "x": 578.727844,
+            "y": 56.10533,
+            "z": 482.1384
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.2,
+          "lateral": -1.1,
+          "at": {
+            "x": 578.561,
+            "y": 56.10533,
+            "z": 482.0282
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.0,
+          "lateral": -1.1,
+          "at": {
+            "x": 578.394043,
+            "y": 56.10533,
+            "z": 481.91803
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.2,
+          "lateral": -1.1,
+          "at": {
+            "x": 578.2271,
+            "y": 56.10533,
+            "z": 481.807861
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.4,
+          "lateral": -1.1,
+          "at": {
+            "x": 578.060242,
+            "y": 56.10533,
+            "z": 481.697662
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.6,
+          "lateral": -1.1,
+          "at": {
+            "x": 577.8933,
+            "y": 56.10533,
+            "z": 481.5875
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.8,
+          "lateral": -1.1,
+          "at": {
+            "x": 577.7264,
+            "y": 56.10533,
+            "z": 481.477325
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.8,
+          "lateral": 0.0,
+          "at": {
+            "x": 579.667664,
+            "y": 56.10533,
+            "z": 481.4407
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.6,
+          "lateral": 0.0,
+          "at": {
+            "x": 579.500732,
+            "y": 56.10533,
+            "z": 481.330536
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.4,
+          "lateral": 0.0,
+          "at": {
+            "x": 579.3338,
+            "y": 56.10533,
+            "z": 481.220367
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.2,
+          "lateral": 0.0,
+          "at": {
+            "x": 579.166931,
+            "y": 56.10533,
+            "z": 481.110168
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.0,
+          "lateral": 0.0,
+          "at": {
+            "x": 579.0,
+            "y": 56.10533,
+            "z": 481.0
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.2,
+          "lateral": 0.0,
+          "at": {
+            "x": 578.833069,
+            "y": 56.10533,
+            "z": 480.889832
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.4,
+          "lateral": 0.0,
+          "at": {
+            "x": 578.6662,
+            "y": 56.10533,
+            "z": 480.779633
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.6,
+          "lateral": 0.0,
+          "at": {
+            "x": 578.499268,
+            "y": 56.10533,
+            "z": 480.669464
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.8,
+          "lateral": 0.0,
+          "at": {
+            "x": 578.332336,
+            "y": 56.10533,
+            "z": 480.5593
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.8,
+          "lateral": 1.1,
+          "at": {
+            "x": 580.2736,
+            "y": 56.10533,
+            "z": 480.522675
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.6,
+          "lateral": 1.1,
+          "at": {
+            "x": 580.1067,
+            "y": 56.10533,
+            "z": 480.4125
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.4,
+          "lateral": 1.1,
+          "at": {
+            "x": 579.939758,
+            "y": 56.10533,
+            "z": 480.302338
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": -0.2,
+          "lateral": 1.1,
+          "at": {
+            "x": 579.7729,
+            "y": 56.10533,
+            "z": 480.192139
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.0,
+          "lateral": 1.1,
+          "at": {
+            "x": 579.605957,
+            "y": 56.10533,
+            "z": 480.08197
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Wall junction supports - exact masonry infill/Junction support 046"
+        },
+        {
+          "offset": 0.2,
+          "lateral": 1.1,
+          "at": {
+            "x": 579.439,
+            "y": 56.10533,
+            "z": 479.9718
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.4,
+          "lateral": 1.1,
+          "at": {
+            "x": 579.272156,
+            "y": 56.10533,
+            "z": 479.8616
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.6,
+          "lateral": 1.1,
+          "at": {
+            "x": 579.1052,
+            "y": 56.10533,
+            "z": 479.751434
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        },
+        {
+          "offset": 0.8,
+          "lateral": 1.1,
+          "at": {
+            "x": 578.9383,
+            "y": 56.10533,
+            "z": 479.641266
+          },
+          "visibleSupport": true,
+          "nativeSupport": true,
+          "visibleHeight": 56.10533,
+          "nativeHeight": 56.10533,
+          "visibleSurface": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "nativeCollider": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046/Continuous stone wall and walk support"
+        }
+      ]
+    }
+  ],
+  "scope": "Three largest convex joints. Real active rendered triangles sampled every 20 cm across +/-80 cm at three facade heights and three wall-walk tracks. Native collider support is queried independently. Additional infill supports at all affected joints are audited separately against their exact four bounding planes, original collision signature and native ray samples. The 7.5 cm facade tolerance includes the existing 5.3 cm masonry bevel; it cannot conceal the initial full-height V recession. Before is an expected failing defect measurement; After must pass. No scene or asset writes."
+}

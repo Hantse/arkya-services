@@ -47,7 +47,8 @@
       { "id": "blond", "label": "Blond doré", "hex": "#d8bd7d" },
       { "id": "ash", "label": "Blond cendré", "hex": "#b9ad94" },
       { "id": "silver", "label": "Argent", "hex": "#c5d0ca" },
-      { "id": "white", "label": "Blanc nacré", "hex": "#eee8d3" }
+      { "id": "white", "label": "Blanc nacré", "hex": "#eee8d3" },
+      { "id": "magenta", "label": "Magenta", "hex": "#a52e62" }
     ],
     "eyes": [
       { "id": "brown", "label": "Brun", "hex": "#795132" },
@@ -61,7 +62,8 @@
       { "id": "sage", "label": "Sauge", "hex": "#7c9c7b" },
       { "id": "ocean", "label": "Océan", "hex": "#608d99" },
       { "id": "ochre", "label": "Ocre", "hex": "#bd965b" },
-      { "id": "wine", "label": "Lie-de-vin", "hex": "#9d6e79" }
+      { "id": "wine", "label": "Lie-de-vin", "hex": "#9d6e79" },
+      { "id": "jade", "label": "Jade", "hex": "#159b8d" }
     ]
   },
   "defaults": { "version": 1, "race": "human", "silhouette": "a", "heightCm": 175, "skin": "warm", "hairStyle": "short", "hairColor": "brown", "eyeColor": "green", "outfitColor": "sage" }

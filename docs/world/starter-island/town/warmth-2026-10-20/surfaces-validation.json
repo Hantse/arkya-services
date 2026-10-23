@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "geometry": {
+    "triangles": 14760,
+    "renderers": 7,
+    "draws": 9,
+    "shadowCasters": 0,
+    "newColliders": 0,
+    "newLights": 0,
+    "newBehaviours": 0,
+    "missingScripts": 0,
+    "ownedReferences": true
+  },
+  "utc": "2026-10-20T08:26:04.0185726Z"
+}

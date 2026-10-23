@@ -1,0 +1,5407 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "pass": "fine connected meadow",
+  "bladeCount": 132440,
+  "verticesPerBlade": 5,
+  "trianglesPerBlade": 3,
+  "nearTriangles": 397320,
+  "farTriangles": 132441,
+  "oldNearGrassTriangles": 252240,
+  "previousNearGrassTriangles": 224605,
+  "minimumRoadMargin": 0.0751543939,
+  "rejected": 4851,
+  "rendererCountUnchanged": true,
+  "extraColliders": 0,
+  "extraLights": 0,
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/BroadPaintedBlades.mat",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/0-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/0-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/0-2_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/0-2_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/0-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/0-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/0-4_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/0-4_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-0_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-0_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-2_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-2_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-4_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/1-4_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/2-0_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/2-0_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/2-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/2-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/2-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/2-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/3-0_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/3-0_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/3-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/3-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/3-2_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/3-2_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/3-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/3-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-0_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-0_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-2_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-2_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-4_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Meadow/4-4_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/PaintedMeadow.shader",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/PaintedMeadow.hlsl",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/PaintedLightResponse.hlsl",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/FinePaintedBlades.mat",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/0-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/0-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/0-2_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/0-2_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/0-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/0-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/0-4_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/0-4_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-0_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-0_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-2_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-2_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-4_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/1-4_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/2-0_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/2-0_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/2-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/2-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/2-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/2-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/3-0_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/3-0_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/3-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/3-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/3-2_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/3-2_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/3-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/3-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-0_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-0_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-1_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-1_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-2_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-2_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-3_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-3_Herbe_Material15_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-4_Herbe_Material15_0_far.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/4-4_Herbe_Material15_0_near.asset"
+  ],
+  "sampledPositions": [
+    {
+      "position": [
+        560.6908,
+        50.8957443,
+        541.7388
+      ],
+      "margin": 0.228227586
+    },
+    {
+      "position": [
+        578.635864,
+        51.0110855,
+        508.1131
+      ],
+      "margin": 6.41692924
+    },
+    {
+      "position": [
+        577.5713,
+        51.0279961,
+        527.786743
+      ],
+      "margin": 0.233917683
+    },
+    {
+      "position": [
+        515.2215,
+        51.1521873,
+        523.735962
+      ],
+      "margin": 3.51096225
+    },
+    {
+      "position": [
+        560.188538,
+        49.10716,
+        480.591217
+      ],
+      "margin": 12.2230654
+    },
+    {
+      "position": [
+        571.367554,
+        50.9279633,
+        531.607239
+      ],
+      "margin": 2.53521657
+    },
+    {
+      "position": [
+        542.22345,
+        50.420784,
+        500.591827
+      ],
+      "margin": 2.00326633
+    },
+    {
+      "position": [
+        547.977,
+        50.38047,
+        543.5682
+      ],
+      "margin": 4.010524
+    },
+    {
+      "position": [
+        528.8073,
+        50.24951,
+        483.6311
+      ],
+      "margin": 5.182061
+    },
+    {
+      "position": [
+        517.095459,
+        51.1479073,
+        521.575
+      ],
+      "margin": 3.77212739
+    },
+    {
+      "position": [
+        575.238831,
+        50.9128456,
+        539.2001
+      ],
+      "margin": 5.217016
+    },
+    {
+      "position": [
+        533.724,
+        50.29882,
+        487.012939
+      ],
+      "margin": 8.15247
+    },
+    {
+      "position": [
+        584.6878,
+        51.26714,
+        536.498169
+      ],
+      "margin": 7.09997749
+    },
+    {
+      "position": [
+        586.963867,
+        51.2009277,
+        533.0651
+      ],
+      "margin": 7.037759
+    },
+    {
+      "position": [
+        548.381836,
+        50.29972,
+        499.510925
+      ],
+      "margin": 1.01970363
+    },
+    {
+      "position": [
+        586.021851,
+        51.1021729,
+        530.191
+      ],
+      "margin": 5.56203651
+    },
+    {
+      "position": [
+        526.437,
+        50.17171,
+        482.091125
+      ],
+      "margin": 2.89604616
+    },
+    {
+      "position": [
+        530.559265,
+        51.0853157,
+        523.72406
+      ],
+      "margin": 0.309358329
+    },
+    {
+      "position": [
+        546.8018,
+        50.4492226,
+        540.7614
+      ],
+      "margin": 1.63921368
+    },
+    {
+      "position": [
+        582.7977,
+        50.74967,
+        506.197754
+      ],
+      "margin": 7.56288052
+    },
+    {
+      "position": [
+        529.805969,
+        51.0923958,
+        525.349548
+      ],
+      "margin": 1.72532868
+    },
+    {
+      "position": [
+        536.255432,
+        50.2584724,
+        484.8567
+      ],
+      "margin": 10.2693758
+    },
+    {
+      "position": [
+        517.499451,
+        50.3505,
+        537.610352
+      ],
+      "margin": 6.24550724
+    },
+    {
+      "position": [
+        586.247559,
+        51.29257,
+        518.811646
+      ],
+      "margin": 2.81125188
+    },
+    {
+      "position": [
+        581.1261,
+        50.884182,
+        547.7304
+      ],
+      "margin": 3.3166275
+    },
+    {
+      "position": [
+        516.2624,
+        51.1521873,
+        525.789734
+      ],
+      "margin": 1.34045911
+    },
+    {
+      "position": [
+        573.4915,
+        51.0189552,
+        509.0117
+      ],
+      "margin": 3.386416
+    },
+    {
+      "position": [
+        573.664856,
+        48.79775,
+        484.063141
+      ],
+      "margin": 12.4894962
+    },
+    {
+      "position": [
+        530.9214,
+        50.3019524,
+        486.005249
+      ],
+      "margin": 7.413452
+    },
+    {
+      "position": [
+        586.356,
+        51.251915,
+        523.64856
+      ],
+      "margin": 7.056571
+    },
+    {
+      "position": [
+        584.139,
+        51.04728,
+        527.6077
+      ],
+      "margin": 4.24990654
+    },
+    {
+      "position": [
+        574.3557,
+        51.20856,
+        511.2954
+      ],
+      "margin": 3.34699869
+    },
+    {
+      "position": [
+        572.599365,
+        50.94701,
+        530.9187
+      ],
+      "margin": 1.46912813
+    },
+    {
+      "position": [
+        555.4854,
+        50.6708145,
+        539.881958
+      ],
+      "margin": 0.8612275
+    },
+    {
+      "position": [
+        537.5137,
+        50.44769,
+        536.8991
+      ],
+      "margin": 1.31348991
+    },
+    {
+      "position": [
+        580.555969,
+        50.9137764,
+        544.8414
+      ],
+      "margin": 4.6320715
+    },
+    {
+      "position": [
+        513.1934,
+        51.15729,
+        524.873962
+      ],
+      "margin": 3.67902875
+    },
+    {
+      "position": [
+        589.081543,
+        51.30925,
+        510.957184
+      ],
+      "margin": 5.832462
+    },
+    {
+      "position": [
+        522.756653,
+        51.11993,
+        519.626343
+      ],
+      "margin": 1.44744849
+    },
+    {
+      "position": [
+        552.6179,
+        49.55327,
+        485.07135
+      ],
+      "margin": 8.62267
+    },
+    {
+      "position": [
+        538.567139,
+        50.4972153,
+        535.6947
+      ],
+      "margin": 1.38407516
+    },
+    {
+      "position": [
+        553.018066,
+        50.490612,
+        541.7011
+      ],
+      "margin": 3.50844216
+    },
+    {
+      "position": [
+        542.761658,
+        50.27936,
+        498.709442
+      ],
+      "margin": 3.63390565
+    },
+    {
+      "position": [
+        526.863464,
+        50.85275,
+        514.1225
+      ],
+      "margin": 1.6467824
+    },
+    {
+      "position": [
+        541.0581,
+        50.1092873,
+        482.942444
+      ],
+      "margin": 13.3784552
+    },
+    {
+      "position": [
+        526.3261,
+        51.1118469,
+        525.932434
+      ],
+      "margin": 1.39720631
+    },
+    {
+      "position": [
+        529.4117,
+        51.085537,
+        527.24585
+      ],
+      "margin": 3.47751784
+    },
+    {
+      "position": [
+        574.681,
+        50.90022,
+        542.295044
+      ],
+      "margin": 2.531773
+    },
+    {
+      "position": [
+        580.355652,
+        50.8950348,
+        545.812256
+      ],
+      "margin": 3.84758949
+    },
+    {
+      "position": [
+        525.703552,
+        50.9527931,
+        510.7797
+      ],
+      "margin": 3.069189
+    },
+    {
+      "position": [
+        551.704651,
+        49.5584831,
+        483.174377
+      ],
+      "margin": 10.4341116
+    },
+    {
+      "position": [
+        545.922,
+        50.3378067,
+        500.252655
+      ],
+      "margin": 1.52669919
+    },
+    {
+      "position": [
+        550.1947,
+        50.4764137,
+        541.1096
+      ],
+      "margin": 4.139883
+    },
+    {
+      "position": [
+        548.7411,
+        50.43658,
+        541.8438
+      ],
+      "margin": 3.86006474
+    },
+    {
+      "position": [
+        585.085754,
+        51.074646,
+        507.568481
+      ],
+      "margin": 6.5773077
+    },
+    {
+      "position": [
+        571.800232,
+        50.90022,
+        542.4815
+      ],
+      "margin": 0.4674532
+    },
+    {
+      "position": [
+        539.8412,
+        50.16898,
+        481.318817
+      ],
+      "margin": 14.4739571
+    },
+    {
+      "position": [
+        563.942566,
+        50.3898,
+        502.57663
+      ],
+      "margin": 1.54040039
+    },
+    {
+      "position": [
+        566.034363,
+        50.4494133,
+        503.804138
+      ],
+      "margin": 1.31334937
+    },
+    {
+      "position": [
+        566.4147,
+        50.4970665,
+        504.641968
+      ],
+      "margin": 0.7807795
+    },
+    {
+      "position": [
+        588.5455,
+        51.30081,
+        518.5752
+      ],
+      "margin": 4.481905
+    },
+    {
+      "position": [
+        547.824768,
+        50.49859,
+        539.6984
+      ],
+      "margin": 1.99988782
+    },
+    {
+      "position": [
+        557.067444,
+        50.23538,
+        499.261536
+      ],
+      "margin": 2.59048486
+    },
+    {
+      "position": [
+        553.161743,
+        49.4689026,
+        478.814575
+      ],
+      "margin": 14.8981228
+    },
+    {
+      "position": [
+        576.0266,
+        51.22286,
+        511.2873
+      ],
+      "margin": 4.941581
+    },
+    {
+      "position": [
+        579.3356,
+        51.1249962,
+        508.786957
+      ],
+      "margin": 5.517467
+    },
+    {
+      "position": [
+        549.7933,
+        49.7352943,
+        487.5027
+      ],
+      "margin": 6.233753
+    },
+    {
+      "position": [
+        548.98,
+        49.7066956,
+        484.06546
+      ],
+      "margin": 9.763609
+    },
+    {
+      "position": [
+        570.6652,
+        50.1189423,
+        500.113739
+      ],
+      "margin": 1.476088
+    },
+    {
+      "position": [
+        524.9936,
+        50.75754,
+        513.1226
+      ],
+      "margin": 2.26483059
+    },
+    {
+      "position": [
+        523.47345,
+        50.1493149,
+        547.6693
+      ],
+      "margin": 8.826305
+    },
+    {
+      "position": [
+        528.914856,
+        50.22577,
+        545.4272
+      ],
+      "margin": 4.12625933
+    },
+    {
+      "position": [
+        519.553955,
+        50.96712,
+        504.990662
+      ],
+      "margin": 2.3968668
+    },
+    {
+      "position": [
+        527.597046,
+        50.1315231,
+        548.6088
+      ],
+      "margin": 7.5520134
+    },
+    {
+      "position": [
+        583.59906,
+        51.2871971,
+        517.537842
+      ],
+      "margin": 0.403350443
+    },
+    {
+      "position": [
+        571.5872,
+        50.9400253,
+        508.682343
+      ],
+      "margin": 1.83744156
+    },
+    {
+      "position": [
+        541.2916,
+        50.4452667,
+        500.257355
+      ],
+      "margin": 1.51103973
+    },
+    {
+      "position": [
+        587.9459,
+        51.0222054,
+        527.0596
+      ],
+      "margin": 7.98733425
+    },
+    {
+      "position": [
+        524.079041,
+        50.6827469,
+        513.9961
+      ],
+      "margin": 1.30565548
+    },
+    {
+      "position": [
+        541.1571,
+        50.1150131,
+        481.257629
+      ],
+      "margin": 14.9713459
+    },
+    {
+      "position": [
+        589.5158,
+        51.11358,
+        525.043945
+      ],
+      "margin": 9.756708
+    },
+    {
+      "position": [
+        556.6165,
+        49.3082352,
+        482.062622
+      ],
+      "margin": 12.2599411
+    },
+    {
+      "position": [
+        560.811157,
+        50.8433571,
+        543.1926
+      ],
+      "margin": 1.06717229
+    },
+    {
+      "position": [
+        525.006165,
+        50.1329765,
+        548.3231
+      ],
+      "margin": 8.411697
+    },
+    {
+      "position": [
+        516.4646,
+        50.96649,
+        501.47937
+      ],
+      "margin": 1.24649334
+    },
+    {
+      "position": [
+        552.6289,
+        49.5016861,
+        482.181519
+      ],
+      "margin": 11.4925861
+    },
+    {
+      "position": [
+        587.363,
+        51.07485,
+        525.828552
+      ],
+      "margin": 7.92906761
+    },
+    {
+      "position": [
+        587.244263,
+        51.2894859,
+        509.707367
+      ],
+      "margin": 5.49553251
+    },
+    {
+      "position": [
+        588.2023,
+        51.07407,
+        529.438
+      ],
+      "margin": 7.76551151
+    },
+    {
+      "position": [
+        558.5276,
+        49.22282,
+        482.24057
+      ],
+      "margin": 11.21688
+    },
+    {
+      "position": [
+        568.1855,
+        50.2813721,
+        501.7321
+      ],
+      "margin": 2.092977
+    },
+    {
+      "position": [
+        571.1683,
+        50.6474571,
+        506.879059
+      ],
+      "margin": 0.7362304
+    },
+    {
+      "position": [
+        574.860657,
+        50.9893,
+        530.4208
+      ],
+      "margin": 0.231956214
+    },
+    {
+      "position": [
+        579.050537,
+        50.4182,
+        504.688538
+      ],
+      "margin": 4.283001
+    },
+    {
+      "position": [
+        574.977356,
+        50.3237,
+        503.292633
+      ],
+      "margin": 0.83625555
+    },
+    {
+      "position": [
+        586.799255,
+        51.0510025,
+        526.1901
+      ],
+      "margin": 7.262846
+    },
+    {
+      "position": [
+        534.4531,
+        50.2843056,
+        484.194855
+      ],
+      "margin": 10.8257647
+    },
+    {
+      "position": [
+        527.107056,
+        50.1573753,
+        547.720459
+      ],
+      "margin": 6.88985825
+    },
+    {
+      "position": [
+        585.017761,
+        50.5187263,
+        504.828125
+      ],
+      "margin": 9.058133
+    },
+    {
+      "position": [
+        574.3715,
+        50.90022,
+        543.8976
+      ],
+      "margin": 1.10429716
+    },
+    {
+      "position": [
+        536.531,
+        50.9670029,
+        502.563568
+      ],
+      "margin": 0.6699474
+    },
+    {
+      "position": [
+        586.2616,
+        51.29282,
+        518.152466
+      ],
+      "margin": 2.362032
+    },
+    {
+      "position": [
+        553.433044,
+        49.4842453,
+        483.5459
+      ],
+      "margin": 10.26051
+    },
+    {
+      "position": [
+        582.385864,
+        51.2153435,
+        509.15683
+      ],
+      "margin": 4.603989
+    },
+    {
+      "position": [
+        581.165161,
+        50.9042778,
+        507.167755
+      ],
+      "margin": 6.64566231
+    },
+    {
+      "position": [
+        536.737732,
+        50.24905,
+        482.772461
+      ],
+      "margin": 12.393899
+    },
+    {
+      "position": [
+        528.5397,
+        50.2362251,
+        544.894348
+      ],
+      "margin": 3.73328757
+    },
+    {
+      "position": [
+        517.4225,
+        51.14663,
+        522.4243
+      ],
+      "margin": 2.91975713
+    },
+    {
+      "position": [
+        590.2807,
+        51.00937,
+        527.36084
+      ],
+      "margin": 10.1475945
+    },
+    {
+      "position": [
+        527.3545,
+        50.20897,
+        482.884674
+      ],
+      "margin": 3.7598815
+    },
+    {
+      "position": [
+        513.378235,
+        51.15657,
+        523.5476
+      ],
+      "margin": 4.92186069
+    },
+    {
+      "position": [
+        527.682556,
+        51.10533,
+        526.6559
+      ],
+      "margin": 2.47146678
+    },
+    {
+      "position": [
+        587.19696,
+        51.3235741,
+        536.523865
+      ],
+      "margin": 8.95375252
+    },
+    {
+      "position": [
+        530.3089,
+        50.8636436,
+        495.629059
+      ],
+      "margin": 3.40022779
+    },
+    {
+      "position": [
+        515.611267,
+        51.1521873,
+        522.1253
+      ],
+      "margin": 4.371258
+    },
+    {
+      "position": [
+        530.70166,
+        50.9705353,
+        500.2324
+      ],
+      "margin": 1.22860336
+    },
+    {
+      "position": [
+        543.453,
+        49.9967232,
+        485.155365
+      ],
+      "margin": 11.1372786
+    },
+    {
+      "position": [
+        542.43,
+        50.48914,
+        537.8687
+      ],
+      "margin": 0.810978532
+    },
+    {
+      "position": [
+        540.733154,
+        50.1215324,
+        485.7089
+      ],
+      "margin": 10.7420816
+    },
+    {
+      "position": [
+        530.4,
+        50.9705353,
+        501.2851
+      ],
+      "margin": 0.27561304
+    },
+    {
+      "position": [
+        584.2957,
+        51.1757469,
+        524.8918
+      ],
+      "margin": 5.964879
+    },
+    {
+      "position": [
+        553.045532,
+        50.64562,
+        538.0201
+      ],
+      "margin": 0.689293265
+    },
+    {
+      "position": [
+        582.9224,
+        51.2762642,
+        510.494965
+      ],
+      "margin": 3.274205
+    },
+    {
+      "position": [
+        536.175354,
+        50.9688568,
+        502.6233
+      ],
+      "margin": 0.9742222
+    },
+    {
+      "position": [
+        568.3879,
+        50.2962227,
+        501.9525
+      ],
+      "margin": 1.79399729
+    },
+    {
+      "position": [
+        581.380859,
+        51.2377472,
+        509.744781
+      ],
+      "margin": 4.06072044
+    },
+    {
+      "position": [
+        527.8352,
+        50.1550827,
+        547.8847
+      ],
+      "margin": 6.78974533
+    },
+    {
+      "position": [
+        548.684753,
+        50.5957222,
+        537.222351
+      ],
+      "margin": 0.591523767
+    },
+    {
+      "position": [
+        528.397034,
+        50.2589149,
+        484.7495
+      ],
+      "margin": 4.79059029
+    },
+    {
+      "position": [
+        572.530762,
+        48.90899,
+        486.1933
+      ],
+      "margin": 10.2118454
+    },
+    {
+      "position": [
+        545.5093,
+        50.45514,
+        540.107849
+      ],
+      "margin": 0.192559689
+    },
+    {
+      "position": [
+        583.502441,
+        51.2661819,
+        523.273
+      ],
+      "margin": 5.188285
+    },
+    {
+      "position": [
+        532.3951,
+        50.9229431,
+        497.9188
+      ],
+      "margin": 1.56141067
+    },
+    {
+      "position": [
+        540.9975,
+        50.4614143,
+        538.0456
+      ],
+      "margin": 1.97180736
+    },
+    {
+      "position": [
+        537.0534,
+        50.9763947,
+        504.823975
+      ],
+      "margin": 1.74680567
+    },
+    {
+      "position": [
+        527.4393,
+        50.9705353,
+        508.6752
+      ],
+      "margin": 0.364631861
+    },
+    {
+      "position": [
+        564.171143,
+        50.1812325,
+        499.781769
+      ],
+      "margin": 1.50668907
+    },
+    {
+      "position": [
+        587.0028,
+        51.1400337,
+        531.289
+      ],
+      "margin": 6.63039875
+    },
+    {
+      "position": [
+        561.653,
+        49.03376,
+        480.510345
+      ],
+      "margin": 12.0032635
+    },
+    {
+      "position": [
+        556.5437,
+        50.3476868,
+        500.8911
+      ],
+      "margin": 1.26433885
+    },
+    {
+      "position": [
+        583.4634,
+        51.1421776,
+        525.431763
+      ],
+      "margin": 4.995741
+    },
+    {
+      "position": [
+        518.277954,
+        50.35919,
+        535.71936
+      ],
+      "margin": 4.6789794
+    },
+    {
+      "position": [
+        546.69696,
+        49.81988,
+        483.103821
+      ],
+      "margin": 11.3291159
+    },
+    {
+      "position": [
+        583.60144,
+        51.3174477,
+        540.2295
+      ],
+      "margin": 9.66389
+    },
+    {
+      "position": [
+        545.5106,
+        50.274025,
+        498.851257
+      ],
+      "margin": 2.977006
+    },
+    {
+      "position": [
+        527.372559,
+        50.9021454,
+        513.4128
+      ],
+      "margin": 2.46329021
+    },
+    {
+      "position": [
+        537.0999,
+        50.2507439,
+        481.077637
+      ],
+      "margin": 13.6054564
+    },
+    {
+      "position": [
+        524.106,
+        50.9705353,
+        506.273865
+      ],
+      "margin": 1.1274519
+    },
+    {
+      "position": [
+        521.112,
+        50.4053421,
+        534.007568
+      ],
+      "margin": 4.73589134
+    },
+    {
+      "position": [
+        580.079468,
+        51.2719536,
+        512.129761
+      ],
+      "margin": 2.16845679
+    },
+    {
+      "position": [
+        589.206055,
+        51.09552,
+        529.9995
+      ],
+      "margin": 8.746112
+    },
+    {
+      "position": [
+        543.0976,
+        50.50239,
+        537.766357
+      ],
+      "margin": 0.282056183
+    },
+    {
+      "position": [
+        523.9208,
+        50.9705353,
+        507.126678
+      ],
+      "margin": 1.86070824
+    },
+    {
+      "position": [
+        564.1533,
+        50.3912048,
+        502.627136
+      ],
+      "margin": 1.57249272
+    },
+    {
+      "position": [
+        540.0213,
+        50.4631081,
+        537.5652
+      ],
+      "margin": 3.05841136
+    },
+    {
+      "position": [
+        519.204041,
+        50.9705353,
+        503.296936
+      ],
+      "margin": 1.03373623
+    },
+    {
+      "position": [
+        573.565735,
+        49.0275574,
+        488.295837
+      ],
+      "margin": 9.850996
+    },
+    {
+      "position": [
+        557.122742,
+        49.291687,
+        482.369
+      ],
+      "margin": 11.7393436
+    },
+    {
+      "position": [
+        518.131653,
+        51.146328,
+        521.7355
+      ],
+      "margin": 2.987675
+    },
+    {
+      "position": [
+        517.28,
+        50.3618736,
+        536.4838
+      ],
+      "margin": 5.098285
+    },
+    {
+      "position": [
+        581.929932,
+        51.26699,
+        510.343
+      ],
+      "margin": 3.42421842
+    },
+    {
+      "position": [
+        546.522156,
+        50.3607063,
+        500.697632
+      ],
+      "margin": 1.00482714
+    },
+    {
+      "position": [
+        533.867554,
+        50.281414,
+        482.095673
+      ],
+      "margin": 10.3008595
+    },
+    {
+      "position": [
+        588.4874,
+        51.1548538,
+        531.570862
+      ],
+      "margin": 8.140517
+    },
+    {
+      "position": [
+        573.3484,
+        50.6784439,
+        506.945984
+      ],
+      "margin": 2.314552
+    },
+    {
+      "position": [
+        527.7119,
+        50.2850037,
+        487.041656
+      ],
+      "margin": 4.37424755
+    },
+    {
+      "position": [
+        531.332153,
+        50.88097,
+        529.7841
+      ],
+      "margin": 3.11602926
+    },
+    {
+      "position": [
+        537.3206,
+        50.23516,
+        488.039581
+      ],
+      "margin": 7.31658554
+    },
+    {
+      "position": [
+        547.0013,
+        49.81297,
+        484.566162
+      ],
+      "margin": 9.856432
+    },
+    {
+      "position": [
+        584.5018,
+        50.67879,
+        505.651031
+      ],
+      "margin": 8.292085
+    },
+    {
+      "position": [
+        576.051,
+        51.2308044,
+        511.971436
+      ],
+      "margin": 4.710055
+    },
+    {
+      "position": [
+        550.6726,
+        49.5966,
+        481.28952
+      ],
+      "margin": 12.3215294
+    },
+    {
+      "position": [
+        551.212036,
+        49.59354,
+        483.851776
+      ],
+      "margin": 9.747649
+    },
+    {
+      "position": [
+        520.2058,
+        50.9705353,
+        503.61026
+      ],
+      "margin": 0.8704653
+    },
+    {
+      "position": [
+        541.1007,
+        50.1257439,
+        480.6865
+      ],
+      "margin": 15.4833641
+    },
+    {
+      "position": [
+        537.6215,
+        50.2269325,
+        486.251221
+      ],
+      "margin": 9.123972
+    },
+    {
+      "position": [
+        541.0874,
+        50.4071121,
+        539.8737
+      ],
+      "margin": 1.02642071
+    },
+    {
+      "position": [
+        588.495361,
+        51.3021736,
+        512.600464
+      ],
+      "margin": 4.42283726
+    },
+    {
+      "position": [
+        570.112854,
+        50.2033768,
+        501.02182
+      ],
+      "margin": 1.21959186
+    },
+    {
+      "position": [
+        574.601746,
+        50.90022,
+        543.9353
+      ],
+      "margin": 1.22269058
+    },
+    {
+      "position": [
+        527.664734,
+        51.1057243,
+        526.6144
+      ],
+      "margin": 2.42669654
+    },
+    {
+      "position": [
+        553.818237,
+        49.4576263,
+        483.0897
+      ],
+      "margin": 10.78423
+    },
+    {
+      "position": [
+        546.09436,
+        49.8598366,
+        481.302124
+      ],
+      "margin": 13.2275791
+    },
+    {
+      "position": [
+        540.7771,
+        50.3517075,
+        499.060944
+      ],
+      "margin": 1.90187192
+    },
+    {
+      "position": [
+        525.576355,
+        50.95293,
+        510.6609
+      ],
+      "margin": 3.08121586
+    },
+    {
+      "position": [
+        580.465759,
+        51.27511,
+        513.0097
+      ],
+      "margin": 1.20778465
+    },
+    {
+      "position": [
+        558.6367,
+        50.12948,
+        498.061829
+      ],
+      "margin": 1.3366034
+    },
+    {
+      "position": [
+        589.0166,
+        51.27504,
+        523.1779
+      ],
+      "margin": 7.94373226
+    },
+    {
+      "position": [
+        580.6206,
+        50.89322,
+        546.2058
+      ],
+      "margin": 3.80592823
+    },
+    {
+      "position": [
+        576.7166,
+        48.8599243,
+        485.636353
+      ],
+      "margin": 13.0056372
+    },
+    {
+      "position": [
+        523.705933,
+        50.9705353,
+        505.214661
+      ],
+      "margin": 0.635854
+    },
+    {
+      "position": [
+        546.9807,
+        50.4940643,
+        539.488953
+      ],
+      "margin": 1.1633445
+    },
+    {
+      "position": [
+        524.6604,
+        50.1476822,
+        547.866455
+      ],
+      "margin": 8.230761
+    },
+    {
+      "position": [
+        575.3653,
+        51.2023354,
+        510.820251
+      ],
+      "margin": 4.453304
+    },
+    {
+      "position": [
+        534.3241,
+        50.4823456,
+        533.4707
+      ],
+      "margin": 0.388696164
+    },
+    {
+      "position": [
+        562.223267,
+        48.99091,
+        479.383057
+      ],
+      "margin": 13.0498333
+    },
+    {
+      "position": [
+        580.115,
+        51.2487144,
+        510.187378
+      ],
+      "margin": 3.92865825
+    },
+    {
+      "position": [
+        578.0179,
+        51.196167,
+        524.6597
+      ],
+      "margin": 2.99970651
+    },
+    {
+      "position": [
+        552.9739,
+        49.50778,
+        483.648834
+      ],
+      "margin": 10.0815678
+    },
+    {
+      "position": [
+        574.063354,
+        50.448185,
+        504.680756
+      ],
+      "margin": 1.23203421
+    },
+    {
+      "position": [
+        580.9328,
+        50.911705,
+        545.5392
+      ],
+      "margin": 4.464777
+    },
+    {
+      "position": [
+        552.1477,
+        49.59509,
+        485.861725
+      ],
+      "margin": 7.782379
+    },
+    {
+      "position": [
+        521.065369,
+        50.24748,
+        544.34845
+      ],
+      "margin": 8.790903
+    },
+    {
+      "position": [
+        518.3648,
+        50.9295158,
+        505.777618
+      ],
+      "margin": 3.62128687
+    },
+    {
+      "position": [
+        586.905457,
+        51.2804527,
+        522.6331
+      ],
+      "margin": 6.352737
+    },
+    {
+      "position": [
+        565.956848,
+        50.1399841,
+        499.5881
+      ],
+      "margin": 3.21094871
+    },
+    {
+      "position": [
+        567.229736,
+        50.4204559,
+        503.508728
+      ],
+      "margin": 1.49860311
+    },
+    {
+      "position": [
+        551.254761,
+        49.57331,
+        482.3224
+      ],
+      "margin": 11.2770138
+    },
+    {
+      "position": [
+        515.7341,
+        50.6867638,
+        532.9841
+      ],
+      "margin": 1.381432
+    },
+    {
+      "position": [
+        569.7662,
+        48.755703,
+        481.305054
+      ],
+      "margin": 12.4493618
+    },
+    {
+      "position": [
+        589.093567,
+        51.3075447,
+        509.8228
+      ],
+      "margin": 6.59473038
+    },
+    {
+      "position": [
+        582.0882,
+        50.69779,
+        506.046631
+      ],
+      "margin": 7.334137
+    },
+    {
+      "position": [
+        573.475342,
+        50.9556847,
+        533.814636
+      ],
+      "margin": 3.894624
+    },
+    {
+      "position": [
+        577.6701,
+        51.1873245,
+        509.800568
+      ],
+      "margin": 5.34195471
+    },
+    {
+      "position": [
+        522.376038,
+        50.2035255,
+        545.977356
+      ],
+      "margin": 8.497377
+    },
+    {
+      "position": [
+        570.3452,
+        49.07257,
+        488.1398
+      ],
+      "margin": 7.28562832
+    },
+    {
+      "position": [
+        531.115356,
+        51.08459,
+        525.926636
+      ],
+      "margin": 1.72295439
+    },
+    {
+      "position": [
+        526.8128,
+        50.27788,
+        487.094269
+      ],
+      "margin": 3.49561071
+    },
+    {
+      "position": [
+        578.7715,
+        50.66939,
+        506.2673
+      ],
+      "margin": 5.448452
+    },
+    {
+      "position": [
+        547.559631,
+        50.5919952,
+        536.953247
+      ],
+      "margin": 0.432692856
+    },
+    {
+      "position": [
+        587.4434,
+        51.2084045,
+        524.1413
+      ],
+      "margin": 7.94220543
+    },
+    {
+      "position": [
+        587.0447,
+        51.00201,
+        506.866455
+      ],
+      "margin": 7.899514
+    },
+    {
+      "position": [
+        586.7906,
+        51.06712,
+        529.1749
+      ],
+      "margin": 6.384689
+    },
+    {
+      "position": [
+        573.9171,
+        51.1013947,
+        525.734253
+      ],
+      "margin": 0.924589157
+    },
+    {
+      "position": [
+        538.488037,
+        50.2143173,
+        481.575439
+      ],
+      "margin": 13.8738041
+    },
+    {
+      "position": [
+        586.121948,
+        51.0629768,
+        528.9695
+      ],
+      "margin": 5.75040531
+    },
+    {
+      "position": [
+        534.2533,
+        50.9705353,
+        501.846344
+      ],
+      "margin": 1.90130329
+    },
+    {
+      "position": [
+        574.429,
+        51.21609,
+        515.428955
+      ],
+      "margin": 2.47173738
+    },
+    {
+      "position": [
+        538.7537,
+        50.1965637,
+        482.670715
+      ],
+      "margin": 12.8734026
+    },
+    {
+      "position": [
+        544.095,
+        50.23667,
+        497.8703
+      ],
+      "margin": 4.211402
+    },
+    {
+      "position": [
+        554.4671,
+        50.5842247,
+        540.2018
+      ],
+      "margin": 1.90860319
+    },
+    {
+      "position": [
+        568.8227,
+        50.12546,
+        499.887726
+      ],
+      "margin": 2.93489623
+    },
+    {
+      "position": [
+        550.451965,
+        50.5474243,
+        539.023743
+      ],
+      "margin": 2.04026031
+    },
+    {
+      "position": [
+        525.136536,
+        50.79216,
+        514.857544
+      ],
+      "margin": 0.563198566
+    },
+    {
+      "position": [
+        572.1812,
+        50.90022,
+        542.108154
+      ],
+      "margin": 1.0006938
+    },
+    {
+      "position": [
+        578.2152,
+        50.7173347,
+        506.581726
+      ],
+      "margin": 5.40779066
+    },
+    {
+      "position": [
+        521.0732,
+        50.9705353,
+        503.690643
+      ],
+      "margin": 0.595824242
+    },
+    {
+      "position": [
+        573.440247,
+        49.1372948,
+        489.774
+      ],
+      "margin": 9.058532
+    },
+    {
+      "position": [
+        573.414368,
+        51.19644,
+        523.0626
+      ],
+      "margin": 1.32863832
+    },
+    {
+      "position": [
+        543.768738,
+        49.9806252,
+        484.175751
+      ],
+      "margin": 11.7400713
+    },
+    {
+      "position": [
+        533.966248,
+        50.9705353,
+        501.214142
+      ],
+      "margin": 1.73702621
+    },
+    {
+      "position": [
+        549.3207,
+        50.54723,
+        538.7779
+      ],
+      "margin": 1.99501336
+    },
+    {
+      "position": [
+        542.104736,
+        50.067627,
+        481.873444
+      ],
+      "margin": 14.5800591
+    },
+    {
+      "position": [
+        563.6826,
+        50.27311,
+        500.869354
+      ],
+      "margin": 1.28710818
+    },
+    {
+      "position": [
+        544.886169,
+        49.93159,
+        485.681152
+      ],
+      "margin": 9.86678
+    },
+    {
+      "position": [
+        548.1875,
+        50.3609848,
+        500.598328
+      ],
+      "margin": 0.95356
+    },
+    {
+      "position": [
+        582.83844,
+        51.27328,
+        542.050964
+      ],
+      "margin": 8.19912052
+    },
+    {
+      "position": [
+        576.0596,
+        51.23309,
+        515.087952
+      ],
+      "margin": 2.63830543
+    },
+    {
+      "position": [
+        531.269348,
+        50.97939,
+        528.9144
+      ],
+      "margin": 2.764378
+    },
+    {
+      "position": [
+        527.4072,
+        50.1897774,
+        546.6946
+      ],
+      "margin": 5.82921934
+    },
+    {
+      "position": [
+        541.714661,
+        50.4669533,
+        538.2209
+      ],
+      "margin": 1.26013672
+    },
+    {
+      "position": [
+        546.8736,
+        49.8541374,
+        486.943
+      ],
+      "margin": 7.75550556
+    },
+    {
+      "position": [
+        534.8242,
+        50.2826271,
+        485.7036
+      ],
+      "margin": 9.367622
+    },
+    {
+      "position": [
+        576.016968,
+        50.94587,
+        538.5748
+      ],
+      "margin": 6.20675755
+    },
+    {
+      "position": [
+        578.8455,
+        51.2503166,
+        522.420654
+      ],
+      "margin": 1.41611171
+    },
+    {
+      "position": [
+        553.9633,
+        50.6158867,
+        539.241455
+      ],
+      "margin": 1.8224169
+    },
+    {
+      "position": [
+        551.901062,
+        50.54787,
+        539.4888
+      ],
+      "margin": 2.285472
+    },
+    {
+      "position": [
+        572.5966,
+        49.0017967,
+        487.7456
+      ],
+      "margin": 9.316389
+    },
+    {
+      "position": [
+        534.640259,
+        50.97125,
+        502.682343
+      ],
+      "margin": 2.15323067
+    },
+    {
+      "position": [
+        574.216553,
+        48.9126854,
+        486.543762
+      ],
+      "margin": 11.33215
+    },
+    {
+      "position": [
+        584.340454,
+        51.28696,
+        519.1157
+      ],
+      "margin": 2.112257
+    },
+    {
+      "position": [
+        540.727966,
+        50.1217346,
+        485.594971
+      ],
+      "margin": 10.8408318
+    },
+    {
+      "position": [
+        574.058533,
+        51.1863327,
+        524.0538
+      ],
+      "margin": 2.10338855
+    },
+    {
+      "position": [
+        533.147156,
+        50.9705353,
+        503.489044
+      ],
+      "margin": 0.7668581
+    },
+    {
+      "position": [
+        571.45874,
+        50.9300766,
+        530.6913
+      ],
+      "margin": 1.64276481
+    },
+    {
+      "position": [
+        562.470642,
+        49.0359459,
+        482.1779
+      ],
+      "margin": 10.2443733
+    },
+    {
+      "position": [
+        576.223267,
+        51.0343437,
+        526.8893
+      ],
+      "margin": 0.6223788
+    },
+    {
+      "position": [
+        564.4358,
+        48.969635,
+        482.707458
+      ],
+      "margin": 9.675846
+    },
+    {
+      "position": [
+        588.5135,
+        51.06127,
+        529.0285
+      ],
+      "margin": 8.113022
+    },
+    {
+      "position": [
+        552.8583,
+        49.51978,
+        484.017639
+      ],
+      "margin": 9.699738
+    },
+    {
+      "position": [
+        567.803345,
+        50.39999,
+        503.27
+      ],
+      "margin": 1.26629543
+    },
+    {
+      "position": [
+        576.0331,
+        51.22102,
+        522.4463
+      ],
+      "margin": 0.355066866
+    },
+    {
+      "position": [
+        546.198242,
+        49.8529663,
+        484.497437
+      ],
+      "margin": 10.24287
+    },
+    {
+      "position": [
+        584.900635,
+        51.0957642,
+        530.0223
+      ],
+      "margin": 4.44070435
+    },
+    {
+      "position": [
+        578.793457,
+        49.0019035,
+        488.2692
+      ],
+      "margin": 10.74806
+    },
+    {
+      "position": [
+        541.9555,
+        50.4141426,
+        500.368439
+      ],
+      "margin": 1.94425368
+    },
+    {
+      "position": [
+        571.588562,
+        50.7547379,
+        507.553864
+      ],
+      "margin": 1.51198268
+    },
+    {
+      "position": [
+        532.0814,
+        50.2966,
+        484.7012
+      ],
+      "margin": 8.469801
+    },
+    {
+      "position": [
+        576.6953,
+        48.93009,
+        487.048523
+      ],
+      "margin": 11.5961065
+    },
+    {
+      "position": [
+        570.0807,
+        50.2282,
+        501.331726
+      ],
+      "margin": 1.02586365
+    },
+    {
+      "position": [
+        590.429138,
+        51.01088,
+        527.6286
+      ],
+      "margin": 10.2324486
+    },
+    {
+      "position": [
+        574.3724,
+        50.90022,
+        542.495
+      ],
+      "margin": 2.179326
+    },
+    {
+      "position": [
+        590.539551,
+        51.31266,
+        521.529846
+      ],
+      "margin": 7.81036854
+    },
+    {
+      "position": [
+        580.8962,
+        50.8816147,
+        549.261536
+      ],
+      "margin": 2.31996965
+    },
+    {
+      "position": [
+        532.5306,
+        50.9026031,
+        529.4695
+      ],
+      "margin": 1.9154917
+    },
+    {
+      "position": [
+        532.0738,
+        50.3129578,
+        489.75528
+      ],
+      "margin": 5.95331144
+    },
+    {
+      "position": [
+        546.542969,
+        49.83123,
+        482.022125
+      ],
+      "margin": 12.3970909
+    },
+    {
+      "position": [
+        576.488464,
+        51.0208473,
+        530.937561
+      ],
+      "margin": 0.167545408
+    },
+    {
+      "position": [
+        549.6359,
+        49.6566124,
+        482.029755
+      ],
+      "margin": 11.6678991
+    },
+    {
+      "position": [
+        545.5404,
+        50.31286,
+        499.720459
+      ],
+      "margin": 2.115868
+    },
+    {
+      "position": [
+        529.7731,
+        50.2899971,
+        485.7491
+      ],
+      "margin": 6.244272
+    },
+    {
+      "position": [
+        584.973633,
+        51.38239,
+        541.1066
+      ],
+      "margin": 10.4167013
+    },
+    {
+      "position": [
+        575.483337,
+        49.0910873,
+        489.4399
+      ],
+      "margin": 9.162558
+    },
+    {
+      "position": [
+        573.785461,
+        48.7457275,
+        482.6945
+      ],
+      "margin": 13.5595884
+    },
+    {
+      "position": [
+        553.177734,
+        49.4648,
+        481.5919
+      ],
+      "margin": 12.1462212
+    },
+    {
+      "position": [
+        578.9137,
+        51.19955,
+        524.775269
+      ],
+      "margin": 3.46658349
+    },
+    {
+      "position": [
+        527.857544,
+        50.0707359,
+        550.4049
+      ],
+      "margin": 9.211239
+    },
+    {
+      "position": [
+        555.6497,
+        50.7378731,
+        539.2659
+      ],
+      "margin": 0.627886534
+    },
+    {
+      "position": [
+        582.595032,
+        51.27444,
+        510.733429
+      ],
+      "margin": 3.02508521
+    },
+    {
+      "position": [
+        524.552551,
+        50.9705353,
+        496.59613
+      ],
+      "margin": 0.7152133
+    },
+    {
+      "position": [
+        524.9602,
+        50.2114067,
+        485.262024
+      ],
+      "margin": 1.4068203
+    },
+    {
+      "position": [
+        575.24,
+        51.18517,
+        524.4337
+      ],
+      "margin": 2.313588
+    },
+    {
+      "position": [
+        576.4401,
+        51.02536,
+        536.311646
+      ],
+      "margin": 5.24547
+    },
+    {
+      "position": [
+        561.3993,
+        50.7744446,
+        544.805237
+      ],
+      "margin": 1.33353519
+    },
+    {
+      "position": [
+        554.2886,
+        49.54257,
+        486.840057
+      ],
+      "margin": 7.306368
+    },
+    {
+      "position": [
+        586.6803,
+        51.29412,
+        535.9689
+      ],
+      "margin": 8.205494
+    },
+    {
+      "position": [
+        581.2314,
+        51.2781,
+        512.290344
+      ],
+      "margin": 1.58278608
+    },
+    {
+      "position": [
+        564.846863,
+        48.9519043,
+        482.6539
+      ],
+      "margin": 9.764105
+    },
+    {
+      "position": [
+        585.657654,
+        51.1739044,
+        532.638245
+      ],
+      "margin": 5.664907
+    },
+    {
+      "position": [
+        530.1683,
+        51.04133,
+        516.1317
+      ],
+      "margin": 0.5518937
+    },
+    {
+      "position": [
+        538.495056,
+        50.5257,
+        534.621
+      ],
+      "margin": 0.657224655
+    },
+    {
+      "position": [
+        523.359,
+        50.129364,
+        548.1686
+      ],
+      "margin": 9.276577
+    },
+    {
+      "position": [
+        575.8534,
+        50.3513451,
+        503.781464
+      ],
+      "margin": 1.75837874
+    },
+    {
+      "position": [
+        556.890259,
+        49.2805519,
+        481.2873
+      ],
+      "margin": 12.7973118
+    },
+    {
+      "position": [
+        578.961,
+        48.9428253,
+        487.152039
+      ],
+      "margin": 11.8711329
+    },
+    {
+      "position": [
+        586.3959,
+        51.0981026,
+        530.1168
+      ],
+      "margin": 5.9354744
+    },
+    {
+      "position": [
+        528.6629,
+        50.9556274,
+        514.949341
+      ],
+      "margin": 1.321537
+    },
+    {
+      "position": [
+        525.6348,
+        50.1698456,
+        547.245544
+      ],
+      "margin": 7.16562843
+    },
+    {
+      "position": [
+        568.913269,
+        50.9078026,
+        539.5585
+      ],
+      "margin": 0.5246203
+    },
+    {
+      "position": [
+        522.4226,
+        50.36044,
+        535.186157
+      ],
+      "margin": 6.4876976
+    },
+    {
+      "position": [
+        530.445862,
+        50.17299,
+        547.522766
+      ],
+      "margin": 6.030474
+    },
+    {
+      "position": [
+        523.7465,
+        51.116066,
+        519.9494
+      ],
+      "margin": 1.72627139
+    },
+    {
+      "position": [
+        577.1314,
+        48.8451729,
+        485.255371
+      ],
+      "margin": 13.4215765
+    },
+    {
+      "position": [
+        548.3314,
+        50.2694359,
+        498.912354
+      ],
+      "margin": 1.11728549
+    },
+    {
+      "position": [
+        573.1839,
+        50.5612335,
+        505.903778
+      ],
+      "margin": 1.46094394
+    },
+    {
+      "position": [
+        532.019531,
+        50.31154,
+        487.8271
+      ],
+      "margin": 7.766301
+    },
+    {
+      "position": [
+        573.63446,
+        50.9653473,
+        532.4418
+      ],
+      "margin": 2.54940438
+    },
+    {
+      "position": [
+        587.074158,
+        51.295063,
+        521.7038
+      ],
+      "margin": 5.62682533
+    },
+    {
+      "position": [
+        553.0,
+        50.2915764,
+        499.629272
+      ],
+      "margin": 0.663352251
+    },
+    {
+      "position": [
+        586.397339,
+        51.29282,
+        515.9318
+      ],
+      "margin": 1.55975437
+    },
+    {
+      "position": [
+        577.1117,
+        51.2513046,
+        515.685547
+      ],
+      "margin": 1.45142913
+    },
+    {
+      "position": [
+        530.10675,
+        50.32102,
+        489.234558
+      ],
+      "margin": 7.11234474
+    },
+    {
+      "position": [
+        541.281555,
+        50.09807,
+        485.2588
+      ],
+      "margin": 11.3977432
+    },
+    {
+      "position": [
+        563.2788,
+        48.9610062,
+        480.5729
+      ],
+      "margin": 11.7919483
+    },
+    {
+      "position": [
+        528.3799,
+        50.12918,
+        548.7816
+      ],
+      "margin": 7.51154232
+    },
+    {
+      "position": [
+        524.9473,
+        50.0954552,
+        549.3092
+      ],
+      "margin": 9.28282452
+    },
+    {
+      "position": [
+        514.1912,
+        51.1533928,
+        522.3866
+      ],
+      "margin": 5.188978
+    },
+    {
+      "position": [
+        516.0905,
+        51.1521873,
+        525.399353
+      ],
+      "margin": 1.73364925
+    },
+    {
+      "position": [
+        545.088135,
+        50.3642159,
+        500.76004
+      ],
+      "margin": 1.17490828
+    },
+    {
+      "position": [
+        531.5821,
+        50.2877045,
+        484.041229
+      ],
+      "margin": 7.95268726
+    },
+    {
+      "position": [
+        540.880737,
+        50.415638,
+        539.5234
+      ],
+      "margin": 1.37126124
+    },
+    {
+      "position": [
+        573.1125,
+        48.8059921,
+        484.1636
+      ],
+      "margin": 12.028121
+    },
+    {
+      "position": [
+        552.2605,
+        49.6039734,
+        486.285858
+      ],
+      "margin": 7.372715
+    },
+    {
+      "position": [
+        584.6678,
+        51.3218346,
+        538.717
+      ],
+      "margin": 8.852641
+    },
+    {
+      "position": [
+        575.117737,
+        48.8074875,
+        484.47937
+      ],
+      "margin": 13.2953119
+    },
+    {
+      "position": [
+        548.5849,
+        50.4257927,
+        542.171448
+      ],
+      "margin": 3.88431954
+    },
+    {
+      "position": [
+        582.727966,
+        51.2839432,
+        513.113159
+      ],
+      "margin": 0.648978
+    },
+    {
+      "position": [
+        589.5305,
+        51.0634766,
+        529.182251
+      ],
+      "margin": 9.109864
+    },
+    {
+      "position": [
+        587.1706,
+        51.0827026,
+        525.747253
+      ],
+      "margin": 7.79603958
+    },
+    {
+      "position": [
+        584.80896,
+        51.2934265,
+        537.4002
+      ],
+      "margin": 7.86838055
+    },
+    {
+      "position": [
+        578.184753,
+        51.26086,
+        513.9502
+      ],
+      "margin": 1.80186772
+    },
+    {
+      "position": [
+        544.3159,
+        49.9670753,
+        486.640533
+      ],
+      "margin": 9.43897
+    },
+    {
+      "position": [
+        518.3409,
+        50.9090576,
+        506.238464
+      ],
+      "margin": 4.04670429
+    },
+    {
+      "position": [
+        585.8512,
+        51.0365677,
+        507.225525
+      ],
+      "margin": 7.14716053
+    },
+    {
+      "position": [
+        570.6252,
+        48.75917,
+        481.950134
+      ],
+      "margin": 12.2845058
+    },
+    {
+      "position": [
+        527.5616,
+        50.25667,
+        485.488525
+      ],
+      "margin": 4.017875
+    },
+    {
+      "position": [
+        587.6128,
+        51.02048,
+        526.505859
+      ],
+      "margin": 7.87128544
+    },
+    {
+      "position": [
+        591.2191,
+        51.31211,
+        515.8076
+      ],
+      "margin": 6.36441374
+    },
+    {
+      "position": [
+        512.304932,
+        51.1580467,
+        522.3599
+      ],
+      "margin": 6.34308338
+    },
+    {
+      "position": [
+        550.62854,
+        50.4265137,
+        543.0244
+      ],
+      "margin": 5.964436
+    },
+    {
+      "position": [
+        525.9323,
+        50.2093773,
+        484.499
+      ],
+      "margin": 2.31737137
+    },
+    {
+      "position": [
+        529.0966,
+        50.97046,
+        497.980835
+      ],
+      "margin": 1.78361225
+    },
+    {
+      "position": [
+        547.8792,
+        49.7577248,
+        480.886322
+      ],
+      "margin": 13.1058207
+    },
+    {
+      "position": [
+        587.666,
+        51.2900467,
+        509.619751
+      ],
+      "margin": 5.810801
+    },
+    {
+      "position": [
+        575.129,
+        51.21221,
+        522.8929
+      ],
+      "margin": 0.785160065
+    },
+    {
+      "position": [
+        531.627136,
+        50.1267548,
+        549.343445
+      ],
+      "margin": 7.93561745
+    },
+    {
+      "position": [
+        534.7529,
+        50.9489632,
+        500.1739
+      ],
+      "margin": 0.4883462
+    },
+    {
+      "position": [
+        516.6558,
+        50.96703,
+        502.553864
+      ],
+      "margin": 1.878057
+    },
+    {
+      "position": [
+        543.5601,
+        49.991,
+        484.023682
+      ],
+      "margin": 11.9837646
+    },
+    {
+      "position": [
+        516.195435,
+        50.4596176,
+        534.457947
+      ],
+      "margin": 2.91073728
+    },
+    {
+      "position": [
+        533.0227,
+        50.3043,
+        487.881042
+      ],
+      "margin": 7.4303627
+    },
+    {
+      "position": [
+        538.7482,
+        50.19418,
+        484.234558
+      ],
+      "margin": 11.366147
+    },
+    {
+      "position": [
+        533.2711,
+        50.28968,
+        483.9919
+      ],
+      "margin": 9.641245
+    },
+    {
+      "position": [
+        533.4256,
+        50.9705353,
+        503.6798
+      ],
+      "margin": 0.8405113
+    },
+    {
+      "position": [
+        515.6614,
+        51.1521873,
+        521.074
+      ],
+      "margin": 5.102293
+    },
+    {
+      "position": [
+        534.7063,
+        50.28563,
+        487.2432
+      ],
+      "margin": 7.832691
+    },
+    {
+      "position": [
+        578.9763,
+        50.8294678,
+        507.0949
+      ],
+      "margin": 6.255594
+    },
+    {
+      "position": [
+        584.6636,
+        51.28696,
+        519.935669
+      ],
+      "margin": 2.991207
+    },
+    {
+      "position": [
+        537.3687,
+        50.9763947,
+        504.383057
+      ],
+      "margin": 1.22080946
+    },
+    {
+      "position": [
+        522.706665,
+        50.1647339,
+        547.164368
+      ],
+      "margin": 9.004384
+    },
+    {
+      "position": [
+        527.8232,
+        50.1905365,
+        546.666748
+      ],
+      "margin": 5.644593
+    },
+    {
+      "position": [
+        550.37,
+        49.6919365,
+        486.8055
+      ],
+      "margin": 6.8395195
+    },
+    {
+      "position": [
+        555.2572,
+        49.3801422,
+        482.4284
+      ],
+      "margin": 11.7943573
+    },
+    {
+      "position": [
+        573.3771,
+        48.8122,
+        484.3754
+      ],
+      "margin": 12.0654354
+    },
+    {
+      "position": [
+        517.9034,
+        50.36335,
+        535.561462
+      ],
+      "margin": 4.392402
+    },
+    {
+      "position": [
+        530.2964,
+        50.1564026,
+        548.1293
+      ],
+      "margin": 6.63686752
+    },
+    {
+      "position": [
+        586.476746,
+        50.46794,
+        504.417877
+      ],
+      "margin": 10.0075588
+    },
+    {
+      "position": [
+        570.7818,
+        48.81775,
+        483.704742
+      ],
+      "margin": 10.8904829
+    },
+    {
+      "position": [
+        521.5061,
+        50.74482,
+        510.183777
+      ],
+      "margin": 5.074981
+    },
+    {
+      "position": [
+        573.828552,
+        49.1617622,
+        490.164856
+      ],
+      "margin": 8.599736
+    },
+    {
+      "position": [
+        577.530334,
+        49.004837,
+        488.302673
+      ],
+      "margin": 10.4506617
+    },
+    {
+      "position": [
+        531.271545,
+        50.316555,
+        488.363251
+      ],
+      "margin": 7.552803
+    },
+    {
+      "position": [
+        519.0497,
+        50.9705353,
+        503.3823
+      ],
+      "margin": 1.18370485
+    },
+    {
+      "position": [
+        531.6518,
+        51.03548,
+        528.2168
+      ],
+      "margin": 2.109449
+    },
+    {
+      "position": [
+        525.5654,
+        50.20533,
+        484.658539
+      ],
+      "margin": 1.958457
+    },
+    {
+      "position": [
+        578.2376,
+        51.2604446,
+        513.128967
+      ],
+      "margin": 2.3466444
+    },
+    {
+      "position": [
+        531.0339,
+        50.3047,
+        486.295624
+      ],
+      "margin": 7.560481
+    },
+    {
+      "position": [
+        580.3756,
+        51.08103,
+        508.258667
+      ],
+      "margin": 5.701889
+    },
+    {
+      "position": [
+        530.5796,
+        50.05547,
+        551.362732
+      ],
+      "margin": 9.872021
+    },
+    {
+      "position": [
+        554.1684,
+        50.235775,
+        498.848846
+      ],
+      "margin": 1.7662878
+    },
+    {
+      "position": [
+        562.4598,
+        50.8614922,
+        544.6055
+      ],
+      "margin": 1.01735973
+    },
+    {
+      "position": [
+        571.5087,
+        50.90226,
+        540.9774
+      ],
+      "margin": 1.33157969
+    },
+    {
+      "position": [
+        589.467163,
+        51.03265,
+        526.141968
+      ],
+      "margin": 9.729265
+    },
+    {
+      "position": [
+        571.7982,
+        50.90022,
+        541.6293
+      ],
+      "margin": 1.07280016
+    },
+    {
+      "position": [
+        586.1084,
+        51.2983437,
+        536.484
+      ],
+      "margin": 8.093714
+    },
+    {
+      "position": [
+        588.85614,
+        51.172905,
+        524.4376
+      ],
+      "margin": 8.889595
+    },
+    {
+      "position": [
+        574.955444,
+        49.0965729,
+        489.458221
+      ],
+      "margin": 9.16484
+    },
+    {
+      "position": [
+        585.5661,
+        51.29282,
+        518.0575
+      ],
+      "margin": 1.79487443
+    },
+    {
+      "position": [
+        536.93335,
+        50.9697227,
+        503.112732
+      ],
+      "margin": 0.7280302
+    },
+    {
+      "position": [
+        573.3642,
+        50.9600677,
+        531.4988
+      ],
+      "margin": 1.75453639
+    },
+    {
+      "position": [
+        578.367859,
+        51.2292328,
+        523.689
+      ],
+      "margin": 2.251524
+    },
+    {
+      "position": [
+        554.6836,
+        49.3912468,
+        481.430573
+      ],
+      "margin": 12.59712
+    },
+    {
+      "position": [
+        587.1761,
+        51.29868,
+        513.1848
+      ],
+      "margin": 2.989411
+    },
+    {
+      "position": [
+        533.546936,
+        50.9705353,
+        502.502136
+      ],
+      "margin": 1.7318697
+    },
+    {
+      "position": [
+        542.5607,
+        50.0364,
+        484.605133
+      ],
+      "margin": 12.1260309
+    },
+    {
+      "position": [
+        543.995056,
+        50.32945,
+        499.9913
+      ],
+      "margin": 2.171742
+    },
+    {
+      "position": [
+        535.1376,
+        50.96809,
+        501.8246
+      ],
+      "margin": 1.21358466
+    },
+    {
+      "position": [
+        573.467346,
+        50.9661179,
+        529.8714
+      ],
+      "margin": 0.189105481
+    },
+    {
+      "position": [
+        517.5934,
+        50.9679146,
+        503.2644
+      ],
+      "margin": 1.85092068
+    },
+    {
+      "position": [
+        533.7259,
+        50.2988052,
+        488.2702
+      ],
+      "margin": 6.90953541
+    },
+    {
+      "position": [
+        586.8992,
+        50.89792,
+        506.3892
+      ],
+      "margin": 8.284748
+    },
+    {
+      "position": [
+        522.7928,
+        50.8722038,
+        530.982239
+      ],
+      "margin": 3.78918815
+    },
+    {
+      "position": [
+        536.2325,
+        50.25892,
+        482.6435
+      ],
+      "margin": 12.4714518
+    },
+    {
+      "position": [
+        516.352966,
+        51.15081,
+        522.2669
+      ],
+      "margin": 3.75451875
+    },
+    {
+      "position": [
+        586.0363,
+        51.213768,
+        533.7312
+      ],
+      "margin": 6.45779133
+    },
+    {
+      "position": [
+        530.178467,
+        50.39626,
+        534.7155
+      ],
+      "margin": 2.90913987
+    },
+    {
+      "position": [
+        559.0979,
+        50.15654,
+        498.52356
+      ],
+      "margin": 0.789765835
+    },
+    {
+      "position": [
+        544.665833,
+        50.2133331,
+        497.383423
+      ],
+      "margin": 4.56936836
+    },
+    {
+      "position": [
+        531.03064,
+        50.9655838,
+        498.8812
+      ],
+      "margin": 2.41947985
+    },
+    {
+      "position": [
+        542.8949,
+        50.0260735,
+        485.970551
+      ],
+      "margin": 10.8771782
+    },
+    {
+      "position": [
+        529.52124,
+        51.0934219,
+        524.5043
+      ],
+      "margin": 0.8375504
+    },
+    {
+      "position": [
+        585.189758,
+        51.29356,
+        513.326538
+      ],
+      "margin": 1.36553288
+    },
+    {
+      "position": [
+        576.7961,
+        51.1949921,
+        524.405457
+      ],
+      "margin": 2.39576674
+    },
+    {
+      "position": [
+        515.786743,
+        50.9646759,
+        500.791321
+      ],
+      "margin": 1.33241749
+    },
+    {
+      "position": [
+        575.5656,
+        48.8269424,
+        484.934021
+      ],
+      "margin": 13.3678179
+    },
+    {
+      "position": [
+        515.876831,
+        51.1468658,
+        519.880554
+      ],
+      "margin": 5.52552128
+    },
+    {
+      "position": [
+        551.3932,
+        49.65838,
+        486.949677
+      ],
+      "margin": 6.65117168
+    },
+    {
+      "position": [
+        570.9,
+        50.8657646,
+        508.27948
+      ],
+      "margin": 1.44715464
+    },
+    {
+      "position": [
+        524.9655,
+        50.04661,
+        550.4491
+      ],
+      "margin": 10.272891
+    },
+    {
+      "position": [
+        583.3996,
+        51.28259,
+        520.018738
+      ],
+      "margin": 2.85853553
+    },
+    {
+      "position": [
+        516.069336,
+        51.1519165,
+        520.919
+      ],
+      "margin": 4.94382524
+    },
+    {
+      "position": [
+        551.485352,
+        49.62184,
+        485.82196
+      ],
+      "margin": 7.78070259
+    },
+    {
+      "position": [
+        588.2014,
+        51.0445633,
+        528.493835
+      ],
+      "margin": 7.879801
+    },
+    {
+      "position": [
+        534.6314,
+        50.280014,
+        483.1736
+      ],
+      "margin": 11.0195856
+    },
+    {
+      "position": [
+        575.29126,
+        49.02316,
+        488.446136
+      ],
+      "margin": 10.1603117
+    },
+    {
+      "position": [
+        526.92395,
+        51.1046753,
+        527.3149
+      ],
+      "margin": 2.893408
+    },
+    {
+      "position": [
+        574.1526,
+        50.90022,
+        541.3353
+      ],
+      "margin": 2.91131258
+    },
+    {
+      "position": [
+        524.1317,
+        51.11721,
+        527.3208
+      ],
+      "margin": 1.86860824
+    },
+    {
+      "position": [
+        525.756,
+        50.2058945,
+        484.497375
+      ],
+      "margin": 2.141078
+    },
+    {
+      "position": [
+        580.408,
+        51.07413,
+        508.216248
+      ],
+      "margin": 5.735851
+    },
+    {
+      "position": [
+        514.8384,
+        51.156723,
+        527.2743
+      ],
+      "margin": 1.06581712
+    },
+    {
+      "position": [
+        551.2658,
+        49.6174927,
+        485.190338
+      ],
+      "margin": 8.409089
+    },
+    {
+      "position": [
+        545.7542,
+        49.884,
+        480.940735
+      ],
+      "margin": 13.6864166
+    },
+    {
+      "position": [
+        571.7268,
+        49.069973,
+        488.521881
+      ],
+      "margin": 8.161531
+    },
+    {
+      "position": [
+        541.929,
+        50.07488,
+        482.126465
+      ],
+      "margin": 14.4746981
+    },
+    {
+      "position": [
+        535.0362,
+        50.6313362,
+        530.9453
+      ],
+      "margin": 0.658744931
+    },
+    {
+      "position": [
+        528.328247,
+        50.1128654,
+        549.2642
+      ],
+      "margin": 7.99377537
+    },
+    {
+      "position": [
+        523.4313,
+        51.1234055,
+        526.5048
+      ],
+      "margin": 0.804911137
+    },
+    {
+      "position": [
+        531.112244,
+        50.920372,
+        497.083252
+      ],
+      "margin": 2.55005813
+    },
+    {
+      "position": [
+        573.801941,
+        50.93778,
+        536.0395
+      ],
+      "margin": 5.87685966
+    },
+    {
+      "position": [
+        577.0568,
+        51.0004044,
+        508.27243
+      ],
+      "margin": 5.884539
+    },
+    {
+      "position": [
+        563.1097,
+        48.96768,
+        480.519562
+      ],
+      "margin": 11.8515863
+    },
+    {
+      "position": [
+        550.201,
+        50.50187,
+        540.2967
+      ],
+      "margin": 3.33722258
+    },
+    {
+      "position": [
+        522.712952,
+        51.12358,
+        527.8964
+      ],
+      "margin": 1.49962783
+    },
+    {
+      "position": [
+        515.9415,
+        51.1521873,
+        520.737
+      ],
+      "margin": 5.16456366
+    },
+    {
+      "position": [
+        572.0162,
+        50.9724464,
+        508.858551
+      ],
+      "margin": 2.13200569
+    },
+    {
+      "position": [
+        554.445,
+        50.6018028,
+        539.877441
+      ],
+      "margin": 1.89437222
+    },
+    {
+      "position": [
+        585.7363,
+        51.2898369,
+        521.47644
+      ],
+      "margin": 4.80940866
+    },
+    {
+      "position": [
+        534.213,
+        50.2925034,
+        485.7865
+      ],
+      "margin": 9.317167
+    },
+    {
+      "position": [
+        579.8041,
+        51.272522,
+        514.3265
+      ],
+      "margin": 0.420287579
+    },
+    {
+      "position": [
+        585.660034,
+        51.2954,
+        513.783
+      ],
+      "margin": 1.39695311
+    },
+    {
+      "position": [
+        553.1032,
+        49.5033722,
+        483.733673
+      ],
+      "margin": 10.01798
+    },
+    {
+      "position": [
+        577.591,
+        51.0779343,
+        508.735718
+      ],
+      "margin": 6.30768967
+    },
+    {
+      "position": [
+        572.0511,
+        49.14382,
+        489.579742
+      ],
+      "margin": 7.909914
+    },
+    {
+      "position": [
+        534.934937,
+        50.2754364,
+        482.1925
+      ],
+      "margin": 11.3620586
+    },
+    {
+      "position": [
+        586.454834,
+        51.0305748,
+        526.7332
+      ],
+      "margin": 6.7184
+    },
+    {
+      "position": [
+        576.1855,
+        50.89548,
+        545.712158
+      ],
+      "margin": 0.9109678
+    },
+    {
+      "position": [
+        533.002,
+        50.2924843,
+        484.2156
+      ],
+      "margin": 9.375439
+    },
+    {
+      "position": [
+        586.8251,
+        51.29868,
+        514.249146
+      ],
+      "margin": 2.20496416
+    },
+    {
+      "position": [
+        572.468933,
+        51.1987,
+        513.158569
+      ],
+      "margin": 1.00649416
+    },
+    {
+      "position": [
+        550.8081,
+        49.59731,
+        482.490936
+      ],
+      "margin": 11.1158524
+    },
+    {
+      "position": [
+        571.87,
+        50.56686,
+        505.960632
+      ],
+      "margin": 0.5741224
+    },
+    {
+      "position": [
+        586.2201,
+        51.29282,
+        517.008667
+      ],
+      "margin": 1.69288588
+    },
+    {
+      "position": [
+        557.644836,
+        49.3583946,
+        485.291046
+      ],
+      "margin": 8.992794
+    },
+    {
+      "position": [
+        554.8976,
+        50.3771057,
+        501.1492
+      ],
+      "margin": 0.755958438
+    },
+    {
+      "position": [
+        534.38,
+        50.29073,
+        489.286774
+      ],
+      "margin": 5.815859
+    },
+    {
+      "position": [
+        576.078247,
+        50.89485,
+        545.873047
+      ],
+      "margin": 0.72008276
+    },
+    {
+      "position": [
+        576.5173,
+        51.2410545,
+        513.1975
+      ],
+      "margin": 3.5358808
+    },
+    {
+      "position": [
+        557.5389,
+        50.34709,
+        500.9992
+      ],
+      "margin": 1.33576238
+    },
+    {
+      "position": [
+        588.2729,
+        51.3014336,
+        512.5669
+      ],
+      "margin": 4.24768257
+    },
+    {
+      "position": [
+        563.29126,
+        50.4633865,
+        503.672516
+      ],
+      "margin": 0.280393451
+    },
+    {
+      "position": [
+        587.5273,
+        51.17353,
+        524.5491
+      ],
+      "margin": 8.346052
+    },
+    {
+      "position": [
+        525.329163,
+        50.88292,
+        511.8992
+      ],
+      "margin": 3.52149224
+    },
+    {
+      "position": [
+        525.6553,
+        51.0919533,
+        528.3553
+      ],
+      "margin": 3.465563
+    },
+    {
+      "position": [
+        521.0642,
+        50.4419823,
+        533.768433
+      ],
+      "margin": 4.52495527
+    },
+    {
+      "position": [
+        513.4839,
+        51.1561546,
+        523.467651
+      ],
+      "margin": 4.95454168
+    },
+    {
+      "position": [
+        554.4414,
+        50.6723022,
+        538.8968
+      ],
+      "margin": 1.44463027
+    },
+    {
+      "position": [
+        576.9676,
+        50.8943558,
+        546.14325
+      ],
+      "margin": 1.13604641
+    },
+    {
+      "position": [
+        545.387634,
+        49.9278336,
+        487.547241
+      ],
+      "margin": 8.061342
+    },
+    {
+      "position": [
+        519.403259,
+        51.1447525,
+        522.86554
+      ],
+      "margin": 1.31079173
+    },
+    {
+      "position": [
+        547.372559,
+        50.40514,
+        542.4071
+      ],
+      "margin": 2.93522286
+    },
+    {
+      "position": [
+        574.5427,
+        51.19742,
+        510.874146
+      ],
+      "margin": 3.6579814
+    },
+    {
+      "position": [
+        575.747131,
+        51.2303963,
+        514.720337
+      ],
+      "margin": 3.11505485
+    },
+    {
+      "position": [
+        565.9634,
+        50.3801346,
+        502.752563
+      ],
+      "margin": 2.20849037
+    },
+    {
+      "position": [
+        548.177246,
+        50.31664,
+        499.786072
+      ],
+      "margin": 1.2017951
+    },
+    {
+      "position": [
+        544.54,
+        49.9582939,
+        480.67276
+      ],
+      "margin": 14.4095669
+    },
+    {
+      "position": [
+        518.8098,
+        50.7299042,
+        508.353546
+      ],
+      "margin": 5.7738905
+    },
+    {
+      "position": [
+        530.7603,
+        51.0715523,
+        527.595
+      ],
+      "margin": 2.66393566
+    },
+    {
+      "position": [
+        588.595154,
+        51.3010025,
+        517.6886
+      ],
+      "margin": 4.14201
+    },
+    {
+      "position": [
+        589.7906,
+        51.1305466,
+        524.844543
+      ],
+      "margin": 9.746626
+    },
+    {
+      "position": [
+        525.4341,
+        50.1315231,
+        548.412048
+      ],
+      "margin": 8.262684
+    },
+    {
+      "position": [
+        523.170044,
+        50.1808739,
+        546.7051
+      ],
+      "margin": 8.352285
+    },
+    {
+      "position": [
+        525.4277,
+        50.9705353,
+        496.844055
+      ],
+      "margin": 0.840463161
+    },
+    {
+      "position": [
+        586.4934,
+        51.29455,
+        510.450348
+      ],
+      "margin": 4.46267128
+    },
+    {
+      "position": [
+        524.860352,
+        51.1117134,
+        519.326
+      ],
+      "margin": 0.949941158
+    },
+    {
+      "position": [
+        588.021545,
+        51.3046227,
+        510.364777
+      ],
+      "margin": 5.460608
+    },
+    {
+      "position": [
+        531.9854,
+        50.743927,
+        530.524231
+      ],
+      "margin": 2.92455626
+    },
+    {
+      "position": [
+        578.7862,
+        50.9445076,
+        507.7361
+      ],
+      "margin": 6.68037033
+    },
+    {
+      "position": [
+        561.895569,
+        50.8830948,
+        543.4503
+      ],
+      "margin": 0.5901544
+    },
+    {
+      "position": [
+        556.268066,
+        50.62103,
+        541.1402
+      ],
+      "margin": 0.217445344
+    },
+    {
+      "position": [
+        557.85376,
+        50.2656975,
+        499.810577
+      ],
+      "margin": 1.69421864
+    },
+    {
+      "position": [
+        529.619446,
+        50.1288567,
+        548.94696
+      ],
+      "margin": 7.48549843
+    },
+    {
+      "position": [
+        530.5261,
+        50.96162,
+        497.9232
+      ],
+      "margin": 2.76623
+    },
+    {
+      "position": [
+        572.2219,
+        51.04693,
+        509.352356
+      ],
+      "margin": 2.09302044
+    },
+    {
+      "position": [
+        527.315247,
+        51.1079826,
+        524.5467
+      ],
+      "margin": 0.3404275
+    },
+    {
+      "position": [
+        529.819336,
+        50.2485,
+        544.2658
+      ],
+      "margin": 2.80829883
+    },
+    {
+      "position": [
+        574.420166,
+        51.14383,
+        525.2409
+      ],
+      "margin": 1.55952334
+    },
+    {
+      "position": [
+        540.168762,
+        50.3813553,
+        540.4038
+      ],
+      "margin": 1.61108887
+    },
+    {
+      "position": [
+        560.3447,
+        49.0872231,
+        479.883
+      ],
+      "margin": 12.8715782
+    },
+    {
+      "position": [
+        528.667053,
+        51.094883,
+        519.501465
+      ],
+      "margin": 0.1539652
+    },
+    {
+      "position": [
+        565.008667,
+        50.25433,
+        500.884857
+      ],
+      "margin": 2.57708144
+    },
+    {
+      "position": [
+        555.204163,
+        50.46919,
+        543.5255
+      ],
+      "margin": 1.58095145
+    },
+    {
+      "position": [
+        588.681152,
+        51.23552,
+        508.2797
+      ],
+      "margin": 7.49185
+    },
+    {
+      "position": [
+        533.496643,
+        50.2823868,
+        482.3449
+      ],
+      "margin": 9.918671
+    },
+    {
+      "position": [
+        550.767639,
+        50.43849,
+        542.642456
+      ],
+      "margin": 5.565806
+    },
+    {
+      "position": [
+        529.288635,
+        50.9697762,
+        497.805756
+      ],
+      "margin": 2.039804
+    },
+    {
+      "position": [
+        521.003662,
+        50.6673965,
+        532.30365
+      ],
+      "margin": 3.41693616
+    },
+    {
+      "position": [
+        577.0001,
+        51.1810837,
+        524.943237
+      ],
+      "margin": 2.716573
+    },
+    {
+      "position": [
+        544.195,
+        50.31021,
+        499.62796
+      ],
+      "margin": 2.47403479
+    },
+    {
+      "position": [
+        552.161743,
+        50.57483,
+        538.826843
+      ],
+      "margin": 1.59450686
+    },
+    {
+      "position": [
+        575.3845,
+        51.1914673,
+        510.4146
+      ],
+      "margin": 4.606303
+    },
+    {
+      "position": [
+        579.0026,
+        51.2593269,
+        511.3203
+      ],
+      "margin": 3.36324
+    },
+    {
+      "position": [
+        587.792053,
+        51.044,
+        528.4497
+      ],
+      "margin": 7.48481941
+    },
+    {
+      "position": [
+        531.251,
+        50.0879021,
+        550.4928
+      ],
+      "margin": 9.037381
+    },
+    {
+      "position": [
+        531.4817,
+        50.31088,
+        487.31
+      ],
+      "margin": 8.141808
+    },
+    {
+      "position": [
+        528.801,
+        50.1818237,
+        547.099731
+      ],
+      "margin": 5.77826
+    },
+    {
+      "position": [
+        526.733154,
+        50.9155235,
+        512.3843
+      ],
+      "margin": 3.3043735
+    },
+    {
+      "position": [
+        527.000366,
+        50.9705353,
+        510.2727
+      ],
+      "margin": 1.77623749
+    },
+    {
+      "position": [
+        538.9559,
+        50.42495,
+        538.373047
+      ],
+      "margin": 3.36035371
+    },
+    {
+      "position": [
+        584.727234,
+        51.25996,
+        509.470764
+      ],
+      "margin": 4.66064262
+    },
+    {
+      "position": [
+        551.719543,
+        50.5725174,
+        538.7272
+      ],
+      "margin": 1.55521429
+    },
+    {
+      "position": [
+        589.848145,
+        51.27866,
+        523.1622
+      ],
+      "margin": 8.455114
+    },
+    {
+      "position": [
+        549.4064,
+        49.699913,
+        485.029327
+      ],
+      "margin": 8.736111
+    },
+    {
+      "position": [
+        529.4895,
+        50.2117271,
+        546.1046
+      ],
+      "margin": 4.674889
+    },
+    {
+      "position": [
+        565.504761,
+        50.10884,
+        499.1398
+      ],
+      "margin": 2.676563
+    },
+    {
+      "position": [
+        530.7702,
+        50.9705353,
+        500.883057
+      ],
+      "margin": 0.8212147
+    },
+    {
+      "position": [
+        527.429,
+        50.19587,
+        546.471741
+      ],
+      "margin": 5.617056
+    },
+    {
+      "position": [
+        554.118164,
+        50.31746,
+        500.1505
+      ],
+      "margin": 1.64561236
+    },
+    {
+      "position": [
+        551.7767,
+        50.5313034,
+        539.9186
+      ],
+      "margin": 2.72808123
+    },
+    {
+      "position": [
+        579.687439,
+        51.2587738,
+        511.068329
+      ],
+      "margin": 3.29564643
+    },
+    {
+      "position": [
+        527.989563,
+        50.3770638,
+        489.763977
+      ],
+      "margin": 5.129781
+    },
+    {
+      "position": [
+        556.3086,
+        50.695015,
+        540.388245
+      ],
+      "margin": 0.0985063
+    },
+    {
+      "position": [
+        521.6757,
+        50.9705353,
+        503.9065
+      ],
+      "margin": 0.5560665
+    },
+    {
+      "position": [
+        566.085449,
+        50.33011,
+        502.06485
+      ],
+      "margin": 2.87915564
+    },
+    {
+      "position": [
+        575.5122,
+        51.0074043,
+        534.6467
+      ],
+      "margin": 3.9889214
+    },
+    {
+      "position": [
+        591.689453,
+        50.99683,
+        526.3195
+      ],
+      "margin": 11.7795906
+    },
+    {
+      "position": [
+        536.1365,
+        50.2607956,
+        487.337219
+      ],
+      "margin": 7.790189
+    },
+    {
+      "position": [
+        526.1702,
+        51.1065979,
+        519.175842
+      ],
+      "margin": 0.484234065
+    },
+    {
+      "position": [
+        545.3049,
+        50.3118858,
+        499.6997
+      ],
+      "margin": 2.17726
+    },
+    {
+      "position": [
+        554.345337,
+        49.40118,
+        480.3798
+      ],
+      "margin": 13.544467
+    },
+    {
+      "position": [
+        531.754333,
+        50.92455,
+        497.575378
+      ],
+      "margin": 2.02918863
+    },
+    {
+      "position": [
+        580.896057,
+        50.9364624,
+        544.6303
+      ],
+      "margin": 5.02757263
+    },
+    {
+      "position": [
+        516.752747,
+        50.44265,
+        534.557434
+      ],
+      "margin": 3.103752
+    },
+    {
+      "position": [
+        585.670837,
+        51.29544,
+        512.0118
+      ],
+      "margin": 2.70522
+    },
+    {
+      "position": [
+        544.7294,
+        50.3277321,
+        544.2509
+      ],
+      "margin": 1.33500278
+    },
+    {
+      "position": [
+        537.4071,
+        50.9763947,
+        505.78363
+      ],
+      "margin": 1.11262357
+    },
+    {
+      "position": [
+        550.1843,
+        50.49445,
+        540.5299
+      ],
+      "margin": 3.569944
+    },
+    {
+      "position": [
+        536.589233,
+        50.25195,
+        486.1175
+      ],
+      "margin": 9.057928
+    },
+    {
+      "position": [
+        553.576,
+        49.51357,
+        485.1142
+      ],
+      "margin": 8.755853
+    },
+    {
+      "position": [
+        587.653564,
+        51.2225075,
+        523.977234
+      ],
+      "margin": 7.8903513
+    },
+    {
+      "position": [
+        555.4361,
+        49.4986229,
+        486.7703
+      ],
+      "margin": 7.830374
+    },
+    {
+      "position": [
+        559.074463,
+        49.2036171,
+        482.5152
+      ],
+      "margin": 10.7495174
+    },
+    {
+      "position": [
+        546.5166,
+        49.8338852,
+        483.751
+      ],
+      "margin": 10.7946043
+    },
+    {
+      "position": [
+        542.0902,
+        50.4921532,
+        501.1578
+      ],
+      "margin": 1.53470731
+    },
+    {
+      "position": [
+        584.706055,
+        51.0837326,
+        529.610046
+      ],
+      "margin": 4.26648474
+    },
+    {
+      "position": [
+        558.5882,
+        49.1758957,
+        478.8347
+      ],
+      "margin": 14.3687468
+    },
+    {
+      "position": [
+        535.9523,
+        50.9763947,
+        504.241669
+      ],
+      "margin": 2.207103
+    },
+    {
+      "position": [
+        525.2027,
+        50.8054047,
+        512.6575
+      ],
+      "margin": 2.753226
+    },
+    {
+      "position": [
+        552.7433,
+        50.5188522,
+        540.6773
+      ],
+      "margin": 3.36366129
+    },
+    {
+      "position": [
+        588.3807,
+        51.3072624,
+        510.06427
+      ],
+      "margin": 5.924932
+    },
+    {
+      "position": [
+        576.6317,
+        50.2341042,
+        502.50058
+      ],
+      "margin": 1.121192
+    },
+    {
+      "position": [
+        590.0748,
+        51.31467,
+        511.5557
+      ],
+      "margin": 6.313304
+    },
+    {
+      "position": [
+        526.91095,
+        50.25061,
+        485.713531
+      ],
+      "margin": 3.39719772
+    },
+    {
+      "position": [
+        548.9244,
+        50.52906,
+        539.198242
+      ],
+      "margin": 2.48287344
+    },
+    {
+      "position": [
+        587.7003,
+        51.2796974,
+        522.7599
+      ],
+      "margin": 6.854373
+    },
+    {
+      "position": [
+        586.5775,
+        51.29312,
+        517.7276
+      ],
+      "margin": 2.35938382
+    },
+    {
+      "position": [
+        548.816345,
+        50.5460625,
+        538.6786
+      ],
+      "margin": 1.993632
+    },
+    {
+      "position": [
+        544.8462,
+        50.2203369,
+        497.580841
+      ],
+      "margin": 4.34358549
+    },
+    {
+      "position": [
+        579.837036,
+        51.1518936,
+        508.971527
+      ],
+      "margin": 5.166825
+    },
+    {
+      "position": [
+        526.1903,
+        51.11141,
+        526.747742
+      ],
+      "margin": 2.13221288
+    },
+    {
+      "position": [
+        539.6277,
+        50.16326,
+        484.974731
+      ],
+      "margin": 10.9522953
+    },
+    {
+      "position": [
+        575.64856,
+        49.0055542,
+        488.223145
+      ],
+      "margin": 10.3782711
+    },
+    {
+      "position": [
+        564.18335,
+        50.4584465,
+        503.705
+      ],
+      "margin": 0.589709163
+    },
+    {
+      "position": [
+        583.2582,
+        51.2631,
+        537.9168
+      ],
+      "margin": 7.43987942
+    },
+    {
+      "position": [
+        574.159241,
+        50.90022,
+        543.3227
+      ],
+      "margin": 1.40900707
+    },
+    {
+      "position": [
+        584.688843,
+        51.19826,
+        533.9232
+      ],
+      "margin": 5.39382029
+    },
+    {
+      "position": [
+        587.4751,
+        51.3004379,
+        510.646729
+      ],
+      "margin": 4.8874836
+    },
+    {
+      "position": [
+        589.3168,
+        51.30382,
+        518.0721
+      ],
+      "margin": 4.95485
+    },
+    {
+      "position": [
+        575.268738,
+        48.78831,
+        483.988525
+      ],
+      "margin": 13.7255955
+    },
+    {
+      "position": [
+        576.222656,
+        51.1446571,
+        509.6002
+      ],
+      "margin": 5.67278528
+    },
+    {
+      "position": [
+        573.931335,
+        50.95157,
+        535.4718
+      ],
+      "margin": 5.298903
+    },
+    {
+      "position": [
+        583.4919,
+        51.29524,
+        539.236755
+      ],
+      "margin": 8.71958
+    },
+    {
+      "position": [
+        553.2149,
+        49.4711533,
+        482.1187
+      ],
+      "margin": 11.6305351
+    },
+    {
+      "position": [
+        546.129639,
+        50.217083,
+        497.659821
+      ],
+      "margin": 3.4120748
+    },
+    {
+      "position": [
+        588.7216,
+        51.3015,
+        520.8628
+      ],
+      "margin": 6.00808334
+    },
+    {
+      "position": [
+        565.901855,
+        48.90242,
+        482.339081
+      ],
+      "margin": 10.230092
+    },
+    {
+      "position": [
+        537.5243,
+        50.46575,
+        536.135742
+      ],
+      "margin": 0.8450546
+    },
+    {
+      "position": [
+        547.6801,
+        50.40239,
+        542.6394
+      ],
+      "margin": 3.31625056
+    },
+    {
+      "position": [
+        526.239,
+        50.2278023,
+        545.188049
+      ],
+      "margin": 5.14309263
+    },
+    {
+      "position": [
+        565.9003,
+        50.46957,
+        504.1041
+      ],
+      "margin": 0.98597157
+    },
+    {
+      "position": [
+        530.728149,
+        50.3919334,
+        535.2671
+      ],
+      "margin": 2.13580132
+    },
+    {
+      "position": [
+        514.319153,
+        51.1580467,
+        526.4779
+      ],
+      "margin": 1.87795138
+    },
+    {
+      "position": [
+        570.9945,
+        50.92359,
+        531.459534
+      ],
+      "margin": 2.50099039
+    },
+    {
+      "position": [
+        588.460754,
+        51.2244453,
+        533.3116
+      ],
+      "margin": 8.530817
+    },
+    {
+      "position": [
+        543.101135,
+        50.5245857,
+        537.062256
+      ],
+      "margin": 0.629214168
+    },
+    {
+      "position": [
+        540.6676,
+        50.12255,
+        484.7723
+      ],
+      "margin": 11.5515194
+    },
+    {
+      "position": [
+        554.597351,
+        49.3956566,
+        481.506073
+      ],
+      "margin": 12.5029478
+    },
+    {
+      "position": [
+        533.845764,
+        50.5890846,
+        531.536255
+      ],
+      "margin": 1.96122992
+    },
+    {
+      "position": [
+        577.9225,
+        49.0690155,
+        489.314667
+      ],
+      "margin": 9.527674
+    },
+    {
+      "position": [
+        588.453735,
+        51.0366325,
+        526.2086
+      ],
+      "margin": 8.761971
+    },
+    {
+      "position": [
+        587.60376,
+        51.2149734,
+        533.286438
+      ],
+      "margin": 7.71467
+    },
+    {
+      "position": [
+        525.801941,
+        50.2083168,
+        546.014465
+      ],
+      "margin": 6.063496
+    },
+    {
+      "position": [
+        583.042847,
+        51.30195,
+        541.2226
+      ],
+      "margin": 8.914954
+    },
+    {
+      "position": [
+        538.1713,
+        50.2211075,
+        481.65686
+      ],
+      "margin": 13.7270164
+    },
+    {
+      "position": [
+        531.8719,
+        50.968235,
+        499.7834
+      ],
+      "margin": 2.37760067
+    },
+    {
+      "position": [
+        572.464,
+        50.94883,
+        508.628448
+      ],
+      "margin": 2.63536072
+    },
+    {
+      "position": [
+        585.8747,
+        51.29282,
+        515.857849
+      ],
+      "margin": 1.03211808
+    },
+    {
+      "position": [
+        586.878357,
+        51.1696625,
+        507.979919
+      ],
+      "margin": 6.81685352
+    },
+    {
+      "position": [
+        532.1747,
+        50.76751,
+        530.355347
+      ],
+      "margin": 2.67500544
+    },
+    {
+      "position": [
+        529.3234,
+        50.288002,
+        485.95285
+      ],
+      "margin": 5.820732
+    },
+    {
+      "position": [
+        527.8323,
+        50.22668,
+        483.27298
+      ],
+      "margin": 4.22185564
+    },
+    {
+      "position": [
+        589.9014,
+        51.3076744,
+        521.535
+      ],
+      "margin": 7.32937241
+    },
+    {
+      "position": [
+        590.388,
+        51.3114777,
+        520.4234
+      ],
+      "margin": 7.0254755
+    },
+    {
+      "position": [
+        587.944946,
+        51.14167,
+        531.3308
+      ],
+      "margin": 7.568966
+    },
+    {
+      "position": [
+        573.0351,
+        51.2033234,
+        515.0148
+      ],
+      "margin": 1.16215384
+    },
+    {
+      "position": [
+        531.2148,
+        50.4073944,
+        534.574951
+      ],
+      "margin": 2.16777682
+    },
+    {
+      "position": [
+        540.7849,
+        50.1274,
+        481.695251
+      ],
+      "margin": 14.4283047
+    },
+    {
+      "position": [
+        534.111,
+        50.9689751,
+        500.9555
+      ],
+      "margin": 1.46758914
+    },
+    {
+      "position": [
+        587.0302,
+        51.29489,
+        518.886658
+      ],
+      "margin": 3.42386365
+    },
+    {
+      "position": [
+        517.6707,
+        50.93864,
+        504.9825
+      ],
+      "margin": 3.25383854
+    },
+    {
+      "position": [
+        527.167542,
+        50.2651978,
+        486.318634
+      ],
+      "margin": 3.72814941
+    },
+    {
+      "position": [
+        579.1907,
+        50.8877525,
+        547.223755
+      ],
+      "margin": 2.05209923
+    },
+    {
+      "position": [
+        558.1138,
+        50.26936,
+        499.903046
+      ],
+      "margin": 1.419486
+    },
+    {
+      "position": [
+        527.0739,
+        50.2532959,
+        485.72052
+      ],
+      "margin": 3.55976248
+    },
+    {
+      "position": [
+        563.1043,
+        50.89087,
+        544.2883
+      ],
+      "margin": 0.339569539
+    },
+    {
+      "position": [
+        544.290344,
+        49.9515457,
+        482.785156
+      ],
+      "margin": 12.6442013
+    },
+    {
+      "position": [
+        532.147766,
+        50.9436035,
+        498.4275
+      ],
+      "margin": 1.9949739
+    },
+    {
+      "position": [
+        545.89856,
+        50.3686676,
+        543.1091
+      ],
+      "margin": 1.94437635
+    },
+    {
+      "position": [
+        553.4878,
+        49.5923157,
+        487.451447
+      ],
+      "margin": 6.47301149
+    },
+    {
+      "position": [
+        532.3756,
+        50.9159355,
+        497.814026
+      ],
+      "margin": 1.53570938
+    },
+    {
+      "position": [
+        574.646,
+        48.7703171,
+        483.527863
+      ],
+      "margin": 13.5681734
+    },
+    {
+      "position": [
+        546.2281,
+        49.8635826,
+        485.5345
+      ],
+      "margin": 9.302209
+    }
+  ],
+  "scope": "Owned meadow regenerated noncumulatively from original garden placement centers. Fine curved 3-triangle blades, connected green/teal drifts, pinned wind and upright two-sided lighting. Full street widths, workyards, plaza and obstacles checked per blade including bend footprint. Existing canopies, approved sources and terrain unchanged."
+}

@@ -1,0 +1,245 @@
+{
+  "success": true,
+  "route": "Door approach 02 - Maison du boulanger",
+  "source": "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Meshes/Painted paving quarter 2.asset",
+  "derivative": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Removal/PavingWithoutBakerySpur.asset",
+  "removedStones": 28,
+  "removedMoss": 20,
+  "removedTriangles": 852,
+  "trianglesBefore": 17637,
+  "trianglesAfter": 16785,
+  "retainedTrianglesUnchangedAndInOrder": true,
+  "allVertexAttributesUnchanged": true,
+  "sourceFileUnchanged": true,
+  "terrainUntouched": true,
+  "collidersUnchanged": true,
+  "materialsAndTransformUnchanged": true,
+  "sceneSaved": false,
+  "matches": [
+    {
+      "seed": 164469,
+      "center": [
+        544.7886,
+        534.535034
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 164499,
+      "center": [
+        544.2962,
+        534.8624
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164500,
+      "center": [
+        544.690735,
+        535.1356
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 164501,
+      "center": [
+        545.1406,
+        535.071167
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164530,
+      "center": [
+        544.1402,
+        535.5051
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164531,
+      "center": [
+        544.542358,
+        535.809753
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164561,
+      "center": [
+        543.9683,
+        536.0976
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164562,
+      "center": [
+        544.358337,
+        536.3962
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164592,
+      "center": [
+        543.817932,
+        536.7329
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164593,
+      "center": [
+        544.2416,
+        537.030945
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 164623,
+      "center": [
+        543.7267,
+        537.3159
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164654,
+      "center": [
+        543.561157,
+        537.9706
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164655,
+      "center": [
+        543.9582,
+        538.2023
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164656,
+      "center": [
+        544.441162,
+        538.132751
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164686,
+      "center": [
+        543.822754,
+        538.8518
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 164687,
+      "center": [
+        544.306641,
+        538.798767
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 164716,
+      "center": [
+        543.2559,
+        539.165649
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164717,
+      "center": [
+        543.6777,
+        539.4733
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164748,
+      "center": [
+        543.5067,
+        540.0709
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164749,
+      "center": [
+        544.014648,
+        539.988159
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164779,
+      "center": [
+        543.404846,
+        540.6737
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 164780,
+      "center": [
+        543.87085,
+        540.572937
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 164809,
+      "center": [
+        542.888062,
+        541.0412
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164810,
+      "center": [
+        543.2612,
+        541.295166
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164811,
+      "center": [
+        543.7844,
+        541.1797
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164841,
+      "center": [
+        543.211731,
+        541.9653
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164871,
+      "center": [
+        542.6599,
+        542.3018
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 164872,
+      "center": [
+        543.1036,
+        542.5554
+      ],
+      "moss": 0
+    }
+  ],
+  "scope": "Removes only complete 17-vertex Door02 paving stones and their matched 10-vertex moss seams. Other stones, moss, vertices, normals, UVs, colours and bounds remain identical. The other three paving meshes are untouched."
+}

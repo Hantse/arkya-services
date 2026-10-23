@@ -1,0 +1,975 @@
+{
+  "success": true,
+  "utc": "2026-10-20T09:38:38.9429227Z",
+  "caseCount": 48,
+  "passed": 48,
+  "installedRuntimeProxies": 1337,
+  "bodyRadius": 0.3,
+  "bodyHeight": 1.75,
+  "extraClearanceHeight": 2.0,
+  "ticks": 22278,
+  "distanceTravelled": 1631.544,
+  "scope": "Both gates: actual server ECS ground and bridge traversals, each on three lateral lines, walking and running at 60 and 20Hz. Each route returns continuously without jumping, teleporting or excluding new gate colliders.",
+  "cases": [
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -2.0,
+      "MaximumVerticalChange": 0.00545120239,
+      "Distance": 31.97136,
+      "Ticks": 872,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 872,
+      "FinalPosition": {
+        "x": 524.514648,
+        "y": 50.3618164,
+        "z": 487.310822
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -2.0,
+      "MaximumVerticalChange": 0.00888443,
+      "Distance": 31.9999981,
+      "Ticks": 292,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 292,
+      "FinalPosition": {
+        "x": 524.517456,
+        "y": 50.3620262,
+        "z": 487.315826
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -2.0,
+      "MaximumVerticalChange": 0.0059928894,
+      "Distance": 31.97153,
+      "Ticks": 436,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 436,
+      "FinalPosition": {
+        "x": 524.5147,
+        "y": 50.3618126,
+        "z": 487.310852
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -2.0,
+      "MaximumVerticalChange": 0.0169754028,
+      "Distance": 32.0000153,
+      "Ticks": 148,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 148,
+      "FinalPosition": {
+        "x": 524.517456,
+        "y": 50.3620262,
+        "z": 487.315826
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.00713729858,
+      "Distance": 31.971365,
+      "Ticks": 872,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 872,
+      "FinalPosition": {
+        "x": 522.7666,
+        "y": 50.6472549,
+        "z": 488.282532
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.0128211975,
+      "Distance": 32.0000038,
+      "Ticks": 292,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 292,
+      "FinalPosition": {
+        "x": 522.7694,
+        "y": 50.6477,
+        "z": 488.287537
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.009979248,
+      "Distance": 31.9714241,
+      "Ticks": 436,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 436,
+      "FinalPosition": {
+        "x": 522.766663,
+        "y": 50.64725,
+        "z": 488.282562
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.02128601,
+      "Distance": 32.00002,
+      "Ticks": 148,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 148,
+      "FinalPosition": {
+        "x": 522.7694,
+        "y": 50.6477,
+        "z": 488.287537
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 2.0,
+      "MaximumVerticalChange": 0.008396149,
+      "Distance": 31.9713573,
+      "Ticks": 872,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 872,
+      "FinalPosition": {
+        "x": 521.0185,
+        "y": 50.9045677,
+        "z": 489.254272
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 2.0,
+      "MaximumVerticalChange": 0.0105514526,
+      "Distance": 31.9999981,
+      "Ticks": 292,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 292,
+      "FinalPosition": {
+        "x": 521.0213,
+        "y": 50.90464,
+        "z": 489.259277
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 2.0,
+      "MaximumVerticalChange": 0.008823395,
+      "Distance": 31.9715843,
+      "Ticks": 436,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 436,
+      "FinalPosition": {
+        "x": 521.018555,
+        "y": 50.90457,
+        "z": 489.254364
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 2.0,
+      "MaximumVerticalChange": 0.0206832886,
+      "Distance": 32.0000153,
+      "Ticks": 148,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 148,
+      "FinalPosition": {
+        "x": 521.0213,
+        "y": 50.90464,
+        "z": 489.259277
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0002,
+      "Ticks": 982,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 982,
+      "FinalPosition": {
+        "x": 527.0889,
+        "y": 56.1053352,
+        "z": 477.534332
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 35.9999771,
+      "Ticks": 328,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 328,
+      "FinalPosition": {
+        "x": 527.0889,
+        "y": 56.1053352,
+        "z": 477.534332
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0000763,
+      "Ticks": 492,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 492,
+      "FinalPosition": {
+        "x": 527.0889,
+        "y": 56.1053352,
+        "z": 477.534332
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0000038,
+      "Ticks": 164,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 164,
+      "FinalPosition": {
+        "x": 527.0889,
+        "y": 56.1053352,
+        "z": 477.534332
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.00022,
+      "Ticks": 982,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 982,
+      "FinalPosition": {
+        "x": 526.74884,
+        "y": 56.1053352,
+        "z": 476.922516
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0,
+      "Ticks": 328,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 328,
+      "FinalPosition": {
+        "x": 526.74884,
+        "y": 56.1053352,
+        "z": 476.922516
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.000103,
+      "Ticks": 492,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 492,
+      "FinalPosition": {
+        "x": 526.74884,
+        "y": 56.1053352,
+        "z": 476.922516
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0000267,
+      "Ticks": 164,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 164,
+      "FinalPosition": {
+        "x": 526.74884,
+        "y": 56.1053352,
+        "z": 476.922516
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.00025,
+      "Ticks": 982,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 982,
+      "FinalPosition": {
+        "x": 526.408752,
+        "y": 56.1053352,
+        "z": 476.310669
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.00003,
+      "Ticks": 328,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 328,
+      "FinalPosition": {
+        "x": 526.408752,
+        "y": 56.1053352,
+        "z": 476.310669
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.00013,
+      "Ticks": 492,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 492,
+      "FinalPosition": {
+        "x": 526.408752,
+        "y": 56.1053352,
+        "z": 476.310669
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Arrival",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0000572,
+      "Ticks": 164,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 164,
+      "FinalPosition": {
+        "x": 526.408752,
+        "y": 56.1053352,
+        "z": 476.310669
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -2.0,
+      "MaximumVerticalChange": 0.00112915039,
+      "Distance": 31.9798565,
+      "Ticks": 872,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 872,
+      "FinalPosition": {
+        "x": 574.295044,
+        "y": 51.0420876,
+        "z": 559.8873
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -2.0,
+      "MaximumVerticalChange": 0.00324630737,
+      "Distance": 32.00001,
+      "Ticks": 292,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 292,
+      "FinalPosition": {
+        "x": 574.292542,
+        "y": 51.0420265,
+        "z": 559.8841
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -2.0,
+      "MaximumVerticalChange": 0.00218963623,
+      "Distance": 31.9791183,
+      "Ticks": 436,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 436,
+      "FinalPosition": {
+        "x": 574.2951,
+        "y": 51.0420952,
+        "z": 559.887451
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -2.0,
+      "MaximumVerticalChange": 0.00614547729,
+      "Distance": 32.0000534,
+      "Ticks": 148,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 148,
+      "FinalPosition": {
+        "x": 574.292542,
+        "y": 51.0420265,
+        "z": 559.8841
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.00160598755,
+      "Distance": 31.9799442,
+      "Ticks": 872,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 872,
+      "FinalPosition": {
+        "x": 575.8792,
+        "y": 50.9014435,
+        "z": 558.6665
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.00228500366,
+      "Distance": 31.99984,
+      "Ticks": 292,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 292,
+      "FinalPosition": {
+        "x": 575.8768,
+        "y": 50.9014969,
+        "z": 558.6633
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.00155639648,
+      "Distance": 31.9797764,
+      "Ticks": 436,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 436,
+      "FinalPosition": {
+        "x": 575.8792,
+        "y": 50.9014435,
+        "z": 558.6665
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.004295349,
+      "Distance": 31.9998779,
+      "Ticks": 148,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 148,
+      "FinalPosition": {
+        "x": 575.8768,
+        "y": 50.9014969,
+        "z": 558.6633
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 2.0,
+      "MaximumVerticalChange": 0.000202178955,
+      "Distance": 31.9799442,
+      "Ticks": 872,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 872,
+      "FinalPosition": {
+        "x": 577.4634,
+        "y": 50.888176,
+        "z": 557.4457
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 2.0,
+      "MaximumVerticalChange": 0.000606536865,
+      "Distance": 32.00001,
+      "Ticks": 292,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 292,
+      "FinalPosition": {
+        "x": 577.460938,
+        "y": 50.88819,
+        "z": 557.4425
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 2.0,
+      "MaximumVerticalChange": 0.0004043579,
+      "Distance": 31.9796753,
+      "Ticks": 436,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 436,
+      "FinalPosition": {
+        "x": 577.4634,
+        "y": 50.888176,
+        "z": 557.4457
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Ground under open portcullis",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 2.0,
+      "MaximumVerticalChange": 0.001209259,
+      "Distance": 32.0000534,
+      "Ticks": 148,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 148,
+      "FinalPosition": {
+        "x": 577.460938,
+        "y": 50.88819,
+        "z": 557.4425
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 35.9453278,
+      "Ticks": 980,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 980,
+      "FinalPosition": {
+        "x": 573.2039,
+        "y": 56.1053352,
+        "z": 569.9392
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.00001,
+      "Ticks": 328,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 328,
+      "FinalPosition": {
+        "x": 573.2039,
+        "y": 56.1053352,
+        "z": 569.9392
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0000229,
+      "Ticks": 492,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 492,
+      "FinalPosition": {
+        "x": 573.2039,
+        "y": 56.1053352,
+        "z": 569.9392
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.00006,
+      "Ticks": 164,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 164,
+      "FinalPosition": {
+        "x": 573.2039,
+        "y": 56.1053352,
+        "z": 569.9392
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 35.94525,
+      "Ticks": 980,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 980,
+      "FinalPosition": {
+        "x": 573.6312,
+        "y": 56.1053352,
+        "z": 570.493652
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 35.99994,
+      "Ticks": 328,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 328,
+      "FinalPosition": {
+        "x": 573.6312,
+        "y": 56.1053352,
+        "z": 570.493652
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 35.99995,
+      "Ticks": 492,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 492,
+      "FinalPosition": {
+        "x": 573.6312,
+        "y": 56.1053352,
+        "z": 570.493652
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 35.99999,
+      "Ticks": 164,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 164,
+      "FinalPosition": {
+        "x": 573.6312,
+        "y": 56.1053352,
+        "z": 570.493652
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 35.9453278,
+      "Ticks": 980,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 980,
+      "FinalPosition": {
+        "x": 574.058533,
+        "y": 56.1053352,
+        "z": 571.048157
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0000153,
+      "Ticks": 328,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 328,
+      "FinalPosition": {
+        "x": 574.058533,
+        "y": 56.1053352,
+        "z": 571.048157
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0000229,
+      "Ticks": 492,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 492,
+      "FinalPosition": {
+        "x": 574.058533,
+        "y": 56.1053352,
+        "z": 571.048157
+      },
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Route": "Wall bridge between the two towers",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.7,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Distance": 36.0000648,
+      "Ticks": 164,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 164,
+      "FinalPosition": {
+        "x": 574.058533,
+        "y": 56.1053352,
+        "z": 571.048157
+      },
+      "Failures": []
+    }
+  ]
+}

@@ -1,0 +1,679 @@
+{
+  "success": true,
+  "route": "Civic court - connected to well square",
+  "source": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Removal/PavingWithoutBakerySpur.asset",
+  "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Forecourt/PavingWithoutFormerCivicApproach.asset",
+  "removedStones": 66,
+  "removedMoss": 45,
+  "removedTriangles": 1989,
+  "trianglesBefore": 16785,
+  "trianglesAfter": 14796,
+  "retainedTrianglesUnchangedAndInOrder": true,
+  "allVertexAttributesUnchanged": true,
+  "sourceFileUnchanged": true,
+  "terrainUntouched": true,
+  "collidersUnchanged": true,
+  "materialsAndTransformUnchanged": true,
+  "sceneSaved": false,
+  "matches": [
+    {
+      "seed": 375857,
+      "center": [
+        535.3322,
+        547.0558
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 375858,
+      "center": [
+        534.932861,
+        547.3565
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 375887,
+      "center": [
+        535.758057,
+        546.566833
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 375888,
+      "center": [
+        535.233032,
+        546.429565
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 375919,
+      "center": [
+        535.1297,
+        545.8426
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 375920,
+      "center": [
+        534.727966,
+        546.1144
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 375949,
+      "center": [
+        535.527344,
+        545.2963
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 375950,
+      "center": [
+        535.0627,
+        545.190857
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 375951,
+      "center": [
+        534.5941,
+        545.5089
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 375982,
+      "center": [
+        534.5713,
+        544.637756
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376011,
+      "center": [
+        535.6565,
+        544.2503
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376012,
+      "center": [
+        535.2525,
+        544.017944
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376013,
+      "center": [
+        534.7413,
+        544.0448
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376042,
+      "center": [
+        535.817444,
+        543.6383
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376043,
+      "center": [
+        535.3918,
+        543.370544
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376044,
+      "center": [
+        534.8748,
+        543.4125
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376074,
+      "center": [
+        535.5513,
+        542.753357
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376105,
+      "center": [
+        535.7359,
+        542.142456
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376106,
+      "center": [
+        535.168457,
+        542.227844
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376135,
+      "center": [
+        536.264954,
+        541.833435
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376136,
+      "center": [
+        535.855164,
+        541.5513
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376137,
+      "center": [
+        535.3258,
+        541.5972
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376166,
+      "center": [
+        536.429749,
+        541.2399
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376167,
+      "center": [
+        536.0099,
+        540.950439
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376168,
+      "center": [
+        535.530945,
+        540.9759
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376198,
+      "center": [
+        536.353,
+        540.431
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376228,
+      "center": [
+        536.9845,
+        540.277466
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376229,
+      "center": [
+        536.725769,
+        539.854
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376259,
+      "center": [
+        537.365234,
+        539.784851
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376260,
+      "center": [
+        537.021667,
+        539.358154
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376261,
+      "center": [
+        536.56134,
+        539.2223
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376290,
+      "center": [
+        537.697754,
+        539.2116
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376291,
+      "center": [
+        537.3584,
+        538.7826
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376292,
+      "center": [
+        536.865967,
+        538.73114
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376322,
+      "center": [
+        537.7305,
+        538.291931
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376323,
+      "center": [
+        537.160767,
+        538.169739
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376352,
+      "center": [
+        538.3679,
+        538.1609
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376353,
+      "center": [
+        538.0451,
+        537.777466
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376354,
+      "center": [
+        537.4989,
+        537.631165
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376383,
+      "center": [
+        538.6905,
+        537.6347
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376384,
+      "center": [
+        538.367249,
+        537.1643
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376414,
+      "center": [
+        539.011963,
+        536.9258
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376445,
+      "center": [
+        539.1559,
+        536.2753
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376446,
+      "center": [
+        538.7728,
+        535.9994
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376447,
+      "center": [
+        538.257,
+        536.0602
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376477,
+      "center": [
+        538.8797,
+        535.4114
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376478,
+      "center": [
+        538.373657,
+        535.4763
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376507,
+      "center": [
+        539.4661,
+        535.0722
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376508,
+      "center": [
+        539.082458,
+        534.7875
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376538,
+      "center": [
+        539.6567,
+        534.487732
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376539,
+      "center": [
+        539.187866,
+        534.173767
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376540,
+      "center": [
+        538.6711,
+        534.2461
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376569,
+      "center": [
+        539.7852,
+        533.844
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376570,
+      "center": [
+        539.325134,
+        533.581055
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376600,
+      "center": [
+        539.9132,
+        533.2407
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376601,
+      "center": [
+        539.5085,
+        532.977966
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376602,
+      "center": [
+        538.9688,
+        533.0091
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376786,
+      "center": [
+        540.9331,
+        529.6468
+      ],
+      "moss": 0
+    },
+    {
+      "seed": 376787,
+      "center": [
+        540.4937,
+        529.3231
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376788,
+      "center": [
+        539.9594,
+        529.3473
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376817,
+      "center": [
+        541.090759,
+        529.006531
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376818,
+      "center": [
+        540.6674,
+        528.668
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376819,
+      "center": [
+        540.1527,
+        528.744
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376848,
+      "center": [
+        541.305237,
+        528.394531
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376849,
+      "center": [
+        540.8652,
+        528.116638
+      ],
+      "moss": 1
+    },
+    {
+      "seed": 376850,
+      "center": [
+        540.3723,
+        528.1321
+      ],
+      "moss": 1
+    }
+  ],
+  "sourceMeshFilter": "Aubefont - mana well town/Town ground - worn paving and garden transitions/Painted paving quarter 2",
+  "routeFromPlazaToEntry": [
+    [
+      548.0,
+      529.0
+    ],
+    [
+      547.990662,
+      529.6796
+    ],
+    [
+      547.9398,
+      530.344543
+    ],
+    [
+      547.85,
+      530.9959
+    ],
+    [
+      547.7242,
+      531.6348
+    ],
+    [
+      547.5653,
+      532.2629
+    ],
+    [
+      547.376,
+      532.8808
+    ],
+    [
+      547.1593,
+      533.4903
+    ],
+    [
+      546.9177,
+      534.0921
+    ],
+    [
+      546.6545,
+      534.688
+    ],
+    [
+      546.372253,
+      535.278931
+    ],
+    [
+      546.0737,
+      535.865967
+    ],
+    [
+      545.762,
+      536.450745
+    ],
+    [
+      545.4397,
+      537.034241
+    ],
+    [
+      545.109863,
+      537.6177
+    ],
+    [
+      544.7751,
+      538.2024
+    ],
+    [
+      544.4383,
+      538.789551
+    ],
+    [
+      544.1024,
+      539.3804
+    ],
+    [
+      543.770142,
+      539.976135
+    ],
+    [
+      543.444458,
+      540.578064
+    ],
+    [
+      543.128052,
+      541.1874
+    ],
+    [
+      542.823853,
+      541.8053
+    ],
+    [
+      542.5346,
+      542.4331
+    ],
+    [
+      542.263245,
+      543.072
+    ],
+    [
+      542.0126,
+      543.7232
+    ]
+  ],
+  "outsideEntry": [
+    542.0126,
+    50.34802,
+    543.7232
+  ],
+  "apron": {
+    "width": 6.4,
+    "depth": 4.35,
+    "stones": 67,
+    "triangles": 1851
+  },
+  "approach": {
+    "width": 2.2,
+    "stones": 86,
+    "triangles": 2424
+  },
+  "addedTriangles": 4275,
+  "addedRenderers": 2,
+  "addedColliders": 0,
+  "addedLights": 0,
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Forecourt/PavingWithoutFormerCivicApproach.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Forecourt/Organic civic apron.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Forecourt/Curved civic approach.asset"
+  ],
+  "sharedMaterial": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/11 Soft painted limestone.mat",
+  "oldRouteSignatureCount": 66,
+  "scope": "Only complete former civic-route stones and their exact moss signatures are removed from the current source. All unrelated paving indices and attributes are preserved. New tightly laid worn stones form a 6.4m organic apron and a 2.2m curved route, reserved against surviving pavement. No terrain, collision, material or light change."
+}

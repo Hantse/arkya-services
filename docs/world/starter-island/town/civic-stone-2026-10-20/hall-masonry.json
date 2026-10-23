@@ -1,0 +1,161 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "checkedAtUtc": "2026-10-20T14:48:33.7382186Z",
+  "marker": "Civic stone - monumental masonry and arched entry",
+  "hall": "Aubefont - mana well town/Hotel de ville - Aubefont civic house",
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicWeatheredLimestone.mat",
+    "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicWornCutStone.mat",
+    "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicTimberInteriorAndWindows.asset",
+    "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicRoofWithoutSmallBell.asset",
+    "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicArchedPorchRoof.asset",
+    "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicMasonryAndBelfry.asset"
+  ],
+  "colliderChanges": [
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Porch stone foot",
+      "globalObjectId": "GlobalObjectId_V1-2-10d09f0b32d910b43888eff5e1343f68-499951517-0",
+      "beforeSize": [
+        0.46,
+        0.4,
+        0.46
+      ],
+      "afterSize": [
+        0.82,
+        0.4,
+        0.82
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Porch carved column",
+      "globalObjectId": "GlobalObjectId_V1-2-10d09f0b32d910b43888eff5e1343f68-1173809999-0",
+      "beforeSize": [
+        0.22,
+        2.95,
+        0.22
+      ],
+      "afterSize": [
+        0.64,
+        2.95,
+        0.64
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Porch stone foot",
+      "globalObjectId": "GlobalObjectId_V1-2-10d09f0b32d910b43888eff5e1343f68-236003785-0",
+      "beforeSize": [
+        0.46,
+        0.4,
+        0.46
+      ],
+      "afterSize": [
+        0.82,
+        0.4,
+        0.82
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Porch carved column",
+      "globalObjectId": "GlobalObjectId_V1-2-10d09f0b32d910b43888eff5e1343f68-1286926837-0",
+      "beforeSize": [
+        0.22,
+        2.95,
+        0.22
+      ],
+      "afterSize": [
+        0.64,
+        2.95,
+        0.64
+      ]
+    }
+  ],
+  "geometryCuts": [
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Architecture - Painted beams V2",
+      "source": "Assets/Arkya/World/StarterIsland/Town/VillageUpgrade/Architecture/Meshes/Civic_house_Painted_beams_V2.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicTimberInteriorAndWindows.asset",
+      "removedTriangles": 804,
+      "retainedTriangles": 2184,
+      "reason": "Exterior timber boxes replaced by stone"
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - main weather cover/Architecture - Painted civic blue slate",
+      "source": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/Civic_house_settled_roof.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicRoofWithoutSmallBell.asset",
+      "removedTriangles": 126,
+      "retainedTriangles": 5913,
+      "reason": "Old small bell canopy beneath new stone belfry"
+    }
+  ],
+  "newColliders": [
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic stone - monumental masonry and arched entry/Corner buttress collision 0",
+      "globalObjectId": "GlobalObjectId_V1-2-10d09f0b32d910b43888eff5e1343f68-1505949175-0",
+      "center": [
+        -6.02,
+        3.12,
+        -4.02
+      ],
+      "size": [
+        0.84,
+        6.3,
+        0.84
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic stone - monumental masonry and arched entry/Corner buttress collision 1",
+      "globalObjectId": "GlobalObjectId_V1-2-10d09f0b32d910b43888eff5e1343f68-1529176666-0",
+      "center": [
+        -6.02,
+        3.12,
+        4.02
+      ],
+      "size": [
+        0.84,
+        6.3,
+        0.84
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic stone - monumental masonry and arched entry/Corner buttress collision 2",
+      "globalObjectId": "GlobalObjectId_V1-2-10d09f0b32d910b43888eff5e1343f68-1783128670-0",
+      "center": [
+        6.02,
+        3.12,
+        -4.02
+      ],
+      "size": [
+        0.84,
+        6.3,
+        0.84
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic stone - monumental masonry and arched entry/Corner buttress collision 3",
+      "globalObjectId": "GlobalObjectId_V1-2-10d09f0b32d910b43888eff5e1343f68-175060096-0",
+      "center": [
+        6.02,
+        3.12,
+        4.02
+      ],
+      "size": [
+        0.84,
+        6.3,
+        0.84
+      ]
+    }
+  ],
+  "newRenderers": 1,
+  "newTriangles": 11904,
+  "belfryHeight": 14.65,
+  "formerRoofHeight": 12.5412,
+  "mainFootprint": [
+    12.0,
+    8.0
+  ],
+  "exteriorArchClearWidth": 3.76,
+  "entryDoorAndWindowOpeningsUnchanged": true,
+  "newLights": 0,
+  "scope": "Hall-only stone materials, retained interior timber, four corner buttresses, arcaded porch on existing floor, stone belfry and enlarged teal banners. Source meshes and existing window/door apertures retained."
+}

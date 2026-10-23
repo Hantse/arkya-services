@@ -1,14 +1,14 @@
 {
   "species": "wolf",
-  "artRevision": 3,
+  "artRevision": 10,
   "bones": 39,
   "meshes": {
     "TotemFur": {
-      "vertices": 14402,
-      "triangles": 28800,
+      "vertices": 14982,
+      "triangles": 29508,
       "materials": 1,
       "maxInfluences": 4,
-      "maxWeightError": 4.8050424084067345e-08
+      "maxWeightError": 4.470348358154297e-08
     },
     "TotemMagic": {
       "vertices": 1120,
@@ -32,12 +32,12 @@
       "expected_speed_mps": 0.0,
       "gait": "breathing",
       "checks": {
-        "max_contact_slip_m": 5.02423578391879e-07,
-        "max_contact_height_error_m": 3.87e-07,
-        "max_ik_error_m": 4.0788101235541687e-07,
+        "max_contact_slip_m": 5.82629203195619e-07,
+        "max_contact_height_error_m": 4.99e-07,
+        "max_ik_error_m": 5.821473853474127e-07,
         "max_loop_position_error_m": 0.0,
         "max_loop_rotation_error_degrees": 0.0,
-        "max_foot_loop_velocity_error_mps": 5.209621132839373e-05,
+        "max_foot_loop_velocity_error_mps": 0.00015519873785409065,
         "frame_count": 241,
         "passed": true
       }
@@ -45,15 +45,15 @@
     {
       "name": "Walk",
       "duration_seconds": 1.0,
-      "expected_speed_mps": 0.44090445172041653,
+      "expected_speed_mps": 0.42393233012408016,
       "gait": "four_beat_walk",
       "checks": {
-        "max_contact_slip_m": 4.7624516441919976e-07,
-        "max_contact_height_error_m": 3.13e-07,
-        "max_ik_error_m": 3.863720531413473e-07,
+        "max_contact_slip_m": 4.308211150580117e-07,
+        "max_contact_height_error_m": 7.38e-07,
+        "max_ik_error_m": 7.955740985846647e-07,
         "max_loop_position_error_m": 0.0,
         "max_loop_rotation_error_degrees": 0.0,
-        "max_foot_loop_velocity_error_mps": 0.005050695503950951,
+        "max_foot_loop_velocity_error_mps": 0.004907487427185907,
         "frame_count": 61,
         "passed": true
       }
@@ -61,15 +61,15 @@
     {
       "name": "Run",
       "duration_seconds": 0.7,
-      "expected_speed_mps": 1.5746587561443448,
+      "expected_speed_mps": 1.5140440361574292,
       "gait": "transverse_gallop",
       "checks": {
-        "max_contact_slip_m": 3.6261532077800957e-07,
-        "max_contact_height_error_m": 3.43e-07,
-        "max_ik_error_m": 3.4337397282728294e-07,
+        "max_contact_slip_m": 3.5864280774329873e-07,
+        "max_contact_height_error_m": 5.29e-07,
+        "max_ik_error_m": 5.54255095523515e-07,
         "max_loop_position_error_m": 0.0,
         "max_loop_rotation_error_degrees": 0.0,
-        "max_foot_loop_velocity_error_mps": 0.00188813402044087,
+        "max_foot_loop_velocity_error_mps": 0.001806725358264724,
         "frame_count": 43,
         "passed": true
       }

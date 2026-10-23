@@ -1,0 +1,128 @@
+{
+  "success": true,
+  "changed": false,
+  "plans": [
+    {
+      "name": "Stairway - West",
+      "oldRun": 12.8000031,
+      "newRun": 8.389999,
+      "reductionPercent": 34.4531441,
+      "stepCount": 26,
+      "going": 0.29,
+      "riser": 0.187354952,
+      "landing": 0.85,
+      "minWidth": 2.47504878,
+      "maxWidth": 2.60814881,
+      "bottom": 0.13614881,
+      "top": 5.00737762,
+      "startZ": 4.41000366,
+      "endZ": 12.8000031,
+      "centerX": -0.41790247,
+      "wallOverlap": 0.025,
+      "groundApproachDifference": 0.02004087,
+      "groundSamples": [
+        {
+          "offset": -0.7,
+          "heights": [
+            0.116107941,
+            0.1159668,
+            0.11366272
+          ]
+        },
+        {
+          "offset": -1.05,
+          "heights": [
+            0.116107941,
+            0.116107941,
+            0.113918304
+          ]
+        },
+        {
+          "offset": -1.4,
+          "heights": [
+            0.116107941,
+            0.116107941,
+            0.112625122
+          ]
+        },
+        {
+          "offset": -1.8,
+          "heights": [
+            0.111221313,
+            0.109054565,
+            0.105239868
+          ]
+        },
+        {
+          "offset": -2.2,
+          "heights": [
+            0.103546143,
+            0.10137558,
+            0.0978469849
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stairway - East",
+      "oldRun": 13.3999872,
+      "newRun": 8.969999,
+      "reductionPercent": 33.0596428,
+      "stepCount": 28,
+      "going": 0.29,
+      "riser": 0.188074172,
+      "landing": 0.85,
+      "minWidth": 2.19758153,
+      "maxWidth": 2.79002237,
+      "bottom": 0.9105514,
+      "top": 6.176628,
+      "startZ": 4.429988,
+      "endZ": 13.3999872,
+      "centerX": 1.67154229,
+      "wallOverlap": 0.025,
+      "groundApproachDifference": 0.249067664,
+      "groundSamples": [
+        {
+          "offset": -0.7,
+          "heights": [
+            0.738929749,
+            0.7374687,
+            0.733696
+          ]
+        },
+        {
+          "offset": -1.05,
+          "heights": [
+            0.6629486,
+            0.661483765,
+            0.657917
+          ]
+        },
+        {
+          "offset": -1.4,
+          "heights": [
+            0.586956,
+            0.585083,
+            0.580944061
+          ]
+        },
+        {
+          "offset": -1.8,
+          "heights": [
+            0.500118256,
+            0.4969368,
+            0.492794037
+          ]
+        },
+        {
+          "offset": -2.2,
+          "heights": [
+            0.412937164,
+            0.408798218,
+            0.404659271
+          ]
+        }
+      ]
+    }
+  ]
+}

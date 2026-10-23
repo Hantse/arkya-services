@@ -1,0 +1,127 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "materialCount": 17,
+  "materials": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Fleur_Material17_0.mat",
+      "growthMask": 1.0,
+      "wind": 0.025,
+      "thinLeaf": 0.65,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material06_1.mat",
+      "growthMask": 1.0,
+      "wind": 0.0,
+      "thinLeaf": 0.0,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material07_1.mat",
+      "growthMask": 1.0,
+      "wind": 0.085,
+      "thinLeaf": 0.65,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material08_1.mat",
+      "growthMask": 1.0,
+      "wind": 0.0,
+      "thinLeaf": 0.0,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material13_2.mat",
+      "growthMask": 1.0,
+      "wind": 0.025,
+      "thinLeaf": 0.65,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material14_2.mat",
+      "growthMask": 1.0,
+      "wind": 0.0,
+      "thinLeaf": 0.0,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material13_0.mat",
+      "growthMask": 1.0,
+      "wind": 0.025,
+      "thinLeaf": 0.65,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material13_1.mat",
+      "growthMask": 1.0,
+      "wind": 0.025,
+      "thinLeaf": 0.65,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material14_0.mat",
+      "growthMask": 1.0,
+      "wind": 0.0,
+      "thinLeaf": 0.0,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material14_1.mat",
+      "growthMask": 1.0,
+      "wind": 0.0,
+      "thinLeaf": 0.0,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Fleur_Material17_1.mat",
+      "growthMask": 1.0,
+      "wind": 0.025,
+      "thinLeaf": 0.65,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material06_2.mat",
+      "growthMask": 1.0,
+      "wind": 0.0,
+      "thinLeaf": 0.0,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material07_2.mat",
+      "growthMask": 1.0,
+      "wind": 0.085,
+      "thinLeaf": 0.65,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material08_2.mat",
+      "growthMask": 1.0,
+      "wind": 0.0,
+      "thinLeaf": 0.0,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material06_0.mat",
+      "growthMask": 1.0,
+      "wind": 0.0,
+      "thinLeaf": 0.0,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material07_0.mat",
+      "growthMask": 1.0,
+      "wind": 0.085,
+      "thinLeaf": 0.65,
+      "emission": 0.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material08_0.mat",
+      "growthMask": 1.0,
+      "wind": 0.0,
+      "thinLeaf": 0.0,
+      "emission": 0.0
+    }
+  ],
+  "scope": "Restore original BuildLushTownGardens material parameters on live owned garden materials only. Source paint, texture references, base colors, mesh geometry, source assets and the separate fine-meadow shader/material remain unchanged."
+}

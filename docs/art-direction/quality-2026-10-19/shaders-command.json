@@ -1,0 +1,48 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var names = new[] { \"Arkya/Environment/Warm Glass\", \"Arkya/Environment/Painted Foliage Wind\", \"Arkya/Characters/Painted\", \"Arkya/Totems/Painted\" }; return System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Select(names, name => { var shader = UnityEngine.Shader.Find(name); return new { name, exists = shader != null, supported = shader != null && shader.isSupported, errors = shader != null && UnityEditor.ShaderUtil.ShaderHasError(shader) }; }));"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": [
+        {
+          "name": "Arkya/Environment/Warm Glass",
+          "exists": true,
+          "supported": true,
+          "errors": false
+        },
+        {
+          "name": "Arkya/Environment/Painted Foliage Wind",
+          "exists": true,
+          "supported": true,
+          "errors": false
+        },
+        {
+          "name": "Arkya/Characters/Painted",
+          "exists": true,
+          "supported": true,
+          "errors": false
+        },
+        {
+          "name": "Arkya/Totems/Painted",
+          "exists": true,
+          "supported": true,
+          "errors": false
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

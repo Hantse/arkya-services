@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "samples": 1257,
+  "installedRuntimeProxies": 1334,
+  "capsuleRadius": 0.3,
+  "capsuleHeight": 1.75,
+  "failures": [],
+  "scope": "Play Mode route centerlines within 12 to 125 m of town center, with runtime static island colliders installed. Not a manual full-character walkthrough."
+}

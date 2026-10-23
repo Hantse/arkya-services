@@ -1,0 +1,188 @@
+{
+  "success": true,
+  "playMode": false,
+  "captures": [
+    {
+      "file": "forest-floor-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 630.0,
+        "y": 52.3659859,
+        "z": 798.0
+      },
+      "target": {
+        "x": 625.0,
+        "y": 53.0660934,
+        "z": 810.0
+      },
+      "fieldOfView": 60.0
+    },
+    {
+      "file": "forest-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 630.0,
+        "y": 54.4102173,
+        "z": 819.0
+      },
+      "target": {
+        "x": 646.0,
+        "y": 54.8957138,
+        "z": 855.0
+      },
+      "fieldOfView": 60.0
+    },
+    {
+      "file": "forest-night.png",
+      "phase": 0.79,
+      "position": {
+        "x": 630.0,
+        "y": 54.4102173,
+        "z": 819.0
+      },
+      "target": {
+        "x": 646.0,
+        "y": 54.8957138,
+        "z": 855.0
+      },
+      "fieldOfView": 60.0
+    },
+    {
+      "file": "town-overview-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 480.0,
+        "y": 128.518585,
+        "z": 433.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.0031128,
+        "z": 520.0
+      },
+      "fieldOfView": 44.0
+    },
+    {
+      "file": "town-overview-night.png",
+      "phase": 0.79,
+      "position": {
+        "x": 480.0,
+        "y": 128.518585,
+        "z": 433.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.0031128,
+        "z": 520.0
+      },
+      "fieldOfView": 44.0
+    },
+    {
+      "file": "market-street-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 540.000244,
+        "y": 52.6855049,
+        "z": 528.000244
+      },
+      "target": {
+        "x": 531.833252,
+        "y": 51.7490463,
+        "z": 533.833252
+      },
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "market-street-night.png",
+      "phase": 0.79,
+      "position": {
+        "x": 540.000244,
+        "y": 52.6855049,
+        "z": 528.000244
+      },
+      "target": {
+        "x": 531.833252,
+        "y": 51.7490463,
+        "z": 533.833252
+      },
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "arrival-gate-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 508.8572,
+        "y": 51.4033356,
+        "z": 468.825562
+      },
+      "target": {
+        "x": 518.8825,
+        "y": 53.4601135,
+        "z": 481.295258
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "well-court-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 560.0,
+        "y": 52.8300743,
+        "z": 516.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 52.60311,
+        "z": 520.0
+      },
+      "fieldOfView": 64.0
+    },
+    {
+      "file": "sheltered-court-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 565.0,
+        "y": 50.9959755,
+        "z": 489.0
+      },
+      "target": {
+        "x": 560.0,
+        "y": 50.25262,
+        "z": 487.0
+      },
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "rampart-stair-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 517.6169,
+        "y": 52.8345,
+        "z": 529.2673
+      },
+      "target": {
+        "x": 508.0755,
+        "y": 55.017,
+        "z": 531.414551
+      },
+      "fieldOfView": 73.0
+    },
+    {
+      "file": "rampart-walk-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 597.7339,
+        "y": 57.8053322,
+        "z": 523.44104
+      },
+      "target": {
+        "x": 597.101135,
+        "y": 57.5053329,
+        "z": 509.455353
+      },
+      "fieldOfView": 73.0
+    }
+  ],
+  "stateRestored": true,
+  "scope": "Polished town, with player-height street, well court, gate, stair and wall views. Edit Mode rendering only. Camera, weather, clock, lights, particles and render quality restored; scene not saved."
+}

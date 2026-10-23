@@ -4,6 +4,15 @@ La finition peinte des arbres V3 a été **validée par l'utilisateur le 15 octo
 2026 comme référence pour les autres objets**. Les copies figées, avec leurs
 empreintes, sont dans [la référence arbre V3](references/arbre-peint-v3/README.md).
 
+Pour les **personnages**, l’utilisateur a retenu le **20 octobre 2026** une
+[référence dédiée de six images](references/personnages-stylises-2026-10-20/README.md),
+avec un alignement très fidèle sur tout le langage visuel et la finition :
+proportions, visage, cheveux sculptés, équipement et matières. Les images
+originales et leurs empreintes sont conservées. Le **22 octobre 2026**, l’utilisateur
+a choisi `valkyrie_2019`, importé sous `Unity3D/Arkya/Assets/Valkyrie/`, comme
+base des futurs personnages. Cette cible artistique guide ses adaptations ;
+la [présentation Unity intégrée](../../CHARACTER_CREATION.md#base-retenue--valkyrie_2019).
+
 Le **15 octobre 2026**, l'utilisateur a également **validé les cailloux,
 les roches métallifères et les cristaux**, soit les 36 variantes présentées
 dans le viewer (4 formes/tailles × 3 matières par famille). Ces collections
@@ -65,7 +74,7 @@ pas recopier le motif d'écorce sur les objets minéraux.
 | Mares de mana | 3 | Bleue, orange, verte | Validé | [Modèles animés](mares-de-mana/README.md) |
 | Outils invoqués | Hache, pioche et faucille, 0 à 3 sockets vides | Mana bleu, orange, vert | Proposition à examiner | [36 modèles animés](outils-invoques/README.md) |
 | Structures | Fondation, mur plein, fenêtre, porte, plafond | Chaume, bois, pierre | Proposition à examiner | [15 pièces modulaires](structures/README.md) |
-| Familiers totems | Loup, renard riggés | 12 pelages par animal, 12 teintes de palette | Loup V3 et renard V2 à examiner | [Atelier des totems](totems/README.md) |
+| Familiers totems | Loup, renard riggés | 12 pelages par animal, 12 teintes de référence par palette | Loup V10 et renard V2 à examiner | [Atelier des totems](totems/README.md) |
 
 Les neuf premières familles comptent **108 modèles 3D**. Les trois formes de
 mares de mana ajoutent neuf variantes colorées, soit **117 modèles 3D validés**,
@@ -106,7 +115,7 @@ Ces six modèles sont également validés, avec leurs matières et leurs animati
 
 ## Viewer
 
-Les [familiers totems](totems/README.md) disposent d'un [atelier dédié](http://127.0.0.1:51805/totems/viewer/index.html) : loup et renard, douze pelages chacun, flux magiques et contrôle des allures au ralenti. Les modèles adaptent une [base Bake3D sous CC BY 4.0](totems/sources/bake3d/README.md), avec proportions et rig repris, puis animations par appuis IK. Le loup V3 possède une tête large, un museau épais, de petites oreilles espacées, un thorax puissant et une queue basse fuselée ; le renard V2 est conservé. Cette collection reste à valider artistiquement. Le [lien à une âme animale dès le départ](../../GAMEPLAY_TOTEMS.md) est une direction de gameplay confirmée, dont les règles et la persistance restent à intégrer.
+Les [familiers totems](totems/README.md) disposent d'un [atelier dédié](http://127.0.0.1:51805/totems/viewer/index.html) : loup et renard, douze pelages chacun, flux magiques et contrôle des allures au ralenti. Le loup V10 adapte une [source canine NewDLC sous CC0 1.0](totems/sources/newdlc/README.md) autour du loup blanc debout de la référence utilisateur : tête basse et avancée, nuque reliée au garrot, petits yeux et oreilles triangulaires. Son museau reconstruit depuis la base canine V4 s'effile progressivement vers une truffe volumique. La V10 renforce la cage thoracique, le poitrail, le collet et le haut des cuisses. Sa gueule retrouve le soutien de la base et de la mandibule V8, avec les joues reculées V9, une terminaison légèrement relevée et une truffe plus transversale. Yeux, oreilles, queue, squelette et appuis sont conservés. La peinture claire suit les joues en diagonale sans remonter sur les oreilles ou le front, avec des transitions douces au menton. L'expression calme et la queue abaissée sont conservées ; les originaux NewDLC restent inchangés. Le renard V2 conserve sa [base Bake3D sous CC BY 4.0](totems/sources/bake3d/README.md). Les rigs, les poids et les animations par appuis IK sont adaptés à chaque espèce. Cette collection reste à valider artistiquement. Le [lien à une âme animale dès le départ](../../GAMEPLAY_TOTEMS.md) est une direction de gameplay confirmée, dont les règles et la persistance restent à intégrer.
 
 Un [atelier d’apparence Humain / Elfe](personnages/README.md) permet également
 de comparer deux silhouettes par race et de choisir la taille, la peau,

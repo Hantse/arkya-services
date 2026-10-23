@@ -86,13 +86,20 @@ YARP relaie une liste de routes et de méthodes explicites. Les routes API conse
 | --- | --- |
 | `POST /v1/auth/discord/challenges`, `GET /v1/auth/discord/authorize/{id}` | Identity |
 | `GET /v1/auth/discord/callback`, `POST /v1/auth/discord/exchange` | Identity |
-| `GET /v1/auth/me`, `POST /v1/auth/logout` | Identity |
+| `GET /v1/auth/me`, `POST /v1/auth/refresh`, `POST /v1/auth/logout` | Identity |
 | `GET /health` | Gateway elle-même |
 | `GET/POST /v1/characters`, `GET /v1/characters/{guid}`, `GET /v1/characters/appearance-options` | Characters, seulement si activé |
 | `GET /v1/realms`, `POST /v1/characters/{guid}/admissions` | Characters, seulement si activé ; session Arkya requise |
+| `GET /v1/content/posts`, `GET /v1/content/posts/{guid}` | Content, seulement si `Gateway:ContentEnabled=true` ; publications anonymes |
 | `GET /game/beta-web/{**path}` avec upgrade WebSocket | Dedicated bêta, seulement si activé ; préfixe `/game/beta-web` retiré |
 
 Les prérequêtes `OPTIONS` des appels API sont transmises au service concerné, qui conserve sa politique CORS. Sur le domaine API, `/internal`, les routes d'administration, de développement, Social SDK et les sondes détaillées ne sont pas publiés. Un nouveau sous-service demande une route explicite dans `GatewayRoutes.cs`, sa destination et son filtrage réseau ; aucun chemin générique ne donne accès à toutes ses API.
+
+Le [feed d'actualités et de notes de version](../../../docs/PUBLICATIONS.md) lit
+uniquement les snapshots publiés. Le profil GitOps `admin` active son cluster
+Content privé, autorise le Host public et l'accès réseau Gateway vers Content.
+Les endpoints `/admin/content` et `/internal/content` restent privés ; leurs clés
+ne sont jamais transmises au launcher ou au site.
 
 Le tunnel de jeu est désactivé par défaut. `Gateway__RealmGameEnabled=true` et
 `Gateway__RealmGameAddress=http://arkya-beta-web-island.arkya-beta-realm.svc.cluster.local:17943/`
@@ -109,6 +116,32 @@ Le routage du backoffice est désactivé par défaut. Renseigner `adminAddress` 
 Ajouter le routeur [Traefik backoffice](traefik/backoffice.dynamic.example.yaml) au provider fichier existant, en adaptant domaine, certificat et entryPoint. Il réutilise le service `arkya-gateway` déjà déclaré. Admin exige la confiance explicite dans les proxies pour HTTP privé et conserve ses contrôles de session et antiforgery. Son backend Realms reste interne, en HTTPS. Le [guide opérations k3s](../realms/README.md) décrit ses manifests, Secrets et certificats.
 
 Le test `./Test-AdminRendering.ps1` vérifie cette configuration sans contacter de cluster.
+
+### Catalogue public et domaines de realm
+
+`Gateway:PublicRealmsEnabled=true` et `Gateway:PublicRealmsAddress` ajoutent
+uniquement les lectures anonymes `/v1/public/realms` et
+`/v1/public/realms/{id}`. Elles sont disponibles sur le domaine API et sur le
+frontend principal. Leur destination reste privée ; les cookies, Bearer et
+clés interservices sont retirés et le Host est celui du service Realms.
+Le profil GitOps `admin` active ce catalogue et son accès réseau privé.
+
+`Gateway:RealmSitesEnabled=true` et `Gateway:RealmBaseDomain=arkya.online`
+ajoutent `{id}.arkya.online` au frontend et `{id}.admin.arkya.online` à Admin.
+Cette option exige les deux applications et le catalogue public activés.
+`AllowedHosts` conserve les hôtes exacts et ajoute seulement les deux motifs
+`*.arkya.online;*.admin.arkya.online`. Gateway valide ensuite la forme et les
+labels réservés avant tout proxy. Le domaine API ne retombe jamais sur le
+frontend. Les routes anonymes sont aussi disponibles sur les domaines publics
+des realms ; le détail d'un autre realm y est refusé.
+
+Le [profil GitOps admin](../gitops/admin/README.md) active directement cette
+configuration Gateway/Admin, sans changer le chemin de l'Application Argo
+existante. Le [guide des sites de realm](../../../docs/REALM_SITES.md) décrit
+les entrées DNS `*.arkya.online` et `*.admin.arkya.online`, les certificats
+couvrant les deux suffixes et l'exemple Traefik. Un routeur existant couvrant
+les sous-domaines à un niveau accepte déjà les realms publics ; il doit aussi
+couvrir les sous-domaines Admin imbriqués vers le même YARP privé.
 
 ### Activer Characters ultérieurement
 

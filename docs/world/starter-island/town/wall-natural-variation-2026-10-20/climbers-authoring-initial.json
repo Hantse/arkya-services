@@ -1,0 +1,785 @@
+{
+  "success": true,
+  "utc": "2026-10-20T10:47:28.6393161Z",
+  "sceneSaved": false,
+  "root": "Wall climbers - rooted organic growth",
+  "oldRootPreservedInactive": true,
+  "nearTriangles": 47220,
+  "farTriangles": 20844,
+  "leafCount": 2193,
+  "stemSegments": 4215,
+  "colonies": 50,
+  "legacyVinesReplaced": 27,
+  "districts": 6,
+  "activeRenderersOutsideCrossfade": 6,
+  "activeRenderersDuringCrossfade": 12,
+  "materialCount": 1,
+  "newColliders": 0,
+  "newLights": 0,
+  "shadowCasters": 0,
+  "windAmplitude": 0.01,
+  "flutterAmplitude": 0.0025,
+  "boundsPadding": 0.1,
+  "stemVerticesPinned": 38874,
+  "leafRootsPinned": 3403,
+  "leafTipsWeighted": 3403,
+  "exactWindAnchors": true,
+  "nativeTerrainRootsConnected": true,
+  "legacyMoss": [
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 0 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_0_-_Painted_climbing_ivy.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 0 - Painted climbing ivy - moss retained.asset",
+      "removedVineVertices": 5007,
+      "retainedVertices": 429,
+      "retainedMossAttributesExact": true
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 1 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_1_-_Painted_climbing_ivy.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 1 - Painted climbing ivy - moss retained.asset",
+      "removedVineVertices": 3960,
+      "retainedVertices": 390,
+      "retainedMossAttributesExact": true
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 2 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_2_-_Painted_climbing_ivy.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 2 - Painted climbing ivy - moss retained.asset",
+      "removedVineVertices": 3960,
+      "retainedVertices": 390,
+      "retainedMossAttributesExact": true
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 3 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_3_-_Painted_climbing_ivy.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 3 - Painted climbing ivy - moss retained.asset",
+      "removedVineVertices": 5007,
+      "retainedVertices": 429,
+      "retainedMossAttributesExact": true
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 4 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_4_-_Painted_climbing_ivy.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 4 - Painted climbing ivy - moss retained.asset",
+      "removedVineVertices": 3960,
+      "retainedVertices": 351,
+      "retainedMossAttributesExact": true
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 5 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_5_-_Painted_climbing_ivy.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 5 - Painted climbing ivy - moss retained.asset",
+      "removedVineVertices": 5007,
+      "retainedVertices": 429,
+      "retainedMossAttributesExact": true
+    }
+  ],
+  "coloniesLayout": [
+    {
+      "bay": "Curtain bay 095",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 507.6561,
+        "y": 50.22906,
+        "z": 550.481262
+      },
+      "height": 4.13864136,
+      "width": 1.40083909,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 094",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 505.508759,
+        "y": 50.4076538,
+        "z": 548.5445
+      },
+      "height": 3.43719745,
+      "width": 1.61556041,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 082",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 496.085724,
+        "y": 51.1126976,
+        "z": 514.1118
+      },
+      "height": 4.19263363,
+      "width": 1.49221528,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 083",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 495.992828,
+        "y": 51.0335045,
+        "z": 517.7182
+      },
+      "height": 3.11331844,
+      "width": 1.277494,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 093",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 503.432373,
+        "y": 50.55278,
+        "z": 546.5708
+      },
+      "height": 4.58506727,
+      "width": 1.83028162,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 058",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 544.5852,
+        "y": 50.24988,
+        "z": 472.379822
+      },
+      "height": 4.062916,
+      "width": 2.14552522,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 108",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 540.100464,
+        "y": 50.1545334,
+        "z": 568.7114
+      },
+      "height": 4.01538467,
+      "width": 1.309463,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 109",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 542.791443,
+        "y": 50.43991,
+        "z": 569.4289
+      },
+      "height": 4.719968,
+      "width": 1.9947418,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 107",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 537.397461,
+        "y": 49.8736229,
+        "z": 567.968262
+      },
+      "height": 3.31118679,
+      "width": 1.52418423,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 110",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 545.4649,
+        "y": 50.7141151,
+        "z": 570.128662
+      },
+      "height": 3.57362,
+      "width": 1.78002059,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 059",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 541.555359,
+        "y": 50.383667,
+        "z": 472.337067
+      },
+      "height": 4.764851,
+      "width": 1.93080389,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 106",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 534.687744,
+        "y": 49.6268845,
+        "z": 567.191345
+      },
+      "height": 4.45761871,
+      "width": 1.73890555,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 079",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 497.970245,
+        "y": 50.96063,
+        "z": 505.1706
+      },
+      "height": 4.00491953,
+      "width": 2.136379,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 060",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 538.5061,
+        "y": 50.44211,
+        "z": 472.3561
+      },
+      "height": 3.61629868,
+      "width": 1.71608257,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 020",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 595.9534,
+        "y": 51.939415,
+        "z": 547.6978
+      },
+      "height": 3.27801776,
+      "width": 1.30493224,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 046",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 578.45636,
+        "y": 48.69001,
+        "z": 478.440277
+      },
+      "height": 3.030902,
+      "width": 2.02218,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 061",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 535.4344,
+        "y": 50.4171753,
+        "z": 472.454742
+      },
+      "height": 4.316945,
+      "width": 1.50136137,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 038",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 593.9631,
+        "y": 49.24247,
+        "z": 495.875183
+      },
+      "height": 4.805937,
+      "width": 1.93995,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 062",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 532.3909,
+        "y": 50.3226471,
+        "z": 472.588257
+      },
+      "height": 3.16765237,
+      "width": 1.28664,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 051",
+      "inside": false,
+      "small": false,
+      "root": {
+        "x": 564.9091,
+        "y": 48.8791,
+        "z": 474.7767
+      },
+      "height": 4.69261742,
+      "width": 1.8485738,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 062",
+      "inside": true,
+      "small": false,
+      "root": {
+        "x": 532.5761,
+        "y": 50.2598534,
+        "z": 477.054443
+      },
+      "height": 2.81955385,
+      "width": 1.33681381,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 037",
+      "inside": true,
+      "small": false,
+      "root": {
+        "x": 591.8661,
+        "y": 49.8225479,
+        "z": 500.723053
+      },
+      "height": 3.41450572,
+      "width": 1.30484486,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 038",
+      "inside": true,
+      "small": false,
+      "root": {
+        "x": 590.3033,
+        "y": 49.5329247,
+        "z": 498.4416
+      },
+      "height": 2.70218182,
+      "width": 1.99012363,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 051",
+      "inside": true,
+      "small": false,
+      "root": {
+        "x": 563.96344,
+        "y": 48.8854675,
+        "z": 479.145538
+      },
+      "height": 2.62056446,
+      "width": 1.89874756,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 050",
+      "inside": true,
+      "small": false,
+      "root": {
+        "x": 566.635437,
+        "y": 48.78638,
+        "z": 479.743134
+      },
+      "height": 3.33383465,
+      "width": 2.113469,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 061",
+      "inside": true,
+      "small": false,
+      "root": {
+        "x": 535.6413,
+        "y": 50.2952538,
+        "z": 476.919952
+      },
+      "height": 3.53141642,
+      "width": 1.551535,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 103",
+      "inside": true,
+      "small": false,
+      "root": {
+        "x": 528.0709,
+        "y": 49.57804,
+        "z": 560.365051
+      },
+      "height": 3.4742012,
+      "width": 1.533243,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 102",
+      "inside": true,
+      "small": false,
+      "root": {
+        "x": 526.194,
+        "y": 49.5859337,
+        "z": 559.3738
+      },
+      "height": 3.03739882,
+      "width": 1.74796426,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 002",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 556.495239,
+        "y": 51.3849754,
+        "z": 572.0936
+      },
+      "height": 2.814218,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 005",
+      "inside": true,
+      "small": true,
+      "root": {
+        "x": 565.6902,
+        "y": 51.507988,
+        "z": 568.7249
+      },
+      "height": 2.35841751,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 007",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 571.564758,
+        "y": 51.7616539,
+        "z": 573.949036
+      },
+      "height": 2.82602453,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 016",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 591.7614,
+        "y": 50.8521957,
+        "z": 558.642944
+      },
+      "height": 2.87648916,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 021",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 596.891235,
+        "y": 51.93289,
+        "z": 545.26886
+      },
+      "height": 2.75984716,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 026",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 600.180237,
+        "y": 51.18862,
+        "z": 530.9092
+      },
+      "height": 2.84158468,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 026",
+      "inside": true,
+      "small": true,
+      "root": {
+        "x": 595.709167,
+        "y": 51.13375,
+        "z": 530.8916
+      },
+      "height": 2.29645538,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 031",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 599.573853,
+        "y": 51.3691025,
+        "z": 516.0535
+      },
+      "height": 2.86744833,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 036",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 597.245667,
+        "y": 49.9627838,
+        "z": 500.793427
+      },
+      "height": 3.05000448,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 041",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 588.9406,
+        "y": 49.0114975,
+        "z": 489.145874
+      },
+      "height": 2.95687628,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 043",
+      "inside": true,
+      "small": true,
+      "root": {
+        "x": 581.883667,
+        "y": 48.95698,
+        "z": 487.599823
+      },
+      "height": 2.23638535,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 056",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 550.8013,
+        "y": 49.83457,
+        "z": 472.589
+      },
+      "height": 2.78435659,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 060",
+      "inside": true,
+      "small": true,
+      "root": {
+        "x": 538.685669,
+        "y": 50.26538,
+        "z": 476.823639
+      },
+      "height": 2.36588669,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 070",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 511.873932,
+        "y": 50.89105,
+        "z": 482.634125
+      },
+      "height": 2.92918539,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 075",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 501.399933,
+        "y": 50.89252,
+        "z": 493.204529
+      },
+      "height": 2.917108,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 080",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 497.337677,
+        "y": 51.0646553,
+        "z": 507.9646
+      },
+      "height": 2.82011557,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 081",
+      "inside": true,
+      "small": true,
+      "root": {
+        "x": 501.070953,
+        "y": 50.9374123,
+        "z": 511.9329
+      },
+      "height": 2.389717,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 085",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 496.855377,
+        "y": 51.2033,
+        "z": 523.207642
+      },
+      "height": 2.87224722,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 090",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 499.834625,
+        "y": 50.72394,
+        "z": 537.5665
+      },
+      "height": 2.86000586,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 098",
+      "inside": true,
+      "small": true,
+      "root": {
+        "x": 517.0787,
+        "y": 49.8920937,
+        "z": 552.496033
+      },
+      "height": 2.19004822,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 100",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 518.832031,
+        "y": 49.4742928,
+        "z": 559.4848
+      },
+      "height": 3.00600576,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    },
+    {
+      "bay": "Curtain bay 105",
+      "inside": false,
+      "small": true,
+      "root": {
+        "x": 531.7855,
+        "y": 49.4204674,
+        "z": 566.3132
+      },
+      "height": 3.048555,
+      "width": 1.05,
+      "rootDepthBelowTerrain": 0.035
+    }
+  ],
+  "sources": {
+    "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_0_-_Painted_climbing_ivy.asset": "7ea17cf5f3f5c4d24fb6a90d0a9430fd5a0ded49a86a54351bc4a8efca01dc0f",
+    "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_1_-_Painted_climbing_ivy.asset": "6322ef3cf331f14c0b244b549b09f8c46d6fb31873f30b2ea77ac0e4da35ac4a",
+    "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_2_-_Painted_climbing_ivy.asset": "a65b575014f031e13f0c2f22c69343ac7df9b011f980b0601a49263ce47d4dd8",
+    "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_3_-_Painted_climbing_ivy.asset": "0224b6b0f90cb5e6074d1b0c1fe36cfcb28d4adc5ff451d729517f717ff9a841",
+    "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_4_-_Painted_climbing_ivy.asset": "bf63dee42a6f24f9f749687e8af1f010960cbde36b03cf16139550f17753a9c5",
+    "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_5_-_Painted_climbing_ivy.asset": "b1f52e95d0e9769c2673c782c2076fe0fd5911c614c4028ba8e2f03d85a81436",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 01 LOD0.asset": "d27c744e30795dfd0a0d82fd86a222671086f254a0adf41991ce2bbe44bcad00",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 01 LOD1.asset": "dae522a8bc2e679eb4210ec9d2dad4e89d6bf167a8d40c9852c88520fe9e806f",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 02 LOD0.asset": "02f570f02b9d81ea2a8bc5a61cbd47a5850946577f6aeb3d41813d135b32d36a",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 02 LOD1.asset": "ac2db282d384214ae435f2bc59772d7d76011c2e97c917668c0f1983143c2dd5",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 03 LOD0.asset": "38de744ce29953f90d4e2e61f4f9d87171c91a8642fce00bc19afabe8c8a19a5",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 03 LOD1.asset": "81bad3541514c8ab423aa311883d4a8c2f0f8458dafcee4d23cafa47a414c44c",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 04 LOD0.asset": "d061c03b677c240cf59b322c69102c9bdbf0d1b059f49d4850c0a30baf8742fc",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 04 LOD1.asset": "df8ef8dd20119b927265159a5241a83ae020c682a1115d2f0c52370478ffb046",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 05 LOD0.asset": "44731be921b39076962e62a61df6608c5a7b8c8d2b6fcf0b9db88a029d233e28",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 05 LOD1.asset": "b77649a1800f0dfebc9626cf8ba53c8e1187548ba83289566e88f03b4508c84a",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Materials/Painted sage ivy.mat": "753c174f31f6faf4c0108f7a452f32f9ad9506c7d3dcdde57bd7c1d3ad42690d"
+  },
+  "generatedAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Materials/Olive sage rooted climbers.mat",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 00 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 00 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 01 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 01 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 02 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 02 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 03 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 03 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 04 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 04 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 05 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 05 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 0 - Painted climbing ivy - moss retained.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 1 - Painted climbing ivy - moss retained.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 2 - Painted climbing ivy - moss retained.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 3 - Painted climbing ivy - moss retained.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 4 - Painted climbing ivy - moss retained.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 5 - Painted climbing ivy - moss retained.asset"
+  ],
+  "validation": {
+    "success": true,
+    "oldIvyPreservedInactive": true,
+    "nearTriangles": 47220,
+    "farTriangles": 20844,
+    "lodGroups": 6,
+    "renderers": 12,
+    "bakedWindWeightsAndBounds": true,
+    "materialsAndGentleWind": true,
+    "metadata": true,
+    "noCollidersLightsOrScripts": true,
+    "lodsValid": true,
+    "movementContract": "All stem and petiole vertices are pinned at UV1.x=0; leaf attachment pinned at 0 and tips at 1. Existing global wind drives 10 mm sway / 2.5 mm flutter; no scene wind ownership or registration added."
+  },
+  "scope": "Only existing wall ivy replaced. Existing mixed moss geometry is retained exactly in cloned meshes. Roots touch native Terrain, stems remain wall-adherent and pinned, leaf petioles are pinned with animated tips. No runtime manager, collider, terrain, vendor or approved source edits."
+}

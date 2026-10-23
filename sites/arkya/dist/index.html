@@ -14,20 +14,23 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/hero.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="realms.css">
   <script src="auth-config.js" defer></script>
+  <script src="realm-copy.js" defer></script>
   <script src="i18n.js" defer></script>
   <script src="common.js" type="module"></script>
+  <script src="realms.mjs" type="module"></script>
   <script src="app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
   <header class="site-header">
     <a class="brand" href="#accueil" aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
-    <nav aria-label="Navigation principale" data-i18n-aria-label="nav.main"><a href="#vision" data-i18n="nav.vision">La vision</a><a href="#collection" data-i18n="nav.creations">Les créations</a><a href="#interfaces" data-i18n="nav.interfaces">Les interfaces</a><a href="classes.html?lang=fr" data-language-link data-i18n="nav.classes">Les classes</a><a href="development.html?lang=fr" data-language-link data-i18n="nav.project">Le projet</a><a href="play.html?lang=fr" data-language-link data-i18n="nav.play">Jouer</a></nav>
+    <nav aria-label="Navigation principale" data-i18n-aria-label="nav.main"><a href="#vision" data-i18n="nav.vision">La vision</a><a href="#collection" data-i18n="nav.creations">Les créations</a><a href="#interfaces" data-i18n="nav.interfaces">Les interfaces</a><a href="classes.html?lang=fr" data-language-link data-i18n="nav.classes">Les classes</a><a href="realms.html?lang=fr" data-language-link data-i18n="nav.realms">Les realms</a><a href="development.html?lang=fr" data-language-link data-i18n="nav.project">Le projet</a><a href="play.html?lang=fr" data-language-link data-i18n="nav.play">Installer le launcher</a></nav>
     <a class="header-link account-nav-link" href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a>
     <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true" class="active">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
     <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
-    <nav id="mobile-menu" aria-label="Navigation mobile" data-i18n-aria-label="nav.mobile" hidden><a href="#vision" data-i18n="nav.vision">La vision</a><a href="#collection" data-i18n="nav.creations">Les créations</a><a href="#interfaces" data-i18n="nav.interfaces">Les interfaces</a><a href="classes.html?lang=fr" data-language-link data-i18n="nav.classes">Les classes</a><a href="development.html?lang=fr" data-language-link data-i18n="nav.project">Le projet</a><a href="play.html?lang=fr" data-language-link data-i18n="nav.play">Jouer</a><a href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a></nav>
+    <nav id="mobile-menu" aria-label="Navigation mobile" data-i18n-aria-label="nav.mobile" hidden><a href="#vision" data-i18n="nav.vision">La vision</a><a href="#collection" data-i18n="nav.creations">Les créations</a><a href="#interfaces" data-i18n="nav.interfaces">Les interfaces</a><a href="classes.html?lang=fr" data-language-link data-i18n="nav.classes">Les classes</a><a href="realms.html?lang=fr" data-language-link data-i18n="nav.realms">Les realms</a><a href="development.html?lang=fr" data-language-link data-i18n="nav.project">Le projet</a><a href="play.html?lang=fr" data-language-link data-i18n="nav.play">Installer le launcher</a><a href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a></nav>
   </header>
   <main id="contenu">
     <section class="hero" id="accueil" aria-labelledby="hero-title">
@@ -37,7 +40,7 @@
         <p class="eyebrow"><span class="tiny-star" aria-hidden="true">✦</span> <span data-i18n="hero.eyebrow">MMORPG · CARNET DE CRÉATION</span></p>
         <h1 id="hero-title" data-i18n-html="hero.title">Un monde<br>prend <em>forme.</em></h1>
         <p class="hero-description" data-i18n-html="hero.description">Des terres à découvrir. Des histoires à partager.<br>Entrez dans l’univers en construction d’Arkya.</p>
-        <a class="button primary" href="#collection"><span data-i18n="hero.explore">Explorer les créations</span> <span aria-hidden="true">↗</span></a>
+        <div class="hero-actions"><a class="button primary" href="play.html?lang=fr" data-language-link><span data-i18n="nav.play">Installer le launcher</span> <span aria-hidden="true">↓</span></a><a class="hero-atlas-link" href="#collection" data-i18n="hero.explore">Explorer les créations</a></div>
       </div>
       <div class="hero-caption"><span class="caption-mark"></span><div><strong id="hero-caption">Les Terres des Anciens</strong><span data-i18n="hero.captionNote">Concept généré · exploration artistique</span></div></div>
       <div class="hero-bottom"><span data-i18n="hero.journey">LE VOYAGE COMMENCE ICI</span><a href="#vision" aria-label="Découvrir la vision" data-i18n-aria-label="hero.vision"><span aria-hidden="true">↓</span></a><span data-i18n="hero.development">PROJET EN DÉVELOPPEMENT</span></div>
@@ -51,6 +54,18 @@
         <button class="direction-option active" data-direction="anciens" aria-pressed="true"><img src="assets/anciens.webp" alt="" loading="lazy" width="360" height="210"><span><small data-i18n="directions.ancientsMood">NATURE & MYSTÈRE</small><strong data-i18n="directions.ancients">Terres des Anciens</strong></span><i aria-hidden="true">↗</i></button>
       </div>
       <p class="sr-only" id="direction-announcement" aria-live="polite"></p>
+    </section>
+
+    <section class="realms-home section-shell" id="realms" aria-labelledby="home-realms-title">
+      <div class="section-heading"><div><p class="eyebrow" data-i18n="realm.eyebrow">LES MONDES D’ARKYA</p><h2 id="home-realms-title" data-i18n-html="realm.homeTitle">Les realms<br><em>d’Arkya.</em></h2></div><p data-i18n="realm.homeIntro">Chaque realm possède sa propre page. Consultez son état et suivez ses dernières informations.</p></div>
+      <div class="realm-registry" data-realm-list aria-label="Realms">
+        <div class="realm-feed-bar"><p data-realm-feed-status role="status" data-i18n="realm.loading">Chargement des realms…</p><button class="realm-refresh" type="button" data-realm-refresh data-i18n="realm.retry">Actualiser</button></div>
+        <div data-realm-items></div>
+        <p class="realm-empty" data-realm-message hidden></p>
+        <p class="realm-footnote" data-i18n="realm.readinessNote">L’état des serveurs ne garantit pas l’ouverture des admissions en jeu.</p>
+        <noscript><p class="realm-empty" data-i18n="realm.noScript">Activez JavaScript pour consulter l’état actuel des realms.</p></noscript>
+      </div>
+      <a class="text-link realm-all-link" href="realms.html?lang=fr" data-language-link><span data-i18n="realm.all">Voir tous les realms</span> <span aria-hidden="true">↗</span></a>
     </section>
 
     <section class="vision section-shell" id="vision" aria-labelledby="vision-title">

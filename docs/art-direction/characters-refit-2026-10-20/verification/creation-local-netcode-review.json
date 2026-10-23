@@ -1,0 +1,107 @@
+{
+  "verificationMethod": "Live loopback Netcode exercise via CharacterLocalPlaytest.Begin/SetTestInput/TryGetSnapshot/End; not Unity Test Runner",
+  "limitations": "Local flat arena only. No island traversal, remote service, saved character mutation or UI mode change.",
+  "output": "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\verification",
+  "status": "Completed",
+  "phase": "Finished",
+  "worldsCleaned": true,
+  "uiPreserved": true,
+  "scenesPreserved": true,
+  "startedUtc": "2026-10-20T20:19:51.3513311Z",
+  "completedUtc": "2026-10-20T20:19:56.0974133Z",
+  "races": [
+    {
+      "race": "human",
+      "message": "Require server/client displacement > 1 m and final gap < 0.2 m, stable for 0.4 s.",
+      "appearance": {
+        "version": 1,
+        "race": "human",
+        "silhouette": "b",
+        "heightCm": 175,
+        "skin": "sand",
+        "hairStyle": "braid",
+        "hairColor": "magenta",
+        "eyeColor": "green",
+        "outfitColor": "jade"
+      },
+      "worlds": [
+        "CharacterLocalServer-6a87b399e5bc44aaa755daf202cd024d",
+        "CharacterLocalClient-6a87b399e5bc44aaa755daf202cd024d"
+      ],
+      "connected": true,
+      "passed": true,
+      "worldsCleaned": true,
+      "clientStart": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "serverStart": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clientEnd": [
+        1.613,
+        0.0,
+        0.0
+      ],
+      "serverEnd": [
+        1.61333323,
+        0.0,
+        0.0
+      ],
+      "clientDisplacement": 1.613,
+      "serverDisplacement": 1.61333323,
+      "finalGap": 0.000333189964,
+      "stableSeconds": 0.40917240000089805
+    },
+    {
+      "race": "elf",
+      "message": "Require server/client displacement > 1 m and final gap < 0.2 m, stable for 0.4 s.",
+      "appearance": {
+        "version": 1,
+        "race": "elf",
+        "silhouette": "b",
+        "heightCm": 175,
+        "skin": "sand",
+        "hairStyle": "braid",
+        "hairColor": "magenta",
+        "eyeColor": "green",
+        "outfitColor": "jade"
+      },
+      "worlds": [
+        "CharacterLocalServer-b9b35c8b836d4772ba9b49998431f463",
+        "CharacterLocalClient-b9b35c8b836d4772ba9b49998431f463"
+      ],
+      "connected": true,
+      "passed": true,
+      "worldsCleaned": true,
+      "clientStart": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "serverStart": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clientEnd": [
+        1.613,
+        0.0,
+        0.0
+      ],
+      "serverEnd": [
+        1.61333323,
+        0.0,
+        0.0
+      ],
+      "clientDisplacement": 1.613,
+      "serverDisplacement": 1.61333323,
+      "finalGap": 0.000333189964,
+      "stableSeconds": 0.41972339999847463
+    }
+  ],
+  "messages": []
+}

@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "root": "Village water well - painted stone and timber",
+  "position": {
+    "x": 562.0,
+    "y": 51.1551933,
+    "z": 516.0
+  },
+  "radius": 2.05,
+  "rimHeight": 1.075,
+  "waterHeight": 0.47,
+  "terrainReliefAtSite": 0.023223877,
+  "rendererCount": 9,
+  "triangles": 15072,
+  "colliders": 19,
+  "newLights": 0,
+  "assets": "Assets/Arkya/World/StarterIsland/Town/WaterWell",
+  "waterShader": "Arkya/World/Starter Island Water",
+  "scope": "Decorative drinking well beside the east side of the plaza; existing mana source, terrain, streets and shared materials preserved."
+}

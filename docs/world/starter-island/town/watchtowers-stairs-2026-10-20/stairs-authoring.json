@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "changed": true,
+  "sceneSaved": false,
+  "accesses": [
+    {
+      "name": "Stairway - West",
+      "foot": {
+        "x": 514.690063,
+        "y": 51.1345,
+        "z": 529.925964
+      },
+      "top": {
+        "x": 503.6658,
+        "y": 56.10533,
+        "z": 532.4069
+      },
+      "width": 2.9,
+      "count": 28,
+      "riser": 0.177529737,
+      "going": 0.358927757,
+      "intermediateLandingLength": 1.25,
+      "runLength": 11.2999773,
+      "supportSamples": 84,
+      "maximumSupportError": 3.81469727E-06,
+      "triangles": 2024,
+      "renderers": 4,
+      "colliders": 61
+    },
+    {
+      "name": "Stairway - East",
+      "foot": {
+        "x": 583.2682,
+        "y": 51.3010559,
+        "z": 515.572144
+      },
+      "top": {
+        "x": 594.5364,
+        "y": 56.10533,
+        "z": 514.7245
+      },
+      "width": 2.9,
+      "count": 28,
+      "riser": 0.171581268,
+      "going": 0.358929485,
+      "intermediateLandingLength": 1.25,
+      "runLength": 11.3000259,
+      "supportSamples": 84,
+      "maximumSupportError": 0.0,
+      "triangles": 2024,
+      "renderers": 4,
+      "colliders": 61
+    }
+  ],
+  "failures": [],
+  "scope": "Two existing stair accesses only. Actual horizontal tread and vertical riser collision, no ramp. Original anchors, gates, parapets and manual descendants retained. Scene save and server traversal validation required."
+}

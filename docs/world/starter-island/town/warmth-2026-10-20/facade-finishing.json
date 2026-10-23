@@ -1,0 +1,88 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "flowerBoxes": 10,
+  "flowerGroups": 50,
+  "renderers": 3,
+  "triangles": 130720,
+  "newColliders": 0,
+  "newLights": 0,
+  "cleared": [
+    {
+      "name": "Buisson",
+      "house": "01 - Auberge des Lanternes",
+      "position": [
+        519.331665,
+        50.3546677,
+        537.9922
+      ]
+    },
+    {
+      "name": "Herbe",
+      "house": "01 - Auberge des Lanternes",
+      "position": [
+        519.564758,
+        50.3413925,
+        539.662537
+      ]
+    },
+    {
+      "name": "Herbe",
+      "house": "05 - Herboristerie",
+      "position": [
+        580.6292,
+        51.19611,
+        537.8708
+      ]
+    },
+    {
+      "name": "Buisson",
+      "house": "05 - Herboristerie",
+      "position": [
+        580.6202,
+        51.195755,
+        537.8655
+      ]
+    },
+    {
+      "name": "Souche",
+      "house": "06 - Forge du Refuge",
+      "position": [
+        586.5461,
+        50.120903,
+        502.596924
+      ]
+    },
+    {
+      "name": "Herbe",
+      "house": "01 - Auberge des Lanternes",
+      "position": [
+        520.953735,
+        50.3502769,
+        538.581055
+      ]
+    }
+  ],
+  "hallApproach": {
+    "width": 2.2,
+    "stones": 90,
+    "triangles": 180,
+    "renderers": 1,
+    "route": [
+      [
+        535.4343,
+        547.513
+      ],
+      [
+        535.0,
+        545.0
+      ],
+      [
+        536.0,
+        541.0
+      ]
+    ],
+    "terrainHeightChanged": false
+  },
+  "scope": "Approved flower LOD2 geometry and timber window boxes. Only natural prefab instances intruding into house interiors are disabled."
+}

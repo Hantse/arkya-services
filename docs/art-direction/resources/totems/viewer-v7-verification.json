@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "revision": "20261016T131607887245Z-totems",
+  "method": "Focused verification through the existing in-app browser tab; accessibility state and rendered screenshots",
+  "scope": {
+    "species": "wolf",
+    "coats": [
+      "lunar",
+      "ember",
+      "abyss",
+      "pearl"
+    ],
+    "animations": [
+      "Idle",
+      "Walk",
+      "Run"
+    ],
+    "paletteColors": 12,
+    "mobileRepeated": false,
+    "foxRepeated": false
+  },
+  "checks": [
+    {
+      "check": "lunar loaded",
+      "passed": true
+    },
+    {
+      "check": "12 palette colors",
+      "passed": true
+    },
+    {
+      "check": "revision download links",
+      "passed": true
+    },
+    {
+      "check": "ember loaded with 12 colors",
+      "passed": true
+    },
+    {
+      "check": "abyss loaded with 12 colors",
+      "passed": true
+    },
+    {
+      "check": "pearl loaded with 12 colors",
+      "passed": true
+    },
+    {
+      "check": "Walk selected",
+      "passed": true
+    },
+    {
+      "check": "Run selected",
+      "passed": true
+    },
+    {
+      "check": "Pause",
+      "passed": true
+    },
+    {
+      "check": "Magic off",
+      "passed": true
+    },
+    {
+      "check": "Magic restored",
+      "passed": true
+    },
+    {
+      "check": "Idle restored",
+      "passed": true
+    },
+    {
+      "check": "Playback restored",
+      "passed": true
+    }
+  ],
+  "visualReview": [
+    "Lunar full model visible",
+    "Pearl Walk and Run visible with lower forward head and intact muzzle",
+    "Pearl Idle left visible with magic and playback enabled"
+  ],
+  "screenshot": "D:/Repositories/arkya/output/totem-wolf-v7/viewer-final.png",
+  "passed": true,
+  "artisticApproval": false
+}

@@ -1,8 +1,12 @@
 # Humains et Elfes — atelier d’apparence
 
-Proposition artistique pour la création de personnage d’Arkya. Les deux races
-partagent le langage de volumes doux, de surfaces peintes et de matières mates
-des références approuvées. Leur validation artistique reste à faire.
+Proposition artistique pour la création de personnage d’Arkya. Depuis le
+**20 octobre 2026**, la cible est la
+[référence personnages fournie par l’utilisateur](../references/personnages-stylises-2026-10-20/README.md) :
+proportions élancées, volumes sculptés, visages expressifs, cheveux en grandes
+mèches et matières distinctes, avec un alignement très fidèle demandé.
+Les modèles de cet atelier restent des prototypes ; leur validation artistique
+contre cette référence reste à faire.
 
 ## Ouvrir l’atelier
 

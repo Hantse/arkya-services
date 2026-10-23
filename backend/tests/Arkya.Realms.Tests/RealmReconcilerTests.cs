@@ -8,6 +8,36 @@ namespace Arkya.Realms.Tests;
 public sealed class RealmReconcilerTests
 {
     [Fact]
+    public async Task SuccessfulUnchangedObservationsRefreshFreshnessWithoutChangingStateDate()
+    {
+        var repository = new MemoryRealmRepository();
+        var original = Fixtures.Realm(RealmStatus.Ready) with { Servers = [new("area-west", 1, "192.0.2.1")] };
+        await repository.TryCreateAsync(original, default);
+        var clock = new TestClock { Now = original.UpdatedAt.AddSeconds(10) };
+        var deployer = new StubDeployer();
+        var reconciler = new RealmReconciler(repository, deployer, Options.Create(Fixtures.Options()), clock);
+
+        await reconciler.ReconcileAsync(original, default);
+        var first = (await repository.FindAsync(original.RealmId, default))!;
+        Assert.Equal(clock.Now, first.LastObservedAt);
+        Assert.Equal(original.UpdatedAt, first.UpdatedAt);
+        Assert.Equal(original.Revision, first.Revision);
+        clock.Now = clock.Now.AddSeconds(10);
+        await reconciler.ReconcileAsync(first, default);
+        var refreshed = (await repository.FindAsync(original.RealmId, default))!;
+        Assert.Equal(clock.Now, refreshed.LastObservedAt);
+        Assert.Equal(original.UpdatedAt, refreshed.UpdatedAt);
+        Assert.Equal(first.Version + 1, refreshed.Version);
+
+        deployer.Error = new HttpRequestException("private dependency response");
+        clock.Now = clock.Now.AddSeconds(10);
+        await reconciler.ReconcileAsync(refreshed, default);
+        var unavailable = (await repository.FindAsync(original.RealmId, default))!;
+        Assert.Equal(refreshed.LastObservedAt, unavailable.LastObservedAt);
+        Assert.Equal(RealmStatus.Deploying, unavailable.Status);
+    }
+
+    [Fact]
     public async Task RestartResumesPersistedDeploymentAndReadinessNeedsReplicaAndExternalAddress()
     {
         var repository = new MemoryRealmRepository();

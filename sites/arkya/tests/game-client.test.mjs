@@ -28,7 +28,7 @@ function fixture({ saved = true, responses = [], loadGame, charactersBaseUrl = A
       const next = responses.shift();
       if (next instanceof Error) throw next;
       if (typeof next === 'function') return next(url, init);
-      return next || json(USER);
+      return next || (url.endsWith('/refresh') ? json({}, 401) : json(USER));
     } });
   const game = {
     SendMessage(object, method, payload) { events.push({ type: 'message', object, method, payload }); },
@@ -52,7 +52,8 @@ function fixture({ saved = true, responses = [], loadGame, charactersBaseUrl = A
 test('signed-out visitors never request a build or receive a game session', async () => {
   const f = fixture({ saved: false });
   await f.controller.start();
-  assert.deepEqual(f.events, []);
+  assert.deepEqual(f.events.map(e => e.type), ['request']);
+  assert.equal(f.events[0].url, `${API}/v1/auth/refresh`);
   assert.equal(f.states.at(-1).status, 'signed-out');
 });
 
@@ -166,6 +167,18 @@ test('playing expiry clears Unity before Quit and leaves fullscreen disabled', a
   assert.equal(f.states.at(-1).status, 'expired');
 });
 
+test('website renewal cannot extend the original bearer held by the running Unity game', async () => {
+  const renewed = { ...USER, sessionToken: 'R'.repeat(43), expiresAt: new Date(START + 7200000).toISOString() };
+  const f = fixture({ responses: [json(USER), json(USER), json(renewed)] });
+  await f.controller.start();
+  await f.advance(3540000);
+  assert.equal(f.auth.session().expiresAt, renewed.expiresAt);
+  assert.equal(f.states.at(-1).status, 'playing');
+  await f.advance(60001);
+  assert.equal(f.states.at(-1).status, 'expired');
+  assert.equal(f.events.filter(e => e.type === 'message' && e.method === 'AcceptSiteSession').length, 1);
+});
+
 test('session loss while playing hides the game and tears it down exactly once', async () => {
   const f = fixture({ responses: [json(USER), json(USER), new Response(null, { status: 204 })] });
   await f.controller.start();
@@ -181,7 +194,7 @@ test('periodic server revalidation stops a revoked game session', async () => {
   const f = fixture({ responses: [json(USER), json(USER), json({}, 401)] });
   await f.controller.start();
   await f.advance(60000);
-  assert.equal(f.events.filter(e => e.type === 'request').length, 3);
+  assert.equal(f.events.filter(e => e.type === 'request').length, 4);
   assert.equal(f.events.at(-1).type, 'quit');
   assert.equal(f.states.at(-1).status, 'signed-out');
 });

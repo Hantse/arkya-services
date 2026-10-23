@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "AgentScripts/World/ValidateWeatherPolish.cs",
+      "entry": "ValidateWeatherPolish.Main",
+      "timeout_ms": "120000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 203,
+      "executeMs": 2154,
+      "assemblyName": "PipelineRunScript_ValidateWeatherPolish_93eece9a17d241e0af3719b086d44a7f",
+      "success": true,
+      "result": "{\r\n  \"success\": true,\r\n  \"checks\": [\r\n    {\r\n      \"name\": \"Rain and delayed physical contacts are alive\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"RainParticleCount\": 491,\r\n        \"liveRipples\": 56,\r\n        \"generatedContacts\": 151\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Ripples sit on the raised sloping receiver\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"maximumContactError\": 4.11756337E-05,\r\n        \"tolerance\": 0.035\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Ripple geometry supports surface normals\",\r\n      \"passed\": true,\r\n      \"detail\": null\r\n    },\r\n    {\r\n      \"name\": \"Three bounded systems remain\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"systems\": 3,\r\n        \"ParticleBudget\": 1800\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Rain reaches the ocean and surface shader channel\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"shaderRain\": 0.75,\r\n        \"wetness\": 0.651014\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Clearing rain removes active and pending impacts\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"RainParticleCount\": 0,\r\n        \"SplashParticleCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Surfaces dry gradually after the rain\",\r\n      \"passed\": true,\r\n      \"detail\": {\r\n        \"before\": 0.651014,\r\n        \"after\": 0.6472836\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"Disabling weather restores its previous shader state\",\r\n      \"passed\": true,\r\n      \"detail\": null\r\n    }\r\n  ],\r\n  \"failures\": []\r\n}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

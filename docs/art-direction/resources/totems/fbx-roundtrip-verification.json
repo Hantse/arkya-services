@@ -5,50 +5,50 @@
   "models": [
     {
       "species": "wolf",
-      "sha256": "e06bb5bb6afb3b45797f1f1035d3fd3236e5af0d47ef0165bf9601e0bb843d34",
+      "sha256": "b30e1e16572cd3b6a5fe1043e52e29c36f506d753debd32e391437e3895cb0dc",
       "bones": 39,
       "meshes": 3,
       "maxInfluences": 4,
-      "maxWeightSumError": 9.740006134961732e-07,
+      "maxWeightSumError": 4.470348358154297e-08,
       "animations": [
         {
           "name": "Idle",
           "sampleCount": 9,
-          "maxVertexDisplacementMeters": 0.5072416051596834,
+          "maxVertexDisplacementMeters": 0.41357804957098226,
           "maxLoopVertexErrorMeters": 0.0,
           "meshMaxDisplacementMeters": {
-            "TotemSpark": 0.5072416051596834,
-            "TotemFur": 0.034660954099381996,
-            "TotemMagic": 0.00670123359422121
+            "TotemMagic": 0.008256090946954809,
+            "TotemFur": 0.040353876694055886,
+            "TotemSpark": 0.41357804957098226
           },
-          "sampledMinZMeters": -1.4998050801295904e-07,
-          "sampledMaxZMeters": 1.0914238691329956
+          "sampledMinZMeters": -9.541387413491975e-08,
+          "sampledMaxZMeters": 0.8634018898010254
         },
         {
           "name": "Walk",
           "sampleCount": 9,
-          "maxVertexDisplacementMeters": 0.5034143842636362,
+          "maxVertexDisplacementMeters": 0.4201814124980253,
           "maxLoopVertexErrorMeters": 0.0,
           "meshMaxDisplacementMeters": {
-            "TotemSpark": 0.5034143842636362,
-            "TotemFur": 0.30682268554490316,
-            "TotemMagic": 0.030671983280717366
+            "TotemMagic": 0.029490433985799286,
+            "TotemFur": 0.30079315716338856,
+            "TotemSpark": 0.4201814124980253
           },
-          "sampledMinZMeters": -3.139681211905554e-05,
-          "sampledMaxZMeters": 1.0723092555999756
+          "sampledMinZMeters": -2.6605743187246844e-05,
+          "sampledMaxZMeters": 0.8396209478378296
         },
         {
           "name": "Run",
           "sampleCount": 9,
-          "maxVertexDisplacementMeters": 0.5150542646975894,
+          "maxVertexDisplacementMeters": 0.4635911565733101,
           "maxLoopVertexErrorMeters": 0.0,
           "meshMaxDisplacementMeters": {
-            "TotemSpark": 0.5150542646975894,
-            "TotemFur": 0.4702478698824567,
-            "TotemMagic": 0.0849310495913182
+            "TotemMagic": 0.08846533126345195,
+            "TotemFur": 0.4635911565733101,
+            "TotemSpark": 0.44121340075863197
           },
-          "sampledMinZMeters": -0.0003169418778270483,
-          "sampledMaxZMeters": 1.0411748886108398
+          "sampledMinZMeters": -0.0003540153265930712,
+          "sampledMaxZMeters": 0.7968843579292297
         }
       ]
     },
@@ -66,8 +66,8 @@
           "maxVertexDisplacementMeters": 0.15305265289879466,
           "maxLoopVertexErrorMeters": 0.0,
           "meshMaxDisplacementMeters": {
-            "TotemFur": 0.016778269434693394,
             "TotemSpark": 0.15305265289879466,
+            "TotemFur": 0.016778269434693394,
             "TotemMagic": 0.0037492345623154036
           },
           "sampledMinZMeters": -1.2221529743783321e-07,
@@ -79,8 +79,8 @@
           "maxVertexDisplacementMeters": 0.15360096146299676,
           "maxLoopVertexErrorMeters": 0.0,
           "meshMaxDisplacementMeters": {
-            "TotemFur": 0.1299597398004186,
             "TotemSpark": 0.15360096146299676,
+            "TotemFur": 0.1299597398004186,
             "TotemMagic": 0.01200940976701378
           },
           "sampledMinZMeters": -1.2298416550038382e-05,
@@ -92,8 +92,8 @@
           "maxVertexDisplacementMeters": 0.1707514389477836,
           "maxLoopVertexErrorMeters": 0.0,
           "meshMaxDisplacementMeters": {
-            "TotemFur": 0.1707514389477836,
             "TotemSpark": 0.15405852125387773,
+            "TotemFur": 0.1707514389477836,
             "TotemMagic": 0.033809486554627545
           },
           "sampledMinZMeters": -0.00018035007815342396,

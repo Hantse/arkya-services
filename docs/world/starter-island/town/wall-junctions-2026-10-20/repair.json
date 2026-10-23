@@ -1,0 +1,220 @@
+{
+  "success": true,
+  "utc": "2026-10-20T10:19:39.1066975Z",
+  "alreadyApplied": false,
+  "sceneSaved": false,
+  "junctions": 102,
+  "primitives": 928,
+  "derivativeMeshes": 18,
+  "addedTriangles": 0,
+  "addedRenderers": 0,
+  "addedMaterials": 0,
+  "addedColliders": 0,
+  "originalAssetsUnchanged": true,
+  "allCollidersAndTransformsUnchanged": true,
+  "nonSelectedVerticesNormalsUvsTangentsUnchanged": true,
+  "existingStepsGatehousesWatchtowersAndStairOpeningsPreserved": true,
+  "method": "Analytical end miters in exact 96-vertex source primitives; original small overlaps and bevels retained. No whole-enclosure rebuild.",
+  "changedKinds": [
+    {
+      "name": "Continuous stone wall and walk support",
+      "count": 104
+    },
+    {
+      "name": "Walkway dressed paving",
+      "count": 104
+    },
+    {
+      "name": "Outer protective parapet",
+      "count": 104
+    },
+    {
+      "name": "Outer parapet coping",
+      "count": 104
+    },
+    {
+      "name": "Inner safety parapet",
+      "count": 100
+    },
+    {
+      "name": "Inner coping",
+      "count": 100
+    },
+    {
+      "name": "Inset stone course",
+      "count": 312
+    }
+  ],
+  "maximumVertexDisplacement": 0.596671343,
+  "miterCoverage": {
+    "samples": 3624,
+    "minimumFlatFaceReachPastBisector": 0.0411410965,
+    "minimumRequiredMetres": 0.008,
+    "longitudinalFacesRetainTheirOriginalPlanes": true
+  },
+  "meshChanges": [
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Warm painted defensive limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_00_batch_0.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_00_batch_0_Mitered.asset",
+      "selectedPrimitives": 48,
+      "vertices": 5856,
+      "triangles": 2684,
+      "maximumDisplacement": 0.5401067
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Carved limestone coping",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_00_batch_1.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_00_batch_1_Mitered.asset",
+      "selectedPrimitives": 48,
+      "vertices": 6816,
+      "triangles": 3124,
+      "maximumDisplacement": 0.5543626
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_00_batch_2.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_00_batch_2_Mitered.asset",
+      "selectedPrimitives": 48,
+      "vertices": 13920,
+      "triangles": 6380,
+      "maximumDisplacement": 0.5405363
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Warm painted defensive limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_01_batch_0.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_01_batch_0_Mitered.asset",
+      "selectedPrimitives": 58,
+      "vertices": 7104,
+      "triangles": 3256,
+      "maximumDisplacement": 0.486892
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Carved limestone coping",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_01_batch_1.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_01_batch_1_Mitered.asset",
+      "selectedPrimitives": 58,
+      "vertices": 8352,
+      "triangles": 3828,
+      "maximumDisplacement": 0.499762356
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_01_batch_2.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_01_batch_2_Mitered.asset",
+      "selectedPrimitives": 60,
+      "vertices": 17472,
+      "triangles": 8008,
+      "maximumDisplacement": 0.487353832
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_02_batch_0.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_02_batch_0_Mitered.asset",
+      "selectedPrimitives": 60,
+      "vertices": 7296,
+      "triangles": 3344,
+      "maximumDisplacement": 0.5551681
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Carved limestone coping",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_02_batch_1.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_02_batch_1_Mitered.asset",
+      "selectedPrimitives": 60,
+      "vertices": 8448,
+      "triangles": 3872,
+      "maximumDisplacement": 0.5698482
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_02_batch_2.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_02_batch_2_Mitered.asset",
+      "selectedPrimitives": 60,
+      "vertices": 17376,
+      "triangles": 7964,
+      "maximumDisplacement": 0.555689454
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_03_batch_0.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_03_batch_0_Mitered.asset",
+      "selectedPrimitives": 48,
+      "vertices": 5760,
+      "triangles": 2640,
+      "maximumDisplacement": 0.5812965
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Carved limestone coping",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_03_batch_1.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_03_batch_1_Mitered.asset",
+      "selectedPrimitives": 48,
+      "vertices": 7008,
+      "triangles": 3212,
+      "maximumDisplacement": 0.596671343
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_03_batch_2.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_03_batch_2_Mitered.asset",
+      "selectedPrimitives": 48,
+      "vertices": 14016,
+      "triangles": 6424,
+      "maximumDisplacement": 0.5818291
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_04_batch_0.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_04_batch_0_Mitered.asset",
+      "selectedPrimitives": 58,
+      "vertices": 7104,
+      "triangles": 3256,
+      "maximumDisplacement": 0.56165576
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Carved limestone coping",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_04_batch_1.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_04_batch_1_Mitered.asset",
+      "selectedPrimitives": 58,
+      "vertices": 8256,
+      "triangles": 3784,
+      "maximumDisplacement": 0.5765363
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_04_batch_2.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_04_batch_2_Mitered.asset",
+      "selectedPrimitives": 60,
+      "vertices": 17376,
+      "triangles": 7964,
+      "maximumDisplacement": 0.5621736
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Warm painted defensive limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_05_batch_0.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_05_batch_0_Mitered.asset",
+      "selectedPrimitives": 36,
+      "vertices": 4320,
+      "triangles": 1980,
+      "maximumDisplacement": 0.321892738
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Carved limestone coping",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_05_batch_1.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_05_batch_1_Mitered.asset",
+      "selectedPrimitives": 36,
+      "vertices": 5088,
+      "triangles": 2332,
+      "maximumDisplacement": 0.330387354
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_05_batch_2.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_05_batch_2_Mitered.asset",
+      "selectedPrimitives": 36,
+      "vertices": 10464,
+      "triangles": 4796,
+      "maximumDisplacement": 0.322143227
+    }
+  ],
+  "validation": "Analytic bevel-face coverage and preserved-source checks pass. Scene triangle-ray and visual checks are separate."
+}

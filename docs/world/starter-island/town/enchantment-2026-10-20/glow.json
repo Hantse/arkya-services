@@ -1,0 +1,7 @@
+{
+  "success": true,
+  "jadeEmission": 2.1,
+  "amberEmission": 2.2,
+  "newLights": 0,
+  "scope": "Bounded material emission, no realtime GI, new light or lighting bake. Renderers are not GI static."
+}

@@ -20,7 +20,8 @@ public sealed class LoginModel(IOptions<AdminOptions> options) : PageModel
     public IActionResult OnGet(string? error)
     {
         if (error == "discord") ModelState.AddModelError("", "Connexion Discord refusée ou interrompue. Utilisez le compte administrateur autorisé puis réessayez.");
-        return User.Identity?.IsAuthenticated == true ? LocalRedirect("/") : Page();
+        return User.Identity?.IsAuthenticated == true
+            ? LocalRedirect(AdminDiscordAuthentication.LocalReturnUrl(ReturnUrl)) : Page();
     }
 
     public async Task<IActionResult> OnPostAsync()

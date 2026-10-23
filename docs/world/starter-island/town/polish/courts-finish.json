@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "marketCourts": 2,
+  "shelteredCourts": 3,
+  "laidPavers": 385,
+  "plantedGroups": 17,
+  "authoredSmallPlantLod": 2,
+  "renderers": 12,
+  "triangles": 72308,
+  "colliders": 51,
+  "terrainHeightmapUnchanged": true,
+  "originalHeightmapSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "heightmapSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "marketSites": [
+    {
+      "x": 531.833252,
+      "z": 533.833252
+    },
+    {
+      "x": 559.0,
+      "z": 510.0
+    }
+  ],
+  "scope": "Static presentation and authored solid furniture. Streets and wall-walk topology unchanged; existing lights, particles and moving-sign references retained."
+}

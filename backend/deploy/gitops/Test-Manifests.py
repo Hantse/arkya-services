@@ -33,6 +33,14 @@ def require(condition, message):
         raise AssertionError(message)
 
 
+def check_admin_sessions(config):
+    require(config.get("Mongo__DatabaseName") == "arkya_admin" and "Mongo__ConnectionString" not in config,
+            "Admin sessions need their own Mongo database with credentials supplied only through the application Secret")
+    require(config.get("AdminSessions__AccessLifetime") == "00:30:00" and
+            config.get("AdminSessions__RefreshLifetime") == "30.00:00:00",
+            "Admin sessions must preserve short access and bounded absolute refresh expiry")
+
+
 def render(path):
     result = subprocess.run(
         [os.environ.get("KUBECTL", "kubectl"), "kustomize", str(path)],
@@ -151,6 +159,7 @@ def check_services(documents, require_digests):
         if app in {"characters", "admin"}:
             require(config["SSL_CERT_FILE"] == "/etc/arkya/internal-ca/ca.crt", f"Private CA trust missing in {name}")
         if app == "admin":
+            check_admin_sessions(config)
             require(not config.get("RealmsApi__CertificateAuthorityFile"),
                     "Admin must use SSL_CERT_FILE's full CA bundle: its Realms custom CA override loads only the first certificate")
     require(resources[("NetworkPolicy", OPERATIONS, "arkya-backend")]["spec"]["ingress"] == [],
@@ -292,12 +301,22 @@ def check_frontend_discord(documents, beta_documents):
             "Frontend/Discord must contain only 3 workloads/configs/services/policies and Identity PVC in arkya-beta")
 
 
-def check_admin(documents, frontend_documents, beta_documents):
+def check_content_publication_feed(configs):
+    gateway = configs["gateway"]
+    prefix = "ReverseProxy__Clusters__content__"
+    require(gateway.get("Gateway__ContentEnabled") == "true" and
+            {key: value for key, value in gateway.items() if key.startswith(prefix)} == {
+                prefix + "Destinations__primary__Address":
+                f"http://arkya-content.{FRONTEND_NAMESPACE}.svc.cluster.local:8080/"},
+            "Public publications must use only the existing private Content service through Gateway")
+
+
+def check_admin(documents, frontend_documents, beta_documents, require_digests=False):
     if any(item["kind"] == "Deployment" and item["metadata"]["name"] == "arkya-characters" for item in documents):
         validator_spec = importlib.util.spec_from_file_location("arkya_player_management", ROOT / "admin" / "Validate-PlayerManagement.py")
         validator = importlib.util.module_from_spec(validator_spec)
         validator_spec.loader.exec_module(validator)
-        return validator.check_profile(documents, frontend_documents, beta_documents)
+        return validator.check_profile(documents, frontend_documents, beta_documents, require_digests)
     resources, frontend, beta = index(documents), index(frontend_documents), index(beta_documents)
     apps = {"identity", "gateway", "frontend", "admin", "content", "realms"}
     require(len(resources) == 26 and
@@ -460,8 +479,13 @@ def check_direct_application(application, workload_documents, project, profile="
     require(spec["destination"] == {"server": "https://kubernetes.default.svc", "namespace": FRONTEND_NAMESPACE}
             and spec["destination"] in project["spec"]["destinations"],
             "The direct application's destination must be allowed by its project")
-    require(all(d["metadata"].get("namespace", FRONTEND_NAMESPACE) == FRONTEND_NAMESPACE for d in workload_documents),
-            "The direct destination must match the explicit workload namespaces")
+    allowed_namespaces = {item["namespace"] for item in project["spec"]["destinations"]
+                          if item["server"] == spec["destination"]["server"]}
+    expected_namespaces = {FRONTEND_NAMESPACE, "arkya-beta-realm"} if profile == "admin" else {FRONTEND_NAMESPACE}
+    require(expected_namespaces.issubset(allowed_namespaces) and
+            all(d["metadata"].get("namespace") in expected_namespaces or
+                d["kind"] == "Namespace" and d["metadata"]["name"] in expected_namespaces for d in workload_documents),
+            "The direct profile may use only its explicit project-approved namespaces")
     require("automated" not in spec["syncPolicy"] and {
         "CreateNamespace=true", "FailOnSharedResource=true"}.issubset(spec["syncPolicy"]["syncOptions"]),
             "The direct application must start manually and detect competing ownership")
@@ -484,7 +508,7 @@ def check_bootstrap(documents, bootstrap_project, *, frontend_discord=False):
         ("git@github.com:Hantse/arkya-services.git", "backend/deploy/gitops/beta", "master"),
         ("git@github.com:Hantse/arkya-mmorpg.git", "deploy/gitops/beta", "main"),
     }
-    expected_namespaces = NAMESPACES | {GAME, FRONTEND_NAMESPACE}
+    expected_namespaces = NAMESPACES | {GAME, FRONTEND_NAMESPACE, "arkya-beta-realm"}
     destination_namespace = IDENTITY
     if frontend_discord:
         expected_sources = {
@@ -505,8 +529,10 @@ def check_bootstrap(documents, bootstrap_project, *, frontend_discord=False):
     require(project["spec"]["clusterResourceWhitelist"] == [{"group": "", "kind": "Namespace"}], "Unnecessary cluster-wide Argo permissions")
     require({(item["group"], item["kind"]) for item in project["spec"]["namespaceResourceWhitelist"]} == {
         ("", "ConfigMap"), ("", "Service"), ("", "PersistentVolumeClaim"), ("apps", "Deployment"),
-        ("networking.k8s.io", "NetworkPolicy"), ("networking.k8s.io", "Ingress")},
-            "The workload project must allow only its declared workload types")
+        ("networking.k8s.io", "NetworkPolicy"), ("networking.k8s.io", "Ingress"),
+        ("", "ServiceAccount"), ("", "Pod"), ("apps", "ReplicaSet"),
+        ("rbac.authorization.k8s.io", "Role"), ("rbac.authorization.k8s.io", "RoleBinding")},
+            "The workload project must allow declared workloads and their observable Pod/ReplicaSet children")
     require(len(resources) == 2, "Unexpected bootstrap resources")
     require(identity(bootstrap_project) == ("AppProject", "argocd", "arkya-bootstrap"),
             "The parent needs a distinct administrative bootstrap project")
@@ -573,7 +599,7 @@ def main():
         frontend_documents, yaml.safe_load((ROOT / "bootstrap/project.yaml").read_text(encoding="utf-8")))
     check_bootstrap(render(ROOT / "bootstrap-frontend-discord"), bootstrap_project, frontend_discord=True)
     admin_documents = render(ROOT / "admin")
-    check_admin(admin_documents, frontend_documents, documents)
+    check_admin(admin_documents, frontend_documents, documents, args.require_digests)
     check_direct_application(
         yaml.safe_load((ROOT / "admin.application.example.yaml").read_text(encoding="utf-8")),
         admin_documents, yaml.safe_load((ROOT / "bootstrap/project.yaml").read_text(encoding="utf-8")),
@@ -585,6 +611,7 @@ def main():
     print(f"Validated {len(frontend_documents)} frontend/Discord resources, 3 inherited deployments, the direct Argo application and optional bootstrap.")
     admin_deployments = sum(item["kind"] == "Deployment" for item in admin_documents)
     print(f"Validated {len(admin_documents)} Admin resources, {admin_deployments} deployments, private HTTP modules, existing frontend preservation and direct Argo application.")
+    print("Validated realm host routing in the existing Admin deployment and its Traefik example.")
     if unity_count:
         print(f"Validated {unity_count} Unity resources and the combined service/admission/WSS contracts.")
     if not args.require_digests:

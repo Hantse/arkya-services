@@ -1,0 +1,43 @@
+{
+  "readOnly": true,
+  "results": [
+    {
+      "field": "m_SceneTargetTexture",
+      "path": "D:\\Repositories\\arkya\\docs\\world\\starter-island\\town\\art-finish-2026-10-20\\lighting-probe\\m_SceneTargetTexture.png",
+      "width": 1196,
+      "height": 573,
+      "format": "R16G16B16A16_SFloat"
+    },
+    {
+      "field": "m_LDRSceneTargetTexture",
+      "path": "D:\\Repositories\\arkya\\docs\\world\\starter-island\\town\\art-finish-2026-10-20\\lighting-probe\\m_LDRSceneTargetTexture.png",
+      "width": 1196,
+      "height": 573,
+      "format": "R8G8B8A8_SRGB"
+    }
+  ],
+  "pipeline": "Assets/Settings/PC_RPAsset.asset",
+  "sceneLighting": true,
+  "drawGizmos": true,
+  "sceneViewState": {
+    "m_AlwaysRefresh": false,
+    "showFog": true,
+    "showSkybox": true,
+    "showFlares": true,
+    "showImageEffects": true,
+    "showParticleSystems": true,
+    "showVisualEffectGraphs": true,
+    "m_FxEnabled": true
+  },
+  "position": [
+    542.828369,
+    91.0743256,
+    526.4601
+  ],
+  "rotation": [
+    53.2513962,
+    345.152679,
+    7.13493364E-06
+  ],
+  "scope": "Read existing Scene view color textures without rendering, camera changes or setting changes."
+}

@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "gateCount": 2,
+  "stairCount": 2,
+  "walkSamples": 3483,
+  "supportSamples": 3483,
+  "gateSamples": 306,
+  "walkHeight": 56.10533,
+  "walkClearWidth": 3.0,
+  "missingScripts": 0,
+  "unsupportedMaterials": 0,
+  "terrainHeightmapUnchanged": true,
+  "triangles": 102408,
+  "renderers": 75,
+  "colliders": 593,
+  "failures": []
+}

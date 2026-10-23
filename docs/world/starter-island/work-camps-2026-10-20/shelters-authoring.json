@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "previousCount": 38,
+  "addedCount": 5,
+  "totalCount": 43,
+  "previousReferencesPreserved": true,
+  "covers": [
+    {
+      "path": "Miners work camp - painted quarry and shelter/Slate roof miners shelter - accessible floor/05_Shelter",
+      "mesh": "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/05_Shelter.asset"
+    },
+    {
+      "path": "Woodcutters work camp - timber yard and lodge/Lodge - glazed timber cabin/Work camp roof - lodge slate/Detailed roof/Painted camp - Painted blue slate",
+      "mesh": "Assets/Arkya/World/StarterIsland/WorkCamps/Logging/Meshes/Lodge_roof_high_0.asset"
+    },
+    {
+      "path": "Woodcutters work camp - timber yard and lodge/Lodge - glazed timber cabin/Work camp roof - lodge slate/Distant roof/Painted camp - Painted blue slate",
+      "mesh": "Assets/Arkya/World/StarterIsland/WorkCamps/Logging/Meshes/Lodge_roof_low_0.asset"
+    },
+    {
+      "path": "Woodcutters work camp - timber yard and lodge/Sawmill - open timber workshop/Work camp roof - saw shelter slate/Detailed roof/Painted camp - Painted blue slate",
+      "mesh": "Assets/Arkya/World/StarterIsland/WorkCamps/Logging/Meshes/Sawmill_roof_high_0.asset"
+    },
+    {
+      "path": "Woodcutters work camp - timber yard and lodge/Sawmill - open timber workshop/Work camp roof - saw shelter slate/Distant roof/Painted camp - Painted blue slate",
+      "mesh": "Assets/Arkya/World/StarterIsland/WorkCamps/Logging/Meshes/Sawmill_roof_low_0.asset"
+    }
+  ],
+  "scope": "Only append the five real camp roof renderers. Keep all existing references in order. Gallery ceiling already has a native static collider. No scene save, shared asset edits or runtime behavior changes."
+}

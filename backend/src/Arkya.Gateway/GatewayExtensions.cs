@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Routing.Matching;
 using Yarp.ReverseProxy.Configuration;
 using Yarp.ReverseProxy.Transforms;
 
@@ -24,16 +25,24 @@ public static class GatewayExtensions
                 "Gateway:FrontendHost must be an exact DNS hostname distinct from api.arkya.online.")
             .Validate(options => !options.FrontendEnabled || GatewayOptions.IsOriginValid(options.FrontendAddress),
                 "Gateway:FrontendAddress must be an HTTP(S) origin without credentials, path prefix, query or fragment.")
+            .Validate(options => !options.PublicRealmsEnabled || GatewayOptions.IsOriginValid(options.PublicRealmsAddress),
+                "Gateway:PublicRealmsAddress must be an HTTP(S) origin without credentials, path prefix, query or fragment.")
+            .Validate(options => !options.RealmSitesEnabled || options.FrontendEnabled && options.AdminEnabled && options.PublicRealmsEnabled
+                && GatewayOptions.IsWebHostValid(options.RealmBaseDomain)
+                && options.FrontendHost.Equals(options.RealmBaseDomain, StringComparison.OrdinalIgnoreCase)
+                && options.AdminHost.Equals($"admin.{options.RealmBaseDomain}", StringComparison.OrdinalIgnoreCase),
+                "Realm sites require the public realm catalogue, frontend at RealmBaseDomain and admin at admin.RealmBaseDomain.")
             .Validate(options => !options.AdminEnabled || !options.FrontendEnabled
                 || !string.Equals(options.AdminHost, options.FrontendHost, StringComparison.OrdinalIgnoreCase),
                 "Gateway:FrontendHost and Gateway:AdminHost must be distinct when both routes are enabled.")
             .Validate<IConfiguration>((options, configuration) => (!options.AdminEnabled && !options.FrontendEnabled)
                 || options.HasExplicitAllowedHosts(configuration),
-                "AllowedHosts must explicitly include api.arkya.online and each enabled frontend/admin host, without wildcard hosts.")
+                "AllowedHosts must explicitly include api.arkya.online and each enabled frontend/admin host; only enabled realm host patterns may be wildcards.")
             .ValidateOnStart();
         services.AddOptions<GatewayManagementOptions>().BindConfiguration("Management")
             .Validate(options => options.Port == 0 || options.Port is >= 1024 and <= 65535,
                 "Management port must be zero (disabled) or 1024-65535.").ValidateOnStart();
+        services.AddSingleton<MatcherPolicy, RealmSiteHostMatcherPolicy>();
 
         services.AddSingleton<IProxyConfigProvider>(provider =>
         {
@@ -42,13 +51,17 @@ public static class GatewayExtensions
             var publicHosts = options.AdminEnabled || options.FrontendEnabled
                 ? options.PublicApiHosts(finalConfiguration) : null;
             var routes = GatewayRoutes.Create(options.CharactersEnabled, options.AdminEnabled ? options.AdminHost : null,
-                publicHosts, options.FrontendEnabled ? options.FrontendHost : null, options.RealmGameEnabled);
+                publicHosts, options.FrontendEnabled ? options.FrontendHost : null, options.ReportsEnabled,
+                options.InferenceEnabled, options.RealmGameEnabled, options.ContentEnabled,
+                options.PublicRealmsEnabled, options.RealmSitesEnabled ? options.RealmBaseDomain : null);
             var configured = finalConfiguration.GetSection("ReverseProxy:Clusters").Get<Dictionary<string, ClusterConfig>>()
                 ?? throw new InvalidOperationException("ReverseProxy:Clusters must be configured.");
             if (options.AdminEnabled)
                 configured["admin"] = OriginCluster("admin", options.AdminAddress);
             if (options.FrontendEnabled)
                 configured["frontend"] = OriginCluster("frontend", options.FrontendAddress);
+            if (options.PublicRealmsEnabled)
+                configured["public-realms"] = OriginCluster("public-realms", options.PublicRealmsAddress);
             if (options.RealmGameEnabled)
                 configured["realm-game"] = OriginCluster("realm-game", options.RealmGameAddress) with
                 {
@@ -65,6 +78,7 @@ public static class GatewayExtensions
         {
             context.AddOriginalHost(true);
             context.UseDefaultForwarders = false;
+            var anonymousRealms = context.Route.ClusterId == "public-realms";
             context.AddRequestTransform(transform =>
             {
                 // Only the trusted, normalized incoming connection may identify the client.
@@ -74,8 +88,17 @@ public static class GatewayExtensions
                         || header.StartsWith("X-Forwarded-", StringComparison.OrdinalIgnoreCase)
                         || header.StartsWith("X-Original-", StringComparison.OrdinalIgnoreCase)
                         || header.Equals("X-Arkya-Service-Key", StringComparison.OrdinalIgnoreCase)
-                        || header.Equals("X-Arkya-Dedicated-Key", StringComparison.OrdinalIgnoreCase))
+                        || header.Equals("X-Arkya-Admin-Key", StringComparison.OrdinalIgnoreCase)
+                        || header.Equals("X-Arkya-Dedicated-Key", StringComparison.OrdinalIgnoreCase)
+                        || header.Equals("X-Arkya-Reports-Admin-Key", StringComparison.OrdinalIgnoreCase)
+                        || header.Equals("X-Arkya-Admin-Actor", StringComparison.OrdinalIgnoreCase))
                         transform.ProxyRequest.Headers.Remove(header);
+                }
+                if (anonymousRealms)
+                {
+                    transform.ProxyRequest.Headers.Remove("Authorization");
+                    transform.ProxyRequest.Headers.Remove("Cookie");
+                    transform.ProxyRequest.Headers.Host = null;
                 }
                 var request = transform.HttpContext.Request;
                 transform.ProxyRequest.Headers.TryAddWithoutValidation("X-Forwarded-Proto", request.Scheme);

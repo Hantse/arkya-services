@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "revision": "20261016T135246006436Z-totems",
+  "method": "Focused checks using the existing in-app browser tab",
+  "scope": {
+    "species": "wolf",
+    "coats": [
+      "lunar",
+      "ember",
+      "abyss",
+      "pearl"
+    ],
+    "clips": [
+      "Idle",
+      "Walk",
+      "Run"
+    ],
+    "paletteColors": 12,
+    "mobileRepeated": false,
+    "foxRepeated": false
+  },
+  "checks": [
+    {
+      "name": "lunarLoaded",
+      "passed": true
+    },
+    {
+      "name": "palette12",
+      "passed": true
+    },
+    {
+      "name": "downloadsCurrentRevision",
+      "passed": true
+    },
+    {
+      "name": "emberLoaded",
+      "passed": true
+    },
+    {
+      "name": "abyssLoaded",
+      "passed": true
+    },
+    {
+      "name": "pearlLoaded",
+      "passed": true
+    },
+    {
+      "name": "walkSelected",
+      "passed": true
+    },
+    {
+      "name": "runSelected",
+      "passed": true
+    },
+    {
+      "name": "pause",
+      "passed": true
+    },
+    {
+      "name": "magicOff",
+      "passed": true
+    },
+    {
+      "name": "magicOn",
+      "passed": true
+    },
+    {
+      "name": "idleSelected",
+      "passed": true
+    },
+    {
+      "name": "playingFinal",
+      "passed": true
+    }
+  ],
+  "visualReview": [
+    "Final V8 Lunar and Pearl renders inspected in the browser.",
+    "Walk and Run poses inspected; low head carriage and broad shoulder volume retained.",
+    "Final view: Pearl, Idle playing, magic enabled."
+  ],
+  "screenshot": "D:/Repositories/arkya/output/totem-wolf-v8/viewer-final.png",
+  "passed": true,
+  "artisticApproval": false
+}

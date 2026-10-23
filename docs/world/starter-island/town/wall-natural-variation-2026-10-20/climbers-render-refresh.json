@@ -1,0 +1,107 @@
+{
+  "success": true,
+  "utc": "2026-10-20T11:04:04.3410413Z",
+  "diagnostics": [
+    {
+      "bay": "Curtain bay 058",
+      "expectedNewMassVertices": 1763,
+      "samples": 64,
+      "matches": 64,
+      "cpuMassPresent": true
+    },
+    {
+      "bay": "Curtain bay 059",
+      "expectedNewMassVertices": 1831,
+      "samples": 64,
+      "matches": 64,
+      "cpuMassPresent": true
+    }
+  ],
+  "refreshedMeshes": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 00 LOD0.asset",
+      "vertices": 3672,
+      "triangles": 3504,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 00 LOD1.asset",
+      "vertices": 1549,
+      "triangles": 1464,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 01 LOD0.asset",
+      "vertices": 11121,
+      "triangles": 10608,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 01 LOD1.asset",
+      "vertices": 4891,
+      "triangles": 4614,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 02 LOD0.asset",
+      "vertices": 15973,
+      "triangles": 15218,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 02 LOD1.asset",
+      "vertices": 6982,
+      "triangles": 6576,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 03 LOD0.asset",
+      "vertices": 14033,
+      "triangles": 13378,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 03 LOD1.asset",
+      "vertices": 6253,
+      "triangles": 5892,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 04 LOD0.asset",
+      "vertices": 15841,
+      "triangles": 15098,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 04 LOD1.asset",
+      "vertices": 7056,
+      "triangles": 6648,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 05 LOD0.asset",
+      "vertices": 21783,
+      "triangles": 20730,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 05 LOD1.asset",
+      "vertices": 9506,
+      "triangles": 8940,
+      "identicalCpuData": true,
+      "savedAssetUnchanged": true
+    }
+  ],
+  "scope": "Re-submitted the same vertex/normal/color/UV/index arrays through native Mesh setters, MarkModified and UploadMeshData(false), and rebound identical MeshFilter references. CPU channels, bounds, mesh identity and saved asset bytes checked unchanged. No Undo, CopySerialized, destruction, material or scene layout edits. Appearance still requires the following capture."
+}

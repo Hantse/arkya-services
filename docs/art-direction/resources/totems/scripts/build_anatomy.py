@@ -1,4 +1,4 @@
-"""Derive normalized, weighted companion anatomy from the licensed Bake3D fox.
+"""Build weighted anatomy from each companion's licensed source.
 
 Run with Blender --background --python scripts/build_anatomy.py -- [wolf|fox].
 Only writes the anatomy sources; final coats, VFX and clips are built separately.
@@ -310,6 +310,10 @@ def render_source(coat,species):
 
 
 def build(species):
+    if species == 'wolf':
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from build_wolf_anatomy import build as build_wolf
+        return build_wolf(output_directory=OUT)
     OUT.mkdir(parents=True,exist_ok=True)
     rig,coat=neutral_import()
     source_points=[v.co.copy() for v in coat.data.vertices]

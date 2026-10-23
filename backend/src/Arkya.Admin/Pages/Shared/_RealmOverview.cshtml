@@ -1,0 +1,42 @@
+@model RealmModel
+@using Arkya.Admin.Realms
+@{ var realm = Model.Realm!; }
+<dl class="panel realm-summary">
+    <div><dt>Serveurs prêts</dt><dd>@realm.Servers.Sum(server => server.ReadyReplicas)<span> / @realm.Servers.Sum(server => server.DesiredReplicas)</span></dd></div>
+    <div><dt>Cible</dt><dd class="mono">@realm.TargetId</dd></div>
+    <div><dt>Profil</dt><dd class="mono">@realm.ProfileId</dd></div>
+    <div><dt>Dernier changement</dt><dd class="realm-summary-date">@realm.UpdatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm 'UTC'")</dd></div>
+</dl>
+@if (realm.Topology is not null || Model.SelectedIsland is not null)
+{
+    <partial name="_RealmIslands" model="Model" />
+}
+<details class="panel realm-advanced" open="@(realm.Topology is null && Model.SelectedIsland is null)"><summary>Serveurs dédiés <span class="muted">@realm.Servers.Length serveur(s)</span></summary><div class="realm-server-scroll" tabindex="0" role="region" aria-label="Liste des serveurs dédiés">
+            <ul class="realm-server-list">
+            @foreach (var server in realm.Servers)
+            {
+                <li><div><strong class="mono">@server.Id</strong><small>@(server.Transport == "WebSocket" ? "WebSocket / TCP" : "UDP") @server.Port@if (realm.Topology is not null) { <span> · @RealmPresentation.ServerKindLabel(server.Kind)@if (server.IslandId is not null) { <span> · @server.IslandId · partition @(server.PartitionIndex + 1) / @server.PartitionCount</span> }</span> }</small></div><span class="realm-status @(server.ReadyReplicas == server.DesiredReplicas && server.ReadyReplicas > 0 ? "ready" : "pending")">@server.ReadyReplicas / @server.DesiredReplicas prêt(s)</span><details class="realm-server-address"><summary>Adresses</summary><code>@(string.IsNullOrWhiteSpace(server.Address) ? "Adresse en attente" : server.Address)</code>@if (server.PublicEndpoint is not null) { <code>@server.PublicEndpoint</code> }</details></li>
+            }
+            </ul>
+</div></details>
+<details class="panel realm-advanced"><summary>Détails du déploiement <span class="muted">Révision @realm.Revision · coordonnées</span></summary><div class="realm-advanced-body"><dl class="realm-facts"><div><dt>Namespace</dt><dd class="mono">@realm.Namespace</dd></div><div><dt>Image des serveurs</dt><dd class="mono">@realm.Image</dd></div></dl><p class="muted">La disponibilité affichée concerne les ressources du cluster. Vérifiez aussi l’admission des joueurs et leur entrée en jeu avec un client réel.</p>
+@if (realm.Operations?.OrderByDescending(operation => operation.RequestedAt).FirstOrDefault() is { } lastOperation)
+{
+    <div class="realm-last-operation"><span>Dernière opération : <strong>@(lastOperation.Kind == "Update" ? "Mise à jour" : "Redémarrage")</strong> · @RealmPresentation.StatusLabel(lastOperation.Status)</span><a asp-page="/Realm" asp-route-realmId="@realm.RealmId" asp-route-section="history">Voir l’historique →</a></div>
+}
+@if (realm.Topology is not null)
+{
+    <h3 class="realm-bounds-heading">Limites des partitions (X / Z)</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Coordonnées des partitions"><table class="realm-table"><caption class="sr-only">Coordonnées des zones de chaque serveur dédié</caption><thead><tr><th scope="col">Dédié</th><th scope="col">Minimum X / Z</th><th scope="col">Maximum X / Z</th></tr></thead><tbody>
+        @foreach (var server in realm.Servers.Where(server => server.Bounds is not null))
+        {
+            <tr><th scope="row" class="mono">@server.Id</th><td>@server.Bounds!.MinX / @server.Bounds.MinZ</td><td>@server.Bounds.MaxX / @server.Bounds.MaxZ</td></tr>
+        }
+        </tbody></table></div>
+        <p>Les découpes sont figées au déploiement. L’admission et les transferts entre dédiés nécessitent un runtime compatible et sa validation en jeu.</p>
+    @if (!realm.TopologyRuntimeSupported)
+    {
+        <p class="realm-topology-note">Le déploiement est bloqué pour ce profil : la prise en charge des îles partagées n’est pas configurée.</p>
+    }
+}
+</div></details>

@@ -1,0 +1,120 @@
+{
+  "success": true,
+  "scope": "Two complementary clockwise server-ECS traversals using the compact stair markers cover the full wall circuit, both gate bridges, both stair ascents and both descents. Three additional forward/return paths cross the worst repaired joints at exterior offset +1.10 m over tangent +/-0.8 m, starting with verified native support on the deck. Scene physics proxies installed; no teleporting between route waypoints and no jumps. Targeted paths require native infill support in both directions and deck height within 2.5 cm on every tick.",
+  "installedRuntimeProxies": 1369,
+  "capsuleRadius": 0.3,
+  "capsuleHeight": 1.75,
+  "timeStep": 0.05,
+  "ticks": 1791,
+  "circuitTicks": 1743,
+  "junctionTicks": 48,
+  "routes": [
+    {
+      "Name": "West ascent - north wall and forest gate - East descent",
+      "Success": true,
+      "Ticks": 851,
+      "ReachedWaypoints": 68,
+      "TotalWaypoints": 68,
+      "AirborneTicks": 0,
+      "TargetedJunctionSupport": false,
+      "ForwardInfillSupportTicks": 0,
+      "ReturnInfillSupportTicks": 0,
+      "MaximumSupportHeightError": 0.0,
+      "DistanceTravelled": 183.120773,
+      "MaximumHeight": 56.10534,
+      "ExpectedWallHeight": 56.10533,
+      "FinalPosition": {
+        "x": 592.2123,
+        "y": 50.3970947,
+        "z": 503.277374
+      },
+      "Failures": []
+    },
+    {
+      "Name": "East ascent - south wall and arrival gate - West descent",
+      "Success": true,
+      "Ticks": 892,
+      "ReachedWaypoints": 70,
+      "TotalWaypoints": 70,
+      "AirborneTicks": 0,
+      "TargetedJunctionSupport": false,
+      "ForwardInfillSupportTicks": 0,
+      "ReturnInfillSupportTicks": 0,
+      "MaximumSupportHeightError": 0.0,
+      "DistanceTravelled": 191.263809,
+      "MaximumHeight": 56.10534,
+      "ExpectedWallHeight": 56.10533,
+      "FinalPosition": {
+        "x": 502.4956,
+        "y": 51.2133636,
+        "z": 521.9643
+      },
+      "Failures": []
+    }
+  ],
+  "junctionRoutes": [
+    {
+      "Name": "Joint 74 outer support - forward and return",
+      "Success": true,
+      "Ticks": 16,
+      "ReachedWaypoints": 5,
+      "TotalWaypoints": 5,
+      "AirborneTicks": 0,
+      "TargetedJunctionSupport": true,
+      "ForwardInfillSupportTicks": 2,
+      "ReturnInfillSupportTicks": 2,
+      "MaximumSupportHeightError": 7.62939453E-06,
+      "DistanceTravelled": 3.20002437,
+      "MaximumHeight": 56.10533,
+      "ExpectedWallHeight": 56.10533,
+      "FinalPosition": {
+        "x": 504.581726,
+        "y": 56.1053276,
+        "z": 488.70575
+      },
+      "Failures": []
+    },
+    {
+      "Name": "Joint 93 outer support - forward and return",
+      "Success": true,
+      "Ticks": 16,
+      "ReachedWaypoints": 5,
+      "TotalWaypoints": 5,
+      "AirborneTicks": 0,
+      "TargetedJunctionSupport": true,
+      "ForwardInfillSupportTicks": 2,
+      "ReturnInfillSupportTicks": 2,
+      "MaximumSupportHeightError": 0.0,
+      "DistanceTravelled": 3.200056,
+      "MaximumHeight": 56.10533,
+      "ExpectedWallHeight": 56.10533,
+      "FinalPosition": {
+        "x": 502.6443,
+        "y": 56.10533,
+        "z": 543.890442
+      },
+      "Failures": []
+    },
+    {
+      "Name": "Joint 46 outer support - forward and return",
+      "Success": true,
+      "Ticks": 16,
+      "ReachedWaypoints": 5,
+      "TotalWaypoints": 5,
+      "AirborneTicks": 0,
+      "TargetedJunctionSupport": true,
+      "ForwardInfillSupportTicks": 2,
+      "ReturnInfillSupportTicks": 2,
+      "MaximumSupportHeightError": 0.0,
+      "DistanceTravelled": 3.199988,
+      "MaximumHeight": 56.10533,
+      "ExpectedWallHeight": 56.10533,
+      "FinalPosition": {
+        "x": 580.2736,
+        "y": 56.10533,
+        "z": 480.522675
+      },
+      "Failures": []
+    }
+  ]
+}

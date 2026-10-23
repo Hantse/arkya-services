@@ -1,0 +1,126 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 0.84,
+      "summary": {
+        "total": 14,
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.InterruptedTransitionAndExternalPlayStillAcceptRequestedState",
+          "Status": "Passed",
+          "Duration": 0.2578081,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle(\"human-a\")",
+          "Status": "Passed",
+          "Duration": 0.0051788,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle(\"human-b\")",
+          "Status": "Passed",
+          "Duration": 0.139875,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle(\"elf-a\")",
+          "Status": "Passed",
+          "Duration": 0.1391519,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle(\"elf-b\")",
+          "Status": "Passed",
+          "Duration": 0.1453883,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.ReplacementRigReceivesThePreviouslyRequestedMotion",
+          "Status": "Passed",
+          "Duration": 0.0040093,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace(\"human-a\")",
+          "Status": "Passed",
+          "Duration": 0.00967,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace(\"human-b\")",
+          "Status": "Passed",
+          "Duration": 0.0075585,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace(\"elf-a\")",
+          "Status": "Passed",
+          "Duration": 0.0062117,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace(\"elf-b\")",
+          "Status": "Passed",
+          "Duration": 0.0124761,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick(\"human-a\")",
+          "Status": "Passed",
+          "Duration": 0.0133212,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick(\"human-b\")",
+          "Status": "Passed",
+          "Duration": 0.0176574,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick(\"elf-a\")",
+          "Status": "Passed",
+          "Duration": 0.0163787,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick(\"elf-b\")",
+          "Status": "Passed",
+          "Duration": 0.0270846,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

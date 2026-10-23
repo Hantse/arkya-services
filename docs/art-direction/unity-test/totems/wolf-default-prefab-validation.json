@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "prefab": "Assets/Arkya/Totems/Prefabs/wolf.prefab",
+  "reference": "Assets/Arkya/Totems/Prefabs/wolf-lunar.prefab",
+  "sameMeshes": true,
+  "sameMaterials": true,
+  "sameController": true,
+  "avatarValid": true,
+  "noMissingScripts": true,
+  "sameTransform": true,
+  "noColliders": true,
+  "skinnedRenderers": 3
+}

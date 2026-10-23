@@ -1,0 +1,482 @@
+{
+  "success": true,
+  "materials": [
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/01 Earth and sage in worn joints.mat",
+      "role": "Joints",
+      "coolFill": 0.62,
+      "indirectStrength": 0.95,
+      "height": 0.0021,
+      "textureSoftness": 0.5,
+      "textureContrast": 1.0
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/02 Jade lantern porcelain.mat",
+      "role": "Lantern",
+      "coolFill": 0.4,
+      "indirectStrength": 0.96,
+      "height": 0.0,
+      "textureSoftness": 0.0,
+      "textureContrast": 1.0
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/03 Soft amber mana inlay.mat",
+      "role": "Lantern",
+      "coolFill": 0.4,
+      "indirectStrength": 0.96,
+      "height": 0.0,
+      "textureSoftness": 0.0,
+      "textureContrast": 1.0
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/04 Pastel limewash 0 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.45,
+      "textureContrast": 1.04
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/05 Pastel limewash 2 Soft sage limewash.mat",
+      "role": "Limewash",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.45,
+      "textureContrast": 1.04
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/06 Pastel limewash 3 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.45,
+      "textureContrast": 1.04
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/07 Pastel limewash 4 Soft ochre limewash.mat",
+      "role": "Limewash",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.45,
+      "textureContrast": 1.04
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/08 Pastel limewash 5 Soft sage limewash.mat",
+      "role": "Limewash",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.45,
+      "textureContrast": 1.04
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/09 Pastel limewash 6 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.45,
+      "textureContrast": 1.04
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/10 Pastel limewash 7 Soft ochre limewash.mat",
+      "role": "Limewash",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.45,
+      "textureContrast": 1.04
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/11 Pastel limewash 8 Soft sage limewash.mat",
+      "role": "Limewash",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.45,
+      "textureContrast": 1.04
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/12 Pastel limewash 9 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.45,
+      "textureContrast": 1.04
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/13 Soft painted limestone.mat",
+      "role": "Paving",
+      "coolFill": 0.65,
+      "indirectStrength": 0.93,
+      "height": 0.01,
+      "textureSoftness": 0.6,
+      "textureContrast": 1.05
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/14 Painted civic blue slate.mat",
+      "role": "Slate",
+      "coolFill": 0.63,
+      "indirectStrength": 0.88,
+      "height": 0.0,
+      "textureSoftness": 0.65,
+      "textureContrast": 1.08
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/15 Painted civic slate highlights.mat",
+      "role": "Slate",
+      "coolFill": 0.63,
+      "indirectStrength": 0.88,
+      "height": 0.0,
+      "textureSoftness": 0.65,
+      "textureContrast": 1.08
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/16 CivicWeatheredLimestone.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.023,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/17 CivicWornCutStone.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.0175,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/18 Cream worn coping.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.023,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/19 Joined warm pale kerbs.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.023,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/20 ManaWell_PaintedLimestone.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.0,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/21 ManaWell_PaleCarvedStone.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.0,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/22 ManaWell_WarmStone.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.0,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/23 Pale worn stone relief.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.023,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/24 Sage limestone foundations.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.023,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/25 Sculpted limestone - shared matte painted pigment.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.00629999954,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/26 Soft grey lime recesses.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.023,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/27 Varied hand laid painted limestone.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.023,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/28 Warm coursed limestone.mat",
+      "role": "Stone",
+      "coolFill": 0.78,
+      "indirectStrength": 0.86,
+      "height": 0.023,
+      "textureSoftness": 0.8,
+      "textureContrast": 1.02
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/29 Arkya _ chaume _ painted.mat",
+      "role": "Thatch",
+      "coolFill": 0.55,
+      "indirectStrength": 0.94,
+      "height": 0.0,
+      "textureSoftness": 2.0,
+      "textureContrast": 0.73
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/30 Painted beams V2.mat",
+      "role": "Timber",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.65,
+      "textureContrast": 1.16
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/31 Painted boards V2.mat",
+      "role": "Timber",
+      "coolFill": 0.68,
+      "indirectStrength": 0.9,
+      "height": 0.0,
+      "textureSoftness": 0.65,
+      "textureContrast": 1.16
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Sculpted oak and warm bindings.mat",
+      "role": "Prop",
+      "coolFill": 0.65,
+      "indirectStrength": 0.92,
+      "height": 0.0,
+      "textureSoftness": 0.0,
+      "textureContrast": 1.0
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Blue forged metal.mat",
+      "role": "Prop",
+      "coolFill": 0.65,
+      "indirectStrength": 0.92,
+      "height": 0.0,
+      "textureSoftness": 0.0,
+      "textureContrast": 1.0
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Golden bundled hay.mat",
+      "role": "Prop",
+      "coolFill": 0.65,
+      "indirectStrength": 0.92,
+      "height": 0.0,
+      "textureSoftness": 0.0,
+      "textureContrast": 1.0
+    },
+    {
+      "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Courtyard earth and leaf litter.mat",
+      "role": "Prop",
+      "coolFill": 0.65,
+      "indirectStrength": 0.92,
+      "height": 0.0,
+      "textureSoftness": 0.0,
+      "textureContrast": 1.0
+    }
+  ],
+  "changedMaterials": 35,
+  "addedMaterials": 0,
+  "townShader": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LightResponse/PaintedTownLight.shader",
+  "foliageShader": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LightResponse/PaintedFoliageLight.shader",
+  "shaderErrors": false,
+  "shaderSupported": true,
+  "ambientHue": [
+    0.45,
+    0.76,
+    1.0
+  ],
+  "ambientHueLuminancePreserved": true,
+  "nighttimeLightingUnchanged": true,
+  "sourceShadersTexturesUvsAndPigmentsUnchanged": true,
+  "geometryTransformsCollidersLightsAndProfilesUnchanged": true,
+  "addedRenderers": 0,
+  "addedRuntimeComponents": 0,
+  "assetsSaved": true,
+  "sourceMaterialStates": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/01 Earth and sage in worn joints.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"01 Earth and sage in worn joints\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"1bee61c01f043f44382b6cc29c5a8917\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.025999998673796654},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.002099999925121665},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.03500000014901161},{\"first\":\"_TextureContrast\",\"second\":1.0},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.5},{\"first\":\"_UseVertexColor\",\"second\":1.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.38999995589256287,\"g\":0.38499996066093445,\"b\":0.29999998211860657,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/02 Jade lantern porcelain.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"02 Jade lantern porcelain\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":2,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"instanceID\":0},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.02500000037252903},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.2199999988079071},{\"first\":\"_TextureContrast\",\"second\":1.0},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.0},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.22999995946884155,\"g\":0.6800000071525574,\"b\":0.6200000047683716,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.48299989104270935,\"g\":1.4279999732971191,\"b\":1.3019999265670776,\"a\":2.0999999046325684}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/03 Soft amber mana inlay.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"03 Soft amber mana inlay\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":2,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"instanceID\":0},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.02500000037252903},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.2199999988079071},{\"first\":\"_TextureContrast\",\"second\":1.0},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.0},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.8199999928474426,\"g\":0.6000000238418579,\"b\":0.25999996066093445,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":1.8040000200271606,\"g\":1.3200000524520874,\"b\":0.5719999074935913,\"a\":2.200000047683716}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/04 Pastel limewash 0 Warm ivory limewash.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"04 Pastel limewash 0 Warm ivory limewash\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"3307a200f02447b46956b2ab5255cbe6\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.04500000178813934},{\"first\":\"_TextureContrast\",\"second\":1.0399999618530273},{\"first\":\"_TexturePivot\",\"second\":0.6499999761581421},{\"first\":\"_TextureSoftness\",\"second\":0.44999998807907104},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9325000047683716,\"g\":0.8274999856948853,\"b\":0.6800000071525574,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/05 Pastel limewash 2 Soft sage limewash.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"05 Pastel limewash 2 Soft sage limewash\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"3307a200f02447b46956b2ab5255cbe6\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.04500000178813934},{\"first\":\"_TextureContrast\",\"second\":1.0399999618530273},{\"first\":\"_TexturePivot\",\"second\":0.6499999761581421},{\"first\":\"_TextureSoftness\",\"second\":0.44999998807907104},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.5950000286102295,\"g\":0.7325000166893005,\"b\":0.6924999952316284,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/06 Pastel limewash 3 Warm ivory limewash.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"06 Pastel limewash 3 Warm ivory limewash\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"3307a200f02447b46956b2ab5255cbe6\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.04500000178813934},{\"first\":\"_TextureContrast\",\"second\":1.0399999618530273},{\"first\":\"_TexturePivot\",\"second\":0.6499999761581421},{\"first\":\"_TextureSoftness\",\"second\":0.44999998807907104},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9100000262260437,\"g\":0.8499999642372131,\"b\":0.7049999833106995,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/07 Pastel limewash 4 Soft ochre limewash.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"07 Pastel limewash 4 Soft ochre limewash\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"3307a200f02447b46956b2ab5255cbe6\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.04500000178813934},{\"first\":\"_TextureContrast\",\"second\":1.0399999618530273},{\"first\":\"_TexturePivot\",\"second\":0.6499999761581421},{\"first\":\"_TextureSoftness\",\"second\":0.44999998807907104},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.8174999952316284,\"g\":0.7325000166893005,\"b\":0.4925000071525574,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/08 Pastel limewash 5 Soft sage limewash.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"08 Pastel limewash 5 Soft sage limewash\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"3307a200f02447b46956b2ab5255cbe6\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.04500000178813934},{\"first\":\"_TextureContrast\",\"second\":1.0399999618530273},{\"first\":\"_TexturePivot\",\"second\":0.6499999761581421},{\"first\":\"_TextureSoftness\",\"second\":0.44999998807907104},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.6399999856948853,\"g\":0.7325000166893005,\"b\":0.625,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/09 Pastel limewash 6 Warm ivory limewash.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"09 Pastel limewash 6 Warm ivory limewash\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"3307a200f02447b46956b2ab5255cbe6\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.04500000178813934},{\"first\":\"_TextureContrast\",\"second\":1.0399999618530273},{\"first\":\"_TexturePivot\",\"second\":0.6499999761581421},{\"first\":\"_TextureSoftness\",\"second\":0.44999998807907104},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9125000238418579,\"g\":0.8499999642372131,\"b\":0.7049999833106995,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/10 Pastel limewash 7 Soft ochre limewash.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"10 Pastel limewash 7 Soft ochre limewash\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"3307a200f02447b46956b2ab5255cbe6\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.04500000178813934},{\"first\":\"_TextureContrast\",\"second\":1.0399999618530273},{\"first\":\"_TexturePivot\",\"second\":0.6499999761581421},{\"first\":\"_TextureSoftness\",\"second\":0.44999998807907104},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.8575000166893005,\"g\":0.699999988079071,\"b\":0.5199999809265137,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/11 Pastel limewash 8 Soft sage limewash.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"11 Pastel limewash 8 Soft sage limewash\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"3307a200f02447b46956b2ab5255cbe6\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.04500000178813934},{\"first\":\"_TextureContrast\",\"second\":1.0399999618530273},{\"first\":\"_TexturePivot\",\"second\":0.6499999761581421},{\"first\":\"_TextureSoftness\",\"second\":0.44999998807907104},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.6475000381469727,\"g\":0.7475000023841858,\"b\":0.6349999904632568,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/12 Pastel limewash 9 Warm ivory limewash.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"12 Pastel limewash 9 Warm ivory limewash\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"3307a200f02447b46956b2ab5255cbe6\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.04500000178813934},{\"first\":\"_TextureContrast\",\"second\":1.0399999618530273},{\"first\":\"_TexturePivot\",\"second\":0.6499999761581421},{\"first\":\"_TextureSoftness\",\"second\":0.44999998807907104},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.8774999976158142,\"g\":0.8399999737739563,\"b\":0.7400000095367432,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/13 Soft painted limestone.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"13 Soft painted limestone\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"1bee61c01f043f44382b6cc29c5a8917\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.025999998673796654},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.009999999776482582},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":0.9800000190734863},{\"first\":\"_Smoothness\",\"second\":0.06499999761581421},{\"first\":\"_TextureContrast\",\"second\":1.0499999523162842},{\"first\":\"_TexturePivot\",\"second\":0.550000011920929},{\"first\":\"_TextureSoftness\",\"second\":0.25},{\"first\":\"_UseVertexColor\",\"second\":1.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.8999999761581421,\"g\":0.8999999761581421,\"b\":0.8799999952316284,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/14 Painted civic blue slate.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"14 Painted civic blue slate\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"b5bd1e19e63036f4cafdb96dec0157bf\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0399999618530273},{\"first\":\"_Smoothness\",\"second\":0.1599999964237213},{\"first\":\"_TextureContrast\",\"second\":1.0800000429153442},{\"first\":\"_TexturePivot\",\"second\":0.20000000298023224},{\"first\":\"_TextureSoftness\",\"second\":0.30000001192092896},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.4699999988079071,\"g\":0.6700000166893005,\"b\":0.7799999713897705,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/15 Painted civic slate highlights.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"15 Painted civic slate highlights\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"b5bd1e19e63036f4cafdb96dec0157bf\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0399999618530273},{\"first\":\"_Smoothness\",\"second\":0.1599999964237213},{\"first\":\"_TextureContrast\",\"second\":1.0800000429153442},{\"first\":\"_TexturePivot\",\"second\":0.20000000298023224},{\"first\":\"_TextureSoftness\",\"second\":0.30000001192092896},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.6000000238418579,\"g\":0.7599999904632568,\"b\":0.8199999928474426,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/16 CivicWeatheredLimestone.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"16 CivicWeatheredLimestone\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"9b8ef0060dcccbb49af35c74a362e5c1\",\"type\":2},\"m_Scale\":{\"x\":0.2480158656835556,\"y\":0.4960317313671112},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.045499999076128006},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.05250000208616257},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9100000262260437,\"g\":0.925000011920929,\"b\":0.8799999952316284,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/17 CivicWornCutStone.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"17 CivicWornCutStone\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"d898bc35791d7854c9cd2f00e90d7f27\",\"type\":2},\"m_Scale\":{\"x\":0.7200000286102295,\"y\":0.7200000286102295},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.022749999538064003},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.017500000074505806},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9200000166893005,\"g\":0.9100000262260437,\"b\":0.8299999833106995,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/18 Cream worn coping.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"18 Cream worn coping\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"d898bc35791d7854c9cd2f00e90d7f27\",\"type\":2},\"m_Scale\":{\"x\":0.7200000286102295,\"y\":0.7200000286102295},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.022749999538064003},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.041999999433755875},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":1.0499999523162842,\"g\":1.0199999809265137,\"b\":0.9599999785423279,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/19 Joined warm pale kerbs.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"19 Joined warm pale kerbs\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"d898bc35791d7854c9cd2f00e90d7f27\",\"type\":2},\"m_Scale\":{\"x\":0.6000000238418579,\"y\":0.6000000238418579},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.022749999538064003},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.041999999433755875},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":1.0199999809265137,\"g\":1.0,\"b\":0.9100000262260437,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/20 ManaWell_PaintedLimestone.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"20 ManaWell_PaintedLimestone\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"b5bd1e19e63036f4cafdb96dec0157bf\",\"type\":3},\"m_Scale\":{\"x\":0.6499999761581421,\"y\":0.6499999761581421},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.8299999833106995,\"g\":0.8299999833106995,\"b\":0.7400000095367432,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/21 ManaWell_PaleCarvedStone.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"21 ManaWell_PaleCarvedStone\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"b5bd1e19e63036f4cafdb96dec0157bf\",\"type\":3},\"m_Scale\":{\"x\":0.6499999761581421,\"y\":0.6499999761581421},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9899999499320984,\"g\":0.9799999594688416,\"b\":0.8600000143051147,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/22 ManaWell_WarmStone.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"22 ManaWell_WarmStone\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"b5bd1e19e63036f4cafdb96dec0157bf\",\"type\":3},\"m_Scale\":{\"x\":0.6499999761581421,\"y\":0.6499999761581421},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.7799999713897705,\"g\":0.7400000095367432,\"b\":0.6200000047683716,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/23 Pale worn stone relief.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"23 Pale worn stone relief\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"d898bc35791d7854c9cd2f00e90d7f27\",\"type\":2},\"m_Scale\":{\"x\":0.7200000286102295,\"y\":0.7200000286102295},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.022749999538064003},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.041999999433755875},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":1.034999966621399,\"g\":1.0099999904632568,\"b\":0.949999988079071,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/24 Sage limestone foundations.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"24 Sage limestone foundations\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"d898bc35791d7854c9cd2f00e90d7f27\",\"type\":2},\"m_Scale\":{\"x\":0.6499999761581421,\"y\":0.6499999761581421},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.022749999538064003},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.041999999433755875},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.8299999833106995,\"g\":0.8799999952316284,\"b\":0.75,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/25 Sculpted limestone - shared matte painted pigment.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"25 Sculpted limestone - shared matte painted pigment\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"6efd0a8870f072f4284b495f3b05bcee\",\"type\":2},\"m_Scale\":{\"x\":0.1388888955116272,\"y\":0.2777777910232544},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.016249999403953552},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.006299999542534351},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9899999499320984,\"g\":0.9799999594688416,\"b\":0.9599999785423279,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/26 Soft grey lime recesses.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"26 Soft grey lime recesses\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"d898bc35791d7854c9cd2f00e90d7f27\",\"type\":2},\"m_Scale\":{\"x\":0.6499999761581421,\"y\":0.6499999761581421},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.022749999538064003},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.041999999433755875},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.7200000286102295,\"g\":0.7599999904632568,\"b\":0.7200000286102295,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/27 Varied hand laid painted limestone.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"27 Varied hand laid painted limestone\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"6efd0a8870f072f4284b495f3b05bcee\",\"type\":2},\"m_Scale\":{\"x\":0.1388888955116272,\"y\":0.2777777910232544},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.029249999672174454},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.026599999517202377},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9899999499320984,\"g\":0.9799999594688416,\"b\":0.9599999785423279,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/28 Warm coursed limestone.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"28 Warm coursed limestone\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"9b8ef0060dcccbb49af35c74a362e5c1\",\"type\":2},\"m_Scale\":{\"x\":0.2480158656835556,\"y\":0.4960317313671112},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.045499999076128006},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.05250000208616257},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0199999809265137},{\"first\":\"_Smoothness\",\"second\":0.08500000089406967},{\"first\":\"_TextureContrast\",\"second\":1.090000033378601},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.20000000298023224},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9899999499320984,\"g\":0.9799999594688416,\"b\":0.9599999785423279,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/29 Arkya _ chaume _ painted.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"29 Arkya _ chaume _ painted\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":true,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":5302201444798301844,\"guid\":\"a942e86624e8e19479a5ad24b0a5d354\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":0.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":0.8999999761581421},{\"first\":\"_Smoothness\",\"second\":0.03500000014901161},{\"first\":\"_TextureContrast\",\"second\":0.7300000190734863},{\"first\":\"_TexturePivot\",\"second\":0.30000001192092896},{\"first\":\"_TextureSoftness\",\"second\":2.0},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":1.0,\"g\":0.949999988079071,\"b\":0.8199999928474426,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/30 Painted beams V2.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"30 Painted beams V2\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"0be910ff98413a945956437251bf614f\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0499999523162842},{\"first\":\"_Smoothness\",\"second\":0.10999999940395355},{\"first\":\"_TextureContrast\",\"second\":1.159999966621399},{\"first\":\"_TexturePivot\",\"second\":0.18000000715255737},{\"first\":\"_TextureSoftness\",\"second\":0.30000001192092896},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.8199999928474426,\"g\":0.6700000166893005,\"b\":0.5099999904632568,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/31 Painted boards V2.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"31 Painted boards V2\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"fileID\":2800000,\"guid\":\"0be910ff98413a945956437251bf614f\",\"type\":3},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0499999523162842},{\"first\":\"_Smoothness\",\"second\":0.10999999940395355},{\"first\":\"_TextureContrast\",\"second\":1.159999966621399},{\"first\":\"_TexturePivot\",\"second\":0.18000000715255737},{\"first\":\"_TextureSoftness\",\"second\":0.30000001192092896},{\"first\":\"_UseVertexColor\",\"second\":0.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":0.9200000166893005,\"g\":0.800000011920929,\"b\":0.6399999856948853,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Sculpted oak and warm bindings.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"Sculpted oak and warm bindings\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"instanceID\":0},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.1599999964237213},{\"first\":\"_TextureContrast\",\"second\":1.0},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.0},{\"first\":\"_UseVertexColor\",\"second\":1.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Blue forged metal.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"Blue forged metal\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"instanceID\":0},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.2800000011920929},{\"first\":\"_TextureContrast\",\"second\":1.0},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.0},{\"first\":\"_UseVertexColor\",\"second\":1.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Golden bundled hay.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"Golden bundled hay\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"instanceID\":0},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.05000000074505806},{\"first\":\"_TextureContrast\",\"second\":1.0},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.0},{\"first\":\"_UseVertexColor\",\"second\":1.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Courtyard earth and leaf litter.mat",
+      "serialized": "{\"Material\":{\"serializedVersion\":\"8\",\"m_Name\":\"Courtyard earth and leaf litter\",\"m_Shader\":{\"fileID\":4800000,\"guid\":\"dc99f21712919dc4d83768c329f01716\",\"type\":3},\"m_Parent\":{\"instanceID\":0},\"m_ModifiedSerializedProperties\":0,\"m_ValidKeywords\":[],\"m_InvalidKeywords\":[],\"m_LightmapFlags\":4,\"m_EnableInstancingVariants\":true,\"m_DoubleSidedGI\":false,\"m_CustomRenderQueue\":-1,\"stringTagMap\":{},\"disabledShaderPasses\":[],\"m_LockedProperties\":\"\",\"m_SavedProperties\":{\"serializedVersion\":\"3\",\"m_TexEnvs\":[{\"first\":\"_BaseMap\",\"second\":{\"m_Texture\":{\"instanceID\":0},\"m_Scale\":{\"x\":1.0,\"y\":1.0},\"m_Offset\":{\"x\":0.0,\"y\":0.0}}}],\"m_Ints\":[],\"m_Floats\":[{\"first\":\"_CavityStrength\",\"second\":0.0},{\"first\":\"_Cull\",\"second\":2.0},{\"first\":\"_DayEmissionScale\",\"second\":0.0},{\"first\":\"_HeightStrength\",\"second\":0.0},{\"first\":\"_NightEmissionScale\",\"second\":1.0},{\"first\":\"_Saturation\",\"second\":1.0},{\"first\":\"_Smoothness\",\"second\":0.019999999552965164},{\"first\":\"_TextureContrast\",\"second\":1.0},{\"first\":\"_TexturePivot\",\"second\":0.2199999988079071},{\"first\":\"_TextureSoftness\",\"second\":0.0},{\"first\":\"_UseVertexColor\",\"second\":1.0}],\"m_Colors\":[{\"first\":\"_BaseColor\",\"second\":{\"r\":1.0,\"g\":1.0,\"b\":1.0,\"a\":1.0}},{\"first\":\"_EmissionColor\",\"second\":{\"r\":0.0,\"g\":0.0,\"b\":0.0,\"a\":1.0}}]},\"m_BuildTextureStacks\":[],\"m_AllowLocking\":true}}"
+    }
+  ],
+  "scope": "Daylight indirect fill only, with explicit bounded energy. Existing warm sun, moon, lamps, PBR highlights and weather retained. Fine masonry relief softened.",
+  "limitations": "This does not alter architectural silhouettes, replace the sky, add terrain vegetation or establish a baked-lighting workflow."
+}

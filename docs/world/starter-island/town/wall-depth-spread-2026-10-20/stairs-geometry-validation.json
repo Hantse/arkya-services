@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "rows": [
+    {
+      "name": "Stairway - West",
+      "contactSamples": 31,
+      "clearanceSamples": 291,
+      "maximumWallGap": 0.0,
+      "meshCollider": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/CompactWallStairs/Meshes/Stairway - West real stepped collision.asset"
+    },
+    {
+      "name": "Stairway - East",
+      "contactSamples": 34,
+      "clearanceSamples": 291,
+      "maximumWallGap": 0.0,
+      "meshCollider": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/CompactWallStairs/Meshes/Stairway - East real stepped collision.asset"
+    }
+  ],
+  "failures": [],
+  "utc": "2026-10-20T11:41:31.8340023Z"
+}

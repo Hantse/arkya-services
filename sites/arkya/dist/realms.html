@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111d28">
+  <meta name="description" content="Les realms d’Arkya : consultez leur état et retrouvez la page de chaque monde.">
+  <meta property="og:locale" content="fr_FR">
+  <title>Arkya — Realms</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/realms.css">
+  <script src="/realm-copy.js" defer></script>
+  <script src="/i18n.js" defer></script>
+  <script src="/realms.mjs" type="module"></script>
+</head>
+<body class="realm-page">
+  <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
+  <header class="site-header realm-header">
+    <a class="brand" href="https://arkya.online/?lang=fr" data-realm-global-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
+    <a class="realm-header-link" href="https://arkya.online/?lang=fr" data-realm-global-link data-i18n="realm.navAtlas">Découvrir Arkya</a>
+    <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true" class="active">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+  </header>
+  <main id="contenu" class="realm-main section-shell">
+    <section class="realm-intro" aria-labelledby="realms-title">
+      <p class="eyebrow" data-i18n="realm.eyebrow">LES MONDES D’ARKYA</p>
+      <h1 id="realms-title" data-i18n-html="realm.catalogueTitle">Un monde à <em>rejoindre.</em></h1>
+      <p data-i18n="realm.catalogueIntro">Retrouvez les realms d’Arkya et consultez leur état avant votre prochaine aventure.</p>
+    </section>
+    <section class="realm-registry" data-realm-list aria-label="Realms">
+      <div class="realm-feed-bar"><p data-realm-feed-status role="status" data-i18n="realm.loading">Chargement des realms…</p><button class="realm-refresh" type="button" data-realm-refresh data-i18n="realm.retry">Actualiser</button></div>
+      <div data-realm-items></div>
+      <p class="realm-empty" data-realm-message hidden></p>
+      <p class="realm-footnote" data-i18n="realm.readinessNote">L’état des serveurs ne garantit pas l’ouverture des admissions en jeu.</p>
+      <p class="realm-footnote" data-i18n="realm.refreshNote">Actualisation toutes les 10 secondes lorsque cette page est visible.</p>
+      <noscript><p class="realm-empty" data-i18n="realm.noScript">Activez JavaScript pour consulter l’état actuel des realms.</p></noscript>
+    </section>
+  </main>
+  <footer class="realm-footer section-shell"><span>ARKYA</span><a href="https://arkya.online/?lang=fr" data-realm-global-link data-i18n="realm.navAtlas">Découvrir Arkya</a></footer>
+</body>
+</html>

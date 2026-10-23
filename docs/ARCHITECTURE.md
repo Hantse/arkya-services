@@ -1,5 +1,28 @@
 # Architecture Arkya
 
+Les [sites dédiés aux realms](REALM_SITES.md) ajoutent une liste publique sur
+le site principal, une page `https://{realmId}.arkya.online/` et un espace
+opérateur `https://{realmId}.admin.arkya.online/`. Ils partagent les services
+existants : Realms expose un DTO anonyme limité, actualisé périodiquement,
+et Admin conserve les sessions et les mutations. La connexion Discord reste
+centrale et les cookies partagés sont limités au domaine `admin.arkya.online`.
+Le profil GitOps `admin` active directement le routage wildcard et l'espace
+Admin dédié, sans changer le chemin de l'Application Argo existante.
+Les entrées DNS et les certificats TLS sont configurés sur l'entrée publique.
+
+Les [sessions renouvelables](AUTH_SESSIONS.md) conservent la séparation joueur/admin :
+Identity possède les familles de refresh des joueurs ; Admin possède désormais
+ses sessions dans `arkya_admin`, avec allowlist revérifiée, rotation et révocation.
+Le [launcher Windows](WINDOWS_LAUNCHER.md) distribue des builds Unity complets
+via manifeste HTTPS, archive vérifiée et installation dans le profil utilisateur.
+Il effectue aussi la connexion Discord et remet en mémoire la session Arkya au
+jeu Windows ; Unity la revalide avant d’afficher la sélection ou la création.
+
+La [console d'administration](ADMIN_CONSOLE.md) consulte les comptes via
+Identity et les personnages/leases via Characters. Identity conserve bans,
+droits bêta et audit ; Characters applique le contrôle bêta à l'admission et
+aux renouvellements. Admin reste un client privé sans accès direct aux bases.
+
 Arkya utilise Unity DOTS (Data-Oriented Technology Stack) pour la simulation temps réel et Netcode for Entities pour le multijoueur sous autorité serveur. La simulation, exécutée par un serveur dédié Unity, est séparée des services ASP.NET Core qui possèdent les comptes et les données persistantes. La décision sur ces services est détaillée dans [0002 — Services backend](decisions/0002-backend-services.md).
 
 ## Vue d'ensemble
@@ -9,6 +32,8 @@ La cible réseau et services est détaillée dans [Backoffice et déploiement de
 ```mermaid
 flowchart LR
     Client["Client Unity web\nPrésentation des ghosts interpolés"]
+    NativeClient["Client Unity Windows\nSession vérifiée avant l’interface"]
+    Launcher["Launcher Windows\nConnexion Discord"]
     GameServer["Serveur dédié Unity DOTS\nSimulation autoritaire"]
     Gateway["Gateway YARP\napi.arkya.online"]
     Identity["Identity API\nDiscord, comptes, sessions"]
@@ -18,6 +43,10 @@ flowchart LR
     Discord["Discord\nOAuth2 et Social SDK"]
 
     Client <-->|Netcode for Entities sur WSS| GameServer
+    NativeClient <-->|Netcode for Entities sur WSS| GameServer
+    Launcher -->|HTTPS JSON| Gateway
+    Launcher -->|pipe Windows local| NativeClient
+    NativeClient -->|HTTPS JSON| Gateway
     Client -->|HTTPS JSON| Gateway
     Gateway -->|Routes publiques auth| Identity
     Gateway -->|Routes publiques personnages| Characters
@@ -28,7 +57,7 @@ flowchart LR
     Characters --> CharactersDb
 ```
 
-Identity et Characters possèdent les comptes, sessions et personnages persistants. La [scène Unity de création](CHARACTER_CREATION.md) branche leur création, liste et apparence sur ces services. Le web reçoit la session Arkya du site après connexion Discord, choisit une destination Realms et demande une admission à usage unique avant d’entrer sur l’île dédiée. Un [prototype Unity isolé](AREA_PROTOTYPE.md) conserve deux processus serveurs et deux clients sur une carte continue, avec transferts d’autorité et combat interzone ; son intégration avec cette admission reste à réaliser. Le bootstrap historique conserve son parcours décrit dans [Enter World](ENTER_WORLD_FLOW.md).
+Identity et Characters possèdent les comptes, sessions et personnages persistants. La [scène Unity de création](CHARACTER_CREATION.md) branche leur création, liste et apparence sur ces services. Le joueur Windows reçoit sa session du launcher ; le web la reçoit du site après connexion Discord. Après revalidation, le client choisit une destination Realms et demande une admission à usage unique avant d’entrer sur l’île dédiée. Un [prototype Unity isolé](AREA_PROTOTYPE.md) conserve deux processus serveurs et deux clients sur une carte continue, avec transferts d’autorité et combat interzone ; son intégration avec cette admission reste à réaliser. Le bootstrap historique conserve son parcours décrit dans [Enter World](ENTER_WORLD_FLOW.md).
 
 L’entrée publique préparée est maintenant **`api.arkya.online`**, avec [une gateway YARP](../backend/deploy/gateway/README.md). Le Traefik externe termine TLS et joint le LoadBalancer de la gateway à `192.168.100.218:80`. YARP transmet les chemins publics existants aux services sans ajouter de préfixe et sans rediriger le navigateur vers une adresse interne. Identity passe en ClusterIP via son profil `gateway`, avec un callback Discord sur `https://api.arkya.online/v1/auth/discord/callback`. Les anciens profils directs `identity.arkya.online` restent disponibles pour une installation sans gateway ; ils ne doivent pas occuper la même IP simultanément.
 
@@ -63,21 +92,45 @@ Le serveur dédié demande les données initiales et transmet les mutations pers
 
 ### Création, apparence et entrée sur l’île
 
-La scène `Assets/Arkya/Characters/Scenes/CharacterCreation.unity`, dans `Unity3D/Arkya/`, réunit l'interface UI Toolkit, le client HTTPS Identity/Characters et la présentation des modèles Humain/Elfe. Le rig Generic, les matériaux peints, la taille visuelle et les animations Idle/Walk/Run/Jump/SwimIdle/Swim appartiennent à la présentation. Ils ne possèdent aucune statistique autoritaire. Le choix de taille applique une échelle visuelle et ne change pas les collisions ou la vitesse.
+La scène `Assets/Arkya/Characters/Scenes/CharacterCreation.unity`, dans `Unity3D/Arkya/`, réunit l'interface UI Toolkit, le client HTTPS Identity/Characters et la présentation Valkyrie. Depuis le 22 octobre 2026, le catalogue visuel partage cette base entre les quatre couples historiques race/silhouette sans modifier leurs identifiants persistants ou réseau ; la nouvelle création propose uniquement le modèle humain féminin et sa coiffure longue disponibles. Le rig Generic, les matériaux peints, la taille visuelle et les animations Idle/Walk/Run/Jump/SwimIdle/Swim appartiennent à la présentation. Ils ne possèdent aucune statistique autoritaire. Le choix de taille applique une échelle visuelle et ne change pas les collisions ou la vitesse.
 
-`CharacterServiceClient` ouvre la connexion Discord dans le navigateur système et conserve la session Arkya et son expiration en mémoire. L'activation sociale ajoute un jeton d'accès Discord et un ticket de renouvellement en mémoire, via une autorisation distincte. Le client n'embarque ni secret Discord, ni clé de service, ni accès MongoDB. La création transmet un contrat d'apparence versionné ; Characters le valide et choisit le propriétaire à partir de la session.
+Cette migration visuelle conserve le contrat d’apparence version 1 et les
+valeurs déjà sauvegardées : les capacités de création du catalogue sont
+distinctes des identifiants acceptés par Characters et répliqués par Netcode.
+Le bouton **Nouveau** choisit `human/b/long` sans convertir un personnage
+existant. Le [bilan ciblé du 22 octobre](CHARACTER_CREATION.md#intégration-valkyrie--22-octobre-2026)
+compte 65 réussites sur 66 tests, sans échec ; le test avec services réels est
+ignoré faute de `ARKYA_WEB_BETA_TICKETS_FILE`.
 
-L'essai local crée ses propres mondes serveur/client Netcode sur loopback, port 17843. Le client envoie des intentions de déplacement par RPC ; le serveur vérifie la connexion, les séquences, les valeurs et les bornes avant de simuler le mouvement. La présentation lit un ghost interpolé pour placer et animer le modèle. Ces mondes sont détruits au retour à la création et restent séparés du prototype d'areas. Cet essai ne constitue pas une admission d'un personnage MongoDB dans un realm. Voir le [guide de création](CHARACTER_CREATION.md) pour les assets, la configuration et les limites.
+Dans le parcours Windows distribué, `LauncherIdentityClient` ouvre la connexion Discord dans le navigateur système auprès de l’origine Identity fixe `https://api.arkya.online`. La session Arkya reste en mémoire et `/v1/auth/me` est vérifié après la connexion puis avant le démarrage du jeu. `LauncherSessionHandoff` remet la session une seule fois sur un pipe Windows local et aléatoire, limité à l’utilisateur courant et au PID du jeu lancé. Le message et ses délais sont bornés ; seul le nom du pipe passe dans l’environnement, puis Unity l’efface. Le bearer ne passe ni par un fichier ni par les arguments du processus. L’usage unique porte sur la remise locale, pas sur la session HTTPS elle-même.
 
-Le bouton **Explorer l’île** charge `StarterIsland` de façon additive et conserve l’UI, la session et l’apparence de création. Le serveur possède une copie immuable du relief et applique les déplacements, les pentes, les sauts, la gravité, la nage et les obstacles statiques ; le client ne transmet aucune position. Chaque pression de saut porte une séquence consommée une seule fois par le serveur ; la vitesse verticale et la phase de traversée restent locales au serveur. Le champ de mouvement répliqué sélectionne la présentation au sol, en l’air ou dans l’eau. La nage utilise le niveau marin moyen ; les vagues restent visuelles. L’[essai natif local](world/STARTER_ISLAND_PLAYABLE.md) conserve ses deux mondes loopback, détruits avant de libérer le terrain et de décharger l’île.
+`CharacterNativeSessionBridge` et `CharacterServiceClient.ImportLauncherSessionAsync` revalident `/v1/auth/me` sur les origines intégrées au build. Le compte doit correspondre et l’expiration retenue ne peut dépasser celle de la remise. La sélection et la création restent masquées jusqu’à cette validation ; une session absente, invalide ou expirée laisse ces vues masquées ou les masque de nouveau et invite à quitter le jeu puis à se reconnecter dans le launcher. Une révocation distante est détectée lors des appels authentifiés. L’Editor conserve la connexion directe de `CharacterServiceClient` et l’aperçu sans compte ; le WebGL conserve la session du site. La connexion OAuth Discord réelle et le parcours complet launcher/jeu Windows construit/dédié restent à valider pour cette révision.
+
+Les origines de l’asset de scène restent locales pour le développement. Le
+workflow Windows fournit les trois origines Identity, Characters et Reports
+`https://api.arkya.online` à `CiBuild.ClientEndpointOverride`, qui les intègre au
+build puis restaure l’asset source. Le pipe ne transporte aucune URL ; la remise
+de session ne remplace pas cette configuration pendant l’exécution.
+
+L’activation sociale ajoute un jeton d’accès Discord et un ticket de renouvellement en mémoire, via une autorisation distincte. Le client n’embarque ni secret Discord, ni clé de service, ni accès MongoDB. La création transmet un contrat d’apparence versionné ; Characters le valide et choisit le propriétaire à partir de la session.
+
+L’essai local, réservé à l’Editor sans compte, crée ses propres mondes serveur/client Netcode sur loopback, port 17843. Le client envoie des intentions de déplacement par RPC ; le serveur vérifie la connexion, les séquences, les valeurs et les bornes avant de simuler le mouvement. La présentation lit un ghost interpolé pour placer et animer le modèle. Ces mondes sont détruits au retour à la création et restent séparés du prototype d’areas. Cet essai ne constitue pas une admission d’un personnage MongoDB dans un realm. Voir le [guide de création](CHARACTER_CREATION.md) pour les assets, la configuration et les limites.
+
+Dans l’Editor, le bouton **Explorer l’île (Editor)** charge `StarterIsland` de façon additive et conserve l’UI et l’apparence de création. Le serveur possède une copie immuable du relief et applique les déplacements, les pentes, les sauts, la gravité, la nage et les obstacles statiques ; le client ne transmet aucune position. Chaque pression de saut porte une séquence consommée une seule fois par le serveur ; la vitesse verticale et la phase de traversée restent locales au serveur. Le champ de mouvement répliqué sélectionne la présentation au sol, en l’air ou dans l’eau. La nage utilise le niveau marin moyen ; les vagues restent visuelles. L’[essai local](world/STARTER_ISLAND_PLAYABLE.md) conserve ses deux mondes loopback, détruits avant de libérer le terrain et de décharger l’île. Le joueur Windows distribué utilise l’admission au dédié, sans repli vers cet essai.
 
 En WebGL, `CharacterWebSessionBridge` reçoit la session du site et Unity la revalide ; aucun essai loopback n’est autorisé. Après sélection du realm/personnage, Characters délivre un ticket court. `CharacterNetworkWorlds` crée uniquement un client WebSocket ; `CharacterServerAdmissionSystem` consomme ce ticket via HTTPS avant `ConnectionApproved` et le spawn du ghost. L’identité et l’apparence répliquées viennent de la réponse serveur. Chaque ghost porte un propriétaire Netcode, tandis que la présentation interpole tous les acteurs et réserve les entrées/caméra au personnage possédé.
 
-Le dedicated charge une copie de l’île avec colliders préparés avant stripping. Il réutilise la simulation ECS de terrain et les collisions statiques Unity, renouvelle la lease toutes les 20 secondes et sauvegarde position/orientation toutes les 15 secondes ainsi qu’à la fermeture. Les écritures sont conditionnées par lease, époque et révision. Une expiration ou un refus d’autorité arrête l’acteur. Le [guide bêta web](WEB_BETA.md) documente builds, configuration, validation et limites : une île par realm, sans intégration des quêtes, de l’inventaire ou des transferts multi-area dans ce parcours.
+Le dedicated charge une copie de l’île avec colliders préparés avant stripping. Il réutilise la simulation ECS de terrain et les collisions statiques Unity, renouvelle la lease toutes les 20 secondes et sauvegarde position/orientation toutes les 15 secondes ainsi qu’à la fermeture. Les écritures sont conditionnées par lease, époque et révision. Une expiration ou un refus d’autorité arrête l’acteur. Le [guide bêta web](WEB_BETA.md) conserve le parcours historique. Le [runtime de handoff StarterIsland](STARTER_ISLAND_HANDOFF.md) ajoute en version 2 une topologie de partitions et le transfert du snapshot de déplacement avec sa lease. Les quêtes, l’inventaire et le combat du prototype gameplay ne sont pas intégrés à cet acteur admis.
 
 ### Realms et domaines de simulation
 
-Un realm est un univers logique persistant choisi par le joueur. Un personnage appartient à ce realm. Une area est une portion de sa simulation prise en charge par un processus Unity : traverser une frontière d'area conserve le même personnage et le même realm. Le nombre de processus peut évoluer sans changer cette identité. La [décision 0003](decisions/0003-realms-and-area-authority.md) précise cette distinction.
+Un realm est un univers logique persistant choisi par le joueur. Son déploiement regroupe les dedicateds de toutes ses îles et les capacités prévues pour les instances et les raids. Chaque île configure son identifiant, ses dimensions, son origine et son nombre de domaines d'autorité. Une area est l'un de ces domaines, simulé par un processus Unity : traverser sa frontière conserve le même personnage, la même île et le même realm. Quatre dedicateds pour une île signifient quatre portions de cette île, chacune avec une seule réplique Kubernetes. La [décision 0003](decisions/0003-realms-and-area-authority.md) précise cette distinction.
+
+La topologie est définie à la création du realm et conservée dans un snapshot de profil. Une édition explicite avec révision attendue peut encore changer ce plan et son profil en état `Draft`. Dès qu'un déploiement est engagé, le découpage reste figé ; une migration à chaud demandera un workflow de drain distinct. La liste accepte toutes les îles à prévoir, sans règle spécifique à StarterIsland. Les dimensions utilisent le plan X/Z Unity : une île de 1 000 × 1 000 à l'origine (0, 0), répartie sur quatre dedicateds, produit quatre domaines de 500 × 500. Les frontières intérieures appartiennent à un seul domaine selon des intervalles semi-ouverts ; le bord extérieur maximal reste inclus. Les indices, le nombre de partitions et leurs bornes décrivent le plan de simulation. Le build doit encore disposer du contenu et du routage correspondants.
+
+Les compteurs dédiés aux instances et raids décrivent des emplacements de processus distincts des partitions d'île. Leur allocation à une partie ou à un groupe, les droits d'entrée, le retour au monde ouvert et leur cycle de vie restent à implémenter. Ces instances privées conservent le realm du personnage.
+
+Le plan peut être enregistré avec un profil historique, mais son déploiement exige une déclaration figée de compatibilité, des processus d’île et la paire réseau `2 / arkya-partition-handoff-v1` ; sinon il est refusé avec `topology_runtime_unsupported`. Le catalogue publie les bornes et les destinations des plans d’île compatibles. Characters résout la partition de la position persistée et impose la correspondance exacte de la paire client. Les API gardent le parcours `1 / arkya-web-beta-v1` pour les images historiques. Les compteurs d’instances ou de raids restent enregistrables mais empêchent le déploiement avec le runtime v2 actuel. Les autres contenus d’île doivent encore être fournis et intégrés ; la configuration ne charge pas automatiquement une nouvelle scène.
 
 Le combat doit rester continu entre areas voisines d'un même realm. Le serveur propriétaire d'une entité reste seul autorisé à en modifier l'état. Les propriétaires échangent les observations nécessaires aux cibles proches ; celui de la cible valide et applique un impact une seule fois. Une frontière technique ne crée ni arrêt du combat ni nouvelle scène. Un changement de realm est une autre opération, à définir explicitement.
 
@@ -89,6 +142,24 @@ La [météo de l’île](world/STARTER_ISLAND_WEATHER.md) suit également un cal
 
 Le prototype actuel emploie des identifiants de test et deux areas fixes sur loopback, sans catalogue de realms ni lien avec les personnages MongoDB. Ses ghosts sont interpolés et chaque client se connecte aux deux serveurs. Son protocole illustre préparation, libération et activation de l'autorité par époque, en conservant l'historique et le registre d'impacts ; il ne fournit pas encore une migration durable ou une gestion d'intérêt adaptée au MMORPG complet.
 
+Le passage du joueur utilise une préparation idempotente, un claim cible sans
+lease active, un seal du snapshot final puis un commit atomique dans le document
+MongoDB de lease. Le commit remplace le serveur et la lease, puis incrémente
+l'époque ; les anciennes écritures sont refusées. Le snapshot conserve la
+position, l'orientation, les intentions, les séquences d'entrée/saut et l'état
+complet de traversée actuellement présent sur cet acteur. La seconde connexion
+cliente est préparée avant la bascule et la présentation suit l'identité
+persistante et l'époque. Une annulation et un commit concurrents ne peuvent
+pas gagner ensemble. Les [contrats et preuves du handoff](STARTER_ISLAND_HANDOFF.md)
+décrivent les timeouts et la reconnexion depuis l'état durable.
+
+Cette tranche concerne le joueur admis sur StarterIsland. La visibilité
+frontalière des autres autorités, les PNJ, les effets de combat dédupliqués et
+l'allocation de parties privées restent séparés. Un run réel avec quatre
+exécutables dedicated et un client Unity Editor rendu a réussi six handoffs,
+avec un blocage maximal mesuré de 0,43 seconde près d'une frontière. Le client
+natif exporté et le déploiement public restent à valider.
+
 ## Services ASP.NET Core
 
 Le [profil de déploiement progressif Admin](../backend/deploy/gitops/admin/README.md)
@@ -98,27 +169,41 @@ Le HTTPS public est terminé par Traefik ; Admin appelle Content/Realms
 en HTTP privé, avec activation explicite limitée aux noms Kubernetes.
 Les API vérifient le pair réseau direct contre une liste de réseaux privés,
 en plus de leurs clés d'authentification ; les NetworkPolicies limitent
-leurs entrées aux pods Admin. Les exigences HTTPS des autres profils
+leurs entrées aux pods Admin, ainsi qu'aux pods Gateway pour le feed public Content. Les exigences HTTPS des autres profils
 restent inchangées. Les modules Quêtes et Realms sont disponibles, tandis
 que le déployeur Kubernetes et l'admission de jeu restent désactivés
 jusqu'à la configuration des dedicateds.
 
 | Projet | Responsabilité | Données possédées |
 | --- | --- | --- |
-| `Arkya.Gateway` | Reverse proxy YARP, routes publiques Identity/Characters et backoffice facultatif sur un domaine distinct ; aucune API interne/dev | Aucune donnée métier |
+| `Arkya.Gateway` | Reverse proxy YARP, routes publiques explicitement autorisées dont Identity, Characters et publications Content ; backoffice sur un domaine distinct | Aucune donnée métier |
 | `Arkya.Identity.Api` | Connexion Discord, identité Arkya, création, validation et révocation des sessions | Comptes, challenges de connexion, sessions dans `arkya_identity` |
 | `Arkya.Characters.Api` | Personnages du compte, validation d’apparence, liaison au realm, admission, leases et sauvegarde autoritaire de position | Personnages, admissions et état persistant dans `arkya_characters` |
-| `Arkya.Content.Api` | Brouillons de quêtes, validation et publication de catalogues immuables | Révisions et publications dans `arkya_content` |
-| `Arkya.Admin` | Interface web authentifiée pour éditer/publier le contenu et créer/déployer/suivre les realms | Aucune donnée métier ; appels serveur vers Content et Realms |
+| `Arkya.Content.Api` | Brouillons de quêtes, catalogues immuables, actualités et notes de version publiables | Catalogues et `content_posts` dans `arkya_content` |
+| `Arkya.Reports.Api` | Bugs (F8) et suggestions (F9) avec capture, type immuable, suivi, tags et révisions de triage | Rapports et PNG bornés dans `arkya_reports` |
+| `Arkya.Admin` | Interface web authentifiée pour le contenu, les realms et les signalements ; MCP Reports facultatif | Sessions d’administration dans `arkya_admin` ; données métier via les autres services |
 | `Arkya.Realms.Api` | Catalogue opérateur des realms, demandes de déploiement durables et observation des dedicated k3s | Définitions, profils figés et état des opérations dans `arkya_realms` |
 | `Arkya.Backend.Api` | Ancien parcours local : annuaire de serveurs mock et connexion de développement | Sessions de développement en mémoire |
 | `Arkya.ServiceDefaults` | Bibliothèque technique commune : options MongoDB et authentification des appels de service | Aucune donnée métier |
+
+Les [signalements](BUG_REPORTS.md) utilisent l'introspection Identity pour
+attribuer le propriétaire, une insertion MongoDB atomique rapport/capture,
+un UUID de retry par compte et des mises à jour administrateur conditionnées
+par révision. Admin expose une interface de triage et, sur activation explicite,
+un MCP HTTP `/mcp/reports` authentifié par un bearer distinct de sa clé Reports.
+Les outils partagés de `Arkya.Reports.Mcp` servent aussi l'hôte stdio
+`Arkya.Admin.Mcp`. Aucun de ces outils n'exécute de code ni ne déploie de build :
+Codex utilise les preuves pour travailler dans le dépôt, puis consigne la validation.
+Le [profil Reports](../backend/deploy/gitops/reports/README.md) étend Admin
+sans modifier les profils antérieurs ; ses secrets et son image sont provisionnés
+avant activation. Son exception HTTP privée Identity concerne uniquement
+`/internal/sessions`, vérifiée sur le pair réseau direct.
 
 `Arkya.Realms.Api` fournit le catalogue opérateur et le déploiement de processus dédiés dans des namespaces k3s préautorisés. Son catalogue interne de destinations est désormais exposé aux joueurs authentifiés par Characters. Characters lie atomiquement le personnage à un `realmId` et délivre un ticket seulement pour une destination compatible et activée. Les noms de personnages restent globalement uniques ; l’identité du compte et l’appartenance au realm sont vérifiées côté services.
 
 Les nouvelles API ciblent .NET 10. Chaque service sépare contrats HTTP, règles applicatives et adaptateurs de persistance. Les documents MongoDB restent internes. Un `accountId` Arkya est stable et distinct de l'identifiant Discord ; Characters conserve cette référence sans lire la base Identity.
 
-La gateway conserve l’authentification et les règles métier dans les services. Son allowlist de routes API est explicite : connexion web Identity et endpoints publics Characters. Un routage Admin facultatif dessert exclusivement son domaine configuré, distinct de `api.arkya.online` ; les API Content et Realms restent internes. Les routes Social SDK restent hors de cette exposition web. Les futures routes doivent être ajoutées volontairement et testées. Les workflows GitHub Actions construisent et publient séparément les images Identity, Gateway, Admin et Realms dans GHCR.
+La gateway conserve l’authentification et les règles métier dans les services. Son allowlist de routes API est explicite : elle inclut la connexion Identity, les endpoints joueurs activés et les lectures de publications Content. `Gateway:ContentEnabled` expose seulement `GET /v1/content/posts` et `GET /v1/content/posts/{id}`, avec `OPTIONS`. Un routage Admin facultatif dessert exclusivement son domaine configuré, distinct de `api.arkya.online` ; la gestion Content, les catalogues de quêtes du dedicated et les API Realms restent internes. Les routes Social SDK restent hors de cette exposition web. Les futures routes doivent être ajoutées volontairement et testées. Le workflow `Services images` vérifie les services, publie leurs images et promeut ensemble les dix digests dans GitOps.
 
 Un même processus MongoDB peut héberger les deux bases en développement. Chaque service reste seul propriétaire de sa base : pas de jointure entre bases ni de lecture directe des collections d'un autre service. En déploiement, fournir des comptes MongoDB limités à leur base ; les identifiants administrateur du Compose servent uniquement au développement local.
 
@@ -126,13 +211,13 @@ Un même processus MongoDB peut héberger les deux bases en développement. Chaq
 
 Le fournisseur initial est Discord, avec le flux OAuth2 Authorization Code et le seul scope `identify` pour la connexion du compte Arkya. Le secret de l'application Discord et l'échange du code restent dans Identity. Ce parcours de connexion ne transmet aucun jeton Discord au client Unity. Ce fonctionnement suit les mécanismes documentés par [Discord OAuth2](https://docs.discord.com/developers/topics/oauth2).
 
-Le protocole Arkya relie le client natif au navigateur :
+Le protocole Arkya relie le launcher Windows au navigateur ; le client Unity dans l’Editor conserve ce flux pour le développement :
 
-1. Le client génère un `codeVerifier` aléatoire, conservé localement, et envoie son empreinte S256 à `POST /v1/auth/discord/challenges`.
+1. Le launcher, ou le client dans l’Editor, génère un `codeVerifier` aléatoire, conservé en mémoire, et envoie son empreinte S256 à `POST /v1/auth/discord/challenges`.
 2. Identity renvoie une URL d'autorisation sous son propre domaine et un challenge valable cinq minutes.
 3. Le navigateur ouvre cette URL. Identity crée un état OAuth à usage unique et un cookie de corrélation `Secure`, `HttpOnly`, `SameSite=Lax`, puis redirige vers Discord.
 4. Discord revient sur le callback HTTPS fixe d'Identity. Identity vérifie l'état et le cookie, échange le code et associe le compte Arkya au compte Discord.
-5. Le client interroge `POST /v1/auth/discord/exchange` avec le challenge et son vérificateur. La réponse est en attente (`202`) ou fournit une session Arkya, une seule fois (`200`).
+5. Le launcher, ou le client dans l’Editor, interroge `POST /v1/auth/discord/exchange` avec le challenge et son vérificateur. La réponse est en attente (`202`) ou fournit une session Arkya, une seule fois (`200`). Le launcher ne demande pas de cookie de renouvellement et vérifie ensuite `/v1/auth/me`.
 
 La preuve S256 appartient au protocole de remise Arkya ; elle ne présume pas d'un support PKCE chez Discord. Une session Arkya est un jeton opaque aléatoire dont seule l'empreinte est persistée. Sa durée par défaut est de huit heures. Expiration et révocation sont vérifiées lors des lectures, indépendamment du nettoyage différé par index TTL MongoDB.
 
@@ -158,6 +243,21 @@ La résolution ne donne pas un droit d'entrée en jeu : elle ne réserve pas un 
 
 La bêta ajoute `realmId` aux personnages et les routes authentifiées `GET /v1/realms` et `POST /v1/characters/{id}/admissions`. Un personnage historique sans realm est lié atomiquement à sa première admission valide ; le client ne peut ensuite changer ce realm. Le dedicated consomme le ticket une seule fois avec une clé liée à son identité, puis reçoit une lease de 90 secondes au plus et une époque d’autorité. Les sauvegardes exigent la lease, l’époque et la révision attendue. Le [contrat web](WEB_BETA_CONTRACT.md) précise les DTO, expirations et garanties de rejeu.
 
+### Actualités et notes de version
+
+Content conserve les articles en texte brut dans `content_posts`, avec ID stable,
+schéma, révision, brouillon et snapshot publié facultatif. L'Admin utilise ses
+contrôles de session, antiforgery et sa clé Content privée. La publication et la
+dépublication exigent la révision attendue ; une édition conserve le snapshot
+public précédent jusqu'à une nouvelle publication. Les notes de version portent
+une `gameVersion`, tandis que les actualités restent distinctes.
+
+Le launcher et le site peuvent consulter le feed anonyme publié, filtré par type
+et langue avec pagination bornée. Le routage public ne donne accès ni aux
+brouillons ni aux mutations. Aucun article n'est prépublié au démarrage ; une
+indisponibilité de Content est distinguée d'un feed vide. Le [guide des
+publications](PUBLICATIONS.md) décrit les contrats et le backoffice.
+
 ### Contenu et progression des quêtes
 
 L'administration web ASP.NET Razor Pages édite un brouillon complet via Content. Une sauvegarde porte la révision attendue ; une édition concurrente est refusée. Une publication fige cette révision dans un catalogue identifié par UUID, avec `schemaVersion = 1`. Répéter la publication d'une même révision retourne la même version. Le dedicated n'accède jamais directement à MongoDB ni aux brouillons.
@@ -174,7 +274,7 @@ L'administration conserve un cookie et une protection antiforgery ; sa clé de p
 
 `Arkya.Backend.Api` conserve `GET /health`, `GET /servers` et `POST /dev/auth/login`. Cette dernière route est enregistrée uniquement dans l'environnement `Development`. Ses jetons prévisibles et son stockage en mémoire appartiennent au bootstrap local ; Identity et Characters ne les acceptent pas.
 
-Le bootstrap Unity historique appelle toujours ce parcours. La scène de création fournit `connexion Discord → création/sélection du personnage` avec Identity et Characters ; le web ajoute l’admission réelle dans l’île dédiée. L’essai natif local de locomotion ne délivre aucun droit d’entrée et reste distinct de cette admission.
+Le bootstrap Unity historique appelle toujours ce parcours. Le parcours Windows actuel fournit `connexion Discord dans le launcher → revalidation Unity → royaume → création/sélection du personnage → admission au dédié` avec Identity et Characters ; le web conserve sa session fournie par le site. L’essai local de locomotion, réservé à l’Editor sans compte, ne délivre aucun droit d’entrée et reste distinct de cette admission.
 
 ## Transport entre serveur dédié et services
 
@@ -189,9 +289,17 @@ Les routes internes interservices utilisent `X-Arkya-Service-Key` avec une clé 
 ## Prochaines frontières
 
 - Valider et déployer le parcours bêta complet sur les vrais domaines : site, build WebGL, API, image Linux dédiée et endpoint WSS.
-- Raccorder l’admission et ses leases au prototype multi-area, aux groupes et aux futures copies de l’île.
+- Valider le client natif exporté et le parcours public après la preuve réussie des quatre dedicateds StarterIsland avec client Editor, puis étendre le handoff aux interactions frontalières, aux groupes et aux futures copies de l’île.
 - Étendre les mutations persistantes au combat, à l’inventaire et à la progression avec leurs garanties de concurrence/rejeu.
 - Mesurer capacité serveur, latence navigateur et budgets de contenu avant l’ouverture publique.
 - Ajouter les services sociaux, d'économie et d'exploitation au rythme des besoins métier.
 
 La configuration locale, les limites de cette tranche et la vérification se trouvent dans le [README backend](../backend/README.md).
+
+## Machines d'inférence et workers LFM
+
+`Arkya.Inference.Api` possède le registre des machines, leurs jetons hachés, les autorisations temporaires d'inscription et les configurations de workers dans la base MongoDB `arkya_inference`. Admin émet une clé d'installation de 30 minutes, sans précréer de machine. L'installateur génère et protège le jeton permanent localement, puis inscrit automatiquement la machine en liant cette autorisation à son identité. Les reprises sont idempotentes et une autre machine ne peut pas réutiliser la clé. Les routes opérateur restent internes ; Gateway expose uniquement l'inscription et le heartbeat HTTPS authentifiés.
+
+Un agent supervise plusieurs processus Ollama CPU isolés, partageant seulement le cache des poids. Chaque worker possède un modèle autorisé et un nombre de threads, modifiables depuis Admin. Le catalogue commun propose initialement LFM2.5-1.2B et Qwen3.5-0.8B quantifiés ; il n'accepte pas d'URL ou de modèle arbitraire transmis par l'opérateur. Un changement laisse finir le dialogue courant, puis remplace uniquement le processus concerné. La démo locale distribue chaque dialogue à un worker libre et borne sa file d'attente. La configuration initiale prévoit trois workers LFM de quatre threads ; le dimensionnement reste à mesurer sur la machine cible. Les processus et leurs ports demeurent locaux à la machine Windows.
+
+Ce contrôle de capacité ne possède pas les PNJ, leurs souvenirs ni l'autorité de gameplay. Un futur raccordement des dialogues du dedicated devra garder les règles, les transactions et la mémoire persistante sous contrôle serveur. Le package Windows, les limites, les contrats et le profil de déploiement optionnel sont décrits dans [Agents d'inférence](INFERENCE_AGENTS.md).

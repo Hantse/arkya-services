@@ -1,0 +1,73 @@
+{
+  "success": true,
+  "connectedHostAndClient": true,
+  "proxies": 0,
+  "waypoints": [
+    {
+      "name": "middle-ascent",
+      "server": {
+        "x": 509.100372,
+        "y": 53.619915,
+        "z": 531.183838
+      },
+      "client": {
+        "x": 509.282318,
+        "y": 53.6200027,
+        "z": 531.143433
+      },
+      "heightOk": true,
+      "grounded": true,
+      "clientServerDistance": 0.186378285
+    },
+    {
+      "name": "wall-top",
+      "server": {
+        "x": 502.871338,
+        "y": 56.1053352,
+        "z": 532.585754
+      },
+      "client": {
+        "x": 502.707031,
+        "y": 56.1050034,
+        "z": 532.623047
+      },
+      "heightOk": true,
+      "grounded": true,
+      "clientServerDistance": 0.16848594
+    },
+    {
+      "name": "middle-descent",
+      "server": {
+        "x": 509.281219,
+        "y": 53.619915,
+        "z": 531.1434
+      },
+      "client": {
+        "x": 509.410034,
+        "y": 53.6200027,
+        "z": 531.114
+      },
+      "heightOk": true,
+      "grounded": true,
+      "clientServerDistance": 0.132117838
+    },
+    {
+      "name": "ground-return",
+      "server": {
+        "x": 515.1654,
+        "y": 51.13717,
+        "z": 529.8189
+      },
+      "client": {
+        "x": 515.104,
+        "y": 51.137,
+        "z": 529.833
+      },
+      "heightOk": true,
+      "grounded": true,
+      "clientServerDistance": 0.06299953
+    }
+  ],
+  "failures": [],
+  "scope": "Real local Netcode host/client, actual West staircase, ascent/descent with walk/run input. No teleport between waypoints and no jump."
+}

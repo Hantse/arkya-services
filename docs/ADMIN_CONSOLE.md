@@ -3,6 +3,19 @@
 `Arkya.Admin` sert une console technique distincte de la vitrine. L'accueil `/`
 est le dashboard ; l'éditeur de quêtes est conservé sous `/Quests`.
 
+La fiche de chaque realm propose aussi le redémarrage, la mise à jour approuvée, les annonces en jeu, la déconnexion, la sauvegarde des joueurs et les multiplicateurs XP/récolte modifiables en direct : voir [actions, suivi et configuration](REALM_OPERATIONS.md).
+
+La liste des royaumes `/Realms` ouvre un formulaire séparé sous `/CreateRealm`.
+Chaque fiche utilise cinq sections : Aperçu, Réglages, Maintenance, En jeu et
+Historique. Une seule section est affichée ; les formulaires d’action et les
+historiques s’ouvrent à la demande pour limiter le défilement.
+
+L’aperçu présente une liste d’îles avec une seule carte sélectionnée et les
+pools de donjons/raids séparés. Le formulaire de création permet de choisir
+les colonnes X et les lignes Y avec une prévisualisation immédiate ; Y désigne
+le Z du monde Unity. Une zone correspond à un dédié. Voir
+[le plan et ses limites](REALM_DEPLOYMENT.md).
+
 ## Navigation
 
 | Menu | Écrans et actions |
@@ -15,6 +28,12 @@ est le dashboard ; l'éditeur de quêtes est conservé sous `/Quests`.
 Les groupes du menu peuvent être repliés sans JavaScript. Les pages héritent du
 rôle `Administrator`, de la session opérateur et de l'antiforgery ASP.NET pour
 chaque formulaire. Les clés privées restent dans le serveur Admin.
+
+La [session administrateur](ADMIN_SESSIONS.md) associe un ticket d'accès de
+30 minutes à un refresh token HttpOnly, renouvelé automatiquement et limité à
+30 jours. Son état persiste dans la base MongoDB `arkya_admin`. La déconnexion,
+le rejeu d'un ancien refresh token et le retrait de l'allowlist révoquent l'accès.
+La mise à jour impose une reconnexion aux anciennes sessions sans refresh token.
 
 ## Dashboard et présence
 
@@ -74,6 +93,7 @@ distinctes des clés de session/introspection et des clés dédiées.
 
 | Application | Réglages |
 | --- | --- |
+| Sessions Admin | `Mongo:ConnectionString`, `Mongo:DatabaseName=arkya_admin`, `AdminSessions:AccessLifetime`, `AdminSessions:RefreshLifetime` ; [durées et garanties](ADMIN_SESSIONS.md) |
 | Admin → Identity | `IdentityAdminApi:Enabled`, `BaseUrl`, `AdminKey`, `CertificateAuthorityFile`, `AllowClusterHttp` |
 | Admin → Characters | `CharactersAdminApi:Enabled`, `BaseUrl`, `AdminKey`, `CertificateAuthorityFile`, `AllowClusterHttp` |
 | Identity | `Administration:Enabled=true`, `Administration:AdminKey` identique à la clé cliente Identity |
@@ -110,9 +130,52 @@ deux PVC de clés et Discord. Il ajoute Characters, les connexions privées
 Admin vers Identity/Characters et les règles réseau correspondantes. La
 connexion MongoDB Content existante est utilisée avec la base distincte
 `arkya_characters` ; le principal de cette installation dispose déjà des droits
-nécessaires. Ce profil ne requiert ni nouveau Secret ni permission Kubernetes.
-Les routes publiques Characters et les dedicateds restent désactivés. Le
-profil complet ne doit pas être appliqué à l'aveugle par-dessus l'installation.
+nécessaires. Le profil active l'allowlist publique exacte Characters pour
+le catalogue, les personnages et l'admission : session joueur, propriété,
+ban et accès bêta restent contrôlés par les services. Les routes `/admin`
+et `/internal/game` restent absentes du routage public. Il active également
+le déployeur Realms pour `beta-web`, dans le namespace réservé
+`arkya-beta-realm`, avec un seul dedicated `island` en WebSocket/TCP `17943`.
+La gateway existante publie uniquement la route de jeu
+`wss://api.arkya.online/game/beta-web/` vers son Service privé stable.
+
+Le compte de service projeté est monté seulement dans Realms. Son rôle dans
+le namespace cible autorise `get/create` sur Deployments et Services,
+`get` sur les seuls Secrets `arkya-ghcr` et `arkya-dedicated`, et `create` sur les Secrets. Kubernetes
+ne limite pas `create` par nom ; Realms valide le nom fixe et le namespace.
+Il n'a aucun droit de liste, modification ou suppression de Secret ni accès
+à un autre namespace. Les ressources de contrôle sont
+déclarées dans [realm-control](../backend/deploy/gitops/realm-control/README.md).
+L'Application Argo vivante s'appelle `arkya-beta`, suit le chemin `admin`
+sur `master` et utilise le projet `arkya-beta`. Les permissions du projet
+ont été corrigées et vérifiées dans Argo le 20 octobre 2026 à 21:15 UTC
+(23:15 à Bruxelles) : destination du realm et types RBAC autorisés,
+interdiction globale cluster retirée et seul Namespace `arkya-beta-realm`
+autorisé par nom. Aucun propriétaire Git actif du projet n'a été observé.
+Le modèle bootstrap générique reste plus large pour son installation
+multi-namespace et n'actualise pas automatiquement ce projet réel. Le patch
+historique de huit opérations garde des préconditions et ne doit pas être
+rejoué sur la configuration déjà corrigée.
+
+Realms et Characters reçoivent la graine dédiée depuis un Secret existant et
+dérivent une clé liée au couple `beta-web/island`. Avant les workloads, Realms
+provisionne le Secret Opaque fixe `arkya-dedicated`, indexé par ID de serveur.
+Le Deployment reçoit `ARKYA_DEDICATED_KEY` par `secretKeyRef` vers l'entrée
+`island`, sans valeur de clé dans sa configuration. La clé reste absente de
+Git, des logs, du profil MongoDB et des DTO.
+Le nouveau dedicated autorise explicitement HTTP privé vers l'origine
+Characters Kubernetes complète. Characters exige sa clé, contrôle le pair
+direct et réserve ce transport aux routes internes de jeu. Aucun nouveau
+Secret à copier manuellement, certificat, Ingress ou LoadBalancer n'est
+requis dans le realm. Le **Secret source `arkya-ghcr` dans `arkya-beta` doit
+être provisionné avant le rollout Realms** ; une référence de registre dans
+un Deployment ne prouve pas sa présence. Le [guide runtime](REALM_RUNTIME.md#provisionner-le-registre-source)
+décrit le modèle YAML du Secret source, à alimenter par la gestion des secrets
+de l'infrastructure avec un PAT de lecture `read:packages`. Le déploiement
+applicatif reste un push Git suivi de la synchronisation Argo. Realms reçoit en lecture seule son Docker
+config, le valide et crée `arkya-ghcr` dans la cible
+avant le Deployment. Les identifiants ne passent ni dans Git, ni dans les
+logs, API ou profils MongoDB. Aucun droit Argo sur les Secrets n'est ajouté.
 
 Infrastructure utilise le déployeur existant : choisir cible/profil, créer la
 définition, relire la fiche, puis déclencher le déploiement. Tous les dedicateds

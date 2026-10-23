@@ -1,0 +1,852 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T09:06:26.7795189Z",
+  "mode": "Play Mode",
+  "frame": 1317,
+  "buildings": 11,
+  "cases": 44,
+  "passed": 44,
+  "installedRuntimeProxies": 0,
+  "bodyRadius": 0.3,
+  "bodyHeight": 1.75,
+  "additionalHeadroomHeight": 2.0,
+  "results": [
+    {
+      "Building": "01 - Auberge des Lanternes",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 1494,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 1494,
+      "FinalPosition": {
+        "x": 530.8914,
+        "y": 50.3455734,
+        "z": 539.678
+      },
+      "Failures": []
+    },
+    {
+      "Building": "01 - Auberge des Lanternes",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 500,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 500,
+      "FinalPosition": {
+        "x": 530.8824,
+        "y": 50.34545,
+        "z": 539.683655
+      },
+      "Failures": []
+    },
+    {
+      "Building": "01 - Auberge des Lanternes",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 750,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 750,
+      "FinalPosition": {
+        "x": 530.8914,
+        "y": 50.3455734,
+        "z": 539.678
+      },
+      "Failures": []
+    },
+    {
+      "Building": "01 - Auberge des Lanternes",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 254,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 254,
+      "FinalPosition": {
+        "x": 530.890869,
+        "y": 50.3455658,
+        "z": 539.6783
+      },
+      "Failures": []
+    },
+    {
+      "Building": "02 - Maison du boulanger",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 1012,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 1012,
+      "FinalPosition": {
+        "x": 543.1074,
+        "y": 50.3681679,
+        "z": 542.479736
+      },
+      "Failures": []
+    },
+    {
+      "Building": "02 - Maison du boulanger",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 342,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 342,
+      "FinalPosition": {
+        "x": 543.1093,
+        "y": 50.3685036,
+        "z": 542.4684
+      },
+      "Failures": []
+    },
+    {
+      "Building": "02 - Maison du boulanger",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 510,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 510,
+      "FinalPosition": {
+        "x": 543.1087,
+        "y": 50.3684,
+        "z": 542.471863
+      },
+      "Failures": []
+    },
+    {
+      "Building": "02 - Maison du boulanger",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 176,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 176,
+      "FinalPosition": {
+        "x": 543.109253,
+        "y": 50.36849,
+        "z": 542.468933
+      },
+      "Failures": []
+    },
+    {
+      "Building": "03 - Atelier des runes",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 1330,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 1330,
+      "FinalPosition": {
+        "x": 558.536255,
+        "y": 50.5591545,
+        "z": 544.720764
+      },
+      "Failures": []
+    },
+    {
+      "Building": "03 - Atelier des runes",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 448,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 448,
+      "FinalPosition": {
+        "x": 558.538147,
+        "y": 50.5588646,
+        "z": 544.730957
+      },
+      "Failures": []
+    },
+    {
+      "Building": "03 - Atelier des runes",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 668,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 668,
+      "FinalPosition": {
+        "x": 558.5387,
+        "y": 50.55879,
+        "z": 544.7337
+      },
+      "Failures": []
+    },
+    {
+      "Building": "03 - Atelier des runes",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 226,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 226,
+      "FinalPosition": {
+        "x": 558.5381,
+        "y": 50.5588837,
+        "z": 544.7304
+      },
+      "Failures": []
+    },
+    {
+      "Building": "04 - Maison des voyageurs",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.125160217,
+      "Ticks": 162,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 162,
+      "FinalPosition": {
+        "x": 570.006958,
+        "y": 50.9084625,
+        "z": 553.277466
+      },
+      "Failures": []
+    },
+    {
+      "Building": "04 - Maison des voyageurs",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.125160217,
+      "Ticks": 56,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 56,
+      "FinalPosition": {
+        "x": 570.006348,
+        "y": 50.9084549,
+        "z": 553.2756
+      },
+      "Failures": []
+    },
+    {
+      "Building": "04 - Maison des voyageurs",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.125160217,
+      "Ticks": 82,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 82,
+      "FinalPosition": {
+        "x": 570.006348,
+        "y": 50.9084549,
+        "z": 553.2756
+      },
+      "Failures": []
+    },
+    {
+      "Building": "04 - Maison des voyageurs",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.125160217,
+      "Ticks": 28,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 28,
+      "FinalPosition": {
+        "x": 570.006348,
+        "y": 50.9084549,
+        "z": 553.2756
+      },
+      "Failures": []
+    },
+    {
+      "Building": "05 - Herboristerie",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.126564026,
+      "Ticks": 180,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 180,
+      "FinalPosition": {
+        "x": 578.0914,
+        "y": 51.0536423,
+        "z": 529.775635
+      },
+      "Failures": []
+    },
+    {
+      "Building": "05 - Herboristerie",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.126564026,
+      "Ticks": 60,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 60,
+      "FinalPosition": {
+        "x": 578.0917,
+        "y": 51.0536423,
+        "z": 529.775757
+      },
+      "Failures": []
+    },
+    {
+      "Building": "05 - Herboristerie",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.126564026,
+      "Ticks": 92,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 92,
+      "FinalPosition": {
+        "x": 578.0914,
+        "y": 51.0536423,
+        "z": 529.775635
+      },
+      "Failures": []
+    },
+    {
+      "Building": "05 - Herboristerie",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.126564026,
+      "Ticks": 32,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 32,
+      "FinalPosition": {
+        "x": 578.0914,
+        "y": 51.0536423,
+        "z": 529.775635
+      },
+      "Failures": []
+    },
+    {
+      "Building": "06 - Forge du Refuge",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.147117615,
+      "Ticks": 214,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 214,
+      "FinalPosition": {
+        "x": 574.3315,
+        "y": 50.1584167,
+        "z": 500.9679
+      },
+      "Failures": []
+    },
+    {
+      "Building": "06 - Forge du Refuge",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.14465332,
+      "Ticks": 72,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 72,
+      "FinalPosition": {
+        "x": 574.3181,
+        "y": 50.1594,
+        "z": 500.977142
+      },
+      "Failures": []
+    },
+    {
+      "Building": "06 - Forge du Refuge",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.147117615,
+      "Ticks": 108,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 108,
+      "FinalPosition": {
+        "x": 574.3315,
+        "y": 50.1584167,
+        "z": 500.9679
+      },
+      "Failures": []
+    },
+    {
+      "Building": "06 - Forge du Refuge",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.143295288,
+      "Ticks": 38,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 38,
+      "FinalPosition": {
+        "x": 574.3181,
+        "y": 50.1594,
+        "z": 500.977142
+      },
+      "Failures": []
+    },
+    {
+      "Building": "07 - Entrepot des marchands",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 1228,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 1228,
+      "FinalPosition": {
+        "x": 563.1296,
+        "y": 49.7884979,
+        "z": 494.596375
+      },
+      "Failures": []
+    },
+    {
+      "Building": "07 - Entrepot des marchands",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 412,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 412,
+      "FinalPosition": {
+        "x": 563.1278,
+        "y": 49.78874,
+        "z": 494.598755
+      },
+      "Failures": []
+    },
+    {
+      "Building": "07 - Entrepot des marchands",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 620,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 620,
+      "FinalPosition": {
+        "x": 563.127,
+        "y": 49.78885,
+        "z": 494.599823
+      },
+      "Failures": []
+    },
+    {
+      "Building": "07 - Entrepot des marchands",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 212,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 212,
+      "FinalPosition": {
+        "x": 563.127,
+        "y": 49.78885,
+        "z": 494.599823
+      },
+      "Failures": []
+    },
+    {
+      "Building": "08 - Maison des tisserands",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 1012,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 1012,
+      "FinalPosition": {
+        "x": 551.188,
+        "y": 50.07845,
+        "z": 495.6826
+      },
+      "Failures": []
+    },
+    {
+      "Building": "08 - Maison des tisserands",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 342,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 342,
+      "FinalPosition": {
+        "x": 551.187134,
+        "y": 50.0790367,
+        "z": 495.6922
+      },
+      "Failures": []
+    },
+    {
+      "Building": "08 - Maison des tisserands",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 510,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 510,
+      "FinalPosition": {
+        "x": 551.1873,
+        "y": 50.0788765,
+        "z": 495.689484
+      },
+      "Failures": []
+    },
+    {
+      "Building": "08 - Maison des tisserands",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.166671753,
+      "Ticks": 176,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 176,
+      "FinalPosition": {
+        "x": 551.187134,
+        "y": 50.0790367,
+        "z": 495.6922
+      },
+      "Failures": []
+    },
+    {
+      "Building": "09 - Maison du verger",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.110877991,
+      "Ticks": 146,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 146,
+      "FinalPosition": {
+        "x": 535.518738,
+        "y": 50.6178741,
+        "z": 497.391632
+      },
+      "Failures": []
+    },
+    {
+      "Building": "09 - Maison du verger",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.107730865,
+      "Ticks": 50,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 50,
+      "FinalPosition": {
+        "x": 535.518738,
+        "y": 50.6178741,
+        "z": 497.391632
+      },
+      "Failures": []
+    },
+    {
+      "Building": "09 - Maison du verger",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.107727051,
+      "Ticks": 74,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 74,
+      "FinalPosition": {
+        "x": 535.518738,
+        "y": 50.6178741,
+        "z": 497.391632
+      },
+      "Failures": []
+    },
+    {
+      "Building": "09 - Maison du verger",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.107727051,
+      "Ticks": 26,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 26,
+      "FinalPosition": {
+        "x": 535.518738,
+        "y": 50.6178741,
+        "z": 497.391632
+      },
+      "Failures": []
+    },
+    {
+      "Building": "10 - Relais de la crique",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.174282074,
+      "Ticks": 146,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 146,
+      "FinalPosition": {
+        "x": 523.05835,
+        "y": 51.0104065,
+        "z": 516.7566
+      },
+      "Failures": []
+    },
+    {
+      "Building": "10 - Relais de la crique",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.0869407654,
+      "Ticks": 50,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 50,
+      "FinalPosition": {
+        "x": 523.05835,
+        "y": 51.0104065,
+        "z": 516.7566
+      },
+      "Failures": []
+    },
+    {
+      "Building": "10 - Relais de la crique",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.174282074,
+      "Ticks": 74,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 74,
+      "FinalPosition": {
+        "x": 523.05835,
+        "y": 51.0104065,
+        "z": 516.7566
+      },
+      "Failures": []
+    },
+    {
+      "Building": "10 - Relais de la crique",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.0869407654,
+      "Ticks": 26,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 26,
+      "FinalPosition": {
+        "x": 523.05835,
+        "y": 51.0104065,
+        "z": 516.7566
+      },
+      "Failures": []
+    },
+    {
+      "Building": "Hotel de ville - Aubefont civic house",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.160003662,
+      "Ticks": 1930,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 1930,
+      "FinalPosition": {
+        "x": 535.4304,
+        "y": 50.2054443,
+        "z": 547.5204
+      },
+      "Failures": []
+    },
+    {
+      "Building": "Hotel de ville - Aubefont civic house",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.160003662,
+      "Ticks": 648,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 648,
+      "FinalPosition": {
+        "x": 535.4343,
+        "y": 50.20563,
+        "z": 547.513
+      },
+      "Failures": []
+    },
+    {
+      "Building": "Hotel de ville - Aubefont civic house",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.160003662,
+      "Ticks": 966,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 966,
+      "FinalPosition": {
+        "x": 535.431458,
+        "y": 50.2054939,
+        "z": 547.518433
+      },
+      "Failures": []
+    },
+    {
+      "Building": "Hotel de ville - Aubefont civic house",
+      "Route": "Exterior, room, stairs and upper floor, return",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.160003662,
+      "Ticks": 328,
+      "ReachedWaypoints": 16,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 328,
+      "FinalPosition": {
+        "x": 535.4343,
+        "y": 50.20563,
+        "z": 547.513
+      },
+      "Failures": []
+    }
+  ],
+  "scope": "Continuous real server ECS movement on the authored scene colliders. Entry, stairs, upper rooms and return, walking/running at 60/20 Hz. No jumps or waypoint teleportation. No scene/asset writes."
+}

@@ -1,0 +1,33 @@
+{
+  "success": true,
+  "verificationMethod": "Actual Play Mode UI button -> island load and Netcode client/server -> UI return",
+  "arrival": {
+    "capturedUtc": "2026-10-20T20:55:23.0717249Z",
+    "frame": 8031,
+    "IsOnIsland": true,
+    "IsConnected": true,
+    "activeScene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+    "creationCameraInactive": true,
+    "backdropInactive": true,
+    "snapshot": true,
+    "clientPosition": "float3(405f, 33.688f, 350f)",
+    "serverPosition": "float3(405f, 33.6876f, 350f)",
+    "positionGap": 0.0003990691,
+    "path": "D:/Repositories/arkya/docs/art-direction/characters-refit-2026-10-20/after/island.png"
+  },
+  "returnedUtc": "2026-10-20T20:55:41.114417Z",
+  "frame": 9747,
+  "checks": {
+    "portraitRestored": true,
+    "creationMode": true,
+    "appearancePreserved": true,
+    "namePreserved": true,
+    "rootsRestored": true,
+    "worldsGone": true,
+    "creationActive": true,
+    "cameraActive": true,
+    "viewportCropped": true,
+    "groundHidden": true,
+    "cameraOrientationViewportRestored": true
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "trees": 14,
+  "triangles": 499240,
+  "renderers": 42,
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/CanopyFrame/MatureTree0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/CanopyFrame/MatureTree1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/CanopyFrame/MatureTree2.asset"
+  ],
+  "minimumRoadMargin": 0.1964258,
+  "placements": [
+    {
+      "position": [
+        516.1144,
+        50.3166275,
+        541.778442
+      ],
+      "scale": [
+        0.88,
+        0.94,
+        0.88
+      ],
+      "yaw": 0.0,
+      "margin": 9.359545
+    },
+    {
+      "position": [
+        516.0,
+        50.3756981,
+        536.0
+      ],
+      "scale": [
+        0.945,
+        1.005,
+        0.945
+      ],
+      "yaw": 137.5,
+      "margin": 3.595446
+    },
+    {
+      "position": [
+        548.7166,
+        50.4002151,
+        557.9347
+      ],
+      "scale": [
+        0.88,
+        1.135,
+        0.88
+      ],
+      "yaw": 52.4999847,
+      "margin": 13.5133858
+    },
+    {
+      "position": [
+        553.0,
+        50.54368,
+        540.0
+      ],
+      "scale": [
+        0.945,
+        0.94,
+        0.945
+      ],
+      "yaw": 189.999985,
+      "margin": 1.85351789
+    },
+    {
+      "position": [
+        587.084045,
+        51.36537,
+        538.042
+      ],
+      "scale": [
+        1.01,
+        0.94,
+        1.01
+      ],
+      "yaw": 20.0,
+      "margin": 9.061873
+    },
+    {
+      "position": [
+        588.0,
+        51.05738,
+        529.0
+      ],
+      "scale": [
+        0.88,
+        1.005,
+        0.88
+      ],
+      "yaw": 157.500015,
+      "margin": 6.79633665
+    },
+    {
+      "position": [
+        513.660767,
+        51.1079674,
+        518.7631
+      ],
+      "scale": [
+        0.945,
+        1.06999993,
+        0.945
+      ],
+      "yaw": 295.0,
+      "margin": 6.413751
+    },
+    {
+      "position": [
+        517.1144,
+        50.4863853,
+        508.778442
+      ],
+      "scale": [
+        1.01,
+        1.135,
+        1.01
+      ],
+      "yaw": 72.50003,
+      "margin": 6.057279
+    },
+    {
+      "position": [
+        524.5676,
+        50.9675331,
+        506.608551
+      ],
+      "scale": [
+        0.88,
+        0.94,
+        0.88
+      ],
+      "yaw": 209.999939,
+      "margin": 0.226503253
+    },
+    {
+      "position": [
+        536.536743,
+        50.9680252,
+        503.081482
+      ],
+      "scale": [
+        0.945,
+        1.005,
+        0.945
+      ],
+      "yaw": 347.499969,
+      "margin": 0.1964258
+    },
+    {
+      "position": [
+        542.0,
+        50.0612259,
+        485.0
+      ],
+      "scale": [
+        1.01,
+        1.06999993,
+        1.01
+      ],
+      "yaw": 124.999977,
+      "margin": 11.1699247
+    },
+    {
+      "position": [
+        572.536743,
+        48.8496971,
+        485.081482
+      ],
+      "scale": [
+        0.88,
+        1.135,
+        0.88
+      ],
+      "yaw": 262.5001,
+      "margin": 10.1611261
+    },
+    {
+      "position": [
+        587.1144,
+        51.1378021,
+        507.778442
+      ],
+      "scale": [
+        0.945,
+        0.94,
+        0.945
+      ],
+      "yaw": 40.0000038,
+      "margin": 6.29108572
+    },
+    {
+      "position": [
+        575.0,
+        51.21755,
+        515.0
+      ],
+      "scale": [
+        1.01,
+        1.005,
+        1.01
+      ],
+      "yaw": 177.4999,
+      "margin": 2.29368448
+    }
+  ],
+  "sourceAssetsUnchanged": true,
+  "collidersAdded": 0,
+  "lightsAdded": 0,
+  "scope": "Reusable mature tree derivatives frame house clusters. All proposed vertices tested against existing colliders, trunk footprints clear of road reserves and props. Full lowest source LOD geometry retained until distance culling; draw-call/FPS impact unmeasured."
+}

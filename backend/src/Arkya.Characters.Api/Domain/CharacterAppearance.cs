@@ -63,7 +63,8 @@ public static class CharacterAppearanceCatalog
         new("black", "Noir", "#272b2c"), new("brown", "Châtain", "#665044"),
         new("chestnut", "Châtaigne", "#885a3d"), new("auburn", "Auburn", "#b5784d"),
         new("blond", "Blond doré", "#d8bd7d"), new("ash", "Blond cendré", "#b9ad94"),
-        new("silver", "Argent", "#c5d0ca"), new("white", "Blanc nacré", "#eee8d3")
+        new("silver", "Argent", "#c5d0ca"), new("white", "Blanc nacré", "#eee8d3"),
+        new("magenta", "Magenta", "#a52e62")
     ];
     public static ImmutableArray<AppearanceColorOption> Eyes { get; } =
     [
@@ -74,6 +75,7 @@ public static class CharacterAppearanceCatalog
     public static ImmutableArray<AppearanceColorOption> Outfit { get; } =
     [
         new("sage", "Sauge", "#7c9c7b"), new("ocean", "Océan", "#608d99"),
-        new("ochre", "Ocre", "#bd965b"), new("wine", "Lie-de-vin", "#9d6e79")
+        new("ochre", "Ocre", "#bd965b"), new("wine", "Lie-de-vin", "#9d6e79"),
+        new("jade", "Jade", "#159b8d")
     ];
 }

@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "Arkya.Characters.Editor.CharacterCreationBuilder.ImportReferenceModels(); return new { imported = true, shaderErrors = ShaderUtil.ShaderHasError(Shader.Find(\"Arkya/Characters/Painted\")), bladeMaterial = AssetDatabase.LoadAssetAtPath<Material>(\"Assets/Arkya/Characters/Materials/Blade.mat\") != null };",
+      "timeout": "55000"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "imported": true,
+        "shaderErrors": false,
+        "bladeMaterial": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7803,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

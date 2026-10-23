@@ -2,12 +2,12 @@
   "id": "human-b",
   "attribution": "Rain and Snow by Blender Studio / Blender Foundation, CC BY 4.0. Arkya adaptations: fantasy costumes, painted surfaces, proportions, elf ears, hairstyles, compact rig and procedural locomotion. See ../CREDITS.md.",
   "bones": 26,
-  "vertices": 39502,
-  "trianglesAllHairOptions": 69753,
-  "trianglesShort": 63037,
+  "vertices": 110985,
+  "trianglesAllHairOptions": 220603,
+  "trianglesShort": 172799,
   "maxInfluences": 4,
   "unweightedVertices": 0,
-  "maxWeightSumError": 1.564621925354004e-07,
+  "maxWeightSumError": 1.7881393432617188e-07,
   "clips": [
     {
       "name": "Idle",
@@ -34,56 +34,56 @@
   "animationDeformationProbes": [
     {
       "clip": "Idle",
-      "maxVertexDisplacementMeters": 0.04918487489797821
+      "maxVertexDisplacementMeters": 0.008855982557738009
     },
     {
       "clip": "Walk",
-      "maxVertexDisplacementMeters": 0.27008355521579597
+      "maxVertexDisplacementMeters": 0.2692957277552971
     },
     {
       "clip": "Run",
-      "maxVertexDisplacementMeters": 0.44085340565803177
+      "maxVertexDisplacementMeters": 0.4390502439261247
     }
   ],
   "meshes": [
     {
+      "name": "CharacterMesh",
+      "triangles": 157103,
+      "materials": [
+        "Pupil",
+        "Skin",
+        "EyesWhite",
+        "Iris",
+        "Leather",
+        "Metal",
+        "OutfitAccent",
+        "Ivory",
+        "Gem",
+        "Hair",
+        "Blade",
+        "DarkLeather"
+      ]
+    },
+    {
       "name": "HairMain",
-      "triangles": 3225,
+      "triangles": 15696,
       "materials": [
         "Hair"
       ]
     },
     {
       "name": "HairLong",
-      "triangles": 2782,
+      "triangles": 11628,
       "materials": [
         "Hair"
       ]
     },
     {
       "name": "HairBraid",
-      "triangles": 3934,
+      "triangles": 36176,
       "materials": [
         "Hair",
         "Metal"
-      ]
-    },
-    {
-      "name": "CharacterMesh",
-      "triangles": 59812,
-      "materials": [
-        "Hair",
-        "Pupil",
-        "Skin",
-        "EyesWhite",
-        "Iris",
-        "Cloth",
-        "DarkLeather",
-        "Leather",
-        "Metal",
-        "Thread",
-        "OutfitAccent",
-        "Gem"
       ]
     }
   ],
@@ -115,5 +115,1074 @@
     "RightFoot",
     "RightToes"
   ],
-  "verticesUsingRemappedSourceWeights": 12655
+  "artPass": "Adult face and sculpted hair reference pass 2026-10-20",
+  "bodyReferenceHeightMeters": 1.75,
+  "boundsBlenderZUp": [
+    [
+      -0.5393874049186707,
+      -0.19499999284744263,
+      0.0
+    ],
+    [
+      0.5177560448646545,
+      0.38734737038612366,
+      1.962132453918457
+    ]
+  ],
+  "newCostumeAndHairParts": 240,
+  "sourceSkeletonPreserved": true,
+  "staticGripChecks": [
+    {
+      "side": "Left",
+      "sculptedFingerVertices": 1282,
+      "palmTwistRadians": 0.6189169146444169,
+      "nonHandVerticesUnchanged": true,
+      "protectedNonHandVertices": 5577,
+      "sourceMaskVertexCount": 1718
+    },
+    {
+      "side": "Right",
+      "sculptedFingerVertices": 1286,
+      "palmTwistRadians": -0.6121240421887705,
+      "nonHandVerticesUnchanged": true,
+      "protectedNonHandVertices": 5577,
+      "sourceMaskVertexCount": 1730
+    }
+  ],
+  "exportTriangulationChecks": [
+    {
+      "mesh": "CharacterMesh",
+      "sourcePolygons": 87429,
+      "resolvedNonTriangles": 68183,
+      "removedZeroAreaTriangles": 1,
+      "exportTriangles": 157103,
+      "minimumTriangleAreaSquareMeters": 4.9658760041320846e-14,
+      "degenerateTriangles": 0,
+      "vertexCoordinatesUnchanged": true
+    },
+    {
+      "mesh": "HairMain",
+      "sourcePolygons": 7664,
+      "resolvedNonTriangles": 7664,
+      "removedZeroAreaTriangles": 48,
+      "exportTriangles": 15696,
+      "minimumTriangleAreaSquareMeters": 4.63477520251665e-12,
+      "degenerateTriangles": 0,
+      "vertexCoordinatesUnchanged": true
+    },
+    {
+      "mesh": "HairLong",
+      "sourcePolygons": 5688,
+      "resolvedNonTriangles": 5688,
+      "removedZeroAreaTriangles": 0,
+      "exportTriangles": 11628,
+      "minimumTriangleAreaSquareMeters": 3.296047168532823e-08,
+      "degenerateTriangles": 0,
+      "vertexCoordinatesUnchanged": true
+    },
+    {
+      "mesh": "HairBraid",
+      "sourcePolygons": 17744,
+      "resolvedNonTriangles": 17744,
+      "removedZeroAreaTriangles": 0,
+      "exportTriangles": 36176,
+      "minimumTriangleAreaSquareMeters": 3.2384617210112765e-10,
+      "degenerateTriangles": 0,
+      "vertexCoordinatesUnchanged": true
+    }
+  ],
+  "cranialSurfaceRepair": {
+    "required": false
+  },
+  "bladeGripLandmarksReferenceSpace": {
+    "Left": {
+      "center": [
+        0.28516340255737305,
+        -0.015249919146299362,
+        0.8568627238273621
+      ],
+      "across": [
+        0.5571399927139282,
+        0.8263548612594604,
+        0.08205295354127884
+      ],
+      "down": [
+        0.32809576392173767,
+        -0.12827704846858978,
+        -0.9358943104743958
+      ],
+      "normal": [
+        0.7628552913665771,
+        -0.5483453869819641,
+        0.342591792345047
+      ],
+      "wrist": [
+        0.2720201015472412,
+        -0.013612466864287853,
+        0.9296149611473083
+      ],
+      "palmTip": [
+        0.2884499430656433,
+        -0.020036114379763603,
+        0.8827487826347351
+      ],
+      "halfLength": 0.054,
+      "radius": 0.0105,
+      "bone": "LeftHand"
+    },
+    "Right": {
+      "center": [
+        -0.31949588656425476,
+        -0.015369162894785404,
+        0.8693919777870178
+      ],
+      "across": [
+        -0.5424382090568542,
+        0.8319586515426636,
+        0.11664343625307083
+      ],
+      "down": [
+        -0.3925815522670746,
+        -0.12827661633491516,
+        -0.9107276797294617
+      ],
+      "normal": [
+        -0.742725133895874,
+        -0.53980553150177,
+        0.3961937427520752
+      ],
+      "wrist": [
+        -0.3013884127140045,
+        -0.013612188398838043,
+        0.9410672187805176
+      ],
+      "palmTip": [
+        -0.32104745507240295,
+        -0.02003581076860428,
+        0.8954613208770752
+      ],
+      "halfLength": 0.054,
+      "radius": 0.0105,
+      "bone": "RightHand"
+    }
+  },
+  "bladeTriangles": 8280,
+  "bladeWeightChecks": [
+    {
+      "part": "Reference crescent blade Left | turquoise crescent cutting edge",
+      "bone": "LeftHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Left | broad swept gold spine",
+      "bone": "LeftHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Left | leather grip",
+      "bone": "LeftHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Left | wrapped leather grip",
+      "bone": "LeftHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Left | gold grip collar -1",
+      "bone": "LeftHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Left | gold grip collar 1",
+      "bone": "LeftHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Left | continuous long gold openwork",
+      "bone": "LeftHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Left | continuous short gold openwork",
+      "bone": "LeftHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Right | turquoise crescent cutting edg",
+      "bone": "RightHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Right | broad swept gold spine",
+      "bone": "RightHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Right | leather grip",
+      "bone": "RightHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Right | wrapped leather grip",
+      "bone": "RightHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Right | gold grip collar -1",
+      "bone": "RightHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Right | gold grip collar 1",
+      "bone": "RightHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Right | continuous long gold openwork",
+      "bone": "RightHand",
+      "rigidHandWeight": 1.0
+    },
+    {
+      "part": "Reference crescent blade Right | continuous short gold openwork",
+      "bone": "RightHand",
+      "rigidHandWeight": 1.0
+    }
+  ],
+  "torsoDraperyWeightChecks": [
+    {
+      "part": "Jade fitted crescent breastplate -1",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Jade fitted crescent breastplate -1 forged gold edge",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Cuirass forged spiral -1",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Jade fitted crescent breastplate 1",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Jade fitted crescent breastplate 1 forged gold edge",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Cuirass forged spiral 1",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Leather underbust support",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Ivory flowing diagonal drape",
+      "bones": [
+        "Chest",
+        "Hips",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Woven dark drape edge",
+      "bones": [
+        "Chest",
+        "Hips",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Drape embroidered curl",
+      "bones": [
+        "Chest"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Drape embroidered curl.001",
+      "bones": [
+        "Chest"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Drape embroidered curl.002",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Drape embroidered curl.003",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Drape embroidered curl.004",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Drape embroidered curl.005",
+      "bones": [
+        "Chest",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Drape embroidered curl.006",
+      "bones": [
+        "Chest",
+        "Hips",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    },
+    {
+      "part": "Ivory continuous shoulder back drape",
+      "bones": [
+        "Chest",
+        "Hips",
+        "Spine"
+      ],
+      "armWeightsAbsent": true,
+      "pairedLayerWeightError": 0.0
+    }
+  ],
+  "outwardPlateFrontFacesVerified": 3160,
+  "rigRestMatrices": {
+    "Root": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "Hips": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        -0.03195524588227272
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.9321568012237549
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "Spine": [
+      [
+        1.0,
+        1.0421602003683056e-14,
+        -1.0421602850716003e-14,
+        0.0
+      ],
+      [
+        -1.0421602850716003e-14,
+        -5.9113340000749304e-08,
+        -1.0,
+        -0.03195524588227272
+      ],
+      [
+        -1.0421602850716003e-14,
+        1.0,
+        -5.9113340000749304e-08,
+        0.9871568083763123
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "Chest": [
+      [
+        1.0,
+        1.7008305874810503e-08,
+        -1.58353135049083e-08,
+        1.9702909619047533e-15
+      ],
+      [
+        -1.7008304098453664e-08,
+        0.07133801281452179,
+        -0.9974521994590759,
+        -0.031955257058143616
+      ],
+      [
+        -1.58353135049083e-08,
+        0.9974521994590759,
+        0.07133801281452179,
+        1.1762151718139648
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "Neck": [
+      [
+        1.0,
+        -3.767371303808886e-09,
+        3.827372196951728e-09,
+        3.799379921787249e-09
+      ],
+      [
+        3.767377521057824e-09,
+        -0.015799202024936676,
+        -0.9998751878738403,
+        -0.016019508242607117
+      ],
+      [
+        3.827370420594889e-09,
+        0.9998752474784851,
+        -0.015799202024936676,
+        1.3990297317504883
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "Head": [
+      [
+        1.0,
+        -2.0816681711721685e-17,
+        0.0,
+        3.384398095107599e-09
+      ],
+      [
+        4.440892098500626e-15,
+        -1.862645149230957e-09,
+        -1.0,
+        -0.017759814858436584
+      ],
+      [
+        -9.08995101411847e-16,
+        1.0000001192092896,
+        1.862645149230957e-09,
+        1.5091675519943237
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "HairUpper": [
+      [
+        1.0,
+        2.0250595696437345e-17,
+        -4.1359030627651384e-25,
+        0.0
+      ],
+      [
+        4.4362016535552055e-15,
+        0.23162049055099487,
+        0.9728013277053833,
+        0.09000000357627869
+      ],
+      [
+        -9.101119143528017e-16,
+        -0.9728062748908997,
+        0.23162052035331726,
+        1.5575000047683716
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "HairLower": [
+      [
+        1.0,
+        1.687059904057919e-24,
+        -3.927813388881414e-24,
+        4.371503126374329e-18
+      ],
+      [
+        4.440892098500626e-15,
+        0.15398547053337097,
+        0.9880682229995728,
+        0.14000000059604645
+      ],
+      [
+        -9.298117831235686e-16,
+        -0.9880732297897339,
+        0.15398508310317993,
+        1.347499966621399
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "LeftShoulder": [
+      [
+        -1.869812749077937e-09,
+        1.0,
+        1.6918020762091146e-08,
+        2.220446049250313e-16
+      ],
+      [
+        -1.0,
+        -1.8698091963642582e-09,
+        -1.4901161193847656e-08,
+        0.0045484621077775955
+      ],
+      [
+        -1.4901161193847656e-08,
+        -1.6918022538447985e-08,
+        1.0,
+        1.3558369874954224
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "LeftUpperArm": [
+      [
+        0.8972568511962891,
+        0.32799091935157776,
+        0.2955537438392639,
+        0.12272683531045914
+      ],
+      [
+        -0.32799097895622253,
+        0.04705871641635895,
+        0.9435080289840698,
+        0.0045484621077775955
+      ],
+      [
+        0.29555371403694153,
+        -0.9435080885887146,
+        0.14980188012123108,
+        1.3558369874954224
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "LeftLowerArm": [
+      [
+        0.8755806088447571,
+        0.33016932010650635,
+        0.3526281714439392,
+        0.1956891119480133
+      ],
+      [
+        -0.3301692008972168,
+        -0.12383565306663513,
+        0.9357632994651794,
+        0.015016773715615273
+      ],
+      [
+        0.35262829065322876,
+        -0.9357633590698242,
+        0.0005836784839630127,
+        1.1459516286849976
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "LeftHand": [
+      [
+        0.8765124678611755,
+        0.32809582352638245,
+        0.35224831104278564,
+        0.2720201015472412
+      ],
+      [
+        -0.3280957341194153,
+        -0.12827707827091217,
+        0.9358943700790405,
+        -0.013612465932965279
+      ],
+      [
+        0.3522484004497528,
+        -0.9358944296836853,
+        -0.004789590835571289,
+        0.9296149611473083
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "RightShoulder": [
+      [
+        8.966333808757554e-08,
+        -0.9999998211860657,
+        -1.3358945061270333e-08,
+        4.163336342344337e-16
+      ],
+      [
+        0.9999998807907104,
+        -2.955928835035593e-10,
+        -4.470348358154297e-08,
+        0.00454852357506752
+      ],
+      [
+        4.470348358154297e-08,
+        -1.3358940620378235e-08,
+        0.9999999403953552,
+        1.3558368682861328
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "RightUpperArm": [
+      [
+        0.8524863123893738,
+        -0.3930079936981201,
+        -0.34469011425971985,
+        -0.1227269098162651
+      ],
+      [
+        0.3930080831050873,
+        0.04705921187996864,
+        0.9183298945426941,
+        0.00454852357506752
+      ],
+      [
+        -0.3446902632713318,
+        -0.9183299541473389,
+        0.19457268714904785,
+        1.3558368682861328
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "RightLowerArm": [
+      [
+        0.8222461938858032,
+        -0.3946407437324524,
+        -0.4100843667984009,
+        -0.21015235781669617
+      ],
+      [
+        0.39464086294174194,
+        -0.12383507937192917,
+        0.910452127456665,
+        0.015016943216323853
+      ],
+      [
+        -0.41008448600769043,
+        -0.9104523062705994,
+        0.053918421268463135,
+        1.151552438735962
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "RightHand": [
+      [
+        0.8232001066207886,
+        -0.3925814628601074,
+        -0.410147100687027,
+        -0.30138838291168213
+      ],
+      [
+        0.3925817012786865,
+        -0.12827661633491516,
+        0.9107273817062378,
+        -0.013612184673547745
+      ],
+      [
+        -0.41014719009399414,
+        -0.9107274413108826,
+        0.048522964119911194,
+        0.9410672187805176
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "CapeUpper": [
+      [
+        1.0,
+        -3.9968028886505635e-15,
+        3.552713678800501e-15,
+        3.3306690738754696e-16
+      ],
+      [
+        -4.796163466380676e-14,
+        0.18711204826831818,
+        0.982339084148407,
+        0.09000000357627869
+      ],
+      [
+        -6.8833827526759706e-15,
+        -0.982338547706604,
+        0.1871120035648346,
+        1.3300000429153442
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "CapeLower": [
+      [
+        1.0,
+        8.735027268559972e-22,
+        1.6940658945086007e-21,
+        -1.1621663672034608e-15
+      ],
+      [
+        -4.521951457486968e-14,
+        0.09480910003185272,
+        0.9954959750175476,
+        0.1599999964237213
+      ],
+      [
+        -2.2924131448225906e-15,
+        -0.9954954385757446,
+        0.09480910748243332,
+        0.9624999761581421
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "LeftUpperLeg": [
+      [
+        0.9997591376304626,
+        -0.015461469069123268,
+        -0.015581399202346802,
+        0.08859845995903015
+      ],
+      [
+        0.01546141505241394,
+        -0.007845222018659115,
+        0.9998496770858765,
+        -0.023377304896712303
+      ],
+      [
+        -0.015581389889121056,
+        -0.9998495578765869,
+        -0.007604273967444897,
+        0.9272864460945129
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "LeftLowerLeg": [
+      [
+        0.9993917942047119,
+        -0.025296539068222046,
+        -0.024005062878131866,
+        0.08208480477333069
+      ],
+      [
+        0.025296472012996674,
+        0.05203502997756004,
+        0.9983248114585876,
+        -0.02668236382305622
+      ],
+      [
+        -0.024005064740777016,
+        -0.9983246326446533,
+        0.05264328420162201,
+        0.5060667991638184
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "LeftFoot": [
+      [
+        0.993378758430481,
+        0.02663462609052658,
+        0.11175568401813507,
+        0.07135128974914551
+      ],
+      [
+        -0.026634735986590385,
+        -0.8928599953651428,
+        0.4495459198951721,
+        -0.004603501409292221
+      ],
+      [
+        0.11175564676523209,
+        -0.4495457112789154,
+        -0.8862385749816895,
+        0.08246999979019165
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "LeftToes": [
+      [
+        -1.0000001192092896,
+        -1.1175870895385742e-08,
+        1.564621925354004e-07,
+        0.07472977787256241
+      ],
+      [
+        6.332993507385254e-08,
+        -1.0000001192092896,
+        -1.4901161193847656e-07,
+        -0.11785896122455597
+      ],
+      [
+        1.564621925354004e-07,
+        2.9802322387695312e-08,
+        0.9999997615814209,
+        0.0254470594227314
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "RightUpperLeg": [
+      [
+        0.9997590780258179,
+        0.015461924485862255,
+        0.015582025051116943,
+        -0.08859844505786896
+      ],
+      [
+        -0.015462100505828857,
+        -0.007842525839805603,
+        0.9998497366905212,
+        -0.023377297446131706
+      ],
+      [
+        0.01558180432766676,
+        -0.9998496770858765,
+        -0.007601561956107616,
+        0.9272865653038025
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "RightLowerLeg": [
+      [
+        0.9993917942047119,
+        0.02529599703848362,
+        0.024004565551877022,
+        -0.08208459615707397
+      ],
+      [
+        -0.025295954197645187,
+        0.05203443020582199,
+        0.998324990272522,
+        -0.026681222021579742
+      ],
+      [
+        0.024004558101296425,
+        -0.9983249306678772,
+        0.05264266952872276,
+        0.5060667395591736
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "RightFoot": [
+      [
+        0.9933813214302063,
+        -0.026632219552993774,
+        -0.11173371970653534,
+        -0.07135149091482162
+      ],
+      [
+        0.02663225308060646,
+        -0.8928385972976685,
+        0.44958871603012085,
+        -0.004602983593940735
+      ],
+      [
+        -0.11173371225595474,
+        -0.4495886564254761,
+        -0.8862197995185852,
+        0.08247688412666321
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "RightToes": [
+      [
+        -1.0000001192092896,
+        -7.450580596923828e-09,
+        1.4901161193847656e-08,
+        -0.07472967356443405
+      ],
+      [
+        -3.3527612686157227e-08,
+        -1.0,
+        -5.960464477539063e-08,
+        -0.11785572022199631
+      ],
+      [
+        1.4901161193847656e-08,
+        -8.940696716308594e-08,
+        1.0,
+        0.025448493659496307
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  }
 }

@@ -1,0 +1,269 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "meshAssetsReused": 11,
+  "createdAssets": 0,
+  "restoredFacadeRenderers": 142,
+  "previousVertices": 2493923,
+  "previousTriangles": 834625,
+  "vertices": 166517,
+  "triangles": 162337,
+  "budget": {
+    "sourceTriangles": 160368,
+    "resultTriangles": 162337,
+    "addedTriangles": 1969,
+    "allowedAdditionalTriangles": 20000,
+    "addedFraction": 0.01227801
+  },
+  "colliderHash": "ioxZe4u266HjJfmMyEoVakZRsFwcUqME5Svk4tHLCKs=",
+  "buildings": [
+    {
+      "Name": "House_01_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_01_settled_exterior.asset",
+      "sourceTriangles": 16084,
+      "triangles": 16276,
+      "verticesBeforeWelding": 48420,
+      "vertices": 15902,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 21,
+          "SourceTriangles": 8220,
+          "ResultTriangles": 8412,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.117
+    },
+    {
+      "Name": "House_02_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_02_settled_exterior.asset",
+      "sourceTriangles": 15244,
+      "triangles": 15550,
+      "verticesBeforeWelding": 45962,
+      "vertices": 15495,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 20,
+          "SourceTriangles": 7380,
+          "ResultTriangles": 7686,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.101196177
+    },
+    {
+      "Name": "House_03_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_03_settled_exterior.asset",
+      "sourceTriangles": 16084,
+      "triangles": 16300,
+      "verticesBeforeWelding": 48444,
+      "vertices": 15920,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 21,
+          "SourceTriangles": 8220,
+          "ResultTriangles": 8436,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.08946483
+    },
+    {
+      "Name": "House_04_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_04_settled_exterior.asset",
+      "sourceTriangles": 15220,
+      "triangles": 15268,
+      "verticesBeforeWelding": 45684,
+      "vertices": 15302,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7404,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.108291693
+    },
+    {
+      "Name": "House_05_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_05_settled_exterior.asset",
+      "sourceTriangles": 15220,
+      "triangles": 15268,
+      "verticesBeforeWelding": 45684,
+      "vertices": 15260,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7404,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.115171567
+    },
+    {
+      "Name": "House_06_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_06_settled_exterior.asset",
+      "sourceTriangles": 15220,
+      "triangles": 15224,
+      "verticesBeforeWelding": 45640,
+      "vertices": 15236,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7360,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.09457184
+    },
+    {
+      "Name": "House_07_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_07_settled_exterior.asset",
+      "sourceTriangles": 15244,
+      "triangles": 15532,
+      "verticesBeforeWelding": 45948,
+      "vertices": 15444,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 20,
+          "SourceTriangles": 7380,
+          "ResultTriangles": 7668,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.0930002853
+    },
+    {
+      "Name": "House_08_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_08_settled_exterior.asset",
+      "sourceTriangles": 16084,
+      "triangles": 16344,
+      "verticesBeforeWelding": 48488,
+      "vertices": 15952,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 21,
+          "SourceTriangles": 8220,
+          "ResultTriangles": 8480,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.114004992
+    },
+    {
+      "Name": "House_09_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_09_settled_exterior.asset",
+      "sourceTriangles": 15220,
+      "triangles": 15268,
+      "verticesBeforeWelding": 45684,
+      "vertices": 15302,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7404,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.110163853
+    },
+    {
+      "Name": "House_10_settled_exterior",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_10_settled_exterior.asset",
+      "sourceTriangles": 15220,
+      "triangles": 15268,
+      "verticesBeforeWelding": 45684,
+      "vertices": 15302,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7404,
+          "SubdivisionEnabled": true
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "maximumDisplacementMetres": 0.09014897
+    },
+    {
+      "Name": "Civic_house_settled_roof",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/Civic_house_settled_roof.asset",
+      "sourceTriangles": 5528,
+      "triangles": 6039,
+      "verticesBeforeWelding": 11421,
+      "vertices": 11402,
+      "sourceRoles": {
+        "Civic roof and bell": {
+          "Renderers": 8,
+          "SourceTriangles": 5528,
+          "ResultTriangles": 6039,
+          "SubdivisionEnabled": true
+        }
+      },
+      "maximumDisplacementMetres": 0.124
+    }
+  ],
+  "scope": "Only roofs, gables and timber trim use derivative geometry. Every original facade module is visible again with its source mesh and materials. Exact duplicate vertex attributes are welded without smoothing material or UV seams. Existing derivative GUIDs, receiver identities, flowers, windows, transforms, collision and native terrain are retained."
+}

@@ -1,0 +1,331 @@
+{
+  "success": true,
+  "failures": [],
+  "checks": [
+    {
+      "name": "Garden renderer count remains unchanged",
+      "success": true,
+      "details": 129
+    },
+    {
+      "name": "No new collision, dynamic light or runtime behaviour",
+      "success": true,
+      "details": null
+    },
+    {
+      "name": "All live meshes and materials are owned garden derivatives",
+      "success": true,
+      "details": null
+    },
+    {
+      "name": "Owned assets retain their matching metas",
+      "success": true,
+      "details": []
+    },
+    {
+      "name": "Foliage shaders compile and retain pinned wind without emission",
+      "success": true,
+      "details": [
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Fleur_Material17_0.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/MeadowFine/FinePaintedBlades.mat",
+          "shader": "Arkya/Environment/Painted Meadow",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material06_1.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material07_1.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material08_1.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material13_2.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material14_2.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material13_0.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material13_1.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material14_0.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Buisson_Material14_1.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Fleur_Material17_1.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material06_2.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material07_2.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material08_2.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material06_0.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material07_0.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        },
+        {
+          "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Materials/Arbre_Material08_0.mat",
+          "shader": "Arkya/Environment/Painted Foliage Light",
+          "supported": true,
+          "shaderHasError": false,
+          "hasGrowthMask": true,
+          "growthMask": 1.0,
+          "hasEmission": true,
+          "emissionMaximum": 0.0,
+          "shaderMessages": []
+        }
+      ]
+    },
+    {
+      "name": "Three descending LODs own every renderer",
+      "success": true,
+      "details": {
+        "cells": 21,
+        "near": 995024,
+        "far": 667265,
+        "distant": 534824
+      }
+    },
+    {
+      "name": "Refined meadow and canopy budgets match live meshes",
+      "success": true,
+      "details": {
+        "expectedNear": 995024,
+        "nearBudget": 1050000,
+        "grassNear": 397320,
+        "grassFar": 132441
+      }
+    },
+    {
+      "name": "All live meshes have finite valid normals, UVs, growth and indices",
+      "success": true,
+      "details": []
+    },
+    {
+      "name": "Meadow topology matches its applied pass",
+      "success": true,
+      "details": null
+    },
+    {
+      "name": "Fine meadow uses its upright two-sided envelope lighting",
+      "success": true,
+      "details": null
+    },
+    {
+      "name": "Every actual meadow blade respects full-width routes and workyards",
+      "success": true,
+      "details": {
+        "testedBlades": 132440,
+        "grassIntrusions": 0,
+        "minimumEdge": 0.0751543939,
+        "maximumGroundError": 6.100163E-07
+      }
+    },
+    {
+      "name": "At least six safely enlarged crowns retain all ten tree placements",
+      "success": true,
+      "details": [
+        {
+          "enlarged": true,
+          "height": 11.577179
+        },
+        {
+          "enlarged": true,
+          "height": 12.560154
+        },
+        {
+          "enlarged": true,
+          "height": 9.611225
+        },
+        {
+          "enlarged": true,
+          "height": 10.5942039
+        },
+        {
+          "enlarged": true,
+          "height": 12.560154
+        },
+        {
+          "enlarged": true,
+          "height": 9.611221
+        },
+        {
+          "enlarged": true,
+          "height": 10.5942
+        },
+        {
+          "enlarged": true,
+          "height": 11.577179
+        },
+        {
+          "enlarged": true,
+          "height": 12.560154
+        },
+        {
+          "enlarged": false,
+          "height": 0.0
+        }
+      ]
+    }
+  ],
+  "sceneSaved": true,
+  "nearTriangles": 995024,
+  "farTriangles": 667265,
+  "distantTriangles": 534824,
+  "rendererCount": 129,
+  "materialCount": 18,
+  "testedBlades": 132440,
+  "extraColliders": 0,
+  "extraLights": 0,
+  "scope": "Read-only live mesh streams, actual blade root and bending footprints, terrain contact, LOD budgets, compile-supported materials and asset/meta checks. Canopy obstacle and low-root checks are recorded by RefineReferenceCanopies during authoring. Scene-wide preservation remains covered by ReviewLivedInTown."
+}

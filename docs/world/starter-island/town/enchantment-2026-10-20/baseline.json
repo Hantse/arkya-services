@@ -1,0 +1,10 @@
+{
+  "ScenePath": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "TerrainHash": "54cf4a43b0f27e9507ff1a882d330e548617c7d3d08da748b3a0a803e2651c47",
+  "ColliderHash": "09745f634b8e3879b92981bac65916318b88ee2de3f27b83d497a473e04f4879",
+  "SceneColliderCount": 2499,
+  "TownColliderCount": 2270,
+  "SceneLightCount": 26,
+  "TownLightCount": 21,
+  "TownRendererCount": 2102
+}

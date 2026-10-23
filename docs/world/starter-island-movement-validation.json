@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "revision": "Run animation, jumping and swimming",
+  "unityVersion": "6000.6.6f1",
+  "project": "Unity3D/Arkya",
+  "status": "Passed",
+  "tests": {
+    "date": "2026-10-17",
+    "result": "Passed",
+    "total": 129,
+    "passed": 129,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 80.3236524,
+    "suites": ["Arkya.Characters.EditorTests", "Arkya.World.Environment.Tests"],
+    "terrainAndServerCases": 29,
+    "animationCases": 10,
+    "connectedIslandRuntimeCases": 2,
+    "localXml": "artifacts/starter-island-movement/movement-final-tests.xml",
+    "runtimeFlows": [
+      "Real creation UI, island entry twice, arrival road and complete studio restoration",
+      "Connected client and server on a synthetic shore: jump, landing, wading, swimming, idle buoyancy and dry return"
+    ]
+  },
+  "build": {
+    "result": "Success",
+    "target": "StandaloneWindows64",
+    "development": true,
+    "executable": "Unity3D/Arkya/Builds/StarterIsland/Arkya.exe",
+    "localLog": "artifacts/starter-island-movement/build.log",
+    "successMarker": "ARKYA_CHARACTER_BUILD_PASSED Builds/StarterIsland/Arkya.exe",
+    "startupSmoke": "Passed",
+    "responsive": true,
+    "graphicsApi": "Direct3D12",
+    "startupManagedExceptions": 0,
+    "localPlayerLog": "artifacts/starter-island-movement/player.log",
+    "standaloneIslandTraversalExercised": false
+  },
+  "liveEditor": {
+    "entryThroughCreationUi": true,
+    "connectedLocalClientAndServer": true,
+    "visualRig": "human-a",
+    "jump": {
+      "input": "Input System Space event in focused Game View",
+      "returnHudButtonFocused": true,
+      "remainedOnIsland": true,
+      "serverAndClientMotionJump": true,
+      "animatorJump": true,
+      "baselineY": 36.16811,
+      "apexY": 37.36809,
+      "landedY": 36.16811
+    },
+    "run": {
+      "input": "Input System W and LeftShift events in focused Game View",
+      "serverMotionRun": true,
+      "animatorRunNormalizedTimeFirst": 0.269241244,
+      "animatorRunNormalizedTimeLast": 0.8716978,
+      "serverBefore": [442.4508, 41.15612, 398.0721],
+      "serverAfter": [446.8773, 41.65251, 406.6507]
+    },
+    "water": {
+      "input": "Editor test direction override, processed through the connected server movement and collisions",
+      "teleportedAfterSessionStart": false,
+      "serverAndClientMotionSwim": true,
+      "animatorSwim": true,
+      "animatorSwimIdle": true,
+      "seaLevel": 28,
+      "idleServerPosition": [405.0021, 26.85, 300.3764],
+      "idleClientPosition": [405.002, 26.85, 300.376],
+      "idleHeadY": 28.313,
+      "movingServerPosition": [391.9466, 26.85, 300.7197],
+      "movingHeadYMinimum": 28.0093517,
+      "movingHeadYMaximum": 28.3174324,
+      "dryReturnServerPosition": [404.8331, 30.63253, 329.6278],
+      "dryReturnMotion": 0,
+      "screenshots": ["starter-island-swim-idle.png", "starter-island-swim.png"]
+    },
+    "returnThroughHud": true,
+    "localWorldsAfterReturn": 0,
+    "islandLoadedAfterReturn": false,
+    "cursorRestored": "None",
+    "finalScene": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+    "finalSceneDirty": false,
+    "finalPlayMode": false,
+    "consoleErrors": 0,
+    "consoleWarnings": 20
+  },
+  "changedFiles": [
+    "Assets/Arkya/Characters/Runtime/CharacterPreviewPresenter.cs",
+    "Assets/Arkya/Characters/Runtime/Playtest/CharacterLocalPlaytest.cs",
+    "Assets/Arkya/Characters/Runtime/Playtest/CharacterLocalPlaytestComponents.cs",
+    "Assets/Arkya/Characters/Runtime/Playtest/CharacterLocalPlaytestSystems.cs",
+    "Assets/Arkya/Characters/Runtime/Playtest/CharacterTerrainTraversal.cs",
+    "Assets/Arkya/Characters/Runtime/UI/CharacterCreationScreen.cs",
+    "Assets/Arkya/Characters/Runtime/UI/CharacterCreation.uxml",
+    "Assets/Arkya/Characters/Editor/CharacterTraversalAnimationBuilder.cs",
+    "Assets/Arkya/Characters/Editor/CharacterCreationBuilder.cs",
+    "Assets/Arkya/Characters/Animations: 12 traversal clips and 4 controllers, with matching meta files",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterAppearanceTests.cs",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterIslandRuntimeTests.cs",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterTerrainTraversalTests.cs",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterTerrainServerTests.cs",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterTraversalAnimationTests.cs",
+    "docs/ARCHITECTURE.md",
+    "docs/CHARACTER_CREATION.md",
+    "docs/world/STARTER_ISLAND_PLAYABLE.md",
+    "docs/world/starter-island-movement-validation.json",
+    "docs/world/starter-island-swim-idle.png",
+    "docs/world/starter-island-swim.png"
+  ],
+  "checksNotPerformed": [
+    "Live OAuth and backend persistence",
+    "Full island traversal inside the standalone executable",
+    "Separate dedicated server and client"
+  ],
+  "notes": [
+    "The first animation test pass exposed insufficient idle hand motion; clips were corrected before the final 129-case pass.",
+    "An independent UI test edit triggered a domain reload during live QA; the session was re-entered through creation UI and the final swim/dry-return flow completed.",
+    "Existing package, shader and Editor warnings remain; the completed live session had no Console errors.",
+    "Buoyancy follows mean sea level; ocean waves remain visual."
+  ]
+}

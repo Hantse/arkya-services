@@ -1,0 +1,65 @@
+{
+  "success": false,
+  "utc": "2026-10-20T09:31:36.1053953Z",
+  "gates": [
+    {
+      "Gate": "Gate - Arrival",
+      "Success": true,
+      "GroundCapsules": 195,
+      "WallCapsules": 333,
+      "SupportChecks": 600,
+      "WidthChecks": 114,
+      "MinimumGroundWidth": 6.635742,
+      "MinimumWallWidth": 3.296875,
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Success": false,
+      "GroundCapsules": 195,
+      "WallCapsules": 333,
+      "SupportChecks": 600,
+      "WidthChecks": 114,
+      "MinimumGroundWidth": 6.635742,
+      "MinimumWallWidth": 3.30078125,
+      "Failures": [
+        {
+          "kind": "Wall-walk support missing",
+          "at": {
+            "x": 572.632751,
+            "y": 56.10533,
+            "z": 572.146851
+          }
+        },
+        {
+          "kind": "Required wall band unsupported",
+          "at": {
+            "x": 572.047058,
+            "y": 56.10533,
+            "z": 571.7145
+          },
+          "lateral": 1.15
+        },
+        {
+          "kind": "Required wall band unsupported",
+          "at": {
+            "x": 572.245056,
+            "y": 56.10533,
+            "z": 571.5619
+          },
+          "lateral": 1.15
+        },
+        {
+          "kind": "Required wall band unsupported",
+          "at": {
+            "x": 589.472961,
+            "y": 56.10533,
+            "z": 558.2855
+          },
+          "lateral": 1.15
+        }
+      ]
+    }
+  ],
+  "scope": "Read-only pre-authoring geometry. Width includes actual tower drums, plinths, open gate leaves and jambs, not only the nominal arch opening."
+}

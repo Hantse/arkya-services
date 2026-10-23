@@ -1,0 +1,27 @@
+{
+  "recordedUtc": "2026-10-20T21:38:38.3028688Z",
+  "status": "Awaiting Unity window restoration",
+  "project": "D:/Repositories/arkya/Unity3D/Arkya",
+  "unityVersion": "6000.6.6f1",
+  "editorPid": 46588,
+  "observation": "Computer Use reported the Unity window minimized. Two activate_window attempts timed out. Desktop lock was not established.",
+  "pipeline": "Status reports ready, but eval main-thread operation times out after 5000ms. Recompile and set_autotick also timed out.",
+  "modelsCopied": 4,
+  "sourceHashesVerified": true,
+  "metaFilesPreservedDuringCopy": true,
+  "sourceValidation": "Four FBX round trips passed; 26 bones, four meshes, at most four normalized influences; original rest matrices and hierarchy preserved.",
+  "newModelsImportConfirmed": false,
+  "bladeMaterialExists": false,
+  "shader": "Shader and builder compiled before the reflection probe keyword addition; latest shader compilation not confirmed.",
+  "lastConfirmedEditorState": "Edit Mode, Creation active additive, original StarterIsland roots temporarily disabled by ReferenceCreationSession.Begin. End has not yet run.",
+  "pending": [
+    "Restore Unity window",
+    "ImportReferenceModels and verify Blade remap",
+    "CaptureArmedReference native images",
+    "RunReferenceChecks",
+    "CheckDesktopInPlay and desktop screenshots",
+    "Read console",
+    "ReferenceCreationSession.End"
+  ],
+  "userInputRequested": true
+}

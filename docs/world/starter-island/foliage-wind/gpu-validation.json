@@ -1,6 +1,6 @@
 {
   "success": true,
-  "checkedAtUtc": "2026-10-16T08:18:25.6582542Z",
+  "checkedAtUtc": "2026-10-19T21:22:57.6750062Z",
   "caseCount": 17,
   "checks": [
     {
@@ -22,7 +22,7 @@
       "name": "Arbre LOD0 visible GPU motion",
       "passed": true,
       "detail": {
-        "changedPixels": 79779
+        "changedPixels": 81051
       }
     },
     {
@@ -36,7 +36,7 @@
       "name": "Arbre LOD1 visible GPU motion",
       "passed": true,
       "detail": {
-        "changedPixels": 80958
+        "changedPixels": 81480
       }
     },
     {
@@ -50,7 +50,7 @@
       "name": "Arbre LOD2 visible GPU motion",
       "passed": true,
       "detail": {
-        "changedPixels": 88008
+        "changedPixels": 88803
       }
     },
     {
@@ -64,7 +64,7 @@
       "name": "Buisson LOD0 visible GPU motion",
       "passed": true,
       "detail": {
-        "changedPixels": 108859
+        "changedPixels": 108606
       }
     },
     {
@@ -78,7 +78,7 @@
       "name": "Buisson LOD1 visible GPU motion",
       "passed": true,
       "detail": {
-        "changedPixels": 107951
+        "changedPixels": 107396
       }
     },
     {
@@ -92,7 +92,7 @@
       "name": "Buisson LOD2 visible GPU motion",
       "passed": true,
       "detail": {
-        "changedPixels": 107649
+        "changedPixels": 107606
       }
     },
     {

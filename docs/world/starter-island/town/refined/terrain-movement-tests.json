@@ -1,0 +1,251 @@
+{
+  "status": "completed",
+  "duration": 0.74,
+  "summary": {
+    "total": 34,
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.AcceptedConnectionMovesItsActorUsingServerTerrain",
+      "Status": "Passed",
+      "Duration": 0.2634978,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.AcquiringRampSupportDoesNotBypassBodyClearanceAtLowCeiling",
+      "Status": "Passed",
+      "Duration": 0.0123733,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.BuiltRampSteeperThanTerrainSlopeLimitCannotBeClimbed",
+      "Status": "Passed",
+      "Duration": 0.0062782,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.DiagonalMovementSlidesAlongAnObstructingWall",
+      "Status": "Passed",
+      "Duration": 0.0024347,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.DisconnectRemovesActorInsteadOfLeavingPreviousMovementActive",
+      "Status": "Passed",
+      "Duration": 0.0024142,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.ExistingOverlapAllowsEscapeButNotCrossingThroughTheObstacle",
+      "Status": "Passed",
+      "Duration": 0.0060109,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.JumpSequenceIsConsumedOnceAndAirbornePressDoesNotQueue",
+      "Status": "Passed",
+      "Duration": 0.0045919,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.LandingOnBoxSupportsNewJumpAndWalkingOffFallsToTerrain",
+      "Status": "Passed",
+      "Duration": 0.0106966,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.LowCeilingStopsAscentThenGravityReturnsPlayerToGround",
+      "Status": "Passed",
+      "Duration": 0.0044394,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.ReplayedAndNonFiniteInputDoNotReplaceAcceptedIntentOrRefreshTimeout",
+      "Status": "Passed",
+      "Duration": 0.0036548,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.ReplayedInvalidAndUnownedRequestsCannotInitiateJump",
+      "Status": "Passed",
+      "Duration": 0.0023388,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.ShortStepFallbackCannotClimbAnAbruptHighLedge",
+      "Status": "Passed",
+      "Duration": 0.0050726,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.StaticColliderStopsMovementAndTriggerDoesNot",
+      "Status": "Passed",
+      "Duration": 0.0036496,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.SwimmerFloatsAndObstaclesStillStopHorizontalMovement",
+      "Status": "Passed",
+      "Duration": 0.0051963,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.UnadmittedOrIncorrectlyLinkedConnectionCannotControlAnotherActor",
+      "Status": "Passed",
+      "Duration": 0.0030733,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.WalksFromTerrainUpBuiltRampAcrossPlatformAndBackDownWithoutJumping(4.0f)",
+      "Status": "Passed",
+      "Duration": 0.0076992,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.WalksFromTerrainUpBuiltRampAcrossPlatformAndBackDownWithoutJumping(6.4f)",
+      "Status": "Passed",
+      "Duration": 0.0054949,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainServerTests.WallBlocksHorizontalMotionWhileJumpContinuesVertically",
+      "Status": "Passed",
+      "Duration": 0.0025377,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.AirbornePressesCannotDoubleJumpOrQueueForLanding",
+      "Status": "Passed",
+      "Duration": 0.0018252,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.AirborneSlopeChecksUseTerrainHeightInsteadOfAirborneFeet",
+      "Status": "Passed",
+      "Duration": 0.0013249,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.ArenaModeRetainsOriginalBoundsAndGround",
+      "Status": "Passed",
+      "Duration": 0.0011523,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.CoastTraversalWadesSwimsAtFixedSpeedAndReturnsToLand",
+      "Status": "Passed",
+      "Duration": 0.0017206,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.InvalidInputAndClockCannotMovePlayer",
+      "Status": "Passed",
+      "Duration": 0.0030535,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.JumpFromWaterReturnsToFloatingAndSwimmerCannotLeaveTerrainBounds",
+      "Status": "Passed",
+      "Duration": 0.0009185,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.JumpReachesConfiguredApexAndLandsWithoutRepeatingHeldPress",
+      "Status": "Passed",
+      "Duration": 0.0008049,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.MovementFollowsGentleSlopeAndCapsLongFrames",
+      "Status": "Passed",
+      "Duration": 0.000463,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.NormalizedInputCannotExceedServerWalkOrRunSpeed",
+      "Status": "Passed",
+      "Duration": 0.0006691,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.RefusesSteepClimbAndCliffDescent",
+      "Status": "Passed",
+      "Duration": 0.0004169,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.RefusesWaterAndLeavesRoomForBodyAtTerrainEdge",
+      "Status": "Passed",
+      "Duration": 0.0005241,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.RejectsWetSpawnOrInvalidHeightData",
+      "Status": "Passed",
+      "Duration": 0.0026837,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.SnapshotDoesNotChangeWhenAuthoringSourceChanges",
+      "Status": "Passed",
+      "Duration": 0.0006373,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.SnapshotSamplesWorldCoordinatesWithBilinearInterpolation",
+      "Status": "Passed",
+      "Duration": 0.0005295,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.SpawnUsesWorldTerrainHeightInsteadOfAuthoredMarkerOffset",
+      "Status": "Passed",
+      "Duration": 0.0004102,
+      "Message": null,
+      "StackTrace": null
+    },
+    {
+      "FullName": "Arkya.Characters.Tests.CharacterTerrainTraversalTests.StatefulTraversalRejectsInvalidTimeAndKeepsVerticalSimulationWhenInputIsInvalid",
+      "Status": "Passed",
+      "Duration": 0.0009472,
+      "Message": null,
+      "StackTrace": null
+    }
+  ]
+}

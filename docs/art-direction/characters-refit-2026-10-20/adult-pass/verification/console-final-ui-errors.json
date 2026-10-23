@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "command": "command console",
+  "data": {
+    "command": "console",
+    "parameters": {
+      "level": "error",
+      "since": "10171",
+      "since_session": "6faa8c57cc75457c8597fb709021a8df",
+      "tail": "100"
+    },
+    "result": {
+      "entries": [],
+      "cursor": 10171,
+      "session": "6faa8c57cc75457c8597fb709021a8df",
+      "returned": 0,
+      "dropped": false,
+      "reset": false,
+      "counts": {
+        "error": 5,
+        "warn": 153,
+        "log": 1842
+      },
+      "groundTruth": {
+        "sampledUtc": "2026-10-20T22:19:18.3251509Z",
+        "ageMs": 207,
+        "compilationFailed": false,
+        "compiling": false,
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "consoleLogs": 0,
+        "seeded": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7803,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

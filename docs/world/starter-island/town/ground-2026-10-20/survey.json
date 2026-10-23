@@ -1,0 +1,693 @@
+{
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "isDirty": false,
+  "terrain": {
+    "path": "Assets/Arkya/World/StarterIsland/Terrain/StarterIslandTerrain.asset",
+    "size": {
+      "x": 1536.0,
+      "y": 192.0,
+      "z": 1536.0
+    },
+    "origin": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "alphamapResolution": 2048,
+    "layers": [
+      {
+        "index": 0,
+        "name": "SageMeadowV4",
+        "path": "Assets/Arkya/World/StarterIsland/Terrain/Environment/SageMeadowV4.terrainlayer"
+      },
+      {
+        "index": 1,
+        "name": "DuneSandV4",
+        "path": "Assets/Arkya/World/StarterIsland/Terrain/Environment/DuneSandV4.terrainlayer"
+      },
+      {
+        "index": 2,
+        "name": "PaintedRockV4",
+        "path": "Assets/Arkya/World/StarterIsland/Terrain/Environment/PaintedRockV4.terrainlayer"
+      },
+      {
+        "index": 3,
+        "name": "MeadowGlazeV4",
+        "path": "Assets/Arkya/World/StarterIsland/Terrain/Environment/MeadowGlazeV4.terrainlayer"
+      },
+      {
+        "index": 4,
+        "name": "EarthPathV4",
+        "path": "Assets/Arkya/World/StarterIsland/Terrain/Environment/EarthPathV4.terrainlayer"
+      },
+      {
+        "index": 5,
+        "name": "WoodlandLoamV4",
+        "path": "Assets/Arkya/World/StarterIsland/Terrain/Environment/WoodlandLoamV4.terrainlayer"
+      },
+      {
+        "index": 6,
+        "name": "CoolMeadowV4",
+        "path": "Assets/Arkya/World/StarterIsland/Terrain/Environment/CoolMeadowV4.terrainlayer"
+      },
+      {
+        "index": 7,
+        "name": "WeatheredEarthV4",
+        "path": "Assets/Arkya/World/StarterIsland/Terrain/Environment/WeatheredEarthV4.terrainlayer"
+      }
+    ]
+  },
+  "renderers": [
+    {
+      "name": "Joined worn square flagstones",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 550.660034,
+        "y": 51.05178,
+        "z": 519.33
+      },
+      "size": {
+        "x": 20.64801,
+        "y": 0.265167236,
+        "z": 19.39798
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Meshes/Joined worn square flagstones.asset",
+      "materials": [
+        {
+          "name": "Worn limestone paving",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Worn limestone paving.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        },
+        {
+          "name": "Worn limestone honey variation",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Worn limestone honey variation.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        },
+        {
+          "name": "Worn limestone cool variation",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Worn limestone cool variation.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Soft wall foot contact 00",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 581.9075,
+        "y": 51.9672623,
+        "z": 558.1911
+      },
+      "size": {
+        "x": 31.34851,
+        "y": 0.641963959,
+        "z": 32.2154541
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Meshes/Soft wall foot contact 00.asset",
+      "materials": [
+        {
+          "name": "Soft mossed wall contact",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft mossed wall contact.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Soft wall foot contact 01",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 594.6456,
+        "y": 50.7513924,
+        "z": 519.225342
+      },
+      "size": {
+        "x": 10.59137,
+        "y": 3.121643,
+        "z": 49.294342
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/FootContacts/Soft wall foot contact 01_Joined.asset",
+      "materials": [
+        {
+          "name": "Soft mossed wall contact",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft mossed wall contact.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Soft wall foot contact 02",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 577.8801,
+        "y": 49.24805,
+        "z": 485.913574
+      },
+      "size": {
+        "x": 30.7799072,
+        "y": 1.22422028,
+        "z": 23.1071472
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Meshes/Soft wall foot contact 02.asset",
+      "materials": [
+        {
+          "name": "Soft mossed wall contact",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft mossed wall contact.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Soft wall foot contact 03",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 522.5731,
+        "y": 50.64789,
+        "z": 487.117126
+      },
+      "size": {
+        "x": 47.21704,
+        "y": 1.43323517,
+        "z": 29.78897
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/FootContacts/Soft wall foot contact 03_Joined.asset",
+      "materials": [
+        {
+          "name": "Soft mossed wall contact",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft mossed wall contact.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Soft wall foot contact 04",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 502.6757,
+        "y": 50.9497,
+        "z": 525.123962
+      },
+      "size": {
+        "x": 14.0964966,
+        "y": 1.27159119,
+        "z": 49.0467834
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/FootContacts/Soft wall foot contact 04_Joined.asset",
+      "materials": [
+        {
+          "name": "Soft mossed wall contact",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft mossed wall contact.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Soft wall foot contact 05",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 528.5637,
+        "y": 50.6770973,
+        "z": 558.664063
+      },
+      "size": {
+        "x": 44.2456665,
+        "y": 1.35073853,
+        "z": 25.2510376
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Meshes/Soft wall foot contact 05.asset",
+      "materials": [
+        {
+          "name": "Soft mossed wall contact",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft mossed wall contact.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Worn paving - Pale joined kerbstone",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 546.4194,
+        "y": 50.5375748,
+        "z": 508.874939
+      },
+      "size": {
+        "x": 63.2271729,
+        "y": 1.40671921,
+        "z": 66.64841
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Court_00.asset",
+      "materials": [
+        {
+          "name": "Joined warm pale kerbs",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Joined warm pale kerbs.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Worn paving - Worn warm courtyard paving",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 546.814453,
+        "y": 50.50377,
+        "z": 508.9341
+      },
+      "size": {
+        "x": 65.29993,
+        "y": 1.31880569,
+        "z": 67.85504
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Court_01.asset",
+      "materials": [
+        {
+          "name": "Worn limestone paving",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Worn limestone paving.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Small uneven mana square",
+      "enabled": true,
+      "active": true,
+      "center": {
+        "x": 550.577,
+        "y": 51.0120468,
+        "z": 519.6415
+      },
+      "size": {
+        "x": 21.6841431,
+        "y": 0.2962761,
+        "z": 20.94574
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_00.asset",
+      "materials": [
+        {
+          "name": "Muted lime and earth paving joints",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Muted lime and earth paving joints.mat",
+          "shader": "Arkya/Environment/Painted Village Stone"
+        }
+      ]
+    },
+    {
+      "name": "Uneven small square cobble faces",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 550.584961,
+        "y": 51.04999,
+        "z": 519.69
+      },
+      "size": {
+        "x": 21.3500366,
+        "y": 0.269119263,
+        "z": 19.6800232
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_01.asset",
+      "materials": [
+        {
+          "name": "Worn warm courtyard paving",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Polish/Materials/Worn warm courtyard paving.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "North well bypass",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 546.6996,
+        "y": 50.9711761,
+        "z": 522.3014
+      },
+      "size": {
+        "x": 14.875061,
+        "y": 0.2244606,
+        "z": 16.9942017
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_04.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Crooked market loop",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 552.039551,
+        "y": 50.8490448,
+        "z": 519.533447
+      },
+      "size": {
+        "x": 39.83081,
+        "y": 0.7532387,
+        "z": 35.39212
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_05.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 01 - Auberge des Lanternes",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 534.7567,
+        "y": 50.5747757,
+        "z": 535.554443
+      },
+      "size": {
+        "x": 10.0143433,
+        "y": 0.443119049,
+        "z": 11.0264282
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_08.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 02 - Maison du boulanger",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 544.027,
+        "y": 50.55356,
+        "z": 538.253052
+      },
+      "size": {
+        "x": 4.550049,
+        "y": 0.357284546,
+        "z": 10.072937
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_09.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 03 - Atelier des runes",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 557.905151,
+        "y": 50.7492523,
+        "z": 540.3436
+      },
+      "size": {
+        "x": 3.64917,
+        "y": 0.467937469,
+        "z": 10.4353638
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_10.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 04 - Maison des voyageurs",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 569.60144,
+        "y": 50.9320068,
+        "z": 549.8772
+      },
+      "size": {
+        "x": 3.57049561,
+        "y": 0.05571747,
+        "z": 9.936523
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_11.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 05 - Herboristerie",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 573.672546,
+        "y": 51.0852127,
+        "z": 528.1387
+      },
+      "size": {
+        "x": 11.4172363,
+        "y": 0.189571381,
+        "z": 6.08258057
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_12.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 06 - Forge du Refuge",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 570.973633,
+        "y": 50.49264,
+        "z": 504.145874
+      },
+      "size": {
+        "x": 10.6554565,
+        "y": 0.982749939,
+        "z": 10.212677
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_13.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 07 - Entrepot des marchands",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 561.561157,
+        "y": 50.16356,
+        "z": 499.277222
+      },
+      "size": {
+        "x": 5.942749,
+        "y": 0.9209213,
+        "z": 12.2926941
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_14.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 08 - Maison des tisserands",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 550.856934,
+        "y": 50.32303,
+        "z": 499.3897
+      },
+      "size": {
+        "x": 2.91235352,
+        "y": 0.52705,
+        "z": 8.830322
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_15.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 09 - Maison du verger",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 538.407,
+        "y": 50.7119064,
+        "z": 501.206055
+      },
+      "size": {
+        "x": 8.857056,
+        "y": 0.612915039,
+        "z": 10.3588562
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_16.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Door approach 10 - Relais de la crique",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 528.2433,
+        "y": 51.0050125,
+        "z": 518.0045
+      },
+      "size": {
+        "x": 12.3532715,
+        "y": 0.2716713,
+        "z": 4.742737
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_17.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Arrival main street",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 526.403748,
+        "y": 50.4034424,
+        "z": 492.9645
+      },
+      "size": {
+        "x": 31.9986877,
+        "y": 1.30492783,
+        "z": 47.2584839
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_02.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "Forest main street",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 571.053162,
+        "y": 51.1131172,
+        "z": 551.6493
+      },
+      "size": {
+        "x": 38.64099,
+        "y": 0.464691162,
+        "z": 49.23883
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_03.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "West rampart stair access",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 524.399536,
+        "y": 51.1174736,
+        "z": 525.5457
+      },
+      "size": {
+        "x": 19.8231812,
+        "y": 0.155509949,
+        "z": 11.5147705
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_06.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    },
+    {
+      "name": "East rampart stair access",
+      "enabled": false,
+      "active": true,
+      "center": {
+        "x": 576.498352,
+        "y": 51.26552,
+        "z": 517.987854
+      },
+      "size": {
+        "x": 14.2044678,
+        "y": 0.131664276,
+        "z": 7.711548
+      },
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/StreetsV2/Meshes/Street_07.asset",
+      "materials": [
+        {
+          "name": "Packed ochre town earth",
+          "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Packed ochre town earth.mat",
+          "shader": "Universal Render Pipeline/Lit"
+        }
+      ]
+    }
+  ]
+}

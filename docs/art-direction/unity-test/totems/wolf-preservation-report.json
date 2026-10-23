@@ -1,9 +1,13 @@
 {
   "success": true,
-  "revision": "20261016T103309070262Z-totems",
+  "revision": "20261016T150222819563Z-totems",
   "foxFilesChecked": 126,
   "changedFoxFiles": [],
-  "assetGuidsChecked": 136,
+  "foxSourceFilesChecked": 39,
+  "changedFoxSourceFiles": [],
+  "assetGuidsChecked": 137,
   "changedGuids": [],
-  "baseline": "wolf-revision-baseline.json"
+  "sceneFilesChecked": 2,
+  "changedSceneFiles": [],
+  "baseline": "wolf-v10-baseline.json"
 }

@@ -10,6 +10,32 @@ namespace Arkya.Realms.Tests;
 public sealed class MongoRealmRepositoryTests
 {
     [Fact]
+    public void DeletionTimestampRoundTripsAndHistoricalDocumentsRetainActiveReservations()
+    {
+        var active = RealmDocument.From(Fixtures.Realm()).ToBsonDocument();
+        Assert.False(active.Contains("DeletedAt"));
+        Assert.Null(BsonSerializer.Deserialize<RealmDocument>(active).ToRecord().DeletedAt);
+        active["DeletedAt"] = BsonNull.Value;
+        Assert.Null(BsonSerializer.Deserialize<RealmDocument>(active).ToRecord().DeletedAt);
+
+        var deletedAt = new TestClock().Now;
+        var deleted = RealmDocument.From(Fixtures.Realm() with { Status = "Deleted", DeletedAt = deletedAt }).ToBsonDocument();
+        Assert.Equal(BsonType.DateTime, deleted["DeletedAt"].BsonType);
+        Assert.Equal(deletedAt, BsonSerializer.Deserialize<RealmDocument>(deleted).ToRecord().DeletedAt);
+    }
+
+    [Fact]
+    public void ObservationTimestampRoundTripsAndHistoricalDocumentsRemainUnknown()
+    {
+        var observed = new TestClock().Now;
+        var document = RealmDocument.From(Fixtures.Realm() with { LastObservedAt = observed }).ToBsonDocument();
+        Assert.Equal(BsonType.DateTime, document["LastObservedAt"].BsonType);
+        Assert.Equal(observed, BsonSerializer.Deserialize<RealmDocument>(document).ToRecord().LastObservedAt);
+        document.Remove("LastObservedAt");
+        Assert.Null(BsonSerializer.Deserialize<RealmDocument>(document).ToRecord().LastObservedAt);
+    }
+
+    [Fact]
     public void RealmSnapshotRoundTripsBsonWithStableIdVersionsArgumentsAndDates()
     {
         var original = Fixtures.Realm() with { LastError = "cluster_unavailable", Version = 7,
@@ -58,6 +84,60 @@ public sealed class MongoRealmRepositoryTests
             Assert.Equal(2, restored.Version);
             Assert.Equal(realm.DeploymentIdentity, restored.DeploymentIdentity);
             Assert.Equal(realm.Profile.Servers[0].Args, restored.Profile.Servers[0].Args);
+        }
+        finally { await client.DropDatabaseAsync(database); }
+    }
+    [MongoFact]
+    public async Task LegacyReservationsMigrateAndOnlyCompletedDeletionReleasesTargetAndNamespace()
+    {
+        var database = $"arkya_realms_test_{Guid.NewGuid():N}";
+        var settings = MongoClientSettings.FromConnectionString(Environment.GetEnvironmentVariable("ARKYA_TEST_MONGO"));
+        settings.ServerSelectionTimeout = TimeSpan.FromSeconds(5);
+        var client = new MongoClient(settings);
+        var options = Options.Create(new MongoOptions { DatabaseName = database });
+        try
+        {
+            var collection = client.GetDatabase(database).GetCollection<BsonDocument>("realms");
+            await collection.Indexes.CreateManyAsync([
+                new CreateIndexModel<BsonDocument>(new BsonDocument("TargetId", 1),
+                    new CreateIndexOptions { Name = "ux_realm_target", Unique = true }),
+                new CreateIndexModel<BsonDocument>(new BsonDocument("Namespace", 1),
+                    new CreateIndexOptions { Name = "ux_realm_namespace", Unique = true }),
+                new CreateIndexModel<BsonDocument>(new BsonDocument("DeploymentIdentity", 1),
+                    new CreateIndexOptions { Name = "ux_realm_deployment", Unique = true })
+            ]);
+            var original = Fixtures.Realm();
+            await collection.InsertOneAsync(RealmDocument.From(original).ToBsonDocument());
+            var first = new MongoRealmRepository(client, options);
+            var second = new MongoRealmRepository(client, options);
+            await Task.WhenAll(first.InitializeAsync(default), second.InitializeAsync(default));
+            await first.InitializeAsync(default);
+
+            var indexes = await (await collection.Indexes.ListAsync()).ToListAsync();
+            Assert.DoesNotContain(indexes, value => value["name"] == "ux_realm_target" || value["name"] == "ux_realm_namespace");
+            foreach (var name in new[] { "ux_realm_active_target", "ux_realm_active_namespace" })
+            {
+                var index = Assert.Single(indexes, value => value["name"] == name);
+                Assert.True(index["unique"].AsBoolean);
+                Assert.Equal(new BsonDocument("DeletedAt", BsonNull.Value), index["partialFilterExpression"].AsBsonDocument);
+            }
+
+            var replacement = original with { RealmId = "eu-two", DeploymentIdentity = "replacement-deployment-identity" };
+            Assert.False(await first.TryCreateAsync(replacement with { Namespace = "another-namespace" }, default));
+            Assert.False(await first.TryCreateAsync(replacement with { TargetId = "another-target" }, default));
+            var deleting = original with { Status = "Deleting", Version = original.Version + 1 };
+            Assert.True(await first.TryReplaceAsync(deleting, original.Version, default));
+            Assert.False(await second.TryCreateAsync(replacement, default));
+            var deleted = deleting with { Status = "Deleted", DeletedAt = new TestClock().Now, Version = deleting.Version + 1 };
+            Assert.True(await second.TryReplaceAsync(deleted, deleting.Version, default));
+            Assert.True(await first.TryCreateAsync(replacement, default));
+            Assert.Equal(deleted.DeletedAt, (await second.FindAsync(original.RealmId, default))!.DeletedAt);
+            Assert.False(await first.TryCreateAsync(original with { TargetId = "other-target", Namespace = "other-namespace",
+                DeploymentIdentity = "another-deployment-identity" }, default));
+            Assert.False(await first.TryCreateAsync(original with { RealmId = "eu-three", TargetId = "other-target",
+                Namespace = "other-namespace" }, default));
+            Assert.False(await first.TryCreateAsync(replacement with { RealmId = "eu-three",
+                DeploymentIdentity = "another-deployment-identity" }, default));
         }
         finally { await client.DropDatabaseAsync(database); }
     }

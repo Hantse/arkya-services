@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T07:18:27.5419335Z",
+  "playMode": true,
+  "gateSamples": 306,
+  "missingScripts": 0,
+  "unsupportedMaterials": 0,
+  "activeOldStairRamps": 0,
+  "towerCount": 4,
+  "townLights": 21,
+  "failures": []
+}

@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "addedRenderers": 1,
+  "addedMaterials": 0,
+  "triangles": 56,
+  "addedColliders": 0,
+  "existingShelterPreserved": true,
+  "closedGables": 2,
+  "closedEaveBands": 2,
+  "floorHeightLocal": 0.0120822117,
+  "mesh": "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/Shelter_roof_infill.asset"
+}

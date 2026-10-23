@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "verificationMethod": "direct invocation — not Unity Test Runner",
+  "limitations": "Synchronous Test/TestCase methods only. No UnityTest coroutine, Play Mode, framework lifecycle, platform coverage or rendered layout validation is claimed.",
+  "unityVersion": "6000.6.6f1",
+  "completedUtc": "2026-10-20T21:50:59.1330519Z",
+  "durationSeconds": 6.8252606,
+  "success": true,
+  "discovered": 40,
+  "invoked": 40,
+  "passed": 40,
+  "failed": 0,
+  "skipped": 0,
+  "inconclusive": 0,
+  "sceneStatePreserved": true,
+  "originalScenes": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+      "name": "StarterIsland",
+      "wasDirty": false,
+      "roots": 18
+    },
+    {
+      "path": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+      "name": "CharacterCreation",
+      "wasDirty": false,
+      "roots": 10
+    }
+  ],
+  "excluded": [
+    "Arkya.Characters.Tests.CharacterPreviewFramingTests.LeavePlayMode: Unity coroutine lifecycle is outside direct invocation.",
+    "Arkya.Characters.Tests.CharacterPreviewFramingTests.NarrowPreviewKeepsAllAppearancesAndTallHeadgearVisibleAndCanReturnFromPortrait: Unity coroutine lifecycle is outside direct invocation."
+  ],
+  "infrastructureFailures": [],
+  "results": [
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.CloneDoesNotMutateSavedAppearance",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0429817,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndSixAnimationStates",
+      "status": "Passed",
+      "arguments": [
+        "human-a"
+      ],
+      "durationSeconds": 0.0305999,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndSixAnimationStates",
+      "status": "Passed",
+      "arguments": [
+        "human-b"
+      ],
+      "durationSeconds": 0.0035334999999999997,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndSixAnimationStates",
+      "status": "Passed",
+      "arguments": [
+        "elf-a"
+      ],
+      "durationSeconds": 0.0028840999999999997,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.GamePrefabsHaveSkinBonesAndSixAnimationStates",
+      "status": "Passed",
+      "arguments": [
+        "elf-b"
+      ],
+      "durationSeconds": 0.0032254,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.HeightLimitsMatchServer",
+      "status": "Passed",
+      "arguments": [
+        "human",
+        160,
+        195
+      ],
+      "durationSeconds": 0.0049256,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.HeightLimitsMatchServer",
+      "status": "Passed",
+      "arguments": [
+        "elf",
+        170,
+        205
+      ],
+      "durationSeconds": 0.0027207999999999998,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterAppearanceTests.RejectsUnknownOptionsAndVersion",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0030196999999999997,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "human-a",
+        "Walk"
+      ],
+      "durationSeconds": 0.1563789,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "human-b",
+        "Walk"
+      ],
+      "durationSeconds": 0.3042947,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "elf-a",
+        "Walk"
+      ],
+      "durationSeconds": 0.11537019999999999,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "elf-b",
+        "Walk"
+      ],
+      "durationSeconds": 0.12049299999999999,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "human-a",
+        "Run"
+      ],
+      "durationSeconds": 0.0667512,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "human-b",
+        "Run"
+      ],
+      "durationSeconds": 0.0611561,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "elf-a",
+        "Run"
+      ],
+      "durationSeconds": 0.0741153,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop",
+      "status": "Passed",
+      "arguments": [
+        "elf-b",
+        "Run"
+      ],
+      "durationSeconds": 0.092373699999999989,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "human-a",
+        "Walk"
+      ],
+      "durationSeconds": 0.84633669999999994,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "human-b",
+        "Walk"
+      ],
+      "durationSeconds": 0.863883,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "elf-a",
+        "Walk"
+      ],
+      "durationSeconds": 0.93293439999999994,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "elf-b",
+        "Walk"
+      ],
+      "durationSeconds": 0.7619338,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "human-a",
+        "Run"
+      ],
+      "durationSeconds": 0.49665319999999996,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "human-b",
+        "Run"
+      ],
+      "durationSeconds": 0.50276409999999994,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "elf-a",
+        "Run"
+      ],
+      "durationSeconds": 0.4924974,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight",
+      "status": "Passed",
+      "arguments": [
+        "elf-b",
+        "Run"
+      ],
+      "durationSeconds": 0.5068345,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.InterruptedTransitionAndExternalPlayStillAcceptRequestedState",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0264181,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle",
+      "status": "Passed",
+      "arguments": [
+        "human-a"
+      ],
+      "durationSeconds": 0.011186999999999999,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle",
+      "status": "Passed",
+      "arguments": [
+        "human-b"
+      ],
+      "durationSeconds": 0.011122799999999999,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle",
+      "status": "Passed",
+      "arguments": [
+        "elf-a"
+      ],
+      "durationSeconds": 0.0107587,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.RepeatedRunRequestsCompleteTransitionAndAdvanceCycle",
+      "status": "Passed",
+      "arguments": [
+        "elf-b"
+      ],
+      "durationSeconds": 0.0105498,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.ReplacementRigReceivesThePreviouslyRequestedMotion",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0144651,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace",
+      "status": "Passed",
+      "arguments": [
+        "human-a"
+      ],
+      "durationSeconds": 0.0462896,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace",
+      "status": "Passed",
+      "arguments": [
+        "human-b"
+      ],
+      "durationSeconds": 0.020342199999999998,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace",
+      "status": "Passed",
+      "arguments": [
+        "elf-a"
+      ],
+      "durationSeconds": 0.0200492,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TraversalClipsBindToRigDeformLimbsAndLeaveActorRootInPlace",
+      "status": "Passed",
+      "arguments": [
+        "elf-b"
+      ],
+      "durationSeconds": 0.019618399999999998,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick",
+      "status": "Passed",
+      "arguments": [
+        "human-a"
+      ],
+      "durationSeconds": 0.027767399999999998,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick",
+      "status": "Passed",
+      "arguments": [
+        "human-b"
+      ],
+      "durationSeconds": 0.0221887,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick",
+      "status": "Passed",
+      "arguments": [
+        "elf-a"
+      ],
+      "durationSeconds": 0.021574899999999998,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterTraversalAnimationTests.TreadingWaterKeepsBothKneesFlexingForwardThroughTheWholeKick",
+      "status": "Passed",
+      "arguments": [
+        "elf-b"
+      ],
+      "durationSeconds": 0.0241959,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterPreviewFramingTests.ResetRestoresTheConfiguredCameraFullViewportAndCharacterOrientation",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0119469,
+      "messages": []
+    },
+    {
+      "name": "Arkya.Characters.Tests.CharacterPreviewFramingTests.ViewportClipsToTheScreenAndIgnoresInvalidOrUnusableRegions",
+      "status": "Passed",
+      "arguments": [],
+      "durationSeconds": 0.0056148,
+      "messages": []
+    }
+  ],
+  "reportPath": "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\adult-pass\\verification\\reference-direct-checks.json"
+}

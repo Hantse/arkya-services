@@ -1,0 +1,172 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T20:05:27.0879359Z",
+  "sceneSaved": true,
+  "checks": [
+    {
+      "name": "All original colliders preserved without additions",
+      "passed": true,
+      "detail": {
+        "before": 2503,
+        "after": 2503,
+        "unexpected": []
+      }
+    },
+    {
+      "name": "Every original town transform and active state preserved",
+      "passed": true,
+      "detail": {
+        "checkedTransforms": 9768,
+        "unexpected": []
+      }
+    },
+    {
+      "name": "Civic landmark and its complete hierarchy retained",
+      "passed": true,
+      "detail": {
+        "position": [
+          539.0,
+          50.30602,
+          552.0
+        ],
+        "scale": [
+          1.2,
+          1.2,
+          1.2
+        ]
+      }
+    },
+    {
+      "name": "New objects remain under one owned dressing root",
+      "passed": true,
+      "detail": {
+        "newRoots": [
+          "Aubefont - mana well town/Town life - inhabited workyards and garden courts"
+        ],
+        "unexpectedAdditions": []
+      }
+    },
+    {
+      "name": "Nine houses remain active",
+      "passed": true,
+      "detail": [
+        "01 - Auberge des Lanternes",
+        "03 - Atelier des runes",
+        "04 - Maison des voyageurs",
+        "05 - Herboristerie",
+        "06 - Forge du Refuge",
+        "07 - Entrepot des marchands",
+        "08 - Maison des tisserands",
+        "09 - Maison du verger",
+        "10 - Relais de la crique"
+      ]
+    },
+    {
+      "name": "Terrain heights and pose unchanged",
+      "passed": true,
+      "detail": "d0a9fd86d6d94c227cf6410bde37d72ea0dec9a499a7f5975cd522cd8c8392c9"
+    },
+    {
+      "name": "Entire terrain paint unchanged",
+      "passed": true,
+      "detail": "4d935656cee7db9355a17f261604f7dcc57dccd06c70106022b0a1e018ef4897"
+    },
+    {
+      "name": "Terrain layers and source assets unchanged",
+      "passed": true,
+      "detail": "ff96f345c5013b9499f2cdad1fe547fb626f3d1a6a9c6f02b86fa8646d19e37f"
+    },
+    {
+      "name": "No new lights",
+      "passed": true,
+      "detail": {
+        "SceneLightCount": 26,
+        "TownLightCount": 21
+      }
+    },
+    {
+      "name": "Dressing geometry matches its authoring report and budget",
+      "passed": true,
+      "detail": {
+        "triangles": 566932,
+        "renderers": 32,
+        "triangleBudget": 650000,
+        "rendererBudget": 50,
+        "reportedTriangles": 566932,
+        "reportedRenderers": 32
+      }
+    },
+    {
+      "name": "Dressing is presentation only",
+      "passed": true,
+      "detail": "No new collider, light or MonoBehaviour under the owned dressing root."
+    },
+    {
+      "name": "Exterior civic capsule route remains clear",
+      "passed": true,
+      "detail": {
+        "report": "exterior-route.json",
+        "overlaps": 97,
+        "casts": 96,
+        "problems": []
+      }
+    },
+    {
+      "name": "All materials supported and town shaders compile",
+      "passed": true,
+      "detail": {
+        "invalidMaterials": [],
+        "shaderErrors": []
+      }
+    },
+    {
+      "name": "No missing town scripts",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "Owned assets and dependencies have meta files",
+      "passed": true,
+      "detail": {
+        "assets": 406,
+        "missingMeta": []
+      }
+    },
+    {
+      "name": "Scene view effects and gizmos retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Bounded bloom and grading profiles preserved",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "failures": [],
+  "contentBefore": {
+    "renderers": 1445,
+    "meshes": 1431,
+    "triangles": 4457248,
+    "distinctMeshes": 449,
+    "materials": 93,
+    "shadowCasters": 1282,
+    "volumes": 2,
+    "sceneLights": 26,
+    "activeLights": 24,
+    "townLights": 21
+  },
+  "contentAfter": {
+    "renderers": 1662,
+    "meshes": 1648,
+    "triangles": 6806775,
+    "distinctMeshes": 627,
+    "materials": 119,
+    "shadowCasters": 1434,
+    "volumes": 2,
+    "sceneLights": 26,
+    "activeLights": 24,
+    "townLights": 21
+  },
+  "scope": "Edit Mode scene and exterior capsule checks. All existing colliders, civic hierarchy and terrain preserved. New dressing has no physical or runtime components. Content inventories include stored LOD geometry and are not measured draw calls or FPS. No new runtime or network traversal claim."
+}

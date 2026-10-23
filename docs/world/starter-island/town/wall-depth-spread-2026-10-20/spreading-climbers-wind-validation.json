@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "utc": "2026-10-20T11:51:17.3297789Z",
+  "changedLeafPixels": 1694,
+  "zeroWindChangedPixels": 0,
+  "pinnedStemChangedPixels": 0,
+  "pinnedStemVisiblePixels": 4471,
+  "pinnedTriangles": 7896,
+  "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SpreadingClimbers/Meshes/Spreading district 02 LOD0.asset",
+  "material": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SpreadingClimbers/Materials/Olive sage spreading ivy.mat",
+  "scope": "Actual authored mesh and material rendered in an isolated temporary preview scene. Two explicit shader clock poses, zero-wind control, then only original all-zero-weight stem/petiole triangles. Existing shader globals and active render target restored; no scene or asset writes."
+}

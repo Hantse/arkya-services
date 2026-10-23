@@ -1,0 +1,62 @@
+{
+  "kind": "terrain-relief",
+  "label": "Carte du relief",
+  "islandId": "starter-island",
+  "image": "/images/islands/starter-island.png",
+  "imagePixels": {
+    "width": 1024,
+    "height": 1024
+  },
+  "bounds": {
+    "minX": 0,
+    "minZ": 0,
+    "maxX": 1536.0,
+    "maxZ": 1536.0
+  },
+  "orientation": {
+    "right": "+X",
+    "up": "+Z",
+    "origin": "bottom-left"
+  },
+  "heightScaleMetres": 192,
+  "seaLevelMetres": 28.0,
+  "source": "Unity3D/Arkya/Assets/Arkya/World/StarterIsland/Terrain/CoastalHeights.asset",
+  "sourceSha256": "cdd6f9faa8512bbe74b82af5ec366d7731548e26e302b1849cc438e43fb004e5",
+  "layoutSha256": "e85384167bd5b85794475b2323fc8e7f0ac6dd7614dee11776524cda1c3b07e4",
+  "sourceSamples": {
+    "width": 512,
+    "height": 512,
+    "format": "R16 little-endian"
+  },
+  "heightRangeMetres": {
+    "min": 4.002014190890364,
+    "max": 112.76832227054246
+  },
+  "validation": {
+    "submergedBoundaryMaximumMetres": 12.093934538796063,
+    "layoutSamples": [
+      {
+        "point": "ArrivalPosition",
+        "x": 405.0,
+        "z": 350.0,
+        "expectedHeight": 33.687603,
+        "sampledHeight": 33.705665411075664,
+        "absoluteErrorMetres": 0.01806241107566109
+      },
+      {
+        "point": "DeparturePosition",
+        "x": 1272.0,
+        "z": 590.0,
+        "expectedHeight": 33.25203,
+        "sampledHeight": 33.27402687972076,
+        "absoluteErrorMetres": 0.02199687972075992
+      }
+    ]
+  },
+  "imageSha256": "53be10d5cceeb63fc63a32aa6bf537c8e743d98b9e8899085897f5d91c536ee2",
+  "limitations": [
+    "Baked terrain elevation only; no buildings, vegetation or gameplay state.",
+    "Source sampling interval is approximately 3 metres; this is not collision data.",
+    "Refresh CoastalHeights in Unity after terrain edits, then regenerate."
+  ]
+}

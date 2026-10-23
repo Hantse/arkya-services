@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-22",
+  "unity": "6000.6.6f1",
+  "urp": "17.6.0",
+  "testJobId": "d32bbfa6e0fa42ed9541e392953c3a5b",
+  "testMode": "EditMode",
+  "summary": {
+    "total": 67,
+    "passed": 66,
+    "failed": 0,
+    "skipped": 1,
+    "durationSeconds": 62.6506289,
+    "resultState": "Skipped:Ignored"
+  },
+  "ignoredTests": [
+    {
+      "name": "Arkya.Characters.Tests.CharacterRemoteNetworkTests.RealServicesAdmitTwoOwnersRejectInvalidAndReplayedTicketsAndReleaseLeases",
+      "reason": "SetUp : Real API fixture required: ARKYA_WEB_BETA_TICKETS_FILE. No simulated admission service is substituted."
+    }
+  ],
+  "integration": {
+    "prefab": "Assets/Arkya/Characters/Valkyrie/Valkyrie.prefab",
+    "catalog": "Assets/Arkya/Characters/Settings/CharacterVisuals.asset",
+    "historicalPairsResolved": 4,
+    "creationProfile": "human/b/long",
+    "states": [
+      "Idle",
+      "Walk",
+      "Run",
+      "Jump",
+      "SwimIdle",
+      "Swim"
+    ],
+    "shaderErrors": 0,
+    "finalConsoleErrors": 0,
+    "missingMetaFiles": 0
+  },
+  "visualChecks": [
+    "Creation full body and portrait: painted textures, transparent cornea and visible iris",
+    "Local island server connected; Valkyrie rendered in the world",
+    "Visual foot minimum relative to root at sampled idle: -0.00348 m"
+  ],
+  "limitations": [
+    "Real-service admission test ignored: ARKYA_WEB_BETA_TICKETS_FILE missing",
+    "Swimming presentation remains provisional",
+    "Additional races, silhouettes and hairstyles not yet produced",
+    "No new standalone or web build; no crowd performance validation",
+    "Transient Netcode tick batching messages observed during Editor island capture session"
+  ],
+  "captures": [
+    "creation.png",
+    "portrait.png",
+    "island.png"
+  ]
+}

@@ -6,14 +6,14 @@
     "parameters": {
       "file": "AgentScripts/Totems/ValidateTotems.cs",
       "entry": "ValidateTotems.CaptureMotion",
-      "args": "[\"wolf\"]",
-      "timeout_ms": "180000"
+      "timeout_ms": "180000",
+      "args": "[\"wolf\"]"
     },
     "result": {
       "diagnostics": [],
-      "compileMs": 279,
-      "executeMs": 585,
-      "assemblyName": "PipelineRunScript_ValidateTotems_c9596268c2154a3484cf1017b2d16cce",
+      "compileMs": 405,
+      "executeMs": 1033,
+      "assemblyName": "PipelineRunScript_ValidateTotems_fbe2fd329aaa48ee9e4b339b0d638ad5",
       "success": true,
       "result": "{\r\n  \"success\": true,\r\n  \"species\": \"wolf\",\r\n  \"files\": [\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-walk-motion.png\",\r\n    \"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\unity-test\\\\totems\\\\wolf-run-motion.png\"\r\n  ],\r\n  \"layout\": \"Top two rows: side view, t=0 to 7/8 of cycle left to right; bottom two rows: same phases in three-quarter view. Camera fixed for each view. No ground geometry or physics.\",\r\n  \"activeScenePreserved\": true\r\n}"
     },

@@ -1,62 +1,33 @@
 {
-  "success": true,
-  "revision": "20261016T103309070262Z-totems",
-  "scope": "wolf V3 targeted import; fox V2 unchanged",
-  "operations": [
-    {
-      "operation": "wolf-import",
-      "success": true,
-      "diagnostics": []
-    },
-    {
-      "operation": "wolf-validation",
-      "success": true,
-      "diagnostics": []
-    },
-    {
-      "operation": "wolf-audit",
-      "success": true,
-      "diagnostics": []
-    },
-    {
-      "operation": "wolf-capture",
-      "success": true,
-      "diagnostics": []
-    },
-    {
-      "operation": "wolf-motion",
-      "success": true,
-      "diagnostics": []
-    },
-    {
-      "operation": "wolf-editor-state",
-      "success": true,
-      "diagnostics": []
-    }
-  ],
-  "locomotion": {
-    "fox": "existing V2 audit; files unchanged",
-    "wolf": true
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "dirty": false,
+  "playing": false,
+  "compiling": false,
+  "textures": 24,
+  "all2048": true,
+  "shaderSupported": true,
+  "shaderErrors": [],
+  "prefabs": 26,
+  "wolfAnimationCompression": "Off",
+  "revision": "20261016T150222819563Z-totems",
+  "compilationFailed": false,
+  "commandCompilationDiagnostics": [],
+  "startupConsole": {
+    "warnings": 3,
+    "errors": 1,
+    "messages": [
+      "Unity AI account API unavailable after 30 seconds during V4 startup.",
+      "Pipeline eval timed out during V4 startup before import.",
+      "Two Unity AI MCP Windows-signature collection warnings for claude.exe (unknown OID 1.2.840.10045.2.1), emitted before the V9 import."
+    ],
+    "report": "wolf-v10-console-initial.json",
+    "cursor": 4
   },
-  "preservation": {
-    "success": true,
-    "revision": "20261016T103309070262Z-totems",
-    "foxFilesChecked": 126,
-    "changedFoxFiles": [],
-    "assetGuidsChecked": 136,
-    "changedGuids": [],
-    "baseline": "wolf-revision-baseline.json"
-  },
-  "sourceCopies": true,
-  "editor": {
-    "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
-    "dirty": false,
-    "playing": false,
-    "compiling": false,
-    "textures": 24,
-    "all2048": true,
-    "shaderSupported": true,
-    "shaderErrors": [],
-    "prefabs": 26
-  }
+  "newConsoleEntriesAfterStartup": 0,
+  "newConsoleWarnings": 0,
+  "newConsoleErrors": 0,
+  "finalConsoleReport": "wolf-v10-console-final.json",
+  "defaultWolfPrefabValidation": "wolf-default-prefab-validation.json",
+  "headCaptureReport": "wolf-head-capture-report.json",
+  "pearlHeadCaptureReport": "wolf-pearl-head-capture-report.json"
 }

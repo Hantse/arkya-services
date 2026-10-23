@@ -70,6 +70,7 @@ export function createGameController({ auth, loadGame, onState = () => {}, now =
   let active = false;
   let rechecking = false;
   let expiresAt = 0;
+  let engineExpiresAt = Infinity;
   let loadingAbort;
 
   function cancelTimers() { clearTimer(expiryTimer); clearTimer(recheckTimer); }
@@ -87,7 +88,8 @@ export function createGameController({ auth, loadGame, onState = () => {}, now =
 
   function armExpiry(user) {
     clearTimer(expiryTimer);
-    expiresAt = Date.parse(user.expiresAt);
+    // Unity and its admission lease still hold the originally imported bearer.
+    expiresAt = Math.min(Date.parse(user.expiresAt), engineExpiresAt);
     const remaining = expiresAt - now();
     if (!(remaining > 0)) { void stop('expired'); return false; }
     expiryTimer = setTimer(() => { void stop('expired'); }, remaining);
@@ -149,6 +151,7 @@ export function createGameController({ auth, loadGame, onState = () => {}, now =
       await auth.withGameSession(payload => {
         if (run !== revision || payload.accountId !== accountId || Date.parse(payload.expiresAt) <= now()) throw gameError('unauthenticated');
         game.SendMessage('ArkyaWebSession', 'AcceptSiteSession', JSON.stringify(payload));
+        engineExpiresAt = Date.parse(payload.expiresAt);
       });
       if (run !== revision) return;
       const current = auth.session();

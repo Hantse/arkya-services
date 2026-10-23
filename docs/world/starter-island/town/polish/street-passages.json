@@ -1,0 +1,103 @@
+{
+  "success": true,
+  "samples": 4156,
+  "centerlineSamples": 1382,
+  "lateralSamples": 2764,
+  "doorSamples": 10,
+  "adjustedStairSupportSamples": 3,
+  "maximumSampleSpacing": 0.35,
+  "lateralOffsets": [
+    -0.4,
+    0.0,
+    0.4
+  ],
+  "capsuleRadius": 0.3,
+  "capsuleHeight": 1.66,
+  "lowerSphereOffset": 0.4,
+  "upperSphereOffset": 1.46,
+  "installedRuntimeProxies": 1337,
+  "lanes": [
+    {
+      "name": "Arrival main street",
+      "samples": 609,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Forest main street",
+      "samples": 618,
+      "blockedSamples": 0
+    },
+    {
+      "name": "North well bypass",
+      "samples": 255,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Crooked market loop",
+      "samples": 1017,
+      "blockedSamples": 0
+    },
+    {
+      "name": "West rampart stair access",
+      "samples": 249,
+      "blockedSamples": 0
+    },
+    {
+      "name": "East rampart stair access",
+      "samples": 183,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 01 - Auberge des Lanternes",
+      "samples": 135,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 02 - Maison du boulanger",
+      "samples": 108,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 03 - Atelier des runes",
+      "samples": 111,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 04 - Maison des voyageurs",
+      "samples": 105,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 05 - Herboristerie",
+      "samples": 126,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 06 - Forge du Refuge",
+      "samples": 141,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 07 - Entrepot des marchands",
+      "samples": 135,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 08 - Maison des tisserands",
+      "samples": 93,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 09 - Maison du verger",
+      "samples": 123,
+      "blockedSamples": 0
+    },
+    {
+      "name": "Door approach 10 - Relais de la crique",
+      "samples": 138,
+      "blockedSamples": 0
+    }
+  ],
+  "failures": [],
+  "scope": "Play Mode capsule occupancy along every exported street, well bypass, rampart stair approach and ten door ends, with the runtime island obstacle proxies installed. Terrain-following centerline and +/-0.4 m samples use a bounded 0.22 m support-height correction only on the named stair ramps with slope <=40 degrees; those ramp colliders remain in the full capsule check. Elevated rampart traversal and a manual character walkthrough are separate checks."
+}

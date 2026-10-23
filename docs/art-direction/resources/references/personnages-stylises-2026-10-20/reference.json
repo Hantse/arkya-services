@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "status": "Référence principale de direction artistique des personnages retenue par l’utilisateur",
+  "date": "2026-10-20",
+  "userRequest": "Niveau personnage, y faut s'inspirer (mais genre a 100%) de ça",
+  "source": "Six images jointes par l’utilisateur dans le chat",
+  "scope": "Proportions, silhouettes, anatomie stylisée, visage, cheveux sculptés, équipements et finition des matières",
+  "author": null,
+  "sourceUrl": null,
+  "transformation": "Aucune : copies binaires des pièces jointes",
+  "files": [
+    {
+      "file": "01-portrait-couleur.png",
+      "sourceAttachment": "codex-clipboard-1af16043-6612-4b6b-a3b7-a156167140d0.png",
+      "view": "Portrait couleur, visage et arme au premier plan",
+      "width": 1280,
+      "height": 720,
+      "bytes": 867566,
+      "sha256": "B7E9172556ADE912B4ED5B0861A147F89837924A297D859B36DA551C3AEE1C85"
+    },
+    {
+      "file": "02-action-couleur.png",
+      "sourceAttachment": "codex-clipboard-6ddcfab5-3c33-49b3-9129-65455df40b95.png",
+      "view": "Action de profil, armure et double lame",
+      "width": 1280,
+      "height": 720,
+      "bytes": 944263,
+      "sha256": "7A35E68FB78EF49B8FF644601296620B0C0476112EADACC56932965403C28924"
+    },
+    {
+      "file": "03-vues-sculpture.png",
+      "sourceAttachment": "codex-clipboard-975a7de3-60a8-4de2-9b19-44db496220db.png",
+      "view": "Sculpture grise, face, trois-quarts, dos et profil",
+      "width": 1280,
+      "height": 720,
+      "bytes": 676374,
+      "sha256": "9790446F826EB16432A77451C8106C130DBC9F81C47BFD5B6F34A4511472FA0F"
+    },
+    {
+      "file": "04-volumes-sculpture.png",
+      "sourceAttachment": "codex-clipboard-669614ed-5653-432b-ae69-868c00de230f.png",
+      "view": "Sculpture grise, volumes de trois-quarts, dos et profil",
+      "width": 1280,
+      "height": 720,
+      "bytes": 491652,
+      "sha256": "57E42A47CB5BC70EA33B8A1334F06245285E23E9126A3176F89D6CC1FD845E9C"
+    },
+    {
+      "file": "05-poses-sculpture.png",
+      "sourceAttachment": "codex-clipboard-70d5f86e-8963-49a7-bac3-a2878ad6eb65.png",
+      "view": "Quatre poses en sculpture grise avec armes",
+      "width": 1280,
+      "height": 720,
+      "bytes": 747349,
+      "sha256": "83E76CBD96C18CB8AB6C6C3937F48F2364FE43B0193AABCBD43AAE5FD274ACEC"
+    },
+    {
+      "file": "06-poses-couleur.png",
+      "sourceAttachment": "codex-clipboard-730afce2-c7bd-43d2-9b69-6fb42cd68a83.png",
+      "view": "Quatre poses en couleur, silhouette et matières",
+      "width": 1280,
+      "height": 720,
+      "bytes": 908210,
+      "sha256": "0A0B6E3D0B4FE00A0002FF3F96674E6A667F54743129569C69A1526292560D67"
+    }
+  ]
+}

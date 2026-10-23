@@ -1,0 +1,149 @@
+{
+  "utc": "2026-10-20T09:25:26.2382273Z",
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "terrainHeightSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "terrainAlphamapSha256": "b98e19d5ba7c2bbc591ef748f24e91158f8dbdde60b83432f4cc8309c7731734",
+  "townLights": 21,
+  "gates": [
+    {
+      "name": "Gate - Arrival",
+      "position": {
+        "x": 518.8825,
+        "y": 50.060112,
+        "z": 481.295258
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": 209.0689,
+        "z": 0.0
+      }
+    },
+    {
+      "name": "Gate - Forest",
+      "position": {
+        "x": 580.76,
+        "y": 50.89639,
+        "z": 565.0
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": 37.61904,
+        "z": 0.0
+      }
+    }
+  ],
+  "views": [
+    {
+      "name": "arrival-outside-day",
+      "position": {
+        "x": 516.9339,
+        "y": 53.0192146,
+        "z": 457.207855
+      },
+      "target": {
+        "x": 518.8825,
+        "y": 55.560112,
+        "z": 481.295258
+      },
+      "fieldOfView": 64.0
+    },
+    {
+      "name": "arrival-inside-day",
+      "position": {
+        "x": 527.628,
+        "y": 53.08319,
+        "z": 497.0279
+      },
+      "target": {
+        "x": 518.8825,
+        "y": 55.060112,
+        "z": 481.295258
+      },
+      "fieldOfView": 72.0
+    },
+    {
+      "name": "arrival-mechanism-day",
+      "position": {
+        "x": 526.7026,
+        "y": 55.86011,
+        "z": 486.101166
+      },
+      "target": {
+        "x": 518.591,
+        "y": 56.4601135,
+        "z": 480.770844
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "name": "arrival-wall-walk-day",
+      "position": {
+        "x": 529.6139,
+        "y": 57.8053322,
+        "z": 475.901947
+      },
+      "target": {
+        "x": 511.890228,
+        "y": 57.20533,
+        "z": 485.182159
+      },
+      "fieldOfView": 72.0
+    },
+    {
+      "name": "forest-outside-day",
+      "position": {
+        "x": 586.2681,
+        "y": 54.8764763,
+        "z": 588.529968
+      },
+      "target": {
+        "x": 580.76,
+        "y": 56.39639,
+        "z": 565.0
+      },
+      "fieldOfView": 64.0
+    },
+    {
+      "name": "forest-inside-day",
+      "position": {
+        "x": 569.772644,
+        "y": 53.00752,
+        "z": 550.742432
+      },
+      "target": {
+        "x": 580.76,
+        "y": 55.89639,
+        "z": 565.0
+      },
+      "fieldOfView": 72.0
+    },
+    {
+      "name": "forest-mechanism-day",
+      "position": {
+        "x": 572.3124,
+        "y": 56.69639,
+        "z": 561.410156
+      },
+      "target": {
+        "x": 581.1263,
+        "y": 57.29639,
+        "z": 565.4753
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "name": "forest-wall-walk-day",
+      "position": {
+        "x": 570.949768,
+        "y": 57.8053322,
+        "z": 571.928833
+      },
+      "target": {
+        "x": 587.0967,
+        "y": 57.20533,
+        "z": 560.11676
+      },
+      "fieldOfView": 72.0
+    }
+  ]
+}

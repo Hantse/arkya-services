@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var root=\"Assets/Arkya/Totems/Prefabs/\";\nvar actual=UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.GameObject>(root+\"wolf.prefab\");\nvar reference=UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.GameObject>(root+\"wolf-lunar.prefab\");\nif(!actual || !reference) throw new System.InvalidOperationException(\"Missing default or reference prefab.\");\nvar a=actual.GetComponentInChildren<UnityEngine.Animator>();\nvar b=reference.GetComponentInChildren<UnityEngine.Animator>();\nvar skins=actual.GetComponentsInChildren<UnityEngine.SkinnedMeshRenderer>(true);\nvar refSkins=reference.GetComponentsInChildren<UnityEngine.SkinnedMeshRenderer>(true);\nvar sameMeshes=skins.Select(s=>s.sharedMesh).SequenceEqual(refSkins.Select(s=>s.sharedMesh));\nvar sameMaterials=skins.SelectMany(s=>s.sharedMaterials).SequenceEqual(refSkins.SelectMany(s=>s.sharedMaterials));\nvar sameController=a && b && a.runtimeAnimatorController==b.runtimeAnimatorController;\nvar avatarValid=a && a.avatar && a.avatar.isValid && !a.avatar.isHuman;\nvar noMissingScripts=actual.GetComponentsInChildren<UnityEngine.Transform>(true).All(t=>UnityEditor.GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(t.gameObject)==0);\nvar sameTransform=actual.transform.localScale==UnityEngine.Vector3.one && a.transform.localRotation==b.transform.localRotation && a.transform.localScale==b.transform.localScale;\nvar noColliders=actual.GetComponentsInChildren<UnityEngine.Collider>(true).Length==0;\nvar success=skins.Length==3 && sameMeshes && sameMaterials && sameController && avatarValid && noMissingScripts && sameTransform && noColliders && !a.applyRootMotion;\nif(!success) throw new System.InvalidOperationException(\"Default wolf prefab differs from validated lunar appearance.\");\nreturn new {success,prefab=root+\"wolf.prefab\",reference=root+\"wolf-lunar.prefab\",sameMeshes,sameMaterials,sameController,avatarValid,noMissingScripts,sameTransform,noColliders,skinnedRenderers=skins.Length};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "success": true,
+        "prefab": "Assets/Arkya/Totems/Prefabs/wolf.prefab",
+        "reference": "Assets/Arkya/Totems/Prefabs/wolf-lunar.prefab",
+        "sameMeshes": true,
+        "sameMaterials": true,
+        "sameController": true,
+        "avatarValid": true,
+        "noMissingScripts": true,
+        "sameTransform": true,
+        "noColliders": true,
+        "skinnedRenderers": 3
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

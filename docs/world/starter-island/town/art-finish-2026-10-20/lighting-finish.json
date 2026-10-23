@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "checkedAtUtc": "2026-10-20T15:36:21.0299076Z",
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Lighting/IslandBoundedBloom.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Lighting/TownWarmBoundedGlow.asset"
+  ],
+  "profiles": [
+    {
+      "path": "Island grading",
+      "source": "Assets/Arkya/World/StarterIsland/Materials/Environment/PaintedGrading.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Lighting/IslandBoundedBloom.asset",
+      "sourceDependencyHashUnchanged": true
+    },
+    {
+      "path": "Aubefont - mana well town/Local town glow volume",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Materials/Town bloom.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Lighting/TownWarmBoundedGlow.asset",
+      "sourceDependencyHashUnchanged": true
+    }
+  ],
+  "globalBloom": {
+    "clamp": 8.0,
+    "intensity": 0.15,
+    "threshold": 1.3
+  },
+  "localBloom": {
+    "clamp": 8.0,
+    "intensity": 0.25,
+    "threshold": 1.2,
+    "scatter": 0.6
+  },
+  "localColor": {
+    "contrast": 10.0,
+    "saturation": 5.0,
+    "postExposure": 0.05,
+    "temperature": 5.0,
+    "tint": 1.0
+  },
+  "nativeDisplayBefore": "lighting-probe/native-before-finish.png",
+  "nativeDisplayAfter": "lighting-probe/native-after-finish.png",
+  "sourceProfilesUnchanged": true,
+  "lightsUnchanged": true,
+  "sunAndClockUnchanged": true,
+  "scope": "Two derived volume profiles. HDR bloom remains enabled but is bounded at 8. Mild town-local warmth/contrast. No light, sky, clock, camera, geometry or pipeline-asset changes."
+}

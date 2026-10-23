@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "checkedAtUtc": "2026-10-20T19:48:57.6918211Z",
+  "shader": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceAtmosphere/ReferencePaintedSky.shader",
+  "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceAtmosphere/ClearBluePaintedSky.mat",
+  "shaderGuidUnchanged": true,
+  "shaderErrors": false,
+  "scale": 2.85,
+  "cloudRepresentation": "Continuous domain-warped density with four merged scales, short feathered contours and sunward density relief. Derivatives apply only to the continuous field; no per-cell lobe, discontinuous coordinate derivative, repeating pod or raymarch remains.",
+  "scope": "Only the owned sky shader and cloud frequency. Removes the visible cell seams and repeated ellipsoid clouds while keeping the blue palette, original night and fully overcast paths. Target-device profiling is still required before any performance claim."
+}

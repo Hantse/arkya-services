@@ -1,0 +1,499 @@
+{
+    "unityVersion": "6000.6.6f1",
+    "coordinates": "Original PNG pixels, bottom-left origin; alpha >= 1; two-pixel bounds padding",
+    "slicing": "Eight principal alpha components ordered 4x2 by their centers; isolated noise ignored; source PNG pixels preserved",
+    "sheets": [
+        {
+            "theme": "ink-copper",
+            "assetPath": "Assets/Arkya/Characters/Runtime/UI/Art/Resources/ArkyaUI/ink-copper.png",
+            "sourceSha256": "ad9f438a8f278cb5bb3a5b379ea7c89f00150417f2d48eda1f9c66365b0b5a02",
+            "width": 1774,
+            "height": 887,
+            "importedWidth": 1774,
+            "importedHeight": 887,
+            "spriteCount": 8,
+            "sprites": [
+                {
+                    "name": "slot",
+                    "assetGuid": "99926e818e3bee543a47282d388aea08",
+                    "spriteId": "9babfd60df8429241aa61390e2a8a4a7",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 59.0,
+                        "y": 481.0,
+                        "width": 350.0,
+                        "height": 331.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": 618656363
+                },
+                {
+                    "name": "ring",
+                    "assetGuid": "99926e818e3bee543a47282d388aea08",
+                    "spriteId": "dc27c8ba11f08f14b9f92fce19bdfe3d",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 464.0,
+                        "y": 448.0,
+                        "width": 402.0,
+                        "height": 394.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": -1091414986
+                },
+                {
+                    "name": "plaque",
+                    "assetGuid": "99926e818e3bee543a47282d388aea08",
+                    "spriteId": "19ae4e7cacbceb44f83dc66fceaa8fba",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 881.0,
+                        "y": 574.0,
+                        "width": 458.0,
+                        "height": 142.0
+                    },
+                    "border": {
+                        "x": 60.0,
+                        "y": 25.0,
+                        "z": 60.0,
+                        "w": 25.0
+                    },
+                    "localFileId": -67195848
+                },
+                {
+                    "name": "panel",
+                    "assetGuid": "99926e818e3bee543a47282d388aea08",
+                    "spriteId": "56153138ea0137f4d94440b5e2585a39",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1362.0,
+                        "y": 460.0,
+                        "width": 387.0,
+                        "height": 367.0
+                    },
+                    "border": {
+                        "x": 90.0,
+                        "y": 90.0,
+                        "z": 90.0,
+                        "w": 90.0
+                    },
+                    "localFileId": 1358669160
+                },
+                {
+                    "name": "map",
+                    "assetGuid": "99926e818e3bee543a47282d388aea08",
+                    "spriteId": "9c33221a31983ac4f85f14ff6a6a003a",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 59.0,
+                        "y": 77.0,
+                        "width": 378.0,
+                        "height": 333.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": 1756600139
+                },
+                {
+                    "name": "journal",
+                    "assetGuid": "99926e818e3bee543a47282d388aea08",
+                    "spriteId": "79678b6f66bf875489f55b1073dc531a",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 496.0,
+                        "y": 56.0,
+                        "width": 329.0,
+                        "height": 352.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": -1690746998
+                },
+                {
+                    "name": "bag",
+                    "assetGuid": "99926e818e3bee543a47282d388aea08",
+                    "spriteId": "ef62ea667bb257244a125b9b8b4a5ce1",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 898.0,
+                        "y": 74.0,
+                        "width": 397.0,
+                        "height": 333.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": -1598397219
+                },
+                {
+                    "name": "button",
+                    "assetGuid": "99926e818e3bee543a47282d388aea08",
+                    "spriteId": "369eb7ce8c155dd4eaf98a3081d53acc",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1329.0,
+                        "y": 173.0,
+                        "width": 439.0,
+                        "height": 140.0
+                    },
+                    "border": {
+                        "x": 60.0,
+                        "y": 25.0,
+                        "z": 60.0,
+                        "w": 25.0
+                    },
+                    "localFileId": -1941859631
+                }
+            ]
+        },
+        {
+            "theme": "explorer-journal",
+            "assetPath": "Assets/Arkya/Characters/Runtime/UI/Art/Resources/ArkyaUI/explorer-journal.png",
+            "sourceSha256": "0cde275c0cc8fd34ee99edff5d91a16a0f75f3a0d6855fdceab722bc98d432e1",
+            "width": 1774,
+            "height": 887,
+            "importedWidth": 1774,
+            "importedHeight": 887,
+            "spriteCount": 8,
+            "sprites": [
+                {
+                    "name": "slot",
+                    "assetGuid": "07ad4b9c8d2517943a8b0385040971f6",
+                    "spriteId": "a0c683e50e3813140a4f0245d0c672c9",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 43.0,
+                        "y": 478.0,
+                        "width": 374.0,
+                        "height": 347.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": -303237473
+                },
+                {
+                    "name": "ring",
+                    "assetGuid": "07ad4b9c8d2517943a8b0385040971f6",
+                    "spriteId": "e2c86ae8ec758f24fbfc557c6b29abad",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 463.0,
+                        "y": 444.0,
+                        "width": 395.0,
+                        "height": 397.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": 1731909741
+                },
+                {
+                    "name": "plaque",
+                    "assetGuid": "07ad4b9c8d2517943a8b0385040971f6",
+                    "spriteId": "e4697ac20cc72b945b2e57929c5a4159",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 886.0,
+                        "y": 559.0,
+                        "width": 453.0,
+                        "height": 156.0
+                    },
+                    "border": {
+                        "x": 60.0,
+                        "y": 25.0,
+                        "z": 60.0,
+                        "w": 25.0
+                    },
+                    "localFileId": -1761257018
+                },
+                {
+                    "name": "panel",
+                    "assetGuid": "07ad4b9c8d2517943a8b0385040971f6",
+                    "spriteId": "994b13c3ab67c5a4dac0913252c39f85",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1352.0,
+                        "y": 462.0,
+                        "width": 396.0,
+                        "height": 367.0
+                    },
+                    "border": {
+                        "x": 90.0,
+                        "y": 90.0,
+                        "z": 90.0,
+                        "w": 90.0
+                    },
+                    "localFileId": 1217275491
+                },
+                {
+                    "name": "map",
+                    "assetGuid": "07ad4b9c8d2517943a8b0385040971f6",
+                    "spriteId": "8a6a1a55b9ee20b42b0f3379953e16aa",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 56.0,
+                        "y": 60.0,
+                        "width": 373.0,
+                        "height": 336.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": -175458856
+                },
+                {
+                    "name": "journal",
+                    "assetGuid": "07ad4b9c8d2517943a8b0385040971f6",
+                    "spriteId": "3f0e13f375ab3a14a9f24a6c2d75d49f",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 505.0,
+                        "y": 60.0,
+                        "width": 319.0,
+                        "height": 346.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": 1690672256
+                },
+                {
+                    "name": "bag",
+                    "assetGuid": "07ad4b9c8d2517943a8b0385040971f6",
+                    "spriteId": "421bc40f34c614d4fa11e67896dfdafa",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 904.0,
+                        "y": 72.0,
+                        "width": 409.0,
+                        "height": 320.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": 1091067613
+                },
+                {
+                    "name": "button",
+                    "assetGuid": "07ad4b9c8d2517943a8b0385040971f6",
+                    "spriteId": "07c8e40981333394c98a9d7289b9f435",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1335.0,
+                        "y": 162.0,
+                        "width": 426.0,
+                        "height": 149.0
+                    },
+                    "border": {
+                        "x": 60.0,
+                        "y": 25.0,
+                        "z": 60.0,
+                        "w": 25.0
+                    },
+                    "localFileId": -454279524
+                }
+            ]
+        },
+        {
+            "theme": "mana-stone",
+            "assetPath": "Assets/Arkya/Characters/Runtime/UI/Art/Resources/ArkyaUI/mana-stone.png",
+            "sourceSha256": "e9c1feb8313cdcf19adb401e00b5a95bbf32771334072c51e46e6517748a173c",
+            "width": 1774,
+            "height": 887,
+            "importedWidth": 1774,
+            "importedHeight": 887,
+            "spriteCount": 8,
+            "sprites": [
+                {
+                    "name": "slot",
+                    "assetGuid": "4363145367e4be34e959b1f7744d11a3",
+                    "spriteId": "17565361980cd7a47afa418322ef1f39",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 32.0,
+                        "y": 464.0,
+                        "width": 360.0,
+                        "height": 352.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": -1723069179
+                },
+                {
+                    "name": "ring",
+                    "assetGuid": "4363145367e4be34e959b1f7744d11a3",
+                    "spriteId": "ae837183117ba2d4eb927bb9a7d08d4e",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 436.0,
+                        "y": 441.0,
+                        "width": 412.0,
+                        "height": 399.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": -2053312593
+                },
+                {
+                    "name": "plaque",
+                    "assetGuid": "4363145367e4be34e959b1f7744d11a3",
+                    "spriteId": "db6506e03529e4e4a8fb877b824e3670",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 863.0,
+                        "y": 560.0,
+                        "width": 462.0,
+                        "height": 157.0
+                    },
+                    "border": {
+                        "x": 60.0,
+                        "y": 25.0,
+                        "z": 60.0,
+                        "w": 25.0
+                    },
+                    "localFileId": 857996160
+                },
+                {
+                    "name": "panel",
+                    "assetGuid": "4363145367e4be34e959b1f7744d11a3",
+                    "spriteId": "d1feff28c3cfb744598872cd5b72da63",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1347.0,
+                        "y": 447.0,
+                        "width": 415.0,
+                        "height": 391.0
+                    },
+                    "border": {
+                        "x": 90.0,
+                        "y": 90.0,
+                        "z": 90.0,
+                        "w": 90.0
+                    },
+                    "localFileId": -238290767
+                },
+                {
+                    "name": "map",
+                    "assetGuid": "4363145367e4be34e959b1f7744d11a3",
+                    "spriteId": "8ffc184559cabdd4ca4e3dfeba304c25",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 24.0,
+                        "y": 74.0,
+                        "width": 365.0,
+                        "height": 328.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": 552945386
+                },
+                {
+                    "name": "journal",
+                    "assetGuid": "4363145367e4be34e959b1f7744d11a3",
+                    "spriteId": "1ba709c9b595ca54d8405757d718fcfa",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 464.0,
+                        "y": 47.0,
+                        "width": 333.0,
+                        "height": 359.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": 1928357370
+                },
+                {
+                    "name": "bag",
+                    "assetGuid": "4363145367e4be34e959b1f7744d11a3",
+                    "spriteId": "b92b2e0443694d340a5e85d6ce52c8cc",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 869.0,
+                        "y": 45.0,
+                        "width": 406.0,
+                        "height": 358.0
+                    },
+                    "border": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "localFileId": 648432495
+                },
+                {
+                    "name": "button",
+                    "assetGuid": "4363145367e4be34e959b1f7744d11a3",
+                    "spriteId": "335bc023181a46b4383fcb04b38bc1cc",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1285.0,
+                        "y": 155.0,
+                        "width": 479.0,
+                        "height": 160.0
+                    },
+                    "border": {
+                        "x": 60.0,
+                        "y": 25.0,
+                        "z": 60.0,
+                        "w": 25.0
+                    },
+                    "localFileId": 1557258946
+                }
+            ]
+        }
+    ]
+}

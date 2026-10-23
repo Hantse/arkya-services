@@ -1,0 +1,146 @@
+{
+  "success": true,
+  "stage": "after",
+  "utc": "2026-10-20T11:05:20.8742929Z",
+  "playMode": false,
+  "captures": [
+    {
+      "file": "74-outside-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 496.4296,
+        "y": 54.64918,
+        "z": 486.480347
+      },
+      "target": {
+        "x": 503.342834,
+        "y": 53.8491821,
+        "z": 488.7932
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "93-outside-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 497.46524,
+        "y": 54.4919052,
+        "z": 550.5679
+      },
+      "target": {
+        "x": 502.250366,
+        "y": 53.691906,
+        "z": 545.068359
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "46-outside-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 582.121948,
+        "y": 53.6720123,
+        "z": 472.276825
+      },
+      "target": {
+        "x": 580.129333,
+        "y": 52.8720131,
+        "z": 479.289124
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "wall-walk-junction-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 507.649048,
+        "y": 58.20533,
+        "z": 486.362335
+      },
+      "target": {
+        "x": 503.233978,
+        "y": 56.5053329,
+        "z": 492.4251
+      },
+      "fieldOfView": 70.0
+    },
+    {
+      "file": "whole-rampart-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 461.0,
+        "y": 109.003113,
+        "z": 415.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.0031128,
+        "z": 520.0
+      },
+      "fieldOfView": 62.0
+    },
+    {
+      "file": "ivy-095-close-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 504.8559,
+        "y": 52.5458527,
+        "z": 555.630066
+      },
+      "target": {
+        "x": 507.5801,
+        "y": 52.39585,
+        "z": 550.567566
+      },
+      "fieldOfView": 55.0
+    },
+    {
+      "file": "ivy-094-close-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 502.583923,
+        "y": 52.37411,
+        "z": 553.623535
+      },
+      "target": {
+        "x": 505.4307,
+        "y": 52.22411,
+        "z": 548.628967
+      },
+      "fieldOfView": 55.0
+    },
+    {
+      "file": "ivy-059-close-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 540.2858,
+        "y": 53.0166626,
+        "z": 466.6152
+      },
+      "target": {
+        "x": 541.555969,
+        "y": 52.86666,
+        "z": 472.222046
+      },
+      "fieldOfView": 55.0
+    },
+    {
+      "file": "courtyard-wall-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 531.613953,
+        "y": 51.9669075,
+        "z": 482.81424
+      },
+      "target": {
+        "x": 532.5809,
+        "y": 51.7669067,
+        "z": 477.169342
+      },
+      "fieldOfView": 60.0
+    }
+  ],
+  "stateRestored": true,
+  "sceneDirtyFlagUnchanged": true,
+  "scope": "Matched masonry, climbing vegetation, three repaired joints and whole enclosure views. Presentation restored; no scene save or asset edits."
+}

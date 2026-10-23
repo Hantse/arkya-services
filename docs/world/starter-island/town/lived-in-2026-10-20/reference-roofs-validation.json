@@ -1,0 +1,559 @@
+{
+  "success": true,
+  "sceneSaved": true,
+  "checkedAtUtc": "2026-10-20T19:52:26.8138863Z",
+  "houses": 9,
+  "addedRenderers": 14,
+  "ownedMeshes": 23,
+  "totalRoofTriangles": 296638,
+  "failures": [],
+  "buildings": [
+    {
+      "building": "01 - Auberge des Lanternes",
+      "slate": true,
+      "retainedBase": {
+        "lowVertexCount": 2982,
+        "maxLowShift": 0.0,
+        "originalLimewashMinimumY": 6.26008272,
+        "actualLimewashBaseVertexCount": 7,
+        "maxActualLimewashBaseShift": 0.595885754,
+        "note": "Limewash prefix movement is diagnostic: appended replacement gables may close this space. Actual front-band coverage is measured below."
+      },
+      "front": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "back": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "upperSeam": {
+        "front": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.02681446,
+          "openings": []
+        },
+        "back": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.0268201828,
+          "openings": []
+        }
+      }
+    },
+    {
+      "building": "03 - Atelier des runes",
+      "slate": true,
+      "retainedBase": {
+        "lowVertexCount": 2896,
+        "maxLowShift": 0.0,
+        "originalLimewashMinimumY": 6.26946259,
+        "actualLimewashBaseVertexCount": 8,
+        "maxActualLimewashBaseShift": 0.464177132,
+        "note": "Limewash prefix movement is diagnostic: appended replacement gables may close this space. Actual front-band coverage is measured below."
+      },
+      "front": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "back": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "upperSeam": {
+        "front": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.0278377533,
+          "openings": []
+        },
+        "back": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.02779913,
+          "openings": []
+        }
+      }
+    },
+    {
+      "building": "04 - Maison des voyageurs",
+      "slate": false,
+      "retainedBase": {
+        "lowVertexCount": 2342,
+        "maxLowShift": 0.0,
+        "originalLimewashMinimumY": 3.25080252,
+        "actualLimewashBaseVertexCount": 7,
+        "maxActualLimewashBaseShift": 0.4543729,
+        "note": "Limewash prefix movement is diagnostic: appended replacement gables may close this space. Actual front-band coverage is measured below."
+      },
+      "front": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "back": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "upperSeam": null
+    },
+    {
+      "building": "05 - Herboristerie",
+      "slate": true,
+      "retainedBase": {
+        "lowVertexCount": 2372,
+        "maxLowShift": 0.0,
+        "originalLimewashMinimumY": 3.24766421,
+        "actualLimewashBaseVertexCount": 5,
+        "maxActualLimewashBaseShift": 0.4911933,
+        "note": "Limewash prefix movement is diagnostic: appended replacement gables may close this space. Actual front-band coverage is measured below."
+      },
+      "front": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "back": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "upperSeam": {
+        "front": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.0180487633,
+          "openings": []
+        },
+        "back": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.01806593,
+          "openings": []
+        }
+      }
+    },
+    {
+      "building": "06 - Forge du Refuge",
+      "slate": false,
+      "retainedBase": {
+        "lowVertexCount": 2264,
+        "maxLowShift": 0.0,
+        "originalLimewashMinimumY": 3.26772141,
+        "actualLimewashBaseVertexCount": 7,
+        "maxActualLimewashBaseShift": 0.461698771,
+        "note": "Limewash prefix movement is diagnostic: appended replacement gables may close this space. Actual front-band coverage is measured below."
+      },
+      "front": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "back": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "upperSeam": null
+    },
+    {
+      "building": "07 - Entrepot des marchands",
+      "slate": true,
+      "retainedBase": {
+        "lowVertexCount": 2790,
+        "maxLowShift": 0.0,
+        "originalLimewashMinimumY": 6.25773,
+        "actualLimewashBaseVertexCount": 7,
+        "maxActualLimewashBaseShift": 0.471921444,
+        "note": "Limewash prefix movement is diagnostic: appended replacement gables may close this space. Actual front-band coverage is measured below."
+      },
+      "front": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "back": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "upperSeam": {
+        "front": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.0180139542,
+          "openings": []
+        },
+        "back": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.0180211067,
+          "openings": []
+        }
+      }
+    },
+    {
+      "building": "08 - Maison des tisserands",
+      "slate": false,
+      "retainedBase": {
+        "lowVertexCount": 3022,
+        "maxLowShift": 0.0,
+        "originalLimewashMinimumY": 6.248201,
+        "actualLimewashBaseVertexCount": 7,
+        "maxActualLimewashBaseShift": 0.490755081,
+        "note": "Limewash prefix movement is diagnostic: appended replacement gables may close this space. Actual front-band coverage is measured below."
+      },
+      "front": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "back": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "upperSeam": null
+    },
+    {
+      "building": "09 - Maison du verger",
+      "slate": false,
+      "retainedBase": {
+        "lowVertexCount": 2346,
+        "maxLowShift": 0.0,
+        "originalLimewashMinimumY": 3.24996376,
+        "actualLimewashBaseVertexCount": 7,
+        "maxActualLimewashBaseShift": 0.4099431,
+        "note": "Limewash prefix movement is diagnostic: appended replacement gables may close this space. Actual front-band coverage is measured below."
+      },
+      "front": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "back": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "upperSeam": null
+    },
+    {
+      "building": "10 - Relais de la crique",
+      "slate": true,
+      "retainedBase": {
+        "lowVertexCount": 2310,
+        "maxLowShift": 0.0,
+        "originalLimewashMinimumY": 3.25902176,
+        "actualLimewashBaseVertexCount": 7,
+        "maxActualLimewashBaseShift": 0.473115683,
+        "note": "Limewash prefix movement is diagnostic: appended replacement gables may close this space. Actual front-band coverage is measured below."
+      },
+      "front": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "back": {
+        "samples": 39,
+        "gaps": 0,
+        "maximumGap": 0.0,
+        "openings": []
+      },
+      "upperSeam": {
+        "front": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.01798129,
+          "openings": []
+        },
+        "back": {
+          "samples": 39,
+          "gaps": 0,
+          "maximumGap": 0.0179855824,
+          "openings": []
+        }
+      }
+    }
+  ],
+  "geometry": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House01_joined.asset",
+      "vertices": 23540,
+      "triangles": 21196,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House01_timbers.asset",
+      "vertices": 5116,
+      "triangles": 2516,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House01_slate.asset",
+      "vertices": 8352,
+      "triangles": 4176,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House03_joined.asset",
+      "vertices": 22685,
+      "triangles": 19666,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House03_timbers.asset",
+      "vertices": 5116,
+      "triangles": 2516,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House03_slate.asset",
+      "vertices": 6912,
+      "triangles": 3456,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House04_joined.asset",
+      "vertices": 29718,
+      "triangles": 38298,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House04_timbers.asset",
+      "vertices": 5116,
+      "triangles": 2516,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House05_joined.asset",
+      "vertices": 22963,
+      "triangles": 20264,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House05_timbers.asset",
+      "vertices": 5116,
+      "triangles": 2516,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House05_slate.asset",
+      "vertices": 6944,
+      "triangles": 3472,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House06_joined.asset",
+      "vertices": 30594,
+      "triangles": 40128,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House06_timbers.asset",
+      "vertices": 5116,
+      "triangles": 2516,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House07_joined.asset",
+      "vertices": 23184,
+      "triangles": 20602,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House07_timbers.asset",
+      "vertices": 5116,
+      "triangles": 2516,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House07_slate.asset",
+      "vertices": 6944,
+      "triangles": 3472,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House08_joined.asset",
+      "vertices": 30341,
+      "triangles": 39358,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House08_timbers.asset",
+      "vertices": 5116,
+      "triangles": 2516,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House09_joined.asset",
+      "vertices": 29599,
+      "triangles": 38124,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House09_timbers.asset",
+      "vertices": 5116,
+      "triangles": 2516,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House10_joined.asset",
+      "vertices": 22260,
+      "triangles": 18838,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House10_timbers.asset",
+      "vertices": 5116,
+      "triangles": 2516,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House10_slate.asset",
+      "vertices": 5888,
+      "triangles": 2944,
+      "badPosition": 0,
+      "badNormal": 0,
+      "badUv": 0,
+      "badColor": 0,
+      "invalidIndices": 0,
+      "meta": true
+    }
+  ],
+  "shaderCount": 2,
+  "scope": "Read-only authored roof assignments, finite geometry/UV, shader and .meta checks. Gable-base tests slice the actually rendered opaque triangles in a 0.70m facade band at 39 horizontal samples per side, then measure open vertical intervals above the upper wall. Slate seams compare the rendered plaster top against exact vertical triangle intersections with the slate underside at the facade plane. This is a conservative contact test, not a global watertight-mesh or physics traversal proof. Existing collider identity is checked independently by ReviewLivedInTown."
+}

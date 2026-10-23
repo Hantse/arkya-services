@@ -1,0 +1,161 @@
+{
+  "success": true,
+  "utc": "2026-10-20T10:03:28.2513525Z",
+  "checks": [
+    {
+      "name": "Mine exterior before",
+      "passed": true,
+      "detail": {
+        "position": {
+          "x": 700.0,
+          "y": 52.93516,
+          "z": 522.0
+        },
+        "expectedSheltered": false,
+        "cameraStable": true,
+        "actualMeshOverhead": false,
+        "actualColliderOverhead": false,
+        "IsSheltered": false,
+        "RainParticleCount": 386,
+        "SplashParticleCount": 68
+      }
+    },
+    {
+      "name": "Miners shelter",
+      "passed": true,
+      "detail": {
+        "position": {
+          "x": 690.8,
+          "y": 53.0898323,
+          "z": 534.0
+        },
+        "expectedSheltered": true,
+        "cameraStable": true,
+        "actualMeshOverhead": true,
+        "actualColliderOverhead": false,
+        "IsSheltered": true,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0
+      }
+    },
+    {
+      "name": "Gallery beneath its real collider ceiling",
+      "passed": true,
+      "detail": {
+        "position": {
+          "x": 700.0,
+          "y": 52.55197,
+          "z": 552.0
+        },
+        "expectedSheltered": true,
+        "cameraStable": true,
+        "actualMeshOverhead": false,
+        "actualColliderOverhead": true,
+        "IsSheltered": true,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0
+      }
+    },
+    {
+      "name": "Mine exterior after",
+      "passed": true,
+      "detail": {
+        "position": {
+          "x": 700.0,
+          "y": 52.93516,
+          "z": 522.0
+        },
+        "expectedSheltered": false,
+        "cameraStable": true,
+        "actualMeshOverhead": false,
+        "actualColliderOverhead": false,
+        "IsSheltered": false,
+        "RainParticleCount": 267,
+        "SplashParticleCount": 0
+      }
+    },
+    {
+      "name": "Logging exterior before",
+      "passed": true,
+      "detail": {
+        "position": {
+          "x": 528.0,
+          "y": 57.9764862,
+          "z": 870.0
+        },
+        "expectedSheltered": false,
+        "cameraStable": true,
+        "actualMeshOverhead": false,
+        "actualColliderOverhead": false,
+        "IsSheltered": false,
+        "RainParticleCount": 444,
+        "SplashParticleCount": 33
+      }
+    },
+    {
+      "name": "Logging cabin",
+      "passed": true,
+      "detail": {
+        "position": {
+          "x": 559.0,
+          "y": 55.85627,
+          "z": 880.0
+        },
+        "expectedSheltered": true,
+        "cameraStable": true,
+        "actualMeshOverhead": true,
+        "actualColliderOverhead": false,
+        "IsSheltered": true,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0
+      }
+    },
+    {
+      "name": "Saw shelter",
+      "passed": true,
+      "detail": {
+        "position": {
+          "x": 553.0,
+          "y": 55.4880524,
+          "z": 862.0
+        },
+        "expectedSheltered": true,
+        "cameraStable": true,
+        "actualMeshOverhead": true,
+        "actualColliderOverhead": false,
+        "IsSheltered": true,
+        "RainParticleCount": 0,
+        "SplashParticleCount": 0
+      }
+    },
+    {
+      "name": "Logging exterior after",
+      "passed": true,
+      "detail": {
+        "position": {
+          "x": 528.0,
+          "y": 57.9764862,
+          "z": 870.0
+        },
+        "expectedSheltered": false,
+        "cameraStable": true,
+        "actualMeshOverhead": false,
+        "actualColliderOverhead": false,
+        "IsSheltered": false,
+        "RainParticleCount": 290,
+        "SplashParticleCount": 1
+      }
+    },
+    {
+      "name": "Authored roof references and review configuration preserved",
+      "passed": true,
+      "detail": {
+        "referencesRestored": true,
+        "cameraRestored": true,
+        "runInBackgroundRestored": true
+      }
+    }
+  ],
+  "failures": [],
+  "scope": "Real WeatherEffects.Update under Rain preview, no manual probing or shelter-state override. Interior probes also intersect actual roof triangles or a native ceiling collider; exterior particles resume. Viewer and preview settings restored."
+}

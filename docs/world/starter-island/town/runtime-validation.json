@@ -1,0 +1,83 @@
+{
+  "success": true,
+  "checks": [
+    {
+      "name": "Day presentation",
+      "passed": true,
+      "detail": {
+        "NightAmount": 0.0,
+        "ActiveLanternCount": 6
+      }
+    },
+    {
+      "name": "Hanging signs move",
+      "passed": true,
+      "detail": {
+        "count": 10,
+        "maximumAngleDegrees": 1.25115132
+      }
+    },
+    {
+      "name": "Mana crystal animation moves",
+      "passed": true,
+      "detail": {
+        "distance": 0.126134634,
+        "angleDegrees": 80.8208847,
+        "animationPlaying": true
+      }
+    },
+    {
+      "name": "Night presentation",
+      "passed": true,
+      "detail": {
+        "NightAmount": 1.0,
+        "ActiveLanternCount": 6
+      }
+    },
+    {
+      "name": "Particles stay within town budget",
+      "passed": true,
+      "detail": {
+        "systems": 10,
+        "alive": 48,
+        "maximum": 254
+      }
+    },
+    {
+      "name": "Night fireflies emit",
+      "passed": true,
+      "detail": {
+        "systems": 4,
+        "alive": 4
+      }
+    },
+    {
+      "name": "Disable restores authored signs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Disable restores authored lanterns",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Re-enable restores six-light cap",
+      "passed": true,
+      "detail": {
+        "ActiveLanternCount": 6
+      }
+    },
+    {
+      "name": "Day clears night fireflies",
+      "passed": true,
+      "detail": {
+        "NightAmount": 0.0,
+        "alive": 0
+      }
+    }
+  ],
+  "failures": [],
+  "exception": null,
+  "scope": "Live town presentation across frames and disable/re-enable. No gameplay or network state."
+}

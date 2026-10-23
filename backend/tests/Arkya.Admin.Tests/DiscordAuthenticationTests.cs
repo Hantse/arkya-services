@@ -20,6 +20,7 @@ internal sealed class DiscordStub : HttpMessageHandler
     public const string ClientSecret = "discord-test-client-secret";
     public const string AccessToken = "discord-test-access-token";
     public string UserId { get; set; } = AllowedId;
+    public string ExpectedCallbackUrl { get; set; } = "https://localhost/signin-discord";
     public HttpStatusCode TokenStatus { get; set; } = HttpStatusCode.OK;
     public string? UserBody { get; set; }
     public int TokenCalls { get; private set; }
@@ -34,7 +35,7 @@ internal sealed class DiscordStub : HttpMessageHandler
             var body = QueryHelpers.ParseQuery(await request.Content!.ReadAsStringAsync(cancellationToken));
             Assert.Equal(ClientId, body["client_id"].ToString());
             Assert.Equal(ClientSecret, body["client_secret"].ToString());
-            Assert.Equal("https://localhost/signin-discord", body["redirect_uri"].ToString());
+            Assert.Equal(ExpectedCallbackUrl, body["redirect_uri"].ToString());
             Assert.Equal("authorization_code", body["grant_type"].ToString());
             return new(TokenStatus)
             {
@@ -260,6 +261,27 @@ public sealed class DiscordAuthenticationTests
         configuration["Admin:AllowedDiscordUserIds:0"] = DiscordStub.OtherId;
         ((IConfigurationRoot)configuration).Reload();
         Assert.Equal(HttpStatusCode.Redirect, (await browser.GetAsync("/Realms")).StatusCode);
+    }
+
+    [Fact]
+    public async Task ExpiredDiscordCookieRenewsWithoutProviderTokensAndCannotBypassAllowlistRemoval()
+    {
+        await using var factory = Factory();
+        using var browser = factory.Browser();
+        using var challenge = await ChallengeAsync(browser);
+        using var callback = await browser.GetAsync(Callback(challenge));
+        factory.Clock.Advance(TimeSpan.FromHours(3));
+        using var renewed = await browser.GetAsync("/Realms");
+        Assert.Equal(HttpStatusCode.OK, renewed.StatusCode);
+        Assert.Contains(renewed.Headers.GetValues("Set-Cookie"), value => value.StartsWith(AdminSessions.RefreshCookie + "="));
+        Assert.Equal(1, factory.Discord.TokenCalls);
+        Assert.Equal(1, factory.Discord.UserCalls);
+        var configuration = factory.Services.GetRequiredService<IConfiguration>();
+        configuration["Admin:AllowedDiscordUserIds:0"] = DiscordStub.OtherId;
+        ((IConfigurationRoot)configuration).Reload();
+        factory.Clock.Advance(TimeSpan.FromHours(3));
+        Assert.Equal(HttpStatusCode.Redirect, (await browser.GetAsync("/Realms")).StatusCode);
+        Assert.Empty(factory.Sessions.All);
     }
 
     [Theory]

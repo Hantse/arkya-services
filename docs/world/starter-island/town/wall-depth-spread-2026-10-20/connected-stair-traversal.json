@@ -1,0 +1,571 @@
+{
+  "success": true,
+  "utc": "2026-10-20T11:56:14.9943880Z",
+  "connectedSessions": 2,
+  "expectedWaypoints": 20,
+  "reachedWaypoints": 20,
+  "proxies": 1369,
+  "snapshots": 668,
+  "unsupportedSnapshots": 0,
+  "maximumClientServerDistance": 1.0325985,
+  "sessions": [
+    {
+      "stair": "Stairway - West",
+      "connected": true,
+      "expectedWaypoints": 10,
+      "reachedWaypoints": 10,
+      "unsupportedSnapshots": 0
+    },
+    {
+      "stair": "Stairway - East",
+      "connected": true,
+      "expectedWaypoints": 10,
+      "reachedWaypoints": 10,
+      "unsupportedSnapshots": 0
+    }
+  ],
+  "waypoints": [
+    {
+      "stair": "Stairway - West",
+      "target": "transition",
+      "direction": "ascent",
+      "running": false,
+      "server": {
+        "x": 502.569763,
+        "y": 51.21379,
+        "z": 522.3581
+      },
+      "client": {
+        "x": 502.570038,
+        "y": 51.214,
+        "z": 522.358032
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 502.5696,
+        "y": 51.21379,
+        "z": 522.3574
+      },
+      "planarError": 0.0006885079,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.3841095,
+      "clientServerDistance": 0.00035097287
+    },
+    {
+      "stair": "Stairway - West",
+      "target": "lower",
+      "direction": "ascent",
+      "running": false,
+      "server": {
+        "x": 502.668457,
+        "y": 51.23372,
+        "z": 522.882751
+      },
+      "client": {
+        "x": 502.66803,
+        "y": 51.234,
+        "z": 522.883
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 502.667633,
+        "y": 51.23372,
+        "z": 522.8783
+      },
+      "planarError": 0.00453111529,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.3712921,
+      "clientServerDistance": 0.000567300769
+    },
+    {
+      "stair": "Stairway - West",
+      "target": "middle",
+      "direction": "ascent",
+      "running": false,
+      "server": {
+        "x": 503.542816,
+        "y": 53.6695251,
+        "z": 527.5284
+      },
+      "client": {
+        "x": 503.54303,
+        "y": 53.670002,
+        "z": 527.528
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 503.5397,
+        "y": 53.6695251,
+        "z": 527.5119
+      },
+      "planarError": 0.0167709012,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.3968811,
+      "clientServerDistance": 0.0006380587
+    },
+    {
+      "stair": "Stairway - West",
+      "target": "top",
+      "direction": "ascent",
+      "running": true,
+      "server": {
+        "x": 504.436249,
+        "y": 56.10533,
+        "z": 532.2759
+      },
+      "client": {
+        "x": 504.436035,
+        "y": 56.1050034,
+        "z": 532.276
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 504.426544,
+        "y": 56.10533,
+        "z": 532.2242
+      },
+      "planarError": 0.05259977,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.3747635,
+      "clientServerDistance": 0.000410075532
+    },
+    {
+      "stair": "Stairway - West",
+      "target": "wall-connection",
+      "direction": "ascent",
+      "running": true,
+      "server": {
+        "x": 501.00708,
+        "y": 56.1053352,
+        "z": 533.005066
+      },
+      "client": {
+        "x": 501.007019,
+        "y": 56.1050034,
+        "z": 533.005
+      },
+      "heightError": 3.81469727E-06,
+      "grounded": true,
+      "expected": {
+        "x": 501.031677,
+        "y": 56.10533,
+        "z": 532.9997
+      },
+      "planarError": 0.0251767617,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.40209198,
+      "clientServerDistance": 0.00034291984
+    },
+    {
+      "stair": "Stairway - West",
+      "target": "top",
+      "direction": "descent",
+      "running": true,
+      "server": {
+        "x": 504.431427,
+        "y": 56.10533,
+        "z": 532.223
+      },
+      "client": {
+        "x": 504.43103,
+        "y": 56.1050034,
+        "z": 532.223
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 504.426544,
+        "y": 56.10533,
+        "z": 532.2242
+      },
+      "planarError": 0.00501863426,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.367362976,
+      "clientServerDistance": 0.0005148004
+    },
+    {
+      "stair": "Stairway - West",
+      "target": "middle",
+      "direction": "descent",
+      "running": false,
+      "server": {
+        "x": 503.530243,
+        "y": 53.6695251,
+        "z": 527.461853
+      },
+      "client": {
+        "x": 503.530029,
+        "y": 53.670002,
+        "z": 527.462036
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 503.5397,
+        "y": 53.6695251,
+        "z": 527.5119
+      },
+      "planarError": 0.05093511,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.388980865,
+      "clientServerDistance": 0.000553657
+    },
+    {
+      "stair": "Stairway - West",
+      "target": "lower",
+      "direction": "descent",
+      "running": false,
+      "server": {
+        "x": 502.671753,
+        "y": 51.23372,
+        "z": 522.899841
+      },
+      "client": {
+        "x": 502.672028,
+        "y": 51.234,
+        "z": 522.9
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 502.667633,
+        "y": 51.23372,
+        "z": 522.8783
+      },
+      "planarError": 0.02193577,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.40940094,
+      "clientServerDistance": 0.000434339774
+    },
+    {
+      "stair": "Stairway - West",
+      "target": "transition",
+      "direction": "descent",
+      "running": false,
+      "server": {
+        "x": 502.5676,
+        "y": 51.2138,
+        "z": 522.346558
+      },
+      "client": {
+        "x": 502.568024,
+        "y": 51.214,
+        "z": 522.347046
+      },
+      "heightError": 7.62939453E-06,
+      "grounded": true,
+      "expected": {
+        "x": 502.5696,
+        "y": 51.21379,
+        "z": 522.3574
+      },
+      "planarError": 0.0110493861,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.364067078,
+      "clientServerDistance": 0.0006795838
+    },
+    {
+      "stair": "Stairway - West",
+      "target": "approach",
+      "direction": "descent",
+      "running": true,
+      "server": {
+        "x": 502.493652,
+        "y": 51.2131653,
+        "z": 521.954163
+      },
+      "client": {
+        "x": 502.494019,
+        "y": 51.213,
+        "z": 521.954041
+      },
+      "heightError": 0.000198364258,
+      "grounded": true,
+      "expected": {
+        "x": 502.4956,
+        "y": 51.2133636,
+        "z": 521.9643
+      },
+      "planarError": 0.0103183715,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.430938721,
+      "clientServerDistance": 0.000419425924
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "transition",
+      "direction": "ascent",
+      "running": false,
+      "server": {
+        "x": 592.347168,
+        "y": 50.6599464,
+        "z": 504.137634
+      },
+      "client": {
+        "x": 592.347046,
+        "y": 50.6600037,
+        "z": 504.138031
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 592.3487,
+        "y": 50.6599464,
+        "z": 504.146759
+      },
+      "planarError": 0.009251458,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.394168854,
+      "clientServerDistance": 0.0004190094
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "lower",
+      "direction": "ascent",
+      "running": false,
+      "server": {
+        "x": 592.4303,
+        "y": 50.8399467,
+        "z": 504.666931
+      },
+      "client": {
+        "x": 592.430054,
+        "y": 50.840004,
+        "z": 504.667023
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 592.430847,
+        "y": 50.8399467,
+        "z": 504.670349
+      },
+      "planarError": 0.003461829,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.352787018,
+      "clientServerDistance": 0.000266947056
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "middle",
+      "direction": "ascent",
+      "running": false,
+      "server": {
+        "x": 593.2041,
+        "y": 53.4726372,
+        "z": 509.598938
+      },
+      "client": {
+        "x": 593.204041,
+        "y": 53.4730034,
+        "z": 509.59903
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 593.2066,
+        "y": 53.4726372,
+        "z": 509.614868
+      },
+      "planarError": 0.01612553,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.397460938,
+      "clientServerDistance": 0.000382384169
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "top",
+      "direction": "ascent",
+      "running": true,
+      "server": {
+        "x": 594.000854,
+        "y": 56.10533,
+        "z": 514.677063
+      },
+      "client": {
+        "x": 594.001038,
+        "y": 56.1050034,
+        "z": 514.677
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 593.9948,
+        "y": 56.10533,
+        "z": 514.6384
+      },
+      "planarError": 0.0391049162,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.375579834,
+      "clientServerDistance": 0.000380629557
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "wall-connection",
+      "direction": "ascent",
+      "running": true,
+      "server": {
+        "x": 597.235168,
+        "y": 56.10534,
+        "z": 514.5217
+      },
+      "client": {
+        "x": 597.235046,
+        "y": 56.1050034,
+        "z": 514.522034
+      },
+      "heightError": 7.62939453E-06,
+      "grounded": true,
+      "expected": {
+        "x": 597.22876,
+        "y": 56.10533,
+        "z": 514.522
+      },
+      "planarError": 0.00641334,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.389961243,
+      "clientServerDistance": 0.000469812134
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "top",
+      "direction": "descent",
+      "running": true,
+      "server": {
+        "x": 593.989,
+        "y": 56.10533,
+        "z": 514.6386
+      },
+      "client": {
+        "x": 593.989,
+        "y": 56.1050034,
+        "z": 514.639038
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 593.9948,
+        "y": 56.10533,
+        "z": 514.6384
+      },
+      "planarError": 0.00580123,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.351730347,
+      "clientServerDistance": 0.0005386698
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "middle",
+      "direction": "descent",
+      "running": false,
+      "server": {
+        "x": 593.2042,
+        "y": 53.4726372,
+        "z": 509.6001
+      },
+      "client": {
+        "x": 593.204041,
+        "y": 53.4730034,
+        "z": 509.600037
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 593.2066,
+        "y": 53.4726372,
+        "z": 509.614868
+      },
+      "planarError": 0.0149610853,
+      "arrivalTolerance": 0.06,
+      "stoppedSeconds": 0.439300537,
+      "clientServerDistance": 0.000413960573
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "lower",
+      "direction": "descent",
+      "running": false,
+      "server": {
+        "x": 592.4321,
+        "y": 50.8399467,
+        "z": 504.6789
+      },
+      "client": {
+        "x": 592.432,
+        "y": 50.840004,
+        "z": 504.679016
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 592.430847,
+        "y": 50.8399467,
+        "z": 504.670349
+      },
+      "planarError": 0.00864051748,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.357154846,
+      "clientServerDistance": 0.000181869473
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "transition",
+      "direction": "descent",
+      "running": false,
+      "server": {
+        "x": 592.3475,
+        "y": 50.6599464,
+        "z": 504.139069
+      },
+      "client": {
+        "x": 592.348,
+        "y": 50.6600037,
+        "z": 504.139038
+      },
+      "heightError": 0.0,
+      "grounded": true,
+      "expected": {
+        "x": 592.3487,
+        "y": 50.6599464,
+        "z": 504.146759
+      },
+      "planarError": 0.00778670842,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.371612549,
+      "clientServerDistance": 0.0005531311
+    },
+    {
+      "stair": "Stairway - East",
+      "target": "approach",
+      "direction": "descent",
+      "running": true,
+      "server": {
+        "x": 592.209839,
+        "y": 50.3936043,
+        "z": 503.261658
+      },
+      "client": {
+        "x": 592.21,
+        "y": 50.394,
+        "z": 503.262024
+      },
+      "heightError": 0.000324249268,
+      "grounded": true,
+      "expected": {
+        "x": 592.209167,
+        "y": 50.39328,
+        "z": 503.257629
+      },
+      "planarError": 0.004083886,
+      "arrivalTolerance": 0.025,
+      "stoppedSeconds": 0.387237549,
+      "clientServerDistance": 0.0005701154
+    }
+  ],
+  "failures": [],
+  "scope": "Two real local Netcode host/client sessions. Each staircase follows its current approach, transition, lower landing, intermediate landing, top and wall connection, then the exact reverse route. Low route markers require 2.5 cm planar arrival; all points require 350 ms stopped on the server and client convergence within 4 cm before checking the unchanged 8 cm height tolerance. Walk and run input, no jumps or waypoint teleportation. A separate spawn starts each independent session; camera and temporary session ownership are restored."
+}

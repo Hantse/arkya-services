@@ -1,0 +1,173 @@
+{
+  "success": true,
+  "playMode": false,
+  "captures": [
+    {
+      "file": "plaza-street-day.png",
+      "phase": 0.4,
+      "position": [
+        557.0,
+        52.83124,
+        513.0
+      ],
+      "target": [
+        543.0,
+        52.17535,
+        536.0
+      ],
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "plaza-ground-day.png",
+      "phase": 0.4,
+      "position": [
+        558.0,
+        54.18944,
+        511.0
+      ],
+      "target": [
+        550.0,
+        51.2031136,
+        519.0
+      ],
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "market-street-day.png",
+      "phase": 0.4,
+      "position": [
+        540.000244,
+        52.6855049,
+        528.000244
+      ],
+      "target": [
+        531.833252,
+        51.7490463,
+        533.833252
+      ],
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "market-ground-day.png",
+      "phase": 0.4,
+      "position": [
+        542.000244,
+        54.8402176,
+        526.000244
+      ],
+      "target": [
+        536.000244,
+        50.88822,
+        530.000244
+      ],
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "arrival-ground-day.png",
+      "phase": 0.4,
+      "position": [
+        510.736969,
+        52.183712,
+        471.1636
+      ],
+      "target": [
+        521.388855,
+        50.7444534,
+        484.4127
+      ],
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "village-overview-day.png",
+      "phase": 0.4,
+      "position": [
+        492.0,
+        105.8742,
+        474.0
+      ],
+      "target": [
+        550.0,
+        52.21403,
+        535.0
+      ],
+      "fieldOfView": 55.0
+    },
+    {
+      "file": "civic-corner-day.png",
+      "phase": 0.4,
+      "position": [
+        550.0,
+        75.99725,
+        525.0
+      ],
+      "target": [
+        532.0,
+        53.20619,
+        547.0
+      ],
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "civic-court-street-day.png",
+      "phase": 0.4,
+      "position": [
+        539.0,
+        52.30894,
+        536.0
+      ],
+      "target": [
+        532.0,
+        52.5929031,
+        551.0
+      ],
+      "fieldOfView": 65.0
+    },
+    {
+      "file": "plaza-street-evening.png",
+      "phase": 0.7,
+      "position": [
+        557.0,
+        52.83124,
+        513.0
+      ],
+      "target": [
+        543.0,
+        52.17535,
+        536.0
+      ],
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "bakery-straw-day.png",
+      "phase": 0.4,
+      "position": [
+        535.7652,
+        52.321167,
+        530.23114
+      ],
+      "target": [
+        533.628,
+        50.821167,
+        533.3668
+      ],
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "cooper-straw-day.png",
+      "phase": 0.4,
+      "position": [
+        559.2621,
+        51.2969971,
+        492.114349
+      ],
+      "target": [
+        558.8368,
+        49.7969971,
+        488.343536
+      ],
+      "fieldOfView": 58.0
+    }
+  ],
+  "stateRestored": true,
+  "scope": "Matched ground-focused and contextual views of the plaza, market, arrival gate and whole village. Camera, weather, clock, lights, particles and render quality restored; scene not saved."
+}

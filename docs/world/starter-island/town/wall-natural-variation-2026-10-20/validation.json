@@ -1,0 +1,664 @@
+{
+  "success": true,
+  "utc": "2026-10-20T11:00:20.2468214Z",
+  "sceneSaved": false,
+  "checks": 19,
+  "passed": 19,
+  "failures": [],
+  "details": [
+    {
+      "name": "transforms preserved outside declared visual changes",
+      "pass": true,
+      "detail": {
+        "original": 30183,
+        "current": 30202,
+        "altered": 0,
+        "missing": 0,
+        "unexpectedNew": 0,
+        "examples": []
+      }
+    },
+    {
+      "name": "filters preserved outside declared visual changes",
+      "pass": true,
+      "detail": {
+        "original": 18215,
+        "current": 18227,
+        "altered": 0,
+        "missing": 0,
+        "unexpectedNew": 0,
+        "examples": []
+      }
+    },
+    {
+      "name": "renderers preserved outside declared visual changes",
+      "pass": true,
+      "detail": {
+        "original": 18249,
+        "current": 18261,
+        "altered": 0,
+        "missing": 0,
+        "unexpectedNew": 0,
+        "examples": []
+      }
+    },
+    {
+      "name": "All scene collider shapes, meshes and properties preserved",
+      "pass": true,
+      "detail": {
+        "before": 2497,
+        "after": 2497
+      }
+    },
+    {
+      "name": "All scene light settings preserved",
+      "pass": true,
+      "detail": {
+        "before": 26,
+        "after": 26
+      }
+    },
+    {
+      "name": "Terrain heights preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Terrain paint preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Original town material and mesh asset bytes preserved",
+      "pass": true,
+      "detail": {
+        "checkedAssets": 427,
+        "changedSources": []
+      }
+    },
+    {
+      "name": "No missing scripts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "No missing or unsupported enclosure material",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "Masonry replacements actually assigned",
+      "pass": true,
+      "detail": {
+        "changedMeshes": 18,
+        "changedMaterials": 55
+      }
+    },
+    {
+      "name": "Old ivy retained and disabled",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Replacement climbers active",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Climber LOD and mesh budgets",
+      "pass": true,
+      "detail": {
+        "districts": 6,
+        "renderers": 12,
+        "nearTriangles": 78536,
+        "farTriangles": 34134,
+        "materials": 1
+      }
+    },
+    {
+      "name": "Climbers share one supported foliage material",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Climbers add no collision, lights or behaviours",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Climber shadows stay within declared budget",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Overall enclosure rendering delta bounded",
+      "pass": true,
+      "detail": {
+        "highestLodTriangleDelta": -25761,
+        "totalRendererDelta": 12
+      }
+    },
+    {
+      "name": "Scene dirty flag unchanged by validation",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "enclosureBefore": {
+    "renderers": 167,
+    "activeRenderers": 145,
+    "trianglesAllLods": 271185,
+    "trianglesHighestLods": 221211,
+    "materials": 20,
+    "lodGroups": 9,
+    "lights": 4,
+    "colliders": 1045,
+    "invalidMaterials": 0
+  },
+  "enclosureAfter": {
+    "renderers": 179,
+    "activeRenderers": 147,
+    "trianglesAllLods": 329510,
+    "trianglesHighestLods": 195450,
+    "materials": 21,
+    "lodGroups": 15,
+    "lights": 4,
+    "colliders": 1045,
+    "invalidMaterials": 0
+  },
+  "plantBudget": {
+    "districts": 6,
+    "renderers": 12,
+    "nearTriangles": 78536,
+    "farTriangles": 34134,
+    "materials": 1
+  },
+  "changes": [
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_00_batch_2_Mitered.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_00_batch_2_Mitered_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_01_batch_2_Mitered.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_01_batch_2_Mitered_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_02_batch_2_Mitered.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_02_batch_2_Mitered_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_03_batch_2_Mitered.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_03_batch_2_Mitered_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_04_batch_2_Mitered.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_04_batch_2_Mitered_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_05_batch_2_Mitered.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_05_batch_2_Mitered_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 0 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_0_-_Sun_worn_pale_limestone.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_0_-_Sun_worn_pale_limestone_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 0 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_0_-_Painted_climbing_ivy.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 0 - Painted climbing ivy - moss retained.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 1 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_1_-_Sun_worn_pale_limestone.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_1_-_Sun_worn_pale_limestone_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 1 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_1_-_Painted_climbing_ivy.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 1 - Painted climbing ivy - moss retained.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 2 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_2_-_Sun_worn_pale_limestone.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_2_-_Sun_worn_pale_limestone_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 2 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_2_-_Painted_climbing_ivy.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 2 - Painted climbing ivy - moss retained.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 3 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_3_-_Sun_worn_pale_limestone.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_3_-_Sun_worn_pale_limestone_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 3 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_3_-_Painted_climbing_ivy.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 3 - Painted climbing ivy - moss retained.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 4 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_4_-_Sun_worn_pale_limestone.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_4_-_Sun_worn_pale_limestone_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 4 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_4_-_Painted_climbing_ivy.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 4 - Painted climbing ivy - moss retained.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 5 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_5_-_Sun_worn_pale_limestone.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_5_-_Sun_worn_pale_limestone_Natural.asset"
+    },
+    {
+      "kind": "Mesh",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 5 - Painted climbing ivy",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_5_-_Painted_climbing_ivy.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Wall sector 5 - Painted climbing ivy - moss retained.asset"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gatehouse upgrade - paired slate towers/Gate tower - Left/Shaped masonry and scalloped slate",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gatehouse upgrade - paired slate towers/Gate tower - Left/Distant masonry and slate",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gatehouse upgrade - paired slate towers/Gate tower - Right/Shaped masonry and scalloped slate",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gatehouse upgrade - paired slate towers/Gate tower - Right/Distant masonry and slate",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gatehouse upgrade - paired slate towers/Gate tower - Left/Shaped masonry and scalloped slate",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gatehouse upgrade - paired slate towers/Gate tower - Left/Distant masonry and slate",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gatehouse upgrade - paired slate towers/Gate tower - Right/Shaped masonry and scalloped slate",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gatehouse upgrade - paired slate towers/Gate tower - Right/Distant masonry and slate",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Stairway - West/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Stairway - West/Archived perpendicular stair geometry/Closed limestone stair mass",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Stairway - West/Masonry stair upgrade - two flights/Wall aligned limestone mass",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Stairway - East/Painted masonry - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Stairway - East/Archived perpendicular stair geometry/Closed limestone stair mass",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Stairway - East/Masonry stair upgrade - two flights/Wall aligned limestone mass",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Stairway - East/Masonry stair upgrade - two flights/East lower ground transition - revision 1/East ground transition limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Stairway - East/Masonry stair upgrade - two flights/East lower ground transition - revision 1/Full foot support on East arrival tread - revision 2/Extended East arrival limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 17/Shaped tower and walk platform",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 17/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 17/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 17/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 17/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 17/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 17/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 43/Shaped tower and walk platform",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 43/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 43/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 43/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 43/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 43/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 43/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 90/Shaped tower and walk platform",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 90/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 90/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 90/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 90/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 90/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall watch platform 90/Tower protective parapet",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Masonry accent material slot",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 0 - Sun worn pale limestone",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Masonry accent material slot",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 1 - Sun worn pale limestone",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Masonry accent material slot",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 2 - Sun worn pale limestone",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Masonry accent material slot",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 3 - Sun worn pale limestone",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Masonry accent material slot",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 4 - Sun worn pale limestone",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Masonry accent material slot",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 5 - Sun worn pale limestone",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Raised watchtowers - painted guard posts/Watchtower North 03/Painted batch - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Raised watchtowers - painted guard posts/Watchtower East 27/Painted batch - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Raised watchtowers - painted guard posts/Watchtower South 55/Painted batch - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    },
+    {
+      "kind": "Material",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Raised watchtowers - painted guard posts/Watchtower West 99/Painted batch - Warm painted defensive limestone",
+      "slot": 0,
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat"
+    }
+  ],
+  "invariantSnapshots": {
+    "before": "..\\..\\..\\..\\..\\artifacts\\wall-natural-variation-2026-10-20\\invariants-before.json",
+    "after": "..\\..\\..\\..\\..\\artifacts\\wall-natural-variation-2026-10-20\\invariants-after.json"
+  },
+  "scope": "Presentation-only check against immutable Before snapshot. No simulation edits or gameplay pass claimed. Source helper validates exact retained masonry vertices; matching captures remain the visual proof."
+}

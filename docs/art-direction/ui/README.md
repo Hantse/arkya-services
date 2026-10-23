@@ -90,9 +90,11 @@ l'intégration.
    états à l'[écran existant](../../CHARACTER_CREATION.md), avec une distinction
    claire entre aperçu local, opération en cours et résultat serveur.
 
-Cette étape livre uniquement la recherche visuelle. Les composants Unity,
-les icônes de production et la mise en page complète restent à réaliser après
-le choix de direction.
+La recherche du 16 octobre est conservée comme référence visuelle. La
+[première intégration Unity du 17 octobre](IMPLEMENTATION.md) applique les
+trois thèmes à la création, au social et à la structure du HUD d'exploration
+locale. La composition complète V3 dispose maintenant d'un aperçu Editor ;
+son raccordement aux données de gameplay reste à intégrer.
 
 ## Livraison et contrôle
 
@@ -100,6 +102,8 @@ le choix de direction.
   `image_gen`.
 - [Prompt exact](PROMPT.md) : provenance reproductible de l'intention.
 - Inspection visuelle de la planche et contrôle des chemins locaux à la livraison.
-- Aucun code, scène, prefab ou asset du client Unity modifié ; aucun test Unity
-  nécessaire pour cette livraison documentaire. La lisibilité en jeu reste à vérifier.
+- La livraison documentaire du 16 octobre ne modifiait aucun code, scène,
+  prefab ou asset du client Unity et ne nécessitait pas de test Unity.
+  L'[intégration actuelle](IMPLEMENTATION.md) est une étape distincte ;
+  la lisibilité en jeu reste à vérifier.
 

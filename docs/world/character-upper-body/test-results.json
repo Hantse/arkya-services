@@ -1,0 +1,287 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 2.75,
+      "summary": {
+        "total": 37,
+        "passed": 37,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop(\"human-a\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.1820248,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop(\"human-b\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.1112494,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop(\"elf-a\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.0389842,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop(\"elf-b\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.0506929,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop(\"human-a\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.0823964,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop(\"human-b\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.0346119,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop(\"elf-a\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.0970099,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.NativeGaitKeepsForwardKneesOpposedArmsAndAContinuousLoop(\"elf-b\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.0446429,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight(\"human-a\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.3256812,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight(\"human-b\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.17247,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight(\"elf-a\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.2738472,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight(\"elf-b\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.1750585,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight(\"human-a\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.1293315,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight(\"human-b\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.1080627,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight(\"elf-a\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.1320464,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionAnimationTests.SoleContactsTrackActualMovementAtEveryAllowedHeight(\"elf-b\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.1425351,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.CadenceChangesGraduallyAndNeverMovesTheActorRoot",
+          "Status": "Passed",
+          "Duration": 0.0191389,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.CrossfadeKeepsBothGaitsAtTheSamePhysicalSpeed(\"Walk\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.0079081,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.CrossfadeKeepsBothGaitsAtTheSamePhysicalSpeed(\"Run\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.006986,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.FacingSoftensTurnsWithoutMovingTheActorAndIgnoresInvalidInput",
+          "Status": "Passed",
+          "Duration": 0.0103734,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.GaitCadenceMatchesAchievedSpeedAndCharacterHeight(\"human-a\",160)",
+          "Status": "Passed",
+          "Duration": 0.0126542,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.GaitCadenceMatchesAchievedSpeedAndCharacterHeight(\"human-b\",175)",
+          "Status": "Passed",
+          "Duration": 0.0130365,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.GaitCadenceMatchesAchievedSpeedAndCharacterHeight(\"human-b\",195)",
+          "Status": "Passed",
+          "Duration": 0.0127707,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.GaitCadenceMatchesAchievedSpeedAndCharacterHeight(\"elf-a\",170)",
+          "Status": "Passed",
+          "Duration": 0.0128942,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.GaitCadenceMatchesAchievedSpeedAndCharacterHeight(\"elf-b\",185)",
+          "Status": "Passed",
+          "Duration": 0.0126405,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.GaitCadenceMatchesAchievedSpeedAndCharacterHeight(\"elf-b\",205)",
+          "Status": "Passed",
+          "Duration": 0.0134669,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.GaitChangesPreserveFootContactPhaseAndRepeatedRequestsFinishTheBlend(\"Walk\",\"Run\")",
+          "Status": "Passed",
+          "Duration": 0.0061604,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.GaitChangesPreserveFootContactPhaseAndRepeatedRequestsFinishTheBlend(\"Run\",\"Walk\")",
+          "Status": "Passed",
+          "Duration": 0.0048296,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.NonGaitStatesRetainUnitSpeedAfterSlowMovement(\"Idle\")",
+          "Status": "Passed",
+          "Duration": 0.0076494,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.NonGaitStatesRetainUnitSpeedAfterSlowMovement(\"Jump\")",
+          "Status": "Passed",
+          "Duration": 0.0066527,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.NonGaitStatesRetainUnitSpeedAfterSlowMovement(\"SwimIdle\")",
+          "Status": "Passed",
+          "Duration": 0.0059454,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.NonGaitStatesRetainUnitSpeedAfterSlowMovement(\"Swim\")",
+          "Status": "Passed",
+          "Duration": 0.0061205,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.OnlyWalkingAndRunningUseIndependentCadenceParameters(\"human-a\")",
+          "Status": "Passed",
+          "Duration": 0.0034297,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.OnlyWalkingAndRunningUseIndependentCadenceParameters(\"human-b\")",
+          "Status": "Passed",
+          "Duration": 0.0002595,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.OnlyWalkingAndRunningUseIndependentCadenceParameters(\"elf-a\")",
+          "Status": "Passed",
+          "Duration": 0.0002025,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.OnlyWalkingAndRunningUseIndependentCadenceParameters(\"elf-b\")",
+          "Status": "Passed",
+          "Duration": 0.0001908,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterLocomotionPresentationTests.PreviewRequestsRestoreNormalPlaybackAfterGameplayCadence",
+          "Status": "Passed",
+          "Duration": 0.0062253,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,446 @@
+{
+    "unityVersion": "6000.6.6f1",
+    "coordinates": "Original PNG pixels, bottom-left origin; alpha > 32; two-pixel bounds padding clamped to each grid cell",
+    "slicing": "Objects 4x2, actions 5x4, portraits 3x1; names ordered left-to-right, top-to-bottom; original PNG pixels preserved",
+    "sheets": [
+        {
+            "sheet": "objects",
+            "assetPath": "Assets/Arkya/Characters/Runtime/UI/Art/Resources/HudV3/objects.png",
+            "sourceSha256": "cb69ebad0a09e25a662d32f27dab0855ff7a81ae9ce9b50377b244bee3438ce9",
+            "width": 1774,
+            "height": 887,
+            "importedWidth": 1774,
+            "importedHeight": 887,
+            "spriteCount": 8,
+            "sprites": [
+                {
+                    "name": "map",
+                    "assetGuid": "74f8c604fdae4da44bfc5a1647c02cf5",
+                    "spriteId": "6e56084c4377cad45ade46835891af8a",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 96.0,
+                        "y": 443.0,
+                        "width": 309.0,
+                        "height": 282.0
+                    },
+                    "localFileId": 1420660750
+                },
+                {
+                    "name": "journal",
+                    "assetGuid": "74f8c604fdae4da44bfc5a1647c02cf5",
+                    "spriteId": "2f4159e9f3f23ae4494f86aef8a41606",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 498.0,
+                        "y": 451.0,
+                        "width": 372.0,
+                        "height": 266.0
+                    },
+                    "localFileId": -743913810
+                },
+                {
+                    "name": "bag",
+                    "assetGuid": "74f8c604fdae4da44bfc5a1647c02cf5",
+                    "spriteId": "8d18c5bf39c1da34799588eda0033579",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 988.0,
+                        "y": 452.0,
+                        "width": 259.0,
+                        "height": 257.0
+                    },
+                    "localFileId": -145699054
+                },
+                {
+                    "name": "wood",
+                    "assetGuid": "74f8c604fdae4da44bfc5a1647c02cf5",
+                    "spriteId": "7380495e1f102a443b29442ed568e2cd",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1391.0,
+                        "y": 453.0,
+                        "width": 291.0,
+                        "height": 251.0
+                    },
+                    "localFileId": -244459760
+                },
+                {
+                    "name": "sun",
+                    "assetGuid": "74f8c604fdae4da44bfc5a1647c02cf5",
+                    "spriteId": "9ba50bad03bd2434e8964f082d18111a",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 131.0,
+                        "y": 91.0,
+                        "width": 258.0,
+                        "height": 251.0
+                    },
+                    "localFileId": -1175197695
+                },
+                {
+                    "name": "chat",
+                    "assetGuid": "74f8c604fdae4da44bfc5a1647c02cf5",
+                    "spriteId": "b2ae9133e054e4642ae973107f613c84",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 572.0,
+                        "y": 119.0,
+                        "width": 225.0,
+                        "height": 197.0
+                    },
+                    "localFileId": 1191295412
+                },
+                {
+                    "name": "quest",
+                    "assetGuid": "74f8c604fdae4da44bfc5a1647c02cf5",
+                    "spriteId": "8c5166c60fea93c488c8af517010dab0",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1011.0,
+                        "y": 122.0,
+                        "width": 179.0,
+                        "height": 187.0
+                    },
+                    "localFileId": -2111499849
+                },
+                {
+                    "name": "arrow",
+                    "assetGuid": "74f8c604fdae4da44bfc5a1647c02cf5",
+                    "spriteId": "fdd70994d1a1a9e409fe0b2c0451e910",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1437.0,
+                        "y": 122.0,
+                        "width": 174.0,
+                        "height": 191.0
+                    },
+                    "localFileId": 94894574
+                }
+            ]
+        },
+        {
+            "sheet": "actions",
+            "assetPath": "Assets/Arkya/Characters/Runtime/UI/Art/Resources/HudV3/actions.png",
+            "sourceSha256": "a623fa2730ce422a9f57e26466565adc2c825ecc8592df1dd872779595131f15",
+            "width": 1402,
+            "height": 1122,
+            "importedWidth": 1402,
+            "importedHeight": 1122,
+            "spriteCount": 20,
+            "sprites": [
+                {
+                    "name": "heal",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "b8fd7d05ceaae9641993648a35cca3d6",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 65.0,
+                        "y": 841.0,
+                        "width": 195.0,
+                        "height": 179.0
+                    },
+                    "localFileId": -20476339
+                },
+                {
+                    "name": "eye",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "645a00009b5481947a125a2c13b3f077",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 324.0,
+                        "y": 842.0,
+                        "width": 222.0,
+                        "height": 158.0
+                    },
+                    "localFileId": -672177459
+                },
+                {
+                    "name": "vortex",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "13dd71a2847c02c4bb8975b5ee9164a2",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 603.0,
+                        "y": 841.0,
+                        "width": 194.0,
+                        "height": 179.0
+                    },
+                    "localFileId": 290083692
+                },
+                {
+                    "name": "paw",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "e0fbe847f1f806d45a7992045a0b255c",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 870.0,
+                        "y": 841.0,
+                        "width": 199.0,
+                        "height": 185.0
+                    },
+                    "localFileId": -1890812331
+                },
+                {
+                    "name": "horn",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "2b513c8dd840f3a4cbc16c4a2469793f",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1128.0,
+                        "y": 841.0,
+                        "width": 243.0,
+                        "height": 184.0
+                    },
+                    "localFileId": -489163143
+                },
+                {
+                    "name": "lantern",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "cde06ad5d851ec44caa985fa623cadb9",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 86.0,
+                        "y": 562.0,
+                        "width": 143.0,
+                        "height": 279.0
+                    },
+                    "localFileId": 915136939
+                },
+                {
+                    "name": "bread",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "06732566d868f37479f794b0bac4831c",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 323.0,
+                        "y": 581.0,
+                        "width": 234.0,
+                        "height": 175.0
+                    },
+                    "localFileId": 55860909
+                },
+                {
+                    "name": "sword",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "b0a46b453ee502540acb72aac26cc854",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 584.0,
+                        "y": 561.0,
+                        "width": 219.0,
+                        "height": 280.0
+                    },
+                    "localFileId": -425986432
+                },
+                {
+                    "name": "shield",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "80ac3094839cf1b49ab6ede4dbbe18e4",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 877.0,
+                        "y": 564.0,
+                        "width": 180.0,
+                        "height": 277.0
+                    },
+                    "localFileId": 74924376
+                },
+                {
+                    "name": "fire",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "050abc8927371de448af08d6a0316c70",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1158.0,
+                        "y": 561.0,
+                        "width": 179.0,
+                        "height": 235.0
+                    },
+                    "localFileId": -1086222228
+                },
+                {
+                    "name": "leaf",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "3c496df03ce9f3e4f96c193e9c9d0730",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 55.0,
+                        "y": 280.0,
+                        "width": 204.0,
+                        "height": 250.0
+                    },
+                    "localFileId": 476700422
+                },
+                {
+                    "name": "pickaxe",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "3d3a09e18a98c8a47a8b3cf705a98f45",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 336.0,
+                        "y": 298.0,
+                        "width": 224.0,
+                        "height": 225.0
+                    },
+                    "localFileId": -1619771404
+                },
+                {
+                    "name": "red-potion",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "34a04c4bd1f4c7c488e00187bfe7c8f6",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 613.0,
+                        "y": 306.0,
+                        "width": 164.0,
+                        "height": 223.0
+                    },
+                    "localFileId": -903826935
+                },
+                {
+                    "name": "run",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "954a28b408ad9b44baaafaf1fc0f2c3b",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 865.0,
+                        "y": 301.0,
+                        "width": 212.0,
+                        "height": 219.0
+                    },
+                    "localFileId": -73006547
+                },
+                {
+                    "name": "crystal",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "b5aa14ee5e755ed4ea23e4c571950b8e",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1176.0,
+                        "y": 298.0,
+                        "width": 159.0,
+                        "height": 230.0
+                    },
+                    "localFileId": -2045306501
+                },
+                {
+                    "name": "star",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "cdd62991663db8e4ba1303adc4e93f65",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 54.0,
+                        "y": 60.0,
+                        "width": 220.0,
+                        "height": 220.0
+                    },
+                    "localFileId": -738960743
+                },
+                {
+                    "name": "bow",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "cbaf564c67b91ed4ea6d9e13faaba3ef",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 327.0,
+                        "y": 57.0,
+                        "width": 221.0,
+                        "height": 218.0
+                    },
+                    "localFileId": -1571801917
+                },
+                {
+                    "name": "green-potion",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "ae20c312263d2be4f88987e217efc2b9",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 621.0,
+                        "y": 61.0,
+                        "width": 153.0,
+                        "height": 207.0
+                    },
+                    "localFileId": -150449614
+                },
+                {
+                    "name": "shield-buff",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "f5868fa8336de30428ec427ffe8b90f4",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 853.0,
+                        "y": 77.0,
+                        "width": 227.0,
+                        "height": 174.0
+                    },
+                    "localFileId": 1183340053
+                },
+                {
+                    "name": "spiral-buff",
+                    "assetGuid": "1986448f37b1dc44b859e92b28595411",
+                    "spriteId": "c939dfc9d75cf36489b93509eac6b4ea",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1141.0,
+                        "y": 58.0,
+                        "width": 230.0,
+                        "height": 207.0
+                    },
+                    "localFileId": -13657681
+                }
+            ]
+        },
+        {
+            "sheet": "portraits",
+            "assetPath": "Assets/Arkya/Characters/Runtime/UI/Art/Resources/HudV3/portraits.png",
+            "sourceSha256": "d69d6d73ab644ac20a81cfc2926a867ec6deee13a997ded51a1b75b2b4ee2931",
+            "width": 2172,
+            "height": 724,
+            "importedWidth": 2172,
+            "importedHeight": 724,
+            "spriteCount": 3,
+            "sprites": [
+                {
+                    "name": "lyra",
+                    "assetGuid": "24589f1b22fd77f429a2ba16b23c8bf2",
+                    "spriteId": "931da2462a0b4cc4ebfa3544fee6388e",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 50.0,
+                        "y": 23.0,
+                        "width": 565.0,
+                        "height": 680.0
+                    },
+                    "localFileId": 190375310
+                },
+                {
+                    "name": "borin",
+                    "assetGuid": "24589f1b22fd77f429a2ba16b23c8bf2",
+                    "spriteId": "27167a83d6f5f4443bdb5c3c5b6ca9d2",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 779.0,
+                        "y": 23.0,
+                        "width": 569.0,
+                        "height": 681.0
+                    },
+                    "localFileId": -723215843
+                },
+                {
+                    "name": "nea",
+                    "assetGuid": "24589f1b22fd77f429a2ba16b23c8bf2",
+                    "spriteId": "1956d4108a9758547889c79c242f0c8d",
+                    "rect": {
+                        "serializedVersion": "2",
+                        "x": 1542.0,
+                        "y": 23.0,
+                        "width": 545.0,
+                        "height": 668.0
+                    },
+                    "localFileId": 332348476
+                }
+            ]
+        }
+    ]
+}

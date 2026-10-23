@@ -1,0 +1,65 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T09:17:54.0622981Z",
+  "playMode": false,
+  "checks": [
+    {
+      "name": "Terrain heights preserved",
+      "passed": true,
+      "detail": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676"
+    },
+    {
+      "name": "No missing scripts",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "Materials supported and shaders compiled",
+      "passed": true,
+      "detail": {
+        "invalid": 0,
+        "shaderErrors": []
+      }
+    },
+    {
+      "name": "Existing light budget retained",
+      "passed": true,
+      "detail": 21
+    },
+    {
+      "name": "Old ramp colliders disabled",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "All 33 cloth surfaces present",
+      "passed": true,
+      "detail": 33
+    },
+    {
+      "name": "All 15 barrels have two LOD levels",
+      "passed": true,
+      "detail": 15
+    },
+    {
+      "name": "Civic hall present",
+      "passed": true,
+      "detail": "(532.00, 50.28, 554.00)"
+    },
+    {
+      "name": "Owned asset meta files present",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Scene saved",
+      "passed": true,
+      "detail": {
+        "path": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+        "isDirty": false
+      }
+    }
+  ],
+  "failures": [],
+  "scope": "Saved scene and owned presentation assets. Runtime traversal and cloth GPU behavior are validated in separate reports."
+}

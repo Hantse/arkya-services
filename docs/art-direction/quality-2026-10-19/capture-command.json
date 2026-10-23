@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "AgentScripts/World/ReviewVisualQuality.cs",
+      "entry": "ReviewVisualQuality.Capture",
+      "args": "[\"after\"]",
+      "timeout_ms": "120000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 281,
+      "executeMs": 4462,
+      "assemblyName": "PipelineRunScript_ReviewVisualQuality_fab0e47abb274b54b030e52286cf46a7",
+      "success": true,
+      "result": "{\r\n  \"success\": true,\r\n  \"playMode\": false,\r\n  \"captures\": [\r\n    {\r\n      \"file\": \"forest-floor-day.png\",\r\n      \"phase\": 0.4,\r\n      \"position\": {\r\n        \"x\": 630.0,\r\n        \"y\": 52.3659859,\r\n        \"z\": 798.0\r\n      },\r\n      \"target\": {\r\n        \"x\": 625.0,\r\n        \"y\": 53.0660934,\r\n        \"z\": 810.0\r\n      },\r\n      \"fieldOfView\": 60.0\r\n    },\r\n    {\r\n      \"file\": \"forest-day.png\",\r\n      \"phase\": 0.4,\r\n      \"position\": {\r\n        \"x\": 630.0,\r\n        \"y\": 54.4102173,\r\n        \"z\": 819.0\r\n      },\r\n      \"target\": {\r\n        \"x\": 646.0,\r\n        \"y\": 54.8957138,\r\n        \"z\": 855.0\r\n      },\r\n      \"fieldOfView\": 60.0\r\n    },\r\n    {\r\n      \"file\": \"forest-night.png\",\r\n      \"phase\": 0.79,\r\n      \"position\": {\r\n        \"x\": 630.0,\r\n        \"y\": 54.4102173,\r\n        \"z\": 819.0\r\n      },\r\n      \"target\": {\r\n        \"x\": 646.0,\r\n        \"y\": 54.8957138,\r\n        \"z\": 855.0\r\n      },\r\n      \"fieldOfView\": 60.0\r\n    },\r\n    {\r\n      \"file\": \"town-overview-day.png\",\r\n      \"phase\": 0.4,\r\n      \"position\": {\r\n        \"x\": 480.0,\r\n        \"y\": 128.518585,\r\n        \"z\": 433.0\r\n      },\r\n      \"target\": {\r\n        \"x\": 550.0,\r\n        \"y\": 55.0031128,\r\n        \"z\": 520.0\r\n      },\r\n      \"fieldOfView\": 44.0\r\n    },\r\n    {\r\n      \"file\": \"town-overview-night.png\",\r\n      \"phase\": 0.79,\r\n      \"position\": {\r\n        \"x\": 480.0,\r\n        \"y\": 128.518585,\r\n        \"z\": 433.0\r\n      },\r\n      \"target\": {\r\n        \"x\": 550.0,\r\n        \"y\": 55.0031128,\r\n        \"z\": 520.0\r\n      },\r\n      \"fieldOfView\": 44.0\r\n    },\r\n    {\r\n      \"file\": \"market-street-day.png\",\r\n      \"phase\": 0.4,\r\n      \"position\": {\r\n        \"x\": 540.000244,\r\n        \"y\": 52.6855049,\r\n        \"z\": 528.000244\r\n      },\r\n      \"target\": {\r\n        \"x\": 531.833252,\r\n        \"y\": 51.7490463,\r\n        \"z\": 533.833252\r\n      },\r\n      \"fieldOfView\": 66.0\r\n    },\r\n    {\r\n      \"file\": \"market-street-night.png\",\r\n      \"phase\": 0.79,\r\n      \"position\": {\r\n        \"x\": 540.000244,\r\n        \"y\": 52.6855049,\r\n        \"z\": 528.000244\r\n      },\r\n      \"target\": {\r\n        \"x\": 531.833252,\r\n        \"y\": 51.7490463,\r\n        \"z\": 533.833252\r\n      },\r\n      \"fieldOfView\": 66.0\r\n    },\r\n    {\r\n      \"file\": \"arrival-gate-day.png\",\r\n      \"phase\": 0.4,\r\n      \"position\": {\r\n        \"x\": 508.8572,\r\n        \"y\": 51.4033356,\r\n        \"z\": 468.825562\r\n      },\r\n      \"target\": {\r\n        \"x\": 518.8825,\r\n        \"y\": 53.4601135,\r\n        \"z\": 481.295258\r\n      },\r\n      \"fieldOfView\": 68.0\r\n    },\r\n    {\r\n      \"file\": \"well-court-day.png\",\r\n      \"phase\": 0.4,\r\n      \"position\": {\r\n        \"x\": 560.0,\r\n        \"y\": 52.8300743,\r\n        \"z\": 516.0\r\n      },\r\n      \"target\": {\r\n        \"x\": 550.0,\r\n        \"y\": 52.60311,\r\n        \"z\": 520.0\r\n      },\r\n      \"fieldOfView\": 64.0\r\n    },\r\n    {\r\n      \"file\": \"sheltered-court-day.png\",\r\n      \"phase\": 0.4,\r\n      \"position\": {\r\n        \"x\": 565.0,\r\n        \"y\": 50.9959755,\r\n        \"z\": 489.0\r\n      },\r\n      \"target\": {\r\n        \"x\": 560.0,\r\n        \"y\": 50.25262,\r\n        \"z\": 487.0\r\n      },\r\n      \"fieldOfView\": 66.0\r\n    },\r\n    {\r\n      \"file\": \"rampart-stair-day.png\",\r\n      \"phase\": 0.4,\r\n      \"position\": {\r\n        \"x\": 517.6169,\r\n        \"y\": 52.8345,\r\n        \"z\": 529.2673\r\n      },\r\n      \"target\": {\r\n        \"x\": 508.0755,\r\n        \"y\": 55.017,\r\n        \"z\": 531.414551\r\n      },\r\n      \"fieldOfView\": 73.0\r\n    },\r\n    {\r\n      \"file\": \"rampart-walk-day.png\",\r\n      \"phase\": 0.4,\r\n      \"position\": {\r\n        \"x\": 597.7339,\r\n        \"y\": 57.8053322,\r\n        \"z\": 523.44104\r\n      },\r\n      \"target\": {\r\n        \"x\": 597.101135,\r\n        \"y\": 57.5053329,\r\n        \"z\": 509.455353\r\n      },\r\n      \"fieldOfView\": 73.0\r\n    }\r\n  ],\r\n  \"stateRestored\": true,\r\n  \"scope\": \"Polished town, with player-height street, well court, gate, stair and wall views. Edit Mode rendering only. Camera, weather, clock, lights, particles and render quality restored; scene not saved.\"\r\n}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

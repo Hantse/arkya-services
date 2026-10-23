@@ -122,8 +122,8 @@ def inspect_clip(rig, mesh_object, action, metadata, feet, sample_rate, scale, g
     }
 
 
-def verify_species(species, sample_rate, output_directory):
-    source = ROOT / "assets" / "anatomy" / f"{species}.blend"
+def verify_species(species, sample_rate, output_directory, anatomy_directory=None):
+    source = (anatomy_directory or ROOT / "assets" / "anatomy") / f"{species}.blend"
     configuration = source.with_name(f"{species}-rig.json")
     inputs = {
         "anatomy": input_record(source), "rig_configuration": input_record(configuration),
@@ -175,11 +175,15 @@ def main():
     parser.add_argument("--species", choices=("fox", "wolf", "all"), default="all")
     parser.add_argument("--sample-rate", type=int, default=120)
     parser.add_argument("--output-directory", type=Path, default=ROOT)
+    parser.add_argument("--anatomy-directory", type=Path, help="Isolated anatomy draft under the totems directory")
     args = parser.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else [])
     if args.sample_rate < 120:
         parser.error("Use at least 120 Hz to cover the 60 Hz bake and its interpolated subframes")
     species = ("fox", "wolf") if args.species == "all" else (args.species,)
-    outcomes = [verify_species(name, args.sample_rate, args.output_directory.resolve()) for name in species]
+    anatomy=args.anatomy_directory.resolve() if args.anatomy_directory else None
+    if anatomy and not anatomy.is_relative_to(ROOT):
+        parser.error("The anatomy directory must be inside the totems directory for provenance tracking")
+    outcomes = [verify_species(name, args.sample_rate, args.output_directory.resolve(), anatomy) for name in species]
     if not all(outcomes):
         raise RuntimeError("Locomotion skin verification failed; see the emitted reports")
 

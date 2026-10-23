@@ -1,0 +1,98 @@
+{
+  "success": true,
+  "playMode": false,
+  "captures": [
+    {
+      "file": "village-overview-day.png",
+      "phase": 0.4,
+      "position": [
+        596.0,
+        124.551849,
+        468.0
+      ],
+      "target": [
+        550.0,
+        53.9992065,
+        524.0
+      ],
+      "fieldOfView": 60.0
+    },
+    {
+      "file": "civic-corner-day.png",
+      "phase": 0.4,
+      "position": [
+        550.0,
+        75.99725,
+        525.0
+      ],
+      "target": [
+        532.0,
+        56.0303955,
+        553.0
+      ],
+      "fieldOfView": 60.0
+    },
+    {
+      "file": "market-street-day.png",
+      "phase": 0.4,
+      "position": [
+        550.0,
+        52.7237968,
+        507.0
+      ],
+      "target": [
+        541.0,
+        53.54215,
+        536.0
+      ],
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "fountain-day.png",
+      "phase": 0.4,
+      "position": [
+        557.0,
+        52.83124,
+        513.0
+      ],
+      "target": [
+        550.0,
+        53.7031136,
+        520.0
+      ],
+      "fieldOfView": 65.0
+    },
+    {
+      "file": "wall-exterior-day.png",
+      "phase": 0.4,
+      "position": [
+        550.0,
+        62.53043,
+        448.0
+      ],
+      "target": [
+        550.0,
+        56.6553764,
+        480.0
+      ],
+      "fieldOfView": 65.0
+    },
+    {
+      "file": "town-twilight.png",
+      "phase": 0.7,
+      "position": [
+        557.0,
+        52.83124,
+        513.0
+      ],
+      "target": [
+        543.0,
+        53.57535,
+        536.0
+      ],
+      "fieldOfView": 68.0
+    }
+  ],
+  "stateRestored": true,
+  "scope": "Matched village overview, civic, market, fountain, exterior wall and twilight views. Camera, weather, clock, lights, particles and render quality restored; scene not saved."
+}

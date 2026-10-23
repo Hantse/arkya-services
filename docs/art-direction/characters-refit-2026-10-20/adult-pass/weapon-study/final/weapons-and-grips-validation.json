@@ -1,0 +1,850 @@
+[
+  {
+    "model": "human-a",
+    "bones": 26,
+    "restMatricesPreserved": true,
+    "handTopologyPreserved": true,
+    "finiteCoordinates": true,
+    "handSculpt": [
+      {
+        "side": "Left",
+        "sculptedFingerVertices": 1247,
+        "palmTwistRadians": 0.5045949958087169,
+        "nonHandVerticesUnchanged": true,
+        "protectedNonHandVertices": 752,
+        "sourceMaskVertexCount": 1619
+      },
+      {
+        "side": "Right",
+        "sculptedFingerVertices": 1241,
+        "palmTwistRadians": -0.5163302022921675,
+        "nonHandVerticesUnchanged": true,
+        "protectedNonHandVertices": 752,
+        "sourceMaskVertexCount": 1616
+      }
+    ],
+    "weaponTriangles": 8280,
+    "grips": {
+      "Left": {
+        "center": [
+          0.34388813376426697,
+          -0.06527358293533325,
+          0.7961943745613098
+        ],
+        "across": [
+          0.5634133815765381,
+          0.8166993260383606,
+          -0.12477028369903564
+        ],
+        "down": [
+          0.29569894075393677,
+          -0.34035733342170715,
+          -0.8925911784172058
+        ],
+        "normal": [
+          0.771445095539093,
+          -0.4660033583641052,
+          0.4332590103149414
+        ],
+        "wrist": [
+          0.3279823958873749,
+          -0.04105832800269127,
+          0.8828741908073425
+        ],
+        "palmTip": [
+          0.34640032052993774,
+          -0.06225784868001938,
+          0.827278196811676
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "LeftHand"
+      },
+      "Right": {
+        "center": [
+          -0.3165243864059448,
+          -0.04039699584245682,
+          0.7817668318748474
+        ],
+        "across": [
+          -0.5706275701522827,
+          0.8179404139518738,
+          -0.07319580018520355
+        ],
+        "down": [
+          -0.2528213560581207,
+          -0.25977957248687744,
+          -0.9319849610328674
+        ],
+        "normal": [
+          -0.7813229560852051,
+          -0.5133108496665955,
+          0.3550301790237427
+        ],
+        "wrist": [
+          -0.3046294152736664,
+          -0.02412140928208828,
+          0.8709092736244202
+        ],
+        "palmTip": [
+          -0.3203766644001007,
+          -0.040302056819200516,
+          0.8128595948219299
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "RightHand"
+      }
+    },
+    "parts": [
+      {
+        "name": "Reference crescent blade Left | turquoise crescent cutting edge",
+        "triangles": 784,
+        "closedManifold": true,
+        "positiveVolume": 0.0002949112030237391,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | broad swept gold spine",
+        "triangles": 812,
+        "closedManifold": true,
+        "positiveVolume": 0.00011347930810517778,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | leather grip",
+        "triangles": 60,
+        "closedManifold": true,
+        "positiveVolume": 3.645284018685597e-05,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | wrapped leather grip",
+        "triangles": 900,
+        "closedManifold": true,
+        "positiveVolume": 5.9054667260032054e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar -1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.220904837483846e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar 1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.2209015135222635e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | continuous long gold openwork",
+        "triangles": 728,
+        "closedManifold": true,
+        "positiveVolume": 0.00010354905840077022,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | continuous short gold openwork",
+        "triangles": 678,
+        "closedManifold": true,
+        "positiveVolume": 5.742624870310941e-05,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Right | turquoise crescent cutting edg",
+        "triangles": 784,
+        "closedManifold": true,
+        "positiveVolume": 0.00029491028196742766,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | broad swept gold spine",
+        "triangles": 812,
+        "closedManifold": true,
+        "positiveVolume": 0.00011347935629939056,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | leather grip",
+        "triangles": 60,
+        "closedManifold": true,
+        "positiveVolume": 3.645291318293858e-05,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | wrapped leather grip",
+        "triangles": 900,
+        "closedManifold": true,
+        "positiveVolume": 5.905445829849327e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar -1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.220907912053301e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar 1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.220906159076748e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | continuous long gold openwork",
+        "triangles": 722,
+        "closedManifold": true,
+        "positiveVolume": 0.00010354597367145661,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | continuous short gold openwork",
+        "triangles": 672,
+        "closedManifold": true,
+        "positiveVolume": 5.67042648567765e-05,
+        "bone": "RightHand"
+      }
+    ]
+  },
+  {
+    "model": "human-b",
+    "bones": 26,
+    "restMatricesPreserved": true,
+    "handTopologyPreserved": true,
+    "finiteCoordinates": true,
+    "handSculpt": [
+      {
+        "side": "Left",
+        "sculptedFingerVertices": 1282,
+        "palmTwistRadians": 0.6189169146444169,
+        "nonHandVerticesUnchanged": true,
+        "protectedNonHandVertices": 5577,
+        "sourceMaskVertexCount": 1718
+      },
+      {
+        "side": "Right",
+        "sculptedFingerVertices": 1286,
+        "palmTwistRadians": -0.6121240421887705,
+        "nonHandVerticesUnchanged": true,
+        "protectedNonHandVertices": 5577,
+        "sourceMaskVertexCount": 1730
+      }
+    ],
+    "weaponTriangles": 8280,
+    "grips": {
+      "Left": {
+        "center": [
+          0.28516340255737305,
+          -0.015249919146299362,
+          0.8568627238273621
+        ],
+        "across": [
+          0.5571399927139282,
+          0.8263548612594604,
+          0.08205295354127884
+        ],
+        "down": [
+          0.32809576392173767,
+          -0.12827704846858978,
+          -0.9358943104743958
+        ],
+        "normal": [
+          0.7628552913665771,
+          -0.5483453869819641,
+          0.342591792345047
+        ],
+        "wrist": [
+          0.2720201015472412,
+          -0.013612466864287853,
+          0.9296149611473083
+        ],
+        "palmTip": [
+          0.2884499430656433,
+          -0.020036114379763603,
+          0.8827487826347351
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "LeftHand"
+      },
+      "Right": {
+        "center": [
+          -0.31949588656425476,
+          -0.015369162894785404,
+          0.8693919777870178
+        ],
+        "across": [
+          -0.5424382090568542,
+          0.8319586515426636,
+          0.11664343625307083
+        ],
+        "down": [
+          -0.3925815522670746,
+          -0.12827661633491516,
+          -0.9107276797294617
+        ],
+        "normal": [
+          -0.742725133895874,
+          -0.53980553150177,
+          0.3961937427520752
+        ],
+        "wrist": [
+          -0.3013884127140045,
+          -0.013612188398838043,
+          0.9410672187805176
+        ],
+        "palmTip": [
+          -0.32104745507240295,
+          -0.02003581076860428,
+          0.8954613208770752
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "RightHand"
+      }
+    },
+    "parts": [
+      {
+        "name": "Reference crescent blade Left | turquoise crescent cutting edge",
+        "triangles": 784,
+        "closedManifold": true,
+        "positiveVolume": 0.00029491079813010975,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | broad swept gold spine",
+        "triangles": 812,
+        "closedManifold": true,
+        "positiveVolume": 0.00011347919004774656,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | leather grip",
+        "triangles": 60,
+        "closedManifold": true,
+        "positiveVolume": 3.645283751125128e-05,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | wrapped leather grip",
+        "triangles": 900,
+        "closedManifold": true,
+        "positiveVolume": 5.905467432732229e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar -1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.220912631958488e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar 1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.2209117811359965e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | continuous long gold openwork",
+        "triangles": 728,
+        "closedManifold": true,
+        "positiveVolume": 0.00010354912737627512,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | continuous short gold openwork",
+        "triangles": 678,
+        "closedManifold": true,
+        "positiveVolume": 5.7426328130231105e-05,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Right | turquoise crescent cutting edg",
+        "triangles": 784,
+        "closedManifold": true,
+        "positiveVolume": 0.00029491102514223744,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | broad swept gold spine",
+        "triangles": 812,
+        "closedManifold": true,
+        "positiveVolume": 0.0001134793096585304,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | leather grip",
+        "triangles": 60,
+        "closedManifold": true,
+        "positiveVolume": 3.645284833479671e-05,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | wrapped leather grip",
+        "triangles": 900,
+        "closedManifold": true,
+        "positiveVolume": 5.9054827146244405e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar -1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.2209137419212565e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar 1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.220912084889431e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | continuous long gold openwork",
+        "triangles": 722,
+        "closedManifold": true,
+        "positiveVolume": 0.00010354555491423307,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | continuous short gold openwork",
+        "triangles": 672,
+        "closedManifold": true,
+        "positiveVolume": 5.670406702833623e-05,
+        "bone": "RightHand"
+      }
+    ]
+  },
+  {
+    "model": "elf-a",
+    "bones": 26,
+    "restMatricesPreserved": true,
+    "handTopologyPreserved": true,
+    "finiteCoordinates": true,
+    "handSculpt": [
+      {
+        "side": "Left",
+        "sculptedFingerVertices": 1247,
+        "palmTwistRadians": 0.5045947174510261,
+        "nonHandVerticesUnchanged": true,
+        "protectedNonHandVertices": 752,
+        "sourceMaskVertexCount": 1619
+      },
+      {
+        "side": "Right",
+        "sculptedFingerVertices": 1241,
+        "palmTwistRadians": -0.5163304038162777,
+        "nonHandVerticesUnchanged": true,
+        "protectedNonHandVertices": 752,
+        "sourceMaskVertexCount": 1616
+      }
+    ],
+    "weaponTriangles": 8280,
+    "grips": {
+      "Left": {
+        "center": [
+          0.34388816356658936,
+          -0.06527357548475266,
+          0.7961943745613098
+        ],
+        "across": [
+          0.5634133219718933,
+          0.8166993856430054,
+          -0.12476998567581177
+        ],
+        "down": [
+          0.2956993877887726,
+          -0.34035724401474,
+          -0.8925910592079163
+        ],
+        "normal": [
+          0.7714450359344482,
+          -0.46600332856178284,
+          0.43325936794281006
+        ],
+        "wrist": [
+          0.3279823660850525,
+          -0.04105832800269127,
+          0.8828741908073425
+        ],
+        "palmTip": [
+          0.34640032052993774,
+          -0.06225784495472908,
+          0.827278196811676
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "LeftHand"
+      },
+      "Right": {
+        "center": [
+          -0.31652435660362244,
+          -0.04039698839187622,
+          0.7817667722702026
+        ],
+        "across": [
+          -0.5706276893615723,
+          0.817940354347229,
+          -0.07319588959217072
+        ],
+        "down": [
+          -0.2528207004070282,
+          -0.25977933406829834,
+          -0.9319852590560913
+        ],
+        "normal": [
+          -0.7813230156898499,
+          -0.5133110880851746,
+          0.35502949357032776
+        ],
+        "wrist": [
+          -0.3046294152736664,
+          -0.02412140741944313,
+          0.8709093332290649
+        ],
+        "palmTip": [
+          -0.3203766345977783,
+          -0.04030205309391022,
+          0.8128595948219299
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "RightHand"
+      }
+    },
+    "parts": [
+      {
+        "name": "Reference crescent blade Left | turquoise crescent cutting edge",
+        "triangles": 784,
+        "closedManifold": true,
+        "positiveVolume": 0.00030451113494930774,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | broad swept gold spine",
+        "triangles": 812,
+        "closedManifold": true,
+        "positiveVolume": 0.00011717339459300726,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | leather grip",
+        "triangles": 60,
+        "closedManifold": true,
+        "positiveVolume": 3.763955485966663e-05,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | wrapped leather grip",
+        "triangles": 900,
+        "closedManifold": true,
+        "positiveVolume": 6.097714638420822e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar -1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.423415993958791e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar 1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.423416838173256e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | continuous long gold openwork",
+        "triangles": 728,
+        "closedManifold": true,
+        "positiveVolume": 0.00010694510205211292,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | continuous short gold openwork",
+        "triangles": 678,
+        "closedManifold": true,
+        "positiveVolume": 5.929837561279902e-05,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Right | turquoise crescent cutting edg",
+        "triangles": 784,
+        "closedManifold": true,
+        "positiveVolume": 0.00030451056506815673,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | broad swept gold spine",
+        "triangles": 812,
+        "closedManifold": true,
+        "positiveVolume": 0.00011717343887407773,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | leather grip",
+        "triangles": 60,
+        "closedManifold": true,
+        "positiveVolume": 3.7639577292752674e-05,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | wrapped leather grip",
+        "triangles": 900,
+        "closedManifold": true,
+        "positiveVolume": 6.09767900493629e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar -1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.423417024622125e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar 1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.423417343899188e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | continuous long gold openwork",
+        "triangles": 722,
+        "closedManifold": true,
+        "positiveVolume": 0.00010694017156935477,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | continuous short gold openwork",
+        "triangles": 672,
+        "closedManifold": true,
+        "positiveVolume": 5.855651072823911e-05,
+        "bone": "RightHand"
+      }
+    ]
+  },
+  {
+    "model": "elf-b",
+    "bones": 26,
+    "restMatricesPreserved": true,
+    "handTopologyPreserved": true,
+    "finiteCoordinates": true,
+    "handSculpt": [
+      {
+        "side": "Left",
+        "sculptedFingerVertices": 1282,
+        "palmTwistRadians": 0.6189169151435069,
+        "nonHandVerticesUnchanged": true,
+        "protectedNonHandVertices": 5577,
+        "sourceMaskVertexCount": 1718
+      },
+      {
+        "side": "Right",
+        "sculptedFingerVertices": 1286,
+        "palmTwistRadians": -0.6121252545828705,
+        "nonHandVerticesUnchanged": true,
+        "protectedNonHandVertices": 5577,
+        "sourceMaskVertexCount": 1730
+      }
+    ],
+    "weaponTriangles": 8292,
+    "grips": {
+      "Left": {
+        "center": [
+          0.28516340255737305,
+          -0.01524992287158966,
+          0.8568627238273621
+        ],
+        "across": [
+          0.5571399927139282,
+          0.8263548612594604,
+          0.08205295354127884
+        ],
+        "down": [
+          0.32809576392173767,
+          -0.12827706336975098,
+          -0.9358943104743958
+        ],
+        "normal": [
+          0.7628552913665771,
+          -0.5483453869819641,
+          0.3425918221473694
+        ],
+        "wrist": [
+          0.2720201015472412,
+          -0.013612467795610428,
+          0.9296149611473083
+        ],
+        "palmTip": [
+          0.2884499430656433,
+          -0.020036116242408752,
+          0.8827487826347351
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "LeftHand"
+      },
+      "Right": {
+        "center": [
+          -0.31949588656425476,
+          -0.015369165688753128,
+          0.8693920373916626
+        ],
+        "across": [
+          -0.5424382090568542,
+          0.8319585919380188,
+          0.11664339900016785
+        ],
+        "down": [
+          -0.3925815522670746,
+          -0.12827666103839874,
+          -0.9107276797294617
+        ],
+        "normal": [
+          -0.7427250742912292,
+          -0.5398054718971252,
+          0.3961937129497528
+        ],
+        "wrist": [
+          -0.3013884127140045,
+          -0.013612188398838043,
+          0.9410672783851624
+        ],
+        "palmTip": [
+          -0.32104745507240295,
+          -0.020035812631249428,
+          0.89546138048172
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "RightHand"
+      }
+    },
+    "parts": [
+      {
+        "name": "Reference crescent blade Left | turquoise crescent cutting edge",
+        "triangles": 784,
+        "closedManifold": true,
+        "positiveVolume": 0.0003045111146969921,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | broad swept gold spine",
+        "triangles": 812,
+        "closedManifold": true,
+        "positiveVolume": 0.00011717329330988677,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | leather grip",
+        "triangles": 60,
+        "closedManifold": true,
+        "positiveVolume": 3.763948852224907e-05,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | wrapped leather grip",
+        "triangles": 900,
+        "closedManifold": true,
+        "positiveVolume": 6.0977102392436554e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar -1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.423424718330603e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar 1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.423422420529365e-06,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | continuous long gold openwork",
+        "triangles": 734,
+        "closedManifold": true,
+        "positiveVolume": 0.0001069451524790056,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | continuous short gold openwork",
+        "triangles": 678,
+        "closedManifold": true,
+        "positiveVolume": 5.930277692364612e-05,
+        "bone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Right | turquoise crescent cutting edg",
+        "triangles": 784,
+        "closedManifold": true,
+        "positiveVolume": 0.00030451138108986457,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | broad swept gold spine",
+        "triangles": 812,
+        "closedManifold": true,
+        "positiveVolume": 0.00011717343019470765,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | leather grip",
+        "triangles": 60,
+        "closedManifold": true,
+        "positiveVolume": 3.763952314552581e-05,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | wrapped leather grip",
+        "triangles": 900,
+        "closedManifold": true,
+        "positiveVolume": 6.097715024065614e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar -1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.423427201751658e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar 1",
+        "triangles": 92,
+        "closedManifold": true,
+        "positiveVolume": 6.423419051037376e-06,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | continuous long gold openwork",
+        "triangles": 728,
+        "closedManifold": true,
+        "positiveVolume": 0.00010694305862256318,
+        "bone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | continuous short gold openwork",
+        "triangles": 672,
+        "closedManifold": true,
+        "positiveVolume": 5.8565787517904884e-05,
+        "bone": "RightHand"
+      }
+    ]
+  }
+]

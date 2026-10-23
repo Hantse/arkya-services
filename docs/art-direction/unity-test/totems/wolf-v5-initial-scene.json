@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "var scene=UnityEngine.SceneManagement.SceneManager.GetActiveScene(); var shader=UnityEngine.Shader.Find(\"Arkya/Totems/Painted\"); var textures=UnityEditor.AssetDatabase.FindAssets(\"t:Texture2D\",new[]{\"Assets/Arkya/Totems/Textures\"}).Select(g=>UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Texture2D>(UnityEditor.AssetDatabase.GUIDToAssetPath(g))).ToArray(); var importer=UnityEditor.AssetImporter.GetAtPath(\"Assets/Arkya/Totems/Models/wolf.fbx\") as UnityEditor.ModelImporter; return new {scene=scene.path,dirty=scene.isDirty,playing=UnityEditor.EditorApplication.isPlaying,compiling=UnityEditor.EditorApplication.isCompiling,textures=textures.Length,all2048=textures.All(t=>t.width==2048 && t.height==2048),shaderSupported=shader.isSupported,shaderErrors=UnityEditor.ShaderUtil.GetShaderMessages(shader).Where(m=>m.severity.ToString()==\"Error\").Select(m=>m.message).ToArray(),prefabs=UnityEditor.AssetDatabase.FindAssets(\"t:Prefab\",new[]{\"Assets/Arkya/Totems/Prefabs\"}).Length,wolfAnimationCompression=importer.animationCompression.ToString()};"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+        "dirty": false,
+        "playing": false,
+        "compiling": false,
+        "textures": 24,
+        "all2048": true,
+        "shaderSupported": true,
+        "shaderErrors": [],
+        "prefabs": 26,
+        "wolfAnimationCompression": "Off"
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

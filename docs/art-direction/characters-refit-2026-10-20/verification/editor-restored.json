@@ -1,0 +1,17 @@
+{
+  "completedUtc": "2026-10-20T21:04:40.5323938Z",
+  "play": false,
+  "compiling": false,
+  "activeScene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "scenes": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+      "isDirty": false,
+      "roots": 18,
+      "activeRoots": 18
+    }
+  ],
+  "reviewSessionCleared": true,
+  "backgroundRestored": true,
+  "runInBackground": true
+}

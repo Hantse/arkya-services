@@ -1,6 +1,6 @@
 {
   "success": true,
-  "revision": "20261016T103309070262Z-totems",
+  "revision": "20261016T150222819563Z-totems",
   "unity": "6000.6.6f1",
   "testedInEditor": true,
   "mode": "isolated preview scene, actual baked deformation",
@@ -27,14 +27,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -49,24 +49,24 @@
       ],
       "animations": [
         {
-          "clip": "Walk",
-          "seconds": 1.0,
-          "maximumVertexDisplacementMeters": 0.2534757,
-          "bodyVertexDisplacementMeters": 0.2534757,
-          "loopSeamMeters": 0.0
-        },
-        {
           "clip": "Idle",
           "seconds": 4.0,
-          "maximumVertexDisplacementMeters": 0.174563333,
-          "bodyVertexDisplacementMeters": 0.03402323,
+          "maximumVertexDisplacementMeters": 0.147432625,
+          "bodyVertexDisplacementMeters": 0.0396491736,
           "loopSeamMeters": 0.0
         },
         {
           "clip": "Run",
           "seconds": 0.700000048,
-          "maximumVertexDisplacementMeters": 0.470347017,
-          "bodyVertexDisplacementMeters": 0.470347017,
+          "maximumVertexDisplacementMeters": 0.46367538,
+          "bodyVertexDisplacementMeters": 0.46367538,
+          "loopSeamMeters": 0.0
+        },
+        {
+          "clip": "Walk",
+          "seconds": 1.0,
+          "maximumVertexDisplacementMeters": 0.2486917,
+          "bodyVertexDisplacementMeters": 0.2486917,
           "loopSeamMeters": 0.0
         }
       ],
@@ -92,14 +92,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -130,14 +130,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -168,14 +168,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -206,14 +206,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -244,14 +244,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -282,14 +282,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -320,14 +320,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -358,14 +358,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -396,14 +396,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -434,14 +434,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true
@@ -472,14 +472,14 @@
       "meshes": [
         {
           "mesh": "TotemFur",
-          "vertices": 16496,
-          "triangles": 28800,
+          "vertices": 16876,
+          "triangles": 29508,
           "bones": 39,
           "normalizedWeights": true
         },
         {
           "mesh": "TotemMagic",
-          "vertices": 1794,
+          "vertices": 1762,
           "triangles": 1086,
           "bones": 39,
           "normalizedWeights": true

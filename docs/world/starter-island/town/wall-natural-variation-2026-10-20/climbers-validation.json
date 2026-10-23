@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "oldIvyPreservedInactive": true,
+  "nearTriangles": 78536,
+  "farTriangles": 34134,
+  "lodGroups": 6,
+  "renderers": 12,
+  "bakedWindWeightsAndBounds": true,
+  "materialsAndGentleWind": true,
+  "metadata": true,
+  "noCollidersLightsOrScripts": true,
+  "lodsValid": true,
+  "movementContract": "All stem and petiole vertices are pinned at UV1.x=0; leaf attachment pinned at 0 and tips at 1. Existing global wind drives 10 mm sway / 2.5 mm flutter; no scene wind ownership or registration added."
+}

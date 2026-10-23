@@ -1,4 +1,4 @@
-# Atelier des âmes totems — V2 à examiner
+# Atelier des âmes totems — loup V10 et renard V2 à examiner
 
 L'atelier lit [le manifeste](../manifest.json) et utilise le composant local `model-viewer`. Depuis `docs/art-direction/resources/` :
 
@@ -19,9 +19,9 @@ Ouvrir <http://127.0.0.1:51805/totems/viewer/index.html>.
 
 Les clips restent sur place. La note de mouvement utilise leur vitesse virtuelle issue des métadonnées de locomotion. Le ralenti change la lecture dans l'atelier ; l'association au déplacement réel sera gérée par le jeu. Les animations sont suspendues au chargement si le système demande de réduire les mouvements.
 
-La base des deux espèces est une adaptation de **« Fox » par Bake3D** sous **CC BY 4.0**. Le pied de page donne accès à la [provenance et aux modifications Arkya](../sources/bake3d/README.md).
+Le **loup V10** adapte « 3d wolf » par NewDLC, sous CC0 1.0 ; voir [sa provenance](../sources/newdlc/README.md). Il suit le loup blanc debout en bas à droite de la première référence : tête basse et avancée, raccord nuque–garrot, petits yeux, oreilles triangulaires et museau effilé. La V10 épaissit la cage thoracique, le poitrail et le collet, avec un haut de cuisse cohérent. La gueule retrouve une base et une mandibule plus soutenues, une terminaison légèrement relevée et une truffe plus transversale ; les joues restent reculées. Le corps conserve son échelle et ses appuis, sans déplacer le squelette. Les joues claires restent sous les oreilles et le front ; petits yeux, oreilles et queue sont conservés. Examiner ensemble face, profil, trois quarts et animations. Le **renard V2** conserve « Fox » par Bake3D sous CC BY 4.0 ; voir [sa provenance](../sources/bake3d/README.md).
 
-Le [rapport de vérification](../viewer-verification.json) sert à consigner les 24 chargements, les clips, la pause, le ralenti, les palettes, la lueur, les téléchargements et l'affichage mobile. Les contrôles à réaliser après une régénération portent sur les fichiers de la révision courante. La revue technique ne remplace pas la validation artistique des modèles et des allures.
+Le [rapport ciblé V10](../viewer-v10-verification.json) consigne les essais de la révision `20261016T150222819563Z-totems` sur quatre pelages du loup (`lunar`, `ember`, `abyss`, `pearl`), les trois clips sur ordinateur, les commandes de lecture et de magie, et les liens de téléchargement. Le [rapport complet](../viewer-verification.json) reste l'historique V5 ; ses 24 chargements, ses contrôles mobiles et les essais du renard n'ont pas été répétés pour V10. Le code de l'interface est inchangé. La revue technique ne remplace pas la validation artistique des modèles et des allures.
 
 Voir le [guide de la collection](../README.md) pour les sources, les commandes de construction et les contrôles GLB/FBX/IK.
 

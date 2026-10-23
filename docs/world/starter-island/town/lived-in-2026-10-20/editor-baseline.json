@@ -1,0 +1,19 @@
+{
+  "drawGizmos": true,
+  "sceneLighting": true,
+  "showImageEffects": true,
+  "showFlares": true,
+  "showParticleSystems": true,
+  "sharedProfiles": [
+    {
+      "path": "Island grading",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Lighting/IslandBoundedBloom.asset",
+      "dependency": "1f14576bd36646e5ce60a7e5c6500f07"
+    },
+    {
+      "path": "Aubefont - mana well town/Local town glow volume",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Lighting/TownWarmBoundedGlow.asset",
+      "dependency": "8e822134c2f7c1f5386c98280e408bf4"
+    }
+  ]
+}

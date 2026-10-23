@@ -1,0 +1,217 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-19T21:30:55.2839963Z",
+  "caseCount": 11,
+  "checks": [
+    {
+      "name": "The authored scene matches the groundcover installation",
+      "passed": true,
+      "detail": {
+        "renderers": 80,
+        "cells": 56,
+        "materials": 4,
+        "authoredClumps": 460
+      }
+    },
+    {
+      "name": "Combined geometry matches the report and stays below the total budget",
+      "passed": true,
+      "detail": {
+        "triangleCount": 413452,
+        "reported": 413452
+      }
+    },
+    {
+      "name": "Only native LOD culling and render components were added",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Every material uses the compiled foliage shader and baked growth mask",
+      "passed": true,
+      "detail": [
+        {
+          "name": "00",
+          "shader": "Arkya/Environment/Painted Foliage Wind",
+          "mask": 1.0
+        },
+        {
+          "name": "01",
+          "shader": "Arkya/Environment/Painted Foliage Wind",
+          "mask": 1.0
+        },
+        {
+          "name": "02",
+          "shader": "Arkya/Environment/Painted Foliage Wind",
+          "mask": 1.0
+        },
+        {
+          "name": "03",
+          "shader": "Arkya/Environment/Painted Foliage Wind",
+          "mask": 1.0
+        }
+      ]
+    },
+    {
+      "name": "UV1 contains finite root-to-tip wind weights for every combined vertex",
+      "passed": true,
+      "detail": [
+        {
+          "mesh": "16-35-Material15",
+          "vertexCount": 3020,
+          "uvCount": 3020,
+          "minimum": 0.0,
+          "maximum": 0.99999994,
+          "valid": true
+        },
+        {
+          "mesh": "16-35-Material17",
+          "vertexCount": 2284,
+          "uvCount": 2284,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "valid": true
+        },
+        {
+          "mesh": "16-36-Material15",
+          "vertexCount": 6040,
+          "uvCount": 6040,
+          "minimum": 0.0,
+          "maximum": 0.99999994,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "name": "Tiny groundcover adds no shadow casters",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "The herb probe contains pinned roots and flexible tips",
+      "passed": true,
+      "detail": {
+        "minimum": 0.0,
+        "maximum": 0.99999994
+      }
+    },
+    {
+      "name": "The isolated probe reuses the authored mesh and materials",
+      "passed": true,
+      "detail": {
+        "sourceCell": "Forest patch 31-34",
+        "mesh": "31-34-Material15",
+        "cameraDistance": 1.67443776
+      }
+    },
+    {
+      "name": "The baked growth-mask shader path visibly moves the real GPU mesh",
+      "passed": true,
+      "detail": {
+        "changedPixels": 26982,
+        "firstPhase": 1.0,
+        "secondPhase": 3.2,
+        "strength": 1.0
+      }
+    },
+    {
+      "name": "Zero wind leaves identical rendered pixels at different clocks",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "All captured shader globals and render target are restored",
+      "passed": true,
+      "detail": {
+        "globals": [
+          {
+            "name": "_ArkyaFoliageWind",
+            "expected": [
+              0.9438583,
+              0.3303504,
+              1.08749545,
+              1.13970315
+            ],
+            "restored": true
+          },
+          {
+            "name": "_ArkyaFoliageClock",
+            "expected": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "restored": true
+          },
+          {
+            "name": "_ArkyaWeather",
+            "expected": [
+              0.132096514,
+              0.0,
+              0.310451478,
+              0.132096514
+            ],
+            "restored": true
+          },
+          {
+            "name": "_Time",
+            "expected": [
+              1.97893524,
+              39.5787048,
+              79.15741,
+              118.736115
+            ],
+            "restored": true
+          },
+          {
+            "name": "_SinTime",
+            "expected": [
+              -0.9725262,
+              -0.452795565,
+              0.8074381,
+              0.952699959
+            ],
+            "restored": true
+          },
+          {
+            "name": "_CosTime",
+            "expected": [
+              0.23279351,
+              -0.8916144,
+              0.58995235,
+              -0.303912431
+            ],
+            "restored": true
+          },
+          {
+            "name": "unity_DeltaTime",
+            "expected": [
+              0.0231201034,
+              43.2524033,
+              0.0227169991,
+              44.0198975
+            ],
+            "restored": true
+          },
+          {
+            "name": "_TimeParameters",
+            "expected": [
+              39.5787048,
+              0.952699959,
+              -0.303912431,
+              0.0
+            ],
+            "restored": true
+          }
+        ],
+        "renderTargetRestored": true
+      }
+    }
+  ],
+  "failures": [],
+  "exception": null,
+  "note": "This validation attempts synchronous Play Mode renders of one real combined herb cell at layer 31 and position 3000, using the authored mesh/material references and UV1 weights unchanged. It compares wind phases 1 and 3.2, then a zero-wind control. Only the individual passed checks establish successful GPU movement and stability; preflight failures or exceptions are reported separately. No source assets, scene save, terrain, collision or gameplay changes."
+}

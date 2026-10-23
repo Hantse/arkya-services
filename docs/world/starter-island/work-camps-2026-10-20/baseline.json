@@ -1,0 +1,116 @@
+{
+  "utc": "2026-10-20T09:48:30.1432264Z",
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "terrainHeightSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "terrainAlphamapSha256": "b98e19d5ba7c2bbc591ef748f24e91158f8dbdde60b83432f4cc8309c7731734",
+  "townLights": 21,
+  "townStructureSha256": "f6788eed3ff4a3eae8f90a9680176af38cf2d5368f0c3fbdff904d382817a46a",
+  "layout": {
+    "distanceReferenceName": "Puits et centre d’Aubefont",
+    "distanceReference": {
+      "x": 550,
+      "y": 0,
+      "z": 520
+    },
+    "heightPolicy": "Y is sampled from the live Terrain; the zero values here are not authoritative heights.",
+    "minimumDirectionAngle": 60,
+    "camps": [
+      {
+        "id": "miners",
+        "rootName": "Miners work camp - painted quarry and shelter",
+        "center": {
+          "x": 700,
+          "y": 0,
+          "z": 540
+        },
+        "yaw": 0,
+        "targetDistance": 150,
+        "distanceTolerance": 15
+      },
+      {
+        "id": "woodcutters",
+        "rootName": "Woodcutters work camp - timber yard and lodge",
+        "center": {
+          "x": 550,
+          "y": 0,
+          "z": 870
+        },
+        "yaw": 90,
+        "targetDistance": 350,
+        "distanceTolerance": 20
+      }
+    ]
+  },
+  "views": [
+    {
+      "name": "miners-overview-day",
+      "position": {
+        "x": 669.0,
+        "y": 77.47775,
+        "z": 497.0
+      },
+      "target": {
+        "x": 700.0,
+        "y": 53.4777527,
+        "z": 540.0
+      },
+      "fieldOfView": 57.0
+    },
+    {
+      "name": "miners-player-day",
+      "position": {
+        "x": 700.0,
+        "y": 53.332058,
+        "z": 515.0
+      },
+      "target": {
+        "x": 700.0,
+        "y": 53.4777527,
+        "z": 540.0
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "name": "woodcutters-overview-day",
+      "position": {
+        "x": 507.0,
+        "y": 79.93103,
+        "z": 901.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.9310265,
+        "z": 870.0
+      },
+      "fieldOfView": 57.0
+    },
+    {
+      "name": "woodcutters-player-day",
+      "position": {
+        "x": 525.0,
+        "y": 58.66832,
+        "z": 870.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.9310265,
+        "z": 870.0
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "name": "town-and-work-camps-day",
+      "position": {
+        "x": 758.0,
+        "y": 489.967072,
+        "z": 520.0
+      },
+      "target": {
+        "x": 625.0,
+        "y": 52.46707,
+        "z": 695.0
+      },
+      "fieldOfView": 60.0
+    }
+  ]
+}

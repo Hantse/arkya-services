@@ -1,0 +1,1234 @@
+[
+  {
+    "model": "human-a",
+    "bones": 26,
+    "restMatricesPreserved": true,
+    "weaponTriangles": 9296,
+    "grips": {
+      "Left": {
+        "center": [
+          0.3474157452583313,
+          -0.061595357954502106,
+          0.8489688038825989
+        ],
+        "across": [
+          0.679122269153595,
+          0.7320250272750854,
+          -0.05415056645870209
+        ],
+        "down": [
+          0.29569894075393677,
+          -0.34035733342170715,
+          -0.8925911784172058
+        ],
+        "normal": [
+          0.6718296408653259,
+          -0.5901662707328796,
+          0.4476032853126526
+        ],
+        "wrist": [
+          0.3279823958873749,
+          -0.04105832800269127,
+          0.8828741908073425
+        ],
+        "palmTip": [
+          0.34640032052993774,
+          -0.06225784868001938,
+          0.827278196811676
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "LeftHand"
+      },
+      "Right": {
+        "center": [
+          -0.3223050534725189,
+          -0.04166260361671448,
+          0.8344554901123047
+        ],
+        "across": [
+          -0.6878181099891663,
+          0.7257133722305298,
+          -0.015698105096817017
+        ],
+        "down": [
+          -0.2528213560581207,
+          -0.25977957248687744,
+          -0.9319849610328674
+        ],
+        "normal": [
+          -0.6804319620132446,
+          -0.6370673179626465,
+          0.3621569275856018
+        ],
+        "wrist": [
+          -0.3046294152736664,
+          -0.02412140928208828,
+          0.8709092736244202
+        ],
+        "palmTip": [
+          -0.3203766644001007,
+          -0.040302056819200516,
+          0.8128595948219299
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "RightHand"
+      }
+    },
+    "parts": [
+      {
+        "name": "Reference crescent blade Left | turquoise crescent cutting edge",
+        "triangles": 784,
+        "volume": 0.0005589061087091516,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | broad swept gold spine",
+        "triangles": 812,
+        "volume": 0.00011465312571696631,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | leather grip",
+        "triangles": 60,
+        "volume": 3.6452833041021034e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | wrapped leather grip",
+        "triangles": 900,
+        "volume": 5.905448321518149e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar -1",
+        "triangles": 92,
+        "volume": 6.220909344396567e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar 1",
+        "triangles": 92,
+        "volume": 6.2209088029014755e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hooked gold guard",
+        "triangles": 188,
+        "volume": 1.637828795549571e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long swept gold guard",
+        "triangles": 188,
+        "volume": 1.786386192334299e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | round gold aperture",
+        "triangles": 480,
+        "volume": 1.951696970228245e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | swept gold aperture",
+        "triangles": 480,
+        "volume": 1.5178363571873455e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long point root",
+        "triangles": 188,
+        "volume": 1.152550735734746e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long point bridge",
+        "triangles": 128,
+        "volume": 1.1359399533388318e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hook root",
+        "triangles": 128,
+        "volume": 1.031179109593218e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hook bridge",
+        "triangles": 128,
+        "volume": 6.055073737837007e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Right | turquoise crescent cutting edg",
+        "triangles": 784,
+        "volume": 0.000558906901312537,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | broad swept gold spine",
+        "triangles": 812,
+        "volume": 0.00011465329167887337,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | leather grip",
+        "triangles": 60,
+        "volume": 3.6452900268283284e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | wrapped leather grip",
+        "triangles": 900,
+        "volume": 5.905446370481715e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar -1",
+        "triangles": 92,
+        "volume": 6.2209072920165356e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar 1",
+        "triangles": 92,
+        "volume": 6.220904470031509e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hooked gold guard",
+        "triangles": 188,
+        "volume": 1.6378325779421016e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long swept gold guard",
+        "triangles": 188,
+        "volume": 1.7863931072228066e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | round gold aperture",
+        "triangles": 480,
+        "volume": 1.9517036680103527e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | swept gold aperture",
+        "triangles": 480,
+        "volume": 1.5178427026645858e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long point root",
+        "triangles": 188,
+        "volume": 1.1524341628852716e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long point bridge",
+        "triangles": 128,
+        "volume": 1.1359421569931027e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hook root",
+        "triangles": 128,
+        "volume": 1.0312580065911082e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hook bridge",
+        "triangles": 128,
+        "volume": 6.055071518170066e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      }
+    ],
+    "poseChecks": [
+      {
+        "clip": "Idle",
+        "frame": 1,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Idle",
+        "frame": 31,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Walk",
+        "frame": 10,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Walk",
+        "frame": 28,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Run",
+        "frame": 7,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Run",
+        "frame": 19,
+        "allWeaponVerticesFinite": true
+      }
+    ]
+  },
+  {
+    "model": "human-b",
+    "bones": 26,
+    "restMatricesPreserved": true,
+    "weaponTriangles": 9296,
+    "grips": {
+      "Left": {
+        "center": [
+          0.29277172684669495,
+          -0.025858329609036446,
+          0.8926229476928711
+        ],
+        "across": [
+          0.671560525894165,
+          0.728438675403595,
+          0.13558600842952728
+        ],
+        "down": [
+          0.32809576392173767,
+          -0.12827704846858978,
+          -0.9358943104743958
+        ],
+        "normal": [
+          0.6643490195274353,
+          -0.6729949116706848,
+          0.3251434564590454
+        ],
+        "wrist": [
+          0.2720201015472412,
+          -0.013612466864287853,
+          0.9296149611473083
+        ],
+        "palmTip": [
+          0.2884499430656433,
+          -0.020036114379763603,
+          0.8827487826347351
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "LeftHand"
+      },
+      "Right": {
+        "center": [
+          -0.3247376084327698,
+          -0.02578265219926834,
+          0.905631422996521
+        ],
+        "across": [
+          -0.6538394093513489,
+          0.7353314161300659,
+          0.17827445268630981
+        ],
+        "down": [
+          -0.3925815522670746,
+          -0.12827661633491516,
+          -0.9107276797294617
+        ],
+        "normal": [
+          -0.646818220615387,
+          -0.6654568910598755,
+          0.372549831867218
+        ],
+        "wrist": [
+          -0.3013884127140045,
+          -0.013612188398838043,
+          0.9410672187805176
+        ],
+        "palmTip": [
+          -0.32104745507240295,
+          -0.02003581076860428,
+          0.8954613208770752
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "RightHand"
+      }
+    },
+    "parts": [
+      {
+        "name": "Reference crescent blade Left | turquoise crescent cutting edge",
+        "triangles": 784,
+        "volume": 0.0005589060350942437,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | broad swept gold spine",
+        "triangles": 812,
+        "volume": 0.00011465326091134724,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | leather grip",
+        "triangles": 60,
+        "volume": 3.645288133303319e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | wrapped leather grip",
+        "triangles": 900,
+        "volume": 5.9054503352914695e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar -1",
+        "triangles": 92,
+        "volume": 6.220904611407312e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar 1",
+        "triangles": 92,
+        "volume": 6.220905615299892e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hooked gold guard",
+        "triangles": 188,
+        "volume": 1.6378278281196424e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long swept gold guard",
+        "triangles": 188,
+        "volume": 1.786386967479541e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | round gold aperture",
+        "triangles": 480,
+        "volume": 1.9517093988439847e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | swept gold aperture",
+        "triangles": 480,
+        "volume": 1.5178445823020561e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long point root",
+        "triangles": 188,
+        "volume": 1.1525484569098794e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long point bridge",
+        "triangles": 128,
+        "volume": 1.1359386070472159e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hook root",
+        "triangles": 128,
+        "volume": 1.031176835921034e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hook bridge",
+        "triangles": 128,
+        "volume": 6.055061119122586e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Right | turquoise crescent cutting edg",
+        "triangles": 784,
+        "volume": 0.0005589064374155357,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | broad swept gold spine",
+        "triangles": 812,
+        "volume": 0.00011465319153493741,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | leather grip",
+        "triangles": 60,
+        "volume": 3.6452828680187834e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | wrapped leather grip",
+        "triangles": 900,
+        "volume": 5.905474963312267e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar -1",
+        "triangles": 92,
+        "volume": 6.2209167144505295e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar 1",
+        "triangles": 92,
+        "volume": 6.220917808505003e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hooked gold guard",
+        "triangles": 188,
+        "volume": 1.637820290803575e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long swept gold guard",
+        "triangles": 188,
+        "volume": 1.7863851023518327e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | round gold aperture",
+        "triangles": 480,
+        "volume": 1.9517027570228493e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | swept gold aperture",
+        "triangles": 480,
+        "volume": 1.5178413312337271e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long point root",
+        "triangles": 188,
+        "volume": 1.152428348224441e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long point bridge",
+        "triangles": 128,
+        "volume": 1.1359364945128395e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hook root",
+        "triangles": 128,
+        "volume": 1.0312522436657133e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hook bridge",
+        "triangles": 128,
+        "volume": 6.055048045731019e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      }
+    ],
+    "poseChecks": [
+      {
+        "clip": "Idle",
+        "frame": 1,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Idle",
+        "frame": 31,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Walk",
+        "frame": 10,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Walk",
+        "frame": 28,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Run",
+        "frame": 7,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Run",
+        "frame": 19,
+        "allWeaponVerticesFinite": true
+      }
+    ]
+  },
+  {
+    "model": "elf-a",
+    "bones": 26,
+    "restMatricesPreserved": true,
+    "weaponTriangles": 9296,
+    "grips": {
+      "Left": {
+        "center": [
+          0.3474157452583313,
+          -0.06159535050392151,
+          0.8489688038825989
+        ],
+        "across": [
+          0.6791222095489502,
+          0.7320250868797302,
+          -0.05415025353431702
+        ],
+        "down": [
+          0.2956993877887726,
+          -0.34035724401474,
+          -0.8925910592079163
+        ],
+        "normal": [
+          0.6718295216560364,
+          -0.5901662707328796,
+          0.44760358333587646
+        ],
+        "wrist": [
+          0.3279823660850525,
+          -0.04105832800269127,
+          0.8828741908073425
+        ],
+        "palmTip": [
+          0.34640032052993774,
+          -0.06225784495472908,
+          0.827278196811676
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "LeftHand"
+      },
+      "Right": {
+        "center": [
+          -0.32230502367019653,
+          -0.04166259244084358,
+          0.8344555497169495
+        ],
+        "across": [
+          -0.687818169593811,
+          0.7257132530212402,
+          -0.01569831371307373
+        ],
+        "down": [
+          -0.2528207004070282,
+          -0.25977933406829834,
+          -0.9319852590560913
+        ],
+        "normal": [
+          -0.6804320812225342,
+          -0.6370674967765808,
+          0.3621562421321869
+        ],
+        "wrist": [
+          -0.3046294152736664,
+          -0.02412140741944313,
+          0.8709093332290649
+        ],
+        "palmTip": [
+          -0.3203766345977783,
+          -0.04030205309391022,
+          0.8128595948219299
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "RightHand"
+      }
+    },
+    "parts": [
+      {
+        "name": "Reference crescent blade Left | turquoise crescent cutting edge",
+        "triangles": 784,
+        "volume": 0.0005771002370247057,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | broad swept gold spine",
+        "triangles": 812,
+        "volume": 0.00011838540866204936,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | leather grip",
+        "triangles": 60,
+        "volume": 3.7639505784187166e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | wrapped leather grip",
+        "triangles": 900,
+        "volume": 6.097683788130735e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar -1",
+        "triangles": 92,
+        "volume": 6.423423232104151e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar 1",
+        "triangles": 92,
+        "volume": 6.4234242793410805e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hooked gold guard",
+        "triangles": 188,
+        "volume": 1.6918255480897983e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long swept gold guard",
+        "triangles": 188,
+        "volume": 1.84522242369353e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | round gold aperture",
+        "triangles": 480,
+        "volume": 2.0152309131036144e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | swept gold aperture",
+        "triangles": 480,
+        "volume": 1.567247385006741e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long point root",
+        "triangles": 188,
+        "volume": 1.1900697852281666e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long point bridge",
+        "triangles": 128,
+        "volume": 1.172918464465608e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hook root",
+        "triangles": 128,
+        "volume": 1.0647462537821271e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hook bridge",
+        "triangles": 128,
+        "volume": 6.252186078234399e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Right | turquoise crescent cutting edg",
+        "triangles": 784,
+        "volume": 0.0005771007561662947,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | broad swept gold spine",
+        "triangles": 812,
+        "volume": 0.00011838562362409416,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | leather grip",
+        "triangles": 60,
+        "volume": 3.763949790994812e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | wrapped leather grip",
+        "triangles": 900,
+        "volume": 6.097674809047304e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar -1",
+        "triangles": 92,
+        "volume": 6.42341429446445e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar 1",
+        "triangles": 92,
+        "volume": 6.423414394869591e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hooked gold guard",
+        "triangles": 188,
+        "volume": 1.6918004718618118e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long swept gold guard",
+        "triangles": 188,
+        "volume": 1.8451744018455844e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | round gold aperture",
+        "triangles": 480,
+        "volume": 2.0152388353980636e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | swept gold aperture",
+        "triangles": 480,
+        "volume": 1.567254250303501e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long point root",
+        "triangles": 188,
+        "volume": 1.1899492506924545e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long point bridge",
+        "triangles": 128,
+        "volume": 1.1729222352263889e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hook root",
+        "triangles": 128,
+        "volume": 1.0648303211197209e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hook bridge",
+        "triangles": 128,
+        "volume": 6.2521804967697205e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      }
+    ],
+    "poseChecks": [
+      {
+        "clip": "Idle",
+        "frame": 1,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Idle",
+        "frame": 31,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Walk",
+        "frame": 10,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Walk",
+        "frame": 28,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Run",
+        "frame": 7,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Run",
+        "frame": 19,
+        "allWeaponVerticesFinite": true
+      }
+    ]
+  },
+  {
+    "model": "elf-b",
+    "bones": 26,
+    "restMatricesPreserved": true,
+    "weaponTriangles": 9296,
+    "grips": {
+      "Left": {
+        "center": [
+          0.29277172684669495,
+          -0.025858331471681595,
+          0.8926229476928711
+        ],
+        "across": [
+          0.671560525894165,
+          0.728438675403595,
+          0.13558600842952728
+        ],
+        "down": [
+          0.32809576392173767,
+          -0.12827706336975098,
+          -0.9358943104743958
+        ],
+        "normal": [
+          0.6643490195274353,
+          -0.6729949116706848,
+          0.3251434564590454
+        ],
+        "wrist": [
+          0.2720201015472412,
+          -0.013612467795610428,
+          0.9296149611473083
+        ],
+        "palmTip": [
+          0.2884499430656433,
+          -0.020036116242408752,
+          0.8827487826347351
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "LeftHand"
+      },
+      "Right": {
+        "center": [
+          -0.3247376084327698,
+          -0.02578265219926834,
+          0.9056314826011658
+        ],
+        "across": [
+          -0.6538394093513489,
+          0.7353313565254211,
+          0.17827442288398743
+        ],
+        "down": [
+          -0.3925815522670746,
+          -0.12827666103839874,
+          -0.9107276797294617
+        ],
+        "normal": [
+          -0.6468181610107422,
+          -0.6654568910598755,
+          0.372549831867218
+        ],
+        "wrist": [
+          -0.3013884127140045,
+          -0.013612188398838043,
+          0.9410672783851624
+        ],
+        "palmTip": [
+          -0.32104745507240295,
+          -0.020035812631249428,
+          0.89546138048172
+        ],
+        "halfLength": 0.054,
+        "radius": 0.0105,
+        "bone": "RightHand"
+      }
+    },
+    "parts": [
+      {
+        "name": "Reference crescent blade Left | turquoise crescent cutting edge",
+        "triangles": 784,
+        "volume": 0.0005771002232568297,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | broad swept gold spine",
+        "triangles": 812,
+        "volume": 0.00011838564069123668,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | leather grip",
+        "triangles": 60,
+        "volume": 3.763953846943298e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | wrapped leather grip",
+        "triangles": 900,
+        "volume": 6.0976881585778905e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar -1",
+        "triangles": 92,
+        "volume": 6.4234151866730964e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | gold grip collar 1",
+        "triangles": 92,
+        "volume": 6.423413491065548e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hooked gold guard",
+        "triangles": 188,
+        "volume": 1.6919078589882274e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long swept gold guard",
+        "triangles": 188,
+        "volume": 1.8450471790013457e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | round gold aperture",
+        "triangles": 480,
+        "volume": 2.0152435648361803e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | swept gold aperture",
+        "triangles": 480,
+        "volume": 1.567255378199017e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long point root",
+        "triangles": 188,
+        "volume": 1.1900672922669586e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | long point bridge",
+        "triangles": 128,
+        "volume": 1.1729175035858521e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hook root",
+        "triangles": 128,
+        "volume": 1.064744568486966e-05,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Left | short hook bridge",
+        "triangles": 128,
+        "volume": 6.252172027757788e-06,
+        "closedManifold": true,
+        "rigidBone": "LeftHand"
+      },
+      {
+        "name": "Reference crescent blade Right | turquoise crescent cutting edg",
+        "triangles": 784,
+        "volume": 0.0005771005904370902,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | broad swept gold spine",
+        "triangles": 812,
+        "volume": 0.00011838552937237189,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | leather grip",
+        "triangles": 60,
+        "volume": 3.763949754725468e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | wrapped leather grip",
+        "triangles": 900,
+        "volume": 6.097717981811526e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar -1",
+        "triangles": 92,
+        "volume": 6.4234283318023415e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | gold grip collar 1",
+        "triangles": 92,
+        "volume": 6.423426440383964e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hooked gold guard",
+        "triangles": 188,
+        "volume": 1.6919672582464066e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long swept gold guard",
+        "triangles": 188,
+        "volume": 1.845030127623252e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | round gold aperture",
+        "triangles": 480,
+        "volume": 2.015237224988282e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | swept gold aperture",
+        "triangles": 480,
+        "volume": 1.5672514205443682e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long point root",
+        "triangles": 188,
+        "volume": 1.1899440022604795e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | long point bridge",
+        "triangles": 128,
+        "volume": 1.1729146491630443e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hook root",
+        "triangles": 128,
+        "volume": 1.0648229730344852e-05,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      },
+      {
+        "name": "Reference crescent blade Right | short hook bridge",
+        "triangles": 128,
+        "volume": 6.252165171606017e-06,
+        "closedManifold": true,
+        "rigidBone": "RightHand"
+      }
+    ],
+    "poseChecks": [
+      {
+        "clip": "Idle",
+        "frame": 1,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Idle",
+        "frame": 31,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Walk",
+        "frame": 10,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Walk",
+        "frame": 28,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Run",
+        "frame": 7,
+        "allWeaponVerticesFinite": true
+      },
+      {
+        "clip": "Run",
+        "frame": 19,
+        "allWeaponVerticesFinite": true
+      }
+    ]
+  }
+]

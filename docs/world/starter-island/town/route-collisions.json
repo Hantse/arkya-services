@@ -1,0 +1,61 @@
+{
+  "success": true,
+  "radiusMin": 9,
+  "radiusMax": 90,
+  "capsuleRadius": 0.3,
+  "testedHeightAboveTerrain": [
+    0.15,
+    1.8
+  ],
+  "sampleSpacingMaximum": 0.4,
+  "townColliders": 538,
+  "routes": [
+    {
+      "route": "arrival-refuge",
+      "sampled": 205,
+      "blockedSamples": 0
+    },
+    {
+      "route": "meadow-west-loop",
+      "sampled": 205,
+      "blockedSamples": 0
+    },
+    {
+      "route": "forest-main",
+      "sampled": 206,
+      "blockedSamples": 0
+    },
+    {
+      "route": "forest-west-loop",
+      "sampled": 0,
+      "blockedSamples": 0
+    },
+    {
+      "route": "mana-basin",
+      "sampled": 0,
+      "blockedSamples": 0
+    },
+    {
+      "route": "ridge-west-ascent",
+      "sampled": 0,
+      "blockedSamples": 0
+    },
+    {
+      "route": "ridge-east-ascent",
+      "sampled": 0,
+      "blockedSamples": 0
+    },
+    {
+      "route": "harbor-road",
+      "sampled": 205,
+      "blockedSamples": 0
+    },
+    {
+      "route": "summit-to-harbor",
+      "sampled": 0,
+      "blockedSamples": 0
+    }
+  ],
+  "blockers": [],
+  "scope": "Original island route centerlines against active town colliders; central well excluded. Does not prove full road width, plaza detours or doorway traversal."
+}

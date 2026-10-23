@@ -1,0 +1,128 @@
+{
+  "completed": true,
+  "readOnly": true,
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "clearance": 0.05,
+  "supportedContactPairs": 0,
+  "nonConvexReviewPairs": 0,
+  "pairChecks": 173,
+  "nativeClosestPointCalls": 17158,
+  "trees": [
+    {
+      "tree": "Canopy frame 01",
+      "vertices": 80045,
+      "lowVertices": 899,
+      "maximumLowVertexRadius": 1.59149408,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 02",
+      "vertices": 80045,
+      "lowVertices": 889,
+      "maximumLowVertexRadius": 1.89893508,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 03",
+      "vertices": 80045,
+      "lowVertices": 874,
+      "maximumLowVertexRadius": 1.76830816,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 04",
+      "vertices": 80045,
+      "lowVertices": 899,
+      "maximumLowVertexRadius": 1.8989532,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 05",
+      "vertices": 80045,
+      "lowVertices": 899,
+      "maximumLowVertexRadius": 2.02954125,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 06",
+      "vertices": 80045,
+      "lowVertices": 890,
+      "maximumLowVertexRadius": 1.76834035,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 07",
+      "vertices": 80045,
+      "lowVertices": 884,
+      "maximumLowVertexRadius": 1.78502476,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 08",
+      "vertices": 80045,
+      "lowVertices": 873,
+      "maximumLowVertexRadius": 2.02954984,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 09",
+      "vertices": 80045,
+      "lowVertices": 899,
+      "maximumLowVertexRadius": 1.76834857,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 10",
+      "vertices": 80045,
+      "lowVertices": 889,
+      "maximumLowVertexRadius": 1.89894271,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 11",
+      "vertices": 80045,
+      "lowVertices": 883,
+      "maximumLowVertexRadius": 2.02957225,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 12",
+      "vertices": 80045,
+      "lowVertices": 874,
+      "maximumLowVertexRadius": 1.7683183,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 13",
+      "vertices": 80045,
+      "lowVertices": 899,
+      "maximumLowVertexRadius": 1.89894187,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    },
+    {
+      "tree": "Canopy frame 14",
+      "vertices": 80045,
+      "lowVertices": 890,
+      "maximumLowVertexRadius": 2.02954769,
+      "supportedContactPairs": 0,
+      "nonConvexReviewPairs": 0
+    }
+  ],
+  "supportedContacts": [],
+  "nonConvexBoundsOverlaps": [],
+  "routeContacts": [],
+  "scope": "Checks authored vertices against supported collider surfaces; non-convex mesh candidates use cached bounds only and require mesh review. Low vertices up to terrain +2.2m are checked against actual lane widths. Roof surface intersections are a separate AuditRoofSurfaces entry; these vertex tests alone do not prove triangle-to-triangle separation."
+}

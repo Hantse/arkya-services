@@ -1,0 +1,88 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "checkedAtUtc": "2026-10-20T14:57:37.5502581Z",
+  "detail": {
+    "readOnly": false,
+    "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Court furniture and planting - Painted boards V2",
+    "sourceMesh": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Court_04.asset",
+    "derivativeMesh": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Removal/CourtWithoutBakeryGableHeaders.asset",
+    "ownerFrame": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Weather sealed gable joint - 02 - Maison du boulanger",
+    "ownerWorldToLocal": [
+      -0.986394048,
+      0.0,
+      0.164399,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      -0.164399,
+      0.0,
+      -0.986394048,
+      0.0,
+      623.401,
+      -50.3506355,
+      449.631317,
+      1.0
+    ],
+    "rendererLocalToWorld": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "selectionVolumes": [
+      {
+        "center": [
+          0.0,
+          3.18,
+          -2.5
+        ],
+        "size": [
+          6.06,
+          0.42,
+          0.2
+        ],
+        "tolerance": 0.001,
+        "removedTriangles": 44
+      },
+      {
+        "center": [
+          0.0,
+          3.18,
+          2.5
+        ],
+        "size": [
+          6.06,
+          0.42,
+          0.2
+        ],
+        "tolerance": 0.001,
+        "removedTriangles": 44
+      }
+    ],
+    "removedTriangles": 88,
+    "retainedTriangles": 3332,
+    "originalAuthoring": "PolishStarterTownCourts.CloseGableJoints: 02 - Maison du boulanger; two Continuous worked gable header boxes",
+    "vertexAttributesPreserved": true
+  },
+  "verticesPreserved": true,
+  "retainedIndicesExact": true,
+  "colliderHashBefore": "399c099e103bfb5dd1379a507ed1f10cd8de484e87a9e00c753a54bcbc2fcb2b",
+  "colliderHashAfter": "399c099e103bfb5dd1379a507ed1f10cd8de484e87a9e00c753a54bcbc2fcb2b",
+  "allCollidersUnchanged": true,
+  "scope": "Exactly the two worked gable headers authored for the removed bakery. All remaining court mesh attributes, indices, materials, original assets and all collision retained."
+}

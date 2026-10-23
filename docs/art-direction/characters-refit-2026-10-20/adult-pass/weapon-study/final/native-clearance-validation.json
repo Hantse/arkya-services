@@ -1,0 +1,125 @@
+{
+  "model": "human-b",
+  "nativeExportGeneratedUtc": "2026-10-20T22:16:03.4342855Z",
+  "nativeExportSha256": "5eb2f9a19739d95421178d609b6e32c92a62291e7cc456ec4c56e88fd1adb341",
+  "gripSweepRadians": 0.94,
+  "extraHandTranslation": false,
+  "method": "Bidirectional edge/triangle BVH intersections using native skinned cloth and hand deformation matrices; source Blender to imported mesh is (-x,y,z).",
+  "clothTriangles": 54468,
+  "excludedMaterials": [
+    "Skin"
+  ],
+  "limitations": "Twelve sampled native animation poses only, not a continuous motion or full-body collision proof. Skin excluded because original export can contain previous grip-sculpt defects.",
+  "poses": [
+    {
+      "clip": "Idle",
+      "seconds": 0.5,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "Idle",
+      "seconds": 2.0,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "Walk",
+      "seconds": 0.18,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "Walk",
+      "seconds": 0.54,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "Run",
+      "seconds": 0.15,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "Run",
+      "seconds": 0.450000018,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "Jump",
+      "seconds": 0.2,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "Jump",
+      "seconds": 0.6,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "SwimIdle",
+      "seconds": 0.45,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "SwimIdle",
+      "seconds": 1.3499999,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "Swim",
+      "seconds": 0.3,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    },
+    {
+      "clip": "Swim",
+      "seconds": 0.900000036,
+      "weaponEdgesThroughCloth": [],
+      "clothEdgesThroughWeapons": {},
+      "totalCrossings": 0
+    }
+  ],
+  "noClothIntersectionOnSampledFrames": true,
+  "gripModuleSha256": "2d9bdf94b91784ed5f50d6734fac981bf49b34b4e3a5b3751054f076b80f352a",
+  "finalSourceModelSha256": {
+    "elf-a.fbx": "334953879aae375065df400dd2b6bf86d52c9b9330da8165721a6187d7039755",
+    "elf-b.fbx": "804ecb695e63d51cb2f1858d5cd9131f9e3b4ca378e95b18c013924c12bbd3de",
+    "human-a.fbx": "bc0499619af367180230b6ae064ce5af6436d5c227f47912217c80c76eed4cdd",
+    "human-b.fbx": "cf3f76f5599948ee8b2201d247636e0af1c85039594be6d53096eace1bbdda2a"
+  },
+  "finalUnityModelSha256": {
+    "elf-a.fbx": "334953879aae375065df400dd2b6bf86d52c9b9330da8165721a6187d7039755",
+    "elf-b.fbx": "804ecb695e63d51cb2f1858d5cd9131f9e3b4ca378e95b18c013924c12bbd3de",
+    "human-a.fbx": "bc0499619af367180230b6ae064ce5af6436d5c227f47912217c80c76eed4cdd",
+    "human-b.fbx": "cf3f76f5599948ee8b2201d247636e0af1c85039594be6d53096eace1bbdda2a"
+  },
+  "sourceAndUnityModelHashesMatch": true,
+  "calibrationNotes": "Native costume and hand matrices from the final .94-radian triangulated model. Idle arm spread: upper left .28 / right .32, lower .25. No extra hand translation. Native exported geometry excludes hand-influenced triangles.",
+  "angleSweepResult": "Before final triangulation: .90 had four cloth edges through left cyan blade at SwimIdle 75%; .92/.94/.96 had no crossings in either direction on twelve samples. .94 selected for additional margin, then retested against final imported native geometry.",
+  "gripStudyImages": {
+    "angleRadians": 0.94,
+    "files": [
+      "grip-human-a.png",
+      "grip-human-b.png"
+    ],
+    "scope": "Close-up Blender grip and blade studies with original source costumes, not final native character renders. B uses restored complete body; A uses complete Snow source."
+  },
+  "finalModelExportPending": false
+}

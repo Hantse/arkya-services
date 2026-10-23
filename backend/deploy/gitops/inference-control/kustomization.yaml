@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+- inference.yaml
+configMapGenerator:
+- name: arkya-inference-config
+  namespace: arkya-beta
+  envs:
+  - inference.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+images:
+- name: ghcr.io/hantse/arkya-services-inference
+  newName: ghcr.io/hantse/arkya-services-inference
+  digest: sha256:3f3b6a8aa52086b6e785688425d3ea804c5ce83206b91c5c96344af52f290e5b
+patches:
+- patch: "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: arkya-gateway-config\n\
+    \  namespace: arkya-beta\ndata:\n  Gateway__InferenceEnabled: 'true'\n  ReverseProxy__Clusters__inference__Destinations__primary__Address:\
+    \ http://arkya-inference.arkya-beta.svc.cluster.local:8080/"
+- patch: "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: arkya-admin-config\n\
+    \  namespace: arkya-beta\ndata:\n  InferenceApi__Enabled: 'true'\n  InferenceApi__BaseUrl:\
+    \ http://arkya-inference.arkya-beta.svc.cluster.local:8080/\n  InferenceApi__AllowClusterHttp:\
+    \ 'true'"
+- patch: "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: arkya-admin\n\
+    \  namespace: arkya-beta\nspec:\n  template:\n    spec:\n      containers:\n \
+    \     - name: admin\n        env:\n        - name: InferenceOperator__KeySeed\n\
+    \          valueFrom:\n            secretKeyRef:\n              name: arkya-admin-secrets\n\
+    \              key: ContentApi__AdminKey"

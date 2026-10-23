@@ -1,0 +1,131 @@
+{
+  "success": true,
+  "root": "Miners work camp - painted quarry and shelter",
+  "position": {
+    "x": 700.0,
+    "y": 51.4777527,
+    "z": 540.0
+  },
+  "yaw": 0,
+  "distanceToVillageWellXZ": 151.327454,
+  "bounds": {
+    "min": {
+      "x": 686.295044,
+      "y": 49.5192871,
+      "z": 529.1356
+    },
+    "max": {
+      "x": 713.4552,
+      "y": 57.2546234,
+      "z": 558.2124
+    }
+  },
+  "trianglesIncludingAllLods": 317703,
+  "maximumLod0Triangles": 208423,
+  "renderers": 137,
+  "lodGroups": 40,
+  "colliders": 69,
+  "materialCount": 14,
+  "route": [
+    {
+      "name": "Review route approach",
+      "position": {
+        "x": 700.0,
+        "y": 51.3351631,
+        "z": 522.0
+      }
+    },
+    {
+      "name": "Review route entrance",
+      "position": {
+        "x": 700.0,
+        "y": 51.51486,
+        "z": 526.0
+      }
+    },
+    {
+      "name": "Review route center",
+      "position": {
+        "x": 700.0,
+        "y": 51.4777527,
+        "z": 540.0
+      }
+    },
+    {
+      "name": "Review route shelter foot",
+      "position": {
+        "x": 693.9,
+        "y": 51.39689,
+        "z": 534.0
+      }
+    },
+    {
+      "name": "Review route shelter step 01",
+      "position": {
+        "x": 693.34,
+        "y": 51.4898338,
+        "z": 534.0
+      }
+    },
+    {
+      "name": "Review route shelter",
+      "position": {
+        "x": 690.8,
+        "y": 51.4898338,
+        "z": 534.0
+      }
+    },
+    {
+      "name": "Review route gallery foot",
+      "position": {
+        "x": 700.0,
+        "y": 50.85264,
+        "z": 545.61
+      }
+    },
+    {
+      "name": "Review route gallery step 01",
+      "position": {
+        "x": 700.0,
+        "y": 50.951973,
+        "z": 546.17
+      }
+    },
+    {
+      "name": "Review route gallery",
+      "position": {
+        "x": 700.0,
+        "y": 50.951973,
+        "z": 552.0
+      }
+    }
+  ],
+  "retiredApprovedInstances": [],
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/00_Shelter.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/01_Shelter.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/02_Shelter.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/03_Shelter.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/04_Shelter.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/05_Shelter.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/06_Shelter.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/07_Shelter.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/08_Gallery.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/09_Gallery.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/10_Gallery.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/11_Gallery.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/12_Wagon.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/13_Wagon.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/14_Wagon.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/15_Sorting.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/16_Sorting.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/17_Workyard.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/18_Workyard.asset",
+    "Assets/Arkya/World/StarterIsland/WorkCamps/Mining/Meshes/19_Workyard.asset"
+  ],
+  "terrainUnchanged": true,
+  "sceneSaved": false,
+  "addedRuntimeBehaviours": 0,
+  "addedLights": 0,
+  "scope": "Miner shelter, actual raised exploratory gallery with timber support, approved rock/ore LODs, rail siding and cart, sorting yard. No harvesting, NPC or gameplay state."
+}

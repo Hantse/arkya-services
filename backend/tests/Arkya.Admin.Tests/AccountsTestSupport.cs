@@ -89,6 +89,7 @@ internal sealed class AccountsFactory : WebApplicationFactory<Arkya.Admin.Progra
         });
         builder.ConfigureServices(services =>
         {
+            services.AddTestSessions();
             services.AddHttpClient<IdentityAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Upstream);
             services.AddHttpClient<CharactersAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Upstream);
         });

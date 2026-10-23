@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "nearTriangles": 49952,
+  "farTriangles": 26208,
+  "totalStoredRenderers": 10,
+  "maximumActiveRenderersOutsideCrossfade": 5,
+  "lodGroups": 5,
+  "windWeightsValid": true,
+  "paddedBoundsValid": true,
+  "materialsAndWindValid": true,
+  "newColliders": 0,
+  "newLights": 0,
+  "shadowCasters": 0,
+  "runtimeScriptsOrMissingScripts": 0,
+  "lodsValid": true
+}

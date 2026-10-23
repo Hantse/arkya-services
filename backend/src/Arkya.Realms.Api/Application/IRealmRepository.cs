@@ -15,6 +15,8 @@ public interface IRealmRepository
 public interface IRealmDeployer
 {
     Task<ServerObservation[]> ReconcileAsync(RealmRecord realm, CancellationToken cancellationToken);
+    Task<bool> DeleteAsync(RealmRecord realm, CancellationToken cancellationToken) =>
+        Task.FromException<bool>(new DeploymentFailure("deletion_unsupported"));
 }
 
 public sealed class DeploymentFailure(string code) : Exception(code)

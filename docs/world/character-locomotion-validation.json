@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "unityVersion": "6000.6.6f1",
+  "project": "Unity3D/Arkya",
+  "status": "Passed",
+  "scope": "Whole-body Walk and Run cycles, observed movement cadence and SwimIdle knee flexion",
+  "baseline": {
+    "walkClipSeconds": 1.2,
+    "runClipSeconds": 0.8,
+    "meanStanceRetractionMetersPerSecond": {
+      "Walk": 0.667,
+      "Run": 1.55
+    },
+    "gameplayMetersPerSecond": {
+      "Walk": 2.2,
+      "Run": 4.4
+    },
+    "observed": "Short sliding steps, a persistently lowered pelvis, reaching arms and no Run flight interval"
+  },
+  "change": {
+    "nativeGaitClips": 8,
+    "rigs": [
+      "human-a",
+      "human-b",
+      "elf-a",
+      "elf-b"
+    ],
+    "Walk": {
+      "stanceFraction": 0.54,
+      "referenceSpeed": 2.2,
+      "durationSeconds": 0.72
+    },
+    "Run": {
+      "stanceFraction": 0.3,
+      "referenceSpeed": 4.4,
+      "durationSeconds": 0.6
+    },
+    "keysPerSecond": 120,
+    "footContact": "Actual rigid footwear vertices define the support profile; integrated rolling contact accommodates flat and rounded soles",
+    "body": "Forward knee IK, opposed arm swing, softly bent walking elbows, bent running elbows, restrained pelvis travel and steady gaze",
+    "presentation": "LocomotionRate scales Walk/Run by achieved planar speed and visual scale, smoothed over 0.1 seconds",
+    "transitions": "Walk and Run retain their supporting-foot phase",
+    "swimIdle": "Replaced reverse knee flexion with a positive relative thigh-to-shin bend",
+    "firstGeneration": "Clip names are explicitly preserved after CreateAsset and CopySerialized",
+    "meshOrBindSkeletonChanged": false,
+    "newRuntimeDependencies": false,
+    "newNetworkFields": false,
+    "rootMotion": false,
+    "menu": "Arkya/Characters/Rebuild planted locomotion animations"
+  },
+  "tests": {
+    "total": 66,
+    "passed": 66,
+    "failed": 0,
+    "skipped": 0,
+    "fixtures": [
+      {
+        "name": "CharacterLocomotionAnimationTests",
+        "cases": 16
+      },
+      {
+        "name": "CharacterLocomotionPresentationTests",
+        "cases": 18
+      },
+      {
+        "name": "CharacterTraversalAnimationTests",
+        "cases": 14
+      },
+      {
+        "name": "CharacterIdleAnimationTests",
+        "cases": 8
+      },
+      {
+        "name": "CharacterAppearanceTests",
+        "cases": 8
+      },
+      {
+        "name": "CharacterIslandRuntimeTests",
+        "cases": 2
+      }
+    ],
+    "coverage": [
+      "Actual stance support remains within 2 mm at 60/120 Hz over minimum/default/maximum allowed heights",
+      "Actual lowest footwear vertices remain on the floor during stance, including changes of rolling contact",
+      "Forward knee flexion, conserved limb lengths, opposed arms and stable gaze",
+      "Walking elbows 15-25 degrees and running elbows 75-90 degrees",
+      "Pelvis travel stays within 5 cm Walk and 11 cm Run",
+      "Native curve values and tangents close at the loop seam",
+      "Measured playback rate follows speed and height without moving the actor root",
+      "Jump, SwimIdle, Swim and Idle keep unit playback speed",
+      "Connected island entry and return twice, jump/landing, wading, swimming and dry-ground return"
+    ],
+    "localResults": [
+      "artifacts/character-animation-quality/gait-final-CharacterLocomotion.json",
+      "artifacts/character-animation-quality/gait-final-CharacterTraversalAnimationTests.json",
+      "artifacts/character-animation-quality/gait-final-CharacterIdleAnimationTests.json",
+      "artifacts/character-animation-quality/gait-final-CharacterAppearanceTests.json",
+      "artifacts/character-animation-quality/gait-final-CharacterIslandRuntimeTests.json"
+    ],
+    "fullProjectSuiteRerun": false
+  },
+  "visualReview": {
+    "result": "PassedForPlayablePrototype",
+    "rigs": [
+      "human-a",
+      "human-b",
+      "elf-a",
+      "elf-b"
+    ],
+    "motions": [
+      "Walk",
+      "Run"
+    ],
+    "views": [
+      "front",
+      "profile"
+    ],
+    "cycleSamples": [
+      0,
+      0.125,
+      0.25,
+      0.375,
+      0.5,
+      0.625,
+      0.75,
+      0.875
+    ],
+    "bakedMeshRendering": true,
+    "localAtlases": "artifacts/character-animation-quality/gait-after-{Walk,Run}-{rig}.png",
+    "swimIdleReviewed": true,
+    "screenshot": "character-locomotion.png"
+  },
+  "liveIsland": {
+    "result": "Passed",
+    "entryThroughCreationUi": true,
+    "connectedLocalServerAndClient": true,
+    "input": "Editor movement override through the existing authoritative input path",
+    "gaitSequence": [
+      "Walk",
+      "Run",
+      "Walk",
+      "Idle"
+    ],
+    "metrics": {
+      "done": true,
+      "error": "",
+      "walk": true,
+      "run": true,
+      "returnWalk": true,
+      "idle": true,
+      "walkRate": 1.00718272,
+      "runRate": 1.01692462,
+      "walkFirst": 0.5361457,
+      "walkLast": 3.73863721,
+      "runFirst": 0.9054551,
+      "runLast": 2.58827972,
+      "idleDrift": 0,
+      "distance": 19.0188427,
+      "maximumNetworkDistance": 0.8842215,
+      "worlds": 0,
+      "refreshHeld": false
+    },
+    "returnThroughHud": true,
+    "editorValidationState": {
+      "playing": false,
+      "compiling": false,
+      "scene": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+      "dirty": false,
+      "errors": 0,
+      "warnings": 5,
+      "logs": 0,
+      "held": false
+    },
+    "localResult": "artifacts/character-animation-quality/gait-island-qa-final.json"
+  },
+  "build": {
+    "result": "Success",
+    "target": "StandaloneWindows64",
+    "development": true,
+    "executable": "Unity3D/Arkya/Builds/StarterIsland/Arkya.exe",
+    "localLog": "artifacts/character-animation-quality/gait-build.log",
+    "successMarker": "ARKYA_CHARACTER_BUILD_PASSED Builds/StarterIsland/Arkya.exe",
+    "managedAssemblySha256": "0DF488C9BCC6E92153B91CA9B15B2CC04459F7DCAC004A03914C6E57CA0E70B4",
+    "managedAssemblyWrittenAt": "2026-10-18T01:08:43.7456546+02:00",
+    "settingsBaselineRestored": true,
+    "graphicsApi": "Direct3D12",
+    "startupSmoke": "Passed",
+    "startupManagedExceptions": 0,
+    "localPlayerLog": "artifacts/character-animation-quality/gait-player.log",
+    "responsive": true
+  },
+  "limits": [
+    "The foot contact is authored against a flat floor; runtime foot placement does not conform to uneven terrain",
+    "Hands remain open because this compact rig has no finger joints",
+    "Cloth is sparsely articulated and some shin-guard rims remain prominent during knee flexion",
+    "The full traversal path in the standalone executable has not been replayed"
+  ],
+  "changedFiles": [
+    "Unity3D/Arkya/Assets/Arkya/Characters/Editor/CharacterLocomotionAnimationBuilder.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Editor/CharacterCreationBuilder.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Editor/CharacterIdleAnimationBuilder.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Editor/CharacterTraversalAnimationBuilder.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Runtime/CharacterPreviewPresenter.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Runtime/Playtest/CharacterLocalPlaytest.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Tests/Editor/CharacterLocomotionAnimationTests.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Tests/Editor/CharacterLocomotionPresentationTests.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Tests/Editor/CharacterTraversalAnimationTests.cs",
+    "Eight Walk/Run native clips and matching meta files",
+    "Four SwimIdle native clips and the four controller Walk/Run motion references and speed parameters",
+    "docs/CHARACTER_CREATION.md",
+    "docs/world/STARTER_ISLAND_PLAYABLE.md",
+    "docs/art-direction/resources/personnages/game/README.md",
+    "docs/world/character-locomotion-validation.json",
+    "docs/world/character-locomotion.png"
+  ],
+  "finalEditor": {
+    "playing": false,
+    "compiling": false,
+    "scene": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+    "dirty": false,
+    "errors": 0,
+    "warnings": 2,
+    "nativeGaitsReady": true,
+    "builder": "CharacterLocomotionAnimationBuilder"
+  }
+}

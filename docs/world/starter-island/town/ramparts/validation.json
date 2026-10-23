@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "gateCount": 2,
+  "curtainChecks": 656,
+  "gateChecks": 924,
+  "missingScripts": 0,
+  "unsupportedMaterials": 0,
+  "terrainHeightmapUnchanged": true,
+  "originalHeightmapSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "heightmapSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "colliders": 431,
+  "renderers": 112,
+  "triangles": 84504,
+  "failures": [],
+  "scope": "Closed stone enclosure with two permanently open static gates; wall continuity and seven player capsule lanes at both gates. No gate interaction or authoritative state."
+}

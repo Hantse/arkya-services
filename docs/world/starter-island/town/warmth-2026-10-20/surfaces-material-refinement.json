@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "shader": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Shaders/PaintedVillageStone.shader",
+  "shaderSupported": true,
+  "shaderErrors": false,
+  "materials": [
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Cream worn coping.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Joined warm pale kerbs.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Muted lime and earth paving joints.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Muted moss on old stone relief.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Pale worn stone relief.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Sage limestone foundations.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft grey lime recesses.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft mossed wall contact.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Worn limestone cool variation.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Worn limestone honey variation.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Worn limestone paving.mat"
+  ],
+  "newTextures": [
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Textures/Refined limestone - painted pigment and soft bossage.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Textures/Refined worn limestone - mineral brushwork and relief.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Textures/Refined wall contact - quiet sage patina.asset"
+  ],
+  "textureSizes": [
+    2048,
+    1024,
+    256
+  ],
+  "relief": "Height in texture alpha; bounded world-space normal perturbation, no vertex displacement and no tangent dependency.",
+  "geometryTransformsCollidersAndRendererAssignmentsUnchanged": true,
+  "meshAssetsUnchanged": true,
+  "terrainAssetUnchanged": true,
+  "addedRenderers": 0,
+  "addedTriangles": 0,
+  "addedColliders": 0,
+  "scope": "Only the 12 local surface materials and their owned texture/shader assets. Real-time URP PBR, shadows, depth normals, fog, instancing and existing cosmetic wetness.",
+  "limits": "No Meta pass: current village uses real-time sky lighting. Revisit if lightmap baking is introduced.",
+  "visualReviewRequired": true,
+  "utc": "2026-10-20T08:38:34.7789362Z"
+}

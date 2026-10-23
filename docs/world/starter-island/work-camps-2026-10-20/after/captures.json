@@ -1,0 +1,101 @@
+{
+  "success": true,
+  "stage": "after",
+  "utc": "2026-10-20T10:04:25.1833908Z",
+  "playMode": false,
+  "captures": [
+    {
+      "file": "miners-overview-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 669.0,
+        "y": 77.47775,
+        "z": 497.0
+      },
+      "target": {
+        "x": 700.0,
+        "y": 53.4777527,
+        "z": 540.0
+      },
+      "fieldOfView": 57.0
+    },
+    {
+      "file": "miners-player-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 700.0,
+        "y": 53.332058,
+        "z": 515.0
+      },
+      "target": {
+        "x": 700.0,
+        "y": 53.4777527,
+        "z": 540.0
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "woodcutters-overview-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 507.0,
+        "y": 79.93103,
+        "z": 901.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.9310265,
+        "z": 870.0
+      },
+      "fieldOfView": 57.0
+    },
+    {
+      "file": "woodcutters-player-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 525.0,
+        "y": 58.66832,
+        "z": 870.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.9310265,
+        "z": 870.0
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "town-and-work-camps-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 758.0,
+        "y": 489.967072,
+        "z": 520.0
+      },
+      "target": {
+        "x": 625.0,
+        "y": 52.46707,
+        "z": 695.0
+      },
+      "fieldOfView": 60.0
+    },
+    {
+      "file": "woodcutters-courtyard-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 538.0,
+        "y": 67.93103,
+        "z": 870.0
+      },
+      "target": {
+        "x": 555.0,
+        "y": 54.9310265,
+        "z": 870.0
+      },
+      "fieldOfView": 78.0
+    }
+  ],
+  "stateRestored": true,
+  "sceneDirtyFlagUnchanged": true,
+  "scope": "Five fixed before/after views: local overview and player height per camp plus shared positioning. After also includes one interior courtyard view behind the woodland crowns. Presentation restored; no scene save or asset edits."
+}

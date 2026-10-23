@@ -1,0 +1,538 @@
+{
+  "success": true,
+  "buildings": [
+    {
+      "building": "01 - Auberge des Lanternes",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_01_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 47,
+      "originalTriangles": 128132,
+      "triangles": 128324,
+      "addedTriangles": 192,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 21,
+          "SourceTriangles": 8220,
+          "ResultTriangles": 8412,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 24,
+          "SourceTriangles": 112048,
+          "ResultTriangles": 112048,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 384564,
+      "adaptiveMidpoints": 192,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.117,
+      "camera": {
+        "position": [
+          533.0293,
+          54.0269928,
+          525.453
+        ],
+        "target": [
+          525.0,
+          56.92699,
+          540.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "02 - Maison du boulanger",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_02_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 38,
+      "originalTriangles": 91948,
+      "triangles": 92254,
+      "addedTriangles": 306,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 20,
+          "SourceTriangles": 7380,
+          "ResultTriangles": 7686,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 16,
+          "SourceTriangles": 76704,
+          "ResultTriangles": 76704,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 276074,
+      "adaptiveMidpoints": 278,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.101196177,
+      "camera": {
+        "position": [
+          538.1887,
+          53.9696655,
+          531.8452
+        ],
+        "target": [
+          541.0,
+          56.8696632,
+          546.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "03 - Atelier des runes",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_03_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 43,
+      "originalTriangles": 107076,
+      "triangles": 107292,
+      "addedTriangles": 216,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 21,
+          "SourceTriangles": 8220,
+          "ResultTriangles": 8436,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 20,
+          "SourceTriangles": 90992,
+          "ResultTriangles": 90992,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 321420,
+      "adaptiveMidpoints": 216,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.08946483,
+      "camera": {
+        "position": [
+          550.2691,
+          54.26305,
+          536.4425
+        ],
+        "target": [
+          558.0,
+          57.1630478,
+          550.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "04 - Maison des voyageurs",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_04_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 29,
+      "originalTriangles": 53196,
+      "triangles": 53244,
+      "addedTriangles": 48,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7404,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 8,
+          "SourceTriangles": 37976,
+          "ResultTriangles": 37976,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 159612,
+      "adaptiveMidpoints": 48,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.108291693,
+      "camera": {
+        "position": [
+          560.8927,
+          53.049427,
+          546.805542
+        ],
+        "target": [
+          570.0,
+          54.7494278,
+          558.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "05 - Herboristerie",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_05_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 31,
+      "originalTriangles": 63724,
+      "triangles": 63772,
+      "addedTriangles": 48,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7404,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 10,
+          "SourceTriangles": 48504,
+          "ResultTriangles": 48504,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 191196,
+      "adaptiveMidpoints": 48,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.115171567,
+      "camera": {
+        "position": [
+          565.7135,
+          53.07541,
+          536.663757
+        ],
+        "target": [
+          581.0,
+          54.77541,
+          534.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "06 - Forge du Refuge",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_06_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 33,
+      "originalTriangles": 70868,
+      "triangles": 70872,
+      "addedTriangles": 4,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7360,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 12,
+          "SourceTriangles": 55648,
+          "ResultTriangles": 55648,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 212584,
+      "adaptiveMidpoints": 4,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.09457184,
+      "camera": {
+        "position": [
+          573.2271,
+          52.4562225,
+          514.6856
+        ],
+        "target": [
+          581.0,
+          54.1562233,
+          500.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "07 - Entrepot des marchands",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_07_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 42,
+      "originalTriangles": 113004,
+      "triangles": 113292,
+      "addedTriangles": 288,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 20,
+          "SourceTriangles": 7380,
+          "ResultTriangles": 7668,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 20,
+          "SourceTriangles": 97760,
+          "ResultTriangles": 97760,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 339228,
+      "adaptiveMidpoints": 264,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.0930002853,
+      "camera": {
+        "position": [
+          566.2465,
+          53.545517,
+          508.41748
+        ],
+        "target": [
+          568.0,
+          56.4455147,
+          493.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "08 - Maison des tisserands",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_08_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 39,
+      "originalTriangles": 92788,
+      "triangles": 93048,
+      "addedTriangles": 260,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 21,
+          "SourceTriangles": 8220,
+          "ResultTriangles": 8480,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 16,
+          "SourceTriangles": 76704,
+          "ResultTriangles": 76704,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 278600,
+      "adaptiveMidpoints": 260,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.114004992,
+      "camera": {
+        "position": [
+          556.961243,
+          53.6478767,
+          505.8769
+        ],
+        "target": [
+          553.0,
+          56.5478745,
+          492.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "09 - Maison du verger",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_09_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 29,
+      "originalTriangles": 53196,
+      "triangles": 53244,
+      "addedTriangles": 48,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7404,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 8,
+          "SourceTriangles": 37976,
+          "ResultTriangles": 37976,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 159612,
+      "adaptiveMidpoints": 48,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.110163853,
+      "camera": {
+        "position": [
+          545.599,
+          52.5387,
+          502.793976
+        ],
+        "target": [
+          535.0,
+          54.2387,
+          493.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "10 - Relais de la crique",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_10_settled_exterior.asset",
+      "preservedReceiver": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/plafond-chaume/Visual/Structure_plafond-chaume",
+      "mergedRenderers": 29,
+      "originalTriangles": 53196,
+      "triangles": 53244,
+      "addedTriangles": 48,
+      "sourceRoles": {
+        "Gables and timber trim": {
+          "Renderers": 19,
+          "SourceTriangles": 7356,
+          "ResultTriangles": 7404,
+          "SubdivisionEnabled": true
+        },
+        "Facade modules": {
+          "Renderers": 8,
+          "SourceTriangles": 37976,
+          "ResultTriangles": 37976,
+          "SubdivisionEnabled": false
+        },
+        "Thatched roof": {
+          "Renderers": 2,
+          "SourceTriangles": 7864,
+          "ResultTriangles": 7864,
+          "SubdivisionEnabled": false
+        }
+      },
+      "vertices": 159612,
+      "adaptiveMidpoints": 48,
+      "materialSlots": 4,
+      "largestDisplacementMetres": 0.09014897,
+      "camera": {
+        "position": [
+          532.7919,
+          52.93704,
+          510.752
+        ],
+        "target": [
+          519.0,
+          54.63704,
+          515.0
+        ],
+        "fieldOfView": 55.0
+      }
+    },
+    {
+      "building": "Hotel de ville - Aubefont civic house",
+      "asset": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/Civic_house_settled_roof.asset",
+      "preservedReceiver": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Civic roof - main weather cover/Architecture - Painted civic blue slate",
+      "mergedRenderers": 8,
+      "originalTriangles": 5528,
+      "triangles": 6039,
+      "addedTriangles": 511,
+      "sourceRoles": {
+        "Civic roof and bell": {
+          "Renderers": 8,
+          "SourceTriangles": 5528,
+          "ResultTriangles": 6039,
+          "SubdivisionEnabled": true
+        }
+      },
+      "vertices": 11421,
+      "adaptiveMidpoints": 365,
+      "materialSlots": 6,
+      "largestDisplacementMetres": 0.124,
+      "camera": {
+        "position": [
+          530.003662,
+          54.1200523,
+          535.9707
+        ],
+        "target": [
+          532.0,
+          57.1800537,
+          554.0
+        ],
+        "fieldOfView": 55.0
+      }
+    }
+  ],
+  "meshAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_01_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_02_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_03_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_04_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_05_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_06_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_07_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_08_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_09_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_10_settled_exterior.asset",
+    "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/Civic_house_settled_roof.asset"
+  ],
+  "triangles": 834625,
+  "budget": {
+    "sourceTriangles": 832656,
+    "resultTriangles": 834625,
+    "addedTriangles": 1969,
+    "allowedAdditionalTriangles": 20000,
+    "addedFraction": 0.002364722
+  },
+  "originalRenderers": 368,
+  "visibleReplacementRenderers": 11,
+  "addedLights": 0,
+  "addedColliders": 0,
+  "addedRuntimeComponents": 0,
+  "maximumAllowedDisplacementMetres": 0.15,
+  "subdivision": {
+    "broadShapeToleranceMetres": 0.016,
+    "maximumDepth": 5,
+    "detailedWallsAndThatch": false
+  },
+  "existingTransformsPreserved": true,
+  "colliderHash": "Mxv+GdVw9Pw16gkmRcRzczH3wftKkFAhcK/nB8t6CoU=",
+  "sourceAssetsPreserved": true,
+  "sceneSaved": false,
+  "weather": "Existing shelter Renderer references and GameObjects are retained. One original roof Renderer per building now covers the combined silhouette; retired source renderers remain available to the existing bounds-based shelter probe.",
+  "preserved": "Previously draped and wind-animated awnings, rounded watchtower roofs, doors, windows, thresholds, terrain, paths, collision geometry, building anchors and flower decorations.",
+  "scope": "Continuous roof settlement, gently swept eaves, joined gables and bowed upper facade corners. No procedural noise, building translation, scale changes or authoritative gameplay changes."
+}

@@ -1,0 +1,521 @@
+{
+  "success": true,
+  "rendererCount": 33,
+  "triangles": 30880,
+  "materials": [
+    "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas harvest gold - Awning.mat",
+    "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas madder red - Awning.mat",
+    "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Awning.mat",
+    "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Laundry.mat",
+    "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas harvest gold - Laundry.mat",
+    "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Gate banner.mat",
+    "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Tower banner.mat",
+    "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Banner.mat"
+  ],
+  "changed": [
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Scalloped shop awning",
+      "kind": "Awning",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_001.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas harvest gold - Awning.mat",
+      "vertices": 1255,
+      "triangles": 2232,
+      "position": {
+        "x": 527.842834,
+        "y": 53.12699,
+        "z": 537.503845
+      },
+      "amplitude": 0.1
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Scalloped shop awning",
+      "kind": "Awning",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_002.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas madder red - Awning.mat",
+      "vertices": 1230,
+      "triangles": 2186,
+      "position": {
+        "x": 540.9178,
+        "y": 53.069664,
+        "z": 543.451843
+      },
+      "amplitude": 0.1
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Scalloped shop awning",
+      "kind": "Awning",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_003.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Awning.mat",
+      "vertices": 1230,
+      "triangles": 2186,
+      "position": {
+        "x": 556.8175,
+        "y": 53.36305,
+        "z": 546.4064
+      },
+      "amplitude": 0.1
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Scalloped shop awning",
+      "kind": "Awning",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_004.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Awning.mat",
+      "vertices": 1255,
+      "triangles": 2232,
+      "position": {
+        "x": 578.4775,
+        "y": 53.97541,
+        "z": 533.63
+      },
+      "amplitude": 0.1
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Scalloped shop awning",
+      "kind": "Awning",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_005.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas madder red - Awning.mat",
+      "vertices": 1255,
+      "triangles": 2232,
+      "position": {
+        "x": 578.201355,
+        "y": 53.3562241,
+        "z": 502.545624
+      },
+      "amplitude": 0.1
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Scalloped shop awning",
+      "kind": "Awning",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_006.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Awning.mat",
+      "vertices": 1230,
+      "triangles": 2186,
+      "position": {
+        "x": 553.290649,
+        "y": 52.7478752,
+        "z": 494.5329
+      },
+      "amplitude": 0.1
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Scalloped shop awning",
+      "kind": "Awning",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_007.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Awning.mat",
+      "vertices": 1230,
+      "triangles": 2186,
+      "position": {
+        "x": 521.5263,
+        "y": 53.83704,
+        "z": 514.6569
+      },
+      "amplitude": 0.1
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Market stall - future merchant/Market canvas",
+      "kind": "Awning",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_008.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas madder red - Awning.mat",
+      "vertices": 721,
+      "triangles": 1264,
+      "position": {
+        "x": 531.037659,
+        "y": 53.0490456,
+        "z": 534.4391
+      },
+      "amplitude": 0.1
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Market stall - future merchant/Market canvas",
+      "kind": "Awning",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_009.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Awning.mat",
+      "vertices": 721,
+      "triangles": 1264,
+      "position": {
+        "x": 559.668945,
+        "y": 53.49568,
+        "z": 509.2567
+      },
+      "amplitude": 0.1
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_010.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 548.5,
+        "y": 51.7201958,
+        "z": 484.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_011.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas harvest gold - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 551.0,
+        "y": 51.48718,
+        "z": 484.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_012.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 553.5,
+        "y": 51.32841,
+        "z": 484.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_013.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas harvest gold - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 556.0,
+        "y": 51.255394,
+        "z": 484.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_014.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 558.5,
+        "y": 51.25663,
+        "z": 484.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_015.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 562.8333,
+        "y": 52.8970261,
+        "z": 559.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_016.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas harvest gold - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 562.6667,
+        "y": 52.832962,
+        "z": 560.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_017.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 562.5,
+        "y": 52.84315,
+        "z": 561.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_018.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas harvest gold - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 562.3333,
+        "y": 52.93909,
+        "z": 562.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Laundry in sheltered back court/Faded laundry cloth",
+      "kind": "Laundry",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_019.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Laundry.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 562.1667,
+        "y": 53.10928,
+        "z": 563.0
+      },
+      "amplitude": 0.21
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Village cloth banner - civic teal",
+      "kind": "Banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_020.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Banner.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 535.809631,
+        "y": 55.5300522,
+        "z": 551.1854
+      },
+      "amplitude": 0.16
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Village cloth banner - civic teal",
+      "kind": "Banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_021.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Banner.mat",
+      "vertices": 273,
+      "triangles": 480,
+      "position": {
+        "x": 532.1861,
+        "y": 55.5300522,
+        "z": 549.267
+      },
+      "amplitude": 0.16
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Raised watchtowers - painted guard posts/Watchtower North 03/Painted batch - Canvas river teal",
+      "kind": "Tower banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_022.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Tower banner.mat",
+      "vertices": 266,
+      "triangles": 468,
+      "position": {
+        "x": 558.3672,
+        "y": 56.10533,
+        "z": 570.0781
+      },
+      "amplitude": 0.09
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Raised watchtowers - painted guard posts/Watchtower East 27/Painted batch - Canvas river teal",
+      "kind": "Tower banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_023.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Tower banner.mat",
+      "vertices": 266,
+      "triangles": 468,
+      "position": {
+        "x": 597.893,
+        "y": 56.10533,
+        "z": 528.46405
+      },
+      "amplitude": 0.09
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Raised watchtowers - painted guard posts/Watchtower South 55/Painted batch - Canvas river teal",
+      "kind": "Tower banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_024.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Tower banner.mat",
+      "vertices": 266,
+      "triangles": 468,
+      "position": {
+        "x": 555.0,
+        "y": 56.10533,
+        "z": 475.0
+      },
+      "amplitude": 0.09
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Raised watchtowers - painted guard posts/Watchtower West 99/Painted batch - Canvas river teal",
+      "kind": "Tower banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_025.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Tower banner.mat",
+      "vertices": 266,
+      "triangles": 468,
+      "position": {
+        "x": 516.908142,
+        "y": 56.10533,
+        "z": 555.207031
+      },
+      "amplitude": 0.09
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tall teal gate banner",
+      "kind": "Gate banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_026.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Gate banner.mat",
+      "vertices": 416,
+      "triangles": 744,
+      "position": {
+        "x": 523.1887,
+        "y": 55.8053322,
+        "z": 475.663635
+      },
+      "amplitude": 0.17
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Tall teal gate banner",
+      "kind": "Gate banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_027.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Gate banner.mat",
+      "vertices": 416,
+      "triangles": 744,
+      "position": {
+        "x": 511.826263,
+        "y": 55.8053322,
+        "z": 481.979828
+      },
+      "amplitude": 0.17
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 3 - Woven gate turquoise",
+      "kind": "Retained static batch",
+      "removedTriangles": 192,
+      "retainedTriangles": 42,
+      "removedVertexWorldBounds": {
+        "minimum": {
+          "x": 514.275757,
+          "y": 53.76033,
+          "z": 480.497864
+        },
+        "maximum": {
+          "x": 526.3485,
+          "y": 55.55033,
+          "z": 487.23468
+        },
+        "vertexCount": 576
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Village cloth - sheltered gate standard -1",
+      "kind": "Gate banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_029.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Gate banner.mat",
+      "vertices": 325,
+      "triangles": 576,
+      "position": {
+        "x": 525.9922,
+        "y": 55.55033,
+        "z": 480.706818
+      },
+      "amplitude": 0.17
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Village cloth - sheltered gate standard 1",
+      "kind": "Gate banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_030.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Gate banner.mat",
+      "vertices": 325,
+      "triangles": 576,
+      "position": {
+        "x": 514.6297,
+        "y": 55.55033,
+        "z": 487.023
+      },
+      "amplitude": 0.17
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tall teal gate banner",
+      "kind": "Gate banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_031.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Gate banner.mat",
+      "vertices": 416,
+      "triangles": 744,
+      "position": {
+        "x": 577.3389,
+        "y": 55.8053322,
+        "z": 571.2092
+      },
+      "amplitude": 0.17
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Tall teal gate banner",
+      "kind": "Gate banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_032.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Gate banner.mat",
+      "vertices": 416,
+      "triangles": 744,
+      "position": {
+        "x": 587.636047,
+        "y": 55.8053322,
+        "z": 563.2739
+      },
+      "amplitude": 0.17
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 0 - Woven gate turquoise",
+      "kind": "Retained static batch",
+      "removedTriangles": 192,
+      "retainedTriangles": 42,
+      "removedVertexWorldBounds": {
+        "minimum": {
+          "x": 573.49,
+          "y": 53.76033,
+          "z": 558.4446
+        },
+        "maximum": {
+          "x": 584.437744,
+          "y": 55.55033,
+          "z": 566.8955
+        },
+        "vertexCount": 576
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Village cloth - sheltered gate standard -1",
+      "kind": "Gate banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_034.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Gate banner.mat",
+      "vertices": 325,
+      "triangles": 576,
+      "position": {
+        "x": 573.816833,
+        "y": 55.55033,
+        "z": 566.6389
+      },
+      "amplitude": 0.17
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Village cloth - sheltered gate standard 1",
+      "kind": "Gate banner",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Meshes/Cloth_035.asset",
+      "material": "Assets/Arkya/World/StarterIsland/Town/VillageCloth/Materials/Canvas river teal - Gate banner.mat",
+      "vertices": 325,
+      "triangles": 576,
+      "position": {
+        "x": 584.113953,
+        "y": 55.55033,
+        "z": 558.7036
+      },
+      "amplitude": 0.17
+    }
+  ],
+  "scope": "Authored drape and GPU wind deformation; no physical Cloth simulation, new manager, light, collider or gameplay state.",
+  "weather": "Uses existing island foliage wind and surface wetness globals. Existing awning Renderer identities retained.",
+  "bounds": "Mesh bounds include 0.65 m padding in every axis. No static batching.",
+  "sceneSaved": false
+}

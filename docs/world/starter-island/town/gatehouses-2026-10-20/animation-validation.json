@@ -1,0 +1,3897 @@
+{
+  "success": true,
+  "status": "finished",
+  "checkedAtUtc": "2026-10-20T09:38:09.915184Z",
+  "mode": "Play Mode, observed actual MonoBehaviour.Update; no manual animation stepping or timeScale changes; background execution temporarily enabled",
+  "gateCount": 2,
+  "completedPhases": 2,
+  "durations": [
+    {
+      "phase": "closing",
+      "observedSeconds": 2.41914272,
+      "intendedSeconds": 2.4,
+      "toleranceSeconds": 0.741379261
+    },
+    {
+      "phase": "opening",
+      "observedSeconds": 2.41640949,
+      "intendedSeconds": 2.4,
+      "toleranceSeconds": 0.741379261
+    }
+  ],
+  "totalFrameSamples": 478,
+  "maximumFrameGapSeconds": 0.2965517,
+  "elapsedRealSeconds": 4.928158100003202,
+  "realTimeoutSeconds": 30,
+  "runInBackgroundRestored": true,
+  "chainCount": 4,
+  "maximumChainEndpointErrorMeters": 0.0,
+  "openChainLengths": [
+    [
+      0.6452179,
+      0.6452179
+    ],
+    [
+      0.3999977,
+      0.3999977
+    ]
+  ],
+  "closedChainLengths": [
+    [
+      4.645218,
+      4.645218
+    ],
+    [
+      4.39999771,
+      4.39999771
+    ]
+  ],
+  "gates": [
+    {
+      "name": "Gate - Arrival",
+      "minimumOpenness": 0.0,
+      "maximumOpenness": 1.0,
+      "observedTravelMeters": 4.0,
+      "closingIntermediateFrames": 100,
+      "openingIntermediateFrames": 106
+    },
+    {
+      "name": "Gate - Forest",
+      "minimumOpenness": 0.0,
+      "maximumOpenness": 1.0,
+      "observedTravelMeters": 4.0,
+      "closingIntermediateFrames": 100,
+      "openingIntermediateFrames": 106
+    }
+  ],
+  "noAnimatedColliders": true,
+  "fixedCollidersUnchanged": true,
+  "openPoseAndSerializedConfigurationRestored": true,
+  "error": null,
+  "samples": [
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 413,
+      "seconds": 0.2965517,
+      "openness": 0.9579694,
+      "localY": 3.83187771
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 413,
+      "seconds": 0.2965517,
+      "openness": 0.9579694,
+      "localY": 3.83187771
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 414,
+      "seconds": 0.308783531,
+      "openness": 0.9545995,
+      "localY": 3.818398
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 414,
+      "seconds": 0.308783531,
+      "openness": 0.9545995,
+      "localY": 3.818398
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 415,
+      "seconds": 0.316061974,
+      "openness": 0.952539,
+      "localY": 3.810156
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 415,
+      "seconds": 0.316061974,
+      "openness": 0.952539,
+      "localY": 3.810156
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 416,
+      "seconds": 0.323431015,
+      "openness": 0.9504116,
+      "localY": 3.80164647
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 416,
+      "seconds": 0.323431015,
+      "openness": 0.9504116,
+      "localY": 3.80164647
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 417,
+      "seconds": 0.331308365,
+      "openness": 0.948091865,
+      "localY": 3.79236746
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 417,
+      "seconds": 0.331308365,
+      "openness": 0.948091865,
+      "localY": 3.79236746
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 418,
+      "seconds": 0.339341164,
+      "openness": 0.9456782,
+      "localY": 3.7827127
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 418,
+      "seconds": 0.339341164,
+      "openness": 0.9456782,
+      "localY": 3.7827127
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 419,
+      "seconds": 0.357380867,
+      "openness": 0.940082252,
+      "localY": 3.760329
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 419,
+      "seconds": 0.357380867,
+      "openness": 0.940082252,
+      "localY": 3.760329
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 420,
+      "seconds": 0.377797127,
+      "openness": 0.9334625,
+      "localY": 3.73385
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 420,
+      "seconds": 0.377797127,
+      "openness": 0.9334625,
+      "localY": 3.73385
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 421,
+      "seconds": 0.400363922,
+      "openness": 0.92579937,
+      "localY": 3.70319748
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 421,
+      "seconds": 0.400363922,
+      "openness": 0.92579937,
+      "localY": 3.70319748
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 422,
+      "seconds": 0.420246124,
+      "openness": 0.918754756,
+      "localY": 3.675019
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 422,
+      "seconds": 0.420246124,
+      "openness": 0.918754756,
+      "localY": 3.675019
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 423,
+      "seconds": 0.44066143,
+      "openness": 0.911243,
+      "localY": 3.644972
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 423,
+      "seconds": 0.44066143,
+      "openness": 0.911243,
+      "localY": 3.644972
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 424,
+      "seconds": 0.462807655,
+      "openness": 0.90278393,
+      "localY": 3.61113572
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 424,
+      "seconds": 0.462807655,
+      "openness": 0.90278393,
+      "localY": 3.61113572
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 425,
+      "seconds": 0.481773376,
+      "openness": 0.8952898,
+      "localY": 3.581159
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 425,
+      "seconds": 0.481773376,
+      "openness": 0.8952898,
+      "localY": 3.581159
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 426,
+      "seconds": 0.502465248,
+      "openness": 0.886858,
+      "localY": 3.547432
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 426,
+      "seconds": 0.502465248,
+      "openness": 0.886858,
+      "localY": 3.547432
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 427,
+      "seconds": 0.523757,
+      "openness": 0.8779108,
+      "localY": 3.51164317
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 427,
+      "seconds": 0.523757,
+      "openness": 0.8779108,
+      "localY": 3.51164317
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 428,
+      "seconds": 0.5445919,
+      "openness": 0.8688985,
+      "localY": 3.475594
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 428,
+      "seconds": 0.5445919,
+      "openness": 0.8688985,
+      "localY": 3.475594
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 429,
+      "seconds": 0.566987038,
+      "openness": 0.858935833,
+      "localY": 3.43574333
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 429,
+      "seconds": 0.566987038,
+      "openness": 0.858935833,
+      "localY": 3.43574333
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 430,
+      "seconds": 0.587000847,
+      "openness": 0.8497988,
+      "localY": 3.39919519
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 430,
+      "seconds": 0.587000847,
+      "openness": 0.8497988,
+      "localY": 3.39919519
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 431,
+      "seconds": 0.609954834,
+      "openness": 0.839057863,
+      "localY": 3.35623145
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 431,
+      "seconds": 0.609954834,
+      "openness": 0.839057863,
+      "localY": 3.35623145
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 432,
+      "seconds": 0.6323452,
+      "openness": 0.828320444,
+      "localY": 3.31328177
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 432,
+      "seconds": 0.6323452,
+      "openness": 0.828320444,
+      "localY": 3.31328177
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 433,
+      "seconds": 0.652071953,
+      "openness": 0.8186556,
+      "localY": 3.27462244
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 433,
+      "seconds": 0.652071953,
+      "openness": 0.8186556,
+      "localY": 3.27462244
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 434,
+      "seconds": 0.672822,
+      "openness": 0.8082895,
+      "localY": 3.233158
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 434,
+      "seconds": 0.672822,
+      "openness": 0.8082895,
+      "localY": 3.233158
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 435,
+      "seconds": 0.6928978,
+      "openness": 0.7980729,
+      "localY": 3.1922915
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 435,
+      "seconds": 0.6928978,
+      "openness": 0.7980729,
+      "localY": 3.1922915
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 436,
+      "seconds": 0.7133579,
+      "openness": 0.787477732,
+      "localY": 3.149911
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 436,
+      "seconds": 0.7133579,
+      "openness": 0.787477732,
+      "localY": 3.149911
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 437,
+      "seconds": 0.733139038,
+      "openness": 0.7770666,
+      "localY": 3.10826635
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 437,
+      "seconds": 0.733139038,
+      "openness": 0.7770666,
+      "localY": 3.10826635
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 438,
+      "seconds": 0.7537184,
+      "openness": 0.7660668,
+      "localY": 3.06426716
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 438,
+      "seconds": 0.7537184,
+      "openness": 0.7660668,
+      "localY": 3.06426716
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 439,
+      "seconds": 0.7742796,
+      "openness": 0.7549125,
+      "localY": 3.01965
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 439,
+      "seconds": 0.7742796,
+      "openness": 0.7549125,
+      "localY": 3.01965
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 440,
+      "seconds": 0.8021183,
+      "openness": 0.7395631,
+      "localY": 2.95825243
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 440,
+      "seconds": 0.8021183,
+      "openness": 0.7395631,
+      "localY": 2.95825243
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 441,
+      "seconds": 0.8161812,
+      "openness": 0.7317064,
+      "localY": 2.92682552
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 441,
+      "seconds": 0.8161812,
+      "openness": 0.7317064,
+      "localY": 2.92682552
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 442,
+      "seconds": 0.8366909,
+      "openness": 0.7201302,
+      "localY": 2.88052082
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 442,
+      "seconds": 0.8366909,
+      "openness": 0.7201302,
+      "localY": 2.88052082
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 443,
+      "seconds": 0.8576298,
+      "openness": 0.7081754,
+      "localY": 2.83270168
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 443,
+      "seconds": 0.8576298,
+      "openness": 0.7081754,
+      "localY": 2.83270168
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 444,
+      "seconds": 0.8808193,
+      "openness": 0.6947837,
+      "localY": 2.77913475
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 444,
+      "seconds": 0.8808193,
+      "openness": 0.6947837,
+      "localY": 2.77913475
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 445,
+      "seconds": 0.8983965,
+      "openness": 0.684532762,
+      "localY": 2.738131
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 445,
+      "seconds": 0.8983965,
+      "openness": 0.684532762,
+      "localY": 2.738131
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 446,
+      "seconds": 0.920877457,
+      "openness": 0.6713053,
+      "localY": 2.6852212
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 446,
+      "seconds": 0.920877457,
+      "openness": 0.6713053,
+      "localY": 2.6852212
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 447,
+      "seconds": 0.940862656,
+      "openness": 0.659443,
+      "localY": 2.637772
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 447,
+      "seconds": 0.940862656,
+      "openness": 0.659443,
+      "localY": 2.637772
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 448,
+      "seconds": 0.9643669,
+      "openness": 0.645377636,
+      "localY": 2.58151054
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 448,
+      "seconds": 0.9643669,
+      "openness": 0.645377636,
+      "localY": 2.58151054
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 449,
+      "seconds": 0.9847307,
+      "openness": 0.6331003,
+      "localY": 2.532401
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 449,
+      "seconds": 0.9847307,
+      "openness": 0.6331003,
+      "localY": 2.532401
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 450,
+      "seconds": 1.00464344,
+      "openness": 0.621019244,
+      "localY": 2.484077
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 450,
+      "seconds": 1.00464344,
+      "openness": 0.621019244,
+      "localY": 2.484077
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 451,
+      "seconds": 1.02364635,
+      "openness": 0.609427452,
+      "localY": 2.43770981
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 451,
+      "seconds": 1.02364635,
+      "openness": 0.609427452,
+      "localY": 2.43770981
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 452,
+      "seconds": 1.04423046,
+      "openness": 0.596809149,
+      "localY": 2.3872366
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 452,
+      "seconds": 1.04423046,
+      "openness": 0.596809149,
+      "localY": 2.3872366
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 453,
+      "seconds": 1.0653038,
+      "openness": 0.5838313,
+      "localY": 2.33532524
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 453,
+      "seconds": 1.0653038,
+      "openness": 0.5838313,
+      "localY": 2.33532524
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 454,
+      "seconds": 1.08830643,
+      "openness": 0.569606841,
+      "localY": 2.27842736
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 454,
+      "seconds": 1.08830643,
+      "openness": 0.569606841,
+      "localY": 2.27842736
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 455,
+      "seconds": 1.10745811,
+      "openness": 0.557723761,
+      "localY": 2.230895
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 455,
+      "seconds": 1.10745811,
+      "openness": 0.557723761,
+      "localY": 2.230895
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 456,
+      "seconds": 1.12910748,
+      "openness": 0.544256568,
+      "localY": 2.17702627
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 456,
+      "seconds": 1.12910748,
+      "openness": 0.544256568,
+      "localY": 2.17702627
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 457,
+      "seconds": 1.14923763,
+      "openness": 0.5317077,
+      "localY": 2.12683082
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 457,
+      "seconds": 1.14923763,
+      "openness": 0.5317077,
+      "localY": 2.12683082
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 458,
+      "seconds": 1.1709156,
+      "openness": 0.51817435,
+      "localY": 2.0726974
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 458,
+      "seconds": 1.1709156,
+      "openness": 0.51817435,
+      "localY": 2.0726974
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 459,
+      "seconds": 1.19339848,
+      "openness": 0.504125953,
+      "localY": 2.01650381
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 459,
+      "seconds": 1.19339848,
+      "openness": 0.504125953,
+      "localY": 2.01650381
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 460,
+      "seconds": 1.21243382,
+      "openness": 0.492229462,
+      "localY": 1.96891785
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 460,
+      "seconds": 1.21243382,
+      "openness": 0.492229462,
+      "localY": 1.96891785
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 461,
+      "seconds": 1.24081516,
+      "openness": 0.474500239,
+      "localY": 1.898001
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 461,
+      "seconds": 1.24081516,
+      "openness": 0.474500239,
+      "localY": 1.898001
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 462,
+      "seconds": 1.25807953,
+      "openness": 0.4637286,
+      "localY": 1.85491443
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 462,
+      "seconds": 1.25807953,
+      "openness": 0.4637286,
+      "localY": 1.85491443
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 463,
+      "seconds": 1.28105164,
+      "openness": 0.449420035,
+      "localY": 1.79768014
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 463,
+      "seconds": 1.28105164,
+      "openness": 0.449420035,
+      "localY": 1.79768014
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 464,
+      "seconds": 1.30005455,
+      "openness": 0.437610924,
+      "localY": 1.7504437
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 464,
+      "seconds": 1.30005455,
+      "openness": 0.437610924,
+      "localY": 1.7504437
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 465,
+      "seconds": 1.32155132,
+      "openness": 0.424290121,
+      "localY": 1.69716048
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 465,
+      "seconds": 1.32155132,
+      "openness": 0.424290121,
+      "localY": 1.69716048
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 466,
+      "seconds": 1.34007263,
+      "openness": 0.4128521,
+      "localY": 1.65140843
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 466,
+      "seconds": 1.34007263,
+      "openness": 0.4128521,
+      "localY": 1.65140843
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 467,
+      "seconds": 1.35979271,
+      "openness": 0.400720119,
+      "localY": 1.60288048
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 467,
+      "seconds": 1.35979271,
+      "openness": 0.400720119,
+      "localY": 1.60288048
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 468,
+      "seconds": 1.38007069,
+      "openness": 0.388300657,
+      "localY": 1.55320263
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 468,
+      "seconds": 1.38007069,
+      "openness": 0.388300657,
+      "localY": 1.55320263
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 469,
+      "seconds": 1.40367889,
+      "openness": 0.373923182,
+      "localY": 1.49569273
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 469,
+      "seconds": 1.40367889,
+      "openness": 0.373923182,
+      "localY": 1.49569273
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 470,
+      "seconds": 1.42824554,
+      "openness": 0.3590672,
+      "localY": 1.43626881
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 470,
+      "seconds": 1.42824554,
+      "openness": 0.3590672,
+      "localY": 1.43626881
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 471,
+      "seconds": 1.45377064,
+      "openness": 0.3437577,
+      "localY": 1.37503076
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 471,
+      "seconds": 1.45377064,
+      "openness": 0.3437577,
+      "localY": 1.37503076
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 472,
+      "seconds": 1.46833611,
+      "openness": 0.335085154,
+      "localY": 1.34034061
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 472,
+      "seconds": 1.46833611,
+      "openness": 0.335085154,
+      "localY": 1.34034061
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 473,
+      "seconds": 1.48693752,
+      "openness": 0.324082077,
+      "localY": 1.29632831
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 473,
+      "seconds": 1.48693752,
+      "openness": 0.324082077,
+      "localY": 1.29632831
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 474,
+      "seconds": 1.5066328,
+      "openness": 0.3125258,
+      "localY": 1.25010324
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 474,
+      "seconds": 1.5066328,
+      "openness": 0.3125258,
+      "localY": 1.25010324
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 475,
+      "seconds": 1.52566528,
+      "openness": 0.3014561,
+      "localY": 1.20582438
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 475,
+      "seconds": 1.52566528,
+      "openness": 0.3014561,
+      "localY": 1.20582438
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 476,
+      "seconds": 1.55014324,
+      "openness": 0.287371278,
+      "localY": 1.14948511
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 476,
+      "seconds": 1.55014324,
+      "openness": 0.287371278,
+      "localY": 1.14948511
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 477,
+      "seconds": 1.56878471,
+      "openness": 0.276766181,
+      "localY": 1.10706472
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 477,
+      "seconds": 1.56878471,
+      "openness": 0.276766181,
+      "localY": 1.10706472
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 478,
+      "seconds": 1.58969116,
+      "openness": 0.265005,
+      "localY": 1.06002
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 478,
+      "seconds": 1.58969116,
+      "openness": 0.265005,
+      "localY": 1.06002
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 479,
+      "seconds": 1.613924,
+      "openness": 0.2515579,
+      "localY": 1.00623155
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 479,
+      "seconds": 1.613924,
+      "openness": 0.2515579,
+      "localY": 1.00623155
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 480,
+      "seconds": 1.63146782,
+      "openness": 0.24195379,
+      "localY": 0.967815161
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 480,
+      "seconds": 1.63146782,
+      "openness": 0.24195379,
+      "localY": 0.967815161
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 481,
+      "seconds": 1.65160179,
+      "openness": 0.231073678,
+      "localY": 0.9242947
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 481,
+      "seconds": 1.65160179,
+      "openness": 0.231073678,
+      "localY": 0.9242947
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 482,
+      "seconds": 1.67527485,
+      "openness": 0.218485177,
+      "localY": 0.8739407
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 482,
+      "seconds": 1.67527485,
+      "openness": 0.218485177,
+      "localY": 0.8739407
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 483,
+      "seconds": 1.69407082,
+      "openness": 0.2086547,
+      "localY": 0.8346188
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 483,
+      "seconds": 1.69407082,
+      "openness": 0.2086547,
+      "localY": 0.8346188
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 484,
+      "seconds": 1.71397781,
+      "openness": 0.19840771,
+      "localY": 0.793630838
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 484,
+      "seconds": 1.71397781,
+      "openness": 0.19840771,
+      "localY": 0.793630838
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 485,
+      "seconds": 1.73255539,
+      "openness": 0.189004838,
+      "localY": 0.756019354
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 485,
+      "seconds": 1.73255539,
+      "openness": 0.189004838,
+      "localY": 0.756019354
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 486,
+      "seconds": 1.75414181,
+      "openness": 0.1782797,
+      "localY": 0.7131188
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 486,
+      "seconds": 1.75414181,
+      "openness": 0.1782797,
+      "localY": 0.7131188
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 487,
+      "seconds": 1.78253937,
+      "openness": 0.164513528,
+      "localY": 0.6580541
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 487,
+      "seconds": 1.78253937,
+      "openness": 0.164513528,
+      "localY": 0.6580541
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 488,
+      "seconds": 1.80019665,
+      "openness": 0.15615803,
+      "localY": 0.6246321
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 488,
+      "seconds": 1.80019665,
+      "openness": 0.15615803,
+      "localY": 0.6246321
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 489,
+      "seconds": 1.8174324,
+      "openness": 0.14815861,
+      "localY": 0.592634439
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 489,
+      "seconds": 1.8174324,
+      "openness": 0.14815861,
+      "localY": 0.592634439
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 490,
+      "seconds": 1.838171,
+      "openness": 0.13874495,
+      "localY": 0.5549798
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 490,
+      "seconds": 1.838171,
+      "openness": 0.13874495,
+      "localY": 0.5549798
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 491,
+      "seconds": 1.86409378,
+      "openness": 0.1273138,
+      "localY": 0.5092552
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 491,
+      "seconds": 1.86409378,
+      "openness": 0.1273138,
+      "localY": 0.5092552
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 492,
+      "seconds": 1.882596,
+      "openness": 0.119391024,
+      "localY": 0.4775641
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 492,
+      "seconds": 1.882596,
+      "openness": 0.119391024,
+      "localY": 0.4775641
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 493,
+      "seconds": 1.90098381,
+      "openness": 0.111718535,
+      "localY": 0.446874142
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 493,
+      "seconds": 1.90098381,
+      "openness": 0.111718535,
+      "localY": 0.446874142
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 494,
+      "seconds": 1.92226791,
+      "openness": 0.1030944,
+      "localY": 0.4123776
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 494,
+      "seconds": 1.92226791,
+      "openness": 0.1030944,
+      "localY": 0.4123776
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 495,
+      "seconds": 1.94536781,
+      "openness": 0.09405643,
+      "localY": 0.3762257
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 495,
+      "seconds": 1.94536781,
+      "openness": 0.09405643,
+      "localY": 0.3762257
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 496,
+      "seconds": 1.9624958,
+      "openness": 0.087577045,
+      "localY": 0.35030818
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 496,
+      "seconds": 1.9624958,
+      "openness": 0.087577045,
+      "localY": 0.35030818
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 497,
+      "seconds": 1.984128,
+      "openness": 0.07967216,
+      "localY": 0.318688631
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 497,
+      "seconds": 1.984128,
+      "openness": 0.07967216,
+      "localY": 0.318688631
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 498,
+      "seconds": 2.003521,
+      "openness": 0.07285589,
+      "localY": 0.291423559
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 498,
+      "seconds": 2.003521,
+      "openness": 0.07285589,
+      "localY": 0.291423559
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 499,
+      "seconds": 2.02497959,
+      "openness": 0.06561947,
+      "localY": 0.262477875
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 499,
+      "seconds": 2.02497959,
+      "openness": 0.06561947,
+      "localY": 0.262477875
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 500,
+      "seconds": 2.04622459,
+      "openness": 0.0587800741,
+      "localY": 0.2351203
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 500,
+      "seconds": 2.04622459,
+      "openness": 0.0587800741,
+      "localY": 0.2351203
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 501,
+      "seconds": 2.06615162,
+      "openness": 0.05266601,
+      "localY": 0.210664034
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 501,
+      "seconds": 2.06615162,
+      "openness": 0.05266601,
+      "localY": 0.210664034
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 502,
+      "seconds": 2.087041,
+      "openness": 0.0465775132,
+      "localY": 0.186310053
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 502,
+      "seconds": 2.087041,
+      "openness": 0.0465775132,
+      "localY": 0.186310053
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 503,
+      "seconds": 2.11111355,
+      "openness": 0.0399782062,
+      "localY": 0.159912825
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 503,
+      "seconds": 2.11111355,
+      "openness": 0.0399782062,
+      "localY": 0.159912825
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 504,
+      "seconds": 2.128601,
+      "openness": 0.0354710221,
+      "localY": 0.141884089
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 504,
+      "seconds": 2.128601,
+      "openness": 0.0354710221,
+      "localY": 0.141884089
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 505,
+      "seconds": 2.15140915,
+      "openness": 0.029963553,
+      "localY": 0.119854212
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 505,
+      "seconds": 2.15140915,
+      "openness": 0.029963553,
+      "localY": 0.119854212
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 506,
+      "seconds": 2.17128372,
+      "openness": 0.0255143642,
+      "localY": 0.102057457
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 506,
+      "seconds": 2.17128372,
+      "openness": 0.0255143642,
+      "localY": 0.102057457
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 507,
+      "seconds": 2.19071865,
+      "openness": 0.0214856863,
+      "localY": 0.0859427452
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 507,
+      "seconds": 2.19071865,
+      "openness": 0.0214856863,
+      "localY": 0.0859427452
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 508,
+      "seconds": 2.214384,
+      "openness": 0.0170191526,
+      "localY": 0.06807661
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 508,
+      "seconds": 2.214384,
+      "openness": 0.0170191526,
+      "localY": 0.06807661
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 509,
+      "seconds": 2.23263836,
+      "openness": 0.0139102936,
+      "localY": 0.0556411743
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 509,
+      "seconds": 2.23263836,
+      "openness": 0.0139102936,
+      "localY": 0.0556411743
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 510,
+      "seconds": 2.253996,
+      "openness": 0.0106524825,
+      "localY": 0.04260993
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 510,
+      "seconds": 2.253996,
+      "openness": 0.0106524825,
+      "localY": 0.04260993
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 511,
+      "seconds": 2.27646732,
+      "openness": 0.00767529,
+      "localY": 0.03070116
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 511,
+      "seconds": 2.27646732,
+      "openness": 0.00767529,
+      "localY": 0.03070116
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 512,
+      "seconds": 2.29578686,
+      "openness": 0.005492747,
+      "localY": 0.0219709873
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 512,
+      "seconds": 2.29578686,
+      "openness": 0.005492747,
+      "localY": 0.0219709873
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 513,
+      "seconds": 2.31583118,
+      "openness": 0.0036034584,
+      "localY": 0.0144138336
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 513,
+      "seconds": 2.31583118,
+      "openness": 0.0036034584,
+      "localY": 0.0144138336
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 514,
+      "seconds": 2.33832073,
+      "openness": 0.00194746256,
+      "localY": 0.00778985023
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 514,
+      "seconds": 2.33832073,
+      "openness": 0.00194746256,
+      "localY": 0.00778985023
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 515,
+      "seconds": 2.35729122,
+      "openness": 0.000938713551,
+      "localY": 0.0037548542
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 515,
+      "seconds": 2.35729122,
+      "openness": 0.000938713551,
+      "localY": 0.0037548542
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 516,
+      "seconds": 2.37761021,
+      "openness": 0.000259459019,
+      "localY": 0.00103783607
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 516,
+      "seconds": 2.37761021,
+      "openness": 0.000259459019,
+      "localY": 0.00103783607
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 517,
+      "seconds": 2.39845276,
+      "openness": 1.25169754E-06,
+      "localY": 5.00679E-06
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 517,
+      "seconds": 2.39845276,
+      "openness": 1.25169754E-06,
+      "localY": 5.00679E-06
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "closing",
+      "frame": 518,
+      "seconds": 2.41914272,
+      "openness": 0.0,
+      "localY": 0.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "closing",
+      "frame": 518,
+      "seconds": 2.41914272,
+      "openness": 0.0,
+      "localY": 0.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 519,
+      "seconds": 2.44298267,
+      "openness": 0.000294043159,
+      "localY": 0.00117617263
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 519,
+      "seconds": 2.44298267,
+      "openness": 0.000294043159,
+      "localY": 0.00117617263
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 520,
+      "seconds": 2.46099663,
+      "openness": 0.0009017662,
+      "localY": 0.00360706472
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 520,
+      "seconds": 2.46099663,
+      "openness": 0.0009017662,
+      "localY": 0.00360706472
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 521,
+      "seconds": 2.48292542,
+      "openness": 0.002081304,
+      "localY": 0.008325216
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 521,
+      "seconds": 2.48292542,
+      "openness": 0.002081304,
+      "localY": 0.008325216
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 522,
+      "seconds": 2.50333118,
+      "openness": 0.003605175,
+      "localY": 0.0144207
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 522,
+      "seconds": 2.50333118,
+      "openness": 0.003605175,
+      "localY": 0.0144207
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 523,
+      "seconds": 2.52598286,
+      "openness": 0.00576877128,
+      "localY": 0.0230750851
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 523,
+      "seconds": 2.52598286,
+      "openness": 0.00576877128,
+      "localY": 0.0230750851
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 524,
+      "seconds": 2.54778862,
+      "openness": 0.008311608,
+      "localY": 0.03324643
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 524,
+      "seconds": 2.54778862,
+      "openness": 0.008311608,
+      "localY": 0.03324643
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 525,
+      "seconds": 2.56582069,
+      "openness": 0.010748894,
+      "localY": 0.0429955758
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 525,
+      "seconds": 2.56582069,
+      "openness": 0.010748894,
+      "localY": 0.0429955758
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 526,
+      "seconds": 2.58840179,
+      "openness": 0.0142196435,
+      "localY": 0.0568785742
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 526,
+      "seconds": 2.58840179,
+      "openness": 0.0142196435,
+      "localY": 0.0568785742
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 527,
+      "seconds": 2.61033344,
+      "openness": 0.0180274453,
+      "localY": 0.07210978
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 527,
+      "seconds": 2.61033344,
+      "openness": 0.0180274453,
+      "localY": 0.07210978
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 528,
+      "seconds": 2.63107681,
+      "openness": 0.0220166743,
+      "localY": 0.0880667
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 528,
+      "seconds": 2.63107681,
+      "openness": 0.0220166743,
+      "localY": 0.0880667
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 529,
+      "seconds": 2.65234184,
+      "openness": 0.0264891982,
+      "localY": 0.105956793
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 529,
+      "seconds": 2.65234184,
+      "openness": 0.0264891982,
+      "localY": 0.105956793
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 530,
+      "seconds": 2.67554569,
+      "openness": 0.0318021141,
+      "localY": 0.127208456
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 530,
+      "seconds": 2.67554569,
+      "openness": 0.0318021141,
+      "localY": 0.127208456
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 531,
+      "seconds": 2.691702,
+      "openness": 0.03576263,
+      "localY": 0.143050522
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 531,
+      "seconds": 2.691702,
+      "openness": 0.03576263,
+      "localY": 0.143050522
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 532,
+      "seconds": 2.71261883,
+      "openness": 0.04120147,
+      "localY": 0.164805874
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 532,
+      "seconds": 2.71261883,
+      "openness": 0.04120147,
+      "localY": 0.164805874
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 533,
+      "seconds": 2.73360062,
+      "openness": 0.0470033661,
+      "localY": 0.188013464
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 533,
+      "seconds": 2.73360062,
+      "openness": 0.0470033661,
+      "localY": 0.188013464
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 534,
+      "seconds": 2.75390434,
+      "openness": 0.05293973,
+      "localY": 0.211758927
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 534,
+      "seconds": 2.75390434,
+      "openness": 0.05293973,
+      "localY": 0.211758927
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 535,
+      "seconds": 2.776968,
+      "openness": 0.06005859,
+      "localY": 0.24023436
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 535,
+      "seconds": 2.776968,
+      "openness": 0.06005859,
+      "localY": 0.24023436
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 536,
+      "seconds": 2.79700851,
+      "openness": 0.06656042,
+      "localY": 0.26624167
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 536,
+      "seconds": 2.79700851,
+      "openness": 0.06656042,
+      "localY": 0.26624167
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 537,
+      "seconds": 2.81627083,
+      "openness": 0.07307987,
+      "localY": 0.292319477
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 537,
+      "seconds": 2.81627083,
+      "openness": 0.07307987,
+      "localY": 0.292319477
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 538,
+      "seconds": 2.8372364,
+      "openness": 0.08046937,
+      "localY": 0.32187748
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 538,
+      "seconds": 2.8372364,
+      "openness": 0.08046937,
+      "localY": 0.32187748
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 539,
+      "seconds": 2.860093,
+      "openness": 0.0888652056,
+      "localY": 0.355460823
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 539,
+      "seconds": 2.860093,
+      "openness": 0.0888652056,
+      "localY": 0.355460823
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 540,
+      "seconds": 2.87951946,
+      "openness": 0.0962722,
+      "localY": 0.3850888
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 540,
+      "seconds": 2.87951946,
+      "openness": 0.0962722,
+      "localY": 0.3850888
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 541,
+      "seconds": 2.90312862,
+      "openness": 0.1055992,
+      "localY": 0.4223968
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 541,
+      "seconds": 2.90312862,
+      "openness": 0.1055992,
+      "localY": 0.4223968
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 542,
+      "seconds": 2.92293644,
+      "openness": 0.11369238,
+      "localY": 0.454769522
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 542,
+      "seconds": 2.92293644,
+      "openness": 0.11369238,
+      "localY": 0.454769522
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 543,
+      "seconds": 2.94615746,
+      "openness": 0.123481467,
+      "localY": 0.493925869
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 543,
+      "seconds": 2.94615746,
+      "openness": 0.123481467,
+      "localY": 0.493925869
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 544,
+      "seconds": 2.96495152,
+      "openness": 0.131635711,
+      "localY": 0.526542842
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 544,
+      "seconds": 2.96495152,
+      "openness": 0.131635711,
+      "localY": 0.526542842
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 545,
+      "seconds": 2.98810863,
+      "openness": 0.1419578,
+      "localY": 0.5678312
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 545,
+      "seconds": 2.98810863,
+      "openness": 0.1419578,
+      "localY": 0.5678312
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 546,
+      "seconds": 3.00608921,
+      "openness": 0.150176033,
+      "localY": 0.600704134
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 546,
+      "seconds": 3.00608921,
+      "openness": 0.150176033,
+      "localY": 0.600704134
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 547,
+      "seconds": 3.029749,
+      "openness": 0.1612509,
+      "localY": 0.6450036
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 547,
+      "seconds": 3.029749,
+      "openness": 0.1612509,
+      "localY": 0.6450036
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 548,
+      "seconds": 3.048852,
+      "openness": 0.17040202,
+      "localY": 0.6816081
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 548,
+      "seconds": 3.048852,
+      "openness": 0.17040202,
+      "localY": 0.6816081
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 549,
+      "seconds": 3.07218742,
+      "openness": 0.181825623,
+      "localY": 0.7273025
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 549,
+      "seconds": 3.07218742,
+      "openness": 0.181825623,
+      "localY": 0.7273025
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 550,
+      "seconds": 3.0959177,
+      "openness": 0.193707839,
+      "localY": 0.774831355
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 550,
+      "seconds": 3.0959177,
+      "openness": 0.193707839,
+      "localY": 0.774831355
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 551,
+      "seconds": 3.113206,
+      "openness": 0.202525973,
+      "localY": 0.8101039
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 551,
+      "seconds": 3.113206,
+      "openness": 0.202525973,
+      "localY": 0.8101039
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 552,
+      "seconds": 3.13371849,
+      "openness": 0.213158309,
+      "localY": 0.852633238
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 552,
+      "seconds": 3.13371849,
+      "openness": 0.213158309,
+      "localY": 0.852633238
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 553,
+      "seconds": 3.15366554,
+      "openness": 0.223668084,
+      "localY": 0.894672334
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 553,
+      "seconds": 3.15366554,
+      "openness": 0.223668084,
+      "localY": 0.894672334
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 554,
+      "seconds": 3.17213631,
+      "openness": 0.2335434,
+      "localY": 0.9341736
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 554,
+      "seconds": 3.17213631,
+      "openness": 0.2335434,
+      "localY": 0.9341736
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 555,
+      "seconds": 3.192957,
+      "openness": 0.244832978,
+      "localY": 0.9793319
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 555,
+      "seconds": 3.192957,
+      "openness": 0.244832978,
+      "localY": 0.9793319
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 556,
+      "seconds": 3.21903324,
+      "openness": 0.2591985,
+      "localY": 1.036794
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 556,
+      "seconds": 3.21903324,
+      "openness": 0.2591985,
+      "localY": 1.036794
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 557,
+      "seconds": 3.23865986,
+      "openness": 0.270166934,
+      "localY": 1.08066773
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 557,
+      "seconds": 3.23865986,
+      "openness": 0.270166934,
+      "localY": 1.08066773
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 558,
+      "seconds": 3.25856972,
+      "openness": 0.281423956,
+      "localY": 1.12569582
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 558,
+      "seconds": 3.25856972,
+      "openness": 0.281423956,
+      "localY": 1.12569582
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 559,
+      "seconds": 3.27610016,
+      "openness": 0.291438967,
+      "localY": 1.16575587
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 559,
+      "seconds": 3.27610016,
+      "openness": 0.291438967,
+      "localY": 1.16575587
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 560,
+      "seconds": 3.29731464,
+      "openness": 0.303679556,
+      "localY": 1.21471822
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 560,
+      "seconds": 3.29731464,
+      "openness": 0.303679556,
+      "localY": 1.21471822
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 561,
+      "seconds": 3.31827259,
+      "openness": 0.3158963,
+      "localY": 1.26358521
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 561,
+      "seconds": 3.31827259,
+      "openness": 0.3158963,
+      "localY": 1.26358521
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 562,
+      "seconds": 3.3409462,
+      "openness": 0.329242229,
+      "localY": 1.31696892
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 562,
+      "seconds": 3.3409462,
+      "openness": 0.329242229,
+      "localY": 1.31696892
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 563,
+      "seconds": 3.35995674,
+      "openness": 0.3405278,
+      "localY": 1.36211121
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 563,
+      "seconds": 3.35995674,
+      "openness": 0.3405278,
+      "localY": 1.36211121
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 564,
+      "seconds": 3.38108063,
+      "openness": 0.353162855,
+      "localY": 1.41265142
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 564,
+      "seconds": 3.38108063,
+      "openness": 0.353162855,
+      "localY": 1.41265142
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 565,
+      "seconds": 3.403287,
+      "openness": 0.3665451,
+      "localY": 1.46618044
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 565,
+      "seconds": 3.403287,
+      "openness": 0.3665451,
+      "localY": 1.46618044
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 566,
+      "seconds": 3.42506027,
+      "openness": 0.379756242,
+      "localY": 1.519025
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 566,
+      "seconds": 3.42506027,
+      "openness": 0.379756242,
+      "localY": 1.519025
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 567,
+      "seconds": 3.444705,
+      "openness": 0.391744077,
+      "localY": 1.56697631
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 567,
+      "seconds": 3.444705,
+      "openness": 0.391744077,
+      "localY": 1.56697631
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 568,
+      "seconds": 3.46466255,
+      "openness": 0.403983444,
+      "localY": 1.61593378
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 568,
+      "seconds": 3.46466255,
+      "openness": 0.403983444,
+      "localY": 1.61593378
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 569,
+      "seconds": 3.48504734,
+      "openness": 0.416539073,
+      "localY": 1.66615629
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 569,
+      "seconds": 3.48504734,
+      "openness": 0.416539073,
+      "localY": 1.66615629
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 570,
+      "seconds": 3.506195,
+      "openness": 0.4296162,
+      "localY": 1.71846485
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 570,
+      "seconds": 3.506195,
+      "openness": 0.4296162,
+      "localY": 1.71846485
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 571,
+      "seconds": 3.529849,
+      "openness": 0.444294155,
+      "localY": 1.77717662
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 571,
+      "seconds": 3.529849,
+      "openness": 0.444294155,
+      "localY": 1.77717662
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 572,
+      "seconds": 3.54779816,
+      "openness": 0.455461919,
+      "localY": 1.82184768
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 572,
+      "seconds": 3.54779816,
+      "openness": 0.455461919,
+      "localY": 1.82184768
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 573,
+      "seconds": 3.568719,
+      "openness": 0.468503475,
+      "localY": 1.8740139
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 573,
+      "seconds": 3.568719,
+      "openness": 0.468503475,
+      "localY": 1.8740139
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 574,
+      "seconds": 3.5918684,
+      "openness": 0.482956678,
+      "localY": 1.93182671
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 574,
+      "seconds": 3.5918684,
+      "openness": 0.482956678,
+      "localY": 1.93182671
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 575,
+      "seconds": 3.61012936,
+      "openness": 0.494366437,
+      "localY": 1.97746575
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 575,
+      "seconds": 3.61012936,
+      "openness": 0.494366437,
+      "localY": 1.97746575
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 576,
+      "seconds": 3.63545036,
+      "openness": 0.5101913,
+      "localY": 2.04076529
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 576,
+      "seconds": 3.63545036,
+      "openness": 0.5101913,
+      "localY": 2.04076529
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 577,
+      "seconds": 3.65513325,
+      "openness": 0.522487044,
+      "localY": 2.08994818
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 577,
+      "seconds": 3.65513325,
+      "openness": 0.522487044,
+      "localY": 2.08994818
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 578,
+      "seconds": 3.67445755,
+      "openness": 0.5345474,
+      "localY": 2.13818955
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 578,
+      "seconds": 3.67445755,
+      "openness": 0.5345474,
+      "localY": 2.13818955
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 579,
+      "seconds": 3.69669724,
+      "openness": 0.548403859,
+      "localY": 2.19361544
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 579,
+      "seconds": 3.69669724,
+      "openness": 0.548403859,
+      "localY": 2.19361544
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 580,
+      "seconds": 3.71809578,
+      "openness": 0.5617056,
+      "localY": 2.24682236
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 580,
+      "seconds": 3.71809578,
+      "openness": 0.5617056,
+      "localY": 2.24682236
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 581,
+      "seconds": 3.73786926,
+      "openness": 0.5739619,
+      "localY": 2.29584765
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 581,
+      "seconds": 3.73786926,
+      "openness": 0.5739619,
+      "localY": 2.29584765
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 582,
+      "seconds": 3.760295,
+      "openness": 0.587813,
+      "localY": 2.351252
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 582,
+      "seconds": 3.760295,
+      "openness": 0.587813,
+      "localY": 2.351252
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 583,
+      "seconds": 3.777525,
+      "openness": 0.5984138,
+      "localY": 2.3936553
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 583,
+      "seconds": 3.777525,
+      "openness": 0.5984138,
+      "localY": 2.3936553
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 584,
+      "seconds": 3.798787,
+      "openness": 0.6114387,
+      "localY": 2.44575477
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 584,
+      "seconds": 3.798787,
+      "openness": 0.6114387,
+      "localY": 2.44575477
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 585,
+      "seconds": 3.81961918,
+      "openness": 0.6241321,
+      "localY": 2.49652839
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 585,
+      "seconds": 3.81961918,
+      "openness": 0.6241321,
+      "localY": 2.49652839
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 586,
+      "seconds": 3.84040451,
+      "openness": 0.636721432,
+      "localY": 2.54688573
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 586,
+      "seconds": 3.84040451,
+      "openness": 0.636721432,
+      "localY": 2.54688573
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 587,
+      "seconds": 3.86140728,
+      "openness": 0.649357855,
+      "localY": 2.59743142
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 587,
+      "seconds": 3.86140728,
+      "openness": 0.649357855,
+      "localY": 2.59743142
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 588,
+      "seconds": 3.881362,
+      "openness": 0.661278665,
+      "localY": 2.64511466
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 588,
+      "seconds": 3.881362,
+      "openness": 0.661278665,
+      "localY": 2.64511466
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 589,
+      "seconds": 3.9013176,
+      "openness": 0.6731085,
+      "localY": 2.692434
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 589,
+      "seconds": 3.9013176,
+      "openness": 0.6731085,
+      "localY": 2.692434
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 590,
+      "seconds": 3.92324638,
+      "openness": 0.6859959,
+      "localY": 2.74398351
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 590,
+      "seconds": 3.92324638,
+      "openness": 0.6859959,
+      "localY": 2.74398351
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 591,
+      "seconds": 3.94376564,
+      "openness": 0.6979404,
+      "localY": 2.79176164
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 591,
+      "seconds": 3.94376564,
+      "openness": 0.6979404,
+      "localY": 2.79176164
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 592,
+      "seconds": 3.96326542,
+      "openness": 0.709180951,
+      "localY": 2.8367238
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 592,
+      "seconds": 3.96326542,
+      "openness": 0.709180951,
+      "localY": 2.8367238
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 593,
+      "seconds": 3.98478127,
+      "openness": 0.7214517,
+      "localY": 2.8858068
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 593,
+      "seconds": 3.98478127,
+      "openness": 0.7214517,
+      "localY": 2.8858068
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 594,
+      "seconds": 4.006876,
+      "openness": 0.7338998,
+      "localY": 2.935599
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 594,
+      "seconds": 4.006876,
+      "openness": 0.7338998,
+      "localY": 2.935599
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 595,
+      "seconds": 4.031249,
+      "openness": 0.7474405,
+      "localY": 2.989762
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 595,
+      "seconds": 4.031249,
+      "openness": 0.7474405,
+      "localY": 2.989762
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 596,
+      "seconds": 4.04819775,
+      "openness": 0.756732464,
+      "localY": 3.02692986
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 596,
+      "seconds": 4.04819775,
+      "openness": 0.756732464,
+      "localY": 3.02692986
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 597,
+      "seconds": 4.07446671,
+      "openness": 0.7709205,
+      "localY": 3.083682
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 597,
+      "seconds": 4.07446671,
+      "openness": 0.7709205,
+      "localY": 3.083682
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 598,
+      "seconds": 4.088275,
+      "openness": 0.778269768,
+      "localY": 3.113079
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 598,
+      "seconds": 4.088275,
+      "openness": 0.778269768,
+      "localY": 3.113079
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 599,
+      "seconds": 4.108493,
+      "openness": 0.7888903,
+      "localY": 3.15556121
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 599,
+      "seconds": 4.108493,
+      "openness": 0.7888903,
+      "localY": 3.15556121
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 600,
+      "seconds": 4.12945843,
+      "openness": 0.799720347,
+      "localY": 3.19888139
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 600,
+      "seconds": 4.12945843,
+      "openness": 0.799720347,
+      "localY": 3.19888139
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 601,
+      "seconds": 4.15037346,
+      "openness": 0.810330033,
+      "localY": 3.24132013
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 601,
+      "seconds": 4.15037346,
+      "openness": 0.810330033,
+      "localY": 3.24132013
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 602,
+      "seconds": 4.170927,
+      "openness": 0.8205599,
+      "localY": 3.28223968
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 602,
+      "seconds": 4.170927,
+      "openness": 0.8205599,
+      "localY": 3.28223968
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 603,
+      "seconds": 4.191472,
+      "openness": 0.830583155,
+      "localY": 3.32233262
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 603,
+      "seconds": 4.191472,
+      "openness": 0.830583155,
+      "localY": 3.32233262
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 604,
+      "seconds": 4.211993,
+      "openness": 0.8403852,
+      "localY": 3.36154079
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 604,
+      "seconds": 4.211993,
+      "openness": 0.8403852,
+      "localY": 3.36154079
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 605,
+      "seconds": 4.23436928,
+      "openness": 0.8508264,
+      "localY": 3.40330553
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 605,
+      "seconds": 4.23436928,
+      "openness": 0.8508264,
+      "localY": 3.40330553
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 606,
+      "seconds": 4.25339031,
+      "openness": 0.8594925,
+      "localY": 3.43797
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 606,
+      "seconds": 4.25339031,
+      "openness": 0.8594925,
+      "localY": 3.43797
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 607,
+      "seconds": 4.27434444,
+      "openness": 0.868807852,
+      "localY": 3.47523141
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 607,
+      "seconds": 4.27434444,
+      "openness": 0.868807852,
+      "localY": 3.47523141
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 608,
+      "seconds": 4.29620075,
+      "openness": 0.8782582,
+      "localY": 3.513033
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 608,
+      "seconds": 4.29620075,
+      "openness": 0.8782582,
+      "localY": 3.513033
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 609,
+      "seconds": 4.31586,
+      "openness": 0.886519432,
+      "localY": 3.54607773
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 609,
+      "seconds": 4.31586,
+      "openness": 0.886519432,
+      "localY": 3.54607773
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 610,
+      "seconds": 4.33735657,
+      "openness": 0.8952845,
+      "localY": 3.581138
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 610,
+      "seconds": 4.33735657,
+      "openness": 0.8952845,
+      "localY": 3.581138
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 611,
+      "seconds": 4.35769939,
+      "openness": 0.903314233,
+      "localY": 3.613257
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 611,
+      "seconds": 4.35769939,
+      "openness": 0.903314233,
+      "localY": 3.613257
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 612,
+      "seconds": 4.37802029,
+      "openness": 0.9110703,
+      "localY": 3.64428115
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 612,
+      "seconds": 4.37802029,
+      "openness": 0.9110703,
+      "localY": 3.64428115
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 613,
+      "seconds": 4.40014172,
+      "openness": 0.919204,
+      "localY": 3.676816
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 613,
+      "seconds": 4.40014172,
+      "openness": 0.919204,
+      "localY": 3.676816
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 614,
+      "seconds": 4.419876,
+      "openness": 0.926180363,
+      "localY": 3.70472145
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 614,
+      "seconds": 4.419876,
+      "openness": 0.926180363,
+      "localY": 3.70472145
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 615,
+      "seconds": 4.439969,
+      "openness": 0.9330053,
+      "localY": 3.732021
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 615,
+      "seconds": 4.439969,
+      "openness": 0.9330053,
+      "localY": 3.732021
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 616,
+      "seconds": 4.46042061,
+      "openness": 0.9396567,
+      "localY": 3.7586267
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 616,
+      "seconds": 4.46042061,
+      "openness": 0.9396567,
+      "localY": 3.7586267
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 617,
+      "seconds": 4.48170471,
+      "openness": 0.9462545,
+      "localY": 3.785018
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 617,
+      "seconds": 4.48170471,
+      "openness": 0.9462545,
+      "localY": 3.785018
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 618,
+      "seconds": 4.502736,
+      "openness": 0.95244056,
+      "localY": 3.80976224
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 618,
+      "seconds": 4.502736,
+      "openness": 0.95244056,
+      "localY": 3.80976224
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 619,
+      "seconds": 4.52349663,
+      "openness": 0.9582143,
+      "localY": 3.83285713
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 619,
+      "seconds": 4.52349663,
+      "openness": 0.9582143,
+      "localY": 3.83285713
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 620,
+      "seconds": 4.54495525,
+      "openness": 0.9638266,
+      "localY": 3.85530639
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 620,
+      "seconds": 4.54495525,
+      "openness": 0.9638266,
+      "localY": 3.85530639
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 621,
+      "seconds": 4.56721973,
+      "openness": 0.969258368,
+      "localY": 3.87703347
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 621,
+      "seconds": 4.56721973,
+      "openness": 0.969258368,
+      "localY": 3.87703347
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 622,
+      "seconds": 4.58587742,
+      "openness": 0.9734963,
+      "localY": 3.89398527
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 622,
+      "seconds": 4.58587742,
+      "openness": 0.9734963,
+      "localY": 3.89398527
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 623,
+      "seconds": 4.60643768,
+      "openness": 0.977827966,
+      "localY": 3.91131186
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 623,
+      "seconds": 4.60643768,
+      "openness": 0.977827966,
+      "localY": 3.91131186
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 624,
+      "seconds": 4.62730026,
+      "openness": 0.981852949,
+      "localY": 3.92741179
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 624,
+      "seconds": 4.62730026,
+      "openness": 0.981852949,
+      "localY": 3.92741179
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 625,
+      "seconds": 4.64751148,
+      "openness": 0.9853891,
+      "localY": 3.94155645
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 625,
+      "seconds": 4.64751148,
+      "openness": 0.9853891,
+      "localY": 3.94155645
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 626,
+      "seconds": 4.66904926,
+      "openness": 0.9887558,
+      "localY": 3.95502329
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 626,
+      "seconds": 4.66904926,
+      "openness": 0.9887558,
+      "localY": 3.95502329
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 627,
+      "seconds": 4.6932497,
+      "openness": 0.992033958,
+      "localY": 3.96813583
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 627,
+      "seconds": 4.6932497,
+      "openness": 0.992033958,
+      "localY": 3.96813583
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 628,
+      "seconds": 4.71138763,
+      "openness": 0.9941336,
+      "localY": 3.97653437
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 628,
+      "seconds": 4.71138763,
+      "openness": 0.9941336,
+      "localY": 3.97653437
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 629,
+      "seconds": 4.73329163,
+      "openness": 0.9962528,
+      "localY": 3.985011
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 629,
+      "seconds": 4.73329163,
+      "openness": 0.9962528,
+      "localY": 3.985011
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 630,
+      "seconds": 4.75295734,
+      "openness": 0.9977604,
+      "localY": 3.99104166
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 630,
+      "seconds": 4.75295734,
+      "openness": 0.9977604,
+      "localY": 3.99104166
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 631,
+      "seconds": 4.77378464,
+      "openness": 0.998941958,
+      "localY": 3.99576783
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 631,
+      "seconds": 4.77378464,
+      "openness": 0.998941958,
+      "localY": 3.99576783
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 632,
+      "seconds": 4.79389572,
+      "openness": 0.9996703,
+      "localY": 3.99868131
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 632,
+      "seconds": 4.79389572,
+      "openness": 0.9996703,
+      "localY": 3.99868131
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 633,
+      "seconds": 4.815093,
+      "openness": 0.9999915,
+      "localY": 3.999966
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 633,
+      "seconds": 4.815093,
+      "openness": 0.9999915,
+      "localY": 3.999966
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "opening",
+      "frame": 634,
+      "seconds": 4.835552,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "opening",
+      "frame": 634,
+      "seconds": 4.835552,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 635,
+      "seconds": 4.856365,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 635,
+      "seconds": 4.856365,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 636,
+      "seconds": 4.87699032,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 636,
+      "seconds": 4.87699032,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 637,
+      "seconds": 4.899704,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 637,
+      "seconds": 4.899704,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 638,
+      "seconds": 4.919093,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 638,
+      "seconds": 4.919093,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 639,
+      "seconds": 4.94109249,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 639,
+      "seconds": 4.94109249,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 640,
+      "seconds": 4.96067429,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 640,
+      "seconds": 4.96067429,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 641,
+      "seconds": 4.981983,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 641,
+      "seconds": 4.981983,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 642,
+      "seconds": 5.00351238,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 642,
+      "seconds": 5.00351238,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 643,
+      "seconds": 5.023054,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 643,
+      "seconds": 5.023054,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 644,
+      "seconds": 5.04491138,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 644,
+      "seconds": 5.04491138,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 645,
+      "seconds": 5.06683254,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 645,
+      "seconds": 5.06683254,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 646,
+      "seconds": 5.08568668,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 646,
+      "seconds": 5.08568668,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 647,
+      "seconds": 5.10872936,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 647,
+      "seconds": 5.10872936,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 648,
+      "seconds": 5.127784,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 648,
+      "seconds": 5.127784,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 649,
+      "seconds": 5.149953,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 649,
+      "seconds": 5.149953,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 650,
+      "seconds": 5.16987133,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 650,
+      "seconds": 5.16987133,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Arrival",
+      "phase": "settled",
+      "frame": 651,
+      "seconds": 5.19078541,
+      "openness": 1.0,
+      "localY": 4.0
+    },
+    {
+      "gate": "Gate - Forest",
+      "phase": "settled",
+      "frame": 651,
+      "seconds": 5.19078541,
+      "openness": 1.0,
+      "localY": 4.0
+    }
+  ]
+}

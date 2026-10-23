@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "framesAdvance": true,
+  "firstFrame": 1,
+  "lastFrame": 1091,
+  "elapsedGameSeconds": 14.0405178,
+  "checks": [
+    {
+      "name": "Floating lantern 07",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.08842913,
+      "rendererVisible": true
+    },
+    {
+      "name": "Floating lantern 09",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.07697068,
+      "rendererVisible": true
+    },
+    {
+      "name": "Floating lantern 11",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.0516634956,
+      "rendererVisible": true
+    },
+    {
+      "name": "Floating lantern 14",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.0826793462,
+      "rendererVisible": true
+    },
+    {
+      "name": "Floating lantern 01",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.09431951,
+      "rendererVisible": true
+    },
+    {
+      "name": "Floating lantern 02",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.08945287,
+      "rendererVisible": true
+    },
+    {
+      "name": "Floating lantern 03",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.07615913,
+      "rendererVisible": true
+    },
+    {
+      "name": "Floating lantern 04",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.03909915,
+      "rendererVisible": true
+    },
+    {
+      "name": "Floating lantern 05",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.04292257,
+      "rendererVisible": true
+    },
+    {
+      "name": "Floating lantern 06",
+      "passed": true,
+      "playing": true,
+      "legacy": true,
+      "maximumDistance": 0.04331519,
+      "rendererVisible": true
+    }
+  ],
+  "materialChecks": [
+    {
+      "name": "Soft amber mana inlay",
+      "emissionEnabled": true,
+      "peakEmission": 1.804
+    },
+    {
+      "name": "Jade lantern porcelain",
+      "emissionEnabled": true,
+      "peakEmission": 1.428
+    }
+  ],
+  "scope": "Observed automatic legacy animations during advancing Play Mode frames. Camera restored and scene not saved; no manual animation sampling."
+}

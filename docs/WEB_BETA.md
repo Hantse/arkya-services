@@ -2,12 +2,27 @@
 
 Le parcours implémenté est `connexion Discord sur le site → session Arkya → sélection du realm/personnage → ticket d’admission → île sur un dedicated Unity`. Les appels Identity, Characters et Realms utilisent les vrais services et MongoDB. Le client web ne crée pas de serveur local et ne propose pas d’entrée hors ligne. Ce guide décrit le code et sa préparation au déploiement ; il ne constitue pas une confirmation de mise en production.
 
-Le [contrat HTTP version 1](WEB_BETA_CONTRACT.md) fixe les DTO, les erreurs et les garanties de concurrence. La [configuration backend](../backend/README.md), le [guide du site](../sites/arkya/README.md) et le [déploiement des realms](REALM_DEPLOYMENT.md) complètent ce document.
+Le [contrat HTTP version 1](WEB_BETA_CONTRACT.md) conserve les DTO du parcours historique. Le [handoff StarterIsland version 2](STARTER_ISLAND_HANDOFF.md) ajoute le passage du joueur entre partitions, ses API privées et ses preuves de validation. La [configuration backend](../backend/README.md), le [guide du site](../sites/arkya/README.md) et le [déploiement des realms](REALM_DEPLOYMENT.md) complètent ce document.
+
+L'atelier actuel affiche « Un visage. Une histoire. », avec les onglets
+**Apparence** et **Nom & aventure**, les vues portrait/corps entier et un
+cadrage adapté au panneau disponible. Les palettes incluent `magenta` pour
+les cheveux et `jade` pour les étoffes ; Identity ne possède pas ces choix.
+Le client, le catalogue Characters et le dedicated doivent tous accepter
+ces identifiants avant l'activation publique de cette version.
+
+Le manifest WebGL expose `sourceRevision` lors d'un build CI. Ce SHA permet
+de reconnaître le client réellement servi ; `buildId` conserve son rôle
+de contrat réseau. Dans l'installation Admin à une seule source Argo, les
+images Unity publiées doivent être sélectionnées ensemble dans le composant
+[client statique](../backend/deploy/gitops/web-client-control/README.md) et
+le profil dedicated. La release versionnée décrite dans le guide Realms
+met à jour les realms déjà créés ; changer seulement le profil ne suffit pas.
 
 ## Parcours et autorité
 
 1. Le site vérifie sa session par `GET /v1/auth/me`, charge le vrai build et transmet la session en mémoire à `ArkyaWebSession.AcceptSiteSession`. La remise ne contient ni jeton Discord ni secret de service. Unity vérifie également la session auprès d’Identity.
-2. `CharacterCreationScreen` lit les personnages et le catalogue des realms. Characters vérifie le propriétaire, le realm, la compatibilité `protocolVersion=1` / `buildId=arkya-web-beta-v1` et délivre un ticket opaque valable au plus 60 secondes.
+2. `CharacterCreationScreen` lit les personnages et le catalogue des realms. Characters vérifie le propriétaire, le realm et la paire réseau exacte de la destination avant de délivrer un ticket opaque valable au plus 60 secondes. Les API acceptent le parcours historique `1 / arkya-web-beta-v1` et le nouveau runtime `2 / arkya-partition-handoff-v1` ; les pins WebGL déjà publiés restent historiques.
 3. `CharacterCreationFlow` charge l’île de façon additive, conserve l’UI et sa session, puis ouvre uniquement le client Netcode vers l’endpoint WSS reçu. Un retour ou une déconnexion pendant le chargement annule cette entrée. L’expiration du ticket impose une nouvelle demande ; elle ne déclenche aucun fallback local.
 4. `CharacterAdmissionRpc`, de type `IApprovalRpcCommand`, transmet le ticket avant l’entrée en jeu. Le dedicated appelle `/internal/game/admissions/consume`. Il ajoute `ConnectionApproved` seulement après validation, puis crée le ghost lorsque Netcode attribue le `NetworkId`.
 5. Le ghost reçoit l’identité et l’apparence retournées par Characters. `GhostOwner` associe la connexion à son acteur ; les RPC d’entrée ne portent aucune position ni identité de cible. Le serveur applique les séquences, bornes, déplacements, sauts, nage et collisions existants. Le client présente son acteur et les autres ghosts interpolés ; seuls l’acteur possédé et sa caméra reçoivent les entrées locales.
@@ -79,9 +94,96 @@ Pour la production, fournir les domaines/certificats réels, secrets de déploie
 
 La lease dure au plus 90 secondes et ne dépasse jamais la session Arkya. Une lease expirée ou un refus d’autorité arrête la simulation du personnage. À la reconnexion, le serveur vérifie les coordonnées sauvegardées, les replace sur le terrain ou la surface de nage et revient au point d’arrivée si la position est invalide ou obstruée. Le client ne fournit jamais cet état.
 
-Le logout du site ferme le client Unity et entraîne la fermeture de sa connexion. Characters vérifie aussi la référence hachée de session auprès d’Identity lors de la consommation du ticket, du renouvellement et de la sauvegarde. Une session révoquée est donc refusée au prochain appel, même pour un client modifié ; la libération reste possible. L’expiration absolue de session reste une borne du bail. Un crash peut perdre les changements depuis la dernière sauvegarde acceptée. La bêta ne promet ni migration multi-area de cette lease ni reprise transactionnelle de combat/inventaire.
+Une sauvegarde restaurable possède une révision strictement positive. Unity
+`JsonUtility` matérialise un `state:null` ou absent en objets de valeur zéro :
+tester uniquement la nullité envoyait les nouveaux personnages à `(0, 0)`,
+dans l'océan, au lieu de l'Anse de l'Éveil. Le serveur exige désormais cette
+révision et un emplacement dont le corps entier tient dans l'empreinte du
+terrain. Une ancienne sauvegarde à l'origine retrouve donc l'arrivée sèche,
+sans effacer le personnage ni remettre sa révision persistante à zéro. Les
+sauvegardes de nage valides à l'intérieur du terrain conservent leur position.
+
+`CharacterSpawnRulesTests` couvre ces règles et les données non finies,
+limites et obstacles. `CharacterAdmissionNetworkTests` traverse HTTP JSON,
+l'admission du vrai serveur WebSocket, la réplication vers quatre clients et
+la libération des leases. Son API est explicitement une fixture locale ; le
+test des vraies API et de leur authentification reste séparé.
+
+Le logout du site ferme le client Unity et entraîne la fermeture de sa connexion. Characters vérifie aussi la référence hachée de session auprès d’Identity lors de la consommation du ticket, du renouvellement et de la sauvegarde. Une session révoquée est donc refusée au prochain appel, même pour un client modifié ; la libération reste possible. L’expiration absolue de session reste une borne du bail. Un crash peut perdre les changements depuis la dernière sauvegarde acceptée. Le runtime version 2 ajoute un snapshot de déplacement/traversée et un transfert atomique de cette lease entre partitions StarterIsland. Le [guide de handoff](STARTER_ISLAND_HANDOFF.md) atteste un run réussi avec quatre exécutables dedicated et un client Unity Editor rendu : six handoffs et un blocage maximal mesuré de 0,43 seconde près d’une frontière. Le client natif exporté et cette nouvelle paire WebGL restent à valider. La reprise transactionnelle de combat/inventaire reste séparée.
+
+## Passage entre partitions StarterIsland
+
+Le nouveau runtime prépare une connexion Netcode cible près d'une frontière,
+conserve l'autorité source jusqu'au seal et attend le commit Characters avant
+d'activer le joueur cible. La position, l'orientation, les séquences d'entrée,
+le saut et l'état de traversée sont conservés. Le passage diagonal est résolu
+par les bornes du plan ; tant que la cible n'est pas préparée, la simulation
+reste dans les bornes source. Aucun choix d'autorité ou de position n'est reçu
+du joueur.
+
+Chaque processus récupère `GET /internal/game/topology` avec sa propre clé,
+avant sa readiness. Characters doit connaître toutes les identités, via
+`GameAccess:DedicatedServers` ou la liste finie `RealmRuntime:ServerIds`.
+Les endpoints WSS et leurs ports privés restent à provisionner. Les pools
+instances/raids restent des plans non déployables avec ce runtime d'île.
+
+Les scripts [de build isolé](../scripts/area-prototype/Build-StarterIslandPartitions.ps1)
+et [de test à quatre dedicateds](../scripts/area-prototype/Test-StarterIslandPartitions.ps1)
+utilisent les vraies API et MongoDB. Le [bilan du handoff](STARTER_ISLAND_HANDOFF.md#preuves-au-23-octobre-2026)
+rapporte sept waypoints, six handoffs dont deux en l'air, ainsi que la
+persistance et la réadmission réelles, avec quatre dedicateds et un client
+Editor rendu. Les validations historiques ci-dessous ne prouvent pas le
+parcours WebGL de cette nouvelle paire.
 
 ## Validation
+
+Le correctif de spawn `ef90ae8` passe **543 tests EditMode** et **3 tests
+PlayMode** dans la [CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/39619856892),
+dont les 29 nouvelles régressions. Le seul test ignoré reste celui exigeant
+`ARKYA_WEB_BETA_TICKETS_FILE`. Les 28 règles et le test à quatre clients
+passent également dans l'Editor via MCP. Sur le vrai Terrain chargé,
+l'absence d'état et une ancienne sauvegarde d'origine reviennent à
+`(405, 33.6876, 350)`, au-dessus du niveau marin `28`, sans collider dans le
+gabarit du personnage. La scène initiale est restaurée hors Play Mode et
+reste non modifiée. Des diagnostics Netcode de regroupement de ticks sont
+présents lors du test Editor à quatre clients ; ces contrôles ne mesurent
+pas les performances du serveur public.
+
+Les trois builds (WebGL, Windows, Dedicated Linux) et les contrôles de
+démarrage puis d'arrêt des deux images passent dans cette même CI. La
+promotion `ba8fdb2` associe les images immuables de la source `ef90ae8` ;
+le profil Admin sélectionne cette paire et porte la release de `beta-web`
+à la version `2`, depuis le dedicated `7da7ef5`. Le reconciler existant
+applique cette intention après synchronisation Argo CD.
+
+Après la sélection GitOps `dba4c5e`, le manifest public expose `ef90ae8`
+à 18:42 (Bruxelles). Les quatre payloads répondent 200 avec les bons types
+et caches, l'upgrade WSS répond 101 et le vrai WebGL affiche l'atelier
+actuel. Aucune erreur console navigateur, seul l'avertissement FSR connu.
+Les six validateurs GitOps passent hors cluster ; le hash de configuration
+change dans le template Realms, ce qui provoque son rollout sans rebuild
+des services. Le digest effectif du pod dédié et l'admission avec un
+compte Discord restent non attestés sans session Admin/joueur.
+
+Le 21 octobre 2026, la [CI Unity de `fd77651`](https://github.com/Hantse/arkya-mmorpg/actions/runs/39591280771)
+valide le checkout publié de l'atelier et de l'île : **514 tests EditMode**
+et **3 tests PlayMode** réussis, aucun échec. Le seul test EditMode ignoré
+est `CharacterRemoteNetworkTests.RealServicesAdmitTwoOwnersRejectInvalidAndReplayedTicketsAndReleaseLeases`,
+qui exige la fixture réelle `ARKYA_WEB_BETA_TICKETS_FILE`. Ces suites ne
+prouvent donc pas l'admission avec une session Discord sur le site public.
+Les trois builds (Windows, dedicated Linux et WebGL), la santé et l'arrêt
+des deux conteneurs ont ensuite réussi. Les neuf jobs sont verts ; la
+promotion Unity `aa8fbc9` publie une paire d'images issue de cette même source.
+À 15:19 (Bruxelles), le client public expose `fd77651` et affiche le nouvel
+atelier dans un vrai navigateur. Les quatre fichiers du build répondent
+HTTP 200 avec leur cache et leur type attendus ; voir la
+[vérification du client statique](../backend/deploy/gitops/web-client-control/README.md).
+Ce chargement autonome ne couvre pas l'admission avec un compte Discord.
+La gateway corrigée dans `ca2a3d3` passe 176 tests, dont le vrai pipeline
+Production derrière un proxy approuvé. Après la CI et la promotion des
+services, l'upgrade WSS public passe de HTTP 400 à **101** à 15:38, puis
+le client .NET ouvre également la connexion à 15:39. L'admission avec
+une session Discord et le digest effectif du realm restent à vérifier.
 
 État constaté le 18 octobre 2026, également consigné dans [WEB_BETA_VALIDATION.json](WEB_BETA_VALIDATION.json) :
 

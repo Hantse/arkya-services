@@ -38,7 +38,10 @@ après un checkout limité à ce dossier ; il n'a besoin d'aucun dépôt supplé
 Après les tests backend et frontend, la CI démarre également l'image Nginx de la
 vitrine en utilisateur 101 avec un système de fichiers en lecture seule. Elle
 vérifie les types MIME JavaScript et le maintien du site lorsque le serveur de
-jeu manque. Le contexte Docker contient seulement `dist/` et la configuration
+jeu manque. `scripts/ci/Test-FrontendProxy.py` vérifie aussi le vrai proxy sur
+un réseau Docker isolé : destination configurable, contenu JSON et binaire,
+types MIME, cache et suppression des cookies et du bearer vers l'upstream.
+Le contexte Docker contient seulement `dist/` et la configuration
 Nginx ; les médias Git LFS sont téléchargés et contrôlés avant le build.
 
 Sur la branche par défaut, `services-images.yml` publie
@@ -50,8 +53,12 @@ utilise cette source Git. Les preuves JSON sont conservées dans les artifacts
 utilise le `GITHUB_TOKEN` temporaire, sans secret de publication supplémentaire.
 
 L'image sert la vitrine sur le port 8080 et transmet `/game/` au service
-`arkya-web-client.arkya-realm-beta-web.svc.cluster.local:8080`, en conservant le
-chemin. Le DNS est relu à l'exécution ; un serveur de jeu absent ne bloque pas
+`ARKYA_UNITY_UPSTREAM` (`host:port`), en conservant le chemin. Le défaut est
+`arkya-web-client.arkya-realm-beta-web.svc.cluster.local:8080` pour la variante
+Unity historique ; le profil Admin sélectionne son client dans `arkya-beta`.
+Seules cette variable et `NGINX_LOCAL_RESOLVERS` sont substituées dans la
+configuration Nginx ; les variables de requête Nginx restent intactes.
+Le DNS est relu à l'exécution ; un serveur de jeu absent ne bloque pas
 le démarrage du site. Les en-têtes de cache du build Unity sont conservés ; les
 pages/scripts/configurations de la vitrine sont revalidés et ses images mises
 en cache pendant une heure. Les secrets et l'authentification restent dans les API.

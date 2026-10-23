@@ -1,0 +1,389 @@
+{
+  "success": true,
+  "marker": "Climbing ivy - painted wall gardens",
+  "generatedAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Materials/Painted sage ivy.mat",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 01 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 01 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 02 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 02 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 03 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 03 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 04 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 04 LOD1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 05 LOD0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/ClimbingPlants/Meshes/Ivy district 05 LOD1.asset"
+  ],
+  "sceneSaved": false,
+  "exteriorPatches": 20,
+  "interiorPatches": 8,
+  "leafCount": 1792,
+  "stemSegments": 868,
+  "nearTriangles": 49952,
+  "farTriangles": 26208,
+  "maximumActiveRenderersOutsideCrossfade": 5,
+  "maximumActiveRenderersDuringCrossfade": 10,
+  "lodGroupCount": 5,
+  "materialCount": 1,
+  "newColliders": 0,
+  "newLights": 0,
+  "shadowCasters": 0,
+  "paddedBoundsMeters": 0.16,
+  "windMask": "UV1.x: stems pinned at 0, leaf base 0, leaf tips 1",
+  "placement": [
+    {
+      "bay": "Curtain bay 095",
+      "side": "outside",
+      "width": 1.40083909,
+      "height": 3.94370246,
+      "center": {
+        "x": 507.5801,
+        "y": 52.39585,
+        "z": 550.567566
+      },
+      "clearanceBelowDeck": 1.73762918
+    },
+    {
+      "bay": "Curtain bay 094",
+      "side": "outside",
+      "width": 1.61556041,
+      "height": 3.24148059,
+      "center": {
+        "x": 505.4307,
+        "y": 52.22411,
+        "z": 548.628967
+      },
+      "clearanceBelowDeck": 2.26048017
+    },
+    {
+      "bay": "Curtain bay 082",
+      "side": "outside",
+      "width": 1.49221528,
+      "height": 3.995231,
+      "center": {
+        "x": 495.972778,
+        "y": 53.3077164,
+        "z": 514.0902
+      },
+      "clearanceBelowDeck": 0.799999952
+    },
+    {
+      "bay": "Curtain bay 083",
+      "side": "outside",
+      "width": 1.277494,
+      "height": 2.91704082,
+      "center": {
+        "x": 495.879028,
+        "y": 52.6883,
+        "z": 517.734863
+      },
+      "clearanceBelowDeck": 1.95850849
+    },
+    {
+      "bay": "Curtain bay 093",
+      "side": "outside",
+      "width": 1.83028162,
+      "height": 4.389259,
+      "center": {
+        "x": 503.352,
+        "y": 52.94322,
+        "z": 546.653
+      },
+      "clearanceBelowDeck": 0.967484
+    },
+    {
+      "bay": "Curtain bay 058",
+      "side": "outside",
+      "width": 2.14552522,
+      "height": 3.86149573,
+      "center": {
+        "x": 544.5878,
+        "y": 52.38205,
+        "z": 472.264832
+      },
+      "clearanceBelowDeck": 1.79253411
+    },
+    {
+      "bay": "Curtain bay 108",
+      "side": "outside",
+      "width": 1.309463,
+      "height": 3.822586,
+      "center": {
+        "x": 540.0705,
+        "y": 52.258625,
+        "z": 568.822449
+      },
+      "clearanceBelowDeck": 1.93541336
+    },
+    {
+      "bay": "Curtain bay 109",
+      "side": "outside",
+      "width": 1.9947418,
+      "height": 4.524808,
+      "center": {
+        "x": 542.762146,
+        "y": 52.8974762,
+        "z": 569.5401
+      },
+      "clearanceBelowDeck": 0.9454527
+    },
+    {
+      "bay": "Curtain bay 107",
+      "side": "outside",
+      "width": 1.52418423,
+      "height": 3.12036419,
+      "center": {
+        "x": 537.366455,
+        "y": 51.6246262,
+        "z": 568.079041
+      },
+      "clearanceBelowDeck": 2.92052174
+    },
+    {
+      "bay": "Curtain bay 110",
+      "side": "outside",
+      "width": 1.78002059,
+      "height": 3.37702966,
+      "center": {
+        "x": 545.4359,
+        "y": 52.59922,
+        "z": 570.24
+      },
+      "clearanceBelowDeck": 1.8175962
+    },
+    {
+      "bay": "Curtain bay 059",
+      "side": "outside",
+      "width": 1.93080389,
+      "height": 4.56371737,
+      "center": {
+        "x": 541.555969,
+        "y": 52.86666,
+        "z": 472.222046
+      },
+      "clearanceBelowDeck": 0.956813335
+    },
+    {
+      "bay": "Curtain bay 106",
+      "side": "outside",
+      "width": 1.73890555,
+      "height": 4.2681427,
+      "center": {
+        "x": 534.6554,
+        "y": 51.95043,
+        "z": 567.3017
+      },
+      "clearanceBelowDeck": 2.02082825
+    },
+    {
+      "bay": "Curtain bay 079",
+      "side": "outside",
+      "width": 2.136379,
+      "height": 3.80815363,
+      "center": {
+        "x": 497.8583,
+        "y": 53.06147,
+        "z": 505.144318
+      },
+      "clearanceBelowDeck": 1.13978338
+    },
+    {
+      "bay": "Curtain bay 060",
+      "side": "outside",
+      "width": 1.71608257,
+      "height": 3.41593933,
+      "center": {
+        "x": 538.5041,
+        "y": 52.3504372,
+        "z": 472.241119
+      },
+      "clearanceBelowDeck": 2.04692459
+    },
+    {
+      "bay": "Curtain bay 020",
+      "side": "outside",
+      "width": 1.30493224,
+      "height": 3.077067,
+      "center": {
+        "x": 596.060364,
+        "y": 53.6788979,
+        "z": 547.7401
+      },
+      "clearanceBelowDeck": 0.8878987
+    },
+    {
+      "bay": "Curtain bay 046",
+      "side": "outside",
+      "width": 2.02218,
+      "height": 2.83483386,
+      "center": {
+        "x": 578.494446,
+        "y": 50.3034935,
+        "z": 478.331757
+      },
+      "clearanceBelowDeck": 4.38441944
+    },
+    {
+      "bay": "Curtain bay 061",
+      "side": "outside",
+      "width": 1.50136137,
+      "height": 4.118161,
+      "center": {
+        "x": 535.429,
+        "y": 52.67504,
+        "z": 472.339874
+      },
+      "clearanceBelowDeck": 1.371211
+    },
+    {
+      "bay": "Curtain bay 038",
+      "side": "outside",
+      "width": 1.93995,
+      "height": 4.61705971,
+      "center": {
+        "x": 594.057251,
+        "y": 51.7398758,
+        "z": 495.809174
+      },
+      "clearanceBelowDeck": 2.05692482
+    },
+    {
+      "bay": "Curtain bay 062",
+      "side": "outside",
+      "width": 1.28664,
+      "height": 2.970383,
+      "center": {
+        "x": 532.386169,
+        "y": 52.0051079,
+        "z": 472.473358
+      },
+      "clearanceBelowDeck": 2.615032
+    },
+    {
+      "bay": "Curtain bay 051",
+      "side": "outside",
+      "width": 1.8485738,
+      "height": 4.495943,
+      "center": {
+        "x": 564.9335,
+        "y": 51.3237457,
+        "z": 474.6643
+      },
+      "clearanceBelowDeck": 2.5336132
+    },
+    {
+      "bay": "Curtain bay 062",
+      "side": "courtyard",
+      "width": 1.33681381,
+      "height": 2.62500048,
+      "center": {
+        "x": 532.5809,
+        "y": 51.7669067,
+        "z": 477.169342
+      },
+      "clearanceBelowDeck": 3.02592421
+    },
+    {
+      "bay": "Curtain bay 037",
+      "side": "courtyard",
+      "width": 1.30484486,
+      "height": 3.212094,
+      "center": {
+        "x": 591.7705,
+        "y": 51.63101,
+        "z": 500.787
+      },
+      "clearanceBelowDeck": 2.86827779
+    },
+    {
+      "bay": "Curtain bay 038",
+      "side": "courtyard",
+      "width": 1.99012363,
+      "height": 2.4986105,
+      "center": {
+        "x": 590.2091,
+        "y": 50.9858,
+        "z": 498.5076
+      },
+      "clearanceBelowDeck": 3.870225
+    },
+    {
+      "bay": "Curtain bay 051",
+      "side": "courtyard",
+      "width": 1.89874756,
+      "height": 2.42332172,
+      "center": {
+        "x": 563.9391,
+        "y": 50.2943726,
+        "z": 479.257935
+      },
+      "clearanceBelowDeck": 4.59929943
+    },
+    {
+      "bay": "Curtain bay 050",
+      "side": "courtyard",
+      "width": 2.113469,
+      "height": 3.13680553,
+      "center": {
+        "x": 566.609558,
+        "y": 50.55181,
+        "z": 479.8552
+      },
+      "clearanceBelowDeck": 3.985116
+    },
+    {
+      "bay": "Curtain bay 061",
+      "side": "courtyard",
+      "width": 1.551535,
+      "height": 3.33848429,
+      "center": {
+        "x": 535.646667,
+        "y": 52.15743,
+        "z": 477.034821
+      },
+      "clearanceBelowDeck": 2.27866125
+    },
+    {
+      "bay": "Curtain bay 103",
+      "side": "courtyard",
+      "width": 1.533243,
+      "height": 3.27216721,
+      "center": {
+        "x": 528.109558,
+        "y": 51.41616,
+        "z": 560.2568
+      },
+      "clearanceBelowDeck": 3.05308914
+    },
+    {
+      "bay": "Curtain bay 102",
+      "side": "courtyard",
+      "width": 1.74796426,
+      "height": 2.835651,
+      "center": {
+        "x": 526.2618,
+        "y": 51.2055054,
+        "z": 559.280945
+      },
+      "clearanceBelowDeck": 3.481999
+    }
+  ],
+  "palette": "Deep green, moss and sage; shaped five-lobed leaves with painted vertex gradients and curved front / back surfaces.",
+  "validation": {
+    "success": true,
+    "nearTriangles": 49952,
+    "farTriangles": 26208,
+    "totalStoredRenderers": 10,
+    "maximumActiveRenderersOutsideCrossfade": 5,
+    "lodGroups": 5,
+    "windWeightsValid": true,
+    "paddedBoundsValid": true,
+    "materialsAndWindValid": true,
+    "newColliders": 0,
+    "newLights": 0,
+    "shadowCasters": 0,
+    "runtimeScriptsOrMissingScripts": 0,
+    "lodsValid": true
+  },
+  "preserved": "Terrain, masonry, vendor/source assets, gate openings, stairs, wall walk, collision and runtime managers."
+}

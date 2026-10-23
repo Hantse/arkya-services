@@ -1,0 +1,323 @@
+{
+  "success": true,
+  "utc": "2026-10-20T11:53:32.8565628Z",
+  "checks": 28,
+  "passed": 28,
+  "failures": [],
+  "details": [
+    {
+      "name": "transforms preserved outside the two stairs and declared visual changes",
+      "pass": true,
+      "detail": {
+        "before": 30202,
+        "after": 30269,
+        "altered": 0,
+        "missing": 0,
+        "unexpectedNew": 0,
+        "examples": []
+      }
+    },
+    {
+      "name": "filters preserved outside the two stairs and declared visual changes",
+      "pass": true,
+      "detail": {
+        "before": 18227,
+        "after": 18265,
+        "altered": 0,
+        "missing": 0,
+        "unexpectedNew": 0,
+        "examples": []
+      }
+    },
+    {
+      "name": "renderers preserved outside the two stairs and declared visual changes",
+      "pass": true,
+      "detail": {
+        "before": 18261,
+        "after": 18299,
+        "altered": 0,
+        "missing": 0,
+        "unexpectedNew": 0,
+        "examples": []
+      }
+    },
+    {
+      "name": "West stair root transform retained",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "West wall-walk connection marker retained",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "East stair root transform retained",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "East wall-walk connection marker retained",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "All collider shapes and properties outside the two stair roots preserved",
+      "pass": true,
+      "detail": {
+        "before": 2497,
+        "after": 2499,
+        "retained": 2175
+      }
+    },
+    {
+      "name": "All scene light settings preserved",
+      "pass": true,
+      "detail": {
+        "before": 26,
+        "after": 26
+      }
+    },
+    {
+      "name": "Terrain heights preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Terrain paint preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Previously referenced town mesh and material asset bytes preserved",
+      "pass": true,
+      "detail": {
+        "checkedAssets": 441,
+        "changedSources": []
+      }
+    },
+    {
+      "name": "No missing scripts",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "No missing or unsupported enclosure materials",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "Previous ivy retained and inactive",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Sculpted wall masonry - painted stone volumes active",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Sculpted wall masonry - painted stone volumes LOD budget",
+      "pass": true,
+      "detail": {
+        "groups": 12,
+        "renderers": 24,
+        "nearTriangles": 134859,
+        "farTriangles": 44953,
+        "materials": 1
+      }
+    },
+    {
+      "name": "Sculpted wall masonry - painted stone volumes adds no collision, lights or behaviours",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Spreading ivy - irregular wall carpets active",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Spreading ivy - irregular wall carpets LOD budget",
+      "pass": true,
+      "detail": {
+        "groups": 5,
+        "renderers": 10,
+        "nearTriangles": 69744,
+        "farTriangles": 32732,
+        "materials": 1
+      }
+    },
+    {
+      "name": "Spreading ivy - irregular wall carpets adds no collision, lights or behaviours",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Ivy shares one supported foliage material",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Ivy adds no shadow casters",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "West old stair geometry archived",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "West real horizontal treads and vertical risers",
+      "pass": true,
+      "detail": {
+        "side": "West",
+        "meshColliders": 1,
+        "collisionTriangles": 360,
+        "inclinedCollisionTriangles": 0,
+        "missingMeshes": []
+      }
+    },
+    {
+      "name": "East old stair geometry archived",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "East real horizontal treads and vertical risers",
+      "pass": true,
+      "detail": {
+        "side": "East",
+        "meshColliders": 1,
+        "collisionTriangles": 396,
+        "inclinedCollisionTriangles": 0,
+        "missingMeshes": []
+      }
+    },
+    {
+      "name": "Scene dirty flag unchanged by validation",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "changes": [
+    {
+      "kind": "Old accent mesh removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 0 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_0_-_Sun_worn_pale_limestone_Natural.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Wall sector 0 - Sun worn pale limestone - retained architecture.asset"
+    },
+    {
+      "kind": "Old accent mesh removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 1 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_1_-_Sun_worn_pale_limestone_Natural.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Wall sector 1 - Sun worn pale limestone - retained architecture.asset"
+    },
+    {
+      "kind": "Old accent mesh removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 2 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_2_-_Sun_worn_pale_limestone_Natural.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Wall sector 2 - Sun worn pale limestone - retained architecture.asset"
+    },
+    {
+      "kind": "Old accent mesh removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 3 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_3_-_Sun_worn_pale_limestone_Natural.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Wall sector 3 - Sun worn pale limestone - retained architecture.asset"
+    },
+    {
+      "kind": "Old accent mesh removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 4 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_4_-_Sun_worn_pale_limestone_Natural.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Wall sector 4 - Sun worn pale limestone - retained architecture.asset"
+    },
+    {
+      "kind": "Old accent mesh removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 5 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_5_-_Sun_worn_pale_limestone_Natural.asset",
+      "destination": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Wall sector 5 - Sun worn pale limestone - retained architecture.asset"
+    },
+    {
+      "kind": "Old accent material slot removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 0 - Sun worn pale limestone"
+    },
+    {
+      "kind": "Old accent material slot removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 1 - Sun worn pale limestone"
+    },
+    {
+      "kind": "Old accent material slot removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 2 - Sun worn pale limestone"
+    },
+    {
+      "kind": "Old accent material slot removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 3 - Sun worn pale limestone"
+    },
+    {
+      "kind": "Old accent material slot removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 4 - Sun worn pale limestone"
+    },
+    {
+      "kind": "Old accent material slot removed",
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 5 - Sun worn pale limestone"
+    }
+  ],
+  "stoneBudget": {
+    "groups": 12,
+    "renderers": 24,
+    "nearTriangles": 134859,
+    "farTriangles": 44953,
+    "materials": 1
+  },
+  "plantBudget": {
+    "groups": 5,
+    "renderers": 10,
+    "nearTriangles": 69744,
+    "farTriangles": 32732,
+    "materials": 1
+  },
+  "stairDetails": [
+    {
+      "side": "West",
+      "meshColliders": 1,
+      "collisionTriangles": 360,
+      "inclinedCollisionTriangles": 0,
+      "missingMeshes": []
+    },
+    {
+      "side": "East",
+      "meshColliders": 1,
+      "collisionTriangles": 396,
+      "inclinedCollisionTriangles": 0,
+      "missingMeshes": []
+    }
+  ],
+  "enclosureBefore": {
+    "renderers": 179,
+    "activeRenderers": 147,
+    "trianglesAllLods": 329510,
+    "trianglesHighestLods": 195450,
+    "materials": 21,
+    "lodGroups": 15,
+    "lights": 4,
+    "colliders": 1045,
+    "invalidMaterials": 0
+  },
+  "enclosureAfter": {
+    "renderers": 217,
+    "activeRenderers": 167,
+    "trianglesAllLods": 613024,
+    "trianglesHighestLods": 320553,
+    "materials": 23,
+    "lodGroups": 32,
+    "lights": 4,
+    "colliders": 1047,
+    "invalidMaterials": 0
+  },
+  "invariantSnapshots": {
+    "before": "..\\..\\..\\..\\..\\artifacts\\wall-depth-spread-2026-10-20\\invariants-before.json.gz",
+    "after": "..\\..\\..\\..\\..\\artifacts\\wall-depth-spread-2026-10-20\\invariants-after.json.gz"
+  },
+  "scope": "Scene invariants, rendering budgets and explicit stepped collision. Stair contact, headroom and server traversal are validated separately by the authoring/traversal helpers. No scene save, asset edit or Undo operation."
+}

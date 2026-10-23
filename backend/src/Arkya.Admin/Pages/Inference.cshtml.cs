@@ -12,12 +12,29 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
     [BindProperty] public AgentInput Input { get; set; } = new();
     public InferenceAgentSummary[] Agents { get; private set; } = [];
     public CreateInferenceAgentResponse? Created { get; private set; }
+    public InferenceEnrollmentGrantResponse? InstallationGrant { get; private set; }
+    public InferenceModelOption[] Models { get; private set; } = [];
+    public bool ModelsLoaded { get; private set; }
     public bool Enabled => inference.Enabled;
     public bool Loaded { get; private set; }
     public string? Error { get; private set; }
     [TempData] public string? Notice { get; set; }
 
     public async Task OnGetAsync(CancellationToken ct) => await LoadAsync(ct);
+
+    public async Task<IActionResult> OnPostPrepareInstallationAsync(CancellationToken ct)
+    {
+        if (!Enabled) return NotFound();
+        ClearCreateInput();
+        try { InstallationGrant = await inference.PrepareInstallationAsync(ct); }
+        catch (Exception ex) when (InferencePresentation.IsDependencyError(ex, ct))
+        {
+            Error = InferencePresentation.ErrorMessage(ex);
+        }
+        await LoadAsync(ct);
+        // Credentials are rendered only in the issuing POST, never in TempData.
+        return Page();
+    }
 
     public async Task<IActionResult> OnPostCreateAsync(CancellationToken ct)
     {
@@ -28,12 +45,15 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
             ModelState.AddModelError("Input.InitialWorkers", "Le nombre initial ne peut pas dépasser le maximum de workers.");
         if ((long)Input.InitialWorkers * Input.ThreadsPerWorker > 96)
             ModelState.AddModelError("Input.ThreadsPerWorker", "Les workers ne peuvent pas demander plus de 96 threads au total.");
-        if (ModelState.IsValid)
+        await LoadModelsAsync(ct);
+        if (ModelsLoaded && !ValidModel(Input.ModelId))
+            ModelState.AddModelError("Input.ModelId", "Choisissez un modèle dans le catalogue disponible.");
+        if (ModelState.IsValid && ModelsLoaded)
         {
             try
             {
                 Created = await inference.CreateAsync(new(Input.AgentId, Input.DisplayName!.Trim(),
-                    Input.InitialWorkers, Input.ThreadsPerWorker, Input.MaxWorkers), ct);
+                    Input.InitialWorkers, Input.ThreadsPerWorker, Input.MaxWorkers, Input.ModelId), ct);
                 Input = new();
                 ModelState.Clear();
             }
@@ -47,15 +67,41 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
         return Page();
     }
 
-    public async Task<IActionResult> OnPostAddWorkerAsync(string? agentId, int? threads, CancellationToken ct)
+    public async Task<IActionResult> OnPostAddWorkerAsync(string? agentId, int? threads, string? modelId, CancellationToken ct)
     {
         if (!Enabled) return NotFound();
         ClearCreateInput();
         if (!ValidAgentId(agentId) || threads is not (>= 1 and <= 24)) return BadRequest();
+        await LoadModelsAsync(ct);
+        if (!ModelsLoaded) { await LoadAsync(ct); return Page(); }
+        if (!ValidModel(modelId)) return BadRequest();
         try
         {
-            await inference.AddWorkerAsync(agentId!, threads.Value, ct);
+            await inference.AddWorkerAsync(agentId!, threads.Value, ct, modelId!);
             Notice = "Worker demandé. L’agent le démarrera à son prochain contact.";
+            return RedirectToPage();
+        }
+        catch (Exception ex) when (InferencePresentation.IsDependencyError(ex, ct))
+        {
+            Error = InferencePresentation.ErrorMessage(ex);
+            await LoadAsync(ct);
+            return Page();
+        }
+    }
+
+    public async Task<IActionResult> OnPostUpdateWorkerAsync(string? agentId, string? workerId, int? threads,
+        string? modelId, CancellationToken ct)
+    {
+        if (!Enabled) return NotFound();
+        ClearCreateInput();
+        if (!ValidAgentId(agentId) || !ValidWorkerId(workerId) || threads is not (>= 1 and <= 24)) return BadRequest();
+        await LoadModelsAsync(ct);
+        if (!ModelsLoaded) { await LoadAsync(ct); return Page(); }
+        if (!ValidModel(modelId)) return BadRequest();
+        try
+        {
+            await inference.UpdateWorkerAsync(agentId!, workerId!, threads.Value, modelId!, ct);
+            Notice = "Configuration du worker enregistrée. L’agent appliquera le modèle et les threads à son prochain contact ; un changement redémarre ce worker.";
             return RedirectToPage();
         }
         catch (Exception ex) when (InferencePresentation.IsDependencyError(ex, ct))
@@ -116,7 +162,29 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
         {
             Error ??= InferencePresentation.ErrorMessage(ex);
         }
+        if (!ModelsLoaded) await LoadModelsAsync(ct);
     }
+
+    private async Task LoadModelsAsync(CancellationToken ct)
+    {
+        try
+        {
+            var models = await inference.ModelsAsync(ct);
+            if (models.Length == 0 || models.Any(model => model is null || string.IsNullOrWhiteSpace(model.ModelId) ||
+                    string.IsNullOrWhiteSpace(model.Label)) || models.Select(model => model.ModelId).Distinct(StringComparer.Ordinal).Count() != models.Length)
+                throw new InferenceApiException(System.Net.HttpStatusCode.BadGateway, "Le catalogue de modèles est indisponible. Les changements de configuration sont désactivés.");
+            Models = models;
+            ModelsLoaded = true;
+        }
+        catch (Exception ex) when (InferencePresentation.IsDependencyError(ex, ct))
+        {
+            Error ??= "Le catalogue de modèles est indisponible. Les changements de configuration sont désactivés.";
+        }
+    }
+
+    private bool ValidModel(string? modelId) => ModelsLoaded && Models.Any(model => model.ModelId == modelId);
+
+    public string ModelLabel(string modelId) => Models.FirstOrDefault(model => model.ModelId == modelId)?.Label ?? modelId;
 
     private void ClearCreateInput()
     {
@@ -148,5 +216,8 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
 
         [Range(1, 12, ErrorMessage = "Choisissez un maximum entre 1 et 12 workers.")]
         public int MaxWorkers { get; set; } = 6;
+
+        [Required(ErrorMessage = "Choisissez un modèle."), StringLength(64)]
+        public string ModelId { get; set; } = InferenceModels.DefaultModelId;
     }
 }

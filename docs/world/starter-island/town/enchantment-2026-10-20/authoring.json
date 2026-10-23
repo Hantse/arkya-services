@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "lanterns": 10,
+  "flowerBoxes": 21,
+  "decoratedHouses": 10,
+  "renderers": 64,
+  "triangles": 93384,
+  "newLights": 0,
+  "newColliders": 0,
+  "animations": 10,
+  "assets": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020",
+  "sceneBackup": "D:\\Repositories\\arkya\\artifacts\\village-enchantment-2026-10-20",
+  "scope": "Floating jade and amber lanterns, painted flower boxes, trailing lilac vines, brass gable charms and local pastel limewash derivatives. No gameplay, terrain, source-material or collision change."
+}

@@ -1,0 +1,7 @@
+# The endpoint becomes available after deployment of the reports profile.
+# Provide ARKYA_ADMIN_MCP_TOKEN to the Codex process from your secret store.
+[mcp_servers.arkya_admin]
+url = "https://admin.arkya.online/mcp/reports"
+bearer_token_env_var = "ARKYA_ADMIN_MCP_TOKEN"
+startup_timeout_sec = 30
+tool_timeout_sec = 60

@@ -1,0 +1,85 @@
+{
+  "verifiedUtc": "2026-10-19T21:32:27.6294323Z",
+  "editMode": [
+    {
+      "report": "environment-tests.json",
+      "passed": 62,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "report": "locomotion-tests.json",
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "report": "idle-tests.json",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "report": "traversal-tests.json",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "editModeTotal": 121.0,
+  "playMode": [
+    {
+      "report": "weather-command.json",
+      "commandSuccess": true,
+      "success": true,
+      "checks": 28,
+      "failures": []
+    },
+    {
+      "report": "weather-polish-command.json",
+      "commandSuccess": true,
+      "success": true,
+      "checks": 8,
+      "failures": []
+    },
+    {
+      "report": "foliage-command.json",
+      "commandSuccess": true,
+      "success": true,
+      "checks": 17,
+      "failures": []
+    },
+    {
+      "report": "waves-command.json",
+      "commandSuccess": true,
+      "success": true,
+      "checks": 29,
+      "failures": []
+    },
+    {
+      "report": "environment-runtime-command.json",
+      "commandSuccess": true,
+      "success": true,
+      "checks": 35,
+      "failures": []
+    },
+    {
+      "report": "groundcover-command.json",
+      "commandSuccess": true,
+      "success": true,
+      "checks": 11,
+      "failures": []
+    }
+  ],
+  "playModeTotal": 128.0,
+  "globalSettings": [
+    {
+      "file": "QualitySettings.asset",
+      "unchanged": true
+    },
+    {
+      "file": "GraphicsSettings.asset",
+      "unchanged": true
+    }
+  ]
+}

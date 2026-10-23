@@ -10,6 +10,13 @@ La demande comprend à la fois **douze variantes de pelage par animal** et une *
 
 La [collection de modèles](art-direction/resources/totems/README.md) réunit les sources éditables, les modèles riggés, les variantes et l'atelier de revue. Cette première livraison artistique reste à valider par l'utilisateur.
 
+La passe de finition graphique du 19 octobre 2026 conserve le loup V10, le
+renard V2 et leurs 24 pelages. Dans Unity, leur shader peint utilise désormais
+l'occlusion ambiante du renderer pour mieux séparer les pattes, le ventre et
+les contacts avec le décor. Cet assombrissement concerne la lumière reçue et
+préserve l'émission des marques d'âme. Les sources, les poids et les clips ne
+sont pas régénérés par cette passe.
+
 ## Périmètre de cette étape
 
 Cette étape prépare les deux modèles, leur squelette, leurs pelages et leur présentation animée. Le lien à l'âme est enregistré ici comme une règle de conception ; le rituel de choix, la sauvegarde du totem et son apparition dans le monde restent à implémenter.

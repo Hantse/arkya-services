@@ -1,0 +1,37 @@
+# Historical patch for the exact initial project state observed on 2026-10-20.
+# Already applied in Argo UI at 21:15 UTC. Tests deliberately reject other states.
+# Never include this patch as a workload resource or replace unrelated lists.
+- op: test
+  path: /spec/clusterResourceWhitelist/0/kind
+  value: Namespace
+- op: test
+  path: /spec/clusterResourceBlacklist
+  value:
+  - group: '*'
+    kind: '*'
+- op: add
+  path: /spec/clusterResourceWhitelist/0/name
+  value: arkya-beta-realm
+- op: replace
+  path: /spec/clusterResourceBlacklist
+  value: []
+- op: add
+  path: /spec/destinations/-
+  value:
+    server: https://kubernetes.default.svc
+    namespace: arkya-beta-realm
+- op: add
+  path: /spec/namespaceResourceWhitelist/-
+  value:
+    group: ''
+    kind: ServiceAccount
+- op: add
+  path: /spec/namespaceResourceWhitelist/-
+  value:
+    group: rbac.authorization.k8s.io
+    kind: Role
+- op: add
+  path: /spec/namespaceResourceWhitelist/-
+  value:
+    group: rbac.authorization.k8s.io
+    kind: RoleBinding

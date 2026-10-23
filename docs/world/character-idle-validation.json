@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "unityVersion": "6000.6.6f1",
+  "project": "Unity3D/Arkya",
+  "status": "Passed",
+  "scope": "Stationary Idle posture and breathing on the four Human/Elf rigs",
+  "observation": "The imported Idle retained a symmetric, rigid resting stance with abducted arms and almost straight knees.",
+  "change": {
+    "nativeIdleClips": 4,
+    "durationSeconds": 8,
+    "authoringKeysPerSecond": 8,
+    "interpolation": "Continuous quaternion curves with smooth tangents",
+    "features": [
+      "Slightly widened and staggered planted feet",
+      "Small asymmetric weight shift and a straighter supporting leg",
+      "Relaxed arms and softly bent elbows",
+      "Restrained breathing and steady gaze",
+      "Actor root remains owned by the existing simulation"
+    ],
+    "controllerStatesChanged": ["Idle"],
+    "meshOrBindSkeletonChanged": false,
+    "newRuntimeDependencies": false,
+    "menu": "Arkya/Characters/Rebuild relaxed idle animations"
+  },
+  "tests": {
+    "total": 26,
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0,
+    "fixtures": [
+      { "name": "CharacterIdleAnimationTests", "cases": 8 },
+      { "name": "CharacterTraversalAnimationTests", "cases": 10 },
+      { "name": "CharacterAppearanceTests", "cases": 8 }
+    ],
+    "coverage": [
+      "All four native clips resolve to the correct rig",
+      "Feet drift less than 0.5 mm over a full loop sampled at 60 Hz",
+      "Actor root remains fixed, with restrained head movement and no head wag",
+      "No abrupt bone rotation at frame boundaries or the loop seam",
+      "Forward knee flexion, relaxed elbows and balanced stance",
+      "Existing locomotion transitions, rig replacement and prefab animation states"
+    ],
+    "localResults": [
+      "artifacts/character-animation-quality/CharacterIdleAnimationTests-final.json",
+      "artifacts/character-animation-quality/CharacterTraversalAnimationTests-final.json",
+      "artifacts/character-animation-quality/CharacterAppearanceTests-final.json"
+    ],
+    "fullProjectSuiteRerun": false
+  },
+  "visualReview": {
+    "playModeStudioRendering": true,
+    "rigs": ["human-a", "human-b", "elf-a", "elf-b"],
+    "views": ["front", "profile"],
+    "cycleSamples": [0, 0.25, 0.5, 0.75],
+    "reviewed": [
+      "More relaxed silhouette compared with the imported Idle",
+      "Upright stance after reducing the initial crouch",
+      "Boot sole placement and unchanged foot positions",
+      "Arm, pauldron and thigh garment clearance",
+      "Stable head and restrained breathing"
+    ],
+    "screenshot": "character-idle.png",
+    "localAtlases": "artifacts/character-animation-quality/idle-after-{human-a,human-b,elf-a,elf-b}.png"
+  },
+  "build": {
+    "result": "Success",
+    "target": "StandaloneWindows64",
+    "development": true,
+    "executable": "Unity3D/Arkya/Builds/StarterIsland/Arkya.exe",
+    "successMarker": "ARKYA_CHARACTER_BUILD_PASSED Builds/StarterIsland/Arkya.exe",
+    "localLog": "artifacts/character-animation-quality/build.log",
+    "startupSmoke": "Passed",
+    "responsive": true,
+    "graphicsApi": "Direct3D12",
+    "startupManagedExceptions": 0,
+    "localPlayerLog": "artifacts/character-animation-quality/player.log"
+  },
+  "liveIsland": {
+    "result": "Passed",
+    "entryThroughCreationUi": true,
+    "connectedLocalServerAndClient": true,
+    "input": "Editor movement override through the existing authoritative movement path",
+    "runThenIdleObserved": true,
+    "idleServerAndClientMotionZero": true,
+    "idleAnimatorNormalizedTimeFirst": 0.07729407,
+    "idleAnimatorNormalizedTimeLast": 1.20298707,
+    "idleObservationSeconds": 9,
+    "maximumActorRootDriftMeters": 0,
+    "returnThroughHud": true,
+    "localWorldsAfterReturn": 0,
+    "temporaryRefreshIsolationReleased": true,
+    "finalScene": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+    "finalSceneDirty": false,
+    "finalPlayMode": false,
+    "consoleErrors": 0,
+    "consoleWarnings": 9
+  },
+  "checksNotCompleted": [
+    "Full island traversal inside the standalone executable"
+  ],
+  "limits": [
+    "Foot IK is used when authoring the clip; runtime foot placement does not conform to uneven terrain.",
+    "This revision covers the resting pose. The other five locomotion clips retain their existing authored motion."
+  ],
+  "changedFiles": [
+    "Unity3D/Arkya/Assets/Arkya/Characters/Editor/CharacterIdleAnimationBuilder.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Editor/CharacterCreationBuilder.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Tests/Editor/CharacterIdleAnimationTests.cs",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Animations/human-a-Idle.anim",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Animations/human-b-Idle.anim",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Animations/elf-a-Idle.anim",
+    "Unity3D/Arkya/Assets/Arkya/Characters/Animations/elf-b-Idle.anim",
+    "Matching meta files and the Idle motion reference in each of the four controllers",
+    "docs/CHARACTER_CREATION.md",
+    "docs/world/STARTER_ISLAND_PLAYABLE.md",
+    "docs/art-direction/resources/personnages/game/README.md",
+    "docs/world/character-idle-validation.json",
+    "docs/world/character-idle.png"
+  ]
+}

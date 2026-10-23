@@ -33,6 +33,26 @@ public static class GameAdmissionEndpoints
         internalApi.MapPost("/admissions/consume", async (ConsumeAdmissionRequest request, HttpContext context,
             GameAdmissionService service, CancellationToken cancellationToken) =>
             Response(await service.ConsumeAsync(Server(context), request, cancellationToken)));
+        internalApi.MapGet("/topology", async (HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
+            Response(await service.TopologyAsync(Server(context), cancellationToken)));
+        internalApi.MapPost("/leases/{characterId:guid}/transfers/prepare", async (Guid characterId, PrepareTransferRequest request,
+            HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
+            Response(await service.PrepareTransferAsync(characterId, Server(context), request, cancellationToken)));
+        internalApi.MapPost("/transfers/claim", async (ClaimTransferRequest request, HttpContext context,
+            GameAdmissionService service, CancellationToken cancellationToken) =>
+            Response(await service.ClaimTransferAsync(Server(context), request, cancellationToken)));
+        internalApi.MapGet("/leases/{characterId:guid}/transfers/{transferId:guid}", async (Guid characterId, Guid transferId,
+            HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
+            Response(await service.TransferStatusAsync(characterId, transferId, Server(context), cancellationToken)));
+        internalApi.MapPost("/leases/{characterId:guid}/transfers/{transferId:guid}/seal", async (Guid characterId, Guid transferId,
+            SealTransferRequest request, HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
+            Response(await service.SealTransferAsync(characterId, transferId, Server(context), request, cancellationToken)));
+        internalApi.MapPost("/leases/{characterId:guid}/transfers/{transferId:guid}/commit", async (Guid characterId, Guid transferId,
+            CommitTransferRequest request, HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
+            Response(await service.CommitTransferAsync(characterId, transferId, Server(context), request, cancellationToken)));
+        internalApi.MapPost("/leases/{characterId:guid}/transfers/{transferId:guid}/abort", async (Guid characterId, Guid transferId,
+            LeaseRequest request, HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
+            Response(await service.AbortTransferAsync(characterId, transferId, Server(context), request, cancellationToken)));
         internalApi.MapPost("/leases/{characterId:guid}/heartbeat", async (Guid characterId, LeaseRequest request,
             HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
             Response(await service.HeartbeatAsync(characterId, Server(context), request, cancellationToken)));

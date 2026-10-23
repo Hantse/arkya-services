@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "changed": true,
+  "sceneSaved": false,
+  "width": 2.6,
+  "depth": 0.75000006,
+  "upperRiser": 0.126847386,
+  "minimumPhysicalNoseAboveTerrain": 0.109999537,
+  "maximumRemainingTerrainDrop": 0.183043361,
+  "marker": {
+    "x": 589.622253,
+    "y": 49.801857,
+    "z": 499.811981
+  },
+  "distanceToBothTreadEnds": 0.37500003,
+  "groundApproachBeyondTread": 0.7500092,
+  "clearanceSamples": 150,
+  "retainedShortThresholdAssets": true,
+  "originalFlightsAndCurtainUnchanged": true,
+  "terrainHeightsUnchanged": true,
+  "requiredRuntimeProof": "Rerun all 24 strict ascent/descent cases and both wall circuits.",
+  "utc": "2026-10-20T09:11:34.2635350Z"
+}

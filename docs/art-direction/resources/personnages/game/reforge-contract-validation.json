@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "id": "human-a",
+      "originalRigRestMatrices": "identical",
+      "maximumMatrixElementError": 0,
+      "parentHierarchy": "identical",
+      "uniqueCornerPaintedLayer": true,
+      "customizableMaterialsNeutral": true
+    },
+    {
+      "id": "human-b",
+      "originalRigRestMatrices": "identical",
+      "maximumMatrixElementError": 0,
+      "parentHierarchy": "identical",
+      "uniqueCornerPaintedLayer": true,
+      "customizableMaterialsNeutral": true
+    },
+    {
+      "id": "elf-a",
+      "originalRigRestMatrices": "identical",
+      "maximumMatrixElementError": 0,
+      "parentHierarchy": "identical",
+      "uniqueCornerPaintedLayer": true,
+      "customizableMaterialsNeutral": true
+    },
+    {
+      "id": "elf-b",
+      "originalRigRestMatrices": "identical",
+      "maximumMatrixElementError": 0,
+      "parentHierarchy": "identical",
+      "uniqueCornerPaintedLayer": true,
+      "customizableMaterialsNeutral": true
+    }
+  ]
+}

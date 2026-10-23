@@ -1,0 +1,57 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: arkya-beta
+resources:
+- ../reports
+- inference.yaml
+configMapGenerator:
+- name: arkya-inference-config
+  envs:
+  - inference.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+# Pin the digest published by inference-image.yml before activating this profile.
+images:
+- name: ghcr.io/hantse/arkya-services-inference
+  newTag: pending-publication
+patches:
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-gateway-config
+      namespace: arkya-beta
+    data:
+      Gateway__InferenceEnabled: 'true'
+      ReverseProxy__Clusters__inference__Destinations__primary__Address: http://arkya-inference.arkya-beta.svc.cluster.local:8080/
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-admin-config
+      namespace: arkya-beta
+    data:
+      InferenceApi__Enabled: 'true'
+      InferenceApi__BaseUrl: http://arkya-inference.arkya-beta.svc.cluster.local:8080/
+      InferenceApi__AllowClusterHttp: 'true'
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-admin
+      namespace: arkya-beta
+    spec:
+      template:
+        spec:
+          containers:
+          - name: admin
+            envFrom:
+            - configMapRef:
+                name: arkya-admin-config
+            - secretRef:
+                name: arkya-admin-secrets
+            - secretRef:
+                name: arkya-admin-reports-secrets
+            - secretRef:
+                name: arkya-admin-inference-secrets

@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "meshes": [
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Forecourt/Organic civic apron.asset",
+      "previousVertices": 1409,
+      "previousTriangles": 1851,
+      "vertices": 1542,
+      "triangles": 2067,
+      "addedTriangles": 216
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Forecourt/Curved civic approach.asset",
+      "previousVertices": 1862,
+      "previousTriangles": 2424,
+      "vertices": 2037,
+      "triangles": 2712,
+      "addedTriangles": 288
+    }
+  ],
+  "scope": "Continuous low earth-and-moss joint beds under the new civic paving only. Existing stone vertices and triangle order retained. No terrain, collider, material or renderer changes."
+}

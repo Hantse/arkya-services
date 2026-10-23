@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "images": [
+    "native-current",
+    "native-no-gizmos",
+    "native-no-image-effects",
+    "native-no-flares",
+    "native-no-particles",
+    "island-profile"
+  ],
+  "stateRestored": true,
+  "sceneSaved": false,
+  "scope": "Temporary Scene view display toggles and quality pipeline comparison. Existing displayed LDR texture read after repaint; all display settings restored. No scene or asset writes."
+}

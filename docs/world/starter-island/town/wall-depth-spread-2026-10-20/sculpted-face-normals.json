@@ -1,0 +1,73 @@
+{
+  "success": true,
+  "utc": "2026-10-20T11:57:19.5659681Z",
+  "faceNormalVersion": 1,
+  "sceneSaved": false,
+  "meshesUpdated": 12,
+  "fragments": 4943,
+  "shoulderAndCrownNormals": "Exact original wall face normal",
+  "outerRimNormals": "Preserved area-smoothed normals recalculated from unchanged geometry",
+  "allVerticesUvsIndicesBoundsMaterialsLod1AndSceneComponentsUnchanged": true,
+  "meshes": [
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 00 LOD0.asset",
+      "beforeHash": "y9tOvDlpyniTYQfjnQGfwj8NyKzmgs9mbxMqSMpzMBM=",
+      "afterHash": "8DnoaEnds3eOY+2URAsJRiNg+qVsGmKQDzm8wyf7tks="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 01 LOD0.asset",
+      "beforeHash": "mY0Ri9f8nFnrPt+3mymNGhjlilK+mPZ4/0UMBOTbhNE=",
+      "afterHash": "Pfml/YsMv+Ge3flCo2MzL3q9fsxaXinqV7rGnUyYahg="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 02 LOD0.asset",
+      "beforeHash": "sFI7fmYIlXYBD4OXeeTF1k3lGSRnk/IkOUWvXkKGnek=",
+      "afterHash": "LABOJh7kFfarJeFkn9Li+DemLXFZIN8ckaY7vIeOx/A="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 03 LOD0.asset",
+      "beforeHash": "+Tr002lTkB4rsFdPa1somBbaLc26T6L5dxxv9djoLW4=",
+      "afterHash": "y2fz6GCWOkPDH4Ha+6nJLY6xsnWfqjn8Io3Lajsavtg="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 04 LOD0.asset",
+      "beforeHash": "NUvp+8apqc0XOP+pDZssLJuUazN2TbGe6fdp6q7q/Ck=",
+      "afterHash": "5rxbb6ZsfZiYFJ4g+V6jahn7CaCs24DD6JvH5dONYls="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 05 LOD0.asset",
+      "beforeHash": "PMKNlqq8JlNR/6ThrpBJxe+oT03WmhYdkUMBL9XhcSY=",
+      "afterHash": "PUmMN7qtPnwqxpzeql6oxZWbXuwu8wD004/3jupFAnM="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 06 LOD0.asset",
+      "beforeHash": "Tbe/bdsyTKqn+VCq7dJh75Jd+XQwwVklAb9sKnGyEVk=",
+      "afterHash": "B5ArP6RzlXcpw4pPcWXzM7HGvNWE5+R+EMGGQxtWGIE="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 07 LOD0.asset",
+      "beforeHash": "BCkgcelc8JLscBuR9OL9fSjMkKxr3c54tzKiss6dGk0=",
+      "afterHash": "/fqfKtx7Dka/UCAWp0/2EflGEFeZ3XOyCObx0BUG+Cs="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 08 LOD0.asset",
+      "beforeHash": "diOtsDB9xVkZKm7U0L+eShgEkVfGtDvbjSQeBi4cNew=",
+      "afterHash": "3tJ9cPYMlwM7z9nc+vYae087M4KcW4SQP7oas+H+p1Y="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 09 LOD0.asset",
+      "beforeHash": "GJaKjEDH48A0B7On5y6w7BykJ8+3mj7IWhF1YGPfADY=",
+      "afterHash": "d5aBG0zMpGt/MSTyGdAUL5P9DNAkaCdpJvxhyTCxjf0="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 10 LOD0.asset",
+      "beforeHash": "OXdKzE+IpeF162YB75w7MVgHv4Ve/e8wDSQiicK490g=",
+      "afterHash": "jdQzX8fsaXI95FK+MbAgYGOuo/KdfLGFsHo6HVTOX2k="
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Meshes/Sculpted masonry 11 LOD0.asset",
+      "beforeHash": "RL7Kk0cQ24gQ6golwIoDQgG4phdmnPZ8BI80XNTPmoI=",
+      "afterHash": "ixINkSqNrPjxUzYAuQUNIquDo/Hi9K79Em/LnixpMiI="
+    }
+  ]
+}

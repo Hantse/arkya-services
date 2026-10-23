@@ -9,6 +9,7 @@ public sealed class GatewayProxyTests
 {
     [Theory]
     [InlineData("GET", "/v1/realms")]
+    [InlineData("GET", "/v1/characters/entry-context")]
     [InlineData("POST", "/v1/characters/ab1890c5-9930-4ac0-bafd-cd15a48bceca/admissions")]
     public async Task Game_routes_forward_to_characters_without_dedicated_credentials(string method, string path)
     {
@@ -33,6 +34,7 @@ public sealed class GatewayProxyTests
     [InlineData("GET", "/v1/auth/discord/callback")]
     [InlineData("POST", "/v1/auth/discord/exchange")]
     [InlineData("GET", "/v1/auth/me")]
+    [InlineData("POST", "/v1/auth/refresh")]
     [InlineData("POST", "/v1/auth/logout")]
     public async Task Public_identity_routes_preserve_method_path_query_body_and_bearer(string method, string path)
     {
@@ -131,6 +133,7 @@ public sealed class GatewayProxyTests
 
     [Theory]
     [InlineData("DELETE", "/v1/auth/me")]
+    [InlineData("GET", "/v1/auth/refresh")]
     [InlineData("GET", "/v1/auth/discord/challenges")]
     [InlineData("POST", "/v1/auth/discord/callback")]
     [InlineData("DELETE", "/v1/characters")]
@@ -167,6 +170,33 @@ public sealed class GatewayProxyTests
         Assert.Equal(cookie, Assert.Single(response.Headers.GetValues("Set-Cookie")));
         Assert.Equal("redirect body", await response.Content.ReadAsStringAsync());
         Assert.Single(identity.Requests);
+    }
+
+    [Fact]
+    public async Task Refresh_cookie_origin_and_antiforgery_header_survive_the_public_proxy()
+    {
+        const string cookie = "arkya.refresh=rotated; Path=/v1/auth; Secure; HttpOnly; SameSite=Lax";
+        await using var identity = await Downstream.StartAsync("identity", async context =>
+        {
+            context.Response.Headers.SetCookie = cookie;
+            context.Response.Headers.CacheControl = "no-store";
+            await context.Response.WriteAsJsonAsync(new { expiresAt = "2026-10-22T20:00:00Z" });
+        });
+        await using var factory = new GatewayFactory(identity.Address);
+        using var client = factory.Client();
+        using var request = new HttpRequestMessage(HttpMethod.Post, "/v1/auth/refresh");
+        request.Headers.Add("Cookie", "arkya.refresh=previous");
+        request.Headers.Add("Origin", "https://arkya.online");
+        request.Headers.Add("X-Arkya-Refresh", "1");
+        request.Content = new StringContent("{}", Encoding.UTF8, "application/json");
+        using var response = await client.SendAsync(request);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(cookie, Assert.Single(response.Headers.GetValues("Set-Cookie")));
+        Assert.True(response.Headers.CacheControl!.NoStore);
+        var received = Assert.Single(identity.Requests);
+        Assert.Equal("arkya.refresh=previous", received.Headers["Cookie"]);
+        Assert.Equal("https://arkya.online", received.Headers["Origin"]);
+        Assert.Equal("1", received.Headers["X-Arkya-Refresh"]);
     }
 
     [Theory]
@@ -227,6 +257,7 @@ public sealed class GatewayProxyTests
     [InlineData("POST", "/v1/characters")]
     [InlineData("GET", "/v1/characters/11111111-1111-1111-1111-111111111111")]
     [InlineData("GET", "/v1/characters/appearance-options")]
+    [InlineData("GET", "/v1/characters/entry-context")]
     public async Task Character_routes_target_only_characters_when_enabled(string method, string path)
     {
         await using var identity = await Downstream.StartAsync("identity");

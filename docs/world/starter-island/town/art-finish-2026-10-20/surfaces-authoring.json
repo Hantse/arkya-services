@@ -1,0 +1,333 @@
+{
+  "success": true,
+  "changedRenderers": 648,
+  "derivedMaterials": 29,
+  "shader": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/PaintedTownFinish.shader",
+  "shaderErrors": false,
+  "materials": [
+    {
+      "source": "Earth and sage in worn joints",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Materials/Earth and sage in worn joints.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/01 Earth and sage in worn joints.mat",
+      "role": "Joints",
+      "texturePreserved": true,
+      "saturation": 0.8,
+      "pigmentBlend": 0.0,
+      "textureSoftness": 0.5
+    },
+    {
+      "source": "Pastel limewash 0 Warm ivory limewash",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Pastel limewash 0 Warm ivory limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/02 Pastel limewash 0 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "texturePreserved": true,
+      "saturation": 0.87,
+      "pigmentBlend": 0.04,
+      "textureSoftness": 0.6
+    },
+    {
+      "source": "Pastel limewash 2 Soft sage limewash",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Pastel limewash 2 Soft sage limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/03 Pastel limewash 2 Soft sage limewash.mat",
+      "role": "Limewash",
+      "texturePreserved": true,
+      "saturation": 0.87,
+      "pigmentBlend": 0.04,
+      "textureSoftness": 0.6
+    },
+    {
+      "source": "Pastel limewash 3 Warm ivory limewash",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Pastel limewash 3 Warm ivory limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/04 Pastel limewash 3 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "texturePreserved": true,
+      "saturation": 0.87,
+      "pigmentBlend": 0.04,
+      "textureSoftness": 0.6
+    },
+    {
+      "source": "Pastel limewash 4 Soft ochre limewash",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Pastel limewash 4 Soft ochre limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/05 Pastel limewash 4 Soft ochre limewash.mat",
+      "role": "Limewash",
+      "texturePreserved": true,
+      "saturation": 0.87,
+      "pigmentBlend": 0.04,
+      "textureSoftness": 0.6
+    },
+    {
+      "source": "Pastel limewash 5 Soft sage limewash",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Pastel limewash 5 Soft sage limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/06 Pastel limewash 5 Soft sage limewash.mat",
+      "role": "Limewash",
+      "texturePreserved": true,
+      "saturation": 0.87,
+      "pigmentBlend": 0.04,
+      "textureSoftness": 0.6
+    },
+    {
+      "source": "Pastel limewash 6 Warm ivory limewash",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Pastel limewash 6 Warm ivory limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/07 Pastel limewash 6 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "texturePreserved": true,
+      "saturation": 0.87,
+      "pigmentBlend": 0.04,
+      "textureSoftness": 0.6
+    },
+    {
+      "source": "Pastel limewash 7 Soft ochre limewash",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Pastel limewash 7 Soft ochre limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/08 Pastel limewash 7 Soft ochre limewash.mat",
+      "role": "Limewash",
+      "texturePreserved": true,
+      "saturation": 0.87,
+      "pigmentBlend": 0.04,
+      "textureSoftness": 0.6
+    },
+    {
+      "source": "Pastel limewash 8 Soft sage limewash",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Pastel limewash 8 Soft sage limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/09 Pastel limewash 8 Soft sage limewash.mat",
+      "role": "Limewash",
+      "texturePreserved": true,
+      "saturation": 0.87,
+      "pigmentBlend": 0.04,
+      "textureSoftness": 0.6
+    },
+    {
+      "source": "Pastel limewash 9 Warm ivory limewash",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Pastel limewash 9 Warm ivory limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/10 Pastel limewash 9 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "texturePreserved": true,
+      "saturation": 0.87,
+      "pigmentBlend": 0.04,
+      "textureSoftness": 0.6
+    },
+    {
+      "source": "Soft painted limestone",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Materials/Soft painted limestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/11 Soft painted limestone.mat",
+      "role": "Paving",
+      "texturePreserved": true,
+      "saturation": 0.63,
+      "pigmentBlend": 0.16,
+      "textureSoftness": 0.35
+    },
+    {
+      "source": "Painted civic blue slate",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/VillageUpgrade/Architecture/Materials/Painted civic blue slate.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/12 Painted civic blue slate.mat",
+      "role": "Slate",
+      "texturePreserved": true,
+      "saturation": 0.84,
+      "pigmentBlend": 0.1,
+      "textureSoftness": 0.5
+    },
+    {
+      "source": "Painted civic slate highlights",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/VillageUpgrade/Architecture/Materials/Painted civic slate highlights.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/13 Painted civic slate highlights.mat",
+      "role": "Slate",
+      "texturePreserved": true,
+      "saturation": 0.84,
+      "pigmentBlend": 0.1,
+      "textureSoftness": 0.5
+    },
+    {
+      "source": "CivicWeatheredLimestone",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicWeatheredLimestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/14 CivicWeatheredLimestone.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "CivicWornCutStone",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicWornCutStone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/15 CivicWornCutStone.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "Cream worn coping",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Cream worn coping.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/16 Cream worn coping.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "Joined warm pale kerbs",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Joined warm pale kerbs.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/17 Joined warm pale kerbs.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "ManaWell_PaintedLimestone",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Materials/ManaWell_PaintedLimestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/18 ManaWell_PaintedLimestone.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "ManaWell_PaleCarvedStone",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Materials/ManaWell_PaleCarvedStone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/19 ManaWell_PaleCarvedStone.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "ManaWell_WarmStone",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Materials/ManaWell_WarmStone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/20 ManaWell_WarmStone.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "Pale worn stone relief",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Pale worn stone relief.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/21 Pale worn stone relief.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "Sage limestone foundations",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Sage limestone foundations.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/22 Sage limestone foundations.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "Sculpted limestone - shared matte painted pigment",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/SculptedMasonry/Materials/Sculpted limestone - shared matte painted pigment.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/23 Sculpted limestone - shared matte painted pigment.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "Soft grey lime recesses",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft grey lime recesses.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/24 Soft grey lime recesses.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "Varied hand laid painted limestone",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/25 Varied hand laid painted limestone.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "Warm coursed limestone",
+      "sourcePath": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/26 Warm coursed limestone.mat",
+      "role": "Stone",
+      "texturePreserved": true,
+      "saturation": 0.86,
+      "pigmentBlend": 0.055,
+      "textureSoftness": 0.25
+    },
+    {
+      "source": "Arkya | chaume | painted",
+      "sourcePath": "Assets/Arkya/Building/Structures/Models/plafond-chaume.glb",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/27 Arkya _ chaume _ painted.mat",
+      "role": "Thatch",
+      "texturePreserved": true,
+      "saturation": 0.58,
+      "pigmentBlend": 0.34,
+      "textureSoftness": 1.25
+    },
+    {
+      "source": "Painted beams V2",
+      "sourcePath": "Assets/Arkya/Building/Art/Materials/Painted beams V2.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/28 Painted beams V2.mat",
+      "role": "Timber",
+      "texturePreserved": true,
+      "saturation": 0.82,
+      "pigmentBlend": 0.14,
+      "textureSoftness": 0.65
+    },
+    {
+      "source": "Painted boards V2",
+      "sourcePath": "Assets/Arkya/Building/Art/Materials/Painted boards V2.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/29 Painted boards V2.mat",
+      "role": "Timber",
+      "texturePreserved": true,
+      "saturation": 0.82,
+      "pigmentBlend": 0.14,
+      "textureSoftness": 0.65
+    }
+  ],
+  "terrain": {
+    "X": 668,
+    "Z": 628,
+    "Width": 132,
+    "Height": 132,
+    "Changed": 13369,
+    "MaximumDelta": 0.6425098,
+    "radius": 49.0,
+    "centre": [
+      550.0,
+      520.0
+    ],
+    "layersUnchanged": true,
+    "earthPathRockSandWeightsIntentionallyUnchanged": true,
+    "meadowCoveragePreservedWithinNativeQuantization": true,
+    "paintValidation": {
+      "maximumCoverageDelta": 0.003921747,
+      "maximumOtherLayerDelta": 0.0,
+      "nativeControlTextureTolerance": 0.003921569,
+      "noAdditionalTerrainLayers": true
+    },
+    "heightHash": "D+b5AFGIzC8/DqX60qf0H4VhZyIBBwkpt2ff6cc8BnY=",
+    "outsideWindowUnchanged": true,
+    "outsideHash": "UB7FhRXDRODrzbuq7PdSl5mPuxMe+xaF0h2pUAshkMk="
+  },
+  "geometryTransformsCollidersRendererStatesLightsUnchanged": true,
+  "sourceMaterialsAndTexturesUnchanged": true,
+  "addedTriangles": 0,
+  "addedRenderers": 0,
+  "addedDraws": 0,
+  "addedRuntimeComponents": 0,
+  "assetsSaved": true,
+  "sceneSaved": false,
+  "scope": "Warm grey paving, calmer aged honey thatch, softened timber and mineral paint. Local meadow glaze rebalancing preserves every road and terrain height."
+}

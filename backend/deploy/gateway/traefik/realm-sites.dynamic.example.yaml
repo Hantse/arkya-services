@@ -1,0 +1,23 @@
+# Merge with the existing external Traefik v3 file-provider configuration.
+# Reuse its arkya-gateway service, exact-host routers and existing certificate resolver.
+# Provision DNS and certificates for BOTH *.arkya.online and *.admin.arkya.online first.
+http:
+  routers:
+    arkya-realm-admin:
+      entryPoints: [websecure]
+      rule: HostRegexp(`^[a-z][a-z0-9-]{1,29}[a-z0-9]\.admin\.arkya\.online$`)
+      priority: 10
+      service: arkya-gateway
+      tls: {}
+      observability:
+        accessLogs: false
+        tracing: false
+    arkya-realm-public:
+      entryPoints: [websecure]
+      rule: HostRegexp(`^[a-z][a-z0-9-]{1,29}[a-z0-9]\.arkya\.online$`) && !Host(`api.arkya.online`) && !Host(`admin.arkya.online`) && !Host(`www.arkya.online`) && !Host(`backoffice.arkya.online`) && !Host(`beta-game.arkya.online`)
+      priority: 10
+      service: arkya-gateway
+      tls: {}
+      observability:
+        accessLogs: false
+        tracing: false

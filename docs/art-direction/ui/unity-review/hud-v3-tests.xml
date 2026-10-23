@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="21" result="Passed" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 08:47:02Z" end-time="2026-10-18 08:48:01Z" duration="59.6372672">
+  <test-suite type="TestSuite" id="1000" name="Arkya" fullname="Arkya" runstate="Runnable" testcasecount="340" result="Passed" start-time="2026-10-18 08:47:02Z" end-time="2026-10-18 08:48:01Z" duration="59.637267" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1185" name="Arkya.Characters.EditorTests.dll" fullname="D:/Repositories/arkya/artifacts/ui-integration/project/Library/ScriptAssemblies/Arkya.Characters.EditorTests.dll" runstate="Runnable" testcasecount="93" result="Passed" start-time="2026-10-18 08:47:02Z" end-time="2026-10-18 08:48:01Z" duration="59.506591" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48756" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1186" name="Arkya" fullname="Arkya" runstate="Runnable" testcasecount="93" result="Passed" start-time="2026-10-18 08:47:02Z" end-time="2026-10-18 08:48:01Z" duration="59.502736" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1187" name="Characters" fullname="Arkya.Characters" runstate="Runnable" testcasecount="93" result="Passed" start-time="2026-10-18 08:47:02Z" end-time="2026-10-18 08:48:01Z" duration="59.497305" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1188" name="Tests" fullname="Arkya.Characters.Tests" runstate="Runnable" testcasecount="93" result="Passed" start-time="2026-10-18 08:47:02Z" end-time="2026-10-18 08:48:01Z" duration="59.493496" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1085" name="CharacterIslandRuntimeTests" fullname="Arkya.Characters.Tests.CharacterIslandRuntimeTests" classname="Arkya.Characters.Tests.CharacterIslandRuntimeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 08:47:02Z" end-time="2026-10-18 08:47:51Z" duration="48.940747" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1086" name="CreationUiEntersIslandWithAuthoritativeTerrainMovementAndCanReturnTwice" fullname="Arkya.Characters.Tests.CharacterIslandRuntimeTests.CreationUiEntersIslandWithAuthoritativeTerrainMovementAndCanReturnTwice" methodname="CreationUiEntersIslandWithAuthoritativeTerrainMovementAndCanReturnTwice" classname="Arkya.Characters.Tests.CharacterIslandRuntimeTests" runstate="Runnable" seed="600741670" result="Passed" start-time="2026-10-18 08:47:02Z" end-time="2026-10-18 08:47:51Z" duration="48.866868" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.5 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning.
+Expect client input loss, and a reduction in gameplay, physics, prediction and interpolation quality. Server Tick Batching should only occur in exceptional situations, as a defensive mechanism to prevent a death spiral. i.e. If encountered frequently - with optimizations (like Burst) enabled - this indicates unacceptably poor server performance, as frequent batching makes most games effectively unplayable.
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.5 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.5 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.5 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning.
+Expect client input loss, and a reduction in gameplay, physics, prediction and interpolation quality. Server Tick Batching should only occur in exceptional situations, as a defensive mechanism to prevent a death spiral. i.e. If encountered frequently - with optimizations (like Burst) enabled - this indicates unacceptably poor server performance, as frequent batching makes most games effectively unplayable.
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1159" name="DiscordSocialPanelRuntimeTests" fullname="Arkya.Characters.Tests.DiscordSocialPanelRuntimeTests" classname="Arkya.Characters.Tests.DiscordSocialPanelRuntimeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-18 08:47:51Z" end-time="2026-10-18 08:47:58Z" duration="7.098784" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1160" name="SocialPanelRequiresAnAccountAndRemainsAvailableDuringLocalPlaytest" fullname="Arkya.Characters.Tests.DiscordSocialPanelRuntimeTests.SocialPanelRequiresAnAccountAndRemainsAvailableDuringLocalPlaytest" methodname="SocialPanelRequiresAnAccountAndRemainsAvailableDuringLocalPlaytest" classname="Arkya.Characters.Tests.DiscordSocialPanelRuntimeTests" runstate="Runnable" seed="2041670242" result="Passed" start-time="2026-10-18 08:47:51Z" end-time="2026-10-18 08:47:58Z" duration="7.094463" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning.
+Expect client input loss, and a reduction in gameplay, physics, prediction and interpolation quality. Server Tick Batching should only occur in exceptional situations, as a defensive mechanism to prevent a death spiral. i.e. If encountered frequently - with optimizations (like Burst) enabled - this indicates unacceptably poor server performance, as frequent batching makes most games effectively unplayable.
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+Server Tick Batching has occurred due to the server falling behind its desired `SimulationTickRate`. An average of 1.25 ticks per frame has been detected for the last ~4 frames. Click <a href="OpenPlayModeTools" highlight="WarnBatchedTicks">here</a> to disable this warning. (see first warning for more details)
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1161" name="HudV3PresentationTests" fullname="Arkya.Characters.Tests.HudV3PresentationTests" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.119540" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1163" name="EditorReferenceFrameMatchesTheApprovedV3ValuesAndSlotOrder" fullname="Arkya.Characters.Tests.HudV3PresentationTests.EditorReferenceFrameMatchesTheApprovedV3ValuesAndSlotOrder" methodname="EditorReferenceFrameMatchesTheApprovedV3ValuesAndSlotOrder" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="317952935" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.011621" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1162" name="EmptyFrameLeavesUnavailableGameplayValuesUnknown" fullname="Arkya.Characters.Tests.HudV3PresentationTests.EmptyFrameLeavesUnavailableGameplayValuesUnknown" methodname="EmptyFrameLeavesUnavailableGameplayValuesUnknown" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="938228539" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.003664" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1173" name="GaugeFillIsBoundedWithoutInventingTheReportedValue" fullname="Arkya.Characters.Tests.HudV3PresentationTests.GaugeFillIsBoundedWithoutInventingTheReportedValue" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.033133" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1169" name="GaugeFillIsBoundedWithoutInventingTheReportedValue(5,0,&quot;—&quot;,0)" fullname="Arkya.Characters.Tests.HudV3PresentationTests.GaugeFillIsBoundedWithoutInventingTheReportedValue(5,0,&quot;—&quot;,0)" methodname="GaugeFillIsBoundedWithoutInventingTheReportedValue" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="595493906" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.008552" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1170" name="GaugeFillIsBoundedWithoutInventingTheReportedValue(5,-1,&quot;—&quot;,0)" fullname="Arkya.Characters.Tests.HudV3PresentationTests.GaugeFillIsBoundedWithoutInventingTheReportedValue(5,-1,&quot;—&quot;,0)" methodname="GaugeFillIsBoundedWithoutInventingTheReportedValue" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="60124491" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.007058" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1171" name="GaugeFillIsBoundedWithoutInventingTheReportedValue(-5,100,&quot;-5 / 100&quot;,0)" fullname="Arkya.Characters.Tests.HudV3PresentationTests.GaugeFillIsBoundedWithoutInventingTheReportedValue(-5,100,&quot;-5 / 100&quot;,0)" methodname="GaugeFillIsBoundedWithoutInventingTheReportedValue" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="2017205250" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.007342" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1172" name="GaugeFillIsBoundedWithoutInventingTheReportedValue(150,100,&quot;150 / 100&quot;,100)" fullname="Arkya.Characters.Tests.HudV3PresentationTests.GaugeFillIsBoundedWithoutInventingTheReportedValue(150,100,&quot;150 / 100&quot;,100)" methodname="GaugeFillIsBoundedWithoutInventingTheReportedValue" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="304682447" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.007065" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1164" name="ImportedArtResolvesEveryApprovedIconAndPortraitKey" fullname="Arkya.Characters.Tests.HudV3PresentationTests.ImportedArtResolvesEveryApprovedIconAndPortraitKey" methodname="ImportedArtResolvesEveryApprovedIconAndPortraitKey" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="1410334997" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.002252" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1168" name="RendererClearsReferenceOnlyContentWhenTheLiveFrameHasNone" fullname="Arkya.Characters.Tests.HudV3PresentationTests.RendererClearsReferenceOnlyContentWhenTheLiveFrameHasNone" methodname="RendererClearsReferenceOnlyContentWhenTheLiveFrameHasNone" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="350187059" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.017217" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1166" name="RendererKeepsTwelveBindingsPerRowWhenActionsAreCleared" fullname="Arkya.Characters.Tests.HudV3PresentationTests.RendererKeepsTwelveBindingsPerRowWhenActionsAreCleared" methodname="RendererKeepsTwelveBindingsPerRowWhenActionsAreCleared" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="807136369" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.028395" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1167" name="RendererReplacesKnownStatisticsWithExplicitUnknownValues" fullname="Arkya.Characters.Tests.HudV3PresentationTests.RendererReplacesKnownStatisticsWithExplicitUnknownValues" methodname="RendererReplacesKnownStatisticsWithExplicitUnknownValues" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="48020645" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.016261" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1165" name="UnavailableIconKeysDoNotAcquireAPlaceholderItem" fullname="Arkya.Characters.Tests.HudV3PresentationTests.UnavailableIconKeysDoNotAcquireAPlaceholderItem" methodname="UnavailableIconKeysDoNotAcquireAPlaceholderItem" classname="Arkya.Characters.Tests.HudV3PresentationTests" runstate="Runnable" seed="742214105" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.000554" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1174" name="InterfacePresentationTests" fullname="Arkya.Characters.Tests.InterfacePresentationTests" classname="Arkya.Characters.Tests.InterfacePresentationTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:48:01Z" duration="3.305361" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="ParameterizedMethod" id="1178" name="SelectedThemeIsRestoredWhenTheInterfaceIsRecreated" fullname="Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated" classname="Arkya.Characters.Tests.InterfacePresentationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.025378" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1175" name="SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(&quot;ink-copper&quot;)" fullname="Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(&quot;ink-copper&quot;)" methodname="SelectedThemeIsRestoredWhenTheInterfaceIsRecreated" classname="Arkya.Characters.Tests.InterfacePresentationTests" runstate="Runnable" seed="1883585789" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.011159" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1176" name="SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(&quot;explorer-journal&quot;)" fullname="Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(&quot;explorer-journal&quot;)" methodname="SelectedThemeIsRestoredWhenTheInterfaceIsRecreated" classname="Arkya.Characters.Tests.InterfacePresentationTests" runstate="Runnable" seed="1319848782" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.006404" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1177" name="SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(&quot;mana-stone&quot;)" fullname="Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(&quot;mana-stone&quot;)" methodname="SelectedThemeIsRestoredWhenTheInterfaceIsRecreated" classname="Arkya.Characters.Tests.InterfacePresentationTests" runstate="Runnable" seed="166349455" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:47:58Z" duration="0.006360" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1180" name="ThemeSelectionPreservesCreationAndExplorationControls" fullname="Arkya.Characters.Tests.InterfacePresentationTests.ThemeSelectionPreservesCreationAndExplorationControls" methodname="ThemeSelectionPreservesCreationAndExplorationControls" classname="Arkya.Characters.Tests.InterfacePresentationTests" runstate="Runnable" seed="1665917400" result="Passed" start-time="2026-10-18 08:47:58Z" end-time="2026-10-18 08:48:01Z" duration="3.273502" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1179" name="UnknownSavedThemeFallsBackWithoutDiscardingExistingInterfaceContent" fullname="Arkya.Characters.Tests.InterfacePresentationTests.UnknownSavedThemeFallsBackWithoutDiscardingExistingInterfaceContent" methodname="UnknownSavedThemeFallsBackWithoutDiscardingExistingInterfaceContent" classname="Arkya.Characters.Tests.InterfacePresentationTests" runstate="Runnable" seed="1038892015" result="Passed" start-time="2026-10-18 08:48:01Z" end-time="2026-10-18 08:48:01Z" duration="0.003863" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1181" name="TerrainMapPresentationTests" fullname="Arkya.Characters.Tests.TerrainMapPresentationTests" classname="Arkya.Characters.Tests.TerrainMapPresentationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 08:48:01Z" end-time="2026-10-18 08:48:01Z" duration="0.006008" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1184" name="LayerTintRemapsTheDeclaredTextureMeanWithoutReadingTexturePixels" fullname="Arkya.Characters.Tests.TerrainMapPresentationTests.LayerTintRemapsTheDeclaredTextureMeanWithoutReadingTexturePixels" methodname="LayerTintRemapsTheDeclaredTextureMeanWithoutReadingTexturePixels" classname="Arkya.Characters.Tests.TerrainMapPresentationTests" runstate="Runnable" seed="893880523" result="Passed" start-time="2026-10-18 08:48:01Z" end-time="2026-10-18 08:48:01Z" duration="0.002391" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1182" name="PaintBlendingPreservesTerrainAxesAndInterpolatesBothLayers" fullname="Arkya.Characters.Tests.TerrainMapPresentationTests.PaintBlendingPreservesTerrainAxesAndInterpolatesBothLayers" methodname="PaintBlendingPreservesTerrainAxesAndInterpolatesBothLayers" classname="Arkya.Characters.Tests.TerrainMapPresentationTests" runstate="Runnable" seed="2128961632" result="Passed" start-time="2026-10-18 08:48:01Z" end-time="2026-10-18 08:48:01Z" duration="0.001203" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1183" name="PaintBlendNormalizesWeightsAndKeepsOutputOpaque" fullname="Arkya.Characters.Tests.TerrainMapPresentationTests.PaintBlendNormalizesWeightsAndKeepsOutputOpaque" methodname="PaintBlendNormalizesWeightsAndKeepsOutputOpaque" classname="Arkya.Characters.Tests.TerrainMapPresentationTests" runstate="Runnable" seed="1388203588" result="Passed" start-time="2026-10-18 08:48:01Z" end-time="2026-10-18 08:48:01Z" duration="0.000506" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/grass/AppData/LocalLow/DefaultCompany/Arkya\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

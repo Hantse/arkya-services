@@ -1,0 +1,84 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 1.18,
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterIdleAnimationTests.IdleKeepsFeetRootAndGazeSteadyThroughContinuousBreathing(\"human-a\")",
+          "Status": "Passed",
+          "Duration": 0.401923,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterIdleAnimationTests.IdleKeepsFeetRootAndGazeSteadyThroughContinuousBreathing(\"human-b\")",
+          "Status": "Passed",
+          "Duration": 0.2161504,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterIdleAnimationTests.IdleKeepsFeetRootAndGazeSteadyThroughContinuousBreathing(\"elf-a\")",
+          "Status": "Passed",
+          "Duration": 0.2776096,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterIdleAnimationTests.IdleKeepsFeetRootAndGazeSteadyThroughContinuousBreathing(\"elf-b\")",
+          "Status": "Passed",
+          "Duration": 0.2458221,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterIdleAnimationTests.IdleUsesSoftForwardKneesRelaxedElbowsAndBalancedStance(\"human-a\")",
+          "Status": "Passed",
+          "Duration": 0.0028491,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterIdleAnimationTests.IdleUsesSoftForwardKneesRelaxedElbowsAndBalancedStance(\"human-b\")",
+          "Status": "Passed",
+          "Duration": 0.0008642,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterIdleAnimationTests.IdleUsesSoftForwardKneesRelaxedElbowsAndBalancedStance(\"elf-a\")",
+          "Status": "Passed",
+          "Duration": 0.0008124,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "Arkya.Characters.Tests.CharacterIdleAnimationTests.IdleUsesSoftForwardKneesRelaxedElbowsAndBalancedStance(\"elf-b\")",
+          "Status": "Passed",
+          "Duration": 0.001131,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

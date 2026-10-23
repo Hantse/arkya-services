@@ -1,0 +1,409 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "root": "Woodcutters work camp - timber yard and lodge",
+  "center": {
+    "x": 550.0,
+    "y": 53.9310265,
+    "z": 870.0
+  },
+  "yaw": 90.0,
+  "distanceFromTownWell": 350.0,
+  "front": "Local -Z, world west",
+  "footprint": {
+    "width": 40,
+    "depth": 40
+  },
+  "minimumEntranceLaneWidth": 5.0,
+  "terrainHeightsUnchanged": true,
+  "terrainPaintUnchanged": true,
+  "townUnchanged": true,
+  "clearing": "Individual approved natural instances inside 40x40m; extra overhanging crowns only where they intersect lodge or saw roof.",
+  "additions": [
+    {
+      "kind": "Lodge",
+      "path": "Woodcutters work camp - timber yard and lodge/Lodge - glazed timber cabin",
+      "width": 8,
+      "depth": 6,
+      "floorWorldHeight": 54.25627,
+      "roofEave": 3.04,
+      "windows": 6,
+      "doorWidth": 1.67,
+      "doorClearHeight": 2.39,
+      "terrainFoundationDepth": 0.6074753
+    },
+    {
+      "kind": "Saw shelter",
+      "path": "Woodcutters work camp - timber yard and lodge/Sawmill - open timber workshop",
+      "width": 12,
+      "depth": 8,
+      "eaveWorldHeight": 57.2575836,
+      "minimumGroundClearance": 3.35,
+      "terrainFloor": true
+    },
+    {
+      "kind": "Timber yard",
+      "lumberStacks": 2,
+      "roughLogStack": 1,
+      "workCart": 1,
+      "decorativeTools": "Hand saw and axe; no gameplay components"
+    },
+    {
+      "kind": "Rest corner",
+      "sharedTable": 1,
+      "benches": 2,
+      "windLaundry": 3,
+      "newLights": 0
+    }
+  ],
+  "clearedNaturalInstances": [
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 558.3921,
+        "y": 53.8958359,
+        "z": 845.8729
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 554.2917,
+        "y": 53.8768234,
+        "z": 868.016968
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 569.4879,
+        "y": 53.6418953,
+        "z": 859.1579
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 561.8689,
+        "y": 54.1416321,
+        "z": 883.122
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 544.224548,
+        "y": 53.9787865,
+        "z": 858.701355
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 540.803,
+        "y": 54.689785,
+        "z": 883.819336
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 566.0897,
+        "y": 53.8856125,
+        "z": 850.2363
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 569.9093,
+        "y": 54.6430779,
+        "z": 887.2091
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 550.1909,
+        "y": 54.2341,
+        "z": 890.3557
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 537.7891,
+        "y": 54.95316,
+        "z": 875.9522
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 530.660034,
+        "y": 55.4310455,
+        "z": 860.857544
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 548.0359,
+        "y": 54.05136,
+        "z": 877.887634
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Tree groves/Arbre",
+      "position": {
+        "x": 565.916,
+        "y": 53.88504,
+        "z": 869.1289
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Arbre.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Fleur",
+      "position": {
+        "x": 559.090942,
+        "y": 53.84898,
+        "z": 866.088135
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Fleur.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Herbe",
+      "position": {
+        "x": 552.1624,
+        "y": 53.8973579,
+        "z": 867.3691
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Herbe.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Herbe",
+      "position": {
+        "x": 555.9767,
+        "y": 53.8667221,
+        "z": 869.992249
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Herbe.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Buisson",
+      "position": {
+        "x": 558.318542,
+        "y": 53.8585548,
+        "z": 868.630066
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Buisson.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Herbe",
+      "position": {
+        "x": 555.820862,
+        "y": 53.8653145,
+        "z": 869.0599
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Herbe.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Fleur",
+      "position": {
+        "x": 552.815063,
+        "y": 53.8999863,
+        "z": 872.5249
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Fleur.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Buisson",
+      "position": {
+        "x": 556.8733,
+        "y": 53.8553467,
+        "z": 866.46344
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Buisson.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Herbe",
+      "position": {
+        "x": 569.675842,
+        "y": 53.7478638,
+        "z": 852.957031
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Herbe.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Herbe",
+      "position": {
+        "x": 569.484,
+        "y": 53.8054962,
+        "z": 851.216248
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Herbe.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Fleur",
+      "position": {
+        "x": 565.6867,
+        "y": 53.796917,
+        "z": 855.7365
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Fleur.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Souche",
+      "position": {
+        "x": 567.6991,
+        "y": 53.867115,
+        "z": 850.3127
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Souche.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Herbe",
+      "position": {
+        "x": 563.9819,
+        "y": 53.8313141,
+        "z": 854.6809
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Herbe.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Tronc",
+      "position": {
+        "x": 569.0897,
+        "y": 53.7576866,
+        "z": 853.2363
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Tronc.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Fleur",
+      "position": {
+        "x": 569.185669,
+        "y": 54.5564728,
+        "z": 885.6472
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Fleur.prefab"
+    },
+    {
+      "path": "Painted island - groves and ground gardens/Path gardens - painted flowers roots and stones/Buisson",
+      "position": {
+        "x": 555.5508,
+        "y": 54.17644,
+        "z": 889.0303
+      },
+      "prefab": "Assets/Arkya/ArtDirection/Optimized/Prefabs/Buisson.prefab"
+    }
+  ],
+  "roofShelterRenderers": [
+    "Woodcutters work camp - timber yard and lodge/Lodge - glazed timber cabin/Work camp roof - lodge slate/Detailed roof/Painted camp - Painted blue slate",
+    "Woodcutters work camp - timber yard and lodge/Lodge - glazed timber cabin/Work camp roof - lodge slate/Distant roof/Painted camp - Painted blue slate",
+    "Woodcutters work camp - timber yard and lodge/Sawmill - open timber workshop/Work camp roof - saw shelter slate/Detailed roof/Painted camp - Painted blue slate",
+    "Woodcutters work camp - timber yard and lodge/Sawmill - open timber workshop/Work camp roof - saw shelter slate/Distant roof/Painted camp - Painted blue slate"
+  ],
+  "markers": [
+    {
+      "name": "Review cabin step 00",
+      "path": "Woodcutters work camp - timber yard and lodge/Review cabin step 00",
+      "position": {
+        "x": 554.94,
+        "y": 54.104763,
+        "z": 880.0
+      }
+    },
+    {
+      "name": "Review cabin step 01",
+      "path": "Woodcutters work camp - timber yard and lodge/Review cabin step 01",
+      "position": {
+        "x": 555.3,
+        "y": 54.25627,
+        "z": 880.0
+      }
+    },
+    {
+      "name": "Review cabin outside",
+      "path": "Woodcutters work camp - timber yard and lodge/Review cabin outside",
+      "position": {
+        "x": 554.21,
+        "y": 53.9536438,
+        "z": 880.0
+      }
+    },
+    {
+      "name": "Review cabin threshold",
+      "path": "Woodcutters work camp - timber yard and lodge/Review cabin threshold",
+      "position": {
+        "x": 556.55,
+        "y": 54.25627,
+        "z": 880.0
+      }
+    },
+    {
+      "name": "Review cabin interior",
+      "path": "Woodcutters work camp - timber yard and lodge/Review cabin interior",
+      "position": {
+        "x": 559.0,
+        "y": 54.25627,
+        "z": 880.0
+      }
+    },
+    {
+      "name": "Review route approach",
+      "path": "Woodcutters work camp - timber yard and lodge/Review route approach",
+      "position": {
+        "x": 528.0,
+        "y": 56.3764877,
+        "z": 870.0
+      }
+    },
+    {
+      "name": "Review route entrance",
+      "path": "Woodcutters work camp - timber yard and lodge/Review route entrance",
+      "position": {
+        "x": 535.0,
+        "y": 55.06977,
+        "z": 870.0
+      }
+    },
+    {
+      "name": "Review route center",
+      "path": "Woodcutters work camp - timber yard and lodge/Review route center",
+      "position": {
+        "x": 547.0,
+        "y": 53.99939,
+        "z": 870.0
+      }
+    },
+    {
+      "name": "Review route shelter",
+      "path": "Woodcutters work camp - timber yard and lodge/Review route shelter",
+      "position": {
+        "x": 553.0,
+        "y": 53.8880539,
+        "z": 862.0
+      }
+    }
+  ],
+  "renderers": 85,
+  "lodGroups": 21,
+  "colliders": 93,
+  "newLights": 0,
+  "invalidMaterials": 0,
+  "missingScripts": 0,
+  "scope": "Authored workplace and rest area only. Existing approved wood/vegetation LOD prefabs and village materials reused; no gameplay nodes or NPCs."
+}

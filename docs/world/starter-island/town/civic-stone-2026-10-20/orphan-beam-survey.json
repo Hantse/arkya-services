@@ -1,0 +1,367 @@
+{
+  "readOnly": true,
+  "rays": [
+    {
+      "pixel": [
+        975.0,
+        657.0
+      ],
+      "hits": [
+        {
+          "path": "Ocean waves - gentle coast and violet swell/Local displaced ocean - 2m grid",
+          "mesh": "Assets/Arkya/World/StarterIsland/Meshes/LocalOceanGrid.asset",
+          "material": "Assets/Arkya/World/StarterIsland/Materials/Ocean.mat",
+          "distance": 65.1494141,
+          "triangle": 43961,
+          "submesh": 0,
+          "hit": [
+            532.666565,
+            28.0000019,
+            565.5002
+          ],
+          "rendererBoundsCenter": [
+            540.0,
+            28.0,
+            528.0
+          ],
+          "rendererBoundsSize": [
+            384.0,
+            3.7,
+            384.0
+          ]
+        },
+        {
+          "path": "Ocean - presentation only",
+          "mesh": "Library/unity default resources",
+          "material": "Assets/Arkya/World/StarterIsland/Materials/Ocean.mat",
+          "distance": 65.14942,
+          "triangle": 93,
+          "submesh": 0,
+          "hit": [
+            532.666565,
+            27.9999962,
+            565.5002
+          ],
+          "rendererBoundsCenter": [
+            768.0,
+            28.0,
+            768.0
+          ],
+          "rendererBoundsSize": [
+            4200.0,
+            2.220446E-16,
+            4200.0
+          ]
+        }
+      ]
+    },
+    {
+      "pixel": [
+        998.0,
+        573.0
+      ],
+      "hits": [
+        {
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Architecture - Warm coursed limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageUpgrade/Architecture/Meshes/Civic_house_Warm_coursed_limestone.asset",
+          "material": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicWeatheredLimestone.mat",
+          "distance": 40.51812,
+          "triangle": 3,
+          "submesh": 0,
+          "hit": [
+            538.4759,
+            48.8267021,
+            552.761
+          ],
+          "rendererBoundsCenter": [
+            532.6059,
+            51.08005,
+            552.855469
+          ],
+          "rendererBoundsSize": [
+            15.965888,
+            4.8,
+            15.3794689
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Architecture - Warm coursed limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageUpgrade/Architecture/Meshes/Civic_house_Warm_coursed_limestone.asset",
+          "material": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicWeatheredLimestone.mat",
+          "distance": 40.73681,
+          "triangle": 11,
+          "submesh": 0,
+          "hit": [
+            538.4137,
+            48.6800537,
+            552.9108
+          ],
+          "rendererBoundsCenter": [
+            532.6059,
+            51.08005,
+            552.855469
+          ],
+          "rendererBoundsSize": [
+            15.965888,
+            4.8,
+            15.3794689
+          ]
+        },
+        {
+          "path": "Ocean waves - gentle coast and violet swell/Local displaced ocean - 2m grid",
+          "mesh": "Assets/Arkya/World/StarterIsland/Meshes/LocalOceanGrid.asset",
+          "material": "Assets/Arkya/World/StarterIsland/Materials/Ocean.mat",
+          "distance": 71.5759659,
+          "triangle": 45876,
+          "submesh": 0,
+          "hit": [
+            529.642456,
+            27.9999981,
+            574.0403
+          ],
+          "rendererBoundsCenter": [
+            540.0,
+            28.0,
+            528.0
+          ],
+          "rendererBoundsSize": [
+            384.0,
+            3.7,
+            384.0
+          ]
+        },
+        {
+          "path": "Ocean - presentation only",
+          "mesh": "Library/unity default resources",
+          "material": "Assets/Arkya/World/StarterIsland/Materials/Ocean.mat",
+          "distance": 71.57597,
+          "triangle": 93,
+          "submesh": 0,
+          "hit": [
+            529.642456,
+            27.9999924,
+            574.040344
+          ],
+          "rendererBoundsCenter": [
+            768.0,
+            28.0,
+            768.0
+          ],
+          "rendererBoundsSize": [
+            4200.0,
+            2.220446E-16,
+            4200.0
+          ]
+        }
+      ]
+    },
+    {
+      "pixel": [
+        700.0,
+        446.0
+      ],
+      "hits": [
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Court furniture and planting - Town warm limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Court_10.asset",
+          "material": "Assets/Arkya/World/StarterIsland/Town/Materials/Town warm limestone.mat",
+          "distance": 44.33517,
+          "triangle": 579,
+          "submesh": 0,
+          "hit": [
+            523.4509,
+            50.53565,
+            549.7479
+          ],
+          "rendererBoundsCenter": [
+            552.9767,
+            50.55729,
+            516.9992
+          ],
+          "rendererBoundsSize": [
+            74.02228,
+            3.05726242,
+            66.41843
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Court furniture and planting - Town warm limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Court_10.asset",
+          "material": "Assets/Arkya/World/StarterIsland/Town/Materials/Town warm limestone.mat",
+          "distance": 44.5003128,
+          "triangle": 530,
+          "submesh": 0,
+          "hit": [
+            523.352051,
+            50.4408073,
+            549.840149
+          ],
+          "rendererBoundsCenter": [
+            552.9767,
+            50.55729,
+            516.9992
+          ],
+          "rendererBoundsSize": [
+            74.02228,
+            3.05726242,
+            66.41843
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Court furniture and planting - Town warm limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Court_10.asset",
+          "material": "Assets/Arkya/World/StarterIsland/Town/Materials/Town warm limestone.mat",
+          "distance": 44.53477,
+          "triangle": 572,
+          "submesh": 0,
+          "hit": [
+            523.3314,
+            50.42102,
+            549.8594
+          ],
+          "rendererBoundsCenter": [
+            552.9767,
+            50.55729,
+            516.9992
+          ],
+          "rendererBoundsSize": [
+            74.02228,
+            3.05726242,
+            66.41843
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Court furniture and planting - Town warm limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Court_10.asset",
+          "material": "Assets/Arkya/World/StarterIsland/Town/Materials/Town warm limestone.mat",
+          "distance": 44.9592133,
+          "triangle": 538,
+          "submesh": 0,
+          "hit": [
+            523.0772,
+            50.1772652,
+            550.096252
+          ],
+          "rendererBoundsCenter": [
+            552.9767,
+            50.55729,
+            516.9992
+          ],
+          "rendererBoundsSize": [
+            74.02228,
+            3.05726242,
+            66.41843
+          ]
+        },
+        {
+          "path": "Ocean waves - gentle coast and violet swell/Local displaced ocean - 2m grid",
+          "mesh": "Assets/Arkya/World/StarterIsland/Meshes/LocalOceanGrid.asset",
+          "material": "Assets/Arkya/World/StarterIsland/Materials/Ocean.mat",
+          "distance": 83.57551,
+          "triangle": 45079,
+          "submesh": 0,
+          "hit": [
+            499.952759,
+            28.0,
+            571.6519
+          ],
+          "rendererBoundsCenter": [
+            540.0,
+            28.0,
+            528.0
+          ],
+          "rendererBoundsSize": [
+            384.0,
+            3.7,
+            384.0
+          ]
+        },
+        {
+          "path": "Ocean - presentation only",
+          "mesh": "Library/unity default resources",
+          "material": "Assets/Arkya/World/StarterIsland/Materials/Ocean.mat",
+          "distance": 83.5755157,
+          "triangle": 93,
+          "submesh": 0,
+          "hit": [
+            499.952759,
+            27.9999943,
+            571.6519
+          ],
+          "rendererBoundsCenter": [
+            768.0,
+            28.0,
+            768.0
+          ],
+          "rendererBoundsSize": [
+            4200.0,
+            2.220446E-16,
+            4200.0
+          ]
+        }
+      ]
+    }
+  ],
+  "nearbyBrownGeometry": [
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Lantern carved post",
+      "mesh": "Assets/Arkya/Building/Art/Meshes/RoundedTimber_180_3300_180.asset",
+      "selectedVertices": 1146,
+      "center": [
+        548.0,
+        52.1682,
+        541.0
+      ],
+      "size": [
+        0.179931641,
+        3.20334625,
+        0.180175781
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Court furniture and planting - Painted boards V2",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Court_04.asset",
+      "selectedVertices": 192,
+      "center": [
+        541.0,
+        53.530632,
+        546.0
+      ],
+      "size": [
+        6.831665,
+        0.419998169,
+        6.12084961
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Architecture - Painted boards V2",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/VillageUpgrade/Architecture/Meshes/Civic_house_Painted_boards_V2.asset",
+      "selectedVertices": 120,
+      "center": [
+        535.2335,
+        53.4800529,
+        551.3782
+      ],
+      "size": [
+        2.31036377,
+        0.0699996948,
+        1.22314453
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Architecture - Painted beams V2",
+      "mesh": "Assets/Arkya/World/StarterIsland/Town/CivicStone20261020/Hall/CivicTimberInteriorAndWindows.asset",
+      "selectedVertices": 150,
+      "center": [
+        535.63916,
+        53.63005,
+        551.330444
+      ],
+      "size": [
+        2.3828125,
+        4.830002,
+        1.25488281
+      ]
+    }
+  ]
+}

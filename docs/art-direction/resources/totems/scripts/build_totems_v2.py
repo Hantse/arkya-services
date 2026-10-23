@@ -32,6 +32,16 @@ def select(objects):
     bpy.context.view_layer.objects.active = objects[0]
 
 
+def render_preview(path):
+    # Replace completed PNGs so an open Windows preview cannot block the write.
+    path=Path(path)
+    temporary=path.with_name(path.stem+'.pending.png')
+    bpy.context.scene.render.filepath=str(temporary)
+    bpy.ops.render.render(write_still=True)
+    temporary.replace(path)
+    bpy.context.scene.render.filepath=str(path)
+
+
 def coat_material(original, palette, species, profile=None):
     material = bpy.data.materials.new('Paint working')
     material.use_nodes = True
@@ -81,9 +91,12 @@ def coat_material(original, palette, species, profile=None):
     links.new(texture.outputs['Color'],mix.inputs[1])
     links.new(ramp.outputs['Color'],mix.inputs[2])
     painted = mix.outputs[0]
-    if profile == 'wolf-v4':
+    if profile in ('wolf-v4','wolf-v7','wolf-v8','wolf-v9','wolf-v10'):
         from wolf_coat_v4 import paint_wolf
-        painted = paint_wolf(nodes,links,texture.outputs['Color'],palette,color)
+        painted = paint_wolf(nodes,links,texture.outputs['Color'],palette,color,
+                             position_attribute="PaintPosition" if profile in ("wolf-v7","wolf-v8","wolf-v9","wolf-v10") else "SourcePosition",
+                             refined_brow=profile in ("wolf-v8","wolf-v9","wolf-v10"),
+                             swept_cheeks=profile in ("wolf-v9","wolf-v10"))
     elif species == 'wolf':
         from wolf_coat import paint_wolf
         painted = paint_wolf(nodes,links,texture.outputs['Color'],grey.outputs[0],painted,palette,color)
@@ -113,8 +126,10 @@ def coat_material(original, palette, species, profile=None):
 def bake_coat(coat, original, palette, path, species, profile=None):
     if species == 'wolf' and 'SourcePosition' not in coat.data.attributes:
         raise ValueError('Rebuild the wolf anatomy with its SourcePosition attribute before baking.')
-    if profile == 'wolf-v4' and 'EyeMask' not in coat.data.attributes:
+    if profile in ('wolf-v4','wolf-v7','wolf-v8','wolf-v9','wolf-v10') and 'EyeMask' not in coat.data.attributes:
         raise ValueError('The wolf V4 anatomy must include its eye-island mask.')
+    if profile in ('wolf-v7','wolf-v8','wolf-v9','wolf-v10') and 'PaintPosition' not in coat.data.attributes:
+        raise ValueError('This wolf anatomy requires transported PaintPosition coordinates.')
     working=coat_material(original,palette,species,profile)
     coat.data.materials.clear()
     coat.data.materials.append(working)
@@ -131,9 +146,12 @@ def bake_coat(coat, original, palette, path, species, profile=None):
     scene.render.bake.margin=12
     select([coat])
     bpy.ops.object.bake(type='EMIT')
-    image.filepath_raw=str(path)
+    temporary=path.with_name(path.stem+'.pending.png')
+    image.filepath_raw=str(temporary)
     image.file_format='PNG'
     image.save()
+    temporary.replace(path)
+    image.filepath_raw=str(path)
     final=bpy.data.materials.new('TotemFur')
     final.use_nodes=True
     bs=final.node_tree.nodes.get('Principled BSDF')
@@ -231,11 +249,10 @@ def render_head_views(camera,coat,prefix):
     for suffix,direction in [('front',(3,0,.04)),('profile',(0,-3,.08)),('three-quarter',(2,-3,.22))]:
         camera.location=center+Vector(direction)*size
         camera.rotation_euler=(center-camera.location).to_track_quat('-Z','Y').to_euler()
-        bpy.context.scene.render.filepath=str(ROOT/'renders'/f'{prefix}-head-{suffix}.png')
-        bpy.ops.render.render(write_still=True)
+        render_preview(ROOT/'renders'/f'{prefix}-head-{suffix}.png')
 
 
-def build(species,draft=False,lookdev=False,source_override=None):
+def build(species,draft=False,lookdev=False,source_override=None,skip_renders=False):
     manifest=json.loads((ROOT/'manifest.json').read_text(encoding='utf-8'))
     source=Path(source_override).resolve() if source_override else ROOT/'assets'/'anatomy'/f'{species}.blend'
     bpy.ops.wm.open_mainfile(filepath=str(source))
@@ -262,10 +279,10 @@ def build(species,draft=False,lookdev=False,source_override=None):
         bake_coat(coat,original,variant['colors'],ROOT/'renders'/f'{species}-lookdev-basecolor.png',species,profile)
         magic_material(magic,variant['colors'])
         camera=studio()
+        bpy.context.scene.cycles.samples=24
         frame_camera(camera,coat)
-        bpy.context.scene.render.filepath=str(ROOT/'renders'/f'{species}-lookdev-v2.png')
-        bpy.ops.render.render(write_still=True)
-        if profile=='wolf-v4':
+        render_preview(ROOT/'renders'/f'{species}-lookdev-v2.png')
+        if profile in ('wolf-v4','wolf-v7','wolf-v8','wolf-v9','wolf-v10'):
             render_head_views(camera,coat,'wolf-lookdev')
         return
     sparks,paths=make_sparks(rig,paths,coat.dimensions.z*.0035,
@@ -304,9 +321,12 @@ def build(species,draft=False,lookdev=False,source_override=None):
         rig.animation_data.action=actions[0]
         bpy.context.scene.frame_set(0)
         select([rig,coat,magic,sparks])
-        bpy.ops.export_scene.gltf(filepath=str(ROOT/'models'/f"{species}-{variant['id']}.glb"),
+        model_path=ROOT/'models'/f"{species}-{variant['id']}.glb"
+        pending_model=model_path.with_name(model_path.stem+'.pending.glb')
+        bpy.ops.export_scene.gltf(filepath=str(pending_model),
             export_format='GLB',use_selection=True,export_animations=True,export_animation_mode='ACTIONS',
             export_force_sampling=True,export_frame_range=False,export_skins=True,export_yup=True,export_extras=True)
+        pending_model.replace(model_path)
         if index==0:
             bpy.ops.export_scene.fbx(filepath=str(ROOT/'assets'/f'{species}.fbx'),use_selection=True,
                 object_types={'ARMATURE','MESH'},add_leaf_bones=False,bake_anim=True,
@@ -315,13 +335,13 @@ def build(species,draft=False,lookdev=False,source_override=None):
             image.pack()
             bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'assets'/f'{species}.blend'))
             bpy.context.scene.cycles.samples=48
-            for suffix,action,frame,side in [('beauty',actions[0],0,False),('side',actions[0],0,True),('walk',actions[1],15,True)]:
+            previews=[] if skip_renders else [('beauty',actions[0],0,False),('side',actions[0],0,True),('walk',actions[1],15,True)]
+            for suffix,action,frame,side in previews:
                 rig.animation_data.action=action
                 bpy.context.scene.frame_set(frame)
                 frame_camera(camera,coat,side)
-                bpy.context.scene.render.filepath=str(ROOT/'renders'/f'{species}-{suffix}.png')
-                bpy.ops.render.render(write_still=True)
-            if profile=='wolf-v4':
+                render_preview(ROOT/'renders'/f'{species}-{suffix}.png')
+            if profile in ('wolf-v4','wolf-v7','wolf-v8','wolf-v9','wolf-v10') and not skip_renders:
                 rig.animation_data.action=actions[0]
                 bpy.context.scene.frame_set(0)
                 render_head_views(camera,coat,'wolf')
@@ -362,8 +382,11 @@ if __name__=='__main__':
     parser.add_argument('--species',required=True,choices=['wolf','fox'])
     parser.add_argument('--draft',action='store_true')
     parser.add_argument('--lookdev',action='store_true')
+    parser.add_argument('--skip-renders',action='store_true',help='Build all assets without replacing studio previews')
     parser.add_argument('--source',help='Alternative anatomy .blend for a lookdev preview only')
     args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
     if args.source and not args.lookdev:
         parser.error('--source requires --lookdev')
-    build(args.species,args.draft,args.lookdev,args.source)
+    if args.skip_renders and args.lookdev:
+        parser.error('--skip-renders cannot be used with --lookdev')
+    build(args.species,args.draft,args.lookdev,args.source,args.skip_renders)

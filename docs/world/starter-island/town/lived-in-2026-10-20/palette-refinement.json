@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/29 Arkya _ chaume _ painted.mat",
+  "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/27 Arkya _ chaume _ painted.mat",
+  "previous": {
+    "textureSoftness": 1.25,
+    "textureContrast": 0.84,
+    "saturation": 0.95
+  },
+  "current": {
+    "textureSoftness": 2.0,
+    "textureContrast": 0.73,
+    "saturation": 0.9,
+    "baseColor": [
+      1.0,
+      0.95,
+      0.82,
+      1.0
+    ]
+  },
+  "shaderErrors": false,
+  "newAssets": 0,
+  "derivedMaterialCountUnchanged": true,
+  "sourceMaterialTextureUvAndHoneyTintUnchanged": true,
+  "geometryTerrainTransformsCollidersLightsAndProfilesUnchanged": true,
+  "assetsSaved": true,
+  "sceneSaved": false,
+  "scope": "Capture-driven softening of the single owned thatch material. Positive mip bias and bounded texture contrast reduce fine repetition; no grey pigment wash.",
+  "limitation": "Existing strand geometry and silhouette are retained."
+}

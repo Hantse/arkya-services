@@ -1,0 +1,86 @@
+{
+  "success": true,
+  "stage": "before",
+  "utc": "2026-10-20T09:49:20.6815642Z",
+  "playMode": false,
+  "captures": [
+    {
+      "file": "miners-overview-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 669.0,
+        "y": 77.47775,
+        "z": 497.0
+      },
+      "target": {
+        "x": 700.0,
+        "y": 53.4777527,
+        "z": 540.0
+      },
+      "fieldOfView": 57.0
+    },
+    {
+      "file": "miners-player-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 700.0,
+        "y": 53.332058,
+        "z": 515.0
+      },
+      "target": {
+        "x": 700.0,
+        "y": 53.4777527,
+        "z": 540.0
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "woodcutters-overview-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 507.0,
+        "y": 79.93103,
+        "z": 901.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.9310265,
+        "z": 870.0
+      },
+      "fieldOfView": 57.0
+    },
+    {
+      "file": "woodcutters-player-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 525.0,
+        "y": 58.66832,
+        "z": 870.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.9310265,
+        "z": 870.0
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "town-and-work-camps-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 758.0,
+        "y": 489.967072,
+        "z": 520.0
+      },
+      "target": {
+        "x": 625.0,
+        "y": 52.46707,
+        "z": 695.0
+      },
+      "fieldOfView": 60.0
+    }
+  ],
+  "stateRestored": true,
+  "sceneDirtyFlagUnchanged": true,
+  "scope": "Local overview and player-height view per camp, plus shared town/camps positioning. Fixed before/after cameras and day phase; presentation state restored, no scene save or asset edits."
+}

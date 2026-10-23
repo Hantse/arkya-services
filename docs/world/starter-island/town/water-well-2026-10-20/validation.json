@@ -1,0 +1,157 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T07:33:43.9967988Z",
+  "mode": "Edit Mode",
+  "caseCount": 13,
+  "checks": [
+    {
+      "name": "The small decorative prop stays within its authored component budget",
+      "passed": true,
+      "detail": {
+        "renderers": 9,
+        "colliders": 19,
+        "lights": 0,
+        "behaviours": 0
+      }
+    },
+    {
+      "name": "The placed well matches the recorded position and orientation",
+      "passed": true,
+      "detail": {
+        "position": {
+          "x": 562.0,
+          "y": 51.1551933,
+          "z": 516.0
+        },
+        "recorded": {
+          "x": 562.0,
+          "y": 51.1551933,
+          "z": 516.0
+        },
+        "yaw": 290.0
+      }
+    },
+    {
+      "name": "The visible water is a level 0.867 m disk recessed below the rim",
+      "passed": true,
+      "detail": {
+        "radius": 0.8670282,
+        "waterHeight": 51.6251945,
+        "localWaterHeight": 0.470001221,
+        "rimLocalHeight": 1.075
+      }
+    },
+    {
+      "name": "Terrain cannot hide or intersect the recessed water disk",
+      "passed": true,
+      "detail": {
+        "samples": 513,
+        "minimumWaterClearanceAboveTerrain": 0.4800148
+      }
+    },
+    {
+      "name": "The shaped stone coping rises to 1.075 m",
+      "passed": true,
+      "detail": {
+        "measuredLocalRimTop": 1.07500076,
+        "waterRecess": 0.605000734
+      }
+    },
+    {
+      "name": "The closed masonry rim blocks inward movement around its circumference",
+      "passed": true,
+      "detail": {
+        "masonrySegments": 16,
+        "radialCollisionChecks": 64,
+        "blocked": 64
+      }
+    },
+    {
+      "name": "A 0.6 m wide and 2 m high body can circle the well at radius 2.7 m",
+      "passed": true,
+      "detail": {
+        "radius": 2.7,
+        "circulationSamples": 96,
+        "sweptSegments": 96,
+        "maximumFloorCorrection": 0.0,
+        "failures": []
+      }
+    },
+    {
+      "name": "The well center remains at least 5.75 m outside every recorded street edge",
+      "passed": true,
+      "detail": {
+        "closest": [
+          {
+            "name": "Crooked market loop",
+            "width": 3.8,
+            "centerToStreetEdge": 5.7510767
+          },
+          {
+            "name": "East rampart stair access",
+            "width": 2.6,
+            "centerToStreetEdge": 6.946211
+          },
+          {
+            "name": "Door approach 06 - Forge du Refuge",
+            "width": 2.35,
+            "centerToStreetEdge": 7.608431
+          }
+        ],
+        "conservativePropRadius": 2.05,
+        "minimumClearanceAfterPropRadius": 3.70107675
+      }
+    },
+    {
+      "name": "The water uses its dedicated supported shader and clock controls",
+      "passed": true,
+      "detail": {
+        "shader": "Arkya/World/Painted Well Water",
+        "speed": 0.55,
+        "clock": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "w": 0.0
+        },
+        "materialPath": "Assets/Arkya/World/StarterIsland/Town/WaterWell/Materials/Clear village well water.mat"
+      }
+    },
+    {
+      "name": "The water surface adds no solid collider or shadow caster",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "The exact authored water mesh and material produce visible GPU animation",
+      "passed": true,
+      "detail": {
+        "changedPixels": 118739,
+        "imagePixels": 640000,
+        "phaseA": 0,
+        "phaseB": 4,
+        "threshold": "Sum of absolute RGB byte differences > 3",
+        "sourceMesh": "Recessed water surface - gentle ripples"
+      }
+    },
+    {
+      "name": "Repeated renders at the same water clock are stable",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "Source water, lighting, shader globals and render target are restored",
+      "passed": true,
+      "detail": {
+        "sourceClockUnchanged": true,
+        "originalLightUntouched": true,
+        "sunlightRestored": true
+      }
+    }
+  ],
+  "failures": [],
+  "exception": null,
+  "scope": "The authored well geometry, Terrain separation, closed masonry collision, 2.7 m circulation ring, recorded street edges and isolated GPU water animation. No scene/asset save, terrain edit, gameplay state or permanent light."
+}

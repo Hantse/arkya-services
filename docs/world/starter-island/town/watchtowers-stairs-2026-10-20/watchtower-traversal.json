@@ -1,0 +1,1598 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T07:15:33.8643808Z",
+  "towers": 4,
+  "caseCount": 80,
+  "passed": 80,
+  "installedRuntimeProxies": 0,
+  "bodyRadius": 0.3,
+  "serverBodyHeight": 1.75,
+  "extraClearanceHeight": 2.0,
+  "minimumRequiredPassageWidth": 1.8,
+  "minimumMeasuredSupportedPassageWidth": 2.0390625,
+  "scope": "Actual scene colliders. Two wall paths and three stair lines per tower, walking/running, 60/20 Hz. Each server route is continuous in both directions, without jumping or waypoint teleportation. A separate 2 m tall clearance check supplements the unchanged 1.75 m server body. Width is measured with oriented overlap boxes and floor support across the full 1.8 m band.",
+  "geometry": [
+    {
+      "Tower": "Watchtower North 03",
+      "Success": true,
+      "CapsuleChecks": 207,
+      "WidthChecks": 104,
+      "SupportChecks": 935,
+      "RiserChecks": 20,
+      "MinimumMeasuredPassageWidth": 2.06718779,
+      "NarrowestPoint": {
+        "x": 554.270447,
+        "y": 56.10533,
+        "z": 568.8976
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Success": true,
+      "CapsuleChecks": 210,
+      "WidthChecks": 105,
+      "SupportChecks": 945,
+      "RiserChecks": 20,
+      "MinimumMeasuredPassageWidth": 2.046094,
+      "NarrowestPoint": {
+        "x": 597.3233,
+        "y": 56.10533,
+        "z": 532.535461
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Success": true,
+      "CapsuleChecks": 209,
+      "WidthChecks": 104,
+      "SupportChecks": 937,
+      "RiserChecks": 20,
+      "MinimumMeasuredPassageWidth": 2.074219,
+      "NarrowestPoint": {
+        "x": 560.414063,
+        "y": 56.10533,
+        "z": 476.777679
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Success": true,
+      "CapsuleChecks": 206,
+      "WidthChecks": 102,
+      "SupportChecks": 920,
+      "RiserChecks": 20,
+      "MinimumMeasuredPassageWidth": 2.0390625,
+      "NarrowestPoint": {
+        "x": 514.627869,
+        "y": 56.10533,
+        "z": 552.572449
+      },
+      "Failures": []
+    }
+  ],
+  "cases": [
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Wall center, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 928,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 928,
+      "FinalPosition": {
+        "x": 550.004,
+        "y": 56.10534,
+        "z": 569.0005
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Wall interior, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 930,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 930,
+      "FinalPosition": {
+        "x": 550.123047,
+        "y": 56.10534,
+        "z": 568.361755
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 398,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 398,
+      "FinalPosition": {
+        "x": 551.266357,
+        "y": 56.10533,
+        "z": 570.0198
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 404,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 404,
+      "FinalPosition": {
+        "x": 551.2408,
+        "y": 56.10533,
+        "z": 570.21814
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 410,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 410,
+      "FinalPosition": {
+        "x": 551.2152,
+        "y": 56.10533,
+        "z": 570.4165
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Wall center, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 314,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 314,
+      "FinalPosition": {
+        "x": 550.0,
+        "y": 56.10534,
+        "z": 569.0
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Wall interior, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 314,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 314,
+      "FinalPosition": {
+        "x": 550.147,
+        "y": 56.10534,
+        "z": 568.3648
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 134,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 134,
+      "FinalPosition": {
+        "x": 551.266357,
+        "y": 56.10533,
+        "z": 570.0198
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 136,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 136,
+      "FinalPosition": {
+        "x": 551.2408,
+        "y": 56.10533,
+        "z": 570.21814
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 138,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 138,
+      "FinalPosition": {
+        "x": 551.2152,
+        "y": 56.10533,
+        "z": 570.4165
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Wall center, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 466,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 466,
+      "FinalPosition": {
+        "x": 550.0269,
+        "y": 56.10534,
+        "z": 569.0035
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Wall interior, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 466,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 466,
+      "FinalPosition": {
+        "x": 550.123047,
+        "y": 56.10534,
+        "z": 568.361755
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 200,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 200,
+      "FinalPosition": {
+        "x": 551.2771,
+        "y": 56.10533,
+        "z": 570.0212
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 202,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 202,
+      "FinalPosition": {
+        "x": 551.2515,
+        "y": 56.10533,
+        "z": 570.219543
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 206,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 206,
+      "FinalPosition": {
+        "x": 551.225952,
+        "y": 56.10533,
+        "z": 570.4179
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Wall center, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 158,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 158,
+      "FinalPosition": {
+        "x": 550.0,
+        "y": 56.10534,
+        "z": 569.0
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Wall interior, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 158,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 158,
+      "FinalPosition": {
+        "x": 550.123047,
+        "y": 56.10534,
+        "z": 568.361755
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 70,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 70,
+      "FinalPosition": {
+        "x": 551.266357,
+        "y": 56.10533,
+        "z": 570.0198
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 70,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 70,
+      "FinalPosition": {
+        "x": 551.2408,
+        "y": 56.10533,
+        "z": 570.21814
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower North 03",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 72,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 72,
+      "FinalPosition": {
+        "x": 551.2152,
+        "y": 56.10533,
+        "z": 570.4165
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Wall center, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 946,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 946,
+      "FinalPosition": {
+        "x": 597.1693,
+        "y": 56.10534,
+        "z": 537.697144
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Wall interior, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 934,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 934,
+      "FinalPosition": {
+        "x": 596.550964,
+        "y": 56.10534,
+        "z": 537.4966
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 397,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 397,
+      "FinalPosition": {
+        "x": 598.857849,
+        "y": 56.10533,
+        "z": 535.4699
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 404,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 404,
+      "FinalPosition": {
+        "x": 599.0583,
+        "y": 56.10533,
+        "z": 535.4959
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 410,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 410,
+      "FinalPosition": {
+        "x": 599.25824,
+        "y": 56.10533,
+        "z": 535.4926
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Wall center, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 318,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 318,
+      "FinalPosition": {
+        "x": 597.1686,
+        "y": 56.10534,
+        "z": 537.6995
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Wall interior, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 314,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 314,
+      "FinalPosition": {
+        "x": 596.5494,
+        "y": 56.10534,
+        "z": 537.5017
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 134,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 134,
+      "FinalPosition": {
+        "x": 598.858337,
+        "y": 56.10533,
+        "z": 535.4992
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 136,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 136,
+      "FinalPosition": {
+        "x": 599.0583,
+        "y": 56.10533,
+        "z": 535.4959
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 138,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 138,
+      "FinalPosition": {
+        "x": 599.25824,
+        "y": 56.10533,
+        "z": 535.4926
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Wall center, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 476,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 476,
+      "FinalPosition": {
+        "x": 597.1686,
+        "y": 56.10534,
+        "z": 537.6995
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Wall interior, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 468,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 468,
+      "FinalPosition": {
+        "x": 596.5527,
+        "y": 56.10534,
+        "z": 537.4911
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 200,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 200,
+      "FinalPosition": {
+        "x": 598.858154,
+        "y": 56.10533,
+        "z": 535.4868
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 202,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 202,
+      "FinalPosition": {
+        "x": 599.0581,
+        "y": 56.10533,
+        "z": 535.4835
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 206,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 206,
+      "FinalPosition": {
+        "x": 599.258057,
+        "y": 56.10533,
+        "z": 535.4802
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Wall center, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 162,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 162,
+      "FinalPosition": {
+        "x": 597.1686,
+        "y": 56.10534,
+        "z": 537.6995
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Wall interior, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 7.62939453E-06,
+      "Ticks": 162,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 162,
+      "FinalPosition": {
+        "x": 596.5494,
+        "y": 56.10534,
+        "z": 537.5017
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 70,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 70,
+      "FinalPosition": {
+        "x": 598.858337,
+        "y": 56.10533,
+        "z": 535.4992
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 70,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 70,
+      "FinalPosition": {
+        "x": 599.0583,
+        "y": 56.10533,
+        "z": 535.4959
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower East 27",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 72,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 72,
+      "FinalPosition": {
+        "x": 599.25824,
+        "y": 56.10533,
+        "z": 535.4926
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Wall center, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 940,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 940,
+      "FinalPosition": {
+        "x": 563.082947,
+        "y": 56.1053352,
+        "z": 476.668152
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Wall interior, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 934,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 934,
+      "FinalPosition": {
+        "x": 562.948059,
+        "y": 56.1053352,
+        "z": 477.304016
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 398,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 398,
+      "FinalPosition": {
+        "x": 562.07666,
+        "y": 56.10533,
+        "z": 475.587921
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 404,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 404,
+      "FinalPosition": {
+        "x": 562.116943,
+        "y": 56.10533,
+        "z": 475.392029
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 410,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 410,
+      "FinalPosition": {
+        "x": 562.1572,
+        "y": 56.10533,
+        "z": 475.196136
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Wall center, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 314,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 314,
+      "FinalPosition": {
+        "x": 563.0668,
+        "y": 56.1053352,
+        "z": 476.6648
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Wall interior, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 314,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 314,
+      "FinalPosition": {
+        "x": 562.935852,
+        "y": 56.1053352,
+        "z": 477.301483
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 134,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 134,
+      "FinalPosition": {
+        "x": 562.07666,
+        "y": 56.10533,
+        "z": 475.587921
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 136,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 136,
+      "FinalPosition": {
+        "x": 562.116943,
+        "y": 56.10533,
+        "z": 475.392029
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 138,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 138,
+      "FinalPosition": {
+        "x": 562.1572,
+        "y": 56.10533,
+        "z": 475.196136
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Wall center, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 472,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 472,
+      "FinalPosition": {
+        "x": 563.082947,
+        "y": 56.1053352,
+        "z": 476.668152
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Wall interior, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 470,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 470,
+      "FinalPosition": {
+        "x": 562.948059,
+        "y": 56.1053352,
+        "z": 477.304016
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 200,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 200,
+      "FinalPosition": {
+        "x": 562.0656,
+        "y": 56.10533,
+        "z": 475.585632
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 202,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 202,
+      "FinalPosition": {
+        "x": 562.1059,
+        "y": 56.10533,
+        "z": 475.38974
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 206,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 206,
+      "FinalPosition": {
+        "x": 562.1462,
+        "y": 56.10533,
+        "z": 475.193848
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Wall center, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 162,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 162,
+      "FinalPosition": {
+        "x": 563.082947,
+        "y": 56.1053352,
+        "z": 476.668152
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Wall interior, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 162,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 162,
+      "FinalPosition": {
+        "x": 562.948059,
+        "y": 56.1053352,
+        "z": 477.304016
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 70,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 70,
+      "FinalPosition": {
+        "x": 562.07666,
+        "y": 56.10533,
+        "z": 475.587921
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 70,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 70,
+      "FinalPosition": {
+        "x": 562.116943,
+        "y": 56.10533,
+        "z": 475.392029
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower South 55",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 72,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 72,
+      "FinalPosition": {
+        "x": 562.1572,
+        "y": 56.10533,
+        "z": 475.196136
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Wall center, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 938,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 938,
+      "FinalPosition": {
+        "x": 510.203522,
+        "y": 56.10533,
+        "z": 549.7461
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Wall interior, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 936,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 936,
+      "FinalPosition": {
+        "x": 510.63,
+        "y": 56.10533,
+        "z": 549.2555
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 398,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 398,
+      "FinalPosition": {
+        "x": 510.872864,
+        "y": 56.10533,
+        "z": 551.465332
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 404,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 404,
+      "FinalPosition": {
+        "x": 510.7479,
+        "y": 56.10533,
+        "z": 551.62146
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 410,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 410,
+      "FinalPosition": {
+        "x": 510.622925,
+        "y": 56.10533,
+        "z": 551.7776
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Wall center, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 316,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 316,
+      "FinalPosition": {
+        "x": 510.203522,
+        "y": 56.10533,
+        "z": 549.7461
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Wall interior, both directions",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 314,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 314,
+      "FinalPosition": {
+        "x": 510.629,
+        "y": 56.10533,
+        "z": 549.254639
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 134,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 134,
+      "FinalPosition": {
+        "x": 510.872864,
+        "y": 56.10533,
+        "z": 551.465332
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 136,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 136,
+      "FinalPosition": {
+        "x": 510.7479,
+        "y": 56.10533,
+        "z": 551.62146
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 138,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 138,
+      "FinalPosition": {
+        "x": 510.622925,
+        "y": 56.10533,
+        "z": 551.7776
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Wall center, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 472,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 472,
+      "FinalPosition": {
+        "x": 510.203522,
+        "y": 56.10533,
+        "z": 549.7461
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Wall interior, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 470,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 470,
+      "FinalPosition": {
+        "x": 510.629,
+        "y": 56.10533,
+        "z": 549.254639
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 200,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 200,
+      "FinalPosition": {
+        "x": 510.881836,
+        "y": 56.10533,
+        "z": 551.472534
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 202,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 202,
+      "FinalPosition": {
+        "x": 510.756866,
+        "y": 56.10533,
+        "z": 551.628662
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 206,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 206,
+      "FinalPosition": {
+        "x": 510.631866,
+        "y": 56.10533,
+        "z": 551.7847
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Wall center, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 160,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 160,
+      "FinalPosition": {
+        "x": 510.203522,
+        "y": 56.10533,
+        "z": 549.7461
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Wall interior, both directions",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 3.81469727E-06,
+      "Ticks": 158,
+      "ReachedWaypoints": 12,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 158,
+      "FinalPosition": {
+        "x": 510.62912,
+        "y": 56.10533,
+        "z": 549.254761
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 70,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 70,
+      "FinalPosition": {
+        "x": 510.872864,
+        "y": 56.10533,
+        "z": 551.465332
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 70,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 70,
+      "FinalPosition": {
+        "x": 510.7479,
+        "y": 56.10533,
+        "z": 551.62146
+      },
+      "Failures": []
+    },
+    {
+      "Tower": "Watchtower West 99",
+      "Route": "Twenty stair risers, ascent and descent",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.2,
+      "MaximumVerticalChange": 0.150001526,
+      "Ticks": 72,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "HeadroomChecks": 72,
+      "FinalPosition": {
+        "x": 510.622925,
+        "y": 56.10533,
+        "z": 551.7776
+      },
+      "Failures": []
+    }
+  ]
+}

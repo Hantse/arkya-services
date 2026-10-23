@@ -1,18 +1,18 @@
 {
   "success": true,
-  "checkedAtUtc": "2026-10-16T08:18:59.4431463Z",
+  "checkedAtUtc": "2026-10-19T21:26:10.4853907Z",
   "unity": "6000.6.6f1",
   "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
-  "elapsedSeconds": 8.1080679,
-  "caseCount": 34,
-  "initialPhase": 0.0785328448,
+  "elapsedSeconds": 7.8787632999999992,
+  "caseCount": 35,
+  "initialPhase": 0.358486056,
   "cases": [
     {
       "name": "Unity Console starts without errors",
       "passed": true,
       "detail": {
         "Errors": 0,
-        "Warnings": 7,
+        "Warnings": 0,
         "Logs": 0
       }
     },
@@ -40,7 +40,7 @@
       "name": "Particle velocity curve modes agree",
       "passed": true,
       "detail": {
-        "systems": 28,
+        "systems": 38,
         "inconsistentVelocity": []
       }
     },
@@ -77,13 +77,21 @@
       ]
     },
     {
+      "name": "Day/night fixture uses clear weather",
+      "passed": true,
+      "detail": {
+        "previousWeather": "Rain",
+        "fixtureWeather": "Clear"
+      }
+    },
+    {
       "name": "Noon illumination",
       "passed": true,
       "detail": {
         "phase": 0.5,
         "Daylight": 1.0,
         "NightAmount": 0.0,
-        "sun": 1.5,
+        "sun": 1.72,
         "moon": 0.0
       }
     },
@@ -95,17 +103,17 @@
           {
             "name": "Warm drifting pollen",
             "emission": 2.0,
-            "particles": 30
+            "particles": 10
           },
           {
             "name": "Warm drifting pollen",
             "emission": 2.0,
-            "particles": 1
+            "particles": 9
           },
           {
             "name": "Warm drifting pollen",
             "emission": 2.0,
-            "particles": 1
+            "particles": 28
           },
           {
             "name": "Warm drifting pollen",
@@ -120,12 +128,12 @@
           {
             "name": "Meadow butterflies",
             "emission": 0.35,
-            "particles": 6
+            "particles": 2
           },
           {
             "name": "Meadow butterflies",
             "emission": 0.35,
-            "particles": 0
+            "particles": 2
           },
           {
             "name": "Meadow butterflies",
@@ -179,8 +187,8 @@
       "name": "Runtime frames advance",
       "passed": true,
       "detail": {
-        "frames": 29,
-        "elapsed": 1.52370834
+        "frames": 55,
+        "elapsed": 1.52857971
       }
     },
     {
@@ -199,47 +207,57 @@
       "passed": true,
       "detail": {
         "movingBirds": 9,
-        "maximumDistanceMeters": 6.8116107
+        "maximumDistanceMeters": 6.712247
       }
     },
     {
       "name": "Readable non-silent clip: Hearth",
       "passed": true,
       "detail": {
-        "rms": 0.062443771859459547,
-        "readable": true
+        "rms": 0.066433095041977752,
+        "readable": true,
+        "frequency": 44100,
+        "durationMatches": true
       }
     },
     {
       "name": "Readable non-silent clip: Wind",
       "passed": true,
       "detail": {
-        "rms": 0.15168752187979412,
-        "readable": true
+        "rms": 0.14860560913206708,
+        "readable": true,
+        "frequency": 44100,
+        "durationMatches": true
       }
     },
     {
       "name": "Readable non-silent clip: Surf",
       "passed": true,
       "detail": {
-        "rms": 0.0889497387137303,
-        "readable": true
+        "rms": 0.0915239329987604,
+        "readable": true,
+        "frequency": 44100,
+        "durationMatches": true
       }
     },
     {
       "name": "Readable non-silent clip: Birdsong",
       "passed": true,
       "detail": {
-        "rms": 0.18560514808188402,
-        "readable": true
+        "rms": 0.1705604072288632,
+        "readable": true,
+        "frequency": 44100,
+        "durationMatches": true
       }
     },
     {
       "name": "Readable non-silent clip: Crickets",
       "passed": true,
       "detail": {
-        "rms": 0.11342428834303386,
-        "readable": true
+        "rms": 0.10370616406499236,
+        "readable": true,
+        "frequency": 44100,
+        "durationMatches": true
       }
     },
     {
@@ -348,12 +366,12 @@
           {
             "name": "Woodland fireflies",
             "emission": 1.5,
-            "particles": 2
+            "particles": 3
           },
           {
             "name": "Woodland fireflies",
             "emission": 1.5,
-            "particles": 3
+            "particles": 2
           },
           {
             "name": "Woodland fireflies",
@@ -390,7 +408,7 @@
       "name": "Night ambient and fog palette changes",
       "passed": true,
       "detail": {
-        "skyDistance": 0.8956003,
+        "skyDistance": 0.7404053,
         "fogDistance": 1.098858
       }
     },
@@ -418,11 +436,11 @@
       "name": "Live UTC clock advances at four-hour rate",
       "passed": true,
       "detail": {
-        "before": 0.07901241,
-        "after": 0.0790922,
-        "elapsedSeconds": 1.1490266999999998,
-        "actualPhaseProgress": 7.978827E-05,
-        "expectedPhaseProgress": 7.9793520833333317E-05
+        "before": 0.358950436,
+        "after": 0.359028578,
+        "elapsedSeconds": 1.1252149,
+        "actualPhaseProgress": 7.814169E-05,
+        "expectedPhaseProgress": 7.8139923611111114E-05
       }
     },
     {
@@ -430,7 +448,7 @@
       "passed": true,
       "detail": {
         "sampledUnixSeconds": 3600,
-        "correctedPhase": 0.25001356
+        "correctedPhase": 0.25001362
       }
     },
     {
@@ -456,7 +474,7 @@
       "detail": {
         "console": {
           "Errors": 0,
-          "Warnings": 7,
+          "Warnings": 0,
           "Logs": 0
         },
         "observedErrorEvents": 0
@@ -467,77 +485,77 @@
     {
       "name": "Hearth",
       "length": 8.0,
-      "samples": 176400,
-      "frequency": 22050,
+      "samples": 352800,
+      "frequency": 44100,
       "channels": 1,
       "loaded": "Loaded",
       "readWindows": 7,
       "windowSize": 512,
-      "rms": 0.062443771859459547,
+      "rms": 0.066433095041977752,
       "passed": true
     },
     {
       "name": "Wind",
       "length": 16.0,
-      "samples": 352800,
-      "frequency": 22050,
+      "samples": 705600,
+      "frequency": 44100,
       "channels": 1,
       "loaded": "Loaded",
       "readWindows": 7,
       "windowSize": 512,
-      "rms": 0.15168752187979412,
+      "rms": 0.14860560913206708,
       "passed": true
     },
     {
       "name": "Surf",
       "length": 24.0,
-      "samples": 529200,
-      "frequency": 22050,
+      "samples": 1058400,
+      "frequency": 44100,
       "channels": 1,
       "loaded": "Loaded",
       "readWindows": 7,
       "windowSize": 512,
-      "rms": 0.0889497387137303,
+      "rms": 0.0915239329987604,
       "passed": true
     },
     {
       "name": "Birdsong",
       "length": 28.0,
-      "samples": 617400,
-      "frequency": 22050,
+      "samples": 1234800,
+      "frequency": 44100,
       "channels": 1,
       "loaded": "Loaded",
       "readWindows": 7,
       "windowSize": 512,
-      "rms": 0.18560514808188402,
+      "rms": 0.1705604072288632,
       "passed": true
     },
     {
       "name": "Crickets",
       "length": 16.0,
-      "samples": 352800,
-      "frequency": 22050,
+      "samples": 705600,
+      "frequency": 44100,
       "channels": 1,
       "loaded": "Loaded",
       "readWindows": 7,
       "windowSize": 512,
-      "rms": 0.11342428834303386,
+      "rms": 0.10370616406499236,
       "passed": true
     }
   ],
   "initialConsole": {
     "Errors": 0,
-    "Warnings": 7,
+    "Warnings": 0,
     "Logs": 0
   },
   "finalConsole": {
     "Errors": 0,
-    "Warnings": 7,
+    "Warnings": 0,
     "Logs": 0
   },
   "unityErrorCount": 0,
   "unityErrors": [],
   "failures": [],
   "exception": null,
-  "note": "Play Mode integration verification. The Editor Console must have zero errors before and after; emitted Error/Exception/Assert events and velocity mode mismatches across all scene ParticleSystems fail validation. Actual presentation components run across frames; temporary preview time, trusted clock offset, camera pose, review-camera enabled state and ambience volume are restored. Audio PCM samples prove non-silent decoded assets and source playback, not subjective audio quality or hardware output. This is not a performance benchmark."
+  "note": "Play Mode integration verification under an explicit clear-weather fixture. The Editor Console must have zero errors before and after; emitted Error/Exception/Assert events and velocity mode mismatches across all scene ParticleSystems fail validation. Actual presentation components run across frames; weather preview/kind, sky/ambience weather, temporary preview time, trusted clock offset, camera pose, review-camera enabled state and ambience volume are restored. Audio PCM samples prove non-silent decoded assets, consistent duration/sample count and source playback; Unity's decoded buffer rate may differ from the source WAV. This does not verify subjective audio quality, hardware output or performance."
 }

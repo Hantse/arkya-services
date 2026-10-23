@@ -4,7 +4,7 @@
   "data": {
     "command": "eval",
     "parameters": {
-      "code": "UnityEditor.AssetDatabase.ImportAsset(\"Assets/Arkya/Totems/README.md\",UnityEditor.ImportAssetOptions.ForceSynchronousImport); var scene=UnityEngine.SceneManagement.SceneManager.GetActiveScene(); var shader=UnityEngine.Shader.Find(\"Arkya/Totems/Painted\"); var textures=UnityEditor.AssetDatabase.FindAssets(\"t:Texture2D\",new[]{\"Assets/Arkya/Totems/Textures\"}).Select(g=>UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Texture2D>(UnityEditor.AssetDatabase.GUIDToAssetPath(g))).ToArray(); return new {scene=scene.path,dirty=scene.isDirty,playing=UnityEditor.EditorApplication.isPlaying,compiling=UnityEditor.EditorApplication.isCompiling,textures=textures.Length,all2048=textures.All(t=>t.width==2048 && t.height==2048),shaderSupported=shader.isSupported,shaderErrors=UnityEditor.ShaderUtil.GetShaderMessages(shader).Where(m=>m.severity.ToString()==\"Error\").Select(m=>m.message).ToArray(),prefabs=UnityEditor.AssetDatabase.FindAssets(\"t:Prefab\",new[]{\"Assets/Arkya/Totems/Prefabs\"}).Length};"
+      "code": "var scene=UnityEngine.SceneManagement.SceneManager.GetActiveScene(); var shader=UnityEngine.Shader.Find(\"Arkya/Totems/Painted\"); var textures=UnityEditor.AssetDatabase.FindAssets(\"t:Texture2D\",new[]{\"Assets/Arkya/Totems/Textures\"}).Select(g=>UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Texture2D>(UnityEditor.AssetDatabase.GUIDToAssetPath(g))).ToArray(); var importer=UnityEditor.AssetImporter.GetAtPath(\"Assets/Arkya/Totems/Models/wolf.fbx\") as UnityEditor.ModelImporter; return new {scene=scene.path,dirty=scene.isDirty,playing=UnityEditor.EditorApplication.isPlaying,compiling=UnityEditor.EditorApplication.isCompiling,textures=textures.Length,all2048=textures.All(t=>t.width==2048 && t.height==2048),shaderSupported=shader.isSupported,shaderErrors=UnityEditor.ShaderUtil.GetShaderMessages(shader).Where(m=>m.severity.ToString()==\"Error\").Select(m=>m.message).ToArray(),prefabs=UnityEditor.AssetDatabase.FindAssets(\"t:Prefab\",new[]{\"Assets/Arkya/Totems/Prefabs\"}).Length,wolfAnimationCompression=importer.animationCompression.ToString()};"
     },
     "result": {
       "output": null,
@@ -19,7 +19,8 @@
         "all2048": true,
         "shaderSupported": true,
         "shaderErrors": [],
-        "prefabs": 26
+        "prefabs": 26,
+        "wolfAnimationCompression": "Off"
       }
     },
     "target": {

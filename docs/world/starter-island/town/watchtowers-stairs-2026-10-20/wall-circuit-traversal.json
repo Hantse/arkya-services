@@ -1,0 +1,45 @@
+{
+  "success": true,
+  "scope": "Two complementary clockwise server-ECS traversals cover the full wall circuit, both gate bridges, both stair ascents and both descents. Scene physics proxies installed; no teleporting between route waypoints and no jumps.",
+  "installedRuntimeProxies": 0,
+  "capsuleRadius": 0.3,
+  "capsuleHeight": 1.75,
+  "timeStep": 0.05,
+  "ticks": 1749,
+  "routes": [
+    {
+      "Name": "West ascent - north wall and forest gate - East descent",
+      "Success": true,
+      "Ticks": 854,
+      "ReachedWaypoints": 60,
+      "TotalWaypoints": 60,
+      "AirborneTicks": 0,
+      "DistanceTravelled": 183.763062,
+      "MaximumHeight": 56.10534,
+      "ExpectedWallHeight": 56.10533,
+      "FinalPosition": {
+        "x": 582.62,
+        "y": 51.3010559,
+        "z": 515.6209
+      },
+      "Failures": []
+    },
+    {
+      "Name": "East ascent - south wall and arrival gate - West descent",
+      "Success": true,
+      "Ticks": 895,
+      "ReachedWaypoints": 62,
+      "TotalWaypoints": 62,
+      "AirborneTicks": 0,
+      "DistanceTravelled": 191.906677,
+      "MaximumHeight": 56.10534,
+      "ExpectedWallHeight": 56.10533,
+      "FinalPosition": {
+        "x": 515.3242,
+        "y": 51.1374626,
+        "z": 529.783264
+      },
+      "Failures": []
+    }
+  ]
+}

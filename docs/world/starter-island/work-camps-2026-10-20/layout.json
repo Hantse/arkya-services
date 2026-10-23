@@ -1,0 +1,24 @@
+{
+  "distanceReferenceName": "Puits et centre d’Aubefont",
+  "distanceReference": { "x": 550, "y": 0, "z": 520 },
+  "heightPolicy": "Y is sampled from the live Terrain; the zero values here are not authoritative heights.",
+  "minimumDirectionAngle": 60,
+  "camps": [
+    {
+      "id": "miners",
+      "rootName": "Miners work camp - painted quarry and shelter",
+      "center": { "x": 700, "y": 0, "z": 540 },
+      "yaw": 0,
+      "targetDistance": 150,
+      "distanceTolerance": 15
+    },
+    {
+      "id": "woodcutters",
+      "rootName": "Woodcutters work camp - timber yard and lodge",
+      "center": { "x": 550, "y": 0, "z": 870 },
+      "yaw": 90,
+      "targetDistance": 350,
+      "distanceTolerance": 20
+    }
+  ]
+}

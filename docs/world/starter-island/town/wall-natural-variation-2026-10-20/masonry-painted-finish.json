@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "utc": "2026-10-20T10:59:27.3345750Z",
+  "sceneSaved": false,
+  "recipeVersion": 3,
+  "material": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat",
+  "previousTexturePreserved": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Textures/Hand laid limestone - painted finish.asset",
+  "texture": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Textures/Hand laid limestone - matte painted finish.asset",
+  "heightStrength": 0.038,
+  "cavityStrength": 0.045,
+  "paint": "Broad matte pigment and brushwork, no mineral contour lines; retained broken edge wear and softened bevel lighting.",
+  "mineralVeinAmplitude": 0,
+  "stonePartitionPaletteAndTilingPreserved": true,
+  "allSceneGeometryRenderersTransformsAndCollidersUnchanged": true,
+  "newRenderers": 0,
+  "newTriangles": 0,
+  "newColliders": 0
+}

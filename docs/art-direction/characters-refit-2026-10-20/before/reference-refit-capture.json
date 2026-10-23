@@ -1,0 +1,1001 @@
+{
+  "success": true,
+  "capturedUtc": "2026-10-20T17:29:09.9265980Z",
+  "unityVersion": "6000.6.6f1",
+  "graphicsApi": "Direct3D12",
+  "outputDirectory": "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before",
+  "pipeline": "Assets/Arkya/World/StarterIsland/Materials/Environment/IslandRenderPipeline.asset",
+  "ambientOcclusionFeatureActive": true,
+  "studio": "Neutral key/fill and the current CharacterStudio grading profile; actual imported game prefabs.",
+  "colorPolicy": "Current CharacterAppearanceCatalog defaults; short hair for A, braid for B. No capture-only color grading or recoloring.",
+  "clayPolicy": "Only human-b-turnaround-clay.png replaces materials with temporary neutral URP Lit clones. Vertex pigment and appearance tints are intentionally omitted in this sculpt review.",
+  "renderSampling": "2x resolution per axis, GPU bilinear resolve. Body and portrait: 1000x1200. Turnaround: four 1000x1200 panels.",
+  "turnaroundOrder": [
+    "front",
+    "left profile",
+    "back",
+    "right profile"
+  ],
+  "cameraPolicy": "Fit evaluated visible skinned vertices, including crown and hair; identical camera for all turnaround views and both material modes.",
+  "activeScenePreserved": true,
+  "sceneDirtyFlagsPreserved": true,
+  "assetsSaved": false,
+  "originalScene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "scenes": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+      "dirty": true
+    }
+  ],
+  "files": [
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\human-a-body.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\human-a-portrait.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\human-b-body.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\human-b-portrait.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\human-b-turnaround-color.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\human-b-turnaround-clay.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\elf-a-body.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\elf-a-portrait.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\elf-b-body.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\before\\elf-b-portrait.png"
+  ],
+  "subjects": [
+    {
+      "key": "human-a",
+      "appearance": {
+        "version": 1,
+        "race": "human",
+        "silhouette": "a",
+        "heightCm": 175,
+        "skin": "warm",
+        "hairStyle": "short",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "prefab": "Assets/Arkya/Characters/Prefabs/human-a.prefab",
+      "pose": "Idle",
+      "poseTimeSeconds": 0.5,
+      "bodyBounds": {
+        "minimum": [
+          -0.301910549,
+          4.43458557E-05,
+          -0.291718453
+        ],
+        "maximum": [
+          0.330636472,
+          1.7478317,
+          0.22084859
+        ]
+      },
+      "portraitBounds": {
+        "minimum": [
+          -0.295448363,
+          1.27742267,
+          -0.187472731
+        ],
+        "maximum": [
+          0.323660254,
+          1.74783206,
+          0.186464757
+        ]
+      },
+      "avatarValid": true,
+      "bones": [
+        "CapeLower",
+        "CapeUpper",
+        "Chest",
+        "HairLower",
+        "HairUpper",
+        "Head",
+        "Hips",
+        "LeftFoot",
+        "LeftHand",
+        "LeftLowerArm",
+        "LeftLowerLeg",
+        "LeftShoulder",
+        "LeftToes",
+        "LeftUpperArm",
+        "LeftUpperLeg",
+        "Neck",
+        "RightFoot",
+        "RightHand",
+        "RightLowerArm",
+        "RightLowerLeg",
+        "RightShoulder",
+        "RightToes",
+        "RightUpperArm",
+        "RightUpperLeg",
+        "Root",
+        "Spine"
+      ],
+      "meshes": [
+        {
+          "name": "CharacterMesh",
+          "visible": true,
+          "vertices": 26998,
+          "triangles": 47033,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Skin",
+            "Hair",
+            "EyesWhite",
+            "Iris",
+            "Pupil",
+            "DarkLeather",
+            "OutfitAccent",
+            "Ivory",
+            "Metal",
+            "Gem"
+          ]
+        },
+        {
+          "name": "HairBraid",
+          "visible": false,
+          "vertices": 1977,
+          "triangles": 3934,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair",
+            "Metal"
+          ]
+        },
+        {
+          "name": "HairLong",
+          "visible": false,
+          "vertices": 1409,
+          "triangles": 2782,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair"
+          ]
+        },
+        {
+          "name": "HairMain",
+          "visible": true,
+          "vertices": 2913,
+          "triangles": 4920,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair"
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "name": "Skin",
+          "path": "Assets/Arkya/Characters/Materials/Skin.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Hair",
+          "path": "Assets/Arkya/Characters/Materials/Hair.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "EyesWhite",
+          "path": "Assets/Arkya/Characters/Materials/EyesWhite.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Iris",
+          "path": "Assets/Arkya/Characters/Materials/Iris.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Pupil",
+          "path": "Assets/Arkya/Characters/Materials/Pupil.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "DarkLeather",
+          "path": "Assets/Arkya/Characters/Materials/DarkLeather.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "OutfitAccent",
+          "path": "Assets/Arkya/Characters/Materials/OutfitAccent.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Ivory",
+          "path": "Assets/Arkya/Characters/Materials/Ivory.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Metal",
+          "path": "Assets/Arkya/Characters/Materials/Metal.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Gem",
+          "path": "Assets/Arkya/Characters/Materials/Gem.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        }
+      ],
+      "missingMaterials": 0,
+      "clips": [
+        {
+          "name": "Idle",
+          "seconds": 8.0,
+          "loop": true
+        },
+        {
+          "name": "Walk",
+          "seconds": 0.72,
+          "loop": true
+        },
+        {
+          "name": "Run",
+          "seconds": 0.6,
+          "loop": true
+        },
+        {
+          "name": "Jump",
+          "seconds": 0.8,
+          "loop": false
+        },
+        {
+          "name": "SwimIdle",
+          "seconds": 1.8,
+          "loop": true
+        },
+        {
+          "name": "Swim",
+          "seconds": 1.2,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "key": "human-b",
+      "appearance": {
+        "version": 1,
+        "race": "human",
+        "silhouette": "b",
+        "heightCm": 175,
+        "skin": "warm",
+        "hairStyle": "braid",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "prefab": "Assets/Arkya/Characters/Prefabs/human-b.prefab",
+      "pose": "Idle",
+      "poseTimeSeconds": 0.5,
+      "bodyBounds": {
+        "minimum": [
+          -0.2802129,
+          -1.1920929E-07,
+          -0.265272945
+        ],
+        "maximum": [
+          0.3194435,
+          1.74751937,
+          0.237697333
+        ]
+      },
+      "portraitBounds": {
+        "minimum": [
+          -0.212328017,
+          1.30544853,
+          -0.157339722
+        ],
+        "maximum": [
+          0.203512669,
+          1.74751949,
+          0.165829986
+        ]
+      },
+      "avatarValid": true,
+      "bones": [
+        "CapeLower",
+        "CapeUpper",
+        "Chest",
+        "HairLower",
+        "HairUpper",
+        "Head",
+        "Hips",
+        "LeftFoot",
+        "LeftHand",
+        "LeftLowerArm",
+        "LeftLowerLeg",
+        "LeftShoulder",
+        "LeftToes",
+        "LeftUpperArm",
+        "LeftUpperLeg",
+        "Neck",
+        "RightFoot",
+        "RightHand",
+        "RightLowerArm",
+        "RightLowerLeg",
+        "RightShoulder",
+        "RightToes",
+        "RightUpperArm",
+        "RightUpperLeg",
+        "Root",
+        "Spine"
+      ],
+      "meshes": [
+        {
+          "name": "CharacterMesh",
+          "visible": true,
+          "vertices": 37570,
+          "triangles": 59444,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair",
+            "Pupil",
+            "Skin",
+            "EyesWhite",
+            "Iris",
+            "Cloth",
+            "DarkLeather",
+            "Leather",
+            "Metal",
+            "Thread",
+            "OutfitAccent",
+            "Gem"
+          ]
+        },
+        {
+          "name": "HairBraid",
+          "visible": true,
+          "vertices": 1977,
+          "triangles": 3934,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair",
+            "Metal"
+          ]
+        },
+        {
+          "name": "HairLong",
+          "visible": false,
+          "vertices": 1409,
+          "triangles": 2782,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair"
+          ]
+        },
+        {
+          "name": "HairMain",
+          "visible": true,
+          "vertices": 1847,
+          "triangles": 3225,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair"
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "name": "Hair",
+          "path": "Assets/Arkya/Characters/Materials/Hair.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Pupil",
+          "path": "Assets/Arkya/Characters/Materials/Pupil.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Skin",
+          "path": "Assets/Arkya/Characters/Materials/Skin.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "EyesWhite",
+          "path": "Assets/Arkya/Characters/Materials/EyesWhite.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Iris",
+          "path": "Assets/Arkya/Characters/Materials/Iris.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Cloth",
+          "path": "Assets/Arkya/Characters/Materials/Cloth.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "DarkLeather",
+          "path": "Assets/Arkya/Characters/Materials/DarkLeather.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Leather",
+          "path": "Assets/Arkya/Characters/Materials/Leather.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Metal",
+          "path": "Assets/Arkya/Characters/Materials/Metal.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Thread",
+          "path": "Assets/Arkya/Characters/Materials/Thread.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "OutfitAccent",
+          "path": "Assets/Arkya/Characters/Materials/OutfitAccent.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Gem",
+          "path": "Assets/Arkya/Characters/Materials/Gem.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        }
+      ],
+      "missingMaterials": 0,
+      "clips": [
+        {
+          "name": "Idle",
+          "seconds": 8.0,
+          "loop": true
+        },
+        {
+          "name": "Walk",
+          "seconds": 0.72,
+          "loop": true
+        },
+        {
+          "name": "Run",
+          "seconds": 0.6,
+          "loop": true
+        },
+        {
+          "name": "Jump",
+          "seconds": 0.8,
+          "loop": false
+        },
+        {
+          "name": "SwimIdle",
+          "seconds": 1.8,
+          "loop": true
+        },
+        {
+          "name": "Swim",
+          "seconds": 1.2,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "key": "elf-a",
+      "appearance": {
+        "version": 1,
+        "race": "elf",
+        "silhouette": "a",
+        "heightCm": 185,
+        "skin": "warm",
+        "hairStyle": "short",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "prefab": "Assets/Arkya/Characters/Prefabs/elf-a.prefab",
+      "pose": "Idle",
+      "poseTimeSeconds": 0.5,
+      "bodyBounds": {
+        "minimum": [
+          -0.294455379,
+          4.696846E-05,
+          -0.290418357
+        ],
+        "maximum": [
+          0.3240368,
+          1.84784663,
+          0.220974952
+        ]
+      },
+      "portraitBounds": {
+        "minimum": [
+          -0.294455379,
+          1.35061407,
+          -0.18608591
+        ],
+        "maximum": [
+          0.3159044,
+          1.847847,
+          0.18490994
+        ]
+      },
+      "avatarValid": true,
+      "bones": [
+        "CapeLower",
+        "CapeUpper",
+        "Chest",
+        "HairLower",
+        "HairUpper",
+        "Head",
+        "Hips",
+        "LeftFoot",
+        "LeftHand",
+        "LeftLowerArm",
+        "LeftLowerLeg",
+        "LeftShoulder",
+        "LeftToes",
+        "LeftUpperArm",
+        "LeftUpperLeg",
+        "Neck",
+        "RightFoot",
+        "RightHand",
+        "RightLowerArm",
+        "RightLowerLeg",
+        "RightShoulder",
+        "RightToes",
+        "RightUpperArm",
+        "RightUpperLeg",
+        "Root",
+        "Spine"
+      ],
+      "meshes": [
+        {
+          "name": "CharacterMesh",
+          "visible": true,
+          "vertices": 27008,
+          "triangles": 47035,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Skin",
+            "Hair",
+            "EyesWhite",
+            "Iris",
+            "Pupil",
+            "DarkLeather",
+            "OutfitAccent",
+            "Ivory",
+            "Metal",
+            "Gem"
+          ]
+        },
+        {
+          "name": "HairBraid",
+          "visible": false,
+          "vertices": 1977,
+          "triangles": 3934,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair",
+            "Metal"
+          ]
+        },
+        {
+          "name": "HairLong",
+          "visible": false,
+          "vertices": 1409,
+          "triangles": 2782,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair"
+          ]
+        },
+        {
+          "name": "HairMain",
+          "visible": true,
+          "vertices": 2916,
+          "triangles": 4920,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair"
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "name": "Skin",
+          "path": "Assets/Arkya/Characters/Materials/Skin.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Hair",
+          "path": "Assets/Arkya/Characters/Materials/Hair.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "EyesWhite",
+          "path": "Assets/Arkya/Characters/Materials/EyesWhite.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Iris",
+          "path": "Assets/Arkya/Characters/Materials/Iris.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Pupil",
+          "path": "Assets/Arkya/Characters/Materials/Pupil.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "DarkLeather",
+          "path": "Assets/Arkya/Characters/Materials/DarkLeather.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "OutfitAccent",
+          "path": "Assets/Arkya/Characters/Materials/OutfitAccent.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Ivory",
+          "path": "Assets/Arkya/Characters/Materials/Ivory.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Metal",
+          "path": "Assets/Arkya/Characters/Materials/Metal.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Gem",
+          "path": "Assets/Arkya/Characters/Materials/Gem.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        }
+      ],
+      "missingMaterials": 0,
+      "clips": [
+        {
+          "name": "Idle",
+          "seconds": 8.0,
+          "loop": true
+        },
+        {
+          "name": "Walk",
+          "seconds": 0.72,
+          "loop": true
+        },
+        {
+          "name": "Run",
+          "seconds": 0.6,
+          "loop": true
+        },
+        {
+          "name": "Jump",
+          "seconds": 0.8,
+          "loop": false
+        },
+        {
+          "name": "SwimIdle",
+          "seconds": 1.8,
+          "loop": true
+        },
+        {
+          "name": "Swim",
+          "seconds": 1.2,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "key": "elf-b",
+      "appearance": {
+        "version": 1,
+        "race": "elf",
+        "silhouette": "b",
+        "heightCm": 185,
+        "skin": "warm",
+        "hairStyle": "braid",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "prefab": "Assets/Arkya/Characters/Prefabs/elf-b.prefab",
+      "pose": "Idle",
+      "poseTimeSeconds": 0.5,
+      "bodyBounds": {
+        "minimum": [
+          -0.271871269,
+          5.96046448E-08,
+          -0.264698535
+        ],
+        "maximum": [
+          0.311186671,
+          1.84751916,
+          0.237902969
+        ]
+      },
+      "portraitBounds": {
+        "minimum": [
+          -0.207208291,
+          1.3801918,
+          -0.157938585
+        ],
+        "maximum": [
+          0.231145248,
+          1.8475194,
+          0.166488126
+        ]
+      },
+      "avatarValid": true,
+      "bones": [
+        "CapeLower",
+        "CapeUpper",
+        "Chest",
+        "HairLower",
+        "HairUpper",
+        "Head",
+        "Hips",
+        "LeftFoot",
+        "LeftHand",
+        "LeftLowerArm",
+        "LeftLowerLeg",
+        "LeftShoulder",
+        "LeftToes",
+        "LeftUpperArm",
+        "LeftUpperLeg",
+        "Neck",
+        "RightFoot",
+        "RightHand",
+        "RightLowerArm",
+        "RightLowerLeg",
+        "RightShoulder",
+        "RightToes",
+        "RightUpperArm",
+        "RightUpperLeg",
+        "Root",
+        "Spine"
+      ],
+      "meshes": [
+        {
+          "name": "CharacterMesh",
+          "visible": true,
+          "vertices": 37549,
+          "triangles": 59437,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair",
+            "Pupil",
+            "Skin",
+            "EyesWhite",
+            "Iris",
+            "Cloth",
+            "DarkLeather",
+            "Leather",
+            "Metal",
+            "Thread",
+            "OutfitAccent",
+            "Gem"
+          ]
+        },
+        {
+          "name": "HairBraid",
+          "visible": true,
+          "vertices": 1977,
+          "triangles": 3934,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair",
+            "Metal"
+          ]
+        },
+        {
+          "name": "HairLong",
+          "visible": false,
+          "vertices": 1409,
+          "triangles": 2782,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair"
+          ]
+        },
+        {
+          "name": "HairMain",
+          "visible": true,
+          "vertices": 1847,
+          "triangles": 3225,
+          "bones": 26,
+          "bindposes": 26,
+          "materials": [
+            "Hair"
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "name": "Hair",
+          "path": "Assets/Arkya/Characters/Materials/Hair.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Pupil",
+          "path": "Assets/Arkya/Characters/Materials/Pupil.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Skin",
+          "path": "Assets/Arkya/Characters/Materials/Skin.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "EyesWhite",
+          "path": "Assets/Arkya/Characters/Materials/EyesWhite.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Iris",
+          "path": "Assets/Arkya/Characters/Materials/Iris.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Cloth",
+          "path": "Assets/Arkya/Characters/Materials/Cloth.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "DarkLeather",
+          "path": "Assets/Arkya/Characters/Materials/DarkLeather.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Leather",
+          "path": "Assets/Arkya/Characters/Materials/Leather.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Metal",
+          "path": "Assets/Arkya/Characters/Materials/Metal.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Thread",
+          "path": "Assets/Arkya/Characters/Materials/Thread.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "OutfitAccent",
+          "path": "Assets/Arkya/Characters/Materials/OutfitAccent.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        },
+        {
+          "name": "Gem",
+          "path": "Assets/Arkya/Characters/Materials/Gem.mat",
+          "shader": "Arkya/Characters/Painted",
+          "supported": true,
+          "shaderErrors": false
+        }
+      ],
+      "missingMaterials": 0,
+      "clips": [
+        {
+          "name": "Idle",
+          "seconds": 8.0,
+          "loop": true
+        },
+        {
+          "name": "Walk",
+          "seconds": 0.72,
+          "loop": true
+        },
+        {
+          "name": "Run",
+          "seconds": 0.6,
+          "loop": true
+        },
+        {
+          "name": "Jump",
+          "seconds": 0.8,
+          "loop": false
+        },
+        {
+          "name": "SwimIdle",
+          "seconds": 1.8,
+          "loop": true
+        },
+        {
+          "name": "Swim",
+          "seconds": 1.2,
+          "loop": true
+        }
+      ]
+    }
+  ],
+  "limits": "Images support visual comparison; they do not constitute artistic approval, animation regression tests, or gameplay/network validation."
+}

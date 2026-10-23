@@ -1,0 +1,233 @@
+{
+  "success": true,
+  "playMode": false,
+  "captures": [
+    {
+      "file": "village-overview-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 492.0,
+        "y": 105.8742,
+        "z": 474.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 52.21403,
+        "z": 535.0
+      },
+      "fieldOfView": 55.0
+    },
+    {
+      "file": "town-hall-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 542.0,
+        "y": 52.32143,
+        "z": 544.0
+      },
+      "target": {
+        "x": 531.0,
+        "y": 53.1846733,
+        "z": 561.0
+      },
+      "fieldOfView": 65.0
+    },
+    {
+      "file": "town-hall-evening.png",
+      "phase": 0.7,
+      "position": {
+        "x": 542.0,
+        "y": 52.32143,
+        "z": 544.0
+      },
+      "target": {
+        "x": 531.0,
+        "y": 53.1846733,
+        "z": 561.0
+      },
+      "fieldOfView": 65.0
+    },
+    {
+      "file": "market-street-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 540.000244,
+        "y": 52.6855049,
+        "z": 528.000244
+      },
+      "target": {
+        "x": 531.833252,
+        "y": 51.7490463,
+        "z": 533.833252
+      },
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "plaza-street-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 557.0,
+        "y": 52.83124,
+        "z": 513.0
+      },
+      "target": {
+        "x": 543.0,
+        "y": 52.17535,
+        "z": 536.0
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "inner-wall-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 506.0,
+        "y": 52.6718636,
+        "z": 518.0
+      },
+      "target": {
+        "x": 501.0,
+        "y": 53.72383,
+        "z": 530.0
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "inn-interior-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 528.4946,
+        "y": 52.12699,
+        "z": 540.9153
+      },
+      "target": {
+        "x": 522.2265,
+        "y": 52.02699,
+        "z": 539.4453
+      },
+      "fieldOfView": 84.0
+    },
+    {
+      "file": "inn-upper-floor-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 528.383667,
+        "y": 55.076992,
+        "z": 540.74884
+      },
+      "target": {
+        "x": 522.2265,
+        "y": 54.826992,
+        "z": 539.4453
+      },
+      "fieldOfView": 84.0
+    },
+    {
+      "file": "arrival-gate-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 508.8572,
+        "y": 51.4033356,
+        "z": 468.825562
+      },
+      "target": {
+        "x": 518.8825,
+        "y": 53.4601135,
+        "z": 481.295258
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "civic-house-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 529.7125,
+        "y": 60.2800522,
+        "z": 536.9481
+      },
+      "target": {
+        "x": 532.0,
+        "y": 54.7800522,
+        "z": 554.0
+      },
+      "fieldOfView": 65.0
+    },
+    {
+      "file": "civic-house-evening.png",
+      "phase": 0.7,
+      "position": {
+        "x": 529.7125,
+        "y": 60.2800522,
+        "z": 536.9481
+      },
+      "target": {
+        "x": 532.0,
+        "y": 54.7800522,
+        "z": 554.0
+      },
+      "fieldOfView": 65.0
+    },
+    {
+      "file": "civic-upper-interior.png",
+      "phase": 0.4,
+      "position": {
+        "x": 536.6581,
+        "y": 55.1800537,
+        "z": 553.7505
+      },
+      "target": {
+        "x": 527.643433,
+        "y": 55.7800522,
+        "z": 554.7486
+      },
+      "fieldOfView": 90.0
+    },
+    {
+      "file": "barrel-detail-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 522.6179,
+        "y": 52.0381,
+        "z": 534.131
+      },
+      "target": {
+        "x": 520.6179,
+        "y": 50.9381,
+        "z": 536.131
+      },
+      "fieldOfView": 48.0
+    },
+    {
+      "file": "wall-stair-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 509.752625,
+        "y": 56.0979538,
+        "z": 515.551453
+      },
+      "target": {
+        "x": 503.444275,
+        "y": 53.6016426,
+        "z": 525.286133
+      },
+      "fieldOfView": 70.0
+    },
+    {
+      "file": "east-wall-stair-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 583.608948,
+        "y": 57.9287033,
+        "z": 510.19455
+      },
+      "target": {
+        "x": 591.3107,
+        "y": 53.0170174,
+        "z": 507.670227
+      },
+      "fieldOfView": 75.0
+    }
+  ],
+  "stateRestored": true,
+  "scope": "Village architecture, interiors, civic hall, cloth, paving and defensive stone. Matched Edit Mode views before and after. Camera, weather, clock, lights, particles and render quality restored; scene not saved."
+}

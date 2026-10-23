@@ -1,0 +1,62 @@
+{
+  "success": true,
+  "shader": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceWindows/ReferenceAmberGlass.shader",
+  "shaderGuidPreserved": true,
+  "shaderErrors": false,
+  "changedMaterials": 3,
+  "materials": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceWindows/Window.mat",
+      "dayGlow": 0.82,
+      "nightGlow": 1.05,
+      "paneGrid": [
+        2.0,
+        2.0
+      ],
+      "dayOpacity": 0.72,
+      "nightOpacity": 0.88,
+      "renderQueue": 3000
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceWindows/StreetLantern.mat",
+      "dayGlow": 0.64,
+      "nightGlow": 1.05,
+      "paneGrid": [
+        1.0,
+        1.0
+      ],
+      "dayOpacity": 1.0,
+      "nightOpacity": 1.0,
+      "renderQueue": 2000
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceWindows/Festoon.mat",
+      "dayGlow": 0.72,
+      "nightGlow": 1.1,
+      "paneGrid": [
+        1.0,
+        1.0
+      ],
+      "dayOpacity": 1.0,
+      "nightOpacity": 1.0,
+      "renderQueue": 2000
+    }
+  ],
+  "emissionProfile": {
+    "edge": 0.18,
+    "center": 2.1,
+    "description": "Copper edges around a cream-gold core for each real pane; window mullions match the 2 by 2 division, lantern faces use a single pane."
+  },
+  "windowTransparencyPreserved": true,
+  "lampOpaqueDepthPreserved": true,
+  "newAssets": 0,
+  "newMaterials": 0,
+  "newRenderers": 0,
+  "newLights": 0,
+  "sourceAssetsAndManaLanternMaterialsUnchanged": true,
+  "sceneTransformsGeometryCollidersLightsCamerasAndAssignmentSlotsUnchanged": true,
+  "clockSunWeatherProfilesAndGlobalSaturationUnchanged": true,
+  "assetsSaved": true,
+  "sceneSaved": false,
+  "scope": "Owned three glass materials and their existing shader only; no bloom or exposure increase. Visual comparison remains required."
+}

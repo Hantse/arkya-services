@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "buildings": 10,
+  "missingScripts": 0,
+  "unsupportedMaterials": 0,
+  "lights": 21,
+  "shadowCastingLocalLights": 0,
+  "particleSystems": 10,
+  "maximumParticles": 254,
+  "colliders": 970,
+  "center": {
+    "x": 550,
+    "z": 520
+  },
+  "terrainHeightmapUnchanged": true,
+  "originalHeightmapSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "heightmapSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "scope": "Authored town presentation and static obstacles; no NPC, mana rewards or networking state."
+}

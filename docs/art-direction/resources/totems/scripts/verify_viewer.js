@@ -1,7 +1,7 @@
 // Pass this function to Playwright CLI run-code with the local library server running.
 async page => {
   const report = {schemaVersion: 2, checkedAt: new Date().toISOString(), passed: false,
-    viewer: 'http://127.0.0.1:51805/totems/viewer/index.html', models: [], animations: [], downloads: [], errors: []};
+    viewer: 'http://127.0.0.1:51805/totems/viewer/index.html', models: [], animations: [], downloads: [], credits: [], errors: []};
   page.on('pageerror', error => report.errors.push(String(error)));
   await page.setViewportSize({width: 1440, height: 1000});
   await page.goto(report.viewer);
@@ -17,6 +17,10 @@ async page => {
   for (const species of manifest.species) {
     await page.getByRole('button', {name: species.name, exact: true}).click();
     await loaded(species.id, species.defaultColorway);
+    const credit = await page.locator('#provenance').evaluate(a => ({text:a.textContent, href:a.href}));
+    const expectedAuthor = species.provenance?.author || 'Bake3D';
+    if (!credit.text.includes(expectedAuthor)) throw new Error(`Wrong source credit for ${species.id}`);
+    report.credits.push({species:species.id, ...credit});
     for (const coat of manifest.colorways) {
       await page.getByRole('button', {name: `Pelage ${coat.name}`, exact: true}).click();
       await loaded(species.id, coat.id);
@@ -62,6 +66,13 @@ async page => {
     await page.locator('#playback-rate').selectOption('1');
     await page.evaluate(() => window.scrollTo(0,0));
     await page.screenshot({path: `output/playwright/totem-v2-${species.id}.png`, fullPage: true});
+    if (species.id === 'wolf') {
+      await page.setViewportSize({width:390,height:844});
+      report.wolfMobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+      if (report.wolfMobileOverflow) throw new Error('Wolf mobile horizontal overflow');
+      await page.screenshot({path:'output/playwright/totem-v4-mobile-wolf.png', fullPage:true});
+      await page.setViewportSize({width:1440,height:1000});
+    }
   }
   await page.setViewportSize({width:390,height:844});
   await page.evaluate(() => window.scrollTo(0,0));

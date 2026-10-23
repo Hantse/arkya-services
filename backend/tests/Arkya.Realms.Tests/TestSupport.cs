@@ -30,7 +30,8 @@ internal sealed class MemoryRealmRepository : IRealmRepository
     {
         lock (gate)
         {
-            if (realms.ContainsKey(realm.RealmId) || realms.Values.Any(value => value.TargetId == realm.TargetId || value.Namespace == realm.Namespace)) return Task.FromResult(false);
+            if (realms.ContainsKey(realm.RealmId) || realms.Values.Any(value =>
+                value.DeletedAt is null && (value.TargetId == realm.TargetId || value.Namespace == realm.Namespace))) return Task.FromResult(false);
             realms.Add(realm.RealmId, realm);
             return Task.FromResult(true);
         }
@@ -51,6 +52,13 @@ internal sealed class StubDeployer : IRealmDeployer
     public ServerObservation[] Observations { get; set; } = [new("area-west", 1, "192.0.2.1")];
     public Exception? Error { get; set; }
     public int Calls { get; private set; }
+    public int DeleteCalls { get; private set; }
+    public bool DeletionComplete { get; set; } = true;
+    public Task<bool> DeleteAsync(RealmRecord realm, CancellationToken cancellationToken)
+    {
+        DeleteCalls++;
+        return Error is null ? Task.FromResult(DeletionComplete) : Task.FromException<bool>(Error);
+    }
     public Task<ServerObservation[]> ReconcileAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
         Calls++;

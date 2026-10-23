@@ -1,0 +1,253 @@
+{
+  "success": true,
+  "utc": "2026-10-20T09:40:36.2372247Z",
+  "playMode": false,
+  "sceneSaved": true,
+  "checks": [
+    {
+      "name": "Terrain heights unchanged",
+      "passed": true,
+      "detail": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676"
+    },
+    {
+      "name": "Terrain paint unchanged",
+      "passed": true,
+      "detail": "b98e19d5ba7c2bbc591ef748f24e91158f8dbdde60b83432f4cc8309c7731734"
+    },
+    {
+      "name": "Exactly 21 existing town lights",
+      "passed": true,
+      "detail": 21
+    },
+    {
+      "name": "Gate - Arrival anchor preserved",
+      "passed": true,
+      "detail": {
+        "x": 518.8825,
+        "y": 50.060112,
+        "z": 481.295258
+      }
+    },
+    {
+      "name": "Gate - Arrival paired tower upgrade exists",
+      "passed": true,
+      "detail": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gatehouse upgrade - paired slate towers"
+    },
+    {
+      "name": "Gate - Arrival one tower on each side",
+      "passed": true,
+      "detail": [
+        {
+          "name": "Gate tower - Left",
+          "local": {
+            "x": -6.5,
+            "y": 6.04521942,
+            "z": 0.0
+          }
+        },
+        {
+          "name": "Gate tower - Right",
+          "local": {
+            "x": 6.5,
+            "y": 6.04521942,
+            "z": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gate - Arrival grille and lifting mechanism exist",
+      "passed": true,
+      "detail": {
+        "grille": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gatehouse upgrade - paired slate towers/Portcullis moving grille",
+        "mechanism": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gatehouse upgrade - paired slate towers/Portcullis fixed mechanism"
+      }
+    },
+    {
+      "name": "Gate - Arrival portcullis presentation configured",
+      "passed": true,
+      "detail": "Arkya.World.Environment.VillagePortcullisPresentation"
+    },
+    {
+      "name": "Gate - Arrival grille fully open and stationary",
+      "passed": true,
+      "detail": {
+        "displayed": 1.0,
+        "target": 1.0,
+        "moving": false
+      }
+    },
+    {
+      "name": "Gate - Arrival raised grille visibly clears the opening",
+      "passed": true,
+      "detail": {
+        "minimumHeightAboveGateOrigin": 4.049999,
+        "renderers": 1
+      }
+    },
+    {
+      "name": "Gate - Arrival decorative grille has no authoritative collision",
+      "passed": true,
+      "detail": {
+        "colliders": 0,
+        "rigidbodies": 0
+      }
+    },
+    {
+      "name": "Gate - Arrival actual ground and wall passages",
+      "passed": true,
+      "detail": {
+        "Gate": "Gate - Arrival",
+        "Success": true,
+        "GroundCapsules": 195,
+        "WallCapsules": 273,
+        "SupportChecks": 492,
+        "WidthChecks": 98,
+        "MinimumGroundWidth": 6.635742,
+        "MinimumWallWidth": 3.33984375,
+        "Failures": []
+      }
+    },
+    {
+      "name": "Gate - Forest anchor preserved",
+      "passed": true,
+      "detail": {
+        "x": 580.76,
+        "y": 50.89639,
+        "z": 565.0
+      }
+    },
+    {
+      "name": "Gate - Forest paired tower upgrade exists",
+      "passed": true,
+      "detail": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gatehouse upgrade - paired slate towers"
+    },
+    {
+      "name": "Gate - Forest one tower on each side",
+      "passed": true,
+      "detail": [
+        {
+          "name": "Gate tower - Left",
+          "local": {
+            "x": -6.5,
+            "y": 5.20894241,
+            "z": 0.0
+          }
+        },
+        {
+          "name": "Gate tower - Right",
+          "local": {
+            "x": 6.5,
+            "y": 5.20894241,
+            "z": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gate - Forest grille and lifting mechanism exist",
+      "passed": true,
+      "detail": {
+        "grille": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gatehouse upgrade - paired slate towers/Portcullis moving grille",
+        "mechanism": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gatehouse upgrade - paired slate towers/Portcullis fixed mechanism"
+      }
+    },
+    {
+      "name": "Gate - Forest portcullis presentation configured",
+      "passed": true,
+      "detail": "Arkya.World.Environment.VillagePortcullisPresentation"
+    },
+    {
+      "name": "Gate - Forest grille fully open and stationary",
+      "passed": true,
+      "detail": {
+        "displayed": 1.0,
+        "target": 1.0,
+        "moving": false
+      }
+    },
+    {
+      "name": "Gate - Forest raised grille visibly clears the opening",
+      "passed": true,
+      "detail": {
+        "minimumHeightAboveGateOrigin": 4.049999,
+        "renderers": 1
+      }
+    },
+    {
+      "name": "Gate - Forest decorative grille has no authoritative collision",
+      "passed": true,
+      "detail": {
+        "colliders": 0,
+        "rigidbodies": 0
+      }
+    },
+    {
+      "name": "Gate - Forest actual ground and wall passages",
+      "passed": true,
+      "detail": {
+        "Gate": "Gate - Forest",
+        "Success": true,
+        "GroundCapsules": 195,
+        "WallCapsules": 273,
+        "SupportChecks": 492,
+        "WidthChecks": 98,
+        "MinimumGroundWidth": 6.635742,
+        "MinimumWallWidth": 3.3203125,
+        "Failures": []
+      }
+    },
+    {
+      "name": "Owned meshes and material shaders valid",
+      "passed": true,
+      "detail": {
+        "invalidMeshes": 0,
+        "invalidMaterials": 0,
+        "shaderErrors": []
+      }
+    },
+    {
+      "name": "No missing scripts",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "Referenced owned and shared assets retain their metadata",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "failures": [],
+  "gates": [
+    {
+      "Gate": "Gate - Arrival",
+      "Success": true,
+      "GroundCapsules": 195,
+      "WallCapsules": 273,
+      "SupportChecks": 492,
+      "WidthChecks": 98,
+      "MinimumGroundWidth": 6.635742,
+      "MinimumWallWidth": 3.33984375,
+      "Failures": []
+    },
+    {
+      "Gate": "Gate - Forest",
+      "Success": true,
+      "GroundCapsules": 195,
+      "WallCapsules": 273,
+      "SupportChecks": 492,
+      "WidthChecks": 98,
+      "MinimumGroundWidth": 6.635742,
+      "MinimumWallWidth": 3.3203125,
+      "Failures": []
+    }
+  ],
+  "budgets": {
+    "meshInstances": 16,
+    "renderers": 16,
+    "materials": 7,
+    "triangles": 42144,
+    "townLights": 21
+  },
+  "scope": "Actual authored colliders, three ground lines and three wall-walk lines per gate. Static geometry checks supplement the separate server movement and presentation animation reports."
+}

@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T07:20:02.9308934Z",
+  "preservedFiles": [
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\Assets\\Arkya\\World\\StarterIsland\\Terrain\\StarterIslandTerrain.asset",
+      "expectedSha256": "A0E7F2C64D80F4B4EE7A3BFE6457046C167D85C00DCBB6102BD301B54BFA97AB",
+      "currentSha256": "A0E7F2C64D80F4B4EE7A3BFE6457046C167D85C00DCBB6102BD301B54BFA97AB",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\ProjectSettings\\QualitySettings.asset",
+      "expectedSha256": "7FA3E21095B718CECEA9E9BEFEB6D56ACED5ECA369A1C5844214FC3E1ED7F415",
+      "currentSha256": "7FA3E21095B718CECEA9E9BEFEB6D56ACED5ECA369A1C5844214FC3E1ED7F415",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\Unity3D\\Arkya\\ProjectSettings\\GraphicsSettings.asset",
+      "expectedSha256": "D1288ED712C51A6803DE0B43556CA13A1B418835DE68E806846A8FC0C608E03A",
+      "currentSha256": "D1288ED712C51A6803DE0B43556CA13A1B418835DE68E806846A8FC0C608E03A",
+      "unchanged": true
+    }
+  ],
+  "scopedAssetAndFolderCount": 51,
+  "missingMeta": [],
+  "savedScene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "finalEditorState": "Edit Mode, scene clean, four watchtowers and ivy present",
+  "compilationFailed": false,
+  "consoleErrors": 0
+}

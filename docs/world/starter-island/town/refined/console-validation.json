@@ -1,0 +1,23 @@
+{
+  "entries": [],
+  "cursor": 41114,
+  "session": "510fbb3fc4f14f4b97b6cdb7d767e566",
+  "returned": 0,
+  "dropped": false,
+  "reset": false,
+  "counts": {
+    "error": 2,
+    "warn": 21,
+    "log": 16
+  },
+  "groundTruth": {
+    "sampledUtc": "2026-10-18T12:42:42.9967089Z",
+    "ageMs": 62,
+    "compilationFailed": false,
+    "compiling": false,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "consoleLogs": 0,
+    "seeded": true
+  }
+}

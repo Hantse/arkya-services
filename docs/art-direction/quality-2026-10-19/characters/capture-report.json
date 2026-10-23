@@ -1,0 +1,149 @@
+{
+  "success": true,
+  "capturedUtc": "2026-10-19T21:19:59.2542874Z",
+  "unity": "6000.6.6f1",
+  "graphicsApi": "Direct3D11",
+  "pipeline": "Assets/Arkya/World/StarterIsland/Materials/Environment/IslandRenderPipeline.asset",
+  "ambientOcclusionFeatureActive": true,
+  "studio": "Neutral key/fill, neutral studio grading, actual imported skinned meshes and clips",
+  "renderSampling": "2x resolution on each axis, GPU bilinear resolve to output resolution; no image retouching",
+  "activeScenePreserved": true,
+  "assetsSaved": false,
+  "files": [
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\human-a-body.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\human-a-portrait.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\human-b-body.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\human-b-portrait.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\elf-a-body.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\elf-a-portrait.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\elf-b-body.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\elf-b-portrait.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\wolf-lunar-idle.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\wolf-walk-phases.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\fox-ember-idle.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\quality-2026-10-19\\characters\\fox-walk-phases.png"
+  ],
+  "subjects": [
+    {
+      "key": "human-a",
+      "appearance": {
+        "version": 1,
+        "race": "human",
+        "silhouette": "a",
+        "heightCm": 175,
+        "skin": "warm",
+        "hairStyle": "short",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "pose": "Idle",
+      "time": 0.5,
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Jump",
+        "SwimIdle",
+        "Swim"
+      ],
+      "renderers": 4
+    },
+    {
+      "key": "human-b",
+      "appearance": {
+        "version": 1,
+        "race": "human",
+        "silhouette": "b",
+        "heightCm": 175,
+        "skin": "warm",
+        "hairStyle": "long",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "pose": "Idle",
+      "time": 0.5,
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Jump",
+        "SwimIdle",
+        "Swim"
+      ],
+      "renderers": 4
+    },
+    {
+      "key": "elf-a",
+      "appearance": {
+        "version": 1,
+        "race": "elf",
+        "silhouette": "a",
+        "heightCm": 185,
+        "skin": "warm",
+        "hairStyle": "short",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "pose": "Idle",
+      "time": 0.5,
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Jump",
+        "SwimIdle",
+        "Swim"
+      ],
+      "renderers": 4
+    },
+    {
+      "key": "elf-b",
+      "appearance": {
+        "version": 1,
+        "race": "elf",
+        "silhouette": "b",
+        "heightCm": 185,
+        "skin": "warm",
+        "hairStyle": "long",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "pose": "Idle",
+      "time": 0.5,
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Jump",
+        "SwimIdle",
+        "Swim"
+      ],
+      "renderers": 4
+    },
+    {
+      "key": "wolf-lunar",
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "walkDuration": 1.0,
+      "sheetLayout": "Top: profile; bottom: three-quarter. Left to right: 0, 25, 50, 75 percent of Walk. Fixed camera and ground per row."
+    },
+    {
+      "key": "fox-ember",
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run"
+      ],
+      "walkDuration": 1.0,
+      "sheetLayout": "Top: profile; bottom: three-quarter. Left to right: 0, 25, 50, 75 percent of Walk. Fixed camera and ground per row."
+    }
+  ],
+  "limits": "After-only captures. These images support visual review; they do not certify art approval, uneven-terrain foot placement or a gameplay companion integration."
+}

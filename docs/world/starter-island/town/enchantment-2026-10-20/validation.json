@@ -1,0 +1,109 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T13:33:20.7420826Z",
+  "playMode": false,
+  "checks": [
+    {
+      "name": "Enchantment group present",
+      "passed": true,
+      "detail": "Aubefont - mana well town/Town enchantment - floating lanterns and painted gardens"
+    },
+    {
+      "name": "Terrain heights and placement preserved",
+      "passed": true,
+      "detail": {
+        "baseline": "54cf4a43b0f27e9507ff1a882d330e548617c7d3d08da748b3a0a803e2651c47",
+        "current": "54cf4a43b0f27e9507ff1a882d330e548617c7d3d08da748b3a0a803e2651c47"
+      }
+    },
+    {
+      "name": "Scene collider geometry and placement preserved",
+      "passed": true,
+      "detail": {
+        "baseline": "09745f634b8e3879b92981bac65916318b88ee2de3f27b83d497a473e04f4879",
+        "current": "09745f634b8e3879b92981bac65916318b88ee2de3f27b83d497a473e04f4879",
+        "before": 2499,
+        "after": 2499
+      }
+    },
+    {
+      "name": "Town collider count preserved",
+      "passed": true,
+      "detail": {
+        "before": 2270,
+        "after": 2270
+      }
+    },
+    {
+      "name": "Scene light count preserved",
+      "passed": true,
+      "detail": {
+        "before": 26,
+        "after": 26
+      }
+    },
+    {
+      "name": "Town light count preserved",
+      "passed": true,
+      "detail": {
+        "before": 21,
+        "after": 21
+      }
+    },
+    {
+      "name": "Enchantment adds no collision or dynamic lights",
+      "passed": true,
+      "detail": {
+        "addedColliders": 0,
+        "addedLights": 0
+      }
+    },
+    {
+      "name": "No missing scripts",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "Materials supported and shaders compile",
+      "passed": true,
+      "detail": {
+        "invalidMaterials": 0,
+        "shaderErrors": []
+      }
+    },
+    {
+      "name": "Enchantment meshes valid",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Referenced asset meta files present",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Enchantment geometry budget",
+      "passed": true,
+      "detail": {
+        "triangles": 93384,
+        "triangleLimit": 100000,
+        "renderers": 64,
+        "rendererLimit": 80
+      }
+    }
+  ],
+  "failures": [],
+  "budget": {
+    "triangles": 93384,
+    "meshFilters": 64,
+    "renderers": 64,
+    "materialSlots": 64,
+    "distinctMaterials": 8,
+    "shadowCasters": 32,
+    "particles": 0,
+    "addedColliders": 0,
+    "addedLights": 0
+  },
+  "sceneSaved": false,
+  "scope": "Read-only scene, geometry and render-resource checks. Visual review and runtime animation are separate evidence; counts are not a player performance measurement."
+}

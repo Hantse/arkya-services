@@ -1,0 +1,1539 @@
+{
+  "success": true,
+  "utc": "2026-10-20T10:23:27.7650611Z",
+  "alreadyApplied": false,
+  "sceneSaved": false,
+  "oldCollidersPreserved": true,
+  "oldCollidersSha256": "9d913f5e5458e48ada0b93592fa07c68c2753044ba89f12f54e06bf9bc8f2713",
+  "addedStaticMeshColliders": 14,
+  "addedRenderers": 0,
+  "addedMaterials": 0,
+  "triangles": 168,
+  "maximumPlanArea": 0.9094167,
+  "totalPlanArea": 7.385493,
+  "maximumPlanWidth": 0.9452808,
+  "endpointOverlap": 0.001,
+  "missingSamplesBefore": 125,
+  "missingSamplesAfter": 0,
+  "supports": [
+    {
+      "id": 74,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_074_support.asset",
+      "top": {
+        "x": 505.0,
+        "y": 56.10533,
+        "z": 490.0
+      },
+      "bottom": 50.32704,
+      "area": 0.9094167,
+      "width": 0.9452808,
+      "polygon": [
+        {
+          "x": 503.539856,
+          "y": 56.10533,
+          "z": 488.352
+        },
+        {
+          "x": 504.7167,
+          "y": 56.10533,
+          "z": 489.79364
+        },
+        {
+          "x": 502.9833,
+          "y": 56.10533,
+          "z": 489.116058
+        },
+        {
+          "x": 503.161163,
+          "y": 56.10533,
+          "z": 488.6611
+        }
+      ],
+      "probes": [
+        {
+          "x": 503.599365,
+          "y": 56.10533,
+          "z": 488.980042
+        },
+        {
+          "x": 503.551147,
+          "y": 56.10533,
+          "z": 488.478119
+        },
+        {
+          "x": 504.0209,
+          "y": 56.10533,
+          "z": 489.0536
+        },
+        {
+          "x": 504.490662,
+          "y": 56.10533,
+          "z": 489.629059
+        },
+        {
+          "x": 503.798737,
+          "y": 56.10533,
+          "z": 489.358582
+        },
+        {
+          "x": 503.1068,
+          "y": 56.10533,
+          "z": 489.088135
+        },
+        {
+          "x": 503.177826,
+          "y": 56.10533,
+          "z": 488.9065
+        },
+        {
+          "x": 503.2488,
+          "y": 56.10533,
+          "z": 488.724884
+        },
+        {
+          "x": 503.399963,
+          "y": 56.10533,
+          "z": 488.6015
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 93,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_093_support.asset",
+      "top": {
+        "x": 504.0,
+        "y": 56.10533,
+        "z": 544.0
+      },
+      "bottom": 49.9702759,
+      "area": 0.8677105,
+      "width": 0.909593,
+      "polygon": [
+        {
+          "x": 501.924316,
+          "y": 56.10533,
+          "z": 544.7345
+        },
+        {
+          "x": 503.691162,
+          "y": 56.10533,
+          "z": 544.188538
+        },
+        {
+          "x": 502.398346,
+          "y": 56.10533,
+          "z": 545.5108
+        },
+        {
+          "x": 502.062866,
+          "y": 56.10533,
+          "z": 545.182861
+        }
+      ],
+      "probes": [
+        {
+          "x": 502.5182,
+          "y": 56.10533,
+          "z": 544.9048
+        },
+        {
+          "x": 502.043335,
+          "y": 56.10533,
+          "z": 544.769348
+        },
+        {
+          "x": 502.7486,
+          "y": 56.10533,
+          "z": 544.5514
+        },
+        {
+          "x": 503.4538,
+          "y": 56.10533,
+          "z": 544.3335
+        },
+        {
+          "x": 502.937775,
+          "y": 56.10533,
+          "z": 544.861267
+        },
+        {
+          "x": 502.421722,
+          "y": 56.10533,
+          "z": 545.389038
+        },
+        {
+          "x": 502.2878,
+          "y": 56.10533,
+          "z": 545.2581
+        },
+        {
+          "x": 502.153931,
+          "y": 56.10533,
+          "z": 545.1272
+        },
+        {
+          "x": 502.098633,
+          "y": 56.10533,
+          "z": 544.948242
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 46,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_046_support.asset",
+      "top": {
+        "x": 579.0,
+        "y": 56.10533,
+        "z": 481.0
+      },
+      "bottom": 48.10688,
+      "area": 0.853670537,
+      "width": 0.8975848,
+      "polygon": [
+        {
+          "x": 580.5621,
+          "y": 56.10533,
+          "z": 479.448273
+        },
+        {
+          "x": 579.2016,
+          "y": 56.10533,
+          "z": 480.6946
+        },
+        {
+          "x": 579.813,
+          "y": 56.10533,
+          "z": 478.9538
+        },
+        {
+          "x": 580.2495,
+          "y": 56.10533,
+          "z": 479.107056
+        }
+      ],
+      "probes": [
+        {
+          "x": 579.957153,
+          "y": 56.10533,
+          "z": 479.549957
+        },
+        {
+          "x": 580.440552,
+          "y": 56.10533,
+          "z": 479.468048
+        },
+        {
+          "x": 579.8976,
+          "y": 56.10533,
+          "z": 479.965485
+        },
+        {
+          "x": 579.354553,
+          "y": 56.10533,
+          "z": 480.462952
+        },
+        {
+          "x": 579.5986,
+          "y": 56.10533,
+          "z": 479.7681
+        },
+        {
+          "x": 579.8426,
+          "y": 56.10533,
+          "z": 479.073273
+        },
+        {
+          "x": 580.0168,
+          "y": 56.10533,
+          "z": 479.13446
+        },
+        {
+          "x": 580.19104,
+          "y": 56.10533,
+          "z": 479.195679
+        },
+        {
+          "x": 580.315735,
+          "y": 56.10533,
+          "z": 479.331848
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 7,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_007_support.asset",
+      "top": {
+        "x": 570.110535,
+        "y": 56.10533,
+        "z": 572.002258
+      },
+      "bottom": 51.07607,
+      "area": 0.8219058,
+      "width": 0.8700617,
+      "polygon": [
+        {
+          "x": 569.673157,
+          "y": 56.10533,
+          "z": 574.160156
+        },
+        {
+          "x": 570.1101,
+          "y": 56.10533,
+          "z": 572.3775
+        },
+        {
+          "x": 570.5433,
+          "y": 56.10533,
+          "z": 574.161133
+        },
+        {
+          "x": 570.1081,
+          "y": 56.10533,
+          "z": 574.2668
+        }
+      ],
+      "probes": [
+        {
+          "x": 570.1087,
+          "y": 56.10533,
+          "z": 573.742554
+        },
+        {
+          "x": 569.7611,
+          "y": 56.10533,
+          "z": 574.076843
+        },
+        {
+          "x": 569.9354,
+          "y": 56.10533,
+          "z": 573.365356
+        },
+        {
+          "x": 570.109863,
+          "y": 56.10533,
+          "z": 572.6539
+        },
+        {
+          "x": 570.2827,
+          "y": 56.10533,
+          "z": 573.3657
+        },
+        {
+          "x": 570.455566,
+          "y": 56.10533,
+          "z": 574.0776
+        },
+        {
+          "x": 570.28186,
+          "y": 56.10533,
+          "z": 574.119751
+        },
+        {
+          "x": 570.1082,
+          "y": 56.10533,
+          "z": 574.1619
+        },
+        {
+          "x": 569.934631,
+          "y": 56.10533,
+          "z": 574.1194
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 36,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_036_support.asset",
+      "top": {
+        "x": 596.0,
+        "y": 56.10533,
+        "z": 503.0
+      },
+      "bottom": 49.79058,
+      "area": 0.709064662,
+      "width": 0.7713655,
+      "polygon": [
+        {
+          "x": 598.16864,
+          "y": 56.10533,
+          "z": 502.619446
+        },
+        {
+          "x": 596.389038,
+          "y": 56.10533,
+          "z": 502.858032
+        },
+        {
+          "x": 597.904236,
+          "y": 56.10533,
+          "z": 501.8948
+        },
+        {
+          "x": 598.11615,
+          "y": 56.10533,
+          "z": 502.228149
+        }
+      ],
+      "probes": [
+        {
+          "x": 597.645752,
+          "y": 56.10533,
+          "z": 502.399658
+        },
+        {
+          "x": 598.063965,
+          "y": 56.10533,
+          "z": 502.5747
+        },
+        {
+          "x": 597.353943,
+          "y": 56.10533,
+          "z": 502.669922
+        },
+        {
+          "x": 596.64386,
+          "y": 56.10533,
+          "z": 502.765076
+        },
+        {
+          "x": 597.2484,
+          "y": 56.10533,
+          "z": 502.380768
+        },
+        {
+          "x": 597.853,
+          "y": 56.10533,
+          "z": 501.996429
+        },
+        {
+          "x": 597.937561,
+          "y": 56.10533,
+          "z": 502.129456
+        },
+        {
+          "x": 598.0221,
+          "y": 56.10533,
+          "z": 502.262451
+        },
+        {
+          "x": 598.043,
+          "y": 56.10533,
+          "z": 502.418579
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 8,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_008_support.asset",
+      "top": {
+        "x": 572.3528,
+        "y": 56.10533,
+        "z": 571.457764
+      },
+      "bottom": 51.07607,
+      "area": 0.6574043,
+      "width": 0.7255268,
+      "polygon": [
+        {
+          "x": 572.958435,
+          "y": 56.10533,
+          "z": 573.574646
+        },
+        {
+          "x": 572.539856,
+          "y": 56.10533,
+          "z": 571.8508
+        },
+        {
+          "x": 573.6136,
+          "y": 56.10533,
+          "z": 573.2629
+        },
+        {
+          "x": 573.3186,
+          "y": 56.10533,
+          "z": 573.4871
+        }
+      ],
+      "probes": [
+        {
+          "x": 573.108154,
+          "y": 56.10533,
+          "z": 573.045044
+        },
+        {
+          "x": 572.989136,
+          "y": 56.10533,
+          "z": 573.468567
+        },
+        {
+          "x": 572.822144,
+          "y": 56.10533,
+          "z": 572.7809
+        },
+        {
+          "x": 572.6552,
+          "y": 56.10533,
+          "z": 572.0932
+        },
+        {
+          "x": 573.0835,
+          "y": 56.10533,
+          "z": 572.6565
+        },
+        {
+          "x": 573.511841,
+          "y": 56.10533,
+          "z": 573.2198
+        },
+        {
+          "x": 573.3942,
+          "y": 56.10533,
+          "z": 573.309265
+        },
+        {
+          "x": 573.27655,
+          "y": 56.10533,
+          "z": 573.3987
+        },
+        {
+          "x": 573.1329,
+          "y": 56.10533,
+          "z": 573.433655
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 63,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_063_support.asset",
+      "top": {
+        "x": 530.93634,
+        "y": 56.10533,
+        "z": 474.885529
+      },
+      "bottom": 49.6133842,
+      "area": 0.5736295,
+      "width": 0.6500095,
+      "polygon": [
+        {
+          "x": 530.7563,
+          "y": 56.10533,
+          "z": 472.691132
+        },
+        {
+          "x": 530.8281,
+          "y": 56.10533,
+          "z": 474.423279
+        },
+        {
+          "x": 530.1234,
+          "y": 56.10533,
+          "z": 472.839233
+        },
+        {
+          "x": 530.4255,
+          "y": 56.10533,
+          "z": 472.704834
+        }
+      ],
+      "probes": [
+        {
+          "x": 530.532959,
+          "y": 56.10533,
+          "z": 473.1632
+        },
+        {
+          "x": 530.7108,
+          "y": 56.10533,
+          "z": 472.785553
+        },
+        {
+          "x": 530.7395,
+          "y": 56.10533,
+          "z": 473.476349
+        },
+        {
+          "x": 530.7681,
+          "y": 56.10533,
+          "z": 474.1671
+        },
+        {
+          "x": 530.487061,
+          "y": 56.10533,
+          "z": 473.5354
+        },
+        {
+          "x": 530.206055,
+          "y": 56.10533,
+          "z": 472.903717
+        },
+        {
+          "x": 530.3265,
+          "y": 56.10533,
+          "z": 472.8501
+        },
+        {
+          "x": 530.44696,
+          "y": 56.10533,
+          "z": 472.7965
+        },
+        {
+          "x": 530.578857,
+          "y": 56.10533,
+          "z": 472.791016
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 16,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_016_support.asset",
+      "top": {
+        "x": 589.299,
+        "y": 56.10533,
+        "z": 558.388
+      },
+      "bottom": 50.2241974,
+      "area": 0.526069045,
+      "width": 0.6065761,
+      "polygon": [
+        {
+          "x": 590.728,
+          "y": 56.10533,
+          "z": 560.0629
+        },
+        {
+          "x": 589.673645,
+          "y": 56.10533,
+          "z": 558.7207
+        },
+        {
+          "x": 591.131,
+          "y": 56.10533,
+          "z": 559.609558
+        },
+        {
+          "x": 590.9707,
+          "y": 56.10533,
+          "z": 559.8723
+        }
+      ],
+      "probes": [
+        {
+          "x": 590.626953,
+          "y": 56.10533,
+          "z": 559.5674
+        },
+        {
+          "x": 590.7085,
+          "y": 56.10533,
+          "z": 559.9633
+        },
+        {
+          "x": 590.2881,
+          "y": 56.10533,
+          "z": 559.4282
+        },
+        {
+          "x": 589.8676,
+          "y": 56.10533,
+          "z": 558.893066
+        },
+        {
+          "x": 590.4487,
+          "y": 56.10533,
+          "z": 559.247437
+        },
+        {
+          "x": 591.0298,
+          "y": 56.10533,
+          "z": 559.6018
+        },
+        {
+          "x": 590.9659,
+          "y": 56.10533,
+          "z": 559.7066
+        },
+        {
+          "x": 590.902,
+          "y": 56.10533,
+          "z": 559.81134
+        },
+        {
+          "x": 590.805237,
+          "y": 56.10533,
+          "z": 559.8873
+        }
+      ],
+      "missingBefore": 8,
+      "triangles": 12
+    },
+    {
+      "id": 83,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_083_support.asset",
+      "top": {
+        "x": 498.0,
+        "y": 56.10533,
+        "z": 516.0
+      },
+      "bottom": 50.4058533,
+      "area": 0.4725951,
+      "width": 0.5570565,
+      "polygon": [
+        {
+          "x": 495.82254,
+          "y": 56.10533,
+          "z": 515.67395
+        },
+        {
+          "x": 497.4658,
+          "y": 56.10533,
+          "z": 515.988342
+        },
+        {
+          "x": 495.810333,
+          "y": 56.10533,
+          "z": 516.2309
+        },
+        {
+          "x": 495.7694,
+          "y": 56.10533,
+          "z": 515.9516
+        }
+      ],
+      "probes": [
+        {
+          "x": 496.215424,
+          "y": 56.10533,
+          "z": 515.9611
+        },
+        {
+          "x": 495.90097,
+          "y": 56.10533,
+          "z": 515.7322
+        },
+        {
+          "x": 496.555939,
+          "y": 56.10533,
+          "z": 515.8575
+        },
+        {
+          "x": 497.2109,
+          "y": 56.10533,
+          "z": 515.9828
+        },
+        {
+          "x": 496.5511,
+          "y": 56.10533,
+          "z": 516.079468
+        },
+        {
+          "x": 495.891235,
+          "y": 56.10533,
+          "z": 516.1761
+        },
+        {
+          "x": 495.874939,
+          "y": 56.10533,
+          "z": 516.0648
+        },
+        {
+          "x": 495.8586,
+          "y": 56.10533,
+          "z": 515.9535
+        },
+        {
+          "x": 495.8798,
+          "y": 56.10533,
+          "z": 515.842834
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 25,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_025_support.asset",
+      "top": {
+        "x": 598.0,
+        "y": 56.10533,
+        "z": 535.0
+      },
+      "bottom": 50.8277473,
+      "area": 0.415326864,
+      "width": 0.503376,
+      "polygon": [
+        {
+          "x": 600.1287,
+          "y": 56.10533,
+          "z": 535.5624
+        },
+        {
+          "x": 598.5706,
+          "y": 56.10533,
+          "z": 535.0825
+        },
+        {
+          "x": 600.201,
+          "y": 56.10533,
+          "z": 535.0642
+        },
+        {
+          "x": 600.2038,
+          "y": 56.10533,
+          "z": 535.318542
+        }
+      ],
+      "probes": [
+        {
+          "x": 599.7777,
+          "y": 56.10533,
+          "z": 535.2572
+        },
+        {
+          "x": 600.0587,
+          "y": 56.10533,
+          "z": 535.500549
+        },
+        {
+          "x": 599.438,
+          "y": 56.10533,
+          "z": 535.3094
+        },
+        {
+          "x": 598.817139,
+          "y": 56.10533,
+          "z": 535.118164
+        },
+        {
+          "x": 599.4668,
+          "y": 56.10533,
+          "z": 535.1109
+        },
+        {
+          "x": 600.116333,
+          "y": 56.10533,
+          "z": 535.103638
+        },
+        {
+          "x": 600.1175,
+          "y": 56.10533,
+          "z": 535.2049
+        },
+        {
+          "x": 600.1186,
+          "y": 56.10533,
+          "z": 535.3063
+        },
+        {
+          "x": 600.0887,
+          "y": 56.10533,
+          "z": 535.4034
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 103,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_103_support.asset",
+      "top": {
+        "x": 526.0,
+        "y": 56.10533,
+        "z": 562.0
+      },
+      "bottom": 48.7866135,
+      "area": 0.366931736,
+      "width": 0.457170367,
+      "polygon": [
+        {
+          "x": 524.774,
+          "y": 56.10533,
+          "z": 563.828857
+        },
+        {
+          "x": 525.71106,
+          "y": 56.10533,
+          "z": 562.546143
+        },
+        {
+          "x": 525.178162,
+          "y": 56.10533,
+          "z": 564.042542
+        },
+        {
+          "x": 524.9603,
+          "y": 56.10533,
+          "z": 563.965
+        }
+      ],
+      "probes": [
+        {
+          "x": 525.1551,
+          "y": 56.10533,
+          "z": 563.5973
+        },
+        {
+          "x": 524.8508,
+          "y": 56.10533,
+          "z": 563.783
+        },
+        {
+          "x": 525.22406,
+          "y": 56.10533,
+          "z": 563.2722
+        },
+        {
+          "x": 525.5973,
+          "y": 56.10533,
+          "z": 562.7613
+        },
+        {
+          "x": 525.3851,
+          "y": 56.10533,
+          "z": 563.3573
+        },
+        {
+          "x": 525.1727,
+          "y": 56.10533,
+          "z": 563.953247
+        },
+        {
+          "x": 525.086,
+          "y": 56.10533,
+          "z": 563.922363
+        },
+        {
+          "x": 524.999268,
+          "y": 56.10533,
+          "z": 563.8915
+        },
+        {
+          "x": 524.925049,
+          "y": 56.10533,
+          "z": 563.8372
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 18,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_018_support.asset",
+      "top": {
+        "x": 591.271667,
+        "y": 56.10533,
+        "z": 553.200745
+      },
+      "bottom": 50.61919,
+      "area": 0.1337597,
+      "width": 0.219093412,
+      "polygon": [
+        {
+          "x": 589.2059,
+          "y": 56.10533,
+          "z": 552.438965
+        },
+        {
+          "x": 590.3289,
+          "y": 56.10533,
+          "z": 552.9055
+        },
+        {
+          "x": 589.1404,
+          "y": 56.10533,
+          "z": 552.6481
+        },
+        {
+          "x": 589.1636,
+          "y": 56.10533,
+          "z": 552.540955
+        }
+      ],
+      "probes": [
+        {
+          "x": 589.457031,
+          "y": 56.10533,
+          "z": 552.632568
+        },
+        {
+          "x": 589.2558,
+          "y": 56.10533,
+          "z": 552.478455
+        },
+        {
+          "x": 589.7009,
+          "y": 56.10533,
+          "z": 552.6633
+        },
+        {
+          "x": 590.146057,
+          "y": 56.10533,
+          "z": 552.8482
+        },
+        {
+          "x": 589.6749,
+          "y": 56.10533,
+          "z": 552.7462
+        },
+        {
+          "x": 589.203857,
+          "y": 56.10533,
+          "z": 552.644165
+        },
+        {
+          "x": 589.2131,
+          "y": 56.10533,
+          "z": 552.601746
+        },
+        {
+          "x": 589.2222,
+          "y": 56.10533,
+          "z": 552.559265
+        },
+        {
+          "x": 589.2391,
+          "y": 56.10533,
+          "z": 552.51886
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 0,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_000_support.asset",
+      "top": {
+        "x": 550.0,
+        "y": 56.10533,
+        "z": 569.0
+      },
+      "bottom": 50.36483,
+      "area": 0.0404473878,
+      "width": 0.101140738,
+      "polygon": [
+        {
+          "x": 549.5315,
+          "y": 56.10533,
+          "z": 571.151367
+        },
+        {
+          "x": 549.732666,
+          "y": 56.10533,
+          "z": 570.378967
+        },
+        {
+          "x": 549.6308,
+          "y": 56.10533,
+          "z": 571.170654
+        },
+        {
+          "x": 549.5805,
+          "y": 56.10533,
+          "z": 571.1642
+        }
+      ],
+      "probes": [
+        {
+          "x": 549.6181,
+          "y": 56.10533,
+          "z": 570.9702
+        },
+        {
+          "x": 549.549561,
+          "y": 56.10533,
+          "z": 571.115356
+        },
+        {
+          "x": 549.6285,
+          "y": 56.10533,
+          "z": 570.8125
+        },
+        {
+          "x": 549.7074,
+          "y": 56.10533,
+          "z": 570.509644
+        },
+        {
+          "x": 549.6674,
+          "y": 56.10533,
+          "z": 570.820068
+        },
+        {
+          "x": 549.627441,
+          "y": 56.10533,
+          "z": 571.130432
+        },
+        {
+          "x": 549.6077,
+          "y": 56.10533,
+          "z": 571.1279
+        },
+        {
+          "x": 549.588,
+          "y": 56.10533,
+          "z": 571.125366
+        },
+        {
+          "x": 549.5688,
+          "y": 56.10533,
+          "z": 571.120361
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    },
+    {
+      "id": 72,
+      "asset": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Supports/Junction_072_support.asset",
+      "top": {
+        "x": 509.20755,
+        "y": 56.10533,
+        "z": 486.7087
+      },
+      "bottom": 50.3265839,
+      "area": 0.037561208,
+      "width": 0.0966899544,
+      "polygon": [
+        {
+          "x": 508.039673,
+          "y": 56.10533,
+          "z": 484.842163
+        },
+        {
+          "x": 508.424072,
+          "y": 56.10533,
+          "z": 485.515625
+        },
+        {
+          "x": 507.958862,
+          "y": 56.10533,
+          "z": 484.895264
+        },
+        {
+          "x": 507.9977,
+          "y": 56.10533,
+          "z": 484.866119
+        }
+      ],
+      "probes": [
+        {
+          "x": 508.102875,
+          "y": 56.10533,
+          "z": 485.026428
+        },
+        {
+          "x": 508.051636,
+          "y": 56.10533,
+          "z": 484.879425
+        },
+        {
+          "x": 508.2022,
+          "y": 56.10533,
+          "z": 485.143219
+        },
+        {
+          "x": 508.352783,
+          "y": 56.10533,
+          "z": 485.407043
+        },
+        {
+          "x": 508.170532,
+          "y": 56.10533,
+          "z": 485.164032
+        },
+        {
+          "x": 507.9883,
+          "y": 56.10533,
+          "z": 484.921
+        },
+        {
+          "x": 508.0035,
+          "y": 56.10533,
+          "z": 484.909576
+        },
+        {
+          "x": 508.018738,
+          "y": 56.10533,
+          "z": 484.898163
+        },
+        {
+          "x": 508.0352,
+          "y": 56.10533,
+          "z": 484.8888
+        }
+      ],
+      "missingBefore": 9,
+      "triangles": 12
+    }
+  ],
+  "skipped": [
+    {
+      "id": 17,
+      "reason": "Other existing collision already supports the void",
+      "samples": 9
+    },
+    {
+      "id": 55,
+      "reason": "Other existing collision already supports the void",
+      "samples": 9
+    },
+    {
+      "id": 1,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 2,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 3,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 4,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 5,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 6,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 9,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 15,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 19,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 20,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 21,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 22,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 23,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 24,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 26,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 27,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 28,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 29,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 30,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 31,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 32,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 33,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 34,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 35,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 37,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 38,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 39,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 40,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 41,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 42,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 43,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 44,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 45,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 47,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 48,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 49,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 50,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 51,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 52,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 53,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 54,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 56,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 57,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 58,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 59,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 60,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 61,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 62,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 64,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 65,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 71,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 73,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 75,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 76,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 77,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 78,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 79,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 80,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 81,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 82,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 84,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 85,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 86,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 87,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 88,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 89,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 90,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 91,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 92,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 94,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 95,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 96,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 97,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 98,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 99,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 100,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 101,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 102,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 104,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 105,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 106,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 107,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 108,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 109,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 110,
+      "reason": "Existing boxes overlap fully"
+    },
+    {
+      "id": 111,
+      "reason": "Existing boxes overlap fully"
+    }
+  ],
+  "scope": "Only voids between the original pair of BoxColliders, clipped to the two masonry side planes. Full wall depth down to the higher adjacent base. One millimetre overlap only at the existing end caps. Existing collisions, visual meshes, terrain and gameplay remain untouched."
+}

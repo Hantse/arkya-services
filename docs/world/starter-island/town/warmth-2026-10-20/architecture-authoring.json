@@ -1,0 +1,1275 @@
+{
+  "authoredAtUtc": "2026-10-20T08:26:34.9770261Z",
+  "terrainHeightmapUnchanged": true,
+  "houseXZAndYawUnchanged": true,
+  "originalHouses": 10,
+  "housesWithAccessibleUpperFloor": 5,
+  "civicHouse": 1,
+  "sceneSaved": false,
+  "buildings": [
+    {
+      "name": "01 - Auberge des Lanternes",
+      "width": 9.0,
+      "depth": 7.5,
+      "previousBaseY": 50.3380547,
+      "newBaseY": 50.42699,
+      "verticalLift": 0.0889343247,
+      "groundFloorWorldY": 50.46199,
+      "upperFloorWorldY": 53.46199,
+      "floors": 2,
+      "addedStorey": false,
+      "windows": 15,
+      "stairAndEntryTreads": 19,
+      "internalStair": {
+        "rise": 3.0,
+        "treads": 18,
+        "riser": 0.166666672,
+        "going": 0.25,
+        "width": 1.05,
+        "landingLength": 1.0
+      },
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 530.899231,
+          "y": 50.3456841,
+          "z": 539.6727
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 529.243469,
+          "y": 50.46199,
+          "z": 540.7766
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 528.43634,
+          "y": 50.46199,
+          "z": 540.1969
+        },
+        {
+          "name": "04 - Stair foot",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+          "x": 525.4049,
+          "y": 50.46199,
+          "z": 535.2892
+        },
+        {
+          "name": "05 - Turning landing outbound",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+          "x": 522.784,
+          "y": 51.96199,
+          "z": 537.0365
+        },
+        {
+          "name": "06 - Turning landing return",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+          "x": 523.4496,
+          "y": 51.96199,
+          "z": 538.035
+        },
+        {
+          "name": "07 - Upper stair exit",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+          "x": 526.153748,
+          "y": 53.46199,
+          "z": 536.2322
+        },
+        {
+          "name": "08 - Upper room front",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+          "x": 528.686,
+          "y": 53.46199,
+          "z": 540.0305
+        },
+        {
+          "name": "09 - Upper room rear",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+          "x": 524.0681,
+          "y": 53.46199,
+          "z": 543.1091
+        }
+      ]
+    },
+    {
+      "name": "02 - Maison du boulanger",
+      "width": 6.0,
+      "depth": 5.0,
+      "previousBaseY": 50.3506355,
+      "newBaseY": 50.3696632,
+      "verticalLift": 0.0190261845,
+      "groundFloorWorldY": 50.4046631,
+      "upperFloorWorldY": 53.4046631,
+      "floors": 2,
+      "addedStorey": true,
+      "windows": 11,
+      "stairAndEntryTreads": 19,
+      "internalStair": {
+        "rise": 3.0,
+        "treads": 18,
+        "riser": 0.166666672,
+        "going": 0.25,
+        "width": 1.05,
+        "landingLength": 1.0
+      },
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 543.1109,
+          "y": 50.368782,
+          "z": 542.458862
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 542.783752,
+          "y": 50.4046631,
+          "z": 544.421753
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 542.607849,
+          "y": 50.4046631,
+          "z": 544.747253
+        },
+        {
+          "name": "04 - Stair foot",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+          "x": 539.1143,
+          "y": 50.4046631,
+          "z": 543.9623
+        },
+        {
+          "name": "05 - Turning landing outbound",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+          "x": 538.5965,
+          "y": 51.9046631,
+          "z": 547.0694
+        },
+        {
+          "name": "06 - Turning landing return",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+          "x": 539.780151,
+          "y": 51.9046631,
+          "z": 547.2667
+        },
+        {
+          "name": "07 - Upper stair exit",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+          "x": 540.314453,
+          "y": 53.4046631,
+          "z": 544.0609
+        },
+        {
+          "name": "08 - Upper room front",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+          "x": 542.657166,
+          "y": 53.4046631,
+          "z": 544.451355
+        },
+        {
+          "name": "09 - Upper room rear",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+          "x": 542.1557,
+          "y": 53.4046631,
+          "z": 547.459839
+        }
+      ]
+    },
+    {
+      "name": "03 - Atelier des runes",
+      "width": 6.0,
+      "depth": 7.5,
+      "previousBaseY": 50.52824,
+      "newBaseY": 50.6630478,
+      "verticalLift": 0.134806067,
+      "groundFloorWorldY": 50.6980476,
+      "upperFloorWorldY": 53.6980476,
+      "floors": 2,
+      "addedStorey": false,
+      "windows": 11,
+      "stairAndEntryTreads": 19,
+      "internalStair": {
+        "rise": 3.0,
+        "treads": 18,
+        "riser": 0.166666672,
+        "going": 0.25,
+        "width": 1.05,
+        "landingLength": 1.0
+      },
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 558.536255,
+          "y": 50.5536156,
+          "z": 544.720764
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 558.903,
+          "y": 50.6980476,
+          "z": 546.676636
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 558.849548,
+          "y": 50.6980476,
+          "z": 547.0428
+        },
+        {
+          "name": "04 - Stair foot",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+          "x": 555.29895,
+          "y": 50.6980476,
+          "z": 547.505066
+        },
+        {
+          "name": "05 - Turning landing outbound",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+          "x": 555.879456,
+          "y": 52.1980476,
+          "z": 550.6011
+        },
+        {
+          "name": "06 - Turning landing return",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+          "x": 557.0589,
+          "y": 52.1980476,
+          "z": 550.379944
+        },
+        {
+          "name": "07 - Upper stair exit",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+          "x": 556.459961,
+          "y": 53.6980476,
+          "z": 547.1856
+        },
+        {
+          "name": "08 - Upper room front",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+          "x": 558.7943,
+          "y": 53.6980476,
+          "z": 546.7479
+        },
+        {
+          "name": "09 - Upper room rear",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+          "x": 559.8171,
+          "y": 53.6980476,
+          "z": 552.2029
+        }
+      ]
+    },
+    {
+      "name": "04 - Maison des voyageurs",
+      "width": 6.0,
+      "depth": 5.0,
+      "previousBaseY": 50.92774,
+      "newBaseY": 51.2494278,
+      "verticalLift": 0.3216881,
+      "groundFloorWorldY": 51.2844276,
+      "upperFloorWorldY": null,
+      "floors": 1,
+      "addedStorey": false,
+      "windows": 5,
+      "stairAndEntryTreads": 3,
+      "internalStair": null,
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 570.006348,
+          "y": 50.90845,
+          "z": 553.2756
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 570.838,
+          "y": 51.2844276,
+          "z": 555.770569
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 570.834839,
+          "y": 51.2844276,
+          "z": 556.140564
+        }
+      ]
+    },
+    {
+      "name": "05 - Herboristerie",
+      "width": 9.0,
+      "depth": 5.0,
+      "previousBaseY": 51.0686722,
+      "newBaseY": 51.27541,
+      "verticalLift": 0.206736,
+      "groundFloorWorldY": 51.31041,
+      "upperFloorWorldY": null,
+      "floors": 1,
+      "addedStorey": false,
+      "windows": 7,
+      "stairAndEntryTreads": 2,
+      "internalStair": null,
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 578.0914,
+          "y": 51.0542946,
+          "z": 529.775635
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 580.2668,
+          "y": 51.31041,
+          "z": 530.552551
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 580.2836,
+          "y": 51.31041,
+          "z": 531.5461
+        }
+      ]
+    },
+    {
+      "name": "06 - Forge du Refuge",
+      "width": 9.0,
+      "depth": 7.5,
+      "previousBaseY": 50.0532837,
+      "newBaseY": 50.6562233,
+      "verticalLift": 0.602938056,
+      "groundFloorWorldY": 50.6912231,
+      "upperFloorWorldY": null,
+      "floors": 1,
+      "addedStorey": false,
+      "windows": 7,
+      "stairAndEntryTreads": 4,
+      "internalStair": null,
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 574.3181,
+          "y": 50.1594772,
+          "z": 500.977142
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 576.7436,
+          "y": 50.6912231,
+          "z": 499.297974
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 577.5607,
+          "y": 50.6912231,
+          "z": 499.8634
+        }
+      ]
+    },
+    {
+      "name": "07 - Entrepot des marchands",
+      "width": 9.0,
+      "depth": 5.0,
+      "previousBaseY": 49.70918,
+      "newBaseY": 49.9455147,
+      "verticalLift": 0.236334234,
+      "groundFloorWorldY": 49.9805145,
+      "upperFloorWorldY": 52.9805145,
+      "floors": 2,
+      "addedStorey": true,
+      "windows": 15,
+      "stairAndEntryTreads": 20,
+      "internalStair": {
+        "rise": 3.0,
+        "treads": 18,
+        "riser": 0.166666672,
+        "going": 0.25,
+        "width": 1.05,
+        "landingLength": 1.0
+      },
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 563.127,
+          "y": 49.7895,
+          "z": 494.599823
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 564.485657,
+          "y": 49.9805145,
+          "z": 492.731659
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 565.443665,
+          "y": 49.9805145,
+          "z": 492.995575
+        },
+        {
+          "name": "04 - Stair foot",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+          "x": 569.9884,
+          "y": 49.9805145,
+          "z": 496.548157
+        },
+        {
+          "name": "05 - Turning landing outbound",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+          "x": 571.8411,
+          "y": 51.4805145,
+          "z": 494.000641
+        },
+        {
+          "name": "06 - Turning landing return",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+          "x": 570.870667,
+          "y": 51.4805145,
+          "z": 493.29483
+        },
+        {
+          "name": "07 - Upper stair exit",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+          "x": 568.9591,
+          "y": 52.9805145,
+          "z": 495.923218
+        },
+        {
+          "name": "08 - Upper room front",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+          "x": 565.2672,
+          "y": 52.9805145,
+          "z": 493.23822
+        },
+        {
+          "name": "09 - Upper room rear",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+          "x": 567.061157,
+          "y": 52.9805145,
+          "z": 490.771576
+        }
+      ]
+    },
+    {
+      "name": "08 - Maison des tisserands",
+      "width": 6.0,
+      "depth": 5.0,
+      "previousBaseY": 50.0404472,
+      "newBaseY": 50.0478745,
+      "verticalLift": 0.00742569,
+      "groundFloorWorldY": 50.0828743,
+      "upperFloorWorldY": 53.0828743,
+      "floors": 2,
+      "addedStorey": false,
+      "windows": 11,
+      "stairAndEntryTreads": 19,
+      "internalStair": {
+        "rise": 3.0,
+        "treads": 18,
+        "riser": 0.166666672,
+        "going": 0.25,
+        "width": 1.05,
+        "landingLength": 1.0
+      },
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 551.1863,
+          "y": 50.08108,
+          "z": 495.702179
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 551.351563,
+          "y": 50.0828743,
+          "z": 493.719055
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 551.5002,
+          "y": 50.0828743,
+          "z": 493.380219
+        },
+        {
+          "name": "04 - Stair foot",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+          "x": 555.046265,
+          "y": 50.0828743,
+          "z": 493.8764
+        },
+        {
+          "name": "05 - Turning landing outbound",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+          "x": 555.307861,
+          "y": 51.5828743,
+          "z": 490.7373
+        },
+        {
+          "name": "06 - Turning landing return",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+          "x": 554.112,
+          "y": 51.5828743,
+          "z": 490.637634
+        },
+        {
+          "name": "07 - Upper stair exit",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+          "x": 553.8421,
+          "y": 53.0828743,
+          "z": 493.8764
+        },
+        {
+          "name": "08 - Upper room front",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+          "x": 551.4753,
+          "y": 53.0828743,
+          "z": 493.679169
+        },
+        {
+          "name": "09 - Upper room rear",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+          "x": 551.7286,
+          "y": 53.0828743,
+          "z": 490.6397
+        }
+      ]
+    },
+    {
+      "name": "09 - Maison du verger",
+      "width": 6.0,
+      "depth": 5.0,
+      "previousBaseY": 50.53566,
+      "newBaseY": 50.7387,
+      "verticalLift": 0.203039557,
+      "groundFloorWorldY": 50.7737,
+      "upperFloorWorldY": null,
+      "floors": 1,
+      "addedStorey": false,
+      "windows": 5,
+      "stairAndEntryTreads": 2,
+      "internalStair": null,
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 535.518738,
+          "y": 50.6176949,
+          "z": 497.391632
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 534.4857,
+          "y": 50.7737,
+          "z": 495.3255
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 534.4365,
+          "y": 50.7737,
+          "z": 494.9588
+        }
+      ]
+    },
+    {
+      "name": "10 - Relais de la crique",
+      "width": 6.0,
+      "depth": 5.0,
+      "previousBaseY": 50.9909821,
+      "newBaseY": 51.13704,
+      "verticalLift": 0.146055609,
+      "groundFloorWorldY": 51.17204,
+      "upperFloorWorldY": null,
+      "floors": 1,
+      "addedStorey": false,
+      "windows": 5,
+      "stairAndEntryTreads": 2,
+      "internalStair": null,
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+          "x": 523.05835,
+          "y": 51.0069275,
+          "z": 516.7566
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+          "x": 520.7528,
+          "y": 51.17204,
+          "z": 516.6125
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Architecture upgrade - floors glazing stairs/03 - Ground room",
+          "x": 520.411,
+          "y": 51.17204,
+          "z": 516.4709
+        }
+      ]
+    },
+    {
+      "name": "Hotel de ville - Aubefont civic house",
+      "width": 12.0,
+      "depth": 8.0,
+      "baseY": 50.2800522,
+      "groundFloorWorldY": 50.315052,
+      "upperFloorWorldY": 53.5150528,
+      "floors": 2,
+      "windows": 23,
+      "stairAndEntryTreads": 21,
+      "internalStair": {
+        "rise": 3.2,
+        "treads": 20,
+        "riser": 0.16,
+        "going": 0.25,
+        "width": 1.05,
+        "landingLength": 1.0
+      },
+      "porchWidth": 4.8,
+      "porchDepth": 2.0,
+      "waypoints": [
+        {
+          "name": "01 - Outside entry",
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/01 - Outside entry",
+          "x": 535.4343,
+          "y": 50.2056274,
+          "z": 547.513
+        },
+        {
+          "name": "02 - Interior threshold",
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/02 - Interior threshold",
+          "x": 533.544,
+          "y": 50.315052,
+          "z": 551.0835
+        },
+        {
+          "name": "03 - Ground room",
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/03 - Ground room",
+          "x": 535.6547,
+          "y": 50.315052,
+          "z": 552.6535
+        },
+        {
+          "name": "04 - Stair foot",
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/04 - Stair foot",
+          "x": 528.905945,
+          "y": 50.315052,
+          "z": 548.7412
+        },
+        {
+          "name": "05 - Turning landing outbound",
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/05 - Turning landing outbound",
+          "x": 527.3151,
+          "y": 51.91505,
+          "z": 551.7461
+        },
+        {
+          "name": "06 - Turning landing return",
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/06 - Turning landing return",
+          "x": 528.3757,
+          "y": 51.91505,
+          "z": 552.307556
+        },
+        {
+          "name": "07 - Upper stair exit",
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/07 - Upper stair exit",
+          "x": 530.0133,
+          "y": 53.5150528,
+          "z": 549.2143
+        },
+        {
+          "name": "08 - Upper room front",
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/08 - Upper room front",
+          "x": 535.9833,
+          "y": 53.5150528,
+          "z": 552.3749
+        },
+        {
+          "name": "09 - Upper room rear",
+          "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/09 - Upper room rear",
+          "x": 533.1526,
+          "y": 53.5150528,
+          "z": 557.7218
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "ownedRoots": 11,
+    "addedRenderers": 99,
+    "colliders": 631,
+    "triangles": 118482,
+    "windowPaneColliders": 115,
+    "physicalInternalTreads": 110,
+    "upperExits": 6,
+    "invalidMaterials": 0,
+    "missingScripts": 0,
+    "traversal": [
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 530.899231,
+            "y": 50.3456841,
+            "z": 539.6727
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 529.243469,
+            "y": 50.46199,
+            "z": 540.7766
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 528.43634,
+            "y": 50.46199,
+            "z": 540.1969
+          },
+          {
+            "name": "04 - Stair foot",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+            "x": 525.4049,
+            "y": 50.46199,
+            "z": 535.2892
+          },
+          {
+            "name": "05 - Turning landing outbound",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+            "x": 522.784,
+            "y": 51.96199,
+            "z": 537.0365
+          },
+          {
+            "name": "06 - Turning landing return",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+            "x": 523.4496,
+            "y": 51.96199,
+            "z": 538.035
+          },
+          {
+            "name": "07 - Upper stair exit",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+            "x": 526.153748,
+            "y": 53.46199,
+            "z": 536.2322
+          },
+          {
+            "name": "08 - Upper room front",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+            "x": 528.686,
+            "y": 53.46199,
+            "z": 540.0305
+          },
+          {
+            "name": "09 - Upper room rear",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+            "x": 524.0681,
+            "y": 53.46199,
+            "z": 543.1091
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 543.1109,
+            "y": 50.368782,
+            "z": 542.458862
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 542.783752,
+            "y": 50.4046631,
+            "z": 544.421753
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 542.607849,
+            "y": 50.4046631,
+            "z": 544.747253
+          },
+          {
+            "name": "04 - Stair foot",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+            "x": 539.1143,
+            "y": 50.4046631,
+            "z": 543.9623
+          },
+          {
+            "name": "05 - Turning landing outbound",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+            "x": 538.5965,
+            "y": 51.9046631,
+            "z": 547.0694
+          },
+          {
+            "name": "06 - Turning landing return",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+            "x": 539.780151,
+            "y": 51.9046631,
+            "z": 547.2667
+          },
+          {
+            "name": "07 - Upper stair exit",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+            "x": 540.314453,
+            "y": 53.4046631,
+            "z": 544.0609
+          },
+          {
+            "name": "08 - Upper room front",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+            "x": 542.657166,
+            "y": 53.4046631,
+            "z": 544.451355
+          },
+          {
+            "name": "09 - Upper room rear",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+            "x": 542.1557,
+            "y": 53.4046631,
+            "z": 547.459839
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 558.536255,
+            "y": 50.5536156,
+            "z": 544.720764
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 558.903,
+            "y": 50.6980476,
+            "z": 546.676636
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 558.849548,
+            "y": 50.6980476,
+            "z": 547.0428
+          },
+          {
+            "name": "04 - Stair foot",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+            "x": 555.29895,
+            "y": 50.6980476,
+            "z": 547.505066
+          },
+          {
+            "name": "05 - Turning landing outbound",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+            "x": 555.879456,
+            "y": 52.1980476,
+            "z": 550.6011
+          },
+          {
+            "name": "06 - Turning landing return",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+            "x": 557.0589,
+            "y": 52.1980476,
+            "z": 550.379944
+          },
+          {
+            "name": "07 - Upper stair exit",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+            "x": 556.459961,
+            "y": 53.6980476,
+            "z": 547.1856
+          },
+          {
+            "name": "08 - Upper room front",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+            "x": 558.7943,
+            "y": 53.6980476,
+            "z": 546.7479
+          },
+          {
+            "name": "09 - Upper room rear",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+            "x": 559.8171,
+            "y": 53.6980476,
+            "z": 552.2029
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 570.006348,
+            "y": 50.90845,
+            "z": 553.2756
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 570.838,
+            "y": 51.2844276,
+            "z": 555.770569
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 570.834839,
+            "y": 51.2844276,
+            "z": 556.140564
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 578.0914,
+            "y": 51.0542946,
+            "z": 529.775635
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 580.2668,
+            "y": 51.31041,
+            "z": 530.552551
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 580.2836,
+            "y": 51.31041,
+            "z": 531.5461
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 574.3181,
+            "y": 50.1594772,
+            "z": 500.977142
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 576.7436,
+            "y": 50.6912231,
+            "z": 499.297974
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 577.5607,
+            "y": 50.6912231,
+            "z": 499.8634
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 563.127,
+            "y": 49.7895,
+            "z": 494.599823
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 564.485657,
+            "y": 49.9805145,
+            "z": 492.731659
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 565.443665,
+            "y": 49.9805145,
+            "z": 492.995575
+          },
+          {
+            "name": "04 - Stair foot",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+            "x": 569.9884,
+            "y": 49.9805145,
+            "z": 496.548157
+          },
+          {
+            "name": "05 - Turning landing outbound",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+            "x": 571.8411,
+            "y": 51.4805145,
+            "z": 494.000641
+          },
+          {
+            "name": "06 - Turning landing return",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+            "x": 570.870667,
+            "y": 51.4805145,
+            "z": 493.29483
+          },
+          {
+            "name": "07 - Upper stair exit",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+            "x": 568.9591,
+            "y": 52.9805145,
+            "z": 495.923218
+          },
+          {
+            "name": "08 - Upper room front",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+            "x": 565.2672,
+            "y": 52.9805145,
+            "z": 493.23822
+          },
+          {
+            "name": "09 - Upper room rear",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+            "x": 567.061157,
+            "y": 52.9805145,
+            "z": 490.771576
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 551.1863,
+            "y": 50.08108,
+            "z": 495.702179
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 551.351563,
+            "y": 50.0828743,
+            "z": 493.719055
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 551.5002,
+            "y": 50.0828743,
+            "z": 493.380219
+          },
+          {
+            "name": "04 - Stair foot",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/04 - Stair foot",
+            "x": 555.046265,
+            "y": 50.0828743,
+            "z": 493.8764
+          },
+          {
+            "name": "05 - Turning landing outbound",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/05 - Turning landing outbound",
+            "x": 555.307861,
+            "y": 51.5828743,
+            "z": 490.7373
+          },
+          {
+            "name": "06 - Turning landing return",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/06 - Turning landing return",
+            "x": 554.112,
+            "y": 51.5828743,
+            "z": 490.637634
+          },
+          {
+            "name": "07 - Upper stair exit",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/07 - Upper stair exit",
+            "x": 553.8421,
+            "y": 53.0828743,
+            "z": 493.8764
+          },
+          {
+            "name": "08 - Upper room front",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/08 - Upper room front",
+            "x": 551.4753,
+            "y": 53.0828743,
+            "z": 493.679169
+          },
+          {
+            "name": "09 - Upper room rear",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Architecture upgrade - floors glazing stairs/09 - Upper room rear",
+            "x": 551.7286,
+            "y": 53.0828743,
+            "z": 490.6397
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 535.518738,
+            "y": 50.6176949,
+            "z": 497.391632
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 534.4857,
+            "y": 50.7737,
+            "z": 495.3255
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 534.4365,
+            "y": 50.7737,
+            "z": 494.9588
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Architecture upgrade - floors glazing stairs",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Architecture upgrade - floors glazing stairs/01 - Outside entry",
+            "x": 523.05835,
+            "y": 51.0069275,
+            "z": 516.7566
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Architecture upgrade - floors glazing stairs/02 - Interior threshold",
+            "x": 520.7528,
+            "y": 51.17204,
+            "z": 516.6125
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Architecture upgrade - floors glazing stairs/03 - Ground room",
+            "x": 520.411,
+            "y": 51.17204,
+            "z": 516.4709
+          }
+        ]
+      },
+      {
+        "root": "Aubefont - mana well town/Hotel de ville - Aubefont civic house",
+        "waypoints": [
+          {
+            "name": "01 - Outside entry",
+            "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/01 - Outside entry",
+            "x": 535.4343,
+            "y": 50.2056274,
+            "z": 547.513
+          },
+          {
+            "name": "02 - Interior threshold",
+            "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/02 - Interior threshold",
+            "x": 533.544,
+            "y": 50.315052,
+            "z": 551.0835
+          },
+          {
+            "name": "03 - Ground room",
+            "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/03 - Ground room",
+            "x": 535.6547,
+            "y": 50.315052,
+            "z": 552.6535
+          },
+          {
+            "name": "04 - Stair foot",
+            "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/04 - Stair foot",
+            "x": 528.905945,
+            "y": 50.315052,
+            "z": 548.7412
+          },
+          {
+            "name": "05 - Turning landing outbound",
+            "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/05 - Turning landing outbound",
+            "x": 527.3151,
+            "y": 51.91505,
+            "z": 551.7461
+          },
+          {
+            "name": "06 - Turning landing return",
+            "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/06 - Turning landing return",
+            "x": 528.3757,
+            "y": 51.91505,
+            "z": 552.307556
+          },
+          {
+            "name": "07 - Upper stair exit",
+            "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/07 - Upper stair exit",
+            "x": 530.0133,
+            "y": 53.5150528,
+            "z": 549.2143
+          },
+          {
+            "name": "08 - Upper room front",
+            "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/08 - Upper room front",
+            "x": 535.9833,
+            "y": 53.5150528,
+            "z": 552.3749
+          },
+          {
+            "name": "09 - Upper room rear",
+            "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/09 - Upper room rear",
+            "x": 533.1526,
+            "y": 53.5150528,
+            "z": 557.7218
+          }
+        ]
+      }
+    ],
+    "note": "Authoring validation only; replay the server mover through the reported entry and stair waypoints."
+  }
+}

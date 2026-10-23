@@ -1,0 +1,199 @@
+{
+  "success": true,
+  "enlargedTrees": 9,
+  "trees": [
+    {
+      "position": [
+        567.342041,
+        50.91932,
+        535.0103
+      ],
+      "enlarged": true,
+      "height": 11.577179,
+      "upperHeightFactor": 2.05,
+      "individualLeafScale": 2.2,
+      "blockers": []
+    },
+    {
+      "position": [
+        578.0,
+        51.2136421,
+        524.0
+      ],
+      "enlarged": true,
+      "height": 12.560154,
+      "upperHeightFactor": 2.05,
+      "individualLeafScale": 2.2,
+      "blockers": []
+    },
+    {
+      "position": [
+        571.891235,
+        50.74483,
+        507.4776
+      ],
+      "enlarged": true,
+      "height": 9.611225,
+      "upperHeightFactor": 2.05,
+      "individualLeafScale": 2.2,
+      "blockers": []
+    },
+    {
+      "position": [
+        542.352356,
+        50.36527,
+        500.099823
+      ],
+      "enlarged": true,
+      "height": 10.5942039,
+      "upperHeightFactor": 2.05,
+      "individualLeafScale": 2.2,
+      "blockers": []
+    },
+    {
+      "position": [
+        514.351868,
+        51.1546745,
+        526.2571
+      ],
+      "enlarged": true,
+      "height": 12.560154,
+      "upperHeightFactor": 2.05,
+      "individualLeafScale": 2.2,
+      "blockers": []
+    },
+    {
+      "position": [
+        551.0,
+        49.58854,
+        483.0
+      ],
+      "enlarged": true,
+      "height": 9.611221,
+      "upperHeightFactor": 2.05,
+      "individualLeafScale": 2.2,
+      "blockers": []
+    },
+    {
+      "position": [
+        563.0,
+        49.0045166,
+        482.0
+      ],
+      "enlarged": true,
+      "height": 10.5942,
+      "upperHeightFactor": 2.05,
+      "individualLeafScale": 2.2,
+      "blockers": []
+    },
+    {
+      "position": [
+        587.0,
+        51.2956772,
+        514.0
+      ],
+      "enlarged": true,
+      "height": 11.577179,
+      "upperHeightFactor": 2.05,
+      "individualLeafScale": 2.2,
+      "blockers": []
+    },
+    {
+      "position": [
+        581.0,
+        50.9030724,
+        546.0
+      ],
+      "enlarged": true,
+      "height": 12.560154,
+      "upperHeightFactor": 2.05,
+      "individualLeafScale": 2.2,
+      "blockers": []
+    },
+    {
+      "position": [
+        548.0596,
+        50.3126335,
+        546.705566
+      ],
+      "enlarged": false,
+      "height": 0.0,
+      "upperHeightFactor": 0.0,
+      "individualLeafScale": 0.0,
+      "blockers": [
+        "Corner buttress collision 1"
+      ]
+    }
+  ],
+  "sceneSaved": false,
+  "trianglesUnchanged": true,
+  "originalApprovedAssetsUnchanged": true,
+  "rootsUnchanged": true,
+  "extraRenderers": 0,
+  "extraColliders": 0,
+  "extraLights": 0,
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/0-2_Arbre_Material06_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/0-2_Arbre_Material07_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/0-2_Arbre_Material08_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/2-0_Arbre_Material06_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/2-0_Arbre_Material07_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/2-0_Arbre_Material08_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/2-1_Arbre_Material06_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/2-1_Arbre_Material07_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/2-1_Arbre_Material08_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/2-3_Arbre_Material06_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/2-3_Arbre_Material07_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/2-3_Arbre_Material08_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/3-0_Arbre_Material06_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/3-0_Arbre_Material07_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/3-0_Arbre_Material08_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/3-1_Arbre_Material06_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/3-1_Arbre_Material07_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/3-1_Arbre_Material08_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/3-3_Arbre_Material06_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/3-3_Arbre_Material07_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/3-3_Arbre_Material08_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/4-2_Arbre_Material06_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/4-2_Arbre_Material06_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/4-2_Arbre_Material07_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/4-2_Arbre_Material07_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/4-2_Arbre_Material08_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/4-2_Arbre_Material08_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/4-3_Arbre_Material06_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/4-3_Arbre_Material07_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/Canopies/4-3_Arbre_Material08_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/0-2_Arbre_Material06_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/0-2_Arbre_Material07_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/0-2_Arbre_Material08_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/2-0_Arbre_Material06_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/2-0_Arbre_Material07_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/2-0_Arbre_Material08_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/2-1_Arbre_Material06_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/2-1_Arbre_Material07_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/2-1_Arbre_Material08_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/2-3_Arbre_Material06_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/2-3_Arbre_Material07_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/2-3_Arbre_Material08_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/3-0_Arbre_Material06_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/3-0_Arbre_Material07_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/3-0_Arbre_Material08_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/3-1_Arbre_Material06_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/3-1_Arbre_Material07_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/3-1_Arbre_Material08_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/3-3_Arbre_Material06_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/3-3_Arbre_Material07_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/3-3_Arbre_Material08_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/4-2_Arbre_Material06_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/4-2_Arbre_Material06_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/4-2_Arbre_Material07_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/4-2_Arbre_Material07_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/4-2_Arbre_Material08_0_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/4-2_Arbre_Material08_1_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/4-3_Arbre_Material06_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/4-3_Arbre_Material07_2_near.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/LushGardens/CanopyDensity/4-3_Arbre_Material08_2_near.asset"
+  ],
+  "rebuiltFromInitialMeshes": true,
+  "scope": "Owned tree geometry copied into taller mature crowns. Entire individual leaf components expanded around their own centers; upper trunk and branches stretched together above 2.2 m. Low footprints checked and every proposed vertex tested against overlapping physical obstacles. Source meshes, UVs, colours, triangle topology and root placement retained."
+}

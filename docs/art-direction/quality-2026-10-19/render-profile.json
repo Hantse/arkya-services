@@ -1,0 +1,10 @@
+{
+  "renderer": "Assets/Arkya/World/StarterIsland/Materials/Environment/IslandRenderer.asset",
+  "ssao": {
+    "intensity": 0.72,
+    "radius": 0.42,
+    "direct": 0.18
+  },
+  "approvedSourceAssetsUnmodified": true,
+  "sceneSaved": false
+}

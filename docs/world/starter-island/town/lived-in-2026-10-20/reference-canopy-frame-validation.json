@@ -1,0 +1,105 @@
+{
+  "success": true,
+  "readOnly": true,
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "sceneSaved": true,
+  "trees": 14,
+  "renderers": 42,
+  "reusableMeshes": 3,
+  "triangles": 499240,
+  "collidersAdded": 0,
+  "lightsAdded": 0,
+  "runtimeBehavioursAdded": 0,
+  "checks": [
+    {
+      "name": "No added collider, light, runtime behaviour or unexpected component",
+      "success": true,
+      "details": {
+        "colliders": 0,
+        "lights": 0,
+        "runtimeBehaviours": 0,
+        "unsupported": []
+      }
+    },
+    {
+      "name": "Placement count matches report and bounded canopy plan",
+      "success": true,
+      "details": {
+        "actual": 14,
+        "reported": 14,
+        "minimum": 6,
+        "maximum": 14
+      }
+    },
+    {
+      "name": "Canopy hierarchy is active and its frame root has identity local transform",
+      "success": true,
+      "details": null
+    },
+    {
+      "name": "Report lists exactly the reusable derivative mesh assets",
+      "success": true,
+      "details": [
+        "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/CanopyFrame/MatureTree0.asset",
+        "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/CanopyFrame/MatureTree1.asset",
+        "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/CanopyFrame/MatureTree2.asset"
+      ]
+    },
+    {
+      "name": "All meshes and reused materials have stable asset identities and metas",
+      "success": true,
+      "details": []
+    },
+    {
+      "name": "Derivative streams, normals, bounds and indices are finite and valid",
+      "success": true,
+      "details": []
+    },
+    {
+      "name": "Every derivative retains the full lowest source LOD triangle topology",
+      "success": true,
+      "details": []
+    },
+    {
+      "name": "Live placement transforms match the authored report",
+      "success": true,
+      "details": {
+        "maximumPositionError": 0.0,
+        "maximumScaleError": 0.0,
+        "maximumYawError": 0.0,
+        "issues": []
+      }
+    },
+    {
+      "name": "All instances share the expected meshes and materials",
+      "success": true,
+      "details": []
+    },
+    {
+      "name": "One distance-culling LOD group owns every tree renderer",
+      "success": true,
+      "details": []
+    },
+    {
+      "name": "Reused canopy shaders compile and are supported",
+      "success": true,
+      "details": null
+    },
+    {
+      "name": "Live geometry matches the report and 520k triangle ceiling",
+      "success": true,
+      "details": {
+        "triangles": 499240,
+        "trianglesPerTree": 35660,
+        "budget": 520000
+      }
+    },
+    {
+      "name": "Reported route margins are finite and consistent",
+      "success": true,
+      "details": null
+    }
+  ],
+  "failures": [],
+  "scope": "Validates current canopy assignments, finite geometry, source LOD topology, metas, shaders and reported placement transforms. Does not repeat global road/collider checks, prove source-file history or measure frame cost."
+}

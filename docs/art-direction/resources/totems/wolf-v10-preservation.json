@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "revision": "20261016T150222819563Z-totems",
+  "foxFiles": [
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-abyss.glb",
+      "sha256": "4b9f1cfcb99d5c3498156847b971d0d57f8ea1db99ff4f3f0e9a07b0f8b03120",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-amethyst.glb",
+      "sha256": "ff3e20166ea67d8abed3e7459b1672c4a300df55e223df63084346add3b5ca75",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-copper.glb",
+      "sha256": "4d32e672fb672cbe9720aa69dc8c2f1b6328f336c3b63dff14454119f43f820c",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-ember.glb",
+      "sha256": "d767ded2399087fa9706d57a24459145589bb988103a1e4049ece9cdd1e3c7e1",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-frost.glb",
+      "sha256": "193c48d5e3fae96b7778d35af6f8c5233a5796c861ba6ecd975c01cd5b3bed55",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-jade.glb",
+      "sha256": "14e2dc7acfef28dc921ec65a1fe2f904838f4b77e8fa87dcd51420c569437943",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-lunar.glb",
+      "sha256": "e6ad0be35cb3c220a3ee601fab4c7eb565760015f25edfde4ae40790eee9417d",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-moss.glb",
+      "sha256": "bed1bc14cc878e82fc900bc71d01d3dbb4f34b93c0bed188fdc10a168a9b1071",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-pearl.glb",
+      "sha256": "c52e8b719c22e8d3d4da25c55d711532e48a2f76817d02e120493fe1f05317ea",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-rose.glb",
+      "sha256": "b8698c33ac90a36b97b5960f896bd76b69901422160958d4285c9c1962def1ac",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-solar.glb",
+      "sha256": "6974aed90b5bb7617b93996dcd8d5e40d68975a3985a0cf3422c90817df891a4",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\models\\fox-storm.glb",
+      "sha256": "f9f07d5487b3869e28d9be79e481377e9e57b8586cc24ded68a37f547b4740a1",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-abyss-basecolor.png",
+      "sha256": "2b66efc136bc1ed468b5d38242edc310418da0ccb1c7c74d66e942354f791cfa",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-amethyst-basecolor.png",
+      "sha256": "c0d87bb455bac11bb153f0fe17d6e98a636d2258cc609a8ac52f60a3c38924c0",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-copper-basecolor.png",
+      "sha256": "df42f4ad18c58400ff1cd8977cf5c32faf370326efcb6f3e8c8fe1b9e1639e8f",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-ember-basecolor.png",
+      "sha256": "18b755a3457550b2ca356fbe283e13183774bb1cee410988a0be4b080450dc7d",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-frost-basecolor.png",
+      "sha256": "acad71cf139fd50470e6ba2090075908b8a0b161595677767fa1247c3cb5c909",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-jade-basecolor.png",
+      "sha256": "02aaad01d73865f5e03e9656f698d166f87e5d52a6be634b7482d80bc599d208",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-lunar-basecolor.png",
+      "sha256": "d67576a7d9ac7afc992aed2aabc84bfc3dcc01cd4c7aff93527b4fcd46f9e680",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-moss-basecolor.png",
+      "sha256": "0be9ee8383b248919b88830ff578c1c818ba23516ac41fd4f6436ec96e014932",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-pearl-basecolor.png",
+      "sha256": "df63b8084aa15d3b84aa650b4b89029b21450be6e6252dfb0e5126449b7e26e6",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-rose-basecolor.png",
+      "sha256": "376dfc720caad93b30a38a820226e820ed403badf7afd086bce3a08047f20007",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-solar-basecolor.png",
+      "sha256": "bd2d980cd0ced6576c8dff96957901dda9ddb9c6f01263bf9eba1dd74104f4f6",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\textures\\fox-storm-basecolor.png",
+      "sha256": "04f2d83d9d0663e81a1e80ee0ffeb4cbac3a0e04d320a67fb521ec2233b9f093",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\assets\\fox.blend",
+      "sha256": "5c56f7d7cc25e02063f979177e285061d40bd1f75465bb1f646d85a9498aafa8",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\assets\\fox.fbx",
+      "sha256": "1c5c06b0bfee3cb01d4fd187688ea7139a4d1a6af4c8b3516cb73f8d0b74998f",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\assets\\anatomy\\fox-rig.json",
+      "sha256": "e685549666b770f33640a15e2503be6571ddb6f3d638319b3b8ea4456cb9d774",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\resources\\totems\\assets\\anatomy\\fox.blend",
+      "sha256": "5835a8e49dcbafea32995d55348e33175ece0ca1ffe598cd6e08a54211806489",
+      "unchanged": true
+    }
+  ],
+  "originalSourceFiles": [
+    {
+      "path": "3dwolf_blend-original.zip",
+      "unchanged": true
+    },
+    {
+      "path": "dog2.blend",
+      "unchanged": true
+    },
+    {
+      "path": "dog2Color.png",
+      "unchanged": true
+    },
+    {
+      "path": "dog2Normal.png",
+      "unchanged": true
+    },
+    {
+      "path": "dog2Roughness.png",
+      "unchanged": true
+    },
+    {
+      "path": "dog2specular.png",
+      "unchanged": true
+    },
+    {
+      "path": "CC0-1.0.txt",
+      "unchanged": true
+    }
+  ],
+  "comparison": {
+    "method": "Direct V9/V10 rest vertices and bones. Thorax, neck, upper thighs and face deliberately changed; lower limbs and feet protected.",
+    "vertices": 14982,
+    "lowerLimbMaximumDisplacementM": 0.0,
+    "weightedFeetMaxDisplacementM": 0.0,
+    "skeletonMaxDisplacementM": 0.0,
+    "changedBones": [],
+    "productionMatchesAuditedDraft": true
+  },
+  "passed": true
+}

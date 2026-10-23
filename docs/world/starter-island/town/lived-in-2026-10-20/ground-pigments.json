@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "meshes": 4,
+  "changedVertices": 1067,
+  "workyardFootprints": 11,
+  "cartWoodVertices": 65256,
+  "geometryNormalsUVsAndTrianglesUnchanged": true,
+  "terrainUnchanged": true,
+  "correction": "Blend workyard earth into meadow greens and reduce the cart wood orange cast."
+}

@@ -1,0 +1,68 @@
+{
+  "success": true,
+  "playMode": false,
+  "captures": [
+    {
+      "file": "civic-corner-day.png",
+      "phase": 0.4,
+      "position": [
+        550.0,
+        75.99725,
+        525.0
+      ],
+      "target": [
+        532.0,
+        53.20619,
+        547.0
+      ],
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "civic-street-day.png",
+      "phase": 0.4,
+      "position": [
+        539.0,
+        52.30894,
+        536.0
+      ],
+      "target": [
+        532.0,
+        52.5929031,
+        551.0
+      ],
+      "fieldOfView": 65.0
+    },
+    {
+      "file": "civic-frontcourt-day.png",
+      "phase": 0.4,
+      "position": [
+        548.0,
+        52.7698746,
+        541.0
+      ],
+      "target": [
+        532.0,
+        53.6616478,
+        552.0
+      ],
+      "fieldOfView": 65.0
+    },
+    {
+      "file": "plaza-street-day.png",
+      "phase": 0.4,
+      "position": [
+        557.0,
+        52.83124,
+        513.0
+      ],
+      "target": [
+        543.0,
+        52.17535,
+        536.0
+      ],
+      "fieldOfView": 68.0
+    }
+  ],
+  "stateRestored": true,
+  "scope": "Matched civic corner, street, frontcourt and plaza views. Camera, weather, clock, lights, particles and render quality restored; scene not saved."
+}

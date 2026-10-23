@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "sceneSaved": true,
+  "checkedAtUtc": "2026-10-20T19:53:07.4051259Z",
+  "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceAtmosphere/ClearBluePaintedSky.mat",
+  "assignedSky": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceAtmosphere/ClearBluePaintedSky.mat",
+  "shaderErrors": false,
+  "shaderSupported": true,
+  "scope": "Read-only authored state and shader validation. Visual daylight, twilight and weather captures remain required."
+}

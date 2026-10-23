@@ -1,0 +1,33 @@
+{
+  "success": true,
+  "changed": true,
+  "sceneSaved": false,
+  "thresholdShiftTowardTown": 0.45,
+  "groundApproachShiftTowardTown": 0.65,
+  "clearanceSamples": 150,
+  "clearanceRadius": 0.33,
+  "bodyHeight": 1.75,
+  "checkedLateralLines": [
+    -0.6,
+    0.0,
+    0.6
+  ],
+  "removedStairGuards": [
+    {
+      "stair": "Stairway - West",
+      "disabledRendererCount": 1,
+      "disabledColliderCount": 43
+    },
+    {
+      "stair": "Stairway - East",
+      "disabledRendererCount": 1,
+      "disabledColliderCount": 43
+    }
+  ],
+  "originalFlightGeometryUnchanged": true,
+  "assetsPreserved": true,
+  "curtainParapetsAndWatchtowersUnchanged": true,
+  "terrainHeightsUnchanged": true,
+  "requiredRuntimeProof": "The same 24 staircase cases and both wall circuits must traverse the new authored ground route.",
+  "utc": "2026-10-20T09:05:23.2256892Z"
+}

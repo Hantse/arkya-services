@@ -1,0 +1,132 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "plans": [
+    {
+      "name": "Stairway - West",
+      "oldRun": 12.8000031,
+      "newRun": 8.389999,
+      "reductionPercent": 34.4531441,
+      "stepCount": 26,
+      "going": 0.29,
+      "riser": 0.187369779,
+      "landing": 0.85,
+      "minWidth": 2.57504869,
+      "maxWidth": 2.70814872,
+      "bottom": 0.135763526,
+      "top": 5.00737762,
+      "startZ": 4.41000366,
+      "endZ": 12.8000031,
+      "centerX": -0.317902446,
+      "wallOverlap": 0.025,
+      "groundApproachDifference": 0.0199264288,
+      "groundSamples": [
+        {
+          "offset": -0.7,
+          "heights": [
+            0.116107941,
+            0.115581512,
+            0.11328125
+          ]
+        },
+        {
+          "offset": -1.05,
+          "heights": [
+            0.116107941,
+            0.1158371,
+            0.11353302
+          ]
+        },
+        {
+          "offset": -1.4,
+          "heights": [
+            0.116107941,
+            0.116088867,
+            0.111881256
+          ]
+        },
+        {
+          "offset": -1.8,
+          "heights": [
+            0.110858917,
+            0.108692169,
+            0.104492188
+          ]
+        },
+        {
+          "offset": -2.2,
+          "heights": [
+            0.103183746,
+            0.101017,
+            0.09710312
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stairway - East",
+      "oldRun": 13.3999872,
+      "newRun": 8.969999,
+      "reductionPercent": 33.0596428,
+      "stepCount": 28,
+      "going": 0.29,
+      "riser": 0.18804951,
+      "landing": 0.85,
+      "minWidth": 2.29758167,
+      "maxWidth": 2.89002252,
+      "bottom": 0.9112419,
+      "top": 6.176628,
+      "startZ": 4.429988,
+      "endZ": 13.3999872,
+      "centerX": 1.57154226,
+      "wallOverlap": 0.025,
+      "groundApproachDifference": 0.249506354,
+      "groundSamples": [
+        {
+          "offset": -0.7,
+          "heights": [
+            0.7391777,
+            0.7377167,
+            0.7343178
+          ]
+        },
+        {
+          "offset": -1.05,
+          "heights": [
+            0.6631813,
+            0.661735535,
+            0.658546448
+          ]
+        },
+        {
+          "offset": -1.4,
+          "heights": [
+            0.587200165,
+            0.5857506,
+            0.5816345
+          ]
+        },
+        {
+          "offset": -1.8,
+          "heights": [
+            0.500350952,
+            0.497631073,
+            0.4934883
+          ]
+        },
+        {
+          "offset": -2.2,
+          "heights": [
+            0.4135208,
+            0.409481049,
+            0.4053421
+          ]
+        }
+      ]
+    }
+  ],
+  "noRamps": true,
+  "noRails": true,
+  "collision": "Native mesh colliders with horizontal treads and vertical risers",
+  "utc": "2026-10-20T11:41:24.0853208Z"
+}

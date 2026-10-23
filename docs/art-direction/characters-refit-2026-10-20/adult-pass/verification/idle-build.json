@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "if (EditorApplication.isCompiling || EditorApplication.isPlaying) throw new System.InvalidOperationException(\"Editor not ready\"); Arkya.Characters.Editor.CharacterIdleAnimationBuilder.BuildAnimations(); return new { success = true };",
+      "timeout": "55000"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "success": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7803,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

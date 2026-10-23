@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "terrainHeightmapUnchanged": true,
+  "heightmapSha256": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "polishedTransforms": 5,
+  "hiddenLaneMeshes": 16,
+  "repaired": [
+    {
+      "name": "Arrival main street",
+      "width": 6.0,
+      "points": 91
+    },
+    {
+      "name": "Forest main street",
+      "width": 6.0,
+      "points": 93
+    },
+    {
+      "name": "West rampart stair access",
+      "width": 2.6,
+      "points": 36
+    },
+    {
+      "name": "East rampart stair access",
+      "width": 2.6,
+      "points": 26
+    }
+  ],
+  "gates": [
+    {
+      "name": "Gate - Arrival",
+      "x": 518.8825,
+      "y": 50.060112,
+      "z": 481.295258
+    },
+    {
+      "name": "Gate - Forest",
+      "x": 580.76,
+      "y": 50.89639,
+      "z": 565.0
+    }
+  ],
+  "scope": "The two gate streets and stair approaches, terrain path paint and exported centerlines were updated; one street lantern and four left canopy supports receive fixed clearance offsets. Lane renderers are disabled in favor of the soft terrain paint, with editable meshes retained and the square visible. Existing houses and presentation references retained."
+}

@@ -1,10 +1,10 @@
 {
   "success": true,
-  "checkedAtUtc": "2026-10-16T07:21:00.5122180Z",
+  "checkedAtUtc": "2026-10-19T21:22:49.0206274Z",
   "unity": "6000.6.6f1",
   "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
-  "caseCount": 27,
-  "elapsedSeconds": 8.663420799999999,
+  "caseCount": 28,
+  "elapsedSeconds": 8.0037104,
   "checks": [
     {
       "name": "Weather components are active",
@@ -36,7 +36,7 @@
         },
         "phase": 0.4,
         "lightning": 0.0,
-        "sun": 1.7,
+        "sun": 1.72,
         "fog": 0.00048,
         "wind": 1.0336,
         "RainParticleCount": 0,
@@ -68,7 +68,7 @@
         },
         "phase": 0.4,
         "lightning": 0.0,
-        "sun": 1.7,
+        "sun": 1.72,
         "fog": 0.00048,
         "wind": 1.0336,
         "RainParticleCount": 0,
@@ -100,7 +100,7 @@
         },
         "phase": 0.4,
         "lightning": 0.0,
-        "sun": 0.771800041,
+        "sun": 0.780880034,
         "fog": 0.000948,
         "wind": 1.156,
         "RainParticleCount": 0,
@@ -132,13 +132,13 @@
         },
         "phase": 0.4,
         "lightning": 0.0,
-        "sun": 0.406980038,
+        "sun": 0.411768019,
         "fog": 0.001944,
         "wind": 1.3396,
-        "RainParticleCount": 337,
-        "SplashParticleCount": 16,
+        "RainParticleCount": 450,
+        "SplashParticleCount": 44,
         "ParticleBudget": 1800,
-        "RainVolume": 0.170624986,
+        "RainVolume": 0.0477749966,
         "ThunderCount": 0,
         "LightningFlash": 0.0,
         "IsSheltered": false
@@ -148,7 +148,7 @@
       "name": "Rain audio is playing",
       "passed": true,
       "detail": {
-        "volume": 0.170624986
+        "volume": 0.0477749966
       }
     },
     {
@@ -164,42 +164,92 @@
       "name": "Weather darkens sunlight and increases fog",
       "passed": true,
       "detail": {
-        "clearSun": 1.7,
-        "rainSun": 0.406980038,
+        "clearSun": 1.72,
+        "rainSun": 0.411768019,
         "clearFog": 0.00048,
         "rainFog": 0.001944
       }
     },
     {
-      "name": "A configured cottage roof shelters the viewer",
+      "name": "An active building roof shelters the viewer",
       "passed": true,
       "detail": {
-        "weather": {
-          "Kind": 2,
-          "Cloud": 0.94,
-          "Rain": 0.75,
-          "Storm": 0.0,
-          "Wind": 0.64
-        },
-        "skyWeather": {
-          "Kind": 2,
-          "Cloud": 0.94,
-          "Rain": 0.75,
-          "Storm": 0.0,
-          "Wind": 0.64
-        },
-        "phase": 0.4,
-        "lightning": 0.0,
-        "sun": 0.406980038,
-        "fog": 0.001944,
-        "wind": 1.3396,
-        "RainParticleCount": 0,
-        "SplashParticleCount": 0,
-        "ParticleBudget": 1800,
-        "RainVolume": 0.0477749966,
-        "ThunderCount": 0,
-        "LightningFlash": 0.0,
-        "IsSheltered": true
+        "shelterFixture": "02 - Maison du boulanger",
+        "position": [
+          540.2109,
+          52.1506348,
+          545.868469
+        ],
+        "state": {
+          "weather": {
+            "Kind": 2,
+            "Cloud": 0.94,
+            "Rain": 0.75,
+            "Storm": 0.0,
+            "Wind": 0.64
+          },
+          "skyWeather": {
+            "Kind": 2,
+            "Cloud": 0.94,
+            "Rain": 0.75,
+            "Storm": 0.0,
+            "Wind": 0.64
+          },
+          "phase": 0.4,
+          "lightning": 0.0,
+          "sun": 0.411768019,
+          "fog": 0.001944,
+          "wind": 1.3396,
+          "RainParticleCount": 0,
+          "SplashParticleCount": 0,
+          "ParticleBudget": 1800,
+          "RainVolume": 0.013377,
+          "ThunderCount": 0,
+          "LightningFlash": 0.0,
+          "IsSheltered": true
+        }
+      }
+    },
+    {
+      "name": "An authored cloth awning shelters without a gameplay collider",
+      "passed": true,
+      "detail": {
+        "awning": "02 - Maison du boulanger/Scalloped shop awning",
+        "configured": true,
+        "colliderOverhead": false,
+        "position": [
+          540.972961,
+          52.015,
+          542.225464
+        ],
+        "state": {
+          "weather": {
+            "Kind": 2,
+            "Cloud": 0.94,
+            "Rain": 0.75,
+            "Storm": 0.0,
+            "Wind": 0.64
+          },
+          "skyWeather": {
+            "Kind": 2,
+            "Cloud": 0.94,
+            "Rain": 0.75,
+            "Storm": 0.0,
+            "Wind": 0.64
+          },
+          "phase": 0.4,
+          "lightning": 0.0,
+          "sun": 0.411768019,
+          "fog": 0.001944,
+          "wind": 1.3396,
+          "RainParticleCount": 0,
+          "SplashParticleCount": 0,
+          "ParticleBudget": 1800,
+          "RainVolume": 0.013377,
+          "ThunderCount": 0,
+          "LightningFlash": 0.0,
+          "IsSheltered": true
+        }
       }
     },
     {
@@ -222,13 +272,13 @@
         },
         "phase": 0.4,
         "lightning": 0.0,
-        "sun": 0.406980038,
+        "sun": 0.411768019,
         "fog": 0.001944,
         "wind": 1.3396,
-        "RainParticleCount": 337,
-        "SplashParticleCount": 13,
+        "RainParticleCount": 365,
+        "SplashParticleCount": 11,
         "ParticleBudget": 1800,
-        "RainVolume": 0.170624986,
+        "RainVolume": 0.0477749966,
         "ThunderCount": 0,
         "LightningFlash": 0.0,
         "IsSheltered": false
@@ -254,13 +304,13 @@
         },
         "phase": 0.4,
         "lightning": 0.0,
-        "sun": 0.168300018,
+        "sun": 0.17028001,
         "fog": 0.00328,
         "wind": 1.57675,
-        "RainParticleCount": 611,
-        "SplashParticleCount": 21,
+        "RainParticleCount": 618,
+        "SplashParticleCount": 71,
         "ParticleBudget": 1800,
-        "RainVolume": 0.305499971,
+        "RainVolume": 0.08554,
         "ThunderCount": 0,
         "LightningFlash": 0.0,
         "IsSheltered": false
@@ -270,7 +320,7 @@
       "name": "Weather particles remain within the declared budget",
       "passed": true,
       "detail": {
-        "live": 640,
+        "live": 694,
         "budget": 1800,
         "systems": 3
       }
@@ -296,7 +346,7 @@
       "detail": {
         "before": 0,
         "after": 1,
-        "elapsedSeconds": 0.2918234,
+        "elapsedSeconds": 0.342386246,
         "expectedMinimumSeconds": 0.291545182
       }
     },
@@ -320,13 +370,13 @@
         },
         "phase": 0.4,
         "lightning": 0.0,
-        "sun": 0.168300018,
+        "sun": 0.17028001,
         "fog": 0.00328,
         "wind": 1.57675,
-        "RainParticleCount": 672,
-        "SplashParticleCount": 25,
+        "RainParticleCount": 682,
+        "SplashParticleCount": 98,
         "ParticleBudget": 1800,
-        "RainVolume": 0.305499971,
+        "RainVolume": 0.08554,
         "ThunderCount": 1,
         "LightningFlash": 0.0,
         "IsSheltered": false
@@ -337,7 +387,7 @@
       "passed": true,
       "detail": {
         "immediateFlash": 1.0,
-        "skyFlash": 1.0
+        "skyFlash": 0.6433735
       }
     },
     {
@@ -367,7 +417,7 @@
       "name": "Lightning creates no extra scene lights",
       "passed": true,
       "detail": {
-        "sceneLights": 5
+        "sceneLights": 26
       }
     },
     {
@@ -375,22 +425,22 @@
       "passed": true,
       "detail": {
         "sampleTime": 933.75,
-        "maxChannelStep": 0.00273656845,
-        "maxSunStep": 0.00365185738,
-        "maxFogStep": 4.26208135E-06,
+        "maxChannelStep": 0.002667725,
+        "maxSunStep": 0.00361520052,
+        "maxFogStep": 4.154863E-06,
         "before": {
           "Kind": 0,
-          "Cloud": 0.539485633,
-          "Rain": 0.430440664,
+          "Cloud": 0.5399187,
+          "Rain": 0.430786222,
           "Storm": 0.0,
-          "Wind": 0.469568342
+          "Wind": 0.46975264
         },
         "after": {
           "Kind": 0,
-          "Cloud": 0.51236546,
-          "Rain": 0.408802241,
+          "Cloud": 0.5136159,
+          "Rain": 0.409799933,
           "Storm": 0.0,
-          "Wind": 0.458027869
+          "Wind": 0.45855996
         }
       }
     },
@@ -430,13 +480,13 @@
         },
         "phase": 0.4,
         "lightning": 0.0,
-        "sun": 0.406980038,
+        "sun": 0.411768019,
         "fog": 0.001944,
         "wind": 1.3396,
-        "RainParticleCount": 319,
-        "SplashParticleCount": 19,
+        "RainParticleCount": 336,
+        "SplashParticleCount": 11,
         "ParticleBudget": 1800,
-        "RainVolume": 0.170624986,
+        "RainVolume": 0.0477749966,
         "ThunderCount": 2,
         "LightningFlash": 0.0,
         "IsSheltered": false
@@ -446,8 +496,8 @@
       "name": "Weather testing does not leak scene roots",
       "passed": true,
       "detail": {
-        "before": 12,
-        "after": 12
+        "before": 15,
+        "after": 15
       }
     },
     {

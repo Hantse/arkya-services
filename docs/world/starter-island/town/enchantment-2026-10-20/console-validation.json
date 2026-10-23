@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "baselineCursor": 370,
+  "currentCursor": 370,
+  "newErrors": [],
+  "newWarnings": [],
+  "scope": "Final corrected Play Mode observation and Edit Mode captures. The earlier diagnostic Camera.Render calls raised RenderPass errors; that explicit render was removed and the same motion check rerun with natural rendering."
+}

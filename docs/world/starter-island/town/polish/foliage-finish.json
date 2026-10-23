@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "material": "Assets/Arkya/World/StarterIsland/Town/Polish/Materials/Painted climbing ivy.mat",
+  "baseMap": "Assets/Arkya/World/StarterIsland/Textures/PaintedStoneV2.png",
+  "tint": {
+    "r": 0.54,
+    "g": 0.63,
+    "b": 0.38
+  },
+  "smoothness": 0.05,
+  "geometryUnchanged": true,
+  "newRenderers": 0,
+  "newColliders": 0,
+  "sceneSaveRequired": false
+}

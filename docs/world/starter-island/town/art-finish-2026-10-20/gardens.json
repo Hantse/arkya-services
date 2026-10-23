@@ -1,0 +1,323 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/00-GardenQuarter0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/01-GardenQuarter0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/02-GardenQuarter0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/03-GardenQuarter0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/04-GardenQuarter0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/05-GardenQuarter1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/06-GardenQuarter1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/07-GardenQuarter1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/08-GardenQuarter1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/09-GardenQuarter1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/10-GardenQuarter2.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/11-GardenQuarter2.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/12-GardenQuarter2.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/13-GardenQuarter2.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/14-GardenQuarter2.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/15-GardenQuarter3.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/16-GardenQuarter3.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/17-GardenQuarter3.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/18-GardenQuarter3.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Gardens/19-GardenQuarter3.asset"
+  ],
+  "beds": [
+    {
+      "owner": "01 - Auberge des Lanternes",
+      "position": [
+        529.8287,
+        50.27472,
+        543.6915
+      ],
+      "yaw": 105.690071,
+      "scale": 1.12
+    },
+    {
+      "owner": "01 - Auberge des Lanternes",
+      "position": [
+        523.449646,
+        50.40764,
+        534.1229
+      ],
+      "yaw": 141.690063,
+      "scale": 1.12
+    },
+    {
+      "owner": "03 - Atelier des runes",
+      "position": [
+        561.8633,
+        50.64111,
+        547.2713
+      ],
+      "yaw": 172.619659,
+      "scale": 1.12
+    },
+    {
+      "owner": "03 - Atelier des runes",
+      "position": [
+        553.4106,
+        50.3928642,
+        548.8562
+      ],
+      "yaw": 208.619659,
+      "scale": 1.12
+    },
+    {
+      "owner": "04 - Maison des voyageurs",
+      "position": [
+        573.8516,
+        50.90223,
+        555.957153
+      ],
+      "yaw": 180.434952,
+      "scale": 1.12
+    },
+    {
+      "owner": "04 - Maison des voyageurs",
+      "position": [
+        565.693,
+        51.00438,
+        558.6767
+      ],
+      "yaw": 216.434952,
+      "scale": 1.12
+    },
+    {
+      "owner": "05 - Herboristerie",
+      "position": [
+        582.255859,
+        51.0680656,
+        528.342834
+      ],
+      "yaw": 232.346176,
+      "scale": 1.12
+    },
+    {
+      "owner": "05 - Herboristerie",
+      "position": [
+        578.388,
+        51.06988,
+        539.172852
+      ],
+      "yaw": 268.3462,
+      "scale": 1.12
+    },
+    {
+      "owner": "06 - Forge du Refuge",
+      "position": [
+        576.1073,
+        49.7023354,
+        496.393738
+      ],
+      "yaw": 286.69516,
+      "scale": 1.12
+    },
+    {
+      "owner": "06 - Forge du Refuge",
+      "position": [
+        582.653259,
+        50.68577,
+        505.848969
+      ],
+      "yaw": 322.69516,
+      "scale": 1.12
+    },
+    {
+      "owner": "07 - Entrepot des marchands",
+      "position": [
+        562.9263,
+        49.4463577,
+        490.200317
+      ],
+      "yaw": 305.972626,
+      "scale": 1.12
+    },
+    {
+      "owner": "07 - Entrepot des marchands",
+      "position": [
+        572.226746,
+        49.8213,
+        496.9643
+      ],
+      "yaw": 341.972626,
+      "scale": 1.12
+    },
+    {
+      "owner": "08 - Maison des tisserands",
+      "position": [
+        548.6551,
+        49.95711,
+        492.3604
+      ],
+      "yaw": 337.236359,
+      "scale": 1.12
+    },
+    {
+      "owner": "08 - Maison des tisserands",
+      "position": [
+        557.225342,
+        49.8093529,
+        493.074615
+      ],
+      "yaw": 373.236359,
+      "scale": 1.12
+    },
+    {
+      "owner": "09 - Maison du verger",
+      "position": [
+        531.475952,
+        50.77233,
+        495.567
+      ],
+      "yaw": 8.565052,
+      "scale": 1.12
+    },
+    {
+      "owner": "09 - Maison du verger",
+      "position": [
+        539.168,
+        50.20441,
+        491.720947
+      ],
+      "yaw": 44.565052,
+      "scale": 1.12
+    },
+    {
+      "owner": "10 - Relais de la crique",
+      "position": [
+        519.4504,
+        51.1504745,
+        519.336548
+      ],
+      "yaw": 68.42367,
+      "scale": 1.12
+    },
+    {
+      "owner": "10 - Relais de la crique",
+      "position": [
+        519.9868,
+        50.5246162,
+        510.7533
+      ],
+      "yaw": 104.423668,
+      "scale": 1.12
+    },
+    {
+      "owner": "Civic stone flank",
+      "position": [
+        547.914063,
+        50.3037033,
+        552.945862
+      ],
+      "yaw": 148.0,
+      "scale": 1.35
+    },
+    {
+      "owner": "Civic stone flank",
+      "position": [
+        531.5634,
+        50.20463,
+        546.9947
+      ],
+      "yaw": 172.0,
+      "scale": 1.35
+    },
+    {
+      "owner": "Well square planted edge",
+      "position": [
+        537.0,
+        51.040226,
+        518.0
+      ],
+      "yaw": 740.0,
+      "scale": 1.25
+    },
+    {
+      "owner": "Well square planted edge",
+      "position": [
+        562.8,
+        51.1203079,
+        522.0
+      ],
+      "yaw": 777.0,
+      "scale": 1.25
+    },
+    {
+      "owner": "Well square planted edge",
+      "position": [
+        550.0,
+        50.73005,
+        507.1
+      ],
+      "yaw": 814.0,
+      "scale": 1.25
+    }
+  ],
+  "treeChanges": [
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Small courtyard shade tree",
+      "position": [
+        513.0,
+        50.3311958,
+        544.0
+      ],
+      "beforeScale": [
+        0.46,
+        0.46,
+        0.46
+      ],
+      "afterScale": [
+        0.62,
+        0.62,
+        0.62
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Small courtyard shade tree",
+      "position": [
+        553.0,
+        50.7530975,
+        562.0
+      ],
+      "beforeScale": [
+        0.46,
+        0.46,
+        0.46
+      ],
+      "afterScale": [
+        0.67,
+        0.67,
+        0.67
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Town lanes V2 - intimate crooked streets/Lived in workyards and planted edges/Small courtyard shade tree",
+      "position": [
+        588.0,
+        51.51096,
+        547.0
+      ],
+      "beforeScale": [
+        0.46,
+        0.46,
+        0.46
+      ],
+      "afterScale": [
+        0.59,
+        0.59,
+        0.59
+      ]
+    }
+  ],
+  "shrubs": 23,
+  "flowers": 46,
+  "grassTufts": 69,
+  "triangles": 388010,
+  "renderers": 20,
+  "newLights": 0,
+  "newColliders": 0,
+  "source": "Approved optimized Buisson, Fleur and Herbe LOD2; existing three courtyard trees retain their LODs.",
+  "scope": "Grouped planted facade corners, civic flanks and square edges. Original prefab meshes/materials preserved; no terrain or collision edits. Distant LOD omits small flowers and grass."
+}

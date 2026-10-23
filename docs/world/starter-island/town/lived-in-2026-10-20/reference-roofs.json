@@ -1,0 +1,127 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "buildings": 9,
+  "slateRoofs": 5,
+  "totalRoofTriangles": 284156,
+  "addedRenderers": 14,
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/RoofPigments.mat",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House01_joined.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House01_timbers.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House01_slate.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House03_joined.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House03_timbers.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House03_slate.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House04_joined.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House04_timbers.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House05_joined.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House05_timbers.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House05_slate.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House06_joined.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House06_timbers.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House07_joined.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House07_timbers.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House07_slate.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House08_joined.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House08_timbers.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House09_joined.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House09_timbers.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House10_joined.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House10_timbers.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceRoofs/House10_slate.asset"
+  ],
+  "roofProfiles": [
+    {
+      "building": "01 - Auberge des Lanternes",
+      "width": 4.98,
+      "depth": 4.45,
+      "eave": 5.97,
+      "ridge": 9.21185,
+      "lift": 1.45,
+      "slate": true,
+      "original": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_01_settled_exterior.asset"
+    },
+    {
+      "building": "03 - Atelier des runes",
+      "width": 3.48,
+      "depth": 4.45,
+      "eave": 5.97,
+      "ridge": 8.274546,
+      "lift": 1.05,
+      "slate": true,
+      "original": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_03_settled_exterior.asset"
+    },
+    {
+      "building": "04 - Maison des voyageurs",
+      "width": 3.48,
+      "depth": 3.2,
+      "eave": 2.97,
+      "ridge": 5.274545,
+      "lift": 1.17,
+      "slate": false,
+      "original": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_04_settled_exterior.asset"
+    },
+    {
+      "building": "05 - Herboristerie",
+      "width": 4.98,
+      "depth": 3.2,
+      "eave": 2.97,
+      "ridge": 6.211849,
+      "lift": 1.29,
+      "slate": true,
+      "original": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_05_settled_exterior.asset"
+    },
+    {
+      "building": "06 - Forge du Refuge",
+      "width": 4.98,
+      "depth": 4.45,
+      "eave": 2.97,
+      "ridge": 6.211849,
+      "lift": 1.05,
+      "slate": false,
+      "original": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_06_settled_exterior.asset"
+    },
+    {
+      "building": "07 - Entrepot des marchands",
+      "width": 4.98,
+      "depth": 3.2,
+      "eave": 5.97000027,
+      "ridge": 9.211849,
+      "lift": 1.17,
+      "slate": true,
+      "original": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_07_settled_exterior.asset"
+    },
+    {
+      "building": "08 - Maison des tisserands",
+      "width": 3.48,
+      "depth": 3.2,
+      "eave": 5.97,
+      "ridge": 8.274546,
+      "lift": 1.29,
+      "slate": false,
+      "original": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_08_settled_exterior.asset"
+    },
+    {
+      "building": "09 - Maison du verger",
+      "width": 3.48,
+      "depth": 3.2,
+      "eave": 2.97,
+      "ridge": 5.274545,
+      "lift": 1.05,
+      "slate": false,
+      "original": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_09_settled_exterior.asset"
+    },
+    {
+      "building": "10 - Relais de la crique",
+      "width": 3.48,
+      "depth": 3.2,
+      "eave": 2.97,
+      "ridge": 5.274545,
+      "lift": 1.17,
+      "slate": true,
+      "original": "Assets/Arkya/World/StarterIsland/Town/OrganicSilhouettes20261020/Meshes/House_10_settled_exterior.asset"
+    }
+  ],
+  "scope": "Joined roof/gable derivatives, taller concave slopes, heavier bevelled timber outlines and broad shingles. Original transforms, openings, colliders, source meshes and approved assets preserved."
+}

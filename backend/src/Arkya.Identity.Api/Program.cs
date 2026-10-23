@@ -18,7 +18,9 @@ builder.Services.AddOptions<DiscordOptions>().BindConfiguration("Discord")
     .Validate(o => o.HasValidEndpoints(),
         "Discord public URL and callback must use the same HTTPS origin, with no query, fragment or credentials.").ValidateOnStart();
 builder.Services.AddOptions<Arkya.Identity.Api.Application.SessionOptions>().BindConfiguration("Sessions")
-    .Validate(o => o.Lifetime > TimeSpan.Zero && o.Lifetime <= TimeSpan.FromDays(1), "Session lifetime must be greater than zero and at most one day.").ValidateOnStart();
+    .Validate(o => o.Lifetime > TimeSpan.Zero && o.Lifetime <= TimeSpan.FromDays(1), "Session lifetime must be greater than zero and at most one day.")
+    .Validate(o => o.RefreshAccessLifetime > TimeSpan.Zero && o.RefreshAccessLifetime <= TimeSpan.FromDays(1), "Refresh access lifetime must be greater than zero and at most one day.")
+    .Validate(o => o.RefreshLifetime >= o.RefreshAccessLifetime && o.RefreshLifetime <= TimeSpan.FromDays(90), "Refresh lifetime must cover access lifetime and be at most 90 days.").ValidateOnStart();
 builder.Services.AddOptions<WebClientOptions>().BindConfiguration("WebClient")
     .Validate(o => o.HasValidOrigins(builder.Environment.IsDevelopment()),
         "Web client origins must be exact HTTPS origins without a trailing slash, path, credentials, query or fragment. HTTP localhost/127.0.0.1 is allowed only in Development.")
@@ -28,7 +30,8 @@ builder.Services.AddOptions<CorsOptions>().Configure<IOptions<WebClientOptions>>
     cors.AddPolicy(WebClientOptions.CorsPolicyName, policy => policy
         .WithOrigins(webClient.Value.AllowedOrigins)
         .WithMethods("GET", "POST")
-        .WithHeaders("Content-Type", "Authorization")
+        .WithHeaders("Content-Type", "Authorization", RefreshCookie.HeaderName)
+        .AllowCredentials()
         .WithExposedHeaders("Retry-After")));
 builder.Services.AddSingleton<MongoIdentityStore>();
 builder.Services.AddSingleton<IIdentityStore>(sp => sp.GetRequiredService<MongoIdentityStore>());

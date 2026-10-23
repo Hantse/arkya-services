@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arkya-reports
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-reports
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: arkya-reports
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1654
+        runAsGroup: 1654
+        fsGroup: 1654
+      imagePullSecrets:
+      - name: arkya-ghcr
+      containers:
+      - name: reports
+        image: ghcr.io/hantse/arkya-services-reports:pending-publication
+        ports:
+        - name: http
+          containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: arkya-reports-config
+        - secretRef:
+            name: arkya-reports-secrets
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: [ALL]
+        resources:
+          requests: { cpu: 100m, memory: 128Mi }
+          limits: { cpu: '1', memory: 512Mi }
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        startupProbe:
+          httpGet:
+            path: /health
+            port: http
+            httpHeaders:
+            - { name: Host, value: arkya-reports.arkya-beta.svc.cluster.local }
+          periodSeconds: 5
+          failureThreshold: 30
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: http
+            httpHeaders:
+            - { name: Host, value: arkya-reports.arkya-beta.svc.cluster.local }
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+            httpHeaders:
+            - { name: Host, value: arkya-reports.arkya-beta.svc.cluster.local }
+          periodSeconds: 20
+      volumes:
+      - name: tmp
+        emptyDir: { sizeLimit: 64Mi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-reports
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: arkya-reports
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-reports
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-reports
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-gateway
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-admin
+    ports:
+    - protocol: TCP
+      port: 8080

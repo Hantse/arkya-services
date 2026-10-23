@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Arkya.Launcher.Core/Arkya.Launcher.Core.csproj" />
+    <Project Path="src/Arkya.Launcher/Arkya.Launcher.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Arkya.Launcher.Tests/Arkya.Launcher.Tests.csproj" />
+    <Project Path="tests/Arkya.Launcher.UiTests/Arkya.Launcher.UiTests.csproj" />
+  </Folder>
+</Solution>

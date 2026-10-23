@@ -38,7 +38,7 @@ public sealed class RealmRuntimeTests
     }
 
     [Fact]
-    public void RuntimeManifestDerivesOnlyTheBoundServerKeyAndHardensUnityPod()
+    public void RuntimeManifestReferencesOnlyTheBoundServerSecretAndHardensUnityPod()
     {
         var realm = Fixtures.Realm();
         var server = realm.Profile.Servers[0] with { Transport = "WebSocket", PublicEndpoint = "wss://api.arkya.online/game/beta-web/" };
@@ -47,11 +47,15 @@ public sealed class RealmRuntimeTests
         var manifest = KubernetesRealmDeployer.DeploymentManifest(realm, server, runtime);
         var pod = manifest["spec"]!["template"]!["spec"]!;
         var container = pod["containers"]![0]!;
-        var environment = container["env"]!.AsArray().ToDictionary(value => value!["name"]!.GetValue<string>(), value => value!["value"]!.GetValue<string>());
-        Assert.Equal(RealmRuntimeKeys.DeriveDedicatedKey(runtime.DedicatedKeySeed, realm.RealmId, server.Id), environment["ARKYA_DEDICATED_KEY"]);
-        Assert.Equal("1", environment["ARKYA_ALLOW_CLUSTER_HTTP"]);
-        Assert.Equal(runtime.CharactersBaseUrl, environment["ARKYA_CHARACTERS_URL"]);
+        var environment = container["env"]!.AsArray().ToDictionary(value => value!["name"]!.GetValue<string>(), value => value!);
+        var dedicatedKey = environment["ARKYA_DEDICATED_KEY"];
+        Assert.Null(dedicatedKey["value"]);
+        Assert.Equal("arkya-dedicated", dedicatedKey["valueFrom"]!["secretKeyRef"]!["name"]!.GetValue<string>());
+        Assert.Equal(server.Id, dedicatedKey["valueFrom"]!["secretKeyRef"]!["key"]!.GetValue<string>());
+        Assert.Equal("1", environment["ARKYA_ALLOW_CLUSTER_HTTP"]["value"]!.GetValue<string>());
+        Assert.Equal(runtime.CharactersBaseUrl, environment["ARKYA_CHARACTERS_URL"]["value"]!.GetValue<string>());
         Assert.DoesNotContain(runtime.DedicatedKeySeed, manifest.ToJsonString());
+        Assert.DoesNotContain(RealmRuntimeKeys.DeriveDedicatedKey(runtime.DedicatedKeySeed, realm.RealmId, server.Id), manifest.ToJsonString());
         Assert.DoesNotContain("DEDICATED_KEY", System.Text.Json.JsonSerializer.Serialize(realm));
         Assert.Equal(1654, pod["securityContext"]!["runAsUser"]!.GetValue<int>());
         Assert.Equal(1654, pod["securityContext"]!["fsGroup"]!.GetValue<int>());

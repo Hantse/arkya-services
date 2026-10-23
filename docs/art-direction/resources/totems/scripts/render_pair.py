@@ -62,5 +62,10 @@ camera.rotation_euler = (Vector((-.12, 0, .52)) - camera.location).to_track_quat
 camera_data.type = 'ORTHO'
 camera_data.ortho_scale = 3.7
 scene.camera = camera
-scene.render.filepath = str(ROOT / 'renders' / 'totems-comparison.png')
+output_path = ROOT / 'renders' / 'totems-comparison.png'
+temporary_path = output_path.with_name(output_path.stem + '.pending.png')
+# An open Windows preview can lock the destination while Blender writes.
+scene.render.filepath = str(temporary_path)
 bpy.ops.render.render(write_still=True)
+temporary_path.replace(output_path)
+scene.render.filepath = str(output_path)

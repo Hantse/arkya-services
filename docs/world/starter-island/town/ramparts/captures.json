@@ -1,0 +1,68 @@
+{
+  "success": true,
+  "playMode": false,
+  "captures": [
+    {
+      "file": "ramparts-overview-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 430.0,
+        "y": 148.088257,
+        "z": 380.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.0031128,
+        "z": 520.0
+      },
+      "fieldOfView": 49.0
+    },
+    {
+      "file": "arrival-gate-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 473.76355,
+        "y": 52.7701225,
+        "z": 462.1298
+      },
+      "target": {
+        "x": 491.2868,
+        "y": 54.88544,
+        "z": 475.4315
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "forest-gate-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 611.8085,
+        "y": 54.2921638,
+        "z": 594.550537
+      },
+      "target": {
+        "x": 597.766968,
+        "y": 54.83318,
+        "z": 577.6143
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "ramparts-overview-night.png",
+      "phase": 0.79,
+      "position": {
+        "x": 430.0,
+        "y": 148.088257,
+        "z": 380.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.0031128,
+        "z": 520.0
+      },
+      "fieldOfView": 49.0
+    }
+  ],
+  "stateRestored": true,
+  "scope": "Edit Mode rendering only. Camera, weather, clock, lights, particles and render quality restored; scene not saved."
+}

@@ -17,7 +17,7 @@ namespace Arkya.Admin.Tests;
 
 internal sealed record ContentCall(HttpMethod Method, string Path, JsonElement? Body);
 
-internal sealed class ContentStub : HttpMessageHandler
+internal sealed partial class ContentStub : HttpMessageHandler
 {
     public static readonly string Version = "95f1b50c-85ba-49a6-9b75-e12745472cf4";
     public ContentDraft Draft { get; set; } = new(3, [new("hunt-wolves", "La menace du bois", "Vaincre les ennemis.", "prototype-monster", 3)]);
@@ -37,6 +37,8 @@ internal sealed class ContentStub : HttpMessageHandler
         Calls.Add(call);
         if (request.Method != HttpMethod.Get && WriteError is { } error)
             return new(error) { Content = new StringContent($"private upstream details {AdminFactory.AdminKey}") };
+        if (call.Path.StartsWith("/admin/content/posts", StringComparison.Ordinal))
+            return HandlePublication(call, request.RequestUri.Query);
         if (request.Method == HttpMethod.Get && call.Path == "/admin/content/draft")
             return Json(Draft);
         if (request.Method == HttpMethod.Get && call.Path == "/admin/content/catalogs")
@@ -68,6 +70,8 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
     public DiscordStub Discord { get; } = new();
     public Dictionary<string, string?> Settings { get; } = [];
     public string EnvironmentName { get; set; } = "Development";
+    public AdminTestTime Clock { get; } = new();
+    public MemoryAdminSessionStore Sessions { get; set; } = new();
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -89,6 +93,7 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
         });
         builder.ConfigureServices(services =>
         {
+            services.AddTestSessions(Sessions, Clock);
             services.AddHttpClient<ContentAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Content);
             services.AddHttpClient<RealmsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Realms);
             services.AddHttpClient<ReportsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Reports);

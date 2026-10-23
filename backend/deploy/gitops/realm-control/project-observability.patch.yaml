@@ -1,0 +1,34 @@
+# Diagnostic project change applied in Argo UI on 2026-10-21 around 00:33 UTC.
+# Distinct from the historical 2026-10-20 project-access.patch.yaml.
+# Fail if another operator has changed the list or this change is already present.
+- op: test
+  path: /spec/namespaceResourceWhitelist
+  value:
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: Service
+  - group: ''
+    kind: PersistentVolumeClaim
+  - group: apps
+    kind: Deployment
+  - group: networking.k8s.io
+    kind: NetworkPolicy
+  - group: networking.k8s.io
+    kind: Ingress
+  - group: ''
+    kind: ServiceAccount
+  - group: rbac.authorization.k8s.io
+    kind: Role
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+- op: add
+  path: /spec/namespaceResourceWhitelist/-
+  value:
+    group: ''
+    kind: Pod
+- op: add
+  path: /spec/namespaceResourceWhitelist/-
+  value:
+    group: apps
+    kind: ReplicaSet

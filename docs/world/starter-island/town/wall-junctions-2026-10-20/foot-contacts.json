@@ -1,0 +1,106 @@
+{
+  "success": true,
+  "alreadyApplied": false,
+  "utc": "2026-10-20T10:26:43.5352248Z",
+  "sceneSaved": false,
+  "joinedCorners": 3,
+  "matchedOriginalStrips": 87,
+  "derivativeMeshes": 3,
+  "changedEndpointVertices": 24,
+  "addedTriangles": 0,
+  "addedRenderers": 0,
+  "addedMaterials": 0,
+  "addedColliders": 0,
+  "maximumSeamMetres": 0.0,
+  "maximumDisplacement": 0.5144717,
+  "originalAssetsTerrainCollisionAndIntermediateColumnsPreserved": true,
+  "corners": [
+    {
+      "id": 74,
+      "side": 1,
+      "profile": [
+        {
+          "x": 503.044281,
+          "y": 50.9388161,
+          "z": 488.5758
+        },
+        {
+          "x": 503.073547,
+          "y": 51.22279,
+          "z": 488.5971
+        },
+        {
+          "x": 503.148773,
+          "y": 51.30141,
+          "z": 488.6519
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "side": 1,
+      "profile": [
+        {
+          "x": 598.250854,
+          "y": 50.298645,
+          "z": 502.179
+        },
+        {
+          "x": 598.217163,
+          "y": 50.5908241,
+          "z": 502.191254
+        },
+        {
+          "x": 598.1306,
+          "y": 50.6720352,
+          "z": 502.222839
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "side": 1,
+      "profile": [
+        {
+          "x": 495.627441,
+          "y": 51.0751076,
+          "z": 515.948242
+        },
+        {
+          "x": 495.662933,
+          "y": 51.3591,
+          "z": 515.949036
+        },
+        {
+          "x": 495.754181,
+          "y": 51.43773,
+          "z": 515.95105
+        }
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "filter": "Aubefont - mana well town/Village surfaces - warm worn limestone/Soft wall foot contact 01",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Meshes/Soft wall foot contact 01.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/FootContacts/Soft wall foot contact 01_Joined.asset",
+      "changedVertices": 8,
+      "triangles": 576
+    },
+    {
+      "filter": "Aubefont - mana well town/Village surfaces - warm worn limestone/Soft wall foot contact 03",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Meshes/Soft wall foot contact 03.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/FootContacts/Soft wall foot contact 03_Joined.asset",
+      "changedVertices": 8,
+      "triangles": 640
+    },
+    {
+      "filter": "Aubefont - mana well town/Village surfaces - warm worn limestone/Soft wall foot contact 04",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Meshes/Soft wall foot contact 04.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/FootContacts/Soft wall foot contact 04_Joined.asset",
+      "changedVertices": 8,
+      "triangles": 672
+    }
+  ],
+  "scope": "Only endpoint columns of already present paired contact strips on the open side of repaired corners. Existing route exclusions, all intermediate columns, paint UVs and collision remain unchanged."
+}

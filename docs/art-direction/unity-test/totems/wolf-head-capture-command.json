@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "D:/Repositories/arkya/output/totem-wolf-v10/CaptureWolfHead.cs",
+      "entry": "CaptureWolfHead.Main",
+      "timeout_ms": "180000",
+      "args": "[\"D:/Repositories/arkya/docs/art-direction/unity-test/totems\",\"wolf\",\"lunar\"]"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 285,
+      "executeMs": 307,
+      "assemblyName": "PipelineRunScript_CaptureWolfHead_7e13a30fe4234dceae226283ae786089",
+      "success": true,
+      "result": "{\r\n  \"success\": true,\r\n  \"files\": [\r\n    \"D:/Repositories/arkya/docs/art-direction/unity-test/totems\\\\wolf-head-front.png\",\r\n    \"D:/Repositories/arkya/docs/art-direction/unity-test/totems\\\\wolf-head-profile.png\",\r\n    \"D:/Repositories/arkya/docs/art-direction/unity-test/totems\\\\wolf-head-three-quarter.png\"\r\n  ],\r\n  \"activeScenePreserved\": true,\r\n  \"framing\": \"Head-weighted fur vertices, perspective 30 degrees, fixed Idle 0.5 s, no ground or colliders.\",\r\n  \"headCenter\": [\r\n    -0.0006723851,\r\n    0.6981308,\r\n    0.580157\r\n  ],\r\n  \"headSize\": [\r\n    0.2732035,\r\n    0.314255118,\r\n    0.355696321\r\n  ]\r\n}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

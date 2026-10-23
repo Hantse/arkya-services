@@ -1,0 +1,80 @@
+[
+  {
+    "file": "01-workshop-day.png",
+    "userAttachment": "codex-clipboard-d89c76a6-16cb-4183-98ab-9f2bc18c6d39.png",
+    "sha256": "40b0fadd433e4261b67c6301a73bbafc1e92f4d3b69c262a0fdf3de64da43aea",
+    "bytes": 1373409
+  },
+  {
+    "file": "02-workshop-night.png",
+    "userAttachment": "codex-clipboard-9c24f42b-b0c6-4592-913d-1df80246fe9c.png",
+    "sha256": "14b8ddbf21e0f9c6f9de685d7688dbe9fd561410b5a3c9af64626f540e35914a",
+    "bytes": 1250911
+  },
+  {
+    "file": "03-stone-ruins-day.png",
+    "userAttachment": "codex-clipboard-667cbfe6-780d-4c0d-aa67-08897a69437b.png",
+    "sha256": "db4ddcc08936454914a7327dde86c34bf3ece723f3871be0a8387005bd54ed1a",
+    "bytes": 1808606
+  },
+  {
+    "file": "04-stone-ruins-night.png",
+    "userAttachment": "codex-clipboard-0824ec2a-ddaa-4a5e-9b40-f485c6cca333.png",
+    "sha256": "a074ecf6887ad25d6ca13ef1ca28cf06a4a307faeb2f9ea4a4f122b582d9f084",
+    "bytes": 1240837
+  },
+  {
+    "file": "05-church-exterior.png",
+    "userAttachment": "codex-clipboard-6d1fe0f8-d7d5-4d67-b696-bc71cd35f12b.png",
+    "sha256": "34d560f9cb01eef551378fdab06e1328b6d0f5900e5653fd1e5a37bd1b302e52",
+    "bytes": 1193513
+  },
+  {
+    "file": "06-woodland-bridge.png",
+    "userAttachment": "codex-clipboard-ed3171ac-7796-4de3-8044-f858151dc362.png",
+    "sha256": "29f94dcdefae0dd14dd98a4f64591bfdabf5e2a3e8877d7772bd483ed945c503",
+    "bytes": 1392770
+  },
+  {
+    "file": "07-church-interior.png",
+    "userAttachment": "codex-clipboard-fe0e50a3-26f6-432d-b6b9-154467b22f84.png",
+    "sha256": "e28a07e32d924233ecbcf1f97555c5d7d9bcf80735dcac05503d87694619b7a6",
+    "bytes": 1030756
+  },
+  {
+    "file": "08-village-lanterns.png",
+    "userAttachment": "codex-clipboard-f027e499-9a3a-404d-a4fb-14dc4fbfd1f4.png",
+    "sha256": "1b684ef87ec82cd4ca3cfc30f49f78eb03c1b27d846cbc0e784d6e99bb5bccf2",
+    "bytes": 1459811
+  },
+  {
+    "file": "09-inn-and-garden.png",
+    "userAttachment": "codex-clipboard-3af6518d-fb6c-4cec-bc3f-e3b694601b73.png",
+    "sha256": "1a6f843751203c6486dd7480871dfceb77e5885a6438433606af683d75eae071",
+    "bytes": 1435651
+  },
+  {
+    "file": "10-country-lane.png",
+    "userAttachment": "codex-clipboard-0ef03eea-db6c-4b83-8530-31642c826355.png",
+    "sha256": "2520fa636d100f8ba5e386ea9b11c26db7d4de06480ecf85b4d5be4d0be9df96",
+    "bytes": 1331340
+  },
+  {
+    "file": "11-porch-framing.png",
+    "userAttachment": "codex-clipboard-bbbc2bae-4cc1-4b1a-bc90-465e2ddacb35.png",
+    "sha256": "05ba40aaf7d3f080023392962f47a9649c6d3c87a56aa0b65f52f01a598a282f",
+    "bytes": 908021
+  },
+  {
+    "file": "12-village-pond.png",
+    "userAttachment": "codex-clipboard-0d2eb648-3773-4a46-8b21-db4918660e7c.png",
+    "sha256": "d11ab4d7c65bc4f64b1fddedc1583df30d6f62fb86403a4c0fd419759decbb25",
+    "bytes": 1239973
+  },
+  {
+    "file": "13-village-aerial.png",
+    "userAttachment": "codex-clipboard-30102f5c-c2e6-4476-8dd8-1271bfc30cb5.png",
+    "sha256": "0ff61e88f2194bb3f65c2e7bd0f78383dc562ee19570ca05d9d9f962fab85190",
+    "bytes": 1319258
+  }
+]

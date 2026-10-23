@@ -1,0 +1,76 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "D:/Repositories/arkya/Unity3D/Arkya/AgentScripts/Characters/ReviewCreationInPlay.cs",
+      "entry": "ReviewCreationInPlay.End",
+      "timeout_ms": "55000"
+    },
+    "result": {
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "message": "'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+          "line": 432,
+          "column": 66,
+          "id": "CS0618",
+          "source": "Require(!Object.FindObjectsByType<CharacterLocalPlaytest>(FindObjectsSortMode.None).Any(test => test.IsActive),"
+        },
+        {
+          "severity": "warning",
+          "message": "'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+          "line": 432,
+          "column": 17,
+          "id": "CS0618",
+          "source": "Require(!Object.FindObjectsByType<CharacterLocalPlaytest>(FindObjectsSortMode.None).Any(test => test.IsActive),"
+        },
+        {
+          "severity": "warning",
+          "message": "'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'",
+          "line": 434,
+          "column": 71,
+          "id": "CS0618",
+          "source": "var screen = Object.FindObjectsByType<CharacterCreationScreen>(FindObjectsSortMode.None)"
+        },
+        {
+          "severity": "warning",
+          "message": "'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'",
+          "line": 434,
+          "column": 21,
+          "id": "CS0618",
+          "source": "var screen = Object.FindObjectsByType<CharacterCreationScreen>(FindObjectsSortMode.None)"
+        },
+        {
+          "severity": "warning",
+          "message": "'EntityId.GetRawData()' is obsolete: 'Please use EntityId.ToULong(EntityId) instead.'",
+          "line": 478,
+          "column": 37,
+          "id": "CS0618",
+          "source": "roots.Select(root => root.GetEntityId().GetRawData()).SequenceEqual(saved.roots) &&"
+        },
+        {
+          "severity": "warning",
+          "message": "'EntityId.GetRawData()' is obsolete: 'Please use EntityId.ToULong(EntityId) instead.'",
+          "line": 558,
+          "column": 43,
+          "id": "CS0618",
+          "source": "roots = objects.Select(root => root.GetEntityId().GetRawData()).ToArray(); active = objects.Select(root => root.activeSelf).ToArray();"
+        }
+      ],
+      "compileMs": 704,
+      "executeMs": 209,
+      "assemblyName": "PipelineRunScript_ReviewCreationInPlay_90bd6df6f3ef4b7ebc171de2d7278699",
+      "success": true,
+      "result": "{\"status\":\"Ended\",\"success\":true,\"reportPath\":\"D:\\\\Repositories\\\\arkya\\\\docs\\\\art-direction\\\\characters-refit-2026-10-20\\\\adult-pass\\\\desktop\\\\creation-live-review.json\"}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7803,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

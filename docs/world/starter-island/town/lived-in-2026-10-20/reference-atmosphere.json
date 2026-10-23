@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "checkedAtUtc": "2026-10-20T17:24:37.0539521Z",
+  "source": "Assets/Arkya/World/StarterIsland/Materials/Environment/PaintedSky.mat",
+  "sourceDependencyHash": "3ce9fd75d5b10825734ede23a323739e",
+  "sourceDependencyHashUnchanged": true,
+  "material": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceAtmosphere/ClearBluePaintedSky.mat",
+  "shader": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceAtmosphere/ReferencePaintedSky.shader",
+  "shaderErrors": false,
+  "clearDay": {
+    "strength": 0.94,
+    "zenith": [
+      0.055,
+      0.3,
+      0.73
+    ],
+    "horizon": [
+      0.43,
+      0.68,
+      0.9
+    ],
+    "cloudCrown": [
+      0.98,
+      0.99,
+      1.0
+    ],
+    "cloudUnderside": [
+      0.29,
+      0.45,
+      0.65
+    ],
+    "coverageBias": -0.055,
+    "gradientExponent": 0.3,
+    "broadCloudWeights": [
+      0.72,
+      0.22,
+      0.06,
+      0.0
+    ],
+    "cloudNoiseEvaluationsUnchanged": true
+  },
+  "preserved": {
+    "clockMode": true,
+    "cycleDuration": true,
+    "sunAndMoon": true,
+    "weatherOwnerAndInputs": true,
+    "lightning": true,
+    "stars": true,
+    "nightAndFullyOvercastShaderBehavior": true,
+    "fogHorizonColor": true,
+    "geometry": true,
+    "colliders": true,
+    "sourceShaderAndMaterial": true
+  },
+  "scope": "One island-sky material derivative. The daylight art controls fade with twilight, cloud, rain and storm; full night/overcast use the original equations. Same four cloud-noise octaves, sharper broad masses and cool undersides, no raymarch, extra light, runtime component, exposure or bloom change. The sky is scene-wide; this does not modify ambient or sun colors, which remain owned by DayNightEnvironment."
+}

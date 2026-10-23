@@ -1,0 +1,411 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "root": "Town life - inhabited workyards and garden courts",
+  "triangles": 566932,
+  "renderers": 32,
+  "cartCount": 4,
+  "crateCount": 26,
+  "hayCount": 12,
+  "shrubCount": 26,
+  "grassCount": 50,
+  "flowerCount": 37,
+  "placements": [
+    {
+      "name": "Inn deliveries",
+      "kind": "cartCrates",
+      "position": [
+        527.520569,
+        50.727562,
+        531.247559
+      ],
+      "radius": 2.65,
+      "yaw": 18.0,
+      "roadMargin": 4.46266,
+      "seed": 1
+    },
+    {
+      "name": "Orchard harvest",
+      "kind": "cartHay",
+      "position": [
+        527.0,
+        50.9386559,
+        494.0
+      ],
+      "radius": 2.65,
+      "yaw": -14.0,
+      "roadMargin": 1.72452688,
+      "seed": 2
+    },
+    {
+      "name": "Merchant dispatch",
+      "kind": "cartCrates",
+      "position": [
+        567.475342,
+        49.00136,
+        485.529633
+      ],
+      "radius": 2.65,
+      "yaw": 64.0,
+      "roadMargin": 5.29110241,
+      "seed": 3
+    },
+    {
+      "name": "Herbalist supply",
+      "kind": "cartHay",
+      "position": [
+        578.0,
+        50.9269371,
+        542.0
+      ],
+      "radius": 2.65,
+      "yaw": -28.0,
+      "roadMargin": 2.533729,
+      "seed": 4
+    },
+    {
+      "name": "South weavers stock",
+      "kind": "stack",
+      "position": [
+        559.6339,
+        49.4978676,
+        489.359467
+      ],
+      "radius": 1.7,
+      "yaw": 17.0,
+      "roadMargin": 3.15759277,
+      "seed": 5
+    },
+    {
+      "name": "Forge timber delivery",
+      "kind": "stack",
+      "position": [
+        576.0,
+        50.6007462,
+        506.0
+      ],
+      "radius": 1.7,
+      "yaw": 33.0,
+      "roadMargin": 2.12488413,
+      "seed": 6
+    },
+    {
+      "name": "Inn grain sacks and hay",
+      "kind": "hay",
+      "position": [
+        519.0,
+        50.6085548,
+        533.0
+      ],
+      "radius": 1.65,
+      "yaw": -12.0,
+      "roadMargin": 1.28152454,
+      "seed": 7
+    },
+    {
+      "name": "Runecrafter provisions",
+      "kind": "stack",
+      "position": [
+        551.0,
+        50.348774,
+        549.0
+      ],
+      "radius": 1.7,
+      "yaw": 26.0,
+      "roadMargin": 5.605056,
+      "seed": 8
+    },
+    {
+      "name": "West cottage supplies",
+      "kind": "stack",
+      "position": [
+        521.0,
+        50.9738121,
+        507.0
+      ],
+      "radius": 1.7,
+      "yaw": 42.0,
+      "roadMargin": 2.24172235,
+      "seed": 9
+    },
+    {
+      "name": "Orchard seed store",
+      "kind": "stack",
+      "position": [
+        540.0,
+        50.1671257,
+        488.0
+      ],
+      "radius": 1.7,
+      "yaw": -25.0,
+      "roadMargin": 6.970087,
+      "seed": 11
+    },
+    {
+      "name": "East courtyard harvest",
+      "kind": "hay",
+      "position": [
+        581.4004,
+        51.29127,
+        520.537537
+      ],
+      "radius": 1.65,
+      "yaw": 38.0,
+      "roadMargin": 0.4328338,
+      "seed": 12
+    },
+    {
+      "name": "Planted courtyard 1",
+      "kind": "garden",
+      "position": [
+        522.5511,
+        50.9694443,
+        530.388245
+      ],
+      "radius": 2.1,
+      "yaw": 16.0,
+      "roadMargin": 1.39191508,
+      "seed": 30
+    },
+    {
+      "name": "Planted courtyard 3",
+      "kind": "garden",
+      "position": [
+        550.4194,
+        50.47732,
+        541.621765
+      ],
+      "radius": 2.1,
+      "yaw": 90.0,
+      "roadMargin": 2.79950857,
+      "seed": 32
+    },
+    {
+      "name": "Planted courtyard 6",
+      "kind": "garden",
+      "position": [
+        577.1459,
+        51.167305,
+        525.3234
+      ],
+      "radius": 2.1,
+      "yaw": 201.0,
+      "roadMargin": 0.598473549,
+      "seed": 35
+    },
+    {
+      "name": "Planted courtyard 7",
+      "kind": "garden",
+      "position": [
+        574.0,
+        51.2277374,
+        514.0
+      ],
+      "radius": 2.1,
+      "yaw": 238.0,
+      "roadMargin": 0.490923047,
+      "seed": 36
+    },
+    {
+      "name": "Planted courtyard 8",
+      "kind": "garden",
+      "position": [
+        586.455444,
+        51.30782,
+        517.637146
+      ],
+      "radius": 2.1,
+      "yaw": 275.0,
+      "roadMargin": 0.397740841,
+      "seed": 37
+    },
+    {
+      "name": "Planted courtyard 9",
+      "kind": "garden",
+      "position": [
+        571.499756,
+        49.1203,
+        488.973816
+      ],
+      "radius": 2.1,
+      "yaw": 312.0,
+      "roadMargin": 5.916585,
+      "seed": 38
+    },
+    {
+      "name": "Planted courtyard 10",
+      "kind": "garden",
+      "position": [
+        557.7374,
+        50.14155,
+        497.8633
+      ],
+      "radius": 2.1,
+      "yaw": 349.0,
+      "roadMargin": 0.447499275,
+      "seed": 39
+    },
+    {
+      "name": "Planted courtyard 11",
+      "kind": "garden",
+      "position": [
+        544.0,
+        50.1007156,
+        493.0
+      ],
+      "radius": 2.1,
+      "yaw": 386.0,
+      "roadMargin": 4.253029,
+      "seed": 40
+    },
+    {
+      "name": "Planted courtyard 12",
+      "kind": "garden",
+      "position": [
+        544.2773,
+        50.3336067,
+        499.799561
+      ],
+      "radius": 2.1,
+      "yaw": 423.0,
+      "roadMargin": 0.478633046,
+      "seed": 41
+    },
+    {
+      "name": "Planted courtyard 13",
+      "kind": "garden",
+      "position": [
+        531.0736,
+        50.9815178,
+        499.022675
+      ],
+      "radius": 2.1,
+      "yaw": 460.0,
+      "roadMargin": 0.5383935,
+      "seed": 42
+    },
+    {
+      "name": "Planted courtyard 14",
+      "kind": "garden",
+      "position": [
+        525.0458,
+        50.98395,
+        508.7486
+      ],
+      "radius": 2.1,
+      "yaw": 497.0,
+      "roadMargin": 0.3569703,
+      "seed": 43
+    },
+    {
+      "name": "Planted courtyard 15",
+      "kind": "garden",
+      "position": [
+        518.128967,
+        51.1613274,
+        522.7788
+      ],
+      "radius": 2.1,
+      "yaw": 534.0,
+      "roadMargin": 0.375605583,
+      "seed": 44
+    },
+    {
+      "name": "Planted courtyard 16",
+      "kind": "garden",
+      "position": [
+        536.1481,
+        50.29802,
+        543.228333
+      ],
+      "radius": 2.1,
+      "yaw": 571.0,
+      "roadMargin": 2.58333945,
+      "seed": 45
+    }
+  ],
+  "rejected": [
+    {
+      "name": "Travellers stable corner",
+      "kind": "hay",
+      "wanted": [
+        576.0,
+        551.0
+      ],
+      "reason": "No clear footprint outside paths and existing colliders"
+    },
+    {
+      "name": "Planted courtyard 2",
+      "kind": "garden",
+      "wanted": [
+        534.0,
+        533.0
+      ],
+      "reason": "No clear footprint outside paths and existing colliders"
+    },
+    {
+      "name": "Planted courtyard 4",
+      "kind": "garden",
+      "wanted": [
+        565.0,
+        542.0
+      ],
+      "reason": "No clear footprint outside paths and existing colliders"
+    },
+    {
+      "name": "Planted courtyard 5",
+      "kind": "garden",
+      "wanted": [
+        575.0,
+        545.0
+      ],
+      "reason": "No clear footprint outside paths and existing colliders"
+    }
+  ],
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Sculpted oak and warm bindings.mat",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Blue forged metal.mat",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Golden bundled hay.mat",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Materials/Courtyard earth and leaf litter.mat",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Props/cart.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Props/crate.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Props/openCrate.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Props/hay.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_2.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_3.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_4.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_5.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_6.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_7.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_8.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_9.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_10.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_11.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_12.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_13.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_14.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_15.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_16.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_17.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_18.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_19.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_20.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_21.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_22.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_23.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_24.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_25.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_26.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_27.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_28.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_29.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_30.asset",
+    "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_31.asset"
+  ],
+  "colliders": 0,
+  "lights": 0,
+  "minRoadMargin": 0.3569703,
+  "scope": "Sculpted props and approved vegetation arranged as workyards; original transforms, terrain, paths and collision untouched. Presentation-only props outside reserved walking corridors."
+}

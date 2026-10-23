@@ -1,0 +1,39 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "return new { capturedUtc = System.DateTime.UtcNow.ToString(\"O\"), EditorApplication.isPlaying, EditorApplication.isCompiling, EditorApplication.isUpdating, reviewSessionCleared = string.IsNullOrEmpty(SessionState.GetString(\"Arkya.ReferenceCreationReview\", \"\")), liveReviewCleared = string.IsNullOrEmpty(SessionState.GetString(\"Arkya.ReferenceCreation.LiveReview\", \"\")), activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().path, scenes = Enumerable.Range(0, UnityEngine.SceneManagement.SceneManager.sceneCount).Select(i => UnityEngine.SceneManagement.SceneManager.GetSceneAt(i)).Select(s => new { s.path, s.isDirty, rootCount=s.rootCount, activeRoots=s.GetRootGameObjects().Count(r=>r.activeSelf) }).ToArray() };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "capturedUtc": "2026-10-20T22:19:16.5066192Z",
+        "isPlaying": false,
+        "isCompiling": false,
+        "isUpdating": false,
+        "reviewSessionCleared": true,
+        "liveReviewCleared": true,
+        "activeScene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+        "scenes": [
+          {
+            "path": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+            "isDirty": false,
+            "rootCount": 18,
+            "activeRoots": 18
+          }
+        ]
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7803,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

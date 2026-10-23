@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-17",
+  "unityVersion": "6000.6.6f1",
+  "project": "Unity3D/Arkya",
+  "status": "Passed",
+  "tests": {
+    "result": "Passed",
+    "total": 101,
+    "passed": 101,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 52.6226674,
+    "suites": [
+      "Arkya.Characters.EditorTests",
+      "Arkya.World.Environment.Tests"
+    ],
+    "localXml": "artifacts/starter-island-playable/release-tests.xml"
+  },
+  "build": {
+    "result": "Success",
+    "target": "StandaloneWindows64",
+    "development": true,
+    "executable": "Unity3D/Arkya/Builds/StarterIsland/Arkya.exe",
+    "startupSmoke": "Passed",
+    "graphicsApi": "Direct3D12",
+    "startupManagedExceptions": 0,
+    "standaloneIslandTraversalExercised": false
+  },
+  "liveEditor": {
+    "entryThroughCreationUi": true,
+    "connectedLocalClientAndServer": true,
+    "spawnServer": [
+      405,
+      33.6876,
+      350
+    ],
+    "beforeKeyboardServer": [
+      413.3077,
+      34.99297,
+      360.6324
+    ],
+    "afterKeyboardServer": [
+      419.3429,
+      35.72107,
+      364.2579
+    ],
+    "afterKeyboardClient": [
+      419.343,
+      35.721,
+      364.258
+    ],
+    "inputPath": "Input System keyboard and mouse events in focused Game View",
+    "cameraYawAfterMouse": 59,
+    "cameraPitchAfterMouse": 26.8,
+    "cameraDistanceAfterScroll": 4.593986,
+    "cursorRestored": "None",
+    "returnThroughHud": true,
+    "localWorldsAfterReturn": 0,
+    "finalScene": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+    "finalSceneDirty": false,
+    "finalPlayMode": false,
+    "screenshot": "starter-island-playable.png"
+  },
+  "scope": [
+    "Local loopback server and client in one process",
+    "Terrain-grounded movement and static obstacle proxies",
+    "No saved position or progression",
+    "No combat, quests, shared realm or dedicated-server admission"
+  ],
+  "checksNotPerformed": [
+    "Live OAuth and backend persistence",
+    "Full island route inside the standalone executable",
+    "Separate dedicated server and client"
+  ],
+  "notes": [
+    "Initial interactive Editor test run crashed natively; final batch test run passed.",
+    "Build emitted warnings from existing packages and shader variants."
+  ],
+  "changedAreas": [
+    "Character creation flow, UI and additive island loading",
+    "Server terrain traversal and static collision checks",
+    "Client input, camera and visual presentation",
+    "Scene reference, build configuration and Windows builder",
+    "Day/night sky restoration across active-scene changes",
+    "Character and terrain tests, launch documentation"
+  ]
+}

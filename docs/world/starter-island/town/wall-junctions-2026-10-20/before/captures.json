@@ -1,0 +1,71 @@
+{
+  "success": true,
+  "stage": "before",
+  "utc": "2026-10-20T10:11:17.2758503Z",
+  "playMode": false,
+  "captures": [
+    {
+      "file": "74-outside-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 496.4296,
+        "y": 54.64918,
+        "z": 486.480347
+      },
+      "target": {
+        "x": 503.342834,
+        "y": 53.8491821,
+        "z": 488.7932
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "93-outside-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 497.46524,
+        "y": 54.4919052,
+        "z": 550.5679
+      },
+      "target": {
+        "x": 502.250366,
+        "y": 53.691906,
+        "z": 545.068359
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "46-outside-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 582.121948,
+        "y": 53.6720123,
+        "z": 472.276825
+      },
+      "target": {
+        "x": 580.129333,
+        "y": 52.8720131,
+        "z": 479.289124
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "wall-walk-junction-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 507.649048,
+        "y": 58.20533,
+        "z": 486.362335
+      },
+      "target": {
+        "x": 503.233978,
+        "y": 56.5053329,
+        "z": 492.4251
+      },
+      "fieldOfView": 70.0
+    }
+  ],
+  "stateRestored": true,
+  "sceneDirtyFlagUnchanged": true,
+  "scope": "Three worst curtain junctions viewed from outside plus their wall-walk context. Identical baseline camera poses and day phase; presentation restored, no scene save or asset edits."
+}

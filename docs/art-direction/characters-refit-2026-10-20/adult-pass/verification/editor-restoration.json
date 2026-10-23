@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "command": "command run_script",
+  "data": {
+    "command": "run_script",
+    "parameters": {
+      "file": "D:/Repositories/arkya/Unity3D/Arkya/AgentScripts/Characters/ReferenceCreationSession.cs",
+      "entry": "ReferenceCreationSession.End",
+      "timeout_ms": "55000"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 493,
+      "executeMs": 3278,
+      "assemblyName": "PipelineRunScript_ReferenceCreationSession_c2916b452af64bd2bd2c89c1bbfb6e79",
+      "success": true,
+      "result": "{\"success\":true,\"restoredRoots\":18,\"activeScene\":\"Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity\"}"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7803,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

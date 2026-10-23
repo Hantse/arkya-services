@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "materials": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/11 Soft painted limestone.mat",
+      "saturation": 0.85,
+      "pigmentBlend": 0.1,
+      "textureSoftness": 0.35,
+      "heightStrength": 0.01,
+      "baseColor": [
+        0.9,
+        0.9,
+        0.88,
+        1.0
+      ],
+      "pigment": [
+        0.429999977,
+        0.424999982,
+        0.354999959,
+        1.0
+      ]
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/27 Arkya _ chaume _ painted.mat",
+      "saturation": 0.8,
+      "pigmentBlend": 0.22,
+      "textureSoftness": 1.1,
+      "heightStrength": 0.0,
+      "baseColor": [
+        0.969999969,
+        0.94,
+        0.8399999,
+        1.0
+      ],
+      "pigment": [
+        0.58,
+        0.454999924,
+        0.254999965,
+        1.0
+      ]
+    }
+  ],
+  "originalMaterialsTexturesGeometryTerrainCollidersAndLightsUnchanged": true,
+  "newAssets": 0,
+  "sceneSaved": false,
+  "scope": "Capture-driven correction of the two owned derivatives: retain warm desaturated honey roofs and restore mineral variation in the paving."
+}

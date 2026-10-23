@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "changedRenderers": 53,
+  "materials": [
+    {
+      "role": "Window",
+      "source": "Assets/Arkya/World/StarterIsland/Town/VillageUpgrade/Architecture/Materials/Hand blown village glass.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceWindows/Window.mat",
+      "renderers": 10,
+      "settings": {
+        "dayEmission": 0.48,
+        "nightEmission": 1.25,
+        "dayOpacity": 0.68,
+        "nightOpacity": 0.88,
+        "reflection": 0.18
+      }
+    },
+    {
+      "role": "StreetLantern",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Materials/Lantern warm glass.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceWindows/StreetLantern.mat",
+      "renderers": 16,
+      "settings": {
+        "dayEmission": 0.48,
+        "nightEmission": 1.2
+      }
+    },
+    {
+      "role": "Festoon",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Materials/Lantern warm glass.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceWindows/Festoon.mat",
+      "renderers": 27,
+      "settings": {
+        "dayEmission": 0.65,
+        "nightEmission": 1.35
+      }
+    }
+  ],
+  "glassShader": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/ReferenceWindows/ReferenceAmberGlass.shader",
+  "shaderErrors": false,
+  "windowTransparencyRetained": true,
+  "floatingManaLanternMaterialsUnchanged": true,
+  "sourceMaterialsUnchanged": true,
+  "geometryTransformsCollidersLightsAndRendererFlagsUnchanged": true,
+  "newLights": 0,
+  "addedRuntimeComponents": 0,
+  "addedRenderers": 0,
+  "addedMaterialSlots": 0,
+  "scope": "Amber day/night window and traditional lamp emission from existing environment globals. Source window apertures, glazing meshes, iron frames and all light components retained; no post-process override."
+}

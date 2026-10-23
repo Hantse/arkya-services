@@ -1,0 +1,198 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T15:45:44.769449Z",
+  "sceneSaved": true,
+  "checks": [
+    {
+      "name": "All 2503 original colliders retained without additions",
+      "passed": true,
+      "detail": {
+        "before": 2503,
+        "after": 2503
+      }
+    },
+    {
+      "name": "Only the complete civic hierarchy changes collider world poses",
+      "passed": true,
+      "detail": {
+        "civicColliders": 181,
+        "preservedColliders": 2322,
+        "unexpected": []
+      }
+    },
+    {
+      "name": "Civic relocation report and final pose match",
+      "passed": true,
+      "detail": {
+        "position": [
+          539.0,
+          50.30602,
+          552.0
+        ],
+        "yaw": 160.0,
+        "scale": [
+          1.2,
+          1.2,
+          1.2
+        ]
+      }
+    },
+    {
+      "name": "Nine houses remain active",
+      "passed": true,
+      "detail": [
+        "01 - Auberge des Lanternes",
+        "03 - Atelier des runes",
+        "04 - Maison des voyageurs",
+        "05 - Herboristerie",
+        "06 - Forge du Refuge",
+        "07 - Entrepot des marchands",
+        "08 - Maison des tisserands",
+        "09 - Maison du verger",
+        "10 - Relais de la crique"
+      ]
+    },
+    {
+      "name": "Existing scene and building anchors preserved except civic pose",
+      "passed": true,
+      "detail": {
+        "unexpected": [],
+        "newRoots": [
+          "Aubefont - mana well town/Civic forecourt - worn limestone apron and curved approach",
+          "Aubefont - mana well town/Town gardens - layered planted courts and grounded facades",
+          "Aubefont - mana well town/Town paving - settled stones in worn street gaps"
+        ]
+      }
+    },
+    {
+      "name": "Terrain heights and pose preserved",
+      "passed": true,
+      "detail": "d0a9fd86d6d94c227cf6410bde37d72ea0dec9a499a7f5975cd522cd8c8392c9"
+    },
+    {
+      "name": "Terrain source layers preserved",
+      "passed": true,
+      "detail": "ff96f345c5013b9499f2cdad1fe547fb626f3d1a6a9c6f02b86fa8646d19e37f"
+    },
+    {
+      "name": "Meadow paint remains within its recorded window",
+      "passed": true,
+      "detail": {
+        "fullAlphamapChanged": true,
+        "outsideHash": "UB7FhRXDRODrzbuq7PdSl5mPuxMe+xaF0h2pUAshkMk=",
+        "report": "surfaces-authoring.json",
+        "note": "Road, soil, rock and sand weights unchanged; meadow total within native 1/255 quantization."
+      }
+    },
+    {
+      "name": "No lights added or removed",
+      "passed": true,
+      "detail": {
+        "SceneLightCount": 26,
+        "TownLightCount": 21
+      }
+    },
+    {
+      "name": "Grouped gardens geometry and presentation budget",
+      "passed": true,
+      "detail": {
+        "triangles": 388010,
+        "renderers": 20,
+        "colliderCount": 0
+      }
+    },
+    {
+      "name": "Civic joint beds modify only the two owned forecourt meshes",
+      "passed": true,
+      "detail": {
+        "report": "civic-joints.json",
+        "addedTriangles": 504
+      }
+    },
+    {
+      "name": "Civic forecourt geometry and presentation budget",
+      "passed": true,
+      "detail": {
+        "triangles": 4779,
+        "renderers": 2,
+        "colliderCount": 0
+      }
+    },
+    {
+      "name": "Existing street gaps geometry and presentation budget",
+      "passed": true,
+      "detail": {
+        "triangles": 7902,
+        "renderers": 4,
+        "colliderCount": 0
+      }
+    },
+    {
+      "name": "Exterior capsule follows the rebuilt civic approach",
+      "passed": true,
+      "detail": {
+        "report": "exterior-route.json",
+        "overlaps": 97,
+        "casts": 96,
+        "problems": []
+      }
+    },
+    {
+      "name": "Bloom remains enabled with bounded HDR input",
+      "passed": true,
+      "detail": "lighting-finish.json"
+    },
+    {
+      "name": "All town materials supported and shaders compile",
+      "passed": true,
+      "detail": {
+        "invalidMaterials": [],
+        "shaderErrors": []
+      }
+    },
+    {
+      "name": "No missing town scripts",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "New authored assets and dependencies have meta files",
+      "passed": true,
+      "detail": {
+        "assets": 59,
+        "missingMeta": []
+      }
+    },
+    {
+      "name": "Scene view effects and gizmos restored",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "failures": [],
+  "contentBefore": {
+    "renderers": 1419,
+    "meshes": 1405,
+    "triangles": 4058546,
+    "distinctMeshes": 423,
+    "materials": 91,
+    "shadowCasters": 1266,
+    "volumes": 2,
+    "sceneLights": 26,
+    "activeLights": 24,
+    "townLights": 21
+  },
+  "contentAfter": {
+    "renderers": 1445,
+    "meshes": 1431,
+    "triangles": 4457248,
+    "distinctMeshes": 449,
+    "materials": 93,
+    "shadowCasters": 1282,
+    "volumes": 2,
+    "sceneLights": 26,
+    "activeLights": 24,
+    "townLights": 21
+  },
+  "scope": "Edit Mode content, Terrain, collider and exterior capsule checks. Civic root intentionally translated, rotated and scaled; local collider shapes retained. Local meadow paint intentional. No runtime movement, server authority or measured FPS claim."
+}

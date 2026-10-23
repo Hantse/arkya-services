@@ -19,6 +19,16 @@ Le maillage proche mesure **384 m de côté**, avec une grille de 2 m : **37 249
 
 Les effets de [BoundaryWaterPresentation](../../Unity3D/Arkya/Assets/Arkya/World/Environment/Rendering/BoundaryWaterPresentation.cs) échantillonnent la même houle pour la naissance des particules. Bulles et écume suivent ensuite la surface au moyen de buffers réutilisés ; la vapeur s’élève librement. Le budget existant de 320 particules est conservé.
 
+## Finition de surface — 19 octobre 2026
+
+La surface conserve les volumes de houle existants et ajoute une seconde échelle de petites ondulations dans les normales. Deux gradients de bruit se croisent en dérivant, sans les fronts périodiques qui donnaient des zébrures sur la première capture. Leur détail diminue avec l’empreinte du pixel pour éviter le scintillement au loin. La pluie ajoute des impacts circulaires éphémères seulement à proximité. Ces détails restent cosmétiques : ils ne changent ni les hauteurs de `OceanWaveMath`, ni les colliders, ni les paramètres de danger.
+
+Les reflets utilisent désormais la palette du ciel actif, sa couverture nuageuse et ses éclairs. Le contrôleur transmet ces valeurs aux deux surfaces par leurs blocs de propriétés, sans modifier les matériaux partagés. La réflexion augmente aux angles rasants ; des reflets solaires larges et fins se complètent. Le ciel peint reste une approximation de réflexion : aucun rendu planaire supplémentaire, aucune réflexion de personnage ou de bâtiment n’est ajouté.
+
+Sur les berges, la profondeur cuite révèle progressivement une teinte de sable humide avant le turquoise. Les fronts d’écume sont plus étroits, interrompus et irréguliers ; les crêtes au large restent discrètes. Cette transition de couleur conserve la passe opaque existante : le fond suggéré ne prétend pas montrer la géométrie sous-marine par transparence. La couronne violette conserve sa lecture de danger, avec des bulles plus petites, une écume ajourée et une vapeur moins opaque. Les textures locales de particules disposent de mipmaps, sans hausse du budget de 320 particules.
+
+Les réglages supplémentaires du matériau sont `Sky reflection` (0,6), `Small wave normals` (0,6), `Broken surf and crests` (0,8) et `Wet sand beneath shallows`. Le reflet utilise une normale adoucie et diminue près du contact avec la berge pour conserver la lecture du sable immergé. La météo fournit `_ArkyaWeather` : pluie, orage, vent, humidité cosmétique. La surface utilise la pluie pour ses impacts et le vent pour ses petites ondulations. Les calculs des bulles violettes sont évités dans la mer turquoise. Aucun nouveau champ réseau n’est nécessaire.
+
 ## Simulation et authoring
 
 [OceanWaveMath](../../Unity3D/Arkya/Assets/Arkya/World/Environment/Runtime/OceanWaveMath.cs) partage le profil cosmétique du shader pour les effets locaux. Il ne décide pas de l’exposition dangereuse. Le [contrat serveur de la couronne](STARTER_ISLAND_BOUNDARY_WATER.md) reste un rayon de 835 m, un niveau moyen de 28 m et un délai de cinq secondes après contact. Les vagues ne modifient ni le Terrain, ni les collisions, ni la natation ou le déplacement des personnages.

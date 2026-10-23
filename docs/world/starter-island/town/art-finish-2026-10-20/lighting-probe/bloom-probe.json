@@ -1,0 +1,54 @@
+{
+  "success": true,
+  "stateRestored": true,
+  "profiles": [
+    {
+      "path": "Packages/com.unity.render-pipelines.universal/Editor/Volume/DefaultVolumeProfile.asset",
+      "name": "Bloom",
+      "intensity": 0.0,
+      "clamp": 65472.0
+    },
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset",
+      "name": "Bloom",
+      "intensity": 0.0,
+      "clamp": 65472.0
+    },
+    {
+      "path": "Assets/Settings/SampleSceneProfile.asset",
+      "name": "Bloom",
+      "intensity": 0.25,
+      "clamp": 65472.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Town bloom.asset",
+      "name": "Bloom",
+      "intensity": 0.4,
+      "clamp": 65472.0
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Materials/Environment/PaintedGrading.asset",
+      "name": "Bloom",
+      "intensity": 0.15,
+      "clamp": 65472.0
+    },
+    {
+      "path": "Packages/com.unity.render-pipelines.universal/Editor/SceneTemplates/Indoors/GlobalVolumeProfile.asset",
+      "name": "Bloom",
+      "intensity": 1.5,
+      "clamp": 65472.0
+    },
+    {
+      "path": "Packages/com.unity.render-pipelines.universal/Editor/SceneTemplates/Standard/GlobalVolumeProfile.asset",
+      "name": "Bloom",
+      "intensity": 0.5,
+      "clamp": 65472.0
+    }
+  ],
+  "images": [
+    "native-bloom-off",
+    "native-bloom-clamp8",
+    "native-bloom-clamp2"
+  ],
+  "scope": "Temporary Bloom parameter probes, without asset saves or scene changes."
+}

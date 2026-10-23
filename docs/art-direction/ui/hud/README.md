@@ -9,8 +9,9 @@ petits avatars, les jauges et les buffs du groupe, sans cadre commun, et
 retirent les libellés des deux icônes de minimap. La V3 conserve cette base
 et place les récoltes sous le groupe, les petits buffs sous chaque jauge de
 mana, la vie et les dégâts au-dessus des ennemis. Les deux boutons de minimap
-deviennent ronds. **Maquettes artistiques ; HUD et sélecteur de thème
-à intégrer.**
+deviennent ronds. **Maquettes artistiques.** Une première
+[intégration Unity des thèmes et du HUD d'exploration](../IMPLEMENTATION.md)
+existe depuis le 17 octobre ; les données du HUD V3 complet restent à raccorder.
 
 [Ouvrir le comparateur](index.html) · [Prompts V3](PROMPTS-V3.md) · [Prompts V2](PROMPTS-V2.md) · [Prompts V1](PROMPTS.md)
 
@@ -171,10 +172,11 @@ réplication Netcode. Une synchronisation entre appareils pourrait être
 ajoutée plus tard via les préférences du compte. Elle n'est pas nécessaire
 pour un premier sélecteur local.
 
-Le HUD actuel du prototype d'areas utilise encore IMGUI. Il faut construire
-le HUD de présentation commun et y brancher les données observées avant
-d'appliquer ces thèmes en jeu. Modifier uniquement le style de la création
-ne suffirait pas.
+Le HUD de diagnostic du prototype d'areas utilise encore IMGUI. La
+[première intégration de présentation commune](../IMPLEMENTATION.md) applique
+les thèmes à la création, au social et à l'exploration locale. Les jauges,
+le groupe, les quêtes et le combat du HUD complet demandent encore leur
+raccordement à la simulation.
 
 ## Vérification
 
@@ -189,6 +191,8 @@ de sa [capture de vérification](comparateur-v2-verifie.jpg), et la V3 de sa
 
 La validation de production reste à faire dans Unity : textes et interactions
 réels, passage jour/nuit, résolutions et échelle UI, langues longues, inventaire
-chargé, contrastes et lisibilité des alertes. Aucun test Unity n'est exécuté
-pour cette livraison d'images et de documentation.
+chargé, contrastes et lisibilité des alertes. Les contrôles décrits ici
+concernent la livraison d'images et de documentation du 16 octobre, sans
+test Unity à cette étape. L'[état de l'intégration Unity](../IMPLEMENTATION.md)
+est suivi séparément.
 

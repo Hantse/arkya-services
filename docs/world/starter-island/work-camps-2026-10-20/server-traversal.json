@@ -1,0 +1,656 @@
+{
+  "success": true,
+  "utc": "2026-10-20T10:03:10.3471542Z",
+  "caseCount": 32,
+  "passed": 32,
+  "installedRuntimeProxies": 1369,
+  "bodyRadius": 0.3,
+  "bodyHeight": 1.75,
+  "extraClearanceHeight": 2.0,
+  "ticks": 21476,
+  "distanceTravelled": 1561.62024,
+  "airborneTicks": 0,
+  "scope": "Both camps and their actual authored connection routes, main entrance and shelter, plus gallery/lodge markers when present. Existing server ECS movement at walk/run, 60/20Hz, continuous out-and-back with no jump or mid-route teleport.",
+  "cases": [
+    {
+      "Camp": "miners",
+      "Route": "Camp main entrance",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.002773285,
+      "Distance": 35.94684,
+      "Ticks": 980,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 980,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.3352356,
+        "z": 522.001648
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Camp main entrance",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.008308411,
+      "Distance": 36.0,
+      "Ticks": 330,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 330,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.3351631,
+        "z": 522.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Camp main entrance",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.00553894043,
+      "Distance": 36.0,
+      "Ticks": 492,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 492,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.3351631,
+        "z": 522.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Camp main entrance",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.0166168213,
+      "Distance": 36.0,
+      "Ticks": 166,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 166,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.3351631,
+        "z": 522.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Work shelter",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.1068573,
+      "Distance": 23.2771435,
+      "Ticks": 635,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 635,
+      "FootprintSupportedWaypoints": 2,
+      "FinalPosition": {
+        "x": 699.9822,
+        "y": 51.4784431,
+        "z": 539.982544
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Work shelter",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.108219147,
+      "Distance": 23.268856,
+      "Ticks": 212,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 212,
+      "FootprintSupportedWaypoints": 2,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.4777527,
+        "z": 540.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Work shelter",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.10754776,
+      "Distance": 23.3126278,
+      "Ticks": 320,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 320,
+      "FootprintSupportedWaypoints": 2,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.4777527,
+        "z": 540.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Work shelter",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.107551575,
+      "Distance": 23.31258,
+      "Ticks": 108,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 108,
+      "FootprintSupportedWaypoints": 2,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.4777527,
+        "z": 540.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Quarry gallery",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.12172699,
+      "Distance": 23.9853516,
+      "Ticks": 654,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 654,
+      "FootprintSupportedWaypoints": 2,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.4777527,
+        "z": 540.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Quarry gallery",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.113643646,
+      "Distance": 23.9660034,
+      "Ticks": 218,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 218,
+      "FootprintSupportedWaypoints": 2,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.476738,
+        "z": 540.0108
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Quarry gallery",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.1170311,
+      "Distance": 24.0,
+      "Ticks": 330,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 330,
+      "FootprintSupportedWaypoints": 2,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.4777527,
+        "z": 540.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Quarry gallery",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.113643646,
+      "Distance": 24.0,
+      "Ticks": 112,
+      "ReachedWaypoints": 6,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 112,
+      "FootprintSupportedWaypoints": 2,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.4777527,
+        "z": 540.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Existing road to camp center",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.00639343262,
+      "Distance": 71.73137,
+      "Ticks": 1956,
+      "ReachedWaypoints": 34,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 1956,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 700.0021,
+        "y": 51.9992676,
+        "z": 505.304657
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Existing road to camp center",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.0191192627,
+      "Distance": 71.79163,
+      "Ticks": 662,
+      "ReachedWaypoints": 34,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 662,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.9992676,
+        "z": 505.3
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Existing road to camp center",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.0127487183,
+      "Distance": 71.791626,
+      "Ticks": 990,
+      "ReachedWaypoints": 34,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 990,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.9992676,
+        "z": 505.3
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "miners",
+      "Route": "Existing road to camp center",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.0381660461,
+      "Distance": 71.79187,
+      "Ticks": 342,
+      "ReachedWaypoints": 34,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 342,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 700.0,
+        "y": 51.9992676,
+        "z": 505.3
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Camp main entrance",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.007457733,
+      "Distance": 37.9901123,
+      "Ticks": 1036,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 1036,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 528.0,
+        "y": 56.3764877,
+        "z": 870.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Camp main entrance",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.0223464966,
+      "Distance": 37.9768066,
+      "Ticks": 346,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 346,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 528.0,
+        "y": 56.3764877,
+        "z": 870.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Camp main entrance",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.0149002075,
+      "Distance": 38.0,
+      "Ticks": 520,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 520,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 528.0,
+        "y": 56.3764877,
+        "z": 870.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Camp main entrance",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.04468918,
+      "Distance": 38.0,
+      "Ticks": 174,
+      "ReachedWaypoints": 4,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 174,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 528.0,
+        "y": 56.3764877,
+        "z": 870.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Work shelter",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.0009498596,
+      "Distance": 19.9630165,
+      "Ticks": 544,
+      "ReachedWaypoints": 2,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 544,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 547.0,
+        "y": 53.99939,
+        "z": 870.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Work shelter",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.00283813477,
+      "Distance": 20.0000114,
+      "Ticks": 182,
+      "ReachedWaypoints": 2,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 182,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 547.0,
+        "y": 53.99939,
+        "z": 870.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Work shelter",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.00189208984,
+      "Distance": 19.945528,
+      "Ticks": 272,
+      "ReachedWaypoints": 2,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 272,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 547.000061,
+        "y": 53.9993858,
+        "z": 869.999939
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Work shelter",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.005672455,
+      "Distance": 20.0,
+      "Ticks": 92,
+      "ReachedWaypoints": 2,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 92,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 547.0,
+        "y": 53.99939,
+        "z": 870.0
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Lodge entrance",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.153820038,
+      "Distance": 34.1912231,
+      "Ticks": 933,
+      "ReachedWaypoints": 10,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 933,
+      "FootprintSupportedWaypoints": 4,
+      "FinalPosition": {
+        "x": 547.0164,
+        "y": 53.999176,
+        "z": 870.0227
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Lodge entrance",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.1537857,
+      "Distance": 34.22578,
+      "Ticks": 316,
+      "ReachedWaypoints": 10,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 316,
+      "FootprintSupportedWaypoints": 4,
+      "FinalPosition": {
+        "x": 547.0044,
+        "y": 53.9993324,
+        "z": 870.006042
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Lodge entrance",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.153579712,
+      "Distance": 34.2319832,
+      "Ticks": 468,
+      "ReachedWaypoints": 10,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 468,
+      "FootprintSupportedWaypoints": 4,
+      "FinalPosition": {
+        "x": 547.0018,
+        "y": 53.9993668,
+        "z": 870.002441
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Lodge entrance",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.153553009,
+      "Distance": 34.2248154,
+      "Ticks": 160,
+      "ReachedWaypoints": 10,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 160,
+      "FootprintSupportedWaypoints": 4,
+      "FinalPosition": {
+        "x": 547.004761,
+        "y": 53.99933,
+        "z": 870.006653
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Existing road to camp center",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.007457733,
+      "Distance": 143.176041,
+      "Ticks": 3908,
+      "ReachedWaypoints": 94,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 3908,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 476.003143,
+        "y": 61.95361,
+        "z": 868.639832
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Existing road to camp center",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.0223464966,
+      "Distance": 143.168121,
+      "Ticks": 1336,
+      "ReachedWaypoints": 94,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 1336,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 476.0,
+        "y": 61.95363,
+        "z": 868.64
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Existing road to camp center",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "MaximumVerticalChange": 0.0149002075,
+      "Distance": 143.160614,
+      "Ticks": 1968,
+      "ReachedWaypoints": 94,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 1968,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 476.029816,
+        "y": 61.95343,
+        "z": 868.63855
+      },
+      "Failures": []
+    },
+    {
+      "Camp": "woodcutters",
+      "Route": "Existing road to camp center",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "MaximumVerticalChange": 0.04468918,
+      "Distance": 143.1903,
+      "Ticks": 714,
+      "ReachedWaypoints": 94,
+      "AirborneTicks": 0,
+      "ClearanceChecks": 714,
+      "FootprintSupportedWaypoints": 0,
+      "FinalPosition": {
+        "x": 476.0,
+        "y": 61.95363,
+        "z": 868.64
+      },
+      "Failures": []
+    }
+  ]
+}

@@ -1,0 +1,1083 @@
+{
+  "success": true,
+  "shader": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/PaintedTownColor.shader",
+  "shaderErrors": false,
+  "changedRenderers": 670,
+  "derivedMaterials": 31,
+  "materials": [
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/01 Earth and sage in worn joints.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/01 Earth and sage in worn joints.mat",
+      "role": "Joints",
+      "renderers": 1,
+      "settings": {
+        "role": "Joints",
+        "label": "Earth and sage in worn joints",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/01 Earth and sage in worn joints.mat",
+        "renderers": 1,
+        "tint": [
+          0.389999956,
+          0.384999961,
+          0.299999982,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.0,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.5,
+        "smoothness": 0.035,
+        "height": 0.0021,
+        "cavity": 0.0259999987,
+        "useVertexColor": 1.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Jade lantern porcelain.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/02 Jade lantern porcelain.mat",
+      "role": "Lantern",
+      "renderers": 6,
+      "settings": {
+        "role": "Lantern",
+        "label": "Jade lantern porcelain",
+        "source": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Jade lantern porcelain.mat",
+        "renderers": 6,
+        "tint": [
+          0.229999959,
+          0.68,
+          0.62,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.0,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.0,
+        "smoothness": 0.22,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.4829999,
+          1.428,
+          1.30199993,
+          2.1
+        ],
+        "dayEmissionScale": 0.025,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Soft amber mana inlay.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/03 Soft amber mana inlay.mat",
+      "role": "Lantern",
+      "renderers": 10,
+      "settings": {
+        "role": "Lantern",
+        "label": "Soft amber mana inlay",
+        "source": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Soft amber mana inlay.mat",
+        "renderers": 10,
+        "tint": [
+          0.82,
+          0.6,
+          0.259999961,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.0,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.0,
+        "smoothness": 0.22,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          1.804,
+          1.32,
+          0.5719999,
+          2.2
+        ],
+        "dayEmissionScale": 0.025,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/02 Pastel limewash 0 Warm ivory limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/04 Pastel limewash 0 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "renderers": 25,
+      "settings": {
+        "role": "Limewash",
+        "label": "Pastel limewash 0 Warm ivory limewash",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/02 Pastel limewash 0 Warm ivory limewash.mat",
+        "renderers": 25,
+        "tint": [
+          0.9325,
+          0.8275,
+          0.68,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.04,
+        "texturePivotLinear": 0.65,
+        "textureSoftness": 0.45,
+        "smoothness": 0.045,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/03 Pastel limewash 2 Soft sage limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/05 Pastel limewash 2 Soft sage limewash.mat",
+      "role": "Limewash",
+      "renderers": 21,
+      "settings": {
+        "role": "Limewash",
+        "label": "Pastel limewash 2 Soft sage limewash",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/03 Pastel limewash 2 Soft sage limewash.mat",
+        "renderers": 21,
+        "tint": [
+          0.595,
+          0.7325,
+          0.6925,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.04,
+        "texturePivotLinear": 0.65,
+        "textureSoftness": 0.45,
+        "smoothness": 0.045,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/04 Pastel limewash 3 Warm ivory limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/06 Pastel limewash 3 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "renderers": 9,
+      "settings": {
+        "role": "Limewash",
+        "label": "Pastel limewash 3 Warm ivory limewash",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/04 Pastel limewash 3 Warm ivory limewash.mat",
+        "renderers": 9,
+        "tint": [
+          0.91,
+          0.849999964,
+          0.705,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.04,
+        "texturePivotLinear": 0.65,
+        "textureSoftness": 0.45,
+        "smoothness": 0.045,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/05 Pastel limewash 4 Soft ochre limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/07 Pastel limewash 4 Soft ochre limewash.mat",
+      "role": "Limewash",
+      "renderers": 11,
+      "settings": {
+        "role": "Limewash",
+        "label": "Pastel limewash 4 Soft ochre limewash",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/05 Pastel limewash 4 Soft ochre limewash.mat",
+        "renderers": 11,
+        "tint": [
+          0.8175,
+          0.7325,
+          0.4925,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.04,
+        "texturePivotLinear": 0.65,
+        "textureSoftness": 0.45,
+        "smoothness": 0.045,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/06 Pastel limewash 5 Soft sage limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/08 Pastel limewash 5 Soft sage limewash.mat",
+      "role": "Limewash",
+      "renderers": 13,
+      "settings": {
+        "role": "Limewash",
+        "label": "Pastel limewash 5 Soft sage limewash",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/06 Pastel limewash 5 Soft sage limewash.mat",
+        "renderers": 13,
+        "tint": [
+          0.64,
+          0.7325,
+          0.625,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.04,
+        "texturePivotLinear": 0.65,
+        "textureSoftness": 0.45,
+        "smoothness": 0.045,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/07 Pastel limewash 6 Warm ivory limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/09 Pastel limewash 6 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "renderers": 21,
+      "settings": {
+        "role": "Limewash",
+        "label": "Pastel limewash 6 Warm ivory limewash",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/07 Pastel limewash 6 Warm ivory limewash.mat",
+        "renderers": 21,
+        "tint": [
+          0.9125,
+          0.849999964,
+          0.705,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.04,
+        "texturePivotLinear": 0.65,
+        "textureSoftness": 0.45,
+        "smoothness": 0.045,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/08 Pastel limewash 7 Soft ochre limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/10 Pastel limewash 7 Soft ochre limewash.mat",
+      "role": "Limewash",
+      "renderers": 17,
+      "settings": {
+        "role": "Limewash",
+        "label": "Pastel limewash 7 Soft ochre limewash",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/08 Pastel limewash 7 Soft ochre limewash.mat",
+        "renderers": 17,
+        "tint": [
+          0.8575,
+          0.7,
+          0.52,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.04,
+        "texturePivotLinear": 0.65,
+        "textureSoftness": 0.45,
+        "smoothness": 0.045,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/09 Pastel limewash 8 Soft sage limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/11 Pastel limewash 8 Soft sage limewash.mat",
+      "role": "Limewash",
+      "renderers": 9,
+      "settings": {
+        "role": "Limewash",
+        "label": "Pastel limewash 8 Soft sage limewash",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/09 Pastel limewash 8 Soft sage limewash.mat",
+        "renderers": 9,
+        "tint": [
+          0.647500038,
+          0.7475,
+          0.635,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.04,
+        "texturePivotLinear": 0.65,
+        "textureSoftness": 0.45,
+        "smoothness": 0.045,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/10 Pastel limewash 9 Warm ivory limewash.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/12 Pastel limewash 9 Warm ivory limewash.mat",
+      "role": "Limewash",
+      "renderers": 9,
+      "settings": {
+        "role": "Limewash",
+        "label": "Pastel limewash 9 Warm ivory limewash",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/10 Pastel limewash 9 Warm ivory limewash.mat",
+        "renderers": 9,
+        "tint": [
+          0.8775,
+          0.84,
+          0.74,
+          1.0
+        ],
+        "saturation": 1.0,
+        "textureContrast": 1.04,
+        "texturePivotLinear": 0.65,
+        "textureSoftness": 0.45,
+        "smoothness": 0.045,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/11 Soft painted limestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/13 Soft painted limestone.mat",
+      "role": "Paving",
+      "renderers": 12,
+      "settings": {
+        "role": "Paving",
+        "label": "Soft painted limestone",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/11 Soft painted limestone.mat",
+        "renderers": 12,
+        "tint": [
+          0.9,
+          0.9,
+          0.88,
+          1.0
+        ],
+        "saturation": 0.98,
+        "textureContrast": 1.05,
+        "texturePivotLinear": 0.55,
+        "textureSoftness": 0.25,
+        "smoothness": 0.065,
+        "height": 0.01,
+        "cavity": 0.0259999987,
+        "useVertexColor": 1.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/12 Painted civic blue slate.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/14 Painted civic blue slate.mat",
+      "role": "Slate",
+      "renderers": 1,
+      "settings": {
+        "role": "Slate",
+        "label": "Painted civic blue slate",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/12 Painted civic blue slate.mat",
+        "renderers": 1,
+        "tint": [
+          0.47,
+          0.67,
+          0.78,
+          1.0
+        ],
+        "saturation": 1.04,
+        "textureContrast": 1.08,
+        "texturePivotLinear": 0.2,
+        "textureSoftness": 0.3,
+        "smoothness": 0.16,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/13 Painted civic slate highlights.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/15 Painted civic slate highlights.mat",
+      "role": "Slate",
+      "renderers": 1,
+      "settings": {
+        "role": "Slate",
+        "label": "Painted civic slate highlights",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/13 Painted civic slate highlights.mat",
+        "renderers": 1,
+        "tint": [
+          0.6,
+          0.76,
+          0.82,
+          1.0
+        ],
+        "saturation": 1.04,
+        "textureContrast": 1.08,
+        "texturePivotLinear": 0.2,
+        "textureSoftness": 0.3,
+        "smoothness": 0.16,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/14 CivicWeatheredLimestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/16 CivicWeatheredLimestone.mat",
+      "role": "Stone",
+      "renderers": 3,
+      "settings": {
+        "role": "Stone",
+        "label": "CivicWeatheredLimestone",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/14 CivicWeatheredLimestone.mat",
+        "renderers": 3,
+        "tint": [
+          0.91,
+          0.925,
+          0.88,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.0525000021,
+        "cavity": 0.0455,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/15 CivicWornCutStone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/17 CivicWornCutStone.mat",
+      "role": "Stone",
+      "renderers": 1,
+      "settings": {
+        "role": "Stone",
+        "label": "CivicWornCutStone",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/15 CivicWornCutStone.mat",
+        "renderers": 1,
+        "tint": [
+          0.92,
+          0.91,
+          0.83,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.0175,
+        "cavity": 0.02275,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/16 Cream worn coping.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/18 Cream worn coping.mat",
+      "role": "Stone",
+      "renderers": 47,
+      "settings": {
+        "role": "Stone",
+        "label": "Cream worn coping",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/16 Cream worn coping.mat",
+        "renderers": 47,
+        "tint": [
+          1.05,
+          1.02,
+          0.96,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.042,
+        "cavity": 0.02275,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/17 Joined warm pale kerbs.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/19 Joined warm pale kerbs.mat",
+      "role": "Stone",
+      "renderers": 1,
+      "settings": {
+        "role": "Stone",
+        "label": "Joined warm pale kerbs",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/17 Joined warm pale kerbs.mat",
+        "renderers": 1,
+        "tint": [
+          1.02,
+          1.0,
+          0.91,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.042,
+        "cavity": 0.02275,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/18 ManaWell_PaintedLimestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/20 ManaWell_PaintedLimestone.mat",
+      "role": "Stone",
+      "renderers": 23,
+      "settings": {
+        "role": "Stone",
+        "label": "ManaWell_PaintedLimestone",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/18 ManaWell_PaintedLimestone.mat",
+        "renderers": 23,
+        "tint": [
+          0.83,
+          0.83,
+          0.74,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/19 ManaWell_PaleCarvedStone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/21 ManaWell_PaleCarvedStone.mat",
+      "role": "Stone",
+      "renderers": 20,
+      "settings": {
+        "role": "Stone",
+        "label": "ManaWell_PaleCarvedStone",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/19 ManaWell_PaleCarvedStone.mat",
+        "renderers": 20,
+        "tint": [
+          0.98999995,
+          0.979999959,
+          0.86,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/20 ManaWell_WarmStone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/22 ManaWell_WarmStone.mat",
+      "role": "Stone",
+      "renderers": 6,
+      "settings": {
+        "role": "Stone",
+        "label": "ManaWell_WarmStone",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/20 ManaWell_WarmStone.mat",
+        "renderers": 6,
+        "tint": [
+          0.78,
+          0.74,
+          0.62,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/21 Pale worn stone relief.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/23 Pale worn stone relief.mat",
+      "role": "Stone",
+      "renderers": 6,
+      "settings": {
+        "role": "Stone",
+        "label": "Pale worn stone relief",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/21 Pale worn stone relief.mat",
+        "renderers": 6,
+        "tint": [
+          1.035,
+          1.01,
+          0.95,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.042,
+        "cavity": 0.02275,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/22 Sage limestone foundations.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/24 Sage limestone foundations.mat",
+      "role": "Stone",
+      "renderers": 6,
+      "settings": {
+        "role": "Stone",
+        "label": "Sage limestone foundations",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/22 Sage limestone foundations.mat",
+        "renderers": 6,
+        "tint": [
+          0.83,
+          0.88,
+          0.75,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.042,
+        "cavity": 0.02275,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/23 Sculpted limestone - shared matte painted pigment.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/25 Sculpted limestone - shared matte painted pigment.mat",
+      "role": "Stone",
+      "renderers": 24,
+      "settings": {
+        "role": "Stone",
+        "label": "Sculpted limestone - shared matte painted pigment",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/23 Sculpted limestone - shared matte painted pigment.mat",
+        "renderers": 24,
+        "tint": [
+          0.98999995,
+          0.979999959,
+          0.96,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.00629999954,
+        "cavity": 0.01625,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/24 Soft grey lime recesses.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/26 Soft grey lime recesses.mat",
+      "role": "Stone",
+      "renderers": 18,
+      "settings": {
+        "role": "Stone",
+        "label": "Soft grey lime recesses",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/24 Soft grey lime recesses.mat",
+        "renderers": 18,
+        "tint": [
+          0.72,
+          0.76,
+          0.72,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.042,
+        "cavity": 0.02275,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/25 Varied hand laid painted limestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/27 Varied hand laid painted limestone.mat",
+      "role": "Stone",
+      "renderers": 43,
+      "settings": {
+        "role": "Stone",
+        "label": "Varied hand laid painted limestone",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/25 Varied hand laid painted limestone.mat",
+        "renderers": 43,
+        "tint": [
+          0.98999995,
+          0.979999959,
+          0.96,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.0266,
+        "cavity": 0.02925,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/26 Warm coursed limestone.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/28 Warm coursed limestone.mat",
+      "role": "Stone",
+      "renderers": 9,
+      "settings": {
+        "role": "Stone",
+        "label": "Warm coursed limestone",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/26 Warm coursed limestone.mat",
+        "renderers": 9,
+        "tint": [
+          0.98999995,
+          0.979999959,
+          0.96,
+          1.0
+        ],
+        "saturation": 1.02,
+        "textureContrast": 1.09,
+        "texturePivotLinear": 0.22,
+        "textureSoftness": 0.2,
+        "smoothness": 0.085,
+        "height": 0.0525000021,
+        "cavity": 0.0455,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/27 Arkya _ chaume _ painted.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/29 Arkya _ chaume _ painted.mat",
+      "role": "Thatch",
+      "renderers": 13,
+      "settings": {
+        "role": "Thatch",
+        "label": "Arkya | chaume | painted",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/27 Arkya _ chaume _ painted.mat",
+        "renderers": 13,
+        "tint": [
+          1.0,
+          0.95,
+          0.82,
+          1.0
+        ],
+        "saturation": 0.95,
+        "textureContrast": 0.84,
+        "texturePivotLinear": 0.3,
+        "textureSoftness": 1.25,
+        "smoothness": 0.035,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/28 Painted beams V2.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/30 Painted beams V2.mat",
+      "role": "Timber",
+      "renderers": 431,
+      "settings": {
+        "role": "Timber",
+        "label": "Painted beams V2",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/28 Painted beams V2.mat",
+        "renderers": 431,
+        "tint": [
+          0.82,
+          0.67,
+          0.51,
+          1.0
+        ],
+        "saturation": 1.05,
+        "textureContrast": 1.16,
+        "texturePivotLinear": 0.18,
+        "textureSoftness": 0.3,
+        "smoothness": 0.11,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    },
+    {
+      "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/29 Painted boards V2.mat",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Palette/Materials/31 Painted boards V2.mat",
+      "role": "Timber",
+      "renderers": 17,
+      "settings": {
+        "role": "Timber",
+        "label": "Painted boards V2",
+        "source": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/29 Painted boards V2.mat",
+        "renderers": 17,
+        "tint": [
+          0.92,
+          0.8,
+          0.64,
+          1.0
+        ],
+        "saturation": 1.05,
+        "textureContrast": 1.16,
+        "texturePivotLinear": 0.18,
+        "textureSoftness": 0.3,
+        "smoothness": 0.11,
+        "height": 0.0,
+        "cavity": 0.0,
+        "useVertexColor": 0.0,
+        "emission": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "dayEmissionScale": 0.0,
+        "nightEmissionScale": 1
+      }
+    }
+  ],
+  "lanterns": {
+    "daytimeEmissionFraction": 0.025,
+    "nighttimeEmissionFraction": 1,
+    "globals": [
+      "_ArkyaDaylight",
+      "_ArkyaEnvironmentActive"
+    ],
+    "sharedRunesAndFlowersUnchanged": true
+  },
+  "sourceMaterialsTexturesAndTerrainFilesUnchanged": true,
+  "geometryTransformsCollidersRendererStatesLightsUnchanged": true,
+  "addedTriangles": 0,
+  "addedRenderers": 0,
+  "addedMaterialSlots": 0,
+  "drawCallsMeasured": false,
+  "addedRuntimeComponents": 0,
+  "assetsSaved": true,
+  "sceneSaved": false,
+  "direction": "Overwatch-inspired clarity: warm ivory, honey, chocolate timber and cool blue slate. No grey wash, procedural micro-noise, extra fog or lighting override.",
+  "limitations": "Existing thatch strands and window geometry are retained; this pass changes material response, not their silhouette."
+}

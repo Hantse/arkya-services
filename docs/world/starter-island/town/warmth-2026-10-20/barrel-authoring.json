@@ -1,0 +1,413 @@
+{
+  "success": true,
+  "count": 15,
+  "sharedMaterials": 3,
+  "meshAssets": 4,
+  "visibleRenderers": 15,
+  "maximumDetailTriangles": 2240,
+  "maximumDistantTriangles": 984,
+  "sourceGeometryCuts": [
+    {
+      "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Court furniture and planting - Painted beams V2",
+      "material": "Painted beams V2",
+      "removedTrianglesPerBarrel": [
+        288,
+        288,
+        288,
+        288,
+        288
+      ],
+      "retainedTriangles": 440,
+      "matchToleranceMetersInBarrelSpace": 0.0008,
+      "source": "24-sided source lathe with seven profile points",
+      "volumes": [
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Bakery market court/Hand coopered court barrel",
+          "origin": {
+            "x": 530.3889,
+            "y": 50.4490471,
+            "z": 532.69574
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Herbs and traders court/Hand coopered court barrel",
+          "origin": {
+            "x": 560.6308,
+            "y": 50.8956833,
+            "z": 510.848846
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Inn sheltered rear court/Hand coopered court barrel",
+          "origin": {
+            "x": 521.6486,
+            "y": 50.1768875,
+            "z": 545.9743
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Coopers sheltered working court/Hand coopered court barrel",
+          "origin": {
+            "x": 558.079163,
+            "y": 49.35262,
+            "z": 486.8984
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Coopers sheltered working court/Hand coopered court barrel",
+          "origin": {
+            "x": 561.9001,
+            "y": 49.35262,
+            "z": 487.1994
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        }
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Court furniture and planting - Forged dark iron",
+      "material": "Forged dark iron",
+      "removedTrianglesPerBarrel": [
+        288,
+        288,
+        288,
+        288,
+        288
+      ],
+      "retainedTriangles": 0,
+      "matchToleranceMetersInBarrelSpace": 0.0008,
+      "source": "Two 24-sided source rings with four profile points each",
+      "volumes": [
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Bakery market court/Hand coopered court barrel",
+          "origin": {
+            "x": 530.3889,
+            "y": 50.4490471,
+            "z": 532.69574
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Herbs and traders court/Hand coopered court barrel",
+          "origin": {
+            "x": 560.6308,
+            "y": 50.8956833,
+            "z": 510.848846
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Inn sheltered rear court/Hand coopered court barrel",
+          "origin": {
+            "x": 521.6486,
+            "y": 50.1768875,
+            "z": 545.9743
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Coopers sheltered working court/Hand coopered court barrel",
+          "origin": {
+            "x": 558.079163,
+            "y": 49.35262,
+            "z": 486.8984
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        },
+        {
+          "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Coopers sheltered working court/Hand coopered court barrel",
+          "origin": {
+            "x": 561.9001,
+            "y": 49.35262,
+            "z": 487.1994
+          },
+          "barrelLocalRadialMaximum": 0.4608,
+          "minimumY": -0.0008,
+          "maximumY": 1.0708
+        }
+      ]
+    }
+  ],
+  "rootsAndCollidersUnchanged": true,
+  "entries": [
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Coopered barrel",
+      "position": {
+        "x": 520.617859,
+        "y": 50.3380547,
+        "z": 536.131
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Coopered barrel",
+      "position": {
+        "x": 536.742065,
+        "y": 50.3506355,
+        "z": 546.304138
+      },
+      "scale": {
+        "x": 1.00000024,
+        "y": 1.0,
+        "z": 1.00000024
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Coopered barrel",
+      "position": {
+        "x": 554.1975,
+        "y": 50.52824,
+        "z": 552.239136
+      },
+      "scale": {
+        "x": 1.00000036,
+        "y": 1.0,
+        "z": 1.00000036
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Coopered barrel",
+      "position": {
+        "x": 566.3792,
+        "y": 50.92774,
+        "z": 560.261047
+      },
+      "scale": {
+        "x": 1.00000024,
+        "y": 1.0,
+        "z": 1.00000024
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Coopered barrel",
+      "position": {
+        "x": 580.041443,
+        "y": 51.0686722,
+        "z": 539.657166
+      },
+      "scale": {
+        "x": 1.00000012,
+        "y": 1.0,
+        "z": 1.00000012
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Coopered barrel",
+      "position": {
+        "x": 585.449341,
+        "y": 50.0532837,
+        "z": 503.791565
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Coopered barrel",
+      "position": {
+        "x": 573.157532,
+        "y": 49.70918,
+        "z": 495.514435
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Coopered barrel",
+      "position": {
+        "x": 557.2187,
+        "y": 50.0404472,
+        "z": 491.348083
+      },
+      "scale": {
+        "x": 0.99999994,
+        "y": 1.0,
+        "z": 0.99999994
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Coopered barrel",
+      "position": {
+        "x": 538.264648,
+        "y": 50.53566,
+        "z": 490.249634
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Coopered barrel",
+      "position": {
+        "x": 518.2608,
+        "y": 50.9909821,
+        "z": 510.795715
+      },
+      "scale": {
+        "x": 0.99999994,
+        "y": 1.0,
+        "z": 0.99999994
+      },
+      "height": 1.1,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Bakery market court/Hand coopered court barrel",
+      "position": {
+        "x": 530.3889,
+        "y": 50.4490471,
+        "z": 532.69574
+      },
+      "scale": {
+        "x": 0.719999969,
+        "y": 0.72,
+        "z": 0.719999969
+      },
+      "height": 0.770400047,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Herbs and traders court/Hand coopered court barrel",
+      "position": {
+        "x": 560.6308,
+        "y": 50.8956833,
+        "z": 510.848846
+      },
+      "scale": {
+        "x": 0.72,
+        "y": 0.72,
+        "z": 0.72
+      },
+      "height": 0.770400047,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Inn sheltered rear court/Hand coopered court barrel",
+      "position": {
+        "x": 521.6486,
+        "y": 50.1768875,
+        "z": 545.9743
+      },
+      "scale": {
+        "x": 0.8000001,
+        "y": 0.8,
+        "z": 0.8000001
+      },
+      "height": 0.856000066,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Coopers sheltered working court/Hand coopered court barrel",
+      "position": {
+        "x": 558.079163,
+        "y": 49.35262,
+        "z": 486.8984
+      },
+      "scale": {
+        "x": 0.900000036,
+        "y": 0.9,
+        "z": 0.900000036
+      },
+      "height": 0.963,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    },
+    {
+      "path": "Aubefont - mana well town/Town finish - market courts and worn paving/Purposeful market and sheltered courts/Coopers sheltered working court/Hand coopered court barrel",
+      "position": {
+        "x": 561.9001,
+        "y": 49.35262,
+        "z": 487.1994
+      },
+      "scale": {
+        "x": 0.680000067,
+        "y": 0.68,
+        "z": 0.680000067
+      },
+      "height": 0.727600038,
+      "colliderCount": 1,
+      "detailTriangles": 2240,
+      "distantTriangles": 984
+    }
+  ],
+  "scope": "Sixteen separately shaped curved staves, recessed plank lid, three bevelled iron bands and small rounded rivets. Shared painted timber UVs follow the wood grain. Existing roots, positions, scales and colliders preserved.",
+  "sceneSaved": false
+}

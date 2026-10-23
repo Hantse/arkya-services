@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "files": [
+    "D:/Repositories/arkya/docs/art-direction/unity-test/totems\\wolf-pearl-head-front.png",
+    "D:/Repositories/arkya/docs/art-direction/unity-test/totems\\wolf-pearl-head-profile.png",
+    "D:/Repositories/arkya/docs/art-direction/unity-test/totems\\wolf-pearl-head-three-quarter.png"
+  ],
+  "activeScenePreserved": true,
+  "framing": "Head-weighted fur vertices, perspective 30 degrees, fixed Idle 0.5 s, no ground or colliders.",
+  "headCenter": [
+    -0.0006723851,
+    0.6981308,
+    0.580157
+  ],
+  "headSize": [
+    0.2732035,
+    0.314255118,
+    0.355696321
+  ]
+}

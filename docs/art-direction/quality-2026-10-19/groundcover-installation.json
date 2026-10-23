@@ -1,0 +1,56 @@
+{
+  "success": true,
+  "seed": 191026,
+  "root": "Groundcover - painted forest floor",
+  "clumps": 460,
+  "herbs": 438,
+  "flowers": 18,
+  "bushes": 4,
+  "triangleCount": 413452,
+  "rendererCount": 80,
+  "materialCount": 4,
+  "cellCount": 56,
+  "cellSize": 24.0,
+  "peakNeighborhoodTriangles": 127684,
+  "neighborhoodRadius": 76.0,
+  "cullReferenceDistance": 50,
+  "cullReferenceFov": 60,
+  "cullReferenceLodBias": 2.0,
+  "cullThreshold": 0.8313844,
+  "rejected": 40,
+  "terrainLayers": [
+    "SageMeadowV4",
+    "DuneSandV4",
+    "PaintedRockV4",
+    "MeadowGlazeV4",
+    "EarthPathV4",
+    "WoodlandLoamV4",
+    "CoolMeadowV4",
+    "WeatheredEarthV4"
+  ],
+  "sourceTriangles": [
+    {
+      "Name": "Herbe",
+      "Triangles": 790,
+      "Components": 42,
+      "RetainedComponents": 21
+    },
+    {
+      "Name": "Fleur",
+      "Triangles": 2096,
+      "Components": 0,
+      "RetainedComponents": 0
+    },
+    {
+      "Name": "Buisson",
+      "Triangles": 7426,
+      "Components": 0,
+      "RetainedComponents": 0
+    }
+  ],
+  "sceneSaved": false,
+  "sourceAssetsChanged": false,
+  "extraColliders": 0,
+  "perFrameManagers": 0,
+  "note": "Editable 24m static mesh cells derived from approved LOD2 sources. Herb thinning keeps complete disconnected blades; UV1.x pins wind at each plant root. The neighborhood budget is a geometric upper bound at this cull setting, not a measured GPU frame. Root scene owner must register compatible wind renderers and save after review."
+}

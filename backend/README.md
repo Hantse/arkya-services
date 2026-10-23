@@ -1,8 +1,27 @@
 # Backend Arkya
 
+Le site et l’admin disposent de [sessions renouvelables](../docs/AUTH_SESSIONS.md),
+avec cookies HttpOnly, rotation et révocation. Admin nécessite désormais sa propre
+base de sessions `arkya_admin` ; provisionner sa connexion MongoDB avant déploiement.
+
+La [console d'administration](../docs/ADMIN_CONSOLE.md) regroupe le dashboard,
+les comptes et accès bêta, la modération, les personnages et les déploiements
+k3s. Le [profil facultatif admin-console](deploy/gitops/admin-console/README.md)
+raccorde les API privées sur la topologie bêta complète.
+
 Identity et Characters établissent le parcours compte/personnage en ASP.NET Core .NET 10. Content et l'administration web ajoutent l'édition de quêtes, leur publication versionnée et le chargement par le dedicated. Characters conserve la progression autoritaire. Voir [le guide des quêtes](../docs/QUEST_CONTENT.md), [l'architecture](../docs/ARCHITECTURE.md) et la [décision de découpage](../docs/decisions/0002-backend-services.md).
 
+Content possède aussi les [actualités et notes de version](../docs/PUBLICATIONS.md).
+L'Admin prépare, publie et dépublie les brouillons ; le launcher consulte un feed
+public anonyme. Les changements non publiés restent privés et les notes de version
+portent explicitement la version du jeu concernée.
+
 ## Services et propriété des données
+
+Les [signalements de bugs](../docs/BUG_REPORTS.md) ajoutent `Arkya.Reports.Api`
+(`arkya_reports`), le suivi dans Admin et un MCP administrateur protégé
+sur `/mcp/reports`. Le [profil Reports facultatif](deploy/gitops/reports/README.md)
+prépare l'intégration hébergée ; son activation nécessite les images et secrets.
 
 Le [backoffice de déploiement des realms sur k3s](deploy/realms/README.md) ajoute `Arkya.Realms.Api` et l'écran **Realms** d'`Arkya.Admin` : définitions dans `arkya_realms`, demandes durables et observation Kubernetes. Le module est activé explicitement dans Admin. Le backend de déploiement reste interne ; seul le backoffice peut être publié sur son domaine via la gateway. Voir [l'architecture réseau et le périmètre](../docs/REALM_DEPLOYMENT.md).
 
@@ -10,9 +29,10 @@ Après le frontend et Discord, le [profil Argo `admin`](deploy/gitops/admin/READ
 
 | Application | Adresse locale | Responsabilité | Base MongoDB |
 | --- | --- | --- | --- |
-| `Arkya.Gateway` | `https://localhost:7140` | YARP : entrée publique commune pour Identity et Characters | Aucune |
+| `Arkya.Gateway` | `https://localhost:7140` | YARP : routes publiques explicitement autorisées, dont Identity, Characters et publications Content | Aucune |
 | `Arkya.Identity.Api` | `https://localhost:7141` | Discord, comptes, sessions | `arkya_identity` |
 | `Arkya.Characters.Api` | `https://localhost:7142` | Personnages, admissions, baux et position serveur persistante | `arkya_characters` |
+| `Arkya.Content.Api` | `https://localhost:7143` | Quêtes et catalogues, brouillons d'actualités et notes de version, feed publié | `arkya_content` |
 | `Arkya.Realms.Api` | `https://localhost:7144` | Déploiement et catalogue interne des destinations approuvées | `arkya_realms` |
 | `Arkya.Backend.Api` | `http://localhost:5062` | Ancien bootstrap Unity : annuaire mock et connexion dev | Mémoire uniquement |
 
@@ -24,7 +44,7 @@ Pour le déploiement public sur **`api.arkya.online`**, utiliser le [guide Gatew
 
 Le workflow [GitHub Actions Identity](deploy/identity/GITHUB_ACTIONS.md) exécute les tests et publie l’image Linux AMD64/ARM64 dans GHCR. Il fournit le digest à utiliser pour le déploiement k3s.
 
-Le workflow [GitHub Actions Gateway](deploy/gateway/GITHUB_ACTIONS.md) publie son image séparément. La gateway transmet `/v1/auth/...` à Identity et, si `Gateway:CharactersEnabled=true`, `/v1/characters/...` à la destination Characters configurée. Les chemins et tokens restent identiques. Les routes internes, admin et de développement ne sont pas accessibles par la gateway. Characters utilise `ProxyTrust:KnownNetworks`/`KnownProxies` pour reconnaître la gateway ; Identity conserve les paramètres `ReverseProxy:KnownNetworks`/`KnownProxies`. Les deux services continuent à vérifier eux-mêmes les sessions et droits.
+Le workflow [GitHub Actions Gateway](deploy/gateway/GITHUB_ACTIONS.md) publie son image séparément. La gateway transmet `/v1/auth/...` à Identity et, si `Gateway:CharactersEnabled=true`, `/v1/characters/...` à la destination Characters configurée. `Gateway:ContentEnabled=true` ajoute uniquement `GET /v1/content/posts` et `GET /v1/content/posts/{id}`, avec leur préflight `OPTIONS`. Le profil GitOps Admin configure leur destination Content privée. Les chemins et tokens restent identiques. Les routes internes, de gestion Content/Realms et de développement ne sont pas accessibles sur le domaine API ; le backoffice reste sur son domaine distinct. Characters utilise `ProxyTrust:KnownNetworks`/`KnownProxies` pour reconnaître la gateway ; Identity conserve les paramètres `ReverseProxy:KnownNetworks`/`KnownProxies`. Les services continuent à vérifier eux-mêmes les sessions et droits.
 
 Pour tester la gateway localement, lancer Identity et Characters comme ci-dessous puis `dotnet run --project src/Arkya.Gateway` depuis `backend/`. Son profil local active Characters et utilise leurs destinations HTTPS 7141/7142. Pour tester aussi OAuth à travers la gateway, configurer **dans Identity** `Discord:PublicBaseUrl=https://localhost:7140` et `Discord:RedirectUri=https://localhost:7140/v1/auth/discord/callback`, puis enregistrer ce callback local dans Discord. Ces paramètres remplacent seulement l’origine publique du parcours ; la destination interne YARP reste 7141. La vitrine doit alors utiliser cette même origine de gateway et rester autorisée dans le CORS d’Identity.
 
@@ -110,7 +130,8 @@ La connexion du compte Arkya utilise OAuth2 Authorization Code avec le seul scop
 | `GET /v1/auth/discord/callback` | Retour navigateur `code` + `state`, ou erreur fournisseur | Redirection vers le `returnUrl` du challenge après validation de l’état et du cookie ; sinon réponse texte historique (`200` ou `400`) |
 | `POST /v1/auth/discord/exchange` | `{ "challengeId": "...", "codeVerifier": "..." }` | `202` en attente ; `200` : `accountId`, `displayName`, `sessionToken`, `expiresAt` |
 | `GET /v1/auth/me` | `Authorization: Bearer <sessionToken>` | `200` : `accountId`, `displayName`, `expiresAt` ; sinon `401` |
-| `POST /v1/auth/logout` | Même bearer | `204` : session révoquée ; sinon `401` |
+| `POST /v1/auth/refresh` | Cookie `arkya.refresh`, `Origin` autorisé et `X-Arkya-Refresh: 1` | `200` : nouvel accès, cookie remplacé ; `401` expiré/révoqué ; `403` origine/en-tête refusé |
+| `POST /v1/auth/logout` | Bearer natif, ou cookie + origine/en-tête refresh navigateur | `204` : session/famille révoquée et cookie supprimé ; sinon `401`/`403` |
 | `POST /internal/sessions/introspect` | Clé de service + `{ "sessionToken": "..." }` | `200` : même identité que `/me` ; `403` mauvaise clé ; `401` session invalide |
 | `POST /internal/sessions/introspect-reference` | Même clé + `{ "sessionReference": "<SHA256 hex64>" }` | Validation privée par empreinte : même identité/expiration, sans bearer ; `401` si expirée/révoquée |
 
@@ -164,7 +185,7 @@ La configuration `WebClient:AllowedOrigins` est une liste vide par défaut : auc
 
 Une variable de déploiement équivalente est `WebClient__AllowedOrigins__0=https://arkya-atlas.easykrill33.chatgpt.site`. Ajouter chaque futur domaine personnalisé comme origine exacte seulement lorsqu'il sert réellement la vitrine ; aucune configuration DNS n'est fournie par ce réglage. Les origines doivent utiliser HTTPS, sans slash final, chemin, paramètres, fragment, identifiants ni joker. En `Development` uniquement, `http://localhost:51806` et `http://127.0.0.1:51806` peuvent être ajoutés séparément pour l'aperçu local. Une origine invalide empêche le démarrage.
 
-La politique CORS s'applique uniquement à `POST /v1/auth/discord/challenges`, `POST /v1/auth/discord/exchange`, `GET /v1/auth/me` et `POST /v1/auth/logout`. Elle autorise GET/POST, les en-têtes `Content-Type` et `Authorization`, et expose `Retry-After`. Elle n'autorise pas les cookies interorigine (`Allow-Credentials` absent) et ne couvre ni les routes `/internal`, ni le Social SDK, ni les navigations OAuth. Le frontend doit envoyer ses requêtes avec `credentials: "omit"` et respecter le délai de polling ; le cookie de corrélation appartient à la navigation de premier niveau sur Identity.
+La politique CORS s'applique à `POST /v1/auth/discord/challenges`, `POST /v1/auth/discord/exchange`, `GET /v1/auth/me`, `POST /v1/auth/refresh` et `POST /v1/auth/logout`, pour les origines exactes configurées. Elle autorise GET/POST et les en-têtes `Content-Type`, `Authorization`, `X-Arkya-Refresh`, expose `Retry-After` et permet les credentials. Le frontend utilise `credentials: "include"` uniquement pour l'échange navigateur avec `useRefreshCookie: true`, le refresh et la déconnexion, avec `X-Arkya-Refresh: 1` ; les autres requêtes restent en `credentials: "omit"`. Ces opérations sur le cookie exigent également une origine autorisée côté serveur. Le refresh reste dans un cookie HttpOnly, jamais dans le JSON ou le stockage JavaScript. Cette politique ne couvre ni `/internal`, ni le Social SDK, ni les navigations OAuth ; le cookie de corrélation appartient à la navigation de premier niveau sur Identity. Voir le [contrat des sessions renouvelables](../docs/AUTH_SESSIONS.md).
 
 **Prérequis de connexion publique :** Identity doit être déployé sur une origine HTTPS joignable par les visiteurs, avec MongoDB, ses secrets et ses noms `AllowedHosts`. Fournir cette origine au frontend, configurer `Discord:PublicBaseUrl` et `Discord:RedirectUri`, puis enregistrer exactement le callback HTTPS `/v1/auth/discord/callback` dans l'application Discord. Le domaine du site vitrine ne déploie pas ce backend. La configuration locale `localhost:7141` ne permet pas de connecter les visiteurs du site public. Un reverse proxy doit transmettre correctement le schéma HTTPS via une configuration de proxies explicitement approuvés ; ne pas faire confiance sans restriction aux en-têtes transférés.
 
@@ -198,6 +219,7 @@ Les routes de personnages exigent un bearer Arkya valide. Seul le catalogue d'ap
 | --- | --- | --- |
 | `GET /v1/characters/appearance-options` | Aucune authentification | `200` : version, valeurs par défaut, races, silhouettes, coiffures et palettes autorisées |
 | `GET /v1/characters` | Bearer | `200` : tableau des personnages du compte |
+| `GET /v1/characters/entry-context` | Bearer | `200` : présence de personnages et dernier realm admis par un dedicated ; [contrat](../docs/CHARACTER_ENTRY.md) |
 | `POST /v1/characters` | Bearer + `name` et `appearance` (exemple ci-dessous) | `201` : personnage ; `400` nom ou apparence invalide ; `409` nom déjà pris |
 | `GET /v1/characters/{id}` | Bearer | `200` : personnage ; `404` absent ou autre propriétaire |
 | `POST /internal/characters/{id}/resolve` | Clé de service + `{ "sessionToken": "..." }` | `200` : `accountId`, `character`, `sessionExpiresAt` ; `403` mauvaise clé ; `401` session invalide ; `404` personnage non accessible |
@@ -250,6 +272,8 @@ Le [contrat HTTP exact](../docs/WEB_BETA_CONTRACT.md) définit le catalogue auth
 La création accepte un `realmId` facultatif. S'il est absent, la première admission lie atomiquement le personnage au realm choisi ; cette liaison reste ensuite immuable. Le catalogue vient du vrai service Realms et refuse une destination non compatible ou sans identité dedicated configurée. `GameAccess:StandaloneEntries` dans Realms permet un serveur réel lancé hors Kubernetes ; une entrée doit être activée explicitement par l'opérateur. Les profils Kubernetes conservent UDP par défaut et acceptent un profil `WebSocket` distinct avec une URL WSS approuvée.
 
 Characters conserve seulement l'empreinte SHA-256 d'un ticket aléatoire de 256 bits, valable 60 secondes au maximum. La consommation atomique crée un bail exclusif de 90 secondes, borné par l'expiration de session, renouvelé par le serveur. `X-Arkya-Dedicated-Key` est lié dans Characters à un couple realm/serveur précis. L'époque d'autorité et la révision protègent la sauvegarde de position contre un ancien serveur ou une écriture concurrente. Seul le dedicated fournit position et direction ; le client ne peut pas appeler ces écritures. La collection `game_leases` conserve aussi la dernière position durable et n'a donc pas de TTL destructif.
+
+Le [contexte d'entrée](../docs/CHARACTER_ENTRY.md) conserve également la dernière admission réussie du compte. Le dedicated enregistre `LastConnectedAt` dans la même écriture atomique que la consommation du ticket ; demander un ticket ou choisir un royaume ne modifie pas cet historique. Le client natif peut ainsi retrouver le dernier royaume après connexion, tout en proposant la sélection de royaume si le compte n'a pas de personnage, aucun historique ou une destination devenue indisponible.
 
 Configurer dans Characters `Realms:BaseUrl`, `Realms:ServiceKey`, `GameAccess:DedicatedServers` et la liste exacte `WebClient:AllowedOrigins`, en complément d'Identity/Mongo. Les origines autorisées doivent inclure celle de la page qui héberge réellement Unity, qui peut différer de la vitrine. Le bearer Arkya reste en mémoire. Les clés dedicated et interservices restent dans les secrets serveur. Voir [la préparation WSS et des services](deploy/web-beta/README.md) pour les valeurs et les frontières réseau.
 
@@ -309,3 +333,9 @@ Les tests automatisés n'autorisent pas une vraie application Discord. Une valid
 Avant ouverture publique, provisionner et valider les destinations WSS, les identités et la rotation des clés de service, les politiques de compte et une confirmation utilisateur du challenge dans le navigateur pour limiter l'approbation d'un lien de connexion transmis par un tiers. Le cookie de corrélation lie le callback à un navigateur ; il ne prouve pas à lui seul que ce navigateur appartient à l'initiateur natif du challenge.
 
 Le transport courant est HTTP JSON. Le passage à gRPC unary pour les appels internes dépendra de mesures sur le build Unity dédié ; le streaming attend un besoin d'événements concret. Les écritures de persistance ne doivent pas suivre chaque tick Netcode.
+
+## Agents Windows et workers LFM
+
+`Arkya.Inference.Api` ajoute un registre MongoDB de machines d'inférence. La page **Agents LFM** d'Admin fournit une clé d'installation temporaire : le script Windows enregistre automatiquement la machine et protège son jeton permanent localement. L'opérateur peut ajouter, supprimer ou modifier les workers, choisir LFM ou Qwen et régler leurs threads. L'agent reçoit les commandes par heartbeat sortant et remplace uniquement le worker modifié après son dialogue en cours. Le package comprend la démo PNJ locale et les scripts d'installation/démarrage automatique.
+
+Les instructions, la configuration du service et la vérification se trouvent dans [INFERENCE_AGENTS.md](../docs/INFERENCE_AGENTS.md). Sources du package : [`tools/inference-agent/`](tools/inference-agent/README.md). Le profil GitOps [`deploy/gitops/inference/`](deploy/gitops/inference/README.md) reste optionnel et exige des images publiées et des secrets provisionnés avant activation.

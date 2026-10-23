@@ -1,0 +1,101 @@
+{
+  "success": true,
+  "stage": "after",
+  "utc": "2026-10-20T11:57:50.2034317Z",
+  "playMode": false,
+  "captures": [
+    {
+      "file": "46-outside-day.png",
+      "phase": 0.32,
+      "position": {
+        "x": 582.121948,
+        "y": 53.6720123,
+        "z": 472.276825
+      },
+      "target": {
+        "x": 580.129333,
+        "y": 52.8720131,
+        "z": 479.289124
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "ivy-094-close-day.png",
+      "phase": 0.32,
+      "position": {
+        "x": 502.583923,
+        "y": 52.37411,
+        "z": 553.623535
+      },
+      "target": {
+        "x": 505.4307,
+        "y": 52.22411,
+        "z": 548.628967
+      },
+      "fieldOfView": 55.0
+    },
+    {
+      "file": "ivy-059-close-day.png",
+      "phase": 0.32,
+      "position": {
+        "x": 540.2858,
+        "y": 53.0166626,
+        "z": 466.6152
+      },
+      "target": {
+        "x": 541.555969,
+        "y": 52.86666,
+        "z": 472.222046
+      },
+      "fieldOfView": 55.0
+    },
+    {
+      "file": "stair-west-side-day.png",
+      "phase": 0.32,
+      "position": {
+        "x": 517.702637,
+        "y": 58.3520126,
+        "z": 520.088745
+      },
+      "target": {
+        "x": 503.562653,
+        "y": 54.40201,
+        "z": 525.9151
+      },
+      "fieldOfView": 60.0
+    },
+    {
+      "file": "stair-east-side-day.png",
+      "phase": 0.32,
+      "position": {
+        "x": 576.3567,
+        "y": 57.8258476,
+        "z": 508.44812
+      },
+      "target": {
+        "x": 591.4146,
+        "y": 53.8758469,
+        "z": 508.332123
+      },
+      "fieldOfView": 60.0
+    },
+    {
+      "file": "stair-east-upper-connection-day.png",
+      "phase": 0.32,
+      "position": {
+        "x": 588.9085,
+        "y": 59.60533,
+        "z": 512.739746
+      },
+      "target": {
+        "x": 595.032959,
+        "y": 56.2553329,
+        "z": 514.417236
+      },
+      "fieldOfView": 59.0
+    }
+  ],
+  "stateRestored": true,
+  "sceneDirtyFlagUnchanged": true,
+  "scope": "Six matched stone, spreading ivy and stair-access views at phase .32. Presentation restored; no scene save or asset edits."
+}

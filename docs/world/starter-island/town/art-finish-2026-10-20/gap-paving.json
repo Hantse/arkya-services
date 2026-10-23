@@ -1,0 +1,2622 @@
+{
+  "success": true,
+  "readOnly": false,
+  "candidates": 358,
+  "existingStonesChecked": 2892,
+  "addedStones": 315,
+  "addedMoss": 38,
+  "stoneTriangles": 7560,
+  "mossTriangles": 342,
+  "addedTriangles": 7902,
+  "renderers": 4,
+  "RejectedOverlap": 43,
+  "RejectedObstacle": 0,
+  "RejectedHall": 0,
+  "BudgetOmitted": 0,
+  "routes": [
+    {
+      "name": "Crooked market loop",
+      "stones": 108
+    },
+    {
+      "name": "West rampart stair access",
+      "stones": 21
+    },
+    {
+      "name": "Arrival main street",
+      "stones": 50
+    },
+    {
+      "name": "Forest main street",
+      "stones": 53
+    },
+    {
+      "name": "Door approach 08 - Maison des tisserands",
+      "stones": 4
+    },
+    {
+      "name": "Door approach 10 - Relais de la crique",
+      "stones": 7
+    },
+    {
+      "name": "Door approach 01 - Auberge des Lanternes",
+      "stones": 12
+    },
+    {
+      "name": "Door approach 05 - Herboristerie",
+      "stones": 5
+    },
+    {
+      "name": "Door approach 03 - Atelier des runes",
+      "stones": 9
+    },
+    {
+      "name": "East rampart stair access",
+      "stones": 9
+    },
+    {
+      "name": "Door approach 06 - Forge du Refuge",
+      "stones": 10
+    },
+    {
+      "name": "Door approach 04 - Maison des voyageurs",
+      "stones": 7
+    },
+    {
+      "name": "Door approach 09 - Maison du verger",
+      "stones": 12
+    },
+    {
+      "name": "Door approach 07 - Entrepot des marchands",
+      "stones": 8
+    }
+  ],
+  "accepted": [
+    {
+      "route": "Crooked market loop",
+      "Seed": 73759,
+      "centre": [
+        570.273438,
+        513.336365
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94524,
+      "centre": [
+        523.0895,
+        524.5683
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74038,
+      "centre": [
+        567.4154,
+        507.987427
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 900,
+      "centre": [
+        519.3692,
+        487.264679
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71620,
+      "centre": [
+        541.765,
+        533.5124
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25479,
+      "centre": [
+        579.4124,
+        560.1283
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94584,
+      "centre": [
+        521.4257,
+        524.275757
+      ]
+    },
+    {
+      "route": "Door approach 08 - Maison des tisserands",
+      "Seed": 305476,
+      "centre": [
+        551.1669,
+        501.609283
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72306,
+      "centre": [
+        555.671265,
+        534.3144
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94648,
+      "centre": [
+        521.130249,
+        525.935
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73763,
+      "centre": [
+        568.3166,
+        513.875244
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25568,
+      "centre": [
+        577.7207,
+        562.4922
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73019,
+      "centre": [
+        566.563965,
+        527.717651
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72891,
+      "centre": [
+        566.8325,
+        530.9506
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71066,
+      "centre": [
+        535.6709,
+        524.146362
+      ]
+    },
+    {
+      "route": "Door approach 10 - Relais de la crique",
+      "Seed": 352582,
+      "centre": [
+        529.743835,
+        517.612854
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94677,
+      "centre": [
+        519.8941,
+        525.4696
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74596,
+      "centre": [
+        556.523132,
+        503.391327
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75158,
+      "centre": [
+        545.372864,
+        505.167816
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141009,
+      "centre": [
+        537.7983,
+        532.0687
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73201,
+      "centre": [
+        569.9079,
+        525.0625
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23740,
+      "centre": [
+        557.164551,
+        533.527161
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24239,
+      "centre": [
+        565.0843,
+        539.63446
+      ]
+    },
+    {
+      "route": "Door approach 05 - Herboristerie",
+      "Seed": 235377,
+      "centre": [
+        577.644531,
+        529.1654
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23554,
+      "centre": [
+        554.702332,
+        530.6748
+      ]
+    },
+    {
+      "route": "Door approach 03 - Atelier des runes",
+      "Seed": 188145,
+      "centre": [
+        557.388,
+        539.9582
+      ]
+    },
+    {
+      "route": "Door approach 03 - Atelier des runes",
+      "Seed": 188271,
+      "centre": [
+        558.5829,
+        542.3763
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2202,
+      "centre": [
+        531.085,
+        507.9636
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94864,
+      "centre": [
+        517.4902,
+        528.740356
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75467,
+      "centre": [
+        540.3552,
+        508.2094
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 872,
+      "centre": [
+        521.0878,
+        486.7248
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1674,
+      "centre": [
+        522.952148,
+        501.426758
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23990,
+      "centre": [
+        561.3509,
+        536.5552
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24204,
+      "centre": [
+        563.113647,
+        540.711853
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2294,
+      "centre": [
+        531.9369,
+        509.6334
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94553,
+      "centre": [
+        521.9604,
+        523.892334
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94832,
+      "centre": [
+        517.6383,
+        527.748352
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74134,
+      "centre": [
+        564.802734,
+        507.694977
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25258,
+      "centre": [
+        576.373047,
+        556.3036
+      ]
+    },
+    {
+      "route": "East rampart stair access",
+      "Seed": 117641,
+      "centre": [
+        573.270447,
+        520.476563
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24332,
+      "centre": [
+        566.431946,
+        540.9584
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74008,
+      "centre": [
+        567.319336,
+        508.67334
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74876,
+      "centre": [
+        550.567139,
+        503.212128
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1116,
+      "centre": [
+        518.082153,
+        491.359344
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258589,
+      "centre": [
+        569.0222,
+        505.296234
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74941,
+      "centre": [
+        549.4832,
+        504.7364
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25290,
+      "centre": [
+        577.073,
+        556.9056
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 871,
+      "centre": [
+        520.5472,
+        486.842926
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2329,
+      "centre": [
+        533.86676,
+        508.4341
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23523,
+      "centre": [
+        554.248352,
+        530.1588
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25355,
+      "centre": [
+        578.869751,
+        557.631836
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23956,
+      "centre": [
+        559.5541,
+        537.053955
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94338,
+      "centre": [
+        526.551636,
+        523.372742
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74259,
+      "centre": [
+        562.6222,
+        507.131439
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 436,
+      "centre": [
+        517.4478,
+        478.772583
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 837,
+      "centre": [
+        519.0878,
+        485.7518
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2418,
+      "centre": [
+        533.9532,
+        511.355957
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25661,
+      "centre": [
+        579.0449,
+        564.8314
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94646,
+      "centre": [
+        520.404236,
+        525.0305
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94429,
+      "centre": [
+        524.3891,
+        522.8254
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75561,
+      "centre": [
+        539.8964,
+        509.8423
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2112,
+      "centre": [
+        530.8549,
+        505.3706
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24921,
+      "centre": [
+        575.2418,
+        549.138855
+      ]
+    },
+    {
+      "route": "Door approach 04 - Maison des voyageurs",
+      "Seed": 211731,
+      "centre": [
+        569.928345,
+        551.4486
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74257,
+      "centre": [
+        563.0066,
+        506.2187
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71124,
+      "centre": [
+        534.2585,
+        526.013062
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71031,
+      "centre": [
+        533.596252,
+        524.1609
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73856,
+      "centre": [
+        567.7316,
+        512.217
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73980,
+      "centre": [
+        566.636536,
+        510.176453
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23836,
+      "centre": [
+        559.5336,
+        533.7442
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72151,
+      "centre": [
+        552.63385,
+        534.0757
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24704,
+      "centre": [
+        571.8489,
+        546.1082
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 527,
+      "centre": [
+        517.423767,
+        480.956757
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23708,
+      "centre": [
+        556.2365,
+        533.2727
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94307,
+      "centre": [
+        527.177551,
+        523.2013
+      ]
+    },
+    {
+      "route": "East rampart stair access",
+      "Seed": 117858,
+      "centre": [
+        577.9982,
+        520.020447
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24640,
+      "centre": [
+        570.195068,
+        546.127258
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24084,
+      "centre": [
+        562.912842,
+        537.413269
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23553,
+      "centre": [
+        554.165649,
+        530.825562
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74135,
+      "centre": [
+        564.6325,
+        508.257263
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72302,
+      "centre": [
+        555.6453,
+        536.31
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94803,
+      "centre": [
+        518.902344,
+        528.074646
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2263,
+      "centre": [
+        531.4425,
+        509.1576
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23991,
+      "centre": [
+        561.5932,
+        536.039551
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72120,
+      "centre": [
+        552.0163,
+        533.958557
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73604,
+      "centre": [
+        570.9165,
+        516.5982
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 496,
+      "centre": [
+        517.1408,
+        480.3695
+      ]
+    },
+    {
+      "route": "East rampart stair access",
+      "Seed": 117951,
+      "centre": [
+        579.3372,
+        518.6003
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24297,
+      "centre": [
+        564.4514,
+        542.025635
+      ]
+    },
+    {
+      "route": "East rampart stair access",
+      "Seed": 117953,
+      "centre": [
+        578.4908,
+        517.8427
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2357,
+      "centre": [
+        533.4204,
+        510.212433
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329308,
+      "centre": [
+        536.5396,
+        498.459076
+      ]
+    },
+    {
+      "route": "Door approach 07 - Entrepot des marchands",
+      "Seed": 282172,
+      "centre": [
+        561.2778,
+        499.222382
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1336,
+      "centre": [
+        519.3361,
+        496.018768
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1647,
+      "centre": [
+        523.2367,
+        499.2021
+      ]
+    },
+    {
+      "route": "Door approach 03 - Atelier des runes",
+      "Seed": 188333,
+      "centre": [
+        558.767761,
+        543.554565
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 589,
+      "centre": [
+        518.1495,
+        482.123322
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94369,
+      "centre": [
+        525.9802,
+        523.5312
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258744,
+      "centre": [
+        571.264038,
+        503.038177
+      ]
+    },
+    {
+      "route": "Door approach 03 - Atelier des runes",
+      "Seed": 188176,
+      "centre": [
+        557.447937,
+        540.5943
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71376,
+      "centre": [
+        538.575745,
+        529.193
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74910,
+      "centre": [
+        550.0822,
+        504.72287
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 328969,
+      "centre": [
+        540.250732,
+        504.3357
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24857,
+      "centre": [
+        573.5596,
+        548.989136
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329060,
+      "centre": [
+        539.6895,
+        502.2979
+      ]
+    },
+    {
+      "route": "Door approach 08 - Maison des tisserands",
+      "Seed": 305693,
+      "centre": [
+        551.5096,
+        497.239777
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74445,
+      "centre": [
+        559.15564,
+        505.999573
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73298,
+      "centre": [
+        568.449,
+        522.7571
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74879,
+      "centre": [
+        550.669,
+        504.75
+      ]
+    },
+    {
+      "route": "Door approach 10 - Relais de la crique",
+      "Seed": 352551,
+      "centre": [
+        530.3526,
+        517.7742
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71405,
+      "centre": [
+        538.330933,
+        530.3164
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25603,
+      "centre": [
+        580.0039,
+        562.3779
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71993,
+      "centre": [
+        549.4767,
+        535.042236
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73761,
+      "centre": [
+        569.289063,
+        513.630554
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 70597,
+      "centre": [
+        534.7622,
+        514.9326
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 465,
+      "centre": [
+        516.8175,
+        479.7942
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71093,
+      "centre": [
+        534.045959,
+        525.4537
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24299,
+      "centre": [
+        565.219238,
+        541.3115
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1027,
+      "centre": [
+        520.5052,
+        489.805756
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73700,
+      "centre": [
+        569.0918,
+        514.7816
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141475,
+      "centre": [
+        532.0917,
+        539.4936
+      ]
+    },
+    {
+      "route": "Door approach 03 - Atelier des runes",
+      "Seed": 188207,
+      "centre": [
+        557.5169,
+        541.2252
+      ]
+    },
+    {
+      "route": "Door approach 07 - Entrepot des marchands",
+      "Seed": 282173,
+      "centre": [
+        560.7858,
+        499.255157
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75034,
+      "centre": [
+        547.691467,
+        504.769073
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258806,
+      "centre": [
+        572.16095,
+        502.1661
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 744,
+      "centre": [
+        519.2405,
+        484.001617
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1178,
+      "centre": [
+        517.9044,
+        492.6032
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24483,
+      "centre": [
+        567.1883,
+        544.690857
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74166,
+      "centre": [
+        564.180969,
+        507.969238
+      ]
+    },
+    {
+      "route": "Door approach 07 - Entrepot des marchands",
+      "Seed": 281954,
+      "centre": [
+        560.5494,
+        503.7745
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73387,
+      "centre": [
+        570.8203,
+        521.23175
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 70539,
+      "centre": [
+        537.0956,
+        514.8154
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25045,
+      "centre": [
+        576.875,
+        551.3179
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24486,
+      "centre": [
+        568.4314,
+        543.6683
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24177,
+      "centre": [
+        564.1833,
+        538.72876
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1306,
+      "centre": [
+        519.8507,
+        495.276581
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74566,
+      "centre": [
+        556.8797,
+        503.95575
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23557,
+      "centre": [
+        555.7855,
+        529.4487
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74007,
+      "centre": [
+        567.847534,
+        508.545
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141165,
+      "centre": [
+        536.2897,
+        534.6874
+      ]
+    },
+    {
+      "route": "Door approach 07 - Entrepot des marchands",
+      "Seed": 282079,
+      "centre": [
+        560.8343,
+        501.043243
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2298,
+      "centre": [
+        533.400269,
+        508.041229
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1058,
+      "centre": [
+        520.3991,
+        490.43338
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71219,
+      "centre": [
+        536.0296,
+        527.3453
+      ]
+    },
+    {
+      "route": "Door approach 10 - Relais de la crique",
+      "Seed": 352584,
+      "centre": [
+        529.509949,
+        518.5097
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73608,
+      "centre": [
+        568.900757,
+        516.818054
+      ]
+    },
+    {
+      "route": "East rampart stair access",
+      "Seed": 117860,
+      "centre": [
+        577.2029,
+        519.2015
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 70537,
+      "centre": [
+        536.222046,
+        514.3408
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 70787,
+      "centre": [
+        535.1472,
+        519.14856
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74255,
+      "centre": [
+        563.411438,
+        505.2847
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 328967,
+      "centre": [
+        540.9138,
+        503.7582
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24143,
+      "centre": [
+        562.7257,
+        539.578
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 965,
+      "centre": [
+        520.716858,
+        488.60614
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329093,
+      "centre": [
+        538.6368,
+        502.428284
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73046,
+      "centre": [
+        568.6479,
+        528.1151
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94368,
+      "centre": [
+        525.588867,
+        523.0392
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1457,
+      "centre": [
+        518.855164,
+        498.9088
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73356,
+      "centre": [
+        570.6901,
+        521.906
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25694,
+      "centre": [
+        580.0797,
+        564.21
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73728,
+      "centre": [
+        570.4487,
+        513.9712
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2542,
+      "centre": [
+        536.2018,
+        512.7456
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72988,
+      "centre": [
+        566.263245,
+        528.253357
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94802,
+      "centre": [
+        518.3475,
+        527.8283
+      ]
+    },
+    {
+      "route": "Door approach 05 - Herboristerie",
+      "Seed": 235375,
+      "centre": [
+        577.385254,
+        530.020447
+      ]
+    },
+    {
+      "route": "Door approach 04 - Maison des voyageurs",
+      "Seed": 211574,
+      "centre": [
+        568.799,
+        548.4129
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71283,
+      "centre": [
+        537.5419,
+        527.820068
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 190,
+      "centre": [
+        515.9452,
+        473.8261
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23681,
+      "centre": [
+        557.442261,
+        531.362061
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74351,
+      "centre": [
+        560.946167,
+        505.983063
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24638,
+      "centre": [
+        569.490662,
+        546.9466
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73232,
+      "centre": [
+        570.062256,
+        524.483154
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74290,
+      "centre": [
+        562.0815,
+        506.900848
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 248,
+      "centre": [
+        514.6643,
+        475.9529
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25788,
+      "centre": [
+        581.816,
+        565.52
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94400,
+      "centre": [
+        525.3294,
+        523.701965
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1054,
+      "centre": [
+        518.3,
+        490.0737
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71592,
+      "centre": [
+        541.912964,
+        531.9022
+      ]
+    },
+    {
+      "route": "Door approach 05 - Herboristerie",
+      "Seed": 235036,
+      "centre": [
+        571.1835,
+        526.7997
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 717,
+      "centre": [
+        521.3718,
+        483.3424
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71527,
+      "centre": [
+        539.962341,
+        532.6613
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72026,
+      "centre": [
+        550.297668,
+        534.1637
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 467,
+      "centre": [
+        517.7618,
+        479.2778
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75030,
+      "centre": [
+        547.5118,
+        502.766571
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2143,
+      "centre": [
+        531.2805,
+        505.8232
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75526,
+      "centre": [
+        538.537964,
+        508.2401
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 70476,
+      "centre": [
+        537.2429,
+        513.621033
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24797,
+      "centre": [
+        573.298462,
+        547.336243
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71558,
+      "centre": [
+        540.556,
+        532.929565
+      ]
+    },
+    {
+      "route": "East rampart stair access",
+      "Seed": 117611,
+      "centre": [
+        573.1259,
+        519.7632
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258618,
+      "centre": [
+        570.0877,
+        505.4731
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 434,
+      "centre": [
+        516.5233,
+        479.282959
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1895,
+      "centre": [
+        527.752136,
+        502.16333
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71186,
+      "centre": [
+        534.8718,
+        527.2309
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25785,
+      "centre": [
+        580.404663,
+        566.338135
+      ]
+    },
+    {
+      "route": "Door approach 10 - Relais de la crique",
+      "Seed": 352458,
+      "centre": [
+        532.148743,
+        518.242432
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24762,
+      "centre": [
+        571.430847,
+        548.555359
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 70848,
+      "centre": [
+        534.484436,
+        520.34436
+      ]
+    },
+    {
+      "route": "Door approach 05 - Herboristerie",
+      "Seed": 235253,
+      "centre": [
+        575.3051,
+        528.305359
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71035,
+      "centre": [
+        535.494263,
+        523.5521
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141194,
+      "centre": [
+        535.2175,
+        534.6519
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141318,
+      "centre": [
+        533.6489,
+        536.615356
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1864,
+      "centre": [
+        527.311157,
+        501.712982
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1550,
+      "centre": [
+        520.565,
+        500.3558
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1395,
+      "centre": [
+        518.0514,
+        497.515045
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94679,
+      "centre": [
+        520.672668,
+        526.3295
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73174,
+      "centre": [
+        567.7964,
+        525.049561
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141289,
+      "centre": [
+        534.7456,
+        536.631042
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329217,
+      "centre": [
+        536.972,
+        500.524872
+      ]
+    },
+    {
+      "route": "Door approach 04 - Maison des voyageurs",
+      "Seed": 211698,
+      "centre": [
+        568.9708,
+        550.9416
+      ]
+    },
+    {
+      "route": "Door approach 04 - Maison des voyageurs",
+      "Seed": 211576,
+      "centre": [
+        569.692,
+        548.3849
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71775,
+      "centre": [
+        544.8744,
+        534.508545
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94617,
+      "centre": [
+        521.6095,
+        525.5837
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24859,
+      "centre": [
+        574.2498,
+        548.177856
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74348,
+      "centre": [
+        561.5823,
+        504.588654
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75185,
+      "centre": [
+        544.1751,
+        503.401184
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74321,
+      "centre": [
+        561.519043,
+        506.6904
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24080,
+      "centre": [
+        561.313354,
+        538.8982
+      ]
+    },
+    {
+      "route": "Door approach 10 - Relais de la crique",
+      "Seed": 352429,
+      "centre": [
+        532.5681,
+        519.277161
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24545,
+      "centre": [
+        568.0578,
+        545.574
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25293,
+      "centre": [
+        578.616638,
+        556.416748
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141256,
+      "centre": [
+        534.408936,
+        535.613037
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71065,
+      "centre": [
+        535.2651,
+        524.444458
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24980,
+      "centre": [
+        574.89624,
+        551.316345
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24144,
+      "centre": [
+        562.9843,
+        539.062744
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2514,
+      "centre": [
+        536.628235,
+        511.1014
+      ]
+    },
+    {
+      "route": "Door approach 08 - Maison des tisserands",
+      "Seed": 305507,
+      "centre": [
+        551.219238,
+        501.005371
+      ]
+    },
+    {
+      "route": "Door approach 04 - Maison des voyageurs",
+      "Seed": 211823,
+      "centre": [
+        570.0769,
+        553.5042
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23894,
+      "centre": [
+        558.737061,
+        536.122131
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329153,
+      "centre": [
+        538.469543,
+        500.83313
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72678,
+      "centre": [
+        562.2563,
+        532.438965
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75123,
+      "centre": [
+        545.515442,
+        503.0657
+      ]
+    },
+    {
+      "route": "Door approach 07 - Entrepot des marchands",
+      "Seed": 282297,
+      "centre": [
+        561.3276,
+        496.763672
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74349,
+      "centre": [
+        561.260437,
+        505.046021
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258897,
+      "centre": [
+        574.16626,
+        501.607666
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73852,
+      "centre": [
+        569.5893,
+        511.4235
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71962,
+      "centre": [
+        548.8655,
+        534.944458
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25321,
+      "centre": [
+        577.244141,
+        557.529541
+      ]
+    },
+    {
+      "route": "Door approach 07 - Entrepot des marchands",
+      "Seed": 282295,
+      "centre": [
+        562.2082,
+        497.03363
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 70690,
+      "centre": [
+        533.8576,
+        516.704651
+      ]
+    },
+    {
+      "route": "Door approach 03 - Atelier des runes",
+      "Seed": 188364,
+      "centre": [
+        558.8772,
+        544.2057
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72767,
+      "centre": [
+        564.9458,
+        532.866943
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75279,
+      "centre": [
+        542.337646,
+        504.798126
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74972,
+      "centre": [
+        548.905762,
+        504.7039
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 344,
+      "centre": [
+        517.0865,
+        476.967316
+      ]
+    },
+    {
+      "route": "Door approach 05 - Herboristerie",
+      "Seed": 235003,
+      "centre": [
+        570.232239,
+        527.438843
+      ]
+    },
+    {
+      "route": "East rampart stair access",
+      "Seed": 117579,
+      "centre": [
+        572.1252,
+        519.9149
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258682,
+      "centre": [
+        570.364746,
+        503.991882
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258587,
+      "centre": [
+        569.630066,
+        505.904236
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25041,
+      "centre": [
+        574.979065,
+        552.4597
+      ]
+    },
+    {
+      "route": "Door approach 03 - Atelier des runes",
+      "Seed": 188052,
+      "centre": [
+        557.1932,
+        538.0935
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75592,
+      "centre": [
+        539.5724,
+        510.338257
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329341,
+      "centre": [
+        535.4584,
+        498.355133
+      ]
+    },
+    {
+      "route": "Door approach 07 - Entrepot des marchands",
+      "Seed": 282078,
+      "centre": [
+        561.1805,
+        501.283478
+      ]
+    },
+    {
+      "route": "Door approach 03 - Atelier des runes",
+      "Seed": 188116,
+      "centre": [
+        558.2222,
+        539.2255
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75623,
+      "centre": [
+        539.2822,
+        510.86203
+      ]
+    },
+    {
+      "route": "Door approach 04 - Maison des voyageurs",
+      "Seed": 211760,
+      "centre": [
+        569.1728,
+        552.2615
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 70752,
+      "centre": [
+        533.4129,
+        518.004
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141101,
+      "centre": [
+        536.3824,
+        533.1634
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94770,
+      "centre": [
+        518.5078,
+        526.81134
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73327,
+      "centre": [
+        569.595,
+        522.3597
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73515,
+      "centre": [
+        568.9935,
+        518.65094
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1429,
+      "centre": [
+        519.861267,
+        497.569641
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75313,
+      "centre": [
+        542.8369,
+        506.310272
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72585,
+      "centre": [
+        560.737244,
+        533.30896
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 70659,
+      "centre": [
+        534.159241,
+        516.101
+      ]
+    },
+    {
+      "route": "East rampart stair access",
+      "Seed": 117765,
+      "centre": [
+        576.136536,
+        521.0691
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329310,
+      "centre": [
+        535.8024,
+        498.958954
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2139,
+      "centre": [
+        529.6946,
+        507.335327
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258804,
+      "centre": [
+        572.764343,
+        502.778381
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1922,
+      "centre": [
+        526.680542,
+        504.1084
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329370,
+      "centre": [
+        535.9532,
+        497.421265
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141413,
+      "centre": [
+        533.1135,
+        538.6731
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329031,
+      "centre": [
+        539.4113,
+        503.3445
+      ]
+    },
+    {
+      "route": "East rampart stair access",
+      "Seed": 118139,
+      "centre": [
+        581.3294,
+        515.0924
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72736,
+      "centre": [
+        564.4491,
+        533.3531
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 2422,
+      "centre": [
+        535.2119,
+        509.558563
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1333,
+      "centre": [
+        517.7026,
+        495.957031
+      ]
+    },
+    {
+      "route": "Door approach 08 - Maison des tisserands",
+      "Seed": 305445,
+      "centre": [
+        551.1217,
+        502.220154
+      ]
+    },
+    {
+      "route": "Door approach 04 - Maison des voyageurs",
+      "Seed": 211761,
+      "centre": [
+        569.6437,
+        552.306335
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71531,
+      "centre": [
+        540.8827,
+        530.8837
+      ]
+    },
+    {
+      "route": "Door approach 07 - Entrepot des marchands",
+      "Seed": 282359,
+      "centre": [
+        561.832,
+        495.526276
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25324,
+      "centre": [
+        578.741638,
+        557.038635
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71282,
+      "centre": [
+        537.2283,
+        528.2602
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258868,
+      "centre": [
+        573.1303,
+        501.258636
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141039,
+      "centre": [
+        537.1536,
+        532.159058
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75278,
+      "centre": [
+        542.2392,
+        504.268036
+      ]
+    },
+    {
+      "route": "Door approach 10 - Relais de la crique",
+      "Seed": 352893,
+      "centre": [
+        523.257751,
+        516.702332
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75344,
+      "centre": [
+        542.398132,
+        506.664154
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94926,
+      "centre": [
+        516.5101,
+        529.5338
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1988,
+      "centre": [
+        529.09906,
+        503.56366
+      ]
+    },
+    {
+      "route": "Door approach 09 - Maison du verger",
+      "Seed": 329123,
+      "centre": [
+        538.40155,
+        501.492065
+      ]
+    },
+    {
+      "route": "Door approach 03 - Atelier des runes",
+      "Seed": 188362,
+      "centre": [
+        557.9903,
+        544.3836
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23584,
+      "centre": [
+        554.6186,
+        531.3349
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141320,
+      "centre": [
+        534.3868,
+        537.2019
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 72833,
+      "centre": [
+        564.46106,
+        530.599731
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71403,
+      "centre": [
+        537.6478,
+        531.054932
+      ]
+    },
+    {
+      "route": "Door approach 10 - Relais de la crique",
+      "Seed": 352799,
+      "centre": [
+        525.3883,
+        516.5405
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73639,
+      "centre": [
+        568.799744,
+        516.2417
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74693,
+      "centre": [
+        554.3564,
+        505.0726
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 23646,
+      "centre": [
+        555.399658,
+        532.3125
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 25816,
+      "centre": [
+        580.792236,
+        566.8367
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 75216,
+      "centre": [
+        543.505432,
+        503.681274
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74383,
+      "centre": [
+        560.3392,
+        506.3379
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1740,
+      "centre": [
+        525.055847,
+        500.041443
+      ]
+    },
+    {
+      "route": "Door approach 06 - Forge du Refuge",
+      "Seed": 258649,
+      "centre": [
+        570.5534,
+        505.018463
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 71217,
+      "centre": [
+        535.1686,
+        527.8302
+      ]
+    },
+    {
+      "route": "Forest main street",
+      "Seed": 24359,
+      "centre": [
+        565.3743,
+        542.9292
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74288,
+      "centre": [
+        562.432739,
+        505.9681
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74503,
+      "centre": [
+        558.4562,
+        503.77066
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73325,
+      "centre": [
+        570.55,
+        522.514832
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 74197,
+      "centre": [
+        563.711,
+        507.6537
+      ]
+    },
+    {
+      "route": "West rampart stair access",
+      "Seed": 94026,
+      "centre": [
+        532.377747,
+        520.7784
+      ]
+    },
+    {
+      "route": "Crooked market loop",
+      "Seed": 73697,
+      "centre": [
+        570.563538,
+        514.5839
+      ]
+    },
+    {
+      "route": "Arrival main street",
+      "Seed": 1089,
+      "centre": [
+        520.262634,
+        491.0759
+      ]
+    },
+    {
+      "route": "Door approach 01 - Auberge des Lanternes",
+      "Seed": 141072,
+      "centre": [
+        537.487732,
+        533.229065
+      ]
+    }
+  ],
+  "hallBounds": {
+    "minimum": [
+      529.097656,
+      48.3860168,
+      541.4679
+    ],
+    "maximum": [
+      549.259033,
+      67.89802,
+      560.424438
+    ]
+  },
+  "material": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Surfaces/Materials/11 Soft painted limestone.mat",
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/PavingGaps/Settled street gaps quarter 0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/PavingGaps/Settled street gaps quarter 1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/PavingGaps/Settled street gaps quarter 2.asset",
+    "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/PavingGaps/Settled street gaps quarter 3.asset"
+  ],
+  "originalMeshesMaterialsTransformsAndCollidersUnchanged": true,
+  "terrainUntouched": true,
+  "addedColliders": 0,
+  "addedLights": 0,
+  "addedRuntimeComponents": 0,
+  "sceneSaved": false,
+  "scope": "Only original street candidates omitted by edge/interior wear. Original plaza, old hall exclusion, sparse outer fade and retired Door02 remain excluded. Current paving SAT, civic bounds and physical obstacles are respected; no new grid or source regeneration."
+}

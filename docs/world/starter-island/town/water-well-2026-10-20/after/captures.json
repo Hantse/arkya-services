@@ -1,0 +1,68 @@
+{
+  "success": true,
+  "playMode": false,
+  "captures": [
+    {
+      "file": "well-village-context.png",
+      "phase": 0.4,
+      "position": {
+        "x": 554.0,
+        "y": 52.95779,
+        "z": 509.0
+      },
+      "target": {
+        "x": 562.0,
+        "y": 52.1551933,
+        "z": 516.0
+      },
+      "fieldOfView": 59.0
+    },
+    {
+      "file": "well-player-height.png",
+      "phase": 0.4,
+      "position": {
+        "x": 559.2196,
+        "y": 53.00519,
+        "z": 517.863342
+      },
+      "target": {
+        "x": 562.0,
+        "y": 52.2051926,
+        "z": 516.0
+      },
+      "fieldOfView": 58.0
+    },
+    {
+      "file": "well-water-close.png",
+      "phase": 0.4,
+      "position": {
+        "x": 560.6718,
+        "y": 53.4551926,
+        "z": 517.1751
+      },
+      "target": {
+        "x": 562.0,
+        "y": 51.7051926,
+        "z": 516.0
+      },
+      "fieldOfView": 57.0
+    },
+    {
+      "file": "well-overview.png",
+      "phase": 0.4,
+      "position": {
+        "x": 558.857544,
+        "y": 55.4551926,
+        "z": 521.400452
+      },
+      "target": {
+        "x": 562.0,
+        "y": 52.1551933,
+        "z": 516.0
+      },
+      "fieldOfView": 49.0
+    }
+  ],
+  "stateRestored": true,
+  "scope": "Village water well: stone rim, timber winding gear, hanging bucket and visible water. Edit Mode rendering only. Camera, weather, clock, lights, particles and render quality restored; scene not saved."
+}

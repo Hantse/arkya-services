@@ -1,0 +1,158 @@
+{
+  "success": true,
+  "playMode": false,
+  "captures": [
+    {
+      "file": "enclosure-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 480.0,
+        "y": 128.518585,
+        "z": 433.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.0031128,
+        "z": 520.0
+      },
+      "fieldOfView": 44.0
+    },
+    {
+      "file": "enclosure-night.png",
+      "phase": 0.79,
+      "position": {
+        "x": 480.0,
+        "y": 128.518585,
+        "z": 433.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 55.0031128,
+        "z": 520.0
+      },
+      "fieldOfView": 44.0
+    },
+    {
+      "file": "arrival-gate.png",
+      "phase": 0.4,
+      "position": {
+        "x": 508.8572,
+        "y": 51.4033356,
+        "z": 468.825562
+      },
+      "target": {
+        "x": 518.8825,
+        "y": 53.4601135,
+        "z": 481.295258
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "west-stair-foot.png",
+      "phase": 0.4,
+      "position": {
+        "x": 519.141357,
+        "y": 52.9344978,
+        "z": 531.486755
+      },
+      "target": {
+        "x": 509.3984,
+        "y": 54.2205,
+        "z": 531.1168
+      },
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "west-stair-side.png",
+      "phase": 0.4,
+      "position": {
+        "x": 514.0562,
+        "y": 54.4344978,
+        "z": 536.2186
+      },
+      "target": {
+        "x": 509.177917,
+        "y": 53.619915,
+        "z": 531.166443
+      },
+      "fieldOfView": 64.0
+    },
+    {
+      "file": "east-stair.png",
+      "phase": 0.4,
+      "position": {
+        "x": 579.467041,
+        "y": 53.1010551,
+        "z": 518.3652
+      },
+      "target": {
+        "x": 588.676941,
+        "y": 54.30711,
+        "z": 515.1653
+      },
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "north-watchtower.png",
+      "phase": 0.4,
+      "position": {
+        "x": 552.0,
+        "y": 53.359787,
+        "z": 587.0
+      },
+      "target": {
+        "x": 558.3672,
+        "y": 59.3,
+        "z": 570.0781
+      },
+      "fieldOfView": 59.0
+    },
+    {
+      "file": "south-watchtower.png",
+      "phase": 0.4,
+      "position": {
+        "x": 568.0,
+        "y": 51.2756767,
+        "z": 457.0
+      },
+      "target": {
+        "x": 555.0,
+        "y": 59.3,
+        "z": 475.0
+      },
+      "fieldOfView": 59.0
+    },
+    {
+      "file": "wall-walk-tower.png",
+      "phase": 0.4,
+      "position": {
+        "x": 550.0,
+        "y": 57.90533,
+        "z": 569.0
+      },
+      "target": {
+        "x": 561.0,
+        "y": 58.0,
+        "z": 570.4
+      },
+      "fieldOfView": 66.0
+    },
+    {
+      "file": "climbing-wall.png",
+      "phase": 0.4,
+      "position": {
+        "x": 487.0,
+        "y": 52.77772,
+        "z": 520.0
+      },
+      "target": {
+        "x": 500.0,
+        "y": 54.5,
+        "z": 524.0
+      },
+      "fieldOfView": 66.0
+    }
+  ],
+  "stateRestored": true,
+  "scope": "Rampart upgrade: enclosure, real stair flights, roofed watchtowers and climbing plants. Edit Mode rendering only. Camera, weather, clock, lights, particles and render quality restored; scene not saved."
+}

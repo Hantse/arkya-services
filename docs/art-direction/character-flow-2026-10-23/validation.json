@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-23",
+  "unityVersion": "6000.6.6f1",
+  "project": "Unity3D/Arkya",
+  "testJob": {
+    "job_id": "a1c5102a64314cfe9578b09e290adde4",
+    "status": "succeeded",
+    "mode": "EditMode",
+    "started_unix_ms": 1792707541898,
+    "finished_unix_ms": 1792707608850,
+    "last_update_unix_ms": 1792707608850,
+    "progress": {
+      "completed": 13,
+      "total": 13,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": null,
+      "last_finished_test_full_name": "Arkya.Characters.Tests.InterfacePresentationTests.UnknownSavedThemeFallsBackWithoutDiscardingExistingInterfaceContent",
+      "last_finished_unix_ms": 1792707608710,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": false,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "EditMode",
+      "summary": {
+        "total": 13,
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 56.6161142,
+        "resultState": "Passed"
+      },
+      "results": []
+    }
+  },
+  "layoutSizesInPanelPoints": [
+    [
+      1600,
+      900
+    ],
+    [
+      980,
+      700
+    ],
+    [
+      430,
+      900
+    ],
+    [
+      830,
+      1736
+    ]
+  ],
+  "visualReview": {
+    "source": "Unity Game View",
+    "width": 1918,
+    "height": 953,
+    "files": [
+      "selection-empty.png",
+      "selection-roster.png",
+      "creation.png"
+    ],
+    "rosterData": "Three transient in-memory fixture characters, no account writes",
+    "returnToSelectionVerified": true
+  },
+  "finalEditor": {
+    "playing": false,
+    "scenes": [
+      {
+        "name": "CharacterCreation",
+        "path": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+        "buildIndex": 0,
+        "isLoaded": true,
+        "isDirty": false,
+        "isActive": true,
+        "rootCount": 10
+      }
+    ],
+    "consoleErrors": 0
+  },
+  "limitations": [
+    "No real-account character creation or Discord login exercised",
+    "No new standalone or Web build",
+    "Existing Unity API deprecation warnings remain"
+  ],
+  "changedSources": [
+    "Assets/Arkya/Characters/Runtime/UI/CharacterCreation.uxml",
+    "Assets/Arkya/Characters/Runtime/UI/CharacterCreation.uss",
+    "Assets/Arkya/Characters/Runtime/UI/CharacterCreationScreen.cs",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterCreationLayoutTests.cs",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterCreationRuntimeTests.cs",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterIslandRuntimeTests.cs",
+    "Assets/Arkya/Characters/Tests/Editor/InterfacePresentationTests.cs"
+  ]
+}

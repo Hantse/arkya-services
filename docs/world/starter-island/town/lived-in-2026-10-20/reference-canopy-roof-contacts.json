@@ -1,0 +1,12 @@
+{
+  "completed": true,
+  "readOnly": true,
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "roofParts": 23,
+  "roofTriangles": 296638,
+  "candidatePairs": 84,
+  "triangleTests": 4249,
+  "intersectingPairs": 0,
+  "contacts": [],
+  "scope": "Exact static triangle surface intersections against active ReferenceRoofs joined facades, timbers and shingles, with a spatial index. Stops after eight examples per tree-part/roof pair. Includes the raised roof geometry absent from colliders; excludes shader wind and wholly enclosed volumes without surface crossings."
+}

@@ -1,0 +1,2837 @@
+{
+  "fixture": "Exact CharacterTerrainServerTests ramp: 8 m run / 6.4 m rise; platform x=11, size4x.4x3; origin10km",
+  "checkedAtUtc": "2026-10-20T07:12:09.0058467Z",
+  "mode": "EditMode",
+  "tickSeconds": 0.1,
+  "runSpeed": 4.4,
+  "reachedSummit": true,
+  "returnedToFoot": false,
+  "firstAirborne": {
+    "Tick": 28,
+    "Leg": "descent",
+    "Before": {
+      "x": 10058.8086,
+      "y": 16.4000015,
+      "z": 10050.0,
+      "localX": 8.808594,
+      "localY": 6.40000153,
+      "localZ": 0.0
+    },
+    "After": {
+      "x": 10058.3682,
+      "y": 16.4000015,
+      "z": 10050.0,
+      "localX": 8.368164,
+      "localY": 6.40000153,
+      "localZ": 0.0
+    },
+    "BeforeTraversal": {
+      "phase": 0,
+      "colliderSupported": 1,
+      "supportHeight": 16.4000015,
+      "verticalVelocity": 0.0,
+      "consumedJump": 0
+    },
+    "AfterTraversal": {
+      "phase": 1,
+      "colliderSupported": 0,
+      "supportHeight": 16.4000015,
+      "verticalVelocity": 0.0,
+      "consumedJump": 0
+    },
+    "HorizontalChange": 0.4404297,
+    "VerticalChange": 0.0,
+    "Airborne": true,
+    "Diagnostics": {
+      "initialState": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "supportUpdate": {
+        "found": true,
+        "state": {
+          "phase": 0,
+          "colliderSupported": 1,
+          "supportHeight": 16.4000015,
+          "verticalVelocity": 0.0,
+          "consumedJump": 0
+        }
+      },
+      "stateAfterStep": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "proposed": {
+        "x": 10058.3682,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "probe": {
+        "x": 10058.3682,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "maximumChange": 0.39456436,
+      "sampledTerrain": 10.0,
+      "centralBefore": {
+        "Found": true,
+        "Horizontal": false,
+        "Height": 16.2468758,
+        "Position": {
+          "x": 10058.8086,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.808594,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "MaximumChange": 0.22
+      },
+      "central": {
+        "Found": false,
+        "Horizontal": false,
+        "Height": "-Infinity",
+        "Position": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "MaximumChange": 0.39456436
+      },
+      "centralAfter": {
+        "Found": false,
+        "Horizontal": false,
+        "Height": "-Infinity",
+        "Position": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "MaximumChange": 0.22
+      },
+      "footprintBefore": {
+        "Found": true,
+        "Horizontal": true,
+        "Height": 16.4000015,
+        "Position": {
+          "x": 10058.8086,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.808594,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "MaximumChange": 0.22
+      },
+      "footprintAfter": {
+        "Found": false,
+        "Horizontal": true,
+        "Height": "-Infinity",
+        "Position": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "MaximumChange": 0.22
+      },
+      "rawFootprintBefore": [
+        {
+          "offset": {
+            "x": 0.28,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "hits": [
+            {
+              "name": "Exact test upper platform",
+              "point": {
+                "x": 10059.0889,
+                "y": 16.4000015,
+                "z": 10050.0,
+                "localX": 9.088867,
+                "localY": 6.40000153,
+                "localZ": 0.0
+              },
+              "normal": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+              },
+              "heightDifference": 0.0
+            }
+          ]
+        },
+        {
+          "offset": {
+            "x": -0.28,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "hits": []
+        },
+        {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.28
+          },
+          "hits": [
+            {
+              "name": "Temporary ramp support diagnostic",
+              "point": {
+                "x": 10058.8086,
+                "y": 16.2468758,
+                "z": 10050.28,
+                "localX": 8.808594,
+                "localY": 6.246876,
+                "localZ": 0.280273438
+              },
+              "normal": {
+                "x": -0.624695063,
+                "y": 0.7808688,
+                "z": 0.0
+              },
+              "heightDifference": -0.153125763
+            }
+          ]
+        },
+        {
+          "offset": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -0.28
+          },
+          "hits": [
+            {
+              "name": "Temporary ramp support diagnostic",
+              "point": {
+                "x": 10058.8086,
+                "y": 16.2468758,
+                "z": 10049.72,
+                "localX": 8.808594,
+                "localY": 6.246876,
+                "localZ": -0.280273438
+              },
+              "normal": {
+                "x": -0.624695063,
+                "y": 0.7808688,
+                "z": 0.0
+              },
+              "heightDifference": -0.153125763
+            }
+          ]
+        },
+        {
+          "offset": {
+            "x": 0.198,
+            "y": 0.0,
+            "z": 0.198
+          },
+          "hits": [
+            {
+              "name": "Exact test upper platform",
+              "point": {
+                "x": 10059.0068,
+                "y": 16.4000015,
+                "z": 10050.1982,
+                "localX": 9.006836,
+                "localY": 6.40000153,
+                "localZ": 0.198242188
+              },
+              "normal": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+              },
+              "heightDifference": 0.0
+            }
+          ]
+        },
+        {
+          "offset": {
+            "x": -0.198,
+            "y": 0.0,
+            "z": 0.198
+          },
+          "hits": []
+        },
+        {
+          "offset": {
+            "x": 0.198,
+            "y": 0.0,
+            "z": -0.198
+          },
+          "hits": [
+            {
+              "name": "Exact test upper platform",
+              "point": {
+                "x": 10059.0068,
+                "y": 16.4000015,
+                "z": 10049.8018,
+                "localX": 9.006836,
+                "localY": 6.40000153,
+                "localZ": -0.198242188
+              },
+              "normal": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+              },
+              "heightDifference": 0.0
+            }
+          ]
+        },
+        {
+          "offset": {
+            "x": -0.198,
+            "y": 0.0,
+            "z": -0.198
+          },
+          "hits": []
+        }
+      ],
+      "footprintAllowAscent": {
+        "Found": false,
+        "Horizontal": true,
+        "Height": "-Infinity",
+        "Position": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "MaximumChange": 0.22
+      },
+      "footprintNoAscent": {
+        "Found": false,
+        "Horizontal": true,
+        "Height": "-Infinity",
+        "Position": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "MaximumChange": 0.22
+      },
+      "rawCentralRayHits": [],
+      "follows": false,
+      "followResult": {
+        "x": 10058.3682,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "followingState": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "resolved": {
+        "x": 10058.3682,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "resolvedState": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "candidates": [
+        {
+          "name": "terrain",
+          "position": {
+            "x": 10058.3682,
+            "y": 10.0,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 0.0,
+            "localZ": 0.0
+          },
+          "rise": -6.40000153,
+          "corner": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "obstructed": true,
+          "canTraverseShortStep": false,
+          "firstLegObstructed": false,
+          "secondLegObstructed": true
+        }
+      ]
+    }
+  },
+  "airborneFrameCount": 5,
+  "lastEightThroughFirstAirborne": [
+    {
+      "Tick": 21,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10059.249,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.249023,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10059.6895,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.689453,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 22,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10059.6895,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.689453,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10060.13,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.1298828,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 23,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10060.13,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.1298828,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10060.57,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.5703125,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 24,
+      "Leg": "descent",
+      "Before": {
+        "x": 10060.57,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.5703125,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10060.13,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.1298828,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 25,
+      "Leg": "descent",
+      "Before": {
+        "x": 10060.13,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.1298828,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10059.6895,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.689453,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 26,
+      "Leg": "descent",
+      "Before": {
+        "x": 10059.6895,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.689453,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10059.249,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.249023,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 27,
+      "Leg": "descent",
+      "Before": {
+        "x": 10059.249,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.249023,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10058.8086,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.808594,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 28,
+      "Leg": "descent",
+      "Before": {
+        "x": 10058.8086,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.808594,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10058.3682,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": true,
+      "Diagnostics": {
+        "initialState": {
+          "phase": 0,
+          "colliderSupported": 1,
+          "supportHeight": 16.4000015,
+          "verticalVelocity": 0.0,
+          "consumedJump": 0
+        },
+        "supportUpdate": {
+          "found": true,
+          "state": {
+            "phase": 0,
+            "colliderSupported": 1,
+            "supportHeight": 16.4000015,
+            "verticalVelocity": 0.0,
+            "consumedJump": 0
+          }
+        },
+        "stateAfterStep": {
+          "phase": 0,
+          "colliderSupported": 1,
+          "supportHeight": 16.4000015,
+          "verticalVelocity": 0.0,
+          "consumedJump": 0
+        },
+        "proposed": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "probe": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "maximumChange": 0.39456436,
+        "sampledTerrain": 10.0,
+        "centralBefore": {
+          "Found": true,
+          "Horizontal": false,
+          "Height": 16.2468758,
+          "Position": {
+            "x": 10058.8086,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.808594,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "central": {
+          "Found": false,
+          "Horizontal": false,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.39456436
+        },
+        "centralAfter": {
+          "Found": false,
+          "Horizontal": false,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "footprintBefore": {
+          "Found": true,
+          "Horizontal": true,
+          "Height": 16.4000015,
+          "Position": {
+            "x": 10058.8086,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.808594,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "footprintAfter": {
+          "Found": false,
+          "Horizontal": true,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "rawFootprintBefore": [
+          {
+            "offset": {
+              "x": 0.28,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "hits": [
+              {
+                "name": "Exact test upper platform",
+                "point": {
+                  "x": 10059.0889,
+                  "y": 16.4000015,
+                  "z": 10050.0,
+                  "localX": 9.088867,
+                  "localY": 6.40000153,
+                  "localZ": 0.0
+                },
+                "normal": {
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0.0
+                },
+                "heightDifference": 0.0
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": -0.28,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "hits": []
+          },
+          {
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.28
+            },
+            "hits": [
+              {
+                "name": "Temporary ramp support diagnostic",
+                "point": {
+                  "x": 10058.8086,
+                  "y": 16.2468758,
+                  "z": 10050.28,
+                  "localX": 8.808594,
+                  "localY": 6.246876,
+                  "localZ": 0.280273438
+                },
+                "normal": {
+                  "x": -0.624695063,
+                  "y": 0.7808688,
+                  "z": 0.0
+                },
+                "heightDifference": -0.153125763
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": -0.28
+            },
+            "hits": [
+              {
+                "name": "Temporary ramp support diagnostic",
+                "point": {
+                  "x": 10058.8086,
+                  "y": 16.2468758,
+                  "z": 10049.72,
+                  "localX": 8.808594,
+                  "localY": 6.246876,
+                  "localZ": -0.280273438
+                },
+                "normal": {
+                  "x": -0.624695063,
+                  "y": 0.7808688,
+                  "z": 0.0
+                },
+                "heightDifference": -0.153125763
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": 0.198,
+              "y": 0.0,
+              "z": 0.198
+            },
+            "hits": [
+              {
+                "name": "Exact test upper platform",
+                "point": {
+                  "x": 10059.0068,
+                  "y": 16.4000015,
+                  "z": 10050.1982,
+                  "localX": 9.006836,
+                  "localY": 6.40000153,
+                  "localZ": 0.198242188
+                },
+                "normal": {
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0.0
+                },
+                "heightDifference": 0.0
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": -0.198,
+              "y": 0.0,
+              "z": 0.198
+            },
+            "hits": []
+          },
+          {
+            "offset": {
+              "x": 0.198,
+              "y": 0.0,
+              "z": -0.198
+            },
+            "hits": [
+              {
+                "name": "Exact test upper platform",
+                "point": {
+                  "x": 10059.0068,
+                  "y": 16.4000015,
+                  "z": 10049.8018,
+                  "localX": 9.006836,
+                  "localY": 6.40000153,
+                  "localZ": -0.198242188
+                },
+                "normal": {
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0.0
+                },
+                "heightDifference": 0.0
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": -0.198,
+              "y": 0.0,
+              "z": -0.198
+            },
+            "hits": []
+          }
+        ],
+        "footprintAllowAscent": {
+          "Found": false,
+          "Horizontal": true,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "footprintNoAscent": {
+          "Found": false,
+          "Horizontal": true,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "rawCentralRayHits": [],
+        "follows": false,
+        "followResult": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "followingState": {
+          "phase": 0,
+          "colliderSupported": 1,
+          "supportHeight": 16.4000015,
+          "verticalVelocity": 0.0,
+          "consumedJump": 0
+        },
+        "resolved": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "resolvedState": {
+          "phase": 1,
+          "colliderSupported": 0,
+          "supportHeight": 16.4000015,
+          "verticalVelocity": 0.0,
+          "consumedJump": 0
+        },
+        "candidates": [
+          {
+            "name": "terrain",
+            "position": {
+              "x": 10058.3682,
+              "y": 10.0,
+              "z": 10050.0,
+              "localX": 8.368164,
+              "localY": 0.0,
+              "localZ": 0.0
+            },
+            "rise": -6.40000153,
+            "corner": {
+              "x": 10058.3682,
+              "y": 16.4000015,
+              "z": 10050.0,
+              "localX": 8.368164,
+              "localY": 6.40000153,
+              "localZ": 0.0
+            },
+            "obstructed": true,
+            "canTraverseShortStep": false,
+            "firstLegObstructed": false,
+            "secondLegObstructed": true
+          }
+        ]
+      }
+    }
+  ],
+  "followingFrames": [
+    {
+      "Tick": 29,
+      "Leg": "descent",
+      "Before": {
+        "x": 10058.3682,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10057.9277,
+        "y": 16.3100014,
+        "z": 10050.0,
+        "localX": 7.92773438,
+        "localY": 6.31000137,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -1.80000007,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": -0.09000015,
+      "Airborne": true,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 30,
+      "Leg": "descent",
+      "Before": {
+        "x": 10057.9277,
+        "y": 16.3100014,
+        "z": 10050.0,
+        "localX": 7.92773438,
+        "localY": 6.31000137,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10057.4873,
+        "y": 16.04,
+        "z": 10050.0,
+        "localX": 7.48730469,
+        "localY": 6.040001,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -1.80000007,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -3.60000014,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": -0.270000458,
+      "Airborne": true,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 31,
+      "Leg": "descent",
+      "Before": {
+        "x": 10057.4873,
+        "y": 16.04,
+        "z": 10050.0,
+        "localX": 7.48730469,
+        "localY": 6.040001,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10057.0469,
+        "y": 15.5900011,
+        "z": 10050.0,
+        "localX": 7.046875,
+        "localY": 5.590001,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -3.60000014,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -5.4,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": -0.4499998,
+      "Airborne": true,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 32,
+      "Leg": "descent",
+      "Before": {
+        "x": 10057.0469,
+        "y": 15.5900011,
+        "z": 10050.0,
+        "localX": 7.046875,
+        "localY": 5.590001,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10056.6064,
+        "y": 14.960001,
+        "z": 10050.0,
+        "localX": 6.60644531,
+        "localY": 4.960001,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -5.4,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -7.20000029,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": -0.6300001,
+      "Airborne": true,
+      "Diagnostics": null
+    }
+  ],
+  "allFrames": [
+    {
+      "Tick": 0,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10050.0,
+        "y": 10.0,
+        "z": 10050.0,
+        "localX": 0.0,
+        "localY": 0.0,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10050.44,
+        "y": 10.0,
+        "z": 10050.0,
+        "localX": 0.4404297,
+        "localY": 0.0,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 0,
+        "supportHeight": 0.0,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 0,
+        "supportHeight": 10.0,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 1,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10050.44,
+        "y": 10.0,
+        "z": 10050.0,
+        "localX": 0.4404297,
+        "localY": 0.0,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10050.8809,
+        "y": 10.0,
+        "z": 10050.0,
+        "localX": 0.8808594,
+        "localY": 0.0,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 0,
+        "supportHeight": 10.0,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 0,
+        "supportHeight": 10.0,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 2,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10050.8809,
+        "y": 10.0,
+        "z": 10050.0,
+        "localX": 0.8808594,
+        "localY": 0.0,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10051.3213,
+        "y": 10.2570314,
+        "z": 10050.0,
+        "localX": 1.32128906,
+        "localY": 0.257031441,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 0,
+        "supportHeight": 10.0,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 10.2570314,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.257031441,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 3,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10051.3213,
+        "y": 10.2570314,
+        "z": 10050.0,
+        "localX": 1.32128906,
+        "localY": 0.257031441,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10051.7617,
+        "y": 10.609375,
+        "z": 10050.0,
+        "localX": 1.76171875,
+        "localY": 0.609375,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 10.2570314,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 10.609375,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 4,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10051.7617,
+        "y": 10.609375,
+        "z": 10050.0,
+        "localX": 1.76171875,
+        "localY": 0.609375,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10052.2021,
+        "y": 10.9617186,
+        "z": 10050.0,
+        "localX": 2.20214844,
+        "localY": 0.961718559,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 10.609375,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 10.9617186,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 5,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10052.2021,
+        "y": 10.9617186,
+        "z": 10050.0,
+        "localX": 2.20214844,
+        "localY": 0.961718559,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10052.6426,
+        "y": 11.3140621,
+        "z": 10050.0,
+        "localX": 2.64257813,
+        "localY": 1.31406212,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 10.9617186,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 11.3140621,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 6,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10052.6426,
+        "y": 11.3140621,
+        "z": 10050.0,
+        "localX": 2.64257813,
+        "localY": 1.31406212,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10053.083,
+        "y": 11.6664066,
+        "z": 10050.0,
+        "localX": 3.08300781,
+        "localY": 1.66640663,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 11.3140621,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 11.6664066,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.3523445,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 7,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10053.083,
+        "y": 11.6664066,
+        "z": 10050.0,
+        "localX": 3.08300781,
+        "localY": 1.66640663,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10053.5234,
+        "y": 12.01875,
+        "z": 10050.0,
+        "localX": 3.5234375,
+        "localY": 2.01875019,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 11.6664066,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 12.01875,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 8,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10053.5234,
+        "y": 12.01875,
+        "z": 10050.0,
+        "localX": 3.5234375,
+        "localY": 2.01875019,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10053.9639,
+        "y": 12.3710938,
+        "z": 10050.0,
+        "localX": 3.96386719,
+        "localY": 2.37109375,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 12.01875,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 12.3710938,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 9,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10053.9639,
+        "y": 12.3710938,
+        "z": 10050.0,
+        "localX": 3.96386719,
+        "localY": 2.37109375,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10054.4043,
+        "y": 12.7234373,
+        "z": 10050.0,
+        "localX": 4.404297,
+        "localY": 2.72343731,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 12.3710938,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 12.7234373,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 10,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10054.4043,
+        "y": 12.7234373,
+        "z": 10050.0,
+        "localX": 4.404297,
+        "localY": 2.72343731,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10054.8447,
+        "y": 13.0757809,
+        "z": 10050.0,
+        "localX": 4.84472656,
+        "localY": 3.07578087,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 12.7234373,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 13.0757809,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 11,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10054.8447,
+        "y": 13.0757809,
+        "z": 10050.0,
+        "localX": 4.84472656,
+        "localY": 3.07578087,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10055.2852,
+        "y": 13.4281254,
+        "z": 10050.0,
+        "localX": 5.28515625,
+        "localY": 3.42812538,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 13.0757809,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 13.4281254,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.3523445,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 12,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10055.2852,
+        "y": 13.4281254,
+        "z": 10050.0,
+        "localX": 5.28515625,
+        "localY": 3.42812538,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10055.7256,
+        "y": 13.7804689,
+        "z": 10050.0,
+        "localX": 5.725586,
+        "localY": 3.780469,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 13.4281254,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 13.7804689,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 13,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10055.7256,
+        "y": 13.7804689,
+        "z": 10050.0,
+        "localX": 5.725586,
+        "localY": 3.780469,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10056.166,
+        "y": 14.1328125,
+        "z": 10050.0,
+        "localX": 6.16601563,
+        "localY": 4.1328125,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 13.7804689,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 14.1328125,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 14,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10056.166,
+        "y": 14.1328125,
+        "z": 10050.0,
+        "localX": 6.16601563,
+        "localY": 4.1328125,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10056.6064,
+        "y": 14.4851561,
+        "z": 10050.0,
+        "localX": 6.60644531,
+        "localY": 4.485156,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 14.1328125,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 14.4851561,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 15,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10056.6064,
+        "y": 14.4851561,
+        "z": 10050.0,
+        "localX": 6.60644531,
+        "localY": 4.485156,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10057.0469,
+        "y": 14.8375,
+        "z": 10050.0,
+        "localX": 7.046875,
+        "localY": 4.83749962,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 14.4851561,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 14.8375,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 16,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10057.0469,
+        "y": 14.8375,
+        "z": 10050.0,
+        "localX": 7.046875,
+        "localY": 4.83749962,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10057.4873,
+        "y": 15.1898441,
+        "z": 10050.0,
+        "localX": 7.48730469,
+        "localY": 5.189844,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 14.8375,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 15.1898441,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.3523445,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 17,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10057.4873,
+        "y": 15.1898441,
+        "z": 10050.0,
+        "localX": 7.48730469,
+        "localY": 5.189844,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10057.9277,
+        "y": 15.5421877,
+        "z": 10050.0,
+        "localX": 7.92773438,
+        "localY": 5.54218769,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 15.1898441,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 15.5421877,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 18,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10057.9277,
+        "y": 15.5421877,
+        "z": 10050.0,
+        "localX": 7.92773438,
+        "localY": 5.54218769,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10058.3682,
+        "y": 15.8945313,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 5.89453125,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 15.5421877,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 15.8945313,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.352343559,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 19,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10058.3682,
+        "y": 15.8945313,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 5.89453125,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10058.8086,
+        "y": 16.2468758,
+        "z": 10050.0,
+        "localX": 8.808594,
+        "localY": 6.246876,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 15.8945313,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.2468758,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.3523445,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 20,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10058.8086,
+        "y": 16.2468758,
+        "z": 10050.0,
+        "localX": 8.808594,
+        "localY": 6.246876,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10059.249,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.249023,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.2468758,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.153125763,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 21,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10059.249,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.249023,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10059.6895,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.689453,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 22,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10059.6895,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.689453,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10060.13,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.1298828,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 23,
+      "Leg": "ascent",
+      "Before": {
+        "x": 10060.13,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.1298828,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10060.57,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.5703125,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 24,
+      "Leg": "descent",
+      "Before": {
+        "x": 10060.57,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.5703125,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10060.13,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.1298828,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 25,
+      "Leg": "descent",
+      "Before": {
+        "x": 10060.13,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 10.1298828,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10059.6895,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.689453,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 26,
+      "Leg": "descent",
+      "Before": {
+        "x": 10059.6895,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.689453,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10059.249,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.249023,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 27,
+      "Leg": "descent",
+      "Before": {
+        "x": 10059.249,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 9.249023,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10058.8086,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.808594,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": false,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 28,
+      "Leg": "descent",
+      "Before": {
+        "x": 10058.8086,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.808594,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10058.3682,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 0,
+        "colliderSupported": 1,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": 0.0,
+      "Airborne": true,
+      "Diagnostics": {
+        "initialState": {
+          "phase": 0,
+          "colliderSupported": 1,
+          "supportHeight": 16.4000015,
+          "verticalVelocity": 0.0,
+          "consumedJump": 0
+        },
+        "supportUpdate": {
+          "found": true,
+          "state": {
+            "phase": 0,
+            "colliderSupported": 1,
+            "supportHeight": 16.4000015,
+            "verticalVelocity": 0.0,
+            "consumedJump": 0
+          }
+        },
+        "stateAfterStep": {
+          "phase": 0,
+          "colliderSupported": 1,
+          "supportHeight": 16.4000015,
+          "verticalVelocity": 0.0,
+          "consumedJump": 0
+        },
+        "proposed": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "probe": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "maximumChange": 0.39456436,
+        "sampledTerrain": 10.0,
+        "centralBefore": {
+          "Found": true,
+          "Horizontal": false,
+          "Height": 16.2468758,
+          "Position": {
+            "x": 10058.8086,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.808594,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "central": {
+          "Found": false,
+          "Horizontal": false,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.39456436
+        },
+        "centralAfter": {
+          "Found": false,
+          "Horizontal": false,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "footprintBefore": {
+          "Found": true,
+          "Horizontal": true,
+          "Height": 16.4000015,
+          "Position": {
+            "x": 10058.8086,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.808594,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "footprintAfter": {
+          "Found": false,
+          "Horizontal": true,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "rawFootprintBefore": [
+          {
+            "offset": {
+              "x": 0.28,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "hits": [
+              {
+                "name": "Exact test upper platform",
+                "point": {
+                  "x": 10059.0889,
+                  "y": 16.4000015,
+                  "z": 10050.0,
+                  "localX": 9.088867,
+                  "localY": 6.40000153,
+                  "localZ": 0.0
+                },
+                "normal": {
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0.0
+                },
+                "heightDifference": 0.0
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": -0.28,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "hits": []
+          },
+          {
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.28
+            },
+            "hits": [
+              {
+                "name": "Temporary ramp support diagnostic",
+                "point": {
+                  "x": 10058.8086,
+                  "y": 16.2468758,
+                  "z": 10050.28,
+                  "localX": 8.808594,
+                  "localY": 6.246876,
+                  "localZ": 0.280273438
+                },
+                "normal": {
+                  "x": -0.624695063,
+                  "y": 0.7808688,
+                  "z": 0.0
+                },
+                "heightDifference": -0.153125763
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": -0.28
+            },
+            "hits": [
+              {
+                "name": "Temporary ramp support diagnostic",
+                "point": {
+                  "x": 10058.8086,
+                  "y": 16.2468758,
+                  "z": 10049.72,
+                  "localX": 8.808594,
+                  "localY": 6.246876,
+                  "localZ": -0.280273438
+                },
+                "normal": {
+                  "x": -0.624695063,
+                  "y": 0.7808688,
+                  "z": 0.0
+                },
+                "heightDifference": -0.153125763
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": 0.198,
+              "y": 0.0,
+              "z": 0.198
+            },
+            "hits": [
+              {
+                "name": "Exact test upper platform",
+                "point": {
+                  "x": 10059.0068,
+                  "y": 16.4000015,
+                  "z": 10050.1982,
+                  "localX": 9.006836,
+                  "localY": 6.40000153,
+                  "localZ": 0.198242188
+                },
+                "normal": {
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0.0
+                },
+                "heightDifference": 0.0
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": -0.198,
+              "y": 0.0,
+              "z": 0.198
+            },
+            "hits": []
+          },
+          {
+            "offset": {
+              "x": 0.198,
+              "y": 0.0,
+              "z": -0.198
+            },
+            "hits": [
+              {
+                "name": "Exact test upper platform",
+                "point": {
+                  "x": 10059.0068,
+                  "y": 16.4000015,
+                  "z": 10049.8018,
+                  "localX": 9.006836,
+                  "localY": 6.40000153,
+                  "localZ": -0.198242188
+                },
+                "normal": {
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0.0
+                },
+                "heightDifference": 0.0
+              }
+            ]
+          },
+          {
+            "offset": {
+              "x": -0.198,
+              "y": 0.0,
+              "z": -0.198
+            },
+            "hits": []
+          }
+        ],
+        "footprintAllowAscent": {
+          "Found": false,
+          "Horizontal": true,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "footprintNoAscent": {
+          "Found": false,
+          "Horizontal": true,
+          "Height": "-Infinity",
+          "Position": {
+            "x": 10058.3682,
+            "y": 16.4000015,
+            "z": 10050.0,
+            "localX": 8.368164,
+            "localY": 6.40000153,
+            "localZ": 0.0
+          },
+          "MaximumChange": 0.22
+        },
+        "rawCentralRayHits": [],
+        "follows": false,
+        "followResult": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "followingState": {
+          "phase": 0,
+          "colliderSupported": 1,
+          "supportHeight": 16.4000015,
+          "verticalVelocity": 0.0,
+          "consumedJump": 0
+        },
+        "resolved": {
+          "x": 10058.3682,
+          "y": 16.4000015,
+          "z": 10050.0,
+          "localX": 8.368164,
+          "localY": 6.40000153,
+          "localZ": 0.0
+        },
+        "resolvedState": {
+          "phase": 1,
+          "colliderSupported": 0,
+          "supportHeight": 16.4000015,
+          "verticalVelocity": 0.0,
+          "consumedJump": 0
+        },
+        "candidates": [
+          {
+            "name": "terrain",
+            "position": {
+              "x": 10058.3682,
+              "y": 10.0,
+              "z": 10050.0,
+              "localX": 8.368164,
+              "localY": 0.0,
+              "localZ": 0.0
+            },
+            "rise": -6.40000153,
+            "corner": {
+              "x": 10058.3682,
+              "y": 16.4000015,
+              "z": 10050.0,
+              "localX": 8.368164,
+              "localY": 6.40000153,
+              "localZ": 0.0
+            },
+            "obstructed": true,
+            "canTraverseShortStep": false,
+            "firstLegObstructed": false,
+            "secondLegObstructed": true
+          }
+        ]
+      }
+    },
+    {
+      "Tick": 29,
+      "Leg": "descent",
+      "Before": {
+        "x": 10058.3682,
+        "y": 16.4000015,
+        "z": 10050.0,
+        "localX": 8.368164,
+        "localY": 6.40000153,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10057.9277,
+        "y": 16.3100014,
+        "z": 10050.0,
+        "localX": 7.92773438,
+        "localY": 6.31000137,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": 0.0,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -1.80000007,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": -0.09000015,
+      "Airborne": true,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 30,
+      "Leg": "descent",
+      "Before": {
+        "x": 10057.9277,
+        "y": 16.3100014,
+        "z": 10050.0,
+        "localX": 7.92773438,
+        "localY": 6.31000137,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10057.4873,
+        "y": 16.04,
+        "z": 10050.0,
+        "localX": 7.48730469,
+        "localY": 6.040001,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -1.80000007,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -3.60000014,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": -0.270000458,
+      "Airborne": true,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 31,
+      "Leg": "descent",
+      "Before": {
+        "x": 10057.4873,
+        "y": 16.04,
+        "z": 10050.0,
+        "localX": 7.48730469,
+        "localY": 6.040001,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10057.0469,
+        "y": 15.5900011,
+        "z": 10050.0,
+        "localX": 7.046875,
+        "localY": 5.590001,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -3.60000014,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -5.4,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": -0.4499998,
+      "Airborne": true,
+      "Diagnostics": null
+    },
+    {
+      "Tick": 32,
+      "Leg": "descent",
+      "Before": {
+        "x": 10057.0469,
+        "y": 15.5900011,
+        "z": 10050.0,
+        "localX": 7.046875,
+        "localY": 5.590001,
+        "localZ": 0.0
+      },
+      "After": {
+        "x": 10056.6064,
+        "y": 14.960001,
+        "z": 10050.0,
+        "localX": 6.60644531,
+        "localY": 4.960001,
+        "localZ": 0.0
+      },
+      "BeforeTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -5.4,
+        "consumedJump": 0
+      },
+      "AfterTraversal": {
+        "phase": 1,
+        "colliderSupported": 0,
+        "supportHeight": 16.4000015,
+        "verticalVelocity": -7.20000029,
+        "consumedJump": 0
+      },
+      "HorizontalChange": 0.4404297,
+      "VerticalChange": -0.6300001,
+      "Airborne": true,
+      "Diagnostics": null
+    }
+  ],
+  "cleanup": {
+    "temporarySceneClosed": true,
+    "temporaryWorldDisposed": true,
+    "originalActiveSceneRestored": true,
+    "originalSceneDirtyBefore": false,
+    "originalSceneDirtyAfter": false,
+    "sceneSaved": false
+  }
+}

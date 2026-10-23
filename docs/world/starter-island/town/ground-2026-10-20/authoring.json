@@ -1,0 +1,80 @@
+{
+  "success": true,
+  "plazaStones": 949,
+  "streetStones": 1884,
+  "mossPockets": 1611,
+  "triangles": 82457,
+  "renderers": 4,
+  "addedColliders": 0,
+  "addedLights": 0,
+  "shadowCasters": 0,
+  "preservedHeightHash": "0fe6f9005188cc2f3f0ea5fad2a7f41f8561672201070929b767dfe9c73c0676",
+  "preservedColliderHash": "331bfe19d570f4fc35ea092645c4737331f7c1fb4a90502170afe707cb7a0a85",
+  "terrainLayersUnchanged": true,
+  "paint": {
+    "x": 649,
+    "z": 609,
+    "width": 170,
+    "height": 170,
+    "changed": 4515,
+    "maximumDelta": 0.701438546,
+    "radius": 61,
+    "hallExclusionRadius": 10,
+    "outsideWindowUnchanged": true
+  },
+  "disabledRenderers": [
+    "Joined worn square flagstones",
+    "Worn paving - Worn warm courtyard paving"
+  ],
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Shaders/PaintedVillageGround.shader",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Textures/Soft painted limestone grain.png",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Materials/Soft painted limestone.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Materials/Earth and sage in worn joints.mat",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Meshes/Painted paving quarter 0.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Meshes/Painted paving quarter 1.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Meshes/Painted paving quarter 2.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Ground20261020/Meshes/Painted paving quarter 3.asset"
+  ],
+  "backup": "D:\\Repositories\\arkya\\artifacts/village-ground-2026-10-20",
+  "scope": "Smaller staggered circular paving, worn narrow street stones, muted jade inlays, mossy joints and bounded grass/earth transitions. Existing meshes, route positions, collision and terrain heights are preserved.",
+  "refinement": {
+    "utc": "2026-10-20T14:25:11.5694166Z",
+    "linearVertexPigments": true,
+    "irregularSharedCourseBoundaries": true,
+    "streetFootprintsCheckedWithSAT": true,
+    "terrainRepainted": false,
+    "scope": "Darker aged limestone, varied worn corners and course widths, settled stone heights, broken joints and irregular moss seams."
+  },
+  "civicApproach": {
+    "replaces": "Civic approach - terrain-following warm paving",
+    "width": 2.2,
+    "route": [
+      [
+        535.4343,
+        547.513
+      ],
+      [
+        535.0,
+        545.0
+      ],
+      [
+        536.0,
+        541.0
+      ],
+      [
+        538.5,
+        537.0
+      ],
+      [
+        540.0,
+        531.0
+      ],
+      [
+        541.5,
+        526.0
+      ]
+    ],
+    "scope": "Connected irregular paving from civic porch to the square; existing terrain and collision unchanged."
+  }
+}

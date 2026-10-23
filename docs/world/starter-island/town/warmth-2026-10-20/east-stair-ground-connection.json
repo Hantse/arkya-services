@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "changed": true,
+  "sceneSaved": false,
+  "newPhysicalTreads": 1,
+  "width": 2.6,
+  "depth": 0.45,
+  "upperRiser": 0.149485409,
+  "maximumRemainingTerrainDrop": 0.149487674,
+  "conservativeSupportOverhangs": [
+    0.3,
+    0.35,
+    0.4
+  ],
+  "checkedLateralLines": [
+    -0.6,
+    0.0,
+    0.6
+  ],
+  "terrainHandoffSamples": 9,
+  "maximumSupportError": 0.0,
+  "groundApproach": {
+    "x": 589.923462,
+    "y": 49.61124,
+    "z": 498.8284
+  },
+  "groundApproachBeyondTread": 0.8500037,
+  "originalFlightsAndWallConnectionUnchanged": true,
+  "terrainHeightsUnchanged": true,
+  "requiredRuntimeProof": "Rerun the full 24 ascent/descent cases from the Terrain and both complementary wall circuits.",
+  "utc": "2026-10-20T08:59:07.9420092Z"
+}

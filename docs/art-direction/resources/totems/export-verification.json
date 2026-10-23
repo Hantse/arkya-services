@@ -638,29 +638,29 @@
     },
     {
       "file": "models/wolf-abyss.glb",
-      "bytes": 3641292,
-      "sha256": "c260321f600b56a45cbbbf96f839ea649da36357fe24273df37bf81169fe121c",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3232568,
+      "sha256": "7bee39d140521420f838fc5f00b0259d5181ad0ec7259927c76c47a26b6e1ef4",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "b4d098a8162279d8fdaaff813bbbbe67319dc885d71935532d8b9afd0d5b0ff5"
+        "7464b64ef9f724c22236f0bd5813521142945332e6555b79aadd75c0b99ab16e"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -686,33 +686,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-amethyst.glb",
-      "bytes": 3731064,
-      "sha256": "44f57089ed3936b5b46e14f5cbc6801df50876ae85ce035e7c042a01d1527867",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3233812,
+      "sha256": "e5be7f17f42587c320c5428d95e2773729e36c5a1dc6de0f7fbfa4b554f28aa3",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "140fd298ba91f75ca1f5c05cedf28de5d9e3b114fde90d9da393e073bcf4b813"
+        "fcaa29252f98ddc4e3e9683923d918926f03b3e708ebf23082cda502d0438ce0"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -738,33 +738,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-copper.glb",
-      "bytes": 3724776,
-      "sha256": "bcabb6eb311f10392fae084ffbcfb23d87d23d55cbd7ec6ad8051f35ccf944a0",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3282500,
+      "sha256": "1665c59d49c38ac1cac69aa48561ec0f35afb60c64cbbd6293261faaabbc0b68",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "470a0eefd851a56583ced23f10b1a03e392a2619a5ebceba77e9ea5f87873721"
+        "7007d640b32d13ad9995667fa06bf9fd55b871c2918ca07a2eeb0080c9342129"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -790,33 +790,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-ember.glb",
-      "bytes": 3757312,
-      "sha256": "51d3ceb72d8bcbd1d99dc1dc605af23b6221af7de0a3b2046a59d38760a80af5",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3278968,
+      "sha256": "76f1d75a3eaeb482d656bfd6ce98f17033f4ffb9e6485c82a3bbcabc47af6ebc",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "ba7d7d751ae020f15168c2a328693cc82e180949a142ec236501e073687437e3"
+        "22f8d3f65243639fa0db7c18a654e0df17e34cc29218e5ceac8360d641d5dbfd"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -842,33 +842,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-frost.glb",
-      "bytes": 3828792,
-      "sha256": "fa417f5353d80f94c76693da3dcc253894b20e4d149fd77228e4109ad7996f1a",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3358892,
+      "sha256": "02b54ecd2d9acc4caa6b5a2785c6f01642322d6d8df8b1c6fc9c726906493a4e",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "940feee8139cafd908b3f5f9e138e78bb7920ad798850c06ce4cf00095f2be78"
+        "c69507757d92aa96425f2e50b654195265dffdb3ee1f0e5849e956b2b18efae7"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -894,33 +894,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-jade.glb",
-      "bytes": 3745096,
-      "sha256": "e4b36eb524ab1266266a5c5c045bb4c2378a695d7b5faed13875bc3450c9befe",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3247060,
+      "sha256": "1b128c16f669123c2266634908adc1b58901c7bbca1fd834bf9c16d0b80c4148",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "ac983da21f8890e95f5df1e28322ec37063819e9ff8f841de7a13c2fadf69766"
+        "134917baf7890a3b039d4ba79da9dc369ed85f022000678dc16ab79903031b54"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -946,33 +946,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-lunar.glb",
-      "bytes": 3802212,
-      "sha256": "38c9b31b35a0eea86df6bdf522bd78142484a52bab872eaec8360e8381170da3",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3293280,
+      "sha256": "465d93e719a8f189368f1a31b4a968d737dd6564b11784f912420ab1257be85a",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "c867e5be5124e314d6686168a11c9bea1152e1f313aceb9d5eaf8c1e145b3e0d"
+        "a50cc272c7228f16ef408026b1100d6bad0985a89bdf5e287fdde228adf8cbab"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -998,33 +998,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-moss.glb",
-      "bytes": 3628560,
-      "sha256": "fa521f4fc820bed4b5b0d9eee0accf14c5b2bf12a728c24d3968cf94220ee6a8",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3200060,
+      "sha256": "f8a2852ad59a3a398ef6ce578ce92454cdcf9c69b40cfc94293b261222ffd61b",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "145e69fec4b63f79bde5aa561021a7cf4ecd3a062dd7ca5d1cf291e94966d7a8"
+        "ce4d41eccccc84bd7a2e9a53a828e323c634e4bd083c786edc706b9e646cb08a"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -1050,33 +1050,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-pearl.glb",
-      "bytes": 3679128,
-      "sha256": "423565abd976f49e254ceb2f50b8292f7ec09e83301fa541b7dd28c569803916",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3278540,
+      "sha256": "80b8dff9d345318b007321959125da8796e3514cf1c01ffe81632bd8bcba7e89",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "3b08a2b3724c60729a33ec136b71c5ed992d0214e95705d4066c5f99c170c078"
+        "7abf8003438c487b7cdb484139c5aff62b5224b3291ec954165af3b20321464f"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -1102,33 +1102,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-rose.glb",
-      "bytes": 3776840,
-      "sha256": "2056f068151f4fff52a93479c13c5ae55c1a75a374553871113865fac096f658",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3303984,
+      "sha256": "33df02e20b56b198a4314545468b08ff6fdf981c266e7a4abb642598cce4a2ae",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "1196dc69e33244692100f04640b854359914b652ea9b4a0a46eec38104c5bb60"
+        "1226b6c1b6e8caab201913ba8e0f079deb84bd9910c936b0518daa21e546e509"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -1154,33 +1154,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-solar.glb",
-      "bytes": 3833680,
-      "sha256": "9e1939612ec71c4a14453144e88e09e2c80d54c720de7959cff6350d1784e1cb",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3330744,
+      "sha256": "a5bd1a6f312563109d12cfa8d7a1e9f88f7b2c0383497cba399e8fd58be96981",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "a0e85bc314d0cc56784c5d1f155b5a67ccc1b1dfc21e3ffd72fed4cf00134577"
+        "eddb76b9e5a650d22c6f0b09b1d179751a141d91e872e5764230065fa555a49d"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -1206,33 +1206,33 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     },
     {
       "file": "models/wolf-storm.glb",
-      "bytes": 3625344,
-      "sha256": "c8ca76a7392c354291bd1e2361eb089f62a3ba73b525c7319ee6caec8ccfa21d",
-      "triangles": 30382,
-      "vertices": 18892,
+      "bytes": 3216104,
+      "sha256": "4eb7149bf5801d8296872c8c60a731007970d2c655bfa83fc31eeebbc595da18",
+      "triangles": 31090,
+      "vertices": 19405,
       "skinCount": 1,
       "bones": 39,
       "maxInfluences": 4,
-      "maxWeightSumError": 1.457519829273224e-07,
+      "maxWeightSumError": 1.1827796697616577e-07,
       "materialCount": 3,
       "embeddedImages": 1,
       "embeddedImageSha256": [
-        "f6b4c956ffffcaa94b745c1fd6f96e5ba0cf30196529ed7ad18c3bd720dc97fa"
+        "4cfc5969ec977a15c1f5209a387ff2b5716fb0f94dea10d0970db3b614b2e20b"
       ],
       "localMeshBounds": [
         [
-          -0.8618531823158264,
-          -0.0038501883391290903,
-          -0.29007598757743835
+          -1.102610468864441,
+          -0.003031330881640315,
+          -0.23473899066448212
         ],
         [
-          0.9292497038841248,
-          1.1000865697860718,
-          0.2902209758758545
+          0.757770299911499,
+          0.8660945296287537,
+          0.23473906517028809
         ]
       ],
       "animations": [
@@ -1258,7 +1258,7 @@
           "maxLoopComponentError": 0
         }
       ],
-      "geometrySha256": "cabb8fbd61f5aa2ec56a297f9ccc3611bc3e860ac0d9b98ea76fc45b7964ed21"
+      "geometrySha256": "451e5be1325117ad60ad6341e0019787d7d2fb858650369f098b5cbe76b566f1"
     }
   ]
 }

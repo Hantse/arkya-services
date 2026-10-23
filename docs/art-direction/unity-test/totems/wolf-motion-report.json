@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "species": "wolf",
+  "files": [
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-walk-motion.png",
+    "D:\\Repositories\\arkya\\docs\\art-direction\\unity-test\\totems\\wolf-run-motion.png"
+  ],
+  "layout": "Top two rows: side view, t=0 to 7/8 of cycle left to right; bottom two rows: same phases in three-quarter view. Camera fixed for each view. No ground geometry or physics.",
+  "activeScenePreserved": true
+}

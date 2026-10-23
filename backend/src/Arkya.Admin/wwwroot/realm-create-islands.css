@@ -1,0 +1,36 @@
+.realm-create-island {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 1fr);
+    gap: 16px 24px;
+    padding: 22px 0;
+}
+.realm-create-island > * { min-width: 0; }
+.realm-create-island [hidden] { display: none !important; }
+.realm-create-island-controls .realm-plan-toggle { margin-bottom: 4px; }
+.realm-create-grid-inputs { display: grid; grid-template-columns: 1fr 20px 1fr; align-items: end; gap: 8px; margin-top: 16px; }
+.realm-create-grid-inputs > span { align-self: center; text-align: center; padding-top: 13px; color: var(--muted); }
+.realm-create-grid-inputs .field { margin-bottom: 0; }
+.realm-create-dedicated-count { margin-top: 16px; max-width: 170px; }
+.realm-create-dedicated-count input[readonly] { background: var(--paper); color: var(--muted); }
+.realm-create-grid-summary { display: block; font: 600 17px/1.5 Bahnschrift, "Segoe UI", sans-serif; color: var(--accent-dark); }
+.realm-create-island-preview { margin: 0; }
+.realm-create-island-map { position: relative; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); isolation: isolate; }
+.realm-create-island-map > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.realm-create-island-placeholder { position: absolute; inset: 0; display: grid; place-content: center; padding: 36px; background: #234457; color: #d9e7ef; text-align: center; font-size: 12px; }
+.realm-create-island-overlay { position: absolute; inset: 0; width: 100%; height: 100%; table-layout: fixed; border-collapse: collapse; border: 0; }
+.realm-create-island-overlay td { border: 1px solid rgb(255 255 255 / 85%); text-align: center; padding: 0; background: rgb(49 91 203 / 7%); }
+.realm-create-island-overlay td > span { display: inline-block; padding: 1px 5px; border-radius: 3px; background: #22334be6; color: white; font: 600 10px/1.6 Consolas, monospace; }
+.realm-create-island-overlay.is-dense td > span { display: none; }
+.realm-create-map-axis { position: absolute; z-index: 1; background: #22334be6; color: white; border-radius: 3px; padding: 2px 6px; font: 10px/1.5 Consolas, monospace; }
+.realm-create-map-x { right: 7px; bottom: 7px; }
+.realm-create-map-y { left: 7px; top: 7px; }
+.realm-create-island-preview figcaption { margin-top: 9px; font-size: 12px; }
+.realm-create-island-preview figcaption small { margin-top: 3px; font-size: 11px; }
+.realm-create-island-dimensions { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 13px; }
+.realm-create-island-dimensions summary { cursor: pointer; color: var(--ink); font-size: 12px; font-weight: 600; }
+.realm-create-island-dimensions .realm-island-dimensions { margin-top: 16px; }
+.realm-create-island > .text-button { justify-self: start; margin-top: 0; }
+@media (max-width: 1000px) {
+    .realm-create-island { grid-template-columns: minmax(0, 1fr); }
+    .realm-create-island-preview { max-width: 420px; width: 100%; }
+}

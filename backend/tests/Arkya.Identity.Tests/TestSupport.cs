@@ -44,9 +44,11 @@ internal sealed class MemoryIdentityStore : IIdentityStore
     private readonly Dictionary<string, LoginChallenge> challenges = [];
     private readonly Dictionary<string, Account> accounts = [];
     private readonly Dictionary<string, Session> sessions = [];
+    private readonly Dictionary<string, RefreshSession> refreshSessions = [];
 
     public Session[] Sessions { get { lock (gate) return sessions.Values.ToArray(); } }
     public Account[] Accounts { get { lock (gate) return accounts.Values.ToArray(); } }
+    public RefreshSession[] RefreshSessions { get { lock (gate) return refreshSessions.Values.ToArray(); } }
 
     public Task CreateChallengeAsync(LoginChallenge challenge, CancellationToken cancellationToken)
     {
@@ -172,6 +174,38 @@ internal sealed class MemoryIdentityStore : IIdentityStore
     public Task RevokeSessionAsync(string tokenHash, CancellationToken cancellationToken)
     {
         lock (gate) sessions.Remove(tokenHash);
+        return Task.CompletedTask;
+    }
+
+    public Task CreateRefreshSessionAsync(RefreshSession session, CancellationToken cancellationToken)
+    {
+        lock (gate) refreshSessions.Add(session.Id, session);
+        return Task.CompletedTask;
+    }
+
+    public Task<RefreshSession?> GetRefreshSessionAsync(string id, CancellationToken cancellationToken)
+    {
+        lock (gate) return Task.FromResult(refreshSessions.GetValueOrDefault(id));
+    }
+
+    public Task<RefreshSession?> RotateRefreshSessionAsync(string id, string tokenHash, string replacementHash, DateTime now,
+        CancellationToken cancellationToken)
+    {
+        lock (gate)
+        {
+            if (!refreshSessions.TryGetValue(id, out var session) || session.Revoked || session.ExpiresAt <= now ||
+                session.TokenHash != tokenHash || session.UsedTokenHashes.Length >= RefreshSession.MaximumRotations)
+                return Task.FromResult<RefreshSession?>(null);
+            var rotated = session with { TokenHash = replacementHash, UsedTokenHashes = [.. session.UsedTokenHashes, tokenHash] };
+            refreshSessions[id] = rotated;
+            return Task.FromResult<RefreshSession?>(rotated);
+        }
+    }
+
+    public Task RevokeRefreshSessionAsync(string id, CancellationToken cancellationToken)
+    {
+        lock (gate)
+            if (refreshSessions.TryGetValue(id, out var session)) refreshSessions[id] = session with { Revoked = true };
         return Task.CompletedTask;
     }
 }

@@ -1,0 +1,3710 @@
+{
+  "readOnly": true,
+  "checkedAtUtc": "2026-10-20T15:55:23.2955451Z",
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "content": {
+    "renderers": 1445,
+    "meshes": 1431,
+    "triangles": 4457248,
+    "distinctMeshes": 449,
+    "materials": 93,
+    "shadowCasters": 1282,
+    "volumes": 2,
+    "sceneLights": 26,
+    "activeLights": 24,
+    "townLights": 21
+  },
+  "environment": {
+    "path": "Island environment V2",
+    "serialized": {
+      "MonoBehaviour": {
+        "m_Enabled": true,
+        "m_EditorHideFlags": 0,
+        "m_Name": "",
+        "m_EditorClassIdentifier": "Arkya.World.Environment.Runtime::Arkya.World.Environment.DayNightEnvironment",
+        "Sun": {
+          "instanceID": 0
+        },
+        "Moon": {
+          "instanceID": 0
+        },
+        "SkyMaterial": {
+          "fileID": 2100000,
+          "guid": "1b9f6c6e55349324888fbc3691dcdc99",
+          "type": 2
+        },
+        "CycleSeconds": 14400.0,
+        "UseUtcClock": true,
+        "PreviewTime01": 0.40000000596046448,
+        "PreviewOverride": true,
+        "CloudCoverage": 0.4699999988079071,
+        "CloudSpeed": 0.2199999988079071,
+        "OrbitAzimuth": 32.0
+      }
+    },
+    "Daylight": 1.0,
+    "sunDirection": [
+      0.712826967,
+      0.7006293,
+      0.0315639935
+    ],
+    "moonDirection": [
+      -0.712826967,
+      -0.7006293,
+      -0.0315639935
+    ],
+    "CurrentLightning": 0.0,
+    "IsPreviewing": true,
+    "currentWeather": "Arkya.World.Environment.WeatherSample"
+  },
+  "weather": {
+    "MonoBehaviour": {
+      "m_Enabled": true,
+      "m_EditorHideFlags": 0,
+      "m_Name": "",
+      "m_EditorClassIdentifier": "Arkya.World.Environment.Rendering::Arkya.World.Environment.IslandWeather",
+      "environment": {
+        "instanceID": 0
+      },
+      "foliageWind": {
+        "instanceID": 0
+      },
+      "ambience": {
+        "instanceID": 0
+      },
+      "effects": {
+        "instanceID": 0
+      },
+      "viewer": {
+        "instanceID": 0
+      },
+      "terrain": {
+        "instanceID": 0
+      },
+      "Automatic": true,
+      "Seed": 137,
+      "SegmentSeconds": 900.0,
+      "TransitionSeconds": 75.0,
+      "PreviewKind": 0
+    }
+  },
+  "renderProfile": {
+    "MonoBehaviour": {
+      "m_Enabled": true,
+      "m_EditorHideFlags": 0,
+      "m_Name": "",
+      "m_EditorClassIdentifier": "Arkya.World.Environment.Rendering::Arkya.World.Environment.IslandRenderProfile",
+      "Pipeline": {
+        "fileID": 11400000,
+        "guid": "bb2a17a387c31054b91b1aa23ebf831f",
+        "type": 2
+      },
+      "EditorPreview": false
+    }
+  },
+  "quality": {
+    "pipeline": "Assets/Settings/PC_RPAsset.asset",
+    "defaultPipeline": "",
+    "antiAliasing": 0,
+    "shadowDistance": 40.0,
+    "skybox": "PaintedSky (Environment Preview)",
+    "skyboxShader": "Arkya/Environment/Painted Sky",
+    "skyboxData": {
+      "Material": {
+        "serializedVersion": "8",
+        "m_Name": "PaintedSky (Environment Preview)",
+        "m_Shader": {
+          "fileID": 4800000,
+          "guid": "526285ed29c745c9be189ccc2442aab1",
+          "type": 3
+        },
+        "m_Parent": {
+          "instanceID": 0
+        },
+        "m_ModifiedSerializedProperties": 0,
+        "m_ValidKeywords": [],
+        "m_InvalidKeywords": [],
+        "m_LightmapFlags": 4,
+        "m_EnableInstancingVariants": false,
+        "m_DoubleSidedGI": false,
+        "m_CustomRenderQueue": -1,
+        "stringTagMap": {},
+        "disabledShaderPasses": [],
+        "m_LockedProperties": "",
+        "m_SavedProperties": {
+          "serializedVersion": "3",
+          "m_TexEnvs": [],
+          "m_Ints": [],
+          "m_Floats": [
+            {
+              "first": "_CloudCoverage",
+              "second": 0.4699999988079071
+            },
+            {
+              "first": "_CloudSpeed",
+              "second": 0.2199999988079071
+            },
+            {
+              "first": "_Daylight",
+              "second": 1.0
+            },
+            {
+              "first": "_StarVisibility",
+              "second": 0.0
+            },
+            {
+              "first": "_Twilight",
+              "second": 0.0
+            },
+            {
+              "first": "_WeatherCloud",
+              "second": 0.0
+            },
+            {
+              "first": "_WeatherLightning",
+              "second": 0.0
+            },
+            {
+              "first": "_WeatherRain",
+              "second": 0.0
+            },
+            {
+              "first": "_WeatherStorm",
+              "second": 0.0
+            }
+          ],
+          "m_Colors": [
+            {
+              "first": "_CloudColor",
+              "second": {
+                "r": 0.93000000715255737,
+                "g": 0.949999988079071,
+                "b": 0.88999998569488525,
+                "a": 1.0
+              }
+            },
+            {
+              "first": "_MoonColor",
+              "second": {
+                "r": 0.81000000238418579,
+                "g": 0.88999998569488525,
+                "b": 1.0,
+                "a": 1.0
+              }
+            },
+            {
+              "first": "_MoonDirection",
+              "second": {
+                "r": -0.71282696723937988,
+                "g": -0.70062929391860962,
+                "b": -0.031563993543386459,
+                "a": 0.0
+              }
+            },
+            {
+              "first": "_SkyHorizon",
+              "second": {
+                "r": 0.6600000262260437,
+                "g": 0.81000000238418579,
+                "b": 0.79000002145767212,
+                "a": 1.0
+              }
+            },
+            {
+              "first": "_SkyTop",
+              "second": {
+                "r": 0.15999999642372131,
+                "g": 0.43000000715255737,
+                "b": 0.64999997615814209,
+                "a": 1.0
+              }
+            },
+            {
+              "first": "_SunDirection",
+              "second": {
+                "r": 0.71282696723937988,
+                "g": 0.70062929391860962,
+                "b": 0.031563993543386459,
+                "a": 0.0
+              }
+            }
+          ]
+        },
+        "m_BuildTextureStacks": [],
+        "m_AllowLocking": true
+      }
+    },
+    "ambientIntensity": 1.0,
+    "reflectionIntensity": 0.7,
+    "fog": true,
+    "fogDensity": 0.00048
+  },
+  "cameras": [
+    {
+      "path": "Starter Island Camera",
+      "enabled": true,
+      "allowHDR": true,
+      "allowMSAA": true,
+      "fieldOfView": 66.0,
+      "cullingMask": -1,
+      "position": [
+        540.000244,
+        52.7855034,
+        528.000244
+      ],
+      "extraData": [
+        {
+          "type": "UnityEngine.Rendering.Universal.UniversalAdditionalCameraData",
+          "data": {
+            "MonoBehaviour": {
+              "m_Enabled": true,
+              "m_EditorHideFlags": 0,
+              "m_Name": "",
+              "m_EditorClassIdentifier": "Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData",
+              "m_RenderShadows": true,
+              "m_RequiresDepthTextureOption": 2,
+              "m_RequiresOpaqueTextureOption": 2,
+              "m_CameraType": 0,
+              "m_Cameras": [],
+              "m_RendererIndex": -1,
+              "m_VolumeLayerMask": {
+                "serializedVersion": "2",
+                "m_Bits": 1
+              },
+              "m_VolumeTrigger": {
+                "instanceID": 0
+              },
+              "m_VolumeFrameworkUpdateModeOption": 2,
+              "m_RenderPostProcessing": true,
+              "m_Antialiasing": 2,
+              "m_AntialiasingQuality": 2,
+              "m_StopNaN": false,
+              "m_Dithering": false,
+              "m_ClearDepth": true,
+              "m_AllowXRRendering": true,
+              "m_AllowHDROutput": true,
+              "m_UseScreenCoordOverride": false,
+              "m_ScreenSizeOverride": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+              },
+              "m_ScreenCoordScaleBias": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+              },
+              "m_RequiresDepthTexture": false,
+              "m_RequiresColorTexture": false,
+              "m_TaaSettings": {
+                "m_Quality": 3,
+                "m_FrameInfluence": 0.10000000149011612,
+                "m_JitterScale": 1.0,
+                "m_MipBias": 0.0,
+                "m_VarianceClampScale": 0.89999997615814209,
+                "m_ContrastAdaptiveSharpening": 0.0
+              },
+              "m_Version": 2
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "lights": [
+    {
+      "path": "Sun - four hour realm sky",
+      "enabled": true,
+      "active": true,
+      "type": "Directional",
+      "intensity": 1.72,
+      "color": [
+        1.0,
+        0.975,
+        0.93
+      ],
+      "range": 10.0,
+      "shadows": "Soft",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 1,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.97500002384185791,
+            "b": 0.93000000715255737,
+            "a": 1.0
+          },
+          "m_Intensity": 1.7200000286102295,
+          "m_Range": 10.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 2,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 0.86000001430511475,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Island environment V2/Moon - cool night light",
+      "enabled": false,
+      "active": true,
+      "type": "Directional",
+      "intensity": 0.0,
+      "color": [
+        0.52,
+        0.67,
+        1.0
+      ],
+      "range": 10.0,
+      "shadows": "None",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": false,
+          "serializedVersion": "13",
+          "m_Type": 1,
+          "m_Color": {
+            "r": 0.51999998092651367,
+            "g": 0.67000001668930054,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "m_Intensity": 0.0,
+          "m_Range": 10.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 0.51999998092651367,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Island ambience/Small sheltered hearth/Hearth amber glow",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.3,
+      "color": [
+        1.0,
+        0.48,
+        0.19
+      ],
+      "range": 9.0,
+      "shadows": "None",
+      "position": [
+        520.0,
+        52.3503723,
+        531.0
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.47999998927116394,
+            "b": 0.18999999761581421,
+            "a": 1.0
+          },
+          "m_Intensity": 1.2999999523162842,
+          "m_Range": 9.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Island ambience/Small sheltered hearth/Hearth amber glow",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.3,
+      "color": [
+        1.0,
+        0.48,
+        0.19
+      ],
+      "range": 9.0,
+      "shadows": "None",
+      "position": [
+        520.0,
+        52.3503723,
+        531.0
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.47999998927116394,
+            "b": 0.18999999761581421,
+            "a": 1.0
+          },
+          "m_Intensity": 1.2999999523162842,
+          "m_Range": 9.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Island ambience/Small sheltered hearth/Hearth amber glow",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.3,
+      "color": [
+        1.0,
+        0.48,
+        0.19
+      ],
+      "range": 9.0,
+      "shadows": "None",
+      "position": [
+        520.0,
+        52.3503723,
+        531.0
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.47999998927116394,
+            "b": 0.18999999761581421,
+            "a": 1.0
+          },
+          "m_Intensity": 1.2999999523162842,
+          "m_Range": 9.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        531.118347,
+        52.80699,
+        541.3895
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": false,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        544.5132,
+        52.7496643,
+        543.4732
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/03 - Atelier des runes/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        560.20166,
+        53.04305,
+        545.1919
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        571.922668,
+        53.62943,
+        554.123047
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/05 - Herboristerie/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        579.63916,
+        53.65541,
+        528.6825
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        574.8582,
+        53.0362244,
+        498.718018
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/07 - Entrepot des marchands/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        562.5146,
+        52.3255157,
+        492.806641
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/08 - Maison des tisserands/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        549.705566,
+        52.4278755,
+        494.8061
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        533.644958,
+        53.1187019,
+        497.1099
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/10 - Relais de la crique/Warm shop lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        521.8738,
+        53.51704,
+        518.235535
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        530.4,
+        54.06787,
+        530.12
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        532.5,
+        53.4627571,
+        543.62
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        548.4,
+        53.6498756,
+        541.12
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        568.4,
+        54.1049843,
+        539.12
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.59,
+        0.26
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        575.4,
+        54.3901558,
+        524.12
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.5899999737739563,
+            "b": 0.25999999046325684,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Mana well • engraved stone and azure source/Contained cyan mana light",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 4.5,
+      "color": [
+        0.22,
+        0.74,
+        1.0
+      ],
+      "range": 12.0,
+      "shadows": "None",
+      "position": [
+        550.0,
+        53.4481125,
+        520.0
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 0.2199999988079071,
+            "g": 0.74000000953674316,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "m_Intensity": 4.5,
+          "m_Range": 12.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 0.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Mana well • engraved stone and azure source/Soft basin reflection",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 2.5,
+      "color": [
+        0.25,
+        0.87,
+        0.88
+      ],
+      "range": 8.0,
+      "shadows": "None",
+      "position": [
+        550.0,
+        52.6981125,
+        520.0
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 0.25,
+            "g": 0.87000000476837158,
+            "b": 0.87999999523162842,
+            "a": 1.0
+          },
+          "m_Intensity": 2.5,
+          "m_Range": 8.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 0.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gate amber lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.58,
+        0.25
+      ],
+      "range": 9.0,
+      "shadows": "None",
+      "position": [
+        521.2951,
+        52.66011,
+        477.093842
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.57999998331069946,
+            "b": 0.25,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 9.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Arrival/Gate amber lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.58,
+        0.25
+      ],
+      "range": 9.0,
+      "shadows": "None",
+      "position": [
+        514.0406,
+        52.66011,
+        481.1265
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.57999998331069946,
+            "b": 0.25,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 9.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gate amber lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.58,
+        0.25
+      ],
+      "range": 9.0,
+      "shadows": "None",
+      "position": [
+        578.99884,
+        53.4963875,
+        569.5134
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.57999998331069946,
+            "b": 0.25,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 9.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    },
+    {
+      "path": "Aubefont - mana well town/Town ramparts - two gates/Gate - Forest/Gate amber lantern/Amber light - shadowless",
+      "enabled": true,
+      "active": true,
+      "type": "Point",
+      "intensity": 1.5,
+      "color": [
+        1.0,
+        0.58,
+        0.25
+      ],
+      "range": 9.0,
+      "shadows": "None",
+      "position": [
+        585.5732,
+        53.4963875,
+        564.447
+      ],
+      "data": {
+        "Light": {
+          "m_Enabled": true,
+          "serializedVersion": "13",
+          "m_Type": 2,
+          "m_Color": {
+            "r": 1.0,
+            "g": 0.57999998331069946,
+            "b": 0.25,
+            "a": 1.0
+          },
+          "m_Intensity": 1.5,
+          "m_Range": 9.0,
+          "m_SpotAngle": 30.0,
+          "m_InnerSpotAngle": 21.802080154418945,
+          "m_CookieSize2D": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "m_Shadows": {
+            "m_Type": 0,
+            "m_Resolution": -1,
+            "m_CustomResolution": -1,
+            "m_Strength": 1.0,
+            "m_Bias": 0.05000000074505806,
+            "m_NormalBias": 0.40000000596046448,
+            "m_NearPlane": 0.20000000298023224,
+            "m_CullingMatrixOverride": {
+              "e00": 1.0,
+              "e01": 0.0,
+              "e02": 0.0,
+              "e03": 0.0,
+              "e10": 0.0,
+              "e11": 1.0,
+              "e12": 0.0,
+              "e13": 0.0,
+              "e20": 0.0,
+              "e21": 0.0,
+              "e22": 1.0,
+              "e23": 0.0,
+              "e30": 0.0,
+              "e31": 0.0,
+              "e32": 0.0,
+              "e33": 1.0
+            },
+            "m_UseCullingMatrixOverride": false
+          },
+          "m_Cookie": {
+            "instanceID": 0
+          },
+          "m_DrawHalo": false,
+          "m_Flare": {
+            "instanceID": 0
+          },
+          "m_RenderMode": 0,
+          "m_CullingMask": {
+            "serializedVersion": "2",
+            "m_Bits": 4294967295
+          },
+          "m_RenderingLayerMask": 1,
+          "m_Lightmapping": 4,
+          "m_LightShadowCasterMode": 0,
+          "m_AreaSize": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "m_BounceIntensity": 1.0,
+          "m_ColorTemperature": 6570.0,
+          "m_UseColorTemperature": false,
+          "m_BoundingSphereOverride": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          },
+          "m_UseBoundingSphereOverride": false,
+          "m_UseViewFrustumForShadowCasterCull": true,
+          "m_ForceVisible": false,
+          "m_ShapeRadius": 0.02500000037252903,
+          "m_ShadowAngle": 0.0,
+          "m_LightUnit": 1,
+          "m_LuxAtDistance": 1.0,
+          "m_EnableSpotReflector": true
+        }
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "path": "Island grading",
+      "enabled": true,
+      "active": true,
+      "isGlobal": true,
+      "priority": 0.0,
+      "weight": 1.0,
+      "blendDistance": 0.0,
+      "profile": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Lighting/IslandBoundedBloom.asset",
+      "components": [
+        {
+          "type": "UnityEngine.Rendering.Universal.Tonemapping",
+          "active": true,
+          "data": {
+            "MonoBehaviour": {
+              "m_Enabled": true,
+              "m_EditorHideFlags": 0,
+              "m_Name": "Tonemapping(Clone)",
+              "m_EditorClassIdentifier": "Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Tonemapping",
+              "active": true,
+              "mode": {
+                "m_OverrideState": true,
+                "m_Value": 1
+              },
+              "neutralHDRRangeReductionMode": {
+                "m_OverrideState": true,
+                "m_Value": 2
+              },
+              "acesPreset": {
+                "m_OverrideState": true,
+                "m_Value": 3
+              },
+              "hueShiftAmount": {
+                "m_OverrideState": true,
+                "m_Value": 0.0
+              },
+              "detectPaperWhite": {
+                "m_OverrideState": true,
+                "m_Value": false
+              },
+              "paperWhite": {
+                "m_OverrideState": true,
+                "m_Value": 300.0
+              },
+              "detectBrightnessLimits": {
+                "m_OverrideState": true,
+                "m_Value": true
+              },
+              "minNits": {
+                "m_OverrideState": true,
+                "m_Value": 0.004999999888241291
+              },
+              "maxNits": {
+                "m_OverrideState": true,
+                "m_Value": 1000.0
+              }
+            }
+          }
+        },
+        {
+          "type": "UnityEngine.Rendering.Universal.Bloom",
+          "active": true,
+          "data": {
+            "MonoBehaviour": {
+              "m_Enabled": true,
+              "m_EditorHideFlags": 0,
+              "m_Name": "Bloom",
+              "m_EditorClassIdentifier": "Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Bloom",
+              "active": true,
+              "skipIterations": {
+                "m_OverrideState": true,
+                "m_Value": 1
+              },
+              "threshold": {
+                "m_OverrideState": true,
+                "m_Value": 1.2999999523162842
+              },
+              "intensity": {
+                "m_OverrideState": true,
+                "m_Value": 0.15000000596046448
+              },
+              "scatter": {
+                "m_OverrideState": true,
+                "m_Value": 0.550000011920929
+              },
+              "clamp": {
+                "m_OverrideState": true,
+                "m_Value": 8.0
+              },
+              "tint": {
+                "m_OverrideState": true,
+                "m_Value": {
+                  "r": 1.0,
+                  "g": 1.0,
+                  "b": 1.0,
+                  "a": 1.0
+                }
+              },
+              "highQualityFiltering": {
+                "m_OverrideState": true,
+                "m_Value": false
+              },
+              "filter": {
+                "m_OverrideState": true,
+                "m_Value": 0
+              },
+              "downscale": {
+                "m_OverrideState": true,
+                "m_Value": 0
+              },
+              "maxIterations": {
+                "m_OverrideState": true,
+                "m_Value": 6
+              },
+              "dirtTexture": {
+                "m_OverrideState": true,
+                "m_Value": {
+                  "instanceID": 0
+                },
+                "dimension": 1
+              },
+              "dirtIntensity": {
+                "m_OverrideState": true,
+                "m_Value": 0.0
+              }
+            }
+          }
+        },
+        {
+          "type": "UnityEngine.Rendering.Universal.ColorAdjustments",
+          "active": true,
+          "data": {
+            "MonoBehaviour": {
+              "m_Enabled": true,
+              "m_EditorHideFlags": 0,
+              "m_Name": "ColorAdjustments",
+              "m_EditorClassIdentifier": "Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ColorAdjustments",
+              "active": true,
+              "postExposure": {
+                "m_OverrideState": true,
+                "m_Value": 0.0
+              },
+              "contrast": {
+                "m_OverrideState": true,
+                "m_Value": 6.0
+              },
+              "colorFilter": {
+                "m_OverrideState": true,
+                "m_Value": {
+                  "r": 1.0,
+                  "g": 1.0,
+                  "b": 1.0,
+                  "a": 1.0
+                }
+              },
+              "hueShift": {
+                "m_OverrideState": true,
+                "m_Value": 0.0
+              },
+              "saturation": {
+                "m_OverrideState": true,
+                "m_Value": 2.0
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Aubefont - mana well town/Local town glow volume",
+      "enabled": true,
+      "active": true,
+      "isGlobal": false,
+      "priority": 5.0,
+      "weight": 1.0,
+      "blendDistance": 12.0,
+      "profile": "Assets/Arkya/World/StarterIsland/Town/ArtFinish20261020/Lighting/TownWarmBoundedGlow.asset",
+      "components": [
+        {
+          "type": "UnityEngine.Rendering.Universal.Bloom",
+          "active": true,
+          "data": {
+            "MonoBehaviour": {
+              "m_Enabled": true,
+              "m_EditorHideFlags": 0,
+              "m_Name": "Bloom",
+              "m_EditorClassIdentifier": "Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Bloom",
+              "active": true,
+              "skipIterations": {
+                "m_OverrideState": true,
+                "m_Value": 1
+              },
+              "threshold": {
+                "m_OverrideState": true,
+                "m_Value": 1.2000000476837158
+              },
+              "intensity": {
+                "m_OverrideState": true,
+                "m_Value": 0.25
+              },
+              "scatter": {
+                "m_OverrideState": true,
+                "m_Value": 0.60000002384185791
+              },
+              "clamp": {
+                "m_OverrideState": true,
+                "m_Value": 8.0
+              },
+              "tint": {
+                "m_OverrideState": true,
+                "m_Value": {
+                  "r": 1.0,
+                  "g": 1.0,
+                  "b": 1.0,
+                  "a": 1.0
+                }
+              },
+              "highQualityFiltering": {
+                "m_OverrideState": true,
+                "m_Value": false
+              },
+              "filter": {
+                "m_OverrideState": true,
+                "m_Value": 0
+              },
+              "downscale": {
+                "m_OverrideState": true,
+                "m_Value": 0
+              },
+              "maxIterations": {
+                "m_OverrideState": true,
+                "m_Value": 6
+              },
+              "dirtTexture": {
+                "m_OverrideState": true,
+                "m_Value": {
+                  "instanceID": 0
+                },
+                "dimension": 1
+              },
+              "dirtIntensity": {
+                "m_OverrideState": true,
+                "m_Value": 0.0
+              }
+            }
+          }
+        },
+        {
+          "type": "UnityEngine.Rendering.Universal.ColorAdjustments",
+          "active": true,
+          "data": {
+            "MonoBehaviour": {
+              "m_Enabled": true,
+              "m_EditorHideFlags": 0,
+              "m_Name": "ColorAdjustments",
+              "m_EditorClassIdentifier": "Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ColorAdjustments",
+              "active": true,
+              "postExposure": {
+                "m_OverrideState": true,
+                "m_Value": 0.05000000074505806
+              },
+              "contrast": {
+                "m_OverrideState": true,
+                "m_Value": 10.0
+              },
+              "colorFilter": {
+                "m_OverrideState": true,
+                "m_Value": {
+                  "r": 1.0,
+                  "g": 1.0,
+                  "b": 1.0,
+                  "a": 1.0
+                }
+              },
+              "hueShift": {
+                "m_OverrideState": true,
+                "m_Value": 0.0
+              },
+              "saturation": {
+                "m_OverrideState": true,
+                "m_Value": 5.0
+              }
+            }
+          }
+        },
+        {
+          "type": "UnityEngine.Rendering.Universal.WhiteBalance",
+          "active": true,
+          "data": {
+            "MonoBehaviour": {
+              "m_Enabled": true,
+              "m_EditorHideFlags": 0,
+              "m_Name": "WhiteBalance",
+              "m_EditorClassIdentifier": "Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.WhiteBalance",
+              "active": true,
+              "temperature": {
+                "m_OverrideState": true,
+                "m_Value": 5.0
+              },
+              "tint": {
+                "m_OverrideState": true,
+                "m_Value": 1.0
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "flareComponents": [],
+  "emissiveMaterials": [
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/Materials/Lantern warm glass.mat",
+      "name": "Lantern warm glass",
+      "color": "RGBA(1.500, 0.780, 0.280, 1.000)",
+      "enabledKeyword": false
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/VillageUpgrade/Architecture/Materials/Hand blown village glass.mat",
+      "name": "Hand blown village glass",
+      "color": "RGBA(1.000, 0.580, 0.290, 1.000)",
+      "enabledKeyword": false
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Soft amber mana inlay.mat",
+      "name": "Soft amber mana inlay",
+      "color": "RGBA(1.804, 1.320, 0.572, 2.200)",
+      "enabledKeyword": true
+    },
+    {
+      "path": "Assets/Arkya/World/StarterIsland/Town/Enchantment20261020/Materials/Jade lantern porcelain.mat",
+      "name": "Jade lantern porcelain",
+      "color": "RGBA(0.483, 1.428, 1.302, 2.100)",
+      "enabledKeyword": true
+    }
+  ],
+  "particles": [
+    {
+      "path": "Island ambience/Warm drifting pollen",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 48,
+      "startSize": 0.12,
+      "emissionRate": 2.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Woodland fireflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 36,
+      "startSize": 0.19,
+      "emissionRate": 1.5,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Warm drifting pollen",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 48,
+      "startSize": 0.12,
+      "emissionRate": 2.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Woodland fireflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 36,
+      "startSize": 0.19,
+      "emissionRate": 1.5,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Warm drifting pollen",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 48,
+      "startSize": 0.12,
+      "emissionRate": 2.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Woodland fireflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 36,
+      "startSize": 0.19,
+      "emissionRate": 1.5,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Warm drifting pollen",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 48,
+      "startSize": 0.12,
+      "emissionRate": 2.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Woodland fireflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 36,
+      "startSize": 0.19,
+      "emissionRate": 1.5,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Warm drifting pollen",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 48,
+      "startSize": 0.12,
+      "emissionRate": 2.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Woodland fireflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 36,
+      "startSize": 0.19,
+      "emissionRate": 1.5,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Meadow butterflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 10,
+      "startSize": 0.32,
+      "emissionRate": 0.35,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Butterfly.mat"
+    },
+    {
+      "path": "Island ambience/Meadow butterflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 10,
+      "startSize": 0.32,
+      "emissionRate": 0.35,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Butterfly.mat"
+    },
+    {
+      "path": "Island ambience/Meadow butterflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 10,
+      "startSize": 0.32,
+      "emissionRate": 0.35,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Butterfly.mat"
+    },
+    {
+      "path": "Island ambience/Small sheltered hearth/Hearth flame",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 28,
+      "startSize": 0.85,
+      "emissionRate": 13.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Small sheltered hearth/Hearth embers",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 12,
+      "startSize": 0.09,
+      "emissionRate": 2.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Small sheltered hearth/Hearth flame",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 28,
+      "startSize": 0.85,
+      "emissionRate": 13.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Small sheltered hearth/Hearth embers",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 12,
+      "startSize": 0.09,
+      "emissionRate": 2.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Small sheltered hearth/Hearth flame",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 28,
+      "startSize": 0.85,
+      "emissionRate": 13.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Island ambience/Small sheltered hearth/Hearth embers",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 20.0,
+      "maxParticles": 12,
+      "startSize": 0.09,
+      "emissionRate": 2.0,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/01 - Auberge des Lanternes/Slow chimney smoke",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 10.0,
+      "maxParticles": 22,
+      "startSize": 1.1,
+      "emissionRate": 0.65,
+      "material": "Assets/Arkya/World/StarterIsland/Town/Materials/Town chimney smoke.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/02 - Maison du boulanger/Slow chimney smoke",
+      "active": false,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 10.0,
+      "maxParticles": 22,
+      "startSize": 1.1,
+      "emissionRate": 0.65,
+      "material": "Assets/Arkya/World/StarterIsland/Town/Materials/Town chimney smoke.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/04 - Maison des voyageurs/Slow chimney smoke",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 10.0,
+      "maxParticles": 22,
+      "startSize": 1.1,
+      "emissionRate": 0.65,
+      "material": "Assets/Arkya/World/StarterIsland/Town/Materials/Town chimney smoke.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/06 - Forge du Refuge/Slow chimney smoke",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 10.0,
+      "maxParticles": 22,
+      "startSize": 1.1,
+      "emissionRate": 0.65,
+      "material": "Assets/Arkya/World/StarterIsland/Town/Materials/Town chimney smoke.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Buildings - ten inhabited silhouettes/09 - Maison du verger/Slow chimney smoke",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 10.0,
+      "maxParticles": 22,
+      "startSize": 1.1,
+      "emissionRate": 0.65,
+      "material": "Assets/Arkya/World/StarterIsland/Town/Materials/Town chimney smoke.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Evening town fireflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 10.0,
+      "maxParticles": 18,
+      "startSize": 0.08,
+      "emissionRate": 1.6,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Evening town fireflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 10.0,
+      "maxParticles": 18,
+      "startSize": 0.08,
+      "emissionRate": 1.6,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Evening town fireflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 10.0,
+      "maxParticles": 18,
+      "startSize": 0.08,
+      "emissionRate": 1.6,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Evening town fireflies",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 10.0,
+      "maxParticles": 18,
+      "startSize": 0.08,
+      "emissionRate": 1.6,
+      "material": "Assets/Arkya/World/Environment/Ambience/Materials/Painted motes.mat"
+    },
+    {
+      "path": "Aubefont - mana well town/Mana well • engraved stone and azure source/Slow rising mana motes • budget 72",
+      "active": true,
+      "particleCount": 0,
+      "isPlaying": false,
+      "time": 0.0,
+      "duration": 8.0,
+      "maxParticles": 72,
+      "startSize": 0.065,
+      "emissionRate": 9.0,
+      "material": "Assets/Arkya/World/StarterIsland/Town/Materials/ManaWell_Motes.mat"
+    }
+  ],
+  "scope": "Read-only snapshot of serialized settings and content counts; no frame-time or FPS measurement."
+}

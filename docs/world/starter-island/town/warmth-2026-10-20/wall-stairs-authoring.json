@@ -1,0 +1,111 @@
+{
+  "success": true,
+  "changed": true,
+  "sceneSaved": false,
+  "terrainHeightmapUnchanged": true,
+  "retainedCollidersAndTransformsUnchangedExceptStairsAndReviewMarkers": true,
+  "plans": [
+    {
+      "name": "Stairway - West",
+      "foot": {
+        "x": 502.260559,
+        "y": 51.0979538,
+        "z": 518.9966
+      },
+      "top": {
+        "x": 504.628,
+        "y": 56.10533,
+        "z": 531.575745
+      },
+      "wallConnection": {
+        "x": 501.031677,
+        "y": 56.10533,
+        "z": 532.9997
+      },
+      "yaw": 10.65859,
+      "width": 2.6,
+      "count": 28,
+      "rise": 5.00737762,
+      "riser": 0.178834915,
+      "going": 0.4125,
+      "runLength": 12.8,
+      "intermediateLandingLength": 1.25,
+      "innerWallInset": 3.8,
+      "minimumWallGap": 0.273082018,
+      "lateralLandingProjection": 0.899999857
+    },
+    {
+      "name": "Stairway - East",
+      "foot": {
+        "x": 590.2722,
+        "y": 49.9287033,
+        "z": 501.0512
+      },
+      "top": {
+        "x": 592.349243,
+        "y": 56.10533,
+        "z": 514.289246
+      },
+      "wallConnection": {
+        "x": 597.22876,
+        "y": 56.10533,
+        "z": 514.522
+      },
+      "yaw": 8.917029,
+      "width": 2.6,
+      "count": 36,
+      "rise": 6.176628,
+      "riser": 0.171573,
+      "going": 0.337499976,
+      "runLength": 13.4,
+      "intermediateLandingLength": 1.25,
+      "innerWallInset": 4.8,
+      "minimumWallGap": 0.24226737,
+      "lateralLandingProjection": 1.90000033
+    }
+  ],
+  "validation": [
+    {
+      "name": "Stairway - West",
+      "steps": 28,
+      "supportSamples": 84,
+      "clearanceSamples": 109,
+      "maximumSupportError": 3.81469727E-06,
+      "bodyRadius": 0.28,
+      "bodyHeight": 2.0,
+      "lateralLines": [
+        -0.8,
+        0.0,
+        0.8
+      ],
+      "lowerApproachRise": 0.1240921,
+      "lateralExitSupported": true
+    },
+    {
+      "name": "Stairway - East",
+      "steps": 36,
+      "supportSamples": 108,
+      "clearanceSamples": 133,
+      "maximumSupportError": 3.81469727E-06,
+      "bodyRadius": 0.28,
+      "bodyHeight": 2.0,
+      "lateralLines": [
+        -0.8,
+        0.0,
+        0.8
+      ],
+      "lowerApproachRise": 0.18497467,
+      "lateralExitSupported": true
+    }
+  ],
+  "assets": [
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/WallStairs/Meshes/West Wall aligned limestone mass.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/WallStairs/Meshes/West Wall aligned carved treads.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/WallStairs/Meshes/West Wall aligned timber guards.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/WallStairs/Meshes/East Wall aligned limestone mass.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/WallStairs/Meshes/East Wall aligned carved treads.asset",
+    "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/WallStairs/Meshes/East Wall aligned timber guards.asset"
+  ],
+  "scope": "Two wall-aligned solid masonry accesses with retained parapet openings and short lateral top landings. Existing walls, gates, towers and buildings unchanged.",
+  "utc": "2026-10-20T08:48:57.9973677Z"
+}

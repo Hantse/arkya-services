@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "UnityEngine.Application.runInBackground = UnityEditor.PlayerSettings.runInBackground; return new { playing = UnityEditor.EditorApplication.isPlaying, compiling = UnityEditor.EditorApplication.isCompiling, scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().path, dirty = UnityEngine.SceneManagement.SceneManager.GetActiveScene().isDirty, pipeline = UnityEditor.AssetDatabase.GetAssetPath(UnityEngine.QualitySettings.renderPipeline), backgroundRestored = UnityEngine.Application.runInBackground == UnityEditor.PlayerSettings.runInBackground };"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": {
+        "playing": false,
+        "compiling": false,
+        "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+        "dirty": false,
+        "pipeline": "Assets/Settings/PC_RPAsset.asset",
+        "backgroundRestored": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

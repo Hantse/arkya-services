@@ -52,6 +52,26 @@ public sealed class CharacterAppearanceTests
         Assert.Empty((CharacterAppearance.Default with { Race = race, HeightCm = heightCm }).Validate());
 
     [Fact]
+    public async Task ReferencePaletteCanBeCreatedAndReadWithoutChangingLegacyDefaults()
+    {
+        var repository = new MemoryCharacterRepository();
+        var service = new CharacterService(repository, new FixedTimeProvider());
+        var ownerId = Guid.NewGuid();
+        var appearance = CharacterAppearance.Default with
+        {
+            Silhouette = "b", Skin = "sand", HairStyle = "braid", HairColor = "magenta", OutfitColor = "jade"
+        };
+        var result = await service.CreateAsync(ownerId, "Aeria", appearance, CancellationToken.None);
+        Assert.Equal(CreateCharacterStatus.Created, result.Status);
+        var saved = Assert.Single(await repository.ListOwnedAsync(ownerId, CancellationToken.None));
+        Assert.Equal(appearance, saved.Appearance);
+        var restored = BsonSerializer.Deserialize<CharacterDocument>(CharacterDocument.From(saved).ToBsonDocument()).ToDomain();
+        Assert.Equal(appearance, restored.Appearance);
+        Assert.Equal("brown", CharacterAppearance.Default.HairColor);
+        Assert.Equal("sage", CharacterAppearance.Default.OutfitColor);
+    }
+
+    [Fact]
     public void BsonRoundTripPreservesAllAppearanceFieldsAndUpgradesSchema()
     {
         var character = new Character(Guid.NewGuid(), Guid.NewGuid(), "Aeria", "AERIA", 1, FixedTimeProvider.Now)

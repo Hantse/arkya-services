@@ -1,0 +1,26 @@
+[
+  {
+    "model": "human-a",
+    "guidBefore": "71237244c8a11cd429c68e4cb27e1b33",
+    "guidAfter": "71237244c8a11cd429c68e4cb27e1b33",
+    "preserved": true
+  },
+  {
+    "model": "human-b",
+    "guidBefore": "8df6ba7eba0b13d4c902e48485e9aea8",
+    "guidAfter": "8df6ba7eba0b13d4c902e48485e9aea8",
+    "preserved": true
+  },
+  {
+    "model": "elf-a",
+    "guidBefore": "23e8e4e81dcfe474a9c95368ccf576f6",
+    "guidAfter": "23e8e4e81dcfe474a9c95368ccf576f6",
+    "preserved": true
+  },
+  {
+    "model": "elf-b",
+    "guidBefore": "ca830a667db8aa94f861022bb8f9daac",
+    "guidAfter": "ca830a667db8aa94f861022bb8f9daac",
+    "preserved": true
+  }
+]

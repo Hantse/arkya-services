@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "utc": "2026-10-20T11:05:47.1328286Z",
+  "changedLeafPixels": 890,
+  "zeroWindChangedPixels": 0,
+  "pinnedStemChangedPixels": 0,
+  "pinnedStemVisiblePixels": 3912,
+  "pinnedTriangles": 5478,
+  "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Meshes/Rooted district 01 LOD0.asset",
+  "material": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalClimbers/Materials/Olive sage rooted climbers.mat",
+  "scope": "Actual authored mesh and material rendered in an isolated temporary preview scene. Two explicit shader clock poses, zero-wind control, then only original all-zero-weight stem/petiole triangles. Existing shader globals and active render target restored; no scene or asset writes."
+}

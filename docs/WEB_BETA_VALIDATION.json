@@ -1,0 +1,167 @@
+{
+  "date": "2026-10-18",
+  "scope": "Website session, real services, authoritative starter-island dedicated and Unity WebGL",
+  "backend": {
+    "passed": 502,
+    "failed": 0,
+    "ignored": 0,
+    "realMongo": true,
+    "realApiRevocationFlow": true,
+    "evidence": "artifacts/web-beta/backend-final-tests/summary.json"
+  },
+  "unityEditor": {
+    "gameContracts": {
+      "passed": 24,
+      "failed": 0
+    },
+    "creationLayoutReturn": {
+      "passed": 1,
+      "failed": 0
+    },
+    "dedicatedIdleShutdownRegression": {
+      "passed": 1,
+      "failed": 0,
+      "evidence": "artifacts/web-beta/unity-dedicated-shutdown-tests.xml"
+    },
+    "serviceClient": {
+      "passed": 23,
+      "failed": 0
+    },
+    "webTextureCopies": {
+      "passed": 9,
+      "failed": 0
+    },
+    "twoRealWebSocketClients": {
+      "passed": 1,
+      "failed": 0
+    },
+    "savedStatesVerifiedInMongo": 2,
+    "contractsAndLayoutEvidence": "artifacts/web-beta/unity-final-tests.xml"
+  },
+  "siteShell": {
+    "nodeTestsPassed": 92,
+    "browserChecksPassed": 61,
+    "testResponsesOnlyInTests": true
+  },
+  "builds": {
+    "windowsDedicated": "succeeded",
+    "webGl": {
+      "initialRelease": "succeeded",
+      "initialReleaseTotalBytes": 91370391,
+      "finalRebuild": "succeeded",
+      "runtimePipelineResourcesIncluded": true,
+      "finalReleaseTotalBytes": 91850994,
+      "privateFixtureSecretValuesChecked": 13,
+      "secretMatchesInDecompressedBuild": 0,
+      "staticDelivery": {
+        "chunkBytesMaximum": 4194304,
+        "chunkedPayloads": 2,
+        "chunks": 23,
+        "integrity": "SHA-256 per chunk and reassembled payload"
+      },
+      "evidence": "artifacts/web-beta/web-build-inspection.json"
+    },
+    "linuxDedicated": {
+      "compilation": "succeeded",
+      "containerImage": "succeeded",
+      "runtimeValidation": "succeeded",
+      "nativeDependenciesResolved": true,
+      "readOnlyNonRootContainer": true,
+      "finalImage": "sha256:899a58742b1d68986386982b1bd0563cafc20f2403538ba8fc66df5881939531",
+      "activeLeaseSigterm": {
+        "image": "sha256:c9da6a1622d11c0c6ba0a921018ecbcec9ecfd7d93825c56639df0d731cf9616",
+        "exitCode": 0,
+        "seconds": 3.167,
+        "finalSaveAndReleaseVerifiedInMongo": true,
+        "clientReturnedToCreation": true
+      },
+      "idleSigtermRegression": {
+        "beforeFix": { "exitCode": 137, "dockerGraceSeconds": 30 },
+        "cause": "An empty drain requested Quit synchronously inside wantsToQuit before the original callback returned false",
+        "fix": "Yield one frame after stopping admission and removing readiness, before requesting Quit",
+        "afterFixExitCodes": [0, 0],
+        "afterFixSeconds": [0.786, 0.751],
+        "activeLeaseRetestedOnFinalImage": false,
+        "evidence": "artifacts/web-beta/linux-validation/idle-stop-after-fix.json"
+      },
+      "evidence": "artifacts/web-beta/linux-validation/verification-summary.json"
+    }
+  },
+  "authenticationFixture": {
+    "isolation": "Dedicated local test databases and a pre-seeded Arkya account/session",
+    "sessionValidation": "Real Identity /me requests from site and Unity",
+    "services": "Real Identity, Characters, Realms and MongoDB",
+    "discordOAuthExercised": false,
+    "mockOAuthDelivered": false
+  },
+  "realWebGlBrowser": {
+    "platform": "Edge on Windows with Release WebGL client and real Windows/Linux dedicated processes",
+    "identityMeRequests": 4,
+    "realmsAndCharactersLoaded": true,
+    "admissions": 2,
+    "bidirectionalWebSockets": 2,
+    "keyboardMovementObserved": true,
+    "spaceJumpObserved": true,
+    "autosaveVerifiedInMongo": true,
+    "finalSaveAndReleaseVerified": true,
+    "reentryRestoresExactSavedPosition": true,
+    "logoutExercised": true,
+    "externalRevocationWhileConnected": {
+      "logoutStatus": 204,
+      "dedicatedDisconnectedBeforePageRevalidation": true,
+      "leaseReleased": true,
+      "lastAcceptedRevisionPreserved": true
+    },
+    "siteLogoutAfterRevocation": {
+      "expectedLogoutStatus": 401,
+      "canvasHidden": true,
+      "sessionStorageCleared": true,
+      "allWebSocketsClosed": true,
+      "identityMeStatus": 401
+    },
+    "uncaughtJavaScriptErrors": 0,
+    "creationLayoutIssue": "Fixed; Unity regression test and final WebGL return-to-creation verified",
+    "ssaoResourceErrors": 0,
+    "siteQuitOnlyWebGlWarnings": 5,
+    "expectedLogoutAfterRevocationNetworkStatus": 401,
+    "remainingRenderingWarning": "URP constructs an unused FSR1 pass whose EASU shader requires unsupported WebGL texture-gather features",
+    "evidence": [
+      "artifacts/web-beta/browser-resources-windows/observations.json",
+      "artifacts/web-beta/browser-real-linux/observations.json",
+      "artifacts/web-beta/browser-chunks-linux/observations.json",
+      "artifacts/web-beta/linux-validation/browser-state-audit.jsonl"
+    ]
+  },
+  "sitePublication": {
+    "status": "succeeded",
+    "url": "https://arkya-atlas.easykrill33.chatgpt.site/play.html?lang=fr",
+    "version": 6,
+    "sourceCommit": "93ae7865d0c125483b681f902c49640365626a93",
+    "publicManifestStatus": 200,
+    "publicChunkIntegrityVerified": true,
+    "publicUnauthenticatedGateVerifiedInEdge": true,
+    "unityAssetRequestsWithoutSession": 0,
+    "evidence": [
+      "artifacts/web-beta/site-deployment-verification.json",
+      "artifacts/web-beta/browser-public-v6/observations.json"
+    ]
+  },
+  "productionDiscordAndWss": "not_verified_public_api_tls_certificate_untrusted_from_this_machine",
+  "productionTlsProbe": {
+    "utc": "2026-10-18T10:52:04Z",
+    "origin": "https://api.arkya.online",
+    "trusted": false,
+    "errors": ["RemoteCertificateNameMismatch", "RemoteCertificateChainErrors"],
+    "validationBypassed": false
+  },
+  "cleanup": {
+    "testContainersRemoved": true,
+    "testApiProcessesStopped": true,
+    "isolatedTestDatabasesRemoved": true,
+    "windowsTestProcessIdStillRunning": 54864,
+    "privateTestDirectoryStillPresent": true,
+    "automaticReviewRejected": ["Stopping the Windows dedicated test process", "Recursively deleting the private fixture directory"],
+    "reviewReason": "blocked by policy; no further reason supplied",
+    "rejectedActionsRetriedThroughAnotherMechanism": false
+  }
+}

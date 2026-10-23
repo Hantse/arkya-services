@@ -1,0 +1,79 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: arkya-beta
+resources:
+- ../admin
+- reports.yaml
+configMapGenerator:
+- name: arkya-reports-config
+  envs:
+  - reports.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+# Replace this bootstrap tag with the digest produced by reports-image.yml before activation.
+images:
+- name: ghcr.io/hantse/arkya-services-reports
+  newTag: pending-publication
+patches:
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-gateway-config
+      namespace: arkya-beta
+    data:
+      Gateway__ReportsEnabled: 'true'
+      ReverseProxy__Clusters__reports__Destinations__primary__Address: http://arkya-reports.arkya-beta.svc.cluster.local:8080/
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-admin-config
+      namespace: arkya-beta
+    data:
+      ReportsApi__Enabled: 'true'
+      ReportsApi__BaseUrl: http://arkya-reports.arkya-beta.svc.cluster.local:8080/
+      ReportsApi__AllowClusterHttp: 'true'
+      AdminMcp__Enabled: 'true'
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: arkya-admin
+      namespace: arkya-beta
+    spec:
+      template:
+        spec:
+          containers:
+          - name: admin
+            envFrom:
+            - configMapRef:
+                name: arkya-admin-config
+            - secretRef:
+                name: arkya-admin-secrets
+            - secretRef:
+                name: arkya-admin-reports-secrets
+- patch: |-
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: arkya-identity-config
+      namespace: arkya-beta
+    data:
+      InternalHttp__AllowedNetworks__0: 10.42.0.0/16
+      InternalHttp__AllowedNetworks__1: 192.168.100.0/24
+- target:
+    kind: NetworkPolicy
+    name: arkya-identity
+  patch: |-
+    - op: add
+      path: /spec/ingress/-
+      value:
+        from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: arkya-reports
+        ports:
+        - protocol: TCP
+          port: 8080

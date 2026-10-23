@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-18",
+  "unityVersion": "6000.6.6f1",
+  "validationProject": "artifacts/ui-integration/project",
+  "sourceUi": "Unity3D/Arkya/Assets/Arkya/Characters/Runtime/UI",
+  "sourceUiMatchesValidationCopy": true,
+  "sourceUiDifferences": [],
+  "compilation": "passed",
+  "tests": {
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "durationSeconds": 59.6372672,
+    "report": "hud-v3-tests.xml"
+  },
+  "spriteImport": {
+    "previousKits": {
+      "report": "sprite-import.json",
+      "textures": 3,
+      "sprites": 24
+    },
+    "hudV3": {
+      "report": "hud-v3-import.json",
+      "textures": 3,
+      "sprites": 31,
+      "sourcePixelsUnchanged": true
+    }
+  },
+  "runtimeReview": {
+    "success": true,
+    "elapsedSeconds": 45.9420941,
+    "checks": [
+      "Creation scene entered Play Mode and initialized the real UI tree.",
+      "Creation selected and persisted ink-copper through its real theme button.",
+      "Creation selected and persisted explorer-journal through its real theme button.",
+      "Creation selected and persisted mana-stone through its real theme button.",
+      "Explorer button loaded the actual island, connected local client/server, and displayed 2 × 12 empty action slots.",
+      "An unchanged connection status faded from the HUD after five seconds without repeating.",
+      "Island HUD selected and persisted ink-copper through its real theme button.",
+      "Island HUD selected and persisted explorer-journal through its real theme button.",
+      "Island HUD selected and persisted mana-stone through its real theme button.",
+      "The approved V3 reference frame was applied only by this Editor review driver, after all real island HUD captures.",
+      "The reference PNG matches the approved concept viewport exactly: 1586 × 992 pixels.",
+      "SetLocalTestActive restored the actual island presentation and its previous theme after the isolated reference capture.",
+      "Map button displayed the real terrain relief and blocked input until closed.",
+      "Return button restored creation, unloaded the island and removed local client/server worlds."
+    ],
+    "runtimeErrors": [],
+    "editorIssues": [
+      "Exception: ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.\r\nParameter name: index\nSystem.Collections.Generic.List`1[T].get_Item (System.Int32 index) (at <c5ae8a4eeb824526b5df2932bc2395e0>:0)\nUnityEditor.Search.SearchDatabase+<EnumerateAll>d__78.MoveNext () (at <f0a9be5047ae4d02964cde5cebf79f70>:0)\nSystem.Linq.Enumerable.TryGetFirst[TSource] (System.Collections.Generic.IEnumerable`1[T] source, System.Boolean& found) (at <f1b392d8fe224ca2b1f9fab1000b77eb>:0)\nSystem.Linq.Enumerable.First[TSource] (System.Collections.Generic.IEnumerable`1[T] source) (at <f1b392d8fe224ca2b1f9fab1000b77eb>:0)\nUnityEditor.Search.SearchDatabase.GetDefaultSearchDatabase () (at <f0a9be5047ae4d02964cde5cebf79f70>:0)\nUnityEditor.Search.SearchInit.IndexationOnStartup () (at <f0a9be5047ae4d02964cde5cebf79f70>:0)\nUnityEditor.EditorApplication.Internal_CallDelayFunctions () (at <d751d9fe5106449e86315aaf0dfa88b7>:0)\nUnityEngine.StackTraceUtility:ExtractStringFromExceptionInternal(Object, String&, String&)\n"
+    ],
+    "preferenceRestored": true,
+    "shaderSettingRestored": true,
+    "referenceSnapshot": "Editor-only HudV3ReferenceFixture; no authoritative gameplay values supplied to the live island",
+    "referenceViewport": "1586 x 992",
+    "clockPreview": "Reference fixture only; live clock restored before map and return",
+    "metadata": "Preserved source GUIDs for the moon script and Bold font in the validation copy after validation; importer settings and file bytes were identical."
+  },
+  "captures": [
+    {
+      "name": "options-ink-copper",
+      "path": "options-ink-copper.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    },
+    {
+      "name": "creation-ink-copper",
+      "path": "creation-ink-copper.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    },
+    {
+      "name": "options-explorer-journal",
+      "path": "options-explorer-journal.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    },
+    {
+      "name": "creation-explorer-journal",
+      "path": "creation-explorer-journal.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    },
+    {
+      "name": "options-mana-stone",
+      "path": "options-mana-stone.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    },
+    {
+      "name": "creation-mana-stone",
+      "path": "creation-mana-stone.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    },
+    {
+      "name": "hud-ink-copper",
+      "path": "hud-ink-copper.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    },
+    {
+      "name": "hud-explorer-journal",
+      "path": "hud-explorer-journal.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    },
+    {
+      "name": "hud-mana-stone",
+      "path": "hud-mana-stone.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    },
+    {
+      "name": "hud-v3-reference",
+      "path": "hud-v3-reference.png",
+      "width": 1586,
+      "height": 992,
+      "referenceData": true
+    },
+    {
+      "name": "map-mana-stone",
+      "path": "map-mana-stone.png",
+      "width": 1600,
+      "height": 929,
+      "referenceData": false
+    }
+  ]
+}

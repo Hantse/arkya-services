@@ -131,7 +131,7 @@ ressources Namespace avant ce provisioning ; Argo CD peut ensuite les adopter.
 | `arkya-identity` | `arkya-characters-secrets` | `Mongo__ConnectionString`, `Identity__ServiceKey`, `ServiceAuthentication__Key`, `Realms__ServiceKey`, `GameAccess__DedicatedServers__0__Key` |
 | `arkya-operations` | `arkya-content-secrets` | `Mongo__ConnectionString`, `ContentAdmin__Key`, `ServiceAuthentication__Key` |
 | `arkya-operations` | `arkya-realms-secrets` | `Mongo__ConnectionString`, `RealmsAdmin__Key`, `GameAccess__ServiceKey` |
-| `arkya-operations` | `arkya-admin-secrets` | `Admin__Password`, `ContentApi__AdminKey`, `RealmsApi__AdminKey` |
+| `arkya-operations` | `arkya-admin-secrets` | `Admin__Password`, `ContentApi__AdminKey`, `RealmsApi__AdminKey`, `Mongo__ConnectionString` (base `arkya_admin`) |
 | `arkya-realm-beta-web` | `arkya-beta-dedicated` | `ARKYA_DEDICATED_KEY` ; l'URL HTTPS Characters est fixée dans le Deployment Unity |
 | Les trois namespaces | `arkya-ghcr` | Secret type `kubernetes.io/dockerconfigjson`, lecture des packages GHCR privés |
 | `arkya-identity`, `arkya-realm-beta-web` | `arkya-public-tls` | `tls.crt`, `tls.key`, certificat public couvrant respectivement le site et le jeu ; les certificats API/backoffice restent sur la VM Traefik |

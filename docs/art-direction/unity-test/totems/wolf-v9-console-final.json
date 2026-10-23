@@ -1,0 +1,61 @@
+{
+  "success": true,
+  "command": "command console",
+  "data": {
+    "command": "console",
+    "parameters": {
+      "level": "warn",
+      "since": "2",
+      "since_session": "c77e0501ada64f1fb7539e8d42d8f90b"
+    },
+    "result": {
+      "entries": [
+        {
+          "seq": 3,
+          "timestampUtc": "2026-10-16T14:03:02.0798775Z",
+          "level": "warn",
+          "logType": "Warning",
+          "message": "Failed to collect Windows signature for C:\\Program Files\\WindowsApps\\Claude_2.42304.0.0_x64__pzs8sxrjxfjjc\\app\\claude.exe: Cannot decode public key from unknown OID '1.2.840.10045.2.1'.",
+          "stackTrace": "UnityEngine.Debug:LogWarning (object)\nUnity.AI.MCP.Editor.Security.ExecutableIdentityCollector:CollectWindowsSignature (string,Unity.AI.MCP.Editor.Models.ExecutableIdentity) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ExecutableIdentityCollector.cs:315)\nUnity.AI.MCP.Editor.Security.ExecutableIdentityCollector:CollectSignatureInfo (string,Unity.AI.MCP.Editor.Models.ExecutableIdentity) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ExecutableIdentityCollector.cs:249)\nUnity.AI.MCP.Editor.Security.ExecutableIdentityCollector:CollectIdentity (string) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ExecutableIdentityCollector.cs:108)\nUnity.AI.MCP.Editor.Security.ProcessInfoCollector:CollectProcessInfo (int) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ProcessInfoCollector.cs:69)\nUnity.AI.MCP.Editor.Security.ProcessInfoCollector:CollectConnectionInfo (int,Unity.AI.MCP.Editor.Security.ValidationConfig) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ProcessInfoCollector.cs:122)\nUnity.AI.MCP.Editor.Security.ConnectionValidator:ValidateConnection (Unity.AI.MCP.Editor.Connection.IConnectionTransport,Unity.AI.MCP.Editor.Security.ValidationConfig) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ConnectionValidator.cs:39)\nUnity.AI.MCP.Editor.Bridge/<>c__DisplayClass67_0:<ValidateAndApproveAsync>b__1 () (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Bridge.cs:1050)\nSystem.Threading._ThreadPoolWaitCallback:PerformWaitCallback ()\n",
+          "seeded": false
+        },
+        {
+          "seq": 4,
+          "timestampUtc": "2026-10-16T14:03:02.1275515Z",
+          "level": "warn",
+          "logType": "Warning",
+          "message": "Failed to collect Windows signature for C:\\Program Files\\WindowsApps\\Claude_2.42304.0.0_x64__pzs8sxrjxfjjc\\app\\claude.exe: Cannot decode public key from unknown OID '1.2.840.10045.2.1'.",
+          "stackTrace": "UnityEngine.Debug:LogWarning (object)\nUnity.AI.MCP.Editor.Security.ExecutableIdentityCollector:CollectWindowsSignature (string,Unity.AI.MCP.Editor.Models.ExecutableIdentity) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ExecutableIdentityCollector.cs:315)\nUnity.AI.MCP.Editor.Security.ExecutableIdentityCollector:CollectSignatureInfo (string,Unity.AI.MCP.Editor.Models.ExecutableIdentity) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ExecutableIdentityCollector.cs:249)\nUnity.AI.MCP.Editor.Security.ExecutableIdentityCollector:CollectIdentity (string) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ExecutableIdentityCollector.cs:108)\nUnity.AI.MCP.Editor.Security.ProcessInfoCollector:CollectProcessInfo (int) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ProcessInfoCollector.cs:69)\nUnity.AI.MCP.Editor.Security.ProcessInfoCollector:CollectConnectionInfo (int,Unity.AI.MCP.Editor.Security.ValidationConfig) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ProcessInfoCollector.cs:122)\nUnity.AI.MCP.Editor.Security.ConnectionValidator:ValidateConnection (Unity.AI.MCP.Editor.Connection.IConnectionTransport,Unity.AI.MCP.Editor.Security.ValidationConfig) (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Security/ConnectionValidator.cs:39)\nUnity.AI.MCP.Editor.Bridge/<>c__DisplayClass67_0:<ValidateAndApproveAsync>b__1 () (at ./Library/PackageCache/com.unity.ai.assistant@1b11b9bfd84a/Modules/Unity.AI.MCP.Editor/Bridge.cs:1050)\nSystem.Threading._ThreadPoolWaitCallback:PerformWaitCallback ()\n",
+          "seeded": false
+        }
+      ],
+      "cursor": 4,
+      "session": "c77e0501ada64f1fb7539e8d42d8f90b",
+      "returned": 2,
+      "dropped": false,
+      "reset": false,
+      "counts": {
+        "error": 1,
+        "warn": 3,
+        "log": 0
+      },
+      "groundTruth": {
+        "sampledUtc": "2026-10-16T14:18:32.1628312Z",
+        "ageMs": 322,
+        "compilationFailed": false,
+        "compiling": false,
+        "consoleErrors": 1,
+        "consoleWarnings": 3,
+        "consoleLogs": 0,
+        "seeded": true
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "D:\\Repositories\\arkya\\Unity3D\\Arkya"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

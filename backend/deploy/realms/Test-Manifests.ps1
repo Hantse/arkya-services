@@ -17,11 +17,22 @@ $manifest = Get-Content -LiteralPath (Join-Path $directory 'operations.json') -R
 $roles = @($manifest.items | Where-Object kind -eq Role)
 Assert-Check ($roles.Count -eq 1) 'One namespaced Role must be created for each target.'
 Assert-Check ((@($manifest.items | Where-Object kind -in @('ClusterRole','ClusterRoleBinding','Secret'))).Count -eq 0) 'Manifest must not contain cluster-wide roles or secret values.'
+Assert-Check ($roles[0].rules.Count -eq 3) 'Deployer RBAC must contain only workload and fixed credential rules.'
 foreach ($rule in $roles[0].rules) {
-    Assert-Check (($rule.verbs -join ',') -eq 'get,create') 'Deployer may only read and create its supported resource types.'
+    if (($rule.resources -join ',') -eq 'secrets') {
+        Assert-Check (($rule.verbs -join ',') -eq 'get,delete' -and ($rule.resourceNames -join ',') -eq 'arkya-ghcr,arkya-dedicated') 'Credential cleanup must allow only fixed names and no listing or mutation of shared secrets.'
+    } else {
+        Assert-Check (($rule.verbs -join ',') -eq 'get,create,delete') 'Deployer may only read, create and delete its supported workload types.'
+    }
 }
 $admin = $manifest.items | Where-Object { $_.kind -eq 'Deployment' -and $_.metadata.name -eq 'arkya-admin' }
 $realms = $manifest.items | Where-Object { $_.kind -eq 'Deployment' -and $_.metadata.name -eq 'arkya-realms' }
+$adminMongo = @($admin.spec.template.spec.containers[0].env | Where-Object name -eq 'Mongo__ConnectionString')
+Assert-Check ($adminMongo.Count -eq 1 -and $adminMongo[0].valueFrom.secretKeyRef.name -eq 'arkya-admin-mongo' -and
+    $adminMongo[0].valueFrom.secretKeyRef.key -eq 'connection-string' -and !$adminMongo[0].ContainsKey('value')) 'Admin sessions must use their own Mongo secret reference.'
+$adminConfig = ($manifest.items | Where-Object { $_.kind -eq 'ConfigMap' -and $_.metadata.name -eq 'arkya-admin-config' }).data['appsettings.Production.json'] | ConvertFrom-Json -AsHashtable
+Assert-Check ($adminConfig.Mongo.DatabaseName -eq 'arkya_admin' -and !$adminConfig.Mongo.ContainsKey('ConnectionString')) 'Admin session database must be explicit without Mongo credentials in the ConfigMap.'
+Assert-Check ($adminConfig.AdminSessions.AccessLifetime -eq '00:30:00' -and $adminConfig.AdminSessions.RefreshLifetime -eq '30.00:00:00') 'Admin access and absolute refresh expiry must match the deployed session policy.'
 Assert-Check (!$admin.spec.template.spec.automountServiceAccountToken) 'Admin must not receive a Kubernetes token.'
 Assert-Check ($realms.spec.template.spec.serviceAccountName -eq 'arkya-realms') 'Realms must use its scoped service account.'
 Assert-Check ($realms.spec.template.spec.containers[0].readinessProbe.httpGet.scheme -eq 'HTTPS') 'API probe must use HTTPS.'

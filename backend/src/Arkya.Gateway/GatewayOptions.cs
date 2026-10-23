@@ -6,14 +6,40 @@ namespace Arkya.Gateway;
 public sealed class GatewayOptions
 {
     public bool CharactersEnabled { get; set; }
+    public bool ContentEnabled { get; set; }
     public bool RealmGameEnabled { get; set; }
     public string RealmGameAddress { get; set; } = "";
+    public bool ReportsEnabled { get; set; }
+    public bool InferenceEnabled { get; set; }
     public bool AdminEnabled { get; set; }
     public string AdminHost { get; set; } = "backoffice.arkya.online";
     public string AdminAddress { get; set; } = "";
     public bool FrontendEnabled { get; set; }
     public string FrontendHost { get; set; } = "arkya.online";
     public string FrontendAddress { get; set; } = "";
+    public bool PublicRealmsEnabled { get; set; }
+    public string PublicRealmsAddress { get; set; } = "";
+    public bool RealmSitesEnabled { get; set; }
+    public string RealmBaseDomain { get; set; } = "arkya.online";
+
+    public string RealmAdminHostPattern => $"*.admin.{RealmBaseDomain}";
+    public string RealmPublicHostPattern => $"*.{RealmBaseDomain}";
+
+    public string? RealmIdForHost(string host, bool admin = false)
+    {
+        var suffix = admin ? $".admin.{RealmBaseDomain}" : $".{RealmBaseDomain}";
+        if (!RealmSitesEnabled || !host.EndsWith(suffix, StringComparison.OrdinalIgnoreCase)) return null;
+        var id = host[..^suffix.Length].ToLowerInvariant();
+        return Regex.IsMatch(id, @"\A[a-z][a-z0-9-]{1,29}[a-z0-9]\z", RegexOptions.CultureInvariant)
+            && id is not ("api" or "admin" or "www" or "backoffice" or "beta-game") ? id : null;
+    }
+
+    public bool IsIncomingHostAllowed(string host, IConfiguration configuration) =>
+        AllowedHosts(configuration).Any(allowed => !allowed.Contains('*') && host.Equals(allowed, StringComparison.OrdinalIgnoreCase))
+        || RealmIdForHost(host) is not null || RealmIdForHost(host, admin: true) is not null;
+
+    public bool IsFrontendHost(string host) => FrontendEnabled &&
+        (host.Equals(FrontendHost, StringComparison.OrdinalIgnoreCase) || RealmIdForHost(host) is not null);
 
     public static bool IsWebHostValid(string? host) => host is { Length: <= 253 }
         && Regex.IsMatch(host, @"\A[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+\z")
@@ -36,7 +62,7 @@ public sealed class GatewayOptions
         (configuration["AllowedHosts"] ?? "").Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
     public string[] PublicApiHosts(IConfiguration configuration) => AllowedHosts(configuration)
-        .Where(host => (!AdminEnabled || !host.Equals(AdminHost, StringComparison.OrdinalIgnoreCase))
+        .Where(host => !host.Contains('*') && (!AdminEnabled || !host.Equals(AdminHost, StringComparison.OrdinalIgnoreCase))
             && (!FrontendEnabled || !host.Equals(FrontendHost, StringComparison.OrdinalIgnoreCase)))
         .ToArray();
 
@@ -46,6 +72,10 @@ public sealed class GatewayOptions
         return (!AdminEnabled || hosts.Contains(AdminHost, StringComparer.OrdinalIgnoreCase))
             && (!FrontendEnabled || hosts.Contains(FrontendHost, StringComparer.OrdinalIgnoreCase))
             && hosts.Contains("api.arkya.online", StringComparer.OrdinalIgnoreCase)
-            && hosts.All(host => !host.Contains('*'));
+            && (!RealmSitesEnabled || hosts.Contains(RealmPublicHostPattern, StringComparer.OrdinalIgnoreCase)
+                && hosts.Contains(RealmAdminHostPattern, StringComparer.OrdinalIgnoreCase))
+            && hosts.All(host => !host.Contains('*') || RealmSitesEnabled &&
+                (host.Equals(RealmPublicHostPattern, StringComparison.OrdinalIgnoreCase)
+                 || host.Equals(RealmAdminHostPattern, StringComparison.OrdinalIgnoreCase)));
     }
 }

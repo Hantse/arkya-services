@@ -1,0 +1,2035 @@
+{
+  "readOnly": true,
+  "rollback": {
+    "postAtOriginalXZ": true,
+    "postPosition": [
+      534.0,
+      53.5940857,
+      543.0
+    ],
+    "festoonAtOriginalAttachmentHeight": true,
+    "festoonStart": [
+      530.755,
+      53.38699,
+      541.511536
+    ],
+    "festoonEnd": [
+      538.534,
+      53.3296623,
+      542.851746
+    ]
+  },
+  "excludedCollider": "Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Street lantern/Lantern carved post",
+  "excludedColliderGlobalId": "GlobalObjectId_V1-2-10d09f0b32d910b43888eff5e1343f68-986903256-0",
+  "radius": 0.35,
+  "height": 1.8,
+  "clearance": 0.08,
+  "entrySteps": [
+    {
+      "path": "Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "center": [
+        535.0787,
+        50.1080856,
+        548.1847
+      ],
+      "size": [
+        3.90576172,
+        0.4139328,
+        2.2713623
+      ],
+      "top": 50.315052,
+      "ground": 50.1884956
+    }
+  ],
+  "candidates": [
+    {
+      "name": "original",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (543.31, 50.86, 530.42): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (543.31, 50.86, 530.42): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          541.5,
+          0.0,
+          533.0
+        ],
+        [
+          545.0,
+          0.0,
+          528.0
+        ]
+      ]
+    },
+    {
+      "name": "left-540-531",
+      "clearExterior": true,
+      "exteriorDetail": "117 overlaps and 116 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.0,
+          0.0,
+          531.0
+        ],
+        [
+          541.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "right-545.5-533",
+      "clearExterior": true,
+      "exteriorDetail": "124 overlaps and 123 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          545.5,
+          0.0,
+          533.0
+        ],
+        [
+          548.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-539.5-540.5",
+      "clearExterior": true,
+      "exteriorDetail": "116 overlaps and 115 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          539.5,
+          0.0,
+          533.0
+        ],
+        [
+          540.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-539.5-541.5",
+      "clearExterior": true,
+      "exteriorDetail": "117 overlaps and 116 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          539.5,
+          0.0,
+          533.0
+        ],
+        [
+          541.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-539.5-542.5",
+      "clearExterior": true,
+      "exteriorDetail": "119 overlaps and 118 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          539.5,
+          0.0,
+          533.0
+        ],
+        [
+          542.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-539.5-547",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.08, 50.89, 530.02): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.08, 50.89, 530.02): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          539.5,
+          0.0,
+          533.0
+        ],
+        [
+          547.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-539.5-548",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.47, 50.89, 530.19): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.47, 50.89, 530.19): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          539.5,
+          0.0,
+          533.0
+        ],
+        [
+          548.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-539.5-549",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.53, 50.88, 530.46): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.53, 50.88, 530.46): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          539.5,
+          0.0,
+          533.0
+        ],
+        [
+          549.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540-540.5",
+      "clearExterior": true,
+      "exteriorDetail": "117 overlaps and 116 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.0,
+          0.0,
+          533.0
+        ],
+        [
+          540.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540-541.5",
+      "clearExterior": true,
+      "exteriorDetail": "117 overlaps and 116 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.0,
+          0.0,
+          533.0
+        ],
+        [
+          541.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540-542.5",
+      "clearExterior": true,
+      "exteriorDetail": "119 overlaps and 118 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.0,
+          0.0,
+          533.0
+        ],
+        [
+          542.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540-547",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.12, 50.89, 530.07): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.12, 50.89, 530.07): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.0,
+          0.0,
+          533.0
+        ],
+        [
+          547.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540-548",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.51, 50.89, 530.24): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.51, 50.89, 530.24): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.0,
+          0.0,
+          533.0
+        ],
+        [
+          548.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540-549",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.58, 50.88, 530.52): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.58, 50.88, 530.52): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.0,
+          0.0,
+          533.0
+        ],
+        [
+          549.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540.5-540.5",
+      "clearExterior": true,
+      "exteriorDetail": "117 overlaps and 116 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.5,
+          0.0,
+          533.0
+        ],
+        [
+          540.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540.5-541.5",
+      "clearExterior": true,
+      "exteriorDetail": "118 overlaps and 117 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.5,
+          0.0,
+          533.0
+        ],
+        [
+          541.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540.5-542.5",
+      "clearExterior": true,
+      "exteriorDetail": "119 overlaps and 118 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.5,
+          0.0,
+          533.0
+        ],
+        [
+          542.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540.5-547",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.33, 50.90, 530.03): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.33, 50.90, 530.03): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.5,
+          0.0,
+          533.0
+        ],
+        [
+          547.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540.5-548",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.56, 50.89, 530.30): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.56, 50.89, 530.30): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.5,
+          0.0,
+          533.0
+        ],
+        [
+          548.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-540.5-549",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.56, 50.88, 530.62): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.56, 50.88, 530.62): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          540.5,
+          0.0,
+          533.0
+        ],
+        [
+          549.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-541-540.5",
+      "clearExterior": true,
+      "exteriorDetail": "119 overlaps and 118 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          541.0,
+          0.0,
+          533.0
+        ],
+        [
+          540.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-541-541.5",
+      "clearExterior": true,
+      "exteriorDetail": "119 overlaps and 118 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          541.0,
+          0.0,
+          533.0
+        ],
+        [
+          541.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-541-542.5",
+      "clearExterior": true,
+      "exteriorDetail": "119 overlaps and 118 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          541.0,
+          0.0,
+          533.0
+        ],
+        [
+          542.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-541-547",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.38, 50.89, 530.08): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.38, 50.89, 530.08): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          541.0,
+          0.0,
+          533.0
+        ],
+        [
+          547.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-541-548",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.61, 50.89, 530.37): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.61, 50.89, 530.37): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          541.0,
+          0.0,
+          533.0
+        ],
+        [
+          548.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-541-549",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.62, 50.88, 530.69): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.62, 50.88, 530.69): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          541.0,
+          0.0,
+          533.0
+        ],
+        [
+          549.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-542-540.5",
+      "clearExterior": true,
+      "exteriorDetail": "122 overlaps and 121 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          542.0,
+          0.0,
+          533.0
+        ],
+        [
+          540.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-542-541.5",
+      "clearExterior": true,
+      "exteriorDetail": "122 overlaps and 121 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          542.0,
+          0.0,
+          533.0
+        ],
+        [
+          541.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-542-542.5",
+      "clearExterior": true,
+      "exteriorDetail": "122 overlaps and 121 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          542.0,
+          0.0,
+          533.0
+        ],
+        [
+          542.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-542-547",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.48, 50.89, 530.21): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.48, 50.89, 530.21): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          542.0,
+          0.0,
+          533.0
+        ],
+        [
+          547.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-542-548",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.57, 50.88, 530.62): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.57, 50.88, 530.62): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          542.0,
+          0.0,
+          533.0
+        ],
+        [
+          548.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-542-549",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.59, 50.87, 530.95): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.59, 50.87, 530.95): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          542.0,
+          0.0,
+          533.0
+        ],
+        [
+          549.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-544-540.5",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (542.78, 50.84, 530.55): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench stone foot; Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (542.78, 50.84, 530.55): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench stone foot; Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          544.0,
+          0.0,
+          533.0
+        ],
+        [
+          540.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-544-541.5",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (543.08, 50.85, 530.42): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (543.08, 50.85, 530.42): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          544.0,
+          0.0,
+          533.0
+        ],
+        [
+          541.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-544-542.5",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (543.46, 50.86, 530.47): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench stone foot; Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (543.46, 50.86, 530.47): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench stone foot; Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          544.0,
+          0.0,
+          533.0
+        ],
+        [
+          542.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-544-547",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (545.68, 50.88, 530.76): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (545.68, 50.88, 530.76): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          544.0,
+          0.0,
+          533.0
+        ],
+        [
+          547.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-544-548",
+      "clearExterior": true,
+      "exteriorDetail": "123 overlaps and 122 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          544.0,
+          0.0,
+          533.0
+        ],
+        [
+          548.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-544-549",
+      "clearExterior": true,
+      "exteriorDetail": "127 overlaps and 126 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          544.0,
+          0.0,
+          533.0
+        ],
+        [
+          549.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-545-540.5",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (543.39, 50.85, 530.50): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench stone foot; Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (543.39, 50.85, 530.50): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench stone foot; Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          545.0,
+          0.0,
+          533.0
+        ],
+        [
+          540.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-545-541.5",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (543.69, 50.86, 530.38): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (543.69, 50.86, 530.38): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          545.0,
+          0.0,
+          533.0
+        ],
+        [
+          541.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-545-542.5",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (544.01, 50.87, 530.24): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (544.01, 50.87, 530.24): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          545.0,
+          0.0,
+          533.0
+        ],
+        [
+          542.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-545-547",
+      "clearExterior": true,
+      "exteriorDetail": "121 overlaps and 120 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          545.0,
+          0.0,
+          533.0
+        ],
+        [
+          547.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-545-548",
+      "clearExterior": true,
+      "exteriorDetail": "123 overlaps and 122 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          545.0,
+          0.0,
+          533.0
+        ],
+        [
+          548.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-545-549",
+      "clearExterior": true,
+      "exteriorDetail": "127 overlaps and 126 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          545.0,
+          0.0,
+          533.0
+        ],
+        [
+          549.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-546-540.5",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (543.92, 50.87, 530.36): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (543.92, 50.87, 530.36): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          546.0,
+          0.0,
+          533.0
+        ],
+        [
+          540.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-546-541.5",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (544.18, 50.88, 530.17): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (544.18, 50.88, 530.17): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          546.0,
+          0.0,
+          533.0
+        ],
+        [
+          541.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-546-542.5",
+      "clearExterior": false,
+      "exteriorDetail": "Sweep (544.51, 50.88, 530.03): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (544.51, 50.88, 530.03): Aubefont - mana well town/Town life - stalls gardens lanterns and signs/Square bench/Bench seat",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          546.0,
+          0.0,
+          533.0
+        ],
+        [
+          542.5,
+          0.0,
+          526.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-546-547",
+      "clearExterior": true,
+      "exteriorDetail": "123 overlaps and 122 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          546.0,
+          0.0,
+          533.0
+        ],
+        [
+          547.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-546-548",
+      "clearExterior": true,
+      "exteriorDetail": "125 overlaps and 124 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          546.0,
+          0.0,
+          533.0
+        ],
+        [
+          548.0,
+          0.0,
+          529.0
+        ]
+      ]
+    },
+    {
+      "name": "probe-546-549",
+      "clearExterior": true,
+      "exteriorDetail": "127 overlaps and 126 sweeps clear.",
+      "clearIncludingStairs": false,
+      "stairDetail": "Sweep (535.25, 50.28, 547.85): Aubefont - mana well town/Hotel de ville - Aubefont civic house/Entry stone step 1",
+      "routeFromHallToPlaza": [
+        [
+          535.4343,
+          0.0,
+          547.513
+        ],
+        [
+          535.0,
+          0.0,
+          545.0
+        ],
+        [
+          536.0,
+          0.0,
+          541.0
+        ],
+        [
+          538.5,
+          0.0,
+          537.0
+        ],
+        [
+          546.0,
+          0.0,
+          533.0
+        ],
+        [
+          549.0,
+          0.0,
+          529.0
+        ]
+      ]
+    }
+  ]
+}

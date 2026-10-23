@@ -22,11 +22,15 @@ internal sealed class InferenceStub : HttpMessageHandler
         [new("worker-one", 4)], [new("worker-one", "ready", 1234, 11501, 4, null)]);
     public List<InferenceCall> Calls { get; } = [];
     public HttpStatusCode? ReadError { get; set; }
+    public HttpStatusCode? ModelsError { get; set; }
     public HttpStatusCode? WriteError { get; set; }
     public bool InvalidJson { get; set; }
     public bool FailListAfterCreate { get; set; }
+    public bool FailListAfterGrant { get; set; }
     public bool Empty { get; set; }
     public string EnrollmentToken { get; set; } = Token;
+    public InferenceModelOption[] Models { get; set; } = [.. InferenceModels.Catalog];
+    public DateTimeOffset GrantExpiresAt { get; set; } = DateTimeOffset.Parse("2026-10-20T12:15:00Z");
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
@@ -41,6 +45,13 @@ internal sealed class InferenceStub : HttpMessageHandler
         if ((request.Method == HttpMethod.Get ? ReadError : WriteError) is { } error)
             return new(error) { Content = new StringContent("private upstream details " + InferenceFactory.AdminKey + " " + Token) };
         if (InvalidJson) return new(HttpStatusCode.OK) { Content = new StringContent("{ invalid " + InferenceFactory.AdminKey) };
+        if (request.Method == HttpMethod.Get && path == "/admin/inference/models")
+            return ModelsError is { } modelsError ? new(modelsError) : Json(Models);
+        if (request.Method == HttpMethod.Post && path == "/admin/inference/enrollment-grants")
+        {
+            if (FailListAfterGrant) ReadError = HttpStatusCode.ServiceUnavailable;
+            return Json(new InferenceEnrollmentGrantResponse(EnrollmentToken, GrantExpiresAt));
+        }
         if (request.Method == HttpMethod.Get && path == "/admin/inference/agents")
             return Json(Empty ? Array.Empty<InferenceAgentSummary>() : [Agent]);
         if (request.Method == HttpMethod.Get && path == "/admin/inference/agents/" + Agent.AgentId)
@@ -54,7 +65,7 @@ internal sealed class InferenceStub : HttpMessageHandler
                 ThreadsPerWorker = created.ThreadsPerWorker, LastSeenAt = null, Online = false,
                 MachineName = null, LogicalProcessors = null, TotalMemoryMb = null, ObservedWorkers = [],
                 DesiredWorkers = Enumerable.Range(1, created.InitialWorkers)
-                    .Select(index => new InferenceWorkerDesired("worker-" + index, created.ThreadsPerWorker)).ToArray()
+                    .Select(index => new InferenceWorkerDesired("worker-" + index, created.ThreadsPerWorker, created.ModelId)).ToArray()
             };
             Empty = false;
             if (FailListAfterCreate) ReadError = HttpStatusCode.ServiceUnavailable;
@@ -62,8 +73,17 @@ internal sealed class InferenceStub : HttpMessageHandler
         }
         if (request.Method == HttpMethod.Post && path == "/admin/inference/agents/" + Agent.AgentId + "/workers")
         {
-            Agent = Agent with { DesiredWorkers = [.. Agent.DesiredWorkers, new("worker-added", body!.Value.GetProperty("threads").GetInt32())] };
+            var added = body!.Value.Deserialize<AddInferenceWorkerRequest>(new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
+            Agent = Agent with { DesiredWorkers = [.. Agent.DesiredWorkers, new("worker-added", added.Threads, added.ModelId)] };
             return new(HttpStatusCode.NoContent);
+        }
+        if (request.Method == HttpMethod.Patch && path.StartsWith("/admin/inference/agents/" + Agent.AgentId + "/workers/", StringComparison.Ordinal))
+        {
+            var workerId = Uri.UnescapeDataString(path.Split('/')[^1]);
+            var update = body!.Value.Deserialize<UpdateInferenceWorkerRequest>(new JsonSerializerOptions(JsonSerializerDefaults.Web))!;
+            Agent = Agent with { DesiredWorkers = Agent.DesiredWorkers.Select(worker => worker.WorkerId == workerId
+                ? worker with { Threads = update.Threads, ModelId = update.ModelId } : worker).ToArray() };
+            return Json(Agent);
         }
         if (request.Method == HttpMethod.Delete && path.StartsWith("/admin/inference/agents/" + Agent.AgentId + "/workers/", StringComparison.Ordinal))
         {
@@ -109,7 +129,10 @@ internal sealed class InferenceFactory : WebApplicationFactory<Arkya.Admin.Progr
             configuration.AddInMemoryCollection(Settings);
         });
         builder.ConfigureServices(services =>
-            services.AddHttpClient<InferenceAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Inference));
+        {
+            services.AddTestSessions();
+            services.AddHttpClient<InferenceAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Inference);
+        });
     }
 
     public HttpClient Browser() => CreateClient(new WebApplicationFactoryClientOptions

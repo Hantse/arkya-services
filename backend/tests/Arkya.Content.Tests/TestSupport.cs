@@ -96,8 +96,11 @@ internal sealed class ContentFactory(bool production = false) : WebApplicationFa
         builder.ConfigureServices(services =>
         {
             services.Remove(services.Single(descriptor => descriptor.ImplementationType == typeof(ContentStoreInitializer)));
+            services.Remove(services.Single(descriptor => descriptor.ImplementationType == typeof(PostStoreInitializer)));
             services.RemoveAll<IContentRepository>();
             services.AddSingleton<IContentRepository, MemoryContentRepository>();
+            services.RemoveAll<IPostRepository>();
+            services.AddSingleton<IPostRepository, MemoryPostRepository>();
             services.RemoveAll<TimeProvider>();
             services.AddSingleton<TimeProvider, FixedTimeProvider>();
         });

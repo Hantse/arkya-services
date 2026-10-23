@@ -1,0 +1,164 @@
+{
+  "success": true,
+  "alreadyApplied": false,
+  "sceneSaved": false,
+  "utc": "2026-10-20T10:44:08.3335822Z",
+  "material": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Materials/Varied hand laid painted limestone.mat",
+  "shader": "Arkya/Environment/Painted Village Stone",
+  "atlasSize": {
+    "width": 2048,
+    "height": 1024
+  },
+  "atlasMetres": {
+    "width": 16.0,
+    "height": 8.0
+  },
+  "textureRGBAWithMipsMiB": 10.666666666666666,
+  "field": {
+    "stones": 126,
+    "widths": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5
+    ],
+    "heights": [
+      0.4,
+      0.8,
+      1.2
+    ],
+    "allCellsCovered": true
+  },
+  "removedFalseJointPrimitives": 936,
+  "originalDecorativePlaques": 276,
+  "retainedVariedShallowAccents": 43,
+  "removedDecorativePlaques": 233,
+  "accentProtrusionMetres": {
+    "minimum": 0.015,
+    "maximum": 0.04,
+    "perimeterEmbeddedInWall": true
+  },
+  "materialAssignments": 49,
+  "derivativeMeshes": 12,
+  "removedTriangles": 45378,
+  "addedRenderers": 0,
+  "addedColliders": 0,
+  "addedLights": 0,
+  "addedMaterials": 1,
+  "addedDrawSlots": 6,
+  "structuralGeometryUvsMitersAndCollisionsUnchanged": true,
+  "originalAssetsUnchanged": true,
+  "changes": [
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_00_batch_2_Mitered.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_00_batch_2_Mitered_Natural.asset",
+      "removedPrimitives": 144,
+      "shallowAccents": 0,
+      "trianglesBefore": 6380,
+      "trianglesAfter": 44
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_01_batch_2_Mitered.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_01_batch_2_Mitered_Natural.asset",
+      "removedPrimitives": 180,
+      "shallowAccents": 0,
+      "trianglesBefore": 8008,
+      "trianglesAfter": 88
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_02_batch_2_Mitered.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_02_batch_2_Mitered_Natural.asset",
+      "removedPrimitives": 180,
+      "shallowAccents": 0,
+      "trianglesBefore": 7964,
+      "trianglesAfter": 44
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_03_batch_2_Mitered.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_03_batch_2_Mitered_Natural.asset",
+      "removedPrimitives": 144,
+      "shallowAccents": 0,
+      "trianglesBefore": 6424,
+      "trianglesAfter": 88
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_04_batch_2_Mitered.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_04_batch_2_Mitered_Natural.asset",
+      "removedPrimitives": 180,
+      "shallowAccents": 0,
+      "trianglesBefore": 7964,
+      "trianglesAfter": 44
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Recessed blue grey stone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/WallJunctions/Meshes/Masonry_district_05_batch_2_Mitered.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Masonry_district_05_batch_2_Mitered_Natural.asset",
+      "removedPrimitives": 108,
+      "shallowAccents": 0,
+      "trianglesBefore": 4796,
+      "trianglesAfter": 44
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 0 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_0_-_Sun_worn_pale_limestone.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_0_-_Sun_worn_pale_limestone_Natural.asset",
+      "removedPrimitives": 48,
+      "shallowAccents": 7,
+      "trianglesBefore": 1170,
+      "trianglesAfter": 432
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 1 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_1_-_Sun_worn_pale_limestone.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_1_-_Sun_worn_pale_limestone_Natural.asset",
+      "removedPrimitives": 44,
+      "shallowAccents": 8,
+      "trianglesBefore": 894,
+      "trianglesAfter": 246
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 2 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_2_-_Sun_worn_pale_limestone.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_2_-_Sun_worn_pale_limestone_Natural.asset",
+      "removedPrimitives": 48,
+      "shallowAccents": 8,
+      "trianglesBefore": 966,
+      "trianglesAfter": 246
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 3 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_3_-_Sun_worn_pale_limestone.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_3_-_Sun_worn_pale_limestone_Natural.asset",
+      "removedPrimitives": 48,
+      "shallowAccents": 8,
+      "trianglesBefore": 1170,
+      "trianglesAfter": 450
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 4 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_4_-_Sun_worn_pale_limestone.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_4_-_Sun_worn_pale_limestone_Natural.asset",
+      "removedPrimitives": 44,
+      "shallowAccents": 5,
+      "trianglesBefore": 894,
+      "trianglesAfter": 192
+    },
+    {
+      "filter": "Aubefont - mana well town/Town ramparts - two gates/Wall finish - lived in limestone/Wall sector 5 - Sun worn pale limestone",
+      "source": "Assets/Arkya/World/StarterIsland/Town/Polish/Meshes/Wall_sector_5_-_Sun_worn_pale_limestone.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/NaturalMasonry/Meshes/Wall_sector_5_-_Sun_worn_pale_limestone_Natural.asset",
+      "removedPrimitives": 44,
+      "shallowAccents": 7,
+      "trianglesBefore": 894,
+      "trianglesAfter": 228
+    }
+  ],
+  "scope": "Enclosure stone only. Retains all physical masses, corner miters, supports, copings, openings, stairs, towers and foliage. Removes the old regular line overlays; replaces periodic white plaques with sparse, low, irregular accents carrying the same projected wall pigment.",
+  "verification": "Strict source primitive matching and unchanged component/source checks. Final appearance is assessed by the separate Unity captures."
+}

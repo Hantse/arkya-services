@@ -1,0 +1,420 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T11:43:24.8277997Z",
+  "caseCount": 24,
+  "passed": 24,
+  "installedRuntimeProxies": 0,
+  "bodyRadius": 0.3,
+  "bodyHeight": 1.75,
+  "scope": "Both actual staircase ascents and descents, walking and running, at 60 Hz and 20 Hz, on three lateral lines, including the complete connection to the true Terrain beyond every landing. Same server ECS movement and real scene colliders; no jumps or waypoint teleportation.",
+  "cases": [
+    {
+      "Stair": "Stairway - West",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.6,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 566,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 501.9063,
+        "y": 51.21418,
+        "z": 522.0772
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 566,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 502.495972,
+        "y": 51.2134,
+        "z": 521.966248
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.6,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 566,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 503.085632,
+        "y": 51.20939,
+        "z": 521.8553
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.6,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 190,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 501.905945,
+        "y": 51.21418,
+        "z": 522.075256
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 190,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 502.4956,
+        "y": 51.2133636,
+        "z": 521.9643
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.6,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 190,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 503.085266,
+        "y": 51.20936,
+        "z": 521.853333
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.6,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 286,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 501.905945,
+        "y": 51.21418,
+        "z": 522.075256
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 286,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 502.4956,
+        "y": 51.2133636,
+        "z": 521.9643
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.6,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 286,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 503.085266,
+        "y": 51.20936,
+        "z": 521.853333
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.6,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 98,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 501.905945,
+        "y": 51.21418,
+        "z": 522.075256
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 98,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 502.4956,
+        "y": 51.2133636,
+        "z": 521.9643
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - West",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.6,
+      "MaximumVerticalChange": 0.1873703,
+      "Ticks": 98,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 503.085266,
+        "y": 51.20936,
+        "z": 521.853333
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.6,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 626,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 591.6164,
+        "y": 50.39546,
+        "z": 503.350647
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 626,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 592.209167,
+        "y": 50.392704,
+        "z": 503.257629
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.6,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 626,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 592.801941,
+        "y": 50.38914,
+        "z": 503.1646
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.6,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 210,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 591.6195,
+        "y": 50.3998222,
+        "z": 503.3704
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 210,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 592.2123,
+        "y": 50.3970947,
+        "z": 503.277374
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": false,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.6,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 210,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 592.805054,
+        "y": 50.3935432,
+        "z": 503.184357
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": -0.6,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 314,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 591.6195,
+        "y": 50.3998222,
+        "z": 503.3704
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 314,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 592.2123,
+        "y": 50.3970947,
+        "z": 503.277374
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.0166666675,
+      "LateralOffset": 0.6,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 314,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 592.805054,
+        "y": 50.3935432,
+        "z": 503.184357
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": -0.6,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 106,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 591.6195,
+        "y": 50.3998222,
+        "z": 503.3704
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.0,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 106,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 592.2123,
+        "y": 50.3970947,
+        "z": 503.277374
+      },
+      "Failures": []
+    },
+    {
+      "Stair": "Stairway - East",
+      "Run": true,
+      "Success": true,
+      "TickSeconds": 0.05,
+      "LateralOffset": 0.6,
+      "MaximumVerticalChange": 0.188053131,
+      "Ticks": 106,
+      "ReachedWaypoints": 8,
+      "AirborneTicks": 0,
+      "FinalPosition": {
+        "x": 592.805054,
+        "y": 50.3935432,
+        "z": 503.184357
+      },
+      "Failures": []
+    }
+  ]
+}

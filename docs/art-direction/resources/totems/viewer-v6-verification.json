@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-16T12:17:46.083274+00:00",
+  "revision": "20261016T121401172083Z-totems",
+  "passed": true,
+  "method": "In-app browser UI interaction and visual review",
+  "scope": "Focused V6 model review; unchanged viewer code. The broader automated UI regression report remains viewer-verification.json for V5.",
+  "species": "wolf",
+  "coatsLoaded": [
+    "lunar",
+    "ember",
+    "pearl",
+    "abyss"
+  ],
+  "paletteColorsPerAppearance": 12,
+  "clipsSelectedAndVisuallyReviewed": [
+    "Idle",
+    "Walk",
+    "Run"
+  ],
+  "pauseControl": true,
+  "magicToggleOffAndOn": true,
+  "downloadLinksUseCurrentRevision": true,
+  "visualReview": [
+    "Tapered muzzle and lighter jaw transition",
+    "Broader upper shoulders and fuller chest",
+    "No visible mesh explosion in selected poses"
+  ],
+  "limitations": [
+    "No repeated mobile or fox browser regression in this focused V6 pass; all 24 GLB files validated independently in export-verification.json."
+  ]
+}

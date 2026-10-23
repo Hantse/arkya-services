@@ -1,0 +1,498 @@
+{
+  "date": "2026-10-23",
+  "unity": "6000.6.6f1",
+  "urp": "17.6.0",
+  "project": "Unity3D/Arkya",
+  "testJob": "84206b41b96e42db8d4ca22ab6046bf7",
+  "tests": {
+    "total": 14,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 62.3281519,
+    "resultState": "Passed"
+  },
+  "cases": [
+    {
+      "name": "CustomizationRowsRemainReadableAfterReturningToASmallerViewport",
+      "fullName": "Arkya.Characters.Tests.CharacterCreationLayoutTests.CustomizationRowsRemainReadableAfterReturningToASmallerViewport",
+      "state": "Passed",
+      "durationSeconds": 3.9374729,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "SelectionAndCreatorKeepTheirControlsSeparateAtEveryViewport",
+      "fullName": "Arkya.Characters.Tests.CharacterCreationLayoutTests.SelectionAndCreatorKeepTheirControlsSeparateAtEveryViewport",
+      "state": "Passed",
+      "durationSeconds": 2.0065856,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "CancellingCreationRestoresTheSelectedProfileAndNewDraftStartsClean",
+      "fullName": "Arkya.Characters.Tests.CharacterCreationRuntimeTests.CancellingCreationRestoresTheSelectedProfileAndNewDraftStartsClean",
+      "state": "Passed",
+      "durationSeconds": 1.0592974,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "CreationSceneDeformsAllRigsAndRunsAuthoritativeLocalClient",
+      "fullName": "Arkya.Characters.Tests.CharacterCreationRuntimeTests.CreationSceneDeformsAllRigsAndRunsAuthoritativeLocalClient",
+      "state": "Passed",
+      "durationSeconds": 4.9296862,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "ConnectedCharacterJumpsLandsWadesSwimsAndReturnsToDryGround",
+      "fullName": "Arkya.Characters.Tests.CharacterIslandRuntimeTests.ConnectedCharacterJumpsLandsWadesSwimsAndReturnsToDryGround",
+      "state": "Passed",
+      "durationSeconds": 16.0120878,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "CreationUiEntersIslandWithAuthoritativeTerrainMovementAndCanReturnTwice",
+      "fullName": "Arkya.Characters.Tests.CharacterIslandRuntimeTests.CreationUiEntersIslandWithAuthoritativeTerrainMovementAndCanReturnTwice",
+      "state": "Passed",
+      "durationSeconds": 27.4931731,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "NarrowPreviewKeepsAllAppearancesVisibleAndCanReturnFromPortrait",
+      "fullName": "Arkya.Characters.Tests.CharacterPreviewFramingTests.NarrowPreviewKeepsAllAppearancesVisibleAndCanReturnFromPortrait",
+      "state": "Passed",
+      "durationSeconds": 2.5097645,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "ResetRestoresTheConfiguredCameraFullViewportAndCharacterOrientation",
+      "fullName": "Arkya.Characters.Tests.CharacterPreviewFramingTests.ResetRestoresTheConfiguredCameraFullViewportAndCharacterOrientation",
+      "state": "Passed",
+      "durationSeconds": 0.00392,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "ViewportClipsToTheScreenAndIgnoresInvalidOrUnusableRegions",
+      "fullName": "Arkya.Characters.Tests.CharacterPreviewFramingTests.ViewportClipsToTheScreenAndIgnoresInvalidOrUnusableRegions",
+      "state": "Passed",
+      "durationSeconds": 0.002592,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"ink-copper\")",
+      "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"ink-copper\")",
+      "state": "Passed",
+      "durationSeconds": 0.035695,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"explorer-journal\")",
+      "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"explorer-journal\")",
+      "state": "Passed",
+      "durationSeconds": 0.0032635,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"mana-stone\")",
+      "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"mana-stone\")",
+      "state": "Passed",
+      "durationSeconds": 0.0034835,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "ThemeSelectionPreservesCreationAndExplorationControls",
+      "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.ThemeSelectionPreservesCreationAndExplorationControls",
+      "state": "Passed",
+      "durationSeconds": 3.9236502,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "name": "UnknownSavedThemeFallsBackWithoutDiscardingExistingInterfaceContent",
+      "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.UnknownSavedThemeFallsBackWithoutDiscardingExistingInterfaceContent",
+      "state": "Passed",
+      "durationSeconds": 0.0026815,
+      "message": null,
+      "stackTrace": null
+    }
+  ],
+  "observations": {
+    "captures": [
+      {
+        "file": "mystic-selection.png",
+        "pixels": [
+          1920,
+          962
+        ]
+      },
+      {
+        "file": "mystic-creation.png",
+        "pixels": [
+          1920,
+          962
+        ]
+      },
+      {
+        "file": "mystic-portrait.png",
+        "pixels": [
+          1920,
+          962
+        ]
+      }
+    ],
+    "rosterFixtures": "Three characters injected only in memory. No real account request or write.",
+    "layoutPanelPoints": [
+      [
+        1600,
+        900
+      ],
+      [
+        980,
+        700
+      ],
+      [
+        430,
+        900
+      ],
+      [
+        830,
+        1736
+      ]
+    ],
+    "shortPanelHeights": [
+      900,
+      700,
+      600
+    ],
+    "stage": {
+      "renderers": 815,
+      "lodGroups": 55,
+      "colliders": 0,
+      "missingMeshes": 0,
+      "effects": [
+        {
+          "name": "Slow rising mana motes • budget 24",
+          "playing": true,
+          "count": 10,
+          "max": 24
+        },
+        {
+          "name": "Floating mana fireflies",
+          "playing": true,
+          "count": 66,
+          "max": 80
+        },
+        {
+          "name": "Slow blue ground mist",
+          "playing": true,
+          "count": 15,
+          "max": 18
+        }
+      ],
+      "animations": [
+        {
+          "name": "Recessed painted azure mana",
+          "playing": true
+        },
+        {
+          "name": "Floating heart crystal • local presentation",
+          "playing": true
+        }
+      ],
+      "lights": [
+        {
+          "name": "Contained cyan mana light",
+          "type": "Point",
+          "intensity": 1.5,
+          "range": 4.0
+        },
+        {
+          "name": "Lantern glow",
+          "type": "Point",
+          "intensity": 1.3,
+          "range": 5.0
+        },
+        {
+          "name": "Lantern glow",
+          "type": "Point",
+          "intensity": 1.3,
+          "range": 5.0
+        },
+        {
+          "name": "Warm character lantern light",
+          "type": "Spot",
+          "intensity": 5.0,
+          "range": 6.0
+        }
+      ],
+      "audio": [
+        {
+          "name": "Courtyard Wind",
+          "playing": true,
+          "volume": 0.045
+        },
+        {
+          "name": "Courtyard Birdsong",
+          "playing": true,
+          "volume": 0.025
+        }
+      ]
+    },
+    "stageInspectionContext": "Play mode after successful full mystic builder reconstruction; renderer count includes LOD levels and disabled elements, not draw calls.",
+    "transientMeshesAfterRebuild": 0,
+    "oldSunlitDustRemoved": true,
+    "builderReconstructionSucceeded": true,
+    "editorFinal": {
+      "scene": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+      "dirty": false,
+      "playing": false,
+      "gameView": "(x:0.00, y:23.00, width:1920.00, height:983.00)",
+      "missingMeshes": 0,
+      "stars": 0.18,
+      "grading": "Assets/Arkya/Characters/CityStage/Mystic courtyard grading.asset"
+    },
+    "gameViewRestoredToPreReviewRectangle": {
+      "x": 0,
+      "y": 23,
+      "width": 1920,
+      "height": 983
+    },
+    "finalConsoleErrors": 0,
+    "assetMetaAudit": {
+      "cityStageEntries": 30,
+      "orphanMetas": 0,
+      "allMatchingMetasPresent": true
+    }
+  },
+  "limitations": [
+    "No new standalone or Web build.",
+    "Discord and real service character creation not exercised.",
+    "Test output includes Netcode server tick batching warnings; this is not a performance benchmark.",
+    "Art direction remains subject to user visual review."
+  ],
+  "changedFiles": [
+    "Assets/Arkya/Characters/Editor/CharacterCityStageBuilder.cs (+ .meta)",
+    "Assets/Arkya/Characters/Editor/CharacterCreationBuilder.cs",
+    "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+    "Assets/Arkya/Characters/CityStage/ (meshes, materials and .meta)",
+    "Assets/Arkya/Characters/Runtime/CharacterPreviewPresenter.cs",
+    "Assets/Arkya/Characters/Runtime/UI/CharacterCreation.uxml",
+    "Assets/Arkya/Characters/Runtime/UI/CharacterCreation.uss",
+    "Assets/Arkya/Characters/Runtime/UI/CharacterCreationScreen.cs",
+    "Assets/Arkya/Characters/Runtime/UI/InterfaceSkin.cs",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterPreviewFramingTests.cs (+ .meta)",
+    "Assets/Arkya/Characters/Tests/Editor/CharacterCreationLayoutTests.cs",
+    "README.md",
+    "docs/CHARACTER_CREATION.md",
+    "docs/art-direction/character-city-stage-2026-10-23/"
+  ],
+  "variant": "mystic-twilight-with-animated-mana-well",
+  "evidence": {
+    "tests": "artifacts/character-ui-redesign-2026-10-23/mystic-tests.json",
+    "stage": "artifacts/character-ui-redesign-2026-10-23/mystic-stage-inspection.json",
+    "finalState": "artifacts/character-ui-redesign-2026-10-23/mystic-final-state.json",
+    "finalConsole": "artifacts/character-ui-redesign-2026-10-23/mystic-final-console.json"
+  },
+  "daytimeBaseline": {
+    "testJob": "5cdf8ee52bb347dea0364a592cc2af2a",
+    "tests": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 59.5708466,
+      "resultState": "Passed"
+    },
+    "cases": [
+      {
+        "name": "CustomizationRowsRemainReadableAfterReturningToASmallerViewport",
+        "fullName": "Arkya.Characters.Tests.CharacterCreationLayoutTests.CustomizationRowsRemainReadableAfterReturningToASmallerViewport",
+        "state": "Passed",
+        "durationSeconds": 3.6414925,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "SelectionAndCreatorKeepTheirControlsSeparateAtEveryViewport",
+        "fullName": "Arkya.Characters.Tests.CharacterCreationLayoutTests.SelectionAndCreatorKeepTheirControlsSeparateAtEveryViewport",
+        "state": "Passed",
+        "durationSeconds": 2.2096946,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "CancellingCreationRestoresTheSelectedProfileAndNewDraftStartsClean",
+        "fullName": "Arkya.Characters.Tests.CharacterCreationRuntimeTests.CancellingCreationRestoresTheSelectedProfileAndNewDraftStartsClean",
+        "state": "Passed",
+        "durationSeconds": 0.9557174,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "CreationSceneDeformsAllRigsAndRunsAuthoritativeLocalClient",
+        "fullName": "Arkya.Characters.Tests.CharacterCreationRuntimeTests.CreationSceneDeformsAllRigsAndRunsAuthoritativeLocalClient",
+        "state": "Passed",
+        "durationSeconds": 4.7243958,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "ConnectedCharacterJumpsLandsWadesSwimsAndReturnsToDryGround",
+        "fullName": "Arkya.Characters.Tests.CharacterIslandRuntimeTests.ConnectedCharacterJumpsLandsWadesSwimsAndReturnsToDryGround",
+        "state": "Passed",
+        "durationSeconds": 15.8579594,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "CreationUiEntersIslandWithAuthoritativeTerrainMovementAndCanReturnTwice",
+        "fullName": "Arkya.Characters.Tests.CharacterIslandRuntimeTests.CreationUiEntersIslandWithAuthoritativeTerrainMovementAndCanReturnTwice",
+        "state": "Passed",
+        "durationSeconds": 25.6869283,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "NarrowPreviewKeepsAllAppearancesVisibleAndCanReturnFromPortrait",
+        "fullName": "Arkya.Characters.Tests.CharacterPreviewFramingTests.NarrowPreviewKeepsAllAppearancesVisibleAndCanReturnFromPortrait",
+        "state": "Passed",
+        "durationSeconds": 2.3044463,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "ResetRestoresTheConfiguredCameraFullViewportAndCharacterOrientation",
+        "fullName": "Arkya.Characters.Tests.CharacterPreviewFramingTests.ResetRestoresTheConfiguredCameraFullViewportAndCharacterOrientation",
+        "state": "Passed",
+        "durationSeconds": 0.0044869,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "ViewportClipsToTheScreenAndIgnoresInvalidOrUnusableRegions",
+        "fullName": "Arkya.Characters.Tests.CharacterPreviewFramingTests.ViewportClipsToTheScreenAndIgnoresInvalidOrUnusableRegions",
+        "state": "Passed",
+        "durationSeconds": 0.002481,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"ink-copper\")",
+        "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"ink-copper\")",
+        "state": "Passed",
+        "durationSeconds": 0.0289351,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"explorer-journal\")",
+        "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"explorer-journal\")",
+        "state": "Passed",
+        "durationSeconds": 0.0027764,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"mana-stone\")",
+        "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.SelectedThemeIsRestoredWhenTheInterfaceIsRecreated(\"mana-stone\")",
+        "state": "Passed",
+        "durationSeconds": 0.002677,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "ThemeSelectionPreservesCreationAndExplorationControls",
+        "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.ThemeSelectionPreservesCreationAndExplorationControls",
+        "state": "Passed",
+        "durationSeconds": 3.8319399,
+        "message": null,
+        "stackTrace": null
+      },
+      {
+        "name": "UnknownSavedThemeFallsBackWithoutDiscardingExistingInterfaceContent",
+        "fullName": "Arkya.Characters.Tests.InterfacePresentationTests.UnknownSavedThemeFallsBackWithoutDiscardingExistingInterfaceContent",
+        "state": "Passed",
+        "durationSeconds": 0.0026694,
+        "message": null,
+        "stackTrace": null
+      }
+    ],
+    "initialAttempt": {
+      "job": "3cef32e0dc6a482ab14e148133b70c84",
+      "outcome": "Initialization timeout and interrupted assembly reload; no usable test result. Retried after stabilization with init_timeout=120000."
+    },
+    "observations": {
+      "capturePixels": [
+        1920,
+        962
+      ],
+      "captureViews": [
+        "selection-empty",
+        "selection-roster",
+        "creation",
+        "portrait",
+        "selection-journal"
+      ],
+      "rosterFixtures": "Three characters injected only in memory. No real account request or write.",
+      "layoutPanelPoints": [
+        [
+          1600,
+          900
+        ],
+        [
+          980,
+          700
+        ],
+        [
+          430,
+          900
+        ],
+        [
+          830,
+          1736
+        ]
+      ],
+      "shortPanelHeights": [
+        900,
+        700,
+        600
+      ],
+      "stage": {
+        "renderersIncludingLodsAndDisabled": 717,
+        "enabledRenderersIncludingLods": 522,
+        "distinctMeshes": 117,
+        "missingMeshesAfterReload": 0,
+        "lodGroupsAfterReload": 54,
+        "colliders": 0,
+        "pointLightsWithoutShadows": 2,
+        "audioLoops": [
+          {
+            "clip": "Wind",
+            "volume": 0.045,
+            "observedPlaying": true
+          },
+          {
+            "clip": "Birdsong",
+            "volume": 0.025,
+            "observedPlaying": true
+          }
+        ],
+        "dustObservedParticles": 18,
+        "dustMaxParticles": 25
+      },
+      "sceneReload": "Sky material and meshes/LOD preserved; scene clean.",
+      "editorFinal": "Outside Play, CharacterCreation clean, Game View rectangle restored.",
+      "finalConsoleErrors": 0
+    }
+  }
+}

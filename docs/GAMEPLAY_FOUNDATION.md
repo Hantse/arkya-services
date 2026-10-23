@@ -4,6 +4,16 @@ Cette tranche ajoute des données ECS de personnage, un inventaire limité en pl
 
 La simulation de récolte s'exécute uniquement dans les mondes `ServerSimulation`. Cette base est indépendante de l'île actuelle et du prototype d'areas : aucune scène ni aucun prefab existant n'est configuré par cette tranche. Lancer la scène actuelle ne fournit donc pas encore une récolte jouable à la souris.
 
+Les [taux en direct du royaume](REALM_OPERATIONS.md#configuration-en-jeu-par-royaume)
+peuvent maintenant multiplier la quantité récoltée côté serveur. Le taux est
+appliqué après les bonus d’outil et de pierres, en millièmes entiers et arrondi
+à l’unité inférieure. Une quantité finale nulle retourne `NoYield` sans modifier
+l’inventaire, les charges du nœud ni le délai de récolte ; la séquence de demande
+reste consommée. Le fonctionnement historique reste à `×1` dans un monde
+indépendant qui n’utilise pas la configuration de royaume. Aucun gain d’XP
+n’est encore implémenté ; son multiplicateur est réservé au futur système de
+progression.
+
 ## Personnage et inventaire
 
 `CharacterStats` conserve la vie, la stamina et la force. La vie et la stamina commencent à leur maximum. La récolte est refusée si la vie vaut zéro ; cette tranche ne dépense pas encore de stamina et n'ajoute ni dégâts, ni régénération, ni progression de statistiques.
@@ -74,7 +84,7 @@ Chaque nœud expose une ou plusieurs sorties `HarvestDrop`, de quantité stricte
 
 Une réussite ajoute les gains, consomme une charge et démarre le délai du personnage. Lorsque la dernière charge est consommée, une réapparition est programmée après `RespawnSeconds` si cette valeur est positive. Elle restaure toutes les charges du nœud. Une valeur zéro laisse le nœud épuisé définitivement. Cette tranche ne masque pas encore son visuel.
 
-Le résultat reste dans `HarvestResult`, avec la séquence, le statut et le nombre total d'unités accordées, toutes sorties confondues. Les statuts sont `Success`, `InvalidRequest`, `DuplicateRequest`, `Dead`, `Cooldown`, `OutOfRange`, `Depleted`, `InventoryFull`, `Overweight` ou `InvalidConfiguration` ; `None` est l'état initial. Zéro catalogue ou plusieurs catalogues entraînent `InvalidConfiguration` lors d'une demande.
+Le résultat reste dans `HarvestResult`, avec la séquence, le statut et le nombre total d'unités accordées, toutes sorties confondues. Les statuts sont `Success`, `InvalidRequest`, `DuplicateRequest`, `Dead`, `Cooldown`, `OutOfRange`, `Depleted`, `InventoryFull`, `Overweight`, `InvalidConfiguration` ou `NoYield` ; `None` est l'état initial. Zéro catalogue ou plusieurs catalogues entraînent `InvalidConfiguration` lors d'une demande.
 
 ## Configuration dans l'Inspector
 

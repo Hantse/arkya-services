@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+- reports.yaml
+configMapGenerator:
+- name: arkya-reports-config
+  envs:
+  - reports.env
+  options:
+    annotations:
+      argocd.argoproj.io/sync-wave: '-10'
+  namespace: arkya-beta
+images:
+- name: ghcr.io/hantse/arkya-services-reports
+  newName: ghcr.io/hantse/arkya-services-reports
+  digest: sha256:85966a476e4df0fb64ee820554c4bc489c73f421175d1c14bf75172729dceb95
+patches:
+- patch: "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: arkya-gateway-config\n\
+    \  namespace: arkya-beta\ndata:\n  Gateway__ReportsEnabled: 'true'\n  ReverseProxy__Clusters__reports__Destinations__primary__Address:\
+    \ http://arkya-reports.arkya-beta.svc.cluster.local:8080/"
+- patch: "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: arkya-admin-config\n\
+    \  namespace: arkya-beta\ndata:\n  ReportsApi__Enabled: 'true'\n  ReportsApi__BaseUrl:\
+    \ http://arkya-reports.arkya-beta.svc.cluster.local:8080/\n  ReportsApi__AllowClusterHttp:\
+    \ 'true'\n  AdminMcp__Enabled: 'true'"
+- patch: "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: arkya-admin\n\
+    \  namespace: arkya-beta\nspec:\n  template:\n    spec:\n      containers:\n \
+    \     - name: admin\n        env:\n        - name: ReportsOperator__KeySeed\n\
+    \          valueFrom:\n            secretKeyRef:\n              name: arkya-admin-secrets\n\
+    \              key: ContentApi__AdminKey"
+- patch: "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: arkya-identity-config\n\
+    \  namespace: arkya-beta\ndata:\n  InternalHttp__AllowedNetworks__0: 10.42.0.0/16\n\
+    \  InternalHttp__AllowedNetworks__1: 192.168.100.0/24"
+- target:
+    kind: NetworkPolicy
+    name: arkya-identity
+  patch: "- op: add\n  path: /spec/ingress/-\n  value:\n    from:\n    - podSelector:\n\
+    \        matchLabels:\n          app.kubernetes.io/name: arkya-reports\n    ports:\n\
+    \    - protocol: TCP\n      port: 8080"

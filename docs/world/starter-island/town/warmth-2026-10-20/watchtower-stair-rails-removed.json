@@ -1,0 +1,540 @@
+{
+  "success": true,
+  "sceneSaved": false,
+  "alreadyApplied": false,
+  "towers": 4,
+  "removedInclinedHandrails": 8,
+  "removedStairPosts": 40,
+  "removedTriangles": 2112,
+  "disabledRailColliders": 8,
+  "changedMeshAssignmentsThisRun": 4,
+  "disabledCollidersThisRun": 8,
+  "preservedStepColliders": 80,
+  "preservedHorizontalStairwellGuards": 8,
+  "nonRailGeometryAndComponentsUnchanged": true,
+  "originalMeshAssetsUnchanged": true,
+  "createdAssets": [
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_North_03_WithoutStairRails.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_East_27_WithoutStairRails.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_South_55_WithoutStairRails.asset",
+    "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_West_99_WithoutStairRails.asset"
+  ],
+  "detail": [
+    {
+      "tower": "Watchtower North 03",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_North_03_03.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_North_03_WithoutStairRails.asset",
+      "originalTriangles": 1628,
+      "retainedTriangles": 1100,
+      "removedPieces": [
+        {
+          "Name": "Ascending timber handrail",
+          "Block": 5,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 6,
+          "triangles": 44,
+          "center": {
+            "x": -6.65,
+            "y": 0.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 7,
+          "triangles": 44,
+          "center": {
+            "x": -5.4125,
+            "y": 1.27,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 8,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.02,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 9,
+          "triangles": 44,
+          "center": {
+            "x": -2.9375,
+            "y": 2.77,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 10,
+          "triangles": 44,
+          "center": {
+            "x": -1.7,
+            "y": 3.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Ascending timber handrail",
+          "Block": 11,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.52,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 12,
+          "triangles": 44,
+          "center": {
+            "x": -6.65,
+            "y": 0.52,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 13,
+          "triangles": 44,
+          "center": {
+            "x": -5.4125,
+            "y": 1.27,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 14,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.02,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 15,
+          "triangles": 44,
+          "center": {
+            "x": -2.9375,
+            "y": 2.77,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 16,
+          "triangles": 44,
+          "center": {
+            "x": -1.7,
+            "y": 3.52,
+            "z": 1.66
+          }
+        }
+      ]
+    },
+    {
+      "tower": "Watchtower East 27",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_East_27_03.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_East_27_WithoutStairRails.asset",
+      "originalTriangles": 1628,
+      "retainedTriangles": 1100,
+      "removedPieces": [
+        {
+          "Name": "Ascending timber handrail",
+          "Block": 5,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 6,
+          "triangles": 44,
+          "center": {
+            "x": -6.65,
+            "y": 0.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 7,
+          "triangles": 44,
+          "center": {
+            "x": -5.4125,
+            "y": 1.27,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 8,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.02,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 9,
+          "triangles": 44,
+          "center": {
+            "x": -2.9375,
+            "y": 2.77,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 10,
+          "triangles": 44,
+          "center": {
+            "x": -1.7,
+            "y": 3.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Ascending timber handrail",
+          "Block": 11,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.52,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 12,
+          "triangles": 44,
+          "center": {
+            "x": -6.65,
+            "y": 0.52,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 13,
+          "triangles": 44,
+          "center": {
+            "x": -5.4125,
+            "y": 1.27,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 14,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.02,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 15,
+          "triangles": 44,
+          "center": {
+            "x": -2.9375,
+            "y": 2.77,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 16,
+          "triangles": 44,
+          "center": {
+            "x": -1.7,
+            "y": 3.52,
+            "z": 1.66
+          }
+        }
+      ]
+    },
+    {
+      "tower": "Watchtower South 55",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_South_55_03.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_South_55_WithoutStairRails.asset",
+      "originalTriangles": 1628,
+      "retainedTriangles": 1100,
+      "removedPieces": [
+        {
+          "Name": "Ascending timber handrail",
+          "Block": 5,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 6,
+          "triangles": 44,
+          "center": {
+            "x": -6.65,
+            "y": 0.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 7,
+          "triangles": 44,
+          "center": {
+            "x": -5.4125,
+            "y": 1.27,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 8,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.02,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 9,
+          "triangles": 44,
+          "center": {
+            "x": -2.9375,
+            "y": 2.77,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 10,
+          "triangles": 44,
+          "center": {
+            "x": -1.7,
+            "y": 3.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Ascending timber handrail",
+          "Block": 11,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.52,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 12,
+          "triangles": 44,
+          "center": {
+            "x": -6.65,
+            "y": 0.52,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 13,
+          "triangles": 44,
+          "center": {
+            "x": -5.4125,
+            "y": 1.27,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 14,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.02,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 15,
+          "triangles": 44,
+          "center": {
+            "x": -2.9375,
+            "y": 2.77,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 16,
+          "triangles": 44,
+          "center": {
+            "x": -1.7,
+            "y": 3.52,
+            "z": 1.66
+          }
+        }
+      ]
+    },
+    {
+      "tower": "Watchtower West 99",
+      "source": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_West_99_03.asset",
+      "derivative": "Assets/Arkya/World/StarterIsland/Town/RampartUpgrade/Watchtowers/Meshes/Watchtower_West_99_WithoutStairRails.asset",
+      "originalTriangles": 1628,
+      "retainedTriangles": 1100,
+      "removedPieces": [
+        {
+          "Name": "Ascending timber handrail",
+          "Block": 5,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 6,
+          "triangles": 44,
+          "center": {
+            "x": -6.65,
+            "y": 0.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 7,
+          "triangles": 44,
+          "center": {
+            "x": -5.4125,
+            "y": 1.27,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 8,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.02,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 9,
+          "triangles": 44,
+          "center": {
+            "x": -2.9375,
+            "y": 2.77,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 10,
+          "triangles": 44,
+          "center": {
+            "x": -1.7,
+            "y": 3.52,
+            "z": 0.44
+          }
+        },
+        {
+          "Name": "Ascending timber handrail",
+          "Block": 11,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.52,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 12,
+          "triangles": 44,
+          "center": {
+            "x": -6.65,
+            "y": 0.52,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 13,
+          "triangles": 44,
+          "center": {
+            "x": -5.4125,
+            "y": 1.27,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 14,
+          "triangles": 44,
+          "center": {
+            "x": -4.175,
+            "y": 2.02,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 15,
+          "triangles": 44,
+          "center": {
+            "x": -2.9375,
+            "y": 2.77,
+            "z": 1.66
+          }
+        },
+        {
+          "Name": "Stair rail post",
+          "Block": 16,
+          "triangles": 44,
+          "center": {
+            "x": -1.7,
+            "y": 3.52,
+            "z": 1.66
+          }
+        }
+      ]
+    }
+  ]
+}

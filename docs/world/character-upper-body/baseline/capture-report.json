@@ -1,0 +1,158 @@
+{
+  "success": true,
+  "label": "baseline",
+  "capturedUtc": "2026-10-20T12:01:42.6948208Z",
+  "unity": "6000.6.6f1",
+  "graphicsApi": "Direct3D11",
+  "pipeline": "Assets/Arkya/World/StarterIsland/Materials/Environment/IslandRenderPipeline.asset",
+  "layout": "Top row: Walk. Bottom row: Run. Left to right: 0, 12.5, 25, 37.5, 50, 62.5, 75, 87.5 percent. Fixed front three-quarter camera.",
+  "tilePixels": [
+    256,
+    360
+  ],
+  "sheetPixels": [
+    2048,
+    720
+  ],
+  "metric": "Maximum pairwise quaternion angle over the whole cycle in character-root space; sampled at 120 Hz including the endpoint.",
+  "scenesPreserved": true,
+  "renderStateRestored": true,
+  "assetsSaved": false,
+  "files": [
+    "D:\\Repositories\\arkya\\docs\\world\\character-upper-body\\baseline\\human-a-walk-run.png",
+    "D:\\Repositories\\arkya\\docs\\world\\character-upper-body\\baseline\\human-b-walk-run.png",
+    "D:\\Repositories\\arkya\\docs\\world\\character-upper-body\\baseline\\elf-a-walk-run.png",
+    "D:\\Repositories\\arkya\\docs\\world\\character-upper-body\\baseline\\elf-b-walk-run.png"
+  ],
+  "subjects": [
+    {
+      "key": "human-a",
+      "appearance": {
+        "version": 1,
+        "race": "human",
+        "silhouette": "a",
+        "heightCm": 175,
+        "skin": "warm",
+        "hairStyle": "short",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "motions": [
+        {
+          "name": "Walk",
+          "path": "Assets/Arkya/Characters/Animations/human-a-Walk.anim",
+          "durationSeconds": 0.72,
+          "sampleCount": 88,
+          "chestPeakToPeakDegrees": 1.75920033,
+          "headPeakToPeakDegrees": 0.0
+        },
+        {
+          "name": "Run",
+          "path": "Assets/Arkya/Characters/Animations/human-a-Run.anim",
+          "durationSeconds": 0.6,
+          "sampleCount": 73,
+          "chestPeakToPeakDegrees": 1.94795632,
+          "headPeakToPeakDegrees": 0.0
+        }
+      ]
+    },
+    {
+      "key": "human-b",
+      "appearance": {
+        "version": 1,
+        "race": "human",
+        "silhouette": "b",
+        "heightCm": 175,
+        "skin": "warm",
+        "hairStyle": "long",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "motions": [
+        {
+          "name": "Walk",
+          "path": "Assets/Arkya/Characters/Animations/human-b-Walk.anim",
+          "durationSeconds": 0.72,
+          "sampleCount": 88,
+          "chestPeakToPeakDegrees": 1.7596451,
+          "headPeakToPeakDegrees": 0.0
+        },
+        {
+          "name": "Run",
+          "path": "Assets/Arkya/Characters/Animations/human-b-Run.anim",
+          "durationSeconds": 0.6,
+          "sampleCount": 73,
+          "chestPeakToPeakDegrees": 1.94755435,
+          "headPeakToPeakDegrees": 0.0
+        }
+      ]
+    },
+    {
+      "key": "elf-a",
+      "appearance": {
+        "version": 1,
+        "race": "elf",
+        "silhouette": "a",
+        "heightCm": 185,
+        "skin": "warm",
+        "hairStyle": "short",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "motions": [
+        {
+          "name": "Walk",
+          "path": "Assets/Arkya/Characters/Animations/elf-a-Walk.anim",
+          "durationSeconds": 0.72,
+          "sampleCount": 88,
+          "chestPeakToPeakDegrees": 1.7596451,
+          "headPeakToPeakDegrees": 0.0
+        },
+        {
+          "name": "Run",
+          "path": "Assets/Arkya/Characters/Animations/elf-a-Run.anim",
+          "durationSeconds": 0.6,
+          "sampleCount": 73,
+          "chestPeakToPeakDegrees": 1.94916141,
+          "headPeakToPeakDegrees": 0.0
+        }
+      ]
+    },
+    {
+      "key": "elf-b",
+      "appearance": {
+        "version": 1,
+        "race": "elf",
+        "silhouette": "b",
+        "heightCm": 185,
+        "skin": "warm",
+        "hairStyle": "long",
+        "hairColor": "brown",
+        "eyeColor": "green",
+        "outfitColor": "sage"
+      },
+      "motions": [
+        {
+          "name": "Walk",
+          "path": "Assets/Arkya/Characters/Animations/elf-b-Walk.anim",
+          "durationSeconds": 0.72,
+          "sampleCount": 88,
+          "chestPeakToPeakDegrees": 1.7583102,
+          "headPeakToPeakDegrees": 0.0
+        },
+        {
+          "name": "Run",
+          "path": "Assets/Arkya/Characters/Animations/elf-b-Run.anim",
+          "durationSeconds": 0.6,
+          "sampleCount": 73,
+          "chestPeakToPeakDegrees": 1.94875968,
+          "headPeakToPeakDegrees": 0.0
+        }
+      ]
+    }
+  ],
+  "error": null
+}

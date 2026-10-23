@@ -1,0 +1,876 @@
+{
+  "verificationMethod": "Live Play review, direct UI events; not Unity Test Runner",
+  "limitations": "Bouton d’exploration réel : callback local intercepté, aucune île chargée. UI return only; no movement or networking asserted. PNGs are raw ScreenCapture output, never composited.",
+  "token": "51199675c6864920a3a182784a6833ab",
+  "status": "Ended",
+  "output": "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\adult-pass\\desktop",
+  "animationButton": "idleButton",
+  "originalName": "",
+  "appearance": {
+    "version": 1,
+    "race": "human",
+    "silhouette": "b",
+    "heightCm": 175,
+    "skin": "sand",
+    "hairStyle": "braid",
+    "hairColor": "magenta",
+    "eyeColor": "green",
+    "outfitColor": "jade"
+  },
+  "portrait": false,
+  "adventure": false,
+  "checksCompleted": true,
+  "desktopOnly": true,
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "scroll": [
+    0.0,
+    0.0
+  ],
+  "animatorSpeed": 1.0,
+  "width": {
+    "keyword": 0,
+    "unit": 1,
+    "value": 100.0
+  },
+  "height": {
+    "keyword": 0,
+    "unit": 1,
+    "value": 100.0
+  },
+  "activeScene": 75866302724383,
+  "scenes": [
+    {
+      "path": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+      "handle": 75866302724383,
+      "loaded": true,
+      "dirty": false,
+      "roots": [
+        5497558729028,
+        78065325979971,
+        40681930817814,
+        23089744773473,
+        5497558729025,
+        5497558729033,
+        38482907562326,
+        38482907562330,
+        36283884306782,
+        5497558729039
+      ],
+      "active": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "stage inside root (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "panel visibility (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "preview separate from customization-panel (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll clipped (1600.00, 900.00) customization-panel",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll hit clipping (1600.00, 900.00) 190",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll hit clipping (1600.00, 900.00) 831",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "preview separate from creation-panel (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll clipped (1600.00, 900.00) creation-panel",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll hit clipping (1600.00, 900.00) 190",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll hit clipping (1600.00, 900.00) 725",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) raceOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) raceDescription",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) silhouetteOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) heightSlider",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) skinOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) hairStyleOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) hairColorOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) eyeColorOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1600.00, 900.00) outfitColorOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "hair label fits (1600.00, 900.00) Courts",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "hair label fits (1600.00, 900.00) Longs",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "hair label fits (1600.00, 900.00) Tressés",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "last palette reachable (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "portrait selection (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "real exploration button callback (1600.00, 900.00)",
+      "detail": "Callback local intercepté, aucune île chargée.",
+      "passed": true
+    },
+    {
+      "name": "exploration viewport reset (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "portrait survives real exploration request (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "intercepted request retains loaded scenes (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "exploration subscribers restored (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "portrait restored on UI return (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "draft name preserved (1600.00, 900.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "stage inside root (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "panel visibility (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "preview separate from customization-panel (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll clipped (1280.00, 720.00) customization-panel",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll hit clipping (1280.00, 720.00) 190",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll hit clipping (1280.00, 720.00) 831",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "preview separate from creation-panel (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll clipped (1280.00, 720.00) creation-panel",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll hit clipping (1280.00, 720.00) 190",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scroll hit clipping (1280.00, 720.00) 725",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) raceOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) raceDescription",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) silhouetteOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) heightSlider",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) skinOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) hairStyleOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) hairColorOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) eyeColorOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) ",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "option rows distinct (1280.00, 720.00) outfitColorOptions",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "hair label fits (1280.00, 720.00) Courts",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "hair label fits (1280.00, 720.00) Longs",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "hair label fits (1280.00, 720.00) Tressés",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "last palette reachable (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "portrait selection (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "real exploration button callback (1280.00, 720.00)",
+      "detail": "Callback local intercepté, aucune île chargée.",
+      "passed": true
+    },
+    {
+      "name": "exploration viewport reset (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "portrait survives real exploration request (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "intercepted request retains loaded scenes (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "exploration subscribers restored (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "portrait restored on UI return (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "draft name preserved (1280.00, 720.00)",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "new draft reference appearance human",
+      "detail": "{\"version\":1,\"race\":\"human\",\"silhouette\":\"b\",\"heightCm\":175,\"skin\":\"sand\",\"hairStyle\":\"braid\",\"hairColor\":\"magenta\",\"eyeColor\":\"green\",\"outfitColor\":\"jade\"}",
+      "passed": true
+    },
+    {
+      "name": "new draft clears saved selection and name human",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "new draft controls reflect reference human",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "new draft reference appearance elf",
+      "detail": "{\"version\":1,\"race\":\"elf\",\"silhouette\":\"b\",\"heightCm\":185,\"skin\":\"sand\",\"hairStyle\":\"braid\",\"hairColor\":\"magenta\",\"eyeColor\":\"green\",\"outfitColor\":\"jade\"}",
+      "passed": true
+    },
+    {
+      "name": "new draft clears saved selection and name elf",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "new draft controls reflect reference elf",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "new draft review restores original selection and name",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/a/short/160",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/a/short/160",
+      "detail": "99351 vertices, viewport min=(0.38, 0.11, 3.36), max=(0.61, 0.88, 3.84)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/a/short/195",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/a/short/195",
+      "detail": "99351 vertices, viewport min=(0.38, 0.11, 4.99), max=(0.61, 0.88, 5.71)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/a/long/160",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/a/long/160",
+      "detail": "105183 vertices, viewport min=(0.38, 0.11, 3.36), max=(0.61, 0.88, 3.84)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/a/long/195",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/a/long/195",
+      "detail": "105183 vertices, viewport min=(0.38, 0.11, 4.99), max=(0.61, 0.88, 5.71)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/a/braid/160",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/a/braid/160",
+      "detail": "117455 vertices, viewport min=(0.39, 0.10, 3.53), max=(0.60, 0.87, 4.02)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/a/braid/195",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/a/braid/195",
+      "detail": "117455 vertices, viewport min=(0.39, 0.10, 5.25), max=(0.60, 0.87, 5.97)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/b/short/160",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/b/short/160",
+      "detail": "108547 vertices, viewport min=(0.40, 0.10, 3.40), max=(0.60, 0.88, 3.86)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/b/short/195",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/b/short/195",
+      "detail": "108547 vertices, viewport min=(0.40, 0.10, 5.05), max=(0.60, 0.88, 5.74)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/b/long/160",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/b/long/160",
+      "detail": "114379 vertices, viewport min=(0.40, 0.10, 3.40), max=(0.60, 0.88, 3.86)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/b/long/195",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/b/long/195",
+      "detail": "114379 vertices, viewport min=(0.40, 0.10, 5.05), max=(0.60, 0.88, 5.74)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/b/braid/160",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/b/braid/160",
+      "detail": "126651 vertices, viewport min=(0.40, 0.10, 3.57), max=(0.59, 0.87, 4.04)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls human/b/braid/195",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing human/b/braid/195",
+      "detail": "126651 vertices, viewport min=(0.40, 0.10, 5.31), max=(0.59, 0.87, 6.00)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/a/short/170",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/a/short/170",
+      "detail": "99353 vertices, viewport min=(0.39, 0.10, 3.56), max=(0.60, 0.88, 4.05)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/a/short/205",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/a/short/205",
+      "detail": "99353 vertices, viewport min=(0.39, 0.10, 5.17), max=(0.60, 0.88, 5.89)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/a/long/170",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/a/long/170",
+      "detail": "105185 vertices, viewport min=(0.39, 0.10, 3.56), max=(0.60, 0.88, 4.05)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/a/long/205",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/a/long/205",
+      "detail": "105185 vertices, viewport min=(0.39, 0.10, 5.17), max=(0.60, 0.88, 5.89)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/a/braid/170",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/a/braid/170",
+      "detail": "117457 vertices, viewport min=(0.39, 0.10, 3.75), max=(0.60, 0.87, 4.24)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/a/braid/205",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/a/braid/205",
+      "detail": "117457 vertices, viewport min=(0.39, 0.10, 5.45), max=(0.60, 0.87, 6.16)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/b/short/170",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/b/short/170",
+      "detail": "108540 vertices, viewport min=(0.40, 0.10, 3.61), max=(0.59, 0.89, 4.07)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/b/short/205",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/b/short/205",
+      "detail": "108540 vertices, viewport min=(0.40, 0.10, 5.24), max=(0.59, 0.89, 5.92)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/b/long/170",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/b/long/170",
+      "detail": "114372 vertices, viewport min=(0.40, 0.10, 3.61), max=(0.59, 0.89, 4.07)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/b/long/205",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/b/long/205",
+      "detail": "114372 vertices, viewport min=(0.40, 0.10, 5.24), max=(0.59, 0.89, 5.92)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/b/braid/170",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/b/braid/170",
+      "detail": "126644 vertices, viewport min=(0.41, 0.09, 3.79), max=(0.59, 0.88, 4.26)",
+      "passed": true
+    },
+    {
+      "name": "appearance controls elf/b/braid/205",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full-body framing elf/b/braid/205",
+      "detail": "126644 vertices, viewport min=(0.41, 0.09, 5.51), max=(0.59, 0.88, 6.20)",
+      "passed": true
+    },
+    {
+      "name": "full-body rotation 0",
+      "detail": "126644 vertices, viewport min=(0.41, 0.09, 5.51), max=(0.59, 0.88, 6.20)",
+      "passed": true
+    },
+    {
+      "name": "full-body rotation 45",
+      "detail": "126644 vertices, viewport min=(0.45, 0.09, 5.43), max=(0.62, 0.88, 6.50)",
+      "passed": true
+    },
+    {
+      "name": "full-body rotation 90",
+      "detail": "126644 vertices, viewport min=(0.46, 0.10, 5.15), max=(0.58, 0.88, 6.36)",
+      "passed": true
+    },
+    {
+      "name": "full-body rotation 135",
+      "detail": "126644 vertices, viewport min=(0.45, 0.11, 5.00), max=(0.62, 0.89, 6.08)",
+      "passed": true
+    },
+    {
+      "name": "full-body rotation 180",
+      "detail": "126644 vertices, viewport min=(0.40, 0.11, 5.28), max=(0.61, 0.90, 6.06)",
+      "passed": true
+    },
+    {
+      "name": "full-body rotation 225",
+      "detail": "126644 vertices, viewport min=(0.38, 0.11, 4.98), max=(0.56, 0.91, 6.07)",
+      "passed": true
+    },
+    {
+      "name": "full-body rotation 270",
+      "detail": "126644 vertices, viewport min=(0.42, 0.10, 5.12), max=(0.54, 0.90, 6.33)",
+      "passed": true
+    },
+    {
+      "name": "full-body rotation 315",
+      "detail": "126644 vertices, viewport min=(0.37, 0.10, 5.40), max=(0.55, 0.89, 6.48)",
+      "passed": true
+    },
+    {
+      "name": "actual tall crown exercised",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "portrait crown inside viewport",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "portrait head inside viewport",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "portrait enlarges head",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "full body restored after portrait",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "original appearance restored",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "original portrait selection restored",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scene count retained",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "active scene retained",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scene retained Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "original roots retained Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scene count retained",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "active scene retained",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "scene retained Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+      "detail": "",
+      "passed": true
+    },
+    {
+      "name": "original roots retained Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+      "detail": "",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\adult-pass\\desktop\\creation-body-1600x900-221759189.png",
+      "status": "Captured",
+      "width": 1600,
+      "height": 900,
+      "requestedUtc": "2026-10-20T22:17:59.1899212Z"
+    },
+    {
+      "path": "D:\\Repositories\\arkya\\docs\\art-direction\\characters-refit-2026-10-20\\adult-pass\\desktop\\creation-portrait-1600x900-221812083.png",
+      "status": "Captured",
+      "width": 1600,
+      "height": 900,
+      "requestedUtc": "2026-10-20T22:18:12.0830494Z"
+    }
+  ]
+}

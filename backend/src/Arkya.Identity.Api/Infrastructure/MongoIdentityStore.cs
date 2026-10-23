@@ -14,6 +14,7 @@ public sealed class MongoIdentityStore : IIdentityStore
     private readonly IMongoCollection<ChallengeDocument> challenges;
     private readonly IMongoCollection<AccountDocument> accounts;
     private readonly IMongoCollection<SessionDocument> sessions;
+    private readonly IMongoCollection<RefreshSessionDocument> refreshSessions;
 
     public MongoIdentityStore(IMongoClient client, IOptions<MongoOptions> options)
     {
@@ -21,6 +22,7 @@ public sealed class MongoIdentityStore : IIdentityStore
         challenges = db.GetCollection<ChallengeDocument>("login_challenges");
         accounts = db.GetCollection<AccountDocument>("accounts");
         sessions = db.GetCollection<SessionDocument>("sessions");
+        refreshSessions = db.GetCollection<RefreshSessionDocument>("refresh_sessions");
     }
 
     public async Task InitializeAsync(CancellationToken cancellationToken)
@@ -39,6 +41,10 @@ public sealed class MongoIdentityStore : IIdentityStore
         await sessions.Indexes.CreateManyAsync([
             new(Builders<SessionDocument>.IndexKeys.Ascending(x => x.ExpiresAt), new CreateIndexOptions { ExpireAfter = TimeSpan.Zero, Name = "session_expiry" }),
             new(Builders<SessionDocument>.IndexKeys.Ascending(x => x.AccountId), new CreateIndexOptions { Name = "account_sessions" })
+        ], cancellationToken);
+        await refreshSessions.Indexes.CreateManyAsync([
+            new(Builders<RefreshSessionDocument>.IndexKeys.Ascending(x => x.ExpiresAt), new CreateIndexOptions { ExpireAfter = TimeSpan.Zero, Name = "refresh_expiry" }),
+            new(Builders<RefreshSessionDocument>.IndexKeys.Ascending(x => x.AccountId), new CreateIndexOptions { Name = "account_refresh_sessions" })
         ], cancellationToken);
     }
 
@@ -153,17 +159,40 @@ public sealed class MongoIdentityStore : IIdentityStore
     public Task CreateSessionAsync(Session session, CancellationToken cancellationToken) => sessions.InsertOneAsync(new SessionDocument
     {
         TokenHash = session.TokenHash, AccountId = session.AccountId, DisplayName = session.DisplayName, ExpiresAt = session.ExpiresAt,
-        SessionVersion = session.SessionVersion
+        SessionVersion = session.SessionVersion, RefreshSessionId = session.RefreshSessionId
     }, cancellationToken: cancellationToken);
 
     public async Task<Session?> GetSessionAsync(string tokenHash, DateTime now, CancellationToken cancellationToken)
     {
         var result = await sessions.Find(x => x.TokenHash == tokenHash && x.ExpiresAt > now).FirstOrDefaultAsync(cancellationToken);
-        return result is null ? null : new(result.TokenHash, result.AccountId, result.DisplayName, result.ExpiresAt, result.SessionVersion);
+        return result is null ? null : new(result.TokenHash, result.AccountId, result.DisplayName, result.ExpiresAt, result.SessionVersion,
+            RefreshSessionId: result.RefreshSessionId);
     }
 
     public Task RevokeSessionAsync(string tokenHash, CancellationToken cancellationToken) =>
         sessions.DeleteOneAsync(x => x.TokenHash == tokenHash, cancellationToken);
+
+    public Task CreateRefreshSessionAsync(RefreshSession session, CancellationToken cancellationToken) =>
+        refreshSessions.InsertOneAsync(new RefreshSessionDocument
+        {
+            Id = session.Id, AccountId = session.AccountId, SessionVersion = session.SessionVersion,
+            TokenHash = session.TokenHash, ExpiresAt = session.ExpiresAt, UsedTokenHashes = session.UsedTokenHashes,
+            Revoked = session.Revoked
+        }, cancellationToken: cancellationToken);
+
+    public async Task<RefreshSession?> GetRefreshSessionAsync(string id, CancellationToken cancellationToken) =>
+        (await refreshSessions.Find(x => x.Id == id).FirstOrDefaultAsync(cancellationToken))?.ToDomain();
+
+    public async Task<RefreshSession?> RotateRefreshSessionAsync(string id, string tokenHash, string replacementHash, DateTime now,
+        CancellationToken cancellationToken) =>
+        (await refreshSessions.FindOneAndUpdateAsync(x => x.Id == id && x.TokenHash == tokenHash && !x.Revoked &&
+            x.ExpiresAt > now && x.UsedTokenHashes.Length < RefreshSession.MaximumRotations,
+            Builders<RefreshSessionDocument>.Update.Set(x => x.TokenHash, replacementHash).Push(x => x.UsedTokenHashes, tokenHash),
+            new() { ReturnDocument = ReturnDocument.After }, cancellationToken))?.ToDomain();
+
+    public Task RevokeRefreshSessionAsync(string id, CancellationToken cancellationToken) =>
+        refreshSessions.UpdateOneAsync(x => x.Id == id, Builders<RefreshSessionDocument>.Update.Set(x => x.Revoked, true),
+            cancellationToken: cancellationToken);
 
     private sealed class ChallengeDocument
     {
@@ -208,6 +237,20 @@ public sealed class MongoIdentityStore : IIdentityStore
         public string DisplayName { get; set; } = "";
         public DateTime ExpiresAt { get; set; }
         public long SessionVersion { get; set; }
+        [BsonIgnoreIfNull] public string? RefreshSessionId { get; set; }
+    }
+
+    private sealed class RefreshSessionDocument
+    {
+        [BsonId] public string Id { get; set; } = "";
+        public int SchemaVersion { get; set; } = 1;
+        public string AccountId { get; set; } = "";
+        public long SessionVersion { get; set; }
+        public string TokenHash { get; set; } = "";
+        public DateTime ExpiresAt { get; set; }
+        public string[] UsedTokenHashes { get; set; } = [];
+        public bool Revoked { get; set; }
+        public RefreshSession ToDomain() => new(Id, AccountId, SessionVersion, TokenHash, ExpiresAt, UsedTokenHashes, Revoked);
     }
 }
 

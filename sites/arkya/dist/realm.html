@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111d28">
+  <meta name="description" content="Consultez l’état actuel de ce realm Arkya, ses serveurs et ses dernières observations.">
+  <meta property="og:locale" content="fr_FR">
+  <title>Arkya — Realm</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/realms.css">
+  <script src="/realm-copy.js" defer></script>
+  <script src="/i18n.js" defer></script>
+  <script src="/realms.mjs" type="module"></script>
+</head>
+<body class="realm-page">
+  <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
+  <header class="site-header realm-header">
+    <a class="brand" href="https://arkya.online/?lang=fr" data-realm-global-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
+    <a class="realm-header-link" href="https://arkya.online/realms.html?lang=fr" data-realm-global-link data-i18n="realm.back">Tous les realms</a>
+    <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true" class="active">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+  </header>
+  <main id="contenu" class="realm-main section-shell" data-realm-detail>
+    <a class="realm-back" href="https://arkya.online/realms.html?lang=fr" data-realm-global-link><span aria-hidden="true">←</span> <span data-i18n="realm.back">Tous les realms</span></a>
+    <section class="realm-intro realm-detail-intro" aria-labelledby="realm-title">
+      <p class="eyebrow" data-i18n="realm.publicLabel">LA PAGE DU REALM</p>
+      <h1 id="realm-title">Realm</h1>
+      <p class="realm-address" data-realm-address></p>
+      <p data-i18n="realm.detailIntro">L’état de ce monde, au même endroit.</p>
+    </section>
+    <section class="realm-detail" aria-labelledby="realm-title">
+      <div class="realm-feed-bar"><p data-realm-feed-status role="status" data-i18n="realm.loading">Chargement des realms…</p><button class="realm-refresh" type="button" data-realm-refresh data-i18n="realm.retry">Actualiser</button></div>
+      <p class="realm-empty" data-realm-message hidden></p>
+      <div class="realm-overview" data-realm-overview hidden>
+        <figure class="realm-landscape"><img src="/assets/ile-environment-refuge-day.webp" alt="" width="1600" height="900"><figcaption data-i18n="realm.capture">L’ÎLE DE DÉPART · CAPTURE DU PROTOTYPE UNITY</figcaption></figure>
+        <div class="realm-observation">
+          <p class="realm-status" data-realm-status></p>
+          <dl class="realm-metrics">
+            <div><dt data-i18n="realm.servers">Serveurs prêts</dt><dd data-realm-servers>—</dd></div>
+            <div><dt data-i18n="realm.players">Joueurs en ligne</dt><dd data-realm-players>—</dd></div>
+          </dl>
+          <p class="realm-population-note" data-realm-population-note></p>
+          <div class="realm-observed"><span data-i18n="realm.observed">Dernière observation</span><time data-realm-observed>—</time></div>
+        </div>
+      </div>
+      <p class="realm-footnote" data-i18n="realm.readinessNote">L’état des serveurs ne garantit pas l’ouverture des admissions en jeu.</p>
+      <p class="realm-footnote" data-i18n="realm.refreshNote">Actualisation toutes les 10 secondes lorsque cette page est visible.</p>
+      <noscript><p class="realm-empty" data-i18n="realm.noScript">Activez JavaScript pour consulter l’état actuel des realms.</p></noscript>
+    </section>
+  </main>
+  <footer class="realm-footer section-shell"><span>ARKYA</span><a href="https://arkya.online/?lang=fr" data-realm-global-link data-i18n="realm.navAtlas">Découvrir Arkya</a></footer>
+</body>
+</html>

@@ -12,7 +12,7 @@
 }
 else if (Model.Loaded)
 {
-    <div class="infrastructure-banner panel"><div><span class="realm-status @(Model.Options.DeploymentEnabled ? "ready" : "pending")">@(Model.Options.DeploymentEnabled ? "Déployeur activé" : "Déployeur désactivé")</span><p>@(Model.Options.DeploymentEnabled ? "Les demandes créent les workloads sur les namespaces autorisés." : "La préparation des realms reste disponible. Activez le déployeur dans Realms après configuration du cluster.")</p></div><a class="button primary" asp-page="/Realms" asp-fragment="create-heading">Préparer un realm</a></div>
+    <div class="infrastructure-banner panel"><div><span class="realm-status @(Model.Options.DeploymentEnabled ? "ready" : "pending")">@(Model.Options.DeploymentEnabled ? "Déployeur activé" : "Déployeur désactivé")</span><p>@(Model.Options.DeploymentEnabled ? "Les demandes créent les workloads sur les namespaces autorisés." : "La préparation des realms reste disponible. Activez le déployeur dans Realms après configuration du cluster.")</p></div><a class="button primary" asp-page="/RealmCreate">Préparer un realm</a></div>
     <ol class="deployment-steps" aria-label="Parcours de déploiement">
         <li><strong>Choisir la cible</strong><span>Un namespace k3s préautorisé, réservé à un realm.</span></li>
         <li><strong>Vérifier le profil</strong><span>Image Linux figée par digest, processus et ports.</span></li>

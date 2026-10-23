@@ -1,0 +1,2692 @@
+{
+  "success": true,
+  "scene": "Assets/Arkya/World/StarterIsland/Scenes/StarterIsland.unity",
+  "isDirty": false,
+  "junctions": [
+    {
+      "id": 74,
+      "previous": 73,
+      "point": {
+        "x": 505.0,
+        "y": 56.10533,
+        "z": 490.0
+      },
+      "tangent": {
+        "x": -0.5886754,
+        "y": 0.0,
+        "z": 0.8083696
+      },
+      "outward": {
+        "x": -0.8083696,
+        "y": 0.0,
+        "z": -0.5886754
+      },
+      "angle": 29.4247189,
+      "approximateMissingExtension": 0.487666458,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 93,
+      "previous": 92,
+      "point": {
+        "x": 504.0,
+        "y": 56.10533,
+        "z": 544.0
+      },
+      "tangent": {
+        "x": 0.5211364,
+        "y": 0.0,
+        "z": 0.853473365
+      },
+      "outward": {
+        "x": -0.853473365,
+        "y": 0.0,
+        "z": 0.5211364
+      },
+      "angle": 28.47326,
+      "approximateMissingExtension": 0.4681824,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 46,
+      "previous": 45,
+      "point": {
+        "x": 579.0,
+        "y": 56.10533,
+        "z": 481.0
+      },
+      "tangent": {
+        "x": -0.8345765,
+        "y": 0.0,
+        "z": -0.5508921
+      },
+      "outward": {
+        "x": 0.5508921,
+        "y": 0.0,
+        "z": -0.8345765
+      },
+      "angle": 28.1563358,
+      "approximateMissingExtension": 0.461710721,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 7,
+      "previous": 6,
+      "point": {
+        "x": 570.110535,
+        "y": 56.10533,
+        "z": 572.002258
+      },
+      "tangent": {
+        "x": 0.999999464,
+        "y": 0.0,
+        "z": 0.00106710941
+      },
+      "outward": {
+        "x": -0.00106710941,
+        "y": 0.0,
+        "z": 0.999999464
+      },
+      "angle": 27.4206352,
+      "approximateMissingExtension": 0.4467219,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 006",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 007",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 36,
+      "previous": 35,
+      "point": {
+        "x": 596.0,
+        "y": 56.10533,
+        "z": 503.0
+      },
+      "tangent": {
+        "x": -0.342676163,
+        "y": 0.0,
+        "z": -0.9394536
+      },
+      "outward": {
+        "x": 0.9394536,
+        "y": 0.0,
+        "z": -0.342676163
+      },
+      "angle": 24.8074322,
+      "approximateMissingExtension": 0.393850952,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 035",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 036",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 8,
+      "previous": 7,
+      "point": {
+        "x": 572.3528,
+        "y": 56.10533,
+        "z": 571.457764
+      },
+      "tangent": {
+        "x": 0.9029656,
+        "y": 0.0,
+        "z": -0.4297129
+      },
+      "outward": {
+        "x": 0.4297129,
+        "y": 0.0,
+        "z": 0.9029656
+      },
+      "angle": 23.6003284,
+      "approximateMissingExtension": 0.369610548,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 007",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 008",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 63,
+      "previous": 62,
+      "point": {
+        "x": 530.93634,
+        "y": 56.10533,
+        "z": 474.885529
+      },
+      "tangent": {
+        "x": -0.9736602,
+        "y": 0.0,
+        "z": 0.228004068
+      },
+      "outward": {
+        "x": -0.228004068,
+        "y": 0.0,
+        "z": -0.9736602
+      },
+      "angle": 21.609581,
+      "approximateMissingExtension": 0.3298631,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 062",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 063",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 16,
+      "previous": 15,
+      "point": {
+        "x": 589.299,
+        "y": 56.10533,
+        "z": 558.388
+      },
+      "tangent": {
+        "x": 0.6640844,
+        "y": 0.0,
+        "z": -0.747657657
+      },
+      "outward": {
+        "x": 0.747657657,
+        "y": 0.0,
+        "z": 0.6640844
+      },
+      "angle": 20.46906,
+      "approximateMissingExtension": 0.307211429,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 015",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 016",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 83,
+      "previous": 82,
+      "point": {
+        "x": 498.0,
+        "y": 56.10533,
+        "z": 516.0
+      },
+      "tangent": {
+        "x": -0.02179863,
+        "y": 0.0,
+        "z": 0.999762356
+      },
+      "outward": {
+        "x": -0.999762356,
+        "y": 0.0,
+        "z": -0.02179863
+      },
+      "angle": 19.165987,
+      "approximateMissingExtension": 0.2814305,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 082",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 083",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 17,
+      "previous": 16,
+      "point": {
+        "x": 590.6158,
+        "y": 56.10533,
+        "z": 556.2289
+      },
+      "tangent": {
+        "x": 0.371358633,
+        "y": 0.0,
+        "z": -0.9284895
+      },
+      "outward": {
+        "x": 0.9284895,
+        "y": 0.0,
+        "z": 0.371358633
+      },
+      "angle": 19.1563,
+      "approximateMissingExtension": 0.281239182,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 016",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 017",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 25,
+      "previous": 24,
+      "point": {
+        "x": 598.0,
+        "y": 56.10533,
+        "z": 535.0
+      },
+      "tangent": {
+        "x": 0.143280953,
+        "y": 0.0,
+        "z": -0.9896821
+      },
+      "outward": {
+        "x": 0.9896821,
+        "y": 0.0,
+        "z": 0.143280953
+      },
+      "angle": 17.7609081,
+      "approximateMissingExtension": 0.25374195,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 024",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 025",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 103,
+      "previous": 102,
+      "point": {
+        "x": 526.0,
+        "y": 56.10533,
+        "z": 562.0
+      },
+      "tangent": {
+        "x": 0.883945465,
+        "y": 0.0,
+        "z": 0.467590034
+      },
+      "outward": {
+        "x": -0.467590034,
+        "y": 0.0,
+        "z": 0.883945465
+      },
+      "angle": 16.5469246,
+      "approximateMissingExtension": 0.2299047,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 102",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 103",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 18,
+      "previous": 17,
+      "point": {
+        "x": 591.271667,
+        "y": 56.10533,
+        "z": 553.200745
+      },
+      "tangent": {
+        "x": 0.298868626,
+        "y": 0.0,
+        "z": -0.954294264
+      },
+      "outward": {
+        "x": 0.954294264,
+        "y": 0.0,
+        "z": 0.298868626
+      },
+      "angle": -10.3367567,
+      "approximateMissingExtension": 0.1089915,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 017",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 018",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 55,
+      "previous": 54,
+      "point": {
+        "x": 555.0,
+        "y": 56.10533,
+        "z": 475.0
+      },
+      "tangent": {
+        "x": -0.992467761,
+        "y": 0.0,
+        "z": -0.122505777
+      },
+      "outward": {
+        "x": 0.122505777,
+        "y": 0.0,
+        "z": -0.992467761
+      },
+      "angle": 9.306243,
+      "approximateMissingExtension": 0.08906087,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 054",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 055",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 0,
+      "previous": 111,
+      "point": {
+        "x": 550.0,
+        "y": 56.10533,
+        "z": 569.0
+      },
+      "tangent": {
+        "x": 0.981733441,
+        "y": 0.0,
+        "z": 0.190261424
+      },
+      "outward": {
+        "x": -0.190261424,
+        "y": 0.0,
+        "z": 0.981733441
+      },
+      "angle": 7.26471472,
+      "approximateMissingExtension": 0.0496596657,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 111",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 000",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 72,
+      "previous": 71,
+      "point": {
+        "x": 509.20755,
+        "y": 56.10533,
+        "z": 486.7087
+      },
+      "tangent": {
+        "x": -0.835888565,
+        "y": 0.0,
+        "z": 0.5488993
+      },
+      "outward": {
+        "x": -0.5488993,
+        "y": 0.0,
+        "z": -0.835888565
+      },
+      "angle": 7.148938,
+      "approximateMissingExtension": 0.0474280976,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 071",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 072",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 1,
+      "previous": 0,
+      "point": {
+        "x": 552.791565,
+        "y": 56.10533,
+        "z": 569.3594
+      },
+      "tangent": {
+        "x": 0.9916727,
+        "y": 0.0,
+        "z": 0.128783852
+      },
+      "outward": {
+        "x": -0.128783852,
+        "y": 0.0,
+        "z": 0.9916727
+      },
+      "angle": -0.126668811,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 000",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 001",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 2,
+      "previous": 1,
+      "point": {
+        "x": 555.5825,
+        "y": 56.10533,
+        "z": 569.725
+      },
+      "tangent": {
+        "x": 0.9917937,
+        "y": 0.0,
+        "z": 0.127848625
+      },
+      "outward": {
+        "x": -0.127848625,
+        "y": 0.0,
+        "z": 0.9917937
+      },
+      "angle": 0.234902456,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 001",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 002",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 3,
+      "previous": 2,
+      "point": {
+        "x": 558.3672,
+        "y": 56.10533,
+        "z": 570.0781
+      },
+      "tangent": {
+        "x": 0.992705345,
+        "y": 0.0,
+        "z": 0.120565563
+      },
+      "outward": {
+        "x": -0.120565563,
+        "y": 0.0,
+        "z": 0.992705345
+      },
+      "angle": 0.605549335,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 002",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 003",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 4,
+      "previous": 3,
+      "point": {
+        "x": 561.14,
+        "y": 56.10533,
+        "z": 570.4
+      },
+      "tangent": {
+        "x": 0.9942852,
+        "y": 0.0,
+        "z": 0.106755823
+      },
+      "outward": {
+        "x": -0.106755823,
+        "y": 0.0,
+        "z": 0.9942852
+      },
+      "angle": 0.987149,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 003",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 004",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 5,
+      "previous": 4,
+      "point": {
+        "x": 563.8953,
+        "y": 56.10533,
+        "z": 570.6719
+      },
+      "tangent": {
+        "x": 0.990421951,
+        "y": 0.0,
+        "z": 0.138073668
+      },
+      "outward": {
+        "x": -0.138073668,
+        "y": 0.0,
+        "z": 0.990421951
+      },
+      "angle": -4.60317373,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 004",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 005",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 6,
+      "previous": 5,
+      "point": {
+        "x": 566.8874,
+        "y": 56.10533,
+        "z": 571.2123
+      },
+      "tangent": {
+        "x": 0.9781305,
+        "y": 0.0,
+        "z": 0.207992256
+      },
+      "outward": {
+        "x": -0.207992256,
+        "y": 0.0,
+        "z": 0.9781305
+      },
+      "angle": -3.53346682,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 005",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 006",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 9,
+      "previous": 8,
+      "point": {
+        "x": 574.41925,
+        "y": 56.10533,
+        "z": 569.8864
+      },
+      "tangent": {
+        "x": 0.7940492,
+        "y": 0.0,
+        "z": -0.6078535
+      },
+      "outward": {
+        "x": 0.6078535,
+        "y": 0.0,
+        "z": 0.7940492
+      },
+      "angle": 0.369565278,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 008",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 009",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 15,
+      "previous": 14,
+      "point": {
+        "x": 587.1892,
+        "y": 56.10533,
+        "z": 560.0455
+      },
+      "tangent": {
+        "x": 0.789232135,
+        "y": 0.0,
+        "z": -0.614095
+      },
+      "outward": {
+        "x": 0.614095,
+        "y": 0.0,
+        "z": 0.789232135
+      },
+      "angle": 0.534125149,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 014",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 015",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 19,
+      "previous": 18,
+      "point": {
+        "x": 592.32,
+        "y": 56.10533,
+        "z": 550.677063
+      },
+      "tangent": {
+        "x": 0.3837991,
+        "y": 0.0,
+        "z": -0.9234166
+      },
+      "outward": {
+        "x": 0.9234166,
+        "y": 0.0,
+        "z": 0.3837991
+      },
+      "angle": -0.01978234,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 018",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 019",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 20,
+      "previous": 19,
+      "point": {
+        "x": 593.3687,
+        "y": 56.10533,
+        "z": 548.1553
+      },
+      "tangent": {
+        "x": 0.376008123,
+        "y": 0.0,
+        "z": -0.9266164
+      },
+      "outward": {
+        "x": 0.9266164,
+        "y": 0.0,
+        "z": 0.376008123
+      },
+      "angle": 0.9873473,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Curtain bay 019",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 020",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 21,
+      "previous": 20,
+      "point": {
+        "x": 594.3819,
+        "y": 56.10533,
+        "z": 545.595337
+      },
+      "tangent": {
+        "x": 0.359554678,
+        "y": 0.0,
+        "z": -0.933124065
+      },
+      "outward": {
+        "x": 0.933124065,
+        "y": 0.0,
+        "z": 0.359554678
+      },
+      "angle": 1.04004622,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 020",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 021",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 22,
+      "previous": 21,
+      "point": {
+        "x": 595.3555,
+        "y": 56.10533,
+        "z": 542.998535
+      },
+      "tangent": {
+        "x": 0.342145383,
+        "y": 0.0,
+        "z": -0.939647
+      },
+      "outward": {
+        "x": 0.939647,
+        "y": 0.0,
+        "z": 0.342145383
+      },
+      "angle": 1.09038055,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 021",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 022",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 23,
+      "previous": 22,
+      "point": {
+        "x": 596.285767,
+        "y": 56.10533,
+        "z": 540.36615
+      },
+      "tangent": {
+        "x": 0.323753148,
+        "y": 0.0,
+        "z": -0.9461416
+      },
+      "outward": {
+        "x": 0.9461416,
+        "y": 0.0,
+        "z": 0.323753148
+      },
+      "angle": 1.144663,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 022",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 023",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 24,
+      "previous": 23,
+      "point": {
+        "x": 597.1686,
+        "y": 56.10533,
+        "z": 537.6995
+      },
+      "tangent": {
+        "x": 0.304330915,
+        "y": 0.0,
+        "z": -0.9525663
+      },
+      "outward": {
+        "x": 0.9525663,
+        "y": 0.0,
+        "z": 0.304330915
+      },
+      "angle": 1.1992625,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 023",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 024",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 26,
+      "previous": 25,
+      "point": {
+        "x": 597.968445,
+        "y": 56.10533,
+        "z": 532.1871
+      },
+      "tangent": {
+        "x": -0.0148262689,
+        "y": 0.0,
+        "z": -0.9998901
+      },
+      "outward": {
+        "x": 0.9998901,
+        "y": 0.0,
+        "z": -0.0148262689
+      },
+      "angle": 0.413068324,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 025",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 026",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 27,
+      "previous": 26,
+      "point": {
+        "x": 597.915466,
+        "y": 56.10533,
+        "z": 529.3138
+      },
+      "tangent": {
+        "x": -0.0224345587,
+        "y": 0.0,
+        "z": -0.9997483
+      },
+      "outward": {
+        "x": 0.9997483,
+        "y": 0.0,
+        "z": -0.0224345587
+      },
+      "angle": 0.4579955,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 026",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 027",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 28,
+      "previous": 27,
+      "point": {
+        "x": 597.838257,
+        "y": 56.10533,
+        "z": 526.3939
+      },
+      "tangent": {
+        "x": -0.03087868,
+        "y": 0.0,
+        "z": -0.999523163
+      },
+      "outward": {
+        "x": 0.999523163,
+        "y": 0.0,
+        "z": -0.03087868
+      },
+      "angle": 0.50937295,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 027",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 028",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 29,
+      "previous": 28,
+      "point": {
+        "x": 597.7339,
+        "y": 56.10533,
+        "z": 523.44104
+      },
+      "tangent": {
+        "x": -0.0402597971,
+        "y": 0.0,
+        "z": -0.999189258
+      },
+      "outward": {
+        "x": 0.999189258,
+        "y": 0.0,
+        "z": -0.0402597971
+      },
+      "angle": 0.56579113,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 028",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 029",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 30,
+      "previous": 29,
+      "point": {
+        "x": 597.5994,
+        "y": 56.10533,
+        "z": 520.469
+      },
+      "tangent": {
+        "x": -0.050666742,
+        "y": 0.0,
+        "z": -0.998715639
+      },
+      "outward": {
+        "x": 0.998715639,
+        "y": 0.0,
+        "z": -0.050666742
+      },
+      "angle": 0.627449632,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 029",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 030",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 31,
+      "previous": 30,
+      "point": {
+        "x": 597.432,
+        "y": 56.10533,
+        "z": 517.491333
+      },
+      "tangent": {
+        "x": -0.06221286,
+        "y": 0.0,
+        "z": -0.9980629
+      },
+      "outward": {
+        "x": 0.9980629,
+        "y": 0.0,
+        "z": -0.06221286
+      },
+      "angle": 0.6974546,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 030",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 031",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 32,
+      "previous": 31,
+      "point": {
+        "x": 597.22876,
+        "y": 56.10533,
+        "z": 514.5219
+      },
+      "tangent": {
+        "x": -0.07503893,
+        "y": 0.0,
+        "z": -0.9971806
+      },
+      "outward": {
+        "x": 0.9971806,
+        "y": 0.0,
+        "z": -0.07503893
+      },
+      "angle": 0.7755645,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 031",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 032",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 33,
+      "previous": 32,
+      "point": {
+        "x": 596.9869,
+        "y": 56.10533,
+        "z": 511.574371
+      },
+      "tangent": {
+        "x": -0.08934677,
+        "y": 0.0,
+        "z": -0.9960006
+      },
+      "outward": {
+        "x": 0.9960006,
+        "y": 0.0,
+        "z": -0.08934677
+      },
+      "angle": 0.8693066,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 032",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 033",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 34,
+      "previous": 33,
+      "point": {
+        "x": 596.703369,
+        "y": 56.10533,
+        "z": 508.662384
+      },
+      "tangent": {
+        "x": -0.105371527,
+        "y": 0.0,
+        "z": -0.9944329
+      },
+      "outward": {
+        "x": 0.9944329,
+        "y": 0.0,
+        "z": -0.105371527
+      },
+      "angle": 0.9755841,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 033",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 034",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 35,
+      "previous": 34,
+      "point": {
+        "x": 596.375366,
+        "y": 56.10533,
+        "z": 505.7997
+      },
+      "tangent": {
+        "x": -0.123364992,
+        "y": 0.0,
+        "z": -0.992361367
+      },
+      "outward": {
+        "x": 0.992361367,
+        "y": 0.0,
+        "z": -0.123364992
+      },
+      "angle": 1.099673,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 034",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 035",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 37,
+      "previous": 36,
+      "point": {
+        "x": 594.504456,
+        "y": 56.10533,
+        "z": 500.647369
+      },
+      "tangent": {
+        "x": -0.546282,
+        "y": 0.0,
+        "z": -0.8376013
+      },
+      "outward": {
+        "x": 0.8376013,
+        "y": 0.0,
+        "z": -0.546282
+      },
+      "angle": 1.337059,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 036",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 037",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 38,
+      "previous": 37,
+      "point": {
+        "x": 592.943054,
+        "y": 56.10533,
+        "z": 498.3133
+      },
+      "tangent": {
+        "x": -0.5651124,
+        "y": 0.0,
+        "z": -0.8250139
+      },
+      "outward": {
+        "x": 0.8250139,
+        "y": 0.0,
+        "z": -0.5651124
+      },
+      "angle": 1.25818837,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 037",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 038",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 39,
+      "previous": 38,
+      "point": {
+        "x": 591.323364,
+        "y": 56.10533,
+        "z": 496.0035
+      },
+      "tangent": {
+        "x": -0.5826067,
+        "y": 0.0,
+        "z": -0.8127543
+      },
+      "outward": {
+        "x": 0.8127543,
+        "y": 0.0,
+        "z": -0.5826067
+      },
+      "angle": 1.18959653,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 038",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 039",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 40,
+      "previous": 39,
+      "point": {
+        "x": 589.653137,
+        "y": 56.10533,
+        "z": 493.723846
+      },
+      "tangent": {
+        "x": -0.5989543,
+        "y": 0.0,
+        "z": -0.8007832
+      },
+      "outward": {
+        "x": 0.8007832,
+        "y": 0.0,
+        "z": -0.5989543
+      },
+      "angle": 1.13211465,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Curtain bay 039",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 040",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 41,
+      "previous": 40,
+      "point": {
+        "x": 587.94,
+        "y": 56.10533,
+        "z": 491.48
+      },
+      "tangent": {
+        "x": -0.6143344,
+        "y": 0.0,
+        "z": -0.789045751
+      },
+      "outward": {
+        "x": 0.789045751,
+        "y": 0.0,
+        "z": -0.6143344
+      },
+      "angle": 1.08462262,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 040",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 041",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 42,
+      "previous": 41,
+      "point": {
+        "x": 586.19165,
+        "y": 56.10533,
+        "z": 489.277771
+      },
+      "tangent": {
+        "x": -0.6288947,
+        "y": 0.0,
+        "z": -0.7774905
+      },
+      "outward": {
+        "x": 0.7774905,
+        "y": 0.0,
+        "z": -0.6288947
+      },
+      "angle": 1.04530108,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 041",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 042",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 43,
+      "previous": 42,
+      "point": {
+        "x": 584.415833,
+        "y": 56.10533,
+        "z": 487.122864
+      },
+      "tangent": {
+        "x": -0.642792,
+        "y": 0.0,
+        "z": -0.7660408
+      },
+      "outward": {
+        "x": 0.7660408,
+        "y": 0.0,
+        "z": -0.642792
+      },
+      "angle": 1.01798737,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 042",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 043",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 44,
+      "previous": 43,
+      "point": {
+        "x": 582.6202,
+        "y": 56.10533,
+        "z": 485.021118
+      },
+      "tangent": {
+        "x": -0.65617,
+        "y": 0.0,
+        "z": -0.7546131
+      },
+      "outward": {
+        "x": 0.7546131,
+        "y": 0.0,
+        "z": -0.65617
+      },
+      "angle": 0.9981881,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 043",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 044",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 45,
+      "previous": 44,
+      "point": {
+        "x": 580.8123,
+        "y": 56.10533,
+        "z": 482.978241
+      },
+      "tangent": {
+        "x": -0.6691376,
+        "y": 0.0,
+        "z": -0.7431385
+      },
+      "outward": {
+        "x": 0.7431385,
+        "y": 0.0,
+        "z": -0.6691376
+      },
+      "angle": 0.985958934,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 044",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 045",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 47,
+      "previous": 46,
+      "point": {
+        "x": 576.431641,
+        "y": 56.10533,
+        "z": 480.098053
+      },
+      "tangent": {
+        "x": -0.949392259,
+        "y": 0.0,
+        "z": -0.314092845
+      },
+      "outward": {
+        "x": 0.314092845,
+        "y": 0.0,
+        "z": -0.949392259
+      },
+      "angle": 2.08797264,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 046",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 047",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 48,
+      "previous": 47,
+      "point": {
+        "x": 573.8172,
+        "y": 56.10533,
+        "z": 479.285645
+      },
+      "tangent": {
+        "x": -0.95936954,
+        "y": 0.0,
+        "z": -0.2821527
+      },
+      "outward": {
+        "x": 0.2821527,
+        "y": 0.0,
+        "z": -0.95936954
+      },
+      "angle": 1.74663663,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 047",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 048",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 49,
+      "previous": 48,
+      "point": {
+        "x": 571.165955,
+        "y": 56.10533,
+        "z": 478.549622
+      },
+      "tangent": {
+        "x": -0.966794968,
+        "y": 0.0,
+        "z": -0.255553335
+      },
+      "outward": {
+        "x": 0.255553335,
+        "y": 0.0,
+        "z": -0.966794968
+      },
+      "angle": 1.41803133,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 048",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 049",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 50,
+      "previous": 49,
+      "point": {
+        "x": 568.486938,
+        "y": 56.10533,
+        "z": 477.876831
+      },
+      "tangent": {
+        "x": -0.97217,
+        "y": 0.0,
+        "z": -0.234276682
+      },
+      "outward": {
+        "x": 0.234276682,
+        "y": 0.0,
+        "z": -0.97217
+      },
+      "angle": 1.09646535,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 049",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 050",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 51,
+      "previous": 50,
+      "point": {
+        "x": 565.789551,
+        "y": 56.10533,
+        "z": 477.254059
+      },
+      "tangent": {
+        "x": -0.9758879,
+        "y": 0.0,
+        "z": -0.218272343
+      },
+      "outward": {
+        "x": 0.218272343,
+        "y": 0.0,
+        "z": -0.9758879
+      },
+      "angle": 0.7860898,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 050",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 051",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 52,
+      "previous": 51,
+      "point": {
+        "x": 563.082947,
+        "y": 56.10533,
+        "z": 476.668152
+      },
+      "tangent": {
+        "x": -0.97824055,
+        "y": 0.0,
+        "z": -0.207473829
+      },
+      "outward": {
+        "x": 0.207473829,
+        "y": 0.0,
+        "z": -0.97824055
+      },
+      "angle": 0.48010543,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 051",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 052",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 53,
+      "previous": 52,
+      "point": {
+        "x": 560.376343,
+        "y": 56.10533,
+        "z": 476.105957
+      },
+      "tangent": {
+        "x": -0.979412,
+        "y": 0.0,
+        "z": -0.20187147
+      },
+      "outward": {
+        "x": 0.20187147,
+        "y": 0.0,
+        "z": -0.979412
+      },
+      "angle": 0.174712971,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 052",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 053",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 54,
+      "previous": 53,
+      "point": {
+        "x": 557.678955,
+        "y": 56.10533,
+        "z": 475.5543
+      },
+      "tangent": {
+        "x": -0.979490042,
+        "y": 0.0,
+        "z": -0.201492742
+      },
+      "outward": {
+        "x": 0.201492742,
+        "y": 0.0,
+        "z": -0.979490042
+      },
+      "angle": -0.129721522,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 053",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 054",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 56,
+      "previous": 55,
+      "point": {
+        "x": 552.0044,
+        "y": 56.10533,
+        "z": 474.8753
+      },
+      "tangent": {
+        "x": -0.999146044,
+        "y": 0.0,
+        "z": -0.04131748
+      },
+      "outward": {
+        "x": 0.04131748,
+        "y": 0.0,
+        "z": -0.999146044
+      },
+      "angle": 0.0279764552,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 055",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 056",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 57,
+      "previous": 56,
+      "point": {
+        "x": 549.015,
+        "y": 56.10533,
+        "z": 474.7525
+      },
+      "tangent": {
+        "x": -0.999280334,
+        "y": 0.0,
+        "z": -0.0379325077
+      },
+      "outward": {
+        "x": 0.0379325077,
+        "y": 0.0,
+        "z": -0.999280334
+      },
+      "angle": 0.3566318,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 056",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 057",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 58,
+      "previous": 57,
+      "point": {
+        "x": 546.028137,
+        "y": 56.10533,
+        "z": 474.648438
+      },
+      "tangent": {
+        "x": -0.9995836,
+        "y": 0.0,
+        "z": -0.0288558956
+      },
+      "outward": {
+        "x": 0.0288558956,
+        "y": 0.0,
+        "z": -0.9995836
+      },
+      "angle": 0.683569133,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 057",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 058",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 59,
+      "previous": 58,
+      "point": {
+        "x": 543.04,
+        "y": 56.10533,
+        "z": 474.580017
+      },
+      "tangent": {
+        "x": -0.9999004,
+        "y": 0.0,
+        "z": -0.0141123394
+      },
+      "outward": {
+        "x": 0.0141123394,
+        "y": 0.0,
+        "z": -0.9999004
+      },
+      "angle": 1.005999,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 058",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 059",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 60,
+      "previous": 59,
+      "point": {
+        "x": 540.0469,
+        "y": 56.10533,
+        "z": 474.564056
+      },
+      "tangent": {
+        "x": -0.999980569,
+        "y": 0.0,
+        "z": 0.006233232
+      },
+      "outward": {
+        "x": -0.006233232,
+        "y": 0.0,
+        "z": -0.999980569
+      },
+      "angle": 1.32529879,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Curtain bay 059",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 060",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 61,
+      "previous": 60,
+      "point": {
+        "x": 537.045,
+        "y": 56.10533,
+        "z": 474.6175
+      },
+      "tangent": {
+        "x": -0.9994862,
+        "y": 0.0,
+        "z": 0.0320515446
+      },
+      "outward": {
+        "x": -0.0320515446,
+        "y": 0.0,
+        "z": -0.9994862
+      },
+      "angle": 1.63374615,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 060",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 061",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 62,
+      "previous": 61,
+      "point": {
+        "x": 534.03064,
+        "y": 56.10533,
+        "z": 474.7572
+      },
+      "tangent": {
+        "x": -0.9990374,
+        "y": 0.0,
+        "z": 0.0438675247
+      },
+      "outward": {
+        "x": -0.0438675247,
+        "y": 0.0,
+        "z": -0.9990374
+      },
+      "angle": -0.278362483,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 061",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 062",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 64,
+      "previous": 63,
+      "point": {
+        "x": 528.5209,
+        "y": 56.10533,
+        "z": 475.960175
+      },
+      "tangent": {
+        "x": -0.89636445,
+        "y": 0.0,
+        "z": 0.4433179
+      },
+      "outward": {
+        "x": -0.4433179,
+        "y": 0.0,
+        "z": -0.89636445
+      },
+      "angle": 4.66274643,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 063",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 064",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 65,
+      "previous": 64,
+      "point": {
+        "x": 526.154541,
+        "y": 56.10533,
+        "z": 477.252869
+      },
+      "tangent": {
+        "x": -0.8758173,
+        "y": 0.0,
+        "z": 0.482642829
+      },
+      "outward": {
+        "x": -0.482642829,
+        "y": 0.0,
+        "z": -0.8758173
+      },
+      "angle": 0.421508759,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 064",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 065",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 71,
+      "previous": 70,
+      "point": {
+        "x": 511.576,
+        "y": 56.10533,
+        "z": 485.356842
+      },
+      "tangent": {
+        "x": -0.871273458,
+        "y": 0.0,
+        "z": 0.4907979
+      },
+      "outward": {
+        "x": -0.4907979,
+        "y": 0.0,
+        "z": -0.871273458
+      },
+      "angle": 0.6477052,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 070",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 071",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 73,
+      "previous": 72,
+      "point": {
+        "x": 507.0493,
+        "y": 56.10533,
+        "z": 488.327179
+      },
+      "tangent": {
+        "x": -0.7875238,
+        "y": 0.0,
+        "z": 0.616284251
+      },
+      "outward": {
+        "x": -0.616284251,
+        "y": 0.0,
+        "z": -0.7875238
+      },
+      "angle": 2.35850048,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 072",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 073",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 75,
+      "previous": 74,
+      "point": {
+        "x": 503.9325,
+        "y": 56.10533,
+        "z": 492.730865
+      },
+      "tangent": {
+        "x": -0.346867651,
+        "y": 0.0,
+        "z": 0.9379141
+      },
+      "outward": {
+        "x": -0.9379141,
+        "y": 0.0,
+        "z": -0.346867651
+      },
+      "angle": 2.109607,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 074",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 075",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 76,
+      "previous": 75,
+      "point": {
+        "x": 502.955872,
+        "y": 56.10533,
+        "z": 495.5289
+      },
+      "tangent": {
+        "x": -0.3142511,
+        "y": 0.0,
+        "z": 0.949339867
+      },
+      "outward": {
+        "x": -0.949339867,
+        "y": 0.0,
+        "z": -0.3142511
+      },
+      "angle": 1.85065472,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 075",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 076",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 77,
+      "previous": 76,
+      "point": {
+        "x": 502.062225,
+        "y": 56.10533,
+        "z": 498.382233
+      },
+      "tangent": {
+        "x": -0.285437375,
+        "y": 0.0,
+        "z": 0.9583973
+      },
+      "outward": {
+        "x": -0.9583973,
+        "y": 0.0,
+        "z": -0.285437375
+      },
+      "angle": 1.61034048,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 076",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 077",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 78,
+      "previous": 77,
+      "point": {
+        "x": 501.243622,
+        "y": 56.10533,
+        "z": 501.279022
+      },
+      "tangent": {
+        "x": -0.260265172,
+        "y": 0.0,
+        "z": 0.9655372
+      },
+      "outward": {
+        "x": -0.9655372,
+        "y": 0.0,
+        "z": -0.260265172
+      },
+      "angle": 1.38776207,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 077",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 078",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 79,
+      "previous": 78,
+      "point": {
+        "x": 500.4922,
+        "y": 56.10533,
+        "z": 504.2074
+      },
+      "tangent": {
+        "x": -0.238576233,
+        "y": 0.0,
+        "z": 0.971123755
+      },
+      "outward": {
+        "x": -0.971123755,
+        "y": 0.0,
+        "z": -0.238576233
+      },
+      "angle": 1.17852378,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 078",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 079",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 80,
+      "previous": 79,
+      "point": {
+        "x": 499.8,
+        "y": 56.10533,
+        "z": 507.155548
+      },
+      "tangent": {
+        "x": -0.22022447,
+        "y": 0.0,
+        "z": 0.9754492
+      },
+      "outward": {
+        "x": -0.9754492,
+        "y": 0.0,
+        "z": -0.22022447
+      },
+      "angle": 0.981981635,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Curtain bay 079",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 080",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 81,
+      "previous": 80,
+      "point": {
+        "x": 499.15918,
+        "y": 56.10533,
+        "z": 510.1116
+      },
+      "tangent": {
+        "x": -0.205097213,
+        "y": 0.0,
+        "z": 0.9787416
+      },
+      "outward": {
+        "x": -0.9787416,
+        "y": 0.0,
+        "z": -0.205097213
+      },
+      "angle": 0.7920414,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 080",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 081",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 82,
+      "previous": 81,
+      "point": {
+        "x": 498.561829,
+        "y": 56.10533,
+        "z": 513.0637
+      },
+      "tangent": {
+        "x": -0.193131834,
+        "y": 0.0,
+        "z": 0.98117286
+      },
+      "outward": {
+        "x": -0.98117286,
+        "y": 0.0,
+        "z": -0.193131834
+      },
+      "angle": 0.606840432,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 081",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 082",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 84,
+      "previous": 83,
+      "point": {
+        "x": 498.408478,
+        "y": 56.10533,
+        "z": 518.788452
+      },
+      "tangent": {
+        "x": 0.1500813,
+        "y": 0.0,
+        "z": 0.9886736
+      },
+      "outward": {
+        "x": -0.9886736,
+        "y": 0.0,
+        "z": 0.1500813
+      },
+      "angle": 0.5951191,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 083",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 084",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 85,
+      "previous": 84,
+      "point": {
+        "x": 498.851837,
+        "y": 56.10533,
+        "z": 521.6102
+      },
+      "tangent": {
+        "x": 0.161023423,
+        "y": 0.0,
+        "z": 0.9869506
+      },
+      "outward": {
+        "x": -0.9869506,
+        "y": 0.0,
+        "z": 0.161023423
+      },
+      "angle": 0.673766136,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 084",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 085",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 86,
+      "previous": 85,
+      "point": {
+        "x": 499.332947,
+        "y": 56.10533,
+        "z": 524.453735
+      },
+      "tangent": {
+        "x": 0.173346758,
+        "y": 0.0,
+        "z": 0.984860837
+      },
+      "outward": {
+        "x": -0.984860837,
+        "y": 0.0,
+        "z": 0.173346758
+      },
+      "angle": 0.7579558,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 085",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 086",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 87,
+      "previous": 86,
+      "point": {
+        "x": 499.854736,
+        "y": 56.10533,
+        "z": 527.3075
+      },
+      "tangent": {
+        "x": 0.187125713,
+        "y": 0.0,
+        "z": 0.982336
+      },
+      "outward": {
+        "x": -0.982336,
+        "y": 0.0,
+        "z": 0.187125713
+      },
+      "angle": 0.8464977,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 086",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 087",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 88,
+      "previous": 87,
+      "point": {
+        "x": 500.419983,
+        "y": 56.10533,
+        "z": 530.16
+      },
+      "tangent": {
+        "x": 0.202485234,
+        "y": 0.0,
+        "z": 0.9792853
+      },
+      "outward": {
+        "x": -0.9792853,
+        "y": 0.0,
+        "z": 0.202485234
+      },
+      "angle": 0.9472937,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 087",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 088",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 89,
+      "previous": 88,
+      "point": {
+        "x": 501.031677,
+        "y": 56.10533,
+        "z": 532.9997
+      },
+      "tangent": {
+        "x": 0.2195731,
+        "y": 0.0,
+        "z": 0.9755961
+      },
+      "outward": {
+        "x": -0.9755961,
+        "y": 0.0,
+        "z": 0.2195731
+      },
+      "angle": 1.05573237,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 088",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 089",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 90,
+      "previous": 89,
+      "point": {
+        "x": 501.692627,
+        "y": 56.10533,
+        "z": 535.815063
+      },
+      "tangent": {
+        "x": 0.238549024,
+        "y": 0.0,
+        "z": 0.971130431
+      },
+      "outward": {
+        "x": -0.971130431,
+        "y": 0.0,
+        "z": 0.238549024
+      },
+      "angle": 1.17819166,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 089",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 090",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 91,
+      "previous": 90,
+      "point": {
+        "x": 502.405762,
+        "y": 56.10533,
+        "z": 538.594543
+      },
+      "tangent": {
+        "x": 0.2596071,
+        "y": 0.0,
+        "z": 0.965714335
+      },
+      "outward": {
+        "x": -0.965714335,
+        "y": 0.0,
+        "z": 0.2596071
+      },
+      "angle": 1.31328428,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 090",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 091",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 92,
+      "previous": 91,
+      "point": {
+        "x": 503.17392,
+        "y": 56.10533,
+        "z": 541.3267
+      },
+      "tangent": {
+        "x": 0.282972,
+        "y": 0.0,
+        "z": 0.9591282
+      },
+      "outward": {
+        "x": -0.9591282,
+        "y": 0.0,
+        "z": 0.282972
+      },
+      "angle": 1.46833777,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 091",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 092",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 94,
+      "previous": 93,
+      "point": {
+        "x": 505.989746,
+        "y": 56.10533,
+        "z": 545.945435
+      },
+      "tangent": {
+        "x": 0.724737763,
+        "y": 0.0,
+        "z": 0.689024746
+      },
+      "outward": {
+        "x": -0.689024746,
+        "y": 0.0,
+        "z": 0.724737763
+      },
+      "angle": 1.60376477,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 093",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 094",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 95,
+      "previous": 94,
+      "point": {
+        "x": 508.062073,
+        "y": 56.10533,
+        "z": 547.861145
+      },
+      "tangent": {
+        "x": 0.742525637,
+        "y": 0.0,
+        "z": 0.6698176
+      },
+      "outward": {
+        "x": -0.6698176,
+        "y": 0.0,
+        "z": 0.742525637
+      },
+      "angle": 1.39605689,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 094",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 095",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 96,
+      "previous": 95,
+      "point": {
+        "x": 510.203522,
+        "y": 56.10533,
+        "z": 549.7461
+      },
+      "tangent": {
+        "x": 0.7575498,
+        "y": 0.0,
+        "z": 0.6527773
+      },
+      "outward": {
+        "x": -0.6527773,
+        "y": 0.0,
+        "z": 0.7575498
+      },
+      "angle": 1.2070694,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 095",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 096",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 97,
+      "previous": 96,
+      "point": {
+        "x": 512.400635,
+        "y": 56.10533,
+        "z": 551.599365
+      },
+      "tangent": {
+        "x": 0.770185649,
+        "y": 0.0,
+        "z": 0.637819767
+      },
+      "outward": {
+        "x": -0.637819767,
+        "y": 0.0,
+        "z": 0.770185649
+      },
+      "angle": 1.03646529,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 096",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 097",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 98,
+      "previous": 97,
+      "point": {
+        "x": 514.64,
+        "y": 56.10533,
+        "z": 553.42
+      },
+      "tangent": {
+        "x": 0.780727267,
+        "y": 0.0,
+        "z": 0.6248719
+      },
+      "outward": {
+        "x": -0.6248719,
+        "y": 0.0,
+        "z": 0.780727267
+      },
+      "angle": 0.8767033,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 097",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 098",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 99,
+      "previous": 98,
+      "point": {
+        "x": 516.908142,
+        "y": 56.10533,
+        "z": 555.207031
+      },
+      "tangent": {
+        "x": 0.789409637,
+        "y": 0.0,
+        "z": 0.613866746
+      },
+      "outward": {
+        "x": -0.613866746,
+        "y": 0.0,
+        "z": 0.789409637
+      },
+      "angle": 0.729541659,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 098",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 099",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 100,
+      "previous": 99,
+      "point": {
+        "x": 519.19165,
+        "y": 56.10533,
+        "z": 556.959534
+      },
+      "tangent": {
+        "x": 0.7964245,
+        "y": 0.0,
+        "z": 0.604738
+      },
+      "outward": {
+        "x": -0.604738,
+        "y": 0.0,
+        "z": 0.7964245
+      },
+      "angle": 0.589171052,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Curtain bay 099",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 100",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 101,
+      "previous": 100,
+      "point": {
+        "x": 521.4771,
+        "y": 56.10533,
+        "z": 558.676453
+      },
+      "tangent": {
+        "x": 0.8018779,
+        "y": 0.0,
+        "z": 0.597487867
+      },
+      "outward": {
+        "x": -0.597487867,
+        "y": 0.0,
+        "z": 0.8018779
+      },
+      "angle": 0.449804783,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 100",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 101",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 102,
+      "previous": 101,
+      "point": {
+        "x": 523.751038,
+        "y": 56.10533,
+        "z": 560.356934
+      },
+      "tangent": {
+        "x": 0.8058422,
+        "y": 0.0,
+        "z": 0.5921303
+      },
+      "outward": {
+        "x": -0.5921303,
+        "y": 0.0,
+        "z": 0.8058422
+      },
+      "angle": 0.313411623,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 101",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 102",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 104,
+      "previous": 103,
+      "point": {
+        "x": 528.6421,
+        "y": 56.10533,
+        "z": 562.94104
+      },
+      "tangent": {
+        "x": 0.9456821,
+        "y": 0.0,
+        "z": 0.3250928
+      },
+      "outward": {
+        "x": -0.3250928,
+        "y": 0.0,
+        "z": 0.9456821
+      },
+      "angle": 1.26655924,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 103",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 104",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 105,
+      "previous": 104,
+      "point": {
+        "x": 531.3026,
+        "y": 56.10533,
+        "z": 563.8229
+      },
+      "tangent": {
+        "x": 0.9521494,
+        "y": 0.0,
+        "z": 0.305633068
+      },
+      "outward": {
+        "x": -0.305633068,
+        "y": 0.0,
+        "z": 0.9521494
+      },
+      "angle": 1.0831784,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 104",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 105",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 106,
+      "previous": 105,
+      "point": {
+        "x": 533.9763,
+        "y": 56.10533,
+        "z": 564.6533
+      },
+      "tangent": {
+        "x": 0.957293034,
+        "y": 0.0,
+        "z": 0.289119333
+      },
+      "outward": {
+        "x": -0.289119333,
+        "y": 0.0,
+        "z": 0.957293034
+      },
+      "angle": 0.8987461,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 105",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 106",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 107,
+      "previous": 106,
+      "point": {
+        "x": 536.6579,
+        "y": 56.10533,
+        "z": 565.4403
+      },
+      "tangent": {
+        "x": 0.9612716,
+        "y": 0.0,
+        "z": 0.275602818
+      },
+      "outward": {
+        "x": -0.275602818,
+        "y": 0.0,
+        "z": 0.9612716
+      },
+      "angle": 0.715731859,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 106",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 107",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 108,
+      "previous": 107,
+      "point": {
+        "x": 539.3421,
+        "y": 56.10533,
+        "z": 566.1918
+      },
+      "tangent": {
+        "x": 0.9642246,
+        "y": 0.0,
+        "z": 0.265086561
+      },
+      "outward": {
+        "x": -0.265086561,
+        "y": 0.0,
+        "z": 0.9642246
+      },
+      "angle": 0.5355885,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 107",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 108",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 109,
+      "previous": 108,
+      "point": {
+        "x": 542.0237,
+        "y": 56.10533,
+        "z": 566.9155
+      },
+      "tangent": {
+        "x": 0.966249347,
+        "y": 0.0,
+        "z": 0.2576086
+      },
+      "outward": {
+        "x": -0.2576086,
+        "y": 0.0,
+        "z": 0.966249347
+      },
+      "angle": 0.351659149,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 108",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 109",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 110,
+      "previous": 109,
+      "point": {
+        "x": 544.6974,
+        "y": 56.10533,
+        "z": 567.619568
+      },
+      "tangent": {
+        "x": 0.9674097,
+        "y": 0.0,
+        "z": 0.253216237
+      },
+      "outward": {
+        "x": -0.253216237,
+        "y": 0.0,
+        "z": 0.9674097
+      },
+      "angle": 0.169020459,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 109",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 110",
+      "endpointDeviation": 0.0
+    },
+    {
+      "id": 111,
+      "previous": 110,
+      "point": {
+        "x": 547.3579,
+        "y": 56.10533,
+        "z": 568.311768
+      },
+      "tangent": {
+        "x": 0.9677444,
+        "y": 0.0,
+        "z": 0.251934
+      },
+      "outward": {
+        "x": -0.251934,
+        "y": 0.0,
+        "z": 0.9677444
+      },
+      "angle": -0.01978234,
+      "approximateMissingExtension": 0.0,
+      "previousBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 110",
+      "nextBay": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Curtain bay 111",
+      "endpointDeviation": 0.0
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Masonry district 00",
+      "filters": [
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Warm painted defensive limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_00_batch_0.asset",
+          "vertices": 5856,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Carved limestone coping",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_00_batch_1.asset",
+          "vertices": 6816,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Cream worn coping.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Recessed blue grey stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_00_batch_2.asset",
+          "vertices": 13920,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft grey lime recesses.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 00/Painted masonry - Mossy foundation stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_00_batch_3.asset",
+          "vertices": 288,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Sage limestone foundations.mat"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Masonry district 01",
+      "filters": [
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Warm painted defensive limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_01_batch_0.asset",
+          "vertices": 7104,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Carved limestone coping",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_01_batch_1.asset",
+          "vertices": 8352,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Cream worn coping.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Recessed blue grey stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_01_batch_2.asset",
+          "vertices": 17472,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft grey lime recesses.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 01/Painted masonry - Mossy foundation stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_01_batch_3.asset",
+          "vertices": 288,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Sage limestone foundations.mat"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Masonry district 02",
+      "filters": [
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Warm painted defensive limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_02_batch_0.asset",
+          "vertices": 7296,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Carved limestone coping",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_02_batch_1.asset",
+          "vertices": 8448,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Cream worn coping.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Recessed blue grey stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_02_batch_2.asset",
+          "vertices": 17376,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft grey lime recesses.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 02/Painted masonry - Mossy foundation stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_02_batch_3.asset",
+          "vertices": 288,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Sage limestone foundations.mat"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Masonry district 03",
+      "filters": [
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Warm painted defensive limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_03_batch_0.asset",
+          "vertices": 5760,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Carved limestone coping",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_03_batch_1.asset",
+          "vertices": 7008,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Cream worn coping.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Recessed blue grey stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_03_batch_2.asset",
+          "vertices": 14016,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft grey lime recesses.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 03/Painted masonry - Mossy foundation stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_03_batch_3.asset",
+          "vertices": 288,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Sage limestone foundations.mat"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Masonry district 04",
+      "filters": [
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Warm painted defensive limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_04_batch_0.asset",
+          "vertices": 7104,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Carved limestone coping",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_04_batch_1.asset",
+          "vertices": 8256,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Cream worn coping.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Recessed blue grey stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_04_batch_2.asset",
+          "vertices": 17376,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft grey lime recesses.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 04/Painted masonry - Mossy foundation stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_04_batch_3.asset",
+          "vertices": 288,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Sage limestone foundations.mat"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Masonry district 05",
+      "filters": [
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Warm painted defensive limestone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_05_batch_0.asset",
+          "vertices": 4320,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Warm coursed limestone.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Carved limestone coping",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_05_batch_1.asset",
+          "vertices": 5088,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Cream worn coping.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Recessed blue grey stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_05_batch_2.asset",
+          "vertices": 10464,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Soft grey lime recesses.mat"
+          ]
+        },
+        {
+          "path": "Aubefont - mana well town/Town ramparts - two gates/Shaped curtain and continuous wall walk/Masonry district 05/Painted masonry - Mossy foundation stone",
+          "mesh": "Assets/Arkya/World/StarterIsland/Town/Ramparts/Refined/Meshes/Masonry_district_05_batch_3.asset",
+          "vertices": 96,
+          "materials": [
+            "Assets/Arkya/World/StarterIsland/Town/Warmth20261020/Surfaces/Materials/Sage limestone foundations.mat"
+          ]
+        }
+      ]
+    }
+  ],
+  "sceneCamera": {
+    "position": {
+      "x": 503.0237,
+      "y": 113.383461,
+      "z": 523.7641
+    },
+    "forward": {
+      "x": 0.718862534,
+      "y": -0.636083663,
+      "z": 0.2804181
+    }
+  },
+  "bevelVertices": 96
+}

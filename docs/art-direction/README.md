@@ -1,6 +1,13 @@
 # Arkya — Trois propositions de direction artistique
 
-Première exploration : 14 octobre 2026. Mise à jour : 15 octobre 2026. Statut : arbres, collections minérales, buissons, touffes d'herbe, champignons, fleurs, souches, troncs couchés et les trois formes de mares de mana validés ; les trois propositions initiales restent des explorations.
+Première exploration : 14 octobre 2026. Mise à jour : 20 octobre 2026. Statut : arbres, collections minérales, buissons, touffes d'herbe, champignons, fleurs, souches, troncs couchés et les trois formes de mares de mana validés ; référence personnages retenue ; les trois propositions initiales restent des explorations.
+
+**Personnages — décision du 20 octobre 2026 :** les
+[six images fournies par l’utilisateur](resources/references/personnages-stylises-2026-10-20/README.md)
+deviennent la référence principale, avec un alignement très fidèle demandé
+sur les proportions, les volumes sculptés, les visages, les cheveux,
+les équipements et les matières. Cette cible prime sur les explorations
+ci-dessous et sur les prototypes Humain/Elfe existants.
 
 Ces propositions rapprochent la fantasy généreuse de WoW et une interprétation de la clarté graphique d’Overwatch : personnages expressifs, silhouettes fortes, grandes masses de couleur et matières faciles à distinguer. Les lieux, personnages et motifs des planches conceptuelles sont proposés pour Arkya. Les personnages des études 3D ultérieures utilisent des bases externes attribuées dans leurs crédits.
 

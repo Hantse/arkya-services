@@ -1,0 +1,47 @@
+@model RealmModel
+@using Arkya.Admin.Realms
+@{ var realm = Model.Realm!; }
+<section class="account-actions" aria-labelledby="operations-heading">
+    <div class="section-heading"><h2 id="operations-heading">Actions serveur</h2><span class="muted">Ces actions interrompent les joueurs connectés.</span></div>
+    @if (Model.OperationsError is not null) { <div class="alert error" role="alert">@Model.OperationsError</div> }
+    @if (Model.OperationsOptions is { } operations)
+    {
+        <div class="action-grid">
+            <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "restart")"><summary><strong>Redémarrer le realm</strong><small>Relancer les serveurs avec l’image actuelle.</small></summary>
+            <form method="post" asp-page="/Realm" asp-page-handler="Restart" asp-route-realmId="@realm.RealmId" class="realm-form">
+                <p class="muted">Relancer tous les serveurs dédiés avec l’image actuelle. Prévenez les joueurs avant l’interruption.</p>
+                <input type="hidden" name="ExpectedRevision" value="@Model.ExpectedRevision" />
+                <div class="field"><label for="restart-reason">Motif du redémarrage</label><input id="restart-reason" name="Reason" value="@Model.Reason" maxlength="500" required /></div>
+                <div class="field"><label for="restart-confirm">Recopiez @realm.RealmId pour confirmer</label><input id="restart-confirm" name="ConfirmRealmId" value="@Model.ConfirmRealmId" autocomplete="off" required /></div>
+                <button class="button danger" type="submit" disabled="@(!operations.CanRestart)">Redémarrer les serveurs</button>
+                @if (!operations.CanRestart) { <small>Redémarrage indisponible dans l’état actuel. Actualisez après les opérations en cours.</small> }
+            </form>
+            </details>
+            <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "update")"><summary><strong>Mettre à jour le realm</strong><small>Installer la version approuvée.</small></summary>
+            <form method="post" asp-page="/Realm" asp-page-handler="Update" asp-route-realmId="@realm.RealmId" class="realm-form">
+                <p class="muted">Installer la version approuvée pour ce realm et relancer ses serveurs.</p>
+                @if (operations.UpdateImage is not null) { <dl class="realm-facts"><div><dt>Version approuvée @operations.UpdateVersion</dt><dd class="mono">@operations.UpdateImage</dd></div></dl> }
+                else { <p class="muted">Aucune nouvelle version approuvée n’est disponible.</p> }
+                <input type="hidden" name="ExpectedRevision" value="@Model.ExpectedRevision" /><input type="hidden" name="ExpectedImage" value="@operations.UpdateImage" />
+                <div class="field"><label for="update-reason">Motif de la mise à jour</label><input id="update-reason" name="Reason" value="@Model.Reason" maxlength="500" required /></div>
+                <div class="field"><label for="update-confirm">Recopiez @realm.RealmId pour confirmer</label><input id="update-confirm" name="ConfirmRealmId" value="@Model.ConfirmRealmId" autocomplete="off" required /></div>
+                <button class="button primary" type="submit" disabled="@(!operations.CanUpdate)">Installer la version approuvée</button>
+                @if (!operations.CanUpdate && operations.UpdateImage is not null) { <small>Mise à jour indisponible dans l’état actuel. Actualisez après les opérations en cours.</small> }
+            </form>
+            </details>
+        </div>
+    }
+</section>
+<section class="account-actions" aria-labelledby="delete-realm-heading">
+    <div class="section-heading"><h2 id="delete-realm-heading">Supprimer le realm</h2><span class="muted">Arrêter ce monde et retirer ses ressources.</span></div>
+    <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "delete")"><summary><strong>@(realm.Status == "DeleteFailed" ? "Relancer la suppression du realm" : "Supprimer le realm")</strong><small>Retirer le monde et ses serveurs dédiés.</small></summary>
+    <form method="post" asp-page="/Realm" asp-page-handler="Delete" asp-route-realmId="@realm.RealmId" class="realm-form">
+        <p>Cette action interrompt les joueurs connectés, supprime les ressources de ce realm et retire ses pages publiques. Les personnages et leurs sauvegardes sont conservés ; ils restent liés à ce realm.</p>
+        <input type="hidden" name="ExpectedRevision" value="@Model.ExpectedRevision" />
+        <div class="field"><label for="delete-reason">Motif de la suppression</label><input id="delete-reason" name="Reason" value="@(Model.ActiveAction == "delete" ? Model.Reason : null)" maxlength="500" required /></div>
+        <div class="field"><label for="delete-confirm">Recopiez exactement @realm.RealmId pour confirmer la suppression</label><input id="delete-confirm" name="ConfirmRealmId" value="@(Model.ActiveAction == "delete" ? Model.ConfirmRealmId : null)" autocomplete="off" required /></div>
+        <button class="button danger" type="submit" disabled="@(!RealmPresentation.CanDelete(realm))">@(realm.Status == "DeleteFailed" ? "Relancer la suppression" : "Supprimer définitivement le realm")</button>
+        @if (!RealmPresentation.CanDelete(realm)) { <small>Suppression indisponible pendant une opération en cours. Actualisez pour suivre son avancement.</small> }
+    </form>
+    </details>
+</section>

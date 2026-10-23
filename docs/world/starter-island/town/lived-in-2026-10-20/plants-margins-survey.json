@@ -1,0 +1,470 @@
+{
+  "success": true,
+  "readOnly": true,
+  "sceneSaved": false,
+  "matchTolerance": 0.00015,
+  "movedPlantParts": 14,
+  "changedMeshes": 8,
+  "affectedVertices": 26754,
+  "moves": [
+    {
+      "owner": "South weavers stock",
+      "family": "Herbe",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Herbe_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_11.asset",
+      "vertexStart": 1538,
+      "vertexCount": 1538,
+      "from": [
+        558.153,
+        49.5061646,
+        488.620117
+      ],
+      "to": [
+        558.5335,
+        49.5047264,
+        488.83844
+      ],
+      "localDelta": [
+        0.380493164,
+        -0.00143814087,
+        0.218322754
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.99465144,
+      "radiusAfter": 1.55861068,
+      "remainingMargin": 0.14138937
+    },
+    {
+      "owner": "South weavers stock",
+      "family": "Fleur",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Fleur_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_12.asset",
+      "vertexStart": 2284,
+      "vertexCount": 2284,
+      "from": [
+        560.3361,
+        49.39999,
+        488.0991
+      ],
+      "to": [
+        560.2888,
+        49.40881,
+        488.2181
+      ],
+      "localDelta": [
+        -0.0473022461,
+        0.00881958,
+        0.119018555
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.63959575,
+      "radiusAfter": 1.51381242,
+      "remainingMargin": 0.186187625
+    },
+    {
+      "owner": "Forge timber delivery",
+      "family": "Herbe",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Herbe_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_11.asset",
+      "vertexStart": 3076,
+      "vertexCount": 1538,
+      "from": [
+        574.3727,
+        50.5539322,
+        505.697479
+      ],
+      "to": [
+        574.7986,
+        50.5744629,
+        505.80246
+      ],
+      "localDelta": [
+        0.42590332,
+        0.0205307,
+        0.104980469
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.994667,
+      "radiusAfter": 1.55865479,
+      "remainingMargin": 0.141345263
+    },
+    {
+      "owner": "Forge timber delivery",
+      "family": "Fleur",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Fleur_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_12.asset",
+      "vertexStart": 4568,
+      "vertexCount": 2284,
+      "from": [
+        576.3276,
+        50.4377556,
+        504.5949
+      ],
+      "to": [
+        576.314941,
+        50.4497032,
+        504.722351
+      ],
+      "localDelta": [
+        -0.0126342773,
+        0.0119476318,
+        0.1274414
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.63956726,
+      "radiusAfter": 1.51379693,
+      "remainingMargin": 0.186203122
+    },
+    {
+      "owner": "Inn grain sacks and hay",
+      "family": "Herbe",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Herbe_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_19.asset",
+      "vertexStart": 1538,
+      "vertexCount": 1538,
+      "from": [
+        518.063232,
+        50.8769035,
+        531.635437
+      ],
+      "to": [
+        518.290161,
+        50.80178,
+        532.0108
+      ],
+      "localDelta": [
+        0.226928711,
+        -0.07512283,
+        0.3753662
+      ],
+      "reservedRadius": 1.65,
+      "radiusBefore": 1.99461246,
+      "radiusAfter": 1.55861878,
+      "remainingMargin": 0.09138119
+    },
+    {
+      "owner": "Inn grain sacks and hay",
+      "family": "Fleur",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Fleur_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_20.asset",
+      "vertexStart": 2284,
+      "vertexCount": 2284,
+      "from": [
+        520.225159,
+        50.7129364,
+        532.2381
+      ],
+      "to": [
+        520.12616,
+        50.70004,
+        532.3193
+      ],
+      "localDelta": [
+        -0.09899902,
+        -0.0128974915,
+        0.08117676
+      ],
+      "reservedRadius": 1.65,
+      "radiusBefore": 1.63957238,
+      "radiusAfter": 1.51384842,
+      "remainingMargin": 0.136151552
+    },
+    {
+      "owner": "Runecrafter provisions",
+      "family": "Herbe",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Herbe_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_19.asset",
+      "vertexStart": 3076,
+      "vertexCount": 1538,
+      "from": [
+        549.4217,
+        50.3280067,
+        548.5014
+      ],
+      "to": [
+        549.8316,
+        50.33319,
+        548.657532
+      ],
+      "localDelta": [
+        0.4099121,
+        0.00518417358,
+        0.15612793
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.994633,
+      "radiusAfter": 1.55863643,
+      "remainingMargin": 0.141363621
+    },
+    {
+      "owner": "Runecrafter provisions",
+      "family": "Fleur",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Fleur_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_29.asset",
+      "vertexStart": 2284,
+      "vertexCount": 2284,
+      "from": [
+        551.4964,
+        50.367115,
+        547.6453
+      ],
+      "to": [
+        551.4683,
+        50.3657,
+        547.770264
+      ],
+      "localDelta": [
+        -0.0280761719,
+        -0.00141525269,
+        0.124938965
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.63956976,
+      "radiusAfter": 1.51381028,
+      "remainingMargin": 0.186189771
+    },
+    {
+      "owner": "West cottage supplies",
+      "family": "Herbe",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Herbe_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_4.asset",
+      "vertexStart": 1538,
+      "vertexCount": 1538,
+      "from": [
+        519.3454,
+        50.9247475,
+        506.95578
+      ],
+      "to": [
+        519.7825,
+        50.94023,
+        506.992828
+      ],
+      "localDelta": [
+        0.437072754,
+        0.0154838562,
+        0.03704834
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.99465966,
+      "radiusAfter": 1.55865729,
+      "remainingMargin": 0.141342759
+    },
+    {
+      "owner": "West cottage supplies",
+      "family": "Fleur",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Fleur_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_5.asset",
+      "vertexStart": 2284,
+      "vertexCount": 2284,
+      "from": [
+        521.10376,
+        50.9855347,
+        505.560974
+      ],
+      "to": [
+        521.1112,
+        50.9855347,
+        505.6888
+      ],
+      "localDelta": [
+        0.007446289,
+        0.0,
+        0.127838135
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.63957679,
+      "radiusAfter": 1.51381576,
+      "remainingMargin": 0.186184287
+    },
+    {
+      "owner": "Orchard seed store",
+      "family": "Herbe",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Herbe_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_4.asset",
+      "vertexStart": 3076,
+      "vertexCount": 1538,
+      "from": [
+        539.3942,
+        50.18647,
+        486.459656
+      ],
+      "to": [
+        539.5309,
+        50.1816635,
+        486.876465
+      ],
+      "localDelta": [
+        0.136657715,
+        -0.00480651855,
+        0.416809082
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.994632,
+      "radiusAfter": 1.558631,
+      "remainingMargin": 0.1413691
+    },
+    {
+      "owner": "Orchard seed store",
+      "family": "Fleur",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Fleur_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_5.asset",
+      "vertexStart": 4568,
+      "vertexCount": 2284,
+      "from": [
+        541.3652,
+        50.1121025,
+        487.5332
+      ],
+      "to": [
+        541.2504,
+        50.1170273,
+        487.590027
+      ],
+      "localDelta": [
+        -0.114746094,
+        0.004924774,
+        0.05682373
+      ],
+      "reservedRadius": 1.7,
+      "radiusBefore": 1.63959134,
+      "radiusAfter": 1.51384473,
+      "remainingMargin": 0.186155319
+    },
+    {
+      "owner": "East courtyard harvest",
+      "family": "Herbe",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Herbe_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_28.asset",
+      "vertexStart": 1538,
+      "vertexCount": 1538,
+      "from": [
+        579.7529,
+        51.28146,
+        520.378
+      ],
+      "to": [
+        580.18634,
+        51.2831535,
+        520.445435
+      ],
+      "localDelta": [
+        0.433410645,
+        0.00169372559,
+        0.06744385
+      ],
+      "reservedRadius": 1.65,
+      "radiusBefore": 1.99462223,
+      "radiusAfter": 1.558633,
+      "remainingMargin": 0.09136701
+    },
+    {
+      "owner": "East courtyard harvest",
+      "family": "Fleur",
+      "sourceMesh": "Assets/Arkya/ArtDirection/Optimized/Meshes/Fleur_LOD2_0.asset",
+      "sourceSubmesh": 0,
+      "target": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_12.asset",
+      "vertexStart": 6852,
+      "vertexCount": 2284,
+      "from": [
+        581.604248,
+        51.2945557,
+        519.109253
+      ],
+      "to": [
+        581.6028,
+        51.294548,
+        519.2373
+      ],
+      "localDelta": [
+        -0.00146484375,
+        -7.62939453E-06,
+        0.128051758
+      ],
+      "reservedRadius": 1.65,
+      "radiusBefore": 1.63953936,
+      "radiusAfter": 1.51377761,
+      "remainingMargin": 0.136222363
+    }
+  ],
+  "meshes": [
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_11.asset",
+      "vertices": 23070,
+      "changedVertices": 3076,
+      "attributesBefore": "7bb0d4e218c2a6a6d0537e748b98ff84e7e7380708122e5885109db1a4855431",
+      "attributesAfter": "7bb0d4e218c2a6a6d0537e748b98ff84e7e7380708122e5885109db1a4855431",
+      "unrelatedVerticesPreserved": true
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter1_12.asset",
+      "vertices": 27408,
+      "changedVertices": 6852,
+      "attributesBefore": "6ffc11b59fcafa6bc38985fe67520cdb02acca523218ed6bf3aabd55e4e8ad3d",
+      "attributesAfter": "6ffc11b59fcafa6bc38985fe67520cdb02acca523218ed6bf3aabd55e4e8ad3d",
+      "unrelatedVerticesPreserved": true
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_19.asset",
+      "vertices": 18456,
+      "changedVertices": 3076,
+      "attributesBefore": "417efbf37601910559f6c427b099a9d4c4f568eafe43c98bf7e766f8d97b6de4",
+      "attributesAfter": "417efbf37601910559f6c427b099a9d4c4f568eafe43c98bf7e766f8d97b6de4",
+      "unrelatedVerticesPreserved": true
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_20.asset",
+      "vertices": 18272,
+      "changedVertices": 2284,
+      "attributesBefore": "f35ee20880c645a93e76977b2f80c9c8cae44844fa6cd7db70882a7dfb68b0b9",
+      "attributesAfter": "f35ee20880c645a93e76977b2f80c9c8cae44844fa6cd7db70882a7dfb68b0b9",
+      "unrelatedVerticesPreserved": true
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_29.asset",
+      "vertices": 13704,
+      "changedVertices": 2284,
+      "attributesBefore": "5afe20a96834951f9aa2b8d42fb5fb16c9b7bf1275ef31da7560b3932fe1a87e",
+      "attributesAfter": "5afe20a96834951f9aa2b8d42fb5fb16c9b7bf1275ef31da7560b3932fe1a87e",
+      "unrelatedVerticesPreserved": true
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_4.asset",
+      "vertices": 23070,
+      "changedVertices": 3076,
+      "attributesBefore": "a4ea9db4d348bfaef444a0d17fdc42a45224da8896d07630602159ae35e8f34f",
+      "attributesAfter": "a4ea9db4d348bfaef444a0d17fdc42a45224da8896d07630602159ae35e8f34f",
+      "unrelatedVerticesPreserved": true
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_5.asset",
+      "vertices": 25124,
+      "changedVertices": 4568,
+      "attributesBefore": "4c6a5909ea6c6ab25e278ec06325343d5d578ee21620ab957e6c2be48d01620b",
+      "attributesAfter": "4c6a5909ea6c6ab25e278ec06325343d5d578ee21620ab957e6c2be48d01620b",
+      "unrelatedVerticesPreserved": true
+    },
+    {
+      "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_28.asset",
+      "vertices": 12304,
+      "changedVertices": 1538,
+      "attributesBefore": "a3f349e22cb4e38441aaa24822530b2ec2a61b5d623314a142ac208f5311d3c6",
+      "attributesAfter": "a3f349e22cb4e38441aaa24822530b2ec2a61b5d623314a142ac208f5311d3c6",
+      "unrelatedVerticesPreserved": true
+    }
+  ],
+  "scope": "Only complete matched herb/flower sequences around stack and hay groups are translated. UVs, normals, tangents, colors, triangles and every other vertex remain exact. No collider, material, transform or terrain changes."
+}

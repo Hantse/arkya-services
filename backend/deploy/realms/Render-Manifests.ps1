@@ -151,6 +151,8 @@ Add-Resource v1 ConfigMap arkya-admin-config $ops @{ data = @{
         ContentApi = @{ Enabled = $false }
         RealmsApi = @{ Enabled = $true; BaseUrl = "https://${appHost}:8443"; CertificateAuthorityFile = '/realm-ca/ca.crt' }
         DataProtection = @{ KeysPath = '/var/lib/arkya/keys' }
+        Mongo = @{ DatabaseName = 'arkya_admin' }
+        AdminSessions = @{ AccessLifetime = '00:30:00'; RefreshLifetime = '30.00:00:00' }
         ProxyTrust = @{ KnownNetworks = $config.trustedGatewayPodNetworks; ForwardLimit = 1 }
     } | ConvertTo-Json -Depth 10)
 } }
@@ -161,6 +163,7 @@ foreach ($app in @('admin', 'realms')) {
     $isAdmin = $app -eq 'admin'; $name = "arkya-$app"; $port = if ($isAdmin) { 8080 } else { 8443 }
     $env = @(@{ name = 'ASPNETCORE_ENVIRONMENT'; value = 'Production' })
     if ($isAdmin) {
+        $env += @{ name = 'Mongo__ConnectionString'; valueFrom = @{ secretKeyRef = @{ name = 'arkya-admin-mongo'; key = 'connection-string' } } }
         $env += @{ name = 'Admin__Password'; valueFrom = @{ secretKeyRef = @{ name = 'arkya-operations-secrets'; key = 'admin-password' } } }
         $env += @{ name = 'RealmsApi__AdminKey'; valueFrom = @{ secretKeyRef = @{ name = 'arkya-operations-secrets'; key = 'realms-admin-key' } } }
     } else {
@@ -223,8 +226,9 @@ foreach ($app in @('admin', 'realms')) {
 foreach ($target in $config.deployment.targets) {
     Add-Resource v1 Namespace $target.namespace '' @{}
     Add-Resource rbac.authorization.k8s.io/v1 Role arkya-realm-deployer $target.namespace @{ rules = @(
-        @{ apiGroups = @('apps'); resources = @('deployments'); verbs = @('get','create') },
-        @{ apiGroups = @(''); resources = @('services'); verbs = @('get','create') }
+        @{ apiGroups = @('apps'); resources = @('deployments'); verbs = @('get','create','delete') },
+        @{ apiGroups = @(''); resources = @('services'); verbs = @('get','create','delete') },
+        @{ apiGroups = @(''); resources = @('secrets'); resourceNames = @('arkya-ghcr','arkya-dedicated'); verbs = @('get','delete') }
     ) }
     Add-Resource rbac.authorization.k8s.io/v1 RoleBinding arkya-realm-deployer $target.namespace @{
         roleRef = @{ apiGroup = 'rbac.authorization.k8s.io'; kind = 'Role'; name = 'arkya-realm-deployer' }

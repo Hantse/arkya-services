@@ -1,0 +1,270 @@
+{
+  "success": true,
+  "checkedAtUtc": "2026-10-20T08:49:50.0565Z",
+  "mode": "Edit Mode",
+  "checks": [
+    {
+      "name": "All existing awnings, laundry and twelve standards use deformable cloth",
+      "passed": true,
+      "detail": {
+        "renderers": 33,
+        "awnings": 9,
+        "laundry": 10
+      }
+    },
+    {
+      "name": "Dense meshes carry finite pin masks, gradients, tangents, wind bounds and two-sided shadow passes",
+      "passed": true,
+      "detail": {
+        "triangles": 30880,
+        "pinnedVertices": 1905,
+        "malformed": []
+      }
+    },
+    {
+      "name": "Cloth stays within the presentation content budget",
+      "passed": true,
+      "detail": {
+        "triangles": 30880,
+        "renderers": 33,
+        "materials": 8,
+        "addedRuntimeManagers": 0
+      }
+    },
+    {
+      "name": "The cloth shader compiles on the active graphics API",
+      "passed": true,
+      "detail": {
+        "graphics": "Direct3D11",
+        "messages": []
+      }
+    },
+    {
+      "name": "The laundry attachment seam lies on the existing clothesline",
+      "passed": true,
+      "detail": {
+        "samples": 130,
+        "maximumDistanceMeters": 0.005406744
+      }
+    },
+    {
+      "name": "laundry: GPU motion changes the actual silhouette",
+      "passed": true,
+      "detail": {
+        "changedPixels": 3784,
+        "visiblePixels": 50397,
+        "phaseA": 0,
+        "phaseB": 3.4
+      }
+    },
+    {
+      "name": "laundry: attachment vertices have identical GPU positions in both wind phases",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0,
+        "visiblePinnedPixels": 13,
+        "pinnedVertices": 13
+      }
+    },
+    {
+      "name": "laundry: the free vertices move independently of the attachment seam",
+      "passed": true,
+      "detail": {
+        "changedPixels": 44,
+        "freeVertices": 23,
+        "worldAmplitudeAtWind1": 0.21,
+        "testWind": 1.6
+      }
+    },
+    {
+      "name": "laundry: zero wind preserves the authored resting drape",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "laundry: the actual depth-normals pass follows the deformed surface",
+      "passed": true,
+      "detail": {
+        "changedPixels": 46270
+      }
+    },
+    {
+      "name": "laundry: the real URP shadow moves with the cloth while the receiver remains fixed",
+      "passed": true,
+      "detail": {
+        "changedShadowPixels": 7823,
+        "repeatedPhaseDifferences": 0,
+        "shadowVsDisabledCasterPixels": 52475,
+        "solidControlShadowPixels": -1,
+        "casterMode": "ShadowsOnly",
+        "fixedReceiver": true,
+        "receiverAlbedo": 0.18,
+        "sunlightIntensity": 0.7,
+        "ambientRgb": 0.08,
+        "receiverMaximumChannel": 6,
+        "cameraProjection": "Orthographic onto vertical receiver"
+      }
+    },
+    {
+      "name": "laundry: temporary probes restore the scene lighting and shader globals",
+      "passed": true,
+      "detail": {
+        "sunlightRestored": true,
+        "renderTargetRestored": true,
+        "ambientRestored": true,
+        "directionalLightsRestored": true,
+        "vectorChanges": [],
+        "matrixChanges": []
+      }
+    },
+    {
+      "name": "awning: GPU motion changes the actual silhouette",
+      "passed": true,
+      "detail": {
+        "changedPixels": 2097,
+        "visiblePixels": 78930,
+        "phaseA": 0,
+        "phaseB": 3.4
+      }
+    },
+    {
+      "name": "awning: attachment vertices have identical GPU positions in both wind phases",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0,
+        "visiblePinnedPixels": 186,
+        "pinnedVertices": 193
+      }
+    },
+    {
+      "name": "awning: the free vertices move independently of the attachment seam",
+      "passed": true,
+      "detail": {
+        "changedPixels": 206,
+        "freeVertices": 103,
+        "worldAmplitudeAtWind1": 0.1,
+        "testWind": 1.6
+      }
+    },
+    {
+      "name": "awning: zero wind preserves the authored resting drape",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "awning: the actual depth-normals pass follows the deformed surface",
+      "passed": true,
+      "detail": {
+        "changedPixels": 63942
+      }
+    },
+    {
+      "name": "awning: the real URP shadow moves with the cloth while the receiver remains fixed",
+      "passed": true,
+      "detail": {
+        "changedShadowPixels": 29,
+        "repeatedPhaseDifferences": 0,
+        "shadowVsDisabledCasterPixels": 30779,
+        "solidControlShadowPixels": 4085,
+        "casterMode": "ShadowsOnly",
+        "fixedReceiver": true,
+        "receiverAlbedo": 0.18,
+        "sunlightIntensity": 0.7,
+        "ambientRgb": 0.08,
+        "receiverMaximumChannel": 6,
+        "cameraProjection": "Perspective onto horizontal receiver"
+      }
+    },
+    {
+      "name": "awning: temporary probes restore the scene lighting and shader globals",
+      "passed": true,
+      "detail": {
+        "sunlightRestored": true,
+        "renderTargetRestored": true,
+        "ambientRestored": true,
+        "directionalLightsRestored": true,
+        "vectorChanges": [],
+        "matrixChanges": []
+      }
+    },
+    {
+      "name": "banner: GPU motion changes the actual silhouette",
+      "passed": true,
+      "detail": {
+        "changedPixels": 2287,
+        "visiblePixels": 69102,
+        "phaseA": 0,
+        "phaseB": 3.4
+      }
+    },
+    {
+      "name": "banner: attachment vertices have identical GPU positions in both wind phases",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0,
+        "visiblePinnedPixels": 14,
+        "pinnedVertices": 14
+      }
+    },
+    {
+      "name": "banner: the free vertices move independently of the attachment seam",
+      "passed": true,
+      "detail": {
+        "changedPixels": 56,
+        "freeVertices": 28,
+        "worldAmplitudeAtWind1": 0.09,
+        "testWind": 1.6
+      }
+    },
+    {
+      "name": "banner: zero wind preserves the authored resting drape",
+      "passed": true,
+      "detail": {
+        "changedPixels": 0
+      }
+    },
+    {
+      "name": "banner: the actual depth-normals pass follows the deformed surface",
+      "passed": true,
+      "detail": {
+        "changedPixels": 53128
+      }
+    },
+    {
+      "name": "banner: the real URP shadow moves with the cloth while the receiver remains fixed",
+      "passed": true,
+      "detail": {
+        "changedShadowPixels": 3147,
+        "repeatedPhaseDifferences": 0,
+        "shadowVsDisabledCasterPixels": 68569,
+        "solidControlShadowPixels": -1,
+        "casterMode": "ShadowsOnly",
+        "fixedReceiver": true,
+        "receiverAlbedo": 0.18,
+        "sunlightIntensity": 0.7,
+        "ambientRgb": 0.08,
+        "receiverMaximumChannel": 6,
+        "cameraProjection": "Orthographic onto vertical receiver"
+      }
+    },
+    {
+      "name": "banner: temporary probes restore the scene lighting and shader globals",
+      "passed": true,
+      "detail": {
+        "sunlightRestored": true,
+        "renderTargetRestored": true,
+        "ambientRestored": true,
+        "directionalLightsRestored": true,
+        "vectorChanges": [],
+        "matrixChanges": []
+      }
+    }
+  ],
+  "failures": [],
+  "exception": null,
+  "scope": "GPU vertex silhouettes, immobile attachment vertices, zero-wind controls, depth normals and actual shadow-caster images. Presentation deformation, not physical Cloth simulation."
+}

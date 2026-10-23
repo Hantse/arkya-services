@@ -1,0 +1,98 @@
+{
+  "success": true,
+  "playMode": false,
+  "captures": [
+    {
+      "file": "town-overview-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 464.0,
+        "y": 132.0008,
+        "z": 414.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 54.0031128,
+        "z": 520.0
+      },
+      "fieldOfView": 48.0
+    },
+    {
+      "file": "town-overview-night.png",
+      "phase": 0.79,
+      "position": {
+        "x": 464.0,
+        "y": 132.0008,
+        "z": 414.0
+      },
+      "target": {
+        "x": 550.0,
+        "y": 54.0031128,
+        "z": 520.0
+      },
+      "fieldOfView": 48.0
+    },
+    {
+      "file": "town-street-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 538.0,
+        "y": 52.6425629,
+        "z": 502.0
+      },
+      "target": {
+        "x": 551.0,
+        "y": 52.59725,
+        "z": 525.0
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "arrival-gate-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 505.097748,
+        "y": 53.39551,
+        "z": 464.1494
+      },
+      "target": {
+        "x": 518.8825,
+        "y": 54.060112,
+        "z": 481.295258
+      },
+      "fieldOfView": 68.0
+    },
+    {
+      "file": "rampart-stair-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 517.6169,
+        "y": 52.8345,
+        "z": 529.2673
+      },
+      "target": {
+        "x": 508.0755,
+        "y": 55.017,
+        "z": 531.414551
+      },
+      "fieldOfView": 73.0
+    },
+    {
+      "file": "rampart-walk-day.png",
+      "phase": 0.4,
+      "position": {
+        "x": 597.7339,
+        "y": 57.8053322,
+        "z": 523.44104
+      },
+      "target": {
+        "x": 597.101135,
+        "y": 57.5053329,
+        "z": 509.455353
+      },
+      "fieldOfView": 73.0
+    }
+  ],
+  "stateRestored": true,
+  "scope": "Revised compact town. Edit Mode rendering only. Camera, weather, clock, lights, particles and render quality restored; scene not saved."
+}
