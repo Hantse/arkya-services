@@ -30,6 +30,11 @@ le même bail, la même époque et la même révision attendue. Il n'existe pas 
 seconde écriture indépendante susceptible de sauvegarder seulement la moitié
 du personnage. Un état ECS invalide n'écrase pas les objets persistés.
 
+Chaque requête conserve son instantané immuable pendant les retries. Les
+mutations d'inventaire sont suspendues lors du gel d'autorité et dès la fermeture
+du personnage, avant sa sauvegarde finale. Un transfert abandonné libère ce
+verrou ; une récolte en attente peut alors reprendre une seule fois.
+
 Le préchargement d'un transfert contient les possessions de préparation ; le
 seal contient l'état final, figé par le serveur source. Le commit transmet cet
 état avec l'autorité au serveur cible. Les portails entre Areas changent la
@@ -91,6 +96,12 @@ Une ancienne requête qui omet `possessions` conserve le dernier instantané. Po
 enregistrer un conteneur vide, le serveur transmet explicitement un instantané
 valide avec `slots: []`. L'absence d'un champ ne peut donc pas effacer un sac.
 
+Le transport Unity préserve explicitement `possessions: null` et
+`harvestTool: null`, car `JsonUtility` matérialise sinon les classes absentes en
+objets par défaut. Cette normalisation concerne seulement les champs connus du
+contrat et laisse le contenu de `simulation` intact. Un objet explicitement
+mal formé reste refusé ; il n'est jamais remplacé par un inventaire vide.
+
 ## Consultation dans l'admin
 
 La fiche `/Character/{id}` affiche les emplacements réels, les quantités et les
@@ -116,6 +127,15 @@ vérifient les instantanés non vides, les sauvegardes/reconnexions, les transfe
 entre partitions et Areas, les retries, les reprises du stockage, les anciennes
 autorités, les écritures joueur refusées et la projection administrative.
 L'UI est vérifiée avec les vrais rendus Razor de réponses de test explicites,
-sur ordinateur et mobile. Les tests Unity vérifient la capture/restauration des
-buffers et le parcours serveur/client ; leurs résultats sont consignés après
-exécution dans l'Editor.
+sur ordinateur et mobile.
+
+Validation du 23 octobre 2026 : 328 tests Characters et 868 tests Admin réussis,
+sans test ignoré, avec MongoDB réel isolé. Dans Unity 6000.6.6f1, la compilation
+complète réussit et les 155 tests du périmètre possessions, JSON, récolte,
+règles, handoff et admission sont validés. Un ancien générateur JSON de fixture
+a été corrigé après le premier lot, puis son test a été relancé avec succès.
+Les deux nouveaux parcours HTTP/WebSocket vérifient les contenus non vides,
+l'outil présent ou absent, la copie cliente ignorée, la sauvegarde forcée,
+la sauvegarde finale et la restauration après réadmission. Les tests JSON
+couvrent aussi les champs absents, les données corrompues et la préservation de
+la simulation opaque. La console ne contient aucune erreur à l'issue des tests.
