@@ -16,6 +16,14 @@ du client provient d'une livraison Unity publiée ; voir les
 [règles de mise à jour et vérifications](../web-client-control/README.md).
 Le profil initial `frontend-discord` conserve son rendu et reste utilisable.
 
+Le composant actif [`../native-nova`](../native-nova/README.md) ajoute le profil
+`nova-native`, épinglé au serveur `3 / arkya-multi-area-v1`, et les routes WSS
+des quatre partitions de Starter Island prévues pour Nova. Il réutilise la
+cible `beta-web` sans lancer de dedicated. Un brouillon créé avec le profil
+historique doit être réenregistré explicitement avec ce nouveau profil avant
+une demande de déploiement séparée. Ce routage couvre seulement Nova et ces
+quatre partitions ; le guide du composant décrit les limites et la validation.
+
 ```text
 Traefik existant → http://192.168.100.218:80 → YARP
   arkya.online       → frontend → /game/ → client WebGL statique

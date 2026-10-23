@@ -31,7 +31,8 @@ class PartitionHandoffManifestTests(unittest.TestCase):
         cls.config_path = cls.root / "partition-handoff/realms-config.yaml"
         cls.rollouts_path = cls.root / "partition-handoff/rollouts.yaml"
         cls.admin = yaml.safe_load(cls.admin_path.read_text(encoding="utf-8"))
-        cls.admin["components"] = [value for value in cls.admin["components"] if value != "../partition-handoff"]
+        cls.admin["components"] = [value for value in cls.admin["components"]
+                                   if value not in {"../partition-handoff", "../native-nova"}]
         cls.handoff.characters_patch(cls.admin, "island")
         cls.config = yaml.safe_load(cls.config_path.read_text(encoding="utf-8"))
         cls.rollouts = list(yaml.safe_load_all(cls.rollouts_path.read_text(encoding="utf-8")))

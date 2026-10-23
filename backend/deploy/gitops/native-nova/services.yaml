@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-nova-partition-01
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/managed-by: arkya-realms
+    arkya.online/realm-id: nova
+    arkya.online/server-id: island-starter-island-01
+  ports:
+  - name: game
+    port: 17943
+    targetPort: 17943
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-nova-partition-02
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/managed-by: arkya-realms
+    arkya.online/realm-id: nova
+    arkya.online/server-id: island-starter-island-02
+  ports:
+  - name: game
+    port: 17943
+    targetPort: 17943
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-nova-partition-03
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/managed-by: arkya-realms
+    arkya.online/realm-id: nova
+    arkya.online/server-id: island-starter-island-03
+  ports:
+  - name: game
+    port: 17943
+    targetPort: 17943
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-nova-partition-04
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/managed-by: arkya-realms
+    arkya.online/realm-id: nova
+    arkya.online/server-id: island-starter-island-04
+  ports:
+  - name: game
+    port: 17943
+    targetPort: 17943
+    protocol: TCP
