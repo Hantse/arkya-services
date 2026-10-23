@@ -48,6 +48,11 @@ et les nouveaux points d’ancrage.
   reste centré et les éléments restent dans le panneau en format large.
 - Vérification visuelle des trois thèmes, notamment du relief et du repère
   visibles derrière le cadre rectangulaire de mini-carte.
+- Contrôle serveur/client complémentaire : le test réseau du HUD passe après
+  augmentation du cadre d’endurance à 7 px. À 5 px, bordures, insets et arrondis
+  du panneau pouvaient réduire son remplissage à zéro. La capture
+  [des valeurs mises à jour par le serveur](server-updated-bars.png) confirme
+  vie, mana, endurance et expérience actualisées sans changer leur disposition.
 
 [Capture du HUD réel](live.png) et [aperçu avec données de démonstration](preview.png).
 Le marqueur de maquette a été placé en haut à gauche pour la capture d’aperçu ;
