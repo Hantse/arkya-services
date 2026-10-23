@@ -13,7 +13,7 @@ configMapGenerator:
 images:
 - name: ghcr.io/hantse/arkya-services-reports
   newName: ghcr.io/hantse/arkya-services-reports
-  digest: sha256:78d174a348f4ea95d48aa4bfe32fb10d95b911602501087c0756bb8ce38e151c
+  digest: sha256:a01d1a50810ed97d9a8f737a107962581ad59be31d9fa0ddacec42245db71456
 patches:
 - patch: "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: arkya-gateway-config\n\
     \  namespace: arkya-beta\ndata:\n  Gateway__ReportsEnabled: 'true'\n  ReverseProxy__Clusters__reports__Destinations__primary__Address:\
