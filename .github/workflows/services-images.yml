@@ -53,7 +53,7 @@ jobs:
         env:
           GIT_CONFIG_COUNT: '1'
           GIT_CONFIG_KEY_0: lfs.fetchinclude
-          GIT_CONFIG_VALUE_0: sites/arkya/dist/**
+          GIT_CONFIG_VALUE_0: sites/arkya/dist/**,backend/src/Arkya.Admin/wwwroot/**
         with:
           persist-credentials: false
           lfs: true
@@ -132,10 +132,10 @@ jobs:
         env:
           GIT_CONFIG_COUNT: '1'
           GIT_CONFIG_KEY_0: lfs.fetchinclude
-          GIT_CONFIG_VALUE_0: sites/arkya/dist/**
+          GIT_CONFIG_VALUE_0: sites/arkya/dist/**,backend/src/Arkya.Admin/wwwroot/**
         with:
           persist-credentials: false
-          lfs: ${{ matrix.name == 'frontend' }}
+          lfs: ${{ matrix.name == 'frontend' || matrix.name == 'admin' }}
           sparse-checkout: |
             backend
             sites/arkya
@@ -143,6 +143,9 @@ jobs:
       - name: Verify public site assets are hydrated
         if: matrix.name == 'frontend'
         run: python3 scripts/ci/Check-SiteAssets.py sites/arkya/dist
+      - name: Verify admin island images are hydrated
+        if: matrix.name == 'admin'
+        run: python3 scripts/ci/Check-AdminAssets.py backend/src/Arkya.Admin/wwwroot
       - name: Select immutable image tag
         id: image
         shell: bash
