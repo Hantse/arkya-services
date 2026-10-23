@@ -26,6 +26,7 @@ WizardStyle=modern dynamic
 Compression=lzma2
 SolidCompression=yes
 OutputBaseFilename=Arkya-Launcher-Setup
+SetupIconFile=..\src\Arkya.Launcher\Assets\Arkya.ico
 UninstallDisplayName=Arkya Launcher
 UninstallDisplayIcon={app}\Arkya.Launcher.exe
 AppMutex=Local\Arkya.Launcher

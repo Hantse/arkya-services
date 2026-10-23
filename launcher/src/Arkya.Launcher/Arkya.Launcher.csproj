@@ -7,8 +7,11 @@
     <AssemblyName>Arkya.Launcher</AssemblyName>
     <Version>0.3.1</Version>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets/Arkya.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Resource Include="Assets/Arkya.ico" />
+    <Resource Include="Assets/Arkya.png" />
     <Resource Include="Assets/world.jpg" />
     <ProjectReference Include="../Arkya.Launcher.Core/Arkya.Launcher.Core.csproj" />
   </ItemGroup>

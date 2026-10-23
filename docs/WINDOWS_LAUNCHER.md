@@ -306,6 +306,16 @@ d’adresse. Le flux public d’actualités reste indépendant du canal du jeu,
 mais son affichage exige la connexion au launcher. Les dossiers de sortie
 existants sont refusés pour préserver une publication antérieure.
 
+L’emblème Arkya est intégré à l’exécutable et à la fenêtre WPF depuis
+`launcher/src/Arkya.Launcher/Assets/Arkya.ico`, avec plusieurs tailles pour
+l’Explorateur, les raccourcis et la barre des tâches. Le même ICO identifie
+l’installateur ; les raccourcis et la liste des applications installées
+reprennent l’icône de l’exécutable. Le PNG `Assets/Arkya.png` fournit l’emblème
+affiché dans le launcher. Les futures publications incluent ces ressources ;
+les anciens exécutables conservent leur icône jusqu’à leur remplacement.
+La [source visuelle et les vérifications](APP_ICONS.md) couvrent aussi
+l’icône partagée avec le client Unity.
+
 Publier d’abord l’installateur dans une release immuable, puis modifier le lien
 du site. Le lien du launcher `0.3.1` utilise la release `launcher-v0.3.1` ; les
 mises à jour du jeu continuent à suivre le manifeste Windows et restent
