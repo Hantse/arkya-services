@@ -236,6 +236,46 @@ def without_reports_component(documents, require_digests):
     return normalized
 
 
+def without_native_nova_component(documents):
+    """Verify the complete native delta before retaining the legacy guards."""
+    source = checks.yaml.safe_load((ROOT / "kustomization.yaml").read_text(encoding="utf-8"))
+    active = "../native-nova" in source.get("components", [])
+    markers = any(document["metadata"]["name"].startswith("arkya-nova-") or
+        document["metadata"]["name"] in {"arkya-characters-nova-admission", "arkya-realms-nova-commands"} or
+        document.get("data", {}).get("Deployment__Profiles__1__Id") == "nova-native" or
+        any(key.startswith("Gateway__RealmGamePartitions__") and key.endswith("__RealmId") and value == "nova"
+            for key, value in document.get("data", {}).items()) for document in documents)
+    if not active:
+        require(not markers, "Native Nova configuration requires the explicitly adopted component")
+        return documents
+    spec = importlib.util.spec_from_file_location("arkya_native_nova", ROOT.parent / "native-nova/Validate-Manifests.py")
+    native = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(native)
+    native.check(adopted=True)
+    additions = native.expected_resources()
+    actual = native.canonical(documents)
+    require(all(actual.get(key) == value for key, value in additions.items()),
+            "Admin native Nova resources must match the exact validated component")
+    configs = native.expected_configs()
+    for app, wanted in configs.items():
+        data = actual[("ConfigMap", NS, f"arkya-{app}-config")]["data"]
+        prefix = "Gateway__RealmGamePartitions__" if app == "gateway" else "Deployment__Profiles__1__"
+        require({key: value for key, value in data.items() if key.startswith(prefix)} == wanted,
+                "Admin native Nova resources must match the exact validated component")
+    normalized = []
+    for document in deepcopy(documents):
+        key = checks.identity(document)
+        if key in additions:
+            continue
+        if key[0] == "ConfigMap" and key[1] == NS:
+            for app in ("gateway", "realms"):
+                if re.fullmatch(f"arkya-{app}-config-[a-z0-9]+", key[2]):
+                    for field in configs[app]:
+                        del document["data"][field]
+        normalized.append(document)
+    return normalized
+
+
 def without_partition_handoff_component(documents):
     """Validate the complete handoff delta before applying the unchanged legacy contract."""
     source = checks.yaml.safe_load((ROOT / "kustomization.yaml").read_text(encoding="utf-8"))
@@ -280,6 +320,7 @@ def without_partition_handoff_component(documents):
 
 
 def check_profile(documents, frontend_documents=None, beta_documents=None, require_digests=False):
+    documents = without_native_nova_component(documents)
     documents = without_partition_handoff_component(documents)
     web_documents = [document for document in documents if document["metadata"]["name"] == "arkya-web-client"]
     web.check_profile(web_documents)

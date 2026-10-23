@@ -4,6 +4,7 @@ components:
 - ../inference-control
 - ../reports-control
 - ../web-client-control
+- ../native-nova
 resources:
 - ../private-base
 - ../realm-control

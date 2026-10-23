@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arkya-realms-config
+  namespace: arkya-beta
+data:
+  Deployment__Profiles__1__Id: nova-native
+  Deployment__Profiles__1__DisplayName: Nova · Starter Island · 4 partitions (native)
+  Deployment__Profiles__1__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:cbb0cb0dd74d8da65024e0e2beb760747e356734217533fd5d36d706f0de4b1f
+  Deployment__Profiles__1__ImagePullSecretName: arkya-ghcr
+  Deployment__Profiles__1__TopologyTemplateServerId: island
+  Deployment__Profiles__1__TopologyPublicEndpointTemplate: wss://api.arkya.online/game/{realmId}/{serverId}/
+  Deployment__Profiles__1__Servers__0__Id: island
+  Deployment__Profiles__1__Servers__0__Port: '17943'
+  Deployment__Profiles__1__Servers__0__Transport: WebSocket
+  Deployment__Profiles__1__Servers__0__PublicEndpoint: wss://api.arkya.online/game/nova/island/
+  Deployment__Profiles__1__Servers__0__ProtocolVersion: '3'
+  Deployment__Profiles__1__Servers__0__BuildId: arkya-multi-area-v1
