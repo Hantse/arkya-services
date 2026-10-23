@@ -88,8 +88,13 @@ public static class GatewayExtensions
             context.AddOriginalHost(true);
             context.UseDefaultForwarders = false;
             var anonymousRealms = context.Route.ClusterId == "public-realms";
+            var centralAdmin = context.Route.RouteId == "admin" && context.Route.ClusterId == "admin";
             context.AddRequestTransform(transform =>
             {
+                var request = transform.HttpContext.Request;
+                // The central Admin authenticates this one Editor export operation.
+                var visualExport = centralAdmin && request.IsHttps && HttpMethods.IsPut(request.Method)
+                    && IsItemVisualExportPath(request.Path);
                 // Only the trusted, normalized incoming connection may identify the client.
                 foreach (var header in transform.ProxyRequest.Headers.Select(header => header.Key).ToArray())
                 {
@@ -97,7 +102,7 @@ public static class GatewayExtensions
                         || header.StartsWith("X-Forwarded-", StringComparison.OrdinalIgnoreCase)
                         || header.StartsWith("X-Original-", StringComparison.OrdinalIgnoreCase)
                         || header.Equals("X-Arkya-Service-Key", StringComparison.OrdinalIgnoreCase)
-                        || header.Equals("X-Arkya-Admin-Key", StringComparison.OrdinalIgnoreCase)
+                        || (header.Equals("X-Arkya-Admin-Key", StringComparison.OrdinalIgnoreCase) && !visualExport)
                         || header.Equals("X-Arkya-Dedicated-Key", StringComparison.OrdinalIgnoreCase)
                         || header.Equals("X-Arkya-Reports-Admin-Key", StringComparison.OrdinalIgnoreCase)
                         || header.Equals("X-Arkya-Admin-Actor", StringComparison.OrdinalIgnoreCase))
@@ -109,7 +114,6 @@ public static class GatewayExtensions
                     transform.ProxyRequest.Headers.Remove("Cookie");
                     transform.ProxyRequest.Headers.Host = null;
                 }
-                var request = transform.HttpContext.Request;
                 transform.ProxyRequest.Headers.TryAddWithoutValidation("X-Forwarded-Proto", request.Scheme);
                 if (transform.HttpContext.Connection.RemoteIpAddress is { } clientIp)
                     transform.ProxyRequest.Headers.TryAddWithoutValidation("X-Forwarded-For", clientIp.ToString());
@@ -117,6 +121,17 @@ public static class GatewayExtensions
             });
         });
         return services;
+    }
+
+    private static bool IsItemVisualExportPath(PathString path)
+    {
+        const string prefix = "/admin/content/item-assets/";
+        var value = path.Value;
+        if (value is null || !value.StartsWith(prefix, StringComparison.Ordinal) || value.Length != prefix.Length + 32)
+            return false;
+        var guid = value[prefix.Length..];
+        return guid.Any(character => character != '0') &&
+            guid.All(character => character is >= '0' and <= '9' or >= 'a' and <= 'f');
     }
 
     private static ClusterConfig OriginCluster(string id, string address) => new()

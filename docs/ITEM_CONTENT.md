@@ -29,7 +29,10 @@ L'export visuel passe par l'API HTTPS du backoffice, activée par
 `ItemVisualExport:Enabled` dans le profil Kubernetes Admin. Elle accepte
 uniquement `PUT /admin/content/item-assets/{guid}`, avec exactement un header
 `X-Arkya-Admin-Key` contenant la clé Content de l'Editor. Le serveur Admin
-relaie cette inscription au service Content privé. La requête JSON est limitée
+relaie cette inscription au service Content privé. La gateway ne conserve
+ce header que pour un `PUT` HTTPS sur l'hôte Admin central et un GUID Unity
+valide. Les autres clés internes
+et les autres routes restent filtrées. La requête JSON est limitée
 à 512 Kio ; Content vérifie le chemin, l'empreinte et la vignette PNG. Un cookie
 de connexion au backoffice ou une session joueur ne remplace pas cette clé.
 Les appels doivent provenir d'un client d'export sans header `Origin` ;
@@ -159,6 +162,8 @@ vignette et un build client/serveur constituent les vérifications Unity du flux
 - API publique d'export : **44 tests réussis** (clé, HTTPS, quota par adresse,
   corps bornés, erreurs Content et annulation). Suite Admin : **725 tests
   réussis, 1 ignoré** sans MongoDB de test avant le dernier ajustement de quota.
+- Gateway : **263 tests réussis**, dont 24 contrôlant le passage de la clé
+  uniquement sur l'export Admin et sa suppression sur les autres routes.
 - Editor connecté : **70 tests Edit Mode du module items réussis**, après
   compilation dans Unity `6000.6.6f1`. Les 21 prefabs d'armes ont été préparés
   avec leur empreinte de sources et une vraie vignette Unity.
