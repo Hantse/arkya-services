@@ -96,10 +96,9 @@ Réutiliser le même `clientReportId` avec un autre type renvoie `409`.
 
 Titre : 120 caractères ; description/résolution : 4 000 ; version/scène :
 128 ; plateforme : 64. Les champs inconnus et les valeurs nulles sont refusés.
-La limite HTTP globale est de 3 Mio. Les envois sont limités à **5 requêtes
-par compte et par fenêtre de 10 minutes, par processus** (retries compris).
-Un déploiement avec plusieurs réplicas nécessite un quota partagé ou une
-limitation correspondante en amont. `429` indique un dépassement.
+La limite HTTP globale est de 3 Mio. Aucun quota de fréquence n'est appliqué
+pour le moment aux envois de bugs, de suggestions ou à leurs retries, quel
+que soit le compte authentifié.
 
 La clé interne utilise `X-Arkya-Reports-Admin-Key`. Le backoffice ajoute
 `X-Arkya-Admin-Actor` à partir de son opérateur ; le MCP utilise un nom fixe.

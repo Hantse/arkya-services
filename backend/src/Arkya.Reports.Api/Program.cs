@@ -1,7 +1,4 @@
-using System.Globalization;
-using System.Security.Claims;
 using System.Text.Json.Serialization;
-using System.Threading.RateLimiting;
 using Arkya.Reports.Api.Application;
 using Arkya.Reports.Api.Endpoints;
 using Arkya.Reports.Api.Infrastructure;
@@ -42,7 +39,7 @@ public partial class Program
         builder.Services.AddOptions<Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions>()
             .Configure<IOptions<BrowserClientOptions>>((cors, web) =>
                 cors.AddPolicy(BrowserClientOptions.Policy, policy => policy.WithOrigins(web.Value.AllowedOrigins)
-                    .WithMethods("GET", "POST").WithHeaders("Authorization", "Content-Type").WithExposedHeaders("Retry-After")));
+                    .WithMethods("GET", "POST").WithHeaders("Authorization", "Content-Type")));
         builder.Services.AddOptions<IdentityOptions>().BindConfiguration("Identity")
             .Validate(options => IdentityOptions.HasSafeBaseUrl(options, builder.Environment.IsDevelopment()),
                 "Identity:BaseUrl requires HTTPS, loopback HTTP in Development, or explicit AllowClusterHttp with a Kubernetes service FQDN.")
@@ -69,20 +66,6 @@ public partial class Program
         builder.Services.AddAuthentication(SessionAuthenticationHandler.SchemeName)
             .AddScheme<AuthenticationSchemeOptions, SessionAuthenticationHandler>(SessionAuthenticationHandler.SchemeName, _ => { });
         builder.Services.AddAuthorization();
-        builder.Services.AddRateLimiter(options =>
-        {
-            options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
-            options.AddPolicy("report-submission", context => RateLimitPartition.GetFixedWindowLimiter(
-                context.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "unauthenticated",
-                _ => new FixedWindowRateLimiterOptions { PermitLimit = 5, Window = TimeSpan.FromMinutes(10), QueueLimit = 0 }));
-            options.OnRejected = async (context, cancellationToken) =>
-            {
-                if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retry))
-                    context.HttpContext.Response.Headers.RetryAfter = Math.Ceiling(retry.TotalSeconds).ToString(CultureInfo.InvariantCulture);
-                await Results.Problem(statusCode: 429, title: "Too many bug reports. Please retry later.")
-                    .ExecuteAsync(context.HttpContext);
-            };
-        });
 
         var app = builder.Build();
         app.UseArkyaInternalHttp();
@@ -120,7 +103,6 @@ public partial class Program
         app.UseCors();
         app.UseAuthentication();
         app.UseAuthorization();
-        app.UseRateLimiter();
         app.Use(async (context, next) =>
         {
             var original = context.Request.Body;

@@ -161,18 +161,22 @@ public sealed class ReportEndpointTests
         Assert.Equal(HttpStatusCode.BadRequest, (await client.GetAsync("/internal/bug-reports?" + query)).StatusCode);
     }
 
-    [Fact]
-    public async Task PlayerQuotaIsPerAuthenticatedAccount()
+    [Theory]
+    [InlineData(BugReportKinds.Bug)]
+    [InlineData(BugReportKinds.Suggestion)]
+    public async Task SubmissionsAndRetriesHaveNoPerAccountQuota(string kind)
     {
         using var factory = new ReportsFactory();
         using var alice = factory.Client("alice");
-        using var bob = factory.Client("bob");
-        for (var i = 0; i < 5; i++)
-            Assert.Equal(HttpStatusCode.Created, (await alice.PostAsJsonAsync("/v1/bug-reports", Fixtures.Request())).StatusCode);
-        var limited = await alice.PostAsJsonAsync("/v1/bug-reports", Fixtures.Request() with { Kind = BugReportKinds.Suggestion });
-        Assert.Equal(HttpStatusCode.TooManyRequests, limited.StatusCode);
-        Assert.NotNull(limited.Headers.RetryAfter);
-        Assert.Equal(HttpStatusCode.Created, (await bob.PostAsJsonAsync("/v1/bug-reports", Fixtures.Request())).StatusCode);
+        for (var i = 0; i < 8; i++)
+        {
+            var request = Fixtures.Request() with { Kind = kind };
+            using var created = await alice.PostAsJsonAsync("/v1/bug-reports", request);
+            Assert.Equal(HttpStatusCode.Created, created.StatusCode);
+            using var replay = await alice.PostAsJsonAsync("/v1/bug-reports", request);
+            Assert.Equal(HttpStatusCode.OK, replay.StatusCode);
+        }
+        Assert.Equal(8, (await alice.GetFromJsonAsync<BugReportListResponse>("/v1/bug-reports"))!.Total);
     }
 
     [Fact]

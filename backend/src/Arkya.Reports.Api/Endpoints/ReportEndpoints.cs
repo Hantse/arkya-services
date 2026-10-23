@@ -17,7 +17,7 @@ public static class ReportEndpoints
         {
             var result = await service.SubmitAsync(Account(context), request, cancellationToken);
             return Change(result, player: true);
-        }).RequireRateLimiting("report-submission");
+        });
         player.MapGet("", async (HttpContext context, IReportRepository repository, CancellationToken cancellationToken) =>
         {
             if (!Query(context, false, out var tag, out var status, out var kind, out var offset, out var limit))
