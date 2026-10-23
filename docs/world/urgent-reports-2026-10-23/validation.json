@@ -1,0 +1,88 @@
+{
+  "unity": "6000.6.6f1",
+  "urp": "17.6.0",
+  "date": "2026-10-23/24",
+  "scope": "Ten initially triaged urgent Arkya MCP reports",
+  "deployment": "Source fixes only; new matched client/server protocol 4 release required",
+  "tests": {
+    "editMode": {
+      "passed": 183,
+      "job": "3a85ddeac22c42ce91873a1fce8d4ab9"
+    },
+    "networkPaths": {
+      "passed": 3,
+      "job": "1b9b906b214e409c9797125462079a30"
+    },
+    "camera": {
+      "passed": 7,
+      "job": "caaf62271bc54b3e801f49ed7f21d814"
+    },
+    "backend": {
+      "characters": 62,
+      "realms": 5
+    },
+    "ciPython": 16
+  },
+  "hay": {
+    "supportGapsAfter": [
+      {
+        "site": "Orchard harvest",
+        "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter0_3.asset",
+        "gap": -0.00799942
+      },
+      {
+        "site": "Inn grain sacks and hay",
+        "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter2_21.asset",
+        "gap": -0.008617401
+      },
+      {
+        "site": "Herbalist supply",
+        "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_27.asset",
+        "gap": -0.00799942
+      },
+      {
+        "site": "East courtyard harvest",
+        "asset": "Assets/Arkya/World/StarterIsland/Town/LivedIn20261020/Gardens/Quarter3_27.asset",
+        "gap": -0.00799942
+      }
+    ],
+    "changedAssets": 2,
+    "changedBales": 3,
+    "vertexChannelsOtherThanPositionPreserved": true,
+    "indexDataPreserved": true
+  },
+  "trees": {
+    "count": 756,
+    "inactivePreserved": 52,
+    "maximumLowering": 2.467331,
+    "averageLowering": 0.719993,
+    "maximumGapAfter": 0.00000381469727,
+    "samplesPerTree": 1447,
+    "sceneSaved": true,
+    "positionXZRotationScalePreserved": true
+  },
+  "grass": {
+    "condition": "Paused local runtime: rain 0.75, surface wetness 1, night phase .02, same camera and lighting",
+    "correction": "Preserve authored matte roughness when wet; retain albedo wet darkening",
+    "shaderErrors": 0,
+    "underLantern": {
+      "roi": [
+        565,
+        355,
+        730,
+        530
+      ],
+      "linearLuminanceBefore": 0.019686,
+      "linearLuminanceAfter": 0.016312,
+      "changePercent": -17.1,
+      "p95ChangePercent": -12.3
+    },
+    "controlPavementFacade": "pixel-identical",
+    "geometry": "preserved"
+  },
+  "camera": {
+    "yaw": 129,
+    "movementYaw": 38,
+    "pitch": -76.8
+  }
+}

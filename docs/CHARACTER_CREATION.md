@@ -116,12 +116,15 @@ et ne représente plus la direction retenue.
 
 1. Ouvrir `Unity3D/Arkya/` dans Unity 6000.6.6f1.
 2. Ouvrir `Assets/Arkya/Characters/Scenes/CharacterCreation.unity` puis lancer **Play** : la vue de sélection apparaît.
-3. Cliquer sur **Créer un perso**, puis choisir la taille et les couleurs de la base Valkyrie disponible. Les boutons de rotation, portrait et animation permettent d’examiner le résultat.
-4. Utiliser **Essayer sur l’île**, disponible sans compte ni backend. Déplacer le personnage avec **ZQSD**, **WASD** ou les **flèches** ; maintenir **Maj** pour courir, le **clic droit** pour orienter la caméra et la **molette** pour zoomer. Le retour de l’île arrête les deux mondes réseau, décharge l’île et retrouve le brouillon de création.
+3. Cliquer sur **Créer un perso**, puis choisir la taille et les couleurs de la base Valkyrie disponible. En sélection comme en création, maintenir le **clic gauche sur l’aperçu** et glisser horizontalement pour tourner le personnage. Les boutons de rotation, portrait et animation restent disponibles.
+4. Utiliser **Essayer sur l’île**, disponible sans compte ni backend. Déplacer le personnage avec **ZQSD**, **WASD** ou les **flèches** : la course est le mode par défaut, maintenir **Maj** pour marcher. **Espace** saute au sol ; en nage, **Ctrl** descend et **Espace** remonte. Le **clic gauche** permet de regarder autour du personnage sans changer la direction du déplacement au clavier ; le **clic droit** réoriente aussi cette direction. La **molette** règle la distance de caméra. Le retour de l’île arrête les deux mondes réseau, décharge l’île et retrouve le brouillon de création.
 5. Pour conserver un personnage depuis l’Editor, configurer les services ci-dessous, utiliser sa connexion Discord de développement et choisir un royaume disponible. Saisir un nom et lancer **Créer mon personnage**. Après confirmation du serveur, la sélection affiche le personnage enregistré ; **Jouer** demande l’entrée sur le dédié de ce royaume. Dans le joueur Windows distribué, effectuer d’abord la connexion Discord dans le launcher, puis lancer le jeu.
 6. Après connexion Arkya, ouvrir **Amis Discord** depuis la création ou le jeu pour activer les amis, la présence et les invitations à un salon social. La configuration du portail et les limites figurent dans le [guide Discord Social SDK](DISCORD_SOCIAL.md). Le chat, la voix et l'admission au monde ne font pas partie de ce panneau.
 
 Le nom contient de 3 à 20 lettres ASCII, sans espace intérieur ni accent, et doit être unique sans distinction de casse. Une erreur de nom, de session ou de service est affichée dans l'écran. Le profil en cours d'édition reste un aperçu tant que Characters n'a pas confirmé son enregistrement.
+
+Les contrôles révisés du 23 octobre 2026 et leur validation sont suivis dans le
+[registre des signalements urgents](URGENT_REPORTS_2026-10-23.md).
 
 **Options → Interface → Thème** applique immédiatement Encre & cuivre, Carnet
 d’exploration ou Pierre de mana à la création, au social et au HUD local. Le

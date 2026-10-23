@@ -19,13 +19,16 @@ L’île est chargée de façon additive ; le décor et la caméra du studio son
 
 | Action | Commande |
 | --- | --- |
-| Marcher | **ZQSD**, **WASD** ou **flèches** |
-| Courir | Maintenir **Maj** gauche ou droite pendant le déplacement |
-| Sauter | Appuyer sur **Espace** au sol ou depuis la surface de l’eau ; relâcher avant le prochain saut |
+| Courir | **ZQSD**, **WASD** ou **flèches**, sans modificateur |
+| Marcher | Maintenir **Maj** gauche ou droite pendant le déplacement |
+| Sauter | Appuyer sur **Espace** au sol ; relâcher avant le prochain saut |
 | Nager | Entrer dans l’eau profonde puis utiliser **ZQSD**, **WASD** ou les **flèches** |
-| Orienter la caméra | Maintenir le **bouton droit** de la souris et déplacer la souris |
+| Plonger / remonter | En nage, maintenir **Ctrl** pour descendre, **Espace** pour remonter ; relâcher pour conserver la profondeur |
+| Regarder autour du personnage | Maintenir le **bouton gauche** et déplacer la souris ; le déplacement au clavier garde sa direction |
+| Orienter la caméra et le déplacement | Maintenir le **bouton droit** de la souris et déplacer la souris |
+| Regarder vers le ciel | Déplacer la souris vers le haut en maintenant un bouton de rotation |
 | Régler la distance de caméra | **Molette** |
-| Libérer le curseur pendant la rotation | Relâcher le bouton droit |
+| Libérer le curseur pendant la rotation | Relâcher les boutons de rotation |
 | Ouvrir les options ou fermer la fenêtre d’exploration ouverte | **Échap** |
 | Ouvrir ou fermer la carte | **M** |
 | Ouvrir ou fermer le journal | **J** |
@@ -33,7 +36,11 @@ L’île est chargée de façon additive ; le décor et la caméra du studio son
 | Revenir au studio | Bouton de retour à la création dans le HUD |
 | Ouvrir le panneau social existant | **Amis Discord** |
 
-Le déplacement suit l’orientation horizontale de la caméra. La marche vaut **2,2 m/s**, la course **4,4 m/s** et la nage **2,2 m/s**, quelle que soit l’apparence. Maj n’accélère pas la nage. Le saut répond à un nouvel appui : maintenir Espace ne relance pas automatiquement un saut à l’atterrissage. En nage, Espace permet aussi une impulsion depuis la surface ; il n’y a pas de commande de plongée. La caméra ajuste sa distance face aux obstacles et reste au-dessus du terrain. La perte de focus ou l’ouverture des options, d’une fenêtre d’exploration ou du panneau social suspend les entrées de déplacement et libère le curseur.
+Le déplacement utilise une orientation horizontale distincte de celle du regard. Le clic gauche fait tourner la caméra autour du personnage et conserve cette orientation, y compris après son relâchement ; le clic droit la réaligne avec la caméra. La marche vaut **2,2 m/s**, la course **4,4 m/s** et la nage **2,2 m/s**, quelle que soit l’apparence. La course est le mode par défaut ; **Maj** permet de marcher et ne modifie pas la vitesse de nage. Le saut répond à un nouvel appui : maintenir Espace ne relance pas automatiquement un saut à l’atterrissage. En nage, Espace remonte jusqu’à la surface sans déclencher de saut ; Ctrl descend jusqu’au fond. Les deux touches ensemble annulent l’intention verticale. La limite de nage s’applique au déplacement total en trois dimensions, diagonales comprises. La caméra permet d’orienter le regard vers le ciel, ajuste sa distance face aux obstacles et reste au-dessus du terrain. La perte de focus ou l’ouverture des options, d’une fenêtre d’exploration ou du panneau social suspend les entrées de déplacement et libère le curseur.
+
+Les changements de commandes du 23 octobre 2026 et leur validation sont suivis
+dans le [registre des signalements urgents](../URGENT_REPORTS_2026-10-23.md).
+Les résultats datés ci-dessous décrivent les commandes de leurs révisions respectives.
 
 Échap ferme d’abord la carte, le journal ou le sac lorsqu’une de ces fenêtres est ouverte ; sinon, il ouvre ou ferme les options. La carte affiche le relief et la position du personnage. Le journal et le sac signalent leurs fonctions encore indisponibles : ils n’ajoutent pas de quêtes ni d’inventaire à cette exploration.
 
@@ -41,15 +48,17 @@ Le déplacement suit l’orientation horizontale de la caméra. La marche vaut *
 
 Le serveur lit une copie immuable des hauteurs du Terrain, construite lors de l’entrée sur l’île. Le personnage apparaît à la position d’arrivée de `StarterIslandDefinition`, avec les pieds recalés sur le sol. Au sol, la position verticale suit le relief ; pendant le saut, le serveur applique l’impulsion et la gravité jusqu’à l’atterrissage. La limite de sept mètres de l’ancienne arène ne s’applique pas à l’île.
 
-Le déplacement refuse les sorties du Terrain et les montées trop raides au sol, avec un seuil de pente de **40°**. L’eau peu profonde permet de marcher sur le fond. Au-delà d’environ **1,1 m de profondeur**, le personnage passe en nage : ses pieds restent à **1,15 m sous le niveau marin**, avec une animation de nage en mouvement et de flottaison à l’arrêt. Rejoindre un rivage peu pentu permet de reprendre la marche. La règle de mort de l’[eau violette](STARTER_ISLAND_BOUNDARY_WATER.md) reste une fonctionnalité distincte ; les dégâts, la noyade et la mort par exposition ne sont pas raccordés à cet essai local.
+Le déplacement refuse les sorties du Terrain et les montées trop raides au sol, avec un seuil de pente de **40°**. L’eau peu profonde permet de marcher sur le fond. Au-delà d’environ **1,1 m de profondeur**, le personnage passe en nage : à la surface, ses pieds restent à **1,15 m sous le niveau marin** ; sous l’eau, le serveur borne leur hauteur entre le fond et cette limite de surface. L’animation suit la vitesse réellement observée, y compris verticale. Rejoindre un rivage peu pentu permet de reprendre la marche. La règle de mort de l’[eau violette](STARTER_ISLAND_BOUNDARY_WATER.md) reste une fonctionnalité distincte ; cette correction n’ajoute pas de mécanique de noyade.
 
 Les collisions de déplacement sont testées côté serveur avec une capsule de **0,30 m de rayon**, dans un gabarit de **1,75 m** indépendant de la taille visuelle choisie. Elles utilisent les colliders statiques de la scène et des volumes simples ajoutés aux décors identifiés sans collision : bas des troncs, rochers, souches, rondins, murs, poteaux et barrières. Les portes conservent leur ouverture grâce à un collider de mesh ; les branches, feuillages et canopées restent traversables. Ces volumes restent des approximations : certains passages peuvent être plus étroits que leur apparence et certains détails décoratifs ne sont pas reproduits exactement.
 
-L’atterrissage utilise le Terrain et les surfaces statiques déjà munies d’un collider. La révision des [remparts d’Aubefont](STARTER_ISLAND_TOWN.md) permet également d’acquérir cet appui en marchant depuis le Terrain et de suivre une rampe ou un plancher, jusqu’à **40°**, avec contrôle du gabarit complet et du plafond. Les petits raccords de palier restent limités à **0,22 m** ; ce mécanisme ne permet pas de franchir un mur. Un appui sur un rocher ou une plateforme peut soutenir le personnage et permettre un nouveau saut ; quitter le bord déclenche une chute. Les planchers, ponts et toits sans collider restent traversables : cette révision n’ajoute pas de collisions à tous les éléments de construction. Les obstacles dynamiques, la plongée et une navigation de production demandent une étape dédiée.
+L’atterrissage utilise le Terrain et les surfaces statiques déjà munies d’un collider. La révision des [remparts d’Aubefont](STARTER_ISLAND_TOWN.md) permet également d’acquérir cet appui en marchant depuis le Terrain et de suivre une rampe ou un plancher, jusqu’à **40°**, avec contrôle du gabarit complet et du plafond. Les petits raccords de palier restent limités à **0,22 m** ; ce mécanisme ne permet pas de franchir un mur. Un appui sur un rocher ou une plateforme peut soutenir le personnage et permettre un nouveau saut ; quitter le bord déclenche une chute. Les planchers, ponts et toits sans collider restent traversables : cette révision n’ajoute pas de collisions à tous les éléments de construction. Les obstacles dynamiques et une navigation de production demandent une étape dédiée.
 
 ## Autorité et persistance
 
-`CharacterLocalPlaytest` crée un monde serveur et un monde client isolés sur **127.0.0.1:17843**. La simulation tourne à **30 Hz**, avec des snapshots à **20 Hz**. Le client transmet une intention de direction, de course et de saut ; le serveur valide la connexion et les commandes, puis calcule la position, la gravité, les transitions avec l’eau et les collisions. Le rendu observe un ghost interpolé et son état de locomotion pour choisir les animations Idle, Walk, Run, Jump, SwimIdle ou Swim. Il n’y a pas encore de prédiction locale.
+`CharacterLocalPlaytest` crée un monde serveur et un monde client isolés sur **127.0.0.1:17843**. La simulation tourne à **30 Hz**, avec des snapshots à **20 Hz**. Le client transmet une intention de direction, de course, de saut et de déplacement vertical en nage ; le serveur valide la connexion et les commandes, puis calcule la position, la gravité, les transitions avec l’eau et les collisions. Une intention périmée est neutralisée après **0,35 s**. Le rendu observe un ghost interpolé et son état de locomotion pour choisir les animations Idle, Walk, Run, Jump, SwimIdle ou Swim. Il n’y a pas encore de prédiction locale.
+
+La commande verticale nécessite un client et un serveur de **protocole 4** compatibles ; les admissions continuent de refuser une paire 3/4 discordante. Le transfert de partition écrit un instantané **v3**, conserve la profondeur et l’intention verticale, et relit les formats v1/v2 avec une intention verticale nulle. Le schéma des statistiques et possessions reste indépendant. Une publication coordonnée du client et du dédié est nécessaire pour distribuer cette révision ; les corrections du dépôt ne valent pas promotion du serveur actuellement en ligne.
 
 Le serveur ECS est propriétaire de la position. Les MonoBehaviours chargent la scène, présentent le modèle, recueillent les entrées et orientent la caméra. La géométrie statique des collisions provient de la scène Physics commune au processus local ; cette intégration ne constitue pas encore le chargement de collisions d’un serveur dédié indépendant.
 
