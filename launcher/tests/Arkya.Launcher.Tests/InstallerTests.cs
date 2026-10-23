@@ -27,6 +27,107 @@ public sealed class InstallerTests : IDisposable
     }
 
     [Fact]
+    public async Task KeepsPriorPointerUnchangedWhileExtractingIntoAnInactiveUniqueRelease()
+    {
+        var fixture = Package();
+        var installer = Installer(fixture.Bytes);
+        var first = await installer.InstallAsync(fixture.Manifest, null, CancellationToken.None);
+        var previousState = File.ReadAllBytes(Path.Combine(root, "current.json"));
+        string? pendingRelease = null;
+        var observations = 0;
+        var progress = new ImmediateProgress(value =>
+        {
+            if (value.Message != "Installation du jeu") return;
+            Assert.Equal(previousState, File.ReadAllBytes(Path.Combine(root, "current.json")));
+            Assert.Equal(first, installer.ReadInstalled());
+            var pending = PendingRelease(first);
+            Assert.Equal(Path.Combine(root, "releases"), Path.GetDirectoryName(pending));
+            var name = Path.GetFileName(pending);
+            Assert.StartsWith("0.2.0-", name, StringComparison.Ordinal);
+            Assert.True(Guid.TryParseExact(name["0.2.0-".Length..], "N", out _));
+            pendingRelease ??= pending;
+            Assert.Equal(pendingRelease, pending);
+            Assert.True(File.Exists(Path.Combine(pending, "Arkya.exe")));
+            observations++;
+        });
+
+        var second = await installer.InstallAsync(fixture.Manifest with { Version = "0.2.0" }, progress, CancellationToken.None);
+
+        Assert.Equal(3, observations);
+        Assert.Equal(Path.GetFullPath(Path.Combine(root, second.DirectoryName)), pendingRelease);
+        Assert.Equal(second, installer.ReadInstalled());
+        Assert.True(File.Exists(Path.Combine(root, first.DirectoryName, "Arkya.exe")));
+        Assert.Equal(2, Directory.GetDirectories(Path.Combine(root, "releases")).Length);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task ExtractionFailureOrCancellationRemovesOnlyInactiveRelease(bool cancel)
+    {
+        var fixture = Package();
+        var installer = Installer(fixture.Bytes);
+        var first = await installer.InstallAsync(fixture.Manifest, null, CancellationToken.None);
+        var previousState = File.ReadAllBytes(Path.Combine(root, "current.json"));
+        using var cancellation = new CancellationTokenSource();
+        string? pendingRelease = null;
+        var progress = new ImmediateProgress(value =>
+        {
+            if (value.Message != "Installation du jeu" || pendingRelease is not null) return;
+            pendingRelease = PendingRelease(first);
+            Assert.True(File.Exists(Path.Combine(pendingRelease, "Arkya.exe")));
+            Assert.Equal(first, installer.ReadInstalled());
+            Assert.Equal(previousState, File.ReadAllBytes(Path.Combine(root, "current.json")));
+            if (cancel) cancellation.Cancel();
+            else File.WriteAllText(Path.Combine(pendingRelease, "UnityPlayer.dll"), "Conflicting file before the next ZIP entry.");
+        });
+
+        var install = () => installer.InstallAsync(fixture.Manifest with { Version = "0.2.0" }, progress, cancellation.Token);
+        if (cancel) await Assert.ThrowsAnyAsync<OperationCanceledException>(install);
+        else await Assert.ThrowsAsync<IOException>(install);
+
+        Assert.NotNull(pendingRelease);
+        Assert.False(Directory.Exists(pendingRelease));
+        Assert.Equal(previousState, File.ReadAllBytes(Path.Combine(root, "current.json")));
+        Assert.Equal(first, installer.ReadInstalled());
+        Assert.Single(Directory.GetDirectories(Path.Combine(root, "releases")));
+        Assert.Empty(Directory.GetFiles(root, "*.zip"));
+        Assert.Empty(Directory.GetFiles(root, "current-*.tmp"));
+        Assert.Empty(Directory.GetDirectories(root, "stage-*"));
+    }
+
+    [Fact]
+    public async Task WindowsInstallsWhileExtractedFileIsHeldWithoutDeleteSharing()
+    {
+        if (!OperatingSystem.IsWindows()) return;
+        var fixture = Package();
+        var installer = Installer(fixture.Bytes);
+        var first = await installer.InstallAsync(fixture.Manifest, null, CancellationToken.None);
+        FileStream? held = null;
+        var progress = new ImmediateProgress(value =>
+        {
+            // The preceding entry has closed; the current entry is still being extracted.
+            if (value.Message != "Installation du jeu" || value.CompletedBytes != 2 * "fixture".Length) return;
+            Assert.Equal(first, installer.ReadInstalled());
+            held = new FileStream(Path.Combine(PendingRelease(first), "Arkya.exe"),
+                FileMode.Open, FileAccess.Read, FileShare.Read);
+        });
+        try
+        {
+            var second = await installer.InstallAsync(fixture.Manifest with { Version = "0.2.0" }, progress, CancellationToken.None);
+
+            Assert.NotNull(held);
+            Assert.Equal(second, installer.ReadInstalled());
+            Assert.Equal((int)'f', held.ReadByte());
+            Assert.True(File.Exists(Path.Combine(root, first.DirectoryName, "Arkya.exe")));
+        }
+        finally
+        {
+            held?.Dispose();
+        }
+    }
+
+    [Fact]
     public async Task HashMismatchPreservesInstalledGame()
     {
         var fixture = Package();
@@ -227,6 +328,14 @@ public sealed class InstallerTests : IDisposable
     {
         var http = new HttpClient(new FakeHandler(_ => new HttpResponseMessage(HttpStatusCode.OK) { Content = new ByteArrayContent(package) }));
         return new GameInstaller(root, new ReleaseClient(http));
+    }
+
+    private string PendingRelease(InstalledGame active)
+    {
+        var activeDirectory = Path.GetFullPath(Path.Combine(root, active.DirectoryName));
+        return Assert.Single(Directory.GetDirectories(root, "stage-*").Concat(
+            Directory.GetDirectories(Path.Combine(root, "releases")).Where(path =>
+                !path.Equals(activeDirectory, StringComparison.OrdinalIgnoreCase))));
     }
 
     private static (byte[] Bytes, GameManifest Manifest) Package(string? extra = null, int attributes = 0)

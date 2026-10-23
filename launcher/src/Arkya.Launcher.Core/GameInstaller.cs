@@ -41,7 +41,6 @@ public sealed class GameInstaller
         await using var installationLock = new FileStream(lockPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
         var id = Guid.NewGuid().ToString("N");
         var archivePath = SafePaths.Resolve(Root, $"download-{id}.zip");
-        var stage = SafePaths.Resolve(Root, $"stage-{id}");
         var relativeRelease = $"releases/{manifest.Version}-{id}";
         var release = SafePaths.Resolve(Root, relativeRelease);
         var temporaryState = SafePaths.Resolve(Root, $"current-{id}.tmp");
@@ -51,14 +50,13 @@ public sealed class GameInstaller
             var drive = new DriveInfo(Path.GetPathRoot(Root)!);
             if (drive.AvailableFreeSpace < manifest.PackageSize + manifest.UnpackedSize + 256L * 1024 * 1024)
                 throw new IOException("Espace disque insuffisant pour installer cette version du jeu.");
-            Directory.CreateDirectory(stage);
+            // Only the atomic current.json switch publishes this unique directory.
+            Directory.CreateDirectory(release);
             await client.DownloadAsync(manifest, archivePath, progress, cancellationToken);
             progress?.Report(new("Vérification et installation du jeu"));
-            await ExtractAsync(archivePath, stage, manifest.UnpackedSize, progress, cancellationToken);
-            ValidatePayload(stage, manifest);
+            await ExtractAsync(archivePath, release, manifest.UnpackedSize, progress, cancellationToken);
+            ValidatePayload(release, manifest);
             cancellationToken.ThrowIfCancellationRequested();
-            Directory.CreateDirectory(Path.GetDirectoryName(release)!);
-            Directory.Move(stage, release);
             var installed = new InstalledGame(manifest, relativeRelease);
             await File.WriteAllTextAsync(temporaryState, JsonSerializer.Serialize(installed, GameManifest.JsonOptions), cancellationToken);
             // The active pointer changes only after the complete release is on disk.
@@ -76,7 +74,6 @@ public sealed class GameInstaller
         {
             TryDeleteFile(archivePath);
             TryDeleteFile(temporaryState);
-            TryDeleteDirectory(stage);
             if (!committed) TryDeleteDirectory(release);
         }
     }
