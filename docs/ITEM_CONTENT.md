@@ -13,7 +13,7 @@ pas incluses dans le client distribué.
 ## Préparer les modèles
 
 Dans Unity, ouvrir **Arkya → Items → Content pipeline**. Configurer l'adresse
-du service Content, puis sélectionner les prefabs ou modèles `.fbx` / `.obj`
+d'export visuel `https://admin.arkya.online`, puis sélectionner les prefabs ou modèles `.fbx` / `.obj`
 à proposer aux créateurs d'items. La sélection d'un dossier permet de parcourir
 ses modèles. Exporter les références visuelles vers Content.
 
@@ -25,10 +25,23 @@ séparées. Un FBX/OBJ représente ici son GameObject importé par Unity ; une
 armure destinée à un personnage doit déjà disposer du rig et des points
 d'attache appropriés.
 
-L'Editor doit disposer d'un accès direct autorisé au service Content. La
-gateway publique n'expose pas les routes de gestion et de synchronisation.
-Pour le profil Kubernetes privé, utiliser un accès HTTPS interne approuvé ou
-un port-forward local ; l'URL publique du backoffice n'est pas celle de Content.
+L'export visuel passe par l'API HTTPS du backoffice, activée par
+`ItemVisualExport:Enabled` dans le profil Kubernetes Admin. Elle accepte
+uniquement `PUT /admin/content/item-assets/{guid}`, avec exactement un header
+`X-Arkya-Admin-Key` contenant la clé Content de l'Editor. Le serveur Admin
+relaie cette inscription au service Content privé. La requête JSON est limitée
+à 512 Kio ; Content vérifie le chemin, l'empreinte et la vignette PNG. Un cookie
+de connexion au backoffice ou une session joueur ne remplace pas cette clé.
+Les appels doivent provenir d'un client d'export sans header `Origin` ;
+aucune permission CORS n'est accordée aux sites web.
+L'API limite les appels à 120 par minute et par adresse cliente.
+
+L'adresse d'export est séparée de l'adresse Content utilisée pour la
+synchronisation des catalogues. Configurer seulement l'export n'active pas
+la synchronisation avant build. Celle-ci nécessite toujours un accès privé
+autorisé au service Content ; ses routes de gestion et de publication ne sont
+pas exposées par cette API. Sans adresse d'export spécifique, l'export utilise
+l'adresse Content pour conserver le fonctionnement des installations locales.
 
 ## Créer et publier dans le BE
 
@@ -82,6 +95,7 @@ Configuration de l'Editor ou de la CI :
 
 | Variable | Usage |
 | --- | --- |
+| `ARKYA_ITEM_VISUAL_EXPORT_URL` | Origine HTTPS du backoffice pour l'export, ou origine Content si absent |
 | `ARKYA_ITEM_CONTENT_URL` | Adresse Content HTTPS ou HTTP loopback en local |
 | `ARKYA_ITEM_ADMIN_KEY` | Clé `ContentAdmin:Key`, pour exporter les modèles |
 | `ARKYA_ITEM_SERVICE_KEY` | Clé `ServiceAuthentication:Key`, pour lire une publication |
@@ -142,20 +156,21 @@ vignette et un build client/serveur constituent les vérifications Unity du flux
 
 ### Vérification du 23 octobre 2026
 
+- API publique d'export : **44 tests réussis** (clé, HTTPS, quota par adresse,
+  corps bornés, erreurs Content et annulation). Suite Admin : **725 tests
+  réussis, 1 ignoré** sans MongoDB de test avant le dernier ajustement de quota.
+- Editor connecté : **70 tests Edit Mode du module items réussis**, après
+  compilation dans Unity `6000.6.6f1`. Les 21 prefabs d'armes ont été préparés
+  avec leur empreinte de sources et une vraie vignette Unity.
+
 - Content : **110 tests réussis**, avec MongoDB de test, dont concurrence,
   immutabilité, reprises et registre de vignettes.
-- Admin : **634 tests réussis**, puis son test MongoDB **1/1 réussi** ; les
-  32 nouveaux tests d'items sont inclus dans cette suite.
 - Navigateur : création d'une arme et d'une armure, recherche et sélection de
   vignettes, publication et relecture du snapshot dans Content. Les captures
   desktop et mobile utilisent trois références visuelles synthétiques dans
   une base jetable ; elles ne constituent pas un export de modèles Unity réels.
-- Sources Unity : compilation des sources et tests du module contre les
-  assemblies installées de Unity `6000.6.6f1`, puis **54 vérifications isolées
-  réussies**. Cette compilation externe ne remplace pas celle de l'Editor.
-- Le MCP a retourné zéro instance Unity. Les quatre tests Edit Mode utilisant
-  l'AssetDatabase, l'export réel avec miniature et le build restent à exécuter
-  dans l'Editor connecté.
+- Le build avec un catalogue d'items publié reste à vérifier ; les contrôles
+  d'export et de références ne valident pas à eux seuls cette intégration.
 
 Ce module fournit le contenu et sa distribution au build. L'inventaire ECS
 historique utilise encore ses identifiants numériques propres. L'équipement

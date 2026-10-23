@@ -115,6 +115,7 @@ public partial class Program
         builder.Services.AddScoped<AdminSessions>();
         builder.Services.AddScoped<OperationsDashboard>();
         builder.Services.AddHostedReportsMcp(builder.Configuration);
+        builder.Services.AddItemVisualExport();
         var authentication = builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
         {
             options.LoginPath = "/Login";
@@ -204,7 +205,10 @@ public partial class Program
         {
             options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
             options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
-                context.Request.Path.Equals("/Login", StringComparison.OrdinalIgnoreCase) && HttpMethods.IsPost(context.Request.Method)
+                ItemVisualExport.IsPath(context.Request.Path)
+                    ? RateLimitPartition.GetFixedWindowLimiter("item-visual-export:" + (context.Connection.RemoteIpAddress?.ToString() ?? "local"), _ =>
+                        new FixedWindowRateLimiterOptions { PermitLimit = ItemVisualExport.RequestsPerMinute, Window = TimeSpan.FromMinutes(1), QueueLimit = 0 })
+                    : context.Request.Path.Equals("/Login", StringComparison.OrdinalIgnoreCase) && HttpMethods.IsPost(context.Request.Method)
                     ? RateLimitPartition.GetFixedWindowLimiter(context.Connection.RemoteIpAddress?.ToString() ?? "local", _ =>
                         new FixedWindowRateLimiterOptions { PermitLimit = 8, Window = TimeSpan.FromMinutes(1), QueueLimit = 0 })
                     : RateLimitPartition.GetNoLimiter("other"));
@@ -234,6 +238,7 @@ public partial class Program
         app.UseHostedReportsMcpAccess();
         app.UseRouting();
         app.UseRateLimiter();
+        app.UseItemVisualExport();
         app.Use(async (context, next) =>
         {
             try { await next(); }

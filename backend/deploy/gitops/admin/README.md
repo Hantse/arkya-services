@@ -42,6 +42,13 @@ Characters : catalogue, personnages et demandes d'admission authentifiées.
 Les routes administrateur et `/internal/game` restent absentes de la gateway.
 
 L'admin utilise **Discord**, un cookie sécurisé et des formulaires antiforgery.
+L'export des modèles Unity possède une API HTTPS distincte de la session web :
+`PUT https://admin.arkya.online/admin/content/item-assets/{guid}`, activée par
+`ItemVisualExport__Enabled=true`. Elle exige la clé `ContentApi__AdminKey`
+dans `X-Arkya-Admin-Key` et ne relaie que l'inscription d'un modèle et de sa
+vignette, avec un corps JSON de 512 Kio maximum. Les autres routes Content
+restent privées. Voir le [pipeline items](../../../../docs/ITEM_CONTENT.md).
+
 Seul le compte `hatya_leash`, identifié par son ID Discord permanent
 **`195861708248449024`**, est autorisé par la configuration de ce profil.
 Le pseudo affiché ne sert jamais à accorder les droits. La connexion Discord

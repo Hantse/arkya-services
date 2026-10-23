@@ -86,6 +86,7 @@ patches:
       Discord__PublicBaseUrl: https://admin.arkya.online
       ContentApi__AllowClusterHttp: 'true'
       ContentApi__BaseUrl: http://arkya-content.arkya-beta.svc.cluster.local:8080/
+      ItemVisualExport__Enabled: 'true'
       RealmsApi__AllowClusterHttp: 'true'
       RealmsApi__BaseUrl: http://arkya-realms.arkya-beta.svc.cluster.local:8080/
       IdentityAdminApi__Enabled: 'true'
