@@ -18,8 +18,8 @@ public sealed class AccountsModel(IdentityAdminClient accounts) : PageModel
     public async Task OnGetAsync(CancellationToken ct)
     {
         Search = Search?.Trim();
-        if (!PlayerAdminPresentation.ValidSearch(Search)) ModelState.AddModelError(nameof(Search), "La recherche accepte au plus 100 caractères sans caractères de contrôle.");
-        if (!PlayerAdminPresentation.ValidPagination(PageNumber, PageSize)) ModelState.AddModelError(nameof(PageNumber), "Choisissez une page de 1 à 10 000 et de 1 à 100 résultats.");
+        if (!PlayerAdminPresentation.ValidSearch(Search)) ModelState.AddModelError(nameof(Search), "Search accepts up to 100 characters without control characters.");
+        if (!PlayerAdminPresentation.ValidPagination(PageNumber, PageSize)) ModelState.AddModelError(nameof(PageNumber), "Choose a page from 1 to 10,000 with 1 to 100 results.");
         if (!Enabled || !ModelState.IsValid) return;
         try { Accounts = await accounts.ListAsync(Search, PageNumber, PageSize, ct); }
         catch (Exception ex) when (PlayerAdminPresentation.IsDependencyError(ex, ct)) { Error = PlayerAdminPresentation.ErrorMessage(ex); }

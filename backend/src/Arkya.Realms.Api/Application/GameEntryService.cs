@@ -27,11 +27,13 @@ public sealed class StandaloneGameEntry
     public string BuildId { get; set; } = GameProtocol.BuildId;
     public string? TopologyVersion { get; set; }
     public GameRealmPartition[] Partitions { get; set; } = [];
+    public GameRealmArea[]? Areas { get; set; }
+    public GameAreaTransition[]? AreaTransitions { get; set; }
     public bool IsValid(bool development) => GameProtocol.ValidId(RealmId) && GameProtocol.ValidId(ServerId) &&
         DeploymentOptions.ValidName(DisplayName) && GameProtocol.ValidEndpoint(Endpoint, development) &&
         GameProtocol.IsSupported(ProtocolVersion, BuildId) &&
         GameTopology.IsValid(new(RealmId, DisplayName, Enabled, ServerId, Endpoint, ProtocolVersion, BuildId)
-            { TopologyVersion = TopologyVersion, Partitions = Partitions }, development);
+            { TopologyVersion = TopologyVersion, Partitions = Partitions, Areas = Areas, AreaTransitions = AreaTransitions }, development);
 }
 
 public sealed class GameEntryService(IRealmRepository realms, IOptions<GameEntryOptions> configured)
@@ -44,7 +46,7 @@ public sealed class GameEntryService(IRealmRepository realms, IOptions<GameEntry
     {
         var entries = configured.Value.StandaloneEntries.Select(value => new GameRealmEntry(value.RealmId,
             value.DisplayName, value.Enabled, value.ServerId, value.Endpoint, value.ProtocolVersion, value.BuildId)
-            { TopologyVersion = value.TopologyVersion, Partitions = value.Partitions }).ToList();
+            { TopologyVersion = value.TopologyVersion, Partitions = value.Partitions, Areas = value.Areas, AreaTransitions = value.AreaTransitions }).ToList();
         foreach (var realm in await realms.ListAsync(cancellationToken))
         {
             // A deployed realm must never be silently overridden by standalone configuration.
@@ -63,6 +65,9 @@ public sealed class GameEntryService(IRealmRepository realms, IOptions<GameEntry
                     initial.Id, initial.PublicEndpoint!, initial.ProtocolVersion, initial.BuildId)
                 {
                     TopologyVersion = realm.DeploymentIdentity,
+                    Areas = realm.Profile.Topology.Islands.Any(area => area.ContentId is not null) ? realm.Profile.Topology.Islands
+                        .Select(area => new GameRealmArea(area.IslandId, area.ContentId ?? area.IslandId)).ToArray() : null,
+                    AreaTransitions = realm.Profile.Topology.AreaTransitions,
                     Partitions = islandServers.Select(server => new GameRealmPartition(server.Id, server.PublicEndpoint!, server.IslandId!,
                         server.PartitionIndex!.Value, new(server.Bounds!.MinX, server.Bounds.MinZ, server.Bounds.MaxX, server.Bounds.MaxZ))).ToArray()
                 };

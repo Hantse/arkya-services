@@ -36,10 +36,10 @@ public sealed class RealmPlayersEndpointTests
         Assert.Empty(query["accountId"].ToString());
         Assert.Equal("/admin/realms/terres-aube", Assert.Single(factory.Realms.Calls).Path);
         Assert.Contains("data-realm-section=\"players\"", html);
-        Assert.Contains("80 personnage(s)", html);
+        Assert.Contains("80 character(s)", html);
         Assert.Contains("&lt;script&gt;character&lt;/script&gt;", html);
         Assert.DoesNotContain("<script>character", html);
-        foreach (var (label, page) in new[] { ("Actualiser", 2), ("Précédents", 1), ("Suivants", 3) })
+        foreach (var (label, page) in new[] { ("Refresh", 2), ("Previous", 1), ("Next", 3) })
         {
             var href = Href(html, label);
             var parameters = QueryHelpers.ParseQuery(new Uri(new Uri("https://localhost"), href).Query);
@@ -69,7 +69,7 @@ public sealed class RealmPlayersEndpointTests
         Assert.DoesNotContain("<script>character", html);
         if (section == "game")
         {
-            var query = QueryHelpers.ParseQuery(new Uri(new Uri("https://localhost"), Href(html, "les personnages en ligne de ce realm")).Query);
+            var query = QueryHelpers.ParseQuery(new Uri(new Uri("https://localhost"), Href(html, "this realm's online characters")).Query);
             Assert.Equal("players", query["section"].ToString());
             Assert.Equal("true", query["onlineOnly"].ToString());
         }
@@ -99,8 +99,8 @@ public sealed class RealmPlayersEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path + "?section=players"));
-        Assert.Contains("La consultation des joueurs est désactivée", html);
-        Assert.DoesNotContain("Aucun personnage", html);
+        Assert.Contains("Player viewing is disabled", html);
+        Assert.DoesNotContain("None personnage", html);
         Assert.Empty(factory.Upstream.Calls);
         NoSecrets(html);
     }
@@ -116,9 +116,9 @@ public sealed class RealmPlayersEndpointTests
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path + "?section=players"));
         Assert.Contains("Les Terres d'Aube", html);
-        Assert.Contains("Les joueurs du realm sont indisponibles", html);
-        Assert.Contains("Réessayer", html);
-        Assert.DoesNotContain("Aucun personnage", html);
+        Assert.Contains("Realm players are unavailable", html);
+        Assert.Contains("Try again", html);
+        Assert.DoesNotContain("None personnage", html);
         NoSecrets(html);
     }
 
@@ -133,10 +133,10 @@ public sealed class RealmPlayersEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path + "?section=players&onlineOnly=true"));
-        Assert.Contains("Les joueurs du realm sont indisponibles", html);
+        Assert.Contains("Realm players are unavailable", html);
         Assert.DoesNotContain("<script>character", html);
-        Assert.DoesNotContain("80 personnage(s)", html);
-        Assert.DoesNotContain("Aucun personnage", html);
+        Assert.DoesNotContain("80 character(s)", html);
+        Assert.DoesNotContain("None personnage", html);
         NoSecrets(html);
     }
 
@@ -149,9 +149,9 @@ public sealed class RealmPlayersEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path + "?section=players&search=Absent&onlineOnly=true"));
-        Assert.Contains("Aucun personnage sur cette page", html);
-        Assert.Contains("0 personnage(s)", html);
-        var query = QueryHelpers.ParseQuery(new Uri(new Uri("https://localhost"), Href(html, "Première page")).Query);
+        Assert.Contains("No characters on this page", html);
+        Assert.Contains("0 character(s)", html);
+        var query = QueryHelpers.ParseQuery(new Uri(new Uri("https://localhost"), Href(html, "First page")).Query);
         Assert.Equal("players", query["section"].ToString());
         Assert.Equal("Absent", query["search"].ToString());
         Assert.Equal("True", query["onlineOnly"].ToString(), ignoreCase: true);
@@ -167,7 +167,7 @@ public sealed class RealmPlayersEndpointTests
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Dedicated + "/?section=players"));
         Assert.Contains("href=\"" + Central + "/Account/" + AccountsStub.Id.ToString("D") + "\"", html);
-        Assert.Contains("Gérer le compte dans l’administration générale", html);
+        Assert.Contains("Manage account in general administration", html);
         Assert.Equal("terres-aube", QueryHelpers.ParseQuery(Assert.Single(factory.Upstream.Calls).Uri.Query)["realmId"].ToString());
         factory.Realms.Calls.Clear();
         factory.Upstream.Calls.Clear();

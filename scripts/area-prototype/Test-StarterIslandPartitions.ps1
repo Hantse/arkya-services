@@ -7,6 +7,8 @@ param(
     [string]$MongodExecutable = '',
     [string]$MongoUri = '',
     [string]$RunDirectory = '',
+    [string]$AdmissionGateFile = '',
+    [switch]$MultiArea,
     [ValidateRange(60, 900)][int]$TimeoutSeconds = 360,
     [switch]$KeepProcesses
 )
@@ -40,7 +42,8 @@ if ($EditorClientProject) {
 }
 if (!$MongoUri) { $MongodExecutable = (Resolve-Path -LiteralPath $MongodExecutable).Path }
 if (!$RunDirectory) {
-    $RunDirectory = Join-Path $workspace ('artifacts/starter-island-partitions/runs/' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [guid]::NewGuid().ToString('N').Substring(0, 8))
+    $runs = if ($MultiArea) { 'artifacts/multi-area/runs/' } else { 'artifacts/starter-island-partitions/runs/' }
+    $RunDirectory = Join-Path $workspace ($runs + (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [guid]::NewGuid().ToString('N').Substring(0, 8))
 }
 $RunDirectory = [IO.Path]::GetFullPath($RunDirectory)
 if (Test-Path -LiteralPath $RunDirectory) { throw 'Choose a new run directory; existing evidence is preserved.' }
@@ -68,7 +71,7 @@ $fixtureScript = Join-Path $workspace 'backend/tools/Start-WebBetaFixture.ps1'
 $fixtureTool = Join-Path $workspace 'backend/tools/Arkya.WebBeta.Fixture/bin/Debug/net10.0/Arkya.WebBeta.Fixture.dll'
 $owned = [Collections.Generic.List[object]]::new()
 $fixtureStarted = $false
-$result = [ordered]@{ passed = $false; actualDedicatedProcesses = 0; clientProcesses = 0; clientMode = $(if ($EditorClientProject) { 'Editor' } else { 'Native' }); failure = $null }
+$result = [ordered]@{ passed = $false; multiArea = [bool]$MultiArea; actualDedicatedProcesses = 0; clientProcesses = 0; clientMode = $(if ($EditorClientProject) { 'Editor' } else { 'Native' }); failure = $null }
 
 function Free-Port {
     $listener = [Net.Sockets.TcpListener]::new([Net.IPAddress]::Loopback, 0)
@@ -129,12 +132,35 @@ function Copy-ClientEvidence {
         @('client-report.startup.json', 'client-startup.json'),
         @('client-report.json.startup.json', 'client-startup.json'),
         @('client-report.crossing.png', 'client-crossing.png'),
-        @('client-report.completed.png', 'client-completed.png'))) {
+        @('client-report.area.png', 'client-area.png'),
+        @('client-report.completed.png', 'client-completed.png'),
+        @('client-report.map.png', 'client-map.png'),
+        @('client-resume-report.json', 'client-resume-report.json'),
+        @('client-resume-report.json.startup.json', 'client-resume-startup.json'),
+        @('client-resume-report.completed.png', 'client-resume-completed.png'),
+        @('client-resume-report.map.png', 'client-resume-map.png'))) {
         $sourcePath = Join-Path $privateDirectory $entry[0]
         if (Test-Path -LiteralPath $sourcePath) {
             Copy-Item -LiteralPath $sourcePath -Destination (Join-Path $RunDirectory $entry[1]) -Force
         }
     }
+}
+function Admit-ReadyClient([Diagnostics.Process]$Process, [string]$ConfigurationName, [string]$Action, [string]$EvidenceName) {
+    $path = Join-Path $privateDirectory $ConfigurationName
+    Wait-File ($path + '.ready') $Process 240
+    if ($AdmissionGateFile) { Wait-File $AdmissionGateFile $Process 240 }
+    $readyAt = [DateTimeOffset]::UtcNow
+    $bootstrap = Get-Content -LiteralPath $path -Raw | ConvertFrom-Json
+    $nonce = $bootstrap.configurationNonce
+    if (!$nonce -or (Get-Content -LiteralPath ($path + '.ready') -Raw) -ne $nonce) { throw 'The rendered-client ready nonce is invalid.' }
+    $null = Fixture-Action 'tickets'
+    $issuedAt = [DateTimeOffset]::UtcNow
+    $null = Fixture-Action $Action
+    Wait-File ($path + '.admission-read') $Process 20
+    if ((Get-Content -LiteralPath ($path + '.admission-read') -Raw) -ne $nonce) { throw 'The client read a different admission configuration.' }
+    @{ processId = $Process.Id; renderedClientReadyAt = $readyAt.ToString('O'); admissionIssuedAt = $issuedAt.ToString('O');
+        admissionReadAt = [DateTimeOffset]::UtcNow.ToString('O'); readyBeforeTicket = ($readyAt -le $issuedAt) } |
+        ConvertTo-Json | Set-Content -LiteralPath (Join-Path $RunDirectory $EvidenceName)
 }
 try {
     $gamePort = Four-FreePorts
@@ -149,28 +175,28 @@ try {
         $env:ARKYA_TEST_MONGO = $MongoUri
         $env:ARKYA_TEST_GAME_ENDPOINT = "ws://127.0.0.1:$gamePort/"
         $fixtureStarted = $true
-        & $fixtureScript -Action Start -Directory $privateDirectory -ServerCount 4 | Out-Null
+        & $fixtureScript -Action Start -Directory $privateDirectory -ServerCount 4 -MultiArea:$MultiArea | Out-Null
     }
     finally { $env:ARKYA_TEST_MONGO = $previousMongo; $env:ARKYA_TEST_GAME_ENDPOINT = $previousEndpoint }
     $fixture = Get-Content -LiteralPath (Join-Path $privateDirectory 'fixture.json') -Raw | ConvertFrom-Json
     if ($fixture.servers.Count -ne 4) { throw 'The fixture must configure exactly four dedicated authorities.' }
     $null = Fixture-Action 'seed-partition-state'
-    foreach ($server in $fixture.servers) {
-        $index = [int]$server.partitionIndex
+    for ($index = 0; $index -lt $fixture.servers.Count; $index++) {
+        $server = $fixture.servers[$index]
         $ready = Join-Path $RunDirectory "dedicated-$index.ready"
         $environment = @{
             ARKYA_REALM_ID = $fixture.realmId; ARKYA_SERVER_ID = $server.serverId
             ARKYA_GAME_PORT = ([Uri]$server.endpoint).Port; ARKYA_WEBSOCKET_PATH = ([Uri]$server.endpoint).AbsolutePath
             ARKYA_CHARACTERS_URL = $fixture.charactersBaseUrl; ARKYA_DEDICATED_KEY = $server.dedicatedKey
             ARKYA_ALLOW_LOCAL_HTTP = '1'; ARKYA_READY_FILE = $ready
-            ARKYA_PARTITIONS_FILE = (Join-Path $privateDirectory 'partitions.json')
         }
         $process = Start-Owned "dedicated-$index" $ServerExecutable @('-batchmode', '-nographics', '-logFile', (Join-Path $RunDirectory "dedicated-$index.log")) $environment
         Wait-File $ready $process 90
         $result.actualDedicatedProcesses++
     }
-    $null = Fixture-Action 'tickets'
-    $null = Fixture-Action 'client-config'
+    # Keep compilation/test load out of measured gameplay and avoid aging a ready client's bootstrap deadline.
+    if ($AdmissionGateFile) { Wait-File $AdmissionGateFile $process 1200 }
+    $null = Fixture-Action 'client-bootstrap'
     $clientArguments = if ($EditorClientProject) {
         @('-batchmode', '-job-worker-count', '4', '-buildTarget', 'Win64', '-standaloneBuildSubtarget', 'Player',
             '-projectPath', $EditorClientProject, '-executeMethod', 'Arkya.Characters.Editor.CharacterPartitionEditorValidation.Run',
@@ -181,21 +207,48 @@ try {
     $clientName = if ($EditorClientProject) { 'editor-client' } else { 'native-client' }
     $client = Start-Owned $clientName $ClientExecutable $clientArguments @{ ARKYA_PARTITION_VALIDATION_FILE = (Join-Path $privateDirectory 'client.json'); DOTNET_PROCESSOR_COUNT = '4' } -Client
     $result.clientProcesses = 1
+    Admit-ReadyClient $client 'client.json' 'client-config' 'client-admission-order.json'
     $until = [DateTimeOffset]::UtcNow.AddSeconds($TimeoutSeconds)
     while (!$client.HasExited -and [DateTimeOffset]::UtcNow -lt $until) {
         $observation = (Fixture-Action 'partition-state') -join "`n" | ConvertFrom-Json
-        $observation | ConvertTo-Json -Compress | Add-Content -LiteralPath (Join-Path $RunDirectory 'lease-observations.jsonl')
+        $observation | ConvertTo-Json -Compress -Depth 12 | Add-Content -LiteralPath (Join-Path $RunDirectory 'lease-observations.jsonl')
         Start-Sleep -Milliseconds 500
     }
     if (!$client.HasExited) { throw 'Client traversal timed out.' }
     if ($client.ExitCode -ne 0) { throw 'Client reported a failed traversal.' }
     $clientReport = Get-Content -LiteralPath (Join-Path $privateDirectory 'client-report.json') -Raw | ConvertFrom-Json
     if ($clientReport.outcome -ne 'Passed' -or $clientReport.visitedServers.Count -ne 4 -or $clientReport.completedHandoffs -lt 4) {
-        throw 'The native client report does not confirm four-authority traversal.'
+        throw 'The client report does not confirm four-authority traversal.'
+    }
+    if ($MultiArea -and ($clientReport.visitedAreas.Count -ne 2 -or $clientReport.areaTransitions -ne 3 -or
+        $clientReport.intraAreaHandoffs -lt 5 -or $clientReport.completedHandoffs -lt 8 -or
+        $clientReport.sceneLoads -ne 4 -or $clientReport.maximumMissingGameplayGap -gt 1 -or !$clientReport.stableGameplay -or !$clientReport.actualAreaScenesValidated)) {
+        throw 'The client report does not confirm two actual Area scenes and complete gameplay-state continuity.'
     }
     Copy-ClientEvidence
     Fixture-Action 'verify-partition-state' | Set-Content -LiteralPath (Join-Path $RunDirectory 'persisted-state.json')
     Fixture-Action 'verify-partition-relogin' | Set-Content -LiteralPath (Join-Path $RunDirectory 'relogin-state.json')
+    if ($MultiArea) {
+        $null = Fixture-Action 'client-bootstrap-resume'
+        $resumeArguments = @($clientArguments)
+        $resumeArguments[$resumeArguments.Count - 1] = Join-Path $RunDirectory 'client-resume.log'
+        $resume = Start-Owned 'editor-resume-client' $ClientExecutable $resumeArguments @{ ARKYA_PARTITION_VALIDATION_FILE = (Join-Path $privateDirectory 'client-resume.json'); DOTNET_PROCESSOR_COUNT = '4' } -Client
+        $result.clientProcesses++
+        Admit-ReadyClient $resume 'client-resume.json' 'client-resume-config' 'client-resume-admission-order.json'
+        $resumeUntil = [DateTimeOffset]::UtcNow.AddSeconds($TimeoutSeconds)
+        while (!$resume.HasExited -and [DateTimeOffset]::UtcNow -lt $resumeUntil) {
+            $observation = (Fixture-Action 'partition-state') -join "`n" | ConvertFrom-Json
+            $observation | ConvertTo-Json -Compress -Depth 12 | Add-Content -LiteralPath (Join-Path $RunDirectory 'lease-resume-observations.jsonl')
+            Start-Sleep -Milliseconds 500
+        }
+        if (!$resume.HasExited -or $resume.ExitCode -ne 0) { throw 'The rendered Area re-entry client failed.' }
+        $resumeReport = Get-Content -LiteralPath (Join-Path $privateDirectory 'client-resume-report.json') -Raw | ConvertFrom-Json
+        if ($resumeReport.outcome -ne 'Passed' -or !$resumeReport.resumeOnly -or $resumeReport.visitedAreas.Count -ne 1 -or
+            $resumeReport.visitedAreas[0] -ne 'handoff-valley' -or $resumeReport.sceneLoads -ne 1 -or $resumeReport.maximumMissingGameplayGap -gt 1 -or !$resumeReport.stableGameplay -or
+            !$resumeReport.actualAreaScenesValidated -or $resumeReport.completedHandoffs -ne 0) { throw 'The rendered re-entry did not restore the saved Area and gameplay state.' }
+        Copy-ClientEvidence
+        Fixture-Action 'verify-partition-state' | Set-Content -LiteralPath (Join-Path $RunDirectory 'persisted-resume-state.json')
+    }
     foreach ($server in $owned | Where-Object name -like 'dedicated-*') {
         if ($server.process.HasExited) { throw 'A dedicated exited during the traversal.' }
     }

@@ -80,8 +80,8 @@ public sealed class DiscordAuthenticationTests
         factory.Settings["AllowedHosts"] = "localhost;other.example";
         using var browser = factory.Browser();
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync("/Login"));
-        Assert.Contains("Continuer avec Discord", html);
-        Assert.DoesNotContain("Mot de passe administrateur", html);
+        Assert.Contains("Continue with Discord", html);
+        Assert.DoesNotContain("Administrator password", html);
         Assert.Equal(HttpStatusCode.BadRequest, (await browser.PostAsync("/Login?handler=Discord", AdminFactory.Form(new()))).StatusCode);
         browser.DefaultRequestHeaders.Host = "other.example";
         using var challenge = await ChallengeAsync(browser);

@@ -40,13 +40,13 @@ public sealed class RealmSectionsEndpointTests
         foreach (var destination in Sections)
             Assert.Single(sectionLinks.Cast<Match>(), link => link.Value.Contains("href=\"" + Path + "?section=" + destination + "\""));
         Assert.DoesNotContain("<nav", Regex.Match(html, @"<main\b.*?</main>", RegexOptions.Singleline).Value);
-        Assert.DoesNotContain("Comptes et acc", navigation);
+        Assert.DoesNotContain("Accounts et acc", navigation);
         Assert.Contains("href=\"/Realms\"", navigation);
-        Assert.Contains("Administration g", WebUtility.HtmlDecode(navigation));
+        Assert.Contains("General administration", WebUtility.HtmlDecode(navigation));
         var anchors = Regex.Matches(html, @"<a\b[^>]*>.*?</a>", RegexOptions.Singleline).Select(match => match.Value).ToArray();
         var active = Assert.Single(anchors, anchor => anchor.Contains("aria-current=\"page\"") && anchor.Contains("?section="));
         Assert.Contains("href=\"" + Path + "?section=" + section + "\"", active);
-        var refresh = Assert.Single(anchors, anchor => anchor.Contains("Actualiser"));
+        var refresh = Assert.Single(anchors, anchor => anchor.Contains("Refresh"));
         Assert.Contains("href=\"" + Path + "?section=" + section + "\"", refresh);
         var actionPanels = Regex.Matches(html, @"<details\b[^>]*class=""[^""]*realm-action-disclosure[^""]*""[^>]*>");
         Assert.All(actionPanels.Cast<Match>(), panel => Assert.DoesNotMatch(@"\sopen(?:\s|=|>)", panel.Value));
@@ -106,7 +106,7 @@ public sealed class RealmSectionsEndpointTests
         Assert.Contains("data-realm-section=\"overview\"", html);
         Assert.Contains("?section=overview\" aria-current=\"page\"", Navigation(html));
         Assert.DoesNotContain("<script>unsafe", html);
-        Assert.DoesNotContain("La configuration en jeu est indisponible", WebUtility.HtmlDecode(html));
+        Assert.DoesNotContain("In-game configuration is unavailable", WebUtility.HtmlDecode(html));
         Assert.Contains("area-one", html);
         foreach (var handler in MutationHandlers) Assert.DoesNotContain("handler=" + handler, html);
         Assert.Equal(ApiPath, Assert.Single(factory.Realms.Calls).Path);
@@ -230,5 +230,5 @@ public sealed class RealmSectionsEndpointTests
     }
 
     private static string Navigation(string html) => Regex.Match(html,
-        @"<nav\b[^>]*aria-label=""Menu principal""[^>]*>.*?</nav>", RegexOptions.Singleline).Value;
+        @"<nav\b[^>]*aria-label=""Main menu""[^>]*>.*?</nav>", RegexOptions.Singleline).Value;
 }

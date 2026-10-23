@@ -189,6 +189,13 @@ déclenche un passage vers une autre carte.
 
 ### Passage automatique du joueur
 
+Le [runtime multi-Area version 3](MULTI_AREA_RUNTIME.md) ajoute les contenus
+enregistrés (`contentId`) et les portails automatiques (`areaTransitions`).
+Chaque Area utilise ses propres dedicateds et coordonnées locales ; un portail
+valide la source puis conserve l'état actif du personnage à l'arrivée sur la
+carte cible. Les paragraphes version 2 ci-dessous conservent le périmètre du
+premier parcours StarterIsland et sa preuve historique.
+
 La préparation et le claim préparent la connexion cible sans créer de seconde
 autorité. La source scelle son état final avant le commit ; Characters remplace
 atomiquement la lease et son époque dans MongoDB. Les écritures de l'ancien

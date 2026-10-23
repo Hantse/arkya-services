@@ -45,5 +45,6 @@ internal static class RealmImageReleases
 
     private static bool SameTopology(RealmTopology? left, RealmTopology? right) =>
         left is null ? right is null : right is not null && left.InstanceDedicatedCount == right.InstanceDedicatedCount &&
-        left.RaidDedicatedCount == right.RaidDedicatedCount && left.Islands.SequenceEqual(right.Islands);
+        left.RaidDedicatedCount == right.RaidDedicatedCount && left.Islands.SequenceEqual(right.Islands) &&
+        (left.AreaTransitions ?? []).SequenceEqual(right.AreaTransitions ?? []);
 }

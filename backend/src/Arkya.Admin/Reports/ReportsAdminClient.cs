@@ -67,7 +67,7 @@ public sealed class ReportsAdminClient(HttpClient client, IOptions<ReportsApiOpt
 
     private HttpRequestMessage CreateRequest(HttpMethod method, string path)
     {
-        if (!Enabled) throw new ReportsApiException(HttpStatusCode.ServiceUnavailable, "La gestion des signalements est désactivée sur cette installation.");
+        if (!Enabled) throw new ReportsApiException(HttpStatusCode.ServiceUnavailable, "Report management is disabled on this installation.");
         var request = new HttpRequestMessage(method, path);
         request.Headers.Add("X-Arkya-Reports-Admin-Key", options.Value.AdminKey);
         return request;
@@ -88,18 +88,18 @@ public sealed class ReportsAdminClient(HttpClient client, IOptions<ReportsApiOpt
     }
 
     private static ReportsApiException InvalidResponse() =>
-        new(HttpStatusCode.BadGateway, "Le service des signalements a renvoyé une réponse invalide.");
+        new(HttpStatusCode.BadGateway, "The report service returned an invalid response.");
 
     private static void EnsureSuccess(HttpResponseMessage response)
     {
         if (response.IsSuccessStatusCode) return;
         throw new ReportsApiException(response.StatusCode, response.StatusCode switch
         {
-            HttpStatusCode.Conflict => "Ce rapport a changé. La version actuelle a été rechargée ; vérifiez-la avant de modifier à nouveau.",
-            HttpStatusCode.BadRequest => "Vérifiez le statut, les tags et la résolution du rapport.",
-            HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "L'accès aux rapports a été refusé. Vérifiez la configuration de l'administration.",
-            HttpStatusCode.NotFound => "Ce rapport n'existe pas ou n'est plus disponible.",
-            _ => "Le service des signalements est indisponible. Réessayez dans un instant."
+            HttpStatusCode.Conflict => "This report has changed. The current version has been reloaded; review it before editing again.",
+            HttpStatusCode.BadRequest => "Check the report status, tags and resolution.",
+            HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "Access to reports was denied. Check the administration configuration.",
+            HttpStatusCode.NotFound => "This report does not exist or is no longer available.",
+            _ => "The report service is unavailable. Try again shortly."
         });
     }
 }
@@ -110,25 +110,25 @@ public static class BugReportPresentation
     {
         BugReportKinds.Bug => "Bug",
         BugReportKinds.Suggestion => "Suggestion",
-        _ => "Type inconnu"
+        _ => "Unknown type"
     };
 
     public static string StatusLabel(string status, string? kind = BugReportKinds.Bug) => kind == BugReportKinds.Suggestion ? status switch
     {
-        BugReportStatuses.New => "Nouvelle",
-        BugReportStatuses.Triaged => "Examinée",
-        BugReportStatuses.InProgress => "En cours",
-        BugReportStatuses.Resolved => "Réalisée",
-        BugReportStatuses.Closed => "Fermée",
-        _ => "Statut inconnu"
+        BugReportStatuses.New => "New",
+        BugReportStatuses.Triaged => "Triaged",
+        BugReportStatuses.InProgress => "In progress",
+        BugReportStatuses.Resolved => "Completed",
+        BugReportStatuses.Closed => "Closed",
+        _ => "Unknown status"
     } : status switch
     {
-        BugReportStatuses.New => "Nouveau",
-        BugReportStatuses.Triaged => "Qualifié",
-        BugReportStatuses.InProgress => "En cours",
-        BugReportStatuses.Resolved => "Résolu",
-        BugReportStatuses.Closed => "Fermé",
-        _ => "Statut inconnu"
+        BugReportStatuses.New => "New",
+        BugReportStatuses.Triaged => "Triaged",
+        BugReportStatuses.InProgress => "In progress",
+        BugReportStatuses.Resolved => "Resolved",
+        BugReportStatuses.Closed => "Closed",
+        _ => "Unknown status"
     };
 
     public static string StatusClass(string status) => status switch
@@ -142,5 +142,5 @@ public static class BugReportPresentation
         || ex is OperationCanceledException && !ct.IsCancellationRequested;
 
     public static string ErrorMessage(Exception ex) => ex is ReportsApiException ? ex.Message
-        : "Le service des signalements est indisponible. Réessayez dans un instant.";
+        : "The report service is unavailable. Try again shortly.";
 }

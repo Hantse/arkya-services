@@ -1,8 +1,10 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Arkya.Characters.Api.Contracts;
 using Arkya.ServiceDefaults;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Arkya.Characters.Api.Application;
 
@@ -17,7 +19,12 @@ public static class TransferStatus
 
 public sealed record GameTransferRecord(string TransferId, string SourceServerId, string SourceLeaseId, long SourceEpoch,
     string TargetServerId, string Endpoint, string TopologyVersion, string Status, string? ClaimId,
-    DateTimeOffset ExpiresAt, SavedWorldState State, string? TargetLeaseId = null, long? TargetEpoch = null);
+    DateTimeOffset ExpiresAt, SavedWorldState State, string? TargetLeaseId = null, long? TargetEpoch = null)
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), BsonIgnoreIfNull] public GameAreaTransition? Transition { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), BsonIgnoreIfNull] public SavedWorldState? SourceState { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), BsonIgnoreIfNull] public GameRealmArea? TargetArea { get; init; }
+}
 
 public sealed partial class GameAdmissionService
 {
@@ -34,7 +41,10 @@ public sealed partial class GameAdmissionService
     public async Task<GameResult<PreparedTransferResponse>> PrepareTransferAsync(Guid characterId, DedicatedServerIdentity server,
         PrepareTransferRequest request, CancellationToken cancellationToken)
     {
+        // JsonUtility sends an optional string as "" for an ordinary partition handoff.
+        var transitionId = request.TransitionId is "" ? null : request.TransitionId;
         if (request.TransferId == Guid.Empty || !GameProtocol.ValidId(request.TargetServerId) ||
+            transitionId is not null && !GameProtocol.ValidId(transitionId) ||
             !Valid(request.Position, request.Forward) || !ValidSimulation(request.Simulation, true))
             return new(Error: "invalid_transfer", Status: 400);
         var catalog = await TopologyAsync(server, cancellationToken);
@@ -42,7 +52,13 @@ public sealed partial class GameAdmissionService
         if (!entry.Ready) return new(Error: "topology_unavailable", Status: 503);
         var source = entry.Partitions.SingleOrDefault(partition => partition.ServerId == server.ServerId);
         var target = entry.Partitions.SingleOrDefault(partition => partition.ServerId == request.TargetServerId);
-        if (source is null || target is null || entry.TopologyVersion != request.TopologyVersion || !GameTopology.AreNeighbors(source, target))
+        var transition = transitionId is null ? null : entry.AreaTransitions?.SingleOrDefault(value => value.Id == transitionId);
+        if (source is null || target is null || entry.TopologyVersion != request.TopologyVersion ||
+            (transitionId is null ? !GameTopology.AreNeighbors(source, target) : transition is null ||
+                source.IslandId != transition.SourceAreaId || target.IslandId != transition.TargetAreaId ||
+                !GameTopology.Contains(transition.SourceBounds, request.Position.X, request.Position.Z) ||
+                GameTopology.Resolve(entry, source.IslandId, request.Position.X, request.Position.Z)?.ServerId != source.ServerId ||
+                GameTopology.Resolve(entry, target.IslandId, transition.TargetPosition.X, transition.TargetPosition.Z)?.ServerId != target.ServerId))
             return new(Error: "invalid_transfer_destination", Status: 409);
         for (var attempt = 0; attempt < 5; attempt++)
         {
@@ -52,7 +68,8 @@ public sealed partial class GameAdmissionService
             {
                 if (current.RealmId != server.RealmId || previous.SourceServerId != server.ServerId || previous.SourceLeaseId != request.LeaseId.ToString("D") ||
                     previous.SourceEpoch != request.AuthorityEpoch || previous.TargetServerId != request.TargetServerId ||
-                    previous.TopologyVersion != request.TopologyVersion || previous.Status == TransferStatus.Aborted || previous.ExpiresAt <= now)
+                    previous.TopologyVersion != request.TopologyVersion || previous.Transition?.Id != transitionId ||
+                    previous.Status == TransferStatus.Aborted || previous.ExpiresAt <= now)
                     return new(Error: "transfer_conflict", Status: 409);
                 return new(Prepared(previous, TransferTicket(server, characterId, request.TransferId, request.LeaseId, request.AuthorityEpoch), current.RealmId));
             }
@@ -66,10 +83,13 @@ public sealed partial class GameAdmissionService
             if (!Owns(current, server, request.LeaseId, request.AuthorityEpoch, now)) return new(Error: "lease_rejected", Status: 409);
             var ticket = TransferTicket(server, characterId, request.TransferId, request.LeaseId, request.AuthorityEpoch);
             var expires = Min(now.AddSeconds(TransferSeconds), Min(current.LeaseExpiresAt, validation.Session!.ExpiresAt));
-            var state = new SavedWorldState(current.State?.Revision ?? 0, request.Position, request.Forward)
+            var position = transition is null ? request.Position : ArrivalPosition(transition);
+            var forward = transition?.TargetForward is { } arrivalForward ? new GameForward(arrivalForward.X, arrivalForward.Z) : request.Forward;
+            var state = new SavedWorldState(current.State?.Revision ?? 0, position, forward)
                 { Simulation = request.Simulation, IslandId = target.IslandId };
             var transfer = new GameTransferRecord(request.TransferId.ToString("D"), server.ServerId, request.LeaseId.ToString("D"),
-                request.AuthorityEpoch, target.ServerId, target.Endpoint, request.TopologyVersion, TransferStatus.Prepared, null, expires, state);
+                request.AuthorityEpoch, target.ServerId, target.Endpoint, request.TopologyVersion, TransferStatus.Prepared, null, expires, state)
+                { Transition = transition, TargetArea = new(target.IslandId, GameTopology.ContentId(entry, target.IslandId)!) };
             var next = current with { Version = current.Version + 1, TicketHash = HashTicket(ticket), TicketExpiresAt = expires, Transfer = transfer };
             if (await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.ActiveLease))
                 return new(Prepared(transfer, ticket, current.RealmId));
@@ -117,6 +137,8 @@ public sealed partial class GameAdmissionService
     {
         if (request.ExpectedRevision is < 0 or long.MaxValue || !Valid(request.Position, request.Forward) || !ValidSimulation(request.Simulation, true))
             return new(Error: "invalid_transfer", Status: 400);
+        // JsonUtility may materialize an absent nested optional object as its empty default.
+        var arrivalSimulation = request.ArrivalSimulation is { SchemaVersion: 0, Payload: null or "" } ? null : request.ArrivalSimulation;
         var catalog = await TopologyAsync(server, cancellationToken);
         if (catalog.Value is not { } entry) return new(Error: catalog.Error, Status: catalog.Status);
         for (var attempt = 0; attempt < 5; attempt++)
@@ -126,22 +148,36 @@ public sealed partial class GameAdmissionService
             if (!MatchesSource(current, transferId, server, request.LeaseId, request.AuthorityEpoch) || current!.Transfer is not { } transfer)
                 return new(Error: "transfer_rejected", Status: 409);
             if (transfer.Status is TransferStatus.Sealed or TransferStatus.Committed)
-                return SameState(transfer.State, request.Position, request.Forward, request.Simulation) && transfer.State.Revision == request.ExpectedRevision + 1
+                return SameState(transfer.SourceState ?? transfer.State, request.Position, request.Forward, request.Simulation) &&
+                    transfer.State.Revision == request.ExpectedRevision + 1 &&
+                    (transfer.Transition is null ? arrivalSimulation is null : arrivalSimulation == transfer.State.Simulation)
                     ? new(Status(current)) : new(Error: "transfer_conflict", Status: 409);
             if (transfer.Status != TransferStatus.Claimed || transfer.ExpiresAt <= now || !Owns(current, server, request.LeaseId, request.AuthorityEpoch, now))
                 return new(Error: "transfer_rejected", Status: 409);
+            var transition = transfer.Transition;
+            var source = entry.Partitions.SingleOrDefault(partition => partition.ServerId == server.ServerId);
             if (entry.TopologyVersion != transfer.TopologyVersion ||
-                GameTopology.Resolve(entry, transfer.State.IslandId, request.Position.X, request.Position.Z)?.ServerId != transfer.TargetServerId)
+                (transition is null ? GameTopology.Resolve(entry, transfer.State.IslandId, request.Position.X, request.Position.Z)?.ServerId != transfer.TargetServerId :
+                    entry.AreaTransitions?.Contains(transition) != true || source?.IslandId != transition.SourceAreaId ||
+                    !GameTopology.Contains(transition.SourceBounds, request.Position.X, request.Position.Z) ||
+                    GameTopology.Resolve(entry, transition.SourceAreaId, request.Position.X, request.Position.Z)?.ServerId != server.ServerId ||
+                    GameTopology.Resolve(entry, transition.TargetAreaId, transition.TargetPosition.X, transition.TargetPosition.Z)?.ServerId != transfer.TargetServerId))
                 return new(Error: "invalid_transfer_destination", Status: 409);
+            if (transition is null ? arrivalSimulation is not null : !ValidSimulation(arrivalSimulation, true))
+                return new(Error: "invalid_transfer", Status: 400);
             if ((current.State?.Revision ?? 0) != request.ExpectedRevision) return new(Error: "state_conflict", Status: 409);
             var validation = await ValidateSessionAsync(current, cancellationToken);
             if (validation.Status == SessionValidationStatus.Unavailable) return new(Error: "dependency_unavailable", Status: 503);
             if (validation.Status != SessionValidationStatus.Valid) return new(Error: "lease_rejected", Status: 409);
             if (transfer.ExpiresAt <= clock.GetUtcNow() || !Owns(current, server, request.LeaseId, request.AuthorityEpoch, clock.GetUtcNow()))
                 return new(Error: "transfer_rejected", Status: 409);
-            var state = new SavedWorldState(request.ExpectedRevision + 1, request.Position, request.Forward)
-                { Simulation = request.Simulation, IslandId = transfer.State.IslandId };
-            var next = current with { Version = current.Version + 1, State = state, Transfer = transfer with { Status = TransferStatus.Sealed, State = state } };
+            var sourceState = new SavedWorldState(request.ExpectedRevision + 1, request.Position, request.Forward)
+                { Simulation = request.Simulation, IslandId = source?.IslandId ?? transfer.State.IslandId };
+            var state = transition is null ? sourceState : new SavedWorldState(sourceState.Revision, ArrivalPosition(transition),
+                transition.TargetForward is { } forward ? new(forward.X, forward.Z) : request.Forward)
+                { Simulation = arrivalSimulation, IslandId = transition.TargetAreaId };
+            var next = current with { Version = current.Version + 1, State = transition is null ? state : sourceState,
+                Transfer = transfer with { Status = TransferStatus.Sealed, State = state, SourceState = transition is null ? null : sourceState } };
             if (await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.TransferPending)) return new(Status(next));
         }
         return new(Error: "transfer_conflict", Status: 409);
@@ -185,7 +221,7 @@ public sealed partial class GameAdmissionService
             var leaseId = Guid.NewGuid();
             var epoch = current.AuthorityEpoch + 1;
             var next = current with { Version = current.Version + 1, ServerId = server.ServerId, LeaseId = leaseId,
-                AuthorityEpoch = epoch, State = transfer.State, LeaseExpiresAt = Min(now.AddSeconds(LeaseSeconds), sessionExpires),
+                AuthorityEpoch = epoch, State = transfer.State, Area = transfer.TargetArea, LeaseExpiresAt = Min(now.AddSeconds(LeaseSeconds), sessionExpires),
                 SessionExpiresAt = sessionExpires, Transfer = transfer with { Status = TransferStatus.Committed, TargetLeaseId = leaseId.ToString("D"), TargetEpoch = epoch } };
             if (await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.TransferPending))
             {
@@ -215,7 +251,8 @@ public sealed partial class GameAdmissionService
                 return new(Error: "transfer_rejected", Status: 409);
             if (current!.Transfer!.Status is TransferStatus.Committed or TransferStatus.Aborted) return new(Status(current));
             if (!Owns(current, server, request.LeaseId, request.AuthorityEpoch, clock.GetUtcNow())) return new(Error: "lease_rejected", Status: 409);
-            var next = current with { Version = current.Version + 1, TicketHash = null, Transfer = current.Transfer with { Status = TransferStatus.Aborted } };
+            var next = current with { Version = current.Version + 1, TicketHash = null,
+                State = current.Transfer.SourceState ?? current.State, Transfer = current.Transfer with { Status = TransferStatus.Aborted } };
             if (await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.ActiveLease)) return new(Status(next));
         }
         return new(Error: "transfer_conflict", Status: 409);
@@ -227,7 +264,8 @@ public sealed partial class GameAdmissionService
         if (character is null || character.RealmId != value.RealmId || value.Transfer is not { } transfer) return null;
         return new(value.AccountId, CharacterResponse.From(character), value.RealmId, transfer.TargetServerId,
             committed ? value.LeaseId : Guid.Empty, committed ? value.AuthorityEpoch : transfer.SourceEpoch + 1,
-            value.LeaseExpiresAt, value.SessionExpiresAt, committed ? value.State : transfer.State);
+            value.LeaseExpiresAt, value.SessionExpiresAt, committed ? value.State : transfer.State)
+            { AreaId = transfer.TargetArea?.AreaId, ContentId = transfer.TargetArea?.ContentId };
     }
 
     private static bool MatchesSource(GameLeaseRecord? current, Guid id, DedicatedServerIdentity server, Guid leaseId, long epoch) =>
@@ -239,6 +277,7 @@ public sealed partial class GameAdmissionService
         value.ServerId, value.AuthorityEpoch, value.Transfer.ExpiresAt, value.State?.Revision ?? 0);
     private static bool SameState(SavedWorldState state, GamePosition position, GameForward forward, ActorStateEnvelope simulation) =>
         state.Position == position && state.Forward == forward && state.Simulation == simulation;
+    private static GamePosition ArrivalPosition(GameAreaTransition transition) => new(transition.TargetPosition.X, transition.TargetPosition.Y, transition.TargetPosition.Z);
     private static string TransferTicket(DedicatedServerIdentity server, Guid characterId, Guid transferId, Guid leaseId, long epoch) =>
         Convert.ToBase64String(HMACSHA256.HashData(Encoding.UTF8.GetBytes(server.Key),
             Encoding.UTF8.GetBytes(FormattableString.Invariant($"arkya-transfer-v1/{characterId:D}/{transferId:D}/{leaseId:D}/{epoch}")))).TrimEnd('=').Replace('+', '-').Replace('/', '_');

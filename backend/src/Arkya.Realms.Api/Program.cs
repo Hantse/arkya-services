@@ -14,7 +14,7 @@ public partial class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 32768);
+        builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 131072);
         builder.Services.ConfigureHttpJsonOptions(options =>
         {
             options.SerializerOptions.UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow;

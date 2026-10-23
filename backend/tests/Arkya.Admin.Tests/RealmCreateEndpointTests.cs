@@ -48,7 +48,7 @@ public sealed class RealmCreateEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/Realms");
-        Assert.Contains("href=\"/CreateRealm\">Créer un royaume", WebUtility.HtmlDecode(html));
+        Assert.Contains("href=\"/CreateRealm\">Create a realm", WebUtility.HtmlDecode(html));
         Assert.Contains("class=\"realm-inventory\"", html);
         Assert.Contains("href=\"/Realms/terres-aube\"", html);
         Assert.DoesNotContain("realms-workspace", html);
@@ -67,12 +67,12 @@ public sealed class RealmCreateEndpointTests
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/CreateRealm");
         var decoded = WebUtility.HtmlDecode(html);
-        Assert.Contains("<h1>Créer un royaume</h1>", decoded);
+        Assert.Contains("<h1>Create a realm</h1>", decoded);
         Assert.Contains("action=\"/CreateRealm?handler=Create\"", html);
         Assert.Contains("formaction=\"/CreateRealm?handler=AddIsland\"", html);
         Assert.Contains("formaction=\"/CreateRealm?handler=RemoveIsland\"", html);
-        Assert.Contains("href=\"/Realms\">Retour à la liste", decoded);
-        Assert.Contains("href=\"/Realms\">Annuler", decoded);
+        Assert.Contains("href=\"/Realms\">Back to list", decoded);
+        Assert.Contains("href=\"/Realms\">Cancel", decoded);
         Assert.Contains("Input.TargetId", html);
         Assert.Contains("Input.ProfileId", html);
         Assert.Contains("Input.ConfigureTopology", html);
@@ -105,7 +105,7 @@ public sealed class RealmCreateEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/CreateRealm");
-        Assert.Contains("La gestion des realms est désactivée", WebUtility.HtmlDecode(html));
+        Assert.Contains("Realm management is disabled", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain("handler=Create", html);
         Assert.Empty(factory.Realms.Calls);
     }
@@ -149,9 +149,9 @@ public sealed class RealmCreateEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync("/CreateRealm"));
-        Assert.Matches("<button[^>]+disabled=\"disabled\"[^>]*>Créer le royaume</button>", html);
-        Assert.Contains("Configuration incomplète", html);
-        Assert.Contains("href=\"/Realms\">Annuler", html);
+        Assert.Matches("<button[^>]+disabled=\"disabled\"[^>]*>Create realm</button>", html);
+        Assert.Contains("Incomplete configuration", html);
+        Assert.Contains("href=\"/Realms\">Cancel", html);
     }
 
     [Theory]
@@ -166,7 +166,7 @@ public sealed class RealmCreateEndpointTests
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/CreateRealm");
         Assert.Contains("role=\"alert\"", html);
-        Assert.Contains("href=\"/CreateRealm\">Réessayer", WebUtility.HtmlDecode(html));
+        Assert.Contains("href=\"/CreateRealm\">Try again", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain("handler=Create", html);
         AdminFactory.NoSecrets(html);
     }

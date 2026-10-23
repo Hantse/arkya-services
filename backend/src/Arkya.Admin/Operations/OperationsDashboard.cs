@@ -12,7 +12,7 @@ namespace Arkya.Admin.Operations;
 
 public sealed record ServiceObservation(string Name, string Purpose, string State, long? ElapsedMilliseconds)
 {
-    public string Label => State switch { "ready" => "Disponible", "disabled" => "Non configuré", _ => "Indisponible" };
+    public string Label => State switch { "ready" => "Available", "disabled" => "Not configured", _ => "Unavailable" };
 }
 
 public sealed record DashboardSnapshot(DateTimeOffset ObservedAt, ServiceObservation[] Services,
@@ -25,17 +25,17 @@ public sealed class OperationsDashboard(IdentityAdminClient identity, Characters
     public async Task<DashboardSnapshot> ReadAsync(CancellationToken ct)
     {
         // Independent probes prevent one unavailable dependency from hiding the others.
-        var accounts = Observe("Identity", "Comptes, sessions et accès", identity.Enabled,
+        var accounts = Observe("Identity", "Accounts, sessions and access", identity.Enabled,
             token => identity.ListAsync(null, 1, 1, token), ct);
-        var players = Observe("Characters", "Personnages et connexions de jeu", characters.Enabled,
+        var players = Observe("Characters", "Characters and game connections", characters.Enabled,
             token => characters.OverviewAsync(token), ct);
-        var worlds = Observe("Realms", "Catalogue et workloads k3s", realms.Enabled,
+        var worlds = Observe("Realms", "Catalogue and k3s workloads", realms.Enabled,
             token => realms.ListAsync(token), ct);
-        var quests = Observe("Content", "Brouillons et catalogues de quêtes", contentOptions.Value.Enabled,
+        var quests = Observe("Content", "Quest drafts and catalogues", contentOptions.Value.Enabled,
             token => content.GetDraftAsync(token), ct);
-        var bugs = Observe("Reports", "Bugs et suggestions", reports.Enabled,
+        var bugs = Observe("Reports", "Bugs and suggestions", reports.Enabled,
             token => reports.ListAsync(null, null, 0, 1, token), ct);
-        var agents = Observe("Inference", "Agents et workers LFM", inference.Enabled,
+        var agents = Observe("Inference", "LFM agents and workers", inference.Enabled,
             token => inference.ListAsync(token), ct);
         await Task.WhenAll(accounts, players, worlds, quests, bugs, agents);
         return new(clock.GetUtcNow(), [(await accounts).Status, (await players).Status, (await worlds).Status,

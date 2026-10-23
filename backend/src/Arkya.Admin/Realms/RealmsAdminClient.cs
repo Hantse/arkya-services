@@ -3,6 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.Options;
+using Arkya.ServiceDefaults;
 
 namespace Arkya.Admin.Realms;
 
@@ -60,8 +61,14 @@ public sealed record AreaBounds(double MinX, double MinZ, double MaxX, double Ma
 public sealed record RealmIslandTopology(string IslandId, int DedicatedCount, double Width = 1000, double Depth = 1000,
     double OriginX = 0, double OriginZ = 0,
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridColumns = null,
-    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridRows = null);
-public sealed record RealmTopology(RealmIslandTopology[] Islands, int InstanceDedicatedCount, int RaidDedicatedCount);
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridRows = null)
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public string? ContentId { get; init; }
+}
+public sealed record RealmTopology(RealmIslandTopology[] Islands, int InstanceDedicatedCount, int RaidDedicatedCount)
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public GameAreaTransition[]? AreaTransitions { get; init; }
+}
 public sealed record CreateRealmRequest(string RealmId, string DisplayName, string TargetId, string ProfileId,
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] RealmTopology? Topology = null);
 
@@ -105,7 +112,7 @@ public sealed class RealmsAdminClient(HttpClient client, IOptions<RealmsApiOptio
 
     private async Task<T> SendAsync<T>(HttpMethod method, string path, object? body, CancellationToken ct, string? actor = null)
     {
-        if (!Enabled) throw new RealmsApiException(HttpStatusCode.ServiceUnavailable, "La gestion des realms est désactivée sur cette installation.");
+        if (!Enabled) throw new RealmsApiException(HttpStatusCode.ServiceUnavailable, "Realm management is disabled on this installation.");
         using var request = new HttpRequestMessage(method, path);
         request.Headers.Add("X-Arkya-Admin-Key", options.Value.AdminKey);
         if (actor is not null) request.Headers.Add("X-Arkya-Admin-Actor", actor);
@@ -115,22 +122,22 @@ public sealed class RealmsAdminClient(HttpClient client, IOptions<RealmsApiOptio
         {
             var message = response.StatusCode switch
             {
-                HttpStatusCode.Conflict => "Ce realm existe déjà, a changé ou possède un déploiement en cours. Actualisez avant de réessayer.",
-                HttpStatusCode.BadRequest => "Vérifiez les champs, le motif et la disponibilité de cette action.",
-                HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "L'accès aux realms a été refusé. Vérifiez la configuration de l'administration.",
-                HttpStatusCode.NotFound => "Ce realm n'existe pas ou n'est plus disponible.",
-                _ => "Le service des realms est indisponible. Réessayez dans un instant."
+                HttpStatusCode.Conflict => "This realm already exists, has changed or has a deployment in progress. Refresh before trying again.",
+                HttpStatusCode.BadRequest => "Check the fields, reason and availability of this action.",
+                HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "Access to realms was denied. Check the administration configuration.",
+                HttpStatusCode.NotFound => "This realm does not exist or is no longer available.",
+                _ => "The realm service is unavailable. Try again shortly."
             };
             throw new RealmsApiException(response.StatusCode, message);
         }
         try
         {
             return await response.Content.ReadFromJsonAsync<T>(ct)
-                ?? throw new RealmsApiException(HttpStatusCode.BadGateway, "Le service des realms a renvoyé une réponse vide.");
+                ?? throw new RealmsApiException(HttpStatusCode.BadGateway, "The realm service returned an empty response.");
         }
         catch (JsonException)
         {
-            throw new RealmsApiException(HttpStatusCode.BadGateway, "Le service des realms a renvoyé une réponse invalide.");
+            throw new RealmsApiException(HttpStatusCode.BadGateway, "The realm service returned an invalid response.");
         }
     }
 }
@@ -160,12 +167,12 @@ public static class RealmPresentation
 {
     public static string CommandLabel(string type) => type switch
     {
-        "announce" => "Annonce en jeu", "kick" => "Déconnecter un personnage", "save" => "Sauvegarder les joueurs", _ => "Commande"
+        "announce" => "In-game announcement", "kick" => "Disconnect a character", "save" => "Save players", _ => "Command"
     };
     public static string CommandStatusLabel(string status) => status switch
     {
-        "Pending" => "En attente du serveur", "Dispatched" => "Transmise au serveur", "Succeeded" => "Exécutée",
-        "Failed" => "Échec", "Expired" => "Expirée sans envoi", "Unknown" => "Résultat inconnu", _ => "État inconnu"
+        "Pending" => "Awaiting server", "Dispatched" => "Sent to server", "Succeeded" => "Executed",
+        "Failed" => "Failed", "Expired" => "Expired without sending", "Unknown" => "Unknown result", _ => "Unknown state"
     };
     public static string CommandStatusClass(string status) => status switch
     {
@@ -173,56 +180,56 @@ public static class RealmPresentation
     };
     public static string CommandFailureMessage(string? resultCode) => resultCode switch
     {
-        "player_not_found" => "Ce personnage n’est plus connecté à ce serveur.",
-        "unsupported" => "Le serveur ne prend pas en charge cette commande.",
-        _ => "Le serveur n’a pas pu exécuter la commande. Vérifiez son état avant de réessayer."
+        "player_not_found" => "This character is no longer connected to this server.",
+        "unsupported" => "The server does not support this command.",
+        _ => "The server could not execute the command. Check its status before trying again."
     };
     public static string FailureMessage(string? code) => code switch
     {
-        "target_unavailable" => "La cible de déploiement n'est plus configurée. Rétablissez cette cible dans le service Realms.",
-        "deployment_progress_failed" => "Le cluster signale un échec de démarrage. Vérifiez les événements et les journaux des serveurs dédiés.",
-        "resource_conflict" => "Une ressource a changé pendant sa création. Vérifiez les ressources du realm avant de réessayer.",
-        "resource_deleting" => "Une ressource du realm est en cours de suppression. Attendez la fin de cette opération avant de réessayer.",
-        "resource_ownership_conflict" => "Une ressource existante appartient à un autre propriétaire. Vérifiez les noms et les étiquettes dans le namespace cible.",
-        "resource_configuration_drift" => "Les ressources du cluster diffèrent de la configuration enregistrée. Rétablissez la configuration attendue avant de réessayer.",
-        "cluster_credentials_invalid" => "Les identifiants du cluster sont invalides. Vérifiez le jeton du compte de service.",
-        "registry_credentials_unreadable" => "Les identifiants GHCR sont illisibles. Vérifiez le montage du Secret de registre dans Realms.",
-        "registry_credentials_invalid" => "Les identifiants GHCR sont invalides. Vérifiez le fichier Docker du Secret de registre.",
-        "runtime_configuration_invalid" => "Le profil dédié est incompatible avec la configuration du runtime ou du registre.",
-        "cluster_access_denied" => "Le cluster a refusé l'accès. Vérifiez le compte de service et ses droits dans le namespace cible.",
-        "target_namespace_missing" => "Le namespace cible n'existe pas. Créez-le et configurez ses droits avant de réessayer.",
-        "cluster_resource_rejected" => "Le cluster a refusé les ressources demandées. Vérifiez le profil et les contraintes du namespace cible.",
-        "cluster_unavailable" => "Le cluster ne répond pas. Vérifiez sa disponibilité et la connexion du service Realms.",
-        "cluster_response_invalid" => "Le cluster a renvoyé une réponse invalide. Vérifiez sa disponibilité avant de réessayer.",
-        "deployment_timeout" => "Les serveurs ne sont pas devenus prêts dans le délai prévu. Vérifiez leur image, leurs ressources et les événements du cluster.",
-        _ => "Le déploiement a échoué. Vérifiez les événements du cluster et la configuration du service Realms avant de réessayer."
+        "target_unavailable" => "The deployment target is no longer configured. Restore this target in the Realms service.",
+        "deployment_progress_failed" => "The cluster reports a startup failure. Check the dedicated server events and logs.",
+        "resource_conflict" => "A resource changed during creation. Check the realm resources before trying again.",
+        "resource_deleting" => "A realm resource is being deleted. Wait for this operation to finish before trying again.",
+        "resource_ownership_conflict" => "An existing resource belongs to another owner. Check names and labels in the target namespace.",
+        "resource_configuration_drift" => "Cluster resources differ from the saved configuration. Restore the expected configuration before trying again.",
+        "cluster_credentials_invalid" => "The cluster credentials are invalid. Check the service account token.",
+        "registry_credentials_unreadable" => "The GHCR credentials cannot be read. Check the registry Secret mount in Realms.",
+        "registry_credentials_invalid" => "The GHCR credentials are invalid. Check the registry Secret's Docker file.",
+        "runtime_configuration_invalid" => "The dedicated profile is incompatible with the runtime or registry configuration.",
+        "cluster_access_denied" => "The cluster denied access. Check the service account and its permissions in the target namespace.",
+        "target_namespace_missing" => "The target namespace does not exist. Create it and configure its permissions before trying again.",
+        "cluster_resource_rejected" => "The cluster rejected the requested resources. Check the profile and target namespace constraints.",
+        "cluster_unavailable" => "The cluster is not responding. Check its availability and the Realms service connection.",
+        "cluster_response_invalid" => "The cluster returned an invalid response. Check its availability before trying again.",
+        "deployment_timeout" => "The servers did not become ready within the deadline. Check their image, resources and cluster events.",
+        _ => "Deployment failed. Check cluster events and the Realms service configuration before trying again."
     };
     public static bool CanDeploy(RealmSummary realm) => realm.Status is "Draft" or "Failed";
     public static bool CanDelete(RealmSummary realm) => realm.Status is "Draft" or "Ready" or "Failed" or "DeleteFailed"
         && !(realm.Operations?.Any(operation => operation.Status is "Pending" or "Deploying" or "Deleting") ?? false);
     public static string DeleteFailureMessage(string? code) => code switch
     {
-        "deletion_timeout" => "Les ressources du realm n’ont pas disparu dans le délai prévu. Vérifiez le cluster avant de relancer la suppression.",
-        "resource_protected" => "Une ressource du realm est protégée. Vérifiez sa protection dans le namespace cible avant de relancer la suppression.",
-        "resource_ownership_conflict" => "Une ressource porte un autre propriétaire. Vérifiez les étiquettes du realm dans le namespace cible avant de relancer la suppression.",
-        "cluster_access_denied" => "Le cluster a refusé la suppression. Vérifiez les droits du compte de service dans le namespace cible.",
-        _ => "La suppression a échoué. Vérifiez les ressources du realm et la disponibilité du cluster avant de réessayer."
+        "deletion_timeout" => "The realm resources were not removed within the deadline. Check the cluster before retrying deletion.",
+        "resource_protected" => "A realm resource is protected. Check its protection in the target namespace before retrying deletion.",
+        "resource_ownership_conflict" => "A resource has a different owner. Check realm labels in the target namespace before retrying deletion.",
+        "cluster_access_denied" => "The cluster denied deletion. Check service account permissions in the target namespace.",
+        _ => "Deletion failed. Check the realm resources and cluster availability before trying again."
     };
     public static string ServerKindLabel(string kind) => kind switch
     {
-        "Island" => "Partition d’Area", "Instance" => "Instance", "Raid" => "Raid", _ => "Monde ouvert"
+        "Island" => "Area partition", "Instance" => "Instance", "Raid" => "Raid", _ => "Open world"
     };
     public static string StatusLabel(string status) => status switch
     {
-        "Draft" => "Brouillon",
-        "Pending" => "En attente",
-        "Deploying" => "Déploiement en cours",
-        "Ready" => "Déploiement prêt",
-        "Failed" => "Déploiement en échec",
-        "Deleting" => "Suppression en cours",
-        "DeleteFailed" => "Suppression en échec",
-        "Deleted" => "Supprimé",
-        _ => "État inconnu"
+        "Draft" => "Draft",
+        "Pending" => "Pending",
+        "Deploying" => "Deploying",
+        "Ready" => "Deployment ready",
+        "Failed" => "Deployment failed",
+        "Deleting" => "Deleting",
+        "DeleteFailed" => "Deletion failed",
+        "Deleted" => "Deleted",
+        _ => "Unknown state"
     };
     public static string StatusClass(string status) => status switch
     {
@@ -231,5 +238,5 @@ public static class RealmPresentation
     public static bool IsDependencyError(Exception ex, CancellationToken ct) => ex is RealmsApiException or HttpRequestException
         || ex is OperationCanceledException && !ct.IsCancellationRequested;
     public static string ErrorMessage(Exception ex) => ex is RealmsApiException ? ex.Message
-        : "Le service des realms est indisponible. Réessayez dans un instant.";
+        : "The realm service is unavailable. Try again shortly.";
 }

@@ -35,17 +35,17 @@ public static class ContentPublicationPresentation
 {
     public static bool IsKind(string? kind) => kind is "news" or "release-note";
     public static bool IsLanguage(string? language) => language is "fr" or "en";
-    public static string KindLabel(string kind) => kind == "release-note" ? "Notes de version" : "Actualité";
-    public static string LanguageLabel(string language) => language == "en" ? "Anglais" : "Français";
+    public static string KindLabel(string kind) => kind == "release-note" ? "Release notes" : "News";
+    public static string LanguageLabel(string language) => language == "en" ? "English" : "French";
     public static bool IsDependencyError(Exception ex, CancellationToken ct) => ex is ContentApiException or HttpRequestException
         || ex is TaskCanceledException && !ct.IsCancellationRequested;
     public static string ErrorMessage(Exception ex) => ex is ContentApiException ? ex.Message : ErrorMessage(HttpStatusCode.ServiceUnavailable);
     public static string ErrorMessage(HttpStatusCode status) => status switch
     {
-        HttpStatusCode.Conflict => "Cette publication a changé. Copiez vos modifications, puis rechargez la page avant de réessayer.",
-        HttpStatusCode.BadRequest => "Vérifiez les champs, la langue et la version du jeu pour les notes de version.",
-        HttpStatusCode.NotFound => "Cette publication n'existe plus.",
-        HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "L'accès aux publications a été refusé. Vérifiez la configuration de l'administration.",
-        _ => "Le service de publications est indisponible. Réessayez dans un instant."
+        HttpStatusCode.Conflict => "This publication has changed. Copy your changes, then reload the page before trying again.",
+        HttpStatusCode.BadRequest => "Check the fields, language and game version for release notes.",
+        HttpStatusCode.NotFound => "This publication no longer exists.",
+        HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "Access to publications was denied. Check the administration configuration.",
+        _ => "The publication service is unavailable. Try again shortly."
     };
 }

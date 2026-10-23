@@ -19,7 +19,7 @@ public sealed class LoginModel(IOptions<AdminOptions> options) : PageModel
 
     public IActionResult OnGet(string? error)
     {
-        if (error == "discord") ModelState.AddModelError("", "Connexion Discord refusée ou interrompue. Utilisez le compte administrateur autorisé puis réessayez.");
+        if (error == "discord") ModelState.AddModelError("", "Discord sign-in was denied or interrupted. Use the authorised administrator account and try again.");
         return User.Identity?.IsAuthenticated == true
             ? LocalRedirect(AdminDiscordAuthentication.LocalReturnUrl(ReturnUrl)) : Page();
     }
@@ -32,11 +32,11 @@ public sealed class LoginModel(IOptions<AdminOptions> options) : PageModel
         var expected = SHA256.HashData(Encoding.UTF8.GetBytes(options.Value.Password));
         if (!CryptographicOperations.FixedTimeEquals(actual, expected))
         {
-            ModelState.AddModelError("", "Mot de passe incorrect.");
+            ModelState.AddModelError("", "Incorrect password.");
             return Page();
         }
         var principal = new ClaimsPrincipal(new ClaimsIdentity([
-            new Claim(ClaimTypes.Name, "Administrateur"), new Claim(ClaimTypes.Role, "Administrator")
+            new Claim(ClaimTypes.Name, "Administrator"), new Claim(ClaimTypes.Role, "Administrator")
         ], CookieAuthenticationDefaults.AuthenticationScheme));
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
         return LocalRedirect(Url.IsLocalUrl(ReturnUrl) ? ReturnUrl! : "/");

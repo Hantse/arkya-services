@@ -156,7 +156,7 @@ public sealed class ItemsEndpointTests
         using var response = await browser.PostAsync("/Item/sword?handler=Save", AdminFactory.Form(form));
         var html = await response.Content.ReadAsStringAsync();
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Contains("Copiez vos modifications", WebUtility.HtmlDecode(html));
+        Assert.Contains("Copy your changes", WebUtility.HtmlDecode(html));
         Assert.Equal("  Épée de garde  ", AdminFactory.Input(html, "Input.Name"));
         Assert.Equal("3", AdminFactory.Input(html, "Revision"));
         Assert.Equal(ContentStub.Sword, Assert.Single(factory.Content.ItemsDraft.Items));

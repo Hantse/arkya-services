@@ -54,9 +54,9 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
                 if (draft.Revision != Revision) throw new ContentApiException(HttpStatusCode.Conflict, ContentItemPresentation.ErrorMessage(HttpStatusCode.Conflict));
                 if (id is not null && !draft.Items.Any(i => i.ItemId == id)) return NotFound();
                 if (id is null && draft.Items.Any(i => i.ItemId == Input.ItemId))
-                    ModelState.AddModelError("Input.ItemId", "Cet identifiant est déjà utilisé par un autre objet.");
+                    ModelState.AddModelError("Input.ItemId", "This ID is already used by another item.");
                 else if (id is null && draft.Items.Length >= 256)
-                    ModelState.AddModelError("", "Un catalogue contient au maximum 256 objets.");
+                    ModelState.AddModelError("", "A catalogue can contain up to 256 items.");
                 else
                 {
                     var items = draft.Items.ToList();
@@ -64,7 +64,7 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
                     if (id is null) items.Add(definition);
                     else items[items.FindIndex(i => i.ItemId == id)] = definition;
                     await content.SaveItemDraftAsync(new(Revision, items.ToArray()), ct);
-                    Notice = "Objet enregistré dans le brouillon. Publiez le catalogue pour préparer sa synchronisation Unity.";
+                    Notice = "Item saved in the draft. Publish the catalogue to prepare its Unity synchronisation.";
                     return RedirectToPage(new { id = definition.ItemId });
                 }
             }
@@ -96,22 +96,22 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
 
     private void ValidateInput(string? id)
     {
-        if (!ContentItemPresentation.IsItemId(Input.ItemId)) ModelState.AddModelError("Input.ItemId", "Utilisez des minuscules, chiffres et tirets simples, jusqu'à 64 caractères.");
-        if (id is not null && Input.ItemId != id) ModelState.AddModelError("Input.ItemId", "L'identifiant d'un objet enregistré est permanent.");
-        if (!ContentItemPresentation.Categories.ContainsKey(Input.Category ?? "")) ModelState.AddModelError("Input.Category", "Choisissez un type d'objet.");
-        if (!ContentItemPresentation.Rarities.ContainsKey(Input.Rarity ?? "")) ModelState.AddModelError("Input.Rarity", "Choisissez une rareté.");
+        if (!ContentItemPresentation.IsItemId(Input.ItemId)) ModelState.AddModelError("Input.ItemId", "Use lowercase letters, digits and single hyphens, up to 64 characters.");
+        if (id is not null && Input.ItemId != id) ModelState.AddModelError("Input.ItemId", "A saved item's ID is permanent.");
+        if (!ContentItemPresentation.Categories.ContainsKey(Input.Category ?? "")) ModelState.AddModelError("Input.Category", "Choose an item type.");
+        if (!ContentItemPresentation.Rarities.ContainsKey(Input.Rarity ?? "")) ModelState.AddModelError("Input.Rarity", "Choose a rarity.");
         var validSlot = Input.Category switch
         {
             "weapon" or "tool" => Input.EquipmentSlot is "main-hand" or "off-hand",
             "armor" => Input.EquipmentSlot is "head" or "chest" or "hands" or "legs" or "feet" or "neck" or "shoulders" or "back" or "waist" or "finger",
             _ => Input.EquipmentSlot == "none"
         };
-        if (!validSlot) ModelState.AddModelError("Input.EquipmentSlot", "Choisissez un emplacement compatible avec ce type d'objet.");
-        if (Input.Category is "weapon" or "armor" or "tool" && Input.MaxStack != 1) ModelState.AddModelError("Input.MaxStack", "Les armes, armures et outils ne s'empilent pas : indiquez 1.");
-        if (!ContentItemPresentation.IsAssetGuid(Input.VisualAssetGuid)) ModelState.AddModelError("Input.VisualAssetGuid", "Choisissez un modèle dans la bibliothèque Unity.");
-        if (Input.Name?.Any(char.IsControl) == true) ModelState.AddModelError("Input.Name", "Le nom doit tenir sur une seule ligne.");
+        if (!validSlot) ModelState.AddModelError("Input.EquipmentSlot", "Choose a slot compatible with this item type.");
+        if (Input.Category is "weapon" or "armor" or "tool" && Input.MaxStack != 1) ModelState.AddModelError("Input.MaxStack", "Weapons, armour and tools cannot be stacked: enter 1.");
+        if (!ContentItemPresentation.IsAssetGuid(Input.VisualAssetGuid)) ModelState.AddModelError("Input.VisualAssetGuid", "Choose a model from the Unity library.");
+        if (Input.Name?.Any(char.IsControl) == true) ModelState.AddModelError("Input.Name", "The name must fit on a single line.");
         if (Input.Description?.Any(c => char.IsControl(c) && c is not ('\r' or '\n' or '\t')) == true)
-            ModelState.AddModelError("Input.Description", "La description contient un caractère de contrôle non autorisé.");
+            ModelState.AddModelError("Input.Description", "The description contains a prohibited control character.");
     }
 
     private async Task LoadAssetsAsync(CancellationToken ct)
@@ -125,7 +125,7 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
                 if (SelectedAsset is null)
                 {
                     try { SelectedAsset = await content.GetItemAssetAsync(Input.VisualAssetGuid, ct); }
-                    catch (ContentApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound) { AssetError = "Le modèle sélectionné n'est plus dans la bibliothèque. Choisissez un autre modèle."; }
+                    catch (ContentApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound) { AssetError = "The selected model is no longer in the library. Choose another model."; }
                 }
             }
         }
@@ -134,13 +134,13 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
 
     public sealed class ItemInput
     {
-        [Required(ErrorMessage = "Renseignez un identifiant."), StringLength(64)] public string ItemId { get; set; } = "";
-        [Required(ErrorMessage = "Renseignez un nom."), StringLength(120)] public string Name { get; set; } = "";
+        [Required(ErrorMessage = "Enter an ID."), StringLength(64)] public string ItemId { get; set; } = "";
+        [Required(ErrorMessage = "Enter a name."), StringLength(120)] public string Name { get; set; } = "";
         [StringLength(2000)] public string? Description { get; set; } = "";
         [Required] public string Category { get; set; } = "weapon";
         [Required] public string Rarity { get; set; } = "common";
         [Required] public string EquipmentSlot { get; set; } = "main-hand";
-        [Required(ErrorMessage = "Choisissez un modèle Unity.")] public string VisualAssetGuid { get; set; } = "";
+        [Required(ErrorMessage = "Choose a Unity model.")] public string VisualAssetGuid { get; set; } = "";
         [Range(1, 9999)] public int MaxStack { get; set; } = 1;
         [Range(0, 1000000)] public int WeightGrams { get; set; }
         [Range(1, 1000)] public int RequiredLevel { get; set; } = 1;

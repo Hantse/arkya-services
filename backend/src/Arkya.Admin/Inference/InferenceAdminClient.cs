@@ -48,7 +48,7 @@ public sealed class InferenceAdminClient(HttpClient client, IOptions<InferenceAp
     {
         if (!Enabled)
             throw new InferenceApiException(HttpStatusCode.ServiceUnavailable,
-                "La gestion de l’inférence est désactivée sur cette installation.");
+                "Inference management is disabled on this installation.");
         var request = new HttpRequestMessage(method, path);
         request.Headers.Add("X-Arkya-Admin-Key", options.Value.AdminKey);
         if (body is not null) request.Content = JsonContent.Create(body);
@@ -75,18 +75,18 @@ public sealed class InferenceAdminClient(HttpClient client, IOptions<InferenceAp
     }
 
     private static InferenceApiException InvalidResponse() =>
-        new(HttpStatusCode.BadGateway, "Le service d’inférence a renvoyé une réponse invalide.");
+        new(HttpStatusCode.BadGateway, "The inference service returned an invalid response.");
 
     private static void EnsureSuccess(HttpResponseMessage response)
     {
         if (response.IsSuccessStatusCode) return;
         throw new InferenceApiException(response.StatusCode, response.StatusCode switch
         {
-            HttpStatusCode.BadRequest => "Vérifiez l’identifiant, le nom, le modèle et les limites de workers et de threads.",
-            HttpStatusCode.Conflict => "La configuration a changé ou une limite est atteinte. Actualisez avant de réessayer ; une machine doit être vide pour être supprimée.",
-            HttpStatusCode.NotFound => "Cette machine ou ce worker n’existe plus. Actualisez la liste.",
-            HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "L’accès à l’inférence a été refusé. Vérifiez la configuration de l’administration.",
-            _ => "Le service d’inférence est indisponible. Réessayez dans un instant."
+            HttpStatusCode.BadRequest => "Check the ID, name, model and worker and thread limits.",
+            HttpStatusCode.Conflict => "The configuration has changed or a limit has been reached. Refresh before trying again; a machine must be empty before deletion.",
+            HttpStatusCode.NotFound => "This machine or worker no longer exists. Refresh the list.",
+            HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "Access to inference was denied. Check the administration configuration.",
+            _ => "The inference service is unavailable. Try again shortly."
         });
     }
 }
@@ -95,15 +95,15 @@ public static class InferencePresentation
 {
     public static string StateLabel(string? state) => state?.ToLowerInvariant() switch
     {
-        "ready" or "running" => "Prêt",
-        "busy" => "En conversation",
-        "offline" => "Hors ligne",
-        "unhealthy" => "Indisponible",
-        "starting" or "loading" => "Démarrage",
-        "stopping" => "Arrêt en cours",
-        "stopped" => "Arrêté",
-        "failed" or "error" => "En échec",
-        _ => "État inconnu"
+        "ready" or "running" => "Ready",
+        "busy" => "In conversation",
+        "offline" => "Offline",
+        "unhealthy" => "Unavailable",
+        "starting" or "loading" => "Starting",
+        "stopping" => "Stopping",
+        "stopped" => "Stopped",
+        "failed" or "error" => "Failed",
+        _ => "Unknown state"
     };
 
     public static string StateClass(string? state) => state?.ToLowerInvariant() switch
@@ -120,5 +120,5 @@ public static class InferencePresentation
         ex is OperationCanceledException && !ct.IsCancellationRequested;
 
     public static string ErrorMessage(Exception ex) => ex is InferenceApiException ? ex.Message
-        : "Le service d’inférence est indisponible. Réessayez dans un instant.";
+        : "The inference service is unavailable. Try again shortly.";
 }

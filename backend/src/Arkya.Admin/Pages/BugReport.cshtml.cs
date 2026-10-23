@@ -36,18 +36,18 @@ public sealed class BugReportModel(ReportsAdminClient reports) : PageModel
         if (!reports.Enabled || id == Guid.Empty) return NotFound();
         if (!ModelState.IsValid && ModelState.TryGetValue(nameof(ExpectedRevision), out var revision) && revision.Errors.Count > 0)
             return BadRequest();
-        if (!BugReportStatuses.All.Contains(Input.Status)) ModelState.AddModelError("Input.Status", "Choisissez un statut disponible.");
+        if (!BugReportStatuses.All.Contains(Input.Status)) ModelState.AddModelError("Input.Status", "Choose an available status.");
         var tags = (Input.Tags ?? "").Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
             .Select(tag => tag.ToLowerInvariant()).Distinct(StringComparer.Ordinal).ToArray();
         if (tags.Length > 10 || tags.Any(tag => !BugReportsModel.ValidTag(tag)))
-            ModelState.AddModelError("Input.Tags", "Utilisez au plus 10 tags de 1 à 32 minuscules, chiffres, tirets ou underscores, séparés par des virgules.");
+            ModelState.AddModelError("Input.Tags", "Use up to 10 comma-separated tags of 1 to 32 lowercase letters, digits, hyphens or underscores.");
         if (!ModelState.IsValid) return await LoadAsync(id, false, ct);
         try
         {
             var discordId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var actor = discordId is null ? "admin:operator" : "admin:discord:" + discordId;
             await reports.UpdateAsync(id, new(ExpectedRevision, Input.Status, tags, Input.Resolution ?? ""), actor, ct);
-            Notice = "Rapport mis à jour.";
+            Notice = "Report updated.";
             return RedirectToPage(new { id });
         }
         catch (ReportsApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound) { return NotFound(); }

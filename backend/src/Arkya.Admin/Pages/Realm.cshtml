@@ -5,29 +5,29 @@
     ViewData["Title"] = Model.Realm?.DisplayName ?? "Realm";
 }
 <div class="realm-workspace">
-<header class="page-header realm-header"><div><div class="eyebrow">UNIVERS / EXPLOITATION</div><h1>@(Model.Realm?.DisplayName ?? "Realm")</h1>@if (Model.Realm is { } current) { <div class="realm-heading-meta"><span class="mono">@current.RealmId</span><span class="realm-status @RealmPresentation.StatusClass(current.Status)">@RealmPresentation.StatusLabel(current.Status)</span></div> }</div><a class="button secondary" asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]" asp-route-section="@Model.ActiveSection" asp-route-island="@(Model.ActiveSection == "overview" ? Model.SelectedIsland?.Plan.IslandId : null)" asp-route-search="@(Model.ActiveSection == "players" ? Model.Search : null)" asp-route-onlineOnly="@(Model.ActiveSection == "players" && Model.OnlineOnly ? "true" : null)" asp-route-pageNumber="@(Model.ActiveSection == "players" && Model.PageNumber != 1 ? Model.PageNumber : (int?)null)" asp-route-pageSize="@(Model.ActiveSection == "players" && Model.PageSize != 25 ? Model.PageSize : (int?)null)">Actualiser</a></header>
-@if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice <a asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]" asp-route-section="history">Voir l’historique</a></div> }
+<header class="page-header realm-header"><div><div class="eyebrow">WORLD / OPERATIONS</div><h1>@(Model.Realm?.DisplayName ?? "Realm")</h1>@if (Model.Realm is { } current) { <div class="realm-heading-meta"><span class="mono">@current.RealmId</span><span class="realm-status @RealmPresentation.StatusClass(current.Status)">@RealmPresentation.StatusLabel(current.Status)</span></div> }</div><a class="button secondary" asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]" asp-route-section="@Model.ActiveSection" asp-route-island="@(Model.ActiveSection == "overview" ? Model.SelectedIsland?.Plan.IslandId : null)" asp-route-search="@(Model.ActiveSection == "players" ? Model.Search : null)" asp-route-onlineOnly="@(Model.ActiveSection == "players" && Model.OnlineOnly ? "true" : null)" asp-route-pageNumber="@(Model.ActiveSection == "players" && Model.PageNumber != 1 ? Model.PageNumber : (int?)null)" asp-route-pageSize="@(Model.ActiveSection == "players" && Model.PageSize != 25 ? Model.PageSize : (int?)null)">Refresh</a></header>
+@if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice <a asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]" asp-route-section="history">View history</a></div> }
 @if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error</div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
 @if (Model.Realm is { } realm)
 {
     @if (realm.Status == "Failed") { <div class="alert error realm-alert" role="alert">@RealmPresentation.FailureMessage(realm.LastError)</div> }
     @if (realm.Status == "DeleteFailed") { <div class="alert error realm-alert" role="alert">@RealmPresentation.DeleteFailureMessage(realm.LastError)</div> }
-    @if (realm.Status == "Deleting") { <p class="realm-progress-note" role="status">Suppression en cours. Le realm disparaîtra de la liste après le retrait de ses ressources. Les personnages et leurs sauvegardes sont conservés.</p> }
+    @if (realm.Status == "Deleting") { <p class="realm-progress-note" role="status">Deletion in progress. The realm will disappear from the list after its resources are removed. Characters and their saves are retained.</p> }
     <div class="realm-pane" data-realm-section="@Model.ActiveSection">
     @if (Model.ActiveSection == "overview") { <partial name="_RealmOverview" model="Model" /> }
     else
     {
         @if (Model.ActiveSection == "maintenance")
         {
-            @if (realm.Status == "Draft") { <div class="realm-draft-action"><span>Ce royaume est encore en préparation.</span><a class="button secondary" asp-page="/RealmCreate" asp-route-editRealmId="@realm.RealmId">Modifier le plan</a></div> }
+            @if (realm.Status == "Draft") { <div class="realm-draft-action"><span>This realm is still being prepared.</span><a class="button secondary" asp-page="/RealmCreate" asp-route-editRealmId="@realm.RealmId">Edit plan</a></div> }
             @if (RealmPresentation.CanDeploy(realm))
             {
-                <div class="panel realm-deploy-action"><div><h2>@(realm.Status == "Failed" ? "Relancer le déploiement" : "Déployer ce realm")</h2><p>Créer les serveurs prévus sur la cible @realm.TargetId.</p></div><form method="post" asp-page-handler="Deploy" asp-route-realmId="@realm.RealmId"><input type="hidden" asp-for="ExpectedRevision" /><button class="button primary" type="submit" disabled="@(!Model.DeploymentEnabled || realm.Topology is not null && !realm.TopologyRuntimeSupported)">@(realm.Status == "Failed" ? "Relancer le déploiement" : "Déployer ce realm")</button></form></div>
+                <div class="panel realm-deploy-action"><div><h2>@(realm.Status == "Failed" ? "Retry deployment" : "Deploy this realm")</h2><p>Create the planned servers on target @realm.TargetId.</p></div><form method="post" asp-page-handler="Deploy" asp-route-realmId="@realm.RealmId"><input type="hidden" asp-for="ExpectedRevision" /><button class="button primary" type="submit" disabled="@(!Model.DeploymentEnabled || realm.Topology is not null && !realm.TopologyRuntimeSupported)">@(realm.Status == "Failed" ? "Retry deployment" : "Deploy this realm")</button></form></div>
             }
-            else if (realm.Status is "Pending" or "Deploying") { <p class="realm-progress-note" role="status">Déploiement en cours. Actualisez pour suivre son avancement.</p> }
-            @if (!Model.DeploymentEnabled && Model.OperationsError is null) { <p class="realm-progress-note">Le déploiement est désactivé sur cette installation.</p> }
-            @if (realm.Topology is not null && !realm.TopologyRuntimeSupported) { <div class="alert error" role="alert">Ce profil permet d’enregistrer le plan, mais son runtime ne prend pas en charge ce déploiement. Le déploiement est bloqué jusqu’à la configuration d’un profil compatible.</div> }
+            else if (realm.Status is "Pending" or "Deploying") { <p class="realm-progress-note" role="status">Deployment in progress. Refresh to track its progress.</p> }
+            @if (!Model.DeploymentEnabled && Model.OperationsError is null) { <p class="realm-progress-note">Deployment is disabled on this installation.</p> }
+            @if (realm.Topology is not null && !realm.TopologyRuntimeSupported) { <div class="alert error" role="alert">This profile allows saving the plan, but its runtime does not support this deployment. Deployment is blocked until a compatible profile is configured.</div> }
         }
         <partial name="_RealmOperations" model="Model" />
     }

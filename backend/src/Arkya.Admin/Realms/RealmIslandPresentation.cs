@@ -6,8 +6,8 @@ public static class RealmIslandPresentation
 {
     // Local, reviewed images only: island identifiers never become file paths.
     public static string? ImagePath(string islandId) => islandId == "starter-island" ? "/images/islands/starter-island.png" : null;
-    public static string Label(string islandId) => islandId == "starter-island" ? "Île de départ" : islandId;
-    public static bool ImageMatchesPlan(RealmIslandTopology plan) => plan.IslandId == "starter-island" &&
+    public static string Label(string islandId) => islandId == "starter-island" ? "Starter Island" : islandId;
+    public static bool ImageMatchesPlan(RealmIslandTopology plan) => (plan.ContentId ?? plan.IslandId) == "starter-island" &&
         plan.Width == 1536 && plan.Depth == 1536 && plan.OriginX == 0 && plan.OriginZ == 0;
     public static string PartitionLabel(int index) => index is >= 0 and < 26 ? ((char)('A' + index)).ToString() : (index + 1).ToString();
 

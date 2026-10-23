@@ -43,7 +43,7 @@ public sealed class PublicationModel(ContentAdminClient content) : PageModel
                         Input.Summary?.Trim() ?? "", Input.Body.Trim(), version), ct)
                     : await content.CreatePostAsync(new(Input.Kind, Input.Language, Input.Title.Trim(),
                         Input.Summary?.Trim() ?? "", Input.Body.Trim(), version), ct);
-                Notice = "Brouillon enregistré. Publiez-le pour le rendre visible aux joueurs.";
+                Notice = "Draft saved. Publish it to make it visible to players.";
                 return RedirectToPage(new { id = saved.Id });
             }
             catch (ContentApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound) { return NotFound(); }
@@ -69,7 +69,7 @@ public sealed class PublicationModel(ContentAdminClient content) : PageModel
         {
             if (publish) await content.PublishPostAsync(id, Revision, ct);
             else await content.UnpublishPostAsync(id, Revision, ct);
-            Notice = publish ? "Publication visible aux joueurs." : "Publication retirée du fil public. Le brouillon est conservé.";
+            Notice = publish ? "Publication is visible to players." : "Publication removed from the public feed. The draft is retained.";
             return RedirectToPage(new { id });
         }
         catch (ContentApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound) { return NotFound(); }
@@ -83,15 +83,15 @@ public sealed class PublicationModel(ContentAdminClient content) : PageModel
 
     private void ValidateInput()
     {
-        if (!ContentPublicationPresentation.IsKind(Input.Kind)) ModelState.AddModelError("Input.Kind", "Choisissez une actualité ou des notes de version.");
-        if (!ContentPublicationPresentation.IsLanguage(Input.Language)) ModelState.AddModelError("Input.Language", "Choisissez le français ou l'anglais.");
+        if (!ContentPublicationPresentation.IsKind(Input.Kind)) ModelState.AddModelError("Input.Kind", "Choose news or release notes.");
+        if (!ContentPublicationPresentation.IsLanguage(Input.Language)) ModelState.AddModelError("Input.Language", "Choose French or English.");
         if (Input.Kind == "release-note" && (string.IsNullOrWhiteSpace(Input.GameVersion) ||
             !Regex.IsMatch(Input.GameVersion.Trim(), @"\A[A-Za-z0-9][A-Za-z0-9._+\-]{0,63}\z", RegexOptions.CultureInvariant)))
-            ModelState.AddModelError("Input.GameVersion", "Renseignez une version de 1 à 64 caractères : lettres, chiffres, points, tirets, underscores ou +.");
-        if (Input.Title?.Any(char.IsControl) == true) ModelState.AddModelError("Input.Title", "Le titre doit tenir sur une seule ligne.");
-        if (Input.Summary?.Any(char.IsControl) == true) ModelState.AddModelError("Input.Summary", "Le résumé doit tenir sur une seule ligne.");
+            ModelState.AddModelError("Input.GameVersion", "Enter a version of 1 to 64 characters: letters, digits, dots, hyphens, underscores or +.");
+        if (Input.Title?.Any(char.IsControl) == true) ModelState.AddModelError("Input.Title", "The title must fit on a single line.");
+        if (Input.Summary?.Any(char.IsControl) == true) ModelState.AddModelError("Input.Summary", "The summary must fit on a single line.");
         if (Input.Body?.Any(c => char.IsControl(c) && c is not ('\r' or '\n' or '\t')) == true)
-            ModelState.AddModelError("Input.Body", "Le texte contient un caractère de contrôle non autorisé.");
+            ModelState.AddModelError("Input.Body", "The text contains a prohibited control character.");
     }
 
     private async Task<IActionResult> LoadAsync(Guid id, bool replaceEditor, CancellationToken ct)
@@ -116,12 +116,12 @@ public sealed class PublicationModel(ContentAdminClient content) : PageModel
     {
         [Required] public string Kind { get; set; } = "news";
         [Required] public string Language { get; set; } = "fr";
-        [Required(ErrorMessage = "Renseignez un titre."), StringLength(160, ErrorMessage = "Le titre est limité à 160 caractères.")]
+        [Required(ErrorMessage = "Enter a title."), StringLength(160, ErrorMessage = "The title is limited to 160 characters.")]
         public string Title { get; set; } = "";
-        [StringLength(400, ErrorMessage = "Le résumé est limité à 400 caractères.")] public string? Summary { get; set; } = "";
-        [Required(ErrorMessage = "Renseignez le texte de la publication."), StringLength(20000, ErrorMessage = "Le texte est limité à 20 000 caractères.")]
+        [StringLength(400, ErrorMessage = "The summary is limited to 400 characters.")] public string? Summary { get; set; } = "";
+        [Required(ErrorMessage = "Enter the publication text."), StringLength(20000, ErrorMessage = "The text is limited to 20,000 characters.")]
         public string Body { get; set; } = "";
-        [StringLength(64, ErrorMessage = "La version est limitée à 64 caractères.")] public string? GameVersion { get; set; }
+        [StringLength(64, ErrorMessage = "The version is limited to 64 characters.")] public string? GameVersion { get; set; }
         public static PublicationInput From(ContentPostResponse post) => new()
         { Kind = post.Kind, Language = post.Language, Title = post.Title, Summary = post.Summary, Body = post.Body, GameVersion = post.GameVersion };
     }

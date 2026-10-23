@@ -74,23 +74,24 @@ public sealed class MongoGameLeaseStore(IMongoClient client, IOptions<MongoOptio
         public string? SessionReference { get; set; }
         public DateTime? LastConnectedAt { get; set; }
         public SavedWorldState? State { get; set; }
+        [BsonIgnoreIfNull] public GameRealmArea? Area { get; set; }
         public GameTransferRecord? Transfer { get; set; }
         public DateTime? TransferExpiresAt { get; set; }
         public GameLeaseRecord ToRecord()
         {
-            if (SchemaVersion is not (1 or 2 or 3 or 4)) throw new InvalidDataException("Unsupported game lease schema.");
+            if (SchemaVersion is not (1 or 2 or 3 or 4 or 5)) throw new InvalidDataException("Unsupported game lease schema.");
             return new(Guid.Parse(CharacterId), Guid.Parse(AccountId), RealmId, ServerId, Version, TicketHash,
                 Utc(TicketExpiresAt), Guid.Parse(LeaseId), AuthorityEpoch, Utc(LeaseExpiresAt), Utc(SessionExpiresAt), State, SessionReference,
-                LastConnectedAt is { } lastConnectedAt ? Utc(lastConnectedAt) : null) { Transfer = Transfer };
+                LastConnectedAt is { } lastConnectedAt ? Utc(lastConnectedAt) : null) { Transfer = Transfer, Area = Area };
         }
         private static DateTimeOffset Utc(DateTime value) => new(DateTime.SpecifyKind(value, DateTimeKind.Utc));
         public static GameLeaseDocument From(GameLeaseRecord value) => new()
         {
-            SchemaVersion = value.Transfer is null && value.State?.Simulation is null ? 3 : 4,
+            SchemaVersion = value.Area is not null || value.Transfer?.Transition is not null ? 5 : value.Transfer is null && value.State?.Simulation is null ? 3 : 4,
             CharacterId = value.CharacterId.ToString("D"), AccountId = value.AccountId.ToString("D"), RealmId = value.RealmId,
             ServerId = value.ServerId, Version = value.Version, TicketHash = value.TicketHash, TicketExpiresAt = value.TicketExpiresAt.UtcDateTime,
             LeaseId = value.LeaseId.ToString("D"), AuthorityEpoch = value.AuthorityEpoch, LeaseExpiresAt = value.LeaseExpiresAt.UtcDateTime,
-            SessionExpiresAt = value.SessionExpiresAt.UtcDateTime, State = value.State, SessionReference = value.SessionReference,
+            SessionExpiresAt = value.SessionExpiresAt.UtcDateTime, State = value.State, Area = value.Area, SessionReference = value.SessionReference,
             LastConnectedAt = value.LastConnectedAt?.UtcDateTime, Transfer = value.Transfer, TransferExpiresAt = value.Transfer?.ExpiresAt.UtcDateTime
         };
     }

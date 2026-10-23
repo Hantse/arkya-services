@@ -29,7 +29,7 @@ Identity possède les comptes et sessions ; Characters possède les personnages 
 
 La liste de cartes est déjà configurable par realm. Les champs historiques `topology.islands`, `islandId`, le type `Island` et les IDs de processus `island-*` sont conservés dans les contrats et snapshots : ils représentent les Areas et leurs partitions. Les renommer ou ajouter des alias sérialisés changerait les empreintes des plans existants ; cette clarification ne constitue pas une migration de protocole.
 
-Le [handoff StarterIsland](../STARTER_ISLAND_HANDOFF.md) a été vérifié avec quatre dedicateds et un client Unity Editor. Il conserve le joueur entre partitions de l'Area de départ. Le runtime charge uniquement cette carte ; configurer d'autres Areas ne fournit pas automatiquement leurs scènes ou leurs règles de transition. Le combat frontalier et les pools privés restent hors de cette tranche.
+Le [handoff StarterIsland](../STARTER_ISLAND_HANDOFF.md) a été vérifié avec quatre dedicateds et un client Unity Editor. Le [runtime multi-Area version 3](../MULTI_AREA_RUNTIME.md) sélectionne maintenant des scènes enregistrées par contenu et relie les cartes par des zones d'entrée ou portails automatiques, confirmés par l'utilisateur le 23 octobre 2026. Le backend et le dedicated valident leur source et leur arrivée avant le transfert d'autorité. Ajouter une Area au plan ne crée pas ses assets Unity : chaque contenu doit exister dans le registre et le build. Le combat frontalier et les pools privés restent hors de cette tranche.
 
 ## Conséquences
 

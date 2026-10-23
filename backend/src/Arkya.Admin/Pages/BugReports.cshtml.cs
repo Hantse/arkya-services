@@ -24,11 +24,11 @@ public sealed class BugReportsModel(ReportsAdminClient reports) : PageModel
     {
         if (!Enabled) return;
         Tag = Tag?.Trim().ToLowerInvariant();
-        if (!string.IsNullOrEmpty(Tag) && !ValidTag(Tag)) ModelState.AddModelError(nameof(Tag), "Le tag doit contenir 1 à 32 minuscules, chiffres, tirets ou underscores.");
+        if (!string.IsNullOrEmpty(Tag) && !ValidTag(Tag)) ModelState.AddModelError(nameof(Tag), "The tag must contain 1 to 32 lowercase letters, digits, hyphens or underscores.");
         if (!string.IsNullOrEmpty(Status) && !BugReportStatuses.All.Contains(Status))
-            ModelState.AddModelError(nameof(Status), "Choisissez un statut disponible.");
+            ModelState.AddModelError(nameof(Status), "Choose an available status.");
         if (!string.IsNullOrEmpty(Kind) && !BugReportKinds.All.Contains(Kind))
-            ModelState.AddModelError(nameof(Kind), "Choisissez un type disponible.");
+            ModelState.AddModelError(nameof(Kind), "Choose an available type.");
         if (!ModelState.IsValid) return;
         try { Reports = await reports.ListAsync(Tag, Status, Offset, Limit, ct, Kind); }
         catch (Exception ex) when (BugReportPresentation.IsDependencyError(ex, ct)) { Error = BugReportPresentation.ErrorMessage(ex); }

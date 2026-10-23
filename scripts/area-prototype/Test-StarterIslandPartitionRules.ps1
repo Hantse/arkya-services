@@ -27,7 +27,7 @@ $start.WorkingDirectory = $ProjectPath; $start.UseShellExecute = $false; $start.
 $start.WindowStyle = [Diagnostics.ProcessWindowStyle]::Hidden
 foreach ($argument in @('-batchmode', '-nographics', '-job-worker-count', '4', '-projectPath', $ProjectPath,
     '-buildTarget', 'Win64', '-standaloneBuildSubtarget', 'Player', '-runTests', '-testPlatform', 'EditMode',
-    '-testFilter', 'Arkya.Characters.Tests.CharacterHandoffStateTests;Arkya.Characters.Tests.CharacterAuthorityBoundaryTests',
+    '-testFilter', 'Arkya.Characters.Tests.CharacterHandoffStateTests;Arkya.Characters.Tests.CharacterAuthorityBoundaryTests;Arkya.Characters.Tests.CharacterMultiAreaTests;Arkya.Characters.Tests.CharacterAreaCatalogTests',
     '-testResults', $results, '-logFile', $log)) { $start.ArgumentList.Add($argument) }
 $start.Environment['DOTNET_PROCESSOR_COUNT'] = '4'
 $process = [Diagnostics.Process]::Start($start)

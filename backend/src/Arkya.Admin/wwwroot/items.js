@@ -41,7 +41,7 @@
         kind.textContent = card.dataset.kind.toUpperCase();
         kind.hidden = false;
         editor.querySelector('[data-selected-image]').replaceChildren(image({ guid: card.dataset.guid, hasThumbnail: card.dataset.thumbnail === 'true' }));
-        status.textContent = 'Modèle sélectionné : ' + card.dataset.name + '. Enregistrez l’objet pour conserver ce choix.';
+        status.textContent = 'Selected model: ' + card.dataset.name + '. Save the item to retain this choice.';
     });
     const render = asset => {
         const card = document.createElement('button');
@@ -73,7 +73,7 @@
         const hadNext = next.disabled;
         previous.disabled = next.disabled = true;
         grid.setAttribute('aria-busy', 'true');
-        status.textContent = 'Chargement des modèles…';
+        status.textContent = 'Loading models…';
         try {
             const url = new URL(library.dataset.assetsUrl, location.origin);
             url.searchParams.set('offset', newOffset);
@@ -86,11 +86,11 @@
             query = newQuery;
             previous.disabled = offset === 0;
             next.disabled = !page.hasMore;
-            status.textContent = page.assets.length ? 'Sélectionnez une vignette pour associer le modèle.' : 'Aucun modèle ne correspond à cette recherche. Exportez la bibliothèque depuis Unity ou essayez un autre nom.';
+            status.textContent = page.assets.length ? 'Select a thumbnail to associate the model.' : 'No models match this search. Export the library from Unity or try another name.';
         } catch {
             previous.disabled = hadPrevious;
             next.disabled = hadNext;
-            status.textContent = 'La bibliothèque est indisponible. Réessayez. Vos modifications sont conservées.';
+            status.textContent = 'The library is unavailable. Try again. Your changes are retained.';
         } finally {
             pending = false;
             grid.removeAttribute('aria-busy');

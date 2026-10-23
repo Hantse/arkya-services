@@ -2,34 +2,34 @@
 @using Arkya.Admin.Realms
 @using System.Globalization
 @{ var realm = Model.Realm!; }
-<header class="section-heading"><h2>Historique du royaume</h2><span class="muted">Opérations et commandes · UTC</span></header>
+<header class="section-heading"><h2>Realm history</h2><span class="muted">Operations and commands · UTC</span></header>
 @if (Model.CommandsError is not null) { <div class="alert error" role="alert">@Model.CommandsError</div> }
 @if (Model.ConfigurationError is not null) { <div class="alert error" role="alert">@Model.ConfigurationError</div> }
 @if (Model.Commands is { } commands)
 {
         <section class="history" aria-labelledby="commands-history-heading">
-            <details class="panel realm-history-group"><summary><strong id="commands-history-heading">Historique des commandes</strong><span class="muted">@commands.Commands.Length commande(s)</span></summary><div class="realm-history-body">
-            @if (commands.Commands.Length == 0) { <div class="panel history-empty">Aucune commande enregistrée.</div> }
+            <details class="panel realm-history-group"><summary><strong id="commands-history-heading">Command history</strong><span class="muted">@commands.Commands.Length command(s)</span></summary><div class="realm-history-body">
+            @if (commands.Commands.Length == 0) { <div class="panel history-empty">No commands saved.</div> }
             else
             {
-                <div class="table-scroll" tabindex="0" role="region" aria-label="Historique des commandes en jeu"><table class="realm-table"><caption class="sr-only">Commandes en jeu et résultats</caption><thead><tr><th scope="col">Commande</th><th scope="col">Serveur</th><th scope="col">État</th><th scope="col">Opérateur / motif</th><th scope="col">Date UTC</th></tr></thead><tbody>
+                <div class="table-scroll" tabindex="0" role="region" aria-label="In-game command history"><table class="realm-table"><caption class="sr-only">In-game commands and results</caption><thead><tr><th scope="col">Command</th><th scope="col">Server</th><th scope="col">Status</th><th scope="col">Operator / reason</th><th scope="col">Date UTC</th></tr></thead><tbody>
                 @foreach (var command in commands.Commands.OrderByDescending(value => value.CreatedAt).Take(50))
                 {
-                    <tr><th scope="row">@RealmPresentation.CommandLabel(command.Type)@if (!string.IsNullOrEmpty(command.Message)) { <small>@command.Message</small> }@if (!string.IsNullOrEmpty(command.CharacterId)) { <small class="mono">@command.CharacterId</small> }<small class="mono">@command.Id</small></th><td>@command.ServerId</td><td><span class="realm-status @RealmPresentation.CommandStatusClass(command.Status)">@RealmPresentation.CommandStatusLabel(command.Status)</span>@if (command.Status == "Succeeded" && command.AffectedPlayers is { } count) { <small>@count joueur(s) concerné(s)</small> }@if (command.Status == "Failed") { <small>@RealmPresentation.CommandFailureMessage(command.ResultCode)</small> }@if (command.Status == "Unknown") { <small>Le serveur n’a pas confirmé le résultat. Vérifiez en jeu avant de relancer.</small> }</td><td>@command.Actor<small>@command.Reason</small></td><td><time datetime="@command.CreatedAt.ToString("O")">@command.CreatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss")</time>@if (command.CompletedAt is { } completed) { <small>Résultat : @completed.UtcDateTime.ToString("HH:mm:ss")</small> }</td></tr>
+                    <tr><th scope="row">@RealmPresentation.CommandLabel(command.Type)@if (!string.IsNullOrEmpty(command.Message)) { <small>@command.Message</small> }@if (!string.IsNullOrEmpty(command.CharacterId)) { <small class="mono">@command.CharacterId</small> }<small class="mono">@command.Id</small></th><td>@command.ServerId</td><td><span class="realm-status @RealmPresentation.CommandStatusClass(command.Status)">@RealmPresentation.CommandStatusLabel(command.Status)</span>@if (command.Status == "Succeeded" && command.AffectedPlayers is { } count) { <small>@count affected player(s)</small> }@if (command.Status == "Failed") { <small>@RealmPresentation.CommandFailureMessage(command.ResultCode)</small> }@if (command.Status == "Unknown") { <small>The server has not confirmed the result. Check in game before retrying.</small> }</td><td>@command.Actor<small>@command.Reason</small></td><td><time datetime="@command.CreatedAt.ToString("O")">@command.CreatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss")</time>@if (command.CompletedAt is { } completed) { <small>Result: @completed.UtcDateTime.ToString("HH:mm:ss")</small> }</td></tr>
                 }
                 </tbody></table></div>
             }
         </div></details></section>
 }
 <section class="history" aria-labelledby="operations-history-heading">
-    <details class="panel realm-history-group"><summary><strong id="operations-history-heading">Historique des opérations serveur</strong><span class="muted">@(realm.Operations?.Length ?? 0) opération(s)</span></summary><div class="realm-history-body">
-    @if (realm.Operations is not { Length: > 0 }) { <div class="panel history-empty">Aucune opération serveur enregistrée.</div> }
+    <details class="panel realm-history-group"><summary><strong id="operations-history-heading">Server operation history</strong><span class="muted">@(realm.Operations?.Length ?? 0) operation(s)</span></summary><div class="realm-history-body">
+    @if (realm.Operations is not { Length: > 0 }) { <div class="panel history-empty">No server operations saved.</div> }
     else
     {
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Historique des opérations serveur"><table class="realm-table"><caption class="sr-only">Opérations serveur du realm</caption><thead><tr><th scope="col">Opération</th><th scope="col">État</th><th scope="col">Opérateur / motif</th><th scope="col">Date UTC</th></tr></thead><tbody>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Server operation history"><table class="realm-table"><caption class="sr-only">Realm server operations</caption><thead><tr><th scope="col">Operation</th><th scope="col">Status</th><th scope="col">Operator / reason</th><th scope="col">Date UTC</th></tr></thead><tbody>
         @foreach (var operation in realm.Operations.OrderByDescending(value => value.RequestedAt).Take(100))
         {
-            <tr><th scope="row">@(operation.Kind switch { "Update" => "Mise à jour", "Delete" => "Suppression", _ => "Redémarrage" })<small>Révision @operation.Revision</small></th><td><span class="realm-status @RealmPresentation.StatusClass(operation.Status)">@RealmPresentation.StatusLabel(operation.Status)</span>@if (operation.Status is "Failed" or "DeleteFailed") { <small>@(operation.Kind == "Delete" ? RealmPresentation.DeleteFailureMessage(operation.Error) : RealmPresentation.FailureMessage(operation.Error))</small> }</td><td>@operation.RequestedBy<small>@operation.Reason</small></td><td><time datetime="@operation.RequestedAt.ToString("O")">@operation.RequestedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss")</time>@if (operation.CompletedAt is { } completed) { <small>Fin : @completed.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss")</small> }</td></tr>
+            <tr><th scope="row">@(operation.Kind switch { "Update" => "Update", "Delete" => "Deletion", _ => "Restart" })<small>Revision @operation.Revision</small></th><td><span class="realm-status @RealmPresentation.StatusClass(operation.Status)">@RealmPresentation.StatusLabel(operation.Status)</span>@if (operation.Status is "Failed" or "DeleteFailed") { <small>@(operation.Kind == "Delete" ? RealmPresentation.DeleteFailureMessage(operation.Error) : RealmPresentation.FailureMessage(operation.Error))</small> }</td><td>@operation.RequestedBy<small>@operation.Reason</small></td><td><time datetime="@operation.RequestedAt.ToString("O")">@operation.RequestedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss")</time>@if (operation.CompletedAt is { } completed) { <small>Finished: @completed.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss")</small> }</td></tr>
         }
         </tbody></table></div>
     }
@@ -38,14 +38,14 @@
 
 @if (Model.Configuration is { } configuration)
 {
-        <details class="history panel realm-history-group"><summary><strong>Historique des multiplicateurs</strong><span class="muted">100 dernières modifications · UTC</span></summary><div class="realm-history-body">
-            @if (configuration.History.Length == 0) { <p class="muted">Aucune modification enregistrée.</p> }
+        <details class="history panel realm-history-group"><summary><strong>Multiplier history</strong><span class="muted">Last 100 changes · UTC</span></summary><div class="realm-history-body">
+            @if (configuration.History.Length == 0) { <p class="muted">No changes saved.</p> }
             else
             {
-                <div class="table-scroll" tabindex="0" role="region" aria-label="Historique des multiplicateurs"><table class="realm-table"><caption class="sr-only">Historique de la configuration en jeu</caption><thead><tr><th scope="col">Version</th><th scope="col">Multiplicateurs</th><th scope="col">Opérateur / motif</th><th scope="col">Date UTC</th></tr></thead><tbody>
+                <div class="table-scroll" tabindex="0" role="region" aria-label="Multiplier history"><table class="realm-table"><caption class="sr-only">In-game configuration history</caption><thead><tr><th scope="col">Version</th><th scope="col">Multipliers</th><th scope="col">Operator / reason</th><th scope="col">Date UTC</th></tr></thead><tbody>
                 @foreach (var change in configuration.History.OrderByDescending(value => value.Revision).Take(100))
                 {
-                    <tr><th scope="row">@change.Revision</th><td>XP ×@change.XpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Récolte ×@change.HarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)<small>Avant : XP ×@change.PreviousXpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Récolte ×@change.PreviousHarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)</small></td><td>@change.UpdatedBy<small>@change.Reason</small></td><td>@change.UpdatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss")</td></tr>
+                    <tr><th scope="row">@change.Revision</th><td>XP ×@change.XpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Harvesting ×@change.HarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)<small>Previously: XP ×@change.PreviousXpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Harvesting ×@change.PreviousHarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)</small></td><td>@change.UpdatedBy<small>@change.Reason</small></td><td>@change.UpdatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss")</td></tr>
                 }
                 </tbody></table></div>
             }

@@ -34,7 +34,7 @@ public sealed class AdminEndpointTests
         }));
         Assert.Equal(HttpStatusCode.OK, rejected.StatusCode);
         var html = await rejected.Content.ReadAsStringAsync();
-        Assert.Contains("Mot de passe incorrect", WebUtility.HtmlDecode(html));
+        Assert.Contains("Incorrect password", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain("incorrect-password", html);
         AdminFactory.NoSecrets(html);
         Assert.Empty(factory.Content.Calls);
@@ -58,7 +58,7 @@ public sealed class AdminEndpointTests
         using var index = await browser.GetAsync("/Quests");
         Assert.Equal(HttpStatusCode.OK, index.StatusCode);
         var html = await index.Content.ReadAsStringAsync();
-        Assert.Contains("La menace du bois", html);
+        Assert.Contains("The woodland threat", html);
         Assert.Equal("3", AdminFactory.Input(html, "Quests[0].RequiredKills"));
         Assert.Contains("script-src 'none'", index.Headers.GetValues("Content-Security-Policy").Single());
         Assert.Contains("frame-ancestors 'none'", index.Headers.GetValues("Content-Security-Policy").Single());
@@ -130,7 +130,7 @@ public sealed class AdminEndpointTests
         Assert.Equal(new QuestDefinition("new-adventure", "Une nouvelle aventure", "Une description conservée.", "prototype-monster", 8), Assert.Single(body.Quests));
         using var index = await browser.GetAsync("/Quests");
         var html = await index.Content.ReadAsStringAsync();
-        Assert.Contains("Brouillon enregistré", WebUtility.HtmlDecode(html));
+        Assert.Contains("Draft saved", WebUtility.HtmlDecode(html));
         Assert.Equal("4", AdminFactory.Input(html, "Revision"));
         AdminFactory.NoSecrets(html);
     }
@@ -156,10 +156,10 @@ public sealed class AdminEndpointTests
     }
 
     [Theory]
-    [InlineData(HttpStatusCode.BadRequest, "Vérifiez les champs")]
-    [InlineData(HttpStatusCode.Conflict, "Ce brouillon a changé")]
-    [InlineData(HttpStatusCode.Forbidden, "L'accès au catalogue a été refusé")]
-    [InlineData(HttpStatusCode.ServiceUnavailable, "Le catalogue est indisponible")]
+    [InlineData(HttpStatusCode.BadRequest, "Check the fields")]
+    [InlineData(HttpStatusCode.Conflict, "This draft has changed")]
+    [InlineData(HttpStatusCode.Forbidden, "Access to the catalogue was denied")]
+    [InlineData(HttpStatusCode.ServiceUnavailable, "The catalogue is unavailable")]
     public async Task RejectedSaveShowsSafeActionableErrorAndRetainsTheSubmittedDraft(HttpStatusCode status, string message)
     {
         await using var factory = new AdminFactory();

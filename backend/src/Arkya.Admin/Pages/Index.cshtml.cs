@@ -20,9 +20,9 @@ public sealed class IndexModel(ContentAdminClient content) : PageModel
 
     public async Task<IActionResult> OnPostSaveAsync(CancellationToken ct)
     {
-        if (Quests.Count > 128) ModelState.AddModelError("", "Un catalogue contient au maximum 128 quêtes.");
+        if (Quests.Count > 128) ModelState.AddModelError("", "A catalogue can contain up to 128 quests.");
         if (Quests.Select(q => q.QuestId).Distinct(StringComparer.Ordinal).Count() != Quests.Count)
-            ModelState.AddModelError("", "Chaque quête doit avoir un identifiant unique.");
+            ModelState.AddModelError("", "Each quest must have a unique ID.");
         if (!ModelState.IsValid)
         {
             await LoadAsync(false, ct);
@@ -31,7 +31,7 @@ public sealed class IndexModel(ContentAdminClient content) : PageModel
         try
         {
             await content.SaveAsync(new ContentDraft(Revision, Quests.Select(q => q.ToDefinition()).ToArray()), ct);
-            Notice = "Brouillon enregistré. Vous pouvez publier cette révision.";
+            Notice = "Draft saved. You can publish this revision.";
             return RedirectToPage();
         }
         catch (Exception ex) when (IsDependencyError(ex, ct)) { Error = Message(ex); }
@@ -47,7 +47,7 @@ public sealed class IndexModel(ContentAdminClient content) : PageModel
         try
         {
             var published = await content.PublishAsync(Revision, ct);
-            Notice = $"Version {published.Version} publiée.";
+            Notice = $"Version {published.Version} published.";
             return RedirectToPage();
         }
         catch (Exception ex) when (IsDependencyError(ex, ct)) { Error = Message(ex); }
@@ -59,7 +59,7 @@ public sealed class IndexModel(ContentAdminClient content) : PageModel
     {
         ModelState.Clear();
         if (Quests.Count < 128) Quests.Add(new QuestInput());
-        else Error = "Un catalogue contient au maximum 128 quêtes.";
+        else Error = "A catalogue can contain up to 128 quests.";
         await LoadAsync(false, ct);
         return Page();
     }
@@ -102,15 +102,15 @@ public sealed class IndexModel(ContentAdminClient content) : PageModel
 
     private static bool IsDependencyError(Exception ex, CancellationToken ct) => ex is ContentApiException or HttpRequestException
         || ex is TaskCanceledException && !ct.IsCancellationRequested;
-    private static string Message(Exception ex) => ex is ContentApiException ? ex.Message : "Le catalogue est indisponible. Réessayez dans un instant.";
+    private static string Message(Exception ex) => ex is ContentApiException ? ex.Message : "The catalogue is unavailable. Try again shortly.";
 
     public sealed class QuestInput
     {
-        [Required(ErrorMessage = "Renseignez un identifiant."), StringLength(64), RegularExpression("[a-z0-9]+(-[a-z0-9]+)*", ErrorMessage = "L'identifiant utilise des minuscules, chiffres et tirets simples.")]
+        [Required(ErrorMessage = "Enter an ID."), StringLength(64), RegularExpression("[a-z0-9]+(-[a-z0-9]+)*", ErrorMessage = "The ID uses lowercase letters, digits and single hyphens.")]
         public string QuestId { get; set; } = "";
-        [Required(ErrorMessage = "Renseignez un titre."), StringLength(120)] public string Title { get; set; } = "";
+        [Required(ErrorMessage = "Enter a title."), StringLength(120)] public string Title { get; set; } = "";
         [StringLength(2000)] public string Description { get; set; } = "";
-        [Range(1, 10000, ErrorMessage = "L'objectif doit être compris entre 1 et 10 000 ennemis.")] public int RequiredKills { get; set; } = 3;
+        [Range(1, 10000, ErrorMessage = "The target must be from 1 to 10,000 enemies.")] public int RequiredKills { get; set; } = 3;
         public QuestDefinition ToDefinition() => new(QuestId, Title, Description ?? "", "prototype-monster", RequiredKills);
         public static QuestInput From(QuestDefinition quest) => new() { QuestId = quest.QuestId, Title = quest.Title,
             Description = quest.Description, RequiredKills = quest.RequiredKills };

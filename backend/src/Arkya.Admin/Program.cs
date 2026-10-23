@@ -179,6 +179,11 @@ public partial class Program
                 ? CookieSecurePolicy.SameAsRequest : CookieSecurePolicy.Always;
         });
         builder.Services.AddAuthorization(options => options.AddPolicy("ContentAdmin", policy => policy.RequireRole("Administrator")));
+        builder.Services.Configure<Microsoft.AspNetCore.Builder.RequestLocalizationOptions>(options =>
+        {
+            options.SetDefaultCulture("en-GB").AddSupportedCultures("en-GB").AddSupportedUICultures("en-GB");
+            options.RequestCultureProviders.Clear();
+        });
         builder.Services.AddRazorPages(options =>
         {
             options.Conventions.ConfigureFilter(new RealmSitePageFilter());
@@ -206,6 +211,7 @@ public partial class Program
         });
         var app = builder.Build();
         app.UseArkyaProxyTrust();
+        app.UseRequestLocalization();
         app.UseExceptionHandler("/Error");
         app.Use(async (context, next) =>
         {
@@ -234,7 +240,7 @@ public partial class Program
             catch (Exception exception) when (exception is MongoException or TimeoutException && !context.Response.HasStarted)
             {
                 context.Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
-                await context.Response.WriteAsync("Le service de session est temporairement indisponible.", context.RequestAborted);
+                await context.Response.WriteAsync("The session service is temporarily unavailable.", context.RequestAborted);
             }
         });
         app.UseAuthentication();

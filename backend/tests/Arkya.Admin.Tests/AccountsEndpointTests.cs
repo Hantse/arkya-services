@@ -126,7 +126,7 @@ public sealed class AccountsEndpointTests
         factory.Upstream.WriteError = HttpStatusCode.Conflict;
         using var response = await browser.PostAsync(Detail + "?handler=Beta", AdminFactory.Form(form));
         var html = await response.Content.ReadAsStringAsync();
-        Assert.Contains("La version actuelle a été rechargée", WebUtility.HtmlDecode(html));
+        Assert.Contains("The current version has been reloaded", WebUtility.HtmlDecode(html));
         Assert.Equal("4", AdminFactory.Input(html, "ExpectedRevision"));
         Assert.Equal("false", AdminFactory.Input(html, "HasBetaAccess"));
         Assert.DoesNotContain("private upstream details", html);
@@ -141,9 +141,9 @@ public sealed class AccountsEndpointTests
         factory.Settings["CharactersAdminApi:Enabled"] = "false";
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        Assert.Contains("désactivée", WebUtility.HtmlDecode(await browser.GetStringAsync("/Accounts")));
-        Assert.Contains("désactivée", WebUtility.HtmlDecode(await browser.GetStringAsync("/Characters")));
-        Assert.Contains("indisponible", await browser.GetStringAsync("/Players"));
+        Assert.Contains("disabled", WebUtility.HtmlDecode(await browser.GetStringAsync("/Accounts")));
+        Assert.Contains("disabled", WebUtility.HtmlDecode(await browser.GetStringAsync("/Characters")));
+        Assert.Contains("unavailable", await browser.GetStringAsync("/Players"));
         Assert.Equal(HttpStatusCode.NotFound, (await browser.GetAsync(Detail)).StatusCode);
         Assert.Empty(factory.Upstream.Calls);
     }

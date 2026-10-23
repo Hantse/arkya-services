@@ -3,10 +3,10 @@
 @using Arkya.Admin.Reports
 @using Arkya.ServiceDefaults.Reports
 @{
-    ViewData["Title"] = Model.Report?.Title ?? "Signalement";
+    ViewData["Title"] = Model.Report?.Title ?? "Report";
 }
-<a class="text-link" asp-page="/BugReports">← Tous les signalements</a>
-<header class="page-header realm-header"><div><div class="eyebrow">ASSISTANCE / SIGNALEMENT</div><h1>@(Model.Report?.Title ?? "Signalement")</h1><p class="intro">Capture, contexte du joueur et suivi du signalement.</p></div><a class="button secondary" asp-page="/BugReport" asp-route-id="@Request.Query["id"]">Actualiser</a></header>
+<a class="text-link" asp-page="/BugReports">← All reports</a>
+<header class="page-header realm-header"><div><div class="eyebrow">SUPPORT / REPORT</div><h1>@(Model.Report?.Title ?? "Report")</h1><p class="intro">Screenshot, player context and report tracking.</p></div><a class="button secondary" asp-page="/BugReport" asp-route-id="@Request.Query["id"]">Refresh</a></header>
 @if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
 @if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error</div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
@@ -14,27 +14,27 @@
 {
     <div class="realms-workspace">
         <section aria-labelledby="report-heading">
-            <div class="section-heading"><h2 id="report-heading">Description du joueur</h2><span class="realm-status @BugReportPresentation.StatusClass(report.Status)">@BugReportPresentation.StatusLabel(report.Status, report.Kind)</span></div>
-            <div class="panel publish-panel"><p class="report-description">@report.Description</p><dl class="realm-facts report-context"><div><dt>Type</dt><dd>@BugReportPresentation.KindLabel(report.Kind)</dd></div><div><dt>Rapport</dt><dd class="mono">@report.Id</dd></div><div><dt>Compte</dt><dd class="mono">@report.AccountId</dd></div><div><dt>Version et plateforme</dt><dd>@report.ClientVersion · @report.Platform</dd></div><div><dt>Scène</dt><dd>@report.Scene</dd></div><div><dt>Reçu le</dt><dd><time datetime="@report.CreatedAt.ToString("O")">@report.CreatedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></dd></div></dl></div>
-            <div class="section-heading report-section"><h2>Capture d'écran</h2><span class="muted">@report.Screenshot.Width × @report.Screenshot.Height</span></div>
-            <figure class="panel report-capture"><a asp-page-handler="Screenshot" asp-route-id="@report.Id"><img src="@Url.Page("/BugReport", "Screenshot", new { id = report.Id })" alt="Capture du jeu jointe au signalement" loading="lazy" /></a><figcaption><a asp-page-handler="Screenshot" asp-route-id="@report.Id">Ouvrir la capture PNG</a></figcaption></figure>
+            <div class="section-heading"><h2 id="report-heading">Player description</h2><span class="realm-status @BugReportPresentation.StatusClass(report.Status)">@BugReportPresentation.StatusLabel(report.Status, report.Kind)</span></div>
+            <div class="panel publish-panel"><p class="report-description">@report.Description</p><dl class="realm-facts report-context"><div><dt>Type</dt><dd>@BugReportPresentation.KindLabel(report.Kind)</dd></div><div><dt>Report</dt><dd class="mono">@report.Id</dd></div><div><dt>Account</dt><dd class="mono">@report.AccountId</dd></div><div><dt>Version and platform</dt><dd>@report.ClientVersion · @report.Platform</dd></div><div><dt>Scene</dt><dd>@report.Scene</dd></div><div><dt>Received</dt><dd><time datetime="@report.CreatedAt.ToString("O")">@report.CreatedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></dd></div></dl></div>
+            <div class="section-heading report-section"><h2>Screenshot</h2><span class="muted">@report.Screenshot.Width × @report.Screenshot.Height</span></div>
+            <figure class="panel report-capture"><a asp-page-handler="Screenshot" asp-route-id="@report.Id"><img src="@Url.Page("/BugReport", "Screenshot", new { id = report.Id })" alt="Game screenshot attached to the report" loading="lazy" /></a><figcaption><a asp-page-handler="Screenshot" asp-route-id="@report.Id">Open PNG screenshot</a></figcaption></figure>
         </section>
         <aside aria-labelledby="triage-heading">
-            <div class="section-heading"><h2 id="triage-heading">Suivi</h2><span class="badge">Révision @report.Revision</span></div>
+            <div class="section-heading"><h2 id="triage-heading">Tracking</h2><span class="badge">Revision @report.Revision</span></div>
             <form method="post" asp-page-handler="Save" asp-route-id="@report.Id" class="panel report-form">
                 <input type="hidden" asp-for="ExpectedRevision" />
-                <div class="field"><label asp-for="Input.Status">Statut</label><select asp-for="Input.Status" required>@foreach (var status in BugReportStatuses.All) { <option value="@status">@BugReportPresentation.StatusLabel(status, report.Kind)</option> }</select></div>
-                <div class="field"><label asp-for="Input.Tags">Tags</label><input asp-for="Input.Tags" maxlength="1024" placeholder="urgent, gameplay" aria-describedby="tags-help" /><small id="tags-help">Au plus 10 tags séparés par des virgules. Minuscules, chiffres, tirets et underscores.</small></div>
-                <div class="field"><label asp-for="Input.Resolution">@(report.Kind == BugReportKinds.Suggestion ? "Réponse / réalisation" : "Résolution")</label><textarea asp-for="Input.Resolution" maxlength="4000" rows="7" aria-describedby="resolution-help"></textarea><small id="resolution-help">Visible par le joueur dans le suivi de son rapport.</small></div>
-                <button type="submit" class="button primary full-width">Enregistrer le suivi</button>
+                <div class="field"><label asp-for="Input.Status">Status</label><select asp-for="Input.Status" required>@foreach (var status in BugReportStatuses.All) { <option value="@status">@BugReportPresentation.StatusLabel(status, report.Kind)</option> }</select></div>
+                <div class="field"><label asp-for="Input.Tags">Tags</label><input asp-for="Input.Tags" maxlength="1024" placeholder="urgent, gameplay" aria-describedby="tags-help" /><small id="tags-help">Up to 10 comma-separated tags. Lowercase letters, digits, hyphens and underscores.</small></div>
+                <div class="field"><label asp-for="Input.Resolution">@(report.Kind == BugReportKinds.Suggestion ? "Response / implementation" : "Resolution")</label><textarea asp-for="Input.Resolution" maxlength="4000" rows="7" aria-describedby="resolution-help"></textarea><small id="resolution-help">Visible to the player in their report tracking.</small></div>
+                <button type="submit" class="button primary full-width">Save tracking</button>
             </form>
         </aside>
     </div>
-    <section class="history" aria-labelledby="report-history"><div class="section-heading"><h2 id="report-history">Historique du suivi</h2></div>
-    @if (report.History.Length == 0) { <div class="panel history-empty">Aucune modification du suivi.</div> }
+    <section class="history" aria-labelledby="report-history"><div class="section-heading"><h2 id="report-history">Tracking history</h2></div>
+    @if (report.History.Length == 0) { <div class="panel history-empty">No tracking changes.</div> }
     @foreach (var change in report.History.Reverse())
     {
-        <details class="panel catalog-entry"><summary><strong>Révision @change.Revision · @BugReportPresentation.StatusLabel(change.Status, report.Kind)</strong><span class="muted">@change.Actor</span><time datetime="@change.ChangedAt.ToString("O")">@change.ChangedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></summary><div class="catalog-detail"><div class="report-tags">@foreach (var tag in change.Tags) { <span class="badge">@tag</span> }</div><p class="report-description">@change.Resolution</p></div></details>
+        <details class="panel catalog-entry"><summary><strong>Revision @change.Revision · @BugReportPresentation.StatusLabel(change.Status, report.Kind)</strong><span class="muted">@change.Actor</span><time datetime="@change.ChangedAt.ToString("O")">@change.ChangedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></summary><div class="catalog-detail"><div class="report-tags">@foreach (var tag in change.Tags) { <span class="badge">@tag</span> }</div><p class="report-description">@change.Resolution</p></div></details>
     }
     </section>
 }

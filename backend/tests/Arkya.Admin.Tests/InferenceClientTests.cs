@@ -9,10 +9,10 @@ namespace Arkya.Admin.Tests;
 public sealed class InferenceClientTests
 {
     [Theory]
-    [InlineData("busy", "En conversation", "pending")]
-    [InlineData("offline", "Hors ligne", "draft")]
-    [InlineData("unhealthy", "Indisponible", "failed")]
-    public void WorkerRuntimeStatesHaveFrenchLabelsAndMatchingPresentation(string state, string label, string cssClass)
+    [InlineData("busy", "In conversation", "pending")]
+    [InlineData("offline", "Offline", "draft")]
+    [InlineData("unhealthy", "Unavailable", "failed")]
+    public void WorkerRuntimeStatesHaveEnglishLabelsAndMatchingPresentation(string state, string label, string cssClass)
     {
         Assert.Equal(label, InferencePresentation.StateLabel(state));
         Assert.Equal(cssClass, InferencePresentation.StateClass(state));

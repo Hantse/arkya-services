@@ -42,8 +42,8 @@ public sealed partial class ContentAdminClient(HttpClient client, IOptions<Conte
     {
         if (!options.Value.Enabled)
             throw new ContentApiException(HttpStatusCode.ServiceUnavailable, publication
-                ? "La gestion des publications est désactivée sur cette installation."
-                : "L'atelier de quêtes est désactivé sur cette installation.");
+                ? "Publication management is disabled on this installation."
+                : "The quest workshop is disabled on this installation.");
         using var request = new HttpRequestMessage(method, path);
         request.Headers.Add("X-Arkya-Admin-Key", options.Value.AdminKey);
         if (body is not null) request.Content = JsonContent.Create(body);
@@ -52,21 +52,21 @@ public sealed partial class ContentAdminClient(HttpClient client, IOptions<Conte
         {
             var message = publication ? ContentPublicationPresentation.ErrorMessage(response.StatusCode) : response.StatusCode switch
             {
-                HttpStatusCode.Conflict => "Ce brouillon a changé. Rechargez la page avant d'enregistrer ou de publier.",
-                HttpStatusCode.BadRequest => "Vérifiez les champs : identifiants uniques, titre renseigné et objectif entre 1 et 10 000 ennemis.",
-                HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "L'accès au catalogue a été refusé. Vérifiez la configuration de l'administration.",
-                _ => "Le catalogue est indisponible. Réessayez dans un instant."
+                HttpStatusCode.Conflict => "This draft has changed. Reload the page before saving or publishing.",
+                HttpStatusCode.BadRequest => "Check the fields: unique IDs, a title and a target from 1 to 10,000 enemies.",
+                HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "Access to the catalogue was denied. Check the administration configuration.",
+                _ => "The catalogue is unavailable. Try again shortly."
             };
             throw new ContentApiException(response.StatusCode, message);
         }
         try
         {
             return await response.Content.ReadFromJsonAsync<T>(ct)
-                ?? throw new ContentApiException(HttpStatusCode.BadGateway, publication ? "Le service de publications a renvoyé une réponse vide." : "Le catalogue a renvoyé une réponse vide.");
+                ?? throw new ContentApiException(HttpStatusCode.BadGateway, publication ? "The publication service returned an empty response." : "The catalogue returned an empty response.");
         }
         catch (JsonException)
         {
-            throw new ContentApiException(HttpStatusCode.BadGateway, publication ? "Le service de publications a renvoyé une réponse invalide." : "Le catalogue a renvoyé une réponse invalide.");
+            throw new ContentApiException(HttpStatusCode.BadGateway, publication ? "The publication service returned an invalid response." : "The catalogue returned an invalid response.");
         }
     }
 }

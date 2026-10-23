@@ -40,14 +40,14 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
     {
         if (!Enabled) return NotFound();
         if (Input.DisplayName?.Any(char.IsControl) == true)
-            ModelState.AddModelError("Input.DisplayName", "Le nom ne peut pas contenir de caractères de contrôle.");
+            ModelState.AddModelError("Input.DisplayName", "The name cannot contain control characters.");
         if (Input.InitialWorkers > Input.MaxWorkers)
-            ModelState.AddModelError("Input.InitialWorkers", "Le nombre initial ne peut pas dépasser le maximum de workers.");
+            ModelState.AddModelError("Input.InitialWorkers", "The initial count cannot exceed the worker limit.");
         if ((long)Input.InitialWorkers * Input.ThreadsPerWorker > 96)
-            ModelState.AddModelError("Input.ThreadsPerWorker", "Les workers ne peuvent pas demander plus de 96 threads au total.");
+            ModelState.AddModelError("Input.ThreadsPerWorker", "Workers cannot request more than 96 threads in total.");
         await LoadModelsAsync(ct);
         if (ModelsLoaded && !ValidModel(Input.ModelId))
-            ModelState.AddModelError("Input.ModelId", "Choisissez un modèle dans le catalogue disponible.");
+            ModelState.AddModelError("Input.ModelId", "Choose a model from the available catalogue.");
         if (ModelState.IsValid && ModelsLoaded)
         {
             try
@@ -78,7 +78,7 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
         try
         {
             await inference.AddWorkerAsync(agentId!, threads.Value, ct, modelId!);
-            Notice = "Worker demandé. L’agent le démarrera à son prochain contact.";
+            Notice = "Worker requested. The agent will start it on its next check-in.";
             return RedirectToPage();
         }
         catch (Exception ex) when (InferencePresentation.IsDependencyError(ex, ct))
@@ -101,7 +101,7 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
         try
         {
             await inference.UpdateWorkerAsync(agentId!, workerId!, threads.Value, modelId!, ct);
-            Notice = "Configuration du worker enregistrée. L’agent appliquera le modèle et les threads à son prochain contact ; un changement redémarre ce worker.";
+            Notice = "Worker configuration saved. The agent will apply the model and threads on its next check-in; a change restarts this worker.";
             return RedirectToPage();
         }
         catch (Exception ex) when (InferencePresentation.IsDependencyError(ex, ct))
@@ -120,7 +120,7 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
         try
         {
             await inference.DeleteWorkerAsync(agentId!, workerId!, ct);
-            Notice = "Suppression du worker demandée. L’agent l’arrêtera à son prochain contact.";
+            Notice = "Worker deletion requested. The agent will stop it on its next check-in.";
             return RedirectToPage();
         }
         catch (Exception ex) when (InferencePresentation.IsDependencyError(ex, ct))
@@ -139,7 +139,7 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
         try
         {
             await inference.DeleteAgentAsync(agentId!, ct);
-            Notice = "Machine supprimée. Son jeton d’agent n’est plus utilisable.";
+            Notice = "Machine deleted. Its agent token is no longer usable.";
             return RedirectToPage();
         }
         catch (Exception ex) when (InferencePresentation.IsDependencyError(ex, ct))
@@ -172,13 +172,13 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
             var models = await inference.ModelsAsync(ct);
             if (models.Length == 0 || models.Any(model => model is null || string.IsNullOrWhiteSpace(model.ModelId) ||
                     string.IsNullOrWhiteSpace(model.Label)) || models.Select(model => model.ModelId).Distinct(StringComparer.Ordinal).Count() != models.Length)
-                throw new InferenceApiException(System.Net.HttpStatusCode.BadGateway, "Le catalogue de modèles est indisponible. Les changements de configuration sont désactivés.");
+                throw new InferenceApiException(System.Net.HttpStatusCode.BadGateway, "The model catalogue is unavailable. Configuration changes are disabled.");
             Models = models;
             ModelsLoaded = true;
         }
         catch (Exception ex) when (InferencePresentation.IsDependencyError(ex, ct))
         {
-            Error ??= "Le catalogue de modèles est indisponible. Les changements de configuration sont désactivés.";
+            Error ??= "The model catalogue is unavailable. Configuration changes are disabled.";
         }
     }
 
@@ -201,23 +201,23 @@ public sealed class InferenceModel(InferenceAdminClient inference) : PageModel
 
     public sealed class AgentInput
     {
-        [Required(ErrorMessage = "Renseignez un identifiant."), StringLength(48, MinimumLength = 3),
-         RegularExpression("[a-z][a-z0-9-]*[a-z0-9]", ErrorMessage = "Utilisez des minuscules, chiffres et tirets, avec une lettre au début et aucun tiret à la fin.")]
+        [Required(ErrorMessage = "Enter an ID."), StringLength(48, MinimumLength = 3),
+         RegularExpression("[a-z][a-z0-9-]*[a-z0-9]", ErrorMessage = "Use lowercase letters, digits and hyphens, starting with a letter and ending without a hyphen.")]
         public string AgentId { get; set; } = "";
 
-        [Required(ErrorMessage = "Renseignez un nom."), StringLength(80)]
+        [Required(ErrorMessage = "Enter a name."), StringLength(80)]
         public string DisplayName { get; set; } = "";
 
-        [Range(0, 12, ErrorMessage = "Choisissez entre 0 et 12 workers initiaux.")]
+        [Range(0, 12, ErrorMessage = "Choose from 0 to 12 initial workers.")]
         public int InitialWorkers { get; set; } = 3;
 
-        [Range(1, 24, ErrorMessage = "Choisissez entre 1 et 24 threads par worker.")]
+        [Range(1, 24, ErrorMessage = "Choose from 1 to 24 threads per worker.")]
         public int ThreadsPerWorker { get; set; } = 4;
 
-        [Range(1, 12, ErrorMessage = "Choisissez un maximum entre 1 et 12 workers.")]
+        [Range(1, 12, ErrorMessage = "Choose a limit from 1 to 12 workers.")]
         public int MaxWorkers { get; set; } = 6;
 
-        [Required(ErrorMessage = "Choisissez un modèle."), StringLength(64)]
+        [Required(ErrorMessage = "Choose a model."), StringLength(64)]
         public string ModelId { get; set; } = InferenceModels.DefaultModelId;
     }
 }

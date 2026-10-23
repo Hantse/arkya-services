@@ -36,8 +36,9 @@
 
         function update() {
             const id = find("[data-island-id]").value;
-            const known = id === catalog.dataset.islandCatalogId && catalog.dataset.islandCatalogImage;
-            const label = known ? catalog.dataset.islandCatalogLabel : id || "Nouvelle Area";
+            const contentId = find("[data-island-content-id]").value.trim() || id;
+            const known = contentId === catalog.dataset.islandCatalogId && catalog.dataset.islandCatalogImage;
+            const label = id === catalog.dataset.islandCatalogId ? catalog.dataset.islandCatalogLabel : id || "New Area";
             find("[data-island-label]").textContent = label;
             image.hidden = !known;
             placeholder.hidden = Boolean(known);
@@ -50,9 +51,9 @@
             const depth = number(depthInput);
             const imageMatchesPlan = known && catalog.dataset.islandCatalogMapped === "true" && width === 1536 && depth === 1536 &&
                 number(find("[data-island-origin-x]")) === 0 && number(find("[data-island-origin-z]")) === 0;
-            find("[data-island-image-note]").textContent = !known ? "Aucune image de catalogue pour cet identifiant."
-                : imageMatchesPlan ? "Carte du relief · X vers la droite, Y / Z vers le haut."
-                : "Illustration · dimensions du plan différentes de la vue.";
+            find("[data-island-image-note]").textContent = !known ? "No catalogue image for this ID."
+                : imageMatchesPlan ? "Terrain map · X points right, Y / Z points up."
+                : "Illustration · plan dimensions differ from the view.";
             const validDimensions = Number.isFinite(width) && width >= 1 && width <= 1000000 &&
                 Number.isFinite(depth) && depth >= 1 && depth <= 1000000;
             let grid = null;
@@ -72,10 +73,10 @@
             }
 
             const summary = grid
-                ? `${grid.columns} × ${grid.rows} = ${grid.columns * grid.rows} dédié(s)`
-                : "Corrigez les dimensions ou la grille pour afficher l’aperçu (64 dédiés maximum).";
+                ? `${grid.columns} × ${grid.rows} = ${grid.columns * grid.rows} dedicated server(s)`
+                : "Correct the dimensions or grid to display the preview (up to 64 dedicated servers).";
             find("[data-grid-summary]").textContent = summary;
-            preview.setAttribute("aria-label", `${label} : ${summary}. X vers la droite, Y / Z vers le haut.`);
+            preview.setAttribute("aria-label", `${label} : ${summary}. X points right, Y / Z points up.`);
             cells.replaceChildren();
             cells.parentElement.classList.toggle("is-dense", Boolean(grid && (grid.columns > 12 || grid.rows > 12)));
             if (!grid) return;

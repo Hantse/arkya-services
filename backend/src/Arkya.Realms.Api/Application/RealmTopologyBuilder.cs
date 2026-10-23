@@ -14,12 +14,13 @@ public static class RealmTopologyBuilder
     public static bool IsValid(RealmTopology? topology) => topology is not null &&
         topology.Islands is { Length: <= MaxIslands } &&
         topology.Islands.All(island => island is not null && DeploymentOptions.ValidId(island.IslandId) &&
-            island.IslandId.Length <= MaxIslandIdLength && island.DedicatedCount is >= 1 and <= MaxDedicatedPerGroup && IslandPartitioning.IsValid(island)) &&
+            island.IslandId.Length <= MaxIslandIdLength && (island.ContentId is null || GameProtocol.ValidId(island.ContentId)) &&
+            island.DedicatedCount is >= 1 and <= MaxDedicatedPerGroup && IslandPartitioning.IsValid(island)) &&
         topology.Islands.Select(island => island.IslandId).Distinct(StringComparer.Ordinal).Count() == topology.Islands.Length &&
         topology.InstanceDedicatedCount is >= 0 and <= MaxDedicatedPerGroup &&
         topology.RaidDedicatedCount is >= 0 and <= MaxDedicatedPerGroup &&
         topology.Islands.Sum(island => island.DedicatedCount) + topology.InstanceDedicatedCount + topology.RaidDedicatedCount
-            is >= 1 and <= MaxTotalDedicated;
+            is >= 1 and <= MaxTotalDedicated && ValidTransitions(topology);
 
     public static bool ValidTemplate(DeploymentProfile profile)
     {
@@ -35,14 +36,19 @@ public static class RealmTopologyBuilder
 
     public static bool SnapshotSupportsRuntime(ProfileSnapshot snapshot) => snapshot.Topology is null ||
         snapshot.TopologyRuntimeSupported && snapshot.Topology.InstanceDedicatedCount == 0 && snapshot.Topology.RaidDedicatedCount == 0 &&
-        snapshot.Servers.All(server => server.Kind == DedicatedKind.Island && GameProtocol.IsHandoff(server.ProtocolVersion, server.BuildId));
+        snapshot.Servers.All(server => server.Kind == DedicatedKind.Island && GameProtocol.IsHandoff(server.ProtocolVersion, server.BuildId) &&
+            (!RequiresMultiArea(snapshot.Topology) || GameProtocol.IsMultiArea(server.ProtocolVersion, server.BuildId)));
+
+    private static bool RequiresMultiArea(RealmTopology topology) => topology.Islands.Any(area => area.ContentId is not null) ||
+        topology.AreaTransitions is { Length: > 0 };
 
     public static ProfileSnapshot Snapshot(DeploymentProfile profile, string realmId, RealmTopology? topology)
     {
         if (topology is null) return profile.Snapshot();
         if (!IsValid(topology)) throw new ArgumentException("Invalid realm topology.", nameof(topology));
         var frozen = new RealmTopology(topology.Islands.OrderBy(island => island.IslandId, StringComparer.Ordinal)
-            .Select(island => island with { }).ToArray(), topology.InstanceDedicatedCount, topology.RaidDedicatedCount);
+            .Select(island => island with { }).ToArray(), topology.InstanceDedicatedCount, topology.RaidDedicatedCount)
+        { AreaTransitions = topology.AreaTransitions is { Length: > 0 } transitions ? transitions.OrderBy(value => value.Id, StringComparer.Ordinal).ToArray() : null };
         var template = profile.Servers.SingleOrDefault(server => server.Id == profile.TopologyTemplateServerId) ?? profile.Servers[0];
         var servers = new List<ServerDefinition>();
         foreach (var island in frozen.Islands)
@@ -57,7 +63,8 @@ public static class RealmTopologyBuilder
         for (var index = 0; index < frozen.RaidDedicatedCount; index++)
             servers.Add(Server($"raid-{Slot(index)}", DedicatedKind.Raid));
         var snapshot = profile.Snapshot() with { Servers = servers.ToArray(), Topology = frozen,
-            TopologyRuntimeSupported = RuntimeSupported(profile) && frozen.InstanceDedicatedCount == 0 && frozen.RaidDedicatedCount == 0 };
+            TopologyRuntimeSupported = RuntimeSupported(profile) && frozen.InstanceDedicatedCount == 0 && frozen.RaidDedicatedCount == 0 &&
+                (!RequiresMultiArea(frozen) || GameProtocol.IsMultiArea(template.ProtocolVersion, template.BuildId)) };
         if (snapshot.TopologyRuntimeSupported && !ValidGeneratedEndpoints(snapshot.Servers))
             throw new ArgumentException("Topology endpoints must be valid and distinct.", nameof(profile));
         return snapshot;
@@ -74,6 +81,17 @@ public static class RealmTopologyBuilder
     }
 
     private static string Slot(int index) => (index + 1).ToString("D2", CultureInfo.InvariantCulture);
+
+    private static bool ValidTransitions(RealmTopology topology)
+    {
+        if (topology.AreaTransitions is not { Length: > 0 }) return true;
+        var partitions = topology.Islands.SelectMany(area => IslandPartitioning.Create(area).Select((bounds, index) =>
+            new GameRealmPartition($"island-{area.IslandId}-{Slot(index)}", $"wss://topology.invalid/{area.IslandId}/{index}", area.IslandId,
+                index, new(bounds.MinX, bounds.MinZ, bounds.MaxX, bounds.MaxZ)))).ToArray();
+        if (partitions.Length == 0) return false;
+        return GameTopology.IsValid(new("validation-realm", "Validation", false, partitions[0].ServerId, partitions[0].Endpoint,
+            GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId) { Partitions = partitions, TopologyVersion = "validation", AreaTransitions = topology.AreaTransitions });
+    }
 
     private static bool ValidEndpointTemplate(string? template)
     {

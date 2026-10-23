@@ -4,7 +4,8 @@ param(
     [ValidateSet('Start', 'Restart', 'Tickets', 'VerifyState', 'VerifyRevocation', 'Stop')][string]$Action = 'Start',
     [string]$Directory = '',
     [ValidateSet('Debug', 'Release')][string]$BuildConfiguration = 'Debug',
-    [ValidateSet(1, 4)][int]$ServerCount = 1
+    [ValidateSet(1, 4)][int]$ServerCount = 1,
+    [switch]$MultiArea
 )
 $ErrorActionPreference = 'Stop'
 $backend = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -55,9 +56,13 @@ if ($Action -in @('Start', 'Restart')) {
         if ($LASTEXITCODE -ne 0) { throw 'Fixture service build failed.' }
     }
     if ($Action -eq 'Start') {
-        $previousCount = $env:ARKYA_TEST_SERVER_COUNT
-        try { $env:ARKYA_TEST_SERVER_COUNT = [string]$ServerCount; $null = Invoke-FixtureTool 'prepare' }
-        finally { $env:ARKYA_TEST_SERVER_COUNT = $previousCount }
+        $previousCount = $env:ARKYA_TEST_SERVER_COUNT; $previousMultiArea = $env:ARKYA_TEST_MULTI_AREA
+        try {
+            $env:ARKYA_TEST_SERVER_COUNT = [string]$ServerCount
+            $env:ARKYA_TEST_MULTI_AREA = $(if ($MultiArea) { '1' } else { '0' })
+            $null = Invoke-FixtureTool 'prepare'
+        }
+        finally { $env:ARKYA_TEST_SERVER_COUNT = $previousCount; $env:ARKYA_TEST_MULTI_AREA = $previousMultiArea }
     }
     $fixture = Get-Content -LiteralPath $fixturePath -Raw | ConvertFrom-Json -AsHashtable
     $launched = @()

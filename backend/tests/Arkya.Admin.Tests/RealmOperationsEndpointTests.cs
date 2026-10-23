@@ -110,7 +110,7 @@ public sealed class RealmOperationsEndpointTests
         using var conflict = await browser.PostAsync(Path + "?handler=Update", AdminFactory.Form(form));
         var html = await conflict.Content.ReadAsStringAsync();
         Assert.Equal("8", AdminFactory.Input(html, "ExpectedRevision"));
-        Assert.Contains("a changé", WebUtility.HtmlDecode(html));
+        Assert.Contains("has changed", WebUtility.HtmlDecode(html));
         AdminFactory.NoSecrets(html);
     }
 
@@ -135,10 +135,10 @@ public sealed class RealmOperationsEndpointTests
         Assert.Equal("admin:operator", factory.Realms.Actors[factory.Realms.Calls.IndexOf(call)]);
         Assert.Equal(Path + "?section=game", response.Headers.Location!.OriginalString);
         var notice = WebUtility.HtmlDecode(await browser.GetStringAsync(response.Headers.Location));
-        Assert.Contains("en attente du serveur", notice);
+        Assert.Contains("awaiting the server", notice);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path + "?section=history"));
-        Assert.Contains("En attente du serveur", html);
-        Assert.DoesNotContain(">Exécutée<", html);
+        Assert.Contains("Awaiting server", html);
+        Assert.DoesNotContain(">Executed<", html);
         AdminFactory.NoSecrets(html);
     }
 
@@ -203,8 +203,8 @@ public sealed class RealmOperationsEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync(Path + "?section=game");
-        Assert.Contains("Aucun serveur compatible", WebUtility.HtmlDecode(html));
-        Assert.Contains("disabled=\"disabled\">Envoyer l’annonce", html);
+        Assert.Contains("No compatible server", WebUtility.HtmlDecode(html));
+        Assert.Contains("disabled=\"disabled\">Send announcement", html);
         var form = await Form(browser, "game");
         using var response = await browser.PostAsync(Path + "?handler=Announce", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -226,8 +226,8 @@ public sealed class RealmOperationsEndpointTests
         Assert.DoesNotContain("<script>alert", html);
         Assert.DoesNotContain("<img src=x>", html);
         Assert.Contains("&lt;script&gt;", html);
-        Assert.Contains("Résultat inconnu", WebUtility.HtmlDecode(html));
-        Assert.Contains("Vérifiez en jeu avant de relancer", WebUtility.HtmlDecode(html));
+        Assert.Contains("Unknown result", WebUtility.HtmlDecode(html));
+        Assert.Contains("Check in game before retrying", WebUtility.HtmlDecode(html));
         AdminFactory.NoSecrets(html);
     }
 

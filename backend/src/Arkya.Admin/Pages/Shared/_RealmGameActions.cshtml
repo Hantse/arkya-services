@@ -2,40 +2,40 @@
 @using Arkya.Admin.Realms
 @{ var realm = Model.Realm!; }
 <section class="account-actions" aria-labelledby="game-heading">
-    <div class="section-heading"><h2 id="game-heading">Actions en jeu</h2><span class="muted">La réception et le résultat sont suivis dans l’historique.</span></div>
+    <div class="section-heading"><h2 id="game-heading">In-game actions</h2><span class="muted">Receipt and results are tracked in the history.</span></div>
     @if (Model.CommandsError is not null) { <div class="alert error" role="alert">@Model.CommandsError</div> }
     @if (Model.Commands is { } commands)
     {
         var announceServers = commands.Servers.Where(server => server.Available && server.SupportedCommands.Contains("announce")).ToArray();
         var commandServers = commands.Servers.Where(server => server.Available && server.SupportedCommands.Any(type => type is "kick" or "save")).ToArray();
         var commandTypes = commandServers.SelectMany(server => server.SupportedCommands).Where(type => type is "kick" or "save").Distinct().ToArray();
-        @if (!commands.Servers.Any(server => server.Available)) { <div class="workflow-note"><strong>Aucun serveur compatible ne répond</strong><p>Les actions en jeu seront disponibles dès qu’un serveur dédié compatible aura contacté le service. Actualisez pour vérifier sa connexion.</p></div> }
+        @if (!commands.Servers.Any(server => server.Available)) { <div class="workflow-note"><strong>No compatible server is responding</strong><p>In-game actions will be available once a compatible dedicated server contacts the service. Refresh to check its connection.</p></div> }
         <div class="panel realm-form"><dl class="detail-grid">
         @foreach (var server in commands.Servers)
         {
-            <div><dt>@server.ServerId</dt><dd>@(server.Available ? "Connecté au contrôle en jeu" : "Contrôle en jeu indisponible")<small>Dernier contact : @(server.LastSeenAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss 'UTC'") ?? "jamais")</small></dd></div>
+            <div><dt>@server.ServerId</dt><dd>@(server.Available ? "Connected to in-game control" : "In-game control unavailable")<small>Last check-in: @(server.LastSeenAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss 'UTC'") ?? "never")</small></dd></div>
         }
         </dl></div>
         <div class="action-grid">
-            <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "announce")"><summary><strong>Envoyer un message en jeu</strong><small>Une annonce pour les joueurs connectés.</small></summary>
+            <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "announce")"><summary><strong>Send an in-game message</strong><small>An announcement for connected players.</small></summary>
             <form method="post" asp-page="/Realm" asp-page-handler="Announce" asp-route-realmId="@realm.RealmId" class="realm-form">
-                <p class="muted">L’annonce est affichée aux joueurs connectés au serveur choisi.</p>
+                <p class="muted">The announcement is shown to players connected to the selected server.</p>
                 <input type="hidden" name="ExpectedRevision" value="@Model.ExpectedRevision" /><input type="hidden" name="RequestId" value="@Model.RequestId" />
-                <div class="field"><label for="announce-server">Serveur destinataire</label><select id="announce-server" name="ServerId" required>@foreach (var server in announceServers) { <option value="@server.ServerId" selected="@(Model.ServerId == server.ServerId)">@server.ServerId</option> }</select></div>
-                <div class="field"><label for="announce-message">Message aux joueurs</label><textarea id="announce-message" name="Message" rows="3" maxlength="400" required aria-describedby="message-limit">@Model.Message</textarea><small id="message-limit">Une ligne, 400 octets UTF-8 maximum. Les accents occupent plusieurs octets.</small></div>
-                <div class="field"><label for="announce-reason">Motif de l’annonce</label><input id="announce-reason" name="Reason" value="@Model.Reason" maxlength="500" required /></div>
-                <button class="button primary" type="submit" disabled="@(announceServers.Length == 0)">Envoyer l’annonce</button>
+                <div class="field"><label for="announce-server">Target server</label><select id="announce-server" name="ServerId" required>@foreach (var server in announceServers) { <option value="@server.ServerId" selected="@(Model.ServerId == server.ServerId)">@server.ServerId</option> }</select></div>
+                <div class="field"><label for="announce-message">Message to players</label><textarea id="announce-message" name="Message" rows="3" maxlength="400" required aria-describedby="message-limit">@Model.Message</textarea><small id="message-limit">One line, up to 400 UTF-8 bytes. Accented characters occupy multiple bytes.</small></div>
+                <div class="field"><label for="announce-reason">Announcement reason</label><input id="announce-reason" name="Reason" value="@Model.Reason" maxlength="500" required /></div>
+                <button class="button primary" type="submit" disabled="@(announceServers.Length == 0)">Send announcement</button>
             </form>
             </details>
-            <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "command")"><summary><strong>Exécuter une commande en jeu</strong><small>Déconnecter un personnage ou sauvegarder.</small></summary>
+            <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "command")"><summary><strong>Run an in-game command</strong><small>Disconnect a character or save.</small></summary>
             <form method="post" asp-page="/Realm" asp-page-handler="Command" asp-route-realmId="@realm.RealmId" class="realm-form">
-                <p class="muted">Choisissez une action prise en charge par le serveur dédié.</p>
+                <p class="muted">Choose an action supported by the dedicated server.</p>
                 <input type="hidden" name="ExpectedRevision" value="@Model.ExpectedRevision" /><input type="hidden" name="RequestId" value="@Model.RequestId" />
-                <div class="field"><label for="command-server">Serveur destinataire</label><select id="command-server" name="ServerId" required>@foreach (var server in commandServers) { <option value="@server.ServerId" selected="@(Model.ServerId == server.ServerId)">@server.ServerId — @string.Join(", ", server.SupportedCommands.Where(type => type is "kick" or "save").Select(RealmPresentation.CommandLabel))</option> }</select></div>
-                <div class="field"><label for="command-type">Commande</label><select id="command-type" name="CommandType" required>@foreach (var type in commandTypes) { <option value="@type" selected="@(Model.CommandType == type)">@RealmPresentation.CommandLabel(type)</option> }</select></div>
-                <div class="field"><label for="command-character">Identifiant du personnage</label><input id="command-character" name="CharacterId" value="@Model.CharacterId" maxlength="36" aria-describedby="character-help" /><small id="character-help">UUID obligatoire pour une déconnexion. Retrouvez-le dans <a asp-page="/Realm" asp-route-realmId="@realm.RealmId" asp-route-section="players" asp-route-onlineOnly="true">les personnages en ligne de ce realm</a>.</small></div>
-                <div class="field"><label for="command-reason">Motif de la commande</label><input id="command-reason" name="Reason" value="@Model.Reason" maxlength="500" required /></div>
-                <button class="button secondary" type="submit" disabled="@(commandServers.Length == 0)">Envoyer la commande</button>
+                <div class="field"><label for="command-server">Target server</label><select id="command-server" name="ServerId" required>@foreach (var server in commandServers) { <option value="@server.ServerId" selected="@(Model.ServerId == server.ServerId)">@server.ServerId — @string.Join(", ", server.SupportedCommands.Where(type => type is "kick" or "save").Select(RealmPresentation.CommandLabel))</option> }</select></div>
+                <div class="field"><label for="command-type">Command</label><select id="command-type" name="CommandType" required>@foreach (var type in commandTypes) { <option value="@type" selected="@(Model.CommandType == type)">@RealmPresentation.CommandLabel(type)</option> }</select></div>
+                <div class="field"><label for="command-character">Character ID</label><input id="command-character" name="CharacterId" value="@Model.CharacterId" maxlength="36" aria-describedby="character-help" /><small id="character-help">A UUID is required to disconnect a character. Find it in <a asp-page="/Realm" asp-route-realmId="@realm.RealmId" asp-route-section="players" asp-route-onlineOnly="true">this realm's online characters</a>.</small></div>
+                <div class="field"><label for="command-reason">Command reason</label><input id="command-reason" name="Reason" value="@Model.Reason" maxlength="500" required /></div>
+                <button class="button secondary" type="submit" disabled="@(commandServers.Length == 0)">Send command</button>
             </form>
             </details>
         </div>

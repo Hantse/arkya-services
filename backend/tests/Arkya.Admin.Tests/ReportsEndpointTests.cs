@@ -46,7 +46,7 @@ public sealed class ReportsEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/BugReports");
-        Assert.Contains("La gestion des signalements est désactivée", WebUtility.HtmlDecode(html));
+        Assert.Contains("Report management is disabled", WebUtility.HtmlDecode(html));
         Assert.Equal(HttpStatusCode.NotFound, (await browser.GetAsync(Detail)).StatusCode);
         Assert.Equal(HttpStatusCode.NotFound, (await browser.GetAsync(Screenshot)).StatusCode);
         Assert.Equal(HttpStatusCode.NotFound, (await browser.PostAsync(Save, AdminFactory.Form(SaveForm(AdminFactory.Input(html, "__RequestVerificationToken"))))).StatusCode);
@@ -75,7 +75,7 @@ public sealed class ReportsEndpointTests
         Assert.Contains("&lt;script&gt;player-input&lt;/script&gt;", html);
         Assert.DoesNotContain("<script>player-input", html);
         Assert.Contains("offset=40", html);
-        Assert.Contains("Précédents", WebUtility.HtmlDecode(html));
+        Assert.Contains("Previous", WebUtility.HtmlDecode(html));
         var nextLink = Regex.Matches(html, "href=\"([^\"]+)\"").Select(match => WebUtility.HtmlDecode(match.Groups[1].Value))
             .Select(href => QueryHelpers.ParseQuery(new Uri(new Uri("https://localhost"), href).Query))
             .Single(parameters => parameters.TryGetValue("offset", out var offset) && offset == "40");
@@ -96,7 +96,7 @@ public sealed class ReportsEndpointTests
         var html = await browser.GetStringAsync("/BugReports" + query);
         var call = Assert.Single(factory.Reports.Calls);
         Assert.False(QueryHelpers.ParseQuery(call.Uri.Query).ContainsKey("kind"));
-        Assert.Contains("Tous les types", html);
+        Assert.Contains("All types", html);
     }
 
     [Theory]
@@ -125,7 +125,7 @@ public sealed class ReportsEndpointTests
         factory.Reports.Total = 0;
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        Assert.Contains("Aucun rapport sur cette page", await browser.GetStringAsync("/BugReports"));
+        Assert.Contains("No reports on this page", await browser.GetStringAsync("/BugReports"));
     }
 
     [Fact]
@@ -159,12 +159,12 @@ public sealed class ReportsEndpointTests
         await AdminFactory.Login(browser);
         var list = await browser.GetStringAsync("/BugReports?kind=suggestion");
         Assert.Contains("<span class=\"badge\">Suggestion</span>", list);
-        Assert.Contains("Réalisée", WebUtility.HtmlDecode(list));
+        Assert.Contains("Completed", WebUtility.HtmlDecode(list));
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Detail));
         Assert.Contains("<dt>Type</dt><dd>Suggestion</dd>", html);
-        Assert.Contains("Réalisée", html);
-        Assert.DoesNotContain("Résolu", html);
-        Assert.Contains("Réponse / réalisation", html);
+        Assert.Contains("Completed", html);
+        Assert.DoesNotContain("Resolved", html);
+        Assert.Contains("Response / implementation", html);
         Assert.Contains("handler=Screenshot", html);
         using var screenshot = await browser.GetAsync(Screenshot);
         Assert.Equal(HttpStatusCode.OK, screenshot.StatusCode);
@@ -183,8 +183,8 @@ public sealed class ReportsEndpointTests
         Assert.Contains("<span class=\"badge\">Bug</span>", await browser.GetStringAsync("/BugReports"));
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Detail));
         Assert.Contains("<dt>Type</dt><dd>Bug</dd>", html);
-        Assert.Contains("Résolu", html);
-        Assert.DoesNotContain("Réalisée", html);
+        Assert.Contains("Resolved", html);
+        Assert.DoesNotContain("Completed", html);
         AdminFactory.NoSecrets(html);
     }
 
@@ -261,7 +261,7 @@ public sealed class ReportsEndpointTests
         Assert.Equal(["urgent", "gameplay"], update.Tags!);
         Assert.Equal("Collision corrigée.", update.Resolution);
         var html = await browser.GetStringAsync(response.Headers.Location);
-        Assert.Contains("Rapport mis à jour.", WebUtility.HtmlDecode(html));
+        Assert.Contains("Report updated.", WebUtility.HtmlDecode(html));
         AdminFactory.NoSecrets(html);
     }
 
@@ -327,7 +327,7 @@ public sealed class ReportsEndpointTests
         using var response = await browser.PostAsync(Save, AdminFactory.Form(SaveForm(token)));
         var html = await response.Content.ReadAsStringAsync();
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Contains("La version actuelle a été rechargée", WebUtility.HtmlDecode(html));
+        Assert.Contains("The current version has been reloaded", WebUtility.HtmlDecode(html));
         Assert.Equal("3", AdminFactory.Input(html, "ExpectedRevision"));
         Assert.Equal("fixed", AdminFactory.Input(html, "Input.Tags"));
         Assert.Contains("Résolution concurrente.", WebUtility.HtmlDecode(html));
@@ -346,7 +346,7 @@ public sealed class ReportsEndpointTests
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/BugReports");
         Assert.Contains("role=\"alert\"", html);
-        Assert.Contains("Réessayer", WebUtility.HtmlDecode(html));
+        Assert.Contains("Try again", WebUtility.HtmlDecode(html));
         AdminFactory.NoSecrets(html);
         using var screenshot = await browser.GetAsync(Screenshot);
         Assert.Equal(HttpStatusCode.BadGateway, screenshot.StatusCode);

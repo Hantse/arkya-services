@@ -65,8 +65,8 @@ public sealed class RealmSiteTests
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Dedicated + "/"));
         Assert.Contains("Les Terres d'Aube", html);
         Assert.Contains("https://terres-aube.arkya.online/", html);
-        Assert.Contains("Administration générale", html);
-        Assert.DoesNotContain("Comptes et accès", html);
+        Assert.Contains("General administration", html);
+        Assert.DoesNotContain("Accounts and access", html);
         AdminFactory.NoSecrets(html);
         factory.Clock.Advance(TimeSpan.FromHours(1));
         using var renewed = await browser.GetAsync(Dedicated + "/?section=settings");
@@ -89,7 +89,7 @@ public sealed class RealmSiteTests
         browser.BaseAddress = new Uri(Central);
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync(Dedicated + "/?section=" + section);
-        var navigation = Regex.Match(html, @"<nav\b[^>]*aria-label=""Menu principal""[^>]*>.*?</nav>", RegexOptions.Singleline).Value;
+        var navigation = Regex.Match(html, @"<nav\b[^>]*aria-label=""Main menu""[^>]*>.*?</nav>", RegexOptions.Singleline).Value;
         var sectionLinks = Regex.Matches(navigation, @"<a\b[^>]*href=""/\?section=[^""]*""[^>]*>.*?</a>", RegexOptions.Singleline);
         Assert.Equal(6, sectionLinks.Count);
         var active = Assert.Single(sectionLinks.Cast<Match>(), link => link.Value.Contains("aria-current=\"page\""));

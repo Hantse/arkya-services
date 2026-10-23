@@ -1,0 +1,16 @@
+@model RealmModel
+@using System.Globalization
+@{
+    string N(double value) => value.ToString("0.#########", CultureInfo.InvariantCulture);
+}
+@if (Model.Realm?.Topology?.AreaTransitions is { Length: > 0 } portals)
+{
+    <details class="panel realm-advanced"><summary>Automatic Area portals <span class="muted">@portals.Length portal(s)</span></summary>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Area portal destinations"><table class="realm-table"><thead><tr><th scope="col">Portal</th><th scope="col">Source Area / trigger X, Z</th><th scope="col">Target Area / arrival X, Y, Z</th><th scope="col">Arrival direction X, Z</th></tr></thead><tbody>
+        @foreach (var portal in portals)
+        {
+            <tr><th scope="row" class="mono">@portal.Id</th><td><strong class="mono">@portal.SourceAreaId</strong><small>(@N(portal.SourceBounds.MinX), @N(portal.SourceBounds.MinZ)) → (@N(portal.SourceBounds.MaxX), @N(portal.SourceBounds.MaxZ))</small></td><td><strong class="mono">@portal.TargetAreaId</strong><small>@N(portal.TargetPosition.X), @N(portal.TargetPosition.Y), @N(portal.TargetPosition.Z)</small></td><td>@(portal.TargetForward is { } forward ? $"{N(forward.X)}, {N(forward.Z)}" : "Preserve player direction")</td></tr>
+        }
+        </tbody></table></div>
+    </details>
+}

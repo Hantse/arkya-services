@@ -1,5 +1,10 @@
 # StarterIsland : passage automatique entre dedicateds
 
+Ce guide conserve la preuve historique du transfert entre partitions de
+StarterIsland. Le [runtime multi-Area version 3](MULTI_AREA_RUNTIME.md) étend
+ce mécanisme aux cartes enregistrées et aux portails automatiques, avec ses
+propres contrats et preuves de validation.
+
 L'île de départ est une **Area**, une carte entière parmi les Areas d'un
 realm. Ses dedicateds simulent ses partitions ; quatre dedicateds correspondent
 à quatre partitions de cette même Area. Chaque autre Area du realm peut avoir

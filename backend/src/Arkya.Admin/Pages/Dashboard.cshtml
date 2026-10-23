@@ -8,38 +8,38 @@
     var available = snapshot.Services.Count(service => service.State == "ready");
 }
 <header class="page-header">
-    <div><div class="eyebrow">EXPLOITATION / VUE D'ENSEMBLE</div><h1 class="dashboard-heading"><partial name="_AdminIcon" model='@("shield")' />Dashboard</h1><p class="intro">Services, mondes et activité des joueurs.</p></div>
-    <div class="header-actions"><a class="button secondary" asp-page="/Dashboard"><partial name="_AdminIcon" model='@("refresh")' />Actualiser</a><small>Relevé <time datetime="@snapshot.ObservedAt.ToString("O")">@snapshot.ObservedAt.ToString("dd/MM/yyyy HH:mm:ss 'UTC'")</time></small></div>
+    <div><div class="eyebrow">OPERATIONS / OVERVIEW</div><h1 class="dashboard-heading"><partial name="_AdminIcon" model='@("shield")' />Dashboard</h1><p class="intro">Services, worlds and player activity.</p></div>
+    <div class="header-actions"><a class="button secondary" asp-page="/Dashboard"><partial name="_AdminIcon" model='@("refresh")' />Refresh</a><small>Observed <time datetime="@snapshot.ObservedAt.ToString("O")">@snapshot.ObservedAt.ToString("dd/MM/yyyy HH:mm:ss 'UTC'")</time></small></div>
 </header>
-<div class="metric-grid" aria-label="Indicateurs actuels">
-    <a class="panel metric" href="#services"><span class="metric-icon"><partial name="_AdminIcon" model='@("activity")' /></span><span>Services disponibles</span><strong>@available <em>/ @monitored</em></strong><small>@snapshot.Services.Count(service => service.State == "disabled") non configuré(s)</small></a>
-    <a class="panel metric" asp-page="/Realms"><span class="metric-icon"><partial name="_AdminIcon" model='@("world")' /></span><span>Realms prêts</span><strong>@(snapshot.Realms is null ? "—" : snapshot.Realms.Count(realm => realm.Status == "Ready").ToString()) <em>/ @(snapshot.Realms?.Length.ToString() ?? "—")</em></strong><small>État du déploiement k3s</small></a>
-    <a class="panel metric" asp-page="/Players"><span class="metric-icon"><partial name="_AdminIcon" model='@("players")' /></span><span>Joueurs en ligne</span><strong>@(snapshot.Characters?.OnlineCharacters.ToString("N0") ?? "—")</strong><small>Connexions de personnages actives</small></a>
-    <a class="panel metric" asp-page="/Accounts"><span class="metric-icon"><partial name="_AdminIcon" model='@("users")' /></span><span>Comptes</span><strong>@(snapshot.TotalAccounts?.ToString("N0") ?? "—")</strong><small>@(snapshot.Characters?.TotalCharacters.ToString("N0") ?? "—") personnages enregistrés</small></a>
+<div class="metric-grid" aria-label="Current metrics">
+    <a class="panel metric" href="#services"><span class="metric-icon"><partial name="_AdminIcon" model='@("activity")' /></span><span>Available services</span><strong>@available <em>/ @monitored</em></strong><small>@snapshot.Services.Count(service => service.State == "disabled") not configured</small></a>
+    <a class="panel metric" asp-page="/Realms"><span class="metric-icon"><partial name="_AdminIcon" model='@("world")' /></span><span>Ready realms</span><strong>@(snapshot.Realms is null ? "—" : snapshot.Realms.Count(realm => realm.Status == "Ready").ToString()) <em>/ @(snapshot.Realms?.Length.ToString() ?? "—")</em></strong><small>k3s deployment status</small></a>
+    <a class="panel metric" asp-page="/Players"><span class="metric-icon"><partial name="_AdminIcon" model='@("players")' /></span><span>Online players</span><strong>@(snapshot.Characters?.OnlineCharacters.ToString("N0") ?? "—")</strong><small>Active character connections</small></a>
+    <a class="panel metric" asp-page="/Accounts"><span class="metric-icon"><partial name="_AdminIcon" model='@("users")' /></span><span>Accounts</span><strong>@(snapshot.TotalAccounts?.ToString("N0") ?? "—")</strong><small>@(snapshot.Characters?.TotalCharacters.ToString("N0") ?? "—") registered characters</small></a>
 </div>
 <section id="services" class="dashboard-section" aria-labelledby="services-heading">
-    <div class="section-heading"><h2 id="services-heading">État des services</h2><span class="muted">Vérification des API authentifiées</span></div>
-    <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Disponibilité des services métier</caption><thead><tr><th scope="col">Service</th><th scope="col">Responsabilité</th><th scope="col">État</th><th scope="col">Temps de réponse</th></tr></thead><tbody>
+    <div class="section-heading"><h2 id="services-heading">Service status</h2><span class="muted">Authenticated API checks</span></div>
+    <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Business service availability</caption><thead><tr><th scope="col">Service</th><th scope="col">Responsibility</th><th scope="col">Status</th><th scope="col">Response time</th></tr></thead><tbody>
     @foreach (var service in snapshot.Services)
     {
         <tr><th scope="row" class="mono">@service.Name</th><td>@service.Purpose</td><td><span class="realm-status @service.State">@service.Label</span></td><td class="mono">@(service.ElapsedMilliseconds is { } ms ? $"{ms} ms" : "—")</td></tr>
     }
     </tbody></table></div>
-    <p class="data-note">Un service disponible a répondu à une lecture métier. « Non configuré » signifie que son accès est désactivé. Les données sont actualisées au chargement de cette page.</p>
+    <p class="data-note">An available service responded to a business data request. “Not configured” means access is disabled. Data is refreshed when this page loads.</p>
 </section>
 <section class="dashboard-section" aria-labelledby="worlds-heading">
-    <div class="section-heading"><h2 id="worlds-heading">Realms et population</h2><a class="text-link" asp-page="/Infrastructure">Gérer l'infrastructure →</a></div>
+    <div class="section-heading"><h2 id="worlds-heading">Realms and population</h2><a class="text-link" asp-page="/Infrastructure">Manage infrastructure →</a></div>
     @if (snapshot.Realms is null)
     {
-        <div class="panel empty-state"><h3>Catalogue des realms indisponible</h3><p>Vérifiez l'état du service Realms et sa configuration, puis actualisez le dashboard.</p></div>
+        <div class="panel empty-state"><h3>Realm catalogue unavailable</h3><p>Check the Realms service status and configuration, then refresh the dashboard.</p></div>
     }
     else if (snapshot.Realms.Length == 0)
     {
-        <div class="panel empty-state"><h3>Aucun realm enregistré</h3><p>Préparez un premier monde à partir d'une cible k3s et d'un profil de serveurs.</p><a class="button primary" asp-page="/Realms">Créer un realm</a></div>
+        <div class="panel empty-state"><h3>No realms saved</h3><p>Prepare a first world using a k3s target and a server profile.</p><a class="button primary" asp-page="/Realms">Create a realm</a></div>
     }
     else
     {
-        <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Infrastructure et joueurs par realm</caption><thead><tr><th scope="col">Realm / namespace</th><th scope="col">Déploiement</th><th scope="col">Serveurs prêts</th><th scope="col">En ligne</th></tr></thead><tbody>
+        <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Infrastructure and players by realm</caption><thead><tr><th scope="col">Realm / namespace</th><th scope="col">Deployment</th><th scope="col">Ready servers</th><th scope="col">Online</th></tr></thead><tbody>
         @foreach (var realm in snapshot.Realms.OrderBy(realm => realm.DisplayName))
         {
             var population = snapshot.Characters?.Realms.FirstOrDefault(item => item.RealmId == realm.RealmId)?.OnlineCharacters;
@@ -47,5 +47,5 @@
         }
         </tbody></table></div>
     }
-    <p class="data-note">La population compte les leases de jeu non expirés. Un déploiement prêt décrit les ressources k3s ; la connexion réelle au jeu se vérifie séparément.</p>
+    <p class="data-note">Population counts unexpired game leases. A ready deployment describes k3s resources; actual game connectivity is verified separately.</p>
 </section>

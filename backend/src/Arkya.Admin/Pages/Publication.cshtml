@@ -1,29 +1,29 @@
 @page "{id:guid?}"
 @model PublicationModel
 @{
-    ViewData["Title"] = Model.PostId is null ? "Nouveau brouillon" : "Modifier la publication";
+    ViewData["Title"] = Model.PostId is null ? "New draft" : "Edit publication";
 }
-<a class="text-link" asp-page="/Publications">← Actualités et versions</a>
+<a class="text-link" asp-page="/Publications">← News and releases</a>
 <header class="page-header realm-header">
-    <div><div class="eyebrow">COMMUNAUTÉ / PUBLICATIONS</div><h1>@ViewData["Title"]</h1><p class="intro">Écrivez, relisez, puis choisissez quand publier.</p></div>
+    <div><div class="eyebrow">COMMUNITY / PUBLICATIONS</div><h1>@ViewData["Title"]</h1><p class="intro">Write, review, then choose when to publish.</p></div>
 </header>
 @if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
-@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Publication" asp-route-id="@Model.PostId">Recharger le brouillon enregistré</a></div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Publication" asp-route-id="@Model.PostId">Reload saved draft</a></div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
 @if (Model.Loaded)
 {
     <div class="workspace">
         <section aria-labelledby="editor-heading">
-            <div class="section-heading"><h2 id="editor-heading">Brouillon</h2>@if (Model.PostId is not null) { <span class="badge">Révision @Model.Revision</span> }</div>
+            <div class="section-heading"><h2 id="editor-heading">Draft</h2>@if (Model.PostId is not null) { <span class="badge">Revision @Model.Revision</span> }</div>
             <form method="post" asp-page-handler="Save" asp-route-id="@Model.PostId" class="panel quest-editor">
                 <input type="hidden" asp-for="Revision" />
-                <div class="field"><label asp-for="Input.Kind">Type de publication</label><select asp-for="Input.Kind"><option value="news">Actualité</option><option value="release-note">Notes de version</option></select></div>
-                <div class="field"><label asp-for="Input.Language">Langue du texte</label><select asp-for="Input.Language"><option value="fr">Français</option><option value="en">Anglais</option></select><small>Créez un brouillon distinct pour chaque langue.</small></div>
-                <div class="field"><label asp-for="Input.GameVersion">Version du jeu</label><input asp-for="Input.GameVersion" maxlength="64" placeholder="2026.10.23" /><small>Obligatoire pour les notes de version. Ignorée pour une actualité.</small></div>
-                <div class="field"><label asp-for="Input.Title">Titre</label><input asp-for="Input.Title" maxlength="160" required /></div>
-                <div class="field"><label asp-for="Input.Summary">Résumé</label><input asp-for="Input.Summary" maxlength="400" /><small>Une courte introduction, jusqu'à 400 caractères.</small></div>
-                <div class="field"><label asp-for="Input.Body">Texte</label><textarea asp-for="Input.Body" rows="16" maxlength="20000" required></textarea><small>Texte brut, jusqu'à 20 000 caractères. Les retours à la ligne sont conservés ; HTML et Markdown restent du texte.</small></div>
-                <button class="button primary" type="submit">@(Model.PostId is null ? "Créer le brouillon" : "Enregistrer le brouillon")</button>
+                <div class="field"><label asp-for="Input.Kind">Publication type</label><select asp-for="Input.Kind"><option value="news">News</option><option value="release-note">Release notes</option></select></div>
+                <div class="field"><label asp-for="Input.Language">Text language</label><select asp-for="Input.Language"><option value="fr">French</option><option value="en">English</option></select><small>Create a separate draft for each language.</small></div>
+                <div class="field"><label asp-for="Input.GameVersion">Game version</label><input asp-for="Input.GameVersion" maxlength="64" placeholder="2026.10.23" /><small>Required for release notes. Ignored for news.</small></div>
+                <div class="field"><label asp-for="Input.Title">Title</label><input asp-for="Input.Title" maxlength="160" required /></div>
+                <div class="field"><label asp-for="Input.Summary">Summary</label><input asp-for="Input.Summary" maxlength="400" /><small>A short introduction, up to 400 characters.</small></div>
+                <div class="field"><label asp-for="Input.Body">Text</label><textarea asp-for="Input.Body" rows="16" maxlength="20000" required></textarea><small>Plain text, up to 20,000 characters. Line breaks are retained; HTML and Markdown remain text.</small></div>
+                <button class="button primary" type="submit">@(Model.PostId is null ? "Create draft" : "Save draft")</button>
             </form>
         </section>
         <aside class="publication-column" aria-labelledby="visibility-heading">
@@ -31,29 +31,29 @@
             <div class="panel publish-panel">
                 @if (Model.Publication is { } post)
                 {
-                    <span class="realm-status @(post.PublishedAt is null ? "pending" : "ready")">@(post.PublishedAt is null ? "Brouillon privé" : "Visible aux joueurs")</span>
-                    <dl class="publication-facts"><div><dt>Révision enregistrée</dt><dd>@post.Revision</dd></div>
-                    @if (post.PublishedAt is { } publishedAt) { <div><dt>Dernière publication</dt><dd><time datetime="@publishedAt.ToString("O")">@publishedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></dd></div> }
+                    <span class="realm-status @(post.PublishedAt is null ? "pending" : "ready")">@(post.PublishedAt is null ? "Private draft" : "Visible to players")</span>
+                    <dl class="publication-facts"><div><dt>Saved revision</dt><dd>@post.Revision</dd></div>
+                    @if (post.PublishedAt is { } publishedAt) { <div><dt>Last publication</dt><dd><time datetime="@publishedAt.ToString("O")">@publishedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></dd></div> }
                     </dl>
-                    @if (post.PublishedRevision is { } publishedRevision && post.Revision > publishedRevision) { <p>Le brouillon contient des modifications non publiées. La dernière publication reste visible.</p> }
-                    <p>Seul le brouillon enregistré sera publié. Enregistrez les modifications de l'éditeur avant de publier.</p>
-                    <form method="post" asp-page-handler="Publish" asp-route-id="@post.Id"><input type="hidden" name="Revision" value="@Model.Revision" /><button type="submit" class="button primary full-width" disabled="@(Model.Error is not null || !ViewData.ModelState.IsValid)">@(post.PublishedAt is null ? "Publier le brouillon" : "Publier la révision enregistrée")</button></form>
+                    @if (post.PublishedRevision is { } publishedRevision && post.Revision > publishedRevision) { <p>The draft contains unpublished changes. The last publication remains visible.</p> }
+                    <p>Only the saved draft will be published. Save editor changes before publishing.</p>
+                    <form method="post" asp-page-handler="Publish" asp-route-id="@post.Id"><input type="hidden" name="Revision" value="@Model.Revision" /><button type="submit" class="button primary full-width" disabled="@(Model.Error is not null || !ViewData.ModelState.IsValid)">@(post.PublishedAt is null ? "Publish draft" : "Publish saved revision")</button></form>
                     @if (post.PublishedAt is not null)
                     {
-                        <form method="post" asp-page-handler="Unpublish" asp-route-id="@post.Id" class="report-section"><input type="hidden" name="Revision" value="@Model.Revision" /><button type="submit" class="button secondary full-width" disabled="@(Model.Error is not null || !ViewData.ModelState.IsValid)">Dépublier</button></form>
-                        <small>Dépublier retire le texte du fil public et conserve le brouillon.</small>
+                        <form method="post" asp-page-handler="Unpublish" asp-route-id="@post.Id" class="report-section"><input type="hidden" name="Revision" value="@Model.Revision" /><button type="submit" class="button secondary full-width" disabled="@(Model.Error is not null || !ViewData.ModelState.IsValid)">Unpublish</button></form>
+                        <small>Unpublishing removes the text from the public feed and retains the draft.</small>
                     }
                 }
                 else if (Model.PostId is not null)
                 {
-                    <p>La visibilité actuelle est indisponible. Votre saisie est conservée ; réessayez l'enregistrement quand le service sera disponible.</p>
+                    <p>Current visibility is unavailable. Your input is retained; try saving again when the service is available.</p>
                 }
                 else
                 {
-                    <span class="realm-status pending">Brouillon privé</span><p>Créez d'abord le brouillon. Vous pourrez ensuite le relire et le publier.</p>
+                    <span class="realm-status pending">Private draft</span><p>Create the draft first. You can then review and publish it.</p>
                 }
             </div>
         </aside>
     </div>
-    <section class="report-section" aria-labelledby="preview-heading"><div class="section-heading"><h2 id="preview-heading">Aperçu du brouillon affiché</h2></div><p class="muted">Enregistrez vos modifications pour actualiser l'aperçu.</p><article class="panel report-form"><h3>@Model.Input.Title</h3><p>@Model.Input.Summary</p><div class="report-description">@Model.Input.Body</div></article></section>
+    <section class="report-section" aria-labelledby="preview-heading"><div class="section-heading"><h2 id="preview-heading">Displayed draft preview</h2></div><p class="muted">Save your changes to update the preview.</p><article class="panel report-form"><h3>@Model.Input.Title</h3><p>@Model.Input.Summary</p><div class="report-description">@Model.Input.Body</div></article></section>
 }

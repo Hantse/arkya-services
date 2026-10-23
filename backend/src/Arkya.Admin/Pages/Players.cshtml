@@ -1,31 +1,31 @@
 @page
 @model PlayersModel
 @{
-    ViewData["Title"] = "Joueurs en ligne";
+    ViewData["Title"] = "Online players";
 }
-<header class="page-header"><div><div class="eyebrow">JOUEURS / PRÉSENCE</div><h1>Joueurs en ligne</h1><p class="intro">Personnages dont le serveur dédié maintient un bail de jeu actif.</p></div><a class="button secondary" asp-page="/Players" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize">Actualiser</a></header>
-@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Players">Réessayer</a></div> }
+<header class="page-header"><div><div class="eyebrow">PLAYERS / PRESENCE</div><h1>Online players</h1><p class="intro">Characters whose dedicated server maintains an active game lease.</p></div><a class="button secondary" asp-page="/Players" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize">Refresh</a></header>
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Players">Try again</a></div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
 @if (!Model.Enabled)
 {
-    <div class="panel empty-state"><h2>La présence des joueurs est indisponible</h2><p>La connexion privée à Characters est désactivée. Configurez-la pour lire les baux de jeu actifs.</p></div>
+    <div class="panel empty-state"><h2>Player presence is unavailable</h2><p>The private Characters connection is disabled. Configure it to read active game leases.</p></div>
 }
 else
 {
-    <form method="get" class="panel filter-bar"><div class="field"><label asp-for="Search">Personnage</label><input asp-for="Search" maxlength="100" placeholder="Nom ou ID de personnage" /></div><div class="field"><label asp-for="AccountId">ID du compte</label><input asp-for="AccountId" maxlength="36" class="mono" placeholder="UUID du compte Arkya" /></div><div class="field"><label asp-for="PageSize">Résultats par page</label><select asp-for="PageSize"><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></div><button class="button primary" type="submit">Filtrer</button><a asp-page="/Players" class="button secondary">Effacer</a></form>
+    <form method="get" class="panel filter-bar"><div class="field"><label asp-for="Search">Character</label><input asp-for="Search" maxlength="100" placeholder="Character name or ID" /></div><div class="field"><label asp-for="AccountId">Account ID</label><input asp-for="AccountId" maxlength="36" class="mono" placeholder="Arkya account UUID" /></div><div class="field"><label asp-for="PageSize">Results per page</label><select asp-for="PageSize"><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></div><button class="button primary" type="submit">Filter</button><a asp-page="/Players" class="button secondary">Clear</a></form>
     @if (Model.Characters is { } characters)
     {
-        <div class="section-heading"><h2>Présence actuelle</h2><span class="muted">@characters.Total personnage(s) en ligne</span></div>
-        @if (characters.Items.Length == 0) { <div class="panel empty-state"><h3>Aucun joueur en ligne pour ces filtres</h3><p>Actualisez la page pour vérifier les dernières connexions.</p></div> }
+        <div class="section-heading"><h2>Current presence</h2><span class="muted">@characters.Total online character(s)</span></div>
+        @if (characters.Items.Length == 0) { <div class="panel empty-state"><h3>No online players match these filters</h3><p>Refresh the page to check the latest connections.</p></div> }
         else
         {
-            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Personnages avec un bail de jeu actif</caption><thead><tr><th scope="col">Personnage</th><th scope="col">Compte</th><th scope="col">Realm</th><th scope="col">Race / silhouette</th><th scope="col">Expiration du bail UTC</th></tr></thead><tbody>
+            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Characters with an active game lease</caption><thead><tr><th scope="col">Character</th><th scope="col">Account</th><th scope="col">Realm</th><th scope="col">Race / silhouette</th><th scope="col">Lease expiry UTC</th></tr></thead><tbody>
             @foreach (var character in characters.Items)
             {
-                <tr><th scope="row"><span class="realm-status ready">En ligne</span> @character.DisplayName<small class="mono">@character.CharacterId</small></th><td><a class="mono" asp-page="/Account" asp-route-id="@character.AccountId">@character.AccountId</a></td><td>@(string.IsNullOrEmpty(character.RealmId) ? "Non lié" : character.RealmId)</td><td>@character.Race / @character.Gender</td><td>@(character.LeaseExpiresAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss") ?? "—")</td></tr>
+                <tr><th scope="row"><span class="realm-status ready">Online</span> @character.DisplayName<small class="mono">@character.CharacterId</small></th><td><a class="mono" asp-page="/Account" asp-route-id="@character.AccountId">@character.AccountId</a></td><td>@(string.IsNullOrEmpty(character.RealmId) ? "Unbound" : character.RealmId)</td><td>@character.Race / @character.Gender</td><td>@(character.LeaseExpiresAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss") ?? "—")</td></tr>
             }
             </tbody></table></div>
         }
-        <nav class="pagination" aria-label="Pagination des joueurs">@if (Model.PageNumber > 1) { <a class="button secondary" asp-page="/Players" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize">Précédents</a> }<span class="muted">Page @characters.Page</span>@if (Model.HasNext) { <a class="button secondary" asp-page="/Players" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize">Suivants</a> }</nav>
+        <nav class="pagination" aria-label="Player pagination">@if (Model.PageNumber > 1) { <a class="button secondary" asp-page="/Players" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize">Previous</a> }<span class="muted">Page @characters.Page</span>@if (Model.HasNext) { <a class="button secondary" asp-page="/Players" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize">Next</a> }</nav>
     }
 }

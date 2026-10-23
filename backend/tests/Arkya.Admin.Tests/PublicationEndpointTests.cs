@@ -57,7 +57,7 @@ public sealed class PublicationEndpointTests
         Assert.Contains("Une île à découvrir", html);
         Assert.Contains("offset=30", html);
         Assert.Contains("offset=10", html);
-        Assert.Contains("Créer un brouillon", html);
+        Assert.Contains("Create a draft", html);
         AdminFactory.NoSecrets(html);
     }
 
@@ -161,8 +161,8 @@ public sealed class PublicationEndpointTests
         Assert.Equal(3, factory.Content.Post.PublishedRevision);
         using var page = await browser.GetAsync(Editor);
         var html = WebUtility.HtmlDecode(await page.Content.ReadAsStringAsync());
-        Assert.Contains("modifications non publiées", html);
-        Assert.Contains("Dépublier", html);
+        Assert.Contains("unpublished changes", html);
+        Assert.Contains("Unpublish", html);
     }
 
     [Theory]
@@ -217,7 +217,7 @@ public sealed class PublicationEndpointTests
         using var response = await browser.PostAsync(Editor + "?handler=Save", AdminFactory.Form(form));
         var html = await response.Content.ReadAsStringAsync();
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Contains("Copiez vos modifications", WebUtility.HtmlDecode(html));
+        Assert.Contains("Copy your changes", WebUtility.HtmlDecode(html));
         Assert.Equal("Les nouvelles aventures", AdminFactory.Input(html, "Input.Title"));
         Assert.Equal("3", AdminFactory.Input(html, "Revision"));
         Assert.Equal("Another operator's edit", factory.Content.Post.Title);
@@ -273,7 +273,7 @@ public sealed class PublicationEndpointTests
         Assert.Equal("Les nouvelles aventures", AdminFactory.Input(html, "Input.Title"));
         Assert.Equal("3", AdminFactory.Input(html, "Revision"));
         Assert.Contains($"action=\"{Editor}?handler=Save\"", html);
-        Assert.DoesNotContain("Créer le brouillon", WebUtility.HtmlDecode(html));
+        Assert.DoesNotContain("Create draft", WebUtility.HtmlDecode(html));
         AdminFactory.NoSecrets(html);
     }
 
@@ -286,7 +286,7 @@ public sealed class PublicationEndpointTests
         await AdminFactory.Login(browser);
         using var list = await browser.GetAsync("/Publications");
         Assert.Equal(HttpStatusCode.OK, list.StatusCode);
-        Assert.Contains("désactivée", WebUtility.HtmlDecode(await list.Content.ReadAsStringAsync()));
+        Assert.Contains("disabled", WebUtility.HtmlDecode(await list.Content.ReadAsStringAsync()));
         using var editor = await browser.GetAsync(Editor);
         Assert.Equal(HttpStatusCode.NotFound, editor.StatusCode);
         Assert.Empty(factory.Content.Calls);

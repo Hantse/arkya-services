@@ -23,6 +23,11 @@ public sealed class CharactersEndpointTests
         Assert.Contains("pageNumber=3", html);
         Assert.Contains("&lt;script&gt;character&lt;/script&gt;", html);
         Assert.DoesNotContain("<script>character", html);
+        if (page == "Players")
+        {
+            Assert.Contains("online character(s)", html);
+            Assert.DoesNotContain("en ligne", html);
+        }
     }
 
     [Theory]

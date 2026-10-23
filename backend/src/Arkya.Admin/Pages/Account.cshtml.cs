@@ -13,7 +13,7 @@ namespace Arkya.Admin.Pages;
 public sealed class AccountModel(IdentityAdminClient accounts, CharactersAdminClient characters) : PageModel
 {
     [BindProperty, BindRequired, Range(0, long.MaxValue)] public long ExpectedRevision { get; set; }
-    [BindProperty, Required(ErrorMessage = "Renseignez le motif de cette action."), StringLength(500)] public string Reason { get; set; } = "";
+    [BindProperty, Required(ErrorMessage = "Enter a reason for this action."), StringLength(500)] public string Reason { get; set; } = "";
     [BindProperty] public bool HasBetaAccess { get; set; }
     public AdminAccountSummary? Account { get; private set; }
     public Guid Id { get; private set; }
@@ -33,7 +33,7 @@ public sealed class AccountModel(IdentityAdminClient accounts, CharactersAdminCl
         if (!accounts.Enabled || id == Guid.Empty) return NotFound();
         if (ModelState.TryGetValue(nameof(ExpectedRevision), out var revision) && revision.Errors.Count > 0) return BadRequest();
         Reason = Reason?.Trim() ?? "";
-        if (string.IsNullOrWhiteSpace(Reason) || Reason.Any(char.IsControl)) ModelState.AddModelError(nameof(Reason), "Renseignez un motif sans caractères de contrôle.");
+        if (string.IsNullOrWhiteSpace(Reason) || Reason.Any(char.IsControl)) ModelState.AddModelError(nameof(Reason), "Enter a reason without control characters.");
         if (action == "beta" && !Request.Form.ContainsKey(nameof(HasBetaAccess))) return BadRequest();
         if (!ModelState.IsValid) return await LoadAsync(id, false, ct);
         var discordId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -43,7 +43,7 @@ public sealed class AccountModel(IdentityAdminClient accounts, CharactersAdminCl
             if (action == "ban") await accounts.BanAsync(id, ExpectedRevision, Reason, actor, ct);
             else if (action == "unban") await accounts.UnbanAsync(id, ExpectedRevision, Reason, actor, ct);
             else await accounts.SetBetaAccessAsync(id, ExpectedRevision, HasBetaAccess, Reason, actor, ct);
-            Notice = action switch { "ban" => "Compte banni. Les sessions du joueur ont été révoquées.", "unban" => "Bannissement levé.", _ => HasBetaAccess ? "Accès à la bêta accordé." : "Accès à la bêta retiré." };
+            Notice = action switch { "ban" => "Account banned. The player's sessions have been revoked.", "unban" => "Ban removed.", _ => HasBetaAccess ? "Beta access granted." : "Beta access removed." };
             return RedirectToPage(new { id });
         }
         catch (PlayerAdminApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound) { return NotFound(); }

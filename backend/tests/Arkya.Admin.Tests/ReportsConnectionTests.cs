@@ -56,7 +56,7 @@ public sealed class ReportsConnectionTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync(PagePath);
-        Assert.Contains("connexion MCP est désactivée", WebUtility.HtmlDecode(html));
+        Assert.Contains("MCP connection is disabled", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain("handler=Download", html);
         AdminFactory.NoSecrets(html);
         using var response = await browser.PostAsync(DownloadPath, AdminFactory.Form(new()

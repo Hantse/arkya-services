@@ -6,32 +6,32 @@
     ViewData["Title"] = "Realms";
 }
 <header class="page-header">
-    <div><div class="eyebrow">UNIVERS / DÉPLOIEMENT</div><h1>Realms</h1><p class="intro">Retrouvez vos mondes et accédez à leurs serveurs dédiés.</p></div>
-    <div class="realm-page-actions">@if (Model.Enabled) { <a class="button primary" asp-page="/RealmCreate">Créer un royaume</a> }<a class="button secondary" asp-page="/Realms">Actualiser</a></div>
+    <div><div class="eyebrow">WORLD / DEPLOYMENT</div><h1>Realms</h1><p class="intro">Find your worlds and access their dedicated servers.</p></div>
+    <div class="realm-page-actions">@if (Model.Enabled) { <a class="button primary" asp-page="/RealmCreate">Create a realm</a> }<a class="button secondary" asp-page="/Realms">Refresh</a></div>
 </header>
 @if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
-@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Realms">Réessayer</a></div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Realms">Try again</a></div> }
 @if (!Model.Enabled)
 {
-    <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h2>La gestion des realms est désactivée</h2><p>Activez la connexion au service Realms dans la configuration de l'administration pour préparer un monde.</p></div>
+    <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h2>Realm management is disabled</h2><p>Enable the Realms service connection in the administration configuration to prepare a world.</p></div>
 }
 else if (Model.Loaded)
 {
         <section class="realm-inventory" aria-labelledby="realms-heading">
-            <div class="section-heading"><h2 id="realms-heading">Mondes enregistrés</h2><span class="muted">@Model.Realms.Length realm(s)</span></div>
+            <div class="section-heading"><h2 id="realms-heading">Saved worlds</h2><span class="muted">@Model.Realms.Length realm(s)</span></div>
             @if (Model.Realms.Length == 0)
             {
-                <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h3>Un premier monde à préparer</h3><p>Choisissez une cible et un profil. Vous pourrez vérifier les serveurs avant de les déployer.</p></div>
+                <div class="panel empty-state"><div class="empty-mark" aria-hidden="true">◇</div><h3>Prepare the first world</h3><p>Choose a target and profile. You can check the servers before deploying them.</p></div>
             }
             else
             {
-                <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Realms et état de déploiement</caption><thead><tr><th scope="col">Realm</th><th scope="col">État</th><th scope="col">Serveurs</th></tr></thead><tbody>
+                <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Realms and deployment status</caption><thead><tr><th scope="col">Realm</th><th scope="col">Status</th><th scope="col">Servers</th></tr></thead><tbody>
                 @foreach (var realm in Model.Realms)
                 {
-                    <tr><th scope="row"><a href="@RealmSites.AdminUrl(realm.RealmId)">@realm.DisplayName</a><small class="mono">@realm.RealmId</small><small>@realm.TargetId · @realm.ProfileId</small></th><td><span class="realm-status @RealmPresentation.StatusClass(realm.Status)">@RealmPresentation.StatusLabel(realm.Status)</span></td><td><span class="server-count">@realm.Servers.Sum(server => server.ReadyReplicas)<span class="muted"> / @realm.Servers.Sum(server => server.DesiredReplicas)</span></span><small>réplicas prêts</small></td></tr>
+                    <tr><th scope="row"><a href="@RealmSites.AdminUrl(realm.RealmId)">@realm.DisplayName</a><small class="mono">@realm.RealmId</small><small>@realm.TargetId · @realm.ProfileId</small></th><td><span class="realm-status @RealmPresentation.StatusClass(realm.Status)">@RealmPresentation.StatusLabel(realm.Status)</span></td><td><span class="server-count">@realm.Servers.Sum(server => server.ReadyReplicas)<span class="muted"> / @realm.Servers.Sum(server => server.DesiredReplicas)</span></span><small>ready replicas</small></td></tr>
                 }
                 </tbody></table></div>
             }
-            <div class="workflow-note"><strong>Prêt à l'échelle de l'infrastructure</strong><p>L'état « Déploiement prêt » décrit les ressources du cluster. Vérifiez ensuite l'admission et les routes publiques avec un client de jeu réel.</p></div>
+            <div class="workflow-note"><strong>Infrastructure readiness</strong><p>“Deployment ready” describes the cluster resources. Then verify admission and public routes with an actual game client.</p></div>
         </section>
 }

@@ -34,7 +34,7 @@ public sealed class AdminSessions(IAdminSessionStore store, IOptionsMonitor<Admi
         var token = RandomToken();
         var session = new AdminSession(RandomToken(), Hash(token), discord ? AdminDiscordAuthentication.Scheme : PasswordProvider,
             principal.FindFirstValue(ClaimTypes.NameIdentifier) ?? PasswordProvider,
-            principal.Identity?.Name ?? "Administrateur", discord ? "" : Hash(admin.Password),
+            principal.Identity?.Name ?? "Administrator", discord ? "" : Hash(admin.Password),
             (now + options.Value.RefreshLifetime).UtcDateTime, now.UtcDateTime, []);
         if (!IsAuthorized(session)) throw new AuthenticationFailureException("Administrator authorization is required.");
         await store.CreateAsync(session, context.HttpContext.RequestAborted);

@@ -20,9 +20,9 @@ public sealed class PublicationsModel(ContentAdminClient content) : PageModel
     public async Task OnGetAsync(CancellationToken ct)
     {
         if (!string.IsNullOrEmpty(Kind) && !ContentPublicationPresentation.IsKind(Kind))
-            ModelState.AddModelError(nameof(Kind), "Choisissez un type de publication disponible.");
+            ModelState.AddModelError(nameof(Kind), "Choose an available publication type.");
         if (!string.IsNullOrEmpty(Language) && !ContentPublicationPresentation.IsLanguage(Language))
-            ModelState.AddModelError(nameof(Language), "Choisissez le français ou l'anglais.");
+            ModelState.AddModelError(nameof(Language), "Choose French or English.");
         if (!Enabled || !ModelState.IsValid) return;
         try { Publications = await content.GetPostsAsync(Kind, Language, Offset, Limit, ct); }
         catch (Exception ex) when (ContentPublicationPresentation.IsDependencyError(ex, ct))

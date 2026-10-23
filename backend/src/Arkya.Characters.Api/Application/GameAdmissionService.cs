@@ -13,6 +13,7 @@ public sealed record GameLeaseRecord(Guid CharacterId, Guid AccountId, string Re
     DateTimeOffset? LastConnectedAt = null)
 {
     public GameTransferRecord? Transfer { get; init; }
+    public GameRealmArea? Area { get; init; }
 }
 
 public enum GameWriteCondition { None, PendingTicket, ActiveLease, TransferPending }
@@ -99,11 +100,14 @@ public sealed partial class GameAdmissionService(ICharacterRepository characters
                 return new(Error: "realm_unavailable", Status: 503);
             var serverId = destination?.ServerId ?? entry.ServerId;
             var endpoint = destination?.Endpoint ?? entry.Endpoint;
+            var areaId = destination?.IslandId ?? entry.Partitions.FirstOrDefault(partition => partition.ServerId == serverId)?.IslandId;
+            var area = areaId is null ? null : new GameRealmArea(areaId, GameTopology.ContentId(entry, areaId)!);
             var next = new GameLeaseRecord(characterId, accountId, entry.RealmId, serverId,
                 (current?.Version ?? 0) + 1, HashTicket(ticket), expires, Guid.Empty, current?.AuthorityEpoch ?? 0,
-                now, sessionExpiresAt, current?.State, sessionReference, current?.LastConnectedAt);
+                now, sessionExpiresAt, current?.State, sessionReference, current?.LastConnectedAt) { Area = area };
             if (await leases.TryWriteAsync(next, current?.Version, cancellationToken))
-                return new(new(ticket, expires, endpoint, entry.ProtocolVersion, entry.BuildId, entry.RealmId, serverId));
+                return new(new(ticket, expires, endpoint, entry.ProtocolVersion, entry.BuildId, entry.RealmId, serverId)
+                    { AreaId = area?.AreaId, ContentId = area?.ContentId });
         }
         return new(Error: "character_in_use", Status: 409);
     }
@@ -131,7 +135,8 @@ public sealed partial class GameAdmissionService(ICharacterRepository characters
             SessionExpiresAt = sessionExpiry, LastConnectedAt = now };
         if (!await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.PendingTicket)) return new(Error: "admission_rejected", Status: 409);
         return new(new(current.AccountId, CharacterResponse.From(character), current.RealmId, current.ServerId,
-            next.LeaseId, next.AuthorityEpoch, next.LeaseExpiresAt, next.SessionExpiresAt, next.State));
+            next.LeaseId, next.AuthorityEpoch, next.LeaseExpiresAt, next.SessionExpiresAt, next.State)
+            { AreaId = next.Area?.AreaId, ContentId = next.Area?.ContentId });
     }
 
     public async Task<GameResult<LeaseHeartbeatResponse>> HeartbeatAsync(Guid characterId, DedicatedServerIdentity server,
@@ -177,7 +182,7 @@ public sealed partial class GameAdmissionService(ICharacterRepository characters
                 return new(state);
             if ((state?.Revision ?? 0) != request.ExpectedRevision) return new(Error: "state_conflict", Status: 409);
             var nextState = new SavedWorldState(request.ExpectedRevision + 1, request.Position!, request.Forward!)
-                { Simulation = request.Simulation ?? state?.Simulation, IslandId = state?.IslandId };
+                { Simulation = request.Simulation ?? state?.Simulation, IslandId = state?.IslandId ?? current.Area?.AreaId };
             var next = current with { Version = current.Version + 1, State = nextState,
                 SessionExpiresAt = sessionExpiry, LeaseExpiresAt = Min(current.LeaseExpiresAt, sessionExpiry) };
             if (await leases.TryWriteAsync(next, current.Version, cancellationToken, GameWriteCondition.ActiveLease)) return new(nextState);

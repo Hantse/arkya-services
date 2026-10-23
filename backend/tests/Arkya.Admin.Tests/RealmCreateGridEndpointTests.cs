@@ -28,9 +28,9 @@ public sealed class RealmCreateGridEndpointTests
         Assert.Equal("1536", AdminFactory.Input(html, "Input.Islands[0].Depth"));
         Assert.Matches("<input(?=[^>]*name=\"Input.Islands\\[0\\].UseGrid\")(?=[^>]*checked=\"checked\")[^>]*>", html);
         Assert.Matches("<img[^>]*src=\"/images/islands/starter-island.png\"[^>]*>", html);
-        Assert.Contains("Colonnes X", html);
-        Assert.Contains("Lignes Y", html);
-        Assert.Contains("2 × 2 = 4 dédié(s)", WebUtility.HtmlDecode(html));
+        Assert.Contains("X columns", html);
+        Assert.Contains("Y rows", html);
+        Assert.Contains("2 × 2 = 4 dedicated server(s)", WebUtility.HtmlDecode(html));
         Assert.Contains("aria-live=\"polite\"", html);
         Assert.Contains("data-island-image-note", html);
         var grid = Regex.Match(html, "<tbody data-grid-cells>(.*?)</tbody>", RegexOptions.Singleline).Groups[1].Value;
@@ -118,7 +118,7 @@ public sealed class RealmCreateGridEndpointTests
         Assert.Equal("", AdminFactory.Input(html, "Input.Islands[0].GridRows"));
         Assert.Equal("3", AdminFactory.Input(html, "Input.Islands[0].DedicatedCount"));
         Assert.DoesNotMatch("<input(?=[^>]*name=\"Input.Islands\\[0\\].UseGrid\")(?=[^>]*checked=\"checked\")[^>]*>", html);
-        Assert.Contains("Illustration · dimensions du plan différentes de la vue", WebUtility.HtmlDecode(html));
+        Assert.Contains("Illustration · plan dimensions differ from the view", WebUtility.HtmlDecode(html));
         var form = GridForm(AdminFactory.Input(html, "__RequestVerificationToken"));
         form["EditRealmId"] = "terres-aube";
         form["ExpectedRevision"] = "1";
@@ -202,8 +202,8 @@ public sealed class RealmCreateGridEndpointTests
         var image = Regex.Match(html, "<img[^>]*data-island-image[^>]*>").Value;
         Assert.NotEmpty(image);
         Assert.DoesNotContain("src=", image);
-        Assert.Contains("Visuel indisponible pour cette Area", WebUtility.HtmlDecode(html));
-        Assert.Contains("Aucune image de catalogue", WebUtility.HtmlDecode(html));
+        Assert.Contains("Visual unavailable for this Area", WebUtility.HtmlDecode(html));
+        Assert.Contains("No catalogue image", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
     }
 

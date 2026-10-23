@@ -35,14 +35,14 @@ public sealed partial class ContentAdminClient
         using var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
         if (!response.IsSuccessStatusCode) throw new ContentApiException(response.StatusCode, ContentItemPresentation.ErrorMessage(response.StatusCode));
         if (response.Content.Headers.ContentType?.MediaType != "image/png" || response.Content.Headers.ContentLength is > 131072)
-            throw new ContentApiException(HttpStatusCode.BadGateway, "L'aperçu de cet objet est indisponible.");
+            throw new ContentApiException(HttpStatusCode.BadGateway, "The preview for this item is unavailable.");
         await using var stream = await response.Content.ReadAsStreamAsync(ct);
         using var bytes = new MemoryStream();
         var buffer = new byte[8192];
         int count;
         while ((count = await stream.ReadAsync(buffer, ct)) > 0)
         {
-            if (bytes.Length + count > 131072) throw new ContentApiException(HttpStatusCode.BadGateway, "L'aperçu de cet objet est indisponible.");
+            if (bytes.Length + count > 131072) throw new ContentApiException(HttpStatusCode.BadGateway, "The preview for this item is unavailable.");
             bytes.Write(buffer, 0, count);
         }
         return bytes.ToArray();
@@ -50,7 +50,7 @@ public sealed partial class ContentAdminClient
 
     private async Task<T> SendItemAsync<T>(HttpMethod method, string path, object? body, CancellationToken ct)
     {
-        if (!Enabled) throw new ContentApiException(HttpStatusCode.ServiceUnavailable, "La gestion des objets est désactivée sur cette installation.");
+        if (!Enabled) throw new ContentApiException(HttpStatusCode.ServiceUnavailable, "Item management is disabled on this installation.");
         using var request = new HttpRequestMessage(method, path);
         request.Headers.Add("X-Arkya-Admin-Key", options.Value.AdminKey);
         if (body is not null) request.Content = JsonContent.Create(body);
@@ -60,18 +60,18 @@ public sealed partial class ContentAdminClient
         {
             return await response.Content.ReadFromJsonAsync<T>(ct) ?? throw new JsonException();
         }
-        catch (JsonException) { throw new ContentApiException(HttpStatusCode.BadGateway, "Le catalogue d'objets a renvoyé une réponse invalide."); }
+        catch (JsonException) { throw new ContentApiException(HttpStatusCode.BadGateway, "The item catalogue returned an invalid response."); }
     }
 }
 
 public static class ContentItemPresentation
 {
     public static readonly IReadOnlyDictionary<string, string> Categories = new Dictionary<string, string>
-    { ["weapon"] = "Arme", ["armor"] = "Armure", ["tool"] = "Outil", ["consumable"] = "Consommable", ["material"] = "Matériau", ["quest"] = "Objet de quête" };
+    { ["weapon"] = "Weapon", ["armor"] = "Armour", ["tool"] = "Tool", ["consumable"] = "Consumable", ["material"] = "Material", ["quest"] = "Quest item" };
     public static readonly IReadOnlyDictionary<string, string> Rarities = new Dictionary<string, string>
-    { ["common"] = "Commun", ["uncommon"] = "Peu commun", ["rare"] = "Rare", ["epic"] = "Épique", ["legendary"] = "Légendaire" };
+    { ["common"] = "Common", ["uncommon"] = "Uncommon", ["rare"] = "Rare", ["epic"] = "Epic", ["legendary"] = "Legendary" };
     public static readonly IReadOnlyDictionary<string, string> Slots = new Dictionary<string, string>
-    { ["none"] = "Aucun", ["main-hand"] = "Main principale", ["off-hand"] = "Main secondaire", ["head"] = "Tête", ["chest"] = "Torse", ["hands"] = "Mains", ["legs"] = "Jambes", ["feet"] = "Pieds", ["neck"] = "Cou", ["shoulders"] = "Épaules", ["back"] = "Dos", ["waist"] = "Taille", ["finger"] = "Doigt" };
+    { ["none"] = "None", ["main-hand"] = "Main hand", ["off-hand"] = "Off hand", ["head"] = "Head", ["chest"] = "Chest", ["hands"] = "Hands", ["legs"] = "Legs", ["feet"] = "Feet", ["neck"] = "Neck", ["shoulders"] = "Shoulders", ["back"] = "Back", ["waist"] = "Waist", ["finger"] = "Finger" };
     public static bool IsItemId(string? id) => id is { Length: > 0 and <= 64 } && Regex.IsMatch(id, "\\A[a-z0-9]+(-[a-z0-9]+)*\\z", RegexOptions.CultureInvariant);
     public static bool IsAssetGuid(string? guid) => guid is { Length: 32 } && Regex.IsMatch(guid, "\\A[0-9a-f]{32}\\z", RegexOptions.CultureInvariant);
     public static string CategoryLabel(string category) => Categories.GetValueOrDefault(category, category);
@@ -80,10 +80,10 @@ public static class ContentItemPresentation
     public static string ErrorMessage(Exception ex) => ex is ContentApiException ? ex.Message : ErrorMessage(HttpStatusCode.ServiceUnavailable);
     public static string ErrorMessage(HttpStatusCode status) => status switch
     {
-        HttpStatusCode.Conflict => "Le catalogue a changé. Copiez vos modifications, puis rechargez le brouillon avant de réessayer.",
-        HttpStatusCode.BadRequest => "Vérifiez les champs, l'emplacement d'équipement et le modèle Unity sélectionné. Les armes, armures et outils ne s'empilent pas.",
-        HttpStatusCode.NotFound => "Cet objet ou ce modèle Unity n'existe plus. Actualisez le catalogue.",
-        HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "L'accès aux objets a été refusé. Vérifiez la configuration de l'administration.",
-        _ => "Le catalogue d'objets est indisponible. Réessayez dans un instant."
+        HttpStatusCode.Conflict => "The catalogue has changed. Copy your changes, then reload the draft before trying again.",
+        HttpStatusCode.BadRequest => "Check the fields, equipment slot and selected Unity model. Weapons, armour and tools cannot be stacked.",
+        HttpStatusCode.NotFound => "This item or Unity model no longer exists. Refresh the catalogue.",
+        HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "Access to items was denied. Check the administration configuration.",
+        _ => "The item catalogue is unavailable. Try again shortly."
     };
 }

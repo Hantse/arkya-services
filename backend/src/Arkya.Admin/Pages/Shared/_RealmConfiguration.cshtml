@@ -4,7 +4,7 @@
     var realm = Model.Realm!;
 }
 <section class="account-actions" aria-labelledby="configuration-live-heading">
-    <div class="section-heading"><h2 id="configuration-live-heading">Configuration en jeu</h2><span class="muted">Modifiable sans redémarrer le realm.</span></div>
+    <div class="section-heading"><h2 id="configuration-live-heading">In-game configuration</h2><span class="muted">Can be changed without restarting the realm.</span></div>
     @if (Model.CommandsError is not null) { <div class="alert error" role="alert">@Model.CommandsError</div> }
     @if (Model.ConfigurationError is not null) { <div class="alert error" role="alert">@Model.ConfigurationError</div> }
     @if (Model.Configuration is { } configuration)
@@ -13,31 +13,31 @@
         var confirmed = servers.Count(server => server.Runtime is { Available: true, ConfigurationVersion: 1 } runtime && runtime.AppliedConfigurationRevision == configuration.Revision);
         <div class="action-grid">
             <form method="post" asp-page="/Realm" asp-page-handler="Configuration" asp-route-realmId="@realm.RealmId" class="panel realm-form">
-                <h3>Multiplicateurs du realm</h3><p class="muted">1 = rythme normal · 2 = double · 0 = récompense désactivée.</p>
+                <h3>Realm multipliers</h3><p class="muted">1 = normal rate · 2 = double · 0 = reward disabled.</p>
                 <input type="hidden" name="ConfigurationRevision" value="@Model.ConfigurationRevision" />
-                <div class="field"><label for="realm-xp-multiplier">Expérience — RateXP (×)</label><input id="realm-xp-multiplier" name="XpMultiplier" type="number" min="0" max="100" step="0.001" value="@Model.XpMultiplier" required aria-describedby="realm-rate-limits" /></div>
-                <div class="field"><label for="realm-harvest-multiplier">Quantité récoltée — RateHarvest (×)</label><input id="realm-harvest-multiplier" name="HarvestMultiplier" type="number" min="0" max="100" step="0.001" value="@Model.HarvestMultiplier" required aria-describedby="realm-rate-limits" /></div>
-                <small id="realm-rate-limits">De 0 à 100, avec trois décimales maximum.</small>
-                <div class="field"><label for="realm-configuration-reason">Motif du changement</label><input id="realm-configuration-reason" name="Reason" value="@Model.Reason" maxlength="500" required /></div>
-                <button class="button primary" type="submit">Enregistrer les multiplicateurs</button>
-                <small>L’enregistrement conserve une nouvelle version. Chaque serveur confirme ensuite son application.</small>
+                <div class="field"><label for="realm-xp-multiplier">Experience — RateXP (×)</label><input id="realm-xp-multiplier" name="XpMultiplier" type="number" min="0" max="100" step="0.001" value="@Model.XpMultiplier" required aria-describedby="realm-rate-limits" /></div>
+                <div class="field"><label for="realm-harvest-multiplier">Harvest quantity — RateHarvest (×)</label><input id="realm-harvest-multiplier" name="HarvestMultiplier" type="number" min="0" max="100" step="0.001" value="@Model.HarvestMultiplier" required aria-describedby="realm-rate-limits" /></div>
+                <small id="realm-rate-limits">From 0 to 100, with at most three decimal places.</small>
+                <div class="field"><label for="realm-configuration-reason">Reason for change</label><input id="realm-configuration-reason" name="Reason" value="@Model.Reason" maxlength="500" required /></div>
+                <button class="button primary" type="submit">Save multipliers</button>
+                <small>Saving retains a new version. Each server then confirms that it has applied it.</small>
             </form>
             <div class="panel realm-form">
-                <h3>Suivi de la configuration</h3>
-                <dl class="realm-facts"><div><dt>Version demandée</dt><dd>@configuration.Revision</dd></div><div><dt>Derniers taux enregistrés</dt><dd>XP ×@configuration.XpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Récolte ×@configuration.HarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)</dd></div><div><dt>Confirmation des serveurs</dt><dd><span class="realm-status @(servers.Length > 0 && confirmed == servers.Length ? "ready" : "pending")">@(Model.Commands is null ? "Suivi indisponible" : $"{confirmed} / {servers.Length} serveur(s)")</span></dd></div>
-                @if (configuration.UpdatedAt is { } changedAt) { <div><dt>Dernière modification</dt><dd>@changedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss 'UTC'")<small>@configuration.UpdatedBy</small></dd></div> }
-                else { <div><dt>Dernière modification</dt><dd>Valeurs initiales du realm.</dd></div> }
+                <h3>Configuration tracking</h3>
+                <dl class="realm-facts"><div><dt>Requested version</dt><dd>@configuration.Revision</dd></div><div><dt>Latest saved rates</dt><dd>XP ×@configuration.XpMultiplier.ToString("0.###", CultureInfo.InvariantCulture) · Harvesting ×@configuration.HarvestMultiplier.ToString("0.###", CultureInfo.InvariantCulture)</dd></div><div><dt>Server confirmation</dt><dd><span class="realm-status @(servers.Length > 0 && confirmed == servers.Length ? "ready" : "pending")">@(Model.Commands is null ? "Tracking unavailable" : $"{confirmed} / {servers.Length} server(s)")</span></dd></div>
+                @if (configuration.UpdatedAt is { } changedAt) { <div><dt>Last modified</dt><dd>@changedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss 'UTC'")<small>@configuration.UpdatedBy</small></dd></div> }
+                else { <div><dt>Last modified</dt><dd>Initial realm values.</dd></div> }
                 </dl>
-                <div class="workflow-note"><strong>Effets disponibles dans le jeu</strong><p>Le taux XP est enregistré et transmis pour le futur système de progression. Le taux de récolte agit lorsque le serveur propose la récolte ; l’île de la bêta ne propose pas encore cette activité. Une version confirmée indique que les réglages sont chargés par le serveur.</p></div>
+                <div class="workflow-note"><strong>Effects available in game</strong><p>The XP rate is saved and transmitted for the future progression system. The harvesting rate applies when the server supports harvesting; the beta island does not yet offer this activity. A confirmed version indicates that the server has loaded the settings.</p></div>
             </div>
         </div>
-        <div class="panel table-scroll" tabindex="0" role="region" aria-label="Application des réglages par serveur"><table class="realm-table"><caption class="sr-only">Application de la configuration sur chaque serveur dédié</caption><thead><tr><th scope="col">Serveur</th><th scope="col">Application</th><th scope="col">Version confirmée</th><th scope="col">Dernier contact UTC</th></tr></thead><tbody>
+        <div class="panel table-scroll" tabindex="0" role="region" aria-label="Settings applied by server"><table class="realm-table"><caption class="sr-only">Configuration applied on each dedicated server</caption><thead><tr><th scope="col">Server</th><th scope="col">Application</th><th scope="col">Confirmed version</th><th scope="col">Last check-in UTC</th></tr></thead><tbody>
         @foreach (var server in servers)
         {
             var runtime = server.Runtime;
             var state = Model.Commands is null ? "unknown" : runtime?.LastSeenAt is null ? "pending" : !runtime.Available ? "unavailable" : runtime.ConfigurationVersion != 1 ? "unsupported" : runtime.AppliedConfigurationRevision == configuration.Revision ? "applied" : "pending";
-            var label = state switch { "unknown" => "Suivi indisponible", "unavailable" => "Serveur non joignable", "unsupported" => "Runtime non compatible", "applied" => "Version appliquée", _ => "En attente d’application" };
-            <tr data-configuration-state="@state"><th scope="row" class="mono">@server.Id</th><td><span class="realm-status @(state == "applied" ? "ready" : state == "unsupported" ? "failed" : "pending")">@label</span></td><td>@(runtime?.AppliedConfigurationRevision?.ToString(CultureInfo.InvariantCulture) ?? "—")</td><td>@(Model.Commands is null ? "Relevé indisponible" : runtime?.LastSeenAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss") ?? "Aucun contact")</td></tr>
+            var label = state switch { "unknown" => "Tracking unavailable", "unavailable" => "Server unreachable", "unsupported" => "Incompatible runtime", "applied" => "Version applied", _ => "Awaiting application" };
+            <tr data-configuration-state="@state"><th scope="row" class="mono">@server.Id</th><td><span class="realm-status @(state == "applied" ? "ready" : state == "unsupported" ? "failed" : "pending")">@label</span></td><td>@(runtime?.AppliedConfigurationRevision?.ToString(CultureInfo.InvariantCulture) ?? "—")</td><td>@(Model.Commands is null ? "Observation unavailable" : runtime?.LastSeenAt?.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss") ?? "No check-in")</td></tr>
         }
         </tbody></table></div>
     }

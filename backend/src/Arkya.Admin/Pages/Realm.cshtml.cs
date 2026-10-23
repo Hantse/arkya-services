@@ -74,11 +74,11 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
             var options = await realms.OptionsAsync(ct);
             if (!options.DeploymentEnabled)
             {
-                Error = "Le déploiement est désactivé sur cette installation. Le realm reste enregistré.";
+                Error = "Deployment is disabled on this installation. The realm remains saved.";
                 return await LoadAsync(realmId, ct);
             }
             await realms.DeployAsync(realmId, ExpectedRevision, ct);
-            Notice = "Déploiement demandé. Actualisez cette page pour suivre son avancement.";
+            Notice = "Deployment requested. Refresh this page to track its progress.";
             return RedirectToPage(new { realmId, section = ActiveSection });
         }
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct)) { Error = RealmPresentation.ErrorMessage(ex); }
@@ -95,18 +95,18 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
         if (!ValidId(realmId) || !ModelState.IsValid) return BadRequest();
         ValidateReason();
         if (!string.Equals(ConfirmRealmId, realmId, StringComparison.Ordinal))
-            ModelState.AddModelError(nameof(ConfirmRealmId), "Recopiez exactement l’identifiant du realm pour confirmer sa suppression.");
+            ModelState.AddModelError(nameof(ConfirmRealmId), "Enter the exact realm ID to confirm its deletion.");
         if (!ModelState.IsValid) return await LoadAsync(realmId, ct);
         try
         {
             var current = await realms.GetAsync(realmId, ct);
             if (!RealmPresentation.CanDelete(current))
             {
-                Error = "La suppression est indisponible pendant une opération en cours. Actualisez avant de réessayer.";
+                Error = "Deletion is unavailable while an operation is in progress. Refresh before trying again.";
                 return await LoadAsync(realmId, ct);
             }
             await realms.DeleteAsync(realmId, ExpectedRevision, Reason!, ConfirmRealmId!, Actor(), ct);
-            Notice = "Suppression du realm demandée. Son retrait de la liste sera confirmé après la suppression de ses ressources. Les personnages et leurs sauvegardes sont conservés.";
+            Notice = "Realm deletion requested. Its removal from the list will be confirmed after its resources are deleted. Characters and their saves are retained.";
             return sites.Enabled ? Redirect(sites.AdminOrigin + "/Realms") : RedirectToPage("/Realms");
         }
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct)) { Error = RealmPresentation.ErrorMessage(ex); }
@@ -124,18 +124,18 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
         if (!ValidId(realmId) || ConfigurationRevision is null or < 0 ||
             ModelState.TryGetValue(nameof(ConfigurationRevision), out var revision) && revision.Errors.Count > 0) return BadRequest();
         ValidateReason();
-        var xp = ValidateMultiplier(XpMultiplier, nameof(XpMultiplier), "expérience");
-        var harvest = ValidateMultiplier(HarvestMultiplier, nameof(HarvestMultiplier), "récolte");
+        var xp = ValidateMultiplier(XpMultiplier, nameof(XpMultiplier), "experience");
+        var harvest = ValidateMultiplier(HarvestMultiplier, nameof(HarvestMultiplier), "harvesting");
         if (!ModelState.IsValid) return await LoadAsync(realmId, ct, preserveConfigurationInput: true);
         try
         {
             await realms.UpdateConfigurationAsync(realmId, new(ConfigurationRevision.Value, xp, harvest, Reason!), Actor(), ct);
-            Notice = "Configuration enregistrée. Consultez le suivi pour vérifier sa réception par chaque serveur.";
+            Notice = "Configuration saved. Check the status to confirm receipt by each server.";
             return RedirectToPage(new { realmId, section = ActiveSection });
         }
         catch (RealmsApiException ex) when (ex.StatusCode == HttpStatusCode.Conflict)
         {
-            ConfigurationError = "La configuration a changé. La version actuelle a été rechargée ; vérifiez les taux avant de réessayer.";
+            ConfigurationError = "The configuration has changed. The current version has been reloaded; review the rates before trying again.";
             return await LoadAsync(realmId, ct);
         }
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
@@ -149,7 +149,7 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
     {
         if (!decimal.TryParse(input, NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out var value)
             || value is < 0 or > 100 || decimal.Round(value, 3) != value)
-            ModelState.AddModelError(key, $"Le multiplicateur de {label} doit être compris entre 0 et 100, avec trois décimales maximum.");
+            ModelState.AddModelError(key, $"The {label} multiplier must be from 0 to 100, with at most three decimal places.");
         return value;
     }
 
@@ -162,25 +162,25 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
             return BadRequest();
         ValidateReason();
         if (type is not ("announce" or "kick" or "save"))
-            ModelState.AddModelError(nameof(CommandType), "Choisissez une commande disponible dans la liste.");
+            ModelState.AddModelError(nameof(CommandType), "Choose an available command from the list.");
         Message = Message?.Trim();
         if (type == "announce" && (string.IsNullOrEmpty(Message) || Message.Length > 400 || Encoding.UTF8.GetByteCount(Message) > 400 || Message.Any(char.IsControl)))
-            ModelState.AddModelError(nameof(Message), "Renseignez un message sans retour à la ligne, limité à 400 octets UTF-8 (les caractères accentués occupent plusieurs octets).");
+            ModelState.AddModelError(nameof(Message), "Enter a single-line message of up to 400 UTF-8 bytes (accented characters occupy multiple bytes).");
         CharacterId = CharacterId?.Trim();
         if (type == "kick" && (!Guid.TryParseExact(CharacterId, "D", out var characterId) || characterId == Guid.Empty))
-            ModelState.AddModelError(nameof(CharacterId), "Renseignez l’identifiant UUID du personnage à déconnecter.");
+            ModelState.AddModelError(nameof(CharacterId), "Enter the UUID of the character to disconnect.");
         if (!ModelState.IsValid) return await LoadAsync(realmId, ct);
         try
         {
             var commands = await realms.CommandsAsync(realmId, ct);
             if (!commands.Servers.Any(server => server.ServerId == ServerId && server.Available && server.SupportedCommands.Contains(type!)))
             {
-                ModelState.AddModelError(nameof(ServerId), "Ce serveur ne répond pas ou ne prend pas en charge cette commande. Actualisez puis réessayez.");
+                ModelState.AddModelError(nameof(ServerId), "This server is not responding or does not support this command. Refresh and try again.");
                 return await LoadAsync(realmId, ct);
             }
             await realms.CommandAsync(realmId, new(requestId.ToString("D"), ExpectedRevision, ServerId!, type!,
                 type == "announce" ? Message! : "", type == "kick" ? Guid.Parse(CharacterId!).ToString("D") : "", Reason!), Actor(), ct);
-            Notice = "Commande enregistrée en attente du serveur. Consultez l’historique pour vérifier son exécution.";
+            Notice = "Command saved and awaiting the server. Check the history to confirm execution.";
             return RedirectToPage(new { realmId, section = ActiveSection });
         }
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct)) { Error = RealmPresentation.ErrorMessage(ex); }
@@ -195,16 +195,16 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
         if (!ValidId(realmId) || !ModelState.IsValid) return BadRequest();
         ValidateReason();
         if (!string.Equals(ConfirmRealmId, realmId, StringComparison.Ordinal))
-            ModelState.AddModelError(nameof(ConfirmRealmId), "Recopiez l’identifiant du realm pour confirmer l’interruption des joueurs.");
+            ModelState.AddModelError(nameof(ConfirmRealmId), "Enter the realm ID to confirm interrupting players.");
         if (update && string.IsNullOrWhiteSpace(ExpectedImage))
-            ModelState.AddModelError(nameof(ExpectedImage), "Rechargez la page pour consulter la version approuvée.");
+            ModelState.AddModelError(nameof(ExpectedImage), "Reload the page to view the approved version.");
         if (!ModelState.IsValid) return await LoadAsync(realmId, ct);
         try
         {
             if (update) await realms.UpdateAsync(realmId, ExpectedRevision, Reason!, ExpectedImage!, Actor(), ct);
             else await realms.RestartAsync(realmId, ExpectedRevision, Reason!, Actor(), ct);
-            Notice = update ? "Mise à jour demandée. Suivez son résultat dans l’historique des opérations."
-                : "Redémarrage demandé. Suivez son résultat dans l’historique des opérations.";
+            Notice = update ? "Update requested. Track its result in the operation history."
+                : "Restart requested. Track its result in the operation history.";
             return RedirectToPage(new { realmId, section = ActiveSection });
         }
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct)) { Error = RealmPresentation.ErrorMessage(ex); }
@@ -215,7 +215,7 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
     {
         Reason = Reason?.Trim();
         if (string.IsNullOrEmpty(Reason) || Reason.Length > 500 || Reason.Any(char.IsControl))
-            ModelState.AddModelError(nameof(Reason), "Renseignez un motif de 1 à 500 caractères, sans caractères de contrôle.");
+            ModelState.AddModelError(nameof(Reason), "Enter a reason of 1 to 500 characters without control characters.");
     }
 
     private string Actor()
@@ -248,13 +248,13 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
                     OperationsOptions = await realms.OperationsOptionsAsync(realmId, ct);
                 }
                 catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
-                { OperationsError = "Les actions serveur sont indisponibles. " + RealmPresentation.ErrorMessage(ex); }
+                { OperationsError = "Server actions are unavailable. " + RealmPresentation.ErrorMessage(ex); }
             }
             if (ActiveSection is "settings" or "game" or "history")
             {
                 try { Commands = await realms.CommandsAsync(realmId, ct); }
                 catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
-                { CommandsError = "Le contrôle en jeu est indisponible. " + RealmPresentation.ErrorMessage(ex); }
+                { CommandsError = "In-game control is unavailable. " + RealmPresentation.ErrorMessage(ex); }
             }
             if (ActiveSection is "settings" or "history")
             {
@@ -272,7 +272,7 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
                     }
                 }
                 catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
-                { ConfigurationError ??= "La configuration en jeu est indisponible. " + RealmPresentation.ErrorMessage(ex); }
+                { ConfigurationError ??= "In-game configuration is unavailable. " + RealmPresentation.ErrorMessage(ex); }
             }
         }
         return Page();
@@ -282,20 +282,20 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
     {
         Search = Search?.Trim();
         if (!PlayerAdminPresentation.ValidSearch(Search))
-            ModelState.AddModelError(nameof(Search), "La recherche accepte au plus 100 caractères sans caractères de contrôle.");
+            ModelState.AddModelError(nameof(Search), "Search accepts up to 100 characters without control characters.");
         if (!PlayerAdminPresentation.ValidPagination(PageNumber, PageSize))
-            ModelState.AddModelError(nameof(PageNumber), "Choisissez une page de 1 à 10 000 et de 1 à 100 résultats.");
+            ModelState.AddModelError(nameof(PageNumber), "Choose a page from 1 to 10,000 with 1 to 100 results.");
         if (!CharactersEnabled || !ModelState.IsValid) return;
         try
         {
             var page = await characters.ListAsync(null, Search, PageNumber, PageSize, OnlineOnly, ct, Realm!.RealmId);
             if (page.Items.Any(character => OnlineOnly && !character.IsOnline)
                 || page.Page != PageNumber || page.PageSize != PageSize)
-                throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "Le service a renvoyé une réponse invalide pour ce realm. Réessayez dans un instant.");
+                throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "The service returned an invalid response for this realm. Try again shortly.");
             Characters = page;
         }
         catch (Exception ex) when (PlayerAdminPresentation.IsDependencyError(ex, ct))
-        { CharactersError = "Les joueurs du realm sont indisponibles. " + PlayerAdminPresentation.ErrorMessage(ex); }
+        { CharactersError = "Realm players are unavailable. " + PlayerAdminPresentation.ErrorMessage(ex); }
     }
 
     private static bool ValidId(string? realmId) => realmId is { Length: >= 3 and <= 31 }

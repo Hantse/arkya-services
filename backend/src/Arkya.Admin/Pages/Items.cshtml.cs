@@ -25,7 +25,7 @@ public sealed class ItemsModel(ContentAdminClient content) : PageModel
         try
         {
             var published = await content.PublishItemCatalogAsync(Revision, ct);
-            Notice = $"Catalogue {published.Version} publié. Synchronisez cette version dans Unity avant de construire le jeu.";
+            Notice = $"Catalogue {published.Version} published. Synchronise this version in Unity before building the game.";
             return RedirectToPage();
         }
         catch (Exception ex) when (ContentItemPresentation.IsDependencyError(ex, ct)) { Error = ContentItemPresentation.ErrorMessage(ex); }

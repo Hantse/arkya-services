@@ -119,7 +119,7 @@ public sealed class AdminDiscordHandler(
                 !AdminDiscordAuthentication.IsAllowed(adminOptions.CurrentValue, id.GetString()))
                 throw new AuthenticationFailureException("Discord authentication failed.");
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, id.GetString()!));
-            identity.AddClaim(new Claim(ClaimTypes.Name, "Administrateur Discord"));
+            identity.AddClaim(new Claim(ClaimTypes.Name, "Discord administrator"));
             identity.AddClaim(new Claim(AdminDiscordAuthentication.ProviderClaim, AdminDiscordAuthentication.Scheme));
             identity.AddClaim(new Claim(ClaimTypes.Role, "Administrator"));
             properties.RedirectUri = AdminDiscordAuthentication.LocalReturnUrl(properties.RedirectUri);

@@ -58,8 +58,8 @@ public sealed class RealmConfigurationEndpointTests
         Assert.Equal("admin:operator", factory.Realms.Actors[factory.Realms.Calls.IndexOf(call)]);
         Assert.Equal(42, factory.Realms.Realm.Revision);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(SettingsPath));
-        Assert.Contains("Configuration enregistrée", html);
-        Assert.Contains("vérifier sa réception par chaque serveur", html);
+        Assert.Contains("Configuration saved", html);
+        Assert.Contains("confirm receipt by each server", html);
         AdminFactory.NoSecrets(html);
     }
 
@@ -117,7 +117,7 @@ public sealed class RealmConfigurationEndpointTests
         using var response = await browser.PostAsync(MutationPath, AdminFactory.Form(form));
         var html = await response.Content.ReadAsStringAsync();
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Contains("La configuration a changé", WebUtility.HtmlDecode(html));
+        Assert.Contains("The configuration has changed", WebUtility.HtmlDecode(html));
         Assert.Equal("7", AdminFactory.Input(html, "ConfigurationRevision"));
         Assert.Equal("3", AdminFactory.Input(html, "XpMultiplier"));
         Assert.Equal("4.125", AdminFactory.Input(html, "HarvestMultiplier"));
@@ -143,9 +143,9 @@ public sealed class RealmConfigurationEndpointTests
         var html = await browser.GetStringAsync(SettingsPath);
         Assert.Contains("data-configuration-state=\"" + expected + "\"", html);
         var decoded = WebUtility.HtmlDecode(html);
-        Assert.Contains(expected == "applied" ? "1 / 1 serveur(s)" : "0 / 1 serveur(s)", decoded);
-        Assert.Contains("futur système de progression", decoded);
-        Assert.Contains("l’île de la bêta ne propose pas encore cette activité", decoded);
+        Assert.Contains(expected == "applied" ? "1 / 1 server(s)" : "0 / 1 server(s)", decoded);
+        Assert.Contains("future progression system", decoded);
+        Assert.Contains("the beta island does not yet offer this activity", decoded);
     }
 
     [Fact]
@@ -156,7 +156,7 @@ public sealed class RealmConfigurationEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync(SettingsPath);
-        Assert.Contains("0 / 2 serveur(s)", WebUtility.HtmlDecode(html));
+        Assert.Contains("0 / 2 server(s)", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain("data-configuration-state=\"applied\"", html);
         Assert.Equal("1", AdminFactory.Input(html, "XpMultiplier"));
         Assert.Equal("1", AdminFactory.Input(html, "HarvestMultiplier"));
@@ -185,13 +185,13 @@ public sealed class RealmConfigurationEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync(SettingsPath);
-        Assert.Contains("La configuration en jeu est indisponible", WebUtility.HtmlDecode(html));
+        Assert.Contains("In-game configuration is unavailable", WebUtility.HtmlDecode(html));
         Assert.Contains("section=maintenance", html);
         Assert.DoesNotContain("handler=Configuration", html);
         AdminFactory.NoSecrets(html);
         var maintenance = await browser.GetStringAsync(Path + "?section=maintenance");
         Assert.Contains("handler=Restart", maintenance);
-        Assert.DoesNotContain("La configuration en jeu est indisponible", WebUtility.HtmlDecode(maintenance));
+        Assert.DoesNotContain("In-game configuration is unavailable", WebUtility.HtmlDecode(maintenance));
         AdminFactory.NoSecrets(maintenance);
     }
 
@@ -204,12 +204,12 @@ public sealed class RealmConfigurationEndpointTests
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync(SettingsPath);
         var decoded = WebUtility.HtmlDecode(html);
-        Assert.Contains("Le contrôle en jeu est indisponible", decoded);
-        Assert.Contains("Suivi indisponible", decoded);
+        Assert.Contains("In-game control is unavailable", decoded);
+        Assert.Contains("Tracking unavailable", decoded);
         Assert.Contains("data-configuration-state=\"unknown\"", html);
         Assert.DoesNotContain("data-configuration-state=\"pending\"", html);
-        Assert.DoesNotContain("0 / 2 serveur(s)", decoded);
-        Assert.DoesNotContain("Aucun contact", decoded);
+        Assert.DoesNotContain("0 / 2 server(s)", decoded);
+        Assert.DoesNotContain("No check-in", decoded);
         Assert.Contains("handler=Configuration", html);
         Assert.Equal("1", AdminFactory.Input(html, "XpMultiplier"));
         Assert.Equal("1", AdminFactory.Input(html, "HarvestMultiplier"));

@@ -28,21 +28,26 @@ try
             Endpoint = Environment.GetEnvironmentVariable("ARKYA_TEST_GAME_ENDPOINT") ?? "ws://127.0.0.1:17943/",
             SessionToken = Secret(), AccountId = Guid.NewGuid().ToString("D"), DedicatedKey = Secret() };
         var partitioned = Environment.GetEnvironmentVariable("ARKYA_TEST_SERVER_COUNT") == "4";
+        fixture.MultiArea = Environment.GetEnvironmentVariable("ARKYA_TEST_MULTI_AREA") == "1";
+        if (fixture.MultiArea && !partitioned) throw new InvalidOperationException("Multi-Area validation requires four dedicateds.");
         if (partitioned)
         {
             var endpoint = new Uri(fixture.Endpoint);
             if (!endpoint.IsLoopback || endpoint.Scheme != "ws" || endpoint.Port > 65532)
                 throw new InvalidOperationException("Partition validation requires four loopback WebSocket ports.");
             fixture.ServerId = "island-starter-island-01";
-            fixture.TopologyVersion = "starter-island-4-v1";
-            fixture.ProtocolVersion = 2;
-            fixture.BuildId = "arkya-partition-handoff-v1";
+            fixture.TopologyVersion = fixture.MultiArea ? "multi-area-2x2-v1" : "starter-island-4-v1";
+            fixture.ProtocolVersion = fixture.MultiArea ? 3 : 2;
+            fixture.BuildId = fixture.MultiArea ? "arkya-multi-area-v1" : "arkya-partition-handoff-v1";
             fixture.Servers = Enumerable.Range(0, 4).Select(index => new FixtureServer
             {
-                ServerId = $"island-starter-island-{index + 1:D2}", Endpoint = new UriBuilder(endpoint) { Port = endpoint.Port + index }.Uri.AbsoluteUri,
-                DedicatedKey = index == 0 ? fixture.DedicatedKey : Secret(), PartitionIndex = index,
+                ServerId = fixture.MultiArea ? $"island-{(index < 2 ? "starter-island" : "handoff-valley")}-{index % 2 + 1:D2}" : $"island-starter-island-{index + 1:D2}",
+                AreaId = fixture.MultiArea && index >= 2 ? "handoff-valley" : "starter-island",
+                ContentId = fixture.MultiArea && index >= 2 ? "handoff-valley" : "starter-island",
+                Endpoint = new UriBuilder(endpoint) { Port = endpoint.Port + index }.Uri.AbsoluteUri,
+                DedicatedKey = index == 0 ? fixture.DedicatedKey : Secret(), PartitionIndex = fixture.MultiArea ? index % 2 : index,
                 MinX = index % 2 * 768, MaxX = (index % 2 + 1) * 768,
-                MinZ = index / 2 * 768, MaxZ = (index / 2 + 1) * 768
+                MinZ = fixture.MultiArea ? 0 : index / 2 * 768, MaxZ = fixture.MultiArea ? 1536 : (index / 2 + 1) * 768
             }).ToArray();
         }
         var identityKey = Secret(); var realmKey = Secret();
@@ -79,28 +84,47 @@ try
         if (partitioned)
         {
             realms["GameAccess__StandaloneEntries__0__TopologyVersion"] = fixture.TopologyVersion!;
-            foreach (var server in fixture.Servers)
+            for (var slot = 0; slot < fixture.Servers.Length; slot++)
             {
-                var index = server.PartitionIndex;
-                var prefix = $"GameAccess__StandaloneEntries__0__Partitions__{index}__";
+                var server = fixture.Servers[slot];
+                var prefix = $"GameAccess__StandaloneEntries__0__Partitions__{slot}__";
                 realms[prefix + "ServerId"] = server.ServerId;
                 realms[prefix + "Endpoint"] = server.Endpoint;
-                realms[prefix + "IslandId"] = "starter-island";
-                realms[prefix + "PartitionIndex"] = index.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                realms[prefix + "IslandId"] = server.AreaId;
+                realms[prefix + "PartitionIndex"] = server.PartitionIndex.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 realms[prefix + "Bounds__MinX"] = server.MinX.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 realms[prefix + "Bounds__MaxX"] = server.MaxX.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 realms[prefix + "Bounds__MinZ"] = server.MinZ.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 realms[prefix + "Bounds__MaxZ"] = server.MaxZ.ToString(System.Globalization.CultureInfo.InvariantCulture);
-                var identityPrefix = $"GameAccess__DedicatedServers__{index}__";
+                var identityPrefix = $"GameAccess__DedicatedServers__{slot}__";
                 characters[identityPrefix + "RealmId"] = fixture.RealmId;
                 characters[identityPrefix + "ServerId"] = server.ServerId;
                 characters[identityPrefix + "Key"] = server.DedicatedKey;
             }
+            if (fixture.MultiArea)
+            {
+                var areas = new[] { "starter-island", "handoff-valley" };
+                for (var index = 0; index < areas.Length; index++)
+                {
+                    var prefix = $"GameAccess__StandaloneEntries__0__Areas__{index}__";
+                    realms[prefix + "AreaId"] = areas[index]; realms[prefix + "ContentId"] = areas[index];
+                    var transition = $"GameAccess__StandaloneEntries__0__AreaTransitions__{index}__";
+                    realms[transition + "Id"] = index == 0 ? "starter-to-valley" : "valley-to-starter";
+                    realms[transition + "SourceAreaId"] = areas[index]; realms[transition + "TargetAreaId"] = areas[1 - index];
+                    realms[transition + "SourceBounds__MinX"] = "810"; realms[transition + "SourceBounds__MaxX"] = "820";
+                    realms[transition + "SourceBounds__MinZ"] = "740"; realms[transition + "SourceBounds__MaxZ"] = "760";
+                    realms[transition + "TargetPosition__X"] = index == 0 ? "750" : "790";
+                    realms[transition + "TargetPosition__Y"] = index == 0 ? "20" : "38";
+                    realms[transition + "TargetPosition__Z"] = "750";
+                    realms[transition + "TargetForward__X"] = "1"; realms[transition + "TargetForward__Z"] = "0";
+                }
+            }
             await File.WriteAllTextAsync(Path.Combine(directory, "partitions.json"), JsonSerializer.Serialize(new
             {
-                realmId = fixture.RealmId, islandId = "starter-island", topologyVersion = fixture.TopologyVersion,
+                realmId = fixture.RealmId, topologyVersion = fixture.TopologyVersion,
                 protocolVersion = fixture.ProtocolVersion, buildId = fixture.BuildId,
-                areas = fixture.Servers.Select(server => new { server.ServerId, server.Endpoint, server.MinX, server.MinZ, server.MaxX, server.MaxZ })
+                partitions = fixture.Servers.Select(server => new { server.ServerId, server.Endpoint, islandId = server.AreaId,
+                    server.ContentId, server.PartitionIndex, bounds = new { server.MinX, server.MinZ, server.MaxX, server.MaxZ } })
             }, json));
         }
         characters["WebClient__AllowedOrigins__0"] = "http://127.0.0.1:51806";
@@ -137,17 +161,22 @@ try
             var epoch = record["AuthorityEpoch"].ToInt64();
             var serverId = record["ServerId"].AsString;
             var revision = state.IsBsonDocument ? state["Revision"].ToInt64() : 0;
+            var areaId = state.IsBsonDocument ? state.AsBsonDocument.GetValue("IslandId", BsonNull.Value).IsString ? state["IslandId"].AsString : null : null;
             object? simulationSummary = null;
             if (state.IsBsonDocument && state.AsBsonDocument.GetValue("Simulation", BsonNull.Value) is BsonDocument simulationState)
             {
                 using var captured = JsonDocument.Parse(simulationState["Payload"].AsString);
                 var value = captured.RootElement;
-                simulationSummary = new { lastSequence = value.GetProperty("lastSequence").GetUInt32(),
+                simulationSummary = new { version = value.GetProperty("version").GetInt32(), lastSequence = value.GetProperty("lastSequence").GetUInt32(),
                     jumpSequence = value.GetProperty("jumpSequence").GetUInt32(), consumedJumpSequence = value.GetProperty("consumedJumpSequence").GetUInt32(),
-                    phase = value.GetProperty("phase").GetInt32(), verticalVelocity = value.GetProperty("verticalVelocity").GetDouble() };
+                    phase = value.GetProperty("phase").GetInt32(), verticalVelocity = value.GetProperty("verticalVelocity").GetDouble(),
+                    gameplay = value.TryGetProperty("gameplay", out var gameplay) ? gameplay.Clone() : (JsonElement?)null };
             }
+            var expectedFinal = fixture.MultiArea ? fixture.Servers[3] : fixture.Servers[0];
+            var expectedX = fixture.MultiArea ? 790 : 750;
             if (action == "verify-partition-state" && (position is null || revision < 2 || epoch < 6 || active ||
-                serverId != fixture.Servers[0].ServerId || Math.Abs(position["X"].ToDouble() - 750) > 5 || Math.Abs(position["Z"].ToDouble() - 750) > 5))
+                serverId != expectedFinal.ServerId || fixture.MultiArea && areaId != expectedFinal.AreaId ||
+                Math.Abs(position["X"].ToDouble() - expectedX) > 5 || Math.Abs(position["Z"].ToDouble() - 750) > 5))
                 throw new InvalidDataException("The four-server traversal did not persist and release its final authority/state.");
             if (action == "verify-partition-state")
             {
@@ -159,10 +188,17 @@ try
                     captured.RootElement.GetProperty("jumpSequence").GetUInt32() == 0 ||
                     captured.RootElement.GetProperty("consumedJumpSequence").GetUInt32() == 0)
                     throw new InvalidDataException("The final input and jump history was lost.");
+                if (fixture.MultiArea && (captured.RootElement.GetProperty("version").GetInt32() != 2 ||
+                    !captured.RootElement.TryGetProperty("gameplay", out var gameplay) || gameplay.GetProperty("version").GetInt32() != 1))
+                    throw new InvalidDataException("The complete gameplay snapshot was not persisted.");
+                if (fixture.MultiArea)
+                    foreach (var expected in SeededGameplay().EnumerateObject())
+                        if (captured.RootElement.GetProperty("gameplay").GetProperty("value").GetProperty(expected.Name).GetInt32() != expected.Value.GetInt32())
+                            throw new InvalidDataException("The persisted nondefault gameplay state changed during traversal.");
             }
             Console.WriteLine(JsonSerializer.Serialize(new
             {
-                observedAt = DateTimeOffset.UtcNow, serverId, authorityEpoch = epoch, revision, activeLease = active,
+                observedAt = DateTimeOffset.UtcNow, serverId, areaId, authorityEpoch = epoch, revision, activeLease = active,
                 simulation = simulationSummary,
                 transfer = transfer.IsBsonDocument ? new
                 {
@@ -173,27 +209,70 @@ try
                 verified = action == "verify-partition-state"
             }, json));
         }
-        else if (action == "client-config")
+        else if (action is "client-bootstrap" or "client-bootstrap-resume")
+        {
+            var resume = action == "client-bootstrap-resume";
+            await File.WriteAllTextAsync(Path.Combine(directory, resume ? "client-resume.json" : "client.json"), JsonSerializer.Serialize(new
+            {
+                awaitAdmission = true, configurationNonce = Guid.NewGuid().ToString("N"), character = fixture.Characters[0],
+                reportPath = Path.Combine(directory, resume ? "client-resume-report.json" : "client-report.json"), timeoutSeconds = 240
+            }, json));
+            Console.WriteLine("Credential-free client bootstrap written.");
+        }
+        else if (action is "client-config" or "client-resume-config")
         {
             if (fixture.Servers.Length != 4) throw new InvalidDataException("Client configuration requires four actual dedicateds.");
+            var resume = action == "client-resume-config";
+            var configurationPath = Path.Combine(directory, resume ? "client-resume.json" : "client.json");
+            using var bootstrap = JsonDocument.Parse(await File.ReadAllTextAsync(configurationPath));
+            var nonce = bootstrap.RootElement.GetProperty("configurationNonce").GetString();
             using var tickets = JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(directory, "tickets.json")));
             var primary = tickets.RootElement.GetProperty("clients")[0];
-            await File.WriteAllTextAsync(Path.Combine(directory, "client.json"), JsonSerializer.Serialize(new
+            BsonDocument? savedState = null;
+            if (resume)
             {
+                var id = fixture.Characters[0].GetProperty("id").GetString();
+                var record = await Mongo(fixture.Mongo).GetDatabase(fixture.Prefix + "_characters").GetCollection<BsonDocument>("game_leases")
+                    .Find(new BsonDocument("_id", id)).SingleAsync();
+                savedState = record["State"].AsBsonDocument;
+                if (savedState["IslandId"].AsString != "handoff-valley") throw new InvalidDataException("Resume must use the persisted Valley Area.");
+            }
+            var resumeServer = fixture.Servers.Single(server => server.ServerId == primary.GetProperty("admission").GetProperty("serverId").GetString());
+            var configurationJson = JsonSerializer.Serialize(new
+            {
+                configurationNonce = nonce, resumeOnly = resume,
                 character = primary.GetProperty("character"), admission = primary.GetProperty("admission"),
-                reportPath = Path.Combine(directory, "client-report.json"), timeoutSeconds = 240,
-                waypoints = new[]
+                reportPath = Path.Combine(directory, resume ? "client-resume-report.json" : "client-report.json"), timeoutSeconds = 240,
+                expectedResumePosition = savedState is null ? null : new { x = savedState["Position"]["X"].ToDouble(), y = savedState["Position"]["Y"].ToDouble(), z = savedState["Position"]["Z"].ToDouble() },
+                expectedResumeForward = savedState is null ? null : new { x = savedState["Forward"]["X"].ToDouble(), z = savedState["Forward"]["Z"].ToDouble() },
+                waypoints = resume ? new[] { new FixtureWaypoint { X = (float)savedState!["Position"]["X"].ToDouble(), Z = (float)savedState["Position"]["Z"].ToDouble(),
+                    ServerId = resumeServer.ServerId, AreaId = resumeServer.AreaId, ContentId = resumeServer.ContentId } } : fixture.MultiArea ? new[]
                 {
-                    new { x = 750, z = 750, serverId = fixture.Servers[0].ServerId },
-                    new { x = 786, z = 750, serverId = fixture.Servers[1].ServerId },
-                    new { x = 786, z = 786, serverId = fixture.Servers[3].ServerId },
-                    new { x = 750, z = 786, serverId = fixture.Servers[2].ServerId },
-                    new { x = 750, z = 750, serverId = fixture.Servers[0].ServerId },
-                    new { x = 786, z = 786, serverId = fixture.Servers[3].ServerId },
-                    new { x = 750, z = 750, serverId = fixture.Servers[0].ServerId }
-                }
-            }, json));
-            Console.WriteLine("Native client configuration written; credentials were not logged.");
+                    Point(750, 750, 0), Point(790, 750, 1), Portal(2, "starter-island", "starter-to-valley", 750),
+                    Point(790, 750, 3), Portal(1, "handoff-valley", "valley-to-starter", 790), Point(750, 750, 0),
+                    Point(790, 750, 1), Portal(2, "starter-island", "starter-to-valley", 750), Point(790, 750, 3)
+                } : new[]
+                {
+                    Point(750, 750, 0), Point(786, 750, 1), Point(786, 786, 3), Point(750, 786, 2),
+                    Point(750, 750, 0), Point(786, 786, 3), Point(750, 750, 0)
+                },
+                multiArea = fixture.MultiArea, expectedGameplay = fixture.MultiArea ? SeededGameplay() : (JsonElement?)null,
+                expectedHandoffs = resume ? 0 : fixture.MultiArea ? 8 : 6,
+                expectedAreaTransitions = resume ? 0 : fixture.MultiArea ? 3 : 0
+            }, json);
+            var temporary = configurationPath + ".tmp";
+            await File.WriteAllTextAsync(temporary, configurationJson);
+            for (var attempt = 0; ; attempt++)
+            {
+                try { File.Move(temporary, configurationPath, true); break; }
+                catch (IOException) when (attempt < 20) { await Task.Delay(25); }
+            }
+            Console.WriteLine("Client configuration written; credentials were not logged.");
+            FixtureWaypoint Point(float x, float z, int slot) => new() { X = x, Z = z, ServerId = fixture.Servers[slot].ServerId,
+                AreaId = fixture.Servers[slot].AreaId, ContentId = fixture.Servers[slot].ContentId };
+            FixtureWaypoint Portal(int slot, string sourceArea, string transition, float arrivalX) => new()
+            { X = arrivalX, Z = 750, ServerId = fixture.Servers[slot].ServerId, AreaId = fixture.Servers[slot].AreaId,
+                ContentId = fixture.Servers[slot].ContentId, SourceAreaId = sourceArea, TransitionId = transition, ApproachX = 815, ApproachZ = 750 };
         }
         else if (action == "verify-state")
         {
@@ -226,7 +305,8 @@ try
         {
             var client = Mongo(fixture.Mongo);
             foreach (var suffix in new[] { "_identity", "_characters", "_realms" }) await client.DropDatabaseAsync(fixture.Prefix + suffix);
-            foreach (var file in new[] { "fixture.json", "tickets.json", "client.json", "partitions.json" }) if (File.Exists(Path.Combine(directory, file))) File.Delete(Path.Combine(directory, file));
+            foreach (var file in new[] { "fixture.json", "tickets.json", "client.json", "client.json.tmp", "client-resume.json", "client-resume.json.tmp", "partitions.json" })
+                if (File.Exists(Path.Combine(directory, file))) File.Delete(Path.Combine(directory, file));
             Console.WriteLine("Isolated test sessions and databases removed.");
         }
         else
@@ -242,8 +322,11 @@ try
                 { realmId = fixture.RealmId, protocolVersion = fixture.ProtocolVersion, buildId = fixture.BuildId });
                 Require(issued, "Initial seed admission");
                 var admission = await issued.Content.ReadFromJsonAsync<JsonElement>();
+                var seedServer = fixture.Servers.Single(server => server.ServerId == admission.GetProperty("serverId").GetString());
+                if (fixture.MultiArea && (seedServer.AreaId != "starter-island" || admission.GetProperty("areaId").GetString() != "starter-island"))
+                    throw new InvalidDataException("Initial admission must select the trusted Starter Area.");
                 using var dedicated = new HttpClient { BaseAddress = new Uri(fixture.CharactersBaseUrl), Timeout = TimeSpan.FromSeconds(15) };
-                dedicated.DefaultRequestHeaders.Add("X-Arkya-Dedicated-Key", fixture.DedicatedKey);
+                dedicated.DefaultRequestHeaders.Add("X-Arkya-Dedicated-Key", seedServer.DedicatedKey);
                 using var consumed = await dedicated.PostAsJsonAsync("/internal/game/admissions/consume", new { ticket = admission.GetProperty("ticket").GetString() });
                 Require(consumed, "Initial seed lease");
                 var lease = await consumed.Content.ReadFromJsonAsync<JsonElement>();
@@ -252,7 +335,15 @@ try
                 using var saved = await dedicated.PutAsJsonAsync(route + "/state", new
                 {
                     leaseBody.leaseId, leaseBody.authorityEpoch, expectedRevision = 0,
-                    position = new { x = 750, y = 100, z = 750 }, forward = new { x = 1, z = 0 }
+                    position = new { x = 750, y = fixture.MultiArea ? 41.2525 : 100, z = 750 }, forward = new { x = 1, z = 0 },
+                    simulation = fixture.MultiArea ? new
+                    {
+                        schemaVersion = 1,
+                        payload = JsonSerializer.Serialize(new { version = 2, motion = 0, run = 0, inputX = 0, inputZ = 0,
+                            verticalVelocity = 0, colliderSupportHeight = 0, inputAgeSeconds = 0, lastSequence = 17,
+                            jumpSequence = 4, consumedJumpSequence = 4, phase = 0, colliderSupported = 0,
+                            gameplay = new { version = 1, value = SeededGameplay() } })
+                    } : null
                 });
                 Require(saved, "Initial center position");
                 using var release = await dedicated.PostAsJsonAsync(route + "/release", leaseBody); Require(release, "Initial seed release");
@@ -301,12 +392,18 @@ try
                 if (admission.GetProperty("serverId").GetString() != before["ServerId"].AsString)
                     throw new InvalidDataException("Relogin selected a different authority from the saved destination.");
                 using var dedicated = new HttpClient { BaseAddress = new Uri(fixture.CharactersBaseUrl), Timeout = TimeSpan.FromSeconds(15) };
-                dedicated.DefaultRequestHeaders.Add("X-Arkya-Dedicated-Key", fixture.DedicatedKey);
+                var selected = fixture.Servers.Single(server => server.ServerId == admission.GetProperty("serverId").GetString());
+                dedicated.DefaultRequestHeaders.Add("X-Arkya-Dedicated-Key", selected.DedicatedKey);
                 using var consumed = await dedicated.PostAsJsonAsync("/internal/game/admissions/consume", new { ticket = admission.GetProperty("ticket").GetString() });
                 Require(consumed, "Relogin lease");
                 var lease = await consumed.Content.ReadFromJsonAsync<JsonElement>();
                 var state = lease.GetProperty("state");
                 var oldState = before["State"].AsBsonDocument;
+                if (fixture.MultiArea && (admission.GetProperty("areaId").GetString() != selected.AreaId ||
+                    admission.GetProperty("contentId").GetString() != selected.ContentId ||
+                    lease.GetProperty("areaId").GetString() != selected.AreaId || lease.GetProperty("contentId").GetString() != selected.ContentId ||
+                    state.GetProperty("islandId").GetString() != selected.AreaId || oldState["IslandId"].AsString != selected.AreaId))
+                    throw new InvalidDataException("Relogin did not route to the saved Area and content.");
                 if (lease.GetProperty("authorityEpoch").GetInt64() != before["AuthorityEpoch"].ToInt64() + 1 ||
                     state.GetProperty("revision").GetInt64() != oldState["Revision"].ToInt64() ||
                     state.GetProperty("simulation").GetProperty("payload").GetString() != oldState["Simulation"]["Payload"].AsString)
@@ -324,7 +421,8 @@ try
                     throw new InvalidDataException("Relogin release changed the saved state or retained authority.");
                 Console.WriteLine(JsonSerializer.Serialize(new { verified = true, persistedPositionPreserved = true,
                     persistedOrientationPreserved = true, completeSimulationPreserved = true, stateRevision = state.GetProperty("revision").GetInt64(),
-                    authorityEpoch = leaseBody.authorityEpoch, released = true }, json));
+                    authorityEpoch = leaseBody.authorityEpoch, areaId = selected.AreaId, contentId = selected.ContentId,
+                    serverId = selected.ServerId, persistedAreaPreserved = fixture.MultiArea, released = true }, json));
             }
             else if (action == "verify-revocation")
             {
@@ -381,6 +479,13 @@ catch (Exception error)
 }
 
 static string Secret() => Convert.ToBase64String(RandomNumberGenerator.GetBytes(32)).TrimEnd('=').Replace('+', '-').Replace('/', '_');
+static JsonElement SeededGameplay() => JsonSerializer.SerializeToElement(new Dictionary<string, int>
+{
+    ["Health"] = 73, ["MaxHealth"] = 127, ["Mana"] = 41, ["MaxMana"] = 95, ["Stamina"] = 63, ["MaxStamina"] = 111,
+    ["ActiveClass"] = 1, ["WarriorLevel"] = 3, ["WarriorExperience"] = 41, ["ScoutLevel"] = 2, ["ScoutExperience"] = 17,
+    ["MageLevel"] = 0, ["MageExperience"] = 0, ["ClericLevel"] = 0, ["ClericExperience"] = 0,
+    ["DruidLevel"] = 0, ["DruidExperience"] = 0, ["LearnedRankOne"] = 1, ["LearnedRankTwo"] = 0
+});
 static string Origin()
 {
     var listener = new TcpListener(IPAddress.Loopback, 0); listener.Start();
@@ -401,6 +506,7 @@ static void Expect(HttpResponseMessage result, HttpStatusCode expected)
 }
 sealed class Fixture
 {
+    public bool MultiArea { get; set; }
     public string Mongo { get; set; } = "";
     public string Prefix { get; set; } = "";
     public string IdentityBaseUrl { get; set; } = "";
@@ -421,6 +527,8 @@ sealed class Fixture
 }
 sealed class FixtureServer
 {
+    public string AreaId { get; set; } = "starter-island";
+    public string ContentId { get; set; } = "starter-island";
     public string ServerId { get; set; } = "";
     public string Endpoint { get; set; } = "";
     public string DedicatedKey { get; set; } = "";
@@ -429,4 +537,16 @@ sealed class FixtureServer
     public double MinZ { get; set; }
     public double MaxX { get; set; }
     public double MaxZ { get; set; }
+}
+sealed class FixtureWaypoint
+{
+    public float X { get; set; }
+    public float Z { get; set; }
+    public string ServerId { get; set; } = "";
+    public string AreaId { get; set; } = "";
+    public string ContentId { get; set; } = "";
+    public string? SourceAreaId { get; set; }
+    public string? TransitionId { get; set; }
+    public float ApproachX { get; set; }
+    public float ApproachZ { get; set; }
 }

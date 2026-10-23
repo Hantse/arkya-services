@@ -33,7 +33,7 @@ public sealed class CharactersAdminClientTests
         var error = await Assert.ThrowsAsync<PlayerAdminApiException>(() =>
             Client(http).ListAsync(null, null, 1, 25, false, default, "lerya"));
         Assert.Equal(HttpStatusCode.BadGateway, error.StatusCode);
-        Assert.Contains("autre realm", error.Message);
+        Assert.Contains("another realm", error.Message);
     }
 
     [Fact]

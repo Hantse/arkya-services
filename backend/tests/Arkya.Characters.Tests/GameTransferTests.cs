@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Http.Json;
+using System.Text.Json;
 using Arkya.Characters.Api.Application;
 using Arkya.Characters.Api.Contracts;
 using Arkya.Characters.Api.Domain;
@@ -99,6 +100,48 @@ public sealed class GameTransferTests
             new(f.Lease.LeaseId, f.Lease.AuthorityEpoch, 2, new(1, 1, 1), new(1, 0)), default)).Error);
         Assert.Equal(TransferStatus.Committed, (await f.Service.AbortTransferAsync(f.Character.Id, transfer.Request.TransferId, f.Source,
             new(f.Lease.LeaseId, f.Lease.AuthorityEpoch), default)).Value!.Status);
+    }
+
+    [Fact]
+    public async Task IntraAreaPrepareAcceptsJsonUtilityEmptyOptionalTransitionAndNullRetries()
+    {
+        var f = new Scenario(); await f.Initialize();
+        var request = f.Prepare() with { TransitionId = "" };
+        var options = new JsonSerializerOptions(JsonSerializerDefaults.Web);
+        var json = JsonSerializer.Serialize(request, options);
+        Assert.Contains("\"transitionId\":\"\"", json);
+        var wireRequest = JsonSerializer.Deserialize<PrepareTransferRequest>(json, options)!;
+        Assert.Equal("", wireRequest.TransitionId);
+
+        var prepared = await f.Service.PrepareTransferAsync(f.Character.Id, f.Source, wireRequest, default);
+        Assert.Null(prepared.Error);
+        Assert.Equal(prepared.Value, (await f.Service.PrepareTransferAsync(f.Character.Id, f.Source,
+            wireRequest with { TransitionId = null }, default)).Value);
+        Assert.Equal(prepared.Value, (await f.Service.PrepareTransferAsync(f.Character.Id, f.Source, wireRequest, default)).Value);
+        Assert.Null((await f.Store.FindCharacterAsync(f.Character.Id, default))!.Transfer!.Transition);
+        Assert.Equal("invalid_transfer", (await f.Service.PrepareTransferAsync(f.Character.Id, f.Source,
+            wireRequest with { TransitionId = " " }, default)).Error);
+
+        var claimed = (await f.Service.ClaimTransferAsync(f.Target, new(prepared.Value!.Ticket), default)).Value!;
+        Assert.Null((await f.Service.SealTransferAsync(f.Character.Id, request.TransferId, f.Source, f.Seal(), default)).Error);
+        var committed = await f.Service.CommitTransferAsync(f.Character.Id, request.TransferId, f.Target, new(claimed.ClaimId), default);
+        Assert.Null(committed.Error);
+        Assert.Equal(f.Target.ServerId, committed.Value!.ServerId);
+        Assert.Equal(Simulation, committed.Value.State!.Simulation);
+    }
+
+    [Fact]
+    public async Task IntraAreaSealAcceptsJsonUtilityEmptyOptionalArrivalButNotASubmittedArrivalPayload()
+    {
+        var f = new Scenario(); await f.Initialize();
+        var transfer = await f.Claim();
+        Assert.Equal("invalid_transfer", (await f.Service.SealTransferAsync(f.Character.Id, transfer.Request.TransferId, f.Source,
+            f.Seal() with { ArrivalSimulation = new(0, "{}") }, default)).Error);
+        var seal = f.Seal() with { ArrivalSimulation = new(0, "") };
+        Assert.Null((await f.Service.SealTransferAsync(f.Character.Id, transfer.Request.TransferId, f.Source, seal, default)).Error);
+        Assert.Null((await f.Service.SealTransferAsync(f.Character.Id, transfer.Request.TransferId, f.Source, seal, default)).Error);
+        Assert.Equal(Simulation, (await f.Service.CommitTransferAsync(f.Character.Id, transfer.Request.TransferId, f.Target,
+            new(transfer.Claim.ClaimId), default)).Value!.State!.Simulation);
     }
 
     [Fact]

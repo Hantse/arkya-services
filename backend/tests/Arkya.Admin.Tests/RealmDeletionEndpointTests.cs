@@ -48,9 +48,9 @@ public sealed class RealmDeletionEndpointTests
         Assert.Equal("admin:operator", factory.Realms.Actors[factory.Realms.Calls.IndexOf(call)]);
         Assert.False(call.Body.Value.TryGetProperty("actor", out _));
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(response.Headers.Location));
-        Assert.Contains("Suppression du realm demandée", html);
-        Assert.Contains("Les personnages et leurs sauvegardes sont conservés", html);
-        Assert.Contains("Suppression en cours", html);
+        Assert.Contains("Realm deletion requested", html);
+        Assert.Contains("Characters and their saves are retained", html);
+        Assert.Contains("Deleting", html);
         AdminFactory.NoSecrets(html);
     }
 
@@ -90,7 +90,7 @@ public sealed class RealmDeletionEndpointTests
         using var response = await browser.PostAsync(Path + "?handler=Delete", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var html = await response.Content.ReadAsStringAsync();
-        Assert.Contains("a changé", WebUtility.HtmlDecode(html));
+        Assert.Contains("has changed", WebUtility.HtmlDecode(html));
         Assert.Equal("8", AdminFactory.Input(html, "ExpectedRevision"));
         Assert.Equal("Ready", factory.Realms.Realm.Status);
         AdminFactory.NoSecrets(html);
@@ -106,11 +106,11 @@ public sealed class RealmDeletionEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path + "?section=maintenance"));
-        Assert.Contains("disabled=\"disabled\">Supprimer définitivement le realm", html);
-        if (status == "Deleting") Assert.Contains("Suppression en cours", WebUtility.HtmlDecode(html));
+        Assert.Contains("disabled=\"disabled\">Permanently delete realm", html);
+        if (status == "Deleting") Assert.Contains("Deleting", WebUtility.HtmlDecode(html));
         using var response = await browser.PostAsync(Path + "?handler=Delete", AdminFactory.Form(await Form(browser)));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Contains("pendant une opération en cours", WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync()));
+        Assert.Contains("while an operation is in progress", WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync()));
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
     }
 
@@ -137,8 +137,8 @@ public sealed class RealmDeletionEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path + "?section=maintenance"));
-        Assert.Contains("Supprimer définitivement le realm", html);
-        Assert.DoesNotContain("disabled=\"disabled\">Supprimer définitivement le realm", html);
+        Assert.Contains("Permanently delete realm", html);
+        Assert.DoesNotContain("disabled=\"disabled\">Permanently delete realm", html);
         using var response = await browser.PostAsync(Path + "?handler=Delete", AdminFactory.Form(await Form(browser)));
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         Assert.Contains(factory.Realms.Calls, call => call.Path.EndsWith("/delete") && call.Method == HttpMethod.Post);
@@ -157,14 +157,14 @@ public sealed class RealmDeletionEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(Path + "?section=maintenance"));
-        Assert.Contains("Suppression en échec", html);
-        Assert.Contains("dans le délai prévu", html);
-        Assert.Contains("Relancer la suppression", html);
-        Assert.DoesNotContain("disabled=\"disabled\">Relancer la suppression", html);
-        Assert.Contains("ils restent liés à ce realm", html);
+        Assert.Contains("Deletion failed", html);
+        Assert.Contains("within the deadline", html);
+        Assert.Contains("Retry deletion", html);
+        Assert.DoesNotContain("disabled=\"disabled\">Retry deletion", html);
+        Assert.Contains("remain bound to this realm", html);
         AdminFactory.NoSecrets(html);
         var history = await browser.GetStringAsync(Path + "?section=history");
-        Assert.Contains(">Suppression<", history);
+        Assert.Contains(">Deletion<", history);
         Assert.Contains("&lt;script&gt;delete-reason&lt;/script&gt;", history);
         Assert.DoesNotContain("<script>delete-reason", history);
         AdminFactory.NoSecrets(history);
@@ -194,8 +194,8 @@ public sealed class RealmDeletionEndpointTests
         Assert.Contains("secure", tempCookie);
         Assert.Contains("httponly", tempCookie);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync(response.Headers.Location));
-        Assert.Contains("Suppression du realm demandée", html);
-        Assert.Contains("Suppression en cours", html);
+        Assert.Contains("Realm deletion requested", html);
+        Assert.Contains("Deleting", html);
         AdminFactory.NoSecrets(html);
     }
 

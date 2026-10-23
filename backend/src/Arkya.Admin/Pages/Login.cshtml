@@ -1,25 +1,25 @@
 @page
 @model LoginModel
 @{
-    ViewData["Title"] = "Connexion";
+    ViewData["Title"] = "Sign in";
 }
 <div class="login-wrap">
     <div class="eyebrow">ARKYA / ADMINISTRATION</div>
-    <h1>Administrer Arkya</h1>
-    <p class="intro">Préparez les mondes, déployez les serveurs et publiez les quêtes.</p>
+    <h1>Administer Arkya</h1>
+    <p class="intro">Prepare worlds, deploy servers and publish quests.</p>
     <form method="post" asp-page-handler="@(Model.DiscordEnabled ? "Discord" : null)" class="panel login-panel">
         <input type="hidden" asp-for="ReturnUrl" />
         @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
         @if (Model.DiscordEnabled)
         {
-            <p>Connectez-vous avec le compte Discord autorisé à administrer Arkya.</p>
-            <button type="submit" class="button primary">Continuer avec Discord <span aria-hidden="true">→</span></button>
+            <p>Sign in with the Discord account authorised to administer Arkya.</p>
+            <button type="submit" class="button primary">Continue with Discord <span aria-hidden="true">→</span></button>
         }
         else
         {
-            <label asp-for="Password">Mot de passe administrateur</label>
+            <label asp-for="Password">Administrator password</label>
             <input asp-for="Password" type="password" autocomplete="current-password" required maxlength="512" />
-            <button type="submit" class="button primary">Se connecter <span aria-hidden="true">→</span></button>
+            <button type="submit" class="button primary">Sign in <span aria-hidden="true">→</span></button>
         }
     </form>
 </div>

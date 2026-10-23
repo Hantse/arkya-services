@@ -25,14 +25,14 @@ public sealed class DashboardEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync("/"));
-        Assert.Contains("Joueurs en ligne", html);
+        Assert.Contains("Online players", html);
         Assert.Contains("<strong>80</strong>", html);
         Assert.Contains("<strong>1</strong>", html);
-        Assert.Contains("Communauté", html);
+        Assert.Contains("Community", html);
         Assert.Contains("Infrastructure", html);
-        Assert.Contains("Contenu et support", html);
+        Assert.Contains("Content and support", html);
         Assert.Contains("href=\"/Quests\"", html);
-        Assert.Contains("Non configuré", html);
+        Assert.Contains("Not configured", html);
         Assert.DoesNotContain(AccountsStub.Key, html);
         Assert.Equal(2, factory.Upstream.Calls.Count);
         Assert.All(factory.Upstream.Calls, call => Assert.Equal(HttpMethod.Get, call.Method));
@@ -46,7 +46,7 @@ public sealed class DashboardEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync("/"));
-        Assert.Contains("Indisponible", html);
+        Assert.Contains("Unavailable", html);
         Assert.Contains("<strong>—</strong>", html);
         Assert.DoesNotContain("<strong>0</strong>", html);
         Assert.DoesNotContain(AccountsStub.Key, html);
@@ -68,7 +68,7 @@ public sealed class DashboardEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync("/Infrastructure"));
-        Assert.Contains("Déployeur activé", html);
+        Assert.Contains("Deployer enabled", html);
         Assert.Contains("arkya-realms", html);
         Assert.Contains("Les Terres d'Aube", html);
         Assert.Contains("@sha256:", html);
@@ -87,10 +87,10 @@ public sealed class DashboardEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var dashboard = WebUtility.HtmlDecode(await browser.GetStringAsync("/"));
-        Assert.Contains("Disponible", dashboard);
-        Assert.Contains("Indisponible", dashboard);
+        Assert.Contains("Available", dashboard);
+        Assert.Contains("Unavailable", dashboard);
         var infrastructure = WebUtility.HtmlDecode(await browser.GetStringAsync("/Infrastructure"));
-        Assert.DoesNotContain("Préparer un realm</a>", infrastructure);
+        Assert.DoesNotContain("Prepare a realm</a>", infrastructure);
         AdminFactory.NoSecrets(dashboard);
         AdminFactory.NoSecrets(infrastructure);
     }

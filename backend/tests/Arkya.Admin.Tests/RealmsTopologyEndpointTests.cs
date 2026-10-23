@@ -21,13 +21,13 @@ public sealed class RealmsTopologyEndpointTests
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/CreateRealm");
         var decoded = WebUtility.HtmlDecode(html);
-        Assert.Contains("Configurer les Areas, instances et raids", decoded);
-        Assert.Contains("Un realm peut contenir plusieurs Areas", decoded);
-        Assert.Contains("Chaque Area est une carte entière et continue", decoded);
-        Assert.Contains("Identifiant de l’Area", decoded);
-        Assert.Contains("Ajouter une Area", decoded);
-        Assert.Contains("une partition de l’Area = un dédié", decoded);
-        Assert.Contains("32 Areas et 256 dédiés maximum par realm", decoded);
+        Assert.Contains("Configure Areas, instances and raids", decoded);
+        Assert.Contains("A realm can contain multiple Areas", decoded);
+        Assert.Contains("Each Area is a complete, continuous map", decoded);
+        Assert.Contains("Area ID", decoded);
+        Assert.Contains("Add an Area", decoded);
+        Assert.Contains("one Area partition = one dedicated server", decoded);
+        Assert.Contains("32 Areas and 256 dedicated servers per realm", decoded);
         Assert.Equal("starter-island", AdminFactory.Input(html, "Input.Islands[0].IslandId"));
         Assert.Equal("4", AdminFactory.Input(html, "Input.Islands[0].DedicatedCount"));
         Assert.Equal("1536", AdminFactory.Input(html, "Input.Islands[0].Width"));
@@ -36,7 +36,7 @@ public sealed class RealmsTopologyEndpointTests
         Assert.Equal("0", AdminFactory.Input(html, "Input.Islands[0].OriginZ"));
         Assert.Contains("Input.InstanceDedicatedCount", html);
         Assert.Contains("Input.RaidDedicatedCount", html);
-        Assert.Contains("déploiement de cette topologie indisponible", WebUtility.HtmlDecode(html));
+        Assert.Contains("deployment of this topology unavailable", WebUtility.HtmlDecode(html));
     }
 
     [Fact]
@@ -105,7 +105,7 @@ public sealed class RealmsTopologyEndpointTests
             form[$"Input.Islands[{index}].DedicatedCount"] = "64";
         }
         using var response = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(form));
-        Assert.Contains("256 serveurs dédiés", WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync()));
+        Assert.Contains("256 dedicated servers", WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync()));
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
     }
 
@@ -157,17 +157,17 @@ public sealed class RealmsTopologyEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms/terres-aube"));
-        Assert.Contains("Pool d’instances", html);
-        Assert.Contains("Pool de raids", html);
-        Assert.Contains("Limites des partitions (X / Z)", html);
+        Assert.Contains("Instance pool", html);
+        Assert.Contains("Raid pool", html);
+        Assert.Contains("Partition bounds (X / Z)", html);
         Assert.Contains("realm-partition-map", html);
         Assert.Contains("realm-partition-cell", html);
         Assert.Contains("role=\"img\"", html);
         Assert.Contains("starter-island-00</th><td>0 / 0</td><td>500 / 500</td>", html);
         Assert.Contains("starter-island-03</th><td>500 / 500</td><td>1000 / 1000</td>", html);
-        Assert.Contains("Le déploiement est bloqué", html);
+        Assert.Contains("Deployment is blocked", html);
         var maintenance = WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms/terres-aube?section=maintenance"));
-        Assert.Matches("<button[^>]+disabled=\"disabled\"[^>]*>Déployer ce realm</button>", maintenance);
+        Assert.Matches("<button[^>]+disabled=\"disabled\"[^>]*>Deploy this realm</button>", maintenance);
         AdminFactory.NoSecrets(html);
     }
 
@@ -230,7 +230,7 @@ public sealed class RealmsTopologyEndpointTests
         form["ExpectedRevision"] = "0";
         using var response = await browser.PostAsync("/CreateRealm?handler=SaveTopology", AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Contains("a changé", WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync()));
+        Assert.Contains("has changed", WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync()));
         Assert.Equal(1, factory.Realms.Realm.Revision);
     }
 
@@ -241,7 +241,7 @@ public sealed class RealmsTopologyEndpointTests
         factory.Realms.Realm = factory.Realms.Realm with { Status = "Ready" };
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        Assert.DoesNotContain("Modifier le plan", WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms/terres-aube?section=maintenance")));
+        Assert.DoesNotContain("Edit plan", WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms/terres-aube?section=maintenance")));
         using var response = await browser.GetAsync("/CreateRealm?editRealmId=terres-aube");
         Assert.Equal(HttpStatusCode.Conflict, response.StatusCode);
     }

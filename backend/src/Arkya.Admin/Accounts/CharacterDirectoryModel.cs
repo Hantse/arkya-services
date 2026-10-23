@@ -19,13 +19,13 @@ public abstract class CharacterDirectoryModel(CharactersAdminClient characters, 
     {
         Search = Search?.Trim();
         AccountId = AccountId?.Trim();
-        if (!PlayerAdminPresentation.ValidSearch(Search)) ModelState.AddModelError(nameof(Search), "La recherche accepte au plus 100 caractères sans caractères de contrôle.");
+        if (!PlayerAdminPresentation.ValidSearch(Search)) ModelState.AddModelError(nameof(Search), "Search accepts up to 100 characters without control characters.");
         if (!string.IsNullOrEmpty(AccountId))
         {
-            if (!Guid.TryParse(AccountId, out var id) || id == Guid.Empty) ModelState.AddModelError(nameof(AccountId), "Renseignez un ID de compte Arkya valide.");
+            if (!Guid.TryParse(AccountId, out var id) || id == Guid.Empty) ModelState.AddModelError(nameof(AccountId), "Enter a valid Arkya account ID.");
             else AccountId = id.ToString("D");
         }
-        if (!PlayerAdminPresentation.ValidPagination(PageNumber, PageSize)) ModelState.AddModelError(nameof(PageNumber), "Choisissez une page de 1 à 10 000 et de 1 à 100 résultats.");
+        if (!PlayerAdminPresentation.ValidPagination(PageNumber, PageSize)) ModelState.AddModelError(nameof(PageNumber), "Choose a page from 1 to 10,000 with 1 to 100 results.");
         if (!Enabled || !ModelState.IsValid) return;
         try { Characters = await characters.ListAsync(AccountId, Search, PageNumber, PageSize, onlineOnly, ct); }
         catch (Exception ex) when (PlayerAdminPresentation.IsDependencyError(ex, ct)) { Error = PlayerAdminPresentation.ErrorMessage(ex); }

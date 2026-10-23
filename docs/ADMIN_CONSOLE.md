@@ -3,6 +3,13 @@
 `Arkya.Admin` sert une console technique distincte de la vitrine. L'accueil `/`
 est le dashboard ; l'éditeur de quêtes est conservé sous `/Quests`.
 
+L'interface est entièrement en anglais, avec une culture de présentation
+`en-GB` fixe : navigation, formulaires, validations, erreurs, tableaux et
+messages JavaScript. Les titres, descriptions et rapports écrits par les
+opérateurs ou les joueurs conservent leur langue. Les routes et identifiants
+techniques restent compatibles. Le [runtime multi-Area](MULTI_AREA_RUNTIME.md)
+décrit les contenus et portails associés au plan du realm.
+
 La fiche de chaque realm propose aussi le redémarrage, la mise à jour approuvée, les annonces en jeu, la déconnexion, la sauvegarde des joueurs et les multiplicateurs XP/récolte modifiables en direct : voir [actions, suivi et configuration](REALM_OPERATIONS.md).
 
 La liste des royaumes `/Realms` ouvre un formulaire séparé sous `/CreateRealm`.
@@ -216,6 +223,15 @@ L'écran ne reçoit ni kubeconfig, ni YAML libre, ni shell. Voir le
 RBAC et TLS. Des réplicas prêts ne prouvent pas l'admission d'un client réel.
 
 ## Vérification
+
+Le 23 octobre 2026, la suite complète Admin a terminé avec **682 réussites,
+0 échec et 1 test MongoDB ignoré** sur 683 cas. Après le dernier correctif du
+compteur anglais des joueurs en ligne, les deux cas existants
+`DirectoriesForwardOwnershipSearchPaginationAndPresenceFilter` ont été
+recompilés et exécutés : **2 réussites, 0 échec, 0 test ignoré**. La suite
+complète précède ce seul correctif de texte et son assertion. Les rapports
+locaux sont `artifacts/admin-english/test-results/admin-global-final.trx`
+et `artifacts/admin-english/test-results/admin-online-presence-final.trx`.
 
 Les tests HTTP couvrent authentification/antiforgery, recherche, pagination,
 erreurs partielles, absence de secrets, modération et conflits. Avec

@@ -34,3 +34,8 @@
     .realm-create-island { grid-template-columns: minmax(0, 1fr); }
     .realm-create-island-preview { max-width: 420px; width: 100%; }
 }
+
+.realm-portals { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 20px; }
+.realm-portal-editor { min-width: 0; margin: 18px 0; padding: 18px; border: 1px solid var(--line); border-radius: 5px; }
+.realm-portal-editor h4 { margin: 16px 0 10px; font-size: 13px; }
+.realm-portal-editor .realm-island-dimensions { margin-top: 14px; }

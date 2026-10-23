@@ -1,32 +1,32 @@
 @page
 @model CharactersModel
 @{
-    ViewData["Title"] = "Personnages";
+    ViewData["Title"] = "Characters";
 }
-<header class="page-header"><div><div class="eyebrow">JOUEURS / PERSONNAGES</div><h1>Personnages</h1><p class="intro">Répertoire persistant, comptes propriétaires et realms.</p></div><a class="button secondary" asp-page="/Characters" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize">Actualiser</a></header>
-@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Characters">Réessayer</a></div> }
+<header class="page-header"><div><div class="eyebrow">PLAYERS / CHARACTERS</div><h1>Characters</h1><p class="intro">Persistent directory, owning accounts and realms.</p></div><a class="button secondary" asp-page="/Characters" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@Model.PageNumber" asp-route-pageSize="@Model.PageSize">Refresh</a></header>
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Characters">Try again</a></div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
 @if (!Model.Enabled)
 {
-    <div class="panel empty-state"><h2>La gestion des personnages est désactivée</h2><p>Configurez la connexion privée à Characters pour consulter les personnages et leur présence.</p></div>
+    <div class="panel empty-state"><h2>Character management is disabled</h2><p>Configure the private Characters connection to view characters and their presence.</p></div>
 }
 else
 {
-    <form method="get" class="panel filter-bar"><div class="field"><label asp-for="Search">Personnage</label><input asp-for="Search" maxlength="100" placeholder="Nom ou ID de personnage" /></div><div class="field"><label asp-for="AccountId">ID du compte</label><input asp-for="AccountId" maxlength="36" class="mono" placeholder="UUID du compte Arkya" /></div><div class="field"><label asp-for="PageSize">Résultats par page</label><select asp-for="PageSize"><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></div><button class="button primary" type="submit">Rechercher</button><a asp-page="/Characters" class="button secondary">Effacer</a></form>
+    <form method="get" class="panel filter-bar"><div class="field"><label asp-for="Search">Character</label><input asp-for="Search" maxlength="100" placeholder="Character name or ID" /></div><div class="field"><label asp-for="AccountId">Account ID</label><input asp-for="AccountId" maxlength="36" class="mono" placeholder="Arkya account UUID" /></div><div class="field"><label asp-for="PageSize">Results per page</label><select asp-for="PageSize"><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></div><button class="button primary" type="submit">Search</button><a asp-page="/Characters" class="button secondary">Clear</a></form>
     @if (Model.Characters is { } characters)
     {
-        <div class="section-heading"><h2>Personnages enregistrés</h2><span class="muted">@characters.Total personnage(s)</span></div>
-        @if (characters.Items.Length == 0) { <div class="panel empty-state"><h3>Aucun personnage sur cette page</h3><p>Modifiez les filtres ou revenez à la première page.</p><a asp-page="/Characters" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId">Première page</a></div> }
+        <div class="section-heading"><h2>Saved characters</h2><span class="muted">@characters.Total character(s)</span></div>
+        @if (characters.Items.Length == 0) { <div class="panel empty-state"><h3>No characters on this page</h3><p>Change the filters or return to the first page.</p><a asp-page="/Characters" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId">First page</a></div> }
         else
         {
-            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Personnages persistants</caption><thead><tr><th scope="col">Personnage</th><th scope="col">Compte</th><th scope="col">Realm</th><th scope="col">Race / silhouette</th><th scope="col">Présence</th><th scope="col">Création UTC</th></tr></thead><tbody>
+            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Persistent characters</caption><thead><tr><th scope="col">Character</th><th scope="col">Account</th><th scope="col">Realm</th><th scope="col">Race / silhouette</th><th scope="col">Presence</th><th scope="col">Created UTC</th></tr></thead><tbody>
             @foreach (var character in characters.Items)
             {
-                <tr><th scope="row">@character.DisplayName<small class="mono">@character.CharacterId</small></th><td><a class="mono" asp-page="/Account" asp-route-id="@character.AccountId">@character.AccountId</a></td><td>@(string.IsNullOrEmpty(character.RealmId) ? "Non lié" : character.RealmId)</td><td>@character.Race / @character.Gender</td><td><span class="realm-status @(character.IsOnline ? "ready" : "draft")">@(character.IsOnline ? "En ligne" : "Hors ligne")</span></td><td>@character.CreatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm")</td></tr>
+                <tr><th scope="row">@character.DisplayName<small class="mono">@character.CharacterId</small></th><td><a class="mono" asp-page="/Account" asp-route-id="@character.AccountId">@character.AccountId</a></td><td>@(string.IsNullOrEmpty(character.RealmId) ? "Unbound" : character.RealmId)</td><td>@character.Race / @character.Gender</td><td><span class="realm-status @(character.IsOnline ? "ready" : "draft")">@(character.IsOnline ? "Online" : "Offline")</span></td><td>@character.CreatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm")</td></tr>
             }
             </tbody></table></div>
         }
-        <nav class="pagination" aria-label="Pagination des personnages">@if (Model.PageNumber > 1) { <a class="button secondary" asp-page="/Characters" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize">Précédents</a> }<span class="muted">Page @characters.Page</span>@if (Model.HasNext) { <a class="button secondary" asp-page="/Characters" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize">Suivants</a> }</nav>
-        <p class="muted">La présence correspond à un bail de jeu actif, entretenu par le serveur dédié.</p>
+        <nav class="pagination" aria-label="Character pagination">@if (Model.PageNumber > 1) { <a class="button secondary" asp-page="/Characters" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize">Previous</a> }<span class="muted">Page @characters.Page</span>@if (Model.HasNext) { <a class="button secondary" asp-page="/Characters" asp-route-search="@Model.Search" asp-route-accountId="@Model.AccountId" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize">Next</a> }</nav>
+        <p class="muted">Presence corresponds to an active game lease maintained by the dedicated server.</p>
     }
 }

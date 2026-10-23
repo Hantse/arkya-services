@@ -42,7 +42,7 @@ public sealed class InferenceEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/Inference");
-        Assert.Contains("La gestion de l’inférence est désactivée", WebUtility.HtmlDecode(html));
+        Assert.Contains("Inference management is disabled", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain("handler=Create", html);
         Assert.DoesNotContain("handler=PrepareInstallation", html);
         var form = CreateForm(AdminFactory.Input(html, "__RequestVerificationToken"));
@@ -73,7 +73,7 @@ public sealed class InferenceEndpointTests
         Assert.DoesNotContain("<script>", html);
         Assert.DoesNotContain(InferenceFactory.AdminKey, html);
         Assert.DoesNotContain(factory.Inference.EnrollmentToken, result.Headers.ToString());
-        Assert.Contains("./Install-Agent.ps1 -BackendUrl 'https://api.arkya.online' -AgentId 'cpu-bureau' -AgentToken (Read-Host 'Jeton de cet agent' -AsSecureString)", WebUtility.HtmlDecode(html));
+        Assert.Contains("./Install-Agent.ps1 -BackendUrl 'https://api.arkya.online' -AgentId 'cpu-bureau' -AgentToken (Read-Host 'Agent token' -AsSecureString)", WebUtility.HtmlDecode(html));
         var call = Assert.Single(factory.Inference.Calls, call => call.Method == HttpMethod.Post);
         Assert.Equal(6, call.Body!.Value.EnumerateObject().Count());
         Assert.Equal("<script>alert('x')</script>", call.Body.Value.GetProperty("displayName").GetString());
@@ -126,7 +126,7 @@ public sealed class InferenceEndpointTests
         Assert.DoesNotContain(factory.Inference.EnrollmentToken, html);
         Assert.DoesNotContain("<script>", html);
         Assert.DoesNotContain("name=\"installation-token\"", html);
-        Assert.Contains("20/10/2026 à 12:15:00 UTC", decoded);
+        Assert.Contains("20/10/2026 at 12:15:00 UTC", decoded);
         Assert.Contains(".\\Install.cmd -BackendUrl https://api.arkya.online", decoded);
         Assert.DoesNotContain("-AgentId", decoded);
         Assert.DoesNotContain("validation-summary-errors", html);
@@ -168,16 +168,16 @@ public sealed class InferenceEndpointTests
         Assert.Equal("qwen35-08b", desired.ModelId);
         var html = await browser.GetStringAsync("/Inference");
         var decoded = WebUtility.HtmlDecode(html);
-        Assert.Contains("Redémarrage demandé", decoded);
-        Assert.Contains("8 threads demandés", decoded);
-        Assert.Contains("4 threads observés", decoded);
+        Assert.Contains("Restart requested", decoded);
+        Assert.Contains("8 requested threads", decoded);
+        Assert.Contains("4 observed threads", decoded);
         Assert.Contains("Qwen3.5", decoded);
         Assert.Contains("LFM2.5", decoded);
         factory.Inference.Agent = factory.Inference.Agent with
         {
             ObservedWorkers = [factory.Inference.Agent.ObservedWorkers[0] with { Threads = 8, ModelId = "qwen35-08b" }]
         };
-        Assert.DoesNotContain("Redémarrage demandé", WebUtility.HtmlDecode(await browser.GetStringAsync("/Inference")));
+        Assert.DoesNotContain("Restart requested", WebUtility.HtmlDecode(await browser.GetStringAsync("/Inference")));
     }
 
     [Theory]
@@ -222,7 +222,7 @@ public sealed class InferenceEndpointTests
         var result = await browser.PostAsync("/Inference?handler=" + handler, AdminFactory.Form(form));
         Assert.Equal(HttpStatusCode.OK, result.StatusCode);
         var html = await result.Content.ReadAsStringAsync();
-        Assert.Contains("Le catalogue de modèles est indisponible", WebUtility.HtmlDecode(html));
+        Assert.Contains("The model catalogue is unavailable", WebUtility.HtmlDecode(html));
         Assert.Contains("CPU Bureau", html);
         Assert.Contains("handler=DeleteWorker", html);
         Assert.Contains("name=\"modelId\" required disabled=\"disabled\"", html);
@@ -245,7 +245,7 @@ public sealed class InferenceEndpointTests
         Assert.Contains("<script>observed</script>", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain("<script>", html);
         factory.Inference.Models = [];
-        Assert.Contains("Le catalogue de modèles est indisponible", WebUtility.HtmlDecode(await browser.GetStringAsync("/Inference")));
+        Assert.Contains("The model catalogue is unavailable", WebUtility.HtmlDecode(await browser.GetStringAsync("/Inference")));
     }
 
     [Theory]
@@ -321,10 +321,10 @@ public sealed class InferenceEndpointTests
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/Inference");
         var decoded = WebUtility.HtmlDecode(html);
-        Assert.Contains("Hors ligne", decoded);
-        Assert.Contains("Démarrage demandé", decoded);
-        Assert.Contains("Arrêt demandé", decoded);
-        Assert.Contains("2 observé(s) / 2 demandé(s)", decoded);
+        Assert.Contains("Offline", decoded);
+        Assert.Contains("Startup requested", decoded);
+        Assert.Contains("Stop requested", decoded);
+        Assert.Contains("2 observed / 2 requested", decoded);
         Assert.DoesNotContain("<script>", html);
         Assert.DoesNotContain(InferenceFactory.AdminKey, html);
         Assert.DoesNotContain("private upstream details", html);
@@ -356,7 +356,7 @@ public sealed class InferenceEndpointTests
         Assert.Equal("/admin/inference/agents/cpu-bureau/workers/worker-one", deletion.Path);
         Assert.Null(deletion.Body);
         var html = await browser.GetStringAsync("/Inference");
-        Assert.Contains("Arrêt demandé", WebUtility.HtmlDecode(html));
+        Assert.Contains("Stop requested", WebUtility.HtmlDecode(html));
     }
 
     [Theory]
@@ -387,7 +387,7 @@ public sealed class InferenceEndpointTests
         var form = new Dictionary<string, string> { ["__RequestVerificationToken"] = token, ["agentId"] = InferenceStub.AgentId };
         var conflict = await browser.PostAsync("/Inference?handler=DeleteAgent", AdminFactory.Form(form));
         var html = WebUtility.HtmlDecode(await conflict.Content.ReadAsStringAsync());
-        Assert.Contains("une machine doit être vide", html);
+        Assert.Contains("a machine must be empty", html);
         Assert.DoesNotContain(InferenceFactory.AdminKey, html);
         factory.Inference.Agent = factory.Inference.Agent with { DesiredWorkers = [], ObservedWorkers = [] };
         Assert.Contains("handler=DeleteAgent", await browser.GetStringAsync("/Inference"));

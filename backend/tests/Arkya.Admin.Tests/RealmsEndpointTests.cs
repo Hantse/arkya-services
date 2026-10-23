@@ -46,7 +46,7 @@ public sealed class RealmsEndpointTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms"));
-        Assert.Contains("La gestion des realms est désactivée", html);
+        Assert.Contains("Realm management is disabled", html);
         var token = AdminFactory.Input(html, "__RequestVerificationToken");
         Assert.Equal(HttpStatusCode.NotFound, (await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(CreateForm(token)))).StatusCode);
         Assert.Empty(factory.Realms.Calls);
@@ -62,9 +62,9 @@ public sealed class RealmsEndpointTests
         factory.Settings["ContentApi:BaseUrl"] = "";
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
-        Assert.Contains("L'atelier de quêtes est désactivé", WebUtility.HtmlDecode(await browser.GetStringAsync("/Quests")));
+        Assert.Contains("The quest workshop is disabled", WebUtility.HtmlDecode(await browser.GetStringAsync("/Quests")));
         Assert.Empty(factory.Content.Calls);
-        Assert.Contains("Mondes enregistrés", WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms")));
+        Assert.Contains("Saved worlds", WebUtility.HtmlDecode(await browser.GetStringAsync("/Realms")));
     }
 
     [Fact]
@@ -79,7 +79,7 @@ public sealed class RealmsEndpointTests
         var token = AdminFactory.Input(html, "__RequestVerificationToken");
         using var result = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(CreateForm(token)));
         Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-        Assert.Contains("Cette cible est réservée au realm beta-web", WebUtility.HtmlDecode(await result.Content.ReadAsStringAsync()));
+        Assert.Contains("This target is reserved for realm beta-web", WebUtility.HtmlDecode(await result.Content.ReadAsStringAsync()));
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method == HttpMethod.Post);
     }
 
@@ -102,7 +102,7 @@ public sealed class RealmsEndpointTests
         Assert.Equal(new CreateRealmRequest("terres-aube", "Les Terres d'Aube", "test-cluster", "island-test"),
             body.Deserialize<CreateRealmRequest>(new JsonSerializerOptions(JsonSerializerDefaults.Web)));
         var html = await browser.GetStringAsync(result.Headers.Location);
-        Assert.Contains("Realm créé", WebUtility.HtmlDecode(html));
+        Assert.Contains("Realm created", WebUtility.HtmlDecode(html));
         Assert.Contains("area-one", html);
         AdminFactory.NoSecrets(html);
     }
@@ -132,8 +132,8 @@ public sealed class RealmsEndpointTests
     }
 
     [Theory]
-    [InlineData("Draft", "Déployer ce realm", 0)]
-    [InlineData("Failed", "Relancer le déploiement", 7)]
+    [InlineData("Draft", "Deploy this realm", 0)]
+    [InlineData("Failed", "Retry deployment", 7)]
     public async Task DeploymentPostsOnlyTheDisplayedRevision(string status, string button, long revision)
     {
         await using var factory = EnabledFactory();
@@ -186,7 +186,7 @@ public sealed class RealmsEndpointTests
         }));
         var html = await result.Content.ReadAsStringAsync();
         Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-        Assert.Contains("a changé", WebUtility.HtmlDecode(html));
+        Assert.Contains("has changed", WebUtility.HtmlDecode(html));
         Assert.Equal("3", AdminFactory.Input(html, "ExpectedRevision"));
         AdminFactory.NoSecrets(html);
     }
@@ -203,7 +203,7 @@ public sealed class RealmsEndpointTests
         {
             ["__RequestVerificationToken"] = token, ["ExpectedRevision"] = "1"
         }));
-        Assert.Contains("Le déploiement est désactivé", WebUtility.HtmlDecode(await result.Content.ReadAsStringAsync()));
+        Assert.Contains("Deployment is disabled", WebUtility.HtmlDecode(await result.Content.ReadAsStringAsync()));
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
     }
 
@@ -219,7 +219,7 @@ public sealed class RealmsEndpointTests
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/Realms");
         Assert.Contains("role=\"alert\"", html);
-        Assert.Contains("Réessayer", WebUtility.HtmlDecode(html));
+        Assert.Contains("Try again", WebUtility.HtmlDecode(html));
         AdminFactory.NoSecrets(html);
     }
 
@@ -236,7 +236,7 @@ public sealed class RealmsEndpointTests
         var html = await browser.GetStringAsync("/Realms/terres-aube");
         Assert.DoesNotContain("handler=Deploy", html);
         Assert.Contains(RealmPresentation.StatusLabel(status), WebUtility.HtmlDecode(html));
-        Assert.Contains("admission des joueurs", WebUtility.HtmlDecode(html));
+        Assert.Contains("player admission", WebUtility.HtmlDecode(html));
         Assert.All(factory.Realms.Calls, call => Assert.Equal(HttpMethod.Get, call.Method));
     }
 
@@ -258,9 +258,9 @@ public sealed class RealmsEndpointTests
     };
 
     [Theory]
-    [InlineData("cluster_access_denied", "Le cluster a refusé l'accès")]
-    [InlineData("resource_ownership_conflict", "appartient à un autre propriétaire")]
-    [InlineData("deployment_timeout", "dans le délai prévu")]
+    [InlineData("cluster_access_denied", "The cluster denied access")]
+    [InlineData("resource_ownership_conflict", "belongs to another owner")]
+    [InlineData("deployment_timeout", "within the deadline")]
     public async Task KnownFailureCodesShowSafeRecoveryGuidance(string code, string expected)
     {
         await using var factory = EnabledFactory();

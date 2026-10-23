@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using Arkya.ServiceDefaults;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Arkya.Realms.Api.Domain;
 
@@ -28,9 +30,16 @@ public static class DedicatedKind
 public sealed record RealmIslandTopology(string IslandId, int DedicatedCount,
     double Width = 1000, double Depth = 1000, double OriginX = 0, double OriginZ = 0,
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridColumns = null,
-    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridRows = null);
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridRows = null)
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), BsonIgnoreIfNull] public string? ContentId { get; init; }
+}
 public sealed record AreaBounds(double MinX, double MinZ, double MaxX, double MaxZ);
-public sealed record RealmTopology(RealmIslandTopology[] Islands, int InstanceDedicatedCount = 0, int RaidDedicatedCount = 0);
+public sealed record RealmTopology(RealmIslandTopology[] Islands, int InstanceDedicatedCount = 0, int RaidDedicatedCount = 0)
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), BsonIgnoreIfNull]
+    public GameAreaTransition[]? AreaTransitions { get; init; }
+}
 
 public sealed record ServerDefinition(string Id, int Port, string[] Args)
 {

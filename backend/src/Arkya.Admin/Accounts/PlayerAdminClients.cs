@@ -40,7 +40,7 @@ public sealed class IdentityAdminClient(HttpClient client, IOptions<IdentityAdmi
             new AccountBetaAccessRequest(revision, hasBetaAccess, reason), actor, ct);
 
     private Task<T> SendAsync<T>(HttpMethod method, string path, object? body, string? actor, CancellationToken ct) =>
-        PlayerAdminTransport.SendAsync<T>(client, options.Value, "comptes", method, path, body, actor, ct);
+        PlayerAdminTransport.SendAsync<T>(client, options.Value, "accounts", method, path, body, actor, ct);
 }
 
 public sealed class CharactersAdminClient(HttpClient client, IOptions<CharactersAdminApiOptions> options)
@@ -50,14 +50,14 @@ public sealed class CharactersAdminClient(HttpClient client, IOptions<Characters
         CancellationToken ct, string? realmId = null)
     {
         var scope = realmId is null ? "" : "&realmId=" + Uri.EscapeDataString(realmId);
-        var result = await PlayerAdminTransport.SendAsync<AdminCharacterPage>(client, options.Value, "personnages", HttpMethod.Get,
+        var result = await PlayerAdminTransport.SendAsync<AdminCharacterPage>(client, options.Value, "characters", HttpMethod.Get,
             $"admin/characters?page={page}&pageSize={pageSize}&accountId={Uri.EscapeDataString(accountId ?? "")}&search={Uri.EscapeDataString(search ?? "")}&onlineOnly={onlineOnly.ToString().ToLowerInvariant()}{scope}", null, null, ct);
         if (realmId is not null && result.Items.Any(character => character.RealmId != realmId))
-            throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "Le service des personnages a renvoyé des données d’un autre realm. Réessayez dans un instant.");
+            throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "The character service returned data from another realm. Try again shortly.");
         return result;
     }
     public Task<AdminCharacterOverview> OverviewAsync(CancellationToken ct) =>
-        PlayerAdminTransport.SendAsync<AdminCharacterOverview>(client, options.Value, "personnages", HttpMethod.Get,
+        PlayerAdminTransport.SendAsync<AdminCharacterOverview>(client, options.Value, "characters", HttpMethod.Get,
             "admin/characters/overview", null, null, ct);
 }
 
@@ -70,7 +70,7 @@ internal static class PlayerAdminTransport
         HttpMethod method, string path, object? body, string? actor, CancellationToken ct)
     {
         if (!options.Enabled)
-            throw new PlayerAdminApiException(HttpStatusCode.ServiceUnavailable, $"La gestion des {resource} est désactivée sur cette installation.");
+            throw new PlayerAdminApiException(HttpStatusCode.ServiceUnavailable, $"Management of {resource} is disabled on this installation.");
         using var request = new HttpRequestMessage(method, path);
         request.Headers.Add("X-Arkya-Admin-Key", options.AdminKey);
         if (body is not null) request.Content = JsonContent.Create(body);
@@ -81,11 +81,11 @@ internal static class PlayerAdminTransport
         if (!response.IsSuccessStatusCode)
             throw new PlayerAdminApiException(response.StatusCode, response.StatusCode switch
             {
-                HttpStatusCode.Conflict => "Ce compte a changé. La version actuelle a été rechargée ; vérifiez-la avant de réessayer.",
-                HttpStatusCode.BadRequest => "Vérifiez les champs et renseignez un motif pour cette action.",
-                HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "L'accès au service a été refusé. Vérifiez la configuration de l'administration.",
-                HttpStatusCode.NotFound => "Ce compte ou personnage n'existe pas ou n'est plus disponible.",
-                _ => $"Le service des {resource} est indisponible. Réessayez dans un instant."
+                HttpStatusCode.Conflict => "This account has changed. The current version has been reloaded; review it before trying again.",
+                HttpStatusCode.BadRequest => "Check the fields and enter a reason for this action.",
+                HttpStatusCode.Forbidden or HttpStatusCode.Unauthorized => "Access to the service was denied. Check the administration configuration.",
+                HttpStatusCode.NotFound => "This account or character does not exist or is no longer available.",
+                _ => $"The {resource} service is unavailable. Try again shortly."
             });
         if (response.Content.Headers.ContentLength is > MaximumResponseBytes) throw InvalidResponse();
         await using var source = await response.Content.ReadAsStreamAsync(deadline.Token);
@@ -124,7 +124,7 @@ internal static class PlayerAdminTransport
         Guid.TryParse(account.AccountId, out _) && account.DisplayName is not null && account.DiscordUserId is not null && account.Revision >= 0;
 
     private static PlayerAdminApiException InvalidResponse() =>
-        new(HttpStatusCode.BadGateway, "Le service a renvoyé une réponse invalide. Réessayez dans un instant.");
+        new(HttpStatusCode.BadGateway, "The service returned an invalid response. Try again shortly.");
 }
 
 public static class PlayerAdminPresentation
@@ -132,7 +132,7 @@ public static class PlayerAdminPresentation
     public static bool IsDependencyError(Exception ex, CancellationToken ct) => ex is PlayerAdminApiException or HttpRequestException or IOException
         || ex is OperationCanceledException && !ct.IsCancellationRequested;
     public static string ErrorMessage(Exception ex) => ex is PlayerAdminApiException ? ex.Message
-        : "Le service est indisponible. Réessayez dans un instant.";
+        : "The service is unavailable. Try again shortly.";
     public static bool ValidSearch(string? search) => search is null || search.Length <= 100 && !search.Any(char.IsControl);
     public static bool ValidPagination(int page, int pageSize) => page is >= 1 and <= 10000 && pageSize is >= 1 and <= 100;
 }
