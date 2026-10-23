@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace Arkya.Launcher.Core;
@@ -12,7 +13,8 @@ public sealed record GameManifest(
     long UnpackedSize,
     string Sha256,
     string Executable,
-    string? ReleaseNotes = null)
+    string? ReleaseNotes = null,
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] int LauncherSessionProtocol = 0)
 {
     public const long MaximumPackageSize = 50L * 1024 * 1024 * 1024;
     public const long MaximumUnpackedSize = 100L * 1024 * 1024 * 1024;
@@ -22,6 +24,8 @@ public sealed record GameManifest(
     {
         if (SchemaVersion != 1 || Platform != "win-x64")
             throw new InvalidDataException("Cette version du jeu n’est pas compatible avec ce launcher Windows.");
+        if (LauncherSessionProtocol is not 0 and not 1)
+            throw new InvalidDataException("Le protocole de connexion de cette version nécessite un autre launcher.");
         if (Version is null || !Regex.IsMatch(Version, @"\A[a-zA-Z0-9][a-zA-Z0-9._-]{0,63}\z"))
             throw new InvalidDataException("Identifiant de version invalide.");
         ValidateHttpsUrl(PackageUrl);
@@ -45,7 +49,7 @@ public sealed record GameManifest(
     }
 }
 
-public sealed record InstalledGame(GameManifest Manifest, string DirectoryName);
+public sealed record InstalledGame(GameManifest Manifest, string DirectoryName, string? Channel = null);
 public sealed record InstallProgress(string Message, long CompletedBytes = 0, long TotalBytes = 0)
 {
     public double Percentage => TotalBytes > 0 ? Math.Min(100, CompletedBytes * 100d / TotalBytes) : 0;

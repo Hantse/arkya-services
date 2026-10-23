@@ -8,7 +8,7 @@
         <SolidColorBrush x:Key="Muted" Color="#9AAEB8" />
         <SolidColorBrush x:Key="Gold" Color="#D3B67C" />
         <SolidColorBrush x:Key="Paper" Color="#F0EDE5" />
-        <Style TargetType="TextBlock"><Setter Property="Foreground" Value="{StaticResource Paper}" /><Setter Property="FontSize" Value="13" /></Style>
+        <Style TargetType="TextBlock"><Setter Property="FontSize" Value="13" /></Style>
         <Style TargetType="Button">
             <Setter Property="Background" Value="{StaticResource Surface}" />
             <Setter Property="Foreground" Value="{StaticResource Paper}" />

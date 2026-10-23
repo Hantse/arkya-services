@@ -10,6 +10,7 @@ try {
     }
     $result = & $publisher -BuildDirectory $buildRoot -Version 'fixture-1' -PackageUrl 'https://example.test/fixture.zip' -OutputDirectory $outputRoot
     $manifest = Get-Content -LiteralPath $result.Manifest -Raw | ConvertFrom-Json
+    if ($manifest.PSObject.Properties.Name -contains 'launcherSessionProtocol') { throw 'Legacy release unexpectedly requires a session handoff.' }
     if ($manifest.sha256 -ne (Get-FileHash -LiteralPath $result.Archive -Algorithm SHA256).Hash.ToLowerInvariant()) { throw 'Package hash mismatch.' }
     if ($manifest.packageSize -ne (Get-Item -LiteralPath $result.Archive).Length) { throw 'Package size mismatch.' }
     $archive = [IO.Compression.ZipFile]::OpenRead($result.Archive)
@@ -27,7 +28,14 @@ try {
     try { & $publisher -BuildDirectory $buildRoot -Version 'fixture-2' -PackageUrl 'https://example.test/fixture.zip' -OutputDirectory (Join-Path $buildRoot 'release') | Out-Null }
     catch { $refusedNestedOutput = $true }
     if (-not $refusedNestedOutput) { throw 'Publisher accepted an output inside its input.' }
-    Write-Output 'Release packaging: hash, sizes, layout, debug exclusion, overwrite and containment checks passed.'
+    $sessionRelease = & $publisher -BuildDirectory $buildRoot -Version 'fixture-session-1' -PackageUrl 'https://example.test/fixture-session.zip' -OutputDirectory (Join-Path $testRoot 'session-release') -LauncherSessionProtocol 1
+    $sessionManifest = Get-Content -LiteralPath $sessionRelease.Manifest -Raw | ConvertFrom-Json
+    if ($sessionManifest.launcherSessionProtocol -ne 1) { throw 'Session handoff capability was not included.' }
+    $refusedUnknownProtocol = $false
+    try { & $publisher -BuildDirectory $buildRoot -Version 'fixture-session-2' -PackageUrl 'https://example.test/fixture-session-2.zip' -OutputDirectory (Join-Path $testRoot 'invalid-session-release') -LauncherSessionProtocol 2 | Out-Null }
+    catch { $refusedUnknownProtocol = $true }
+    if (-not $refusedUnknownProtocol) { throw 'Publisher accepted an unknown session handoff protocol.' }
+    Write-Output 'Release packaging: hash, sizes, layout, debug exclusion, overwrite, containment and session capability checks passed.'
 } finally {
     $resolvedTestRoot = [IO.Path]::GetFullPath($testRoot)
     $temporaryRoot = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd('\') + '\'

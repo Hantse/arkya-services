@@ -8,6 +8,7 @@
     <shell:WindowChrome.WindowChrome><shell:WindowChrome CaptionHeight="52" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0" /></shell:WindowChrome.WindowChrome>
     <Border BorderBrush="#3A4C56" BorderThickness="1" Background="{StaticResource Ink}">
     <Grid>
+    <Grid x:Name="LauncherContent" Visibility="Collapsed">
         <Grid.ColumnDefinitions><ColumnDefinition Width="80" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
         <Border Background="#0B131C" BorderBrush="#283641" BorderThickness="0,0,1,0">
             <Grid>
@@ -31,9 +32,11 @@
                 <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" Margin="28,0,0,0" VerticalAlignment="Center">
                     <TextBlock Text="ARKYA" FontSize="15" FontWeight="SemiBold" />
-                    <Border Background="#263C3F" CornerRadius="3" Margin="13,0,0,0" Padding="7,3"><TextBlock Text="BÊTA" FontSize="9" Foreground="#A6CCC0" /></Border>
+                    <Border Background="#263C3F" CornerRadius="3" Margin="13,0,0,0" Padding="7,3"><TextBlock x:Name="ChannelBadge" Text="BÊTA" FontSize="9" Foreground="#A6CCC0" /></Border>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                    <TextBlock x:Name="AccountLabel" Text="Non connecté" MaxWidth="160" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Margin="10,0,12,0" Foreground="{StaticResource Muted}" FontSize="12" />
+                    <Button x:Name="LogoutButton" Content="Déconnexion" Click="Logout_Click" Style="{StaticResource QuietButton}" Margin="0,9,14,9" Padding="8,3" FontSize="12" Visibility="Collapsed" />
                     <Button Style="{StaticResource QuietButton}" Content="&#xE921;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Minimize_Click" AutomationProperties.Name="Réduire" />
                     <Button Style="{StaticResource QuietButton}" Content="&#xE922;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Maximize_Click" AutomationProperties.Name="Agrandir ou restaurer" />
                     <Button Style="{StaticResource QuietButton}" Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Close_Click" AutomationProperties.Name="Fermer" />
@@ -92,7 +95,7 @@
                                     <TextBlock x:Name="ReleaseNotes" Text="Les changements de la version disponible apparaîtront ici." TextWrapping="Wrap" Foreground="#B7C7CA" FontSize="12" LineHeight="21" />
                                     <Border Height="1" Background="{StaticResource Line}" Margin="0,20,0,16" />
                                     <TextBlock Text="La bêta évolue avec vous." FontSize="12" />
-                                    <TextBlock Text="Retrouvez vos personnages avec Discord directement dans le jeu." FontSize="12" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,8,0,0" LineHeight="20" />
+                                    <TextBlock Text="Connectez-vous avec Discord, puis retrouvez vos personnages dans le jeu." FontSize="12" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,8,0,0" LineHeight="20" />
                                 </StackPanel>
                             </Border>
                         </Grid>
@@ -120,18 +123,22 @@
                             <TextBlock x:Name="LocationLabel" Foreground="{StaticResource Muted}" TextWrapping="Wrap" VerticalAlignment="Center" />
                         </DockPanel>
                         <TextBlock Text="Choisissez un dossier vide ou retrouvez une installation existante. Changer de dossier conserve les fichiers à leur emplacement actuel." Foreground="{StaticResource Muted}" TextWrapping="Wrap" FontSize="12" LineHeight="20" Margin="0,0,0,25" />
-                        <Expander x:Name="SettingsPanel" Header="Paramètres de distribution" Foreground="{StaticResource Paper}" IsExpanded="True">
-                            <StackPanel Margin="0,18,0,0">
-                                <Label Content="Adresse HTTPS du manifeste officiel" Target="{Binding ElementName=ManifestAddress}" Foreground="{StaticResource Muted}" Padding="0,0,0,8" />
-                                <TextBox x:Name="ManifestAddress" Width="620" AutomationProperties.Name="Adresse HTTPS du manifeste officiel" />
-                                <TextBlock Text="Utilisez uniquement l’adresse fournie par l’équipe Arkya." Foreground="{StaticResource Muted}" FontSize="11" Margin="0,10,0,0" />
-                            </StackPanel>
-                        </Expander>
+                        <TextBlock Text="Canal de distribution" FontWeight="SemiBold" Margin="0,0,0,10" />
+                        <TextBlock Text="Choisissez Bêta ou Stable depuis la barre du jeu. Chaque canal conserve son installation et ses mises à jour." Foreground="{StaticResource Muted}" TextWrapping="Wrap" FontSize="12" LineHeight="20" />
+                        <TextBlock Text="La distribution officielle est configurée par Arkya." Foreground="{StaticResource Muted}" FontSize="12" Margin="0,12,0,0" />
                     </StackPanel>
                 </Border>
             </Grid>
             <Border Grid.Row="2" Background="#192832" BorderBrush="#3B5057" BorderThickness="0,1,0,0" Padding="28,17,28,19">
                 <StackPanel>
+                    <DockPanel Margin="0,0,0,13" LastChildFill="True">
+                        <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,18,0">
+                            <TextBlock Text="CANAL" Foreground="{StaticResource Muted}" FontSize="9" VerticalAlignment="Center" Margin="0,0,13,0" />
+                            <RadioButton x:Name="BetaChannel" Content="Bêta" Tag="beta" GroupName="Channel" Style="{StaticResource NavigationTab}" Padding="3,6" Checked="Channel_Checked" Margin="0,0,18,0" />
+                            <RadioButton x:Name="StableChannel" Content="Stable" Tag="stable" GroupName="Channel" Style="{StaticResource NavigationTab}" Padding="3,6" Checked="Channel_Checked" />
+                        </StackPanel>
+                        <TextBlock x:Name="ChannelDescription" Foreground="{StaticResource Muted}" FontSize="11" TextWrapping="Wrap" VerticalAlignment="Center" />
+                    </DockPanel>
                     <DockPanel Margin="0,0,0,10">
                         <Button x:Name="CancelButton" DockPanel.Dock="Right" Content="Annuler" Click="Cancel_Click" Padding="10,3" Style="{StaticResource QuietButton}" Visibility="Collapsed" />
                         <TextBlock x:Name="StatusLabel" Text="Vérifiez les mises à jour pour préparer votre prochaine aventure." Foreground="#B8CDD0" TextWrapping="Wrap" FontSize="12" VerticalAlignment="Center" AutomationProperties.LiveSetting="Polite" />
@@ -155,6 +162,40 @@
                 </StackPanel>
             </Border>
         </Grid>
+    </Grid>
+    <Grid x:Name="LoginPage" Background="{StaticResource Ink}">
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="460" /></Grid.ColumnDefinitions>
+        <Grid ClipToBounds="True">
+            <Grid.Background><ImageBrush ImageSource="Assets/world.jpg" Stretch="UniformToFill" AlignmentX="Center" /></Grid.Background>
+            <Rectangle><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#30101923" Offset="0" /><GradientStop Color="#20101923" Offset="0.45" /><GradientStop Color="#F0101923" Offset="1" /></LinearGradientBrush></Rectangle.Fill></Rectangle>
+            <Rectangle><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#00101923" Offset="0.6" /><GradientStop Color="#FF101923" Offset="1" /></LinearGradientBrush></Rectangle.Fill></Rectangle>
+            <StackPanel Margin="48,52,48,50" VerticalAlignment="Bottom">
+                <TextBlock Text="ARKYA" FontFamily="Georgia" FontSize="66" Foreground="{StaticResource Paper}" />
+                <Border Width="46" Height="2" Background="{StaticResource Gold}" HorizontalAlignment="Left" Margin="2,22,0,23" />
+                <TextBlock Text="Un monde à découvrir.&#x0a;Une histoire à écrire." FontFamily="Georgia" FontSize="29" LineHeight="39" />
+                <TextBlock Text="LE VOYAGE COMMENCE ICI" Foreground="{StaticResource Gold}" FontSize="10" Margin="2,27,0,0" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1" Margin="40,0,40,0">
+            <Grid.RowDefinitions><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Center" Margin="0,42,0,0">
+                <Viewbox Width="30" Height="42" HorizontalAlignment="Left" Margin="0,0,0,29"><Path Stroke="#D3B67C" StrokeThickness="2" Data="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15" /></Viewbox>
+                <TextBlock Text="BIENVENUE SUR ARKYA" FontSize="10" Foreground="{StaticResource Gold}" Margin="0,0,0,13" />
+                <TextBlock Text="Votre aventure&#x0a;vous attend." FontFamily="Georgia" FontSize="35" LineHeight="43" />
+                <TextBlock Text="Connectez-vous pour retrouver le launcher, installer le jeu et préparer votre prochaine aventure." Foreground="{StaticResource Muted}" TextWrapping="Wrap" LineHeight="23" Margin="0,21,0,28" />
+                <Button x:Name="LoginButton" Content="Continuer avec Discord" Background="#5865F2" BorderBrush="#7A84FF" Foreground="White" Height="52" FontSize="15" FontWeight="SemiBold" Click="Login_Click" />
+                <TextBlock x:Name="LoginStatus" Text="La connexion s’ouvre dans votre navigateur. Vous reviendrez ici automatiquement." Foreground="{StaticResource Muted}" TextWrapping="Wrap" LineHeight="21" FontSize="12" Margin="0,17,0,0" AutomationProperties.LiveSetting="Polite" />
+                <ProgressBar x:Name="LoginProgress" Height="3" Foreground="{StaticResource Gold}" Background="#30434B" BorderThickness="0" Margin="0,18,0,0" Visibility="Collapsed" />
+                <Button x:Name="LoginCancelButton" Content="Annuler la connexion" Style="{StaticResource QuietButton}" Click="Cancel_Click" Visibility="Collapsed" Margin="0,8,0,0" />
+            </StackPanel>
+            <Button Grid.Row="1" Content="Découvrir Arkya  ↗" Style="{StaticResource QuietButton}" Click="Website_Click" HorizontalAlignment="Left" Padding="0,10" Margin="0,0,0,27" />
+        </Grid>
+        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="51" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+            <Button Style="{StaticResource QuietButton}" Content="&#xE921;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Minimize_Click" AutomationProperties.Name="Réduire" />
+            <Button Style="{StaticResource QuietButton}" Content="&#xE922;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Maximize_Click" AutomationProperties.Name="Agrandir ou restaurer" />
+            <Button Style="{StaticResource QuietButton}" Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Close_Click" AutomationProperties.Name="Fermer" />
+        </StackPanel>
+    </Grid>
     </Grid>
     </Border>
 </Window>

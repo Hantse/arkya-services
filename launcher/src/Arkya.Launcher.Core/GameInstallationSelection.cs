@@ -18,26 +18,32 @@ public sealed class GameInstallationSelection
         this.protectedDirectories = protectedDirectories.Append(store.DirectoryPath).ToArray();
         var path = GameInstallLocation.Validate(preferences.GameDirectory, this.protectedDirectories);
         Preferences = preferences with { GameDirectory = path };
-        Installer = new GameInstaller(path, releases);
+        Installer = CreateInstaller(Preferences);
     }
 
     public bool SelectDirectory(string? directory)
     {
         if (directory is null) return false;
         var path = GameInstallLocation.Prepare(directory, protectedDirectories);
-        var candidate = new GameInstaller(path, releases);
-        _ = candidate.ReadInstalled();
         var preferences = Preferences with { GameDirectory = path, GameDirectoryConfirmed = true };
+        var candidate = CreateInstaller(preferences);
+        _ = candidate.ReadInstalled();
         store.Save(preferences);
         Preferences = preferences;
         Installer = candidate;
         return true;
     }
 
-    public void SaveManifestUrl(string address)
+    public void SelectChannel(ReleaseChannel channel)
     {
-        var preferences = Preferences with { ManifestUrl = address };
+        var preferences = Preferences with { Channel = channel };
+        var candidate = CreateInstaller(preferences);
+        _ = candidate.ReadInstalled();
         store.Save(preferences);
         Preferences = preferences;
+        Installer = candidate;
     }
+
+    private GameInstaller CreateInstaller(LauncherPreferences preferences) => new(
+        ReleaseChannels.GetInstallationDirectory(preferences.GameDirectory, preferences.Channel), releases, preferences.Channel);
 }

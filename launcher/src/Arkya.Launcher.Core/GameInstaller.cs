@@ -7,14 +7,17 @@ namespace Arkya.Launcher.Core;
 public sealed class GameInstaller
 {
     private readonly ReleaseClient client;
+    private readonly ReleaseChannel? channel;
     public string Root { get; }
 
-    public GameInstaller(string root, ReleaseClient client)
+    public GameInstaller(string root, ReleaseClient client, ReleaseChannel? channel = null)
     {
+        if (channel is not null) _ = ReleaseChannels.GetId(channel.Value);
         Root = Path.GetFullPath(root);
         SafePaths.RejectReparsePoints(Root);
         Directory.CreateDirectory(Root);
         this.client = client;
+        this.channel = channel;
     }
 
     public InstalledGame? ReadInstalled()
@@ -26,6 +29,7 @@ public sealed class GameInstaller
             ?? throw new InvalidDataException("Installation locale invalide.");
         if (installed.Manifest is null || installed.DirectoryName is null)
             throw new InvalidDataException("Installation locale invalide.");
+        ValidateChannel(installed);
         installed.Manifest.Validate();
         if (!installed.DirectoryName.StartsWith("releases/", StringComparison.Ordinal) || installed.DirectoryName.Split('/').Length != 2)
             throw new InvalidDataException("Dossier de version invalide.");
@@ -57,7 +61,7 @@ public sealed class GameInstaller
             await ExtractAsync(archivePath, release, manifest.UnpackedSize, progress, cancellationToken);
             ValidatePayload(release, manifest);
             cancellationToken.ThrowIfCancellationRequested();
-            var installed = new InstalledGame(manifest, relativeRelease);
+            var installed = new InstalledGame(manifest, relativeRelease, channel is null ? null : ReleaseChannels.GetId(channel.Value));
             await File.WriteAllTextAsync(temporaryState, JsonSerializer.Serialize(installed, GameManifest.JsonOptions), cancellationToken);
             // The active pointer changes only after the complete release is on disk.
             using (var stateFile = new FileStream(temporaryState, FileMode.Open, FileAccess.Write, FileShare.None))
@@ -79,16 +83,37 @@ public sealed class GameInstaller
     }
 
     public Process Launch(InstalledGame installed)
+        => Process.Start(CreateLaunchStartInfo(installed)) ?? throw new IOException("Le jeu n’a pas pu démarrer.");
+
+    public Process Launch(InstalledGame installed, string pipeName) =>
+        Process.Start(CreateLaunchStartInfo(installed, pipeName)) ?? throw new IOException("Le jeu n’a pas pu démarrer.");
+
+    public ProcessStartInfo CreateLaunchStartInfo(InstalledGame installed, string? pipeName = null)
     {
+        if (pipeName is not null && !LauncherSessionHandoff.IsValidPipeName(pipeName))
+            throw new ArgumentException("Nom du canal de session invalide.", nameof(pipeName));
+        ValidateChannel(installed);
         installed.Manifest.Validate();
         var directory = SafePaths.Resolve(Root, installed.DirectoryName);
         ValidatePayload(directory, installed.Manifest);
         var executable = SafePaths.Resolve(directory, installed.Manifest.Executable);
-        return Process.Start(new ProcessStartInfo(executable)
+        var startInfo = new ProcessStartInfo(executable)
         {
             WorkingDirectory = Path.GetDirectoryName(executable)!,
             UseShellExecute = false
-        }) ?? throw new IOException("Le jeu n’a pas pu démarrer.");
+        };
+        // A child must never inherit another game's handoff from its parent process.
+        startInfo.Environment.Remove(LauncherSessionHandoff.EnvironmentVariable);
+        if (pipeName is not null) startInfo.Environment[LauncherSessionHandoff.EnvironmentVariable] = pipeName;
+        return startInfo;
+    }
+
+    private void ValidateChannel(InstalledGame installed)
+    {
+        if (channel is null) return;
+        if (installed.Channel == ReleaseChannels.GetId(channel.Value)) return;
+        if (channel == ReleaseChannel.Beta && installed.Channel is null) return;
+        throw new InvalidDataException("Cette installation appartient à un autre canal de distribution.");
     }
 
     private static void ValidatePayload(string directory, GameManifest manifest)

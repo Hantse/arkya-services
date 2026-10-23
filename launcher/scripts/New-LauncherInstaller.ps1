@@ -9,7 +9,7 @@ $ErrorActionPreference = 'Stop'
 $publishRoot = [IO.Path]::GetFullPath($PublishDirectory).TrimEnd('\', '/')
 $outputRoot = [IO.Path]::GetFullPath($OutputDirectory).TrimEnd('\', '/')
 if (-not (Test-Path -LiteralPath (Join-Path $publishRoot 'Arkya.Launcher.exe') -PathType Leaf) -or
-    -not (Test-Path -LiteralPath (Join-Path $publishRoot 'launcher-settings.json') -PathType Leaf)) {
+    -not (Test-Path -LiteralPath (Join-Path $publishRoot 'LISEZ-MOI.txt') -PathType Leaf)) {
     throw 'The launcher payload is incomplete. Publish the self-contained application first.'
 }
 if ($outputRoot.Equals($publishRoot, [StringComparison]::OrdinalIgnoreCase) -or

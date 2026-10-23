@@ -5,7 +5,8 @@ param(
     [Parameter(Mandatory)][uri]$PackageUrl,
     [Parameter(Mandatory)][string]$OutputDirectory,
     [string]$Executable = 'Arkya.exe',
-    [string]$ReleaseNotes = ''
+    [string]$ReleaseNotes = '',
+    [ValidateSet(0, 1)][int]$LauncherSessionProtocol = 0
 )
 $ErrorActionPreference = 'Stop'
 if ($PackageUrl.Scheme -ne 'https' -or $PackageUrl.UserInfo -or $PackageUrl.Fragment) {
@@ -56,5 +57,6 @@ $manifest = [ordered]@{
     executable = $Executable
     releaseNotes = $ReleaseNotes
 }
+if ($LauncherSessionProtocol -ne 0) { $manifest['launcherSessionProtocol'] = $LauncherSessionProtocol }
 $manifest | ConvertTo-Json | Set-Content -LiteralPath $manifestPath -Encoding utf8NoBOM
 [pscustomobject]@{ Archive = $archivePath; Manifest = $manifestPath; PackageSize = $packageSize; Sha256 = $manifest.sha256 }

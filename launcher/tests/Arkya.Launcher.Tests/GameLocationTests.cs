@@ -9,7 +9,6 @@ namespace Arkya.Launcher.Tests;
 
 public sealed class GameLocationTests : IDisposable
 {
-    private const string DefaultManifest = "https://releases.example.test/latest.json";
     private readonly string root = Path.Combine(Path.GetTempPath(), "arkya-location-tests-" + Guid.NewGuid().ToString("N"));
     private readonly HttpClient http;
     private readonly ReleaseClient releases;
@@ -39,9 +38,9 @@ public sealed class GameLocationTests : IDisposable
         var selection = Selection(store, store.Load());
         Assert.False(selection.Preferences.GameDirectoryConfirmed);
         Assert.Null(selection.Installed);
-        selection.SaveManifestUrl("https://other.example.test/latest.json");
+        selection.SelectChannel(ReleaseChannel.Stable);
         Assert.False(store.Load().GameDirectoryConfirmed);
-        Assert.Equal("https://other.example.test/latest.json", store.Load().ManifestUrl);
+        Assert.Equal(ReleaseChannel.Stable, store.Load().Channel);
     }
 
     [Fact]
@@ -50,14 +49,13 @@ public sealed class GameLocationTests : IDisposable
         var store = Store();
         var selection = Selection(store, store.Load());
         var destination = Path.Combine(root, "custom games", "Arkya");
-        selection.SaveManifestUrl("https://other.example.test/latest.json");
         Assert.True(selection.SelectDirectory(destination));
         var installed = await selection.Installer.InstallAsync(manifest, null, CancellationToken.None);
         var reopened = Selection(Store(), Store().Load());
         Assert.Equal(Path.GetFullPath(destination), reopened.Installer.Root);
         Assert.Equal(installed, reopened.Installed);
         Assert.True(reopened.Preferences.GameDirectoryConfirmed);
-        Assert.Equal("https://other.example.test/latest.json", reopened.Preferences.ManifestUrl);
+        Assert.Equal(ReleaseChannel.Beta, reopened.Preferences.Channel);
         Assert.True(File.Exists(Path.Combine(destination, installed.DirectoryName, "Arkya.exe")));
         Assert.False(File.Exists(Path.Combine(store.Defaults.GameDirectory, "current.json")));
     }
@@ -74,7 +72,7 @@ public sealed class GameLocationTests : IDisposable
         var preferences = store.Load();
         var selection = Selection(store, preferences);
         Assert.True(preferences.GameDirectoryConfirmed);
-        Assert.Equal("https://legacy.example.test/latest.json", preferences.ManifestUrl);
+        Assert.Equal(ReleaseChannel.Beta, preferences.Channel);
         Assert.Equal(installed, selection.Installed);
         Assert.Equal(legacyJson, File.ReadAllText(legacyPath));
         Assert.True(File.Exists(Path.Combine(store.DirectoryPath, "launcher-preferences.json")));
@@ -88,7 +86,7 @@ public sealed class GameLocationTests : IDisposable
         var preferences = store.Load();
         Assert.True(preferences.GameDirectoryConfirmed);
         Assert.Equal(game, Selection(store, preferences).Installed);
-        Assert.Equal(DefaultManifest, preferences.ManifestUrl);
+        Assert.Equal(ReleaseChannel.Beta, preferences.Channel);
     }
 
     [Fact]
@@ -106,6 +104,135 @@ public sealed class GameLocationTests : IDisposable
         selection.SelectDirectory(original);
         Assert.Equal(game, selection.Installed);
         Assert.Equal(original, Selection(store, store.Load()).Installer.Root);
+    }
+
+    [Fact]
+    public async Task ChannelsKeepSeparatePointersAndReopenIndependently()
+    {
+        var store = Store();
+        var selection = Selection(store, store.Load());
+        var destination = Path.Combine(root, "chosen");
+        selection.SelectDirectory(destination);
+        var beta = await selection.Installer.InstallAsync(manifest, null, CancellationToken.None);
+        var betaPointer = File.ReadAllText(Path.Combine(destination, "current.json"));
+
+        selection.SelectChannel(ReleaseChannel.Stable);
+        Assert.Null(selection.Installed);
+        Assert.Equal(Path.Combine(destination, "channels", "stable"), selection.Installer.Root);
+        var stable = await selection.Installer.InstallAsync(manifest with { Version = "stable-1" }, null, CancellationToken.None);
+
+        var reopened = Selection(store, store.Load());
+        Assert.Equal(ReleaseChannel.Stable, reopened.Preferences.Channel);
+        Assert.Equal(stable, reopened.Installed);
+        Assert.Equal("stable", reopened.Installed!.Channel);
+        reopened.SelectChannel(ReleaseChannel.Beta);
+        Assert.Equal(beta, reopened.Installed);
+        Assert.Equal("beta", reopened.Installed!.Channel);
+        Assert.Equal(betaPointer, File.ReadAllText(Path.Combine(destination, "current.json")));
+        Assert.Equal(stable, new GameInstaller(Path.Combine(destination, "channels", "stable"), releases,
+            ReleaseChannel.Stable).ReadInstalled());
+    }
+
+    [Theory]
+    [InlineData("beta")]
+    [InlineData(null)]
+    public async Task StableRejectsBetaAndLegacyPointersWithoutSwitchingPreferences(string? pointerChannel)
+    {
+        var store = Store();
+        var selection = Selection(store, store.Load());
+        selection.SelectDirectory(Path.Combine(root, "chosen"));
+        var before = selection.Preferences;
+        var beta = await selection.Installer.InstallAsync(manifest, null, CancellationToken.None);
+        var stableRoot = ReleaseChannels.GetInstallationDirectory(before.GameDirectory, ReleaseChannel.Stable);
+        Directory.CreateDirectory(stableRoot);
+        File.WriteAllText(Path.Combine(stableRoot, "current.json"), JsonSerializer.Serialize(beta with { Channel = pointerChannel }, GameManifest.JsonOptions));
+
+        Assert.Throws<InvalidDataException>(() => selection.SelectChannel(ReleaseChannel.Stable));
+        Assert.Equal(before, selection.Preferences);
+        Assert.Equal(before, store.Load());
+        Assert.Equal(beta, selection.Installed);
+    }
+
+    [Fact]
+    public async Task BetaRejectsAStablePointerAndLaunchBeforeStartingAnyProcess()
+    {
+        var store = Store();
+        var selection = Selection(store, store.Load());
+        var beta = await selection.Installer.InstallAsync(manifest, null, CancellationToken.None);
+        File.WriteAllText(Path.Combine(selection.Installer.Root, "current.json"),
+            JsonSerializer.Serialize(beta with { Channel = "stable" }, GameManifest.JsonOptions));
+        Assert.Throws<InvalidDataException>(() => selection.Installer.ReadInstalled());
+        Assert.Throws<InvalidDataException>(() => selection.Installer.Launch(beta with { Channel = "stable" }));
+    }
+
+    [Fact]
+    public async Task ChangingFolderOnStableKeepsBothOldChannelInstallations()
+    {
+        var store = Store();
+        var selection = Selection(store, store.Load());
+        var first = Path.Combine(root, "first");
+        selection.SelectDirectory(first);
+        var beta = await selection.Installer.InstallAsync(manifest, null, CancellationToken.None);
+        selection.SelectChannel(ReleaseChannel.Stable);
+        var stable = await selection.Installer.InstallAsync(manifest with { Version = "stable-1" }, null, CancellationToken.None);
+        selection.SelectDirectory(Path.Combine(root, "second"));
+        Assert.Null(selection.Installed);
+        Assert.Equal(ReleaseChannel.Stable, selection.Preferences.Channel);
+        selection.SelectDirectory(first);
+        Assert.Equal(stable, selection.Installed);
+        selection.SelectChannel(ReleaseChannel.Beta);
+        Assert.Equal(beta, selection.Installed);
+    }
+
+    [Fact]
+    public void MigratesSavedCustomManifestToFixedBetaAndKeepsChosenFolder()
+    {
+        var store = Store();
+        var destination = Path.Combine(root, "custom existing game");
+        Directory.CreateDirectory(store.DirectoryPath);
+        var path = Path.Combine(store.DirectoryPath, "launcher-preferences.json");
+        File.WriteAllText(path, JsonSerializer.Serialize(new
+        {
+            manifestUrl = "http://untrusted.example.test/arbitrary.json",
+            gameDirectory = destination,
+            gameDirectoryConfirmed = true
+        }));
+
+        var migrated = store.Load();
+
+        Assert.Equal(new LauncherPreferences(ReleaseChannel.Beta, destination, true), migrated);
+        Assert.Equal(migrated, Store().Load());
+        Assert.DoesNotContain("manifestUrl", File.ReadAllText(path), StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("\"channel\": \"beta\"", File.ReadAllText(path));
+        Assert.Equal("https://arkya.online/downloads/windows/latest-win-x64.json", ReleaseChannels.GetManifestUrl(migrated.Channel));
+    }
+
+    [Theory]
+    [InlineData("\"nightly\"")]
+    [InlineData("2")]
+    [InlineData("null")]
+    public void UnknownSavedChannelIsRejectedWithoutOverwritingPreferences(string channelJson)
+    {
+        var store = Store();
+        Directory.CreateDirectory(store.DirectoryPath);
+        var path = Path.Combine(store.DirectoryPath, "launcher-preferences.json");
+        var json = "{\"channel\":" + channelJson + ",\"gameDirectory\":" + JsonSerializer.Serialize(store.Defaults.GameDirectory) + "}";
+        File.WriteAllText(path, json);
+
+        Assert.Throws<JsonException>(() => store.Load());
+        Assert.Equal(json, File.ReadAllText(path));
+    }
+
+    [Fact]
+    public void UnknownChannelCannotBeSelectedOrSaved()
+    {
+        var store = Store();
+        var selection = Selection(store, store.Load());
+        var before = selection.Preferences;
+        Assert.Throws<InvalidDataException>(() => selection.SelectChannel((ReleaseChannel)42));
+        Assert.Throws<InvalidDataException>(() => store.Save(before with { Channel = (ReleaseChannel)42 }));
+        Assert.Equal(before, selection.Preferences);
+        Assert.False(File.Exists(Path.Combine(store.DirectoryPath, "launcher-preferences.json")));
     }
 
     [Fact]
@@ -207,7 +334,7 @@ public sealed class GameLocationTests : IDisposable
         Assert.Empty(Directory.GetFileSystemEntries(path));
     }
 
-    private LauncherPreferencesStore Store() => new(Path.Combine(root, "preferences"), Path.Combine(root, "legacy game"), DefaultManifest);
+    private LauncherPreferencesStore Store() => new(Path.Combine(root, "preferences"), Path.Combine(root, "legacy game"));
     private GameInstallationSelection Selection(LauncherPreferencesStore store, LauncherPreferences preferences) =>
         new(releases, store, preferences, Path.Combine(root, "launcher"));
 

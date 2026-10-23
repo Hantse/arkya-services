@@ -15,6 +15,34 @@ public sealed class ReleaseClient(HttpClient httpClient)
 
     public async Task<GameManifest> GetManifestAsync(string address, CancellationToken cancellationToken)
     {
+        var bytes = await ReadManifestAsync(address, cancellationToken);
+        return ParseManifest(bytes);
+    }
+
+    public async Task<GameManifest?> GetChannelReleaseAsync(ReleaseChannel channel, CancellationToken cancellationToken)
+    {
+        var bytes = await ReadManifestAsync(ReleaseChannels.GetManifestUrl(channel), cancellationToken);
+        using var document = JsonDocument.Parse(bytes);
+        var root = document.RootElement;
+        if (root.ValueKind != JsonValueKind.Object)
+            throw new InvalidDataException("Manifeste de canal invalide.");
+        if (root.TryGetProperty("channel", out var declaredChannel) &&
+            (declaredChannel.ValueKind != JsonValueKind.String || declaredChannel.GetString() != ReleaseChannels.GetId(channel)))
+            throw new InvalidDataException("Le manifeste ne correspond pas au canal sélectionné.");
+        if (root.TryGetProperty("available", out var available))
+        {
+            if (available.ValueKind != JsonValueKind.False ||
+                !root.TryGetProperty("schemaVersion", out var schema) || schema.ValueKind != JsonValueKind.Number ||
+                !schema.TryGetInt32(out var version) || version != 1 ||
+                !root.TryGetProperty("channel", out _) || root.EnumerateObject().Count() != 3)
+                throw new InvalidDataException("État de publication du canal invalide.");
+            return null;
+        }
+        return ParseManifest(bytes);
+    }
+
+    private async Task<byte[]> ReadManifestAsync(string address, CancellationToken cancellationToken)
+    {
         using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         timeout.CancelAfter(TimeSpan.FromSeconds(30));
         using var response = await GetAsync(GameManifest.ValidateHttpsUrl(address), timeout.Token);
@@ -23,7 +51,12 @@ public sealed class ReleaseClient(HttpClient httpClient)
         await using var source = await response.Content.ReadAsStreamAsync(timeout.Token);
         using var destination = new MemoryStream();
         await CopyBoundedAsync(source, destination, 65536, timeout.Token);
-        var manifest = JsonSerializer.Deserialize<GameManifest>(destination.ToArray(), GameManifest.JsonOptions)
+        return destination.ToArray();
+    }
+
+    private static GameManifest ParseManifest(byte[] bytes)
+    {
+        var manifest = JsonSerializer.Deserialize<GameManifest>(bytes, GameManifest.JsonOptions)
             ?? throw new InvalidDataException("Manifeste de version vide.");
         manifest.Validate();
         return manifest;

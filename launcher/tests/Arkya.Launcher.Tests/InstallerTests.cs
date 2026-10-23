@@ -324,6 +324,63 @@ public sealed class InstallerTests : IDisposable
         Assert.Throws<InvalidDataException>(() => installer.ReadInstalled());
     }
 
+    [Fact]
+    public async Task LaunchUsesOnlyTheNonSecretPipeNameAndNoArguments()
+    {
+        var fixture = Package();
+        var installer = Installer(fixture.Bytes);
+        var installed = await installer.InstallAsync(fixture.Manifest, null, CancellationToken.None);
+        var pipeName = LauncherSessionHandoff.PipePrefix + Guid.NewGuid().ToString("N");
+        var launch = installer.CreateLaunchStartInfo(installed, pipeName);
+        Assert.False(launch.UseShellExecute);
+        Assert.Empty(launch.Arguments);
+        Assert.Empty(launch.ArgumentList);
+        Assert.Equal(pipeName, launch.Environment[LauncherSessionHandoff.EnvironmentVariable]);
+        Assert.Equal(Path.GetDirectoryName(launch.FileName), launch.WorkingDirectory);
+        Assert.Throws<ArgumentException>(() => installer.CreateLaunchStartInfo(installed, "session-token"));
+    }
+
+    [Fact]
+    public async Task LegacyLaunchDoesNotAdvertiseASessionPipe()
+    {
+        var fixture = Package();
+        var installer = Installer(fixture.Bytes);
+        var installed = await installer.InstallAsync(fixture.Manifest, null, CancellationToken.None);
+        var launch = installer.CreateLaunchStartInfo(installed);
+        Assert.False(launch.Environment.ContainsKey(LauncherSessionHandoff.EnvironmentVariable));
+        Assert.Empty(launch.ArgumentList);
+    }
+
+    [Fact]
+    public void ExistingManifestWithoutSessionProtocolRemainsCompatible()
+    {
+        var manifest = Package().Manifest;
+        var json = JsonSerializer.Serialize(manifest, GameManifest.JsonOptions);
+        Assert.DoesNotContain("launcherSessionProtocol", json);
+        var restored = JsonSerializer.Deserialize<GameManifest>(json, GameManifest.JsonOptions)!;
+        restored.Validate();
+        Assert.Equal(0, restored.LauncherSessionProtocol);
+        Assert.Equal(manifest, restored);
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    public void RecognizedLauncherSessionProtocolsAreAccepted(int protocol)
+    {
+        var manifest = Package().Manifest with { LauncherSessionProtocol = protocol };
+        manifest.Validate();
+        var restored = JsonSerializer.Deserialize<GameManifest>(JsonSerializer.Serialize(manifest, GameManifest.JsonOptions), GameManifest.JsonOptions)!;
+        Assert.Equal(protocol, restored.LauncherSessionProtocol);
+    }
+
+    [Theory]
+    [InlineData(-1)]
+    [InlineData(2)]
+    [InlineData(int.MaxValue)]
+    public void UnknownLauncherSessionProtocolsAreRejected(int protocol) =>
+        Assert.Throws<InvalidDataException>(() => (Package().Manifest with { LauncherSessionProtocol = protocol }).Validate());
+
     private GameInstaller Installer(byte[] package)
     {
         var http = new HttpClient(new FakeHandler(_ => new HttpResponseMessage(HttpStatusCode.OK) { Content = new ByteArrayContent(package) }));
