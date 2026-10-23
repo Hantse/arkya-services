@@ -57,9 +57,11 @@ de cette persistance. [Contrats, migration et limites Unity](../../docs/AUTH_SES
 
 `dist/play.html` est la page de téléchargement du launcher, en français et en anglais.
 Les liens **Installer le launcher** de l’accueil, des menus et du compte y mènent
-en conservant la langue. Le bouton principal télécharge l’archive ZIP publique
-`Arkya-Launcher-win-x64.zip` ; la page explique son extraction, l’ouverture de
-`Arkya.Launcher.exe`, **Installer le jeu**, puis **Jouer**. Le téléchargement
+en conservant la langue. Le bouton principal télécharge l’installateur Windows
+`Arkya-Launcher-Setup.exe` depuis la release versionnée `launcher-v0.2.0` ; la page
+explique l’assistant d’installation du launcher, le choix du dossier du jeu dans
+**Installer le jeu**, puis **Jouer**. Le dossier du jeu peut être choisi sur un
+autre disque, indépendamment du launcher. Le téléchargement
 reste disponible sans compte, sans JavaScript et lorsque Identity est indisponible.
 La connexion Discord dans le jeu est distincte de celle du site.
 
@@ -91,10 +93,12 @@ l’absence de chargement Unity et le retour de connexion d’un ancien lien
 ## Vérification du passage au launcher — 23 octobre 2026
 
 - **109 tests Node passent**, dont les contrats d’authentification et de refresh conservés.
-- **107 contrôles Edge/Playwright passent** sur la page d’installation et ses liens :
+- **114 contrôles Edge/Playwright passent** sur la page d’installation et ses liens :
   français/anglais, largeurs 320 à 1440 px, compte anonyme ou connecté, panne Identity,
   retour d’un ancien lien de connexion, téléchargement sans JavaScript, absence de
-  canvas, de chargement Unity et d’admission depuis le site.
+  canvas, de chargement Unity et d’admission depuis le site. Ils vérifient aussi
+  le lien `.exe`, l’assistant du launcher et le choix distinct du dossier du jeu ;
+  l’installateur lui-même n’est pas téléchargé par ce scénario navigateur.
 - **17 contrôles compte et 15 contrôles refresh passent** avec les fixtures isolées.
   Ils ne constituent pas une nouvelle connexion Discord réelle.
 - Rendus inspectés sur bureau et mobile, dont l’accueil sans chevauchement du

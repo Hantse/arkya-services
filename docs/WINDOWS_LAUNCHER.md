@@ -14,6 +14,15 @@ SHA-256 du ZIP réellement construit. Le launcher peut ouvrir une version déjà
 installée si le serveur de distribution est indisponible. Cela ne rend pas les
 services de jeu accessibles hors ligne.
 
+Le launcher `0.2.0` se distribue avec un installateur Windows autonome,
+`Arkya-Launcher-Setup.exe`. Il installe le launcher pour l’utilisateur courant,
+par défaut dans `%LOCALAPPDATA%\Programs\Arkya Launcher`, avec choix du dossier
+dans l’assistant, raccourci Démarrer et raccourci bureau facultatif. Le runtime
+.NET est inclus : aucune étape de téléchargement supplémentaire n’est requise.
+Le désinstalleur Windows retire uniquement les fichiers du launcher ; il conserve
+le jeu et les préférences. L’archive ZIP portable reste une distribution
+secondaire pour les usages manuels.
+
 L’accueil rassemble une capture du jeu, les actualités et les notes de version,
 avec une barre d’installation et de lancement toujours accessible. Les onglets
 **Actualités** et **Notes de version** chargent les dernières publications
@@ -26,14 +35,19 @@ par la roue dentée en bas de la barre latérale.
 
 ## Utilisation
 
-1. Extraire `Arkya-Launcher-win-x64.zip` puis ouvrir `Arkya.Launcher.exe`.
-2. Si le canal n’est pas préconfiguré, renseigner l’adresse HTTPS du manifeste
+1. Télécharger `Arkya-Launcher-Setup.exe` sur la page **Installer le launcher**,
+   l’ouvrir, puis suivre l’assistant. Le dossier du launcher se choisit pendant
+   cette installation ; aucun droit administrateur n’est demandé.
+2. Ouvrir Arkya Launcher depuis le menu Démarrer. Si le canal n’est pas préconfiguré,
+   renseigner l’adresse HTTPS du manifeste
    fournie par l’équipe Arkya dans **Paramètres de distribution**.
-3. La version est vérifiée au démarrage. Choisir **Installer le jeu**, puis **Jouer**.
+3. La version est vérifiée au démarrage. Choisir **Installer le jeu**, sélectionner
+   le dossier du jeu, puis attendre le téléchargement. Le jeu peut être installé
+   sur un autre disque que le launcher. Choisir ensuite **Jouer**.
 4. Une future version propose **Mettre à jour**. Une opération peut être annulée.
 
 La page publique ne charge plus de lecteur Unity dans le navigateur. Son bouton
-**Installer le launcher** télécharge l’archive Windows ; le bouton **Jouer** du
+**Installer le launcher** télécharge l’installateur `.exe` Windows ; le bouton **Jouer** du
 launcher ouvre ensuite le client natif. Le compte reste accessible sur le site.
 
 ## Entrée dans les royaumes
@@ -72,8 +86,25 @@ ne modifie ni les routes publiques ni les autorisations par adresse IP client.
 Les contrôles natifs couvrent TLS, WebSocket et la connexion UTP ; l’admission
 authentifiée dans le royaume public reste à vérifier.
 
-Le jeu est installé dans `%LOCALAPPDATA%\Arkya\Game`. La préférence de canal
-reste dans `launcher-preferences.json`. `ARKYA_LAUNCHER_MANIFEST_URL` permet
+Avant le premier téléchargement, le launcher demande le dossier d’installation
+du jeu. Le dossier proposé est `%LOCALAPPDATA%\Arkya\Game` ; un dossier sur un
+autre disque peut être choisi. Annuler le sélecteur ne démarre pas l’installation
+et conserve le choix précédent. Le chemin choisi reste visible dans la barre
+inférieure et dans les paramètres, avec **Modifier…**. Ce bouton est désactivé
+pendant l’installation et lorsque le jeu est lancé.
+
+Changer de dossier permet de retrouver une installation existante ; si le
+nouveau dossier ne contient pas de version installée, le launcher propose
+**Installer le jeu**. Il ne déplace et ne supprime pas automatiquement les
+fichiers de l’ancien dossier. Les versions et leurs téléchargements restent
+regroupés dans le dossier de jeu choisi.
+
+Les préférences de canal et de dossier sont conservées atomiquement dans
+`%LOCALAPPDATA%\Arkya\Launcher\launcher-preferences.json`, indépendamment du dossier
+du launcher et du jeu. Le premier démarrage reprend l’ancien fichier
+`%LOCALAPPDATA%\Arkya\Game\launcher-preferences.json` et reconnaît une installation
+historique désignée par `current.json`.
+`ARKYA_LAUNCHER_MANIFEST_URL` permet
 une configuration locale prioritaire ; sinon la préférence locale précède
 `launcher-settings.json` situé près de l’exécutable. Ne renseigner que des
 canaux officiels : le propriétaire du manifeste choisit le code téléchargé.
@@ -181,7 +212,8 @@ nouvelle release. Un arrêt brutal ou un verrou persistant peut laisser une
 release inactive orpheline sans changer la version active.
 
 Le test Windows reproduit le refus de renommage avec un fichier extrait ouvert,
-puis valide la nouvelle activation. La suite du launcher compte 47 tests réussis.
+puis valide la nouvelle activation. La validation du launcher `0.1.1` comptait
+47 tests réussis.
 Les essais d’installation complets conservent séparément l’ancien échec et la
 réussite avec l’exact Core publié dans le launcher `0.1.1`.
 
@@ -200,14 +232,42 @@ dotnet test launcher/Arkya.Launcher.slnx -c Release
 ./launcher/tests/Test-ReleasePackaging.ps1
 ./launcher/scripts/Publish-Launcher.ps1 `
   -ManifestUrl $publicManifestUrl `
+  -InnoSetupCompiler $isccPath `
   -OutputDirectory './artifacts/windows-launcher-release'
 ```
 
-Le script produit une application autonome `win-x64` et son ZIP. Si
+Fournir le compilateur Inno Setup par `InnoSetupCompiler`, par la variable
+`ARKYA_INNO_SETUP_COMPILER` ou via `ISCC.exe` dans le `PATH`. La version **7.1.0**
+est utilisée pour cette publication. L’installation du compilateur appartient
+au poste de build ; le joueur n’en a pas besoin.
+
+Le script produit l’application autonome `win-x64`, l’installateur
+`Arkya-Launcher-Setup.exe` et le ZIP portable `Arkya-Launcher-win-x64.zip`. La
+version de l’installateur est lue dans le projet du launcher. Si
 `ManifestUrl` est omis, le launcher demande le canal dans ses paramètres ;
 aucun téléchargement du jeu ne peut commencer sans ce canal. Le flux public
 d’actualités reste indépendant de ce réglage. Les dossiers de sortie
 existants sont refusés pour préserver une publication antérieure.
+
+Publier d’abord l’installateur dans une release immuable, puis modifier le lien
+du site. Le lien du launcher `0.2.0` utilise la release `launcher-v0.2.0` ; les
+mises à jour du jeu continuent à suivre le manifeste Windows et restent
+indépendantes de cette version du launcher.
+
+L’installateur peut être vérifié dans un dossier de test neuf, sans démarrer
+le launcher ni télécharger le jeu :
+
+```powershell
+./launcher/tests/Test-LauncherInstaller.ps1 `
+  -InstallerPath './artifacts/windows-launcher-release/Arkya-Launcher-Setup.exe' `
+  -PublishDirectory './artifacts/windows-launcher-release/Arkya-Launcher' `
+  -OutputDirectory './artifacts/windows-launcher-installer-check'
+```
+
+Ce scénario installe dans un chemin contenant des espaces, vérifie les
+empreintes des fichiers, réinstalle, puis désinstalle. Il refuse une installation
+Arkya existante pour préserver celle du poste et vérifie la conservation du jeu
+et des préférences.
 
 La publication utilise le déploiement autonome en fichier unique avec
 extraction des bibliothèques natives, conformément à la
@@ -215,6 +275,14 @@ extraction des bibliothèques natives, conformément à la
 Le runtime WPF n’est pas supprimé par trimming.
 
 ## Vérification
+
+La version `0.2.0` passe **63 tests Core**, dont le choix et la mémorisation du
+dossier, la migration des préférences, la conservation des anciennes
+installations et l’annulation ou le refus d’une destination. La compilation WPF
+termine sans erreur ni avertissement. L’installateur réel a été installé,
+réinstallé et désinstallé dans un dossier isolé avec comparaison des empreintes
+du payload et conservation des fichiers utilisateur. Le test ne lance pas le
+launcher ; l’interaction visuelle avec le sélecteur Windows reste à vérifier.
 
 Les tests utilisent un transport HTTP simulé et des archives synthétiques
 qui ne sont jamais exécutées. Ils couvrent installation/mise à jour, maintien

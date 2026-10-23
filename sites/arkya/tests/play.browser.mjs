@@ -3,7 +3,7 @@
 async (page) => {
   const base = new URL(page.url()).origin;
   const api = 'https://api.arkya.online';
-  const archive = 'https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23.1/Arkya-Launcher-win-x64.zip';
+  const installer = 'https://github.com/Hantse/arkya-services/releases/download/launcher-v0.2.0/Arkya-Launcher-Setup.exe';
   const checks = [];
   const errors = [];
   const requests = [];
@@ -45,13 +45,16 @@ async (page) => {
   try {
     await page.goto(`${base}/play.html?lang=fr`);
     check(await page.locator('#launcher-download').isVisible(), 'Download is immediately available without a session');
-    check(await page.locator('#launcher-download').getAttribute('href') === archive, 'Download points to the published Windows launcher ZIP');
+    check(await page.locator('#launcher-download').getAttribute('href') === installer, 'Download points directly to the versioned Windows launcher EXE installer');
     check(await page.locator('canvas, #game-cover, #game-fullscreen, #game-sign-in').count() === 0, 'The web player and its session gate are removed');
     for (const lang of ['en', 'fr']) {
       await page.getByRole('button', { name: lang === 'en' ? 'English' : 'Français', exact: true }).click();
       check(await page.locator('#launcher-download').innerText() === (lang === 'en' ? 'Install the launcher' : 'Installer le launcher'), `${lang}: localized download action`);
       check((await page.locator('meta[name="description"]').getAttribute('content')).includes(lang === 'en' ? 'Windows beta' : 'bêta Windows'), `${lang}: localized Windows metadata`);
-      check((await page.locator('.installation-steps').innerText()).includes('Arkya.Launcher.exe'), `${lang}: extraction and executable instructions`);
+      check((await page.locator('#launcher-format').innerText()).includes(lang === 'en' ? '.exe installer' : 'installateur .exe'), `${lang}: executable installer format is clear`);
+      check((await page.locator('.installation-steps li').nth(0).innerText()).includes('Arkya-Launcher-Setup.exe'), `${lang}: launcher setup wizard instructions`);
+      check((await page.locator('.installation-steps li').nth(1).innerText()).includes(lang === 'en' ? 'Choose your folder' : 'Choisissez votre dossier'), `${lang}: player chooses the game installation folder`);
+      check(!/ZIP|extray|extract/i.test(await page.locator('.installation-steps').innerText()), `${lang}: no obsolete archive extraction instructions`);
       check((await page.locator('.launcher-note a').getAttribute('href')).includes(`lang=${lang}`), `${lang}: local navigation retains language`);
       for (const width of [1440, 1100, 820, 390, 320]) {
         await page.setViewportSize({ width, height: 1000 });
@@ -83,7 +86,7 @@ async (page) => {
     scenario = 'unavailable';
     await page.goto(`${base}/play.html?lang=en`);
     check(await page.locator('#launcher-download').isVisible(), 'Identity outage does not hide or disable the launcher download');
-    check(await page.locator('#launcher-download').getAttribute('href') === archive, 'Identity outage leaves the real download available');
+    check(await page.locator('#launcher-download').getAttribute('href') === installer, 'Identity outage leaves the real download available');
     scenario = 'success';
     await page.goto(`${base}/account.html?lang=en&returnTo=play.html`);
     await page.locator('#discord-login:not([disabled])').click();
@@ -99,8 +102,9 @@ async (page) => {
       const noScriptPage = await noScriptContext.newPage();
       await noScriptPage.goto(`${base}/play.html?lang=fr`);
       check(await noScriptPage.locator('#launcher-download').isVisible(), 'Download remains usable with JavaScript disabled');
-      check(await noScriptPage.locator('#launcher-download').getAttribute('href') === archive, 'No-script download retains the published URL');
-      check((await noScriptPage.locator('.installation-steps').innerText()).includes('Arkya.Launcher.exe'), 'Installation instructions remain readable without JavaScript');
+      check(await noScriptPage.locator('#launcher-download').getAttribute('href') === installer, 'No-script download retains the versioned EXE URL');
+      check((await noScriptPage.locator('.installation-steps').innerText()).includes('Arkya-Launcher-Setup.exe'), 'Setup instructions remain readable without JavaScript');
+      check((await noScriptPage.locator('.installation-steps').innerText()).includes('Choisissez votre dossier'), 'Game folder instructions remain readable without JavaScript');
     } finally { await noScriptContext.close(); }
     check(errors.length === 0, 'No uncaught browser exceptions');
   } finally {
