@@ -197,6 +197,7 @@ def check(require_release=False, enable_migration=False):
                 "Inactive preparation must retain the current image and zero fingerprint placeholders")
     stage = "enabled migration" if enable_migration else "prepared adoption" if require_release else "inactive preparation"
     print(f"Partition handoff: {len(after)} resources; seven scoped additions, static routing, finite identities, preserved legacy pins, three exact rollout annotations and {stage} validated offline.")
+    return before, after
 
 
 if __name__ == "__main__":
