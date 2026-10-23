@@ -27,7 +27,7 @@ SHA-256 du ZIP réellement construit. Le launcher peut ouvrir une version déjà
 installée si le serveur de distribution est indisponible, après connexion du
 compte. Cela ne rend pas les services de jeu accessibles hors ligne.
 
-Le launcher `0.3.0` se distribue avec un installateur Windows autonome,
+Le launcher `0.3.1` se distribue avec un installateur Windows autonome,
 `Arkya-Launcher-Setup.exe`. Il installe le launcher pour l’utilisateur courant,
 par défaut dans `%LOCALAPPDATA%\Programs\Arkya Launcher`, avec choix du dossier
 dans l’assistant, raccourci Démarrer et raccourci bureau facultatif. Le runtime
@@ -307,7 +307,7 @@ mais son affichage exige la connexion au launcher. Les dossiers de sortie
 existants sont refusés pour préserver une publication antérieure.
 
 Publier d’abord l’installateur dans une release immuable, puis modifier le lien
-du site. Le lien du launcher `0.3.0` utilise la release `launcher-v0.3.0` ; les
+du site. Le lien du launcher `0.3.1` utilise la release `launcher-v0.3.1` ; les
 mises à jour du jeu continuent à suivre le manifeste Windows et restent
 indépendantes de cette version du launcher.
 
@@ -333,8 +333,10 @@ Le runtime WPF n’est pas supprimé par trimming.
 
 ## Vérification
 
-La version `0.3.0` dispose d’une suite de **132 tests Core** réussis pour les canaux, la migration,
-la connexion Discord et le transfert de session. Les tests WPF chargent les vrais
+La suite Core vérifie les canaux, la migration, la connexion Discord et le
+transfert de session. Le correctif `0.3.1` accepte le format UUID avec tirets
+renvoyé par Identity en production ; les réponses d’Identity et de `/me`
+doivent toujours désigner le même compte. Les tests WPF chargent les vrais
 écrans dans un dispatcher STA avec un dossier de préférences temporaire et un
 transport qui interdit le réseau. Ils vérifient le verrou de connexion, les
 commandes désactivées, l’expiration avec annulation et purge du contenu, et le
