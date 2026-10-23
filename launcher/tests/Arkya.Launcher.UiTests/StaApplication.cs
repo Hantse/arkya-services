@@ -36,6 +36,13 @@ public sealed class StaApplication : IDisposable
 
     public void Dispose()
     {
+        // xUnit may dispose the fixture on the dispatcher after an asynchronous UI test.
+        if (dispatcher.CheckAccess())
+        {
+            Application.Current.Shutdown();
+            dispatcher.BeginInvokeShutdown(DispatcherPriority.Send);
+            return;
+        }
         dispatcher.Invoke(() => Application.Current.Shutdown());
         dispatcher.BeginInvokeShutdown(DispatcherPriority.Send);
         if (!thread.Join(TimeSpan.FromSeconds(10))) throw new TimeoutException("The WPF test dispatcher did not stop.");

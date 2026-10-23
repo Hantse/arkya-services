@@ -22,14 +22,26 @@ Connectez-vous avec Discord dans votre navigateur pour accéder au launcher.
 Choisissez Bêta ou Stable, puis le dossier du jeu. Installez-le et cliquez sur Jouer.
 Les adresses officielles sont fixes et chaque canal conserve son installation.
 Stable reste indisponible tant qu'aucune version n'y est publiée.
-Une connexion Discord est nécessaire à chaque ouverture du launcher.
-Le client bêta actuel conserve aussi sa propre connexion aux services de jeu.
+La connexion est mémorisée pour cet utilisateur Windows et vérifiée au démarrage.
+La version installée vérifie ses propres mises à jour et redémarre après installation.
+Les préférences, la connexion et le jeu sont conservés lors des mises à jour.
+Pour une version portable, utilisez le nouvel installateur proposé sur le site.
 '@
 $instructions | Set-Content -LiteralPath (Join-Path $publishRoot 'LISEZ-MOI.txt') -Encoding utf8NoBOM
 $launcherVersion = ([xml](Get-Content -LiteralPath $project -Raw)).Project.PropertyGroup.Version
 $installer = & (Join-Path $PSScriptRoot 'New-LauncherInstaller.ps1') -PublishDirectory $publishRoot -OutputDirectory $outputRoot -LauncherVersion $launcherVersion -InnoSetupCompiler $InnoSetupCompiler
+$updateManifestPath = Join-Path $outputRoot 'latest-win-x64.json'
+[ordered]@{
+    schemaVersion = 1
+    version = [string]$launcherVersion
+    platform = 'win-x64'
+    installerUrl = ('https://github.com/Hantse/arkya-services/releases/download/launcher-v' + $launcherVersion + '/Arkya-Launcher-Setup.exe')
+    installerSize = $installer.Size
+    sha256 = $installer.Sha256
+} | ConvertTo-Json | Set-Content -LiteralPath $updateManifestPath -Encoding utf8NoBOM
 $archivePath = Join-Path $outputRoot 'Arkya-Launcher-win-x64.zip'
 [IO.Compression.ZipFile]::CreateFromDirectory($publishRoot, $archivePath, [IO.Compression.CompressionLevel]::Optimal, $true)
 Get-FileHash -LiteralPath $archivePath -Algorithm SHA256 | Format-List
 Write-Output $installer
 Write-Output $archivePath
+Write-Output $updateManifestPath

@@ -10,11 +10,13 @@ namespace Arkya.Launcher.Core;
 public sealed class LauncherSession
 {
     internal string SessionToken { get; }
+    internal LauncherRefreshCredential? RefreshCredential { get; }
     public string AccountId { get; }
     public string DisplayName { get; }
     public DateTimeOffset ExpiresAt { get; }
 
-    public LauncherSession(string sessionToken, string accountId, string displayName, DateTimeOffset expiresAt)
+    public LauncherSession(string sessionToken, string accountId, string displayName, DateTimeOffset expiresAt,
+        LauncherRefreshCredential? refreshCredential = null)
     {
         if (string.IsNullOrWhiteSpace(sessionToken) || sessionToken.Length != 43 ||
             sessionToken.Any(value => !char.IsAsciiLetterOrDigit(value) && value is not '-' and not '_') ||
@@ -26,6 +28,9 @@ public sealed class LauncherSession
         AccountId = accountId;
         DisplayName = displayName;
         ExpiresAt = expiresAt;
+        if (refreshCredential is not null && (refreshCredential.AccountId != accountId || refreshCredential.ExpiresAt < expiresAt))
+            throw new LauncherAuthenticationException("La réponse du service de connexion est invalide.", true);
+        RefreshCredential = refreshCredential;
     }
 
     public bool IsUsableAt(DateTimeOffset now) => ExpiresAt > now.AddSeconds(15);
@@ -44,13 +49,17 @@ public sealed class LauncherIdentityClient
     private readonly HttpClient httpClient;
     private readonly TimeProvider clock;
     private readonly Func<TimeSpan, CancellationToken, Task> delay;
+    private readonly ILauncherSessionStore? sessionStore;
+    private readonly SemaphoreSlim sessionGate = new(1, 1);
+    private LauncherSession? refreshedSession;
 
     public LauncherIdentityClient(HttpClient httpClient, TimeProvider? clock = null,
-        Func<TimeSpan, CancellationToken, Task>? delay = null)
+        Func<TimeSpan, CancellationToken, Task>? delay = null, ILauncherSessionStore? sessionStore = null)
     {
         this.httpClient = httpClient;
         this.clock = clock ?? TimeProvider.System;
         this.delay = delay ?? ((duration, token) => Task.Delay(duration, token));
+        this.sessionStore = sessionStore;
     }
 
     public static HttpClient CreateHttpClient() => new(new HttpClientHandler
@@ -61,6 +70,20 @@ public sealed class LauncherIdentityClient
     }) { Timeout = Timeout.InfiniteTimeSpan };
 
     public async Task<LauncherSession> LoginWithDiscordAsync(Action<Uri> openBrowser, CancellationToken cancellationToken)
+    {
+        await sessionGate.WaitAsync(cancellationToken);
+        try
+        {
+            using var storageLock = sessionStore is null ? null : await sessionStore.AcquireAsync(cancellationToken);
+            var session = await LoginCoreAsync(openBrowser, cancellationToken);
+            if (session.RefreshCredential is { } credential) sessionStore?.Save(credential);
+            refreshedSession = session;
+            return session;
+        }
+        finally { sessionGate.Release(); }
+    }
+
+    private async Task<LauncherSession> LoginCoreAsync(Action<Uri> openBrowser, CancellationToken cancellationToken)
     {
         var verifier = Base64Url(RandomNumberGenerator.GetBytes(32));
         var proof = Base64Url(SHA256.HashData(Encoding.ASCII.GetBytes(verifier)));
@@ -83,7 +106,7 @@ public sealed class LauncherIdentityClient
         {
             lifetime.Token.ThrowIfCancellationRequested();
             using var request = Request(HttpMethod.Post, "/v1/auth/discord/exchange",
-                new { challengeId = challenge.ChallengeId, codeVerifier = verifier, useRefreshCookie = false });
+                new { challengeId = challenge.ChallengeId, codeVerifier = verifier, useRefreshCookie = false, useRefreshToken = sessionStore is not null });
             using var response = await SendAsync(request, lifetime.Token);
             if (response.StatusCode == HttpStatusCode.Accepted)
             {
@@ -97,7 +120,7 @@ public sealed class LauncherIdentityClient
             if (response.StatusCode == HttpStatusCode.Gone) throw ChallengeExpired();
             RequireSuccess(response);
             var received = await ReadAsync<ExchangeResponse>(response, lifetime.Token);
-            var session = new LauncherSession(received.SessionToken, received.AccountId, received.DisplayName, received.ExpiresAt);
+            var session = ToSession(received, sessionStore is not null);
             var verified = await VerifySessionAsync(session, lifetime.Token);
             lifetime.Token.ThrowIfCancellationRequested();
             return verified;
@@ -115,7 +138,7 @@ public sealed class LauncherIdentityClient
         if (account.IsBanned || !string.Equals(account.AccountId, session.AccountId, StringComparison.Ordinal))
             throw new LauncherAuthenticationException("La session n’est plus valide. Reconnectez-vous avec Discord.", true);
         var expiresAt = account.ExpiresAt < session.ExpiresAt ? account.ExpiresAt : session.ExpiresAt;
-        var verified = new LauncherSession(session.SessionToken, account.AccountId, account.DisplayName, expiresAt);
+        var verified = new LauncherSession(session.SessionToken, account.AccountId, account.DisplayName, expiresAt, session.RefreshCredential);
         RequireUsable(verified);
         cancellationToken.ThrowIfCancellationRequested();
         return verified;
@@ -123,9 +146,110 @@ public sealed class LauncherIdentityClient
 
     public async Task LogoutAsync(LauncherSession session, CancellationToken cancellationToken)
     {
-        using var request = Request(HttpMethod.Post, "/v1/auth/logout", session: session);
-        using var response = await SendAsync(request, cancellationToken);
-        if (response.StatusCode != HttpStatusCode.Unauthorized) RequireSuccess(response);
+        await sessionGate.WaitAsync(cancellationToken);
+        try
+        {
+            using var storageLock = sessionStore is null ? null : await sessionStore.AcquireAsync(cancellationToken);
+            var credential = sessionStore?.Load() ?? session.RefreshCredential;
+            sessionStore?.Clear();
+            refreshedSession = null;
+            using var request = credential is not null
+                ? Request(HttpMethod.Post, "/v1/auth/logout/native", new { refreshToken = credential.RefreshToken }, session)
+                : Request(HttpMethod.Post, "/v1/auth/logout", session: session);
+            using var response = await SendAsync(request, cancellationToken);
+            if (response.StatusCode != HttpStatusCode.Unauthorized) RequireSuccess(response);
+        }
+        finally { sessionGate.Release(); }
+    }
+
+    public async Task<LauncherSession?> RestoreSessionAsync(CancellationToken cancellationToken)
+    {
+        if (sessionStore is null) return null;
+        await sessionGate.WaitAsync(cancellationToken);
+        try
+        {
+            using var storageLock = await sessionStore.AcquireAsync(cancellationToken);
+            var credential = sessionStore.Load();
+            if (credential is null) return null;
+            if (credential.ExpiresAt <= clock.GetUtcNow().AddSeconds(15)) { sessionStore.Clear(); return null; }
+            try { return await RefreshCoreAsync(credential, cancellationToken); }
+            catch (LauncherAuthenticationException exception) when (exception.SessionInvalid)
+            { sessionStore.Clear(); refreshedSession = null; return null; }
+        }
+        finally { sessionGate.Release(); }
+    }
+
+    public async Task<LauncherSession> RefreshSessionAsync(LauncherSession session, CancellationToken cancellationToken)
+    {
+        await sessionGate.WaitAsync(cancellationToken);
+        try
+        {
+            using var storageLock = sessionStore is null ? null : await sessionStore.AcquireAsync(cancellationToken);
+            if (refreshedSession is { } recent && recent.AccountId == session.AccountId &&
+                recent.SessionToken != session.SessionToken && recent.IsUsableAt(clock.GetUtcNow())) return recent;
+            var credential = sessionStore is null ? session.RefreshCredential : sessionStore.Load();
+            if (credential is null || credential.AccountId != session.AccountId || credential.ExpiresAt <= clock.GetUtcNow().AddSeconds(15))
+            {
+                sessionStore?.Clear();
+                refreshedSession = null;
+                throw new LauncherAuthenticationException("Votre session a expiré. Reconnectez-vous avec Discord.", true);
+            }
+            try { return await RefreshCoreAsync(credential, cancellationToken); }
+            catch (LauncherAuthenticationException exception) when (exception.SessionInvalid)
+            { sessionStore?.Clear(); refreshedSession = null; throw; }
+        }
+        finally { sessionGate.Release(); }
+    }
+
+    public async Task ForgetSessionAsync(CancellationToken cancellationToken = default)
+    {
+        await sessionGate.WaitAsync(cancellationToken);
+        try
+        {
+            using var storageLock = sessionStore is null ? null : await sessionStore.AcquireAsync(cancellationToken);
+            sessionStore?.Clear();
+            refreshedSession = null;
+        }
+        finally { sessionGate.Release(); }
+    }
+
+    public async Task WaitForSessionOperationsAsync()
+    {
+        await sessionGate.WaitAsync();
+        sessionGate.Release();
+    }
+
+    private async Task<LauncherSession> RefreshCoreAsync(LauncherRefreshCredential credential, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        // A cancelled window may stop verification, but must still commit an in-flight token rotation.
+        using var rotationTimeout = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+        using var request = Request(HttpMethod.Post, "/v1/auth/refresh/native", new { refreshToken = credential.RefreshToken });
+        using var response = await SendAsync(request, rotationTimeout.Token);
+        RequireSuccess(response);
+        var received = await ReadAsync<ExchangeResponse>(response, rotationTimeout.Token);
+        var session = ToSession(received, requireRefresh: true);
+        if (session.AccountId != credential.AccountId || session.RefreshCredential!.ExpiresAt != credential.ExpiresAt ||
+            session.RefreshCredential.RefreshToken == credential.RefreshToken ||
+            !session.RefreshCredential.RefreshToken.AsSpan(0, 32).SequenceEqual(credential.RefreshToken.AsSpan(0, 32)))
+            throw new LauncherAuthenticationException("La réponse du service de connexion est invalide.", true);
+        // Commit the rotated secret before /me: a temporary verification failure must not replay its predecessor.
+        sessionStore?.Save(session.RefreshCredential);
+        var verified = await VerifySessionAsync(session, cancellationToken);
+        refreshedSession = verified;
+        return verified;
+    }
+
+    private static LauncherSession ToSession(ExchangeResponse received, bool requireRefresh)
+    {
+        LauncherRefreshCredential? credential = null;
+        if (requireRefresh)
+        {
+            if (received.RefreshToken is null || received.RefreshExpiresAt is null)
+                throw new LauncherAuthenticationException("La réponse du service de connexion est invalide.", true);
+            credential = new LauncherRefreshCredential(received.RefreshToken, received.AccountId, received.RefreshExpiresAt.Value);
+        }
+        return new LauncherSession(received.SessionToken, received.AccountId, received.DisplayName, received.ExpiresAt, credential);
     }
 
     public static Uri ValidateAuthorizationUrl(string address, string challengeId)
@@ -198,6 +322,7 @@ public sealed class LauncherIdentityClient
     private static LauncherAuthenticationException ChallengeExpired() => new("La demande de connexion a expiré. Recommencez la connexion Discord.");
     private static string Base64Url(byte[] bytes) => Convert.ToBase64String(bytes).TrimEnd('=').Replace('+', '-').Replace('/', '_');
     private sealed record ChallengeResponse(string ChallengeId, string AuthorizationUrl, DateTimeOffset ExpiresAt);
-    private sealed record ExchangeResponse(string AccountId, string DisplayName, string SessionToken, DateTimeOffset ExpiresAt);
+    private sealed record ExchangeResponse(string AccountId, string DisplayName, string SessionToken, DateTimeOffset ExpiresAt,
+        string? RefreshToken = null, DateTimeOffset? RefreshExpiresAt = null);
     private sealed record AccountResponse(string AccountId, string DisplayName, DateTimeOffset ExpiresAt, bool IsBanned);
 }

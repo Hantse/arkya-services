@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,23 +33,38 @@ public partial class MainWindow : Window
     private bool closeAfterCancellation;
     private readonly CancellationTokenSource windowLifetime = new();
     private readonly ContentFeedClient publications;
+    private readonly LauncherUpdateClient launcherUpdates;
+    private readonly string launcherDataDirectory;
+    private readonly bool automaticServices;
+    private LauncherUpdateManifest? launcherUpdate;
+    private bool checkingLauncherUpdate;
+    private bool refreshingSession;
+    private DateTimeOffset nextSessionAttempt;
+    private DateTimeOffset nextLauncherCheck;
     private IReadOnlyList<PostCard> posts = [];
     private string selectedKind = "all";
     private bool loadingFeed;
     private bool feedFailed;
     private string feedMessage = "Les nouvelles de l’équipe Arkya apparaîtront ici.";
 
-    public MainWindow() : this(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Arkya"))
+    public MainWindow() : this(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Arkya"), true)
     {
     }
 
-    internal MainWindow(string dataDirectory)
+    internal MainWindow(string dataDirectory) : this(dataDirectory, false)
+    {
+    }
+
+    internal MainWindow(string dataDirectory, bool automaticServices)
     {
         InitializeComponent();
         releases = new ReleaseClient(httpClient);
-        identity = new LauncherIdentityClient(identityHttpClient);
         publications = new ContentFeedClient(httpClient);
         var arkya = Path.GetFullPath(dataDirectory);
+        this.automaticServices = automaticServices;
+        launcherDataDirectory = Path.Combine(arkya, "Launcher");
+        identity = new LauncherIdentityClient(identityHttpClient, sessionStore: new ProtectedLauncherSessionStore(launcherDataDirectory));
+        launcherUpdates = new LauncherUpdateClient(httpClient);
         preferencesStore = new LauncherPreferencesStore(Path.Combine(arkya, "Launcher"), Path.Combine(arkya, "Game"));
         selection = new GameInstallationSelection(releases, preferencesStore, preferencesStore.Defaults, AppContext.BaseDirectory);
         try
@@ -64,11 +80,131 @@ public partial class MainWindow : Window
         UpdateChannel();
         UpdateLocation();
         UpdateButtons();
-        sessionTimer.Tick += (_, _) => UpdateButtons();
+        sessionTimer.Tick += async (_, _) => await MaintainConnectionAsync();
         sessionTimer.Start();
     }
 
-    private void Window_Loaded(object sender, RoutedEventArgs e) => UpdateButtons();
+    private async void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        UpdateButtons();
+        if (!automaticServices) return;
+        var updateCheck = CheckLauncherUpdateAsync();
+        await RestoreConnectionAsync();
+        await updateCheck;
+    }
+
+    private void AcceptSession(LauncherSession connected)
+    {
+        sessionLifetime ??= CancellationTokenSource.CreateLinkedTokenSource(windowLifetime.Token);
+        session = connected;
+        nextSessionAttempt = DateTimeOffset.MinValue;
+    }
+
+    private async Task RestoreConnectionAsync()
+    {
+        if (operation is not null || refreshingSession || windowLifetime.IsCancellationRequested) return;
+        nextSessionAttempt = DateTimeOffset.UtcNow.AddMinutes(1);
+        await RunOperationAsync(async token =>
+        {
+            var restored = await identity.RestoreSessionAsync(token);
+            token.ThrowIfCancellationRequested();
+            if (restored is null) return;
+            AcceptSession(restored);
+            SetStatus("Connexion retrouvée. Bienvenue sur Arkya.");
+        }, requiresSession: false);
+        if (Authenticated && !closeAfterCancellation)
+        {
+            var feed = RefreshFeedAsync();
+            await CheckAsync();
+            await feed;
+        }
+    }
+
+    private async Task MaintainConnectionAsync()
+    {
+        if (!automaticServices || windowLifetime.IsCancellationRequested) { UpdateButtons(); return; }
+        if (refreshingSession) return;
+        if (session is { } current && current.ExpiresAt <= DateTimeOffset.UtcNow.AddMinutes(1) && DateTimeOffset.UtcNow >= nextSessionAttempt)
+        {
+            refreshingSession = true;
+            nextSessionAttempt = DateTimeOffset.UtcNow.AddSeconds(30);
+            UpdateButtons();
+            try
+            {
+                var renewed = await identity.RefreshSessionAsync(current, windowLifetime.Token);
+                if (ReferenceEquals(session, current)) AcceptSession(renewed);
+            }
+            catch (OperationCanceledException) when (windowLifetime.IsCancellationRequested) { return; }
+            catch (LauncherAuthenticationException exception) when (exception.SessionInvalid)
+            {
+                EndSession();
+                await DiscardSavedSessionAsync();
+                ShowError(exception);
+            }
+            catch (Exception exception) when (IsExpected(exception) || exception is OperationCanceledException)
+            {
+                SetStatus("Le renouvellement de connexion est momentanément indisponible. Nouvelle tentative automatique…");
+            }
+            finally
+            {
+                refreshingSession = false;
+                if (closeAfterCancellation && operation is null) Close();
+            }
+        }
+        UpdateButtons();
+        if (session is null && operation is null && DateTimeOffset.UtcNow >= nextSessionAttempt) await RestoreConnectionAsync();
+        if (DateTimeOffset.UtcNow >= nextLauncherCheck) await CheckLauncherUpdateAsync();
+    }
+
+    private async Task CheckLauncherUpdateAsync()
+    {
+        if (checkingLauncherUpdate || windowLifetime.IsCancellationRequested) return;
+        checkingLauncherUpdate = true;
+        nextLauncherCheck = DateTimeOffset.UtcNow.AddMinutes(30);
+        try
+        {
+            var currentVersion = typeof(MainWindow).Assembly.GetName().Version ?? new Version(0, 4, 0);
+            launcherUpdate = await launcherUpdates.GetUpdateAsync(currentVersion, windowLifetime.Token);
+            if (launcherUpdate is null) return;
+            LauncherUpdateStatus.Text = "Arkya Launcher " + launcherUpdate.Version + " est disponible. Votre connexion et vos jeux seront conservés.";
+            LauncherUpdateButton.Content = LauncherUpdateInstaller.IsInstalledLauncher(AppContext.BaseDirectory)
+                ? "Mettre à jour et redémarrer" : "Installer le nouveau launcher";
+            LauncherUpdateBanner.Visibility = Visibility.Visible;
+        }
+        catch (Exception exception) when (IsExpected(exception) || exception is OperationCanceledException)
+        {
+            nextLauncherCheck = DateTimeOffset.UtcNow.AddMinutes(5);
+        }
+        finally { checkingLauncherUpdate = false; UpdateButtons(); }
+    }
+
+    private async void LauncherUpdate_Click(object sender, RoutedEventArgs e)
+    {
+        if (launcherUpdate is not { } update || operation is not null || refreshingSession || GameRunning) return;
+        if (!LauncherUpdateInstaller.IsInstalledLauncher(AppContext.BaseDirectory))
+        {
+            WebsiteDownload();
+            return;
+        }
+        await RunOperationAsync(async token =>
+        {
+            var directory = Path.Combine(launcherDataDirectory, "Updates", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(directory);
+            var installer = Path.Combine(directory, "Arkya-Launcher-Setup.exe");
+            var progress = new Progress<InstallProgress>(value =>
+                LauncherUpdateStatus.Text = "Mise à jour du launcher : " + value.Message + " · " + FormatBytes(value.CompletedBytes));
+            await launcherUpdates.DownloadAsync(update, installer, progress, token);
+            token.ThrowIfCancellationRequested();
+            LauncherUpdateInstaller.StartAfterLauncherExit(update, installer, AppContext.BaseDirectory);
+            closeAfterCancellation = true;
+        }, requiresSession: false);
+    }
+
+    private void WebsiteDownload()
+    {
+        try { Process.Start(new ProcessStartInfo("https://arkya.online/play.html") { UseShellExecute = true }); }
+        catch (Exception exception) when (IsExpected(exception)) { ShowError(exception); }
+    }
 
     private bool Authenticated => session?.IsUsableAt(DateTimeOffset.UtcNow) == true;
 
@@ -160,8 +296,7 @@ public partial class MainWindow : Window
                 using var browser = Process.Start(new ProcessStartInfo(uri.AbsoluteUri) { UseShellExecute = true });
             }, token);
             token.ThrowIfCancellationRequested();
-            sessionLifetime = CancellationTokenSource.CreateLinkedTokenSource(windowLifetime.Token);
-            session = connected;
+            AcceptSession(connected);
             SetStatus("Connexion établie. Bienvenue sur Arkya.");
         }, requiresSession: false);
         if (!Authenticated || closeAfterCancellation) return;
@@ -172,7 +307,7 @@ public partial class MainWindow : Window
 
     private async void Logout_Click(object sender, RoutedEventArgs e)
     {
-        if (operation is not null || session is not { } current) return;
+        if (operation is not null || refreshingSession || session is not { } current) return;
         EndSession();
         UpdateButtons();
         await RunOperationAsync(async token =>
@@ -251,7 +386,11 @@ public partial class MainWindow : Window
         }
         catch (LauncherAuthenticationException exception)
         {
-            if (exception.SessionInvalid) EndSession();
+            if (exception.SessionInvalid)
+            {
+                EndSession();
+                await DiscardSavedSessionAsync();
+            }
             ShowError(exception);
         }
         catch (Exception exception) when (IsExpected(exception)) { ShowError(exception); }
@@ -268,14 +407,23 @@ public partial class MainWindow : Window
         string.Equals(installed.Manifest.Sha256, available.Sha256, StringComparison.OrdinalIgnoreCase);
     private bool GameRunning => game is not null && !game.HasExited;
 
+    private async Task DiscardSavedSessionAsync()
+    {
+        try { await identity.ForgetSessionAsync(); }
+        catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or CryptographicException)
+        {
+            // A revoked credential cannot reopen the authenticated UI, even if its file is locked.
+        }
+    }
+
     private void UpdateButtons()
     {
-        if (session is not null && !Authenticated)
+        if (session is not null && !Authenticated && !refreshingSession)
         {
             EndSession();
             SetStatus("Votre session a expiré. Reconnectez-vous avec Discord pour continuer.");
         }
-        var busy = operation is not null;
+        var busy = operation is not null || refreshingSession;
         var connected = Authenticated;
         LoginPage.Visibility = connected ? Visibility.Collapsed : Visibility.Visible;
         LauncherContent.Visibility = connected ? Visibility.Visible : Visibility.Collapsed;
@@ -298,6 +446,7 @@ public partial class MainWindow : Window
         BetaChannel.IsEnabled = StableChannel.IsEnabled = connected && !busy && !GameRunning;
         ChangeLocationButton.IsEnabled = SettingsLocationButton.IsEnabled = connected && !busy && !GameRunning;
         CancelButton.Visibility = busy ? Visibility.Visible : Visibility.Collapsed;
+        LauncherUpdateButton.IsEnabled = !busy && !GameRunning && launcherUpdate is not null;
     }
 
     private void SetStatus(string message) => StatusLabel.Text = LoginStatus.Text = message;
@@ -310,7 +459,7 @@ public partial class MainWindow : Window
     }
 
     private static bool IsExpected(Exception exception) => exception is IOException or UnauthorizedAccessException
-        or HttpRequestException or JsonException or Win32Exception or InvalidDataException or ArgumentException or LauncherAuthenticationException;
+        or HttpRequestException or JsonException or Win32Exception or InvalidDataException or ArgumentException or LauncherAuthenticationException or CryptographicException;
 
     private static string FormatBytes(long value) => value >= 1024L * 1024 * 1024
         ? $"{value / (1024d * 1024 * 1024):0.0} Go" : $"{value / (1024d * 1024):0.0} Mo";
@@ -441,6 +590,12 @@ public partial class MainWindow : Window
 
     private void Window_Closing(object? sender, CancelEventArgs e)
     {
+        if (refreshingSession)
+        {
+            e.Cancel = true;
+            closeAfterCancellation = true;
+            return;
+        }
         if (operation is not null)
         {
             e.Cancel = true;

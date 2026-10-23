@@ -27,7 +27,7 @@ SHA-256 du ZIP réellement construit. Le launcher peut ouvrir une version déjà
 installée si le serveur de distribution est indisponible, après connexion du
 compte. Cela ne rend pas les services de jeu accessibles hors ligne.
 
-Le launcher `0.3.1` se distribue avec un installateur Windows autonome,
+Le launcher `0.4.0` se distribue avec un installateur Windows autonome,
 `Arkya-Launcher-Setup.exe`. Il installe le launcher pour l’utilisateur courant,
 par défaut dans `%LOCALAPPDATA%\Programs\Arkya Launcher`, avec choix du dossier
 dans l’assistant, raccourci Démarrer et raccourci bureau facultatif. Le runtime
@@ -55,11 +55,16 @@ réutilise les challenges Identity avec une preuve S256 ; le secret Discord et
 les jetons Discord restent côté serveur. Le joueur peut annuler puis recommencer.
 
 Le bearer Arkya reste en mémoire : il n’est écrit ni dans les préférences ni
-dans les arguments du jeu. Fermer le launcher exige une nouvelle connexion
-au prochain démarrage. La session est vérifiée à nouveau avant chaque
-lancement ; une expiration ou un refus ramène à la page de connexion.
+dans les arguments du jeu. Le refresh rotatif est mémorisé avec la protection
+Windows DPAPI de l’utilisateur dans
+`%LOCALAPPDATA%\Arkya\Launcher\launcher-session.dat`, hors du dossier installé.
+Le launcher retrouve la connexion au démarrage et après sa mise à jour,
+renouvelle l’accès avant expiration et vérifie le compte avant chaque lancement.
+La connexion dure au maximum 30 jours depuis l’autorisation Discord ; une
+révocation, un ban ou cette échéance demandent une nouvelle connexion.
 **Déconnexion** ferme immédiatement l’accès à l’accueil et demande la révocation de la session. La connexion
-du site reste indépendante.
+du site reste indépendante. Voir les
+[contrats natifs et leur validation](AUTH_SESSIONS.md#launcher-windows).
 
 ## Utilisation
 
@@ -278,7 +283,8 @@ réussite avec l’exact Core publié dans le launcher `0.1.1`.
 Le SHA-256 protège l’intégrité par rapport au manifeste HTTPS. Il ne remplace
 pas une signature indépendante contre la compromission de l’hébergement.
 Cette première version ne fournit ni mise à jour différentielle, ni reprise
-partielle du téléchargement, ni mise à jour automatique du launcher. Pour
+partielle du téléchargement. Le launcher `0.4.0` ajoute son propre mécanisme
+de mise à jour décrit ci-dessous. Pour
 une distribution publique, signer les exécutables Arkya et le launcher avec
 le certificat de publication de l’équipe ; aucun certificat n’est présent
 dans le dépôt. Le binaire produit localement est non signé.
@@ -317,9 +323,42 @@ La [source visuelle et les vérifications](APP_ICONS.md) couvrent aussi
 l’icône partagée avec le client Unity.
 
 Publier d’abord l’installateur dans une release immuable, puis modifier le lien
-du site. Le lien du launcher `0.3.1` utilise la release `launcher-v0.3.1` ; les
+du site. Le lien du launcher `0.4.0` utilise la release `launcher-v0.4.0` ; les
 mises à jour du jeu continuent à suivre le manifeste Windows et restent
 indépendantes de cette version du launcher.
+
+## Mise à jour du launcher
+
+Le launcher vérifie son propre manifeste au démarrage, puis toutes les
+30 minutes : `https://arkya.online/downloads/launcher/latest-win-x64.json`.
+Une nouvelle version affiche **Mettre à jour et redémarrer**, y compris sur
+la page de connexion. Le bouton attend la fin d’une installation ou la
+fermeture du jeu. Le launcher vérifie la version, la taille et le SHA-256
+du setup téléchargé depuis sa release officielle GitHub.
+
+Après la fermeture du launcher, un helper caché revérifie le setup,
+l’installe silencieusement dans le dossier enregistré pour l’utilisateur,
+puis redémarre le launcher. Il attend le processus exact et ne ferme aucun
+jeu. Préférences, dossiers du jeu et session DPAPI restent hors de ce
+remplacement. La fermeture attend un renouvellement de session déjà engagé
+afin de sauvegarder son successeur avant de quitter.
+
+Une distribution portable propose l’installateur du site. Le launcher
+`0.3.1` ne possède pas cet updater : le premier passage à `0.4.0` exige
+l’installation de cette nouvelle version. Les mises à jour suivantes sont
+proposées directement dans le launcher.
+
+`Publish-Launcher.ps1` produit aussi le manifeste du launcher, avec
+`schemaVersion`, `version`, `platform`, `installerUrl`, `installerSize`
+et `sha256`. Publier d’abord le setup immuable et le vérifier, puis déposer
+ce manifeste sous `dist/downloads/launcher/latest-win-x64.json`. Le manifeste
+du jeu reste indépendant sous `downloads/windows/`.
+
+Vérification de `0.4.0` : 182 tests Core et 12 tests WPF réussis ; essai
+réel du helper avec installateurs Inno isolés `0.3.1 → 0.4.0`, dossier
+personnalisé, attente du processus, installation silencieuse, redémarrage
+et conservation/déchiffrement de la session DPAPI. Aucun launcher installé
+chez l’utilisateur n’est remplacé par ces essais.
 
 L’installateur peut être vérifié dans un dossier de test neuf, sans démarrer
 le launcher ni télécharger le jeu :

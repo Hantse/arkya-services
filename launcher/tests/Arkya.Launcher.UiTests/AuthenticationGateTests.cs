@@ -1,5 +1,6 @@
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -164,6 +165,107 @@ public sealed class AuthenticationGateTests(StaApplication application, ITestOut
         SaveScreenshot(content, $"authenticated-{width}x{height}.png");
         Assert.Equal(0, fixture.Network.Requests);
     });
+
+    [Fact]
+    public Task ProtectedSessionRestoresAfterTheWindowIsRecreated() => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture();
+        var directory = Path.Combine(fixture.DataDirectory, "Launcher");
+        var store = new ProtectedLauncherSessionStore(directory);
+        var expiry = DateTimeOffset.UtcNow.AddDays(30);
+        store.Save(new LauncherRefreshCredential(new string('a', 32) + "." + new string('A', 43),
+            "11111111-1111-1111-1111-111111111111", expiry));
+        using var handler = new NativeSessionHandler(expiry);
+        using var client = new HttpClient(handler);
+        Field(fixture.Window, "identity", new LauncherIdentityClient(client, sessionStore: store));
+        await (Task)Invoke(fixture.Window, "RestoreConnectionAsync")!;
+        Assert.Equal(Visibility.Visible, Control<Grid>(fixture.Window, "LauncherContent").Visibility);
+        fixture.Window.Close();
+        Assert.NotNull(store.Load());
+
+        var reopened = (MainWindow)Activator.CreateInstance(typeof(MainWindow), BindingFlags.Instance | BindingFlags.NonPublic,
+            null, new object[] { fixture.DataDirectory }, null)!;
+        try
+        {
+            Field(reopened, "identity", new LauncherIdentityClient(client, sessionStore: new ProtectedLauncherSessionStore(directory)));
+            using var deniedClient = new HttpClient(new DenyNetworkHandler());
+            Field(reopened, "releases", new ReleaseClient(deniedClient));
+            Field(reopened, "publications", new ContentFeedClient(deniedClient));
+            await (Task)Invoke(reopened, "RestoreConnectionAsync")!;
+            Assert.Equal("Aélyra", Control<TextBlock>(reopened, "AccountLabel").Text);
+            Assert.Equal(Visibility.Collapsed, Control<Grid>(reopened, "LoginPage").Visibility);
+            Assert.Equal(2, handler.Rotations);
+        }
+        finally { reopened.Close(); }
+    });
+
+    [Fact]
+    public Task ExplicitLogoutClearsTheProtectedSessionAndRevokesItsFamily() => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture();
+        var store = new ProtectedLauncherSessionStore(Path.Combine(fixture.DataDirectory, "Launcher"));
+        var expiry = DateTimeOffset.UtcNow.AddDays(30);
+        store.Save(new LauncherRefreshCredential(new string('a', 32) + "." + new string('A', 43),
+            "11111111-1111-1111-1111-111111111111", expiry));
+        using var handler = new NativeSessionHandler(expiry);
+        using var client = new HttpClient(handler);
+        Field(fixture.Window, "identity", new LauncherIdentityClient(client, sessionStore: store));
+        await (Task)Invoke(fixture.Window, "RestoreConnectionAsync")!;
+        Invoke(fixture.Window, "Logout_Click", fixture.Window, new RoutedEventArgs());
+        await fixture.Window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.Background);
+        Assert.Null(store.Load());
+        Assert.Equal(1, handler.Logouts);
+        Assert.Equal(Visibility.Visible, Control<Grid>(fixture.Window, "LoginPage").Visibility);
+    });
+
+    [Fact]
+    public Task LauncherUpdateRemainsAvailableWithoutLoginAndWaitsForBusyWork() => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture();
+        Field(fixture.Window, "launcherUpdate", new LauncherUpdateManifest(1, "0.5.0", "win-x64",
+            "https://github.com/Hantse/arkya-services/releases/download/launcher-v0.5.0/Arkya-Launcher-Setup.exe", 1, new string('a', 64)));
+        Control<Border>(fixture.Window, "LauncherUpdateBanner").Visibility = Visibility.Visible;
+        Control<TextBlock>(fixture.Window, "LauncherUpdateStatus").Text = "Arkya Launcher 0.5.0 est disponible. Votre connexion sera conservée.";
+        Invoke(fixture.Window, "UpdateButtons");
+        fixture.Window.UpdateLayout();
+        Assert.True(Control<Button>(fixture.Window, "LauncherUpdateButton").IsEnabled);
+        AssertVisibleInside(Control<Button>(fixture.Window, "LauncherUpdateButton"), (FrameworkElement)fixture.Window.Content);
+        await fixture.Window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.Render);
+        SaveScreenshot((FrameworkElement)fixture.Window.Content, "launcher-update-1040x720.png");
+        using var operation = new CancellationTokenSource();
+        Field(fixture.Window, "operation", operation);
+        Invoke(fixture.Window, "UpdateButtons");
+        Assert.False(Control<Button>(fixture.Window, "LauncherUpdateButton").IsEnabled);
+        Assert.Equal(0, fixture.Network.Requests);
+    });
+
+    private sealed class NativeSessionHandler(DateTimeOffset expiry) : HttpMessageHandler
+    {
+        public int Rotations { get; private set; }
+        public int Logouts { get; private set; }
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var path = request.RequestUri!.AbsolutePath;
+            if (path == "/v1/auth/refresh/native")
+            {
+                Rotations++;
+                return Task.FromResult(new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+                {
+                    Content = JsonContent.Create(new { accountId = "11111111-1111-1111-1111-111111111111", displayName = "Aélyra",
+                        sessionToken = new string((char)('A' + Rotations), 43), expiresAt = DateTimeOffset.UtcNow.AddHours(8),
+                        refreshToken = new string('a', 32) + "." + new string((char)('A' + Rotations), 43), refreshExpiresAt = expiry })
+                });
+            }
+            if (path == "/v1/auth/me") return Task.FromResult(new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+            {
+                Content = JsonContent.Create(new { accountId = "11111111-1111-1111-1111-111111111111", displayName = "Aélyra",
+                    expiresAt = DateTimeOffset.UtcNow.AddHours(8), isBanned = false })
+            });
+            Assert.Equal("/v1/auth/logout/native", path);
+            Logouts++;
+            return Task.FromResult(new HttpResponseMessage(System.Net.HttpStatusCode.NoContent));
+        }
+    }
 
     private static void AssertVisibleInside(FrameworkElement element, FrameworkElement content)
     {

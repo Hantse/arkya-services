@@ -8,6 +8,7 @@
     <shell:WindowChrome.WindowChrome><shell:WindowChrome CaptionHeight="52" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0" /></shell:WindowChrome.WindowChrome>
     <Border BorderBrush="#3A4C56" BorderThickness="1" Background="{StaticResource Ink}">
     <Grid>
+    <Grid.RowDefinitions><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
     <Grid x:Name="LauncherContent" Visibility="Collapsed">
         <Grid.ColumnDefinitions><ColumnDefinition Width="80" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
         <Border Background="#0B131C" BorderBrush="#283641" BorderThickness="0,0,1,0">
@@ -196,6 +197,12 @@
             <Button Style="{StaticResource QuietButton}" Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Close_Click" AutomationProperties.Name="Fermer" />
         </StackPanel>
     </Grid>
+    <Border x:Name="LauncherUpdateBanner" Grid.Row="1" Visibility="Collapsed" Background="#243A3E" BorderBrush="#7C876E" BorderThickness="0,1,0,0" Padding="22,12">
+        <DockPanel LastChildFill="True">
+            <Button x:Name="LauncherUpdateButton" DockPanel.Dock="Right" Content="Mettre à jour et redémarrer" Click="LauncherUpdate_Click" Padding="16,8" Margin="20,0,0,0" Background="{StaticResource Gold}" Foreground="#18242A" />
+            <TextBlock x:Name="LauncherUpdateStatus" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="{StaticResource Paper}" AutomationProperties.LiveSetting="Polite" />
+        </DockPanel>
+    </Border>
     </Grid>
     </Border>
 </Window>
