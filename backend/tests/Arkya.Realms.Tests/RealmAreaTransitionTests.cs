@@ -28,11 +28,13 @@ public sealed class RealmAreaTransitionTests
         return profile;
     }
 
-    [Fact]
-    public async Task ApprovedMultiAreaPlanPublishesContentAndExplicitTransitionsWithoutConfusingLocalCoordinates()
+    [Theory]
+    [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId)]
+    [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId)]
+    public async Task ApprovedMultiAreaPlanPublishesContentAndExplicitTransitionsWithoutConfusingLocalCoordinates(int version, string buildId)
     {
         var plan = Plan();
-        var snapshot = RealmTopologyBuilder.Snapshot(Profile(), "eu-one", plan);
+        var snapshot = RealmTopologyBuilder.Snapshot(Profile(version, buildId), "eu-one", plan);
         Assert.True(snapshot.TopologyRuntimeSupported);
         Assert.True(RealmTopologyBuilder.SnapshotSupportsRuntime(snapshot));
         var repository = new MemoryRealmRepository();

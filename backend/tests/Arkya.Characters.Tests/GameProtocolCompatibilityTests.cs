@@ -9,6 +9,11 @@ public sealed class GameProtocolCompatibilityTests
     [InlineData(GameProtocol.HandoffVersion, GameProtocol.HandoffBuildId, true, true)]
     [InlineData(GameProtocol.HandoffVersion, GameProtocol.CharacterStatsBuildId, true, true)]
     [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId, true, true)]
+    [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId, true, true)]
+    [InlineData(GameProtocol.DivingVersion, GameProtocol.MultiAreaBuildId, false, false)]
+    [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.DivingBuildId, false, false)]
+    [InlineData(GameProtocol.DivingVersion, GameProtocol.CharacterStatsBuildId, false, false)]
+    [InlineData(GameProtocol.DivingVersion, null, false, false)]
     [InlineData(GameProtocol.HandoffVersion, GameProtocol.MultiAreaBuildId, false, false)]
     [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.HandoffBuildId, false, false)]
     [InlineData(GameProtocol.Version, GameProtocol.CharacterStatsBuildId, false, false)]
@@ -24,12 +29,14 @@ public sealed class GameProtocolCompatibilityTests
     }
 
     [Theory]
-    [InlineData(GameProtocol.HandoffBuildId)]
-    [InlineData(GameProtocol.CharacterStatsBuildId)]
-    public void BothSupportedHandoffBuildsKeepTrustedPartitionRouting(string buildId)
+    [InlineData(GameProtocol.HandoffVersion, GameProtocol.HandoffBuildId)]
+    [InlineData(GameProtocol.HandoffVersion, GameProtocol.CharacterStatsBuildId)]
+    [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId)]
+    [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId)]
+    public void SupportedHandoffBuildsKeepTrustedPartitionRouting(int version, string buildId)
     {
         var entry = new GameRealmEntry("beta-web", "Test realm", true, "area-west", "wss://game.example/west",
-            GameProtocol.HandoffVersion, buildId)
+            version, buildId)
         {
             TopologyVersion = "starter-island-v1",
             Partitions = [new("area-west", "wss://game.example/west", "starter-island", 0, new(0, 0, 500, 1000)),

@@ -13,7 +13,10 @@ public static class GameProtocol
     public const string CharacterStatsBuildId = "arkya-character-stats-v1";
     public const int MultiAreaVersion = 3;
     public const string MultiAreaBuildId = "arkya-multi-area-v1";
-    public static bool IsMultiArea(int version, string? buildId) => version == MultiAreaVersion && buildId == MultiAreaBuildId;
+    public const int DivingVersion = 4;
+    public const string DivingBuildId = "arkya-diving-v1";
+    public static bool IsMultiArea(int version, string? buildId) =>
+        version == MultiAreaVersion && buildId == MultiAreaBuildId || version == DivingVersion && buildId == DivingBuildId;
     public static bool IsHandoff(int version, string? buildId) => version == HandoffVersion &&
         buildId is HandoffBuildId or CharacterStatsBuildId || IsMultiArea(version, buildId);
     public static bool IsSupported(int version, string? buildId) => version == Version && buildId == BuildId || IsHandoff(version, buildId);
