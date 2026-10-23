@@ -28,8 +28,9 @@ public static class RealmRuntimeReleases
 
     public static ProfileSnapshot? ApprovedProfile(DeploymentOptions options, RealmRecord realm, RealmRuntimeRelease release)
     {
-        if (!release.IsValid() || !options.Targets.Any(target => target.Id == realm.TargetId &&
-                target.Namespace == realm.Namespace && target.RealmId == realm.RealmId)) return null;
+        if (!release.IsValid() || release.RealmId != realm.RealmId ||
+            !options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace &&
+                (target.RealmId is null || target.RealmId == realm.RealmId))) return null;
         var profile = options.Profiles.SingleOrDefault(value => value.Id == release.ProfileId);
         if (profile is null || !profile.IsValid()) return null;
         ProfileSnapshot snapshot;

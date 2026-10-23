@@ -1,14 +1,18 @@
 # Déploiement du realm bêta
 
 Le service Realms crée les Deployments et Services dans la cible autorisée
-`arkya-beta-realm`. Le profil bêta est réservé à `beta-web` et lance le serveur
-`island` sur TCP 17943. L'image Unity doit être publiée avec le support explicite
+`arkya-beta-realm`. Cette cible accepte tout identifiant de realm valide et
+lance le serveur `island` sur TCP 17943. Un seul realm actif peut occuper cette
+cible et ce namespace ; une suppression terminée libère la destination pour
+un autre identifiant. L'image Unity doit être publiée avec le support explicite
 de `ARKYA_ALLOW_CLUSTER_HTTP=1` avant d'activer ce profil.
 
 Le client utilise `wss://api.arkya.online/game/beta-web/`. Gateway retire le
 préfixe `/game/beta-web` et transmet la connexion WebSocket au Service privé
-stable `arkya-beta-web-island`. Ce Service sélectionne les pods du realm par
-leurs labels ; les ressources créées par Realms gardent leurs noms propres.
+stable `arkya-beta-web-island`. Ces noms historiques désignent la destination,
+pas l’identifiant du realm. Le Service sélectionne le serveur `island` géré
+par Realms dans le namespace réservé ; les ressources créées par Realms gardent
+leurs noms propres.
 
 `RealmRuntime:DedicatedKeySeed` est injecté dans Realms et Characters depuis un
 Secret existant. Une clé HMAC distincte est dérivée pour chaque couple
@@ -16,8 +20,13 @@ realm/serveur. Realms crée le Secret Opaque `arkya-dedicated` dans le namespace
 cible, avec une entrée par identifiant de serveur. Le Deployment utilise un
 `secretKeyRef` : la clé ne figure ni dans son manifeste, ni dans le profil
 enregistré en MongoDB, ni dans les réponses Admin.
-Characters utilise `RealmRuntime:RealmId` et `RealmRuntime:ServerId` pour vérifier
-la même identité. L'admission conserve les contrôles de session et d'accès bêta.
+Avec `RealmRuntime:DynamicRealmsEnabled=true`, Characters résout les couples
+realm/serveur du catalogue privé Realms et vérifie leur clé avec le seed
+existant. Les identités sont disponibles avant la readiness pour le démarrage
+du dedicated ; un realm retiré du catalogue n’est plus authentifié. Le seed
+lui-même n’est jamais une clé de serveur. Le mode statique `RealmRuntime:RealmId`
+et `RealmRuntime:ServerId` reste disponible hors de ce profil. L’admission
+conserve les contrôles de session et d’accès bêta.
 
 Le HTTP interne exige les opt-ins de chaque service et les NetworkPolicies.
 Les accès publics restent en TLS. Le pod Unity ne possède aucun jeton Kubernetes,

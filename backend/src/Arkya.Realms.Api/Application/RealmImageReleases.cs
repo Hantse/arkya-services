@@ -9,8 +9,9 @@ internal static class RealmImageReleases
 
     public static DeploymentProfile? AllowedProfile(DeploymentOptions options, RealmRecord realm, RealmImageRelease release)
     {
-        if (!release.IsValid() || !options.Targets.Any(target => target.Id == realm.TargetId &&
-            target.Namespace == realm.Namespace && target.RealmId == realm.RealmId)) return null;
+        if (!release.IsValid() || release.RealmId != realm.RealmId ||
+            !options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace &&
+                (target.RealmId is null || target.RealmId == realm.RealmId))) return null;
         var profile = options.Profiles.SingleOrDefault(value => value.Id == release.ProfileId);
         if (profile is null || !profile.IsValid() || realm.Profile.Topology is not null && !RealmTopologyBuilder.IsValid(realm.Profile.Topology)) return null;
         return SameConfiguration(RealmTopologyBuilder.Snapshot(profile, realm.RealmId, realm.Profile.Topology), realm.Profile) ? profile : null;

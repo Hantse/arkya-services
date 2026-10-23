@@ -1,74 +1,93 @@
 @inject Arkya.Admin.Realms.RealmSiteLinks RealmSites
-@{ var dedicatedRealmId = RealmSites.RealmId(Context); }
+@{
+    var dedicatedRealmId = RealmSites.RealmId(Context);
+    var page = ViewContext.RouteData.Values["page"]?.ToString();
+    var authenticated = User.Identity?.IsAuthenticated == true;
+    var currentSection = Context.Request.Query["section"].FirstOrDefault() ?? "overview";
+}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
     <title>@ViewData["Title"] · Arkya</title>
     <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
     <link rel="stylesheet" href="~/admin.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/console.css" asp-append-version="true" />
-    @if (ViewContext.RouteData.Values["page"]?.ToString() == "/Realm") { <link rel="stylesheet" href="~/realm-islands.css" asp-append-version="true" /> }
+    @if (page == "/Realm") { <link rel="stylesheet" href="~/realm-islands.css" asp-append-version="true" /> }
+    <link rel="stylesheet" href="~/dark-admin.css" asp-append-version="true" />
 </head>
-<body>
+<body class="@(authenticated ? "signed-in" : "signed-out")">
     <a class="skip-link" href="#main">Aller au contenu</a>
+    @if (authenticated) { <input class="navigation-toggle sr-only" type="checkbox" id="admin-navigation-toggle" aria-label="Afficher ou masquer le menu" /> }
+    <header class="global-header">
+        <a class="brand" href="/" aria-label="Arkya · Administration">
+            <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="m20 3 15 8.5v17L20 37 5 28.5v-17L20 3Z"/><path d="m12 27 8-15 8 15m-12-7h8M5 11.5l7.5 4.25M35 11.5l-7.5 4.25M20 37V28"/></svg>
+            <span>Arkya<span class="brand-label">Administration</span></span>
+        </a>
+        <div class="global-header-actions">
+            @if (authenticated) { <label class="sidebar-toggle" for="admin-navigation-toggle" title="Afficher ou masquer le menu"><partial name="_AdminIcon" model='@("menu")' /><span class="sr-only">Afficher ou masquer le menu</span></label> }
+            <nav class="global-navigation" aria-label="Navigation du site">
+                <a href="https://arkya.online/">Site public <partial name="_AdminIcon" model='@("external")' /></a>
+                <a href="@(dedicatedRealmId is null ? "/" : RealmSites.AdminOrigin + "/")" aria-current="page">Administration</a>
+            </nav>
+            <div class="operator-identity"><span class="operator-avatar" aria-hidden="true"><partial name="_AdminIcon" model='@("user")' /></span><span>@(authenticated ? User.Identity?.Name ?? "Administrateur" : "Accès opérateur")</span></div>
+        </div>
+    </header>
     <div class="app-shell">
+        @if (authenticated)
+        {
         <aside class="sidebar" aria-label="Administration Arkya">
-            <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">A</span><span>ARKYA<small>@(dedicatedRealmId ?? "Console d'exploitation")</small></span></a>
-            @if (User.Identity?.IsAuthenticated == true)
-            {
-                var page = ViewContext.RouteData.Values["page"]?.ToString();
-                <nav class="admin-navigation" aria-label="Menu principal">
-                    @if (dedicatedRealmId is not null)
-                    {
-                        <details class="nav-group" open>
-                            <summary>Ce realm</summary>
-                            @foreach (var (section, label) in new[] { ("overview", "Aperçu"), ("settings", "Réglages"), ("maintenance", "Maintenance"), ("game", "En jeu"), ("history", "Historique") })
-                            {
-                                <a class="nav-item" href="/?section=@(section)" aria-current="@((Context.Request.Query["section"].FirstOrDefault() ?? "overview") == section ? "page" : null)">@label</a>
-                            }
-                        </details>
+            <nav class="admin-navigation" aria-label="Menu principal">
+                @if (dedicatedRealmId is not null)
+                {
+                    <div class="realm-context"><span>Realm actuel</span><strong><partial name="_AdminIcon" model='@("world")' />@dedicatedRealmId</strong></div>
+                    <details class="nav-group" open>
+                        <summary>Gestion du realm</summary>
+                        @foreach (var (section, label, icon) in new[] { ("overview", "Aperçu", "overview"), ("settings", "Réglages", "settings"), ("maintenance", "Maintenance", "activity"), ("game", "En jeu", "players"), ("history", "Historique", "history") })
+                        {
+                            <a class="nav-item" href="/?section=@(section)" aria-current="@(currentSection == section ? "page" : null)"><partial name="_AdminIcon" model="icon" />@label</a>
+                        }
+                    </details>
+                    <details class="nav-group" open>
+                        <summary>Navigation</summary>
                         @if (ViewData.Model is Arkya.Admin.Pages.RealmModel { Realm.Status: not ("Draft" or "Deleting" or "DeleteFailed" or "Deleted") })
                         {
-                            <a class="nav-item" href="@RealmSites.PublicUrl(dedicatedRealmId)">Page publique ↗</a>
+                            <a class="nav-item" href="@RealmSites.PublicUrl(dedicatedRealmId)"><partial name="_AdminIcon" model='@("external")' />Page publique ↗</a>
                         }
-                        <a class="nav-item" href="@(RealmSites.AdminOrigin + "/Realms")">Tous les realms ↗</a>
-                        <a class="nav-item" href="@(RealmSites.AdminOrigin + "/")">Administration générale ↗</a>
-                    }
-                    else
-                    {
-                    <a class="nav-item" asp-page="/Dashboard" aria-current="@(page == "/Dashboard" ? "page" : null)"><span aria-hidden="true">▦</span> Dashboard</a>
+                        <a class="nav-item" href="@(RealmSites.AdminOrigin + "/Realms")"><partial name="_AdminIcon" model='@("world")' />Tous les realms ↗</a>
+                        <a class="nav-item" href="@(RealmSites.AdminOrigin + "/")"><partial name="_AdminIcon" model='@("overview")' />Administration générale ↗</a>
+                    </details>
+                }
+                else
+                {
+                    <a class="nav-item nav-overview" asp-page="/Dashboard" aria-current="@(page == "/Dashboard" ? "page" : null)"><partial name="_AdminIcon" model='@("overview")' />Dashboard</a>
                     <details class="nav-group" open>
                         <summary>Communauté</summary>
-                        <a class="nav-item" asp-page="/Accounts" aria-current="@(page is "/Accounts" or "/Account" ? "page" : null)">Comptes et accès</a>
-                        <a class="nav-item" asp-page="/Players" aria-current="@(page == "/Players" ? "page" : null)">Joueurs en ligne</a>
-                        <a class="nav-item" asp-page="/Characters" aria-current="@(page == "/Characters" ? "page" : null)">Personnages</a>
+                        <a class="nav-item" asp-page="/Accounts" aria-current="@(page is "/Accounts" or "/Account" ? "page" : null)"><partial name="_AdminIcon" model='@("users")' />Comptes et accès</a>
+                        <a class="nav-item" asp-page="/Players" aria-current="@(page == "/Players" ? "page" : null)"><partial name="_AdminIcon" model='@("players")' />Joueurs en ligne</a>
+                        <a class="nav-item" asp-page="/Characters" aria-current="@(page == "/Characters" ? "page" : null)"><partial name="_AdminIcon" model='@("character")' />Personnages</a>
                     </details>
                     <details class="nav-group" open>
                         <summary>Infrastructure</summary>
-                        <a class="nav-item" asp-page="/Infrastructure" aria-current="@(page == "/Infrastructure" ? "page" : null)">Déploiement k3s</a>
-                        <a class="nav-item" asp-page="/Realms" aria-current="@(page is "/Realms" or "/Realm" or "/RealmCreate" ? "page" : null)">Realms et serveurs</a>
-                        <a class="nav-item" asp-page="/Dashboard" asp-fragment="services">État des services</a>
-                        <a class="nav-item" asp-page="/Inference" aria-current="@(page == "/Inference" ? "page" : null)">Agents LFM</a>
+                        <a class="nav-item" asp-page="/Realms" aria-current="@(page is "/Realms" or "/Realm" or "/RealmCreate" ? "page" : null)"><partial name="_AdminIcon" model='@("world")' />Realms et serveurs</a>
+                        <a class="nav-item" asp-page="/Infrastructure" aria-current="@(page == "/Infrastructure" ? "page" : null)"><partial name="_AdminIcon" model='@("servers")' />Déploiement k3s</a>
+                        <a class="nav-item" asp-page="/Dashboard" asp-fragment="services"><partial name="_AdminIcon" model='@("activity")' />État des services</a>
+                        <a class="nav-item" asp-page="/Inference" aria-current="@(page == "/Inference" ? "page" : null)"><partial name="_AdminIcon" model='@("agent")' />Agents LFM</a>
                     </details>
                     <details class="nav-group" open>
                         <summary>Contenu et support</summary>
-                        <a class="nav-item" asp-page="/Index" aria-current="@(page == "/Index" ? "page" : null)">Quêtes</a>
-                        <a class="nav-item" asp-page="/Publications" aria-current="@(page is "/Publications" or "/Publication" ? "page" : null)">Actualités et versions</a>
-                        <a class="nav-item" asp-page="/BugReports" aria-current="@(page is "/BugReports" or "/BugReport" ? "page" : null)">Signalements</a>
+                        <a class="nav-item" asp-page="/Index" aria-current="@(page == "/Index" ? "page" : null)"><partial name="_AdminIcon" model='@("quests")' />Quêtes</a>
+                        <a class="nav-item" asp-page="/Publications" aria-current="@(page is "/Publications" or "/Publication" ? "page" : null)"><partial name="_AdminIcon" model='@("news")' />Actualités et versions</a>
+                        <a class="nav-item" asp-page="/BugReports" aria-current="@(page is "/BugReports" or "/BugReport" ? "page" : null)"><partial name="_AdminIcon" model='@("reports")' />Signalements</a>
                     </details>
-                    }
-                </nav>
-            }
-            <div class="sidebar-bottom">Console opérateur
-                @if (User.Identity?.IsAuthenticated == true)
-                {
-                    <form method="post" asp-page="/Logout"><button class="logout" type="submit">Se déconnecter</button></form>
                 }
-            </div>
+            </nav>
+            <div class="sidebar-bottom"><span>Console opérateur</span><form method="post" asp-page="/Logout"><button class="logout" type="submit"><partial name="_AdminIcon" model='@("logout")' />Se déconnecter</button></form></div>
         </aside>
-        <main id="main" class="main-content" tabindex="-1"><div class="console-bar"><span>ARKYA / ADMINISTRATION</span><span>Accès opérateur</span></div>@RenderBody()</main>
+        }
+        <main id="main" class="main-content" tabindex="-1"><div class="console-bar"><span>Administration <span aria-hidden="true">/</span> @(dedicatedRealmId ?? ViewData["Title"])</span><span class="console-access"><partial name="_AdminIcon" model='@("shield")' />Accès opérateur</span></div><div class="page-content">@RenderBody()</div></main>
     </div>
 </body>
 </html>

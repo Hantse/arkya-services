@@ -238,8 +238,10 @@ Deployment__ImageReleases__0__PreviousImage: ghcr.io/hantse/arkya-mmorpg-dedicat
 ```
 
 La version est un entier positif strictement croissant par realm. Le nouveau
-digest vient exclusivement du profil autorisé, et la cible doit être liée
-explicitement au même `RealmId`. La topologie, les arguments, le protocole,
+digest vient exclusivement du profil autorisé. Le `RealmId` de la release
+doit correspondre au realm ; sa cible et son namespace restent ceux du snapshot
+enregistré. Une cible sans réservation de `RealmId` est admise, tandis qu’une
+cible explicitement épinglée à un autre realm est refusée. La topologie, les arguments, le protocole,
 les identifiants, les références de secrets et le namespace restent identiques.
 Une intention qui ne correspond pas au profil figé, à l'image précédente ou
 à une version déjà enregistrée est ignorée sans écriture ni déploiement.

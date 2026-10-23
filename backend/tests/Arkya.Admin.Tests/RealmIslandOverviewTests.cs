@@ -272,7 +272,8 @@ public sealed class RealmIslandOverviewTests
         return Regex.Matches(nav, @"<a\b[^>]*>.*?</a>", RegexOptions.Singleline).Select(match => match.Value).ToArray();
     }
 
-    private static XElement Map(string html) => XElement.Parse(Regex.Match(html, @"<svg\b[^>]*>.*?</svg>", RegexOptions.Singleline).Value);
+    private static XElement Map(string html) => XElement.Parse(Assert.Single(Regex.Matches(html,
+        @"<svg\b[^>]*\brole=""img""[^>]*>.*?</svg>", RegexOptions.Singleline).Cast<Match>()).Value);
     private static XElement[] Cells(XElement svg) => svg.Elements("g").Where(element => (string?)element.Attribute("class") == "realm-partition-cell").ToArray();
     private static void AssertRect(XElement cell, string x, string y, string width, string height)
     {

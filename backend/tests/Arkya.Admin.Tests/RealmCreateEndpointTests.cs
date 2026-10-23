@@ -12,6 +12,36 @@ public sealed class RealmCreateEndpointTests
     }
 
     [Fact]
+    public async Task ReusableTargetSelectsTheDestinationWithoutReservingTheRealmIdentity()
+    {
+        await using var factory = Factory();
+        factory.Realms.Options = factory.Realms.Options with
+        {
+            Targets = [new("beta-web", "Serveur principal", "arkya-beta-realm")]
+        };
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var html = await browser.GetStringAsync("/CreateRealm");
+        Assert.Equal("", AdminFactory.Input(html, "Input.RealmId"));
+        Assert.Equal("", AdminFactory.Input(html, "Input.DisplayName"));
+        Assert.DoesNotMatch("<input(?=[^>]*name=\"Input.ConfigureTopology\")(?=[^>]*checked)[^>]*>", html);
+        Assert.Matches("<option(?=[^>]*selected=\"selected\")(?=[^>]*value=\"beta-web\")[^>]*>", html);
+        var token = AdminFactory.Input(html, "__RequestVerificationToken");
+        using var result = await browser.PostAsync("/CreateRealm?handler=Create", AdminFactory.Form(new()
+        {
+            ["__RequestVerificationToken"] = token,
+            ["Input.RealmId"] = "nouveau-monde", ["Input.DisplayName"] = "Nouveau monde",
+            ["Input.TargetId"] = "beta-web", ["Input.ProfileId"] = "island-test",
+            ["Input.ConfigureTopology"] = "false"
+        }));
+        Assert.Equal(HttpStatusCode.Redirect, result.StatusCode);
+        Assert.Equal("/Realms/nouveau-monde", result.Headers.Location!.OriginalString);
+        var call = Assert.Single(factory.Realms.Calls, call => call.Method == HttpMethod.Post);
+        Assert.Equal("nouveau-monde", call.Body!.Value.GetProperty("realmId").GetString());
+        Assert.Equal("beta-web", call.Body.Value.GetProperty("targetId").GetString());
+    }
+
+    [Fact]
     public async Task InventoryLinksToDedicatedCreationWithoutLoadingOrRenderingTheForm()
     {
         await using var factory = Factory();

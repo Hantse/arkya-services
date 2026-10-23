@@ -6,6 +6,24 @@ Les formulaires héritent de la session administrateur et de l’antiforgery.
 L’opérateur vient de la session, jamais d’un champ modifiable du navigateur.
 Chaque action demande un motif et conserve son résultat dans un historique.
 
+## Choisir le realm et sa cible
+
+La cible **Serveur principal** n’impose plus l’identifiant `beta-web`.
+L’opérateur choisit le nom et l’identifiant du nouveau realm, puis une cible
+et un profil disponibles. La cible unique est présélectionnée sans remplir
+l’identité du realm. Avec un profil sans prise en charge de topologie variable,
+le formulaire propose sa configuration fixe pour que le realm soit déployable.
+Les destinations restent celles approuvées côté serveur :
+aucun namespace ni serveur Kubernetes arbitraire n’est fourni par le navigateur.
+
+Chaque cible et namespace accepte un seul realm actif. Un autre realm peut
+réutiliser la destination après suppression complète de son prédécesseur ;
+l’ancien identifiant et les personnages restent conservés. L’authentification
+dedicated et le routage WSS suivent le nouveau realm sur cette destination.
+Le chemin historique `/game/beta-web/` désigne la destination de transport,
+pas une restriction de nom du nouveau monde. Plusieurs realms simultanés
+exigent plusieurs cibles et namespaces configurés avec leur routage.
+
 ## Navigation de l’admin
 
 `/Realms` affiche uniquement la liste des royaumes. **Créer un royaume** ouvre
@@ -159,7 +177,8 @@ pas de les transférer automatiquement. L’identifiant du royaume reste réserv
 définitivement pour qu’un nouveau royaume n’hérite pas de ces personnages.
 La cible et le namespace peuvent être réutilisés après nettoyage avec un
 autre identifiant, si leur configuration l’autorise. Une cible explicitement
-liée à l’ancien `RealmId`, comme `beta-web`, doit d’abord être reconfigurée.
+liée à l’ancien `RealmId` doit d’abord être reconfigurée. La cible actuelle
+**Serveur principal** n’a pas cette restriction.
 Les entrées standalone et les intentions de mise à jour ne ressuscitent pas
 un royaume supprimé.
 
@@ -290,7 +309,8 @@ canal ; configurer une origine HTTPS. Les redirections HTTP sont refusées.
 Le mode local de test accepte explicitement le loopback HTTP.
 
 Le composant GitOps `realm-control` autorise uniquement les pods identifiés
-`beta-web/island` du namespace `arkya-beta-realm` à contacter Realms sur 8080.
+comme serveur `island` géré par Realms dans le namespace `arkya-beta-realm`
+à contacter Realms sur 8080.
 Realms contrôle également le pair réseau privé et la clé dédiée. Cette règle
 n’ouvre aucun listener supplémentaire dans le dedicated et ne change pas son
 manifeste Kubernetes figé.

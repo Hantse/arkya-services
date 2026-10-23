@@ -56,10 +56,13 @@ Les modules Admin sont activés :
   MongoDB `arkya_content`.
 - **Realms** : accès à l'API et au catalogue opérateur persistant dans
   `arkya_realms`. `Deployment__Enabled=true` active la cible `beta-web`,
-  réservée au realm `beta-web` dans `arkya-beta-realm`. Le profil homonyme
+  réutilisable par tout realm valide dans `arkya-beta-realm`. Le profil technique `beta-web`
   épingle l'image Linux et lance `island` sur TCP `17943`. La route WSS
   passe par `wss://api.arkya.online/game/beta-web/` ; le catalogue ne la
   marque prête qu'après la disponibilité réelle du dedicated.
+  Une seule définition active réserve cette cible ; après suppression complète,
+  un nouveau realm peut l’occuper. Characters résout ses identifiants depuis
+  le catalogue privé, sans ajout manuel de clé.
 - **Dashboard et joueurs** : état des services, realms et présence,
   recherche des comptes et personnages, bans/unbans et droits bêta.
   Identity possède les mutations de compte ; Characters conserve les
@@ -139,7 +142,7 @@ Admin et côté API :
 | `Realms__ServiceKey` dans Characters | `arkya-realms-secrets` | `GameAccess__ServiceKey` |
 
 Les clés administrateur Identity/Characters, la clé interne Characters et
-la clé dédiée liée au couple `beta-web/island`
+les clés dédiées liées aux couples realm/serveur du catalogue privé
 restent distinctes de leurs graines et entre elles. Elles sont stables tant
 que les graines restent identiques ; une rotation des clés source exige donc
 le redémarrage coordonné des consommateurs. Aucune valeur n'est affichée.
@@ -341,9 +344,10 @@ Les autres profils conservent leurs exigences HTTPS par défaut.
 
 ## Lancer l'île bêta
 
-Dans **Infrastructure → Realms**, créer `beta-web` avec la cible et le profil
-`beta-web`, puis lancer le déploiement. Le namespace est lié à cet ID ;
-une autre identité est refusée pour cette cible. Le dedicated utilise
+Dans **Infrastructure → Realms**, choisir un nom et un identifiant de realm,
+la cible **Serveur principal** et le profil **Île de départ · serveur WebSocket**,
+puis lancer le déploiement. La cible n’impose plus `beta-web` comme identifiant ;
+son namespace reste exclusif à un seul realm actif. Le dedicated utilise
 `ARKYA_ALLOW_CLUSTER_HTTP=1` vers l'origine Characters Kubernetes complète,
 avec une clé liée à son realm et serveur. Characters limite ce transport
 privé aux routes `/internal/game`, au réseau direct autorisé et à la clé

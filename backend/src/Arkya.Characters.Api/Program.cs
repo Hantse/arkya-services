@@ -29,10 +29,20 @@ public partial class Program
             cors.AddPolicy(BrowserClientOptions.Policy, policy => policy.WithOrigins(web.Value.AllowedOrigins)
                 .WithMethods("GET", "POST").WithHeaders("Authorization", "Content-Type")));
         builder.Services.AddOptions<RealmClientOptions>().BindConfiguration("Realms")
-            .Validate(value => value.IsValid(builder.Environment.IsDevelopment()), "Realm catalogue URL/key configuration is invalid.").ValidateOnStart();
+            .Validate(value => value.IsValid(builder.Environment.IsDevelopment()), "Realm catalogue URL/key configuration is invalid.")
+            .Validate(value => !builder.Configuration.GetValue<bool>("RealmRuntime:DynamicRealmsEnabled") || value.BaseUrl.Length > 0,
+                "Dynamic dedicated credentials require the authenticated realm catalogue.").ValidateOnStart();
+        builder.Services.AddOptions<CharacterRealmRuntimeOptions>().BindConfiguration("RealmRuntime")
+            .Validate(value => value.IsValid(), "Dynamic dedicated credentials require a valid secret seed.").ValidateOnStart();
         builder.Services.AddOptions<CharacterGameAccessOptions>().BindConfiguration("GameAccess")
             .Configure<IConfiguration>((value, configuration) =>
             {
+                if (configuration.GetValue<bool>("RealmRuntime:DynamicRealmsEnabled"))
+                {
+                    if (value.DedicatedServers.Length != 0)
+                        throw new InvalidOperationException("Dynamic dedicated credentials cannot be combined with explicit dedicated identities.");
+                    return;
+                }
                 if (configuration["RealmRuntime:DedicatedKeySeed"] is null) return;
                 // Options are also created by startup validation; keep derived credentials in a local copy.
                 using var runtime = new ConfigurationManager();
@@ -42,7 +52,7 @@ public partial class Program
                 runtime.GetSection("GameAccess").Bind(value);
             })
             .Validate(value => value.IsValid(), "Dedicated identities require unique keys and realm/server bindings.").ValidateOnStart();
-        builder.Services.AddSingleton<DedicatedKeyValidator>();
+        builder.Services.AddScoped<DedicatedKeyValidator>();
         builder.Services.AddOptions<CharacterAdminOptions>().BindConfiguration("AdminAuthentication")
             .Validate(options => options.Key.Length == 0 || options.Key.Length is >= 32 and <= 512,
                 "AdminAuthentication:Key must be empty to disable administration, or contain 32 to 512 characters.")

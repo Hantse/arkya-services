@@ -138,6 +138,60 @@ public sealed class RealmRuntimeReleaseTests
         Assert.False(options.IsValid());
     }
 
+    [Fact]
+    public async Task RuntimeMigrationSupportsAnUnboundApprovedTarget()
+    {
+        var (original, options) = Configuration();
+        options.Targets[0].RealmId = null;
+        Assert.True(options.IsValid());
+        var repository = new MemoryRealmRepository();
+        await repository.TryCreateAsync(original, default);
+        var pending = await RealmRuntimeReleases.PrepareAsync(original, repository, options, new TestClock(), default);
+        Assert.NotNull(pending);
+        Assert.NotNull(pending.RuntimeRelease);
+        Assert.Equal(original.TargetId, pending.TargetId);
+        Assert.Equal(original.Namespace, pending.Namespace);
+        Assert.True(RealmRuntimeReleases.Authorizes(options, pending));
+    }
+
+    [Fact]
+    public void RuntimeReleaseAcceptsMultipleUnboundTargetsAndRejectsMismatchedOrDuplicatePins()
+    {
+        var (_, options) = Configuration();
+        options.Targets[0].RealmId = "other-realm";
+        Assert.False(options.IsValid());
+        options.Targets[0].RealmId = null;
+        options.Targets = [options.Targets[0], new()
+        {
+            Id = "realm-eu-two", DisplayName = "EU two", Namespace = "arkya-realm-eu-two"
+        }];
+        Assert.True(options.IsValid());
+        options.Targets[0].RealmId = options.RuntimeReleases[0].RealmId;
+        options.Targets[1].RealmId = options.RuntimeReleases[0].RealmId;
+        Assert.False(options.IsValid());
+    }
+
+    [Theory]
+    [InlineData("realm")]
+    [InlineData("target")]
+    [InlineData("namespace")]
+    [InlineData("pin")]
+    public void UnboundRuntimeReleaseStillRequiresItsRealmAndExactApprovedDestination(string change)
+    {
+        var (realm, options) = Configuration();
+        options.Targets[0].RealmId = null;
+        var release = options.RuntimeReleases[0];
+        Assert.NotNull(RealmRuntimeReleases.ApprovedProfile(options, realm, release));
+        switch (change)
+        {
+            case "realm": realm = realm with { RealmId = "another-realm" }; break;
+            case "target": realm = realm with { TargetId = "another-target" }; break;
+            case "namespace": realm = realm with { Namespace = "another-namespace" }; break;
+            case "pin": options.Targets[0].RealmId = "another-realm"; break;
+        }
+        Assert.Null(RealmRuntimeReleases.ApprovedProfile(options, realm, release));
+    }
+
     internal static (RealmRecord Realm, DeploymentOptions Options) Configuration()
     {
         var realm = Fixtures.Realm(RealmStatus.Ready) with { ImageRelease = new(3, "registry.example/arkya/dedicated@sha256:" + new string('b', 64), Fixtures.Image) };

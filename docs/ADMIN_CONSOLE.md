@@ -16,6 +16,20 @@ les colonnes X et les lignes Y avec une prévisualisation immédiate ; Y désign
 le Z du monde Unity. Une zone correspond à un dédié. Voir
 [le plan et ses limites](REALM_DEPLOYMENT.md).
 
+## Présentation de la console
+
+L’admin reprend la référence sombre fournie le 23 octobre 2026 : fond anthracite,
+panneaux sobres, séparations fines et accent orange. Un bandeau supérieur porte
+la marque, le retour au site et l’identité de l’opérateur. La navigation latérale
+compacte utilise des icônes SVG et des groupes repliables. Les tableaux restent
+denses ; les états conservent leur texte et une couleur sémantique.
+
+Le menu peut être masqué sur ordinateur et ouvert sur mobile sans script.
+Les pages centrales, l’espace dédié au realm, la connexion, les formulaires et
+les aperçus des îles utilisent le même thème. Les fonctions et règles d’accès
+restent celles des pages existantes ; aucune donnée de démonstration n’est
+ajoutée à l’application.
+
 ## Navigation
 
 | Menu | Écrans et actions |

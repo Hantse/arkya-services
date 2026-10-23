@@ -18,7 +18,7 @@ public sealed class DeploymentOptions
 
     public bool IsValid() => Targets is not null && Profiles is not null && ImageReleases is not null && RuntimeReleases is not null &&
         RuntimeReleases.Length <= 100 && RuntimeReleases.All(release => release is not null && release.IsValid() &&
-            Targets.Count(target => target is not null && target.RealmId == release.RealmId) == 1 &&
+            HasReleaseTarget(release.RealmId) &&
             Profiles.Any(profile => profile is not null && profile.Id == release.ProfileId)) &&
         RuntimeReleases.Select(release => release.RealmId).Distinct().Count() == RuntimeReleases.Length &&
         Targets.Length <= 100 && Profiles.Length <= 50 && ImageReleases.Length <= 100 &&
@@ -33,10 +33,17 @@ public sealed class DeploymentOptions
         Profiles.All(profile => profile is not null && profile.IsValid()) &&
         Profiles.Select(profile => profile.Id).Distinct().Count() == Profiles.Length &&
         ImageReleases.All(release => release is not null && release.IsValid() &&
-            Targets.Count(target => target.RealmId == release.RealmId) == 1 &&
+            HasReleaseTarget(release.RealmId) &&
             Profiles.Any(profile => profile.Id == release.ProfileId && profile.Image != release.PreviousImage)) &&
         ImageReleases.Select(release => release.RealmId).Distinct().Count() == ImageReleases.Length &&
         (!Enabled || Targets.Length > 0 && Profiles.Length > 0);
+
+    private bool HasReleaseTarget(string realmId)
+    {
+        var pinnedTargets = Targets.Count(target => target is not null && target.RealmId == realmId);
+        // The persisted realm selects its exact target and namespace when a release is applied.
+        return pinnedTargets == 1 || pinnedTargets == 0 && Targets.Any(target => target is not null && target.RealmId is null);
+    }
 
     public static bool ValidId(string? value) => value is not null && Regex.IsMatch(value, @"\A[a-z][a-z0-9-]{1,29}[a-z0-9]\z", RegexOptions.CultureInvariant);
     public static bool ValidNamespace(string? value) => value is not null && value.Length <= 63 && Regex.IsMatch(value, @"\A[a-z0-9]([a-z0-9-]*[a-z0-9])?\z", RegexOptions.CultureInvariant) &&

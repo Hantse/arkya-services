@@ -21,13 +21,16 @@ public sealed class RealmCreateModel(RealmsAdminClient realms) : PageModel
     public async Task<IActionResult> OnGetAsync(CancellationToken ct)
     {
         await LoadAsync(ct);
-        Input.ConfigureTopology = true;
+        Input.ConfigureTopology = Options.Profiles is not [{ TopologySupported: false }];
         Input.Islands = [new() { UseGrid = true, GridColumns = 2, GridRows = 2, Width = 1536, Depth = 1536 }];
-        if (Options.Targets is [{ RealmId: { } realmId } target])
+        if (Options.Targets is [var target])
         {
-            Input.RealmId = realmId;
             Input.TargetId = target.Id;
-            Input.DisplayName = target.DisplayName;
+            if (target.RealmId is { } realmId)
+            {
+                Input.RealmId = realmId;
+                Input.DisplayName = target.DisplayName;
+            }
         }
         if (Options.Profiles is [var profile]) Input.ProfileId = profile.Id;
         if (EditRealmId is not null)

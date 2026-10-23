@@ -1,6 +1,7 @@
 using System.Text.Json.Nodes;
 using Arkya.Realms.Api.Application;
 using Arkya.Realms.Api.Contracts;
+using Arkya.Realms.Api.Domain;
 using Arkya.Realms.Api.Infrastructure;
 using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
@@ -79,5 +80,29 @@ public sealed class RealmRuntimeTests
         Assert.Equal("target_realm_mismatch", invalid.Error);
         Assert.Empty(await repository.ListAsync(default));
         Assert.NotNull((await service.CreateAsync(new("beta-web", "Beta", "realm-eu-one", "island-v1"), default)).Realm);
+    }
+
+    [Fact]
+    public async Task UnboundTargetCanDeployAnotherRealmWithoutApplyingTheBetaRelease()
+    {
+        var options = Fixtures.Options();
+        options.ImageReleases = [new() { RealmId = "beta-web", ProfileId = "island-v1", Version = 1,
+            PreviousImage = "registry.example/arkya/dedicated@sha256:" + new string('a', 64) }];
+        Assert.True(options.IsValid());
+        var repository = new MemoryRealmRepository();
+        var service = new RealmService(repository, Options.Create(options), new TestClock());
+        Assert.Null(Assert.Single(service.GetOptions().Targets).RealmId);
+        var created = await service.CreateAsync(new("custom-world", "Custom world", "realm-eu-one", "island-v1"), default);
+        Assert.Null(created.Error);
+        var pending = await service.RequestDeploymentAsync("custom-world", created.Realm!.Revision, default);
+        Assert.Null(pending.Error);
+        var deployer = new StubDeployer();
+        await new RealmReconciler(repository, deployer, Options.Create(options), new TestClock()).ReconcileAsync(pending.Realm!, default);
+        var ready = await repository.FindAsync("custom-world", default);
+        Assert.Equal(RealmStatus.Ready, ready!.Status);
+        Assert.Null(ready.ImageRelease);
+        Assert.Equal("realm-eu-one", ready.TargetId);
+        Assert.Equal("arkya-realm-eu-one", ready.Namespace);
+        Assert.Equal(1, deployer.Calls);
     }
 }

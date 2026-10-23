@@ -25,7 +25,8 @@ public static class GameAdmissionEndpoints
         internalApi.AddEndpointFilter(async (context, next) =>
         {
             var values = context.HttpContext.Request.Headers["X-Arkya-Dedicated-Key"];
-            var server = values.Count == 1 ? context.HttpContext.RequestServices.GetRequiredService<DedicatedKeyValidator>().Resolve(values[0]) : null;
+            var server = values.Count == 1 ? await context.HttpContext.RequestServices.GetRequiredService<DedicatedKeyValidator>()
+                .ResolveAsync(values[0], context.HttpContext.RequestAborted) : null;
             if (server is null) return Results.Json(new { code = "dedicated_forbidden" }, statusCode: 403);
             context.HttpContext.Items[typeof(DedicatedServerIdentity)] = server;
             return await next(context);

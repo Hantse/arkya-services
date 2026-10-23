@@ -35,8 +35,12 @@ La route **`wss://api.arkya.online/game/beta-web/`** passe par le Traefik
 externe et la gateway YARP existants, puis rejoint le Service privé
 `arkya-beta-web-island.arkya-beta-realm.svc.cluster.local:17943`.
 YARP retire le préfixe `/game/beta-web` avant de joindre le listener Unity.
-Le sélecteur du Service suit les labels Realms
-`beta-web/island`, sans dépendre du nom aléatoire généré pour le Deployment.
+Le sélecteur du Service suit les labels `managed-by: arkya-realms` et
+`server-id: island` dans le namespace approuvé, sans dépendre du nom du realm
+ni du nom aléatoire généré pour le Deployment. La réservation MongoDB interdit
+plusieurs realms actifs sur cette cible et ce namespace. Après nettoyage
+confirmé, un nouveau realm avec un autre identifiant peut réutiliser cette
+destination. Le préfixe `/game/beta-web/` reste un alias de transport historique.
 L'accès TCP au dedicated est réservé aux pods `arkya-gateway` de `arkya-beta`.
 Les autres pods du namespace n'acceptent aucune connexion entrante.
 Le dedicated peut joindre Characters pour l'admission et les sauvegardes ;
@@ -104,7 +108,8 @@ Avant les workloads, Realms crée le Secret Opaque fixe `arkya-dedicated`
 dans le namespace du realm ; ses entrées sont indexées par ID de serveur
 (`island` pour ce profil). Le Deployment reçoit seulement un `secretKeyRef`
 pour `ARKYA_DEDICATED_KEY`, jamais une valeur de clé en clair dans son YAML.
-Characters dérive la même clé pour `beta-web/island`. La valeur ne figure
+Characters dérive la même clé pour le couple realm/serveur présent dans le
+catalogue privé. La valeur ne figure
 ni dans Git, ni dans les logs, ni dans les DTO, ni dans le profil MongoDB ;
 aucun Secret de clé dédiée n'est à recopier manuellement dans la cible.
 
@@ -165,6 +170,6 @@ kubectl kustomize D:\Repositories\arkya\backend\deploy\gitops\admin
 
 Après synchronisation Argo et disponibilité du Secret source,
 vérifier la route TLS puis
-créer et lancer **`beta-web`** avec le profil de l'île depuis l'admin.
+créer et lancer un realm sur la cible libre avec le profil de l'île depuis l'admin.
 Le Service stable n'a aucun endpoint tant que le dedicated n'a pas
 terminé le chargement du terrain et créé `/tmp/arkya-ready`.

@@ -22,12 +22,12 @@ public sealed class RealmImageReleaseOptionsTests
     }
 
     [Fact]
-    public void ImageReleaseRequiresOneTargetBoundToTheExactRealm()
+    public void ImageReleaseAcceptsAnUnboundTargetButRejectsMismatchedOrDuplicatePins()
     {
         var options = ReleaseOptions();
         Assert.True(options.IsValid());
         options.Targets[0].RealmId = null;
-        Assert.False(options.IsValid());
+        Assert.True(options.IsValid());
         options.Targets[0].RealmId = "eu-two";
         Assert.False(options.IsValid());
         options.Targets[0].RealmId = "eu-one";
@@ -36,6 +36,42 @@ public sealed class RealmImageReleaseOptionsTests
             Id = "realm-eu-two", DisplayName = "EU two", Namespace = "arkya-realm-eu-two", RealmId = "eu-one"
         }];
         Assert.False(options.IsValid());
+    }
+
+    [Fact]
+    public void ImageReleaseCanUseMultipleApprovedUnboundTargets()
+    {
+        var options = ReleaseOptions();
+        options.Targets[0].RealmId = null;
+        options.Targets = [options.Targets[0], new()
+        {
+            Id = "realm-eu-two", DisplayName = "EU two", Namespace = "arkya-realm-eu-two"
+        }];
+        Assert.True(options.IsValid());
+        var realm = Fixtures.Realm() with { TargetId = "realm-eu-two", Namespace = "arkya-realm-eu-two" };
+        Assert.Same(options.Profiles[0], RealmImageReleases.AllowedProfile(options, realm, options.ImageReleases[0]));
+    }
+
+    [Theory]
+    [InlineData("realm")]
+    [InlineData("target")]
+    [InlineData("namespace")]
+    [InlineData("pin")]
+    public void UnboundImageReleaseStillRequiresItsRealmAndExactApprovedDestination(string change)
+    {
+        var options = ReleaseOptions();
+        options.Targets[0].RealmId = null;
+        var realm = Fixtures.Realm();
+        var release = options.ImageReleases[0];
+        Assert.Same(options.Profiles[0], RealmImageReleases.AllowedProfile(options, realm, release));
+        switch (change)
+        {
+            case "realm": realm = realm with { RealmId = "another-realm" }; break;
+            case "target": realm = realm with { TargetId = "another-target" }; break;
+            case "namespace": realm = realm with { Namespace = "another-namespace" }; break;
+            case "pin": options.Targets[0].RealmId = "another-realm"; break;
+        }
+        Assert.Null(RealmImageReleases.AllowedProfile(options, realm, release));
     }
 
     [Fact]
