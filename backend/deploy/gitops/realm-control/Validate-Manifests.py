@@ -15,7 +15,6 @@ NS = "arkya-beta-realm"
 OPERATIONS = "arkya-beta"
 GAME = {
     "app.kubernetes.io/managed-by": "arkya-realms",
-    "arkya.online/realm-id": "beta-web",
     "arkya.online/server-id": "island",
 }
 
@@ -49,7 +48,7 @@ def check_profile(documents):
     require(service["spec"] == {
         "type": "ClusterIP", "selector": GAME,
         "ports": [{"name": "game", "port": 17943, "targetPort": 17943, "protocol": "TCP"}],
-    }, "Public WSS routing must select only the configured beta island through a private TCP Service")
+    }, "Public WSS routing must select only the managed island on the exclusive deployment target through a private TCP Service")
     deny = resources[("NetworkPolicy", NS, "arkya-realm-default-deny")]["spec"]
     require(deny == {"podSelector": {}, "policyTypes": ["Ingress"], "ingress": []},
             "Unselected realm pods must have no inbound access")
@@ -77,7 +76,7 @@ def check_profile(documents):
         "ingress": [{"from": [{"namespaceSelector": {"matchLabels": {
             "kubernetes.io/metadata.name": NS}}, "podSelector": {"matchLabels": GAME}}],
             "ports": [{"port": 8080, "protocol": "TCP"}]}],
-    }, "Only the exact dedicated realm/server may poll the internal Realms command API")
+    }, "Only the managed island in the approved realm namespace may poll the internal Realms command API")
     return resources
 
 

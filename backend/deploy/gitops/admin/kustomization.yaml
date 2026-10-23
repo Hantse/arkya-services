@@ -120,6 +120,7 @@ patches:
       Realms__AllowClusterHttp: 'true'
       GameAccess__RequireBetaAccess: 'true'
       GameAccess__AllowPrivateHttp: 'true'
+      RealmRuntime__DynamicRealmsEnabled: 'true'
       RealmRuntime__RealmId: beta-web
       RealmRuntime__ServerId: island
       GameAccess__DedicatedServers__0__RealmId: null
@@ -152,11 +153,10 @@ patches:
       Deployment__TokenFile: /var/run/secrets/arkya-kubernetes/token
       Deployment__CertificateAuthorityFile: /var/run/secrets/arkya-kubernetes/ca.crt
       Deployment__Targets__0__Id: beta-web
-      Deployment__Targets__0__DisplayName: Bêta web
+      Deployment__Targets__0__DisplayName: Serveur principal
       Deployment__Targets__0__Namespace: arkya-beta-realm
-      Deployment__Targets__0__RealmId: beta-web
       Deployment__Profiles__0__Id: beta-web
-      Deployment__Profiles__0__DisplayName: Île bêta · serveur WebSocket
+      Deployment__Profiles__0__DisplayName: Île de départ · serveur WebSocket
       Deployment__Profiles__0__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:50420fc55c7c7e75448e38a2e92098eb050fe84ef43dce66af4cdcc5c1da5a75
       Deployment__Profiles__0__ImagePullSecretName: arkya-ghcr
       Deployment__ImageReleases__0__RealmId: beta-web

@@ -479,9 +479,9 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
             "Characters must use private Identity introspection and enforce beta rights")
     require(characters["Realms__BaseUrl"] == f"http://arkya-realms.{NS}.svc.cluster.local:8080/" and
             characters["Realms__AllowClusterHttp"] == "true" and characters["GameAccess__AllowPrivateHttp"] == "true" and
-            characters["RealmRuntime__RealmId"] == "beta-web" and characters["RealmRuntime__ServerId"] == "island" and
+            characters["RealmRuntime__DynamicRealmsEnabled"] == "true" and
             not any(k.startswith("GameAccess__DedicatedServers__") for k in characters),
-            "Characters must use the private Realms catalogue and derive its exact dedicated identity from the existing seed")
+            "Characters must derive dedicated identities from the private Realms catalogue and the existing seed")
     realms = configs["realms"]
     require(realms["Deployment__Enabled"] == "true" and
             realms["Deployment__DeploymentTimeoutSeconds"] == "900" and
@@ -494,12 +494,12 @@ def check_profile(documents, frontend_documents=None, beta_documents=None, requi
             realms["RealmRuntime__AllowClusterHttp"] == "true",
             "Realms must deploy through verified Kubernetes TLS with explicitly configured private Characters transport")
     require({k.removeprefix("Deployment__Targets__"): v for k, v in realms.items() if k.startswith("Deployment__Targets__")} == {
-        "0__Id": "beta-web", "0__DisplayName": "Bêta web", "0__Namespace": REALM_NS, "0__RealmId": "beta-web"},
-        "The only deployment target must bind beta-web to the exact user-approved namespace")
+        "0__Id": "beta-web", "0__DisplayName": "Serveur principal", "0__Namespace": REALM_NS},
+        "The reusable deployment target must bind the approved namespace without reserving a realm ID")
     profile = {k.removeprefix("Deployment__Profiles__"): v for k, v in realms.items() if k.startswith("Deployment__Profiles__")}
     image = profile.pop("0__Image", "")
     require(re.fullmatch(DEDICATED_IMAGE_PATTERN, image) and profile == {
-        "0__Id": "beta-web", "0__DisplayName": "Île bêta · serveur WebSocket", "0__Servers__0__Id": "island",
+        "0__Id": "beta-web", "0__DisplayName": "Île de départ · serveur WebSocket", "0__Servers__0__Id": "island",
         "0__ImagePullSecretName": "arkya-ghcr",
         "0__Servers__0__Port": "17943", "0__Servers__0__Transport": "WebSocket", "0__Servers__0__PublicEndpoint": GAME_ENDPOINT,
         "0__Servers__0__ProtocolVersion": "1", "0__Servers__0__BuildId": "arkya-web-beta-v1"},
