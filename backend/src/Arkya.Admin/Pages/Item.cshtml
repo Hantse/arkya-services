@@ -4,7 +4,7 @@
     ViewData["Title"] = Model.ItemId is null ? "Create an item" : "Edit item";
 }
 <a class="text-link" asp-page="/Items">← Item catalogue</a>
-<header class="page-header item-editor-header"><div><div class="eyebrow">WORLD / ITEMS</div><h1>@ViewData["Title"]</h1><p class="intro">Define the item and associate it with a model from the Unity library.</p></div>@if (Model.Loaded) { <span class="badge">Draft · Revision @Model.Revision</span> }</header>
+<header class="page-header item-editor-header"><div><div class="eyebrow">WORLD / ITEMS</div><h1>@(Model.ItemId is null ? "Create an item" : Model.Input.Name)</h1><p class="intro">Define its properties, appearance and mob loot sources.</p></div>@if (Model.Loaded) { <span class="badge">Draft · Revision @Model.Revision</span> }</header>
 @if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice <a asp-page="/Items">Open catalogue</a></div> }
 @if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Item" asp-route-id="@Model.ItemId">Reload saved draft</a></div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
@@ -13,6 +13,8 @@
     <form method="post" asp-page-handler="Save" asp-route-id="@Model.ItemId" class="item-editor" data-item-editor>
         <input type="hidden" asp-for="Revision" />
         <input type="hidden" asp-for="Input.VisualAssetGuid" data-asset-guid />
+        <nav class="item-editor-navigation" aria-label="Item sections"><a href="#identity-heading">01 · Details</a><a href="#loot-heading">02 · Loot sources</a><a href="#model-heading">03 · Unity model</a></nav>
+        <div class="item-editor-main">
         <section class="panel item-fields" aria-labelledby="identity-heading">
             <div class="section-heading"><h2 id="identity-heading">Item details</h2></div>
             <div class="field"><label asp-for="Input.Name">Name</label><input asp-for="Input.Name" maxlength="120" required placeholder="Aubefont sword" /></div>
@@ -32,6 +34,26 @@
             </div>
             <div class="field"><label asp-for="Input.MaxStack">Maximum quantity per slot</label><input asp-for="Input.MaxStack" type="number" min="1" max="9999" required data-item-stack /><small>Weapons, armour and tools use one slot per item (1).</small></div>
         </section>
+        <section class="panel item-loot" id="drop-sources" aria-labelledby="loot-heading" data-loot-editor>
+            <div class="section-heading"><div><span class="eyebrow">ACQUISITION</span><h2 id="loot-heading">Mob loot sources</h2></div><span class="badge">Per defeated mob</span></div>
+            <p class="muted">Link a mob and set its chance to drop this item. Each source has its own percentage.</p>
+            @if (Model.MobError is not null) { <div class="alert error" role="alert">@Model.MobError</div> }
+            <div data-drop-rows>
+                @for (var index = 0; index < Model.Input.DropSources.Count; index++)
+                {
+                    <div class="item-drop-row" data-drop-row>
+                        <div class="field"><label asp-for="Input.DropSources[index].MobId">Mob</label><select asp-for="Input.DropSources[index].MobId" data-drop-mob><option value="">Choose a mob…</option>@foreach (var mob in Model.Mobs) { <option value="@mob.MobId">@mob.Name</option> }@if (!string.IsNullOrEmpty(Model.Input.DropSources[index].MobId) && !Model.Mobs.Any(m => m.MobId == Model.Input.DropSources[index].MobId)) { <option value="@Model.Input.DropSources[index].MobId">Unavailable · @Model.Input.DropSources[index].MobId</option> }</select><span asp-validation-for="Input.DropSources[index].MobId" class="field-validation-error"></span></div>
+                        <div class="field"><label asp-for="Input.DropSources[index].ChancePercent">Drop chance</label><div class="item-percent-input"><input asp-for="Input.DropSources[index].ChancePercent" type="text" inputmode="decimal" maxlength="16" placeholder="12.5" data-drop-chance aria-describedby="loot-chance-help" /><span>%</span></div><span asp-validation-for="Input.DropSources[index].ChancePercent" class="field-validation-error"></span></div>
+                        <button type="button" class="button secondary item-drop-remove" data-drop-remove aria-label="Remove this mob loot source">Remove</button>
+                    </div>
+                }
+            </div>
+            <template data-drop-template><div class="item-drop-row" data-drop-row><div class="field"><label>Mob</label><select data-drop-mob><option value="">Choose a mob…</option>@foreach (var mob in Model.Mobs) { <option value="@mob.MobId">@mob.Name</option> }</select></div><div class="field"><label>Drop chance</label><div class="item-percent-input"><input type="text" inputmode="decimal" maxlength="16" placeholder="12.5" data-drop-chance aria-describedby="loot-chance-help" /><span>%</span></div></div><button type="button" class="button secondary item-drop-remove" data-drop-remove aria-label="Remove this mob loot source">Remove</button></div></template>
+            <div class="item-loot-actions"><button type="button" class="button secondary" data-drop-add disabled="@(Model.MobError is not null || Model.Mobs.Length == 0)">+ Link a mob</button><small id="loot-chance-help">0.01–100%. Use up to two decimal places.</small></div>
+            <p class="muted item-drop-status" role="status" data-drop-status></p>
+            <noscript><p class="muted">Fill the row to link a mob. Enable JavaScript to add or remove more sources.</p></noscript>
+        </section>
+        </div>
         <section class="panel item-models" aria-labelledby="model-heading" data-item-assets data-assets-url="@Url.Page("/Item", "Assets")" data-thumbnail-url="@Url.Page("/Item", "Thumbnail")">
             <div class="section-heading"><h2 id="model-heading">Unity model</h2><span class="badge">Prefab · FBX · OBJ</span></div>
             <p class="muted item-model-intro">Choose this item's appearance from models exported from Unity.</p>
@@ -57,7 +79,7 @@
             <div class="item-asset-pagination"><button type="button" class="button secondary" data-asset-previous disabled>Previous</button><button type="button" class="button secondary" data-asset-next disabled="@(!Model.Assets.HasMore)">Next</button></div>
             <noscript><p class="alert error">Enable JavaScript to choose a model from the library. You can still edit an item that already has a model.</p></noscript>
         </section>
-        <div class="panel item-save-bar"><p>Save this item, then publish the catalogue from the item list.</p><a class="button secondary" asp-page="/Items">Back to catalogue</a><button type="submit" class="button primary">@(Model.ItemId is null ? "Create draft" : "Save item")</button></div>
+        <div class="panel item-save-bar"><p>Changes are saved to the draft.<br /><small>Publish the catalogue when your items are ready.</small></p><a class="button secondary" asp-page="/Items">Back to catalogue</a><button type="submit" class="button primary">@(Model.ItemId is null ? "Create draft" : "Save item")</button></div>
     </form>
     <script src="~/items.js" asp-append-version="true" defer></script>
 }

@@ -1,4 +1,5 @@
 using Arkya.Content.Api.Domain;
+using Arkya.Content.Api.Application;
 using Arkya.Content.Api.Infrastructure.Persistence;
 using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
@@ -9,6 +10,40 @@ namespace Arkya.Content.Tests;
 
 public sealed class MongoItemContentRepositoryTests
 {
+    [MongoFact]
+    public async Task DropSourcesPersistAcrossRestartAndLegacyDocumentsDefaultToNoDrops()
+    {
+        var databaseName = $"arkya_item_drops_test_{Guid.NewGuid():N}";
+        var client = new MongoClient(Environment.GetEnvironmentVariable("ARKYA_TEST_MONGO"));
+        MongoItemContentRepository Repository() => new(client, Options.Create(new MongoOptions { DatabaseName = databaseName }));
+        var ct = CancellationToken.None;
+        try
+        {
+            var repository = Repository();
+            await repository.InitializeAsync(ct);
+            var item = ItemFixtures.Definition() with { DropSources = [new(ContentService.SupportedEnemyId, 1234)] };
+            await repository.TrySaveDraftAsync(0, [item], ct);
+            var publication = await repository.PublishAsync(1,
+                [new PublishedItem(item, ItemFixtures.Asset().AssetPath, ItemFixtures.Hash)], FixedTimeProvider.Now, ct);
+            await repository.TrySaveDraftAsync(1, [item with { DropSources = [] }], ct);
+
+            var restarted = Repository();
+            Assert.Empty(Assert.Single((await restarted.GetDraftAsync(ct)).Items).DropSources);
+            var frozen = (await restarted.FindCatalogAsync(publication.Catalog!.Version, ct))!;
+            Assert.Equal(new ItemDropSource(ContentService.SupportedEnemyId, 1234), Assert.Single(Assert.Single(frozen.Items).Definition.DropSources));
+
+            var documents = client.GetDatabase(databaseName).GetCollection<BsonDocument>("item_revisions");
+            await documents.UpdateOneAsync(Builders<BsonDocument>.Filter.Eq("_id", 2L),
+                Builders<BsonDocument>.Update.Unset("Items.0.DropSources"), cancellationToken: ct);
+            await documents.UpdateOneAsync(Builders<BsonDocument>.Filter.Eq("_id", 1L),
+                Builders<BsonDocument>.Update.Unset("PublishedItems.0.Definition.DropSources"), cancellationToken: ct);
+            Assert.Empty(Assert.Single((await restarted.GetDraftAsync(ct)).Items).DropSources);
+            var legacy = (await restarted.FindCatalogAsync(publication.Catalog.Version, ct))!;
+            Assert.Empty(Assert.Single(legacy.Items).Definition.DropSources);
+        }
+        finally { await client.DropDatabaseAsync(databaseName); }
+    }
+
     [MongoFact]
     public async Task ConcurrentEditingAndPublicationPersistImmutableVisualSnapshotAcrossRestart()
     {

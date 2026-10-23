@@ -1,7 +1,13 @@
 namespace Arkya.Content.Api.Domain;
 
 public sealed record ItemDefinition(string ItemId, string Name, string Description, string Category, string Rarity,
-    string EquipmentSlot, string VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense);
+    string EquipmentSlot, string VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense)
+{
+    public IReadOnlyList<ItemDropSource> DropSources { get; init; } = [];
+}
+
+public sealed record ItemDropSource(string MobId, int ChanceBasisPoints);
+public sealed record ItemMobDefinition(string MobId, string Name);
 
 public sealed record ItemDraft(long Revision, IReadOnlyList<ItemDefinition> Items);
 public sealed record PublishedItem(ItemDefinition Definition, string VisualAssetPath, string VisualDependencyHash);

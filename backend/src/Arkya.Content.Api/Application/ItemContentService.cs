@@ -14,6 +14,7 @@ public sealed partial class ItemContentService(IItemContentRepository repository
     public const int MaxItems = 256;
     public const int MaxPageSize = 50;
     public const int MaxOffset = 10000;
+    public const int MaxDropSources = 32;
     public static readonly string[] Categories = ["weapon", "armor", "tool", "consumable", "material", "quest"];
     public static readonly string[] Rarities = ["common", "uncommon", "rare", "epic", "legendary"];
     private static readonly string[] ArmorSlots = ["head", "chest", "hands", "legs", "feet", "neck", "shoulders", "back", "waist", "finger"];
@@ -36,7 +37,11 @@ public sealed partial class ItemContentService(IItemContentRepository repository
         if (errors.Count > 0) return new(ItemChangeStatus.Invalid, Errors: errors);
         var items = request.Items!.Select(item => new ItemDefinition(item!.ItemId!, item.Name!.Trim(), item.Description!,
             item.Category!, item.Rarity!, item.EquipmentSlot!, item.VisualAssetGuid!, item.MaxStack, item.WeightGrams,
-            item.RequiredLevel, item.Attack, item.Defense)).ToArray();
+            item.RequiredLevel, item.Attack, item.Defense)
+        {
+            DropSources = (item.DropSources ?? []).Select(source =>
+                new ItemDropSource(source!.MobId!, source.ChanceBasisPoints)).ToArray()
+        }).ToArray();
         var draft = await repository.TrySaveDraftAsync(request.Revision!.Value, items, ct);
         return draft is null ? new(ItemChangeStatus.Conflict) : new(ItemChangeStatus.Saved, Draft: draft);
     }
@@ -139,8 +144,33 @@ public sealed partial class ItemContentService(IItemContentRepository repository
             if (item.RequiredLevel is < 1 or > 1000) errors[$"{prefix}.requiredLevel"] = ["Use a level from 1 to 1000."];
             if (item.Attack is < 0 or > 1000000) errors[$"{prefix}.attack"] = ["Use attack from 0 to 1000000."];
             if (item.Defense is < 0 or > 1000000) errors[$"{prefix}.defense"] = ["Use defense from 0 to 1000000."];
+            ValidateDropSources(item.DropSources, prefix, errors);
         }
         return errors;
+    }
+
+    private static void ValidateDropSources(ItemDropSourceRequest?[]? sources, string itemPrefix,
+        Dictionary<string, string[]> errors)
+    {
+        if (sources is null) return;
+        if (sources.Length > MaxDropSources)
+        {
+            errors[$"{itemPrefix}.dropSources"] = [$"Use at most {MaxDropSources} mob drop sources."];
+            return;
+        }
+        var mobIds = new HashSet<string>(StringComparer.Ordinal);
+        for (var index = 0; index < sources.Length; index++)
+        {
+            var source = sources[index];
+            var prefix = $"{itemPrefix}.dropSources[{index}]";
+            if (source is null) { errors[prefix] = ["A mob drop source is required."]; continue; }
+            if (!ItemMobCatalog.Contains(source.MobId))
+                errors[$"{prefix}.mobId"] = ["Choose a mob from the supported mob catalog."];
+            else if (!mobIds.Add(source.MobId!))
+                errors[$"{prefix}.mobId"] = ["Each mob can appear only once per item."];
+            if (source.ChanceBasisPoints is < 1 or > 10000)
+                errors[$"{prefix}.chanceBasisPoints"] = ["Use 1 to 10000 basis points (0.01% to 100%)."];
+        }
     }
 
     private static void ValidateText(string? value, int maximum, string name, bool multiline, Dictionary<string, string[]> errors)

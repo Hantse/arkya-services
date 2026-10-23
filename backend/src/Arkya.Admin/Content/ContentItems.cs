@@ -4,12 +4,15 @@ using System.Text.RegularExpressions;
 
 namespace Arkya.Admin.Content;
 
+public sealed record ItemDropSource(string MobId, int ChanceBasisPoints);
+public sealed record ItemMobDefinition(string MobId, string Name);
 public sealed record ItemDefinition(string ItemId, string Name, string Description, string Category, string Rarity,
-    string EquipmentSlot, string VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense);
+    string EquipmentSlot, string VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense,
+    ItemDropSource[]? DropSources = null);
 public sealed record ItemDraft(long Revision, ItemDefinition[] Items);
 public sealed record PublishedItemDefinition(string ItemId, string Name, string Description, string Category, string Rarity,
     string EquipmentSlot, string VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense,
-    string VisualAssetPath, string VisualDependencyHash);
+    string VisualAssetPath, string VisualDependencyHash, ItemDropSource[]? DropSources = null);
 public sealed record ItemCatalog(int SchemaVersion, string Version, DateTimeOffset PublishedAt, PublishedItemDefinition[] Items);
 public sealed record ItemVisualAsset(string Guid, string Name, string AssetPath, string Kind, string DependencyHash,
     bool HasThumbnail, DateTimeOffset UpdatedAt);
@@ -17,6 +20,8 @@ public sealed record ItemAssetPage(ItemVisualAsset[] Assets, bool HasMore);
 
 public sealed partial class ContentAdminClient
 {
+    public Task<ItemMobDefinition[]> GetItemMobsAsync(CancellationToken ct) => SendItemAsync<ItemMobDefinition[]>(HttpMethod.Get,
+        "admin/content/item-mobs", null, ct);
     public Task<ItemDraft> GetItemDraftAsync(CancellationToken ct) => SendItemAsync<ItemDraft>(HttpMethod.Get, "admin/content/items/draft", null, ct);
     public Task<ItemDraft> SaveItemDraftAsync(ItemDraft draft, CancellationToken ct) => SendItemAsync<ItemDraft>(HttpMethod.Put, "admin/content/items/draft", draft, ct);
     public Task<ItemCatalog[]> GetItemCatalogsAsync(CancellationToken ct) => SendItemAsync<ItemCatalog[]>(HttpMethod.Get, "admin/content/items/catalogs", null, ct);

@@ -3,18 +3,26 @@ using Arkya.Content.Api.Domain;
 namespace Arkya.Content.Api.Contracts;
 
 public sealed record ItemRequest(string? ItemId, string? Name, string? Description, string? Category, string? Rarity,
-    string? EquipmentSlot, string? VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense);
+    string? EquipmentSlot, string? VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense,
+    ItemDropSourceRequest?[]? DropSources = null);
+public sealed record ItemDropSourceRequest(string? MobId, int ChanceBasisPoints);
+public sealed record ItemDropSourceResponse(string MobId, int ChanceBasisPoints)
+{
+    public static ItemDropSourceResponse From(ItemDropSource source) => new(source.MobId, source.ChanceBasisPoints);
+}
+public sealed record ItemMobResponse(string MobId, string Name);
 public sealed record SaveItemDraftRequest(long? Revision, ItemRequest?[]? Items);
 public sealed record PublishItemCatalogRequest(long? DraftRevision);
 public sealed record UpsertItemAssetRequest(string? Name, string? AssetPath, string? Kind, string? DependencyHash,
     string? ThumbnailPngBase64);
 
 public sealed record ItemResponse(string ItemId, string Name, string Description, string Category, string Rarity,
-    string EquipmentSlot, string VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense)
+    string EquipmentSlot, string VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense,
+    IReadOnlyList<ItemDropSourceResponse> DropSources)
 {
     public static ItemResponse From(ItemDefinition item) => new(item.ItemId, item.Name, item.Description, item.Category,
         item.Rarity, item.EquipmentSlot, item.VisualAssetGuid, item.MaxStack, item.WeightGrams, item.RequiredLevel,
-        item.Attack, item.Defense);
+        item.Attack, item.Defense, item.DropSources.Select(ItemDropSourceResponse.From).ToArray());
 }
 
 public sealed record ItemDraftResponse(long Revision, IReadOnlyList<ItemResponse> Items)
@@ -24,14 +32,15 @@ public sealed record ItemDraftResponse(long Revision, IReadOnlyList<ItemResponse
 
 public sealed record PublishedItemResponse(string ItemId, string Name, string Description, string Category, string Rarity,
     string EquipmentSlot, string VisualAssetGuid, int MaxStack, int WeightGrams, int RequiredLevel, int Attack, int Defense,
-    string VisualAssetPath, string VisualDependencyHash)
+    string VisualAssetPath, string VisualDependencyHash, IReadOnlyList<ItemDropSourceResponse> DropSources)
 {
     public static PublishedItemResponse From(PublishedItem item)
     {
         var definition = item.Definition;
         return new(definition.ItemId, definition.Name, definition.Description, definition.Category, definition.Rarity,
             definition.EquipmentSlot, definition.VisualAssetGuid, definition.MaxStack, definition.WeightGrams,
-            definition.RequiredLevel, definition.Attack, definition.Defense, item.VisualAssetPath, item.VisualDependencyHash);
+            definition.RequiredLevel, definition.Attack, definition.Defense, item.VisualAssetPath, item.VisualDependencyHash,
+            definition.DropSources.Select(ItemDropSourceResponse.From).ToArray());
     }
 }
 

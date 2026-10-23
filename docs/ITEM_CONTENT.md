@@ -5,7 +5,7 @@ consommables, matériaux et objets de quête. Unity possède leurs modèles et
 matériaux. Le flux est **Unity → modèles et vignettes dans le BE → brouillon
 d'items → publication → synchronisation Unity avant build**.
 
-Une publication fige les définitions et les références visuelles. Modifier
+Une publication fige les définitions, leurs sources de loot et les références visuelles. Modifier
 un brouillon ne modifie aucun catalogue déjà publié. Les clés Content restent
 dans l'administration, l'Editor ou l'environnement de CI ; elles ne sont
 pas incluses dans le client distribué.
@@ -48,11 +48,37 @@ l'adresse Content pour conserver le fonctionnement des installations locales.
 
 ## Créer et publier dans le BE
 
-Ouvrir **Contenu et support → Objets**, puis créer un item. Renseigner son identifiant
+Ouvrir **Items** dans le backoffice. La bibliothèque affiche les vignettes,
+la catégorie et l'emplacement, la rareté, le niveau requis et les mobs liés
+avec leur pourcentage. La barre de publication conserve la révision et le
+dernier catalogue à portée de main ; l'historique et ses téléchargements
+restent accessibles dans **Published versions**.
+
+La recherche porte sur le nom et l'identifiant. Les filtres se combinent :
+catégorie, rareté, niveau minimum/maximum, mob et présence ou absence de
+sources de loot. Le tri propose le nom, le niveau et la rareté. La pagination
+affiche 24 items par page et conserve les filtres dans l'URL ; **Reset**
+rétablit toute la bibliothèque. Ces filtres ne limitent pas la publication,
+qui inclut toujours le brouillon complet enregistré.
+
+Créer un item avec **Create an item**. Renseigner son identifiant
 stable, son nom, sa description, sa catégorie, sa rareté, son emplacement
 d'équipement, ses contraintes de pile et ses statistiques. Choisir son modèle
 dans la galerie avec aperçu. La recherche et la pagination limitent la liste
 aux modèles utiles.
+
+Dans **Mob loot sources**, choisir un mob et saisir sa probabilité en pourcent,
+de **0,01 à 100 %**, avec deux décimales au maximum. Par exemple, `12.5` ou
+`12,5` représente 12,5 %. **Link a mob** ajoute une source et **Remove** la
+retire ; une ligne entièrement vide est ignorée. Un mob ne peut apparaître
+qu'une fois par item. Les pourcentages décrivent chaque source séparément,
+sans somme imposée entre les mobs. Un item peut avoir jusqu'à 32 sources.
+
+Le choix provient du registre de mobs pris en charge par Content. Pour la
+tranche actuelle, il contient uniquement **Prototype monster**,
+`prototype-monster`, l'identité déjà utilisée par les quêtes du prototype.
+Les noms libres et les identifiants inconnus sont refusés. Importer un modèle
+Unity ne crée pas un nouveau type de mob dans ce registre.
 
 Enregistrer le brouillon, puis publier depuis la liste des items. La publication
 porte sur tout le brouillon enregistré. L'historique conserve les versions
@@ -85,6 +111,10 @@ est construit pour Linux ou le client pour WebGL.
 Le catalogue Unity conserve les références aux GameObjects importés, afin
 que leurs dépendances soient incluses dans le build. Il expose les métadonnées
 et sa version aux systèmes de présentation et aux futurs systèmes de gameplay.
+Il conserve aussi les associations `dropSources`, avec leurs identifiants de
+mobs et probabilités exactes. La validation Unity refuse les doublons, les
+identifiants mal formés et les valeurs hors limites ; les anciennes publications
+sans ce champ restent valides et fournissent une liste vide.
 
 Le préprocesseur de build synchronise le catalogue lorsque le pipeline items
 est configuré ou qu'un catalogue local existe. Une panne Content ou un modèle
@@ -121,6 +151,7 @@ Les routes `/internal/content` exigent exactement un header
 | `PUT /admin/content/items/draft` | Enregistrement complet avec révision attendue |
 | `GET /admin/content/items/catalogs` | Historique des catalogues publiés |
 | `POST /admin/content/items/catalogs` | Publication `{ draftRevision }`, idempotente par révision |
+| `GET /admin/content/item-mobs` | Mobs autorisés pour les sources de loot : `[{ mobId, name }]` |
 | `GET /internal/content/items/catalogs/latest` | Publication la plus récente |
 | `GET /internal/content/items/catalogs/{version}` | Publication immuable épinglée |
 | `GET /admin/content/item-assets?search=&limit=&offset=` | Références visuelles paginées, sans octets PNG |
@@ -131,9 +162,33 @@ Les routes `/internal/content` exigent exactement un header
 
 Une définition contient `itemId`, `name`, `description`, `category`, `rarity`,
 `equipmentSlot`, `visualAssetGuid`, `maxStack`, `weightGrams`, `requiredLevel`,
-`attack` et `defense`. La publication ajoute le chemin `visualAssetPath` et
+`attack`, `defense` et `dropSources`. La publication ajoute le chemin `visualAssetPath` et
 l'empreinte `visualDependencyHash` du modèle enregistré. Le catalogue utilise
 `schemaVersion: 1`, un UUID `version` et une date UTC `publishedAt`.
+
+`dropSources` est un tableau facultatif à l'enregistrement. Chaque entrée
+contient un `mobId` du registre et un entier `chanceBasisPoints` de 1 à 10 000.
+Un point vaut **0,01 %** : `1` vaut 0,01 %, `1250` vaut 12,5 % et `10000` vaut
+100 %. Le contrat utilise ces entiers pour éviter les arrondis de virgule
+flottante. Exemple de champ d'une définition :
+
+```json
+{
+  "dropSources": [
+    { "mobId": "prototype-monster", "chanceBasisPoints": 1250 }
+  ]
+}
+```
+
+Les entrées nulles, les doublons, les mobs inconnus, les valeurs hors limites
+et les tableaux de plus de 32 sources sont refusés. `[]` retire les associations
+du prochain brouillon. L'absence du champ ou `null` dans une requête signifie
+également aucune source ; les clients qui modifient un item doivent donc
+retransmettre ses sources pour les conserver. Les réponses renvoient toujours
+un tableau. Les documents MongoDB historiques sans ce champ sont lus avec
+une liste vide, sans migration ni modification des versions publiées.
+L'ajout est compatible avec le schéma 1 et les sources sont figées avec
+chaque publication.
 
 Content possède les collections MongoDB des révisions d'items et des références
 visuelles dans sa base `arkya_content`. Les révisions sont immuables ; la
@@ -164,13 +219,20 @@ vignette et un build client/serveur constituent les vérifications Unity du flux
   réussis, 1 ignoré** sans MongoDB de test avant le dernier ajustement de quota.
 - Gateway : **263 tests réussis**, dont 24 contrôlant le passage de la clé
   uniquement sur l'export Admin et sa suppression sur les autres routes.
-- Editor connecté : **70 tests Edit Mode du module items réussis**, après
+- Editor connecté : **89 tests Edit Mode du module items réussis**, après
   compilation dans Unity `6000.6.6f1`. Les 21 prefabs d'armes ont été préparés
   avec leur empreinte de sources et une vraie vignette Unity.
+- Refonte liste/éditeur et loot : **773 tests Admin réussis**, avec MongoDB.
+  Vérification navigateur sur une base jetable avec les 21 vraies références
+  visuelles : filtre des sources, ajout/retrait, saisie `7,25` conservée comme
+  `7.25`, rejet de `0.001`, affichages bureau et mobile sans débordement global.
+  Ces items de démonstration ne sont pas ajoutés au catalogue de production.
 
-- Content : **110 tests réussis**, avec MongoDB de test, dont concurrence,
-  immutabilité, reprises et registre de vignettes.
-- Navigateur : création d'une arme et d'une armure, recherche et sélection de
+- Content : **126 tests réussis**, dont six avec MongoDB de test. Ils couvrent
+  la concurrence, les snapshots immuables, les reprises, le registre de vignettes,
+  les probabilités exactes, les sources invalides et la compatibilité des
+  documents historiques après redémarrage.
+- Vérification navigateur initiale : création d'une arme et d'une armure, recherche et sélection de
   vignettes, publication et relecture du snapshot dans Content. Les captures
   desktop et mobile utilisent trois références visuelles synthétiques dans
   une base jetable ; elles ne constituent pas un export de modèles Unity réels.
@@ -179,6 +241,7 @@ vignette et un build client/serveur constituent les vérifications Unity du flux
 
 Ce module fournit le contenu et sa distribution au build. L'inventaire ECS
 historique utilise encore ses identifiants numériques propres. L'équipement
-sur un personnage, les règles de combat, le loot et la persistance d'instances
-d'items nécessitent leur intégration serveur autoritaire ; ils ne sont pas
-activés par la publication d'une définition.
+sur un personnage, les règles de combat, le tirage du loot à la mort d'un mob
+et la persistance d'instances d'items nécessitent leur intégration serveur
+autoritaire. L'association et sa probabilité sont enregistrées et publiées,
+mais elles ne déclenchent pas encore de récompense en jeu.

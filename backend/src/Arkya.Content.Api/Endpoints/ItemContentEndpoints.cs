@@ -8,6 +8,7 @@ public static class ItemContentEndpoints
 {
     public static void MapItemContentEndpoints(this WebApplication app, RouteGroupBuilder admin)
     {
+        admin.MapGet("/item-mobs", () => Results.Ok(ItemMobCatalog.All.Select(mob => new ItemMobResponse(mob.MobId, mob.Name))));
         admin.MapGet("/items/draft", async (ItemContentService service, CancellationToken ct) =>
             Results.Ok(ItemDraftResponse.From(await service.GetDraftAsync(ct))));
         admin.MapPut("/items/draft", async (SaveItemDraftRequest request, ItemContentService service, CancellationToken ct) =>

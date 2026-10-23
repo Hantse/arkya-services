@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Net;
 using Arkya.Admin.Content;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,8 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
     public bool Loaded { get; private set; }
     public ItemAssetPage Assets { get; private set; } = new([], false);
     public ItemVisualAsset? SelectedAsset { get; private set; }
+    public ItemMobDefinition[] Mobs { get; private set; } = [];
+    public string? MobError { get; private set; }
     public string? AssetError { get; private set; }
     public string? Error { get; private set; }
     [TempData] public string? Notice { get; set; }
@@ -34,6 +37,8 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
                 Input = ItemInput.From(item);
             }
             Loaded = true;
+            await LoadMobsAsync(ct);
+            if (Input.DropSources.Count == 0) Input.DropSources.Add(new());
             await LoadAssetsAsync(ct);
         }
         catch (Exception ex) when (ContentItemPresentation.IsDependencyError(ex, ct)) { Error = ContentItemPresentation.ErrorMessage(ex); }
@@ -45,6 +50,7 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
         ItemId = id;
         if (!content.Enabled || id is not null && !ContentItemPresentation.IsItemId(id)) return NotFound();
         if (ModelState[nameof(Revision)]?.Errors.Count is > 0 || Revision is < 0 or long.MaxValue) return BadRequest();
+        await LoadMobsAsync(ct);
         ValidateInput(id);
         if (ModelState.IsValid)
         {
@@ -96,6 +102,18 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
 
     private void ValidateInput(string? id)
     {
+        if (MobError is not null) ModelState.AddModelError("", "The mob library is unavailable. Your changes are retained; try saving again shortly.");
+        if (Input.DropSources.Count > 32) ModelState.AddModelError("Input.DropSources", "An item can have at most 32 loot sources.");
+        var linkedMobs = new HashSet<string>(StringComparer.Ordinal);
+        for (var index = 0; index < Input.DropSources.Count; index++)
+        {
+            var source = Input.DropSources[index];
+            if (source.IsEmpty) continue;
+            var prefix = $"Input.DropSources[{index}]";
+            if (!Mobs.Any(m => m.MobId == source.MobId)) ModelState.AddModelError(prefix + ".MobId", "Choose a mob from the library.");
+            else if (!linkedMobs.Add(source.MobId!)) ModelState.AddModelError(prefix + ".MobId", "This mob is already linked to the item.");
+            if (!source.TryGetBasisPoints(out _)) ModelState.AddModelError(prefix + ".ChancePercent", "Enter a chance from 0.01 to 100%, with at most two decimal places.");
+        }
         if (!ContentItemPresentation.IsItemId(Input.ItemId)) ModelState.AddModelError("Input.ItemId", "Use lowercase letters, digits and single hyphens, up to 64 characters.");
         if (id is not null && Input.ItemId != id) ModelState.AddModelError("Input.ItemId", "A saved item's ID is permanent.");
         if (!ContentItemPresentation.Categories.ContainsKey(Input.Category ?? "")) ModelState.AddModelError("Input.Category", "Choose an item type.");
@@ -132,6 +150,33 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
         catch (Exception ex) when (ContentItemPresentation.IsDependencyError(ex, ct)) { AssetError = ContentItemPresentation.ErrorMessage(ex); }
     }
 
+    private async Task LoadMobsAsync(CancellationToken ct)
+    {
+        try { Mobs = await content.GetItemMobsAsync(ct); }
+        catch (Exception ex) when (ContentItemPresentation.IsDependencyError(ex, ct)) { MobError = ContentItemPresentation.ErrorMessage(ex); }
+    }
+
+    public sealed class DropSourceInput
+    {
+        [StringLength(64)] public string? MobId { get; set; }
+        [StringLength(16)] public string? ChancePercent { get; set; }
+        public bool IsEmpty => string.IsNullOrWhiteSpace(MobId) && string.IsNullOrWhiteSpace(ChancePercent);
+        public bool TryGetBasisPoints(out int basisPoints)
+        {
+            basisPoints = 0;
+            if (!decimal.TryParse(ChancePercent?.Trim().Replace(',', '.'), NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture, out var percentage) || percentage is < 0.01m or > 100m ||
+                percentage * 100 != decimal.Truncate(percentage * 100)) return false;
+            basisPoints = (int)(percentage * 100);
+            return true;
+        }
+        public ItemDropSource ToDefinition()
+        {
+            if (!TryGetBasisPoints(out var basisPoints)) throw new InvalidOperationException("Validate a drop chance before saving it.");
+            return new(MobId!, basisPoints);
+        }
+    }
+
     public sealed class ItemInput
     {
         [Required(ErrorMessage = "Enter an ID."), StringLength(64)] public string ItemId { get; set; } = "";
@@ -146,11 +191,15 @@ public sealed class ItemModel(ContentAdminClient content) : PageModel
         [Range(1, 1000)] public int RequiredLevel { get; set; } = 1;
         [Range(0, 1000000)] public int Attack { get; set; }
         [Range(0, 1000000)] public int Defense { get; set; }
+        public List<DropSourceInput> DropSources { get; set; } = [];
         public ItemDefinition ToDefinition() => new(ItemId, Name.Trim(), Description?.Trim() ?? "", Category, Rarity,
-            EquipmentSlot, VisualAssetGuid, MaxStack, WeightGrams, RequiredLevel, Attack, Defense);
+            EquipmentSlot, VisualAssetGuid, MaxStack, WeightGrams, RequiredLevel, Attack, Defense,
+            DropSources.Where(s => !s.IsEmpty).Select(s => s.ToDefinition()).ToArray());
         public static ItemInput From(ItemDefinition item) => new() { ItemId = item.ItemId, Name = item.Name,
             Description = item.Description, Category = item.Category, Rarity = item.Rarity, EquipmentSlot = item.EquipmentSlot,
             VisualAssetGuid = item.VisualAssetGuid, MaxStack = item.MaxStack, WeightGrams = item.WeightGrams,
-            RequiredLevel = item.RequiredLevel, Attack = item.Attack, Defense = item.Defense };
+            RequiredLevel = item.RequiredLevel, Attack = item.Attack, Defense = item.Defense,
+            DropSources = (item.DropSources ?? []).Select(s => new DropSourceInput { MobId = s.MobId,
+                ChancePercent = (s.ChanceBasisPoints / 100m).ToString("0.##", CultureInfo.InvariantCulture) }).ToList() };
     }
 }

@@ -3,42 +3,100 @@
 @{
     ViewData["Title"] = "Items";
 }
-<header class="page-header">
-    <div><div class="eyebrow">WORLD / CONTENT</div><h1>Items</h1><p class="intro">Create weapons, armour and resources, choose their Unity models, then publish the catalogue.</p></div>
-    @if (Model.Enabled) { <a class="button primary" asp-page="/Item">Create an item</a> }
+<script src="~/item-catalog.js" asp-append-version="true" defer></script>
+<link rel="stylesheet" href="~/item-catalog.css" asp-append-version="true" />
+<header class="page-header item-library-header">
+    <div><div class="eyebrow">WORLD / CONTENT</div><h1>Items</h1><p class="intro">Manage equipment, Unity models and mob drops in one catalogue.</p></div>
+    @if (Model.Enabled) { <a class="button primary" asp-page="/Item"><span aria-hidden="true">＋</span>Create an item</a> }
 </header>
 @if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
 @if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Items">Reload catalogue</a></div> }
 @if (!Model.Enabled) { <div class="panel empty-state"><h2>Item management is disabled</h2><p>Enable the Content service connection to manage the catalogue.</p></div> }
 @if (Model.Draft is { } draft)
 {
-    <div class="item-catalog-layout">
-        <section aria-labelledby="draft-heading">
-            <div class="section-heading"><h2 id="draft-heading">Draft</h2><span class="badge">Revision @draft.Revision · @draft.Items.Length item(s)</span></div>
-            @if (draft.Items.Length == 0) { <div class="panel empty-state"><h3>Create the first item</h3><p>Add a weapon, piece of armour or resource and associate it with a model from the Unity library.</p><a class="button secondary" asp-page="/Item">Create an item</a></div> }
-            else
+    <section class="panel item-publication-bar" aria-label="Catalogue publication">
+        <div class="item-publication-copy">
+            <strong>Draft revision @draft.Revision <span class="item-draft-tag">@draft.Items.Length saved item(s)</span></strong>
+            <p>Publish all saved items, including their models and drop chances.</p>
+        </div>
+        <div class="item-publication-latest">
+            @if (Model.Catalogs.FirstOrDefault() is { } latest)
             {
-                <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Draft items</caption><thead><tr><th scope="col">Item</th><th scope="col">Type</th><th scope="col">Rarity</th><th scope="col">Level</th></tr></thead><tbody>
-                @foreach (var item in draft.Items)
-                {
-                    <tr><th scope="row"><a asp-page="/Item" asp-route-id="@item.ItemId">@item.Name</a><small class="mono">@item.ItemId</small></th><td>@ContentItemPresentation.CategoryLabel(item.Category)</td><td>@ContentItemPresentation.RarityLabel(item.Rarity)</td><td>@item.RequiredLevel</td></tr>
-                }
-                </tbody></table></div>
+                <span>Latest publication</span><a href="#published-versions"><time datetime="@latest.PublishedAt.ToString("O")">@latest.PublishedAt.ToUniversalTime().ToString("dd MMM yyyy · HH:mm 'UTC'", System.Globalization.CultureInfo.InvariantCulture)</time></a>
             }
-        </section>
-        <aside aria-labelledby="publish-heading">
-            <div class="section-heading"><h2 id="publish-heading">Publication</h2></div>
-            <div class="panel publish-panel"><h3>Prepare the next build</h3><p>Publish saved items to freeze their rules and associated models.</p><dl class="publication-facts"><div><dt>Saved revision</dt><dd>@draft.Revision</dd></div><div><dt>Latest version</dt><dd class="mono">@(Model.Catalogs.FirstOrDefault()?.Version ?? "None")</dd></div></dl>
-                <form method="post" asp-page-handler="Publish"><input type="hidden" name="Revision" value="@draft.Revision" /><button class="button primary full-width" type="submit" disabled="@(draft.Items.Length == 0)">Publish catalogue</button></form>
-                <small>In Unity: Arkya → Items → Content pipeline. Synchronise the published version before starting the build.</small>
+            else { <span>No published version</span><span>@(draft.Items.Length == 0 ? "Save your first item to get started." : "Ready for the first publication.")</span> }
+        </div>
+        <form method="post" asp-page-handler="Publish"><input type="hidden" name="Revision" value="@draft.Revision" /><button class="button secondary" type="submit" disabled="@(draft.Items.Length == 0)">Publish catalogue <span aria-hidden="true">↗</span></button></form>
+    </section>
+
+    <section class="panel item-library" aria-labelledby="draft-heading">
+        <div class="item-library-title"><h2 id="draft-heading">Item library <span>@draft.Items.Length</span></h2><span class="muted">Saved draft</span></div>
+        <form method="get" asp-page="/Items" class="item-library-filters" role="search" aria-label="Filter items">
+            <div class="item-library-primary-filters">
+                <div class="field item-search-field"><label for="item-search">Search items</label><input id="item-search" name="Search" value="@Model.Search" type="search" maxlength="120" placeholder="Name or item ID…" /></div>
+                <div class="field"><label for="item-category">Type</label><select id="item-category" name="Category"><option value="">All types</option>@foreach (var (value, label) in ContentItemPresentation.Categories) { <option value="@value" selected="@(Model.Category == value)">@label</option> }</select></div>
+                <div class="field"><label for="item-rarity">Rarity</label><select id="item-rarity" name="Rarity"><option value="">All rarities</option>@foreach (var (value, label) in ContentItemPresentation.Rarities) { <option value="@value" selected="@(Model.Rarity == value)">@label</option> }</select></div>
+                <div class="field"><label for="item-drops">Mob drops</label><select id="item-drops" name="Drops"><option value="">All items</option><option value="linked" selected="@(Model.Drops == "linked")">With mob drops</option><option value="unlinked" selected="@(Model.Drops == "unlinked")">Without mob drops</option></select></div>
+                <div class="field"><label for="item-mob">Mob</label><select id="item-mob" name="MobId"><option value="">All mobs</option>@foreach (var mob in Model.Mobs) { <option value="@mob.MobId" selected="@(Model.MobId == mob.MobId)">@mob.Name</option> }</select></div>
             </div>
-        </aside>
-    </div>
-    <section class="history" aria-labelledby="history-heading"><div class="section-heading"><h2 id="history-heading">Published versions</h2><span class="muted">@Model.Catalogs.Length version(s)</span></div>
-        @if (Model.Catalogs.Length == 0) { <div class="panel history-empty">No published versions. Create an item, save it, then publish the catalogue.</div> }
-        @foreach (var catalog in Model.Catalogs)
+            <div class="item-library-secondary-filters">
+                <fieldset class="item-level-filter"><legend>Required level</legend><label class="sr-only" for="item-min-level">Minimum level</label><input id="item-min-level" name="MinLevel" value="@Model.MinLevel" type="number" min="1" max="1000" placeholder="Min" /><span aria-hidden="true">–</span><label class="sr-only" for="item-max-level">Maximum level</label><input id="item-max-level" name="MaxLevel" value="@Model.MaxLevel" type="number" min="1" max="1000" placeholder="Max" /></fieldset>
+                <div class="field item-sort-filter"><label for="item-sort">Sort by</label><select id="item-sort" name="Sort"><option value="name" selected="@(Model.Sort == "name")">Name: A–Z</option><option value="name-desc" selected="@(Model.Sort == "name-desc")">Name: Z–A</option><option value="level" selected="@(Model.Sort == "level")">Level: low to high</option><option value="level-desc" selected="@(Model.Sort == "level-desc")">Level: high to low</option><option value="rarity" selected="@(Model.Sort == "rarity")">Rarity: highest first</option></select></div>
+                <div class="item-filter-actions"><button class="button primary" type="submit">Apply filters</button>@if (Model.HasFilters || Model.Sort != "name") { <a class="button secondary" asp-page="/Items">Reset</a> }</div>
+            </div>
+        </form>
+        @if (Model.MobWarning is not null) { <p class="item-library-warning" role="status">@Model.MobWarning</p> }
+        <div class="item-results-bar"><span><strong>@Model.MatchingCount</strong> @(Model.MatchingCount == 1 ? "item" : "items")@(Model.HasFilters ? $" matching · {draft.Items.Length} total" : " in the draft")</span>@if (Model.MatchingCount > 0) { <span>@Model.FirstResult–@Model.LastResult shown</span> }</div>
+        @if (draft.Items.Length == 0)
         {
-            <details class="panel catalog-entry"><summary><span class="publication-dot" aria-hidden="true"></span><span class="catalog-version mono">@catalog.Version</span><span class="muted">@catalog.Items.Length item(s)</span><time datetime="@catalog.PublishedAt.ToString("O")">@catalog.PublishedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time><span class="expand-label">Details ↓</span></summary><div class="catalog-detail"><ul>@foreach (var item in catalog.Items) { <li><strong>@item.Name</strong><span>@ContentItemPresentation.CategoryLabel(item.Category) · <code>@item.ItemId</code></span></li> }</ul><a asp-page-handler="Download" asp-route-version="@catalog.Version" class="text-link">Download JSON catalogue →</a></div></details>
+            <div class="empty-state item-library-empty"><partial name="_AdminIcon" model='@("items")' /><h3>Build your item library</h3><p>Create an item, choose its Unity model and define which mobs can drop it.</p><a class="button secondary" asp-page="/Item">Create an item</a></div>
+        }
+        else if (Model.MatchingCount == 0)
+        {
+            <div class="empty-state item-library-empty"><h3>No items match these filters</h3><p>Try a different name, widen the level range or clear the filters.</p><a class="button secondary" asp-page="/Items">Clear filters</a></div>
+        }
+        else
+        {
+            <div class="item-library-table-wrap"><table class="realm-table item-library-table"><caption class="sr-only">Filtered draft items</caption><thead><tr><th scope="col">Item</th><th scope="col">Type / slot</th><th scope="col">Rarity</th><th scope="col">Level</th><th scope="col">Mob drops</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody>
+            @foreach (var item in Model.VisibleItems)
+            {
+                <tr data-item-id="@item.ItemId">
+                    <th scope="row"><a class="item-library-identity" asp-page="/Item" asp-route-id="@item.ItemId"><span class="item-library-thumbnail" aria-hidden="true"><partial name="_AdminIcon" model='@("items")' />@if (ContentItemPresentation.IsAssetGuid(item.VisualAssetGuid)) { <img src="@Url.Page("/Item", "Thumbnail", new { guid = item.VisualAssetGuid })" width="52" height="52" loading="lazy" alt="" /> }</span><span><strong>@item.Name</strong><small class="mono">@item.ItemId</small></span></a></th>
+                    <td data-label="Type"><span>@ContentItemPresentation.CategoryLabel(item.Category)</span>@if (item.EquipmentSlot != "none") { <small>@ContentItemPresentation.Slots.GetValueOrDefault(item.EquipmentSlot, item.EquipmentSlot)</small> }</td>
+                    <td data-label="Rarity"><span class="item-rarity item-rarity-@item.Rarity">@ContentItemPresentation.RarityLabel(item.Rarity)</span></td>
+                    <td data-label="Level"><span class="item-library-level">@item.RequiredLevel</span></td>
+                    <td data-label="Mob drops"><div class="item-library-drops">
+                        @if (item.DropSources is { Length: > 0 } sources)
+                        {
+                            @foreach (var source in sources.Take(2)) { <span class="item-drop-badge"><span>@Model.MobName(source.MobId)</span><strong>@ItemsModel.DropChance(source.ChanceBasisPoints)</strong></span> }
+                            @if (sources.Length > 2) { <a class="text-link" asp-page="/Item" asp-route-id="@item.ItemId" asp-fragment="drop-sources">+@(sources.Length - 2) more</a> }
+                        }
+                        else { <a class="item-drop-empty" asp-page="/Item" asp-route-id="@item.ItemId" asp-fragment="drop-sources">＋ Link a mob</a> }
+                    </div></td>
+                    <td class="item-library-action"><a class="button secondary" asp-page="/Item" asp-route-id="@item.ItemId" aria-label="Edit @item.Name">Edit <span aria-hidden="true">→</span></a></td>
+                </tr>
+            }
+            </tbody></table></div>
+        }
+        @if (Model.PageCount > 1)
+        {
+            <nav class="item-library-pagination" aria-label="Item pages">
+                <div>@if (Model.PageNumber > 1) { <a class="button secondary" asp-page="/Items" asp-all-route-data="@Model.PageRoutes(Model.PageNumber - 1)">← Previous</a> }</div>
+                <span>Page @Model.PageNumber of @Model.PageCount</span>
+                <div>@if (Model.PageNumber < Model.PageCount) { <a class="button secondary" asp-page="/Items" asp-all-route-data="@Model.PageRoutes(Model.PageNumber + 1)">Next →</a> }</div>
+            </nav>
         }
     </section>
+
+    <details class="panel item-library-history" id="published-versions">
+        <summary><span>Published versions <span class="badge">@Model.Catalogs.Length</span></span><span class="muted">History and downloads</span></summary>
+        <div class="item-library-history-body">
+            <p class="item-publication-help">In Unity: Arkya → Items → Content pipeline. Synchronise a published version before building the game.</p>
+            @if (Model.Catalogs.Length == 0) { <p class="muted">No published versions yet. Save your items, then publish the catalogue.</p> }
+            @foreach (var catalog in Model.Catalogs)
+            {
+                <details class="catalog-entry"><summary><span class="publication-dot" aria-hidden="true"></span><span class="catalog-version mono">@catalog.Version</span><span class="muted">@catalog.Items.Length item(s)</span><time datetime="@catalog.PublishedAt.ToString("O")">@catalog.PublishedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time><span class="expand-label">Details ↓</span></summary><div class="catalog-detail"><ul>@foreach (var item in catalog.Items) { <li><strong>@item.Name</strong><span>@ContentItemPresentation.CategoryLabel(item.Category) · <code>@item.ItemId</code></span>@foreach (var source in item.DropSources ?? []) { <span>@Model.MobName(source.MobId) · @ItemsModel.DropChance(source.ChanceBasisPoints)</span> }</li> }</ul><a asp-page-handler="Download" asp-route-version="@catalog.Version" class="text-link">Download JSON catalogue →</a></div></details>
+            }
+        </div>
+    </details>
 }

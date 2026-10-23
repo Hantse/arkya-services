@@ -1,6 +1,42 @@
 (() => {
     const editor = document.querySelector('[data-item-editor]');
     if (!editor) return;
+    const dropRows = editor.querySelector('[data-drop-rows]');
+    const addDrop = editor.querySelector('[data-drop-add]');
+    const dropStatus = editor.querySelector('[data-drop-status]');
+    const refreshDrops = () => {
+        const rows = [...dropRows.querySelectorAll('[data-drop-row]')];
+        const selected = rows.map(row => row.querySelector('[data-drop-mob]').value).filter(Boolean);
+        for (const [index, row] of rows.entries()) {
+            for (const [selector, field] of [['[data-drop-mob]', 'MobId'], ['[data-drop-chance]', 'ChancePercent']]) {
+                const input = row.querySelector(selector);
+                input.name = `Input.DropSources[${index}].${field}`;
+                input.id = `Input_DropSources_${index}__${field}`;
+                row.querySelector(selector).closest('.field').querySelector('label').htmlFor = input.id;
+            }
+            const mob = row.querySelector('[data-drop-mob]');
+            for (const option of mob.options) option.disabled = option.value !== '' && option.value !== mob.value && selected.includes(option.value);
+        }
+        const available = editor.querySelector('[data-drop-template]').content.querySelector('[data-drop-mob]').options.length - 1;
+        addDrop.disabled = rows.length >= Math.min(32, available);
+    };
+    addDrop.addEventListener('click', () => {
+        const row = editor.querySelector('[data-drop-template]').content.cloneNode(true);
+        dropRows.append(row);
+        refreshDrops();
+        dropRows.lastElementChild.querySelector('select').focus();
+        dropStatus.textContent = 'Choose a mob and enter its drop chance.';
+    });
+    dropRows.addEventListener('change', refreshDrops);
+    dropRows.addEventListener('click', event => {
+        const remove = event.target.closest('[data-drop-remove]');
+        if (!remove) return;
+        remove.closest('[data-drop-row]').remove();
+        refreshDrops();
+        addDrop.focus();
+        dropStatus.textContent = 'Loot source removed. Save the item to keep this change.';
+    });
+    refreshDrops();
     const library = editor.querySelector('[data-item-assets]');
     const guidInput = editor.querySelector('[data-asset-guid]');
     const grid = editor.querySelector('[data-asset-grid]');

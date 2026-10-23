@@ -31,16 +31,30 @@ internal sealed class ItemDocument
     public int RequiredLevel { get; set; }
     public int Attack { get; set; }
     public int Defense { get; set; }
+    public ItemDropSourceDocument[] DropSources { get; set; } = [];
 
     public ItemDefinition ToDomain() => new(ItemId, Name, Description, Category, Rarity, EquipmentSlot, VisualAssetGuid,
-        MaxStack, WeightGrams, RequiredLevel, Attack, Defense);
+        MaxStack, WeightGrams, RequiredLevel, Attack, Defense)
+    {
+        DropSources = DropSources.Select(source => new ItemDropSource(source.MobId, source.ChanceBasisPoints)).ToArray()
+    };
     public static ItemDocument From(ItemDefinition item) => new()
     {
         ItemId = item.ItemId, Name = item.Name, Description = item.Description, Category = item.Category,
         Rarity = item.Rarity, EquipmentSlot = item.EquipmentSlot, VisualAssetGuid = item.VisualAssetGuid,
         MaxStack = item.MaxStack, WeightGrams = item.WeightGrams, RequiredLevel = item.RequiredLevel,
-        Attack = item.Attack, Defense = item.Defense
+        Attack = item.Attack, Defense = item.Defense,
+        DropSources = item.DropSources.Select(source => new ItemDropSourceDocument
+        {
+            MobId = source.MobId, ChanceBasisPoints = source.ChanceBasisPoints
+        }).ToArray()
     };
+}
+
+internal sealed class ItemDropSourceDocument
+{
+    public string MobId { get; set; } = "";
+    public int ChanceBasisPoints { get; set; }
 }
 
 internal sealed class PublishedItemDocument

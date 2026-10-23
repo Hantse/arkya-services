@@ -16,12 +16,15 @@ internal sealed partial class ContentStub
     public ItemVisualAsset[] ItemAssets { get; set; } = [new(AssetGuid, "Épée d'Aubefont", "Assets/Arkya/Items/Sword.prefab", "prefab", AssetGuid, true, DateTimeOffset.UtcNow),
         new(OtherAssetGuid, "Bouclier", "Assets/Arkya/Items/Shield.fbx", "fbx", OtherAssetGuid, false, DateTimeOffset.UtcNow)];
     public List<string> ItemAssetQueries { get; } = [];
+    public ItemMobDefinition[] ItemMobs { get; set; } = [new("prototype-monster", "Prototype monster")];
+    public HttpStatusCode? ItemMobsError { get; set; }
     public bool ItemAssetsHaveMore { get; set; }
     public byte[] Thumbnail { get; set; } = Convert.FromBase64String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jF0kAAAAASUVORK5CYII=");
     public string ThumbnailType { get; set; } = "image/png";
 
     private HttpResponseMessage HandleItems(ContentCall call, string query)
     {
+        if (call.Path == "/admin/content/item-mobs") return ItemMobsError is { } error ? new(error) : Json(ItemMobs);
         if (call.Path == "/admin/content/items/draft")
         {
             if (call.Method == HttpMethod.Get) return Json(ItemsDraft);

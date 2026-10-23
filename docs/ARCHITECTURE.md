@@ -280,10 +280,21 @@ Le [pipeline d'items](ITEM_CONTENT.md) utilise également Content, avec ses prop
 révisions et catalogues immuables. Unity exporte un registre de références
 visuelles (GUID, chemin, empreinte des dépendances et PNG), puis le backoffice
 associe ces modèles aux définitions d'armes, armures, outils et autres items.
-La publication fige définitions et références. L'Editor synchronise un snapshot
+La bibliothèque permet de rechercher et filtrer les items par catégorie,
+rareté, niveau et mob lié, avec un tri et une pagination. Chaque définition
+peut associer des mobs autorisés à une probabilité de loot : `dropSources`
+contient des `mobId` uniques et des `chanceBasisPoints` entiers entre 1 et
+10 000, soit 0,01 à 100 %. Content possède ce registre, limité pour l'instant
+à `prototype-monster`, déjà pris en charge par la tranche de quêtes.
+
+La publication fige définitions, probabilités et références. L'Editor synchronise un snapshot
 publié avant le build, résout les assets locaux et bloque les modèles absents
-ou modifiés. Les clés restent hors des assets distribués. Cette distribution
-de contenu ne remplace pas les règles d'inventaire et d'équipement autoritaires.
+ou modifiés. Le catalogue Unity conserve les sources de loot et leurs valeurs
+exactes. Le champ est une extension du schéma 1 : les anciens documents et
+catalogues sans sources restent lisibles comme une liste vide. Les clés restent
+hors des assets distribués. Cette distribution de contenu ne remplace pas les
+règles d'inventaire et d'équipement autoritaires ; le tirage du loot à la mort
+d'un mob et l'attribution persistante des items restent à intégrer au serveur.
 
 ### Contenu et progression des quêtes
 

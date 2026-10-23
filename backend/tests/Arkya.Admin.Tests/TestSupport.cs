@@ -39,7 +39,7 @@ internal sealed partial class ContentStub : HttpMessageHandler
             return new(error) { Content = new StringContent($"private upstream details {AdminFactory.AdminKey}") };
         if (call.Path.StartsWith("/admin/content/posts", StringComparison.Ordinal))
             return HandlePublication(call, request.RequestUri.Query);
-        if (call.Path.StartsWith("/admin/content/items/", StringComparison.Ordinal) || call.Path.StartsWith("/admin/content/item-assets", StringComparison.Ordinal))
+        if (call.Path.StartsWith("/admin/content/items/", StringComparison.Ordinal) || call.Path.StartsWith("/admin/content/item-assets", StringComparison.Ordinal) || call.Path == "/admin/content/item-mobs")
             return HandleItems(call, request.RequestUri.Query);
         if (request.Method == HttpMethod.Get && call.Path == "/admin/content/draft")
             return Json(Draft);
