@@ -1,6 +1,7 @@
-.realm-islands-heading { margin-bottom: 12px; }
-.realm-islands-heading h2 { display: flex; align-items: center; gap: 10px; }
+.realm-islands-heading { justify-content: flex-start; flex-wrap: wrap; gap: 10px 16px; margin: 20px 0 14px; }
+.realm-islands-heading h2 { display: flex; align-items: center; gap: 10px; margin: 0; }
 .realm-islands-heading h2 span { font-size: 12px; font-weight: 400; }
+.realm-islands-heading .button { flex-shrink: 0; }
 .realm-world-layout { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 18px; align-items: start; }
 .realm-island-browser { display: grid; grid-template-columns: 185px minmax(0, 1fr); min-width: 0; overflow: hidden; }
 .realm-island-list { background: #f7f9fc; border-right: 1px solid var(--line); padding: 10px; max-height: 490px; overflow: auto; }

@@ -1,5 +1,6 @@
 @model RealmModel
 @if (Model.ActiveSection == "settings") { <partial name="_RealmConfiguration" model="Model" /> }
 else if (Model.ActiveSection == "maintenance") { <partial name="_RealmServerActions" model="Model" /> }
+else if (Model.ActiveSection == "players") { <partial name="_RealmPlayers" model="Model" /> }
 else if (Model.ActiveSection == "game") { <partial name="_RealmGameActions" model="Model" /> }
 else if (Model.ActiveSection == "history") { <partial name="_RealmHistory" model="Model" /> }

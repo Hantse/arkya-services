@@ -20,7 +20,11 @@ public sealed class MongoCharacterRepository(IMongoClient client, IOptions<Mongo
             new CreateIndexModel<CharacterDocument>(Builders<CharacterDocument>.IndexKeys
                 .Ascending(character => character.AccountId)
                 .Ascending(character => character.CreatedAt)
-                .Ascending(character => character.Id), new CreateIndexOptions { Name = "ix_character_owner_created" })
+                .Ascending(character => character.Id), new CreateIndexOptions { Name = "ix_character_owner_created" }),
+            new CreateIndexModel<CharacterDocument>(Builders<CharacterDocument>.IndexKeys
+                .Ascending(character => character.RealmId)
+                .Descending(character => character.CreatedAt)
+                .Ascending(character => character.Id), new CreateIndexOptions { Name = "ix_character_realm_created" })
         ], cancellationToken);
     }
 

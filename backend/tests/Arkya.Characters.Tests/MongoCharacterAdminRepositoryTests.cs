@@ -82,6 +82,76 @@ public sealed class MongoCharacterAdminRepositoryTests
     }
 
     [MongoFact]
+    public async Task RealmFilterKeepsTotalsPaginationAndCombinedFiltersWithinTheSelectedRealm()
+    {
+        var database = "arkya_character_admin_test_" + Guid.NewGuid().ToString("N");
+        var client = new MongoClient(Environment.GetEnvironmentVariable("ARKYA_TEST_MONGO"));
+        try
+        {
+            var options = Options.Create(new MongoOptions { DatabaseName = database });
+            var characters = new MongoCharacterRepository(client, options);
+            var leases = new MongoGameLeaseStore(client, options);
+            var admin = new MongoCharacterAdminRepository(client, options);
+            await characters.EnsureIndexesAsync(default);
+            await leases.EnsureIndexesAsync(default);
+            var owner = Guid.NewGuid();
+            var otherOwner = Guid.NewGuid();
+            var now = FixedTimeProvider.Now;
+            var fixtures = new[]
+            {
+                (Name: "AelysOld", Realm: (string?)"lerya", Owner: owner, Online: true),
+                (Name: "AelysOther", Realm: (string?)"other-realm", Owner: owner, Online: true),
+                (Name: "AelysNew", Realm: (string?)"lerya", Owner: owner, Online: false),
+                (Name: "AelysGuest", Realm: (string?)"lerya", Owner: otherOwner, Online: true),
+                (Name: "AelysLegacy", Realm: (string?)null, Owner: owner, Online: false)
+            };
+            for (var index = 0; index < fixtures.Length; index++)
+            {
+                var fixture = fixtures[index];
+                var character = new Character(Guid.NewGuid(), fixture.Owner, fixture.Name, fixture.Name.ToUpperInvariant(),
+                    1, now.AddSeconds(index)) { RealmId = fixture.Realm };
+                Assert.True(await characters.TryAddAsync(character, default));
+                if (!fixture.Online) continue;
+                var lease = new GameLeaseRecord(character.Id, fixture.Owner, fixture.Realm!, "island", 1, null,
+                    now.AddSeconds(60), Guid.NewGuid(), 1, now.AddSeconds(90), now.AddHours(1), null, "private-session-reference");
+                Assert.True(await leases.TryWriteAsync(lease, null, default));
+            }
+
+            var firstPage = await admin.ListAsync(new(null, "", false, 1, 1, "lerya"), now, default);
+            Assert.Equal(3, firstPage.Total);
+            Assert.Equal("AelysGuest", Assert.Single(firstPage.Items).DisplayName);
+            var secondPage = await admin.ListAsync(new(null, "", false, 2, 1, "lerya"), now, default);
+            Assert.Equal(3, secondPage.Total);
+            Assert.Equal("AelysNew", Assert.Single(secondPage.Items).DisplayName);
+            var thirdPage = await admin.ListAsync(new(null, "", false, 3, 1, "lerya"), now, default);
+            Assert.Equal(3, thirdPage.Total);
+            Assert.Equal("AelysOld", Assert.Single(thirdPage.Items).DisplayName);
+            Assert.All(firstPage.Items.Concat(secondPage.Items).Concat(thirdPage.Items), value => Assert.Equal("lerya", value.RealmId));
+            var beyondLastPage = await admin.ListAsync(new(null, "", false, 4, 1, "lerya"), now, default);
+            Assert.Equal(3, beyondLastPage.Total);
+            Assert.Empty(beyondLastPage.Items);
+
+            var owned = await admin.ListAsync(new(owner, "aElYs", false, 1, 25, "lerya"), now, default);
+            Assert.Equal(2, owned.Total);
+            Assert.All(owned.Items, value => Assert.Equal(owner.ToString("D"), value.AccountId));
+            var onlineOwned = await admin.ListAsync(new(owner, "aElYs", true, 1, 25, "lerya"), now, default);
+            Assert.Equal(1, onlineOwned.Total);
+            Assert.Equal("AelysOld", Assert.Single(onlineOwned.Items).DisplayName);
+            Assert.Empty((await admin.ListAsync(new(owner, "Guest", false, 1, 25, "lerya"), now, default)).Items);
+            Assert.Empty((await admin.ListAsync(new(null, ".*", false, 1, 25, "lerya"), now, default)).Items);
+            var missingRealm = await admin.ListAsync(new(null, "", false, 1, 25, "missing-realm"), now, default);
+            Assert.Equal(0, missingRealm.Total);
+            Assert.Empty(missingRealm.Items);
+
+            var global = await admin.ListAsync(new(null, "", false, 1, 25), now, default);
+            Assert.Equal(5, global.Total);
+            Assert.Contains(global.Items, value => value.RealmId == "other-realm");
+            Assert.Contains(global.Items, value => value.RealmId == "");
+        }
+        finally { await client.DropDatabaseAsync(database); }
+    }
+
+    [MongoFact]
     public async Task EmptyStoreReturnsAnEmptyPageAndZeroOverview()
     {
         var database = "arkya_character_admin_test_" + Guid.NewGuid().ToString("N");

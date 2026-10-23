@@ -19,6 +19,7 @@ public sealed class MongoCharacterAdminRepository(IMongoClient client, IOptions<
         var pipeline = new List<BsonDocument>();
         var filter = new BsonDocument();
         if (query.AccountId is { } accountId) filter["AccountId"] = accountId.ToString("D");
+        if (query.RealmId is { } realmId) filter["RealmId"] = realmId;
         if (query.Search.Length > 0)
         {
             var literal = new BsonRegularExpression(Regex.Escape(query.Search), "i");

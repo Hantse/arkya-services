@@ -3,7 +3,12 @@
     var dedicatedRealmId = RealmSites.RealmId(Context);
     var page = ViewContext.RouteData.Values["page"]?.ToString();
     var authenticated = User.Identity?.IsAuthenticated == true;
-    var currentSection = Context.Request.Query["section"].FirstOrDefault() ?? "overview";
+    var realmPage = ViewData.Model as Arkya.Admin.Pages.RealmModel;
+    var currentRealm = realmPage?.Realm;
+    var realmContextId = currentRealm?.RealmId ?? dedicatedRealmId;
+    var currentSection = realmPage?.ActiveSection ?? "overview";
+    var realmPath = dedicatedRealmId is not null ? "/" : Url.Page("/Realm", new { realmId = realmContextId });
+    var centralOrigin = dedicatedRealmId is not null ? RealmSites.AdminOrigin : "";
 }
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,24 +45,24 @@
         {
         <aside class="sidebar" aria-label="Administration Arkya">
             <nav class="admin-navigation" aria-label="Menu principal">
-                @if (dedicatedRealmId is not null)
+                @if (realmContextId is not null)
                 {
-                    <div class="realm-context"><span>Realm actuel</span><strong><partial name="_AdminIcon" model='@("world")' />@dedicatedRealmId</strong></div>
+                    <div class="realm-context"><span>Realm actuel</span><strong><partial name="_AdminIcon" model='@("world")' />@realmContextId</strong></div>
                     <details class="nav-group" open>
                         <summary>Gestion du realm</summary>
-                        @foreach (var (section, label, icon) in new[] { ("overview", "Aperçu", "overview"), ("settings", "Réglages", "settings"), ("maintenance", "Maintenance", "activity"), ("game", "En jeu", "players"), ("history", "Historique", "history") })
+                        @foreach (var (section, label, icon) in new[] { ("overview", "Aperçu", "overview"), ("players", "Joueurs et personnages", "players"), ("settings", "Réglages", "settings"), ("maintenance", "Maintenance", "activity"), ("game", "En jeu", "activity"), ("history", "Historique", "history") })
                         {
-                            <a class="nav-item" href="/?section=@(section)" aria-current="@(currentSection == section ? "page" : null)"><partial name="_AdminIcon" model="icon" />@label</a>
+                            <a class="nav-item" href="@(realmPath + "?section=" + section)" aria-current="@(currentSection == section ? "page" : null)"><partial name="_AdminIcon" model="icon" />@label</a>
                         }
                     </details>
                     <details class="nav-group" open>
                         <summary>Navigation</summary>
-                        @if (ViewData.Model is Arkya.Admin.Pages.RealmModel { Realm.Status: not ("Draft" or "Deleting" or "DeleteFailed" or "Deleted") })
+                        @if (RealmSites.Enabled && currentRealm is { Status: not ("Draft" or "Deleting" or "DeleteFailed" or "Deleted") } && Arkya.Admin.Realms.RealmSiteLinks.IsRealmId(realmContextId))
                         {
-                            <a class="nav-item" href="@RealmSites.PublicUrl(dedicatedRealmId)"><partial name="_AdminIcon" model='@("external")' />Page publique ↗</a>
+                            <a class="nav-item" href="@RealmSites.PublicUrl(realmContextId)"><partial name="_AdminIcon" model='@("external")' />Page publique ↗</a>
                         }
-                        <a class="nav-item" href="@(RealmSites.AdminOrigin + "/Realms")"><partial name="_AdminIcon" model='@("world")' />Tous les realms ↗</a>
-                        <a class="nav-item" href="@(RealmSites.AdminOrigin + "/")"><partial name="_AdminIcon" model='@("overview")' />Administration générale ↗</a>
+                        <a class="nav-item" href="@(centralOrigin + "/Realms")"><partial name="_AdminIcon" model='@("world")' />Tous les realms</a>
+                        <a class="nav-item" href="@(centralOrigin + "/")"><partial name="_AdminIcon" model='@("overview")' />Administration générale</a>
                     </details>
                 }
                 else
@@ -87,7 +92,7 @@
             <div class="sidebar-bottom"><span>Console opérateur</span><form method="post" asp-page="/Logout"><button class="logout" type="submit"><partial name="_AdminIcon" model='@("logout")' />Se déconnecter</button></form></div>
         </aside>
         }
-        <main id="main" class="main-content" tabindex="-1"><div class="console-bar"><span>Administration <span aria-hidden="true">/</span> @(dedicatedRealmId ?? ViewData["Title"])</span><span class="console-access"><partial name="_AdminIcon" model='@("shield")' />Accès opérateur</span></div><div class="page-content">@RenderBody()</div></main>
+        <main id="main" class="main-content" tabindex="-1"><div class="console-bar"><span>Administration <span aria-hidden="true">/</span> @(realmContextId ?? ViewData["Title"])</span><span class="console-access"><partial name="_AdminIcon" model='@("shield")' />Accès opérateur</span></div><div class="page-content">@RenderBody()</div></main>
     </div>
 </body>
 </html>

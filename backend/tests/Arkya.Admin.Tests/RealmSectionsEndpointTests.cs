@@ -7,7 +7,7 @@ public sealed class RealmSectionsEndpointTests
 {
     private const string Path = "/Realms/terres-aube";
     private const string ApiPath = "/admin/realms/terres-aube";
-    private static readonly string[] Sections = ["overview", "settings", "maintenance", "game", "history"];
+    private static readonly string[] Sections = ["overview", "players", "settings", "maintenance", "game", "history"];
     private static readonly string[] MutationHandlers = ["Deploy", "Configuration", "Restart", "Update", "Delete", "Announce", "Command"];
 
     private static AdminFactory Factory(bool enabled = true)
@@ -20,6 +20,7 @@ public sealed class RealmSectionsEndpointTests
 
     [Theory]
     [InlineData("overview")]
+    [InlineData("players")]
     [InlineData("settings")]
     [InlineData("maintenance")]
     [InlineData("game")]
@@ -33,8 +34,15 @@ public sealed class RealmSectionsEndpointTests
         Assert.Contains("data-realm-section=\"" + section + "\"", html);
         foreach (var other in Sections.Where(value => value != section))
             Assert.DoesNotContain("data-realm-section=\"" + other + "\"", html);
+        var navigation = Navigation(html);
+        var sectionLinks = Regex.Matches(navigation, @"<a\b[^>]*href=""[^""]*\?section=[^""]*""[^>]*>.*?</a>", RegexOptions.Singleline);
+        Assert.Equal(Sections.Length, sectionLinks.Count);
         foreach (var destination in Sections)
-            Assert.Contains("href=\"" + Path + "?section=" + destination + "\"", html);
+            Assert.Single(sectionLinks.Cast<Match>(), link => link.Value.Contains("href=\"" + Path + "?section=" + destination + "\""));
+        Assert.DoesNotContain("<nav", Regex.Match(html, @"<main\b.*?</main>", RegexOptions.Singleline).Value);
+        Assert.DoesNotContain("Comptes et acc", navigation);
+        Assert.Contains("href=\"/Realms\"", navigation);
+        Assert.Contains("Administration g", WebUtility.HtmlDecode(navigation));
         var anchors = Regex.Matches(html, @"<a\b[^>]*>.*?</a>", RegexOptions.Singleline).Select(match => match.Value).ToArray();
         var active = Assert.Single(anchors, anchor => anchor.Contains("aria-current=\"page\"") && anchor.Contains("?section="));
         Assert.Contains("href=\"" + Path + "?section=" + section + "\"", active);
@@ -60,6 +68,7 @@ public sealed class RealmSectionsEndpointTests
 
     [Theory]
     [InlineData("overview")]
+    [InlineData("players")]
     [InlineData("settings")]
     [InlineData("maintenance")]
     [InlineData("game")]
@@ -95,6 +104,7 @@ public sealed class RealmSectionsEndpointTests
         var url = section is null ? Path : Path + "?section=" + Uri.EscapeDataString(section);
         var html = await browser.GetStringAsync(url);
         Assert.Contains("data-realm-section=\"overview\"", html);
+        Assert.Contains("?section=overview\" aria-current=\"page\"", Navigation(html));
         Assert.DoesNotContain("<script>unsafe", html);
         Assert.DoesNotContain("La configuration en jeu est indisponible", WebUtility.HtmlDecode(html));
         Assert.Contains("area-one", html);
@@ -105,6 +115,7 @@ public sealed class RealmSectionsEndpointTests
 
     [Theory]
     [InlineData("overview")]
+    [InlineData("players")]
     [InlineData("settings")]
     [InlineData("maintenance")]
     [InlineData("game")]
@@ -166,6 +177,7 @@ public sealed class RealmSectionsEndpointTests
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var result = await response.Content.ReadAsStringAsync();
         Assert.Contains("data-realm-section=\"" + section + "\"", result);
+        Assert.Contains("?section=" + section + "\" aria-current=\"page\"", Navigation(result));
         Assert.Contains("validation-summary-errors", result);
         if (handler != "Configuration")
         {
@@ -200,4 +212,23 @@ public sealed class RealmSectionsEndpointTests
                 Assert.DoesNotContain(entry, html);
         }
     }
+
+    [Theory]
+    [InlineData("/Realms")]
+    [InlineData("/CreateRealm")]
+    public async Task CatalogueAndCreationKeepTheGeneralAdminNavigation(string path)
+    {
+        await using var factory = Factory();
+        using var browser = factory.Browser();
+        await AdminFactory.Login(browser);
+        var navigation = Navigation(await browser.GetStringAsync(path));
+        Assert.Contains("href=\"/\"", navigation);
+        Assert.Contains("href=\"/Accounts\"", navigation);
+        Assert.Contains("href=\"/Realms\"", navigation);
+        Assert.DoesNotContain("?section=", navigation);
+        Assert.All(factory.Realms.Calls, call => Assert.Equal(HttpMethod.Get, call.Method));
+    }
+
+    private static string Navigation(string html) => Regex.Match(html,
+        @"<nav\b[^>]*aria-label=""Menu principal""[^>]*>.*?</nav>", RegexOptions.Singleline).Value;
 }

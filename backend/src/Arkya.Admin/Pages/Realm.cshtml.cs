@@ -4,21 +4,33 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
+using Arkya.Admin.Accounts;
 using Arkya.Admin.Realms;
+using Arkya.ServiceDefaults.Characters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Arkya.Admin.Pages;
 
-public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites) : PageModel
+public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, CharactersAdminClient characters) : PageModel
 {
     [BindProperty(SupportsGet = true)] public string? Section { get; set; }
     [BindProperty(SupportsGet = true)] public string? Island { get; set; }
+    [BindProperty(SupportsGet = true)] public string? Search { get; set; }
+    [BindProperty(SupportsGet = true)] public bool OnlineOnly { get; set; }
+    [BindProperty(SupportsGet = true)] public int PageNumber { get; set; } = 1;
+    [BindProperty(SupportsGet = true)] public int PageSize { get; set; } = 25;
     public RealmIslandView[] Islands => Realm is null ? [] : RealmIslandPresentation.Islands(Realm);
     public RealmIslandView? SelectedIsland => Islands.FirstOrDefault(island => island.Plan.IslandId == Island) ?? Islands.FirstOrDefault();
     public string? ActiveAction { get; private set; }
-    public string ActiveSection => Section is "settings" or "maintenance" or "game" or "history" ? Section : "overview";
+    public string ActiveSection => Section is "settings" or "maintenance" or "players" or "game" or "history" ? Section : "overview";
+    public bool CharactersEnabled => characters.Enabled;
+    public AdminCharacterPage? Characters { get; private set; }
+    public string? CharactersError { get; private set; }
+    public bool HasNextCharacters => Characters is not null && (long)Characters.Page * Characters.PageSize < Characters.Total;
+    public string AccountUrl(string accountId) => (sites.Enabled ? sites.AdminOrigin : "") + "/Account/" + Uri.EscapeDataString(accountId);
+    public bool AccountsAreCentral => sites.Enabled;
 
     [BindProperty, BindRequired, Range(0, long.MaxValue)] public long ExpectedRevision { get; set; }
     [BindProperty] public string? Reason { get; set; }
@@ -227,6 +239,7 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites) :
         catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct)) { Error ??= RealmPresentation.ErrorMessage(ex); }
         if (Realm is not null)
         {
+            if (ActiveSection == "players") await LoadPlayersAsync(ct);
             if (ActiveSection == "maintenance")
             {
                 try
@@ -263,6 +276,26 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites) :
             }
         }
         return Page();
+    }
+
+    private async Task LoadPlayersAsync(CancellationToken ct)
+    {
+        Search = Search?.Trim();
+        if (!PlayerAdminPresentation.ValidSearch(Search))
+            ModelState.AddModelError(nameof(Search), "La recherche accepte au plus 100 caractères sans caractères de contrôle.");
+        if (!PlayerAdminPresentation.ValidPagination(PageNumber, PageSize))
+            ModelState.AddModelError(nameof(PageNumber), "Choisissez une page de 1 à 10 000 et de 1 à 100 résultats.");
+        if (!CharactersEnabled || !ModelState.IsValid) return;
+        try
+        {
+            var page = await characters.ListAsync(null, Search, PageNumber, PageSize, OnlineOnly, ct, Realm!.RealmId);
+            if (page.Items.Any(character => OnlineOnly && !character.IsOnline)
+                || page.Page != PageNumber || page.PageSize != PageSize)
+                throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "Le service a renvoyé une réponse invalide pour ce realm. Réessayez dans un instant.");
+            Characters = page;
+        }
+        catch (Exception ex) when (PlayerAdminPresentation.IsDependencyError(ex, ct))
+        { CharactersError = "Les joueurs du realm sont indisponibles. " + PlayerAdminPresentation.ErrorMessage(ex); }
     }
 
     private static bool ValidId(string? realmId) => realmId is { Length: >= 3 and <= 31 }

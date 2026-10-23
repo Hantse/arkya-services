@@ -6,8 +6,12 @@ est le dashboard ; l'éditeur de quêtes est conservé sous `/Quests`.
 La fiche de chaque realm propose aussi le redémarrage, la mise à jour approuvée, les annonces en jeu, la déconnexion, la sauvegarde des joueurs et les multiplicateurs XP/récolte modifiables en direct : voir [actions, suivi et configuration](REALM_OPERATIONS.md).
 
 La liste des royaumes `/Realms` ouvre un formulaire séparé sous `/CreateRealm`.
-Chaque fiche utilise cinq sections : Aperçu, Réglages, Maintenance, En jeu et
-Historique. Une seule section est affichée ; les formulaires d’action et les
+Chaque fiche utilise six sections : Aperçu, Joueurs, Réglages, Maintenance, En jeu
+et Historique, réunies dans le menu latéral du realm. Ce menu remplace la navigation
+générale sur sa fiche, y compris en accès local `/Realms/{realmId}` ; la création
+et les pages centrales conservent le menu général. Les liens vers la liste des
+realms, l’administration générale et la page publique disponible sont regroupés
+dans ce même menu, accessible sur mobile. Une seule section est affichée ; les formulaires d’action et les
 historiques s’ouvrent à la demande pour limiter le défilement.
 
 L’aperçu présente une liste d’îles avec une seule carte sélectionnée et les
@@ -29,6 +33,12 @@ Les pages centrales, l’espace dédié au realm, la connexion, les formulaires 
 les aperçus des îles utilisent le même thème. Les fonctions et règles d’accès
 restent celles des pages existantes ; aucune donnée de démonstration n’est
 ajoutée à l’application.
+
+La section Joueurs et personnages présente uniquement les personnages rattachés
+au realm courant, avec recherche, pagination et filtre des joueurs en ligne.
+Le service Characters applique ce périmètre ; le formulaire de recherche ne
+permet pas de sélectionner un autre realm. La section En jeu conserve les
+annonces et commandes prises en charge par les serveurs.
 
 ## Navigation
 
@@ -96,7 +106,7 @@ routes publiques de la gateway.
 | Identity | `GET /admin/accounts/{accountId}` | Fiche sans jetons ni documents internes |
 | Identity | `POST /admin/accounts/{accountId}/ban` ou `/unban` | `{expectedRevision, reason}` |
 | Identity | `POST /admin/accounts/{accountId}/beta-access` | `{expectedRevision, hasBetaAccess, reason}` |
-| Characters | `GET /admin/characters?accountId=&search=&onlineOnly=false&page=1&pageSize=25` | Personnages, présence et total filtré |
+| Characters | `GET /admin/characters?accountId=&realmId=&search=&onlineOnly=false&page=1&pageSize=25` | Personnages, présence et total filtré ; `realmId` facultatif, appliqué par le serveur |
 | Characters | `GET /admin/characters/overview` | Totaux et présence par realm |
 
 Les contrats partagés sont dans `Arkya.ServiceDefaults/AccountAdminContracts.cs`

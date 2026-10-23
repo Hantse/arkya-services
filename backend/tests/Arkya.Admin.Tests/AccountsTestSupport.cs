@@ -24,6 +24,8 @@ internal sealed class AccountsStub : HttpMessageHandler
     public long Total { get; set; } = 80;
     public bool Empty { get; set; }
     public bool InvalidJson { get; set; }
+    public string CharactersRealmId { get; set; } = "beta";
+    public bool CharacterOnline { get; set; } = true;
     public HttpStatusCode? ReadError { get; set; }
     public HttpStatusCode? WriteError { get; set; }
 
@@ -60,7 +62,7 @@ internal sealed class AccountsStub : HttpMessageHandler
         if (uri.AbsolutePath.StartsWith("/admin/accounts/")) return Json(Account);
         if (uri.AbsolutePath == "/admin/characters/overview") return Json(new AdminCharacterOverview(Total, 1, [new("beta", 1)]));
         if (uri.AbsolutePath == "/admin/characters") return Json(new AdminCharacterPage(Empty ? [] :
-            [new(CharacterId.ToString("D"), Id.ToString("D"), "<script>character</script>", "beta", "human", "a", DateTimeOffset.UtcNow, true, DateTimeOffset.UtcNow.AddSeconds(60))], Total, page, pageSize));
+            [new(CharacterId.ToString("D"), Id.ToString("D"), "<script>character</script>", CharactersRealmId, "human", "a", DateTimeOffset.UtcNow, CharacterOnline, CharacterOnline ? DateTimeOffset.UtcNow.AddSeconds(60) : null)], Total, page, pageSize));
         return new(HttpStatusCode.NotFound);
     }
 

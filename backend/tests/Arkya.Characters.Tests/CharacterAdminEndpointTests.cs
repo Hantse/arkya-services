@@ -34,6 +34,7 @@ public sealed class CharacterAdminEndpointTests
         await using var factory = Factory();
         using var client = factory.PlayerClient();
         Assert.Equal(HttpStatusCode.Forbidden, (await client.GetAsync("/admin/characters")).StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, (await client.GetAsync("/admin/characters?realmId=beta-web")).StatusCode);
         client.DefaultRequestHeaders.Add(ServiceKeyValidator.HeaderName, CharactersFactory.ServiceKey);
         Assert.Equal(HttpStatusCode.Forbidden, (await client.GetAsync("/admin/characters/overview")).StatusCode);
         client.DefaultRequestHeaders.Add(CharacterAdminKeyValidator.HeaderName, AdminKey);
@@ -64,6 +65,46 @@ public sealed class CharacterAdminEndpointTests
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.Equal(new(IdentityStub.AliceId, "Aelys", true, 2, 10), repository.Query);
         Assert.Equal(FixedTimeProvider.Now, repository.ObservedAt);
+    }
+
+    [Theory]
+    [InlineData("beta-web")]
+    [InlineData("ler ya")]
+    [InlineData("Beta-web")]
+    [InlineData("../other-realm")]
+    [InlineData("beta-web/other")]
+    [InlineData("a")]
+    [InlineData("beta-web-")]
+    [InlineData("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
+    public async Task RealmFilterUsesTheDomainIdRulesAndIsForwardedWithEveryOtherFilter(string realmId)
+    {
+        var repository = new TestCharacterAdminRepository();
+        await using var factory = Factory(repository);
+        using var client = factory.PlayerClient(null);
+        client.DefaultRequestHeaders.Add(CharacterAdminKeyValidator.HeaderName, AdminKey);
+        var response = await client.GetAsync($"/admin/characters?realmId={Uri.EscapeDataString(realmId)}&accountId={IdentityStub.AliceId:D}&search=%20Aelys%20&onlineOnly=true&page=2&pageSize=10");
+        if (realmId == "beta-web")
+        {
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal(new(IdentityStub.AliceId, "Aelys", true, 2, 10, realmId), repository.Query);
+            Assert.Equal(FixedTimeProvider.Now, repository.ObservedAt);
+        }
+        else
+        {
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+            Assert.Null(repository.Query);
+        }
+    }
+
+    [Fact]
+    public async Task EmptyRealmFilterPreservesTheGlobalDirectory()
+    {
+        var repository = new TestCharacterAdminRepository();
+        await using var factory = Factory(repository);
+        using var client = factory.PlayerClient(null);
+        client.DefaultRequestHeaders.Add(CharacterAdminKeyValidator.HeaderName, AdminKey);
+        Assert.Equal(HttpStatusCode.OK, (await client.GetAsync("/admin/characters?realmId=")).StatusCode);
+        Assert.Null(repository.Query!.RealmId);
     }
 
     [Fact]

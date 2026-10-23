@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text.RegularExpressions;
 using Arkya.Admin.Realms;
 using Microsoft.AspNetCore.WebUtilities;
 
@@ -72,6 +73,34 @@ public sealed class RealmSiteTests
         Assert.Equal(HttpStatusCode.OK, renewed.StatusCode);
         Assert.Contains(renewed.Headers.GetValues("Set-Cookie"), cookie => cookie.StartsWith("Arkya.Admin.Refresh.RealmSites=") && cookie.Contains("domain=admin.arkya.online"));
         Assert.Equal(HttpStatusCode.OK, (await browser.GetAsync(Central + "/Realms")).StatusCode);
+    }
+
+    [Theory]
+    [InlineData("overview")]
+    [InlineData("players")]
+    [InlineData("settings")]
+    [InlineData("maintenance")]
+    [InlineData("game")]
+    [InlineData("history")]
+    public async Task DedicatedRealmUsesOneSidebarForEverySectionAndKeepsCentralAndPublicLinks(string section)
+    {
+        await using var factory = Factory();
+        using var browser = factory.Browser();
+        browser.BaseAddress = new Uri(Central);
+        await AdminFactory.Login(browser);
+        var html = await browser.GetStringAsync(Dedicated + "/?section=" + section);
+        var navigation = Regex.Match(html, @"<nav\b[^>]*aria-label=""Menu principal""[^>]*>.*?</nav>", RegexOptions.Singleline).Value;
+        var sectionLinks = Regex.Matches(navigation, @"<a\b[^>]*href=""/\?section=[^""]*""[^>]*>.*?</a>", RegexOptions.Singleline);
+        Assert.Equal(6, sectionLinks.Count);
+        var active = Assert.Single(sectionLinks.Cast<Match>(), link => link.Value.Contains("aria-current=\"page\""));
+        Assert.Contains("href=\"/?section=" + section + "\"", active.Value);
+        Assert.Contains("data-realm-section=\"" + section + "\"", html);
+        Assert.Contains("href=\"" + Central + "/Realms\"", navigation);
+        Assert.Contains("href=\"" + Central + "/\"", navigation);
+        Assert.Contains("href=\"https://terres-aube.arkya.online/\"", navigation);
+        Assert.DoesNotContain("<nav", Regex.Match(html, @"<main\b.*?</main>", RegexOptions.Singleline).Value);
+        Assert.All(factory.Realms.Calls, call => Assert.Equal(HttpMethod.Get, call.Method));
+        AdminFactory.NoSecrets(html);
     }
 
     [Theory]

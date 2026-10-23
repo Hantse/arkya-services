@@ -46,9 +46,16 @@ public sealed class IdentityAdminClient(HttpClient client, IOptions<IdentityAdmi
 public sealed class CharactersAdminClient(HttpClient client, IOptions<CharactersAdminApiOptions> options)
 {
     public bool Enabled => options.Value.Enabled;
-    public Task<AdminCharacterPage> ListAsync(string? accountId, string? search, int page, int pageSize, bool onlineOnly, CancellationToken ct) =>
-        PlayerAdminTransport.SendAsync<AdminCharacterPage>(client, options.Value, "personnages", HttpMethod.Get,
-            $"admin/characters?page={page}&pageSize={pageSize}&accountId={Uri.EscapeDataString(accountId ?? "")}&search={Uri.EscapeDataString(search ?? "")}&onlineOnly={onlineOnly.ToString().ToLowerInvariant()}", null, null, ct);
+    public async Task<AdminCharacterPage> ListAsync(string? accountId, string? search, int page, int pageSize, bool onlineOnly,
+        CancellationToken ct, string? realmId = null)
+    {
+        var scope = realmId is null ? "" : "&realmId=" + Uri.EscapeDataString(realmId);
+        var result = await PlayerAdminTransport.SendAsync<AdminCharacterPage>(client, options.Value, "personnages", HttpMethod.Get,
+            $"admin/characters?page={page}&pageSize={pageSize}&accountId={Uri.EscapeDataString(accountId ?? "")}&search={Uri.EscapeDataString(search ?? "")}&onlineOnly={onlineOnly.ToString().ToLowerInvariant()}{scope}", null, null, ct);
+        if (realmId is not null && result.Items.Any(character => character.RealmId != realmId))
+            throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "Le service des personnages a renvoyé des données d’un autre realm. Réessayez dans un instant.");
+        return result;
+    }
     public Task<AdminCharacterOverview> OverviewAsync(CancellationToken ct) =>
         PlayerAdminTransport.SendAsync<AdminCharacterOverview>(client, options.Value, "personnages", HttpMethod.Get,
             "admin/characters/overview", null, null, ct);

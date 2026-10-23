@@ -23,6 +23,8 @@ public sealed class MongoCharacterRepositoryTests
             var indexes = await indexCursor.ToListAsync();
             Assert.True(indexes.Single(index => index["name"] == "ux_character_normalized_name")["unique"].AsBoolean);
             Assert.Contains(indexes, index => index["name"] == "ix_character_owner_created");
+            Assert.Equal(new BsonDocument { ["RealmId"] = 1, ["CreatedAt"] = -1, ["_id"] = 1 },
+                indexes.Single(index => index["name"] == "ix_character_realm_created")["key"].AsBsonDocument);
             var service = new CharacterService(repository, new FixedTimeProvider());
 
             var results = await Task.WhenAll(

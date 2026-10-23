@@ -156,10 +156,6 @@ label { font-size: 11px; color: #cbd1dc; font-weight: 500; }
 .publish-panel h3 { font-size: 18px; }
 .realm-node { color: var(--accent); border-color: #624023; background: #30241b; }
 .realm-servers, .realm-servers li::before { border-color: #624023; }
-.realm-section-nav { padding: 4px; margin-bottom: 20px; border: 1px solid var(--line); background: #262b33; border-radius: 3px; top: 64px; }
-.realm-section-nav a { min-height: 33px; padding: 7px 15px; color: #aeb8c7; font-size: 11px; border-radius: 1px; }
-.realm-section-nav a:hover { background: #303640; color: var(--ink); }
-.realm-section-nav a[aria-current="page"] { background: var(--paper); color: var(--ink); box-shadow: none; }
 .realm-workspace .realm-header h1 { font-size: 26px; }
 .realm-summary { padding: 18px 20px; }
 .realm-summary dd { margin-top: 7px; font-size: 14px; }
@@ -260,8 +256,6 @@ label { font-size: 11px; color: #cbd1dc; font-weight: 500; }
     .realm-table thead th { font-size: 10px; }
     .filter-bar, .report-filters { padding: 14px; }
     .filter-bar .field, .report-filters .field { min-width: 100%; }
-    .realm-section-nav { top: 57px; flex-wrap: wrap; gap: 3px; }
-    .realm-section-nav a { min-height: 35px; padding: 8px 11px; font-size: 10px; }
     .realm-heading-meta { gap: 8px; }
     .realm-summary { padding: 16px; gap: 16px; }
     .realm-pane .realm-form, .realm-create-workspace .realm-create-form { padding: 16px; }
