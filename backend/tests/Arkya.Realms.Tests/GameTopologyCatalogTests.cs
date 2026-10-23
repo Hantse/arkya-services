@@ -8,7 +8,7 @@ namespace Arkya.Realms.Tests;
 public sealed class GameTopologyCatalogTests
 {
     [Fact]
-    public async Task ApprovedHandoffSnapshotPublishesTrustedAreaBoundsAndAStableTopologyVersion()
+    public async Task ApprovedHandoffSnapshotKeepsIndependentAreasAndAStableTopologyVersion()
     {
         var profile = Fixtures.Options().Profiles[0];
         profile.TopologyTemplateServerId = "area-west";
@@ -31,9 +31,20 @@ public sealed class GameTopologyCatalogTests
         Assert.Equal(realm.DeploymentIdentity, entry.TopologyVersion);
         Assert.Equal("island-starter-island-01", entry.ServerId);
         Assert.Equal(6, entry.Partitions.Length);
+        var starterArea = entry.Partitions.Where(partition => partition.IslandId == "starter-island").ToArray();
+        var futureArea = entry.Partitions.Where(partition => partition.IslandId == "future-island").ToArray();
+        Assert.Equal(4, starterArea.Length);
+        Assert.Equal(2, futureArea.Length);
         Assert.DoesNotContain(entry.Partitions, partition => partition.ServerId.StartsWith("instance-", StringComparison.Ordinal) || partition.ServerId.StartsWith("raid-", StringComparison.Ordinal));
         Assert.Equal("island-starter-island-02", GameTopology.Resolve(entry, "starter-island", 500, 250)!.ServerId);
         Assert.Equal("island-starter-island-04", GameTopology.Resolve(entry, "starter-island", 500, 500)!.ServerId);
+        Assert.Equal("island-future-island-02", GameTopology.Resolve(entry, "future-island", 500, 500)!.ServerId);
+        Assert.Equal("island-starter-island-03", GameTopology.Resolve(entry, "starter-island", 250, 750)!.ServerId);
+        Assert.Equal("island-future-island-01", GameTopology.Resolve(entry, "future-island", 250, 750)!.ServerId);
+        Assert.Equal("island-starter-island-04", GameTopology.Resolve(entry, "starter-island", 1000, 1000)!.ServerId);
+        Assert.Equal("island-future-island-02", GameTopology.Resolve(entry, "future-island", 1000, 1000)!.ServerId);
+        Assert.Null(GameTopology.Resolve(entry, "unknown-area", 250, 750));
+        Assert.All(starterArea, left => Assert.DoesNotContain(futureArea, right => GameTopology.AreNeighbors(left, right)));
         Assert.True(GameTopology.IsValid(entry));
         await repository.TryReplaceAsync(realm with { Status = RealmStatus.Deploying, Version = realm.Version + 1 }, realm.Version, default);
         var starting = Assert.Single((await service.ListAsync(default)).Realms);

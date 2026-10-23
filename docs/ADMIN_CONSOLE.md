@@ -14,10 +14,11 @@ realms, l’administration générale et la page publique disponible sont regrou
 dans ce même menu, accessible sur mobile. Une seule section est affichée ; les formulaires d’action et les
 historiques s’ouvrent à la demande pour limiter le défilement.
 
-L’aperçu présente une liste d’îles avec une seule carte sélectionnée et les
+L’aperçu présente les Areas du realm, chacune étant une carte entière comme
+l'île de départ, avec une seule carte sélectionnée et les
 pools de donjons/raids séparés. Le formulaire de création permet de choisir
 les colonnes X et les lignes Y avec une prévisualisation immédiate ; Y désigne
-le Z du monde Unity. Une zone correspond à un dédié. Voir
+le Z du monde Unity. Une partition d'Area correspond à un dédié. Voir
 [le plan et ses limites](REALM_DEPLOYMENT.md).
 
 ## Présentation de la console
@@ -30,7 +31,7 @@ denses ; les états conservent leur texte et une couleur sémantique.
 
 Le menu peut être masqué sur ordinateur et ouvert sur mobile sans script.
 Les pages centrales, l’espace dédié au realm, la connexion, les formulaires et
-les aperçus des îles utilisent le même thème. Les fonctions et règles d’accès
+les aperçus des Areas utilisent le même thème. Les fonctions et règles d’accès
 restent celles des pages existantes ; aucune donnée de démonstration n’est
 ajoutée à l’application.
 

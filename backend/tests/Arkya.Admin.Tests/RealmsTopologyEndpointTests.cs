@@ -14,12 +14,20 @@ public sealed class RealmsTopologyEndpointTests
     }
 
     [Fact]
-    public async Task CreationOffersIslandDimensionsAndSeparateInstanceAndRaidPools()
+    public async Task CreationOffersAreasWithPartitionsAndSeparateInstanceAndRaidPools()
     {
         await using var factory = EnabledFactory();
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync("/CreateRealm");
+        var decoded = WebUtility.HtmlDecode(html);
+        Assert.Contains("Configurer les Areas, instances et raids", decoded);
+        Assert.Contains("Un realm peut contenir plusieurs Areas", decoded);
+        Assert.Contains("Chaque Area est une carte entière et continue", decoded);
+        Assert.Contains("Identifiant de l’Area", decoded);
+        Assert.Contains("Ajouter une Area", decoded);
+        Assert.Contains("une partition de l’Area = un dédié", decoded);
+        Assert.Contains("32 Areas et 256 dédiés maximum par realm", decoded);
         Assert.Equal("starter-island", AdminFactory.Input(html, "Input.Islands[0].IslandId"));
         Assert.Equal("4", AdminFactory.Input(html, "Input.Islands[0].DedicatedCount"));
         Assert.Equal("1536", AdminFactory.Input(html, "Input.Islands[0].Width"));

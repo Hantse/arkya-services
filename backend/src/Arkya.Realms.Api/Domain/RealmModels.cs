@@ -24,6 +24,7 @@ public static class DedicatedKind
     public const string Raid = "Raid";
 }
 
+// Legacy Island names identify complete Areas; changing serialized names would invalidate frozen plans.
 public sealed record RealmIslandTopology(string IslandId, int DedicatedCount,
     double Width = 1000, double Depth = 1000, double OriginX = 0, double OriginZ = 0,
     [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] int? GridColumns = null,

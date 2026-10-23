@@ -8,7 +8,10 @@ et le dedicated doivent être publiés ensemble ; changer uniquement une image
 ne migre pas un profil de realm déjà figé.
 
 L'administration sépare la création du realm et sa fiche d'exploitation.
-La création configure une grille bornée pour chaque île ; la fiche regroupe
+Un realm contient plusieurs Areas, chacune étant une carte entière comme
+l'île de départ. La création configure une grille de partitions pour chaque
+Area, avec un dedicated par partition ; les champs historiques `islands` et
+`islandId` du contrat restent compatibles. La fiche regroupe
 aperçu, réglages, maintenance, actions en jeu et historique. Les révisions
 attendues et les contrôles d'autorisation des opérations restent obligatoires.
 

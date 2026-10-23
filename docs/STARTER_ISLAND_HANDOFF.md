@@ -1,7 +1,14 @@
 # StarterIsland : passage automatique entre dedicateds
 
+L'île de départ est une **Area**, une carte entière parmi les Areas d'un
+realm. Ses dedicateds simulent ses partitions ; quatre dedicateds correspondent
+à quatre partitions de cette même Area. Chaque autre Area du realm peut avoir
+son propre découpage. Les noms techniques historiques `islands`/`islandId`
+désignent ces cartes et restent compatibles ; voir la
+[décision de vocabulaire](decisions/0003-realms-and-area-authority.md).
+
 Le runtime de déplacement des joueurs dispose d'un transfert entre partitions
-d'une même île. Characters conserve une seule lease et une seule époque
+d'une même Area. Characters conserve une seule lease et une seule époque
 d'autorité par personnage ; le dedicated cible devient propriétaire par une
 écriture atomique MongoDB. Le client prépare sa seconde connexion et conserve
 le personnage présenté pendant le changement de monde Netcode.
@@ -22,6 +29,11 @@ par `GET /internal/game/topology`, authentifié avec sa clé propre. Cette lectu
 est disponible avant la readiness afin de permettre le démarrage de tous les
 processus ; l'admission d'un joueur et la préparation d'un transfert exigent
 ensuite une destination prête.
+
+La résolution des coordonnées et le voisinage sont limités à l'identifiant
+de l'Area. Deux Areas peuvent avoir les mêmes bornes sans partager leur
+autorité. Ce handoff ne charge pas une autre carte et ne fournit pas de
+transition entre Areas ; le runtime testé contient uniquement StarterIsland.
 
 Le plan générique de 1 000 × 1 000 avec quatre dedicateds forme une grille
 2 × 2 de cellules de 500 × 500. La fixture des vrais exécutables utilise le

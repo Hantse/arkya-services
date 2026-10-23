@@ -37,7 +37,7 @@
         function update() {
             const id = find("[data-island-id]").value;
             const known = id === catalog.dataset.islandCatalogId && catalog.dataset.islandCatalogImage;
-            const label = known ? catalog.dataset.islandCatalogLabel : id || "Nouvelle île";
+            const label = known ? catalog.dataset.islandCatalogLabel : id || "Nouvelle Area";
             find("[data-island-label]").textContent = label;
             image.hidden = !known;
             placeholder.hidden = Boolean(known);

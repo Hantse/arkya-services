@@ -37,9 +37,9 @@ else if (Model.Loaded)
                 <div class="field"><label asp-for="Input.ProfileId">Profil de serveurs</label><select asp-for="Input.ProfileId" required><option value="">Choisir un profil</option>@foreach (var profile in Model.Options.Profiles) { <option value="@profile.Id">@profile.DisplayName · @profile.Servers.Length serveur(s)</option> }</select></div>
                 <fieldset class="realm-plan" data-island-catalog-id="starter-island" data-island-catalog-image="@RealmIslandPresentation.ImagePath("starter-island")" data-island-catalog-label="@RealmIslandPresentation.Label("starter-island")" data-island-catalog-mapped="@RealmIslandPresentation.ImageMatchesPlan(new("starter-island", 1, 1536, 1536)).ToString().ToLowerInvariant()" data-partition-labels="@System.Text.Json.JsonSerializer.Serialize(Enumerable.Range(0, 64).Select(RealmIslandPresentation.PartitionLabel))">
                     <legend>Répartition des dédiés</legend>
-                    <label class="realm-plan-toggle"><input asp-for="Input.ConfigureTopology" /> Configurer les îles, instances et raids</label>
+                    <label class="realm-plan-toggle"><input asp-for="Input.ConfigureTopology" /> Configurer les Areas, instances et raids</label>
                     <small>Décochez pour utiliser la répartition fixe du profil sélectionné.</small>
-                    <small>Chaque île constitue un monde continu ; ses dédiés sont des partitions de ce monde. Les serveurs d’instances et de raids forment des pools séparés.</small>
+                    <small>Un realm peut contenir plusieurs Areas. Chaque Area est une carte entière et continue, subdivisée en partitions gérées chacune par un dédié. Les serveurs d’instances et de raids forment des pools séparés.</small>
                     @for (var index = 0; index < Model.Input.Islands.Count; index++)
                     {
                         var island = Model.Input.Islands[index];
@@ -49,7 +49,7 @@ else if (Model.Loaded)
                         var gridSummary = grid is { } cells ? $"{cells.Columns} × {cells.Rows} = {cells.Columns * cells.Rows} dédié(s)" : "Corrigez les dimensions ou la grille pour afficher l’aperçu.";
                         <div class="realm-island-input realm-create-island" data-island-editor>
                             <div class="realm-create-island-controls">
-                            <div class="field"><label asp-for="Input.Islands[index].IslandId">Identifiant de l’île</label><input asp-for="Input.Islands[index].IslandId" class="mono" maxlength="20" placeholder="starter-island" data-island-id /><small>3 à 20 caractères. Ajoutez aussi les futures îles.</small></div>
+                            <div class="field"><label asp-for="Input.Islands[index].IslandId">Identifiant de l’Area</label><input asp-for="Input.Islands[index].IslandId" class="mono" maxlength="20" placeholder="starter-island" data-island-id /><small>3 à 20 caractères. Ajoutez chaque Area du realm, y compris les cartes à venir.</small></div>
                             <label class="realm-plan-toggle"><input asp-for="Input.Islands[index].UseGrid" data-use-grid /> Choisir une grille X × Y</label>
                             <small data-grid-legacy-note hidden="@island.UseGrid">Le nombre de dédiés existant est conservé. Cochez pour choisir explicitement une grille.</small>
                             <div class="realm-create-grid-inputs">
@@ -57,14 +57,14 @@ else if (Model.Loaded)
                                 <span aria-hidden="true">×</span>
                                 <div class="field"><label asp-for="Input.Islands[index].GridRows">Lignes Y</label><input asp-for="Input.Islands[index].GridRows" type="number" min="1" max="64" step="1" inputmode="numeric" placeholder="Y" data-grid-rows /></div>
                             </div>
-                            <small>Y sur l’aperçu correspond à Z dans le monde. Une case = un dédié.</small>
-                            <div class="field realm-create-dedicated-count"><label asp-for="Input.Islands[index].DedicatedCount">Dédiés de cette île</label><input asp-for="Input.Islands[index].DedicatedCount" type="number" min="1" max="64" readonly="@island.UseGrid" data-dedicated-count /></div>
+                            <small>Y sur l’aperçu correspond à Z dans le monde. Une case = une partition de l’Area = un dédié.</small>
+                            <div class="field realm-create-dedicated-count"><label asp-for="Input.Islands[index].DedicatedCount">Dédiés de cette Area</label><input asp-for="Input.Islands[index].DedicatedCount" type="number" min="1" max="64" readonly="@island.UseGrid" data-dedicated-count /></div>
                             <output class="realm-create-grid-summary" data-grid-summary aria-live="polite">@gridSummary</output>
                             </div>
                             <figure class="realm-create-island-preview">
                                 <div class="realm-create-island-map" data-island-preview role="img" aria-label="@($"{RealmIslandPresentation.Label(island.IslandId ?? "")} : {gridSummary}. X vers la droite, Y / Z vers le haut.")">
                                     <img src="@imagePath" alt="" data-island-image hidden="@(imagePath is null)" />
-                                    <span class="realm-create-island-placeholder" data-island-placeholder hidden="@(imagePath is not null)">Visuel indisponible pour cette île</span>
+                                    <span class="realm-create-island-placeholder" data-island-placeholder hidden="@(imagePath is not null)">Visuel indisponible pour cette Area</span>
                                     <table class="realm-create-island-overlay @(grid is { } dense && (dense.Columns > 12 || dense.Rows > 12) ? "is-dense" : null)" aria-hidden="true"><tbody data-grid-cells>
                                     @if (grid is { } preview)
                                     {
@@ -86,15 +86,15 @@ else if (Model.Loaded)
                                 <div class="field"><label asp-for="Input.Islands[index].OriginX">Origine X</label><input asp-for="Input.Islands[index].OriginX" type="number" min="-10000000" max="10000000" step="any" data-island-origin-x /></div>
                                 <div class="field"><label asp-for="Input.Islands[index].OriginZ">Origine Z</label><input asp-for="Input.Islands[index].OriginZ" type="number" min="-10000000" max="10000000" step="any" data-island-origin-z /></div>
                             </div>
-                            <small>Coordonnées du monde X/Z. Une île de 1 000 × 1 000 avec une grille 2 × 2 produit quatre zones de 500 × 500.</small>
+                            <small>Coordonnées du monde X/Z. Une Area de 1 000 × 1 000 avec une grille 2 × 2 produit quatre partitions de 500 × 500.</small>
                             </details>
-                            <button class="text-button danger" type="submit" asp-page-handler="RemoveIsland" name="removeIslandIndex" value="@index" formnovalidate>Retirer cette île</button>
+                            <button class="text-button danger" type="submit" asp-page-handler="RemoveIsland" name="removeIslandIndex" value="@index" formnovalidate>Retirer cette Area</button>
                         </div>
                     }
-                    <button class="button secondary full-width" type="submit" asp-page-handler="AddIsland" formnovalidate disabled="@(Model.Input.Islands.Count >= 32)">Ajouter une île</button>
+                    <button class="button secondary full-width" type="submit" asp-page-handler="AddIsland" formnovalidate disabled="@(Model.Input.Islands.Count >= 32)">Ajouter une Area</button>
                     <div class="field"><label asp-for="Input.InstanceDedicatedCount">Serveurs d’instances</label><input asp-for="Input.InstanceDedicatedCount" type="number" min="0" max="64" /></div>
                     <div class="field"><label asp-for="Input.RaidDedicatedCount">Serveurs de raids</label><input asp-for="Input.RaidDedicatedCount" type="number" min="0" max="64" /></div>
-                    <small>32 îles et 256 dédiés maximum par realm. La création conserve ce plan. Le déploiement nécessite un profil compatible ; l’admission et la synchronisation entre partitions restent à intégrer et à valider.</small>
+                    <small>32 Areas et 256 dédiés maximum par realm. La création conserve ce plan. Le déploiement et les transferts entre partitions nécessitent un runtime compatible avec le contenu de chaque Area.</small>
                     @foreach (var profile in Model.Options.Profiles.Where(profile => !profile.TopologySupported))
                     {
                         <small>@profile.DisplayName : enregistrement du plan disponible, déploiement de cette topologie indisponible.</small>

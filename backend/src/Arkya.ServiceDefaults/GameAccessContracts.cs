@@ -30,6 +30,7 @@ public sealed record GameRealmEntry(string RealmId, string DisplayName, bool Rea
     public GameRealmPartition[] Partitions { get; init; } = [];
 }
 public sealed record GamePartitionBounds(double MinX, double MinZ, double MaxX, double MaxZ);
+// IslandId is the legacy Area identifier; a partition belongs to one complete map.
 public sealed record GameRealmPartition(string ServerId, string Endpoint, string IslandId, int PartitionIndex, GamePartitionBounds Bounds);
 public sealed record GameRealmCatalog(GameRealmEntry[] Realms);
 

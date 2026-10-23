@@ -34,13 +34,13 @@ Le contrat fourni au conteneur est :
 
 ```text
 ARKYA_REALM_ID=<identifiant stable>
-ARKYA_SERVER_ID=<identifiant du processus/area>
+ARKYA_SERVER_ID=<identifiant du processus dedicated>
 ARKYA_GAME_PORT=<port UDP ou TCP>
 ARKYA_GAME_TRANSPORT=<Udp ou WebSocket>
 ARKYA_BUILD_ID=<identifiant compatible>
 ```
 
-L'entrypoint de l'image doit consommer ces valeurs ou traduire les `args` du profil vers sa configuration Unity. Le prototype local actuel ne consomme pas automatiquement ce nouveau contrat. La communication entre areas, les versions de contenu, l'accès aux services et les secrets de jeu doivent être pris en charge par l'image approuvée. Le déployeur ne fabrique pas une topologie de simulation à partir du nombre de réplicas.
+L'entrypoint de l'image doit consommer ces valeurs ou traduire les `args` du profil vers sa configuration Unity. Le prototype local actuel ne consomme pas automatiquement ce nouveau contrat. Une Area est une carte entière du realm ; chaque dedicated en simule une partition. La communication entre partitions, les versions de contenu, l'accès aux services et les secrets de jeu doivent être pris en charge par l'image approuvée. Le déployeur ne fabrique pas une topologie de simulation à partir du nombre de réplicas.
 
 Le worker utilise l'API Kubernetes HTTPS et le jeton projeté du compte de service, relu à chaque requête. La CA du cluster sert à vérifier la chaîne TLS et le nom du serveur. La configuration par défaut vise le cluster dans lequel Realms s'exécute. `ReconcileIntervalSeconds` vaut 10, `DeploymentTimeoutSeconds` 300 ; leurs bornes sont respectivement 2–300 et 30–3600 secondes.
 

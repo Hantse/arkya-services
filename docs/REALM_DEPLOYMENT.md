@@ -21,8 +21,8 @@ flowchart TB
     Admin -->|HTTPS + clé administrateur| Realms["Realms API · opérations persistantes"]
     Realms --> DB[("MongoDB · arkya_realms")]
     Realms -->|Identité de service, namespaces autorisés| K8s["API Kubernetes · k3s"]
-    K8s -->|Déploiement| AreaA["Realm x · dedicated area A"]
-    K8s -->|Déploiement| AreaB["Realm x · dedicated area B"]
+    K8s -->|Déploiement| AreaA["Realm x · Area de départ · partition A"]
+    K8s -->|Déploiement| AreaB["Realm x · Area de départ · partition B"]
     Client["Client Unity"] -->|Netcode · UDP vers endpoint attribué| UDP["Service UDP par dedicated"]
     UDP --> AreaA
     UDP --> AreaB
@@ -43,7 +43,8 @@ Les pointillés signalent les intégrations restantes ou facultatives. L'UDP rep
 | Backoffice `Arkya.Admin` | Connexion opérateur, édition des quêtes existante, création et suivi des realms |
 | `Arkya.Realms.Api` | Définitions persistantes, demande de déploiement, observation des ressources Kubernetes |
 | Realm | Univers logique stable, associé pour cette V1 à un namespace préautorisé |
-| Dedicated | Un processus de simulation par area explicitement nommée ; une réplique par processus |
+| Area | Une carte entière du realm, par exemple l'île de départ ; son découpage est configurable |
+| Dedicated | Un processus de simulation par partition d'Area ; une réplique par processus |
 | YARP interne | Cible de routage HTTP des services de jeu ; instance et routes restant à implémenter |
 | Identity / Characters | Services propriétaires des comptes et personnages ; aucune copie implicite par realm |
 
@@ -51,41 +52,52 @@ YARP est un proxy HTTP de couche 7 ; il ne transporte pas les datagrammes Netcod
 
 ## Première tranche disponible
 
-La liste **Realms** ouvre la création sur une page dédiée `/CreateRealm`. Cette page réutilise la session opérateur, les formulaires antiforgery et le style du backoffice existant. L'opérateur choisit un identifiant stable, un nom affiché, une cible et un profil fournis par le serveur. Il peut définir les îles du realm, leur découpage entre dedicateds et les capacités prévues pour les instances et les raids. Le profil fixe l'image par digest, les ports et arguments autorisés, ainsi que les références éventuelles aux Secrets déjà présents dans le namespace cible. Le formulaire ne reçoit ni kubeconfig, ni YAML, ni commande libre.
+La liste **Realms** ouvre la création sur une page dédiée `/CreateRealm`. Cette page réutilise la session opérateur, les formulaires antiforgery et le style du backoffice existant. L'opérateur choisit un identifiant stable, un nom affiché, une cible et un profil fournis par le serveur. Il peut définir plusieurs Areas dans le realm, leur découpage entre dedicateds et les capacités prévues pour les instances et les raids. Le profil fixe l'image par digest, les ports et arguments autorisés, ainsi que les références éventuelles aux Secrets déjà présents dans le namespace cible. Le formulaire ne reçoit ni kubeconfig, ni YAML, ni commande libre.
 
-La création enregistre un brouillon dans `arkya_realms`. Le déploiement enregistre d'abord une demande durable ; un worker crée les `Deployment` et `Service` manquants, puis observe leur état. Un redémarrage de Realms reprend les demandes persistées. Chaque processus possède son propre Service UDP `LoadBalancer` ; il n'y a pas de répartition aléatoire entre areas dans un Service commun.
+La création enregistre un brouillon dans `arkya_realms`. Le déploiement enregistre d'abord une demande durable ; un worker crée les `Deployment` et `Service` manquants, puis observe leur état. Un redémarrage de Realms reprend les demandes persistées. Chaque processus possède son propre Service UDP `LoadBalancer` ; il n'y a pas de répartition aléatoire entre partitions dans un Service commun.
 
 Les états affichés sont `Draft` (brouillon), `Pending` (en attente), `Deploying` (déploiement en cours), `Ready` (déploiement prêt), `Failed` (échec). `Ready` exige la génération observée, une réplique mise à jour et disponible par serveur, et une adresse de LoadBalancer. Cet état ne vérifie ni l'écoute UDP effective, ni l'admission de joueurs, ni les sauvegardes de jeu. Les dedicated générés n'ont pas encore de sonde applicative Unity.
 
-### Îles, partitions, instances et raids
+### Areas, partitions, instances et raids
 
-Un realm regroupe les processus de toutes ses îles et les capacités prévues
-pour ses instances et raids. À la création, chaque île possède un `islandId`
+Un realm contient plusieurs **Areas**. Une Area est une carte entière :
+`starter-island` représente l'Area de l'île de départ. Chaque Area est
+découpée en partitions, avec un dedicated par partition. Le realm regroupe
+ces processus et les capacités prévues pour ses instances et raids.
+À la création, chaque Area possède un identifiant historique `islandId`
 stable, un `dedicatedCount`, ses dimensions `width`/`depth` et son origine
 `originX`/`originZ` dans le plan horizontal X/Z Unity. Une grille explicite
 `gridColumns` × `gridRows` peut fixer les colonnes X et les lignes Z ; le Y
 de la carte affichée représente cet axe Z du monde, pas l'altitude Unity.
-La liste accepte aussi
-les îles futures : aucune règle ne la limite à StarterIsland. Le build Unity
-doit disposer du contenu de chaque île ; cette configuration ne crée pas de
-terrain.
+La liste accepte les Areas futures : aucune règle ne la limite à StarterIsland.
+Le build Unity doit disposer du contenu de chaque Area ; cette configuration
+ne crée pas de terrain. Deux Areas peuvent utiliser les mêmes coordonnées
+locales et des nombres de partitions différents ; leur identifiant les isole.
 
-Une île de 1 000 × 1 000 à l'origine (0, 0), répartie sur quatre dedicateds,
-forme quatre domaines d'autorité de 500 × 500 :
+Le vocabulaire métier est `Realm → Areas → partitions → dedicateds`.
+Pour conserver les plans, empreintes et clients existants, le JSON garde
+`topology.islands` pour la liste d'Areas, `islandId` pour leur identifiant,
+`kind = Island` et les IDs de serveur `island-*`. Les variables
+`ARKYA_ISLAND_ID`, `ARKYA_AREA_BOUNDS` et `ARKYA_AREA_NEIGHBORS` restent
+également historiques : les deux dernières décrivent les partitions et leurs
+voisins. Cette clarification ne migre aucun identifiant ni snapshot.
 
-| Domaine | Dedicated | X min → max | Z min → max |
+L'Area de départ de 1 000 × 1 000 à l'origine (0, 0), répartie sur quatre
+dedicateds, forme quatre partitions d'autorité de 500 × 500 :
+
+| Partition | Dedicated | X min → max | Z min → max |
 | --- | --- | --- | --- |
 | A | `island-starter-island-01` | 0 → 500 | 0 → 500 |
 | B | `island-starter-island-02` | 500 → 1 000 | 0 → 500 |
 | C | `island-starter-island-03` | 0 → 500 | 500 → 1 000 |
 | D | `island-starter-island-04` | 500 → 1 000 | 500 → 1 000 |
 
-Chaque domaine possède son processus et son Service, avec une seule réplique
+Chaque partition possède son processus et son Service, avec une seule réplique
 Kubernetes. Quatre replicas derrière un Service partagé ne fournissent pas
 ce découpage. Les bornes intérieures sont semi-ouvertes : X = 500 appartient
 à la colonne de droite, Z = 500 à la ligne suivante (C/D), et (500, 500) à D.
-Les bords extérieurs maximaux de l'île restent inclus. Une position hors de
-l'île n'a pas de propriétaire dans ce plan.
+Les bords extérieurs maximaux de l'Area restent inclus. Une position hors de
+l'Area n'a pas de propriétaire dans ce plan.
 
 Lorsqu'une grille explicite est fournie, le découpage utilise exactement
 ses colonnes et ses lignes, même si une autre orientation produirait des
@@ -96,8 +108,8 @@ Les cellules ont toutes la même largeur et profondeur.
 Sans ces deux champs (absents ou `null`), le découpage historique choisit
 une grille rectangulaire dont colonnes × lignes égale
 exactement `dedicatedCount`, en recherchant les cellules les plus proches du
-carré compte tenu des dimensions de l'île. À égalité, il privilégie davantage
-de colonnes X. Une île carrée donne donc 2 × 2 avec quatre dedicateds,
+carré compte tenu des dimensions de l'Area. À égalité, il privilégie davantage
+de colonnes X. Une Area carrée donne donc 2 × 2 avec quatre dedicateds,
 3 × 2 avec six, et 5 × 1 avec cinq. Les indices progressent d'abord en X,
 puis en Z. Chaque dedicated possède une cellule ; il n'y a ni trou ni
 superposition d'autorités aux frontières.
@@ -105,7 +117,7 @@ superposition d'autorités aux frontières.
 Le profil autorisé sert de modèle. La création développe et fige les
 processus, leur type (`kind = Island`, `Instance` ou `Raid`), l'`islandId`,
 l'indice `partitionIndex` à partir de zéro, `partitionCount` et les `bounds`
-(`minX`, `minZ`, `maxX`, `maxZ`) des partitions. Les autres îles peuvent avoir
+(`minX`, `minZ`, `maxX`, `maxZ`) des partitions. Les autres Areas peuvent avoir
 des dimensions et une origine différentes. Les documents MongoDB portant
 ce plan utilisent le schéma 2 ; les définitions historiques de schéma 1
 restent lisibles. Les anciens plans de schéma 2 sans grille explicite
@@ -119,7 +131,7 @@ Pour les seuls plans explicites, les manifests injectent
 reçoivent aussi `ARKYA_ISLAND_ID`, `ARKYA_PARTITION_INDEX`,
 `ARKYA_PARTITION_COUNT`, `ARKYA_AREA_BOUNDS` (JSON camelCase) et
 `ARKYA_AREA_NEIGHBORS` (liste JSON des identifiants voisins partageant un
-côté de la même île). Le runtime de transfert lit le catalogue authentifié de Characters, qui
+côté de la même Area). Le runtime de transfert lit le catalogue authentifié de Characters, qui
 reprend le plan Realms figé ; ces variables décrivent aussi le plan injecté
 au processus. Le profil historique version 1 conserve son comportement.
 Le [guide de handoff StarterIsland](STARTER_ISLAND_HANDOFF.md) précise le
@@ -166,12 +178,14 @@ pas être redécoupée sans futur workflow de drain et de migration.
 Le build historique `1 / arkya-web-beta-v1` charge une île dédiée sans
 handoff ; son profil ne peut pas activer la topologie distribuée. Le runtime
 `2 / arkya-partition-handoff-v1` ajoute le passage du joueur entre domaines
-StarterIsland. Le catalogue expose les partitions d'île des plans compatibles,
+StarterIsland. Le catalogue expose les partitions d'Area des plans compatibles,
 avec une version de topologie ; Characters choisit la partition de la position
 sauvegardée et refuse une admission dont la paire client ne correspond pas.
 Les pools d'instances et de raids ne sont pas publiés comme destinations
-jouables. Le contenu des autres îles reste à fournir dans un runtime adapté ;
-la liste du backoffice conserve leur plan sans créer ces contenus.
+jouables. Le contenu des autres Areas reste à fournir dans un runtime adapté ;
+la liste du backoffice conserve leur plan sans créer ces contenus. Le handoff
+reste à l'intérieur d'une même Area ; aucune proximité de coordonnées ne
+déclenche un passage vers une autre carte.
 
 ### Passage automatique du joueur
 
@@ -191,7 +205,7 @@ six handoffs, avec un blocage maximal mesuré de 0,43 seconde près d'une
 frontière ; le client natif exporté et le déploiement public restent à valider.
 La réplication
 frontalière des PNJ, le combat entre domaines et les parties privées ne font
-pas partie de cette tranche. Le [prototype multi-area](AREA_PROTOTYPE.md)
+pas partie de cette tranche. Le [prototype de partitions](AREA_PROTOTYPE.md)
 conserve ses tests locaux de combat et ne constitue pas cette preuve.
 
 ### Garanties et limites
@@ -218,7 +232,7 @@ une vérification distincte.
 Les comptes restent globaux. Le rattachement `realmId`, les tickets et les
 leases sont conservés lors du handoff. Le parcours historique reste disponible
 pour sa paire version 1 ; le nouveau catalogue version 2 route les partitions
-d'île compatibles. Les autres contenus d'île, le placement des groupes et
+d'Area compatibles. Les autres contenus d'Area, le placement des groupes et
 l'allocation d'instances/raids gardent leurs travaux propres.
 
 ### Mettre à jour une image par GitOps
@@ -304,8 +318,9 @@ Toutes les routes `/admin/realms` sont internes et exigent `X-Arkya-Admin-Key`, 
 
 Les identifiants de realm, profil, cible et serveur ont 3 à 31 caractères : lettre minuscule initiale, chiffres/minuscules/tirets, terminaison alphanumérique. Les noms affichés ont 1 à 80 caractères. Une cible ou un realm déjà réservé renvoie `409`, un choix invalide `400`. Les définitions exposent une révision, l'image figée, l'état, une erreur bornée et la date du dernier changement observé.
 
-Exemple de plan : quatre dedicateds pour l'île de départ, deux pour une autre
-île, deux emplacements d'instances et un de raid :
+Exemple de plan : quatre dedicateds pour l'Area de départ, deux pour une autre
+Area, deux emplacements d'instances et un de raid. Les clés JSON historiques
+`islands` et `islandId` représentent ces Areas :
 
 ```json
 {
@@ -342,8 +357,8 @@ Exemple de plan : quatre dedicateds pour l'île de départ, deux pour une autre
 }
 ```
 
-Une topologie accepte au plus 32 îles, avec des identifiants uniques de 3 à
-20 caractères au même format minuscule. Chaque île demande 1 à 64 dedicateds ;
+Une topologie accepte au plus 32 Areas, avec des identifiants uniques de 3 à
+20 caractères au même format minuscule. Chaque Area demande 1 à 64 dedicateds ;
 chaque capacité instance/raid accepte 0 à 64 dedicateds. La somme doit être
 comprise entre 1 et 256 processus. `gridColumns` et `gridRows` sont optionnels
 ensemble ; s'ils sont renseignés, chaque valeur est un entier de 1 à 64 et

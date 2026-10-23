@@ -19,7 +19,7 @@
             <ul class="realm-server-list">
             @foreach (var server in realm.Servers)
             {
-                <li><div><strong class="mono">@server.Id</strong><small>@(server.Transport == "WebSocket" ? "WebSocket / TCP" : "UDP") @server.Port@if (realm.Topology is not null) { <span> · @RealmPresentation.ServerKindLabel(server.Kind)@if (server.IslandId is not null) { <span> · @server.IslandId · partition @(server.PartitionIndex + 1) / @server.PartitionCount</span> }</span> }</small></div><span class="realm-status @(server.ReadyReplicas == server.DesiredReplicas && server.ReadyReplicas > 0 ? "ready" : "pending")">@server.ReadyReplicas / @server.DesiredReplicas prêt(s)</span><details class="realm-server-address"><summary>Adresses</summary><code>@(string.IsNullOrWhiteSpace(server.Address) ? "Adresse en attente" : server.Address)</code>@if (server.PublicEndpoint is not null) { <code>@server.PublicEndpoint</code> }</details></li>
+                <li><div><strong class="mono">@server.Id</strong><small>@(server.Transport == "WebSocket" ? "WebSocket / TCP" : "UDP") @server.Port@if (realm.Topology is not null) { <span> · @RealmPresentation.ServerKindLabel(server.Kind)@if (server.IslandId is not null) { <span> · Area @server.IslandId · partition @(server.PartitionIndex + 1) / @server.PartitionCount</span> }</span> }</small></div><span class="realm-status @(server.ReadyReplicas == server.DesiredReplicas && server.ReadyReplicas > 0 ? "ready" : "pending")">@server.ReadyReplicas / @server.DesiredReplicas prêt(s)</span><details class="realm-server-address"><summary>Adresses</summary><code>@(string.IsNullOrWhiteSpace(server.Address) ? "Adresse en attente" : server.Address)</code>@if (server.PublicEndpoint is not null) { <code>@server.PublicEndpoint</code> }</details></li>
             }
             </ul>
 </div></details>
@@ -31,7 +31,7 @@
 @if (realm.Topology is not null)
 {
     <h3 class="realm-bounds-heading">Limites des partitions (X / Z)</h3>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Coordonnées des partitions"><table class="realm-table"><caption class="sr-only">Coordonnées des zones de chaque serveur dédié</caption><thead><tr><th scope="col">Dédié</th><th scope="col">Minimum X / Z</th><th scope="col">Maximum X / Z</th></tr></thead><tbody>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Coordonnées des partitions"><table class="realm-table"><caption class="sr-only">Coordonnées des partitions de chaque Area et serveur dédié</caption><thead><tr><th scope="col">Dédié</th><th scope="col">Minimum X / Z</th><th scope="col">Maximum X / Z</th></tr></thead><tbody>
         @foreach (var server in realm.Servers.Where(server => server.Bounds is not null))
         {
             <tr><th scope="row" class="mono">@server.Id</th><td>@server.Bounds!.MinX / @server.Bounds.MinZ</td><td>@server.Bounds.MaxX / @server.Bounds.MaxZ</td></tr>
@@ -40,7 +40,7 @@
         <p>Les découpes sont figées au déploiement. L’admission et les transferts entre dédiés nécessitent un runtime compatible et sa validation en jeu.</p>
     @if (!realm.TopologyRuntimeSupported)
     {
-        <p class="realm-topology-note">Le déploiement est bloqué pour ce profil : la prise en charge des îles partagées n’est pas configurée.</p>
+        <p class="realm-topology-note">Le déploiement est bloqué pour ce profil : la prise en charge des Areas partitionnées n’est pas configurée.</p>
     }
 }
 </div></details>

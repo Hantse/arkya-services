@@ -28,14 +28,14 @@ exigent plusieurs cibles et namespaces configurés avec leur routage.
 
 `/Realms` affiche uniquement la liste des royaumes. **Créer un royaume** ouvre
 `/CreateRealm`, où se trouvent le nom, la cible, le profil et le plan complet
-des îles, instances et raids. L’édition du plan d’un brouillon utilise cette
+des Areas, instances et raids. L’édition du plan d’un brouillon utilise cette
 même page ; les anciens liens `/Realms?editRealmId=...` y redirigent.
 
 La fiche `/Realms/{realmId}` affiche une seule section à la fois :
 
 | Section | Contenu |
 | --- | --- |
-| Aperçu | Liste d’îles, carte de l’île sélectionnée et découpes, pools de donjons/raids séparés ; serveurs et coordonnées repliés. |
+| Aperçu | Liste d'Areas, carte de l'Area sélectionnée et partitions, pools de donjons/raids séparés ; serveurs et coordonnées repliés. |
 | Réglages | Multiplicateurs XP/récolte et confirmation de leur application. |
 | Maintenance | Déploiement, redémarrage, mise à jour et suppression ; ouvrir l’action voulue pour afficher son formulaire. |
 | En jeu | Annonce, déconnexion et sauvegarde ; ouvrir le formulaire souhaité. |
@@ -56,22 +56,25 @@ l’authentification, l’antiforgery et la panne du suivi serveur. Le rendu Raz
 a été inspecté dans Chromium sur ordinateur et mobile ; les cinq sections et
 la création ne débordent pas horizontalement à 320, 390, 768 et 1440 pixels.
 
-## Îles et découpes
+## Areas et partitions
 
-Dans `/CreateRealm`, chaque île propose **Colonnes X** et **Lignes Y**. Le
-nombre de dédiés est leur produit (64 maximum par île). L’aperçu se met à jour
+Un realm contient plusieurs Areas ; chacune est une carte entière, comme
+l'île de départ, et peut utiliser plusieurs dedicateds. Dans `/CreateRealm`,
+chaque Area propose **Colonnes X** et **Lignes Y**. Le nombre de dédiés est
+leur produit (64 maximum par Area). L’aperçu se met à jour
 sans enregistrer ; seule la validation du formulaire conserve le plan. Le
 formulaire fonctionne aussi sans JavaScript, avec l’aperçu du dernier rendu
 serveur. Les anciens plans restent en répartition automatique jusqu’au choix
 explicite du mode grille.
 
-Dans l’aperçu du royaume, `?island=identifiant` sélectionne une seule île ; une
-valeur inconnue revient à la première. Les lettres de zone correspondent aux
-serveurs affichés dans le volet **Zones et serveurs dédiés**. Le détail des
-serveurs des pools est replié sous leur capacité. La première zone
+Dans l’aperçu du royaume, le paramètre historique `?island=identifiant`
+sélectionne une seule Area ; une valeur inconnue revient à la première.
+Les lettres de partition correspondent aux serveurs affichés dans le volet
+**Partitions et serveurs dédiés**. Le détail des serveurs des pools est replié
+sous leur capacité. La première partition
 est en bas à gauche, X vers la droite et Y vers le haut (Z Unity). Les limites
 proviennent du snapshot enregistré. Les pools d’instances et de raids n’ont
-pas de découpe spatiale sur l’île.
+pas de découpe spatiale sur l'Area.
 
 Le catalogue d’images est local et contrôlé dans `RealmIslandPresentation` :
 `starter-island` possède une carte du relief calculée depuis la texture R16
@@ -79,10 +82,10 @@ exportée du terrain X/Z `[0, 1536]`, sans bâtiments ni décors. La provenance 
 la commande de génération figurent dans
 [admin-map/README.md](world/starter-island/admin-map/README.md).
 Si les dimensions ou l’origine du plan diffèrent, l’image est signalée comme
-illustration ; les coordonnées du plan restent celles enregistrées. Une île
+illustration ; les coordonnées du plan restent celles enregistrées. Une Area
 inconnue affiche sa grille et indique que son image manque, sans charger
 une URL fournie par l’opérateur. Le profil fixe `beta-web` avec son unique
-serveur `island` affiche l’île de départ en une zone, sans inventer de
+serveur `island` affiche l'Area de l'île de départ en une partition, sans inventer de
 coordonnées de partition dans son snapshot historique.
 
 Le plan reste modifiable uniquement à l’état **Brouillon**. Il ne constitue
@@ -99,6 +102,14 @@ horizontal à 320, 390, 768 et 1 440 pixels. La carte de relief a été inspect�
 et ses points de contrôle comparés au layout ; la capture 3D Unity n’a pas
 abouti (voir la provenance de la carte), aucun test en jeu n’est revendiqué
 pour cette modification d’interface et de plan.
+
+La clarification Area/carte et partition/dedicated du 23 octobre 2026 est
+vérifiée par **634 tests Admin réussis** (un test MongoDB optionnel ignoré)
+et **72 tests Realms ciblés réussis**, sans échec. Les deux Areas d'un même
+catalogue peuvent partager leurs coordonnées et conserver des découpages
+indépendants. Cette correction de vocabulaire conserve les clés de contrat,
+les identifiants et les snapshots existants ; elle n'ajoute pas de nouveau
+contenu Unity ni de passage entre cartes.
 
 ## Redémarrage et mise à jour
 

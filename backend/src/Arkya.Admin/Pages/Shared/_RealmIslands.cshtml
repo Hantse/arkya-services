@@ -8,12 +8,13 @@
     string N(double value) => value.ToString("0.###", CultureInfo.InvariantCulture);
     var poolServers = realm.Servers.Where(server => server.Kind is "Instance" or "Raid").ToArray();
 }
-<div class="section-heading realm-islands-heading"><h2>Îles du royaume <span class="muted">@islands.Length</span></h2>@if (realm.Status == "Draft") { <a class="button secondary" asp-page="/RealmCreate" asp-route-editRealmId="@realm.RealmId">Modifier les îles et découpes</a> }</div>
+<div class="section-heading realm-islands-heading"><h2>Areas du royaume <span class="muted">@islands.Length</span></h2>@if (realm.Status == "Draft") { <a class="button secondary" asp-page="/RealmCreate" asp-route-editRealmId="@realm.RealmId">Modifier les Areas et partitions</a> }</div>
+<p class="muted">Chaque Area est une carte entière du realm ; ses partitions sont simulées par des dédiés distincts.</p>
 <div class="realm-world-layout">
-    <section class="panel realm-island-browser" aria-label="Îles du royaume">
+    <section class="panel realm-island-browser" aria-label="Areas du royaume">
         @if (selected is not null)
         {
-            <nav class="realm-island-list" aria-label="Choisir une île">
+            <nav class="realm-island-list" aria-label="Choisir une Area">
                 @foreach (var island in islands)
                 {
                     var dimensions = RealmIslandPresentation.Grid(island.Plan);
@@ -28,9 +29,9 @@
             var grid = RealmIslandPresentation.Grid(plan);
             var image = RealmIslandPresentation.ImagePath(plan.IslandId);
             <div class="realm-island-detail">
-                <header><div><h3>@RealmIslandPresentation.Label(plan.IslandId)</h3><small class="mono">@plan.IslandId</small></div><span class="realm-island-grid-count">@grid.Columns × @grid.Rows<small>@plan.DedicatedCount zone(s)</small></span></header>
+                <header><div><h3>@RealmIslandPresentation.Label(plan.IslandId)</h3><small class="mono">@plan.IslandId</small></div><span class="realm-island-grid-count">@grid.Columns × @grid.Rows<small>@plan.DedicatedCount partition(s)</small></span></header>
                 <figure class="realm-partition-map realm-island-map">
-                    <svg viewBox="0 0 @N(plan.Width) @N(plan.Depth)" role="img" aria-label="@RealmIslandPresentation.Label(plan.IslandId) : @grid.Columns colonnes X et @grid.Rows lignes Y, @plan.DedicatedCount zones">
+                    <svg viewBox="0 0 @N(plan.Width) @N(plan.Depth)" role="img" aria-label="@RealmIslandPresentation.Label(plan.IslandId) : @grid.Columns colonnes X et @grid.Rows lignes Y, @plan.DedicatedCount partitions">
                         <rect class="realm-island-map-background" width="@N(plan.Width)" height="@N(plan.Depth)" />
                         @if (image is not null) { <image href="@image" width="@N(plan.Width)" height="@N(plan.Depth)" preserveAspectRatio="none" /> }
                         @for (var index = 0; index < plan.DedicatedCount; index++)
@@ -46,18 +47,18 @@
                             var height = bounds.MaxZ - bounds.MinZ;
                             var label = RealmIslandPresentation.PartitionLabel(index);
                             <g class="realm-partition-cell">
-                                <title>Zone @label · @(server?.Id ?? "Affectation en attente")@if (!selected.FixedProfile) { <text> : (@N(bounds.MinX), @N(bounds.MinZ)) → (@N(bounds.MaxX), @N(bounds.MaxZ))</text> }</title>
+                                <title>Partition @label · @(server?.Id ?? "Affectation en attente")@if (!selected.FixedProfile) { <text> : (@N(bounds.MinX), @N(bounds.MinZ)) → (@N(bounds.MaxX), @N(bounds.MaxZ))</text> }</title>
                                 <rect x="@N(x)" y="@N(y)" width="@N(width)" height="@N(height)" />
                                 <text x="@N(x + width / 2)" y="@N(y + height / 2)" font-size="@N(Math.Min(width, height) * .22)">@label</text>
                             </g>
                         }
                     </svg>
-                    <figcaption><span>X → · Y ↑ <small>(Y = Z du monde)</small></span><span>@(selected.FixedProfile ? "Profil fixe · une zone" : "1 zone = 1 dédié")</span></figcaption>
+                    <figcaption><span>X → · Y ↑ <small>(Y = Z du monde)</small></span><span>@(selected.FixedProfile ? "Profil fixe · une partition" : "1 partition = 1 dédié")</span></figcaption>
                 </figure>
-                @if (image is null) { <p class="realm-map-note">Image de cette île à ajouter au catalogue. La grille reste disponible.</p> }
+                @if (image is null) { <p class="realm-map-note">Image de cette Area à ajouter au catalogue. La grille reste disponible.</p> }
                 else if (!selected.FixedProfile) { <p class="realm-map-note">@(RealmIslandPresentation.ImageMatchesPlan(plan) ? "Carte du relief alignée sur les coordonnées du plan." : "Illustration : les dimensions du plan diffèrent de la carte de référence (1 536 × 1 536, origine 0 / 0).")</p> }
                 @if (!selected.FixedProfile) { <p class="realm-map-note">@N(plan.Width) × @N(plan.Depth) unités · origine @N(plan.OriginX) / @N(plan.OriginZ)@if (plan.GridColumns is null) { <span> · répartition automatique historique</span> }</p> }
-                <details class="realm-island-zones"><summary>Zones et serveurs dédiés</summary><div class="table-scroll" tabindex="0" role="region" aria-label="Zones de l’île sélectionnée"><table class="realm-table"><thead><tr><th scope="col">Zone</th><th scope="col">Dédié</th><th scope="col">État</th></tr></thead><tbody>
+                <details class="realm-island-zones"><summary>Partitions et serveurs dédiés</summary><div class="table-scroll" tabindex="0" role="region" aria-label="Partitions de l’Area sélectionnée"><table class="realm-table"><thead><tr><th scope="col">Partition</th><th scope="col">Dédié</th><th scope="col">État</th></tr></thead><tbody>
                 @for (var index = 0; index < plan.DedicatedCount; index++)
                 {
                     var server = selected.Servers.FirstOrDefault(server => server.PartitionIndex == index) ?? (selected.FixedProfile ? selected.Servers.FirstOrDefault() : null);
@@ -66,10 +67,10 @@
                 </tbody></table></div></details>
             </div>
         }
-        else { <div class="realm-no-islands"><h3>Aucune île dans ce plan</h3><p>Ce royaume contient uniquement des pools d’instances ou de raids.</p></div> }
+        else { <div class="realm-no-islands"><h3>Aucune Area dans ce plan</h3><p>Ce royaume contient uniquement des pools d’instances ou de raids.</p></div> }
     </section>
     <aside class="panel realm-dungeon-pools" aria-labelledby="dungeon-pools-heading">
-        <div class="eyebrow">SIMULATIONS ISOLÉES</div><h2 id="dungeon-pools-heading">Pool de donjons</h2><p>Les donjons sont séparés des îles du royaume.</p>
+        <div class="eyebrow">SIMULATIONS ISOLÉES</div><h2 id="dungeon-pools-heading">Pool de donjons</h2><p>Les donjons sont séparés des Areas du royaume.</p>
         <dl><div><dt>Pool d’instances</dt><dd>@(realm.Topology?.InstanceDedicatedCount ?? 0)<small> dédié(s)</small></dd></div><div><dt>Pool de raids</dt><dd>@(realm.Topology?.RaidDedicatedCount ?? 0)<small> dédié(s)</small></dd></div></dl>
         @if (poolServers.Length > 0)
         {

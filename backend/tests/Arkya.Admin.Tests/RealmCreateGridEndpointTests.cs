@@ -202,7 +202,7 @@ public sealed class RealmCreateGridEndpointTests
         var image = Regex.Match(html, "<img[^>]*data-island-image[^>]*>").Value;
         Assert.NotEmpty(image);
         Assert.DoesNotContain("src=", image);
-        Assert.Contains("Visuel indisponible pour cette île", WebUtility.HtmlDecode(html));
+        Assert.Contains("Visuel indisponible pour cette Area", WebUtility.HtmlDecode(html));
         Assert.Contains("Aucune image de catalogue", WebUtility.HtmlDecode(html));
         Assert.DoesNotContain(factory.Realms.Calls, call => call.Method != HttpMethod.Get);
     }

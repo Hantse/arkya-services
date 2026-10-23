@@ -2,6 +2,8 @@
 
 Ce prototype isole le passage d'autorité entre deux processus Unity sur une carte continue. Il utilise réellement Entities, des jobs Burst et Netcode for Entities pour les connexions client/serveur. Il sert à observer le déplacement d'un joueur, d'un monstre et de projectiles entre deux domaines d'autorité, ainsi que l'application unique des dégâts.
 
+Depuis la clarification du 23 octobre 2026, une **Area** désigne une carte entière du realm et une **partition** son domaine d'autorité confié à un dedicated. Les noms historiques `AreaPrototype`, `AreaId` et « inter-area » dans ce prototype désignent ses partitions ; ses deux serveurs ne représentent pas deux cartes distinctes. Voir la [décision de vocabulaire](decisions/0003-realms-and-area-authority.md).
+
 Les preuves effectivement obtenues sont suivies dans le [rapport de validation](AREA_PROTOTYPE_VALIDATION.md).
 
 Le 15 octobre 2026, 56 tests Edit Mode ont réussi : 31 sur le protocole d'areas et 25 sur les règles de quête. Les deux builds Windows ont réussi, avec 0 erreur et 0 avertissement de build. Le scénario final avec deux Dedicated Servers et deux clients graphiques a passé ses **54 contrôles** : 7 transferts, 23 impacts appliqués dont 2 interzones, 10 doublons ignorés et aucun impact rejeté. Les quatre codes de sortie sont nuls, les journaux ne présentent aucune erreur runtime détectée et les captures ont été inspectées. Les intervalles maximaux entre snapshots de simulation sont de 0.4005 s et 0.4667 s ; cette mesure ne garantit pas une fluidité visuelle parfaite.

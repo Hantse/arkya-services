@@ -48,11 +48,17 @@ public sealed class RealmIslandOverviewTests
         { Kind = "Island", IslandId = plan.IslandId, PartitionIndex = index, PartitionCount = plan.DedicatedCount, Bounds = bounds };
 
     [Fact]
-    public async Task OverviewListsBothIslandsAndPlacesTheFirstRowAtTheBottomOfTheMap()
+    public async Task OverviewListsBothAreasAndPlacesTheFirstRowAtTheBottomOfTheMap()
     {
         await using var factory = Factory();
         var html = await Overview(factory);
         var links = IslandLinks(html);
+        var decoded = WebUtility.HtmlDecode(html);
+        Assert.Contains("Areas du royaume", decoded);
+        Assert.Contains("Choisir une Area", decoded);
+        Assert.Contains("Chaque Area est une carte entière du realm", decoded);
+        Assert.Contains("1 partition = 1 dédié", decoded);
+        Assert.DoesNotContain("Îles du royaume", decoded);
         Assert.Equal(2, links.Length);
         Assert.Contains("starter-island", Assert.Single(links, link => link.Contains("aria-current=\"true\"")));
         Assert.Contains("3 × 2", WebUtility.HtmlDecode(links[0]));
@@ -73,7 +79,7 @@ public sealed class RealmIslandOverviewTests
     }
 
     [Fact]
-    public async Task SelectingTheSecondIslandShowsOnlyItsFourZonesAndRefreshKeepsTheSelection()
+    public async Task SelectingTheSecondAreaShowsOnlyItsFourPartitionsAndRefreshKeepsTheSelection()
     {
         await using var factory = Factory();
         var html = await Overview(factory, "second-island");
@@ -90,7 +96,7 @@ public sealed class RealmIslandOverviewTests
         AssertRect(cells[3], "0", "0", "800", "300");
         Assert.All(cells, cell => Assert.Contains("island-second-island-", cell.Element("title")!.Value));
         Assert.Empty(svg.Elements("image"));
-        Assert.Contains("Image de cette île à ajouter au catalogue", WebUtility.HtmlDecode(html));
+        Assert.Contains("Image de cette Area à ajouter au catalogue", WebUtility.HtmlDecode(html));
     }
 
     [Theory]
@@ -169,7 +175,7 @@ public sealed class RealmIslandOverviewTests
         };
         var html = await Overview(factory);
         var decoded = WebUtility.HtmlDecode(html);
-        Assert.Contains("Aucune île dans ce plan", decoded);
+        Assert.Contains("Aucune Area dans ce plan", decoded);
         Assert.Contains("Pool d’instances", decoded);
         Assert.Contains("Pool de raids", decoded);
         Assert.Contains("instance-02", html);
@@ -189,7 +195,7 @@ public sealed class RealmIslandOverviewTests
         await using var factory = Factory(status);
         var html = await Overview(factory);
         Assert.Equal(editable, html.Contains("href=\"/CreateRealm?editRealmId=terres-aube\""));
-        Assert.Equal(editable, WebUtility.HtmlDecode(html).Contains("Modifier les îles et découpes"));
+        Assert.Equal(editable, WebUtility.HtmlDecode(html).Contains("Modifier les Areas et partitions"));
     }
 
     [Fact]
@@ -206,10 +212,10 @@ public sealed class RealmIslandOverviewTests
         Assert.Single(IslandLinks(html));
         Assert.Contains("Île de départ", decoded);
         Assert.Contains("1 × 1", decoded);
-        Assert.Contains("Profil fixe · une zone", decoded);
+        Assert.Contains("Profil fixe · une partition", decoded);
         var cell = Assert.Single(Cells(Map(html)));
-        Assert.Equal("Zone A · island", cell.Element("title")!.Value.Trim());
-        Assert.DoesNotContain("Coordonnées des zones", decoded);
+        Assert.Equal("Partition A · island", cell.Element("title")!.Value.Trim());
+        Assert.DoesNotContain("Coordonnées des partitions", decoded);
         Assert.DoesNotContain("origine", decoded);
         Assert.DoesNotContain("(0, 0)", decoded);
         Assert.DoesNotContain("1 536 × 1 536", decoded);

@@ -144,7 +144,7 @@ public sealed class RealmCreateModel(RealmsAdminClient realms) : PageModel
         if (!Enabled) return NotFound();
         await LoadAsync(ct);
         if (Input.Islands.Count >= 32)
-            ModelState.AddModelError("Input.Islands", "Un realm peut contenir au maximum 32 îles.");
+            ModelState.AddModelError("Input.Islands", "Un realm peut contenir au maximum 32 Areas.");
         else Input.Islands.Add(new IslandInput { IslandId = "", DedicatedCount = 1, UseGrid = true, GridColumns = 1, GridRows = 1 });
         SynchronizeGridCounts();
         return Page();
@@ -167,25 +167,25 @@ public sealed class RealmCreateModel(RealmsAdminClient realms) : PageModel
         if (!Input.ConfigureTopology) return;
         SynchronizeGridCounts();
         if (Input.Islands.Count > 32)
-            ModelState.AddModelError("Input.Islands", "Un realm peut contenir au maximum 32 îles.");
+            ModelState.AddModelError("Input.Islands", "Un realm peut contenir au maximum 32 Areas.");
         var ids = new HashSet<string>(StringComparer.Ordinal);
         long total = 0;
         for (var index = 0; index < Input.Islands.Count; index++)
         {
             var island = Input.Islands[index];
             if (!Regex.IsMatch(island.IslandId ?? "", @"\A[a-z][a-z0-9-]{1,18}[a-z0-9]\z", RegexOptions.CultureInvariant))
-                ModelState.AddModelError($"Input.Islands[{index}].IslandId", "L’identifiant d’île utilise 3 à 20 caractères : minuscules, chiffres et tirets.");
+                ModelState.AddModelError($"Input.Islands[{index}].IslandId", "L’identifiant d’Area utilise 3 à 20 caractères : minuscules, chiffres et tirets.");
             else if (!ids.Add(island.IslandId!))
-                ModelState.AddModelError($"Input.Islands[{index}].IslandId", "Chaque île doit avoir un identifiant distinct.");
+                ModelState.AddModelError($"Input.Islands[{index}].IslandId", "Chaque Area doit avoir un identifiant distinct.");
             if (island.UseGrid && (island.GridColumns is not (>= 1 and <= 64) || island.GridRows is not (>= 1 and <= 64)))
                 ModelState.AddModelError($"Input.Islands[{index}].GridColumns", "Renseignez des colonnes X et des lignes Y entières, entre 1 et 64.");
             else if (island.UseGrid && (long)island.GridColumns!.Value * island.GridRows!.Value > 64)
-                ModelState.AddModelError($"Input.Islands[{index}].GridColumns", "La grille ne peut pas dépasser 64 dédiés par île.");
+                ModelState.AddModelError($"Input.Islands[{index}].GridColumns", "La grille ne peut pas dépasser 64 dédiés par Area.");
             if (island.DedicatedCount is < 1 or > 64)
-                ModelState.AddModelError($"Input.Islands[{index}].DedicatedCount", "Prévoyez entre 1 et 64 dédiés par île.");
+                ModelState.AddModelError($"Input.Islands[{index}].DedicatedCount", "Prévoyez entre 1 et 64 dédiés par Area.");
             if (!double.IsFinite(island.Width) || island.Width is < 1 or > 1_000_000 ||
                 !double.IsFinite(island.Depth) || island.Depth is < 1 or > 1_000_000)
-                ModelState.AddModelError($"Input.Islands[{index}].Width", "Les dimensions de l’île doivent être finies et comprises entre 1 et 1 000 000 unités.");
+                ModelState.AddModelError($"Input.Islands[{index}].Width", "Les dimensions de l’Area doivent être finies et comprises entre 1 et 1 000 000 unités.");
             if (!double.IsFinite(island.OriginX) || Math.Abs(island.OriginX) > 10_000_000 ||
                 !double.IsFinite(island.OriginZ) || Math.Abs(island.OriginZ) > 10_000_000)
                 ModelState.AddModelError($"Input.Islands[{index}].OriginX", "L’origine doit être finie et limitée à ±10 000 000 unités.");
@@ -196,7 +196,7 @@ public sealed class RealmCreateModel(RealmsAdminClient realms) : PageModel
         if (Input.RaidDedicatedCount is < 0 or > 64)
             ModelState.AddModelError("Input.RaidDedicatedCount", "Prévoyez entre 0 et 64 serveurs de raids.");
         total += (long)Input.InstanceDedicatedCount + Input.RaidDedicatedCount;
-        if (total <= 0) ModelState.AddModelError("Input.Islands", "Prévoyez au moins un serveur pour une île, une instance ou un raid.");
+        if (total <= 0) ModelState.AddModelError("Input.Islands", "Prévoyez au moins un serveur pour une Area, une instance ou un raid.");
         if (total > 256) ModelState.AddModelError("Input.Islands", "Un realm peut prévoir au maximum 256 serveurs dédiés au total.");
     }
 

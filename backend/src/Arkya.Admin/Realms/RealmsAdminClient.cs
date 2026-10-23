@@ -210,7 +210,7 @@ public static class RealmPresentation
     };
     public static string ServerKindLabel(string kind) => kind switch
     {
-        "Instance" => "Instance", "Raid" => "Raid", _ => "Monde ouvert"
+        "Island" => "Partition d’Area", "Instance" => "Instance", "Raid" => "Raid", _ => "Monde ouvert"
     };
     public static string StatusLabel(string status) => status switch
     {
