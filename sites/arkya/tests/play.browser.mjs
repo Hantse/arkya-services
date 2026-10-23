@@ -3,7 +3,7 @@
 async (page) => {
   const base = new URL(page.url()).origin;
   const api = 'https://api.arkya.online';
-  const archive = 'https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23/Arkya-Launcher-win-x64.zip';
+  const archive = 'https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23.1/Arkya-Launcher-win-x64.zip';
   const checks = [];
   const errors = [];
   const requests = [];

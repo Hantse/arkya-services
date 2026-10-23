@@ -53,13 +53,24 @@ remplace pas cet historique : seul le backend l’enregistre après consommation
 réussie du ticket par un serveur dédié. Il est associé au compte, indépendamment
 du PC et du launcher.
 
-Ce parcours nécessite un client construit avec ces changements. La publication
-initiale `0.1.0-beta.20261023` reste une exploration locale ; modifier le site ou
-le backend ne met pas à jour ce binaire. Une nouvelle archive Windows validée
-doit être publiée sous une version distincte avant de changer le manifeste du
-canal. Voir [le contrat d’entrée](CHARACTER_ENTRY.md) pour l’historique et
+Le client `0.1.0-beta.20261023.1` provient de la
+[CI Unity du 23 octobre](https://github.com/Hantse/arkya-mmorpg/actions/runs/39888123368),
+source `2b34ab6ff45c0faf56c230136e9d115c6c7aa177`. Il inclut ce parcours natif,
+la base Valkyrie et la sélection/création dans la cour d’Aubefont. Installer
+cette version avec le launcher pour recevoir ces changements. La publication
+initiale `0.1.0-beta.20261023` reste une exploration locale ; une mise à jour du
+site ou du backend ne change pas ce précédent binaire. Voir
+[le contrat d’entrée](CHARACTER_ENTRY.md) pour l’historique et
 [le contrat d’admission](WEB_BETA_CONTRACT.md) pour le transport et les contrôles
 côté serveur.
+
+Le client natif conserve le domaine de l’URL d’admission et son éventuel port
+non standard dans l’en-tête HTTP `Host` du WebSocket. Le nom TLS et la
+validation des certificats restent inchangés. Le
+[correctif du Transport embarqué](https://github.com/Hantse/arkya-mmorpg/blob/2b34ab6ff45c0faf56c230136e9d115c6c7aa177/Packages/com.unity.transport/ARKYA_FORK.md)
+ne modifie ni les routes publiques ni les autorisations par adresse IP client.
+Les contrôles natifs couvrent TLS, WebSocket et la connexion UTP ; l’admission
+authentifiée dans le royaume public reste à vérifier.
 
 Le jeu est installé dans `%LOCALAPPDATA%\Arkya\Game`. La préférence de canal
 reste dans `launcher-preferences.json`. `ARKYA_LAUNCHER_MANIFEST_URL` permet
@@ -100,12 +111,16 @@ ce client avec les vrais services. Le launcher ne modifie pas son parcours
 d’authentification ou de jeu et ne transforme pas l’essai local natif en une
 admission publique sur un serveur dédié.
 
-Pour un client Windows destiné aux joueurs, fournir au processus Unity
-`ARKYA_CLIENT_IDENTITY_URL=https://api.arkya.online` et
-`ARKYA_CLIENT_CHARACTERS_URL=https://api.arkya.online`.
-`ARKYA_CLIENT_REPORTS_URL` est facultatif et reprend l’origine Characters
-si absent. Le pipeline Windows applique temporairement ces origines HTTPS
-publiques aux paramètres du client et restaure ensuite le fichier source
+La CI officielle définit `ARKYA_CLIENT_IDENTITY_URL`,
+`ARKYA_CLIENT_CHARACTERS_URL` et `ARKYA_CLIENT_REPORTS_URL` sur
+`https://api.arkya.online`. Après le build Windows, elle vérifie que
+`identityBaseUrl`, `charactersBaseUrl` et `reportsBaseUrl` dans `build.json`
+portent exactement cette origine ; une différence fait échouer le job.
+
+Pour un build manuel destiné aux joueurs, fournir ces mêmes variables au
+processus Unity. `ARKYA_CLIENT_REPORTS_URL` est facultatif et reprend l’origine
+Characters si absent. Le pipeline Windows applique temporairement ces origines
+HTTPS publiques aux paramètres du client et restaure ensuite le fichier source
 exact. Il refuse HTTP, localhost, identifiants, chemins, query et fragments.
 Les origines effectivement intégrées figurent dans `build.json`.
 Sans ces variables, le pipeline conserve la configuration de développement
@@ -156,12 +171,19 @@ chemins Windows spéciaux, liens et doublons sans distinction de casse.
 L’extraction est bornée par la taille déclarée. Une vérification de l’espace
 disponible inclut archive, fichiers décompressés et 256 Mio de marge.
 
-L’installation est préparée dans un dossier temporaire et un verrou empêche
-deux écritures simultanées. Le pointeur actif est remplacé atomiquement
-seulement après validation du package complet. Une annulation ou une erreur
-conserve la version précédente. Les fichiers temporaires de cette opération
-sont nettoyés ; après un arrêt brutal du processus, un dossier temporaire
-orphelin peut rester sans changer la version active.
+Le launcher `0.1.1` évite le renommage du dossier du jeu, qui peut échouer
+lorsqu’un fichier extrait est encore ouvert. L’archive est extraite dans une release
+unique, encore inactive. Après validation complète, seul `current.json` est
+remplacé atomiquement ; aucun renommage du dossier du jeu n’est nécessaire.
+Le verrou empêche deux écritures simultanées. Une erreur ou une annulation
+conserve le pointeur et la version précédents ; le nettoyage ne cible que la
+nouvelle release. Un arrêt brutal ou un verrou persistant peut laisser une
+release inactive orpheline sans changer la version active.
+
+Le test Windows reproduit le refus de renommage avec un fichier extrait ouvert,
+puis valide la nouvelle activation. La suite du launcher compte 47 tests réussis.
+Les essais d’installation complets conservent séparément l’ancien échec et la
+réussite avec l’exact Core publié dans le launcher `0.1.1`.
 
 Le SHA-256 protège l’intégrité par rapport au manifeste HTTPS. Il ne remplace
 pas une signature indépendante contre la compromission de l’hébergement.

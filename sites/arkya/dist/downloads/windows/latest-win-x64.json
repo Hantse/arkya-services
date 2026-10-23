@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.0-beta.20261023",
+  "version": "0.1.0-beta.20261023.1",
   "platform": "win-x64",
-  "packageUrl": "https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23/Arkya-0.1.0-beta.20261023-win-x64.zip",
-  "packageSize": 472070050,
-  "unpackedSize": 2041639083,
-  "sha256": "1d113281d06160dece3e25c082e8cae28186b0637bd685609f31f2e494db8c0c",
+  "packageUrl": "https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23.1/Arkya-0.1.0-beta.20261023.1-win-x64.zip",
+  "packageSize": 474652319,
+  "unpackedSize": 2053706220,
+  "sha256": "3e6993bd72535fc8e084d0d249d5e95835b8d476c96763505b57ff72852d49e0",
   "executable": "Arkya.exe",
-  "releaseNotes": "Bêta Windows : création de personnage avec la base Valkyrie et exploration de la première île. Version de test."
+  "releaseNotes": "Mise à jour de la bêta Windows : entrée native dans le dernier royaume, création de personnage et île de départ actualisées."
 }
