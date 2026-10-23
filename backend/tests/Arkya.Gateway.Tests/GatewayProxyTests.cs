@@ -35,6 +35,8 @@ public sealed class GatewayProxyTests
     [InlineData("POST", "/v1/auth/discord/exchange")]
     [InlineData("GET", "/v1/auth/me")]
     [InlineData("POST", "/v1/auth/refresh")]
+    [InlineData("POST", "/v1/auth/refresh/native")]
+    [InlineData("POST", "/v1/auth/logout/native")]
     [InlineData("POST", "/v1/auth/logout")]
     public async Task Public_identity_routes_preserve_method_path_query_body_and_bearer(string method, string path)
     {

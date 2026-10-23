@@ -44,21 +44,23 @@ public static class IdentityEndpoints
         auth.MapPost("/discord/exchange", async (ExchangeRequest request, HttpContext context, IdentityService service,
             IOptions<WebClientOptions> webClient, TimeProvider clock, CancellationToken ct) =>
         {
+            if (request.UseRefreshCookie && request.UseRefreshToken) return Results.BadRequest(new { code = "conflicting_refresh_modes" });
+            if (request.UseRefreshToken && !IsNativeRequest(context)) return Results.StatusCode(403);
             if (request.UseRefreshCookie && !RefreshCookie.IsAllowedRequest(context, webClient.Value)) return Results.StatusCode(403);
-            var result = await service.ExchangeAsync(request.ChallengeId, request.CodeVerifier, ct, request.UseRefreshCookie);
+            var result = await service.ExchangeAsync(request.ChallengeId, request.CodeVerifier, ct, request.UseRefreshCookie || request.UseRefreshToken);
             if (result.Status == "pending")
             {
                 context.Response.Headers.RetryAfter = "5";
                 return Results.Json(new { status = "pending" }, statusCode: 202);
             }
-            if (result.Status == "completed" && result.RefreshToken is { } token)
+            if (request.UseRefreshCookie && result.Status == "completed" && result.RefreshToken is { } token)
             {
                 await service.RevokeRefreshAsync(context.Request.Cookies[RefreshCookie.Name], ct);
                 RefreshCookie.Write(context, token, result.Session!.RefreshExpiresAt!.Value, clock);
             }
             return result.Status switch
             {
-                "completed" => Results.Ok(result.Session),
+                "completed" => request.UseRefreshToken ? Results.Ok(ToNativeResponse(result)) : Results.Ok(result.Session),
                 "banned" => Results.Json(new { code = "account_banned" }, statusCode: 403),
                 "expired" => Results.Json(new { code = "challenge_expired_or_consumed" }, statusCode: 410),
                 _ => Results.BadRequest(new { code = "invalid_exchange" })
@@ -77,6 +79,19 @@ public static class IdentityEndpoints
             RefreshCookie.Write(context, result.RefreshToken!, result.Session!.RefreshExpiresAt!.Value, clock);
             return Results.Ok(result.Session);
         }).RequireCors(WebClientOptions.CorsPolicyName);
+        auth.MapPost("/refresh/native", async (NativeRefreshRequest request, HttpContext context, IdentityService service, CancellationToken ct) =>
+        {
+            if (!IsNativeRequest(context)) return Results.StatusCode(403);
+            var result = await service.RefreshAsync(request.RefreshToken, ct);
+            return result.Status == "completed" ? Results.Ok(ToNativeResponse(result)) : Results.Unauthorized();
+        });
+        auth.MapPost("/logout/native", async (NativeRefreshRequest request, HttpContext context, IdentityService service, CancellationToken ct) =>
+        {
+            if (!IsNativeRequest(context)) return Results.StatusCode(403);
+            await service.RevokeRefreshAsync(request.RefreshToken, ct);
+            if (ReadBearer(context) is { } token) await service.RevokeAsync(token, ct);
+            return Results.NoContent();
+        });
         auth.MapGet("/me", async (HttpContext context, IdentityService service, CancellationToken ct) =>
         {
             var session = await service.ValidateSessionAsync(ReadBearer(context), ct);
@@ -120,6 +135,11 @@ public static class IdentityEndpoints
     }
 
     private static AccountSessionResponse ToResponse(Session session) => new(session.AccountId, session.DisplayName, session.ExpiresAt, session.HasBetaAccess);
+    private static NativeSessionResponse ToNativeResponse(ExchangeResult result) => new(result.Session!.AccountId,
+        result.Session.DisplayName, result.Session.SessionToken, result.Session.ExpiresAt, result.RefreshToken!, result.Session.RefreshExpiresAt!.Value);
+    private static bool IsNativeRequest(HttpContext context) => !context.Request.Headers.ContainsKey("Origin") &&
+        !context.Request.Headers.ContainsKey("Cookie") && !context.Request.Headers.ContainsKey("Sec-Fetch-Site") &&
+        !context.Request.Headers.ContainsKey(RefreshCookie.HeaderName);
     private static string? ReadBearer(HttpContext context) => AuthenticationHeaderValue.TryParse(context.Request.Headers.Authorization, out var header)
         && header.Scheme.Equals("Bearer", StringComparison.OrdinalIgnoreCase) ? header.Parameter : null;
 }

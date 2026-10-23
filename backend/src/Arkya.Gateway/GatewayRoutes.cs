@@ -18,6 +18,8 @@ public static class GatewayRoutes
             Route("identity-exchange", "identity", "/v1/auth/discord/exchange", "POST", "OPTIONS"),
             Route("identity-me", "identity", "/v1/auth/me", "GET", "OPTIONS"),
             Route("identity-refresh", "identity", "/v1/auth/refresh", "POST", "OPTIONS"),
+            Route("identity-refresh-native", "identity", "/v1/auth/refresh/native", "POST"),
+            Route("identity-logout-native", "identity", "/v1/auth/logout/native", "POST"),
             Route("identity-logout", "identity", "/v1/auth/logout", "POST", "OPTIONS")
         };
         if (charactersEnabled)

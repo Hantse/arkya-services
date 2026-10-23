@@ -61,6 +61,36 @@ du jeu via sa famille. Cette livraison ne modifie ni l’admission ni les contra
 Unity pour prolonger une partie en cours ; ne pas raccourcir l’accès à quelques
 minutes avant de traiter cette intégration.
 
+## Launcher Windows
+
+À partir du launcher `0.4.0`, l’échange Discord natif demande
+`useRefreshToken: true` et reçoit le refresh rotatif dans sa réponse HTTPS.
+Ce mode est exclusif du cookie navigateur ; Identity refuse `Origin`,
+`Cookie` et les en-têtes Fetch Metadata sur ces requêtes natives.
+
+| Opération | Contrat natif |
+| --- | --- |
+| `POST /v1/auth/discord/exchange` | Challenge S256 et `useRefreshToken: true` ; bearer, `refreshToken`, `refreshExpiresAt` |
+| `POST /v1/auth/refresh/native` | `{ refreshToken }` ; nouvelle paire après rotation atomique |
+| `POST /v1/auth/logout/native` | `{ refreshToken }` ; révocation de la famille, même si le bearer a expiré |
+
+Le launcher conserve uniquement le refresh, l’ID de compte et la limite
+absolue, chiffrés par DPAPI `CurrentUser` dans
+`%LOCALAPPDATA%\Arkya\Launcher\launcher-session.dat`. Le bearer reste en
+mémoire. Ce dossier est indépendant de l’installation et conservé lors des
+mises à jour du launcher. Aucun secret ne passe dans les arguments du jeu,
+de l’updater ou de l’installateur.
+
+La restauration renouvelle puis vérifie `/me` avant d’ouvrir l’accueil.
+Le launcher renouvelle aussi avant l’expiration de l’accès ; une panne
+temporaire conserve le refresh pour réessayer. La déconnexion efface le
+stockage local puis révoque la famille. Révocation, ban ou limite absolue
+exigent une nouvelle connexion Discord. Les limites de durée et de rotation
+restent celles d’Identity décrites plus haut.
+
+Identity et Gateway doivent être déployés avec les routes natives avant de
+distribuer ce launcher. Les contrats navigateur existants restent inchangés.
+
 ## Administration
 
 Admin possède `arkya_admin.admin_sessions`, avec index TTL et schéma versionné.
