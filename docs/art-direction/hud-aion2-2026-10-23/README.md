@@ -10,7 +10,7 @@ de l’image dégagé. Les illustrations et les données restent celles d’Arky
 - Deux rangées de douze emplacements, avec les raccourcis existants, quantités
   et temps de recharge. L’expérience se lit sur la ligne sous les compétences.
 - Mini-carte rectangulaire avec zoom, orientation, repère et heure du monde.
-  Les boutons Personnage (`C`), Inventaire (`I`), Journal (`J`) et Carte (`M`)
+  Les boutons Inventaire (`I`), Journal (`J`) et Carte (`M`)
   occupent la petite barre au-dessus ; les quêtes reçues s’affichent dessous.
 - Cible en haut au centre, groupe à gauche, effets au-dessus du bloc de combat,
   conversation et annonces en bas à gauche. Les signalements `F8` et
@@ -42,7 +42,7 @@ et les nouveaux points d’ancrage.
 - Exploration StarterIsland avec serveur local et client connectés : jauges
   réelles, mini-carte et portrait affichés ; barre d’expérience avec une surface
   de remplissage de 2 px à 1600 × 900.
-- Ouverture des quatre fenêtres depuis leurs boutons, ouverture de la carte
+- Ouverture des fenêtres depuis leurs boutons, ouverture de la carte
   par `M` et fermeture par `Échap`.
 - Captures examinées à 1600 × 900, 1280 × 720 et 1920 × 810. Le bloc de combat
   reste centré et les éléments restent dans le panneau en format large.
@@ -54,3 +54,8 @@ Le marqueur de maquette a été placé en haut à gauche pour la capture d’ape
 les valeurs de quêtes, groupe et compétences de cet aperçu ne décrivent pas
 des fonctionnalités actives de l’exploration locale. Le mode Play, le thème
 et les dimensions de Game View ont été restaurés après la revue.
+
+Les captures incluent le bouton Personnage (`C`) d’un travail local préexistant,
+préservé mais exclu du commit de disposition du HUD. Le test d’intégration de
+sa fiche signale encore une visibilité `None` après son raccourci ; ce contrôle
+est suivi avec le travail de raccordement et ne fait pas partie des 20 cas HUD.
