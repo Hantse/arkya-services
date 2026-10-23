@@ -28,15 +28,18 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
             (target.RealmId is null || target.RealmId == realm.RealmId)))
             throw new DeploymentFailure("target_unavailable");
         var resources = new List<(string Path, JsonObject Desired, JsonObject? Existing)>();
-        var servers = realm.Profile.Servers.Concat(realm.RuntimeRelease?.PreviousProfile.Servers ?? [])
-            .DistinctBy(server => server.Id);
-        foreach (var server in servers)
+        var profiles = new[] { realm.Profile }.Concat(realm.RuntimeRelease is { } transition ? [transition.PreviousProfile] : []);
+        var servers = profiles.SelectMany(profile => profile.Servers.Select(server => (Profile: profile, Server: server)))
+            .DistinctBy(value => value.Server.Id);
+        foreach (var (profile, server) in servers)
         {
+            // Legacy workloads retain the labels of the profile that created them.
+            var owner = realm with { Profile = profile };
             var desired = new JsonObject
             {
                 ["metadata"] = new JsonObject
                 {
-                    ["name"] = ResourceName(realm, server), ["namespace"] = realm.Namespace, ["labels"] = Labels(realm, server)
+                    ["name"] = ResourceName(owner, server), ["namespace"] = realm.Namespace, ["labels"] = Labels(owner, server)
                 }
             };
             foreach (var collection in new[] { "apis/apps/v1", "api/v1" })

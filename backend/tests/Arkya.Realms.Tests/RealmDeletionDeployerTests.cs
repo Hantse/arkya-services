@@ -4,12 +4,59 @@ using System.Text.Json.Nodes;
 using Arkya.Realms.Api.Application;
 using Arkya.Realms.Api.Domain;
 using Arkya.Realms.Api.Infrastructure;
+using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
 
 namespace Arkya.Realms.Tests;
 
 public sealed class RealmDeletionDeployerTests
 {
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task DeletesLegacyAndPartitionedWorkloadsUsingTheirOriginalProfileLabels(bool previousServiceIsForeign)
+    {
+        var original = Fixtures.Realm();
+        var legacy = original.Profile.Servers[0] with
+        {
+            Id = "island", Port = 17943, Transport = "WebSocket", PublicEndpoint = "wss://game.example/game/eu-one/"
+        };
+        original = original with { Profile = original.Profile with { Servers = [legacy] } };
+        var profile = Fixtures.Options().Profiles[0];
+        profile.TopologyTemplateServerId = "island-template";
+        profile.TopologyPublicEndpointTemplate = "wss://game.example/game/{realmId}/{serverId}/";
+        profile.Servers = [new() { Id = "island-template", Port = 17943, Transport = "WebSocket",
+            PublicEndpoint = "wss://game.example/template/", ProtocolVersion = GameProtocol.HandoffVersion,
+            BuildId = GameProtocol.HandoffBuildId }];
+        var migrated = original with
+        {
+            Profile = RealmTopologyBuilder.Snapshot(profile, original.RealmId,
+                new RealmTopology([new("starter-island", 4, 1536, 1536)])),
+            RuntimeRelease = new(1, original.Profile, original.ImageRelease, original.Restart) { Completed = true }
+        };
+        using var cluster = new DeleteCluster(migrated);
+        cluster.AddWorkloads(original);
+        var previousService = cluster.Resources.Single(pair => pair.Key.Contains("/services/", StringComparison.Ordinal) &&
+            pair.Value["metadata"]!["labels"]!["arkya.online/server-id"]!.GetValue<string>() == legacy.Id).Value;
+        Assert.Null(previousService["metadata"]!["labels"]!["arkya.online/server-kind"]);
+        Assert.All(cluster.Resources.Values.Where(resource => resource["metadata"]!["labels"]!["arkya.online/server-id"]!.GetValue<string>() != legacy.Id),
+            resource => Assert.Equal("island", resource["metadata"]!["labels"]!["arkya.online/server-kind"]!.GetValue<string>()));
+        if (previousServiceIsForeign)
+        {
+            previousService["metadata"]!["labels"]!["arkya.online/deployment-id"] = "foreign";
+            Assert.Equal("resource_ownership_conflict", (await Assert.ThrowsAsync<DeploymentFailure>(() =>
+                cluster.Deployer().DeleteAsync(migrated, default))).Code);
+            Assert.Empty(cluster.Deletes);
+            Assert.Equal(10, cluster.Resources.Count);
+        }
+        else
+        {
+            Assert.True(await cluster.Deployer().DeleteAsync(migrated, default));
+            Assert.Equal(10, cluster.Deletes.Length);
+            Assert.Empty(cluster.Resources);
+        }
+    }
+
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
@@ -304,10 +351,15 @@ public sealed class RealmDeletionDeployerTests
             Realm = realm ?? Fixtures.Realm();
             File.WriteAllText(tokenFile, "synthetic-cluster-token");
             client = new HttpClient(this, false);
-            foreach (var server in Realm.Profile.Servers)
+            AddWorkloads(Realm);
+        }
+
+        public void AddWorkloads(RealmRecord owner)
+        {
+            foreach (var server in owner.Profile.Servers)
             {
-                Add($"apis/apps/v1/namespaces/{Realm.Namespace}/deployments", KubernetesRealmDeployer.DeploymentManifest(Realm, server));
-                Add($"api/v1/namespaces/{Realm.Namespace}/services", KubernetesRealmDeployer.ServiceManifest(Realm, server));
+                Add($"apis/apps/v1/namespaces/{owner.Namespace}/deployments", KubernetesRealmDeployer.DeploymentManifest(owner, server));
+                Add($"api/v1/namespaces/{owner.Namespace}/services", KubernetesRealmDeployer.ServiceManifest(owner, server));
             }
         }
 
