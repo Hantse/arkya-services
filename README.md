@@ -85,6 +85,7 @@ For Unity work, Codex should use the installed **CoplayDev Unity MCP** bridge fo
 - [StarterIsland player handoff: protocol, durable authority and four-process validation](docs/STARTER_ISLAND_HANDOFF.md).
 - [Discord Social SDK: friends, presence, social invitations and configuration](docs/DISCORD_SOCIAL.md).
 - [Combat, classes, multiclass progression and inherited spells — design](docs/GAMEPLAY_CLASSES.md).
+- [Character stats, class progression, skill inheritance and live HUD — first implementation](docs/CHARACTER_STATS_SKILLS.md).
 - [Animal soul bonds and wolf/fox totem companions — design and art assets](docs/GAMEPLAY_TOTEMS.md).
 - [Backend service boundaries and transport decision](docs/decisions/0002-backend-services.md).
 - [Realms, characters, and continuous area authority](docs/decisions/0003-realms-and-area-authority.md).

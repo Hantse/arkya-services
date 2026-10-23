@@ -92,6 +92,13 @@ Le serveur dédié demande les données initiales et transmet les mutations pers
 
 ### Création, apparence et entrée sur l’île
 
+La [première tranche de statistiques et compétences](CHARACTER_STATS_SKILLS.md)
+ajoute à l’acteur d’exploration un état ECS autoritaire, répliqué au propriétaire :
+vie/mana/endurance, classe active, niveaux/XP et rangs appris. La fiche `C` et les
+jauges lisent ce ghost. Les sauvegardes et handoffs conservent cet état dans le
+JSON de simulation versionné ; les effets de combat et les sources de récompenses
+restent à intégrer. Ce schéma utilise la paire `2 / arkya-character-stats-v1`.
+
 La scène `Assets/Arkya/Characters/Scenes/CharacterCreation.unity`, dans `Unity3D/Arkya/`, réunit l'interface UI Toolkit, le client HTTPS Identity/Characters et la présentation Valkyrie. Depuis le 22 octobre 2026, le catalogue visuel partage cette base entre les quatre couples historiques race/silhouette sans modifier leurs identifiants persistants ou réseau ; la nouvelle création propose uniquement le modèle humain féminin et sa coiffure longue disponibles. Le rig Generic, les matériaux peints, la taille visuelle et les animations Idle/Walk/Run/Jump/SwimIdle/Swim appartiennent à la présentation. Ils ne possèdent aucune statistique autoritaire. Le choix de taille applique une échelle visuelle et ne change pas les collisions ou la vitesse.
 
 Cette migration visuelle conserve le contrat d’apparence version 1 et les

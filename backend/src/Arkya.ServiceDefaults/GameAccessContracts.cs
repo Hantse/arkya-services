@@ -9,7 +9,9 @@ public static class GameProtocol
     public const string BuildId = "arkya-web-beta-v1";
     public const int HandoffVersion = 2;
     public const string HandoffBuildId = "arkya-partition-handoff-v1";
-    public static bool IsHandoff(int version, string? buildId) => version == HandoffVersion && buildId == HandoffBuildId;
+    public const string CharacterStatsBuildId = "arkya-character-stats-v1";
+    public static bool IsHandoff(int version, string? buildId) => version == HandoffVersion &&
+        buildId is HandoffBuildId or CharacterStatsBuildId;
     public static bool IsSupported(int version, string? buildId) => version == Version && buildId == BuildId || IsHandoff(version, buildId);
     public static bool ValidId(string? value) => value is not null && Regex.IsMatch(value, @"\A[a-z][a-z0-9-]{1,29}[a-z0-9]\z");
     public static bool ValidEndpoint(string? value, bool development = false) =>
