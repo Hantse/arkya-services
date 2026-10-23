@@ -189,6 +189,39 @@ python D:\Repositories\arkya\backend\deploy\gitops\realm-control\Validate-Manife
 python D:\Repositories\arkya\backend\deploy\gitops\Test-Manifests.py --require-digests
 ```
 
+## Source facultative des métadonnées de la bêta native
+
+Le [patch d'Application](native-runtime-metadata.application.patch.yaml) prépare
+une revue du passage de l'Application existante `arkya-beta`, dans `argocd`,
+à deux sources Git. Il conserve `arkya-services/master` sur
+`backend/deploy/gitops/admin` et ajoute `arkya-mmorpg/main` sur
+`deploy/gitops/native-beta`. Le projet, la destination et la politique de
+synchronisation existants sont conservés. Ce fichier reste hors des
+`resources` du profil Admin ; sa présence dans Git n'active pas cette source.
+
+Avant de retenir ce patch, vérifier que l'Application suit encore cette
+source Admin unique. Un merge patch remplace toute la liste `spec.sources` :
+si elle existe déjà, préserver ses autres entrées dans une modification
+adaptée à l'état réel. Le fichier retire explicitement `spec.source` pour
+éviter de conserver simultanément les deux formes de configuration Argo.
+Les instructions de première activation ci-dessous restent distinctes.
+
+La source native doit rendre uniquement le ConfigMap
+`arkya-native-runtime-release`, dans `arkya-beta`. Ses références de source
+et d'image Linux sont immuables ; le client Windows doit provenir du même
+SHA et les sept jobs de la livraison Unity doivent être verts. Cette
+source enregistre une livraison de protocole `3/arkya-multi-area-v1` avec
+adoption manuelle, sans consommateur runtime. Elle ne configure aucun
+`Deployment__Profiles`, `ImageReleases` ou `RuntimeReleases` et ne modifie
+aucune définition de realm.
+
+Le client WebGL existant et le profil `beta-web` gardent leurs références.
+Le chemin Unity historique `deploy/gitops/beta` n'est pas ajouté à
+l'Application. Le modèle multi-source de `../bootstrap/application.yaml`
+cible les anciens overlays ; il ne décrit pas cette option. Ce patch est
+fourni pour revue uniquement ; aucune activation ni adoption n'est effectuée
+par les instructions de cette section.
+
 ## 1. Enregistrer le callback Discord
 
 Dans l'application Discord déjà utilisée pour les joueurs, section

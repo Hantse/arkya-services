@@ -1,0 +1,9 @@
+spec:
+  source: null
+  sources:
+  - repoURL: git@github.com:Hantse/arkya-services.git
+    targetRevision: master
+    path: backend/deploy/gitops/admin
+  - repoURL: git@github.com:Hantse/arkya-mmorpg.git
+    targetRevision: main
+    path: deploy/gitops/native-beta
