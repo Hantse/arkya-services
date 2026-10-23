@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.0-beta.20261023.2",
+  "version": "0.1.0-beta.20261023.3",
   "platform": "win-x64",
-  "packageUrl": "https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23.2/Arkya-0.1.0-beta.20261023.2-win-x64.zip",
-  "packageSize": 474758525,
+  "packageUrl": "https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23.3/Arkya-0.1.0-beta.20261023.3-win-x64.zip",
+  "packageSize": 474937814,
   "unpackedSize": 2054055617,
-  "sha256": "f16cddb7521ce53a72c16a909f5befe736e0e8f289b1d25f5b308790a48d47c7",
+  "sha256": "64fa73c12d4bf9d1ec6907660336da65dee786ca3e04be38f8bc29403aa96366",
   "executable": "Arkya.exe",
-  "releaseNotes": "Bêta Windows : session transmise par le launcher ; client compatible avec le protocole de jeu 3. Aucun royaume public actif n’a été observé lors de cette validation. L’admission, la réadmission et le transfert réseau n’ont pas été vérifiés.",
+  "releaseNotes": "Nouvelle icône Arkya intégrée au jeu Windows. Connexion transmise par le launcher et compatibilité avec le protocole de jeu 3 (Nova).",
   "launcherSessionProtocol": 1
 }

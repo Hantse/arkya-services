@@ -87,20 +87,20 @@ launcher ouvre ensuite le client natif. Le compte reste accessible sur le site.
 
 ## Entrée dans les royaumes
 
-Après la connexion Discord dans le client Windows, le jeu consulte les
-personnages du compte, les royaumes disponibles et
+Après réception et validation de la session du launcher, le client Windows
+consulte les personnages du compte, les royaumes disponibles et
 `GET /v1/characters/entry-context`. Un compte sans personnage choisit d’abord
 son royaume. Pour un compte déjà joué, le client retrouve le dernier royaume
 dont le serveur a accepté une admission, puis affiche les personnages de ce
 royaume. Le choix d’un autre royaume reste accessible.
 
-Le build actuellement publié `0.1.0-beta.20261023.1` conserve sa propre
-connexion Discord dans le client Unity après celle du launcher. Le verrou
-d’accès du launcher ne modifie pas ce binaire. Un futur client pourra recevoir
-la session du launcher par un canal Windows privé ; le manifeste devra alors
-déclarer explicitement `launcherSessionProtocol: 1`. Sans cette capacité
-(`0` par défaut), aucun transfert de session n’est tenté. Le bearer ne transite
-jamais dans une URL, un argument de processus ou un fichier.
+Le client `0.1.0-beta.20261023.3` reçoit la session du launcher par un pipe
+Windows réservé à l’utilisateur courant. Le launcher vérifie le PID du jeu et
+Unity revalide `/v1/auth/me` avant l’accueil. Son manifeste déclare
+`launcherSessionProtocol: 1` ; aucun second parcours Discord n’est demandé
+dans le jeu. Le bearer reste en mémoire et ne transite ni par URL, ni par
+argument de processus, ni par fichier. Les clients historiques sans cette
+capacité (`0` par défaut) conservent leur parcours précédent.
 
 L’historique ne retient que les personnages encore détenus par le compte.
 S’il n’en reste aucun, ou si le dernier royaume n’est plus disponible ou
@@ -110,21 +110,29 @@ remplace pas cet historique : seul le backend l’enregistre après consommation
 réussie du ticket par un serveur dédié. Il est associé au compte, indépendamment
 du PC et du launcher.
 
-Le client `0.1.0-beta.20261023.1` provient de la
-[CI Unity du 23 octobre](https://github.com/Hantse/arkya-mmorpg/actions/runs/39888123368),
-source `2b34ab6ff45c0faf56c230136e9d115c6c7aa177`. Il inclut ce parcours natif,
-la base Valkyrie et la sélection/création dans la cour d’Aubefont. Installer
-cette version avec le launcher pour recevoir ces changements. La publication
-initiale `0.1.0-beta.20261023` reste une exploration locale ; une mise à jour du
-site ou du backend ne change pas ce précédent binaire. Voir
+Le client `0.1.0-beta.20261023.3` provient de la
+[CI Unity du 23 octobre](https://github.com/Hantse/arkya-mmorpg/actions/runs/40022478349),
+source `ffca47da7cb0335e8b61a4cbf17c1df0f4d2c4dd`. Il inclut l’icône Arkya,
+le transfert de session et le runtime natif protocole `3`, build
+`arkya-multi-area-v1`. Il exige des serveurs compatibles avec cette paire.
+Installer cette Bêta avec le launcher pour recevoir ces changements.
+Les publications historiques conservent leur propre binaire. Voir
 [le contrat d’entrée](CHARACTER_ENTRY.md) pour l’historique et
 [le contrat d’admission](WEB_BETA_CONTRACT.md) pour le transport et les contrôles
 côté serveur.
 
+Cette publication a passé 867 tests Edit Mode (un ignoré), trois tests Play
+Mode et le build Windows officiel. L’icône de l’EXE et chaque fichier du ZIP
+ont été comparés au build CI. Le vrai Core du launcher a téléchargé et activé
+le package public dans un dossier isolé ; le client exporté n’a pas été lancé
+pour une admission authentifiée ni un transfert entre zones. La provenance
+et le manifeste sont joints à la
+[release Windows](https://github.com/Hantse/arkya-services/releases/tag/windows-beta-2026.10.23.3).
+
 Le client natif conserve le domaine de l’URL d’admission et son éventuel port
 non standard dans l’en-tête HTTP `Host` du WebSocket. Le nom TLS et la
 validation des certificats restent inchangés. Le
-[correctif du Transport embarqué](https://github.com/Hantse/arkya-mmorpg/blob/2b34ab6ff45c0faf56c230136e9d115c6c7aa177/Packages/com.unity.transport/ARKYA_FORK.md)
+[correctif du Transport embarqué](https://github.com/Hantse/arkya-mmorpg/blob/ffca47da7cb0335e8b61a4cbf17c1df0f4d2c4dd/Packages/com.unity.transport/ARKYA_FORK.md)
 ne modifie ni les routes publiques ni les autorisations par adresse IP client.
 Les contrôles natifs couvrent TLS, WebSocket et la connexion UTP ; l’admission
 authentifiée dans le royaume public reste à vérifier.
@@ -361,6 +369,9 @@ et conservation/déchiffrement de la session DPAPI. Aucun launcher installé
 chez l’utilisateur n’est remplacé par ces essais.
 Le renouvellement accepte l’arrondi des dates par MongoDB sans jamais
 prolonger la limite absolue de connexion.
+Le manifeste officiel et le setup public `0.4.0` ont aussi été téléchargés
+par le vrai `LauncherUpdateClient` : taille et SHA-256 conformes. La page
+Jouer et le manifeste canonique servent cette version avec `no-cache`.
 
 L’installateur peut être vérifié dans un dossier de test neuf, sans démarrer
 le launcher ni télécharger le jeu :

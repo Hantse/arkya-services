@@ -16,12 +16,11 @@ la direction fantasy peinte du jeu, avec une transparence autour du motif.
 - `Unity3D/Arkya/ProjectSettings/ProjectSettings.asset` : icône par défaut
   et huit tailles Standalone, de 16 à 1024 pixels, reliées au PNG.
 
-Les nouveaux builds incluent ces icônes. Les exécutables déjà distribués
-doivent être remplacés par une nouvelle publication pour les afficher.
-La version publique du launcher et les installations existantes ne sont
-pas remplacées par cette intégration.
+Le launcher `0.4.0` et le jeu `0.1.0-beta.20261023.3` distribuent ces icônes.
+Installer une nouvelle publication pour remplacer un ancien exécutable :
+une modification des assets source ne change pas les binaires déjà installés.
 
-## Vérification du 23 octobre 2026
+## Vérification initiale du 23 octobre 2026
 
 - Launcher autonome Windows et installateur Inno Setup construits.
 - Les sept images des ressources PE du launcher et du setup correspondent
@@ -43,6 +42,29 @@ pas remplacées par cette intégration.
 Les sorties locales de validation sont dans
 `artifacts/launcher-icon-20261023/` et
 `Unity3D/Arkya/Captures/Branding-2026-10-23/`.
+
+## Publication du launcher et du jeu
+
+- [Launcher `0.4.0`](https://github.com/Hantse/arkya-services/releases/tag/launcher-v0.4.0) :
+  EXE, fenêtre et setup avec l’icône commune ; 184 tests Core et 12 tests WPF
+  réussis. Le problème de nettoyage de la fixture WPF est corrigé.
+  Les sept images PE du launcher et du setup correspondent à l’ICO source.
+  Le setup public a été téléchargé avec le vrai client de mise à jour,
+  taille et SHA-256 conformes au manifeste officiel.
+- [Jeu `0.1.0-beta.20261023.3`](https://github.com/Hantse/arkya-services/releases/tag/windows-beta-2026.10.23.3) :
+  source Unity `ffca47da7cb0335e8b61a4cbf17c1df0f4d2c4dd`,
+  [CI officielle](https://github.com/Hantse/arkya-mmorpg/actions/runs/40022478349).
+  867 tests Edit Mode réussis, un ignoré et trois tests Play Mode réussis.
+  L’icône embarquée dans `Arkya.exe` correspond au PNG approuvé. Chaque
+  fichier du ZIP distribué correspond au build CI ; les origines API publiques,
+  le protocole réseau `3` et le transfert privé de session sont conservés.
+  Le vrai installateur Core a téléchargé l’archive publique, vérifié son
+  intégrité et activé sa version dans un dossier isolé. Le jeu exporté n’a
+  pas été lancé pour une admission authentifiée dans ce contrôle.
+
+Preuves locales : `artifacts/launcher-release-0.4.0/` et
+`artifacts/windows-release-0.1.0-beta.20261023.3/`. Les manifestes publics
+du launcher et du canal Bêta désignent séparément leurs nouvelles versions.
 
 ## Source visuelle
 
