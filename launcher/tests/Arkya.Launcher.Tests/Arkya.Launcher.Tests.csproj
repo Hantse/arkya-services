@@ -12,6 +12,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <ProjectReference Include="../../src/Arkya.Launcher.Core/Arkya.Launcher.Core.csproj" />
+    <!-- Exercise the actual pure wire DTOs without depending on the Identity web application. -->
+    <Compile Include="../../../backend/src/Arkya.Identity.Api/Contracts/AuthContracts.cs" Link="BackendContracts/AuthContracts.cs" />
     <Using Include="Xunit" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ namespace Arkya.Launcher.Tests;
 
 public sealed class IdentityTests
 {
-    private const string AccountId = "11111111111111111111111111111111";
+    private const string AccountId = "11111111-1111-1111-1111-111111111111";
     private const string ChallengeId = "22222222222222222222222222222222";
     private const string Token = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static readonly DateTimeOffset Now = new(2026, 10, 23, 18, 0, 0, TimeSpan.Zero);

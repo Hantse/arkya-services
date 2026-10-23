@@ -197,7 +197,7 @@ public sealed class AuthenticationGateTests(StaApplication application, ITestOut
         Invoke(window, "UpdateButtons");
     }
 
-    private static LauncherSession Session(DateTimeOffset expiresAt) => new(new string('A', 43), "11111111111111111111111111111111", "Aélyra", expiresAt);
+    private static LauncherSession Session(DateTimeOffset expiresAt) => new(new string('A', 43), "11111111-1111-1111-1111-111111111111", "Aélyra", expiresAt);
     private static GameManifest Manifest() => new(1, "ui-fixture", "win-x64", "https://never-requested.example.test/game.zip", 1, 1, new string('a', 64), "Arkya.exe");
 
     private static void AssertProtectedCommandsDisabled(MainWindow window)

@@ -18,7 +18,8 @@ public sealed class LauncherSession
     {
         if (string.IsNullOrWhiteSpace(sessionToken) || sessionToken.Length != 43 ||
             sessionToken.Any(value => !char.IsAsciiLetterOrDigit(value) && value is not '-' and not '_') ||
-            !Guid.TryParseExact(accountId, "N", out _) ||
+            !(accountId is { Length: 36 } && Guid.TryParseExact(accountId, "D", out _) ||
+              accountId is { Length: 32 } && Guid.TryParseExact(accountId, "N", out _)) ||
             string.IsNullOrWhiteSpace(displayName) || displayName.Length > 256 || displayName.Any(char.IsControl))
             throw new LauncherAuthenticationException("La réponse du service de connexion est invalide.", true);
         SessionToken = sessionToken;

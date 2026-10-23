@@ -31,6 +31,7 @@ public sealed class SessionHandoffTests
             json.RootElement.EnumerateObject().Select(property => property.Name));
         Assert.Equal(1, json.RootElement.GetProperty("schemaVersion").GetInt32());
         Assert.Equal(Token, json.RootElement.GetProperty("sessionToken").GetString());
+        Assert.Equal("11111111-1111-1111-1111-111111111111", json.RootElement.GetProperty("accountId").GetString());
         Assert.Equal("Aélyra", json.RootElement.GetProperty("displayName").GetString());
         Assert.DoesNotContain("https:", Encoding.UTF8.GetString(payload));
         await Assert.ThrowsAsync<InvalidOperationException>(() => handoff.SendAsync(Environment.ProcessId, Session(), timeout.Token));
@@ -67,7 +68,7 @@ public sealed class SessionHandoffTests
         if (!OperatingSystem.IsWindows()) return;
         using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
         using var handoff = new LauncherSessionHandoff();
-        var expired = new LauncherSession(Token, "11111111111111111111111111111111", "Aelyra", DateTimeOffset.UtcNow.AddMinutes(-1));
+        var expired = new LauncherSession(Token, "11111111-1111-1111-1111-111111111111", "Aelyra", DateTimeOffset.UtcNow.AddMinutes(-1));
         var send = handoff.SendAsync(Environment.ProcessId, expired, timeout.Token);
         using var client = Client(handoff.PipeName);
         await client.ConnectAsync(timeout.Token);
@@ -82,6 +83,6 @@ public sealed class SessionHandoffTests
     [InlineData("\\\\other-host\\pipe\\session")]
     public void RejectsUnexpectedPipeNames(string value) => Assert.False(LauncherSessionHandoff.IsValidPipeName(value));
 
-    private static LauncherSession Session() => new(Token, "11111111111111111111111111111111", "Aélyra", DateTimeOffset.UtcNow.AddHours(1));
+    private static LauncherSession Session() => new(Token, "11111111-1111-1111-1111-111111111111", "Aélyra", DateTimeOffset.UtcNow.AddHours(1));
     private static NamedPipeClientStream Client(string name) => new(".", name, PipeDirection.In, PipeOptions.Asynchronous | PipeOptions.CurrentUserOnly);
 }
