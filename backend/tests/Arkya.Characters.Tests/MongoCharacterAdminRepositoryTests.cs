@@ -14,7 +14,7 @@ public sealed class MongoCharacterAdminRepositoryTests
     [MongoFact]
     public async Task DetailLookupEnforcesRealmScopeAndPaginatesOnlyTheSelectedCharactersQuests()
     {
-        var database = "arkya_character_admin_detail_test_" + Guid.NewGuid().ToString("N");
+        var database = "arkya_char_admin_detail_" + Guid.NewGuid().ToString("N");
         var client = new MongoClient(Environment.GetEnvironmentVariable("ARKYA_TEST_MONGO"));
         try
         {
