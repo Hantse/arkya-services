@@ -87,13 +87,14 @@ internal sealed class RealmDocument
     [BsonIgnoreIfNull] public DateTime? DeletedAt { get; set; }
     public ServerObservation[] Servers { get; set; } = [];
     public RealmImageTransition? ImageRelease { get; set; }
+    public RealmRuntimeTransition? RuntimeRelease { get; set; }
     public RealmRestartTransition? Restart { get; set; }
     public RealmOperation[] Operations { get; set; } = [];
     public RealmRuntimeConfiguration? RuntimeConfiguration { get; set; } = new();
 
     public RealmRecord ToRecord()
     {
-        if (SchemaVersion is not (1 or 2)) throw new InvalidOperationException("Unsupported realm schema version.");
+        if (SchemaVersion is not (1 or 2 or 3)) throw new InvalidOperationException("Unsupported realm schema version.");
         var profile = SchemaVersion == 1 ? Profile with
         {
             Servers = Profile.Servers.Select(server => server with { Kind = server.Kind ?? DedicatedKind.Dedicated }).ToArray()
@@ -101,21 +102,21 @@ internal sealed class RealmDocument
         return new(RealmId, DisplayName, TargetId, Namespace, profile, DeploymentIdentity, Revision, Version,
             RequestedFromRevision, Status, LastError, new DateTimeOffset(UpdatedAt, TimeSpan.Zero),
             DeploymentStartedAt is { } started ? new DateTimeOffset(started, TimeSpan.Zero) : null, Servers)
-            { ImageRelease = ImageRelease, Restart = Restart, Operations = Operations, RuntimeConfiguration = RuntimeConfiguration ?? new(),
+            { ImageRelease = ImageRelease, RuntimeRelease = RuntimeRelease, Restart = Restart, Operations = Operations, RuntimeConfiguration = RuntimeConfiguration ?? new(),
                 LastObservedAt = LastObservedAt is { } observed ? new DateTimeOffset(observed, TimeSpan.Zero) : null,
                 DeletedAt = DeletedAt is { } deleted ? new DateTimeOffset(deleted, TimeSpan.Zero) : null };
     }
 
     public static RealmDocument From(RealmRecord realm) => new()
     {
-        SchemaVersion = realm.Profile.Topology is null ? 1 : 2,
+        SchemaVersion = realm.RuntimeRelease is not null ? 3 : realm.Profile.Topology is null ? 1 : 2,
         RealmId = realm.RealmId, DisplayName = realm.DisplayName, TargetId = realm.TargetId, Namespace = realm.Namespace,
         Profile = realm.Profile, DeploymentIdentity = realm.DeploymentIdentity, Revision = realm.Revision, Version = realm.Version,
         RequestedFromRevision = realm.RequestedFromRevision, Status = realm.Status, LastError = realm.LastError,
         UpdatedAt = realm.UpdatedAt.UtcDateTime, DeploymentStartedAt = realm.DeploymentStartedAt?.UtcDateTime, Servers = realm.Servers,
         LastObservedAt = realm.LastObservedAt?.UtcDateTime,
         DeletedAt = realm.DeletedAt?.UtcDateTime,
-        ImageRelease = realm.ImageRelease, Restart = realm.Restart, Operations = realm.Operations, RuntimeConfiguration = realm.RuntimeConfiguration
+        ImageRelease = realm.ImageRelease, RuntimeRelease = realm.RuntimeRelease, Restart = realm.Restart, Operations = realm.Operations, RuntimeConfiguration = realm.RuntimeConfiguration
     };
 }
 

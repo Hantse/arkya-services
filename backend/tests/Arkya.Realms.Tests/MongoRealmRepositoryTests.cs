@@ -1,4 +1,6 @@
 using Arkya.Realms.Api.Infrastructure;
+using Arkya.Realms.Api.Application;
+using Arkya.Realms.Api.Domain;
 using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
@@ -33,6 +35,85 @@ public sealed class MongoRealmRepositoryTests
         Assert.Equal(observed, BsonSerializer.Deserialize<RealmDocument>(document).ToRecord().LastObservedAt);
         document.Remove("LastObservedAt");
         Assert.Null(BsonSerializer.Deserialize<RealmDocument>(document).ToRecord().LastObservedAt);
+    }
+
+    [Fact]
+    public void RuntimeMigrationRoundTripsBothProfilesAndPreservesRealmIdentityAndPreviousTransitions()
+    {
+        var migration = MigrationRecord(Fixtures.Realm(RealmStatus.Ready));
+        var restored = BsonSerializer.Deserialize<RealmDocument>(RealmDocument.From(migration).ToBsonDocument()).ToRecord();
+        AssertMigration(migration, restored);
+    }
+
+    [MongoFact]
+    public async Task RuntimeMigrationWithdrawalIsAtomicAndSurvivesAnotherRepositoryInstance()
+    {
+        var database = $"arkya_runtime_migration_test_{Guid.NewGuid():N}";
+        var client = new MongoClient(Environment.GetEnvironmentVariable("ARKYA_TEST_MONGO"));
+        var options = Options.Create(new MongoOptions { DatabaseName = database });
+        try
+        {
+            var first = new MongoRealmRepository(client, options);
+            await first.InitializeAsync(default);
+            var original = Fixtures.Realm(RealmStatus.Ready);
+            Assert.True(await first.TryCreateAsync(original, default));
+            var migration = MigrationRecord(original);
+            Assert.True(await first.TryReplaceAsync(migration, original.Version, default));
+            Assert.False(await first.TryReplaceAsync(original with { Version = original.Version + 1 }, original.Version, default));
+            var second = new MongoRealmRepository(new MongoClient(Environment.GetEnvironmentVariable("ARKYA_TEST_MONGO")), options);
+            var restored = (await second.FindAsync(original.RealmId, default))!;
+            AssertMigration(migration, restored);
+            Assert.Equal(RealmStatus.Pending, restored.Status);
+            Assert.All(restored.Servers, server => Assert.Equal(0, server.ReadyReplicas));
+        }
+        finally { await client.DropDatabaseAsync(database); }
+    }
+
+    private static RealmRecord MigrationRecord(RealmRecord original)
+    {
+        var islands = new RealmTopology([new("starter-island", 4, 1536, 1536, GridColumns: 2, GridRows: 2)]);
+        var servers = Enumerable.Range(0, 4).Select(index => new ServerDefinition($"island-starter-island-{index + 1:D2}", 17943, [])
+        {
+            ProtocolVersion = GameProtocol.HandoffVersion, BuildId = GameProtocol.HandoffBuildId,
+            Transport = "WebSocket", Kind = DedicatedKind.Island, IslandId = "starter-island",
+            PartitionIndex = index, PartitionCount = 4,
+            Bounds = new(index % 2 * 768, index / 2 * 768, (index % 2 + 1) * 768, (index / 2 + 1) * 768),
+            PublicEndpoint = $"wss://api.example/game/eu-one/island-starter-island-{index + 1:D2}/"
+        }).ToArray();
+        var profile = original.Profile with
+        {
+            Id = "island-v2", Image = "registry.example/arkya/dedicated@sha256:" + new string('a', 64),
+            Servers = servers, Topology = islands, TopologyRuntimeSupported = true
+        };
+        var imageRelease = new RealmImageTransition(3, original.Profile.Image, "registry.example/arkya/dedicated@sha256:" + new string('b', 64));
+        var restart = new RealmRestartTransition(original.Revision, 0) { Completed = true };
+        return original with
+        {
+            Profile = profile, Revision = original.Revision + 1, Version = original.Version + 1, Status = RealmStatus.Pending,
+            RuntimeRelease = new(4, original.Profile, imageRelease, restart),
+            RuntimeConfiguration = new() { Revision = 7, XpMultiplier = 2m },
+            Servers = servers.Select(server => new ServerObservation(server.Id, 0, null)).ToArray()
+        };
+    }
+
+    private static void AssertMigration(RealmRecord expected, RealmRecord restored)
+    {
+        Assert.Equal(expected.RealmId, restored.RealmId);
+        Assert.Equal(expected.Namespace, restored.Namespace);
+        Assert.Equal(expected.DeploymentIdentity, restored.DeploymentIdentity);
+        Assert.Equal(expected.Revision, restored.Revision);
+        Assert.Equal(expected.Version, restored.Version);
+        Assert.Equal(RealmRuntimeReleases.Fingerprint(expected.Profile), RealmRuntimeReleases.Fingerprint(restored.Profile));
+        Assert.Equal(RealmRuntimeReleases.Fingerprint(expected.RuntimeRelease!.PreviousProfile),
+            RealmRuntimeReleases.Fingerprint(restored.RuntimeRelease!.PreviousProfile));
+        Assert.Equal(expected.RuntimeRelease.PreviousImageRelease, restored.RuntimeRelease.PreviousImageRelease);
+        Assert.Equal(expected.RuntimeRelease.PreviousRestart, restored.RuntimeRelease.PreviousRestart);
+        Assert.Equal(4, restored.RuntimeRelease.Version);
+        Assert.False(restored.RuntimeRelease.Completed);
+        Assert.Equal(expected.RuntimeConfiguration.Revision, restored.RuntimeConfiguration.Revision);
+        Assert.Equal(expected.RuntimeConfiguration.XpMultiplier, restored.RuntimeConfiguration.XpMultiplier);
+        Assert.Equal(expected.RuntimeConfiguration.HarvestMultiplier, restored.RuntimeConfiguration.HarvestMultiplier);
+        Assert.Equal(expected.RuntimeConfiguration.History, restored.RuntimeConfiguration.History);
     }
 
     [Fact]

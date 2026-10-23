@@ -56,6 +56,11 @@ public sealed record ServerObservation(string Id, int ReadyReplicas, string? Add
 }
 
 public sealed record RealmImageTransition(long Version, string PreviousImage, string Image, long PreviousVersion = 0);
+public sealed record RealmRuntimeTransition(long Version, ProfileSnapshot PreviousProfile,
+    RealmImageTransition? PreviousImageRelease, RealmRestartTransition? PreviousRestart)
+{
+    public bool Completed { get; init; }
+}
 public sealed record RealmRestartTransition(long Revision, long PreviousRevision)
 {
     public bool Completed { get; init; }
@@ -70,6 +75,7 @@ public sealed record RealmRecord(string RealmId, string DisplayName, string Targ
     ServerObservation[] Servers)
 {
     public RealmImageTransition? ImageRelease { get; init; }
+    public RealmRuntimeTransition? RuntimeRelease { get; init; }
     public RealmRestartTransition? Restart { get; init; }
     public RealmOperation[] Operations { get; init; } = [];
     public RealmRuntimeConfiguration RuntimeConfiguration { get; init; } = new();

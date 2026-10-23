@@ -10,6 +10,40 @@ namespace Arkya.Realms.Tests;
 
 public sealed class RealmDeletionDeployerTests
 {
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task DeletesCurrentAndPreviousRuntimeWorkloadsAfterPreflightingBoth(bool previousServiceIsForeign)
+    {
+        var original = Fixtures.Realm();
+        var current = original.Profile.Servers[0] with { Id = "island-next", Port = 17943 };
+        var migrated = original with
+        {
+            Profile = original.Profile with { Servers = [current] },
+            RuntimeRelease = new(1, original.Profile, original.ImageRelease, original.Restart) { Completed = true }
+        };
+        using var cluster = new DeleteCluster(migrated with
+        {
+            Profile = migrated.Profile with { Servers = [current, original.Profile.Servers[0]] }
+        });
+        if (previousServiceIsForeign)
+        {
+            var previousService = cluster.Resources.Single(pair => pair.Key.Contains("/services/", StringComparison.Ordinal) &&
+                pair.Value["metadata"]!["labels"]!["arkya.online/server-id"]!.GetValue<string>() == original.Profile.Servers[0].Id).Value;
+            previousService["metadata"]!["labels"]!["arkya.online/deployment-id"] = "foreign";
+            Assert.Equal("resource_ownership_conflict", (await Assert.ThrowsAsync<DeploymentFailure>(() =>
+                cluster.Deployer().DeleteAsync(migrated, default))).Code);
+            Assert.Empty(cluster.Deletes);
+            Assert.Equal(4, cluster.Resources.Count);
+        }
+        else
+        {
+            Assert.True(await cluster.Deployer().DeleteAsync(migrated, default));
+            Assert.Equal(4, cluster.Deletes.Length);
+            Assert.Empty(cluster.Resources);
+        }
+    }
+
     [Fact]
     public async Task DeletesOnlyExactOwnedWorkloadsWithPreconditionsAndForegroundCascade()
     {

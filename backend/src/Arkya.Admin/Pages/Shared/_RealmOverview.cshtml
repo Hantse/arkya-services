@@ -7,6 +7,10 @@
     <div><dt>Profil</dt><dd class="mono">@realm.ProfileId</dd></div>
     <div><dt>Dernier changement</dt><dd class="realm-summary-date">@realm.UpdatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm 'UTC'")</dd></div>
 </dl>
+@if (!string.IsNullOrEmpty(realm.ProfileSha256))
+{
+    <details class="panel realm-advanced"><summary>Empreinte du profil de déploiement</summary><p class="mono">@realm.ProfileSha256</p><p class="muted">Identifie la configuration figée à vérifier avant une migration approuvée.</p></details>
+}
 @if (realm.Topology is not null || Model.SelectedIsland is not null)
 {
     <partial name="_RealmIslands" model="Model" />

@@ -122,3 +122,9 @@ Les validateurs de manifests ont passé hors ligne ; aucun cluster n’a été m
 Le MCP Unity n’exposait aucune instance pendant cette intervention ; aucun nouveau
 build Unity ni test du jeu actuel n’a donc été réalisé. Le launcher est vérifié
 séparément dans son [guide de distribution](WINDOWS_LAUNCHER.md).
+
+Préparation de la release du 23 octobre, sur la branche distante à jour :
+**1 260 tests backend réussis**, aucun ignoré, avec MongoDB jetable. Le frontend
+passe **108/108** tests et le launcher **34/34**, avec compilation WPF Release
+sans avertissement et vérification du packaging. Les changements du profil
+Admin restent déclaratifs et seront appliqués par le circuit CI/GitOps.

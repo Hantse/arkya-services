@@ -6,6 +6,8 @@ on:
     paths:
       - 'backend/**'
       - '!backend/deploy/gitops/beta/kustomization.yaml'
+      - '!backend/deploy/gitops/inference-control/kustomization.yaml'
+      - '!backend/deploy/gitops/reports-control/kustomization.yaml'
       - 'sites/arkya/**'
       - 'docs/**'
       - 'scripts/ci/**'
@@ -51,7 +53,7 @@ jobs:
         env:
           GIT_CONFIG_COUNT: '1'
           GIT_CONFIG_KEY_0: lfs.fetchinclude
-          GIT_CONFIG_VALUE_0: sites/arkya/dist/**
+          GIT_CONFIG_VALUE_0: sites/arkya/dist/**,backend/src/Arkya.Admin/wwwroot/**
         with:
           persist-credentials: false
           lfs: true
@@ -59,6 +61,7 @@ jobs:
             backend
             sites/arkya
             scripts/ci
+            .github/workflows
       - name: Verify public site assets are hydrated
         run: python3 scripts/ci/Check-SiteAssets.py sites/arkya/dist
       - name: Set up deployment validation tools
@@ -73,8 +76,7 @@ jobs:
       - name: Every deployable project must have an image
         shell: bash
         env:
-          # Reports and Inference have opt-in deployments and dedicated image workflows.
-          APPLICATIONS: Arkya.Identity.Api Arkya.Gateway Arkya.Characters.Api Arkya.Content.Api Arkya.Admin Arkya.Realms.Api Arkya.Backend.Api Arkya.Reports.Api Arkya.Inference.Api
+          APPLICATIONS: Arkya.Identity.Api Arkya.Gateway Arkya.Characters.Api Arkya.Content.Api Arkya.Admin Arkya.Realms.Api Arkya.Backend.Api Arkya.Inference.Api Arkya.Reports.Api
         run: |
           python3 - <<'PY'
           import os
@@ -90,10 +92,10 @@ jobs:
         run: python3 backend/deploy/gitops/Test-Manifests.py
       - name: Validate the static WebGL client component
         run: python3 backend/deploy/gitops/web-client-control/Validate-Manifests.py
-      - name: Validate opt-in reports manifests
-        run: python3 backend/deploy/gitops/reports/Test-Manifests.py
-      - name: Validate opt-in inference manifests
-        run: python3 backend/deploy/gitops/inference/Test-Manifests.py
+      - name: Validate the inference component and activation preview
+        run: python3 backend/deploy/gitops/inference-control/Test-Manifests.py
+      - name: Validate the reports component and coexistence preview
+        run: python3 backend/deploy/gitops/reports-control/Test-Manifests.py
       - name: Validate operations manifest renderer
         shell: pwsh
         run: ./backend/deploy/realms/Test-Manifests.ps1
@@ -122,16 +124,18 @@ jobs:
           - { name: admin, application: Arkya.Admin, context: backend, dockerfile: backend/Dockerfile.service }
           - { name: realms, application: Arkya.Realms.Api, context: backend, dockerfile: backend/Dockerfile.service }
           - { name: backend, application: Arkya.Backend.Api, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: inference, application: Arkya.Inference.Api, context: backend, dockerfile: backend/Dockerfile.service }
+          - { name: reports, application: Arkya.Reports.Api, context: backend, dockerfile: backend/Dockerfile.service }
           - { name: frontend, application: '', context: sites/arkya, dockerfile: sites/arkya/Dockerfile }
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         env:
           GIT_CONFIG_COUNT: '1'
           GIT_CONFIG_KEY_0: lfs.fetchinclude
-          GIT_CONFIG_VALUE_0: sites/arkya/dist/**
+          GIT_CONFIG_VALUE_0: sites/arkya/dist/**,backend/src/Arkya.Admin/wwwroot/**
         with:
           persist-credentials: false
-          lfs: ${{ matrix.name == 'frontend' }}
+          lfs: ${{ matrix.name == 'frontend' || matrix.name == 'admin' }}
           sparse-checkout: |
             backend
             sites/arkya
@@ -139,6 +143,9 @@ jobs:
       - name: Verify public site assets are hydrated
         if: matrix.name == 'frontend'
         run: python3 scripts/ci/Check-SiteAssets.py sites/arkya/dist
+      - name: Verify admin island images are hydrated
+        if: matrix.name == 'admin'
+        run: python3 scripts/ci/Check-AdminAssets.py backend/src/Arkya.Admin/wwwroot
       - name: Select immutable image tag
         id: image
         shell: bash
@@ -225,10 +232,18 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           assert_current_source() {
-            if ! git diff --quiet "$GITHUB_SHA" HEAD -- . ':(exclude)backend/deploy/gitops/beta/kustomization.yaml'; then
+            if ! git diff --quiet "$GITHUB_SHA" HEAD -- . \
+              ':(exclude)backend/deploy/gitops/beta/kustomization.yaml' \
+              ':(exclude)backend/deploy/gitops/inference-control/kustomization.yaml' \
+              ':(exclude)backend/deploy/gitops/reports-control/kustomization.yaml'; then
               echo '::error::Newer source or deployment configuration exists. Let its tested release finish; do not promote an older generation.'
               exit 1
             fi
+            python3 scripts/ci/Promote-ServiceImages.py \
+              --assert-source-commit "$GITHUB_SHA" \
+              --kustomization backend/deploy/gitops/beta/kustomization.yaml \
+              --inference-kustomization backend/deploy/gitops/inference-control/kustomization.yaml \
+              --reports-kustomization backend/deploy/gitops/reports-control/kustomization.yaml
           }
           git pull --rebase origin "$DEFAULT_BRANCH"
           git merge-base --is-ancestor "$GITHUB_SHA" HEAD
@@ -236,8 +251,10 @@ jobs:
           python3 scripts/ci/Promote-ServiceImages.py \
             --artifact-directory "$RUNNER_TEMP/service-images" --source-commit "$GITHUB_SHA" \
             --kustomization backend/deploy/gitops/beta/kustomization.yaml \
+            --inference-kustomization backend/deploy/gitops/inference-control/kustomization.yaml \
+            --reports-kustomization backend/deploy/gitops/reports-control/kustomization.yaml \
             --release-file "$RUNNER_TEMP/service-images/release.json"
-          git add -- backend/deploy/gitops/beta/kustomization.yaml
+          git add -- backend/deploy/gitops/beta/kustomization.yaml backend/deploy/gitops/inference-control/kustomization.yaml backend/deploy/gitops/reports-control/kustomization.yaml
           if git diff --cached --quiet; then
             echo 'The complete release is already pinned.' >> "$GITHUB_STEP_SUMMARY"
             exit 0
@@ -246,7 +263,7 @@ jobs:
           for attempt in 1 2 3; do
             assert_current_source
             if git push origin "HEAD:$DEFAULT_BRANCH"; then
-              echo 'All service and site digests promoted; Argo CD can reconcile the beta overlay.' >> "$GITHUB_STEP_SUMMARY"
+              echo 'All ten service and site digests promoted together; Argo CD can reconcile activated components.' >> "$GITHUB_STEP_SUMMARY"
               exit 0
             fi
             git pull --rebase origin "$DEFAULT_BRANCH"

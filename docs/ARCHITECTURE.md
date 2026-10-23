@@ -21,7 +21,7 @@ jeu Windows ; Unity la revalide avant d’afficher la sélection ou la création
 La [console d'administration](ADMIN_CONSOLE.md) consulte les comptes via
 Identity et les personnages/leases via Characters. Identity conserve bans,
 droits bêta et audit ; Characters applique le contrôle bêta à l'admission et
-aux renouvellements. Admin reste un client privé sans accès direct aux bases.
+aux renouvellements. Admin lit ces données métier via les API privées ; sa propre base MongoDB conserve uniquement ses sessions.
 
 Arkya utilise Unity DOTS (Data-Oriented Technology Stack) pour la simulation temps réel et Netcode for Entities pour le multijoueur sous autorité serveur. La simulation, exécutée par un serveur dédié Unity, est séparée des services ASP.NET Core qui possèdent les comptes et les données persistantes. La décision sur ces services est détaillée dans [0002 — Services backend](decisions/0002-backend-services.md).
 
@@ -202,6 +202,13 @@ avant activation. Son exception HTTP privée Identity concerne uniquement
 `Arkya.Realms.Api` fournit le catalogue opérateur et le déploiement de processus dédiés dans des namespaces k3s préautorisés. Son catalogue interne de destinations est désormais exposé aux joueurs authentifiés par Characters. Characters lie atomiquement le personnage à un `realmId` et délivre un ticket seulement pour une destination compatible et activée. Les noms de personnages restent globalement uniques ; l’identité du compte et l’appartenance au realm sont vérifiées côté services.
 
 Les nouvelles API ciblent .NET 10. Chaque service sépare contrats HTTP, règles applicatives et adaptateurs de persistance. Les documents MongoDB restent internes. Un `accountId` Arkya est stable et distinct de l'identifiant Discord ; Characters conserve cette référence sans lire la base Identity.
+
+Les [bugs et suggestions](BUG_REPORTS.md) utilisent la session Identity du joueur.
+Admin présente les captures et le suivi, et expose le MCP facultatif `/mcp/reports`
+avec une clé distincte des clés de service. Les outils MCP filtrent par type,
+tag et statut et appliquent les mises à jour avec contrôle de révision.
+Le [composant Reports](../backend/deploy/gitops/reports-control/README.md)
+s'intègre au profil Admin et à la promotion CI des images.
 
 La gateway conserve l’authentification et les règles métier dans les services. Son allowlist de routes API est explicite : elle inclut la connexion Identity, les endpoints joueurs activés et les lectures de publications Content. `Gateway:ContentEnabled` expose seulement `GET /v1/content/posts` et `GET /v1/content/posts/{id}`, avec `OPTIONS`. Un routage Admin facultatif dessert exclusivement son domaine configuré, distinct de `api.arkya.online` ; la gestion Content, les catalogues de quêtes du dedicated et les API Realms restent internes. Les routes Social SDK restent hors de cette exposition web. Les futures routes doivent être ajoutées volontairement et testées. Le workflow `Services images` vérifie les services, publie leurs images et promeut ensemble les dix digests dans GitOps.
 

@@ -26,6 +26,7 @@ public partial class Program
             .Validate(value => !string.IsNullOrWhiteSpace(value.ConnectionString) && !string.IsNullOrWhiteSpace(value.DatabaseName),
                 "Mongo connection string and database name are required.").ValidateOnStart();
         builder.Services.AddOptions<InferenceAdminOptions>().BindConfiguration("InferenceAdmin")
+            .PostConfigure(value => value.Key = InferenceOperatorKeys.ResolveInference(builder.Configuration, value.Key))
             .Validate(value => value.Key is { Length: >= 32 and <= 512 },
                 "InferenceAdmin:Key must contain 32 to 512 characters.").ValidateOnStart();
         builder.Services.AddOptions<InferenceOptions>().BindConfiguration("Inference")

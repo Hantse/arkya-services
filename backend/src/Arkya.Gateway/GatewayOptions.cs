@@ -9,6 +9,7 @@ public sealed class GatewayOptions
     public bool ContentEnabled { get; set; }
     public bool RealmGameEnabled { get; set; }
     public string RealmGameAddress { get; set; } = "";
+    public RealmGamePartition[] RealmGamePartitions { get; set; } = [];
     public bool ReportsEnabled { get; set; }
     public bool InferenceEnabled { get; set; }
     public bool AdminEnabled { get; set; }
@@ -58,6 +59,11 @@ public sealed class GatewayOptions
         && Regex.IsMatch(address!, @"\Ahttp://[a-z](?:[a-z0-9-]{0,61}[a-z0-9])?\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.svc\.cluster\.local(?::[1-9][0-9]{0,4})?/?\z",
             RegexOptions.CultureInvariant);
 
+    public bool HasValidRealmGamePartitions() => RealmGamePartitions is { Length: <= 256 }
+        && RealmGamePartitions.All(partition => partition is not null && partition.IsValid())
+        && RealmGamePartitions.Select(partition => (partition.RealmId, partition.ServerId)).Distinct().Count() == RealmGamePartitions.Length
+        && RealmGamePartitions.Select(partition => new Uri(partition.Address).AbsoluteUri).Distinct(StringComparer.OrdinalIgnoreCase).Count() == RealmGamePartitions.Length;
+
     public static string[] AllowedHosts(IConfiguration configuration) =>
         (configuration["AllowedHosts"] ?? "").Split(';', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
@@ -78,4 +84,18 @@ public sealed class GatewayOptions
                 (host.Equals(RealmPublicHostPattern, StringComparison.OrdinalIgnoreCase)
                  || host.Equals(RealmAdminHostPattern, StringComparison.OrdinalIgnoreCase)));
     }
+}
+
+public sealed class RealmGamePartition
+{
+    public string RealmId { get; set; } = "";
+    public string ServerId { get; set; } = "";
+    public string Address { get; set; } = "";
+    public string ClusterId => $"realm-partition-{RealmId}_{ServerId}";
+    public string PublicPath => $"/game/{RealmId}/{ServerId}/";
+
+    public bool IsValid() => ValidId(RealmId) && ValidId(ServerId) && GatewayOptions.IsRealmGameOriginValid(Address);
+
+    private static bool ValidId(string? value) => value is not null && Regex.IsMatch(value,
+        @"\A[a-z][a-z0-9-]{1,29}[a-z0-9]\z", RegexOptions.CultureInvariant);
 }

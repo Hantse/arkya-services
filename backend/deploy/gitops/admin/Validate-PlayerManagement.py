@@ -236,7 +236,51 @@ def without_reports_component(documents, require_digests):
     return normalized
 
 
+def without_partition_handoff_component(documents):
+    """Validate the complete handoff delta before applying the unchanged legacy contract."""
+    source = checks.yaml.safe_load((ROOT / "kustomization.yaml").read_text(encoding="utf-8"))
+    active = "../partition-handoff" in source.get("components", [])
+    prefixes = ("Gateway__RealmGamePartitions__", "RealmRuntime__ServerIds__", "Deployment__Profiles__1__", "Deployment__RuntimeReleases__")
+    annotation = "arkya.online/partition-handoff-config-revision"
+    markers = any(document["metadata"]["name"].startswith("arkya-beta-web-partition") or
+        document["metadata"]["name"] in {"arkya-characters-partitions-admission", "arkya-realms-partitions-commands"} or
+        any(key.startswith(prefixes) for key in document.get("data", {})) or
+        annotation in document.get("spec", {}).get("template", {}).get("metadata", {}).get("annotations", {})
+        for document in documents)
+    if not active:
+        require(not markers, "Handoff configuration and resources require the explicitly adopted component")
+        return documents
+    spec = importlib.util.spec_from_file_location("arkya_partition_handoff", ROOT.parent / "partition-handoff/Validate-Manifests.py")
+    handoff = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(handoff)
+    config = handoff.read(handoff.ROOT / "realms-config.yaml")["data"]
+    enabled = config.get("Deployment__RuntimeReleases__0__Automatic") == "true"
+    before, after = handoff.check(require_release=True, enable_migration=enabled)
+    require(handoff.canonical(documents) == after,
+            "Admin handoff resources must match the exact validated component and rollout phase")
+    additions = set(after) - set(before)
+    normalized = []
+    for document in deepcopy(documents):
+        key = checks.identity(document)
+        if key in additions:
+            continue
+        if key[0] == "ConfigMap" and key[1] == NS:
+            for app in ("gateway", "characters", "realms"):
+                if re.fullmatch(f"arkya-{app}-config-[a-z0-9]+", key[2]):
+                    document["data"] = deepcopy(before[("ConfigMap", NS, f"arkya-{app}-config")]["data"])
+        if key[0] == "Deployment" and key[1] == NS and key[2] in {"arkya-gateway", "arkya-characters", "arkya-realms"}:
+            metadata = document["spec"]["template"]["metadata"]
+            original = before[key]["spec"]["template"]["metadata"]
+            if "annotations" in original:
+                metadata["annotations"] = deepcopy(original["annotations"])
+            else:
+                metadata.pop("annotations", None)
+        normalized.append(document)
+    return normalized
+
+
 def check_profile(documents, frontend_documents=None, beta_documents=None, require_digests=False):
+    documents = without_partition_handoff_component(documents)
     web_documents = [document for document in documents if document["metadata"]["name"] == "arkya-web-client"]
     web.check_profile(web_documents)
     documents = [document for document in documents if document not in web_documents]

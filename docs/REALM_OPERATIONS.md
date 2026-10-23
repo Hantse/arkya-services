@@ -329,3 +329,12 @@ Le rendu Razor de la configuration a été inspecté dans Chromium à 1440 et
 manifests `realm-control` et `admin`, inchangés par la configuration en direct,
 avaient réussi lors de l’ajout des actions d’exploitation. Cette validation
 ne constitue pas un déploiement ni un essai sur le royaume public.
+
+La préparation intégrée du 23 octobre, basée sur la release services `65ce6d3`,
+a passé les **1 541 tests .NET** avec MongoDB 8.0.30 jetable : aucun échec ni
+cas ignoré, dont **266 tests Realms** et **457 tests Admin**. Les validateurs
+stricts Admin, Reports et Inference passent sur les 52 objets composés ;
+les contrôles Realm, WebGL et du renderer passent aussi, ainsi que les
+28 tests de promotion d'images. Cette préparation conserve les digests
+publiés et les clés opérateur existantes ; elle n'a lancé aucun Editor,
+build Unity ni commande d'exploitation publique.

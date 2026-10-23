@@ -67,11 +67,14 @@ public sealed class RealmReconciler(IRealmRepository repository, IRealmDeployer 
 
     private async Task ReconcileDeploymentAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
-        var prepared = await PrepareImageReleaseAsync(realm, cancellationToken);
+        var runtime = await RealmRuntimeReleases.PrepareAsync(realm, repository, options, clock, cancellationToken);
+        if (runtime is null) return;
+        var prepared = await PrepareImageReleaseAsync(runtime, cancellationToken);
         if (prepared is null) return;
         realm = prepared;
         if (realm.Status is not (RealmStatus.Pending or RealmStatus.Deploying or RealmStatus.Ready) &&
-            !(realm.Status == RealmStatus.Failed && (RealmImageReleases.Authorizes(options, realm) || realm.Restart is not null))) return;
+            !(realm.Status == RealmStatus.Failed && (RealmImageReleases.Authorizes(options, realm) ||
+                realm.RuntimeRelease is { Completed: false } && RealmRuntimeReleases.Authorizes(options, realm) || realm.Restart is not null))) return;
         var now = clock.GetUtcNow();
         var next = realm;
         try
@@ -81,7 +84,7 @@ public sealed class RealmReconciler(IRealmRepository repository, IRealmDeployer 
             var observations = await deployer.ReconcileAsync(realm, attempt.Token);
             var ready = observations.Length == realm.Profile.Servers.Length && observations.All(value =>
                 value.ReadyReplicas == 1 && !string.IsNullOrWhiteSpace(value.Address) &&
-                (realm.ImageRelease is null || value.ReadyImage == realm.Profile.Image) &&
+                (realm.ImageRelease is null && realm.RuntimeRelease is null || value.ReadyImage == realm.Profile.Image) &&
                 (realm.Restart is null || value.ReadyRestartRevision == realm.Restart.Revision));
             var start = realm.Status == RealmStatus.Ready && !ready ? now : realm.DeploymentStartedAt ?? now;
             next = realm with
@@ -90,7 +93,8 @@ public sealed class RealmReconciler(IRealmRepository repository, IRealmDeployer 
                     ? RealmStatus.Failed : RealmStatus.Deploying,
                 LastError = !ready && now - start >= TimeSpan.FromSeconds(options.DeploymentTimeoutSeconds) ? "deployment_timeout" : null,
                 Servers = observations, DeploymentStartedAt = start, LastObservedAt = clock.GetUtcNow(),
-                Restart = ready && realm.Restart is not null ? realm.Restart with { Completed = true } : realm.Restart
+                Restart = ready && realm.Restart is not null ? realm.Restart with { Completed = true } : realm.Restart,
+                RuntimeRelease = ready && realm.RuntimeRelease is not null ? realm.RuntimeRelease with { Completed = true } : realm.RuntimeRelease
             };
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested) { throw; }
@@ -121,7 +125,7 @@ public sealed class RealmReconciler(IRealmRepository repository, IRealmDeployer 
         };
         var changed = !(realm.Status == next.Status && realm.LastError == next.LastError &&
             realm.DeploymentStartedAt == next.DeploymentStartedAt && realm.Servers.SequenceEqual(next.Servers) &&
-            realm.Operations.SequenceEqual(next.Operations) && realm.Restart == next.Restart);
+            realm.Operations.SequenceEqual(next.Operations) && realm.Restart == next.Restart && realm.RuntimeRelease == next.RuntimeRelease);
         if (!changed && realm.LastObservedAt == next.LastObservedAt) return;
         using var saveTimeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         saveTimeout.CancelAfter(TimeSpan.FromSeconds(10));
@@ -132,6 +136,7 @@ public sealed class RealmReconciler(IRealmRepository repository, IRealmDeployer 
     private async Task<RealmRecord?> PrepareImageReleaseAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
         var release = RealmImageReleases.Find(options, realm.RealmId);
+        if (realm.RuntimeRelease is not null && (release is null || release.ProfileId != realm.Profile.Id)) return realm;
         if (realm.ImageRelease is { } existing && (release is null || release.Version <= existing.Version))
             return release?.Version == existing.Version && RealmImageReleases.Authorizes(options, realm) ? realm : null;
         if (release is { Automatic: false } && release.Version > (realm.ImageRelease?.Version ?? 0))
@@ -172,7 +177,8 @@ public sealed class RealmDeploymentWorker(IRealmRepository repository, RealmReco
                 queryTimeout.CancelAfter(TimeSpan.FromSeconds(10));
                 var realms = await repository.ListAsync(queryTimeout.Token);
                 foreach (var realm in realms.Where(value => value.Status is RealmStatus.Pending or RealmStatus.Deploying or RealmStatus.Ready or RealmStatus.Deleting ||
-                    value.Status == RealmStatus.Failed && (RealmImageReleases.Find(configured.Value, value.RealmId) is not null || value.Restart is not null)))
+                    value.Status == RealmStatus.Failed && (RealmImageReleases.Find(configured.Value, value.RealmId) is not null ||
+                        value.RuntimeRelease is { Completed: false } || value.Restart is not null)))
                 {
                     try { await reconciler.ReconcileAsync(realm, stoppingToken); }
                     catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested) { return; }

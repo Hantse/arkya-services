@@ -40,13 +40,15 @@ Configurer Admin : `InferenceApi__Enabled=true`, `InferenceApi__BaseUrl=<origine
 
 Configurer Gateway : `Gateway__InferenceEnabled=true` et `ReverseProxy__Clusters__inference__Destinations__primary__Address=<origine du service>`. Les routes publiques sont `POST /agent/inference/enroll`, protégée à la première inscription par une clé temporaire, et `POST /agent/inference/heartbeat`, authentifiée par le jeton propre à la machine. Les routes `/admin/inference/*` restent internes. Gateway retire les clés opérateur envoyées par le client.
 
-Un profil Kubernetes optionnel est fourni dans [`backend/deploy/gitops/inference`](../backend/deploy/gitops/inference/README.md). Il hérite du profil Reports, préserve les services existants, et n'est pas activé par cette préparation. L'image doit être publiée puis épinglée par digest avant activation.
+Le composant Kubernetes [`backend/deploy/gitops/inference-control`](../backend/deploy/gitops/inference-control/README.md) s'ajoute au profil Admin existant. Il conserve la même Application Argo, les services et les volumes existants. La CI publie l'image Inference avec les huit images déjà livrées, puis promeut leurs neuf digests issus du même commit dans un seul commit GitOps. La première activation du composant intervient après cette publication.
+
+Dans ce profil, Admin et Inference dérivent une clé opérateur dédiée par HMAC-SHA256 à partir de `InferenceOperator__KeySeed`, fourni par la clé `ContentApi__AdminKey` du Secret `arkya-admin-secrets` existant. La graine n'est jamais envoyée comme clé opérateur. Le mode `InferenceAdmin__Key` / `InferenceApi__AdminKey` explicite reste utilisable sur une autre installation ; graine et clé explicite s'excluent. La connexion MongoDB vient du Secret `arkya-content-secrets`, comme pour Characters, avec la base distincte `arkya_inference`. Cet utilisateur MongoDB doit pouvoir créer les collections et index de cette base.
 
 ### Si l'inscription renvoie HTTP 404
 
 `Install.cmd` installe l'agent Windows ; le service Inference, les images Admin/Gateway et leur configuration doivent déjà être déployés sur le backend visé. Un `POST /agent/inference/enroll` qui renvoie 404 indique que cette route est absente à l'adresse utilisée. Vérifier l'URL, puis la version de Gateway, `Gateway__InferenceEnabled=true` et sa destination vers `Arkya.Inference.Api`. Une réponse 200 de `/health` confirme seulement que Gateway répond ; elle ne confirme pas l'activation d'Inference.
 
-Après publication des images, préparation des secrets et activation du profil GitOps, vérifier que la route répond avec une erreur de validation ou d'authentification à une requête vide, plutôt qu'un 404. La création d'une clé d'installation dans Admin doit également fonctionner avant de reprendre l'installation Windows. Un 502/503 nécessite de vérifier la disponibilité et la readiness du service Inference.
+Après publication des images et activation du composant par GitOps, vérifier que la route répond avec une erreur de validation ou d'authentification à une requête vide, plutôt qu'un 404. La création d'une clé d'installation dans Admin doit également fonctionner avant de reprendre l'installation Windows. Un 502/503 nécessite de vérifier la disponibilité et la readiness du service Inference.
 
 Conserver le dossier d'installation et son identité DPAPI après cet échec. Relancer ensuite la même commande avec le même compte et le même mode d'élévation : l'installateur reprend l'inscription sauvegardée. Une clé temporaire expirée peut être remplacée par une nouvelle clé générée dans Admin, sans remplacer l'identité permanente de la machine.
 
@@ -125,7 +127,7 @@ Les sorties du modèle sont limitées à une réplique JSON. Les trois choix son
 dotnet test backend/tests/Arkya.Inference.Tests/Arkya.Inference.Tests.csproj
 dotnet test backend/tests/Arkya.Admin.Tests/Arkya.Admin.Tests.csproj --filter 'FullyQualifiedName~Inference'
 dotnet test backend/tests/Arkya.Gateway.Tests/Arkya.Gateway.Tests.csproj
-python backend/deploy/gitops/inference/Test-Manifests.py
+python backend/deploy/gitops/inference-control/Test-Manifests.py
 python -m unittest discover -s backend/tools/inference-agent/tests -v
 ```
 
@@ -137,4 +139,6 @@ Le package avec runtimes inclus a été installé avec une clé temporaire, sans
 
 Le changement d'un worker LFM de quatre threads vers Qwen à deux threads a été effectué dans la page Admin : son identifiant est resté stable, son PID a changé et les autres PID ont été préservés. Trois dialogues simultanés ont utilisé le pool mixte. Une modification de Qwen à trois threads pendant son dialogue a attendu sa réponse avant le remplacement. Répéter la même configuration n'a pas modifié la révision. La réinstallation sous Windows PowerShell 5.1 a conservé l'identité et cette configuration décidée dans Admin. Le backend utilisait MongoDB réel et a également relu les documents de la version précédente. Admin et la démo ont été inspectés en bureau et à 390 pixels sans débordement horizontal de la page.
 
-Cet essai utilise le démarrage supervisé en session utilisateur. Le redémarrage complet d'un serveur Windows avec une tâche SYSTEM n'a pas été exécuté sur la machine distante. Aucune image ni modification de cluster n'a été publiée par cette préparation.
+Cet essai utilise le démarrage supervisé en session utilisateur. Le redémarrage complet d'un serveur Windows avec une tâche SYSTEM n'a pas été exécuté sur la machine distante.
+
+Le package 1.1.1 précise les diagnostics d'inscription HTTP 404, 502 et 503 sans afficher de stack PowerShell. Un test supplémentaire exerce ces trois échecs puis une reprise réussie avec la même identité DPAPI. Le package 1.1 reste compatible avec le backend ; cette mise à jour améliore uniquement le diagnostic d'installation.

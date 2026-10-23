@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arkya-gateway-config
+  namespace: arkya-beta
+data:
+  Gateway__RealmGamePartitions__0__RealmId: beta-web
+  Gateway__RealmGamePartitions__0__ServerId: island-starter-island-01
+  Gateway__RealmGamePartitions__0__Address: http://arkya-beta-web-partition-01.arkya-beta-realm.svc.cluster.local:17943/
+  Gateway__RealmGamePartitions__1__RealmId: beta-web
+  Gateway__RealmGamePartitions__1__ServerId: island-starter-island-02
+  Gateway__RealmGamePartitions__1__Address: http://arkya-beta-web-partition-02.arkya-beta-realm.svc.cluster.local:17943/
+  Gateway__RealmGamePartitions__2__RealmId: beta-web
+  Gateway__RealmGamePartitions__2__ServerId: island-starter-island-03
+  Gateway__RealmGamePartitions__2__Address: http://arkya-beta-web-partition-03.arkya-beta-realm.svc.cluster.local:17943/
+  Gateway__RealmGamePartitions__3__RealmId: beta-web
+  Gateway__RealmGamePartitions__3__ServerId: island-starter-island-04
+  Gateway__RealmGamePartitions__3__Address: http://arkya-beta-web-partition-04.arkya-beta-realm.svc.cluster.local:17943/

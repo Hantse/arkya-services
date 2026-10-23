@@ -1,5 +1,17 @@
 # Backend Arkya
 
+Le protocole de jeu 2 ajoute le [transfert StarterIsland entre partitions](../docs/STARTER_ISLAND_HANDOFF.md) :
+préparation de la destination, scellement de l'état serveur et bascule atomique
+de la lease dans Characters. Les API conservent le protocole 1 et exigent une
+correspondance exacte entre le client et le runtime du realm. Le nouveau client
+et le dedicated doivent être publiés ensemble ; changer uniquement une image
+ne migre pas un profil de realm déjà figé.
+
+L'administration sépare la création du realm et sa fiche d'exploitation.
+La création configure une grille bornée pour chaque île ; la fiche regroupe
+aperçu, réglages, maintenance, actions en jeu et historique. Les révisions
+attendues et les contrôles d'autorisation des opérations restent obligatoires.
+
 Le site et l’admin disposent de [sessions renouvelables](../docs/AUTH_SESSIONS.md),
 avec cookies HttpOnly, rotation et révocation. Admin nécessite désormais sa propre
 base de sessions `arkya_admin` ; provisionner sa connexion MongoDB avant déploiement.
@@ -18,10 +30,10 @@ portent explicitement la version du jeu concernée.
 
 ## Services et propriété des données
 
-Les [signalements de bugs](../docs/BUG_REPORTS.md) ajoutent `Arkya.Reports.Api`
+Les [bugs (F8) et suggestions (F9)](../docs/BUG_REPORTS.md) ajoutent `Arkya.Reports.Api`
 (`arkya_reports`), le suivi dans Admin et un MCP administrateur protégé
-sur `/mcp/reports`. Le [profil Reports facultatif](deploy/gitops/reports/README.md)
-prépare l'intégration hébergée ; son activation nécessite les images et secrets.
+sur `/mcp/reports`. Le [composant Reports](deploy/gitops/reports-control/README.md)
+complète le profil Admin existant ; la CI promeut son digest avec les autres services.
 
 Le [backoffice de déploiement des realms sur k3s](deploy/realms/README.md) ajoute `Arkya.Realms.Api` et l'écran **Realms** d'`Arkya.Admin` : définitions dans `arkya_realms`, demandes durables et observation Kubernetes. Le module est activé explicitement dans Admin. Le backend de déploiement reste interne ; seul le backoffice peut être publié sur son domaine via la gateway. Voir [l'architecture réseau et le périmètre](../docs/REALM_DEPLOYMENT.md).
 
@@ -338,4 +350,4 @@ Le transport courant est HTTP JSON. Le passage à gRPC unary pour les appels int
 
 `Arkya.Inference.Api` ajoute un registre MongoDB de machines d'inférence. La page **Agents LFM** d'Admin fournit une clé d'installation temporaire : le script Windows enregistre automatiquement la machine et protège son jeton permanent localement. L'opérateur peut ajouter, supprimer ou modifier les workers, choisir LFM ou Qwen et régler leurs threads. L'agent reçoit les commandes par heartbeat sortant et remplace uniquement le worker modifié après son dialogue en cours. Le package comprend la démo PNJ locale et les scripts d'installation/démarrage automatique.
 
-Les instructions, la configuration du service et la vérification se trouvent dans [INFERENCE_AGENTS.md](../docs/INFERENCE_AGENTS.md). Sources du package : [`tools/inference-agent/`](tools/inference-agent/README.md). Le profil GitOps [`deploy/gitops/inference/`](deploy/gitops/inference/README.md) reste optionnel et exige des images publiées et des secrets provisionnés avant activation.
+Les instructions, la configuration du service et la vérification se trouvent dans [INFERENCE_AGENTS.md](../docs/INFERENCE_AGENTS.md). Sources du package : [`tools/inference-agent/`](tools/inference-agent/README.md). Le composant GitOps [`deploy/gitops/inference-control/`](deploy/gitops/inference-control/README.md) complète le profil Admin existant ; la CI publie et promeut son image avec Admin/Gateway avant son activation par Argo.

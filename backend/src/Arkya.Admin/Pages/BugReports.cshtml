@@ -17,6 +17,7 @@
 }
 else
 {
+    <p><a class="text-link" asp-page="/ReportsConnection">Connecter Codex aux signalements</a></p>
     <form method="get" class="panel report-filters">
         <div class="field"><label asp-for="Kind">Type</label><select asp-for="Kind"><option value="">Tous les types</option>@foreach (var kind in BugReportKinds.All) { <option value="@kind">@BugReportPresentation.KindLabel(kind)</option> }</select></div>
         <div class="field"><label asp-for="Tag">Tag</label><input asp-for="Tag" maxlength="32" placeholder="urgent" /></div>

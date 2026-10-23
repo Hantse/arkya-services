@@ -1,4 +1,4 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param(
     [string]$OutputDirectory = ([IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../../artifacts/inference-agent-package'))),
     [string]$OllamaDirectory,
@@ -65,7 +65,7 @@ if ($OllamaDirectory) {
 $files = foreach ($file in Get-ChildItem -LiteralPath $stage -File -Recurse) {
     @{path=$file.FullName.Substring($stage.Length + 1).Replace('\','/'); sha256=(Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant(); bytes=$file.Length}
 }
-$manifest = @{schemaVersion=1; version='1.1.0'; createdUtc=[DateTimeOffset]::UtcNow.ToString('O'); provenance=$provenance; files=@($files)}
+$manifest = @{schemaVersion=1; version='1.1.1'; createdUtc=[DateTimeOffset]::UtcNow.ToString('O'); provenance=$provenance; files=@($files)}
 [IO.File]::WriteAllText((Join-Path $stage 'package-manifest.json'), ($manifest | ConvertTo-Json -Depth 6), [Text.UTF8Encoding]::new($false))
 $zip = Join-Path $outputRoot 'Arkya-Inference-Agent-Windows-x64.zip'
 Compress-Archive -Path (Join-Path $stage '*') -DestinationPath $zip -CompressionLevel Optimal -Force

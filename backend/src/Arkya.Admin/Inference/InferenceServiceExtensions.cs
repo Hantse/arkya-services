@@ -1,5 +1,6 @@
 using Arkya.Admin.Content;
 using Arkya.Admin.Realms;
+using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
 
 namespace Arkya.Admin.Inference;
@@ -10,6 +11,7 @@ public static class InferenceServiceExtensions
         IConfiguration configuration, IHostEnvironment environment)
     {
         services.AddOptions<InferenceApiOptions>().Bind(configuration.GetSection("InferenceApi"))
+            .PostConfigure(options => options.AdminKey = InferenceOperatorKeys.ResolveAdmin(configuration, options.AdminKey))
             .Validate(options => !options.Enabled || options.AdminKey.Length is >= 32 and <= 512,
                 "InferenceApi:AdminKey must contain 32 to 512 characters.")
             .Validate(options => !options.Enabled ||

@@ -1,0 +1,86 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-beta-web-partitions-game
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/managed-by: arkya-realms
+      arkya.online/realm-id: beta-web
+    matchExpressions:
+    - key: arkya.online/server-id
+      operator: In
+      values: [island-starter-island-01, island-starter-island-02, island-starter-island-03, island-starter-island-04]
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-beta
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: arkya-gateway
+    ports:
+    - port: 17943
+      protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-characters-partitions-admission
+  namespace: arkya-beta
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-characters
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-beta-realm
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/managed-by: arkya-realms
+          arkya.online/realm-id: beta-web
+        matchExpressions:
+        - key: arkya.online/server-id
+          operator: In
+          values: [island-starter-island-01, island-starter-island-02, island-starter-island-03, island-starter-island-04]
+    ports:
+    - port: 8080
+      protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: arkya-realms-partitions-commands
+  namespace: arkya-beta
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: arkya-realms
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: arkya-beta-realm
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/managed-by: arkya-realms
+          arkya.online/realm-id: beta-web
+        matchExpressions:
+        - key: arkya.online/server-id
+          operator: In
+          values: [island-starter-island-01, island-starter-island-02, island-starter-island-03, island-starter-island-04]
+    ports:
+    - port: 8080
+      protocol: TCP

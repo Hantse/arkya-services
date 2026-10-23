@@ -30,6 +30,7 @@ public sealed record RealmSummary(string RealmId, string DisplayName, string Tar
 {
     public RealmTopology? Topology { get; init; }
     public bool TopologyRuntimeSupported { get; init; }
+    public string ProfileSha256 { get; init; } = "";
 }
 public sealed record RealmOperation(string Kind, long Revision, string RequestedBy, string Reason,
     DateTimeOffset RequestedAt, DateTimeOffset? CompletedAt, string Status, string? Error, string PreviousImage, string Image);

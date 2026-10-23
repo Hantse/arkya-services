@@ -11,7 +11,7 @@ using Microsoft.Extensions.Options;
 
 namespace Arkya.Realms.Api.Infrastructure;
 
-public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<DeploymentOptions> configured,
+public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<DeploymentOptions> configured,
     IOptions<RealmRuntimeOptions>? runtime = null) : IRealmDeployer
 {
     private const string DedicatedSecretName = "arkya-dedicated";
@@ -22,11 +22,15 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
 
     public async Task<bool> DeleteAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
+        if (!RealmTopologyBuilder.SnapshotSupportsRuntime(realm.Profile))
+            throw new DeploymentFailure("topology_runtime_unsupported");
         if (!options.Enabled || !options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace &&
             (target.RealmId is null || target.RealmId == realm.RealmId)))
             throw new DeploymentFailure("target_unavailable");
         var resources = new List<(string Path, JsonObject Desired, JsonObject? Existing)>();
-        foreach (var server in realm.Profile.Servers)
+        var servers = realm.Profile.Servers.Concat(realm.RuntimeRelease?.PreviousProfile.Servers ?? [])
+            .DistinctBy(server => server.Id);
+        foreach (var server in servers)
         {
             var desired = new JsonObject
             {
@@ -136,6 +140,8 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             throw new DeploymentFailure("target_unavailable");
         if (realm.ImageRelease is not null && !RealmImageReleases.Authorizes(options, realm))
             throw new DeploymentFailure("image_release_conflict");
+        if (realm.RuntimeRelease is { Completed: false } && !await RetirePreviousRuntimeAsync(realm, cancellationToken))
+            return [];
         if (realm.Restart is { } restart && (restart.Revision <= 0 || restart.PreviousRevision < 0 ||
             restart.PreviousRevision >= restart.Revision || restart.Revision > realm.Revision))
             throw new DeploymentFailure("restart_conflict");
@@ -236,6 +242,8 @@ public sealed class KubernetesRealmDeployer(HttpClient client, IOptions<Deployme
             throw new DeploymentFailure("resource_deleting");
         if (!ContainsDesired(desired["metadata"]!["labels"], metadata["labels"]))
             throw new DeploymentFailure("resource_ownership_conflict");
+        if (name == DedicatedSecretName && !JsonNode.DeepEquals(desired["data"], existing["data"]))
+            existing = await MigrateDedicatedSecretAsync(realm, resource, desired, existing, cancellationToken);
         if (!JsonNode.DeepEquals(desired["type"], existing["type"]) || !JsonNode.DeepEquals(desired["data"], existing["data"]))
             throw new DeploymentFailure("resource_configuration_drift");
     }

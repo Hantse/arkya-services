@@ -22,9 +22,16 @@ rules:
   resources: [services]
   verbs: [get, create, delete]
 - apiGroups: ['']
+  resources: [pods]
+  verbs: [get, list]
+- apiGroups: ['']
   resources: [secrets]
   resourceNames: [arkya-ghcr, arkya-dedicated]
   verbs: [get, delete]
+- apiGroups: ['']
+  resources: [secrets]
+  resourceNames: [arkya-dedicated]
+  verbs: [patch]
 # Kubernetes RBAC cannot constrain create by resourceName. Realms validates
 # the fixed registry/dedicated Secret names and approved namespace first.
 - apiGroups: ['']

@@ -24,7 +24,7 @@ Le runner 22.04 utilise le noyau 6.8 compatible. Le job conserve MongoDB 8
 et toutes les suites ; réévaluer ce choix lorsque l'image MongoDB publiée
 prend en charge le noyau du runner 24.04.
 
-Les huit images Linux AMD64/ARM64 sont :
+Les dix images Linux AMD64/ARM64 sont :
 
 - `ghcr.io/hantse/arkya-services-identity`
 - `ghcr.io/hantse/arkya-services-gateway`
@@ -34,10 +34,13 @@ Les huit images Linux AMD64/ARM64 sont :
 - `ghcr.io/hantse/arkya-services-realms`
 - `ghcr.io/hantse/arkya-services-backend` (API historique privée)
 - `ghcr.io/hantse/arkya-services-frontend`
+- `ghcr.io/hantse/arkya-services-inference`
+- `ghcr.io/hantse/arkya-services-reports`
 
 Seule la branche par défaut publie ; les autres branches et PR construisent
-sans publication. Le job final exige huit digests du même commit et met à
-jour `backend/deploy/gitops/beta/kustomization.yaml`. Une publication partielle
+sans publication. Le job final exige dix digests du même commit et met à
+jour les fichiers `kustomization.yaml` de `backend/deploy/gitops/beta`,
+`inference-control` et `reports-control`. Une publication partielle
 ou devenue obsolète n'est pas promue. Les tags `sha-<commit>` identifient les
 sources ; Argo CD utilise les digests immuables. Les preuves de publication
 sont conservées 30 jours. Les commits de promotion ne rebouclent pas la CI.

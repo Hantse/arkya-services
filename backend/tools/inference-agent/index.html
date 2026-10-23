@@ -298,7 +298,7 @@
       <div class="engine">
         <label class="model-label" for="model-select">Modèle CPU</label>
         <select class="model-select" id="model-select" aria-describedby="model-help">
-          
+
           <option value="pool" selected>Pool CPU · premier moteur disponible</option>
         </select>
         <p class="model-help" id="model-help">Le backoffice choisit le modèle et les threads de chaque moteur.</p>
@@ -461,7 +461,7 @@
             : "Le moteur n’a pas pu répondre (HTTP " + response.status + "). Réessayez dans un instant.");
         }
         const result = await response.json();
-        
+
         if (typeof result.reply !== "string" || !result.reply.trim()) {
           throw new Error("La réponse reçue est vide. Réessayez votre question.");
         }
@@ -513,7 +513,7 @@
         if (!response.ok) throw new Error("Status unavailable");
         const status = await response.json();
         if (request !== statusRequest || selectedModel !== requestedModel) return;
-        
+
         cpuOnly = status.cpu_only === true;
         byId("engine-name").textContent = typeof status.model === "string" ? status.model : "Modèle non renseigné";
         byId("engine-mode").textContent = status.cpu_only === true ? "Moteur local · CPU uniquement" : "Moteur local · mode CPU non confirmé";

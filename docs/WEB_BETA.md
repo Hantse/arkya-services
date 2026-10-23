@@ -19,6 +19,21 @@ images Unity publiées doivent être sélectionnées ensemble dans le composant
 le profil dedicated. La release versionnée décrite dans le guide Realms
 met à jour les realms déjà créés ; changer seulement le profil ne suffit pas.
 
+L'atelier actuel affiche « Un visage. Une histoire. », avec les onglets
+**Apparence** et **Nom & aventure**, les vues portrait/corps entier et un
+cadrage adapté au panneau disponible. Les palettes incluent `magenta` pour
+les cheveux et `jade` pour les étoffes ; Identity ne possède pas ces choix.
+Le client, le catalogue Characters et le dedicated doivent tous accepter
+ces identifiants avant l'activation publique de cette version.
+
+Le manifest WebGL expose `sourceRevision` lors d'un build CI. Ce SHA permet
+de reconnaître le client réellement servi ; `buildId` conserve son rôle
+de contrat réseau. Dans l'installation Admin à une seule source Argo, les
+images Unity publiées doivent être sélectionnées ensemble dans le composant
+[client statique](../backend/deploy/gitops/web-client-control/README.md) et
+le profil dedicated. La release versionnée décrite dans le guide Realms
+met à jour les realms déjà créés ; changer seulement le profil ne suffit pas.
+
 ## Parcours et autorité
 
 1. Le site vérifie sa session par `GET /v1/auth/me`, charge le vrai build et transmet la session en mémoire à `ArkyaWebSession.AcceptSiteSession`. La remise ne contient ni jeton Discord ni secret de service. Unity vérifie également la session auprès d’Identity.

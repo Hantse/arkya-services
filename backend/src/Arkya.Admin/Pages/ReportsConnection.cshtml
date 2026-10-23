@@ -1,0 +1,22 @@
+@page
+@model ReportsConnectionModel
+@{
+    ViewData["Title"] = "Connecter Codex";
+}
+<header class="page-header">
+    <div><div class="eyebrow">ASSISTANCE / CODEX</div><h1>Connecter Codex</h1><p class="intro">Retrouvez les bugs, suggestions et captures des joueurs depuis Codex.</p></div>
+    <a class="button secondary" asp-page="/BugReports">Bugs et suggestions</a>
+</header>
+@if (!Model.Enabled)
+{
+    <div class="panel empty-state"><h2>La connexion MCP est désactivée</h2><p>Activez le MCP Reports dans la configuration du serveur pour connecter Codex.</p></div>
+}
+else
+{
+    <section class="panel">
+        <h2>Configuration locale de Codex</h2>
+        <p>Le serveur <code>@ReportsConnectionModel.McpUrl</code> permet de lire les signalements et leurs captures, puis de mettre à jour leurs statuts et leurs tags.</p>
+        <p>Le fichier contient une clé d'accès administrateur au MCP. Conservez-le sur votre ordinateur, hors du dépôt, et ne le partagez pas. Ajoutez sa section à votre configuration locale Codex, puis rechargez la connexion MCP.</p>
+        <form method="post" asp-page-handler="Download"><button type="submit" class="button primary">Télécharger la configuration Codex</button></form>
+    </section>
+}

@@ -79,3 +79,68 @@ déploiement et de `ARKYA_ADMIN_MCP_TOKEN`.
 Docker Desktop n'était pas actif : aucune construction de conteneur locale
 n'est revendiquée. Les workflows assurent cette construction après publication
 du code. Le processus MongoDB temporaire a été arrêté après les tests.
+
+## Ajout F9 et préparation de livraison — 21 octobre 2026
+
+F9 ouvre une suggestion avec le même parcours de capture et d'envoi que F8.
+Le type reste immuable pendant un retry et dans le suivi administrateur.
+Les anciens rapports sans type restent des bugs, y compris leur empreinte
+d'idempotence et les filtres MongoDB.
+
+- Reports : **71/71** tests, dont MongoDB réel, après l'ajout du type.
+- MCP stdio : **14/14**, avec les cinq outils et les deux types.
+- Unity : **15/15**, dont ouverture F9, payload et parcours Play Mode rendu.
+  La capture `artifacts/bug-report-validation/suggestions/suggestion-form.png`
+  a été contrôlée ; hash, taille et horodatage de StarterIsland sont inchangés
+  entre les mesures avant/après cette série.
+- La publication est préparée dans des worktrees séparés depuis les branches
+  distantes actuelles, pour préserver les changements locaux de scènes et d'art.
+- La CI commune comporte dix images et une promotion atomique de trois fichiers
+  de digests. **28 tests Python**, Actionlint et les rendus des profils Admin,
+  Inference et Reports ont réussi avant publication.
+
+Les résultats de livraison et la connexion hébergée seront consignés après
+la promotion des images et l'activation du composant Reports.
+
+Après ajout du raccordement aux secrets existants et de l'export Codex :
+**318/318 Admin**, **170/170 Gateway**, **14/14 MCP** passent dans le worktree
+de publication. Reports : **68 réussis, 4 Mongo ignorés** faute d'instance
+sur ce second passage ; la CI conserve l'exécution MongoDB réelle obligatoire.
+
+## Publication GitOps — 21 octobre 2026
+
+Le code Services est publié dans `5915299` et le client Unity dans `88f3e8f`.
+La CI [Services images](https://github.com/Hantse/arkya-services/actions/runs/39507370833)
+a publié les dix images puis inscrit leurs digests dans `be344fc`, depuis
+`4c3b9cc` qui inclut le changement Reports et une correction Realms concurrente.
+La première exécution a volontairement refusé de promouvoir une source dépassée.
+
+Le composant Reports est maintenant ajouté au profil Admin existant, avec
+Inference. Le rendu composé contient **39 objets** ; les contrats et les digests
+ont été validés sans accès Kubernetes. La synchronisation reste assurée par Argo CD.
+L'activation est publiée dans `ffbbe18`. Après synchronisation, le dashboard
+Admin indique **6/6 services disponibles**. Le MCP refuse un appel anonyme
+avec HTTP 401 et le challenge Bearer attendu. Une session administrateur a
+permis de télécharger puis d'installer la configuration dans le fichier local
+ignoré `.codex/config.toml`, protégé par une ACL utilisateur ; aucune clé n'a
+été publiée. `codex mcp get` confirme le serveur activé et son URL hébergée.
+
+Le protocole MCP réel a ensuite réussi `initialize` (2025-03-26), `tools/list`
+avec les cinq outils, `list_bug_reports` et `list_suggestions` sans erreur
+(deux listes vides). Aucun rapport de test n'a été créé dans l'environnement.
+Le catalogue d'outils du chat déjà ouvert ne s'est pas rechargé à chaud ; une
+réouverture du chat ou une reconnexion MCP peut être nécessaire.
+La route publique joueur `/v1/bug-reports` répond aussi HTTP 401 sans session,
+ce qui confirme son activation et sa protection dans la Gateway.
+
+La CI Services a exécuté **1 172 tests .NET**, **21 tests Python Inference**
+et **28 tests de promotion/workflow**, tous réussis, avant les dix images.
+
+La première [CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/39507179874)
+a compilé le client et obtenu **459 tests EditMode réussis, 0 en échec, 2 ignorés**.
+Le contrôle CI a refusé le second test ignoré : le nouveau test de capture
+exigeait un Editor avec rendu. Le correctif `3c4cc6e` conserve les assertions
+de vraie capture hors batchmode et exerce F8/F9 ainsi que le chemin d'erreur
+de capture en batchmode, sans assouplir le validateur CI.
+La [nouvelle CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/39509174961)
+vérifie ce correctif puis construit séparément les clients et le dedicated.

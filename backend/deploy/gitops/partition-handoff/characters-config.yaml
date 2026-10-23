@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arkya-characters-config
+  namespace: arkya-beta
+data:
+  RealmRuntime__ServerId: null
+  RealmRuntime__ServerIds__0: island
+  RealmRuntime__ServerIds__1: island-starter-island-01
+  RealmRuntime__ServerIds__2: island-starter-island-02
+  RealmRuntime__ServerIds__3: island-starter-island-03
+  RealmRuntime__ServerIds__4: island-starter-island-04

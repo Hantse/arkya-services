@@ -154,11 +154,17 @@ La configuration hébergée est dans
 [`admin-mcp.hosted.config.example.toml`](../backend/tools/admin-mcp.hosted.config.example.toml).
 Après déploiement, fusionner ce bloc dans `.codex/config.toml`, fournir
 `ARKYA_ADMIN_MCP_TOKEN` au processus Codex depuis le gestionnaire de secrets,
-puis recharger les connexions MCP. La configuration de ce poste est préparée
-mais désactivée tant que le service hébergé et le token ne sont pas disponibles.
+puis recharger les connexions MCP. Une connexion ajoutée pendant un chat peut
+nécessiter sa réouverture pour charger les nouveaux outils.
 La [documentation officielle de connexion MCP](https://developers.openai.com/codex/mcp)
 décrit les configurations par projet et le bearer issu d'une variable
 d'environnement. Ne pas versionner le token ni le coller dans le chat.
+
+Dans le backoffice, **Connecter Codex** permet aussi de télécharger un fragment
+TOML prêt à intégrer. Le téléchargement exige une session administrateur et un
+POST protégé par antiforgery ; la page GET n'affiche aucune clé. Le fichier
+contient uniquement la clé MCP et son URL publique. Il doit rester dans une
+configuration locale exclue de Git, avec accès limité au compte utilisateur.
 
 Un hôte stdio existe aussi dans `Arkya.Admin.Mcp`, pour un service privé
 accessible depuis le poste. Il lit `Reports:BaseUrl`, `Reports:AdminKey` et
@@ -170,10 +176,18 @@ est fixé à la version 2.2.0 pour les deux transports.
 
 ## Configuration et déploiement
 
-Voir le [profil hébergé Reports](../backend/deploy/gitops/reports/README.md).
+Voir le [composant hébergé Reports](../backend/deploy/gitops/reports-control/README.md).
 Il ajoute Reports au profil Admin existant, active les routes joueur et le
-MCP, et conserve le LoadBalancer, les domaines, les PVC et les secrets existants.
-Ce profil est facultatif ; les profils actifs antérieurs restent inchangés.
+MCP, et conserve le LoadBalancer, les domaines, les PVC et le composant Inference.
+La CI commune publie les dix images et promeut leurs digests ensemble.
+L'activation est un changement Git du profil Admin après cette promotion.
+
+Le composant référence les secrets déjà utilisés par le profil : connexion
+MongoDB de Content, clé d'introspection Identity et graine administrateur.
+`ReportsOperator:KeySeed` dérive les clés Reports, service et MCP par des
+contextes HMAC-SHA256 distincts. La graine n'est jamais envoyée par HTTP et
+aucune clé n'est inscrite dans les YAML. La configuration par clés explicites
+reste disponible pour les autres environnements, sans graine simultanée.
 
 | Service | Configuration nécessaire |
 | --- | --- |
@@ -204,7 +218,7 @@ des textes non fiables, transport MCP et images. Exécuter depuis la racine :
 ```powershell
 $env:ARKYA_TEST_MONGO = 'mongodb://127.0.0.1:27017'
 dotnet test backend/Arkya.Backend.slnx
-python backend/deploy/gitops/reports/Test-Manifests.py
+python backend/deploy/gitops/reports-control/Test-Manifests.py
 ```
 
 Les tests Mongo utilisent des bases de test uniques. Sans `ARKYA_TEST_MONGO`,

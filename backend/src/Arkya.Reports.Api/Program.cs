@@ -25,6 +25,8 @@ public partial class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = MaximumRequestBodyBytes);
         builder.Services.AddArkyaServiceDefaults(builder.Configuration);
+        builder.Services.PostConfigure<ServiceAuthenticationOptions>(options =>
+            options.Key = ReportsOperatorKeys.ResolveService(builder.Configuration, options.Key));
         builder.Services.AddArkyaInternalHttp(builder.Configuration);
         builder.Services.AddArkyaProxyTrust(builder.Configuration);
         builder.Services.ConfigureHttpJsonOptions(options =>
@@ -47,8 +49,9 @@ public partial class Program
             .Validate(options => options.ServiceKey.Length is >= 32 and <= 512, "Identity:ServiceKey requires 32 to 512 characters.")
             .ValidateOnStart();
         builder.Services.AddOptions<ReportsAdminOptions>().BindConfiguration("ReportsAdmin")
+            .PostConfigure(options => options.Key = ReportsOperatorKeys.ResolveReports(builder.Configuration, options.Key))
             .Validate(options => options.Key.Length is >= 32 and <= 512, "ReportsAdmin:Key requires 32 to 512 characters.")
-            .Validate(options => options.Key != builder.Configuration["ServiceAuthentication:Key"] &&
+            .Validate<IOptions<ServiceAuthenticationOptions>>((options, service) => options.Key != service.Value.Key &&
                 options.Key != builder.Configuration["Identity:ServiceKey"], "The Reports administrator key must be distinct from service keys.")
             .Validate(options => ReportService.ValidActor(options.Actor), "ReportsAdmin:Actor must be printable and at most 128 characters.")
             .ValidateOnStart();
