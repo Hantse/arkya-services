@@ -84,6 +84,7 @@ For Unity work, Codex should use the installed **CoplayDev Unity MCP** bridge fo
 - [CI coverage, Unity runners and workflow activation](docs/CI.md).
 - [Unity MCP: Editor connection, automation and validation](docs/UNITY_MCP.md).
 - [In-game character creation, rigs, server persistence and local movement test](docs/CHARACTER_CREATION.md).
+- [Menu Échap, options graphiques et son du joueur](docs/PLAYER_SETTINGS.md).
 - [Web beta: website session, Unity builds, dedicated configuration and validation](docs/WEB_BETA.md).
 - [StarterIsland player handoff: protocol, durable authority and four-process validation](docs/STARTER_ISLAND_HANDOFF.md).
 - [Discord Social SDK: friends, presence, social invitations and configuration](docs/DISCORD_SOCIAL.md).
