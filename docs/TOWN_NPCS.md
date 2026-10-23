@@ -20,7 +20,10 @@ hors de portée, pendant la mort ou un transfert d’autorité. Une demande en c
 doit terminer avant la suivante ; le cooldown minimum est d’une seconde.
 
 La question est limitée à **200 caractères et 500 octets UTF-8**. La réponse du
-modèle est du texte simple, limité à **512 caractères**. Le client garde un petit
+modèle est du texte simple, limitée à **512 unités UTF-16 et 1 000 octets UTF-8**
+dans le message réseau. Le serveur coupe seulement entre deux caractères Unicode
+complets afin de conserver les accents et les emoji sans dépasser un paquet RPC.
+Le client garde un petit
 historique de présentation pendant la session ; cet historique n’est pas envoyé
 au modèle ni conservé comme mémoire persistante. Si l’inférence est indisponible,
 le salut écrit reste dans le panneau et un statut d’indisponibilité permet de réessayer.
@@ -152,14 +155,26 @@ reconnaissent encore les anciennes paires exactes, mais n’admettent pas un cli
 
 ## Vérification
 
-Les preuves Unity et les captures de cette intégration restent à renseigner
-après exécution dans l’Editor ; ce document ne constitue pas une validation
-visuelle ou une preuve de dialogue avec un worker réel.
+La compilation directe avec Roslyn a réussi pour les assemblies runtime et
+`EditorTests`, en utilisant les fichiers de réponse et les générateurs de la
+version Unity installée **6000.6.6f1**. Cette vérification externe ne constitue
+ni une compilation validée dans l’Editor, ni une exécution des tests Unity.
+Elle a également réussi sur les sources exactes du commit Unity `5ad7d07`,
+sans les modifications locales des autres tâches.
 
-Les suites prévues sont `CharacterNpcTests` pour les règles et l’autorité,
+Pendant une tentative de rendu caméra, l’Editor local s’est arrêté sur un crash
+natif **`D3D12Fence::Wait`**. La sonde MCP a ensuite confirmé
+**`instance_count: 0`**. Les contrôles runtime, serveur/client et visuels des PNJ,
+ainsi que les captures, restent à exécuter après réouverture de l’Editor.
+
+Les suites restant à exécuter sont `CharacterNpcTests` pour les règles et l’autorité,
 `CharacterNpcNetworkTests` pour les ghosts et RPC entre serveur/client réels,
-`CharacterNpcAssetTests` pour le catalogue et les prefabs, et
-`CharacterNpcDialoguePanelTests` pour la présentation du dialogue. Le test réseau
+`CharacterNpcAssetTests` pour le catalogue et les prefabs,
+`CharacterNpcDialoguePanelTests` et `CharacterNpcDialogueRuntimeTests` pour
+la présentation du dialogue, et `CharacterNpcInferenceTests` pour HTTP.
+Ces six fixtures représentent **39 cas** inclus dans le job EditMode de la
+[CI Unity du commit](https://github.com/Hantse/arkya-mmorpg/actions/runs/40034851383),
+encore en file d’attente au moment de cette vérification. Le test réseau
 injecte une réponse de modèle contrôlée afin de vérifier le transport ; il ne
 remplace pas le parcours HTTP avec agent et modèle en fonctionnement.
 
