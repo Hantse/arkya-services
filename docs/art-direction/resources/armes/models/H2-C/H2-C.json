@@ -1,0 +1,101 @@
+{
+  "name": "H2-C",
+  "category": "AxeTwoHands",
+  "length_m": 1.623,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Grip_Secondary": [
+      0,
+      0,
+      0.355
+    ],
+    "Tip": [
+      -0.1875,
+      0,
+      1.355
+    ]
+  },
+  "notes": "Two unobstructed hand zones; solid metal socket; closed blade surfaces; asymmetric counterblade on H2-C.",
+  "code": "H2-C",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.37103909254074097,
+      -0.06943999975919724,
+      -0.2680000066757202
+    ],
+    "max": [
+      0.2315284013748169,
+      0.06943999975919724,
+      1.3539395332336426
+    ]
+  },
+  "dimensionsBlender": [
+    0.6025674939155579,
+    0.13887999951839447,
+    1.6219395399093628
+  ],
+  "lods": [
+    {
+      "vertices": 7348,
+      "triangles": 14428,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 3885,
+      "triangles": 7502,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1865,
+      "triangles": 3462,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "2eb18986e0c20a83935127f51f1b67bdb0e4739867795aaaa2e89d5f43931701",
+    "fbx": "4c4aec1861d2d5fd88aecf0d8ddd0f5c47a5fe2558ce5e96a64b842d4ae5032b",
+    "glb": "0e778e34719000c071e0a02942616c6f091ccef6dd63f4c8ecea28a4e509d28b"
+  }
+}

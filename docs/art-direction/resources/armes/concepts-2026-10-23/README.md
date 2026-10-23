@@ -1,8 +1,9 @@
 # Armes — concepts du 23 octobre 2026
 
 **21 propositions 2D : trois variantes pour chacune des sept catégories demandées.**
-Statut artistique : **à examiner**. Ces planches définissent une intention visuelle ;
-elles ne constituent pas des modèles 3D ni une intégration Unity.
+Statut artistique : **direction approuvée par l'utilisateur** (« Nickel », 23 octobre 2026).
+Ces planches définissent l'intention visuelle. Les [objets 3D et leur import Unity](../README.md)
+prolongent cette première livraison ; leur adaptation en volume reste à examiner.
 
 ## Direction artistique
 
@@ -76,6 +77,6 @@ cohérence des matériaux et des accents turquoise.
 Les épées E2-B et E2-C restent proches dans leur silhouette générale ; leur garde,
 leur largeur et leur traitement de lame les différencient.
 
-La validation artistique appartient à l'utilisateur. La modélisation, les vues
-arrière, les attaches, les dimensions, les points de prise, les textures et les
-contraintes d'animation devront être définis lors d'une éventuelle réalisation 3D.
+La réalisation 3D possède désormais ses volumes arrière, dimensions et repères
+de prise ; voir la [collection Unity](../README.md). Les modèles sont statiques.
+La validation artistique de cette adaptation en volume appartient à l'utilisateur.

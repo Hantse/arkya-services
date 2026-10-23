@@ -1,0 +1,99 @@
+{
+  "name": "Round shield · carved wood and jade",
+  "category": "shield",
+  "length_m": 0.77,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Forearm": [
+      0.13299999999999998,
+      0.015,
+      0
+    ],
+    "Tip": [
+      0,
+      -0.085,
+      0.385
+    ]
+  },
+  "notes": "Domed closed shield with finished back, raised leather straps and real central handgrip.",
+  "code": "B-B",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.34299999475479126,
+      -0.22099998593330383,
+      -0.37439998984336853
+    ],
+    "max": [
+      0.34299999475479126,
+      0.04100000113248825,
+      0.37439998984336853
+    ]
+  },
+  "dimensionsBlender": [
+    0.6859999895095825,
+    0.2619999870657921,
+    0.7487999796867371
+  ],
+  "lods": [
+    {
+      "vertices": 5199,
+      "triangles": 10218,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 3,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 2746,
+      "triangles": 5312,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 3,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1316,
+      "triangles": 2452,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 3,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "369c32e4044ef6e5c1cc12b584bee10654734ce980cd2e29fd8fe9c9896e85d8",
+    "fbx": "3ed03f828655403368fd704f7057a894a6bd2cafbcd4a3f89cd7ca1bffd24870",
+    "glb": "603aca04c6b12001040f5828dbae91c594a0a72b1057503c87a7801b12dd821f"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "H1-A",
+  "category": "AxeOneHand",
+  "length_m": 0.761,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Tip": [
+      -0.2295,
+      0,
+      0.5945
+    ]
+  },
+  "notes": "Closed crescent/bearded blade; solid socket; wrapped single-hand grip; sculpted reverse face.",
+  "code": "H1-A",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.2608333230018616,
+      -0.05119999870657921,
+      -0.16554000973701477
+    ],
+    "max": [
+      0.08902430534362793,
+      0.05119999870657921,
+      0.5933976173400879
+    ]
+  },
+  "dimensionsBlender": [
+    0.3498576283454895,
+    0.10239999741315842,
+    0.7589376270771027
+  ],
+  "lods": [
+    {
+      "vertices": 3382,
+      "triangles": 6640,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1788,
+      "triangles": 3452,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 858,
+      "triangles": 1592,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "960a057f07f0e85dde30dcb065a18d4bba5eed2c5d6a3f80288d78e63e3f703c",
+    "fbx": "198457cca2cb81f9b0721452d3476563d5d6741de7ac7cf4f61796ccb30d47cd",
+    "glb": "8f940b5c7305c780dffbefa85ce90bd9ec3531bf34f7ff1c3c202b7666f67a6c"
+  }
+}

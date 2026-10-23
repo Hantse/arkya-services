@@ -1,0 +1,94 @@
+{
+  "name": "Crystal Sword C",
+  "category": "sword-one-hand",
+  "length_m": 1.049,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Tip": [
+      0,
+      0,
+      0.885
+    ]
+  },
+  "notes": "E1-C: solid faceted turquoise crystal, forked bronze guard and diamond pommel.",
+  "code": "E1-C",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.1501343995332718,
+      -0.03400000184774399,
+      -0.16161301732063293
+    ],
+    "max": [
+      0.1501343995332718,
+      0.03400000184774399,
+      0.8849999904632568
+    ]
+  },
+  "dimensionsBlender": [
+    0.3002687990665436,
+    0.06800000369548798,
+    1.0466130077838898
+  ],
+  "lods": [
+    {
+      "vertices": 3071,
+      "triangles": 6058,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 3,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1617,
+      "triangles": 3150,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 3,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 768,
+      "triangles": 1452,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 3,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Organic"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "21ce8dbaa8cbb928f9158a2dba120303634c5c785daa19f8f24c6f9ae5bf5704",
+    "fbx": "8743368dbc43d5c323eeaed52f43c53b1b21f65b78307b84c767237377572041",
+    "glb": "bad65aa1ca704b6f03478dca93c7d81e72e1e8a548941794c49ebcc90f816637"
+  }
+}

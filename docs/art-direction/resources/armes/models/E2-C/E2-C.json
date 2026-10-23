@@ -1,0 +1,100 @@
+{
+  "name": "Crystal Greatsword C",
+  "category": "sword-two-hands",
+  "length_m": 1.626,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Grip_Secondary": [
+      0,
+      0,
+      -0.205
+    ],
+    "Tip": [
+      0,
+      0,
+      1.174
+    ]
+  },
+  "notes": "E2-C: waisted turquoise crystal planes surrounding a solid steel spine, crescent guard and long two-hand grip.",
+  "code": "E2-C",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.19632959365844727,
+      -0.03849999979138374,
+      -0.4499879479408264
+    ],
+    "max": [
+      0.19632959365844727,
+      0.03849999979138374,
+      1.1740000247955322
+    ]
+  },
+  "dimensionsBlender": [
+    0.39265918731689453,
+    0.07699999958276749,
+    1.6239879727363586
+  ],
+  "lods": [
+    {
+      "vertices": 4730,
+      "triangles": 9340,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 2488,
+      "triangles": 4856,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1180,
+      "triangles": 2240,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "6a06fa4feadcc7f612171c162052a69d416fd7df9dd6e00311a6fddd9c7d3986",
+    "fbx": "68300c2da0dec7572681817b336de4eacdaf1faf987621550a87ce844fe706c0",
+    "glb": "e873bf3ba6e51274207e0f8eac153c55ec149e43229142d8968b335daf7c7faf"
+  }
+}

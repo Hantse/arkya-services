@@ -1,0 +1,100 @@
+{
+  "name": "H2-A",
+  "category": "AxeTwoHands",
+  "length_m": 1.55,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Grip_Secondary": [
+      0,
+      0,
+      0.355
+    ],
+    "Tip": [
+      -0.37925,
+      0,
+      1.28175
+    ]
+  },
+  "notes": "Two unobstructed hand zones; solid metal socket; closed blade surfaces; asymmetric counterblade on H2-C.",
+  "code": "H2-A",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.42625001072883606,
+      -0.07154999673366547,
+      -0.2680000066757202
+    ],
+    "max": [
+      0.09853645414113998,
+      0.07154999673366547,
+      1.2800962924957275
+    ]
+  },
+  "dimensionsBlender": [
+    0.524786464869976,
+    0.14309999346733093,
+    1.5480962991714478
+  ],
+  "lods": [
+    {
+      "vertices": 5102,
+      "triangles": 10048,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 2690,
+      "triangles": 5224,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1283,
+      "triangles": 2410,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "a5ab7ba20b17857665cdeef5558bb53aa456540b3eb7778ab9ad9a8dcfc2cee9",
+    "fbx": "7adb22a65f4ed1001307ba18e1a825436749697c5a3069915e72d43f2ef08b93",
+    "glb": "98c954037d6a120a2330db724e078a626e5d57df4a226106b2c8e23d3d63cc89"
+  }
+}

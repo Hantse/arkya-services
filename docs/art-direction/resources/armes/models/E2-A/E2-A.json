@@ -1,0 +1,101 @@
+{
+  "name": "Greatsword A",
+  "category": "sword-two-hands",
+  "length_m": 1.627,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Grip_Secondary": [
+      0,
+      0,
+      -0.205
+    ],
+    "Tip": [
+      0,
+      0,
+      1.175
+    ]
+  },
+  "notes": "E2-A: disciplined straight greatsword, narrowed ricasso, elongated leather grip and oval counterweight.",
+  "code": "E2-A",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.19821004569530487,
+      -0.04079999774694443,
+      -0.44967758655548096
+    ],
+    "max": [
+      0.19821004569530487,
+      0.04079999774694443,
+      1.1749999523162842
+    ]
+  },
+  "dimensionsBlender": [
+    0.39642009139060974,
+    0.08159999549388885,
+    1.6246775388717651
+  ],
+  "lods": [
+    {
+      "vertices": 4580,
+      "triangles": 9036,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 2411,
+      "triangles": 4698,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1146,
+      "triangles": 2168,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "9b25e38a60b1d7c6dc84d3b93f0a1d3c6bfae9c9491e607acb2813d3a0e3fef9",
+    "fbx": "86e7790de6680f27ff82ae5da6c1ac3b53290af0ee8b69cc32f4accf259f62a8",
+    "glb": "7a4ae45239b3d956e909242dec860115b3b83241be392fe4685c968c5bc9e2d3"
+  }
+}

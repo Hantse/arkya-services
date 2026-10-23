@@ -1,0 +1,101 @@
+{
+  "name": "Crystal staff · turquoise prism and gold talons",
+  "category": "staff",
+  "length_m": 1.868,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Grip_Secondary": [
+      0,
+      0,
+      -0.39
+    ],
+    "Tip": [
+      0,
+      0,
+      1.023
+    ]
+  },
+  "notes": "Solid shaft, leather handgrip, modelled ferrule and three-dimensional magical crown.",
+  "code": "BT-C",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.12086143344640732,
+      -0.06549999862909317,
+      -0.8450000286102295
+    ],
+    "max": [
+      0.12086143344640732,
+      0.05400000140070915,
+      1.0225000381469727
+    ]
+  },
+  "dimensionsBlender": [
+    0.24172286689281464,
+    0.11950000002980232,
+    1.8675000667572021
+  ],
+  "lods": [
+    {
+      "vertices": 2777,
+      "triangles": 5454,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1468,
+      "triangles": 2836,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 704,
+      "triangles": 1308,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "4673730105bdac7722c49ba05b71a3ceea36232e73eb404d1dc13a3ffbd17b78",
+    "fbx": "31ec1c281f2e75f88820fedcbf92216a8bdcd5471d60b06974c6b34b6311c34d",
+    "glb": "8be5b5d2760904190634b76536d3271493fe67ae89fba41828e107bb8d991913"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "name": "Heater shield · blue steel and warm gold",
+  "category": "shield",
+  "length_m": 0.81,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Forearm": [
+      0.0988,
+      0.015,
+      0
+    ],
+    "Tip": [
+      0,
+      -0.085,
+      0.405
+    ]
+  },
+  "notes": "Domed closed shield with finished back, raised leather straps and real central handgrip.",
+  "code": "B-A",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.26112499833106995,
+      -0.20649999380111694,
+      -0.4050000011920929
+    ],
+    "max": [
+      0.26112499833106995,
+      0.04100000113248825,
+      0.4090000092983246
+    ]
+  },
+  "dimensionsBlender": [
+    0.5222499966621399,
+    0.2474999949336052,
+    0.8140000104904175
+  ],
+  "lods": [
+    {
+      "vertices": 4151,
+      "triangles": 8186,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 2186,
+      "triangles": 4256,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1040,
+      "triangles": 1964,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "8b8df9ce1719ec412e1d9d5794a07d7c029b46709e08ff405688bdcfac0456b8",
+    "fbx": "ada8f762508d7366d5caffc7534c1037a72e9d74050358c446eff5b6ea431cf8",
+    "glb": "7a3f8abb52fe01ea2a14364521347f79fb7a26e87e88b9593bdf55de67dff619"
+  }
+}

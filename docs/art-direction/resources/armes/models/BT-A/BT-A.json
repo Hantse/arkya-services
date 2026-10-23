@@ -1,0 +1,101 @@
+{
+  "name": "Lantern staff · amber core and forged cage",
+  "category": "staff",
+  "length_m": 1.856,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Grip_Secondary": [
+      0,
+      0,
+      -0.39
+    ],
+    "Tip": [
+      0,
+      0,
+      1.01
+    ]
+  },
+  "notes": "Solid shaft, leather handgrip, modelled ferrule and three-dimensional magical crown.",
+  "code": "BT-A",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.10237383842468262,
+      -0.11771410703659058,
+      -0.8450000286102295
+    ],
+    "max": [
+      0.12300000339746475,
+      0.11771410703659058,
+      1.0104999542236328
+    ]
+  },
+  "dimensionsBlender": [
+    0.22537384182214737,
+    0.23542821407318115,
+    1.8554999828338623
+  ],
+  "lods": [
+    {
+      "vertices": 3827,
+      "triangles": 7530,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 2019,
+      "triangles": 3914,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 965,
+      "triangles": 1806,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "95cdd6d4cd209d66ae6ea3d1494da6fb1f30f1c697f0a38335f870df344df06b",
+    "fbx": "ec72fedd674d20345fff71e2061f0b728f881595fd7da7e2877bb649b044f227",
+    "glb": "c839397afa1b3114bab627b2f14bf0c887533cf31065ae6ad8a1e8a19c08fb58"
+  }
+}

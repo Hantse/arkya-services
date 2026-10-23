@@ -1,0 +1,119 @@
+{
+  "name": "Recurve bow · wood, blue steel and gold",
+  "category": "bow",
+  "length_m": 1.578,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "ArrowRest": [
+      0.025,
+      -0.051,
+      0.06
+    ],
+    "String_Center": [
+      0.171,
+      0,
+      0.06
+    ],
+    "Tip": [
+      0.171,
+      0,
+      0.73
+    ],
+    "String_Upper": [
+      0.171,
+      0,
+      0.73
+    ],
+    "String_Lower": [
+      0.171,
+      0,
+      -0.73
+    ]
+  },
+  "notes": "Solid tapered recurve limbs and separate thin three-dimensional string. Static display pose; bending and drawing require future animation.",
+  "code": "AR-A",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.11035890877246857,
+      -0.06549999862909317,
+      -0.7854752540588379
+    ],
+    "max": [
+      0.19192585349082947,
+      0.03099999949336052,
+      0.7854752540588379
+    ]
+  },
+  "dimensionsBlender": [
+    0.30228476226329803,
+    0.09649999812245369,
+    1.5709505081176758
+  ],
+  "lods": [
+    {
+      "vertices": 3959,
+      "triangles": 7810,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 2091,
+      "triangles": 4074,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1001,
+      "triangles": 1894,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 5,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "lodPreservedParts": [
+    "AR-A_Taut_Bowstring"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "c7511ca7d05ef9d53e0e56f87bbc50f96b49179b2ca2642530cc4edae0d9f5d2",
+    "fbx": "16678b16d6f995cc0fca0ed500fe9cfa737613792da12abc6658d35ce4ff6b9a",
+    "glb": "a64c31c6aadd08631c469a08e751f725fdcd88f0e203067f5c50c175224df205"
+  }
+}

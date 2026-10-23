@@ -1,0 +1,100 @@
+{
+  "name": "Diamond shield · ivory, jade and turquoise crystal",
+  "category": "shield",
+  "length_m": 0.85,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Forearm": [
+      0.0931,
+      0.015,
+      0
+    ],
+    "Tip": [
+      0,
+      -0.085,
+      0.425
+    ]
+  },
+  "notes": "Domed closed shield with finished back, raised leather straps and real central handgrip.",
+  "code": "B-C",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.24580800533294678,
+      -0.22450000047683716,
+      -0.41999998688697815
+    ],
+    "max": [
+      0.24580800533294678,
+      0.04100000113248825,
+      0.41999998688697815
+    ]
+  },
+  "dimensionsBlender": [
+    0.49161601066589355,
+    0.2655000016093254,
+    0.8399999737739563
+  ],
+  "lods": [
+    {
+      "vertices": 5073,
+      "triangles": 10018,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 2668,
+      "triangles": 5208,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1266,
+      "triangles": 2404,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "2661a0a9498b72ef681d4a50f1921b14f4f2457bc52bc2369f67efba8d376df7",
+    "fbx": "db0fba883ee0abaa6bdadda766c79314ff9f93382efb75eb19dc2449a56d3ff8",
+    "glb": "ae6de8260e23897a7f581b98dc892cb2207471fcb1070e9ad0d8991d989ac98d"
+  }
+}

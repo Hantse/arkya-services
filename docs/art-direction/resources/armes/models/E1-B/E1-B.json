@@ -1,0 +1,95 @@
+{
+  "name": "Leaf Sword B",
+  "category": "sword-one-hand",
+  "length_m": 1.068,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Tip": [
+      0.208,
+      0,
+      0.934
+    ]
+  },
+  "notes": "E1-B: swept single-edge leaf silhouette, curved leather grip, asymmetric jade crescent and ivory insert.",
+  "code": "E1-B",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.16685199737548828,
+      -0.05299999937415123,
+      -0.13499332964420319
+    ],
+    "max": [
+      0.20800000429153442,
+      0.05299999937415123,
+      0.9340000152587891
+    ]
+  },
+  "dimensionsBlender": [
+    0.3748520016670227,
+    0.10599999874830246,
+    1.0689933449029922
+  ],
+  "lods": [
+    {
+      "vertices": 5785,
+      "triangles": 11466,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 3033,
+      "triangles": 5962,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1427,
+      "triangles": 2750,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "6c2defe7854007685e0d681d43423b22cb3449bfde8038eeb1de1ad419319009",
+    "fbx": "c3c9f5ffcdc0a91f0c4e6e1ca1187e6233439c7ea6687f700d48775000429d65",
+    "glb": "8c6441176ef9b6c9ce00944d53dc39c010fe171cfd3eb87806316d0a873c2d11"
+  }
+}

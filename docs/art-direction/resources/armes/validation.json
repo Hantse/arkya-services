@@ -1,0 +1,5680 @@
+{
+  "schemaVersion": 1,
+  "generatedUtc": "2026-10-23T15:10:48.424361+00:00",
+  "validatorSha256": "07bbfa10e22c3c555f03d621fa4d05ecd03047043c61edf1c2b477f6b49d19f6",
+  "blenderVersion": "4.5.14 LTS",
+  "status": "passed",
+  "scope": "21 static weapon art assets; offline source and export validation",
+  "expectedCodes": [
+    "E1-A",
+    "E1-B",
+    "E1-C",
+    "E2-A",
+    "E2-B",
+    "E2-C",
+    "H1-A",
+    "H1-B",
+    "H1-C",
+    "H2-A",
+    "H2-B",
+    "H2-C",
+    "B-A",
+    "B-B",
+    "B-C",
+    "BT-A",
+    "BT-B",
+    "BT-C",
+    "AR-A",
+    "AR-B",
+    "AR-C"
+  ],
+  "selectedCodes": [
+    "E1-A",
+    "E1-B",
+    "E1-C",
+    "E2-A",
+    "E2-B",
+    "E2-C",
+    "H1-A",
+    "H1-B",
+    "H1-C",
+    "H2-A",
+    "H2-B",
+    "H2-C",
+    "B-A",
+    "B-B",
+    "B-C",
+    "BT-A",
+    "BT-B",
+    "BT-C",
+    "AR-A",
+    "AR-B",
+    "AR-C"
+  ],
+  "completeLibrary": true,
+  "technicalValidation": {
+    "status": "passed",
+    "checks": [
+      "Seven categories with three distinct concept IDs each",
+      "Source and all FBX LOD meshes closed, finite and positive-area",
+      "Independent GLB indices, positions, normals, UVs and vertex pigments",
+      "Three decreasing FBX LODs and no more than five surface materials",
+      "Export +Y up, metre dimensions, zero grip pivot and attachment markers",
+      "Source-to-export vertex positions and immutable SHA-256 records"
+    ]
+  },
+  "artReview": {
+    "status": "requires_visual_review",
+    "note": "Geometry checks do not judge fidelity to the approved concept sheets. Review the 21 preview images and actual Unity rendering separately."
+  },
+  "unityValidation": {
+    "status": "not_performed_by_this_validator",
+    "note": "Unity import, materials, prefabs and runtime remain outside this offline check. No Unity validation is claimed here."
+  },
+  "assets": [
+    {
+      "code": "E1-A",
+      "category": "sword-one-hand",
+      "status": "passed",
+      "sha256": {
+        "blend": "52afad8f7bc98fe9d5632eda4097407c2130bc6efc274d65b078f5725aa7077f",
+        "fbx": "238b39697f5b519b14ab630c695e2035dc3c6d6c9aba4d6ca691e318da1cb529",
+        "glb": "a3948d64992d8227c9724a2cb1e5536edc4acf7f17f4c69487b7a89261787595",
+        "json": "0d99e241b4799c3bcf066ab9030ea8f46f90b87639b3566ff2676b6556e641b5",
+        "preview": "602d29888eb498b46ec55a264f0a92a9b6dc5c162e439a99d7e58e9078d53ff8"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 20,
+        "vertices": 3311,
+        "triangles": 6542,
+        "boundsMeters": {
+          "min": [
+            -0.1519300788640976,
+            -0.032499998807907104,
+            -0.16197995841503143
+          ],
+          "max": [
+            0.1519300490617752,
+            0.032499998807907104,
+            0.8679999709129333
+          ],
+          "dimensions": [
+            0.3038601279258728,
+            0.06499999761581421,
+            1.0299799293279648
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 1.1603137252588476e-08,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 6542,
+        "exportedVerticesIncludingAttributeSeams": 7876,
+        "minimumTriangleAreaM2": 1.1603137252588476e-08,
+        "colors": {
+          "samples": 7876,
+          "minRGB": [
+            0.0033397183287888765,
+            0.010132980532944202,
+            0.005364519078284502
+          ],
+          "maxRGB": [
+            0.7647371292114258,
+            0.8771984577178955,
+            0.9446752667427063
+          ],
+          "distinctRGBAtFourDecimals": 2234,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.1519300788640976,
+            -0.16197995841503143,
+            -0.032499998807907104
+          ],
+          "max": [
+            0.1519300490617752,
+            0.8679999709129333,
+            0.032499998807907104
+          ],
+          "dimensions": [
+            0.3038601279258728,
+            1.0299799293279648,
+            0.06499999761581421
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 3311,
+            "triangles": 6542,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.1603137252588476e-08,
+            "finitePositions": true,
+            "colors": {
+              "samples": 19626,
+              "minRGB": [
+                0.0033397183287888765,
+                0.010132980532944202,
+                0.005364519078284502
+              ],
+              "maxRGB": [
+                0.7647371292114258,
+                0.8771984577178955,
+                0.9446752667427063
+              ],
+              "distinctRGBAtFourDecimals": 2234,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.1519300788640976,
+                -0.03249998018145561,
+                -0.16197995841503143
+              ],
+              "max": [
+                0.1519300490617752,
+                0.032500024884939194,
+                0.8679999709129333
+              ],
+              "dimensions": [
+                0.3038601279258728,
+                0.0650000050663948,
+                1.0299799293279648
+              ]
+            },
+            "maxBoundsErrorM": 2.60770320892334e-08,
+            "maxVertexRoundtripErrorM": 1.4141514270704647e-07
+          },
+          {
+            "vertices": 1740,
+            "triangles": 3400,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 9.095142455138096e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 10200,
+              "minRGB": [
+                0.00333971856161952,
+                0.010132980532944202,
+                0.005364519078284502
+              ],
+              "maxRGB": [
+                0.7611309289932251,
+                0.8730619549751282,
+                0.9402205348014832
+              ],
+              "distinctRGBAtFourDecimals": 1293,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.15189620852470398,
+                -0.03249998018145561,
+                -0.16185107827186584
+              ],
+              "max": [
+                0.15190429985523224,
+                0.032500024884939194,
+                0.8679999709129333
+              ],
+              "dimensions": [
+                0.3038005083799362,
+                0.0650000050663948,
+                1.0298510491847992
+              ]
+            }
+          },
+          {
+            "vertices": 825,
+            "triangles": 1570,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.801354808336933e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 4710,
+              "minRGB": [
+                0.0034223366528749466,
+                0.010216452181339264,
+                0.005408709403127432
+              ],
+              "maxRGB": [
+                0.7582727670669556,
+                0.8697835206985474,
+                0.9366899132728577
+              ],
+              "distinctRGBAtFourDecimals": 721,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.15204772353172302,
+                -0.03259352967143059,
+                -0.16136659681797028
+              ],
+              "max": [
+                0.1520121991634369,
+                0.03258553147315979,
+                0.8679999709129333
+              ],
+              "dimensions": [
+                0.3040599226951599,
+                0.06517906114459038,
+                1.0293665677309036
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "E1-B",
+      "category": "sword-one-hand",
+      "status": "passed",
+      "sha256": {
+        "blend": "6c2defe7854007685e0d681d43423b22cb3449bfde8038eeb1de1ad419319009",
+        "fbx": "c3c9f5ffcdc0a91f0c4e6e1ca1187e6233439c7ea6687f700d48775000429d65",
+        "glb": "8c6441176ef9b6c9ce00944d53dc39c010fe171cfd3eb87806316d0a873c2d11",
+        "json": "8ac7b4ff59703c60dc631b06cdb52a0207c0537a67248d578398b00c04cf1880",
+        "preview": "9364884798e808f41fdc7f9cce5decd72be40fec07c9e07331a7236c350999da"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 26,
+        "vertices": 5785,
+        "triangles": 11466,
+        "boundsMeters": {
+          "min": [
+            -0.16685199737548828,
+            -0.05299999937415123,
+            -0.13499332964420319
+          ],
+          "max": [
+            0.20800000429153442,
+            0.05299999937415123,
+            0.9340000152587891
+          ],
+          "dimensions": [
+            0.3748520016670227,
+            0.10599999874830246,
+            1.0689933449029922
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 1.0508822277544197e-08,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 11466,
+        "exportedVerticesIncludingAttributeSeams": 16626,
+        "minimumTriangleAreaM2": 1.0508822277544195e-08,
+        "colors": {
+          "samples": 16626,
+          "minRGB": [
+            0.002910476177930832,
+            0.010198251344263554,
+            0.0053990744054317474
+          ],
+          "maxRGB": [
+            0.792131245136261,
+            0.8978434801101685,
+            0.9669083952903748
+          ],
+          "distinctRGBAtFourDecimals": 3551,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.16685199737548828,
+            -0.13499332964420319,
+            -0.05299999937415123
+          ],
+          "max": [
+            0.20800000429153442,
+            0.9340000152587891,
+            0.05299999937415123
+          ],
+          "dimensions": [
+            0.3748520016670227,
+            1.0689933449029922,
+            0.10599999874830246
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 5785,
+            "triangles": 11466,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.0508822277544197e-08,
+            "finitePositions": true,
+            "colors": {
+              "samples": 34398,
+              "minRGB": [
+                0.002910476177930832,
+                0.010198251344263554,
+                0.0053990744054317474
+              ],
+              "maxRGB": [
+                0.792131245136261,
+                0.8978434801101685,
+                0.9669083952903748
+              ],
+              "distinctRGBAtFourDecimals": 3551,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.16685199737548828,
+                -0.05299998074769974,
+                -0.13499332964420319
+              ],
+              "max": [
+                0.20800000429153442,
+                0.05300001800060272,
+                0.9340000152587891
+              ],
+              "dimensions": [
+                0.3748520016670227,
+                0.10599999874830246,
+                1.0689933449029922
+              ]
+            },
+            "maxBoundsErrorM": 1.862645149230957e-08,
+            "maxVertexRoundtripErrorM": 1.5216792803585122e-07
+          },
+          {
+            "vertices": 3033,
+            "triangles": 5962,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 7.253661055579418e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 17886,
+              "minRGB": [
+                0.002910476177930832,
+                0.010198251344263554,
+                0.0053990744054317474
+              ],
+              "maxRGB": [
+                0.7850233316421509,
+                0.8978434801101685,
+                0.9669083952903748
+              ],
+              "distinctRGBAtFourDecimals": 2023,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.16685199737548828,
+                -0.05299998074769974,
+                -0.13499332964420319
+              ],
+              "max": [
+                0.20800000429153442,
+                0.05300001800060272,
+                0.9340000152587891
+              ],
+              "dimensions": [
+                0.3748520016670227,
+                0.10599999874830246,
+                1.0689933449029922
+              ]
+            }
+          },
+          {
+            "vertices": 1427,
+            "triangles": 2750,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.9275776890978914e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 8250,
+              "minRGB": [
+                0.003093419596552849,
+                0.010232184082269669,
+                0.005417038220912218
+              ],
+              "maxRGB": [
+                0.7827354073524475,
+                0.8978434801101685,
+                0.9669083952903748
+              ],
+              "distinctRGBAtFourDecimals": 1143,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.16659322381019592,
+                -0.05295686051249504,
+                -0.13510464131832123
+              ],
+              "max": [
+                0.20800000429153442,
+                0.052956901490688324,
+                0.9340000152587891
+              ],
+              "dimensions": [
+                0.37459322810173035,
+                0.10591376200318336,
+                1.0691046565771103
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "E1-C",
+      "category": "sword-one-hand",
+      "status": "passed",
+      "sha256": {
+        "blend": "21ce8dbaa8cbb928f9158a2dba120303634c5c785daa19f8f24c6f9ae5bf5704",
+        "fbx": "8743368dbc43d5c323eeaed52f43c53b1b21f65b78307b84c767237377572041",
+        "glb": "bad65aa1ca704b6f03478dca93c7d81e72e1e8a548941794c49ebcc90f816637",
+        "json": "fab9fb9ba9caea4e94fbbb8352b498226dbe9670004d8a01a6b455c65532d320",
+        "preview": "7082f315d7875d6249981acdc615df580a5187783af17081ecd6fe3da78f8be8"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 21,
+        "vertices": 3071,
+        "triangles": 6058,
+        "boundsMeters": {
+          "min": [
+            -0.1501343995332718,
+            -0.03400000184774399,
+            -0.16161301732063293
+          ],
+          "max": [
+            0.1501343995332718,
+            0.03400000184774399,
+            0.8849999904632568
+          ],
+          "dimensions": [
+            0.3002687990665436,
+            0.06800000369548798,
+            1.0466130077838898
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 1.6812021768114575e-07,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Organic"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 6058,
+        "exportedVerticesIncludingAttributeSeams": 6674,
+        "minimumTriangleAreaM2": 1.7071907483432953e-07,
+        "colors": {
+          "samples": 6674,
+          "minRGB": [
+            0.0037858453579247,
+            0.010132980532944202,
+            0.005364519078284502
+          ],
+          "maxRGB": [
+            0.555549681186676,
+            0.5142609477043152,
+            0.4465950131416321
+          ],
+          "distinctRGBAtFourDecimals": 2253,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Organic"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.1501343995332718,
+            -0.16161301732063293,
+            -0.03400000184774399
+          ],
+          "max": [
+            0.1501343995332718,
+            0.8849999904632568,
+            0.03400000184774399
+          ],
+          "dimensions": [
+            0.3002687990665436,
+            1.0466130077838898,
+            0.06800000369548798
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 3071,
+            "triangles": 6058,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.7071907483432953e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 18174,
+              "minRGB": [
+                0.0037858453579247,
+                0.010132980532944202,
+                0.005364519078284502
+              ],
+              "maxRGB": [
+                0.555549681186676,
+                0.5142609477043152,
+                0.4465950131416321
+              ],
+              "distinctRGBAtFourDecimals": 2253,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.1501343995332718,
+                -0.033999983221292496,
+                -0.16161301732063293
+              ],
+              "max": [
+                0.1501343995332718,
+                0.03400002792477608,
+                0.8849999904632568
+              ],
+              "dimensions": [
+                0.3002687990665436,
+                0.06800001114606857,
+                1.0466130077838898
+              ]
+            },
+            "maxBoundsErrorM": 2.60770320892334e-08,
+            "maxVertexRoundtripErrorM": 1.441848098693299e-07
+          },
+          {
+            "vertices": 1617,
+            "triangles": 3150,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.5607112494023636e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 9450,
+              "minRGB": [
+                0.0037858453579247,
+                0.010132980532944202,
+                0.005364519078284502
+              ],
+              "maxRGB": [
+                0.555549681186676,
+                0.5140929222106934,
+                0.44644907116889954
+              ],
+              "distinctRGBAtFourDecimals": 1219,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.1500076949596405,
+                -0.033999983221292496,
+                -0.1615767776966095
+              ],
+              "max": [
+                0.1500076949596405,
+                0.03400002792477608,
+                0.8849999904632568
+              ],
+              "dimensions": [
+                0.300015389919281,
+                0.06800001114606857,
+                1.0465767681598663
+              ]
+            }
+          },
+          {
+            "vertices": 768,
+            "triangles": 1452,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.6678977117692425e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 4356,
+              "minRGB": [
+                0.0037858453579247,
+                0.010216452181339264,
+                0.005408709403127432
+              ],
+              "maxRGB": [
+                0.554619312286377,
+                0.5135188102722168,
+                0.4459505081176758
+              ],
+              "distinctRGBAtFourDecimals": 671,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.14971865713596344,
+                -0.03409973531961441,
+                -0.16131192445755005
+              ],
+              "max": [
+                0.14971865713596344,
+                0.034090664237737656,
+                0.8849999904632568
+              ],
+              "dimensions": [
+                0.2994373142719269,
+                0.06819039955735207,
+                1.0463119149208069
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "E2-A",
+      "category": "sword-two-hands",
+      "status": "passed",
+      "sha256": {
+        "blend": "9b25e38a60b1d7c6dc84d3b93f0a1d3c6bfae9c9491e607acb2813d3a0e3fef9",
+        "fbx": "86e7790de6680f27ff82ae5da6c1ac3b53290af0ee8b69cc32f4accf259f62a8",
+        "glb": "7a4ae45239b3d956e909242dec860115b3b83241be392fe4685c968c5bc9e2d3",
+        "json": "45357dfe1994327467effeae00452a1f3839b93d0772fed3ab72dd7b3bf9c548",
+        "preview": "4f3e42cadb71531e3c7d3ca8daf186dd68da7a5f51551ced1f6802cf2a0ce0c5"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 31,
+        "vertices": 4580,
+        "triangles": 9036,
+        "boundsMeters": {
+          "min": [
+            -0.19821004569530487,
+            -0.04079999774694443,
+            -0.44967758655548096
+          ],
+          "max": [
+            0.19821004569530487,
+            0.04079999774694443,
+            1.1749999523162842
+          ],
+          "dimensions": [
+            0.39642009139060974,
+            0.08159999549388885,
+            1.6246775388717651
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 1.873441815173317e-08,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 9036,
+        "exportedVerticesIncludingAttributeSeams": 10691,
+        "minimumTriangleAreaM2": 1.8729322255369252e-08,
+        "colors": {
+          "samples": 10691,
+          "minRGB": [
+            0.0028393869288265705,
+            0.00981068704277277,
+            0.0051938933320343494
+          ],
+          "maxRGB": [
+            0.7495324015617371,
+            0.8597577810287476,
+            0.9258929491043091
+          ],
+          "distinctRGBAtFourDecimals": 2648,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.19821004569530487,
+            -0.44967758655548096,
+            -0.04079999774694443
+          ],
+          "max": [
+            0.19821004569530487,
+            1.1749999523162842,
+            0.04079999774694443
+          ],
+          "dimensions": [
+            0.39642009139060974,
+            1.6246775388717651,
+            0.08159999549388885
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 4580,
+            "triangles": 9036,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.8729322255369252e-08,
+            "finitePositions": true,
+            "colors": {
+              "samples": 27108,
+              "minRGB": [
+                0.0028393869288265705,
+                0.00981068704277277,
+                0.0051938933320343494
+              ],
+              "maxRGB": [
+                0.7495324015617371,
+                0.8597577810287476,
+                0.9258929491043091
+              ],
+              "distinctRGBAtFourDecimals": 2648,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.19821004569530487,
+                -0.0408000610768795,
+                -0.44967758655548096
+              ],
+              "max": [
+                0.19821004569530487,
+                0.040799934417009354,
+                1.1749999523162842
+              ],
+              "dimensions": [
+                0.39642009139060974,
+                0.08159999549388885,
+                1.6246775388717651
+              ]
+            },
+            "maxBoundsErrorM": 6.332993507385254e-08,
+            "maxVertexRoundtripErrorM": 1.9143179486036388e-07
+          },
+          {
+            "vertices": 2411,
+            "triangles": 4698,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.3907719772500884e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 14094,
+              "minRGB": [
+                0.0029124352149665356,
+                0.00989373680204153,
+                0.005237861070781946
+              ],
+              "maxRGB": [
+                0.7393968105316162,
+                0.8481316566467285,
+                0.9133725166320801
+              ],
+              "distinctRGBAtFourDecimals": 1543,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.19797943532466888,
+                -0.0408000610768795,
+                -0.44967758655548096
+              ],
+              "max": [
+                0.1979936957359314,
+                0.040799934417009354,
+                1.1749999523162842
+              ],
+              "dimensions": [
+                0.3959731310606003,
+                0.08159999549388885,
+                1.6246775388717651
+              ]
+            }
+          },
+          {
+            "vertices": 1146,
+            "triangles": 2168,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.9058554005645945e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 6504,
+              "minRGB": [
+                0.0029124352149665356,
+                0.01038353331387043,
+                0.005497165024280548
+              ],
+              "maxRGB": [
+                0.7389756441116333,
+                0.8476485013961792,
+                0.9128521680831909
+              ],
+              "distinctRGBAtFourDecimals": 897,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.19790880382061005,
+                -0.040649719536304474,
+                -0.44925016164779663
+              ],
+              "max": [
+                0.19790880382061005,
+                0.040787678211927414,
+                1.1749999523162842
+              ],
+              "dimensions": [
+                0.3958176076412201,
+                0.08143739774823189,
+                1.6242501139640808
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "E2-B",
+      "category": "sword-two-hands",
+      "status": "passed",
+      "sha256": {
+        "blend": "8a2deb33f0f0e775aebfff37c98060497b428e422a084bfd53c39ee22b75814d",
+        "fbx": "385df3ee2acd6a5ddc250004301e6fa0ca9b3dfaca0672f43aed10e763ddaca8",
+        "glb": "0a0cc1d33c17fb7fbd5bf3b58d049a2fc20a7484cae39438cbcf2067d73b0090",
+        "json": "fbc1070bf1da65306b007102be86a72e7517b2173adbff77275473c4e0cb2948",
+        "preview": "dc9c2359e9cb5b86c3f3ab56b3d5fd382cc9c5991e958969647ca7adf8a50242"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 31,
+        "vertices": 6632,
+        "triangles": 13140,
+        "boundsMeters": {
+          "min": [
+            -0.19239750504493713,
+            -0.04079999774694443,
+            -0.44967758655548096
+          ],
+          "max": [
+            0.19239750504493713,
+            0.04079999774694443,
+            1.159999966621399
+          ],
+          "dimensions": [
+            0.38479501008987427,
+            0.08159999549388885,
+            1.6096775531768799
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 4.320977225179402e-11,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 13140,
+        "exportedVerticesIncludingAttributeSeams": 15407,
+        "minimumTriangleAreaM2": 3.3116831995100723e-11,
+        "colors": {
+          "samples": 15407,
+          "minRGB": [
+            0.0028393869288265705,
+            0.00981068704277277,
+            0.0051938933320343494
+          ],
+          "maxRGB": [
+            0.9080737233161926,
+            0.8161168694496155,
+            0.86216139793396
+          ],
+          "distinctRGBAtFourDecimals": 3822,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.19239750504493713,
+            -0.44967758655548096,
+            -0.04079999774694443
+          ],
+          "max": [
+            0.19239750504493713,
+            1.159999966621399,
+            0.04079999774694443
+          ],
+          "dimensions": [
+            0.38479501008987427,
+            1.6096775531768799,
+            0.08159999549388885
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 6632,
+            "triangles": 13140,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.3116831995100723e-11,
+            "finitePositions": true,
+            "colors": {
+              "samples": 39420,
+              "minRGB": [
+                0.0028393869288265705,
+                0.00981068704277277,
+                0.0051938933320343494
+              ],
+              "maxRGB": [
+                0.9080737233161926,
+                0.8161168694496155,
+                0.86216139793396
+              ],
+              "distinctRGBAtFourDecimals": 3822,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.19239750504493713,
+                -0.0408000610768795,
+                -0.44967758655548096
+              ],
+              "max": [
+                0.19239750504493713,
+                0.040799934417009354,
+                1.159999966621399
+              ],
+              "dimensions": [
+                0.38479501008987427,
+                0.08159999549388885,
+                1.6096775531768799
+              ]
+            },
+            "maxBoundsErrorM": 6.332993507385254e-08,
+            "maxVertexRoundtripErrorM": 1.8898798259670002e-07
+          },
+          {
+            "vertices": 3478,
+            "triangles": 6832,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 8.610797152254607e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 20496,
+              "minRGB": [
+                0.0029124352149665356,
+                0.00981068704277277,
+                0.0051938933320343494
+              ],
+              "maxRGB": [
+                0.8774789571762085,
+                0.8005784153938293,
+                0.86216139793396
+              ],
+              "distinctRGBAtFourDecimals": 2113,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.1922006756067276,
+                -0.0408000610768795,
+                -0.44967758655548096
+              ],
+              "max": [
+                0.1922006756067276,
+                0.040799934417009354,
+                1.159999966621399
+              ],
+              "dimensions": [
+                0.3844013512134552,
+                0.08159999549388885,
+                1.6096775531768799
+              ]
+            }
+          },
+          {
+            "vertices": 1638,
+            "triangles": 3152,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.9058554005645945e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 9456,
+              "minRGB": [
+                0.0029124352149665356,
+                0.01038353331387043,
+                0.005497165024280548
+              ],
+              "maxRGB": [
+                0.8679945468902588,
+                0.8005784153938293,
+                0.86216139793396
+              ],
+              "distinctRGBAtFourDecimals": 1287,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.1914769560098648,
+                -0.040649719536304474,
+                -0.44925016164779663
+              ],
+              "max": [
+                0.1914769560098648,
+                0.040649596601724625,
+                1.1583282947540283
+              ],
+              "dimensions": [
+                0.3829539120197296,
+                0.0812993161380291,
+                1.607578456401825
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "E2-C",
+      "category": "sword-two-hands",
+      "status": "passed",
+      "sha256": {
+        "blend": "6a06fa4feadcc7f612171c162052a69d416fd7df9dd6e00311a6fddd9c7d3986",
+        "fbx": "68300c2da0dec7572681817b336de4eacdaf1faf987621550a87ce844fe706c0",
+        "glb": "e873bf3ba6e51274207e0f8eac153c55ec149e43229142d8968b335daf7c7faf",
+        "json": "27888b7d891a31590eb8dd625f36f825031efc3d72fa780864a5d8ad223806bf",
+        "preview": "43278399fab8ed71d433bbd9724f5b206e23aded1ff7a6c2e971fa115cec7c82"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 30,
+        "vertices": 4730,
+        "triangles": 9340,
+        "boundsMeters": {
+          "min": [
+            -0.19632959365844727,
+            -0.03849999979138374,
+            -0.4499879479408264
+          ],
+          "max": [
+            0.19632959365844727,
+            0.03849999979138374,
+            1.1740000247955322
+          ],
+          "dimensions": [
+            0.39265918731689453,
+            0.07699999958276749,
+            1.6239879727363586
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 2.8746942974020707e-07,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 9340,
+        "exportedVerticesIncludingAttributeSeams": 9597,
+        "minimumTriangleAreaM2": 2.919194759855676e-07,
+        "colors": {
+          "samples": 9597,
+          "minRGB": [
+            0.0029519088566303253,
+            0.00981068704277277,
+            0.0051938933320343494
+          ],
+          "maxRGB": [
+            0.6892531514167786,
+            0.7906138896942139,
+            0.8514302968978882
+          ],
+          "distinctRGBAtFourDecimals": 2929,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.19632959365844727,
+            -0.4499879479408264,
+            -0.03849999979138374
+          ],
+          "max": [
+            0.19632959365844727,
+            1.1740000247955322,
+            0.03849999979138374
+          ],
+          "dimensions": [
+            0.39265918731689453,
+            1.6239879727363586,
+            0.07699999958276749
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 4730,
+            "triangles": 9340,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.919194759855676e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 28020,
+              "minRGB": [
+                0.0029519088566303253,
+                0.00981068704277277,
+                0.0051938933320343494
+              ],
+              "maxRGB": [
+                0.6892531514167786,
+                0.7906138896942139,
+                0.8514302968978882
+              ],
+              "distinctRGBAtFourDecimals": 2929,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.19632959365844727,
+                -0.038499847054481506,
+                -0.4499879479408264
+              ],
+              "max": [
+                0.19632959365844727,
+                0.03850015625357628,
+                1.1740000247955322
+              ],
+              "dimensions": [
+                0.39265918731689453,
+                0.07700000330805779,
+                1.6239879727363586
+              ]
+            },
+            "maxBoundsErrorM": 1.564621925354004e-07,
+            "maxVertexRoundtripErrorM": 1.912688816219088e-07
+          },
+          {
+            "vertices": 2488,
+            "triangles": 4856,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.1040583258980958e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 14568,
+              "minRGB": [
+                0.0029519088566303253,
+                0.00989373680204153,
+                0.005237861070781946
+              ],
+              "maxRGB": [
+                0.6887277960777283,
+                0.7900113463401794,
+                0.8507813215255737
+              ],
+              "distinctRGBAtFourDecimals": 1713,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.19616389274597168,
+                -0.03855597600340843,
+                -0.4496813416481018
+              ],
+              "max": [
+                0.19616389274597168,
+                0.03855132311582565,
+                1.1740000247955322
+              ],
+              "dimensions": [
+                0.39232778549194336,
+                0.07710729911923409,
+                1.623681366443634
+              ]
+            }
+          },
+          {
+            "vertices": 1180,
+            "triangles": 2240,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.9058554005645945e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 6720,
+              "minRGB": [
+                0.0029519088566303253,
+                0.01038353331387043,
+                0.005497165024280548
+              ],
+              "maxRGB": [
+                0.6913928985595703,
+                0.7930683493614197,
+                0.8540735244750977
+              ],
+              "distinctRGBAtFourDecimals": 992,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.19578590989112854,
+                -0.03855597600340843,
+                -0.44968655705451965
+              ],
+              "max": [
+                0.19578590989112854,
+                0.03956456482410431,
+                1.174790859222412
+              ],
+              "dimensions": [
+                0.3915718197822571,
+                0.07812054082751274,
+                1.6244774162769318
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "H1-A",
+      "category": "AxeOneHand",
+      "status": "passed",
+      "sha256": {
+        "blend": "960a057f07f0e85dde30dcb065a18d4bba5eed2c5d6a3f80288d78e63e3f703c",
+        "fbx": "198457cca2cb81f9b0721452d3476563d5d6741de7ac7cf4f61796ccb30d47cd",
+        "glb": "8f940b5c7305c780dffbefa85ce90bd9ec3531bf34f7ff1c3c202b7666f67a6c",
+        "json": "e9362fdbdb1443cb390c9a5850b3f6588ff5f54daef43e3dec9bc8bcb8cfc5bc",
+        "preview": "bbf83c8433ce5e886ee784ffd321b78a39cb8189040f569056316a4bc9ec21b6"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 31,
+        "vertices": 3382,
+        "triangles": 6640,
+        "boundsMeters": {
+          "min": [
+            -0.2608333230018616,
+            -0.05119999870657921,
+            -0.16554000973701477
+          ],
+          "max": [
+            0.08902430534362793,
+            0.05119999870657921,
+            0.5933976173400879
+          ],
+          "dimensions": [
+            0.3498576283454895,
+            0.10239999741315842,
+            0.7589376270771027
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 1.83373938203998e-07,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 6640,
+        "exportedVerticesIncludingAttributeSeams": 6718,
+        "minimumTriangleAreaM2": 1.833738271835734e-07,
+        "colors": {
+          "samples": 6718,
+          "minRGB": [
+            0.0031193746253848076,
+            0.010007926262915134,
+            0.005298313684761524
+          ],
+          "maxRGB": [
+            0.7876889705657959,
+            0.9035255908966064,
+            0.9730275273323059
+          ],
+          "distinctRGBAtFourDecimals": 2556,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.2608333230018616,
+            -0.16554000973701477,
+            -0.05119999870657921
+          ],
+          "max": [
+            0.08902430534362793,
+            0.5933976173400879,
+            0.05119999870657921
+          ],
+          "dimensions": [
+            0.3498576283454895,
+            0.7589376270771027,
+            0.10239999741315842
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 3382,
+            "triangles": 6640,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.833738271835734e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 19920,
+              "minRGB": [
+                0.0031193746253848076,
+                0.010007926262915134,
+                0.005298313684761524
+              ],
+              "maxRGB": [
+                0.7876889705657959,
+                0.9035255908966064,
+                0.9730275273323059
+              ],
+              "distinctRGBAtFourDecimals": 2556,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.2608333230018616,
+                -0.051199935376644135,
+                -0.16554000973701477
+              ],
+              "max": [
+                0.08902430534362793,
+                0.05120006948709488,
+                0.5933976173400879
+              ],
+              "dimensions": [
+                0.3498576283454895,
+                0.10240000486373901,
+                0.7589376270771027
+              ]
+            },
+            "maxBoundsErrorM": 7.078051567077637e-08,
+            "maxVertexRoundtripErrorM": 9.66247171163559e-08
+          },
+          {
+            "vertices": 1788,
+            "triangles": 3452,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.8639352544595065e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 10356,
+              "minRGB": [
+                0.0031193746253848076,
+                0.010205412283539772,
+                0.0054028648883104324
+              ],
+              "maxRGB": [
+                0.7618530988693237,
+                0.8738902807235718,
+                0.9411126375198364
+              ],
+              "distinctRGBAtFourDecimals": 1429,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.260454386472702,
+                -0.05128154158592224,
+                -0.16554000973701477
+              ],
+              "max": [
+                0.0886421725153923,
+                0.05127637833356857,
+                0.5935167670249939
+              ],
+              "dimensions": [
+                0.34909655898809433,
+                0.10255791991949081,
+                0.7590567767620087
+              ]
+            }
+          },
+          {
+            "vertices": 858,
+            "triangles": 1592,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 4.5240042222791e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 4776,
+              "minRGB": [
+                0.003269806271418929,
+                0.010861771181225777,
+                0.005750348791480064
+              ],
+              "maxRGB": [
+                0.7388820648193359,
+                0.8475412130355835,
+                0.9127367734909058
+              ],
+              "distinctRGBAtFourDecimals": 752,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.260454386472702,
+                -0.05128154158592224,
+                -0.16543512046337128
+              ],
+              "max": [
+                0.08710504323244095,
+                0.05127637833356857,
+                0.5930091142654419
+              ],
+              "dimensions": [
+                0.347559429705143,
+                0.10255791991949081,
+                0.7584442347288132
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "H1-B",
+      "category": "AxeOneHand",
+      "status": "passed",
+      "sha256": {
+        "blend": "c35a68aaa87fa9c7b6ab310af3d2d5f937d3fa5f1795337de273297b2413c4e8",
+        "fbx": "61b05ae639e589390203a9529b6f64ad064e302cf10655ac7fdc797639e6f1e8",
+        "glb": "9533c9d0e75909be90c85c5f253612877ec09a0db2a55662dbfc28c5f3bf36fe",
+        "json": "0ff220aaf9cf1f1787472b658857be1fc3001b074c1ebcd09bff2fdbcd02971c",
+        "preview": "8f761d9c8f9a04cb74bd9050451ce73211727c065a94ecb2db217a9fdddc8249"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 38,
+        "vertices": 4174,
+        "triangles": 8196,
+        "boundsMeters": {
+          "min": [
+            -0.3169088363647461,
+            -0.04985100030899048,
+            -0.16554000973701477
+          ],
+          "max": [
+            0.03144661709666252,
+            0.04985100030899048,
+            0.6059598326683044
+          ],
+          "dimensions": [
+            0.3483554534614086,
+            0.09970200061798096,
+            0.7714998424053192
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 9.990806321886713e-08,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 8196,
+        "exportedVerticesIncludingAttributeSeams": 9990,
+        "minimumTriangleAreaM2": 9.990806321886713e-08,
+        "colors": {
+          "samples": 9990,
+          "minRGB": [
+            0.0025381825398653746,
+            0.01093488559126854,
+            0.0057890573516488075
+          ],
+          "maxRGB": [
+            0.8430060744285583,
+            0.9188967347145081,
+            0.9800000190734863
+          ],
+          "distinctRGBAtFourDecimals": 3302,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.3169088363647461,
+            -0.16554000973701477,
+            -0.04985100030899048
+          ],
+          "max": [
+            0.03144661709666252,
+            0.6059598326683044,
+            0.04985100030899048
+          ],
+          "dimensions": [
+            0.3483554534614086,
+            0.7714998424053192,
+            0.09970200061798096
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 4174,
+            "triangles": 8196,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 9.990806101502756e-08,
+            "finitePositions": true,
+            "colors": {
+              "samples": 24588,
+              "minRGB": [
+                0.0025381825398653746,
+                0.01093488559126854,
+                0.0057890573516488075
+              ],
+              "maxRGB": [
+                0.8430060744285583,
+                0.9188967347145081,
+                0.9800000190734863
+              ],
+              "distinctRGBAtFourDecimals": 3302,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.3169088363647461,
+                -0.049850933253765106,
+                -0.16554000973701477
+              ],
+              "max": [
+                0.03144661709666252,
+                0.04985107108950615,
+                0.6059598326683044
+              ],
+              "dimensions": [
+                0.3483554534614086,
+                0.09970200434327126,
+                0.7714998424053192
+              ]
+            },
+            "maxBoundsErrorM": 7.078051567077637e-08,
+            "maxVertexRoundtripErrorM": 9.872019290924072e-08
+          },
+          {
+            "vertices": 2206,
+            "triangles": 4260,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.4207393179877397e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 12780,
+              "minRGB": [
+                0.0025381825398653746,
+                0.01095249131321907,
+                0.005798377562314272
+              ],
+              "maxRGB": [
+                0.8430060744285583,
+                0.894158124923706,
+                0.9615014791488647
+              ],
+              "distinctRGBAtFourDecimals": 1888,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.3165062665939331,
+                -0.04992961511015892,
+                -0.16554000973701477
+              ],
+              "max": [
+                0.03144661709666252,
+                0.0499248281121254,
+                0.6058942675590515
+              ],
+              "dimensions": [
+                0.3479528836905956,
+                0.09985444322228432,
+                0.7714342772960663
+              ]
+            }
+          },
+          {
+            "vertices": 1059,
+            "triangles": 1966,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.2021544245203211e-05,
+            "finitePositions": true,
+            "colors": {
+              "samples": 5898,
+              "minRGB": [
+                0.00275405403226614,
+                0.011109145358204842,
+                0.005881312303245068
+              ],
+              "maxRGB": [
+                0.8373318910598755,
+                0.894158124923706,
+                0.9615014791488647
+              ],
+              "distinctRGBAtFourDecimals": 962,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.3165062665939331,
+                -0.04992961511015892,
+                -0.16543512046337128
+              ],
+              "max": [
+                0.03129946440458298,
+                0.0499248281121254,
+                0.6056278347969055
+              ],
+              "dimensions": [
+                0.3478057309985161,
+                0.09985444322228432,
+                0.7710629552602768
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "H1-C",
+      "category": "AxeOneHand",
+      "status": "passed",
+      "sha256": {
+        "blend": "67f02a4bfcca89623b5cb299f4ee1b320e64a1018be525c3c551d30ab48fb98b",
+        "fbx": "eee3abad4db2dc1448bdf271c5ec6d735837554a4b90ff053991f2fd1eff32ef",
+        "glb": "450564606df74b35e5b083ade8e2f5ea1ac0be0387f09d42b586d34bdc6921b5",
+        "json": "ff80a01d6caf64453bdac65f9716f589a681fd3a6f0c8ffc76e1240a4557b4ee",
+        "preview": "7cc8f7efc2ed5846c63d4eee4a68081694a9f1f510d6c8e6c4b6d0acc31b52be"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 48,
+        "vertices": 3838,
+        "triangles": 7484,
+        "boundsMeters": {
+          "min": [
+            -0.24191749095916748,
+            -0.05310000106692314,
+            -0.16554000973701477
+          ],
+          "max": [
+            0.09298093616962433,
+            0.05310000106692314,
+            0.6127685904502869
+          ],
+          "dimensions": [
+            0.3348984271287918,
+            0.10620000213384628,
+            0.7783086001873016
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 8.698418616352704e-08,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 7484,
+        "exportedVerticesIncludingAttributeSeams": 9336,
+        "minimumTriangleAreaM2": 8.698418616231033e-08,
+        "colors": {
+          "samples": 9336,
+          "minRGB": [
+            0.0031193746253848076,
+            0.010007926262915134,
+            0.005298313684761524
+          ],
+          "maxRGB": [
+            0.7851527333259583,
+            0.9006164073944092,
+            0.9698945879936218
+          ],
+          "distinctRGBAtFourDecimals": 3008,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.24191749095916748,
+            -0.16554000973701477,
+            -0.05310000106692314
+          ],
+          "max": [
+            0.09298093616962433,
+            0.6127685904502869,
+            0.05310000106692314
+          ],
+          "dimensions": [
+            0.3348984271287918,
+            0.7783086001873016,
+            0.10620000213384628
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 3838,
+            "triangles": 7484,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 8.698418616231033e-08,
+            "finitePositions": true,
+            "colors": {
+              "samples": 22452,
+              "minRGB": [
+                0.0031193746253848076,
+                0.010007926262915134,
+                0.005298313684761524
+              ],
+              "maxRGB": [
+                0.7851527333259583,
+                0.9006164073944092,
+                0.9698945879936218
+              ],
+              "distinctRGBAtFourDecimals": 3008,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.24191749095916748,
+                -0.053099941462278366,
+                -0.16554000973701477
+              ],
+              "max": [
+                0.09298093616962433,
+                0.053100068122148514,
+                0.6127685904502869
+              ],
+              "dimensions": [
+                0.3348984271287918,
+                0.10620000958442688,
+                0.7783086001873016
+              ]
+            },
+            "maxBoundsErrorM": 6.705522537231445e-08,
+            "maxVertexRoundtripErrorM": 9.988434612751007e-08
+          },
+          {
+            "vertices": 2041,
+            "triangles": 3890,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.8639352544595065e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 11670,
+              "minRGB": [
+                0.0031193746253848076,
+                0.010205412283539772,
+                0.0054028648883104324
+              ],
+              "maxRGB": [
+                0.7544726133346558,
+                0.8654244542121887,
+                0.9319955706596375
+              ],
+              "distinctRGBAtFourDecimals": 1670,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.24159052968025208,
+                -0.05318543687462807,
+                -0.16554000973701477
+              ],
+              "max": [
+                0.09254240989685059,
+                0.053179752081632614,
+                0.6126564741134644
+              ],
+              "dimensions": [
+                0.33413293957710266,
+                0.10636518895626068,
+                0.7781964838504791
+              ]
+            }
+          },
+          {
+            "vertices": 994,
+            "triangles": 1796,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 4.5240042222791e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 5388,
+              "minRGB": [
+                0.003269806271418929,
+                0.010861771181225777,
+                0.005750348791480064
+              ],
+              "maxRGB": [
+                0.7299573421478271,
+                0.8373039960861206,
+                0.9017120599746704
+              ],
+              "distinctRGBAtFourDecimals": 875,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.24159052968025208,
+                -0.05318543687462807,
+                -0.16543512046337128
+              ],
+              "max": [
+                0.09098953753709793,
+                0.053179752081632614,
+                0.6124538779258728
+              ],
+              "dimensions": [
+                0.33258006721735,
+                0.10636518895626068,
+                0.7778889983892441
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "H2-A",
+      "category": "AxeTwoHands",
+      "status": "passed",
+      "sha256": {
+        "blend": "a5ab7ba20b17857665cdeef5558bb53aa456540b3eb7778ab9ad9a8dcfc2cee9",
+        "fbx": "7adb22a65f4ed1001307ba18e1a825436749697c5a3069915e72d43f2ef08b93",
+        "glb": "98c954037d6a120a2330db724e078a626e5d57df4a226106b2c8e23d3d63cc89",
+        "json": "f02612a7e13fdb0b1797fd53b731f1025ac5e52ccc09f267e54e2f438c939cb8",
+        "preview": "e8c9ae469f94db6756164efe8e969a417e606d65c3f9d37da49e4fe1b5e4f99d"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 39,
+        "vertices": 5102,
+        "triangles": 10048,
+        "boundsMeters": {
+          "min": [
+            -0.42625001072883606,
+            -0.07154999673366547,
+            -0.2680000066757202
+          ],
+          "max": [
+            0.09853645414113998,
+            0.07154999673366547,
+            1.2800962924957275
+          ],
+          "dimensions": [
+            0.524786464869976,
+            0.14309999346733093,
+            1.5480962991714478
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 4.125383423196899e-07,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 10048,
+        "exportedVerticesIncludingAttributeSeams": 8698,
+        "minimumTriangleAreaM2": 4.125383423196899e-07,
+        "colors": {
+          "samples": 8698,
+          "minRGB": [
+            0.00438695540651679,
+            0.009115367196500301,
+            0.004825782496482134
+          ],
+          "maxRGB": [
+            0.7940703630447388,
+            0.9108454585075378,
+            0.9800000190734863
+          ],
+          "distinctRGBAtFourDecimals": 2828,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.42625001072883606,
+            -0.2680000066757202,
+            -0.07154999673366547
+          ],
+          "max": [
+            0.09853645414113998,
+            1.2800962924957275,
+            0.07154999673366547
+          ],
+          "dimensions": [
+            0.524786464869976,
+            1.5480962991714478,
+            0.14309999346733093
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 5102,
+            "triangles": 10048,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 4.125382684060248e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 30144,
+              "minRGB": [
+                0.00438695540651679,
+                0.009115367196500301,
+                0.004825782496482134
+              ],
+              "maxRGB": [
+                0.7940703630447388,
+                0.9108454585075378,
+                0.9800000190734863
+              ],
+              "distinctRGBAtFourDecimals": 2828,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.42625001072883606,
+                -0.07154984772205353,
+                -0.2680000066757202
+              ],
+              "max": [
+                0.09853645414113998,
+                0.07155017554759979,
+                1.2800962924957275
+              ],
+              "dimensions": [
+                0.524786464869976,
+                0.14310002326965332,
+                1.5480962991714478
+              ]
+            },
+            "maxBoundsErrorM": 1.7881393432617188e-07,
+            "maxVertexRoundtripErrorM": 2.086162567138672e-07
+          },
+          {
+            "vertices": 2690,
+            "triangles": 5224,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.2072256924129635e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 15672,
+              "minRGB": [
+                0.00438695540651679,
+                0.00937994010746479,
+                0.004965851083397865
+              ],
+              "maxRGB": [
+                0.7876722812652588,
+                0.9035064578056335,
+                0.9727767705917358
+              ],
+              "distinctRGBAtFourDecimals": 1645,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.42568162083625793,
+                -0.0715884417295456,
+                -0.2680000066757202
+              ],
+              "max": [
+                0.09790664911270142,
+                0.07158880680799484,
+                1.2802748680114746
+              ],
+              "dimensions": [
+                0.5235882699489594,
+                0.14317724853754044,
+                1.5482748746871948
+              ]
+            }
+          },
+          {
+            "vertices": 1283,
+            "triangles": 2410,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.493803888051238e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 7230,
+              "minRGB": [
+                0.004796302877366543,
+                0.009881719946861267,
+                0.0052314987406134605
+              ],
+              "maxRGB": [
+                0.7528527975082397,
+                0.863566517829895,
+                0.9299947023391724
+              ],
+              "distinctRGBAtFourDecimals": 925,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.42568162083625793,
+                -0.0715884417295456,
+                -0.2678890526294708
+              ],
+              "max": [
+                0.0975123792886734,
+                0.07158880680799484,
+                1.2795134782791138
+              ],
+              "dimensions": [
+                0.5231940001249313,
+                0.14317724853754044,
+                1.5474025309085846
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "H2-B",
+      "category": "AxeTwoHands",
+      "status": "passed",
+      "sha256": {
+        "blend": "30597914b317286451e16c469c4522afd53465ce8b8f564394fa1873b3b58fed",
+        "fbx": "95064d53d6a96863d039e5478adedd0d5046094a68f1912cafaa22d6743963ca",
+        "glb": "bb3e6eda6d7c28265782f61777458446f7d558d1f4dfc8ed101688a71209cc6d",
+        "json": "fe9fde3bb6410330b624b58989e345968f2b11cb5fe6f47ece580089c3974fd9",
+        "preview": "d088b5db0a1fae0959721089f7579994cec654d4124911139a924a7ddd117859"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 49,
+        "vertices": 6416,
+        "triangles": 12636,
+        "boundsMeters": {
+          "min": [
+            -0.3312222361564636,
+            -0.052000001072883606,
+            -0.2680000066757202
+          ],
+          "max": [
+            0.06873936951160431,
+            0.052000001072883606,
+            1.2829999923706055
+          ],
+          "dimensions": [
+            0.39996160566806793,
+            0.10400000214576721,
+            1.5509999990463257
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 2.8351262833251742e-08,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 12636,
+        "exportedVerticesIncludingAttributeSeams": 13240,
+        "minimumTriangleAreaM2": 2.8351262833251742e-08,
+        "colors": {
+          "samples": 13240,
+          "minRGB": [
+            0.003252930473536253,
+            0.009115367196500301,
+            0.004825782496482134
+          ],
+          "maxRGB": [
+            0.8611904978752136,
+            0.9331299066543579,
+            0.9800000190734863
+          ],
+          "distinctRGBAtFourDecimals": 3768,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.3312222361564636,
+            -0.2680000066757202,
+            -0.052000001072883606
+          ],
+          "max": [
+            0.06873936951160431,
+            1.2829999923706055,
+            0.052000001072883606
+          ],
+          "dimensions": [
+            0.39996160566806793,
+            1.5509999990463257,
+            0.10400000214576721
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 6416,
+            "triangles": 12636,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.8351262833251742e-08,
+            "finitePositions": true,
+            "colors": {
+              "samples": 37908,
+              "minRGB": [
+                0.003252930473536253,
+                0.009115367196500301,
+                0.004825782496482134
+              ],
+              "maxRGB": [
+                0.8611904978752136,
+                0.9331299066543579,
+                0.9800000190734863
+              ],
+              "distinctRGBAtFourDecimals": 3768,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.3312222361564636,
+                -0.05199987068772316,
+                -0.2680000066757202
+              ],
+              "max": [
+                0.06873936951160431,
+                0.05200013518333435,
+                1.2829999923706055
+              ],
+              "dimensions": [
+                0.39996160566806793,
+                0.10400000587105751,
+                1.5509999990463257
+              ]
+            },
+            "maxBoundsErrorM": 1.341104507446289e-07,
+            "maxVertexRoundtripErrorM": 2.0902723463223083e-07
+          },
+          {
+            "vertices": 3383,
+            "triangles": 6570,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.2072256924129635e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 19710,
+              "minRGB": [
+                0.0034641893580555916,
+                0.00937994010746479,
+                0.004965851083397865
+              ],
+              "maxRGB": [
+                0.8611904978752136,
+                0.8745620846748352,
+                0.9413321614265442
+              ],
+              "distinctRGBAtFourDecimals": 2088,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.33080363273620605,
+                -0.0520770400762558,
+                -0.2680000066757202
+              ],
+              "max": [
+                0.06835044175386429,
+                0.052072566002607346,
+                1.2829999923706055
+              ],
+              "dimensions": [
+                0.39915407449007034,
+                0.10414960607886314,
+                1.5509999990463257
+              ]
+            }
+          },
+          {
+            "vertices": 1614,
+            "triangles": 3032,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.493803888051238e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 9096,
+              "minRGB": [
+                0.004099383018910885,
+                0.009881719946861267,
+                0.0052314987406134605
+              ],
+              "maxRGB": [
+                0.8536465167999268,
+                0.8293355703353882,
+                0.8931306004524231
+              ],
+              "distinctRGBAtFourDecimals": 1184,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.33080363273620605,
+                -0.0520770400762558,
+                -0.2678890526294708
+              ],
+              "max": [
+                0.06835044175386429,
+                0.052072566002607346,
+                1.2829999923706055
+              ],
+              "dimensions": [
+                0.39915407449007034,
+                0.10414960607886314,
+                1.5508890450000763
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "H2-C",
+      "category": "AxeTwoHands",
+      "status": "passed",
+      "sha256": {
+        "blend": "2eb18986e0c20a83935127f51f1b67bdb0e4739867795aaaa2e89d5f43931701",
+        "fbx": "4c4aec1861d2d5fd88aecf0d8ddd0f5c47a5fe2558ce5e96a64b842d4ae5032b",
+        "glb": "0e778e34719000c071e0a02942616c6f091ccef6dd63f4c8ecea28a4e509d28b",
+        "json": "f65f549d4a667eaa0a2df58768e237e78f5e2766cc4f1be7fbdc99c6d25a1cc4",
+        "preview": "daf3b87a523f4a53e9e2d97fe878087a7107e0d11e8e68a2b7c7994862527262"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 67,
+        "vertices": 7348,
+        "triangles": 14428,
+        "boundsMeters": {
+          "min": [
+            -0.37103909254074097,
+            -0.06943999975919724,
+            -0.2680000066757202
+          ],
+          "max": [
+            0.2315284013748169,
+            0.06943999975919724,
+            1.3539395332336426
+          ],
+          "dimensions": [
+            0.6025674939155579,
+            0.13887999951839447,
+            1.6219395399093628
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 7.969259553885727e-08,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 14428,
+        "exportedVerticesIncludingAttributeSeams": 15674,
+        "minimumTriangleAreaM2": 7.969259553885727e-08,
+        "colors": {
+          "samples": 15674,
+          "minRGB": [
+            0.0023636817932128906,
+            0.009115367196500301,
+            0.004825782496482134
+          ],
+          "maxRGB": [
+            0.7631013989448547,
+            0.875322163105011,
+            0.9426546096801758
+          ],
+          "distinctRGBAtFourDecimals": 4102,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.37103909254074097,
+            -0.2680000066757202,
+            -0.06943999975919724
+          ],
+          "max": [
+            0.2315284013748169,
+            1.3539395332336426,
+            0.06943999975919724
+          ],
+          "dimensions": [
+            0.6025674939155579,
+            1.6219395399093628,
+            0.13887999951839447
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 7348,
+            "triangles": 14428,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 7.969259553885727e-08,
+            "finitePositions": true,
+            "colors": {
+              "samples": 43284,
+              "minRGB": [
+                0.0023636817932128906,
+                0.009115367196500301,
+                0.004825782496482134
+              ],
+              "maxRGB": [
+                0.7631013989448547,
+                0.875322163105011,
+                0.9426546096801758
+              ],
+              "distinctRGBAtFourDecimals": 4102,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.37103909254074097,
+                -0.0694398358464241,
+                -0.2680000066757202
+              ],
+              "max": [
+                0.2315284013748169,
+                0.06944017112255096,
+                1.3539395332336426
+              ],
+              "dimensions": [
+                0.6025674939155579,
+                0.13888000696897507,
+                1.6219395399093628
+              ]
+            },
+            "maxBoundsErrorM": 1.7136335372924805e-07,
+            "maxVertexRoundtripErrorM": 2.207234501838684e-07
+          },
+          {
+            "vertices": 3885,
+            "triangles": 7502,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.2072256924129635e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 22506,
+              "minRGB": [
+                0.0025716449599713087,
+                0.00937994010746479,
+                0.004965851083397865
+              ],
+              "maxRGB": [
+                0.7536331415176392,
+                0.8644614815711975,
+                0.9309585690498352
+              ],
+              "distinctRGBAtFourDecimals": 2236,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.37053757905960083,
+                -0.06954937428236008,
+                -0.2680000066757202
+              ],
+              "max": [
+                0.2312154620885849,
+                0.06954024732112885,
+                1.353773832321167
+              ],
+              "dimensions": [
+                0.6017530411481857,
+                0.13908962160348892,
+                1.6217738389968872
+              ]
+            }
+          },
+          {
+            "vertices": 1865,
+            "triangles": 3462,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.0895427091864794e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 10386,
+              "minRGB": [
+                0.002789206337183714,
+                0.009881719946861267,
+                0.0052314987406134605
+              ],
+              "maxRGB": [
+                0.7403967380523682,
+                0.8492785692214966,
+                0.9146077036857605
+              ],
+              "distinctRGBAtFourDecimals": 1265,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.37053757905960083,
+                -0.06954937428236008,
+                -0.2678890526294708
+              ],
+              "max": [
+                0.2312154620885849,
+                0.06954024732112885,
+                1.3534612655639648
+              ],
+              "dimensions": [
+                0.6017530411481857,
+                0.13908962160348892,
+                1.6213503181934357
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "B-A",
+      "category": "shield",
+      "status": "passed",
+      "sha256": {
+        "blend": "8b8df9ce1719ec412e1d9d5794a07d7c029b46709e08ff405688bdcfac0456b8",
+        "fbx": "ada8f762508d7366d5caffc7534c1037a72e9d74050358c446eff5b6ea431cf8",
+        "glb": "7a3f8abb52fe01ea2a14364521347f79fb7a26e87e88b9593bdf55de67dff619",
+        "json": "3135757a973cd902d9576512f0b68191964311396dc3cc143079523c65d69954",
+        "preview": "669d6d49564175d87df68d45691f23a5f42717a2bc283c745863ac76fcf04585"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 30,
+        "vertices": 4151,
+        "triangles": 8186,
+        "boundsMeters": {
+          "min": [
+            -0.26112499833106995,
+            -0.20649999380111694,
+            -0.4050000011920929
+          ],
+          "max": [
+            0.26112499833106995,
+            0.04100000113248825,
+            0.4090000092983246
+          ],
+          "dimensions": [
+            0.5222499966621399,
+            0.2474999949336052,
+            0.8140000104904175
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 4.690782994053759e-07,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 8186,
+        "exportedVerticesIncludingAttributeSeams": 6161,
+        "minimumTriangleAreaM2": 4.690782994053759e-07,
+        "colors": {
+          "samples": 6161,
+          "minRGB": [
+            0.0044271270744502544,
+            0.009762563742697239,
+            0.005168416071683168
+          ],
+          "maxRGB": [
+            0.8919943571090698,
+            0.8938015699386597,
+            0.9625555276870728
+          ],
+          "distinctRGBAtFourDecimals": 2720,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.26112499833106995,
+            -0.4050000011920929,
+            -0.04100000113248825
+          ],
+          "max": [
+            0.26112499833106995,
+            0.4090000092983246,
+            0.20649999380111694
+          ],
+          "dimensions": [
+            0.5222499966621399,
+            0.8140000104904175,
+            0.2474999949336052
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 4151,
+            "triangles": 8186,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 4.690782994053759e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 24558,
+              "minRGB": [
+                0.0044271270744502544,
+                0.009762563742697239,
+                0.005168416071683168
+              ],
+              "maxRGB": [
+                0.8919943571090698,
+                0.8938015699386597,
+                0.9625555276870728
+              ],
+              "distinctRGBAtFourDecimals": 2720,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.26112499833106995,
+                -0.20649999380111694,
+                -0.4050000011920929
+              ],
+              "max": [
+                0.26112499833106995,
+                0.04100000113248825,
+                0.409000039100647
+              ],
+              "dimensions": [
+                0.5222499966621399,
+                0.2474999949336052,
+                0.8140000402927399
+              ]
+            },
+            "maxBoundsErrorM": 2.9802322387695312e-08,
+            "maxVertexRoundtripErrorM": 7.337970941989624e-08
+          },
+          {
+            "vertices": 2186,
+            "triangles": 4256,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.7290006758993672e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 12768,
+              "minRGB": [
+                0.0044271270744502544,
+                0.01003814022988081,
+                0.005314309615641832
+              ],
+              "maxRGB": [
+                0.8828918933868408,
+                0.8857921957969666,
+                0.9539300203323364
+              ],
+              "distinctRGBAtFourDecimals": 1489,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.26112499833106995,
+                -0.20649999380111694,
+                -0.4050000011920929
+              ],
+              "max": [
+                0.26112499833106995,
+                0.041019413620233536,
+                0.409000039100647
+              ],
+              "dimensions": [
+                0.5222499966621399,
+                0.24751940742135048,
+                0.8140000402927399
+              ]
+            }
+          },
+          {
+            "vertices": 1040,
+            "triangles": 1964,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.4267011110794641e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 5892,
+              "minRGB": [
+                0.0044271270744502544,
+                0.010358743369579315,
+                0.005484040826559067
+              ],
+              "maxRGB": [
+                0.8522631525993347,
+                0.8723047971725464,
+                0.9394051432609558
+              ],
+              "distinctRGBAtFourDecimals": 841,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.2616506814956665,
+                -0.2066878378391266,
+                -0.4049890637397766
+              ],
+              "max": [
+                0.26166996359825134,
+                0.041623108088970184,
+                0.409000039100647
+              ],
+              "dimensions": [
+                0.5233206450939178,
+                0.24831094592809677,
+                0.8139891028404236
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "B-B",
+      "category": "shield",
+      "status": "passed",
+      "sha256": {
+        "blend": "369c32e4044ef6e5c1cc12b584bee10654734ce980cd2e29fd8fe9c9896e85d8",
+        "fbx": "3ed03f828655403368fd704f7057a894a6bd2cafbcd4a3f89cd7ca1bffd24870",
+        "glb": "603aca04c6b12001040f5828dbae91c594a0a72b1057503c87a7801b12dd821f",
+        "json": "830586c731a4f661b8e77a6e718bb4260c9bcb41984a1c0ecc6b63a97e9259fe",
+        "preview": "df8af391ed536a768aeecc71ffe561990f63703de15376249f99cde55b59e11b"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 46,
+        "vertices": 5199,
+        "triangles": 10218,
+        "boundsMeters": {
+          "min": [
+            -0.34299999475479126,
+            -0.22099998593330383,
+            -0.37439998984336853
+          ],
+          "max": [
+            0.34299999475479126,
+            0.04100000113248825,
+            0.37439998984336853
+          ],
+          "dimensions": [
+            0.6859999895095825,
+            0.2619999870657921,
+            0.7487999796867371
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 1.2513729172357724e-06,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 10218,
+        "exportedVerticesIncludingAttributeSeams": 6130,
+        "minimumTriangleAreaM2": 1.251396685182508e-06,
+        "colors": {
+          "samples": 6130,
+          "minRGB": [
+            0.002802982460707426,
+            0.00992288812994957,
+            0.005253293551504612
+          ],
+          "maxRGB": [
+            0.5776151418685913,
+            0.3030221462249756,
+            0.20660601556301117
+          ],
+          "distinctRGBAtFourDecimals": 2706,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.34299999475479126,
+            -0.37439998984336853,
+            -0.04100000113248825
+          ],
+          "max": [
+            0.34299999475479126,
+            0.37439998984336853,
+            0.22099998593330383
+          ],
+          "dimensions": [
+            0.6859999895095825,
+            0.7487999796867371,
+            0.2619999870657921
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 5199,
+            "triangles": 10218,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.251396685182508e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 30654,
+              "minRGB": [
+                0.002802982460707426,
+                0.00992288812994957,
+                0.005253293551504612
+              ],
+              "maxRGB": [
+                0.5776151418685913,
+                0.3030221462249756,
+                0.20660601556301117
+              ],
+              "distinctRGBAtFourDecimals": 2706,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.34299999475479126,
+                -0.22099998593330383,
+                -0.37439996004104614
+              ],
+              "max": [
+                0.34299999475479126,
+                0.04100000113248825,
+                0.3744000196456909
+              ],
+              "dimensions": [
+                0.6859999895095825,
+                0.2619999870657921,
+                0.7487999796867371
+              ]
+            },
+            "maxBoundsErrorM": 2.9802322387695312e-08,
+            "maxVertexRoundtripErrorM": 6.664001972467304e-08
+          },
+          {
+            "vertices": 2746,
+            "triangles": 5312,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.8911594972958239e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 15936,
+              "minRGB": [
+                0.002802982460707426,
+                0.010177191346883774,
+                0.005387924611568451
+              ],
+              "maxRGB": [
+                0.5776151418685913,
+                0.3030221462249756,
+                0.20660601556301117
+              ],
+              "distinctRGBAtFourDecimals": 1708,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.34299999475479126,
+                -0.22099998593330383,
+                -0.37439996004104614
+              ],
+              "max": [
+                0.34299999475479126,
+                0.041019413620233536,
+                0.3744000196456909
+              ],
+              "dimensions": [
+                0.6859999895095825,
+                0.26201939955353737,
+                0.7487999796867371
+              ]
+            }
+          },
+          {
+            "vertices": 1316,
+            "triangles": 2452,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.2399718507828312e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 7356,
+              "minRGB": [
+                0.002802982460707426,
+                0.010177191346883774,
+                0.005387924611568451
+              ],
+              "maxRGB": [
+                0.5773994326591492,
+                0.3007288873195648,
+                0.2021176815032959
+              ],
+              "distinctRGBAtFourDecimals": 994,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.3430938720703125,
+                -0.22084715962409973,
+                -0.37439996004104614
+              ],
+              "max": [
+                0.3430938720703125,
+                0.041623108088970184,
+                0.3744000196456909
+              ],
+              "dimensions": [
+                0.686187744140625,
+                0.2624702677130699,
+                0.7487999796867371
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "B-C",
+      "category": "shield",
+      "status": "passed",
+      "sha256": {
+        "blend": "2661a0a9498b72ef681d4a50f1921b14f4f2457bc52bc2369f67efba8d376df7",
+        "fbx": "db0fba883ee0abaa6bdadda766c79314ff9f93382efb75eb19dc2449a56d3ff8",
+        "glb": "ae6de8260e23897a7f581b98dc892cb2207471fcb1070e9ad0d8991d989ac98d",
+        "json": "35a0b463f03f0f3fb9d0f40390001a998c1491161e9f04b6ba8be41801e326cc",
+        "preview": "5594ba0b72e6ed158b2a1a4b5ad4e91c302afe2932a950a2b43d5f50440e897a"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 33,
+        "vertices": 5073,
+        "triangles": 10018,
+        "boundsMeters": {
+          "min": [
+            -0.24580800533294678,
+            -0.22450000047683716,
+            -0.41999998688697815
+          ],
+          "max": [
+            0.24580800533294678,
+            0.04100000113248825,
+            0.41999998688697815
+          ],
+          "dimensions": [
+            0.49161601066589355,
+            0.2655000016093254,
+            0.8399999737739563
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 1.68375212177042e-07,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 10018,
+        "exportedVerticesIncludingAttributeSeams": 5551,
+        "minimumTriangleAreaM2": 1.683827424607557e-07,
+        "colors": {
+          "samples": 5551,
+          "minRGB": [
+            0.003580845659598708,
+            0.009711435995995998,
+            0.005141348112374544
+          ],
+          "maxRGB": [
+            0.8983526229858398,
+            0.8073802590370178,
+            0.6026923060417175
+          ],
+          "distinctRGBAtFourDecimals": 3327,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.24580800533294678,
+            -0.41999998688697815,
+            -0.04100000113248825
+          ],
+          "max": [
+            0.24580800533294678,
+            0.41999998688697815,
+            0.22450000047683716
+          ],
+          "dimensions": [
+            0.49161601066589355,
+            0.8399999737739563,
+            0.2655000016093254
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 5073,
+            "triangles": 10018,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.683827424607557e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 30054,
+              "minRGB": [
+                0.003580845659598708,
+                0.009711435995995998,
+                0.005141348112374544
+              ],
+              "maxRGB": [
+                0.8983526229858398,
+                0.8073802590370178,
+                0.6026923060417175
+              ],
+              "distinctRGBAtFourDecimals": 3327,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.24580800533294678,
+                -0.22450001537799835,
+                -0.41999998688697815
+              ],
+              "max": [
+                0.24580800533294678,
+                0.04100000113248825,
+                0.41999998688697815
+              ],
+              "dimensions": [
+                0.49161601066589355,
+                0.2655000165104866,
+                0.8399999737739563
+              ]
+            },
+            "maxBoundsErrorM": 1.4901161193847656e-08,
+            "maxVertexRoundtripErrorM": 7.337970941989624e-08
+          },
+          {
+            "vertices": 2668,
+            "triangles": 5208,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.0324036967054034e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 15624,
+              "minRGB": [
+                0.0037984277587383986,
+                0.01000097207725048,
+                0.005294632166624069
+              ],
+              "maxRGB": [
+                0.8900824785232544,
+                0.7999475598335266,
+                0.5971439480781555
+              ],
+              "distinctRGBAtFourDecimals": 1961,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.24580800533294678,
+                -0.22450001537799835,
+                -0.41999998688697815
+              ],
+              "max": [
+                0.24580800533294678,
+                0.041019413620233536,
+                0.41999998688697815
+              ],
+              "dimensions": [
+                0.49161601066589355,
+                0.2655194289982319,
+                0.8399999737739563
+              ]
+            }
+          },
+          {
+            "vertices": 1266,
+            "triangles": 2404,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.4267011110794641e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 7212,
+              "minRGB": [
+                0.003955882042646408,
+                0.010260140523314476,
+                0.00543183833360672
+              ],
+              "maxRGB": [
+                0.8879225254058838,
+                0.7980062961578369,
+                0.5956948399543762
+              ],
+              "distinctRGBAtFourDecimals": 1081,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.24709351360797882,
+                -0.22478806972503662,
+                -0.41998881101608276
+              ],
+              "max": [
+                0.24710145592689514,
+                0.041623108088970184,
+                0.41999998688697815
+              ],
+              "dimensions": [
+                0.49419496953487396,
+                0.2664111778140068,
+                0.8399887979030609
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "BT-A",
+      "category": "staff",
+      "status": "passed",
+      "sha256": {
+        "blend": "95cdd6d4cd209d66ae6ea3d1494da6fb1f30f1c697f0a38335f870df344df06b",
+        "fbx": "ec72fedd674d20345fff71e2061f0b728f881595fd7da7e2877bb649b044f227",
+        "glb": "c839397afa1b3114bab627b2f14bf0c887533cf31065ae6ad8a1e8a19c08fb58",
+        "json": "d41ba706478ef0676128d70de8d51904ce176ce1e1f749b6cd42051466d79cde",
+        "preview": "f12586e1c129558bff91b17115545bbc7af830561c35a41430a4fae3c0237585"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 31,
+        "vertices": 3827,
+        "triangles": 7530,
+        "boundsMeters": {
+          "min": [
+            -0.10237383842468262,
+            -0.11771410703659058,
+            -0.8450000286102295
+          ],
+          "max": [
+            0.12300000339746475,
+            0.11771410703659058,
+            1.0104999542236328
+          ],
+          "dimensions": [
+            0.22537384182214737,
+            0.23542821407318115,
+            1.8554999828338623
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 1.4786128008840677e-06,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 7530,
+        "exportedVerticesIncludingAttributeSeams": 4312,
+        "minimumTriangleAreaM2": 1.4786128008840677e-06,
+        "colors": {
+          "samples": 4312,
+          "minRGB": [
+            0.0035331721883267164,
+            0.009939482435584068,
+            0.00526207871735096
+          ],
+          "maxRGB": [
+            0.9800000190734863,
+            0.5586378574371338,
+            0.4851329028606415
+          ],
+          "distinctRGBAtFourDecimals": 2102,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.10237383842468262,
+            -0.8450000286102295,
+            -0.11771410703659058
+          ],
+          "max": [
+            0.12300000339746475,
+            1.0104999542236328,
+            0.11771410703659058
+          ],
+          "dimensions": [
+            0.22537384182214737,
+            1.8554999828338623,
+            0.23542821407318115
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 3827,
+            "triangles": 7530,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.4786128008840677e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 22590,
+              "minRGB": [
+                0.0035331721883267164,
+                0.009939482435584068,
+                0.00526207871735096
+              ],
+              "maxRGB": [
+                0.9800000190734863,
+                0.5586378574371338,
+                0.4851329028606415
+              ],
+              "distinctRGBAtFourDecimals": 2102,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.10237383842468262,
+                -0.11771398782730103,
+                -0.8450000286102295
+              ],
+              "max": [
+                0.12300000339746475,
+                0.11771422624588013,
+                1.0104999542236328
+              ],
+              "dimensions": [
+                0.22537384182214737,
+                0.23542821407318115,
+                1.8554999828338623
+              ]
+            },
+            "maxBoundsErrorM": 1.1920928955078125e-07,
+            "maxVertexRoundtripErrorM": 1.646313450009984e-07
+          },
+          {
+            "vertices": 2019,
+            "triangles": 3914,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.6564821312861366e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 11742,
+              "minRGB": [
+                0.0035331721883267164,
+                0.010022043250501156,
+                0.005305787548422813
+              ],
+              "maxRGB": [
+                0.9800000190734863,
+                0.5586378574371338,
+                0.4851329028606415
+              ],
+              "distinctRGBAtFourDecimals": 1373,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.10221556574106216,
+                -0.11757083237171173,
+                -0.8450000286102295
+              ],
+              "max": [
+                0.1228417307138443,
+                0.11757107079029083,
+                1.0104999542236328
+              ],
+              "dimensions": [
+                0.22505729645490646,
+                0.23514190316200256,
+                1.8554999828338623
+              ]
+            }
+          },
+          {
+            "vertices": 965,
+            "triangles": 1806,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.8264461396429735e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 5418,
+              "minRGB": [
+                0.0037081202026456594,
+                0.010897345840930939,
+                0.005769182927906513
+              ],
+              "maxRGB": [
+                0.9800000190734863,
+                0.5586378574371338,
+                0.4851329028606415
+              ],
+              "distinctRGBAtFourDecimals": 780,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.10221629589796066,
+                -0.11770863831043243,
+                -0.8450000286102295
+              ],
+              "max": [
+                0.12299130111932755,
+                0.11741884052753448,
+                1.0104999542236328
+              ],
+              "dimensions": [
+                0.2252075970172882,
+                0.23512747883796692,
+                1.8554999828338623
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "BT-B",
+      "category": "staff",
+      "status": "passed",
+      "sha256": {
+        "blend": "faaf2e4a72772b00afa84d3db9307e5cc9ad4289fd1952bf6d3d4015af2701b3",
+        "fbx": "7b4926e860ba1bfee82ffc22ab823a63bdb786161c6e8875804a84dfde994665",
+        "glb": "bee5c411ce1b2e23bf2c3961d5fdf3894f6acacd7db6cd42728475d940a72d3d",
+        "json": "57760e796f6b3f6c2a64c78f1a9392d520e4c6867ec9136625bbe8a494102623",
+        "preview": "cb352507fae5a116354ab7215e1a7a2f44c24b9e3c76ef5911be32dc19200943"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 16,
+        "vertices": 4199,
+        "triangles": 8334,
+        "boundsMeters": {
+          "min": [
+            -0.139118954539299,
+            -0.056000005453825,
+            -0.8700000047683716
+          ],
+          "max": [
+            0.15010042488574982,
+            0.04399999976158142,
+            1.0154246091842651
+          ],
+          "dimensions": [
+            0.28921937942504883,
+            0.10000000521540642,
+            1.8854246139526367
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 2.5256571398111954e-07,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 8334,
+        "exportedVerticesIncludingAttributeSeams": 4380,
+        "minimumTriangleAreaM2": 2.5256643126105795e-07,
+        "colors": {
+          "samples": 4380,
+          "minRGB": [
+            0.0025258196983486414,
+            0.009772689081728458,
+            0.005173776298761368
+          ],
+          "maxRGB": [
+            0.9116564989089966,
+            0.8193368315696716,
+            0.6116176247596741
+          ],
+          "distinctRGBAtFourDecimals": 2401,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.139118954539299,
+            -0.8700000047683716,
+            -0.04399999976158142
+          ],
+          "max": [
+            0.15010042488574982,
+            1.0154246091842651,
+            0.056000005453825
+          ],
+          "dimensions": [
+            0.28921937942504883,
+            1.8854246139526367,
+            0.10000000521540642
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 4199,
+            "triangles": 8334,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.5256636464690784e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 25002,
+              "minRGB": [
+                0.0025258196983486414,
+                0.009772689081728458,
+                0.005173776298761368
+              ],
+              "maxRGB": [
+                0.9116564989089966,
+                0.8193368315696716,
+                0.6116176247596741
+              ],
+              "distinctRGBAtFourDecimals": 2401,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.139118954539299,
+                -0.05599987879395485,
+                -0.8700000047683716
+              ],
+              "max": [
+                0.15010042488574982,
+                0.044000133872032166,
+                1.0154246091842651
+              ],
+              "dimensions": [
+                0.28921937942504883,
+                0.10000001266598701,
+                1.8854246139526367
+              ]
+            },
+            "maxBoundsErrorM": 1.341104507446289e-07,
+            "maxVertexRoundtripErrorM": 1.65433675647364e-07
+          },
+          {
+            "vertices": 2198,
+            "triangles": 4332,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 9.5934599298731e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 12996,
+              "minRGB": [
+                0.002561677247285843,
+                0.009915342554450035,
+                0.005249299108982086
+              ],
+              "maxRGB": [
+                0.9113157987594604,
+                0.8190305829048157,
+                0.6113890409469604
+              ],
+              "distinctRGBAtFourDecimals": 1537,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.139118954539299,
+                -0.05599987879395485,
+                -0.8700000047683716
+              ],
+              "max": [
+                0.15010324120521545,
+                0.044000133872032166,
+                1.0152102708816528
+              ],
+              "dimensions": [
+                0.28922219574451447,
+                0.10000001266598701,
+                1.8852102756500244
+              ]
+            }
+          },
+          {
+            "vertices": 1032,
+            "triangles": 2000,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 4.835551430940551e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 6000,
+              "minRGB": [
+                0.002597767161205411,
+                0.010642841458320618,
+                0.005634445697069168
+              ],
+              "maxRGB": [
+                0.8930436372756958,
+                0.8026087284088135,
+                0.5991305112838745
+              ],
+              "distinctRGBAtFourDecimals": 824,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.1387406885623932,
+                -0.05598895251750946,
+                -0.8700000047683716
+              ],
+              "max": [
+                0.15053687989711761,
+                0.04424719139933586,
+                1.0152102708816528
+              ],
+              "dimensions": [
+                0.2892775684595108,
+                0.10023614391684532,
+                1.8852102756500244
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "BT-C",
+      "category": "staff",
+      "status": "passed",
+      "sha256": {
+        "blend": "4673730105bdac7722c49ba05b71a3ceea36232e73eb404d1dc13a3ffbd17b78",
+        "fbx": "31ec1c281f2e75f88820fedcbf92216a8bdcd5471d60b06974c6b34b6311c34d",
+        "glb": "8be5b5d2760904190634b76536d3271493fe67ae89fba41828e107bb8d991913",
+        "json": "4de1204c2da7c021e2bdf120ac43c6a0225599c9ba9e3fb40e3a6b539283d9fe",
+        "preview": "30c4a3b1f7121d9d7f033633b168da1568ab60e3ca91e086d7b1cae8b099bbb7"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 25,
+        "vertices": 2777,
+        "triangles": 5454,
+        "boundsMeters": {
+          "min": [
+            -0.12086143344640732,
+            -0.06549999862909317,
+            -0.8450000286102295
+          ],
+          "max": [
+            0.12086143344640732,
+            0.05400000140070915,
+            1.0225000381469727
+          ],
+          "dimensions": [
+            0.24172286689281464,
+            0.11950000002980232,
+            1.8675000667572021
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 1.4786128008840677e-06,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 5454,
+        "exportedVerticesIncludingAttributeSeams": 3159,
+        "minimumTriangleAreaM2": 1.4786128008840677e-06,
+        "colors": {
+          "samples": 3159,
+          "minRGB": [
+            0.0024199301842600107,
+            0.009939482435584068,
+            0.00526207871735096
+          ],
+          "maxRGB": [
+            0.5480986833572388,
+            0.5586378574371338,
+            0.4851329028606415
+          ],
+          "distinctRGBAtFourDecimals": 1800,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.12086143344640732,
+            -0.8450000286102295,
+            -0.05400000140070915
+          ],
+          "max": [
+            0.12086143344640732,
+            1.0225000381469727,
+            0.06549999862909317
+          ],
+          "dimensions": [
+            0.24172286689281464,
+            1.8675000667572021,
+            0.11950000002980232
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 2777,
+            "triangles": 5454,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 1.4786128008840677e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 16362,
+              "minRGB": [
+                0.0024199301842600107,
+                0.009939482435584068,
+                0.00526207871735096
+              ],
+              "maxRGB": [
+                0.5480986833572388,
+                0.5586378574371338,
+                0.4851329028606415
+              ],
+              "distinctRGBAtFourDecimals": 1800,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.12086143344640732,
+                -0.0654999315738678,
+                -0.8450000286102295
+              ],
+              "max": [
+                0.12086143344640732,
+                0.05400015413761139,
+                1.0225000381469727
+              ],
+              "dimensions": [
+                0.24172286689281464,
+                0.11950008571147919,
+                1.8675000667572021
+              ]
+            },
+            "maxBoundsErrorM": 1.5273690223693848e-07,
+            "maxVertexRoundtripErrorM": 1.6658640333844232e-07
+          },
+          {
+            "vertices": 1468,
+            "triangles": 2836,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 2.6564821312861366e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 8508,
+              "minRGB": [
+                0.0024199301842600107,
+                0.010022043250501156,
+                0.005305787548422813
+              ],
+              "maxRGB": [
+                0.536466121673584,
+                0.5586378574371338,
+                0.4851329028606415
+              ],
+              "distinctRGBAtFourDecimals": 1023,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.12098532915115356,
+                -0.0654999315738678,
+                -0.8450000286102295
+              ],
+              "max": [
+                0.12098532915115356,
+                0.05400015413761139,
+                1.0225000381469727
+              ],
+              "dimensions": [
+                0.24197065830230713,
+                0.11950008571147919,
+                1.8675000667572021
+              ]
+            }
+          },
+          {
+            "vertices": 704,
+            "triangles": 1308,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.8264461396429735e-06,
+            "finitePositions": true,
+            "colors": {
+              "samples": 3924,
+              "minRGB": [
+                0.0024199301842600107,
+                0.010897345840930939,
+                0.005769182927906513
+              ],
+              "maxRGB": [
+                0.5316144227981567,
+                0.5586378574371338,
+                0.4851329028606415
+              ],
+              "distinctRGBAtFourDecimals": 565,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.12098532915115356,
+                -0.06555314362049103,
+                -0.8450000286102295
+              ],
+              "max": [
+                0.12098532915115356,
+                0.05400015413761139,
+                1.0225000381469727
+              ],
+              "dimensions": [
+                0.24197065830230713,
+                0.11955329775810242,
+                1.8675000667572021
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "AR-A",
+      "category": "bow",
+      "status": "passed",
+      "sha256": {
+        "blend": "c7511ca7d05ef9d53e0e56f87bbc50f96b49179b2ca2642530cc4edae0d9f5d2",
+        "fbx": "16678b16d6f995cc0fca0ed500fe9cfa737613792da12abc6658d35ce4ff6b9a",
+        "glb": "a64c31c6aadd08631c469a08e751f725fdcd88f0e203067f5c50c175224df205",
+        "json": "ce067d7fded00b8dd942e959d7514b2e6b67db01dc74dbc974d57b0516fc5d1d",
+        "preview": "6b27cc37223a3a66d918bf5e61ef63731a8071a8eb9655b5069af867a73bf40b"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 27,
+        "vertices": 3959,
+        "triangles": 7810,
+        "boundsMeters": {
+          "min": [
+            -0.11035890877246857,
+            -0.06549999862909317,
+            -0.7854752540588379
+          ],
+          "max": [
+            0.19192585349082947,
+            0.03099999949336052,
+            0.7854752540588379
+          ],
+          "dimensions": [
+            0.30228476226329803,
+            0.09649999812245369,
+            1.5709505081176758
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 3.2360067631249923e-07,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 7810,
+        "exportedVerticesIncludingAttributeSeams": 4305,
+        "minimumTriangleAreaM2": 3.2360067631249923e-07,
+        "colors": {
+          "samples": 4305,
+          "minRGB": [
+            0.0037411332596093416,
+            0.009747222065925598,
+            0.005160294007509947
+          ],
+          "maxRGB": [
+            0.5636616349220276,
+            0.4873747229576111,
+            0.42324647307395935
+          ],
+          "distinctRGBAtFourDecimals": 2700,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.11035890877246857,
+            -0.7854752540588379,
+            -0.03099999949336052
+          ],
+          "max": [
+            0.19192585349082947,
+            0.7854752540588379,
+            0.06549999862909317
+          ],
+          "dimensions": [
+            0.30228476226329803,
+            1.5709505081176758,
+            0.09649999812245369
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 3959,
+            "triangles": 7810,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.236006595367829e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 23430,
+              "minRGB": [
+                0.0037411332596093416,
+                0.009747222065925598,
+                0.005160294007509947
+              ],
+              "maxRGB": [
+                0.5636616349220276,
+                0.4873747229576111,
+                0.42324647307395935
+              ],
+              "distinctRGBAtFourDecimals": 2700,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.11035890877246857,
+                -0.06550002098083496,
+                -0.7854752540588379
+              ],
+              "max": [
+                0.19192585349082947,
+                0.03100001811981201,
+                0.7854752540588379
+              ],
+              "dimensions": [
+                0.30228476226329803,
+                0.09650003910064697,
+                1.5709505081176758
+              ]
+            },
+            "maxBoundsErrorM": 2.2351741790771484e-08,
+            "maxVertexRoundtripErrorM": 1.2797016779586556e-07
+          },
+          {
+            "vertices": 2091,
+            "triangles": 4074,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.236006595367829e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 12222,
+              "minRGB": [
+                0.0037411332596093416,
+                0.009747222065925598,
+                0.005160294007509947
+              ],
+              "maxRGB": [
+                0.5626803636550903,
+                0.4873747229576111,
+                0.42324647307395935
+              ],
+              "distinctRGBAtFourDecimals": 1568,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.11027263849973679,
+                -0.06550002098083496,
+                -0.7854359149932861
+              ],
+              "max": [
+                0.19192585349082947,
+                0.03100001811981201,
+                0.7854371666908264
+              ],
+              "dimensions": [
+                0.30219849199056625,
+                0.09650003910064697,
+                1.5708730816841125
+              ]
+            }
+          },
+          {
+            "vertices": 1001,
+            "triangles": 1894,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.236006595367829e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 5682,
+              "minRGB": [
+                0.0037411332596093416,
+                0.010344306007027626,
+                0.0054763974621891975
+              ],
+              "maxRGB": [
+                0.5390089154243469,
+                0.4873747229576111,
+                0.42324647307395935
+              ],
+              "distinctRGBAtFourDecimals": 883,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.11036261171102524,
+                -0.06554073840379715,
+                -0.7854359149932861
+              ],
+              "max": [
+                0.19063827395439148,
+                0.029936572536826134,
+                0.7854371666908264
+              ],
+              "dimensions": [
+                0.3010008856654167,
+                0.09547731094062328,
+                1.5708730816841125
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "AR-B",
+      "category": "bow",
+      "status": "passed",
+      "sha256": {
+        "blend": "54d2b66873cfe9f1eaa80ba973899f04bc2b4d9be4b14ab5ec908680f4dd72c5",
+        "fbx": "c5e30f5c90297be58da960f30baacfa6ff053b2723f55e7289c6c11144986c32",
+        "glb": "9935692cc561a21e3467959becb0bda7896aecdc4655e576650d44876870369b",
+        "json": "49fc1371432c0d9d5b8073416e55ebdf9fa7fa261214b22f1cef90ea513d5120",
+        "preview": "31af6256677bad16cb83e921c1ba4768c7fc03a4daafd2ae72bc5cb82e3a3529"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 31,
+        "vertices": 3179,
+        "triangles": 6234,
+        "boundsMeters": {
+          "min": [
+            -0.11035866290330887,
+            -0.06549999862909317,
+            -0.7254754304885864
+          ],
+          "max": [
+            0.19092586636543274,
+            0.03099999949336052,
+            0.7254754304885864
+          ],
+          "dimensions": [
+            0.3012845292687416,
+            0.09649999812245369,
+            1.4509508609771729
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 3.2360067631249923e-07,
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 6234,
+        "exportedVerticesIncludingAttributeSeams": 5299,
+        "minimumTriangleAreaM2": 3.2360067631249923e-07,
+        "colors": {
+          "samples": 5299,
+          "minRGB": [
+            0.0025098915211856365,
+            0.009747222065925598,
+            0.005160294007509947
+          ],
+          "maxRGB": [
+            0.5510297417640686,
+            0.28828680515289307,
+            0.19655917584896088
+          ],
+          "distinctRGBAtFourDecimals": 2202,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Jade",
+          "Arkya_Weapon_Organic"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.11035866290330887,
+            -0.7254754304885864,
+            -0.03099999949336052
+          ],
+          "max": [
+            0.19092586636543274,
+            0.7254754304885864,
+            0.06549999862909317
+          ],
+          "dimensions": [
+            0.3012845292687416,
+            1.4509508609771729,
+            0.09649999812245369
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 3179,
+            "triangles": 6234,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.236006579227392e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 18702,
+              "minRGB": [
+                0.0025098915211856365,
+                0.009747222065925598,
+                0.005160294007509947
+              ],
+              "maxRGB": [
+                0.5510297417640686,
+                0.28828680515289307,
+                0.19655917584896088
+              ],
+              "distinctRGBAtFourDecimals": 2202,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.11035866290330887,
+                -0.06550002098083496,
+                -0.7254754304885864
+              ],
+              "max": [
+                0.19092586636543274,
+                0.031000016257166862,
+                0.7254754304885864
+              ],
+              "dimensions": [
+                0.3012845292687416,
+                0.09650003723800182,
+                1.4509508609771729
+              ]
+            },
+            "maxBoundsErrorM": 2.2351741790771484e-08,
+            "maxVertexRoundtripErrorM": 1.1819495426834692e-07
+          },
+          {
+            "vertices": 1689,
+            "triangles": 3254,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.236006579227392e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 9762,
+              "minRGB": [
+                0.002736012451350689,
+                0.009831812232732773,
+                0.005205077119171619
+              ],
+              "maxRGB": [
+                0.5510297417640686,
+                0.2869946360588074,
+                0.1923465132713318
+              ],
+              "distinctRGBAtFourDecimals": 1239,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.11027412116527557,
+                -0.06550002098083496,
+                -0.7254323363304138
+              ],
+              "max": [
+                0.19092586636543274,
+                0.031000016257166862,
+                0.7254379987716675
+              ],
+              "dimensions": [
+                0.3011999875307083,
+                0.09650003723800182,
+                1.4508703351020813
+              ]
+            }
+          },
+          {
+            "vertices": 820,
+            "triangles": 1516,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.236006579227392e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 4548,
+              "minRGB": [
+                0.0030750564765185118,
+                0.010344306007027626,
+                0.0054763974621891975
+              ],
+              "maxRGB": [
+                0.5454886555671692,
+                0.2841086685657501,
+                0.18766333162784576
+              ],
+              "distinctRGBAtFourDecimals": 721,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Jade",
+              "Arkya_Weapon_Organic"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.11027412116527557,
+                -0.06554073840379715,
+                -0.7254323363304138
+              ],
+              "max": [
+                0.18963828682899475,
+                0.029936568811535835,
+                0.7254379987716675
+              ],
+              "dimensions": [
+                0.2999124079942703,
+                0.09547730721533298,
+                1.4508703351020813
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    },
+    {
+      "code": "AR-C",
+      "category": "bow",
+      "status": "passed",
+      "sha256": {
+        "blend": "a04f209db13cb012fa43264c956c1a123b47b2f2e619d400080282ee22995772",
+        "fbx": "bf7667c7e92c217731aaef02192552fb144a7498acc87348d702e85c6db6b4a0",
+        "glb": "ef85b929fd4a1c9352bcebbbd5a7cc981814302cfc155c5afa855a836b97b753",
+        "json": "06eb71ffca83d35f4bfb651cb226e988c1aa536e037fde94898513c4c90a31d2",
+        "preview": "853fe239e038e566ae47caef41525e09e6379b340ec7ad5d0430b7e4cb19485c"
+      },
+      "blend": {
+        "status": "passed",
+        "parts": 25,
+        "vertices": 3099,
+        "triangles": 6098,
+        "boundsMeters": {
+          "min": [
+            -0.12464097142219543,
+            -0.06549999862909317,
+            -0.7854753136634827
+          ],
+          "max": [
+            0.2109258770942688,
+            0.03099999949336052,
+            0.7854753136634827
+          ],
+          "dimensions": [
+            0.33556684851646423,
+            0.09649999812245369,
+            1.5709506273269653
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "degenerateTriangles": 0,
+        "minimumTriangleAreaM2": 3.2360067631249923e-07,
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "allPartsHaveFiniteVertexColors": true,
+        "markersAtDeclaredPositions": true,
+        "rootPivotAtPrimaryGrip": true
+      },
+      "glb": {
+        "status": "passed",
+        "method": "Independent glTF 2.0 binary accessor decoding",
+        "triangles": 6098,
+        "exportedVerticesIncludingAttributeSeams": 3449,
+        "minimumTriangleAreaM2": 3.2360067631249923e-07,
+        "colors": {
+          "samples": 3449,
+          "minRGB": [
+            0.0034277907107025385,
+            0.009747222065925598,
+            0.005160294007509947
+          ],
+          "maxRGB": [
+            0.5636792778968811,
+            0.5166662335395813,
+            0.44868382811546326
+          ],
+          "distinctRGBAtFourDecimals": 2263,
+          "finiteAndNormalized": true
+        },
+        "materialNames": [
+          "Arkya_Weapon_Crystal",
+          "Arkya_Weapon_Gold",
+          "Arkya_Weapon_Organic",
+          "Arkya_Weapon_Steel"
+        ],
+        "boundsMetersYUp": {
+          "min": [
+            -0.12464097142219543,
+            -0.7854753136634827,
+            -0.03099999949336052
+          ],
+          "max": [
+            0.2109258770942688,
+            0.7854753136634827,
+            0.06549999862909317
+          ],
+          "dimensions": [
+            0.33556684851646423,
+            1.5709506273269653,
+            0.09649999812245369
+          ]
+        },
+        "maxBoundsErrorM": 0.0,
+        "maxVertexRoundtripErrorM": 0.0,
+        "coincidentPositionEdgeDiagnostics": {
+          "singleUseEdges": 0,
+          "junctionEdgesWithMoreThanTwoUses": 0,
+          "note": "Diagnostic only: attribute seams and coincident closed shells share positions. Indexed manifold checks use Blender and FBX."
+        },
+        "primaryGripPivotZero": true,
+        "markersConvertedFromZUpToYUp": true
+      },
+      "fbx": {
+        "status": "passed",
+        "method": "Fresh Blender FBX import for every asset",
+        "globalSettings": {
+          "version": 7400,
+          "UpAxis": 1,
+          "UpAxisSign": 1,
+          "FrontAxis": 2,
+          "FrontAxisSign": 1,
+          "CoordAxis": 0,
+          "CoordAxisSign": 1,
+          "UnitScaleFactor": 100.0,
+          "OriginalUnitScaleFactor": 100.0
+        },
+        "lods": [
+          {
+            "vertices": 3099,
+            "triangles": 6098,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.236006595367829e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 18294,
+              "minRGB": [
+                0.0034277907107025385,
+                0.009747222065925598,
+                0.005160294007509947
+              ],
+              "maxRGB": [
+                0.5636792778968811,
+                0.5166662335395813,
+                0.44868382811546326
+              ],
+              "distinctRGBAtFourDecimals": 2263,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.12464097142219543,
+                -0.06550002098083496,
+                -0.7854753136634827
+              ],
+              "max": [
+                0.2109258770942688,
+                0.03100001811981201,
+                0.7854753136634827
+              ],
+              "dimensions": [
+                0.33556684851646423,
+                0.09650003910064697,
+                1.5709506273269653
+              ]
+            },
+            "maxBoundsErrorM": 2.2351741790771484e-08,
+            "maxVertexRoundtripErrorM": 1.2797018200672028e-07
+          },
+          {
+            "vertices": 1642,
+            "triangles": 3184,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.236006595367829e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 9552,
+              "minRGB": [
+                0.0037411332596093416,
+                0.009831812232732773,
+                0.005205077119171619
+              ],
+              "maxRGB": [
+                0.5426591038703918,
+                0.5166662335395813,
+                0.44868382811546326
+              ],
+              "distinctRGBAtFourDecimals": 1251,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.12452109158039093,
+                -0.06550002098083496,
+                -0.7854322195053101
+              ],
+              "max": [
+                0.2109258770942688,
+                0.03100001811981201,
+                0.7854359745979309
+              ],
+              "dimensions": [
+                0.33544696867465973,
+                0.09650003910064697,
+                1.570868194103241
+              ]
+            }
+          },
+          {
+            "vertices": 792,
+            "triangles": 1484,
+            "boundaryEdges": 0,
+            "nonManifoldEdges": 0,
+            "degenerateTriangles": 0,
+            "minimumTriangleAreaM2": 3.236006595367829e-07,
+            "finitePositions": true,
+            "colors": {
+              "samples": 4452,
+              "minRGB": [
+                0.0037411332596093416,
+                0.010344306007027626,
+                0.0054763974621891975
+              ],
+              "maxRGB": [
+                0.5390089154243469,
+                0.5166662335395813,
+                0.44868382811546326
+              ],
+              "distinctRGBAtFourDecimals": 713,
+              "finiteAndNormalized": true
+            },
+            "materialNames": [
+              "Arkya_Weapon_Crystal",
+              "Arkya_Weapon_Gold",
+              "Arkya_Weapon_Organic",
+              "Arkya_Weapon_Steel"
+            ],
+            "boundsMetersZUpAfterReimport": {
+              "min": [
+                -0.12359794974327087,
+                -0.06554073840379715,
+                -0.7854322195053101
+              ],
+              "max": [
+                0.2096382975578308,
+                0.029550734907388687,
+                0.7854359745979309
+              ],
+              "dimensions": [
+                0.3332362473011017,
+                0.09509147331118584,
+                1.570868194103241
+              ]
+            }
+          }
+        ],
+        "rootPivotAtPrimaryGrip": true,
+        "markersAtDeclaredPositions": true,
+        "lodTriangleCountsStrictlyDecrease": true
+      }
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "expectedAssets": 21,
+    "checkedAssets": 21,
+    "passedAssets": 21,
+    "failedAssets": 0,
+    "categories": 7
+  }
+}

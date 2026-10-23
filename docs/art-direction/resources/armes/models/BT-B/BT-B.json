@@ -1,0 +1,99 @@
+{
+  "name": "Living wood staff · carved crook and jade seed",
+  "category": "staff",
+  "length_m": 1.893,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Grip_Secondary": [
+      0,
+      0,
+      -0.39
+    ],
+    "Tip": [
+      0,
+      0,
+      1.023
+    ]
+  },
+  "notes": "Solid shaft, leather handgrip, modelled ferrule and three-dimensional magical crown.",
+  "code": "BT-B",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.139118954539299,
+      -0.056000005453825,
+      -0.8700000047683716
+    ],
+    "max": [
+      0.15010042488574982,
+      0.04399999976158142,
+      1.0154246091842651
+    ]
+  },
+  "dimensionsBlender": [
+    0.28921937942504883,
+    0.10000000521540642,
+    1.8854246139526367
+  ],
+  "lods": [
+    {
+      "vertices": 4199,
+      "triangles": 8334,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 3,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 2198,
+      "triangles": 4332,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 3,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1032,
+      "triangles": 2000,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 3,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "faaf2e4a72772b00afa84d3db9307e5cc9ad4289fd1952bf6d3d4015af2701b3",
+    "fbx": "7b4926e860ba1bfee82ffc22ab823a63bdb786161c6e8875804a84dfde994665",
+    "glb": "bee5c411ce1b2e23bf2c3961d5fdf3894f6acacd7db6cd42728475d940a72d3d"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "name": "Leaf Greatsword B",
+  "category": "sword-two-hands",
+  "length_m": 1.612,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "Grip_Secondary": [
+      0,
+      0,
+      -0.205
+    ],
+    "Tip": [
+      0,
+      0,
+      1.16
+    ]
+  },
+  "notes": "E2-B: broad leaf-point steel outline, jade central channel and paired ivory leaf guards.",
+  "code": "E2-B",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.19239750504493713,
+      -0.04079999774694443,
+      -0.44967758655548096
+    ],
+    "max": [
+      0.19239750504493713,
+      0.04079999774694443,
+      1.159999966621399
+    ]
+  },
+  "dimensionsBlender": [
+    0.38479501008987427,
+    0.08159999549388885,
+    1.6096775531768799
+  ],
+  "lods": [
+    {
+      "vertices": 6632,
+      "triangles": 13140,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 3478,
+      "triangles": 6832,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1638,
+      "triangles": 3152,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Jade",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "8a2deb33f0f0e775aebfff37c98060497b428e422a084bfd53c39ee22b75814d",
+    "fbx": "385df3ee2acd6a5ddc250004301e6fa0ca9b3dfaca0672f43aed10e763ddaca8",
+    "glb": "0a0cc1d33c17fb7fbd5bf3b58d049a2fc20a7484cae39438cbcf2067d73b0090"
+  }
+}

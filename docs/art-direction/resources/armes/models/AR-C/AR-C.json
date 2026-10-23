@@ -1,0 +1,118 @@
+{
+  "name": "Crystal bow · turquoise limbs and warm gold",
+  "category": "bow",
+  "length_m": 1.578,
+  "markers": {
+    "Grip_Primary": [
+      0,
+      0,
+      0
+    ],
+    "ArrowRest": [
+      0.025,
+      -0.051,
+      0.06
+    ],
+    "String_Center": [
+      0.19,
+      0,
+      0.06
+    ],
+    "Tip": [
+      0.19,
+      0,
+      0.73
+    ],
+    "String_Upper": [
+      0.19,
+      0,
+      0.73
+    ],
+    "String_Lower": [
+      0.19,
+      0,
+      -0.73
+    ]
+  },
+  "notes": "Solid tapered recurve limbs and separate thin three-dimensional string. Static display pose; bending and drawing require future animation.",
+  "code": "AR-C",
+  "units": "meters",
+  "pivot": "primary grip center",
+  "blenderAxes": {
+    "up": "+Z",
+    "front": "-Y"
+  },
+  "unityAxes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "boundsBlender": {
+    "min": [
+      -0.12464097142219543,
+      -0.06549999862909317,
+      -0.7854753136634827
+    ],
+    "max": [
+      0.2109258770942688,
+      0.03099999949336052,
+      0.7854753136634827
+    ]
+  },
+  "dimensionsBlender": [
+    0.33556684851646423,
+    0.09649999812245369,
+    1.5709506273269653
+  ],
+  "lods": [
+    {
+      "vertices": 3099,
+      "triangles": 6098,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 1642,
+      "triangles": 3184,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    },
+    {
+      "vertices": 792,
+      "triangles": 1484,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateFaces": 0,
+      "materials": 4,
+      "vertexColors": true,
+      "finite": true
+    }
+  ],
+  "surfaceMaterials": [
+    "Arkya_Weapon_Crystal",
+    "Arkya_Weapon_Gold",
+    "Arkya_Weapon_Organic",
+    "Arkya_Weapon_Steel"
+  ],
+  "lodPreservedParts": [
+    "AR-C_Taut_Bowstring"
+  ],
+  "formats": [
+    "blend",
+    "fbx",
+    "glb"
+  ],
+  "paint": "Authored vertex pigments; five shared surface materials; no textures required",
+  "sha256": {
+    "blend": "a04f209db13cb012fa43264c956c1a123b47b2f2e619d400080282ee22995772",
+    "fbx": "bf7667c7e92c217731aaef02192552fb144a7498acc87348d702e85c6db6b4a0",
+    "glb": "ef85b929fd4a1c9352bcebbbd5a7cc981814302cfc155c5afa855a836b97b753"
+  }
+}
