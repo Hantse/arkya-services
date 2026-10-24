@@ -1,5 +1,13 @@
 # Architecture Arkya
 
+La [revue d'architecture et d'infrastructure des realms du 24 octobre 2026](REALM_INFRASTRUCTURE.md)
+fixe la cible demandée : `Realm → Areas → grille X/Y → un dedicated par cellule`,
+stockage gameplay et événements isolés par realm, simulation en mémoire,
+batches vers un service de persistance, commandes et mesures depuis l'admin.
+Elle distingue cette cible de l'existant : base Characters commune,
+sauvegardes de snapshots HTTP et observation partielle. Les sections suivantes
+décrivent les services et parcours implémentés ; cette revue ne les migre pas.
+
 Les [sites dédiés aux realms](REALM_SITES.md) ajoutent une liste publique sur
 le site principal, une page `https://{realmId}.arkya.online/` et un espace
 opérateur `https://{realmId}.admin.arkya.online/`. Ils partagent les services

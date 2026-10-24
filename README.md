@@ -71,6 +71,8 @@ For Unity work, Codex should use the installed **CoplayDev Unity MCP** bridge fo
 
 ## Useful Documents
 
+- [Realm infrastructure review: per-realm storage, event batches, admin commands and dedicated load](docs/REALM_INFRASTRUCTURE.md).
+
 - [Sites publics et administration dédiés aux realms](docs/REALM_SITES.md).
 
 - [Sessions renouvelables du site et de l’admin](docs/AUTH_SESSIONS.md).

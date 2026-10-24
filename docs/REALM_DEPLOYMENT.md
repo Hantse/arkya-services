@@ -1,5 +1,10 @@
 # Réseau, backoffice et déploiement des realms
 
+La [cible d'infrastructure revue le 24 octobre 2026](REALM_INFRASTRUCTURE.md)
+prévoit une base gameplay et un flux d'événements isolés par realm, avec
+persistance par worker et supervision des dedicateds. Ce guide conserve le
+périmètre du déployeur existant ; il ne provisionne pas encore ces composants.
+
 La cible reprend le schéma fourni le 16 octobre 2026 : une VM Traefik reçoit les domaines Arkya, une gateway YARP dessert les applications web, et les serveurs dédiés d'un realm appellent les services de jeu par une gateway interne. Le premier parcours implémenté est l'administration des déploiements k3s.
 
 Pour l'installation progressive actuelle, le [profil Argo `admin`](../backend/deploy/gitops/admin/README.md)
