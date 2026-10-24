@@ -9,7 +9,7 @@ Document de conception, commencé le 16 octobre 2026. Les règles confirmées ci
 - Un même personnage peut progresser dans plusieurs classes, avec **une seule classe active à la fois**.
 - Certains sorts acquis dans une classe deviennent utilisables dans les autres classes.
 - Le **rating représente le niveau global du personnage** : somme des niveaux de classe divisée par le nombre de classes débloquées. Il reste distinct du niveau de chaque classe.
-- Le jeu comporte aussi des « skills » ; leur nature et leur progression restent à préciser.
+- Les **skills** désignent des compétences comme **Nature** ; les **abilities** sont des capacités individuelles, comme le sort **Thunder**. Ce sont deux notions distinctes ; la progression des skills reste à préciser.
 
 Le but joueur est de construire son personnage en explorant plusieurs classes, puis de choisir une classe active et les capacités héritées qui complètent sa manière de jouer.
 
@@ -29,7 +29,7 @@ Le catalogue initial accepté donne une première traduction de ces identités e
 
 La distinction entre Cleric et Druid doit se sentir dans leurs décisions de combat. Le catalogue inclut désormais Camouflage pour le Scout ; ses règles détaillées de détection, les transformations éventuelles du Druid et les spécialisations précises de tank, soigneur ou DPS restent ouvertes.
 
-## Niveaux, skills et rating
+## Niveaux, skills, abilities et rating
 
 | Notion | Sens retenu ou question ouverte |
 | --- | --- |
@@ -37,8 +37,11 @@ La distinction entre Cleric et Druid doit se sentir dans leurs décisions de com
 | Classe active | Classe actuellement jouée ; les conditions de changement restent à définir |
 | Rang de sort | Version apprise d'un même sort, comme Heal R1 puis Heal R2 |
 | Sort hérité | Rang rendu disponible hors de sa classe d'origine ; disponibilité, équipement et conditions de lancement sont des étapes distinctes |
-| Skill | À préciser : capacités actives, passifs, maîtrises d'armes, compétences de métier, ou plusieurs de ces catégories |
+| Skill | Compétence comme Nature ; ses règles de progression restent à définir |
+| Ability | Capacité individuelle, par exemple Thunder, qui est un sort |
 | Rating global | Moyenne des niveaux des classes débloquées |
+
+Le [catalogue initial](GAMEPLAY_STARTER_SKILLS.md) décrit des abilities. Les exemples Nature et Thunder fixent la terminologie ; ils ne définissent ni un rattachement de Thunder à Nature, ni un seuil de déblocage, ni un effet de sort.
 
 La distribution de l'expérience entre classes, les plafonds de niveau et l'éventuelle progression indépendante des skills ne sont pas encore fixés. Le rating ne remplace pas le niveau de classe pour apprendre un rang de sort. Aucun effet du rating sur les statistiques, l'accès au contenu ou les récompenses n'est décidé.
 

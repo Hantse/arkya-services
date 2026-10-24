@@ -1,10 +1,12 @@
-# Statistiques et compétences du personnage
+# Statistiques et capacités du personnage
 
 Première tranche implémentée le 23 octobre 2026 dans le projet Unity actif.
 Elle reprend les cinq classes et les seuils du [catalogue accepté](GAMEPLAY_STARTER_SKILLS.md),
 avec les [règles de rating et d’héritage](GAMEPLAY_CLASSES.md).
 Les [écoles d'artisanat](CRAFTING.md), ajoutées séparément, possèdent leurs
 propres niveaux, compétences et XP.
+
+Le catalogue de combat décrit ici contient des **abilities** (capacités individuelles, comme le sort **Thunder**), distinctes des **skills** (compétences comme **Nature**). Les noms techniques historiques `CharacterSkillId`, `CharacterSkillCatalog` et `HudSkillView` désignent encore les abilities de ce catalogue. Les skills de combat tels que Nature ne sont pas encore modélisés dans cette tranche ; Thunder n'est pas ajouté au catalogue par cette clarification.
 
 ## État et autorité
 
@@ -14,7 +16,7 @@ et rangs appris. Ce composant ECS est envoyé uniquement à son propriétaire.
 Les acteurs indépendants de récolte et le prototype d’areas conservent leurs
 propres composants ; ils ne sont pas ajoutés au même acteur.
 
-Le serveur initialise un profil absent avec Warrior, les deux compétences
+Le serveur initialise un profil absent avec Warrior, les deux capacités
 initiales R1 et trois réserves pleines de 100 points. Le niveau historique est
 repris entre 1 et 10. Ce choix initial, les réserves et la courbe d’XP sont des
 réglages de prototype, pas un équilibrage définitif. Il n’y a pas encore de
@@ -43,10 +45,10 @@ de combat et ne modifient pas leur rating. Les compétences artisanales suivent
 automatiquement le niveau de leur école ; l'apprentissage explicite et
 l'héritage des rangs décrits ici restent propres au catalogue de combat.
 
-Le catalogue contient 25 compétences et 40 rangs. Atteindre un seuil autorise
+Le catalogue contient 25 abilities et 40 rangs. Atteindre un seuil autorise
 l’apprentissage ; le rang doit ensuite être appris explicitement. Apprendre
-R2 d’une compétence transmissible rend son R1 disponible dans les autres
-classes. Les compétences réservées restent natives. La disponibilité indique
+R2 d’une capacité transmissible rend son R1 disponible dans les autres
+classes. Les capacités réservées restent natives. La disponibilité indique
 un acquis, pas un équipement ni une autorisation complète de lancer un sort.
 
 ## HUD et fiche personnage
@@ -61,7 +63,7 @@ La vie et l’endurance alimentent les jauges existantes. L’XP affiche son
 pourcentage et son compte en infobulle ; 0/100 est une progression connue à
 zéro, alors qu’un tiret indique une donnée absente. `C` ou **Personnage · C**
 ouvre la fiche en lecture seule : vie/mana/endurance, classe, rating, niveaux
-et catalogue des compétences avec rang appris/hérité ou seuil requis.
+et catalogue des abilities avec rang appris/hérité ou seuil requis.
 Les mises à jour de statistiques préservent les annonces, quêtes et barres
 d’actions déjà présentes.
 

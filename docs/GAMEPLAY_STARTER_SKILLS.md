@@ -8,7 +8,7 @@ Les règles approuvées de classe active unique et de rating sont dans [Combat, 
 
 ## Périmètre et rythme proposés
 
-Hypothèse : « premiers skills » désigne ici les capacités actives de combat. Les maîtrises d'armes, passifs et métiers auront leur propre proposition ; ce choix ne décide pas de leur progression.
+Ce catalogue décrit des **abilities**, c'est-à-dire des capacités actives de combat. Un **skill** est une compétence comme **Nature** ; une **ability** est une capacité individuelle comme le sort **Thunder**. Le nom historique de ce fichier ne change pas cette distinction. Thunder est ici un exemple de terminologie, sans ajout au catalogue ni rattachement à Nature. La progression des skills, les maîtrises d'armes, les passifs et les métiers ne sont pas définis par ce catalogue.
 
 **Valeurs de départ pour essai :** une tranche de niveaux 1 à 10, avec des capacités initiales au niveau 1, de nouvelles capacités aux niveaux 3, 6 et 10, et des améliorations de rang aux niveaux 5 et 10. Chaque classe commence avec une attaque et une capacité de défense ou de soin. Le premier héritage au niveau 5 permet de découvrir le système pendant le parcours de l'[île de départ, niveaux 1 à 6](world/STARTER_ISLAND.md).
 
