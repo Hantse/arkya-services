@@ -1,7 +1,7 @@
 window.ArkyaPageTranslations = {
   fr: {
-    'page.title': 'Wiki Arkya — Classes, compétences et recettes',
-    'meta.description': 'Le guide d’Arkya : classes, compétences, métiers, recettes, ressources et premiers pas sur l’île. Consultez les règles et leur état de développement.',
+    'page.title': 'Wiki Arkya — Classes, capacités et recettes',
+    'meta.description': 'Le guide d’Arkya : classes, skills et abilities, métiers, recettes, ressources et premiers pas sur l’île. Consultez les règles et leur état de développement.',
     'wiki.eyebrow': 'LE COMPAGNON DE VOTRE AVENTURE',
     'wiki.title': 'Le wiki d’Arkya.',
     'wiki.intro': 'Une classe à explorer, une recette à retrouver, un métier à apprendre. Tous vos repères au même endroit.',
@@ -30,8 +30,8 @@ window.ArkyaPageTranslations = {
     'wiki.atlas': 'Atlas visuel & crédits',
   },
   en: {
-    'page.title': 'Arkya Wiki — Classes, skills and recipes',
-    'meta.description': 'Your Arkya guide: classes, skills, professions, recipes, resources and first steps on the island. Explore the rules and their development status.',
+    'page.title': 'Arkya Wiki — Classes, abilities and recipes',
+    'meta.description': 'Your Arkya guide: classes, skills and abilities, professions, recipes, resources and first steps on the island. Explore the rules and their development status.',
     'wiki.eyebrow': 'YOUR ADVENTURE COMPANION',
     'wiki.title': 'The Arkya wiki.',
     'wiki.intro': 'A class to explore, a recipe to find, a profession to learn. All your references in one place.',

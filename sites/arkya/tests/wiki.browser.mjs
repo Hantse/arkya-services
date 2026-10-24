@@ -80,7 +80,7 @@ async (page) => {
     await fit('French index');
     await page.screenshot({ path: '../../output/playwright/arkya-wiki-desktop.png', fullPage: true });
 
-    for (const [id, title] of [['classes', 'Classes'], ['skills', 'Compétences'], ['crafting', 'Métiers'],
+    for (const [id, title] of [['classes', 'Classes'], ['abilities', 'Capacités'], ['crafting', 'Métiers'],
       ['recipes', 'Recettes'], ['resources', 'Ressources'], ['world', 'Monde'], ['start', 'Bien débuter']]) {
       await category(id).click();
       check(new URL(page.url()).searchParams.get('category') === id, `${id}: category is shareable`);
@@ -142,15 +142,15 @@ async (page) => {
     check(new URL(page.url()).searchParams.get('category') === 'recipes', 'Clear search preserves the chosen category');
     check(await page.locator('#wiki-search').evaluate(node => node === document.activeElement), 'Clear search restores input focus');
 
-    await category('skills').click();
+    await category('abilities').click();
     await page.locator('#wiki-search').fill('heal');
     const healLink = page.locator('.wiki-entry-card h3 a').filter({ hasText: /^Heal$/ });
-    check(await healLink.count() === 1, 'English skill search contains the Heal article');
+    check(await healLink.count() === 1, 'English ability search contains the Heal article');
     await healLink.click();
     await article();
-    check(new URL(page.url()).searchParams.get('entry') === 'heal', 'Skill has a stable individual deep link');
+    check(new URL(page.url()).searchParams.get('entry') === 'heal', 'Ability has a stable individual deep link');
     check(await page.locator('.wiki-article > .status').textContent() === 'In design', 'Unimplemented combat effects are labeled as design');
-    check(await page.locator('.wiki-related a').count() > 0, 'Skill article connects to related reference pages');
+    check(await page.locator('.wiki-related a').count() > 0, 'Ability article connects to related reference pages');
     const relatedId = new URL(await page.locator('.wiki-related a').first().getAttribute('href'), base).searchParams.get('entry');
     await page.locator('.wiki-related a').first().click();
     await article();
@@ -158,11 +158,30 @@ async (page) => {
     await page.goBack();
     await article();
     check(new URL(page.url()).searchParams.get('entry') === 'heal', 'Browser back returns from a related article');
-    await fit('English skill');
+    await fit('English ability');
     await page.evaluate(() => { document.activeElement?.blur(); scrollTo(0, 0); });
     await page.screenshot({ path: '../../output/playwright/arkya-wiki-skill-desktop.png', fullPage: true });
     await page.setViewportSize({ width: 390, height: 844 });
     await page.screenshot({ path: '../../output/playwright/arkya-wiki-skill-mobile.png', fullPage: true });
+
+    for (const lang of ['fr', 'en']) {
+      await page.goto(`${base}/wiki.html?lang=${lang}&category=skills&q=heal`);
+      await index();
+      check(await category('abilities').getAttribute('aria-current') === 'true', `${lang}: old skill links select the abilities category`);
+      check(await page.locator('#wiki-search').inputValue() === 'heal', `${lang}: old skill links preserve the Heal search`);
+      await page.locator('.wiki-entry-card h3 a').filter({ hasText: lang === 'fr' ? /^Soin \/ Heal$/ : /^Heal$/ }).click();
+      await article();
+      check(new URL(page.url()).searchParams.get('category') === 'abilities', `${lang}: following an old skill link creates a canonical ability URL`);
+      check(await page.locator('.wiki-breadcrumb').textContent().then(text => text.includes(lang === 'fr' ? 'Capacités' : 'Abilities')), `${lang}: Heal is presented as an ability`);
+
+      await page.goto(`${base}/wiki.html?lang=${lang}&entry=skills-and-abilities`);
+      await article();
+      check(await page.locator('#section-0 h3').textContent() === (lang === 'fr' ? 'Skill : Nature' : 'Skill: Nature'), `${lang}: glossary identifies Nature as a skill`);
+      check(await page.locator('#section-1 h3').textContent() === (lang === 'fr' ? 'Ability : Thunder' : 'Ability: Thunder'), `${lang}: glossary identifies Thunder as an ability`);
+      check((await page.locator('#section-1 p').textContent()).includes(lang === 'fr' ? 'un sort' : 'a spell'), `${lang}: glossary identifies Thunder as a spell`);
+      await fit(`${lang}: skills and abilities glossary`, [320, 1440]);
+      await page.screenshot({ path: `../../output/playwright/arkya-wiki-terminology-${lang}.png`, fullPage: true });
+    }
 
     await page.goto(`${base}/wiki.html?lang=en&category=classes&entry=cleric`);
     await article();
@@ -222,6 +241,7 @@ async (page) => {
       check(await page.locator('.home-essentials a[href*="entry=first-steps"]').count() === 1, `${lang}: homepage keeps the first-steps guide`);
       check(await page.locator('.home-essentials a[href*="development.html"]').count() === 1, `${lang}: homepage keeps the development link`);
       check(await page.locator('.home-wiki-grid a').count() === 4, `${lang}: homepage links directly to four useful wiki categories`);
+      check(await page.locator('.home-wiki-grid a[href*="category=abilities"] h3').textContent() === (lang === 'fr' ? 'Capacités' : 'Abilities'), `${lang}: homepage labels the combat ability catalog correctly`);
       check(await page.locator('.realms-home [data-realm-list]').isVisible(), `${lang}: homepage keeps the realm list`);
       check(await page.locator('#gallery-grid').count() === 0, `${lang}: homepage gives useful information its own space`);
       check((await page.locator('.home-news-card h3').last().textContent()).includes('<img'), `${lang}: publication titles render as literal text`);

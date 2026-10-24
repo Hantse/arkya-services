@@ -16,8 +16,9 @@ export function searchEntries(entries, { query = '', category = '', language = '
 
 export function readWikiState(search, categories) {
   const params = new URLSearchParams(search);
+  const category = params.get('category') === 'skills' ? 'abilities' : params.get('category');
   return {
-    category: categories.some(item => item.id === params.get('category')) ? params.get('category') : '',
+    category: categories.some(item => item.id === category) ? category : '',
     query: (params.get('q') || '').slice(0, 120),
     entry: params.get('entry') || '',
   };

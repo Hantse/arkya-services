@@ -15,7 +15,7 @@ Ouvrir <http://127.0.0.1:51806>. Le serveur expose uniquement `dist/`, sur l’i
 ## Contenu et interactions
 
 - Accueil `dist/index.html` : inscription/statut bêta, installation Windows, premiers pas, avancement, trois dernières actualités et état des realms. L’image d’ouverture est une capture du prototype, identifiée comme telle.
-- Wiki `dist/wiki.html` : **56 fiches FR/EN** avec recherche, sept rubriques et liens entre articles ; classes, compétences, métiers, recettes, ressources, monde et premiers pas.
+- Wiki `dist/wiki.html` : **57 fiches FR/EN** avec recherche, sept rubriques et liens entre articles ; classes, capacités, métiers, recettes, ressources, monde et premiers pas.
 - Navigation commune : Accueil, Wiki, Realms, Actualités, Bêta et launcher, avec compte et langue sur bureau et mobile.
 - Atlas artistique conservé dans `dist/atlas.html` : trois ambiances issues des concepts Royaumes de l’Aube, Cités d’Éther et Terres des Anciens, arbre V3 et ses trois matières.
 - Atlas de **205 visuels** dans sept catégories, recherche tolérante aux accents, filtres de statut, pagination et liens de recherche conservés dans l’URL.
@@ -28,12 +28,12 @@ Ouvrir <http://127.0.0.1:51806>. Le serveur expose uniquement `dist/`, sur l’i
 
 ## Wiki et maintenance du contenu
 
-`wiki-data.mjs` contient sept rubriques et 56 articles : cinq classes, 25 capacités,
+`wiki-data.mjs` contient sept rubriques et 57 articles : cinq classes, 25 capacités,
 quatre écoles de métier, huit compétences artisanales, deux recettes, cinq
-ressources et sept guides, dont les rencontres de l’île. Chaque fiche possède un identifiant stable, des titres
+ressources et huit guides, dont les rencontres de l’île et la distinction entre skills et abilities. Chaque fiche possède un identifiant stable, des titres
 et textes FR/EN, un statut, des sections, des renvois et un chemin de source.
 `reviewedAt` indique la date de revue du catalogue. Les sources principales sont
-[les statistiques et compétences](../../docs/CHARACTER_STATS_SKILLS.md),
+[les statistiques et capacités](../../docs/CHARACTER_STATS_SKILLS.md),
 [les capacités de départ](../../docs/GAMEPLAY_STARTER_SKILLS.md),
 [l’artisanat](../../docs/CRAFTING.md) et [la récolte](../../docs/HARVESTING.md).
 Vérifier les catalogues Unity actuels lorsque ces documents divergent.
@@ -51,6 +51,17 @@ forment des URL partageables, par exemple
 `wiki.html?lang=fr&category=recipes&entry=stone-brick`. Le changement de langue,
 le rechargement et l’historique du navigateur préservent la consultation.
 Une fiche inconnue ou une recherche sans résultat propose un retour à l’index.
+
+La rubrique de combat utilise `category=abilities` et les libellés **Capacités / Abilities**.
+Les anciens liens `category=skills` ouvrent cette même rubrique. Le guide
+`entry=skills-and-abilities` distingue **Nature**, un skill, de **Thunder**,
+une ability (un sort), sans leur attribuer de nouvelles règles de gameplay.
+
+Correction terminologique du 24 octobre 2026 : **15 tests Node du wiki** et
+**296 contrôles Edge** wiki/accueil passent, dont les liens historiques,
+le guide Nature/Thunder en FR/EN et les formats 320 à 1440 px. Deux contrôles
+complémentaires vérifient les libellés du grimoire en FR/EN ; les captures
+du guide sur bureau et d’une ability sur mobile ont été inspectées.
 
 Pour ajouter une fiche, compléter les deux langues, choisir une rubrique et un
 statut, renseigner sa source et ses renvois puis mettre à jour la date de revue.

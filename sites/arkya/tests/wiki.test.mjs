@@ -11,8 +11,8 @@ const fixtures = [
     sections: [{ title: local('Apprendre la formule', 'Learn the formula'),
       text: local('Le maître maçon enseigne cette recette.', 'The mason trainer teaches this recipe.'),
       list: [local('Récoltez du grès près des rochers.', 'Gather sandstone near rocks.')] }] },
-  { id: 'heal', category: 'skills', title: local('Soin', 'Heal'),
-    summary: local('Une compétence du clerc.', 'A cleric skill.'),
+  { id: 'heal', category: 'abilities', title: local('Soin', 'Heal'),
+    summary: local('Une capacité du Cleric.', 'A Cleric ability.'),
     sections: [{ title: local('Héritage', 'Inheritance'), text: local('Les rangs appris restent disponibles.', 'Learned ranks remain available.') }] },
   { id: 'miner', category: 'crafting', title: local('Mineur', 'Miner'),
     summary: local('Récoltez la pierre et les minerais.', 'Gather stone and ores.'),
@@ -50,7 +50,7 @@ test('search follows the selected language while stable identifiers remain searc
 test('category and query filters intersect and preserve input order and catalog data', () => {
   const before = structuredClone(fixtures);
   assert.deepEqual(ids(searchEntries(fixtures, { category: 'recipes', query: 'gres' })), ['sandstone-brick']);
-  assert.deepEqual(ids(searchEntries(fixtures, { category: 'skills', query: 'gres' })), []);
+  assert.deepEqual(ids(searchEntries(fixtures, { category: 'abilities', query: 'gres' })), []);
   assert.deepEqual(ids(searchEntries(fixtures, { category: 'unknown' })), []);
   assert.deepEqual(ids(searchEntries(fixtures, { query: ' \t ' })), fixtures.map(entry => entry.id));
   assert.deepEqual(fixtures, before);
@@ -80,6 +80,16 @@ test('shared wiki URLs round trip literal characters without introducing paramet
   assert.equal(url.searchParams.get('lang'), 'en');
   assert.equal(url.searchParams.getAll('entry').length, 1);
   assert.deepEqual(readWikiState(url.search, categories), { category: state.category, query: state.query, entry: state.entry });
+});
+
+test('legacy skill category links retain their ability filter, search and selected article', () => {
+  const state = readWikiState('?lang=en&category=skills&q=heal&entry=heal', categories);
+  assert.deepEqual(state, { category: 'abilities', query: 'heal', entry: 'heal' });
+  const results = searchEntries(entries, { ...state, language: 'en' });
+  assert.ok(results.some(entry => entry.id === 'heal'));
+  assert.ok(results.every(entry => entry.category === 'abilities'));
+  const href = wikiHref({ ...state, language: 'en' });
+  assert.equal(new URL(href, 'https://arkya.online').searchParams.get('category'), 'abilities');
 });
 
 test('long search parameters are bounded on reading and creating links', () => {
@@ -116,7 +126,7 @@ test('the published wiki has localized categories and unique, stable identifiers
     assertLocalized(category.description, `${category.id}.description`);
     assert.ok(entries.some(entry => entry.category === category.id), `${category.id} contains articles`);
   }
-  for (const id of ['classes', 'recipes', 'skills']) assert.ok(categories.some(category => category.id === id), `${id} category exists`);
+  for (const id of ['classes', 'recipes', 'abilities']) assert.ok(categories.some(category => category.id === id), `${id} category exists`);
   assert.match(reviewedAt, /^\d{4}-\d{2}-\d{2}$/);
   assert.equal(new Date(`${reviewedAt}T00:00:00Z`).toISOString().slice(0, 10), reviewedAt);
 });
@@ -158,7 +168,7 @@ test('every wiki article records a project documentation source without URL or t
   }
 });
 
-test('real catalog searches expose recipes in French and skills in English', () => {
+test('real catalog searches expose recipes in French and abilities in English', () => {
   assert.ok(searchEntries(entries, { query: 'brique', category: 'recipes', language: 'fr' }).length > 0);
-  assert.ok(searchEntries(entries, { query: 'heal', category: 'skills', language: 'en' }).length > 0);
+  assert.ok(searchEntries(entries, { query: 'heal', category: 'abilities', language: 'en' }).length > 0);
 });

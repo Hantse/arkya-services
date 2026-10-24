@@ -12,7 +12,7 @@ const fact = (frLabel, enLabel, frValue, enValue = frValue) => ({
 export const categories = [
   { id: 'start', title: copy('Bien débuter', 'Getting started'), description: copy('Commandes, progression et premiers repères.', 'Controls, progression and your first steps.'), mark: '⌁' },
   { id: 'classes', title: copy('Classes', 'Classes'), description: copy('Les cinq voies de combat et leur identité.', 'The five combat paths and their identities.'), mark: '⚔' },
-  { id: 'skills', title: copy('Compétences', 'Skills'), description: copy('Rangs, héritage et capacités de chaque classe.', 'Ranks, inheritance and each class’s abilities.'), mark: '✧' },
+  { id: 'abilities', title: copy('Capacités', 'Abilities'), description: copy('Rangs, héritage et capacités de chaque classe.', 'Ranks, inheritance and each class’s abilities.'), mark: '✧' },
   { id: 'crafting', title: copy('Métiers', 'Professions'), description: copy('Écoles, maîtres et compétences artisanales.', 'Schools, trainers and crafting skills.'), mark: '⚒' },
   { id: 'recipes', title: copy('Recettes', 'Recipes'), description: copy('Ingrédients, ateliers et résultats de fabrication.', 'Ingredients, stations and crafting results.'), mark: '▱' },
   { id: 'resources', title: copy('Ressources', 'Resources'), description: copy('Où récolter et comment utiliser les matériaux.', 'Gathering and using materials.'), mark: '◇' },
@@ -20,7 +20,7 @@ export const categories = [
 ];
 
 const classSource = 'docs/CHARACTER_STATS_SKILLS.md';
-const skillSource = 'docs/GAMEPLAY_STARTER_SKILLS.md';
+const abilitySource = 'docs/GAMEPLAY_STARTER_SKILLS.md';
 const craftSource = 'docs/CRAFTING.md';
 const harvestSource = 'docs/HARVESTING.md';
 
@@ -33,7 +33,7 @@ const classes = [
 ];
 
 // id, class, French/English names, R1/R2 levels, French/English design effects.
-const skills = [
+const abilities = [
   ['powerful-strike', 'warrior', 'Frappe puissante', 'Powerful Strike', 1, 5, 'Coup renforcé avec une arme de mêlée sur la cible devant soi.', 'A stronger melee weapon strike against the target in front of you.'],
   ['guard', 'warrior', 'Garde', 'Guard', 1, 5, 'Réduit les dégâts physiques venant de face. Demande une arme de mêlée ; attaquer ou lancer un sort termine la garde.', 'Reduces physical damage from the front. Requires a melee weapon; attacking or casting ends the guard.'],
   ['taunt', 'warrior', 'Provocation', 'Taunt', 3, null, 'Force temporairement un ennemi non joueur à se concentrer sur le Warrior. Ne contrôle pas les actions des autres joueurs.', 'Temporarily forces a non-player enemy to focus on Warrior. Does not control other players’ actions.'],
@@ -72,10 +72,10 @@ const classEntries = classes.map(value => ({
   related: [...value.skills, 'progression', 'inheritance'], source: classSource,
 }));
 
-const skillEntries = skills.map(([id, origin, fr, en, rank1, rank2, frEffect, enEffect]) => {
+const abilityEntries = abilities.map(([id, origin, fr, en, rank1, rank2, frEffect, enEffect]) => {
   const originName = classes.find(value => value.id === origin).name;
   return {
-    id, category: 'skills', title: copy(fr, en), summary: copy(frEffect, enEffect), status: 'design',
+    id, category: 'abilities', title: copy(fr, en), summary: copy(frEffect, enEffect), status: 'design',
     sections: [
       section('Effet prévu', 'Intended effect', frEffect, enEffect),
       section('Apprentissage et héritage', 'Learning and inheritance',
@@ -84,7 +84,7 @@ const skillEntries = skills.map(([id, origin, fr, en, rank1, rank2, frEffect, en
       section('État actuel', 'Current state', 'Les noms, seuils et règles d’héritage sont intégrés au catalogue et à la fiche. Le lancement, les effets de combat et le choix des capacités équipées restent à développer ; coûts et délais ne sont pas définitifs.', 'Names, thresholds and inheritance rules are integrated into the catalog and character sheet. Casting, combat effects and equipped ability choices remain to be developed; costs and cooldowns are not final.'),
     ],
     facts: [fact('Classe', 'Class', originName), fact('Rang 1', 'Rank 1', `Niveau ${rank1}`, `Level ${rank1}`), fact('Rang 2', 'Rank 2', rank2 ? `Niveau ${rank2}` : 'Non défini', rank2 ? `Level ${rank2}` : 'Not defined'), fact('Héritage', 'Inheritance', rank2 ? `R1 après R2 · niveau ${rank2}` : 'Réservé à la classe', rank2 ? `R1 after R2 · level ${rank2}` : 'Class exclusive')],
-    related: [origin, 'inheritance', 'progression'], source: skillSource,
+    related: [origin, 'inheritance', 'progression'], source: abilitySource,
   };
 });
 
@@ -160,11 +160,19 @@ const resourceEntries = resources.map(value => ({
 
 const guides = [
   {
+    id: 'skills-and-abilities', category: 'start', title: copy('Skills et abilities', 'Skills and abilities'), summary: copy('Un skill est une compétence comme Nature. Une ability est une capacité individuelle, comme le sort Thunder.', 'A skill is a proficiency such as Nature. An ability is an individual action, such as the Thunder spell.'), status: 'design',
+    sections: [
+      section('Skill : Nature', 'Skill: Nature', 'Nature est un exemple de skill. Les règles de progression et les effets de ce skill restent à définir.', 'Nature is an example of a skill. Its progression rules and effects remain to be defined.'),
+      section('Ability : Thunder', 'Ability: Thunder', 'Thunder est un sort : c’est une ability. Les 25 capacités de classe de ce wiki sont également des abilities. Les rangs et l’héritage décrits dans leur catalogue concernent ces capacités.', 'Thunder is a spell: it is an ability. The 25 class abilities in this wiki are also abilities. Ranks and inheritance in their catalog apply to those individual abilities.'),
+      section('État de la conception', 'Design status', 'Ces exemples fixent le vocabulaire. Le lien éventuel entre Nature et Thunder, les conditions d’apprentissage et les caractéristiques de Thunder restent à préciser.', 'These examples establish the terminology. Any relationship between Nature and Thunder, learning requirements and Thunder’s spell details remain to be defined.'),
+    ], related: ['progression', 'inheritance'], source: 'docs/GAMEPLAY_CLASSES.md',
+  },
+  {
     id: 'first-steps', category: 'start', title: copy('Vos premiers pas', 'Your first steps'), summary: copy('Accès à la bêta, déplacement et fenêtres utiles pour commencer.', 'Beta access, movement and useful windows to get started.'), status: 'prototype',
     sections: [
       section('Rejoindre Arkya', 'Joining Arkya', 'Connectez votre compte Discord sur le site et consultez votre accès bêta. Le launcher Windows est disponible depuis Installer le launcher. L’admission en jeu dépend d’un accès accordé et d’un realm compatible.', 'Connect your Discord account on the website and check your beta access. The Windows launcher is available from Install the launcher. Entering the game requires granted access and a compatible realm.'),
       section('Se déplacer', 'Movement', 'ZQSD, WASD ou les flèches font courir. Maintenez Maj pour marcher. Espace fait sauter au sol ; en nage, Espace remonte et Ctrl fait plonger. Maintenez le clic gauche pour regarder autour du personnage, ou le clic droit pour orienter caméra et déplacement. La molette ajuste la distance.', 'Use ZQSD, WASD or the arrow keys to run. Hold Shift to walk. Space jumps on land; while swimming, Space ascends and Ctrl dives. Hold the left mouse button to look around your character, or the right button to turn the camera and movement direction. The wheel adjusts distance.'),
-      section('Ouvrir les bonnes fenêtres', 'Useful windows', 'Les fenêtres regroupent les informations et actions disponibles dans le prototype.', 'Windows group the information and actions available in the prototype.', [copy('C : fiche personnage et compétences.', 'C: character sheet and skills.'), copy('K : écoles d’artisanat.', 'K: crafting schools.'), copy('L : formules apprises.', 'L: learned formulas.'), copy('I : sacs · M : carte · J : journal.', 'I: bags · M: map · J: journal.'), copy('E : parler à un PNJ proche · G maintenu : récolter.', 'E: speak to a nearby NPC · hold G: gather.'), copy('V près du tailleur de pierre : recettes de la machine.', 'V near the stone cutter: station recipes.'), copy('Tab : sélectionner un ennemi proche · F ou 1 : attaque au contact.', 'Tab: select a nearby enemy · F or 1: melee attack.'), copy('Échap : fermer la fenêtre active ou ouvrir le menu.', 'Escape: close the active window or open the menu.')]),
+      section('Ouvrir les bonnes fenêtres', 'Useful windows', 'Les fenêtres regroupent les informations et actions disponibles dans le prototype.', 'Windows group the information and actions available in the prototype.', [copy('C : fiche personnage et capacités.', 'C: character sheet and abilities.'), copy('K : écoles d’artisanat.', 'K: crafting schools.'), copy('L : formules apprises.', 'L: learned formulas.'), copy('I : sacs · M : carte · J : journal.', 'I: bags · M: map · J: journal.'), copy('E : parler à un PNJ proche · G maintenu : récolter.', 'E: speak to a nearby NPC · hold G: gather.'), copy('V près du tailleur de pierre : recettes de la machine.', 'V near the stone cutter: station recipes.'), copy('Tab : sélectionner un ennemi proche · F ou 1 : attaque au contact.', 'Tab: select a nearby enemy · F or 1: melee attack.'), copy('Échap : fermer la fenêtre active ou ouvrir le menu.', 'Escape: close the active window or open the menu.')]),
       section('Commencer un métier', 'Start a profession', 'Votre profil artisanal commence en Mineur. À Aubefont, un maître vous permet de choisir son école, recevoir ses outils de départ et apprendre ses formules disponibles. Choisissez Bûcheron pour gagner de l’XP en récoltant du bois.', 'Your crafting profile starts as Miner. In Aubefont, a trainer lets you choose their school, receive starter tools and learn available formulas. Choose Logger to earn XP from gathering wood.'),
     ], related: ['starter-island', 'encounters', 'gathering', 'miner', 'progression'], source: 'docs/CRAFTING.md',
   },
@@ -178,12 +186,12 @@ const guides = [
     ], facts: [fact('Plafond de classe du prototype', 'Prototype class cap', '10'), fact('XP au niveau suivant', 'XP to the next level', '100 × niveau courant', '100 × current level')], related: ['inheritance', 'warrior', 'encounters', 'crafting-progression'], source: classSource,
   },
   {
-    id: 'inheritance', category: 'skills', title: copy('Héritage des compétences', 'Skill inheritance'), summary: copy('Apprendre R2 dans une classe rend R1 disponible ailleurs pour les capacités transmissibles.', 'Learning R2 in a class makes R1 available elsewhere for inheritable abilities.'), status: 'prototype',
+    id: 'inheritance', category: 'abilities', title: copy('Héritage des capacités', 'Ability inheritance'), summary: copy('Apprendre R2 dans une classe rend R1 disponible ailleurs pour les capacités transmissibles.', 'Learning R2 in a class makes R1 available elsewhere for inheritable abilities.'), status: 'prototype',
     sections: [
       section('Un rang appris reste acquis', 'A learned rank stays learned', 'Pour les capacités transmissibles du catalogue, apprendre R2 dans la classe d’origine rend R1 disponible dans les autres classes. Atteindre le niveau requis autorise l’apprentissage ; le rang doit ensuite être appris explicitement.', 'For inheritable catalog abilities, learning R2 in the original class makes R1 available to other classes. Reaching the required level permits learning; the rank must then be learned explicitly.'),
       section('Exemple : Soin', 'Example: Heal', 'Cleric niveau 1 peut apprendre Soin R1. Au niveau 5, apprendre Soin R2 libère Soin R1 pour les autres classes. Un Warrior peut ainsi avoir accès à Soin R1, sans obtenir Soin R2.', 'Cleric level 1 can learn Heal R1. At level 5, learning Heal R2 unlocks Heal R1 for other classes. A Warrior can therefore access Heal R1 without gaining Heal R2.'),
       section('Capacités réservées', 'Exclusive abilities', 'Chaque classe garde ses capacités réservées. Le catalogue comprend 25 capacités et 40 rangs. L’équipement des capacités, leur lancement et le nombre d’emplacements hérités restent à intégrer ou à définir.', 'Each class keeps its exclusive abilities. The catalog contains 25 abilities and 40 ranks. Ability loadouts, casting and the number of inherited slots remain to be integrated or defined.'),
-    ], related: ['heal', 'cleric', 'warrior', 'progression'], source: classSource,
+    ], related: ['heal', 'cleric', 'warrior', 'progression', 'skills-and-abilities'], source: classSource,
   },
   {
     id: 'crafting-progression', category: 'crafting', title: copy('Apprendre un métier', 'Learning a profession'), summary: copy('Une école active, quatre progressions conservées et des formules à apprendre auprès des maîtres.', 'One active school, four retained progressions and formulas learned from trainers.'), status: 'prototype',
@@ -224,7 +232,7 @@ const guides = [
 export const entries = [
   ...guides,
   ...classEntries,
-  ...skillEntries,
+  ...abilityEntries,
   ...schoolEntries,
   ...craftSkillEntries,
   ...recipeEntries,
