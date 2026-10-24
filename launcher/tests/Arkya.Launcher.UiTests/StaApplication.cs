@@ -18,11 +18,22 @@ public sealed class StaApplication : IDisposable
         {
             try
             {
-                // Load production resources without App.Run, OnStartup, a mutex or a launcher process.
-                var application = new App { ShutdownMode = ShutdownMode.OnExplicitShutdown };
+                // Application queues OnStartup in its constructor, even without Application.Run.
+                // Suppress that callback so tests load resources without the launcher's mutex or services.
+                var currentDispatcher = Dispatcher.CurrentDispatcher;
+                DispatcherOperation? startup = null;
+                void CaptureStartup(object? sender, DispatcherHookEventArgs e)
+                {
+                    if (e.Operation.Priority == DispatcherPriority.Send) startup ??= e.Operation;
+                }
+                currentDispatcher.Hooks.OperationPosted += CaptureStartup;
+                App application;
+                try { application = new App { ShutdownMode = ShutdownMode.OnExplicitShutdown }; }
+                finally { currentDispatcher.Hooks.OperationPosted -= CaptureStartup; }
+                if (startup is null || !startup.Abort()) throw new InvalidOperationException("Could not suppress production launcher startup.");
                 application.InitializeComponent();
-                ready.SetResult(Dispatcher.CurrentDispatcher);
-                Dispatcher.Run();
+                ready.SetResult(currentDispatcher);
+                application.Run();
             }
             catch (Exception exception) { ready.TrySetException(exception); }
         }) { IsBackground = true, Name = "Arkya launcher UI tests" };
@@ -40,11 +51,9 @@ public sealed class StaApplication : IDisposable
         if (dispatcher.CheckAccess())
         {
             Application.Current.Shutdown();
-            dispatcher.BeginInvokeShutdown(DispatcherPriority.Send);
             return;
         }
         dispatcher.Invoke(() => Application.Current.Shutdown());
-        dispatcher.BeginInvokeShutdown(DispatcherPriority.Send);
         if (!thread.Join(TimeSpan.FromSeconds(10))) throw new TimeoutException("The WPF test dispatcher did not stop.");
     }
 }

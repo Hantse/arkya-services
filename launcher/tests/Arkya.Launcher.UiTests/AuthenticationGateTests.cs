@@ -2,8 +2,10 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
@@ -165,6 +167,80 @@ public sealed class AuthenticationGateTests(StaApplication application, ITestOut
         SaveScreenshot(content, $"authenticated-{width}x{height}.png");
         Assert.Equal(0, fixture.Network.Requests);
     });
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public Task MaximizedWindowKeepsFooterInsideTheMonitorWorkArea(bool updateAvailable) => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture();
+        var window = fixture.Window;
+        Authenticate(window);
+        Field(window, "available", Manifest());
+        Field(window, "installed", new InstalledGame(Manifest() with { Sha256 = new string('b', 64) }, "releases/ui-fixture", "beta"));
+        Invoke(window, "UpdateButtons");
+        if (updateAvailable)
+        {
+            Control<Border>(window, "LauncherUpdateBanner").Visibility = Visibility.Visible;
+            Control<TextBlock>(window, "LauncherUpdateStatus").Text = "Une mise à jour du launcher est disponible. Votre connexion et vos jeux seront conservés.";
+        }
+        // Keep this native maximization test invisible and leave the user's active window alone.
+        window.Opacity = 0;
+        window.Left = SystemParameters.WorkArea.Left + 16;
+        window.Top = SystemParameters.WorkArea.Top + 16;
+        window.UpdateLayout();
+        var restoreBounds = window.RestoreBounds;
+        Invoke(window, "Maximize_Click", window, new RoutedEventArgs());
+        await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
+        window.UpdateLayout();
+        Assert.Equal(WindowState.Maximized, window.WindowState);
+        var handle = new WindowInteropHelper(window).Handle;
+        var monitor = new MonitorInfo { Size = Marshal.SizeOf<MonitorInfo>() };
+        Assert.True(GetMonitorInfo(MonitorFromWindow(handle, 2), ref monitor));
+        var content = (FrameworkElement)window.Content;
+        var actions = new[] { "BetaChannel", "StableChannel", "ChangeLocationButton", "InstallButton", "PlayButton", "CheckButton" };
+        foreach (var name in updateAvailable ? actions.Append("LauncherUpdateButton") : actions)
+            AssertInsideWorkArea(Control<FrameworkElement>(window, name), content, monitor.WorkArea);
+        AssertInsideWorkArea(content, content, monitor.WorkArea);
+        SaveScreenshot(content, $"authenticated-maximized{(updateAvailable ? "-update" : "")}.png");
+
+        Invoke(window, "Maximize_Click", window, new RoutedEventArgs());
+        await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
+        window.UpdateLayout();
+        Assert.Equal(WindowState.Normal, window.WindowState);
+        Assert.InRange(Math.Abs(window.ActualWidth - restoreBounds.Width), 0, 1);
+        Assert.InRange(Math.Abs(window.ActualHeight - restoreBounds.Height), 0, 1);
+        foreach (var name in actions) AssertVisibleInside(Control<FrameworkElement>(window, name), content);
+        Assert.Equal(0, fixture.Network.Requests);
+    });
+
+    private static void AssertInsideWorkArea(FrameworkElement element, FrameworkElement content, NativeRect workArea)
+    {
+        AssertVisibleInside(element, content);
+        var topLeft = element.PointToScreen(new Point());
+        var bottomRight = element.PointToScreen(new Point(element.ActualWidth, element.ActualHeight));
+        Assert.True(topLeft.X >= workArea.Left - 1 && topLeft.Y >= workArea.Top - 1 &&
+            bottomRight.X <= workArea.Right + 1 && bottomRight.Y <= workArea.Bottom + 1,
+            $"{element.Name} screen bounds {topLeft}–{bottomRight} must fit work area {workArea.Left},{workArea.Top}–{workArea.Right},{workArea.Bottom}.");
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct NativeRect { public int Left, Top, Right, Bottom; }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct MonitorInfo
+    {
+        public int Size;
+        public NativeRect MonitorArea, WorkArea;
+        public uint Flags;
+    }
+
+    [DllImport("user32.dll")]
+    private static extern nint MonitorFromWindow(nint window, uint flags);
+
+    [DllImport("user32.dll", EntryPoint = "GetMonitorInfoW")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool GetMonitorInfo(nint monitor, ref MonitorInfo info);
 
     [Fact]
     public Task ProtectedSessionRestoresAfterTheWindowIsRecreated() => application.RunAsync(async () =>
@@ -339,6 +415,7 @@ public sealed class AuthenticationGateTests(StaApplication application, ITestOut
             Field(Window, "publications", new ContentFeedClient(networkClient));
             Field(Window, "identity", new LauncherIdentityClient(networkClient));
             Window.ShowInTaskbar = false;
+            Window.ShowActivated = false;
             Window.WindowStartupLocation = WindowStartupLocation.Manual;
             Window.Left = Window.Top = -20000;
             Window.Width = width;

@@ -46,6 +46,13 @@ l’installation ni le lancement ; les notes du manifeste restent disponibles
 dans le panneau de version. Le canal se choisit dans le launcher ; la roue
 dentée donne accès au dossier du jeu et aux informations d’installation.
 
+La fenêtre agrandie utilise la zone de travail du moniteur courant, au-dessus
+de la barre des tâches Windows. Les boutons d’installation et de lancement,
+ainsi que l’éventuelle bannière de mise à jour, restent entièrement visibles.
+La fenêtre sans bordure applique ces limites via
+[`WM_GETMINMAXINFO`](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-getminmaxinfo),
+en pixels natifs, puis laisse WPF appliquer les dimensions minimales.
+
 ## Connexion au launcher
 
 Sans session, seule la page **Continuer avec Discord** est accessible.
@@ -400,9 +407,15 @@ transfert de session. Le correctif `0.3.1` accepte le format UUID avec tirets
 renvoyé par Identity en production ; les réponses d’Identity et de `/me`
 doivent toujours désigner le même compte. Les tests WPF chargent les vrais
 écrans dans un dispatcher STA avec un dossier de préférences temporaire et un
-transport qui interdit le réseau. Ils vérifient le verrou de connexion, les
+transport qui interdit le réseau. Leur application charge les ressources WPF
+sans démarrer la fenêtre de production, son mutex ou ses services automatiques.
+Ils vérifient le verrou de connexion, les
 commandes désactivées, l’expiration avec annulation et purge du contenu, et le
-rendu aux dimensions 1280 × 830 et 1040 × 720.
+rendu aux dimensions 1280 × 830 et 1040 × 720. Ils agrandissent aussi une
+vraie fenêtre native, avec et sans bannière de mise à jour, comparent les
+limites des boutons à la zone de travail du moniteur, puis vérifient la
+restauration des dimensions. Ce scénario ne couvre pas les changements de
+moniteur avec des échelles DPI différentes.
 
 ```powershell
 dotnet test launcher/tests/Arkya.Launcher.Tests -c Release
