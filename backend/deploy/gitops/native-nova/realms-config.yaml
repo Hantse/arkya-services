@@ -16,3 +16,34 @@ data:
   Deployment__Profiles__1__Servers__0__PublicEndpoint: wss://api.arkya.online/game/nova/island/
   Deployment__Profiles__1__Servers__0__ProtocolVersion: '3'
   Deployment__Profiles__1__Servers__0__BuildId: arkya-multi-area-v1
+  Deployment__Profiles__2__Id: nova-native-v5
+  Deployment__Profiles__2__DisplayName: Nova · Starter Island · 4 partitions · 0.1.49
+  Deployment__Profiles__2__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:241b6d9eca943b6701c52aa99e76746e6fa3c5c7886e4a03e0c1067ea5ee9693
+  Deployment__Profiles__2__ImagePullSecretName: arkya-ghcr
+  Deployment__Profiles__2__TopologyTemplateServerId: island
+  Deployment__Profiles__2__TopologyPublicEndpointTemplate: wss://api.arkya.online/game/{realmId}/{serverId}/
+  Deployment__Profiles__2__Servers__0__Id: island
+  Deployment__Profiles__2__Servers__0__Port: '17943'
+  Deployment__Profiles__2__Servers__0__Transport: WebSocket
+  Deployment__Profiles__2__Servers__0__PublicEndpoint: wss://api.arkya.online/game/nova/island/
+  Deployment__Profiles__2__Servers__0__ProtocolVersion: '5'
+  Deployment__Profiles__2__Servers__0__BuildId: arkya-town-npcs-v1
+  Deployment__Profiles__2__TopologyServerIdPrefix: v5
+  Deployment__RuntimeReleases__0__RealmId: nova
+  Deployment__RuntimeReleases__0__ProfileId: nova-native-v5
+  Deployment__RuntimeReleases__0__Version: '1'
+  Deployment__RuntimeReleases__0__Automatic: 'false'
+  Deployment__RuntimeReleases__0__PreviousProfileSha256: c652962aa8072e2680ed4406fbcc3b3a6b373743560aa89ff50ef558f4ac1781
+  Deployment__RuntimeReleases__0__GameVersion: 0.1.49
+  Deployment__RuntimeReleases__0__SourceRevision: 22bc5eeabce7dfadaba55a42e4b4e9cf40fd8460
+  Deployment__RuntimeReleases__0__SourceRunId: '40095092545'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__IslandId: starter-island
+  Deployment__RuntimeReleases__0__Topology__Islands__0__DedicatedCount: '4'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__GridColumns: '2'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__GridRows: '2'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__Width: '1536'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__Depth: '1536'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__OriginX: '0'
+  Deployment__RuntimeReleases__0__Topology__Islands__0__OriginZ: '0'
+  Deployment__RuntimeReleases__0__Topology__InstanceDedicatedCount: '0'
+  Deployment__RuntimeReleases__0__Topology__RaidDedicatedCount: '0'

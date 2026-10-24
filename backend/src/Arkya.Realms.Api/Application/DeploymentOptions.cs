@@ -82,6 +82,7 @@ public sealed class DeploymentProfile
     public string? EnvironmentSecretName { get; set; }
     public string? ImagePullSecretName { get; set; }
     public string? TopologyTemplateServerId { get; set; }
+    public string? TopologyServerIdPrefix { get; set; }
     public string? TopologyPublicEndpointTemplate { get; set; }
 
     public bool IsValid() => DeploymentOptions.ValidId(Id) && DeploymentOptions.ValidName(DisplayName) &&

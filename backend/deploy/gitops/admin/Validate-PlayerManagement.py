@@ -259,8 +259,7 @@ def without_native_nova_component(documents):
     configs = native.expected_configs()
     for app, wanted in configs.items():
         data = actual[("ConfigMap", NS, f"arkya-{app}-config")]["data"]
-        prefix = "Gateway__RealmGamePartitions__" if app == "gateway" else "Deployment__Profiles__1__"
-        require({key: value for key, value in data.items() if key.startswith(prefix)} == wanted,
+        require({key: value for key, value in data.items() if key.startswith(native.CONFIG_PREFIXES[app])} == wanted,
                 "Admin native Nova resources must match the exact validated component")
     normalized = []
     for document in deepcopy(documents):

@@ -78,6 +78,7 @@ public static class RealmEndpoints
         "deletion_unavailable" => "Deletion or another deployment operation is already in progress. Reload the realm.",
         "deletion_disabled" => "Enable deployment cleanup before deleting a deployed realm.",
         "no_approved_update" => "No compatible image release is approved for this realm.",
+        "runtime_migration_unavailable" => "The approved runtime migration does not match the current realm configuration. Check the GitOps approval.",
         "approved_image_changed" => "The approved image has changed. Reload the realm before updating.",
         "operation_in_progress" or "operation_unavailable" => "This operation is unavailable while the realm is deploying or its configuration has changed.",
         "invalid_realm" => "Realm ID must contain 3 to 31 lowercase letters, digits or hyphens; display name must contain 1 to 80 characters.",

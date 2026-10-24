@@ -35,7 +35,10 @@ public sealed record RealmSummary(string RealmId, string DisplayName, string Tar
 }
 public sealed record RealmOperation(string Kind, long Revision, string RequestedBy, string Reason,
     DateTimeOffset RequestedAt, DateTimeOffset? CompletedAt, string Status, string? Error, string PreviousImage, string Image);
-public sealed record RealmOperationsOptions(bool CanRestart, bool CanUpdate, string? UpdateImage, long? UpdateVersion, string? UnavailableReason);
+public sealed record RealmOperationsOptions(bool CanRestart, bool CanUpdate, string? UpdateImage, long? UpdateVersion, string? UnavailableReason,
+    string? UpdateKind = null, int? CurrentProtocolVersion = null, string? CurrentBuildId = null,
+    int? TargetProtocolVersion = null, string? TargetBuildId = null, string? TargetGameVersion = null,
+    string? TargetSourceRevision = null, string? TargetSourceRunId = null);
 public sealed record RealmCommandServer(string ServerId, DateTimeOffset? LastSeenAt, bool Available, string[] SupportedCommands,
     int ConfigurationVersion = 0, long? AppliedConfigurationRevision = null);
 public sealed record RealmServerVersion(string ServerId, DateTimeOffset? LastSeenAt, bool Available,
@@ -174,6 +177,20 @@ public static class RealmPresentation
         ? UnityRepositoryUrl + "/commit/" + revision : null;
     public static string? SourceRunUrl(string? runId) => runId is { Length: > 0 and <= 24 } && runId.All(char.IsAsciiDigit) && runId.Any(character => character != '0')
         ? UnityRepositoryUrl + "/actions/runs/" + runId : null;
+    public static string OperationLabel(string kind) => kind switch
+    {
+        "Update" => "Update", "RuntimeMigration" => "Runtime migration", "Delete" => "Deletion", _ => "Restart"
+    };
+    public static string UpdateUnavailableMessage(string? reason) => reason switch
+    {
+        "deployment_disabled" => "Deployment is disabled on this installation. Enable deployment before installing an approved release.",
+        "target_unavailable" => "The deployment target is no longer configured. Restore this target in the Realms service.",
+        "topology_runtime_unsupported" => "The current profile does not support this realm's runtime. Check the approved profile before updating.",
+        "operation_in_progress" => "Updates are unavailable in the current state. Refresh after the current operation finishes.",
+        "runtime_migration_unavailable" => "The approved runtime migration does not match the current realm configuration. Refresh or check the GitOps approval.",
+        "no_approved_update" => "No approved image update or runtime migration matches this realm. A successful build must also be approved in GitOps before installation.",
+        _ => "Update is unavailable. Refresh and check this realm's state and approved release configuration."
+    };
     public static string CommandLabel(string type) => type switch
     {
         "announce" => "In-game announcement", "kick" => "Disconnect a character", "save" => "Save players", _ => "Command"

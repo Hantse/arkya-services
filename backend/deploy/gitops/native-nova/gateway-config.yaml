@@ -16,3 +16,15 @@ data:
   Gateway__RealmGamePartitions__3__RealmId: nova
   Gateway__RealmGamePartitions__3__ServerId: island-starter-island-04
   Gateway__RealmGamePartitions__3__Address: http://arkya-nova-partition-04.arkya-beta-realm.svc.cluster.local:17943/
+  Gateway__RealmGamePartitions__4__RealmId: nova
+  Gateway__RealmGamePartitions__4__ServerId: v5-starter-island-01
+  Gateway__RealmGamePartitions__4__Address: http://arkya-nova-v5-partition-01.arkya-beta-realm.svc.cluster.local:17943/
+  Gateway__RealmGamePartitions__5__RealmId: nova
+  Gateway__RealmGamePartitions__5__ServerId: v5-starter-island-02
+  Gateway__RealmGamePartitions__5__Address: http://arkya-nova-v5-partition-02.arkya-beta-realm.svc.cluster.local:17943/
+  Gateway__RealmGamePartitions__6__RealmId: nova
+  Gateway__RealmGamePartitions__6__ServerId: v5-starter-island-03
+  Gateway__RealmGamePartitions__6__Address: http://arkya-nova-v5-partition-03.arkya-beta-realm.svc.cluster.local:17943/
+  Gateway__RealmGamePartitions__7__RealmId: nova
+  Gateway__RealmGamePartitions__7__ServerId: v5-starter-island-04
+  Gateway__RealmGamePartitions__7__Address: http://arkya-nova-v5-partition-04.arkya-beta-realm.svc.cluster.local:17943/

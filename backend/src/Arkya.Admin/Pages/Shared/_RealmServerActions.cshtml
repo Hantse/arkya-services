@@ -6,6 +6,8 @@
     @if (Model.OperationsError is not null) { <div class="alert error" role="alert">@Model.OperationsError</div> }
     @if (Model.OperationsOptions is { } operations)
     {
+        var approvedCommitUrl = RealmPresentation.SourceCommitUrl(operations.TargetSourceRevision);
+        var approvedRunUrl = RealmPresentation.SourceRunUrl(operations.TargetSourceRunId);
         <div class="action-grid">
             <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "restart")"><summary><strong>Restart realm</strong><small>Restart servers with the current image.</small></summary>
             <form method="post" asp-page="/Realm" asp-page-handler="Restart" asp-route-realmId="@realm.RealmId" class="realm-form">
@@ -17,16 +19,31 @@
                 @if (!operations.CanRestart) { <small>Restart is unavailable in the current state. Refresh after current operations finish.</small> }
             </form>
             </details>
-            <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "update")"><summary><strong>Update realm</strong><small>Install the approved version.</small></summary>
+            <details class="panel realm-action-disclosure" name="realm-actions" open="@(Model.ActiveAction == "update")"><summary><strong>Update realm</strong><small>@(operations.TargetGameVersion is { Length: > 0 } gameVersion ? "Install approved version " + gameVersion + "." : "Install the approved version.")</small></summary>
             <form method="post" asp-page="/Realm" asp-page-handler="Update" asp-route-realmId="@realm.RealmId" class="realm-form">
-                <p class="muted">Install the approved version for this realm and restart its servers.</p>
-                @if (operations.UpdateImage is not null) { <dl class="realm-facts"><div><dt>Approved version @operations.UpdateVersion</dt><dd class="mono">@operations.UpdateImage</dd></div></dl> }
-                else { <p class="muted">No new approved version is available.</p> }
+                <p class="muted">@(operations.UpdateKind == "RuntimeMigration" ? "Migrate this realm to the approved runtime and restart its servers. Clients must use a compatible build." : "Install the approved version for this realm and restart its servers.")</p>
+                @if (operations.UpdateImage is not null)
+                {
+                    <dl class="realm-facts">
+                        @if (!string.IsNullOrEmpty(operations.TargetGameVersion)) { <div><dt>Approved game version</dt><dd class="mono">@operations.TargetGameVersion</dd></div> }
+                        <div><dt>@(operations.UpdateKind == "RuntimeMigration" ? "Runtime migration" : "Image update")</dt><dd>Approved release @operations.UpdateVersion</dd></div>
+                        @if (operations.CurrentProtocolVersion is not null || operations.CurrentBuildId is not null) { <div><dt>Current runtime</dt><dd>Protocol @(operations.CurrentProtocolVersion?.ToString() ?? "unknown")@if (operations.CurrentBuildId is not null) { <span class="mono"> · @operations.CurrentBuildId</span> }</dd></div> }
+                        @if (operations.TargetProtocolVersion is not null || operations.TargetBuildId is not null) { <div><dt>Target runtime</dt><dd>Protocol @(operations.TargetProtocolVersion?.ToString() ?? "unknown")@if (operations.TargetBuildId is not null) { <span class="mono"> · @operations.TargetBuildId</span> }</dd></div> }
+                        @if (approvedCommitUrl is not null || approvedRunUrl is not null) { <div><dt>Approved source</dt><dd>@if (approvedCommitUrl is not null) { <a class="mono" href="@approvedCommitUrl">@(operations.TargetSourceRevision![..12])</a> }@if (approvedRunUrl is not null) { <small><a href="@approvedRunUrl">Build run #@operations.TargetSourceRunId</a></small> }</dd></div> }
+                        <div><dt>Approved image</dt><dd class="mono">@operations.UpdateImage</dd></div>
+                    </dl>
+                    @if (string.IsNullOrEmpty(operations.TargetGameVersion)) { <p class="muted">Game version metadata is not available for this approved release.</p> }
+                }
+                else
+                {
+                    <p class="muted">No new approved version is available.</p>
+                    @if (operations.CurrentProtocolVersion is not null || operations.CurrentBuildId is not null) { <p class="muted">Current runtime: protocol @(operations.CurrentProtocolVersion?.ToString() ?? "unknown")@if (operations.CurrentBuildId is not null) { <span class="mono"> · @operations.CurrentBuildId</span> }</p> }
+                }
+                @if (!operations.CanUpdate) { <p class="muted" role="status">@RealmPresentation.UpdateUnavailableMessage(operations.UnavailableReason)</p> }
                 <input type="hidden" name="ExpectedRevision" value="@Model.ExpectedRevision" /><input type="hidden" name="ExpectedImage" value="@operations.UpdateImage" />
                 <div class="field"><label for="update-reason">Update reason</label><input id="update-reason" name="Reason" value="@Model.Reason" maxlength="500" required /></div>
                 <div class="field"><label for="update-confirm">Enter @realm.RealmId to confirm</label><input id="update-confirm" name="ConfirmRealmId" value="@Model.ConfirmRealmId" autocomplete="off" required /></div>
                 <button class="button primary" type="submit" disabled="@(!operations.CanUpdate)">Install approved version</button>
-                @if (!operations.CanUpdate && operations.UpdateImage is not null) { <small>Update is unavailable in the current state. Refresh after current operations finish.</small> }
             </form>
             </details>
         </div>

@@ -47,7 +47,8 @@ public sealed class GameEntryService(IRealmRepository realms, IOptions<GameEntry
         var entries = configured.Value.StandaloneEntries.Select(value => new GameRealmEntry(value.RealmId,
             value.DisplayName, value.Enabled, value.ServerId, value.Endpoint, value.ProtocolVersion, value.BuildId)
             { TopologyVersion = value.TopologyVersion, Partitions = value.Partitions, Areas = value.Areas, AreaTransitions = value.AreaTransitions }).ToList();
-        foreach (var realm in await realms.ListAsync(cancellationToken))
+        var realmRecords = await realms.ListAsync(cancellationToken);
+        foreach (var realm in realmRecords)
         {
             // A deployed realm must never be silently overridden by standalone configuration.
             entries.RemoveAll(value => value.RealmId == realm.RealmId);
@@ -80,6 +81,13 @@ public sealed class GameEntryService(IRealmRepository realms, IOptions<GameEntry
             if (server is not null) entries.Add(new(realm.RealmId, realm.DisplayName, realm.Status == RealmStatus.Ready,
                 server.Id, server.PublicEndpoint!, server.ProtocolVersion, server.BuildId));
         }
-        return new(entries.OrderBy(value => value.RealmId).ToArray());
+        var retiring = new List<RetiringGameServer>();
+        foreach (var realm in realmRecords)
+        {
+            if (RealmStatus.IsDeleting(realm.Status) || realm.RuntimeRelease is not { Completed: false } transition ||
+                !entries.Any(entry => entry.RealmId == realm.RealmId && !entry.Ready)) continue;
+            retiring.AddRange(transition.PreviousProfile.Servers.Select(server => new RetiringGameServer(realm.RealmId, server.Id)));
+        }
+        return new(entries.OrderBy(value => value.RealmId).ToArray()) { RetiringServers = retiring.Count == 0 ? null : retiring.ToArray() };
     }
 }

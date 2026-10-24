@@ -60,7 +60,7 @@ public sealed class DedicatedKeyValidator(IOptions<CharacterGameAccessOptions> o
             CryptographicOperations.FixedTimeEquals(hash, SHA256.HashData(Encoding.UTF8.GetBytes(value.Key))));
     }
 
-    public async Task<DedicatedServerIdentity?> ResolveAsync(string? key, CancellationToken cancellationToken)
+    public async Task<DedicatedServerIdentity?> ResolveAsync(string? key, CancellationToken cancellationToken, bool allowRetiring = false)
     {
         if (!runtimeOptions.DynamicRealmsEnabled) return Resolve(key);
         if (!runtimeOptions.IsValid() || key is not { Length: >= 32 and <= 512 }) return null;
@@ -70,7 +70,8 @@ public sealed class DedicatedKeyValidator(IOptions<CharacterGameAccessOptions> o
             !GameProtocol.ValidId(value.RealmId) || !GameProtocol.ValidId(value.ServerId) ||
             !GameProtocol.ValidEndpoint(value.Endpoint, true) ||
             !GameTopology.IsValid(value, true)) ||
-            catalog.Realms.Select(value => value.RealmId).Distinct(StringComparer.Ordinal).Count() != catalog.Realms.Length)
+            catalog.Realms.Select(value => value.RealmId).Distinct(StringComparer.Ordinal).Count() != catalog.Realms.Length ||
+            !RetiringGameServers.IsValid(catalog))
             throw new HttpRequestException("Realm catalogue response is invalid.");
         var hash = SHA256.HashData(Encoding.UTF8.GetBytes(key));
         foreach (var realm in catalog.Realms.Where(value => GameProtocol.IsSupported(value.ProtocolVersion, value.BuildId)))
@@ -80,6 +81,13 @@ public sealed class DedicatedKeyValidator(IOptions<CharacterGameAccessOptions> o
             var expected = RealmRuntimeKeys.DeriveDedicatedKey(runtimeOptions.DedicatedKeySeed, realm.RealmId, serverId);
             if (CryptographicOperations.FixedTimeEquals(hash, SHA256.HashData(Encoding.UTF8.GetBytes(expected))))
                 return new() { RealmId = realm.RealmId, ServerId = serverId, Key = expected };
+        }
+        if (allowRetiring)
+        foreach (var server in catalog.RetiringServers ?? [])
+        {
+            var expected = RealmRuntimeKeys.DeriveDedicatedKey(runtimeOptions.DedicatedKeySeed, server.RealmId, server.ServerId);
+            if (CryptographicOperations.FixedTimeEquals(hash, SHA256.HashData(Encoding.UTF8.GetBytes(expected))))
+                return new() { RealmId = server.RealmId, ServerId = server.ServerId, Key = expected };
         }
         return null;
     }

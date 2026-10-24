@@ -54,12 +54,6 @@ public sealed class RealmCommandService(IRealmRepository realms, IRealmCommandRe
     private static bool ValidUuid(string? value) => Guid.TryParseExact(value, "D", out var id) && id != Guid.Empty && value == id.ToString("D");
     private static bool Active(RealmCommandServer state, DateTimeOffset now) =>
         state.LastSeenAt <= now && now - state.LastSeenAt <= TimeSpan.FromSeconds(30);
-    private static bool ValidGameVersion(string? value) => string.IsNullOrEmpty(value) || value.Length <= 64 &&
-        value.All(character => char.IsAsciiLetterOrDigit(character) || character is '.' or '-' or '+' or '_');
-    private static bool ValidSourceRevision(string? value) => string.IsNullOrEmpty(value) || value.Length is 40 or 64 &&
-        value.All(character => char.IsAsciiHexDigit(character));
-    private static bool ValidSourceRunId(string? value) => string.IsNullOrEmpty(value) || value.Length <= 24 &&
-        value.All(char.IsAsciiDigit);
 
     public async Task<bool> AuthorizeAsync(string realmId, string serverId, string? key, CancellationToken ct)
     {
@@ -157,8 +151,7 @@ public sealed class RealmCommandService(IRealmRepository realms, IRealmCommandRe
             request.SupportedCommands.Any(type => !SupportedTypes.Contains(type)) ||
             request.ConfigurationVersion is < 0 or > 1 || request.AppliedConfigurationRevision is < -1 ||
             request.ConfigurationVersion == 0 && request.AppliedConfigurationRevision is not null ||
-            !ValidGameVersion(request.GameVersion) || !ValidSourceRevision(request.SourceRevision) ||
-            !ValidSourceRunId(request.SourceRunId)) return new(null, "invalid_poll");
+            !RealmBuildMetadata.Valid(request.GameVersion, request.SourceRevision, request.SourceRunId)) return new(null, "invalid_poll");
         var realm = await realms.FindAsync(realmId, ct);
         if (realm is null || RealmStatus.IsDeleting(realm.Status) || !realm.Profile.Servers.Any(server => server.Id == serverId)) return new(null, "realm_not_found");
         var configuration = RealmConfigurationSnapshot.From(realm.RuntimeConfiguration);

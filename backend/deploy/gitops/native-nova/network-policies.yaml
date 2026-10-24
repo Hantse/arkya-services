@@ -13,8 +13,17 @@ spec:
     matchExpressions:
     - key: arkya.online/server-id
       operator: In
-      values: [island-starter-island-01, island-starter-island-02, island-starter-island-03, island-starter-island-04]
-  policyTypes: [Ingress]
+      values:
+      - island-starter-island-01
+      - island-starter-island-02
+      - island-starter-island-03
+      - island-starter-island-04
+      - v5-starter-island-01
+      - v5-starter-island-02
+      - v5-starter-island-03
+      - v5-starter-island-04
+  policyTypes:
+  - Ingress
   ingress:
   - from:
     - namespaceSelector:
@@ -38,7 +47,8 @@ spec:
   podSelector:
     matchLabels:
       app.kubernetes.io/name: arkya-characters
-  policyTypes: [Ingress]
+  policyTypes:
+  - Ingress
   ingress:
   - from:
     - namespaceSelector:
@@ -51,7 +61,15 @@ spec:
         matchExpressions:
         - key: arkya.online/server-id
           operator: In
-          values: [island-starter-island-01, island-starter-island-02, island-starter-island-03, island-starter-island-04]
+          values:
+          - island-starter-island-01
+          - island-starter-island-02
+          - island-starter-island-03
+          - island-starter-island-04
+          - v5-starter-island-01
+          - v5-starter-island-02
+          - v5-starter-island-03
+          - v5-starter-island-04
     ports:
     - port: 8080
       protocol: TCP
@@ -67,7 +85,8 @@ spec:
   podSelector:
     matchLabels:
       app.kubernetes.io/name: arkya-realms
-  policyTypes: [Ingress]
+  policyTypes:
+  - Ingress
   ingress:
   - from:
     - namespaceSelector:
@@ -80,7 +99,15 @@ spec:
         matchExpressions:
         - key: arkya.online/server-id
           operator: In
-          values: [island-starter-island-01, island-starter-island-02, island-starter-island-03, island-starter-island-04]
+          values:
+          - island-starter-island-01
+          - island-starter-island-02
+          - island-starter-island-03
+          - island-starter-island-04
+          - v5-starter-island-01
+          - v5-starter-island-02
+          - v5-starter-island-03
+          - v5-starter-island-04
     ports:
     - port: 8080
       protocol: TCP

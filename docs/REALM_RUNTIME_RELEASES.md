@@ -8,7 +8,8 @@ realms en brouillon et les publications d'images gardent leurs contrôles.
 
 Chaque entrée approuvée indique `RealmId`, `ProfileId`, `Version`,
 `PreviousProfileSha256` et une `Topology` complète. `Automatic` vaut `false`
-par défaut. L'empreinte SHA-256 du profil courant est lisible dans la console
+par défaut : une release valide est alors proposée dans **Maintenance → Update
+realm → Install approved version**. L'empreinte SHA-256 du profil courant est lisible dans la console
 opérateur et le contrat admin Realms ; elle inclut image, arguments, ports,
 secrets référencés, protocole et découpage. Aucun secret n'est inclus.
 
@@ -19,6 +20,15 @@ de secrets restent identiques. Le service enregistre d'abord la transition
 par comparaison de version et retire ainsi l'admission avant de toucher au
 cluster. Le document MongoDB passe au schéma 3, avec snapshot précédent et
 historique opérateur `RuntimeMigration`.
+
+Le profil cible peut définir `TopologyServerIdPrefix` pour attribuer de nouveaux
+identifiants aux processus, sans renommer les Areas ni leurs partitions. Le
+préfixe absent conserve les identifiants et empreintes des profils historiques.
+La requête manuelle porte la révision et l'image approuvée affichées, l'opérateur
+et un motif ; l'admin demande aussi de recopier l'identifiant du realm. Les
+rejeux ne démarrent pas une seconde migration. Les métadonnées approuvées
+`GameVersion`, `SourceRevision` et `SourceRunId` permettent de vérifier la
+version et la provenance ; elles ne remplacent pas les gardes de migration.
 
 Le déployeur vérifie l'appartenance, l'image, les arguments et les versions
 des anciens Deployments, les réduit à zéro par JSON Patch conditionnel et
@@ -32,6 +42,15 @@ remplacé uniquement si son contenu est exactement l'ancien jeu de clés
 dérivées attendu, avec contrôle de `resourceVersion`. Le droit Kubernetes
 `patch` porte uniquement sur ce Secret nommé. Les pertes de réponse et les
 reprises réutilisent la transition persistée ; une dérive bloque la migration.
+
+Pendant l'arrêt, le catalogue interne publie séparément les identités des anciens
+serveurs dans `retiringServers`. Characters les accepte exclusivement pour le
+renouvellement, la sauvegarde et la libération d'une lease déjà possédée. Elles
+ne peuvent plus consommer d'admission, lire la topologie ni démarrer un transfert.
+Le realm reste absent des admissions prêtes. Les identités sont révoquées à la
+fin de la migration ou dès une suppression ; elles ne sont pas exposées dans le
+catalogue joueur. Les contrôles existants de lease, époque, session et révision
+de sauvegarde continuent de s'appliquer.
 
 L'entrée doit rester approuvée pendant toute la transition. Le realm redevient
 `Ready` lorsque chaque serveur attendu expose le nouveau digest. La transition
@@ -55,6 +74,26 @@ realm, déplacement de personnage ou contournement de protocole n'est requis.
    utilisant l'ancien protocole ; leur mise à jour est nécessaire.
 5. Publier le nouveau manifeste de téléchargement seulement après ces
    vérifications. Tester ensuite l'admission avec le client distribué.
+
+Pour une intervention manuelle, conserver `Automatic=false` et lancer l'action
+dans l'admin après le rollout des API Characters/Realms, de l'Admin et des routes.
+La préparation GitOps ne redémarre pas le realm. L'admin affiche la version du
+jeu ainsi que les protocoles courant et cible avant la confirmation.
+
+## Nova : version 0.1.49
+
+Le composant actif `native-nova` prépare la release issue de la CI Unity 49 :
+protocole `5 / arkya-town-npcs-v1`, quatre processus `v5-starter-island-01..04`
+et la même Area de 1 536 × 1 536, découpée en grille 2 × 2. L'empreinte source
+`c652962aa8072e2680ed4406fbcc3b3a6b373743560aa89ff50ef558f4ac1781` a été relue
+dans la fiche Nova en ligne avant préparation. Les anciens profil, endpoints et
+Services sont conservés. La release reste manuelle et exige un client compatible.
+Voir les [manifests et leur vérification](../backend/deploy/gitops/native-nova/README.md).
+
+Le feed Bêta public du launcher pointait encore vers le client de protocole 3
+lors de cette préparation. Prévoir le client 0.1.49 vérifié avant de lancer la
+maintenance ; la préparation de cette migration ne bascule pas ce feed. Le
+retour à `Ready` du realm ne prouve pas l'admission du client distribué.
 
 Le composant `backend/deploy/gitops/partition-handoff` prépare cette transition
 pour StarterIsland (1 536 × 1 536, quatre partitions de 768 × 768). Il reste

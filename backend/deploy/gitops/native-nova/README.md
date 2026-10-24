@@ -1,66 +1,70 @@
-# Nova natif : configuration de quatre partitions
+# Nova natif : migration manuelle vers 0.1.49
 
-Ce composant prépare le profil `nova-native` et le transport WSS du realm
-`nova` dans la cible existante `beta-web` (`arkya-beta-realm`). Il utilise
-uniquement le serveur natif `3 / arkya-multi-area-v1`, publié depuis
-`cf850219963432742a91938f47a60223be912a90` par la CI Unity `39992052485`,
-avec le digest immuable épinglé dans `realms-config.yaml`.
+Le composant conserve le profil déployé `nova-native`, sa paire réseau
+`3 / arkya-multi-area-v1` et son image `cbb0cb0…`. Il prépare séparément le
+profil `nova-native-v5` pour le client Windows et le dedicated **0.1.49** :
 
-Le périmètre provisionné est **Starter Island, quatre partitions** :
-`island-starter-island-01` à `island-starter-island-04`. Le plan Nova observé
-est `starter-island`, contenu `starter-island`, dimensions 1536 × 1536,
-origine X/Z 0/0 et grille 2 × 2, avec zéro instance et zéro raid. Aucun portail
-vers un autre contenu n'est provisionné ici. Un autre nombre de partitions,
-une autre Area ou un autre realm exige ses propres routes, Services et règles
-réseau avant déploiement. Le modèle d'endpoint générique ne les crée pas.
+- Source : `22bc5eeabce7dfadaba55a42e4b4e9cf40fd8460`.
+- [CI Unity vérifiée](https://github.com/Hantse/arkya-mmorpg/actions/runs/40095092545) : run `40095092545`.
+- Paire réseau : `5 / arkya-town-npcs-v1`.
+- Image : `ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:241b6d9eca943b6701c52aa99e76746e6fa3c5c7886e4a03e0c1067ea5ee9693`.
 
-Les quatre chemins `/game/nova/{serverId}/` de la gateway existante rejoignent
-quatre Services privés sur TCP 17943. Leurs sélecteurs lient exactement le
-realm et le serveur. Les trois NetworkPolicies autorisent seulement la gateway
-vers ces listeners, puis ces dedicateds vers Characters et Realms sur TCP 8080.
-Le TLS public et le LoadBalancer existants sont réutilisés.
+La CI a construit Windows et Linux depuis ce même commit, vérifié leurs
+identités, publié le conteneur après son contrôle de démarrage/arrêt et promu
+l'inventaire natif. Ses tests Unity EditMode/PlayMode restent suspendus ; la
+réussite de cette livraison ne remplace pas un parcours client/serveur réel.
 
-Le profil historique `beta-web`, ses intentions de release et le client WebGL
-restent inchangés. Le composant historique `partition-handoff` reste séparé et
-inactif : les deux composants réservent le même index de profil et les mêmes
-indices de routes ; leur activation simultanée est refusée par la validation.
+## Plan et ressources conservés
 
-Ce composant ne possède **aucun Deployment dédié, Secret, RuntimeRelease,
-ImageRelease, namespace ou RBAC**. Il n'active aucun realm. Characters garde
-ses identités dynamiques fondées sur le catalogue privé et la graine existante,
-commune avec Realms. Les Secrets dédiés et les workloads seront provisionnés
-par Realms seulement lors d'une demande de déploiement autorisée. Les
-ConfigMaps générés changent de nom avec leur contenu, ce qui actualise les
-références des pods Gateway et Realms sans annotation de rollout supplémentaire.
+La topologie reste exactement celle du snapshot Nova : Area `starter-island`,
+contenu implicite `starter-island` (`ContentId` absent), 1536 × 1536, origine
+X/Z 0/0, grille 2 × 2, quatre dedicateds, zéro instance et zéro raid. Aucun
+portail n'est ajouté.
 
-## Adoption et action opérateur distincte
+Les quatre anciens serveurs `island-starter-island-01` à `04`, leurs Services
+et leurs routes restent configurés. Le nouveau profil utilise
+`TopologyServerIdPrefix=v5`, ce qui produit les identifiants disjoints
+`v5-starter-island-01` à `04`. Quatre nouveaux Services privés
+`arkya-nova-v5-partition-01` à `04` et quatre routes gateway WSS les desservent.
 
-Ajouter `../native-nova` à `components` dans `../admin/kustomization.yaml`,
-valider les manifests, puis publier les YAML par le flux GitOps habituel.
-La synchronisation expose le profil dans Admin mais conserve le snapshot
-historique de tout realm déjà enregistré.
+Les trois NetworkPolicies gardent des sélecteurs finis pour ces huit IDs,
+uniquement dans le realm `nova` : gateway vers TCP 17943, puis dedicateds vers
+Characters et Realms sur TCP 8080. Le TLS public, les namespaces et les
+références de secrets existants sont réutilisés. Aucun Deployment dédié,
+Secret ou RBAC n'est ajouté. Le profil historique `beta-web`, ses releases et
+le client WebGL restent inchangés. Le composant `partition-handoff` ne peut
+pas être activé simultanément car il réserve les mêmes indices.
 
-Pour Nova encore **Draft**, réenregistrer explicitement le plan existant avec
-le profil `nova-native` et sa révision attendue courante. Cette action fige le
-nouveau snapshot compatible ; elle ne demande pas le déploiement. Relire le
-plan, les quatre serveurs et la compatibilité, puis utiliser **Deploy** comme
-action séparée et autorisée. Ne pas recréer le realm ni migrer automatiquement
-les personnages. Le namespace cible reste exclusif à un seul realm actif.
+## Préparation puis demande opérateur
 
-Un déploiement ultérieur nécessite encore le téléchargement de l'image,
-la readiness réelle des quatre dedicateds et les contrôles publics d'admission,
-de handoff et de persistance. Une validation YAML ne démontre aucun de ces
-parcours réseau.
+`Deployment__RuntimeReleases__0__Automatic` reste **`false`**. La synchronisation
+GitOps prépare le profil, les routes et l'intention ; elle ne remplace aucun
+serveur du realm. La migration de runtime version `1` épingle l'empreinte
+exacte du profil Nova, confirmée dans l'admin authentifié le 24 octobre 2026 :
 
-## Vérification hors ligne
-
-Depuis la racine du dépôt services, avant adoption :
-
-```powershell
-python backend/deploy/gitops/native-nova/Validate-Manifests.py
+```text
+c652962aa8072e2680ed4406fbcc3b3a6b373743560aa89ff50ef558f4ac1781
 ```
 
-Après ajout du composant :
+Le service doit comparer cette empreinte au snapshot vivant avant d'accepter
+une demande. Une définition modifiée depuis ce relevé rend l'intention
+inapplicable ; ne pas remplacer l'empreinte par une valeur approximative.
+
+Après déploiement des API et de l'Admin compatibles, l'opérateur peut demander
+la migration approuvée depuis **Update realm**, avec confirmation du realm,
+motif et révision attendue. L'opération arrête les anciens serveurs avant de
+créer les nouveaux, déconnecte les joueurs et exige le client Windows 0.1.49.
+Suivre ensuite les quatre réplicas prêts, leurs heartbeats versionnés et les
+parcours réels d'admission, handoff et persistance.
+
+Pour préparer une livraison ultérieure, vérifier d'abord l'inventaire CI et
+ses preuves Windows/dedicated. Une mise à jour conservant la paire réseau
+utilise une `ImageRelease` manuelle avec digest précédent exact et version
+strictement croissante. Un nouveau protocole nécessite un autre profil,
+une empreinte vivante et des IDs/Services/routes disjoints. Le préfixe `v5`
+ne doit pas être recyclé pour une seconde migration de runtime.
+
+## Vérification hors ligne
 
 ```powershell
 python backend/deploy/gitops/native-nova/Validate-Manifests.py --adopted
@@ -69,7 +73,8 @@ python -m unittest discover -s scripts/ci -p test_native_nova_manifests.py -v
 python -m unittest discover -s scripts/ci -p test_partition_handoff_manifests.py -v
 ```
 
-Ces contrôles utilisent seulement `kubectl kustomize` et des copies temporaires.
-Le validateur exige le delta complet exact, puis applique les gardes existantes
-au rendu historique normalisé. Une route, policy, identité, paire réseau ou
-release supplémentaire est refusée ; aucune garde historique n'est désactivée.
+Ces contrôles rendent des copies temporaires avec `kubectl kustomize`. Ils
+exigent le delta exact : huit Services privés, huit routes, trois policies,
+les deux profils et une seule intention manuelle avec sa topologie,
+son empreinte et son identité CI. Ils n'activent aucune migration et ne
+démontrent ni la synchronisation Argo ni la readiness des dedicateds réels.

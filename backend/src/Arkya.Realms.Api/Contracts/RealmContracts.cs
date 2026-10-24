@@ -10,7 +10,10 @@ public sealed record RestartRealmRequest(long ExpectedRevision, string Reason);
 public sealed record UpdateRealmRequest(long ExpectedRevision, string Reason, string ExpectedImage);
 public sealed record DeleteRealmRequest(long ExpectedRevision, string Reason, string ConfirmRealmId);
 public sealed record RealmOperationsOptions(bool CanRestart, bool CanUpdate, string? UpdateImage,
-    long? UpdateVersion, string? UnavailableReason);
+    long? UpdateVersion, string? UnavailableReason, string? UpdateKind = null,
+    int? CurrentProtocolVersion = null, string? CurrentBuildId = null,
+    int? TargetProtocolVersion = null, string? TargetBuildId = null,
+    string? TargetGameVersion = null, string? TargetSourceRevision = null, string? TargetSourceRunId = null);
 public sealed record RealmServerSummary(string Id, int Port, int ReadyReplicas, int DesiredReplicas, string? Address,
     string Transport = "Udp", string? PublicEndpoint = null)
 {

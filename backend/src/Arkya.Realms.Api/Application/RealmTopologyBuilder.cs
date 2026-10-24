@@ -24,7 +24,9 @@ public static class RealmTopologyBuilder
 
     public static bool ValidTemplate(DeploymentProfile profile)
     {
-        if (profile.TopologyTemplateServerId is null) return profile.TopologyPublicEndpointTemplate is null;
+        if (profile.TopologyServerIdPrefix is { } prefix &&
+            !System.Text.RegularExpressions.Regex.IsMatch(prefix, @"\A[a-z](?:[a-z0-9-]{0,4}[a-z0-9])?\z", System.Text.RegularExpressions.RegexOptions.CultureInvariant)) return false;
+        if (profile.TopologyTemplateServerId is null) return profile.TopologyPublicEndpointTemplate is null && profile.TopologyServerIdPrefix is null;
         if (!DeploymentOptions.ValidId(profile.TopologyTemplateServerId)) return false;
         var template = profile.Servers.SingleOrDefault(server => server.Id == profile.TopologyTemplateServerId);
         return template is not null && (template.Transport == "Udp" ? profile.TopologyPublicEndpointTemplate is null :
@@ -55,7 +57,7 @@ public static class RealmTopologyBuilder
         {
             var bounds = IslandPartitioning.Create(island);
             for (var index = 0; index < island.DedicatedCount; index++)
-                servers.Add(Server($"island-{island.IslandId}-{Slot(index)}", DedicatedKind.Island,
+                servers.Add(Server($"{profile.TopologyServerIdPrefix ?? "island"}-{island.IslandId}-{Slot(index)}", DedicatedKind.Island,
                     island.IslandId, index, island.DedicatedCount) with { Bounds = bounds[index] });
         }
         for (var index = 0; index < frozen.InstanceDedicatedCount; index++)

@@ -28,7 +28,7 @@
 <details class="panel realm-advanced"><summary>Deployment details <span class="muted">Revision @realm.Revision · coordinates</span></summary><div class="realm-advanced-body"><dl class="realm-facts"><div><dt>Namespace</dt><dd class="mono">@realm.Namespace</dd></div></dl><p class="muted">The displayed availability concerns cluster resources. Also verify player admission and entry into the game with an actual client.</p>
 @if (realm.Operations?.OrderByDescending(operation => operation.RequestedAt).FirstOrDefault() is { } lastOperation)
 {
-    <div class="realm-last-operation"><span>Last operation: <strong>@(lastOperation.Kind == "Update" ? "Update" : "Restart")</strong> · @RealmPresentation.StatusLabel(lastOperation.Status)</span><a asp-page="/Realm" asp-route-realmId="@realm.RealmId" asp-route-section="history">View history →</a></div>
+    <div class="realm-last-operation"><span>Last operation: <strong>@RealmPresentation.OperationLabel(lastOperation.Kind)</strong> · @RealmPresentation.StatusLabel(lastOperation.Status)</span><a asp-page="/Realm" asp-route-realmId="@realm.RealmId" asp-route-section="history">View history →</a></div>
 }
 @if (realm.Topology is not null)
 {

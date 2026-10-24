@@ -27,7 +27,8 @@ public static class GameAdmissionEndpoints
         {
             var values = context.HttpContext.Request.Headers["X-Arkya-Dedicated-Key"];
             var server = values.Count == 1 ? await context.HttpContext.RequestServices.GetRequiredService<DedicatedKeyValidator>()
-                .ResolveAsync(values[0], context.HttpContext.RequestAborted) : null;
+                .ResolveAsync(values[0], context.HttpContext.RequestAborted,
+                    context.HttpContext.GetEndpoint()?.Metadata.GetMetadata<RetiringLeaseAccess>() is not null) : null;
             if (server is null) return Results.Json(new { code = "dedicated_forbidden" }, statusCode: 403);
             context.HttpContext.Items[typeof(DedicatedServerIdentity)] = server;
             return await next(context);
@@ -57,15 +58,19 @@ public static class GameAdmissionEndpoints
             Response(await service.AbortTransferAsync(characterId, transferId, Server(context), request, cancellationToken)));
         internalApi.MapPost("/leases/{characterId:guid}/heartbeat", async (Guid characterId, LeaseRequest request,
             HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
-            Response(await service.HeartbeatAsync(characterId, Server(context), request, cancellationToken)));
+            Response(await service.HeartbeatAsync(characterId, Server(context), request, cancellationToken)))
+            .WithMetadata(new RetiringLeaseAccess());
         internalApi.MapPut("/leases/{characterId:guid}/state", async (Guid characterId, SaveWorldStateRequest request,
             HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
-            Response(await service.SaveAsync(characterId, Server(context), request, cancellationToken)));
+            Response(await service.SaveAsync(characterId, Server(context), request, cancellationToken)))
+            .WithMetadata(new RetiringLeaseAccess());
         internalApi.MapPost("/leases/{characterId:guid}/release", async (Guid characterId, LeaseRequest request,
             HttpContext context, GameAdmissionService service, CancellationToken cancellationToken) =>
             await service.ReleaseAsync(characterId, Server(context), request, cancellationToken)
-                ? Results.NoContent() : Results.Json(new { code = "lease_rejected" }, statusCode: 409));
+                ? Results.NoContent() : Results.Json(new { code = "lease_rejected" }, statusCode: 409))
+            .WithMetadata(new RetiringLeaseAccess());
     }
     private static DedicatedServerIdentity Server(HttpContext context) => (DedicatedServerIdentity)context.Items[typeof(DedicatedServerIdentity)]!;
+    private sealed class RetiringLeaseAccess { }
     private static IResult Response<T>(GameResult<T> result) => result.Error is null ? Results.Ok(result.Value) : Results.Json(new { code = result.Error }, statusCode: result.Status);
 }

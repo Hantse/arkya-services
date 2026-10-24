@@ -113,6 +113,12 @@ contenu Unity ni de passage entre cartes.
 
 ## Redémarrage et mise à jour
 
+Le bouton **Install approved version** accepte aussi une [migration de runtime
+approuvée](REALM_RUNTIME_RELEASES.md), lorsqu'un changement de protocole exige un
+nouveau profil. Il affiche alors **Runtime migration**, la version du jeu et les
+protocoles courant et cible. Une CI réussie doit être raccordée à cette intention
+approuvée ; le digest du profil seul ne rend pas un ancien realm actualisable.
+
 Les [versions communes client/serveur](BUILD_VERSIONS.md) identifient les builds
 publiés ensemble. Les sections **Overview** et **Maintenance** de la fiche
 affichent la dernière version annoncée par chaque dedicated, son commit et son

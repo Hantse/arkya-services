@@ -20,6 +20,7 @@ public sealed class DynamicRealmRuntimeKeyTests
     private sealed class Catalog(params GameRealmEntry[] entries) : IGameRealmCatalog
     {
         public GameRealmEntry[] Entries { get; set; } = entries;
+        public RetiringGameServer[]? RetiringServers { get; set; }
         public bool Unavailable { get; set; }
         public int Calls { get; private set; }
         public Task<GameRealmCatalog> ListAsync(CancellationToken cancellationToken)
@@ -27,7 +28,7 @@ public sealed class DynamicRealmRuntimeKeyTests
             cancellationToken.ThrowIfCancellationRequested();
             Calls++;
             if (Unavailable) throw new HttpRequestException("Realm catalogue is unavailable.");
-            return Task.FromResult(new GameRealmCatalog(Entries));
+            return Task.FromResult(new GameRealmCatalog(Entries) { RetiringServers = RetiringServers });
         }
     }
 
@@ -219,5 +220,70 @@ public sealed class DynamicRealmRuntimeKeyTests
         }), Options.Create(new CharacterRealmRuntimeOptions()), catalog);
         Assert.Equal(RealmId, (await validator.ResolveAsync(key, default))!.RealmId);
         Assert.Equal(0, catalog.Calls);
+    }
+
+    [Fact]
+    public async Task RetiringDedicatedCanSaveAndReleaseItsExistingLeaseButCannotAdmitOrReadTopology()
+    {
+        var catalog = new Catalog(Entry());
+        await using var factory = Factory(catalog);
+        using var client = factory.PlayerClient(null);
+        var oldKey = RealmRuntimeKeys.DeriveDedicatedKey(Seed, RealmId, ServerId);
+        client.DefaultRequestHeaders.Add("X-Arkya-Dedicated-Key", oldKey);
+        using var scope = factory.Services.CreateScope();
+        var characters = scope.ServiceProvider.GetRequiredService<ICharacterRepository>();
+        var character = (await new CharacterService(characters, new FixedTimeProvider())
+            .CreateAsync(IdentityStub.AliceId, "Aelys", default)).Character!;
+        var game = scope.ServiceProvider.GetRequiredService<GameAdmissionService>();
+        var ticket = (await game.IssueAsync(character.Id, IdentityStub.AliceId, FixedTimeProvider.Now.AddHours(1),
+            SessionReference.Create("alice"), new(RealmId, 1, GameProtocol.BuildId), default)).Value!;
+        var consume = await client.PostAsJsonAsync("/internal/game/admissions/consume", new { ticket = ticket.Ticket });
+        consume.EnsureSuccessStatusCode();
+        var lease = (await consume.Content.ReadFromJsonAsync<ConsumedAdmissionResponse>())!;
+
+        catalog.Entries = [Entry(false) with { ServerId = "new-island" }];
+        catalog.RetiringServers = [new(RealmId, ServerId)];
+        var validator = Validator(catalog);
+        Assert.Null(await validator.ResolveAsync(oldKey, default));
+        Assert.Equal(ServerId, (await validator.ResolveAsync(oldKey, default, allowRetiring: true))!.ServerId);
+        var leaseRequest = new LeaseRequest(lease.LeaseId, lease.AuthorityEpoch);
+        var path = $"/internal/game/leases/{character.Id}";
+        Assert.Equal(HttpStatusCode.OK, (await client.PostAsJsonAsync(path + "/heartbeat", leaseRequest)).StatusCode);
+        var save = await client.PutAsJsonAsync(path + "/state", new SaveWorldStateRequest(lease.LeaseId, lease.AuthorityEpoch,
+            0, new(12, 3, 9), new(0, 1)));
+        save.EnsureSuccessStatusCode();
+        Assert.Equal(1, (await save.Content.ReadFromJsonAsync<SavedWorldState>())!.Revision);
+        Assert.Equal(HttpStatusCode.Forbidden,
+            (await client.PostAsJsonAsync("/internal/game/admissions/consume", new { ticket = ticket.Ticket })).StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, (await client.GetAsync("/internal/game/topology")).StatusCode);
+        Assert.Equal(HttpStatusCode.NoContent, (await client.PostAsJsonAsync(path + "/release", leaseRequest)).StatusCode);
+        var playerCatalog = System.Text.Json.JsonSerializer.Serialize(await game.CatalogAsync(default));
+        Assert.DoesNotContain("Retiring", playerCatalog);
+        Assert.DoesNotContain(Seed, playerCatalog);
+
+        catalog.RetiringServers = null;
+        Assert.Equal(HttpStatusCode.Forbidden, (await client.PostAsJsonAsync(path + "/heartbeat", leaseRequest)).StatusCode);
+    }
+
+    [Theory]
+    [InlineData("ready")]
+    [InlineData("current")]
+    [InlineData("missing-realm")]
+    [InlineData("duplicate")]
+    [InlineData("invalid-id")]
+    public async Task InvalidRetiringIdentityCatalogueCannotAuthorizeAnyShutdownRequest(string problem)
+    {
+        var catalog = new Catalog(Entry(false) with { ServerId = "new-island" })
+            { RetiringServers = [new(RealmId, ServerId)] };
+        switch (problem)
+        {
+            case "ready": catalog.Entries = [catalog.Entries[0] with { Ready = true }]; break;
+            case "current": catalog.RetiringServers = [new(RealmId, "new-island")]; break;
+            case "missing-realm": catalog.RetiringServers = [new("foreign-realm", ServerId)]; break;
+            case "duplicate": catalog.RetiringServers = [new(RealmId, ServerId), new(RealmId, ServerId)]; break;
+            case "invalid-id": catalog.RetiringServers = [new(RealmId, "../server")]; break;
+        }
+        await Assert.ThrowsAsync<HttpRequestException>(() => Validator(catalog)
+            .ResolveAsync(RealmRuntimeKeys.DeriveDedicatedKey(Seed, RealmId, ServerId), default, allowRetiring: true));
     }
 }

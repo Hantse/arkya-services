@@ -22,7 +22,8 @@ public sealed class GameRealmClient(HttpClient client, IOptions<RealmClientOptio
             !GameProtocol.ValidId(value.RealmId) || !GameProtocol.ValidId(value.ServerId) ||
             !GameProtocol.ValidEndpoint(value.Endpoint, environment.IsDevelopment()) || !GameTopology.IsValid(value, environment.IsDevelopment()) ||
             value.DisplayName is not { Length: >= 1 and <= 80 }) ||
-            catalog.Realms.Select(value => value.RealmId).Distinct().Count() != catalog.Realms.Length)
+            catalog.Realms.Select(value => value.RealmId).Distinct().Count() != catalog.Realms.Length ||
+            !RetiringGameServers.IsValid(catalog))
             throw new HttpRequestException("Realm catalogue response is invalid.");
         return catalog;
     }

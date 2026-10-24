@@ -93,9 +93,23 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
                 (realm.ImageRelease is null || realm.Status == RealmStatus.Ready));
         var restart = (realm.ImageRelease is null || RealmImageReleases.Authorizes(options, realm)) &&
             !(update && !retry && release!.Automatic);
+        var currentPair = ProtocolPair(realm.Profile);
+        if (RealmRuntimeReleases.ManualApproval(options, realm) is { } migration)
+        {
+            var targetPair = ProtocolPair(migration.Profile);
+            return new(reason is null && restart, reason is null, migration.Profile.Image, migration.Release.Version, reason,
+                "RuntimeMigration", currentPair.Version, currentPair.BuildId, targetPair.Version, targetPair.BuildId,
+                migration.Release.GameVersion, migration.Release.SourceRevision, migration.Release.SourceRunId);
+        }
+        var target = profile is null ? default : ProtocolPair(profile.Snapshot());
+        var runtimeRelease = RealmRuntimeReleases.Find(options, realm.RealmId);
+        var runtimeUnavailable = runtimeRelease is { Automatic: false } &&
+            (realm.RuntimeRelease is { Completed: false } || runtimeRelease.Version > (realm.RuntimeRelease?.Version ?? 0));
         return new(reason is null && restart, reason is null && update,
             update ? profile!.Image : null, update ? release!.Version : null,
-            reason ?? (update ? null : "no_approved_update"));
+            reason ?? (update ? null : runtimeUnavailable ? "runtime_migration_unavailable" : "no_approved_update"),
+            update ? "Image" : null, currentPair.Version, currentPair.BuildId,
+            update ? target.Version : null, update ? target.BuildId : null);
     }
 
     public Task<RealmResult> RequestRestartAsync(string id, RestartRealmRequest request, string? actor,
@@ -165,6 +179,14 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
             return new(Error: available.UnavailableReason ?? "operation_unavailable");
         if (kind == "Update" && available.UpdateImage != expectedImage) return new(Error: "approved_image_changed");
         var now = clock.GetUtcNow();
+        if (kind == "Update" && available.UpdateKind == "RuntimeMigration")
+        {
+            var migration = RealmRuntimeReleases.ManualApproval(options, realm)!.Value;
+            var requested = RealmRuntimeReleases.BeginTransition(realm, migration.Release, migration.Profile, now, actor!, reason!);
+            if (await repository.TryReplaceAsync(requested, realm.Version, cancellationToken)) return new(requested);
+            var winner = await repository.FindAsync(id, cancellationToken);
+            return winner is not null && IsRetry(winner) ? new(winner) : new(Error: "revision_conflict");
+        }
         var revision = realm.Revision + 1;
         var next = realm with
         {
@@ -193,12 +215,18 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         return current is not null && IsRetry(current) ? new(current) : new(Error: "revision_conflict");
 
         bool IsRetry(RealmRecord current) => current.Operations.Any(operation => operation.ExpectedRevision == expectedRevision &&
-            operation.Kind == kind && operation.RequestedBy == actor && operation.Reason == reason &&
+            (operation.Kind == kind || kind == "Update" && operation.Kind == "RuntimeMigration") && operation.RequestedBy == actor && operation.Reason == reason &&
             (kind != "Update" || operation.Image == expectedImage));
     }
 
     private bool TargetAvailable(RealmRecord realm) => options.Targets.Any(target => target.Id == realm.TargetId &&
         target.Namespace == realm.Namespace && (target.RealmId is null || target.RealmId == realm.RealmId));
+
+    private static (int? Version, string? BuildId) ProtocolPair(ProfileSnapshot profile)
+    {
+        var pairs = profile.Servers.Select(server => (server.ProtocolVersion, server.BuildId)).Distinct().ToArray();
+        return pairs.Length == 1 ? pairs[0] : default;
+    }
 
     private static bool ValidAuditText(string? value, int limit) => value is { Length: > 0 } && value.Length <= limit &&
         value == value.Trim() && !value.Any(char.IsControl);

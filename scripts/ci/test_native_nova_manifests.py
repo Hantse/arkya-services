@@ -62,7 +62,7 @@ class NativeNovaManifestTests(unittest.TestCase):
     def test_adoption_preserves_legacy_profile_and_requires_no_new_credentials_or_workloads(self):
         self.stage()
         before, after = self.native.check(adopted=True)
-        self.assertEqual(7, len(set(after) - set(before)))
+        self.assertEqual(11, len(set(after) - set(before)))
         self.assertEqual({"Service", "NetworkPolicy"}, {key[0] for key in set(after) - set(before)})
         for app in ("characters", "realms"):
             name = next(key for key in before if key[:2] == ("ConfigMap", "arkya-beta") and
@@ -94,7 +94,7 @@ class NativeNovaManifestTests(unittest.TestCase):
                 with self.assertRaisesRegex(AssertionError, "immutable protocol 3"):
                     self.validate()
 
-    def test_runtime_release_or_secret_settings_are_not_allowed(self):
+    def test_unapproved_runtime_release_or_secret_settings_are_not_allowed(self):
         for field in ("Deployment__RuntimeReleases__0__Automatic", "RealmRuntime__DedicatedKeySeed",
                       "Deployment__Profiles__1__EnvironmentSecretName"):
             with self.subTest(field=field):
@@ -113,7 +113,7 @@ class NativeNovaManifestTests(unittest.TestCase):
                 if case == "missing":
                     config["data"].pop("Gateway__RealmGamePartitions__3__Address")
                 elif case == "extra":
-                    config["data"]["Gateway__RealmGamePartitions__4__RealmId"] = "nova"
+                    config["data"]["Gateway__RealmGamePartitions__8__RealmId"] = "nova"
                 else:
                     field = "RealmId" if case == "realm" else "Address"
                     config["data"]["Gateway__RealmGamePartitions__0__" + field] = "beta-web"
@@ -148,7 +148,7 @@ class NativeNovaManifestTests(unittest.TestCase):
 
     def test_normalization_does_not_restore_tampered_legacy_values(self):
         for field, value in (("Deployment__Profiles__0__Servers__0__ProtocolVersion", "3"),
-                ("Deployment__RuntimeReleases__0__Automatic", "true")):
+                ("Deployment__RuntimeReleases__1__Automatic", "true")):
             with self.subTest(field=field):
                 documents = self.stage()
                 config = next(document for document in documents if document["kind"] == "ConfigMap" and
@@ -168,7 +168,51 @@ class NativeNovaManifestTests(unittest.TestCase):
                 else:
                     services.append({"apiVersion": "v1", "kind": "Secret", "metadata": {"name": "unwanted"}})
                 path.write_text(yaml.safe_dump_all(services, sort_keys=False), encoding="utf-8")
-                with self.assertRaisesRegex(AssertionError, "four private Services"):
+                with self.assertRaisesRegex(AssertionError, "eight private Services"):
+                    self.validate()
+
+    def test_prepared_manual_release_keeps_the_original_profile_and_routes(self):
+        self.stage()
+        configs = self.native.expected_configs()
+        realms, gateway = configs["realms"], configs["gateway"]
+        self.assertEqual(self.native.IMAGE, realms["Deployment__Profiles__1__Image"])
+        self.assertEqual("3", realms["Deployment__Profiles__1__Servers__0__ProtocolVersion"])
+        self.assertEqual("arkya-multi-area-v1", realms["Deployment__Profiles__1__Servers__0__BuildId"])
+        self.assertEqual("v5", realms["Deployment__Profiles__2__TopologyServerIdPrefix"])
+        self.assertEqual(self.native.NEXT_IMAGE, realms["Deployment__Profiles__2__Image"])
+        self.assertEqual("false", realms["Deployment__RuntimeReleases__0__Automatic"])
+        self.assertEqual("0.1.49", realms["Deployment__RuntimeReleases__0__GameVersion"])
+        self.assertEqual(self.native.SOURCE_REVISION, realms["Deployment__RuntimeReleases__0__SourceRevision"])
+        self.assertEqual(self.native.SOURCE_RUN_ID, realms["Deployment__RuntimeReleases__0__SourceRunId"])
+        self.assertNotEqual("0" * 64, realms["Deployment__RuntimeReleases__0__PreviousProfileSha256"])
+        for index, server in enumerate(self.native.SERVERS + self.native.NEXT_SERVERS):
+            self.assertEqual(server, gateway[f"Gateway__RealmGamePartitions__{index}__ServerId"])
+        self.assertFalse(set(self.native.SERVERS).intersection(self.native.NEXT_SERVERS))
+        self.assertNotIn("Deployment__RuntimeReleases__0__Topology__Islands__0__ContentId", realms)
+
+    def test_manual_migration_requires_exact_fingerprint_topology_and_ci_identity(self):
+        for field, value in (("Automatic", "true"), ("PreviousProfileSha256", "0" * 64),
+                ("Topology__Islands__0__Width", "768"), ("Topology__Islands__0__DedicatedCount", "8"),
+                ("Topology__Islands__0__ContentId", "starter-island"), ("Topology__RaidDedicatedCount", "1"),
+                ("ProfileId", "nova-native"), ("GameVersion", "0.1.50"), ("SourceRunId", "40095092546"),
+                ("SourceRevision", "1" * 40)):
+            with self.subTest(field=field):
+                self.stage()
+                config = self.native.read(self.root / "native-nova/realms-config.yaml")
+                config["data"]["Deployment__RuntimeReleases__0__" + field] = value
+                self.write("realms-config.yaml", config)
+                with self.assertRaisesRegex(AssertionError, "approved manual protocol 5 release"):
+                    self.validate()
+
+    def test_new_profile_and_routes_cannot_replace_legacy_ids_or_use_an_unapproved_image(self):
+        for field, value in (("TopologyServerIdPrefix", "island"), ("Servers__0__ProtocolVersion", "3"),
+                ("Servers__0__BuildId", "arkya-multi-area-v1"), ("Image", self.native.IMAGE)):
+            with self.subTest(field=field):
+                self.stage()
+                config = self.native.read(self.root / "native-nova/realms-config.yaml")
+                config["data"]["Deployment__Profiles__2__" + field] = value
+                self.write("realms-config.yaml", config)
+                with self.assertRaisesRegex(AssertionError, "approved manual protocol 5 release"):
                     self.validate()
 
     def test_source_beta_rights_and_dynamic_identity_guards_remain_enforced(self):

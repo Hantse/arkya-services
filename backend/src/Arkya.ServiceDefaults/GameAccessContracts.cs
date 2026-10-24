@@ -50,7 +50,35 @@ public sealed record GameAreaTransition(string Id, string SourceAreaId, string T
 public sealed record GamePartitionBounds(double MinX, double MinZ, double MaxX, double MaxZ);
 // IslandId is the legacy Area identifier; a partition belongs to one complete map.
 public sealed record GameRealmPartition(string ServerId, string Endpoint, string IslandId, int PartitionIndex, GamePartitionBounds Bounds);
-public sealed record GameRealmCatalog(GameRealmEntry[] Realms);
+public sealed record GameRealmCatalog(GameRealmEntry[] Realms)
+{
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public RetiringGameServer[]? RetiringServers { get; init; }
+}
+public sealed record RetiringGameServer(string RealmId, string ServerId);
+
+public static class RetiringGameServers
+{
+    public static bool IsValid(GameRealmCatalog catalog)
+    {
+        if (catalog.RetiringServers is null) return true;
+        if (catalog.RetiringServers.Length > 25600 || catalog.Realms is null || catalog.Realms.Length > 100) return false;
+        var realms = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+        foreach (var realm in catalog.Realms)
+            if (!realm.Ready && !realms.TryAdd(realm.RealmId,
+                realm.Partitions.Select(partition => partition.ServerId).Append(realm.ServerId).ToHashSet(StringComparer.Ordinal))) return false;
+        var identities = new HashSet<(string, string)>();
+        var counts = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var server in catalog.RetiringServers)
+        {
+            if (server is null || !GameProtocol.ValidId(server.RealmId) || !GameProtocol.ValidId(server.ServerId) ||
+                !realms.TryGetValue(server.RealmId, out var current) || current.Contains(server.ServerId) ||
+                !identities.Add((server.RealmId, server.ServerId))) return false;
+            counts[server.RealmId] = counts.GetValueOrDefault(server.RealmId) + 1;
+            if (counts[server.RealmId] > 256) return false;
+        }
+        return true;
+    }
+}
 
 public sealed class BrowserClientOptions
 {
