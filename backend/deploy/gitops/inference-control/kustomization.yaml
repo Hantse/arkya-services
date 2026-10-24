@@ -13,7 +13,7 @@ configMapGenerator:
 images:
 - name: ghcr.io/hantse/arkya-services-inference
   newName: ghcr.io/hantse/arkya-services-inference
-  digest: sha256:bf4288c9a5c8f1b9726cb3adf64c7f28f5b642855974ccc6016e7032b8684c45
+  digest: sha256:fddf2221d2f43a705f81598fd85d85e71e48067cfc2f94f786dae0530a94de28
 patches:
 - patch: "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: arkya-gateway-config\n\
     \  namespace: arkya-beta\ndata:\n  Gateway__InferenceEnabled: 'true'\n  ReverseProxy__Clusters__inference__Destinations__primary__Address:\
