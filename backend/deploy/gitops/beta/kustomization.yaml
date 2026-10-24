@@ -67,25 +67,25 @@ configMapGenerator:
 images:
 - name: ghcr.io/hantse/arkya-services-identity
   newName: ghcr.io/hantse/arkya-services-identity
-  digest: sha256:2ec41c7850e6b3a99902f738e73dca94a0f0d23db991f113959f400305a189c3
+  digest: sha256:3edea1346194c93578f03db6c4f5697ef4b6a429476a13ad0d4d557643c82ca0
 - name: ghcr.io/hantse/arkya-services-gateway
   newName: ghcr.io/hantse/arkya-services-gateway
-  digest: sha256:51e35594af16eaf7435f49017c66001eeb5624d1d77eb8326d55b3b28450fffd
+  digest: sha256:1f5796375637c4f7a5726b1ef075abc05ec68fb4898ac71ed7e6917ff66b0a61
 - name: ghcr.io/hantse/arkya-services-characters
   newName: ghcr.io/hantse/arkya-services-characters
-  digest: sha256:6c2be88e22583a34d8686de661e15b8bb5b144076011f007cb177578ebab6d9f
+  digest: sha256:2b26acf82561a719ac3d8ca265781f6314d7941e42de56e90876e98823a10807
 - name: ghcr.io/hantse/arkya-services-content
   newName: ghcr.io/hantse/arkya-services-content
-  digest: sha256:f59962aed8b753f9ccdb96a712a486000a118a8b09fd7fcf1335ae6846570fbb
+  digest: sha256:4e871370e619f191e96570887c9c78d1bddc99c3f8c78d64051d7c334630bd82
 - name: ghcr.io/hantse/arkya-services-realms
   newName: ghcr.io/hantse/arkya-services-realms
-  digest: sha256:32bb289965fd5c20f79274aa18c08ab929a0cb44f06f5e9152d4843788cb5a11
+  digest: sha256:13450ec8b529b48bb9ce290c5d6bc1d6d0aa0d1385ed52548d48209b0f79ff19
 - name: ghcr.io/hantse/arkya-services-admin
   newName: ghcr.io/hantse/arkya-services-admin
-  digest: sha256:6a1ef4dcc23afec975482cdcaf7d48c8ae5ecfe02a84ef2a558bc84cf8ffc920
+  digest: sha256:e245463077ae29f6f23b232eb5f5417d285f43466ba1ced006b9b3eb84046c07
 - name: ghcr.io/hantse/arkya-services-backend
   newName: ghcr.io/hantse/arkya-services-backend
-  digest: sha256:0edfd7381f1d0cc6c90c29f14e93dc9cd3bd04d8a227f17cfbf2508e4e7dfb54
+  digest: sha256:0a924329276ea836d730291113b04d18955d9aab6c35815fa3a231104fdeaaad
 - name: ghcr.io/hantse/arkya-services-frontend
   newName: ghcr.io/hantse/arkya-services-frontend
-  digest: sha256:3e22f999ef69557732091b487642124ca9da6f097971bda3ed8990cc79dea92d
+  digest: sha256:3cbb8334186f4a8ddf4a32d4737566746f00df33bf59a838d33466bcbdc3b3e0
