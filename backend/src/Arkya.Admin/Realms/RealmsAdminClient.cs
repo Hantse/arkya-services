@@ -38,6 +38,8 @@ public sealed record RealmOperation(string Kind, long Revision, string Requested
 public sealed record RealmOperationsOptions(bool CanRestart, bool CanUpdate, string? UpdateImage, long? UpdateVersion, string? UnavailableReason);
 public sealed record RealmCommandServer(string ServerId, DateTimeOffset? LastSeenAt, bool Available, string[] SupportedCommands,
     int ConfigurationVersion = 0, long? AppliedConfigurationRevision = null);
+public sealed record RealmServerVersion(string ServerId, DateTimeOffset? LastSeenAt, bool Available,
+    string? GameVersion, string? SourceRevision, string? SourceRunId);
 public sealed record RealmConfiguration(long Revision, decimal XpMultiplier, decimal HarvestMultiplier,
     DateTimeOffset? UpdatedAt, string? UpdatedBy, RealmConfigurationChange[] History);
 public sealed record RealmConfigurationChange(long Revision, long ExpectedRevision, decimal XpMultiplier,
@@ -103,6 +105,8 @@ public sealed class RealmsAdminClient(HttpClient client, IOptions<RealmsApiOptio
             new { expectedRevision, reason, confirmRealmId }, ct, actor);
     public Task<RealmCommands> CommandsAsync(string realmId, CancellationToken ct) => SendAsync<RealmCommands>(HttpMethod.Get,
         "admin/realms/" + Uri.EscapeDataString(realmId) + "/commands", null, ct);
+    public Task<RealmServerVersion[]> ServerVersionsAsync(string realmId, CancellationToken ct) => SendAsync<RealmServerVersion[]>(HttpMethod.Get,
+        "admin/realms/" + Uri.EscapeDataString(realmId) + "/server-versions", null, ct);
     public Task<RealmCommand> CommandAsync(string realmId, RealmCommandRequest command, string actor, CancellationToken ct) =>
         SendAsync<RealmCommand>(HttpMethod.Post, "admin/realms/" + Uri.EscapeDataString(realmId) + "/commands", command, ct, actor);
     public Task<RealmConfiguration> ConfigurationAsync(string realmId, CancellationToken ct) => SendAsync<RealmConfiguration>(HttpMethod.Get,
@@ -165,6 +169,11 @@ public static class RealmsHttpTransport
 
 public static class RealmPresentation
 {
+    private const string UnityRepositoryUrl = "https://github.com/Hantse/arkya-mmorpg";
+    public static string? SourceCommitUrl(string? revision) => revision is { Length: 40 or 64 } && revision.All(char.IsAsciiHexDigit)
+        ? UnityRepositoryUrl + "/commit/" + revision : null;
+    public static string? SourceRunUrl(string? runId) => runId is { Length: > 0 and <= 24 } && runId.All(char.IsAsciiDigit) && runId.Any(character => character != '0')
+        ? UnityRepositoryUrl + "/actions/runs/" + runId : null;
     public static string CommandLabel(string type) => type switch
     {
         "announce" => "In-game announcement", "kick" => "Disconnect a character", "save" => "Save players", _ => "Command"

@@ -72,3 +72,17 @@ contrôle des capacités, révisions et reprise des tirages ; les tests MongoDB
 exercent la concurrence et la persistance. Le site vérifie les états non
 connecté/en attente/accepté, la restauration de session et le retour OAuth
 limité à `beta.html`, sans inscription automatique après connexion.
+
+Validation du 24 octobre 2026 : **252 tests Identity**, **887 tests Admin**,
+**277 tests Gateway** et **129 tests Node** réussis. Les suites Identity et Admin
+ont utilisé MongoDB réel sans test ignoré. Les essais Edge totalisent
+**248 contrôles** : inscription, compte, renouvellement, launcher et modale Admin,
+avec des API isolées. Aucun compte de production n'a été inscrit ou invité
+par ces essais. La [CI complète](https://github.com/Hantse/arkya-services/actions/runs/40087241218)
+a également construit les dix images et promu les digests vers GitOps.
+
+Après livraison, les contrôles publics ont confirmé `beta.html` en HTTP 200,
+l'API sans bearer en HTTP 401, le préflight POST autorisé depuis
+`https://arkya.online` en HTTP 204 et la page Admin protégée par sa connexion.
+La news FR/EN et les huit notes de version ont ensuite été publiées et relues
+par leurs endpoints anonymes ; voir le [compte rendu MCP](publications/2026-10-24-beta/publication-receipts.json).

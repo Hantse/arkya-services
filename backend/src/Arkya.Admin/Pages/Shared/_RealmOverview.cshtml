@@ -7,6 +7,7 @@
     <div><dt>Profile</dt><dd class="mono">@realm.ProfileId</dd></div>
     <div><dt>Last change</dt><dd class="realm-summary-date">@realm.UpdatedAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm 'UTC'")</dd></div>
 </dl>
+<partial name="_RealmServerVersions" model="Model" />
 @if (!string.IsNullOrEmpty(realm.ProfileSha256))
 {
     <details class="panel realm-advanced"><summary>Deployment profile fingerprint</summary><p class="mono">@realm.ProfileSha256</p><p class="muted">Identifies the frozen configuration to verify before an approved migration.</p></details>
@@ -24,7 +25,7 @@
             }
             </ul>
 </div></details>
-<details class="panel realm-advanced"><summary>Deployment details <span class="muted">Revision @realm.Revision · coordinates</span></summary><div class="realm-advanced-body"><dl class="realm-facts"><div><dt>Namespace</dt><dd class="mono">@realm.Namespace</dd></div><div><dt>Server image</dt><dd class="mono">@realm.Image</dd></div></dl><p class="muted">The displayed availability concerns cluster resources. Also verify player admission and entry into the game with an actual client.</p>
+<details class="panel realm-advanced"><summary>Deployment details <span class="muted">Revision @realm.Revision · coordinates</span></summary><div class="realm-advanced-body"><dl class="realm-facts"><div><dt>Namespace</dt><dd class="mono">@realm.Namespace</dd></div></dl><p class="muted">The displayed availability concerns cluster resources. Also verify player admission and entry into the game with an actual client.</p>
 @if (realm.Operations?.OrderByDescending(operation => operation.RequestedAt).FirstOrDefault() is { } lastOperation)
 {
     <div class="realm-last-operation"><span>Last operation: <strong>@(lastOperation.Kind == "Update" ? "Update" : "Restart")</strong> · @RealmPresentation.StatusLabel(lastOperation.Status)</span><a asp-page="/Realm" asp-route-realmId="@realm.RealmId" asp-route-section="history">View history →</a></div>

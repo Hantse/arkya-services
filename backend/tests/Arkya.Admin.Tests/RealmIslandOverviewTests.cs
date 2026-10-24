@@ -263,9 +263,8 @@ public sealed class RealmIslandOverviewTests
         using var browser = factory.Browser();
         await AdminFactory.Login(browser);
         var html = await browser.GetStringAsync(Path + "?section=overview" + (island is null ? "" : "&island=" + Uri.EscapeDataString(island)));
-        var call = Assert.Single(factory.Realms.Calls);
-        Assert.Equal(HttpMethod.Get, call.Method);
-        Assert.Equal("/admin/realms/terres-aube", call.Path);
+        Assert.All(factory.Realms.Calls, call => Assert.Equal(HttpMethod.Get, call.Method));
+        Assert.Equal(new[] { "/admin/realms/terres-aube", "/admin/realms/terres-aube/server-versions" }, factory.Realms.Calls.Select(call => call.Path));
         Assert.DoesNotContain("handler=", html);
         Assert.DoesNotContain("In-game control is unavailable", WebUtility.HtmlDecode(html));
         AdminFactory.NoSecrets(html);

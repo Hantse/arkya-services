@@ -5,90 +5,90 @@
       "title": "La bêta fermée d’Arkya ouvre ses inscriptions",
       "language": "fr",
       "kind": "news",
-      "revision": 1,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 4,
+      "publishedAt": "2026-10-24T10:56:49.236018+00:00",
+      "publishedRevision": 4
     },
     {
       "id": "246dae46-aa6b-4efd-8db6-52df251104b7",
       "title": "Registration for Arkya’s closed beta is open",
       "language": "en",
       "kind": "news",
-      "revision": 1,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 4,
+      "publishedAt": "2026-10-24T10:56:49.5583259+00:00",
+      "publishedRevision": 4
     },
     {
       "id": "c883229e-d488-4e2b-9094-5038aa23f6be",
       "title": "Bêta : de la première publication web au client Windows",
       "language": "fr",
       "kind": "release-note",
-      "revision": 1,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 2,
+      "publishedAt": "2026-10-24T10:46:16.725+00:00",
+      "publishedRevision": 2
     },
     {
       "id": "5bffd91e-2ce7-4e3f-89f7-aadc533d3bb2",
       "title": "Beta: from the first web release to the Windows client",
       "language": "en",
       "kind": "release-note",
-      "revision": 1,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 2,
+      "publishedAt": "2026-10-24T10:47:17.124+00:00",
+      "publishedRevision": 2
     },
     {
       "id": "763b187c-836b-48bd-90bb-9f1ba0b2bd10",
       "title": "Launcher Windows 0.4.1 : boutons visibles et mises à jour",
       "language": "fr",
       "kind": "release-note",
-      "revision": 2,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 3,
+      "publishedAt": "2026-10-24T10:47:17.547+00:00",
+      "publishedRevision": 3
     },
     {
       "id": "15217ab3-fe02-4a92-95d5-c2d740056ed9",
       "title": "Windows launcher 0.4.1: visible actions and updates",
       "language": "en",
       "kind": "release-note",
-      "revision": 2,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 3,
+      "publishedAt": "2026-10-24T10:47:18.003+00:00",
+      "publishedRevision": 3
     },
     {
       "id": "23770d2e-a52c-4b6b-a093-c701bb2640c5",
       "title": "Développement des 23–24 octobre : exploration, combats et PNJ",
       "language": "fr",
       "kind": "release-note",
-      "revision": 1,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 2,
+      "publishedAt": "2026-10-24T10:47:18.452+00:00",
+      "publishedRevision": 2
     },
     {
       "id": "4da3eaf0-f3ac-4b17-af63-13f47f8f7984",
       "title": "23–24 October development: exploration, encounters, and NPCs",
       "language": "en",
       "kind": "release-note",
-      "revision": 1,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 2,
+      "publishedAt": "2026-10-24T10:47:18.753+00:00",
+      "publishedRevision": 2
     },
     {
       "id": "7ec30125-65f4-4bfb-ab13-d80224955d98",
       "title": "Depuis la première bêta : services, royaumes et outils de contenu",
       "language": "fr",
       "kind": "release-note",
-      "revision": 2,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 3,
+      "publishedAt": "2026-10-24T10:45:18.972+00:00",
+      "publishedRevision": 3
     },
     {
       "id": "3d9211dd-2e1d-47bf-8955-724bd2f5d4a5",
       "title": "Since the first beta: services, realms, and content tools",
       "language": "en",
       "kind": "release-note",
-      "revision": 2,
-      "publishedAt": null,
-      "publishedRevision": null
+      "revision": 3,
+      "publishedAt": "2026-10-24T10:45:03.297+00:00",
+      "publishedRevision": 3
     }
   ]
 }

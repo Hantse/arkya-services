@@ -19,6 +19,8 @@ public static class RealmEndpoints
         admin.MapGet("", async (IRealmRepository repository, CancellationToken cancellationToken) =>
             Results.Ok((await repository.ListAsync(cancellationToken)).Where(realm => realm.Status != Domain.RealmStatus.Deleted).Select(RealmSummary.From).ToArray()));
         admin.MapGet("/options", (RealmService service) => Results.Ok(service.GetOptions()));
+        admin.MapGet("/{id}/server-versions", async (string id, RealmCommandService service, CancellationToken cancellationToken) =>
+            await service.GetServerVersionsAsync(id, cancellationToken) is { } versions ? Results.Ok(versions) : Error("realm_not_found"));
         admin.MapGet("/{id}", async (string id, IRealmRepository repository, CancellationToken cancellationToken) =>
         {
             var realm = await repository.FindAsync(id, cancellationToken);

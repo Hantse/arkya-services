@@ -49,11 +49,13 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
     public RealmSummary? Realm { get; private set; }
     public RealmOperationsOptions? OperationsOptions { get; private set; }
     public RealmCommands? Commands { get; private set; }
+    public RealmServerVersion[]? ServerVersions { get; private set; }
     public RealmConfiguration? Configuration { get; private set; }
     public bool DeploymentEnabled { get; private set; }
     public string? Error { get; private set; }
     public string? OperationsError { get; private set; }
     public string? CommandsError { get; private set; }
+    public string? ServerVersionsError { get; private set; }
     public string? ConfigurationError { get; private set; }
     [TempData] public string? Notice { get; set; }
 
@@ -242,6 +244,12 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
         if (Realm is not null)
         {
             if (ActiveSection == "players") await LoadPlayersAsync(ct);
+            if (ActiveSection is "overview" or "maintenance")
+            {
+                try { ServerVersions = await realms.ServerVersionsAsync(realmId, ct); }
+                catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
+                { ServerVersionsError = "Server versions are unavailable. Refresh this page to try again."; }
+            }
             if (ActiveSection == "maintenance")
             {
                 try

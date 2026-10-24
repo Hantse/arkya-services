@@ -113,6 +113,12 @@ contenu Unity ni de passage entre cartes.
 
 ## Redémarrage et mise à jour
 
+Les [versions communes client/serveur](BUILD_VERSIONS.md) identifient les builds
+publiés ensemble. Les sections **Overview** et **Maintenance** de la fiche
+affichent la dernière version annoncée par chaque dedicated, son commit et son
+dernier contact. Une version inconnue ou une annonce ancienne ne prouve pas
+qu'un serveur exécute la nouvelle image configurée.
+
 Un redémarrage relance les dedicateds du realm avec leur image actuelle.
 Une mise à jour utilise exclusivement le digest approuvé dans la configuration
 Realms. Les deux actions demandent de recopier l’identifiant du realm et

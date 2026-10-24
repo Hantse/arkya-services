@@ -1,0 +1,52 @@
+@model RealmModel
+@using Arkya.Admin.Realms
+@{
+    var realm = Model.Realm!;
+    var versions = Model.ServerVersions ?? [];
+    var reportedBuilds = versions.Where(server => server.LastSeenAt is not null && !string.IsNullOrEmpty(server.GameVersion))
+        .Select(server => (server.GameVersion, server.SourceRevision)).Distinct().Count();
+}
+<section class="panel realm-server-versions" aria-labelledby="server-versions-heading">
+    <div class="realm-version-heading"><div><h2 id="server-versions-heading">Server versions</h2><p class="muted" id="server-versions-description">Build identity reported by each dedicated server. A stale report does not confirm the running version.</p></div>
+    @if (reportedBuilds > 1) { <span class="realm-status pending">Mixed reported builds</span> }
+    </div>
+    @if (Model.ServerVersionsError is not null)
+    {
+        <p class="alert error" role="status">@Model.ServerVersionsError</p>
+    }
+    else if (realm.Servers.Length == 0)
+    {
+        <p class="muted">No dedicated servers are configured for this realm.</p>
+    }
+    else
+    {
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Reported dedicated server versions">
+        <table class="realm-table realm-version-table" aria-describedby="server-versions-description">
+            <caption class="sr-only">Last reported build version, source and heartbeat for each dedicated server</caption>
+            <thead><tr><th scope="col">Dedicated server</th><th scope="col">Reported build</th><th scope="col">Source</th><th scope="col">Last heartbeat</th></tr></thead>
+            <tbody>
+            @foreach (var server in realm.Servers)
+            {
+                var report = versions.FirstOrDefault(version => version.ServerId == server.Id);
+                <tr>
+                    <th scope="row"><span class="mono">@server.Id</span>@if (server.IslandId is not null) { <small>Area @server.IslandId · partition @(server.PartitionIndex + 1) / @server.PartitionCount</small> }</th>
+                    <td><strong class="mono">@(string.IsNullOrEmpty(report?.GameVersion) ? "Unknown" : report.GameVersion)</strong>@if (string.IsNullOrEmpty(report?.GameVersion)) { <small>No build version reported</small> }</td>
+                    <td>
+                        @if (RealmPresentation.SourceCommitUrl(report?.SourceRevision) is { } commitUrl)
+                        { <a class="mono" href="@commitUrl" title="Commit @(report!.SourceRevision)">@(report!.SourceRevision![..12])</a> }
+                        else { <span class="muted">Commit unknown</span> }
+                        @if (RealmPresentation.SourceRunUrl(report?.SourceRunId) is { } runUrl)
+                        { <small><a href="@runUrl">Build run #@(report!.SourceRunId)</a></small> }
+                    </td>
+                    <td><span class="realm-status @(report?.Available == true ? "ready" : "draft")">@(report?.Available == true ? "Reporting" : report?.LastSeenAt is not null ? "Stale / offline" : "Not reported")</span>
+                        @if (report?.LastSeenAt is { } seen) { <small><time datetime="@seen.ToString("O")">@seen.UtcDateTime.ToString("dd/MM/yyyy HH:mm:ss 'UTC'")</time></small> }
+                        else { <small>No heartbeat received</small> }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        </div>
+    }
+    <details class="realm-configured-image"><summary>Configured deployment image</summary><code>@realm.Image</code><p class="muted">This is the desired container image, including its digest when pinned. Reported builds above identify the server executable.</p></details>
+</section>

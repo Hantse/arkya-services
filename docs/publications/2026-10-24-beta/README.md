@@ -10,13 +10,28 @@ La news et les liens d'inscription doivent être publiés après disponibilité 
 `https://arkya.online/beta.html` et des API associées. Ce dossier ne publie rien
 automatiquement et ne crée aucun candidat ou droit bêta.
 
+## Publication vérifiée
+
+Les dix articles ont été publiés par le MCP Admin et leurs snapshots anonymes
+ont été comparés aux textes de `articles.json`. Le
+[compte rendu MCP](publication-receipts.json) conserve les IDs, révisions et
+dates retournés par Content. Les articles de développement portent
+`dev.20261024` et restent explicitement distincts des versions distribuées.
+
+La news d'inscription a été publiée après vérification de la livraison du
+24 octobre : page `beta.html` en HTTP 200, API sans session en HTTP 401,
+préflight CORS en HTTP 204 pour `https://arkya.online`, et page Admin redirigée
+vers sa connexion. La [CI de cette livraison](https://github.com/Hantse/arkya-services/actions/runs/40087241218)
+a construit les dix images et promu leurs digests. Aucun candidat ni accès
+réel n'a été créé par les tests de cette mission.
+
 ## Périmètre et versions
 
 | Sujet | `gameVersion` | Portée |
 | --- | --- | --- |
 | Inscription bêta | `null` | News, inscription distincte de l'attribution d'accès |
 | Rétrospective web → Windows | `0.1.0-beta.20261023.3` | Client Windows proposé dans le manifeste public au moment de la rédaction |
-| Launcher | `0.4.1` | Release GitHub publiée ; la bascule du manifeste canonique du site est à vérifier avant publication de la note |
+| Launcher | `0.4.1` | Release GitHub publiée et manifeste canonique du site vérifié avant publication de la note |
 | Développement jeu des 23–24 octobre | `dev.20261024` | Repère éditorial explicitement présenté comme développement, pas une version téléchargeable |
 | Services et outils | `dev.20261024` | Bilan de réalisation ; activation/déploiement propres à chaque service et royaume |
 
@@ -27,11 +42,11 @@ Les manifestes HTTPS ont été relus publiquement le 24 octobre 2026 avec
   `0.1.0-beta.20261023.3`, session launcher protocole 1,
   SHA-256 `64fa73c12d4bf9d1ec6907660336da65dee786ca3e04be38f8bc29403aa96366`.
 - [Launcher Windows](https://arkya.online/downloads/launcher/latest-win-x64.json) :
-  `0.4.0`, SHA-256
-  `65993eae4915f40085d6d3b15ff2546cdf45c69116a2c82e4d9e243d185da5a2`.
+  `0.4.1`, SHA-256
+  `a0f724f03ea5eb600d87301c688e588f481339ddf1719b64208e64713d47e0c2`.
 
 Ces valeurs correspondent aux fichiers de distribution versionnés sous
-`sites/arkya/dist/downloads/` avant la release launcher décrite ci-dessous.
+`sites/arkya/dist/downloads/` après la release launcher décrite ci-dessous.
 La lecture vérifie les métadonnées disponibles,
 pas une nouvelle installation ou admission au royaume public.
 
@@ -53,11 +68,11 @@ confirme l'installateur, le ZIP portable, le manifeste et la provenance :
   Ces résultats sont ceux de la release contrôlée, pas une nouvelle exécution
   pendant la rédaction de ces articles.
 
-À **12:43, heure de Bruxelles**, le manifeste canonique
-`arkya.online/downloads/launcher/latest-win-x64.json` expose encore `0.4.0`.
-La publication des artefacts `0.4.1` est attestée ; la nouvelle proposition de
-mise à jour via le site attend la réconciliation du frontend. Revérifier ce
-manifeste avant de publier les articles, comme la page d'inscription.
+Le manifeste canonique
+`arkya.online/downloads/launcher/latest-win-x64.json` a ensuite été vérifié à
+`0.4.1`, avant publication des deux notes du launcher. La lecture de ce manifeste
+confirme sa distribution publique ; elle ne remplace pas une nouvelle
+installation du launcher pendant cette mission.
 
 Seules les deux notes existantes du launcher sont actualisées, sans créer de
 doublon : brouillon FR `763b187c…` → **Launcher Windows 0.4.1 : boutons visibles

@@ -16,14 +16,21 @@ public sealed record RealmCommandServer(string RealmId, string ServerId, long Ve
 {
     public int ConfigurationVersion { get; init; }
     public long? AppliedConfigurationRevision { get; init; }
+    public string? GameVersion { get; init; }
+    public string? SourceRevision { get; init; }
+    public string? SourceRunId { get; init; }
 }
 public sealed record RealmCommandCapability(string ServerId, DateTimeOffset? LastSeenAt, bool Available, string[] SupportedCommands,
-    int ConfigurationVersion = 0, long? AppliedConfigurationRevision = null);
+    int ConfigurationVersion = 0, long? AppliedConfigurationRevision = null,
+    string? GameVersion = null, string? SourceRevision = null, string? SourceRunId = null);
+public sealed record RealmServerVersion(string ServerId, DateTimeOffset? LastSeenAt, bool Available,
+    string? GameVersion, string? SourceRevision, string? SourceRunId);
 public sealed record RealmCommandsOverview(RealmCommandCapability[] Servers, RealmGameCommand[] Commands);
 public sealed record EnqueueRealmCommand(string RequestId, long ExpectedRevision, string ServerId, string Type,
     string Message, string CharacterId, string Reason);
 public sealed record PollRealmCommands(string InstanceId, int ProtocolVersion, string[] SupportedCommands,
-    int ConfigurationVersion = 0, long? AppliedConfigurationRevision = null, bool AcceptCommands = true);
+    int ConfigurationVersion = 0, long? AppliedConfigurationRevision = null, bool AcceptCommands = true,
+    string? GameVersion = null, string? SourceRevision = null, string? SourceRunId = null);
 public sealed record CompleteRealmCommand(string InstanceId, bool Success, string ResultCode, int AffectedPlayers);
 public sealed record RealmCommandDelivery(string Id, string Type, string Message, string CharacterId, DateTimeOffset ExpiresAt);
 public sealed record RealmCommandPollResponse(RealmCommandDelivery[] Commands, RealmConfigurationSnapshot? RuntimeConfiguration = null);
@@ -33,6 +40,7 @@ public interface IRealmCommandRepository
 {
     Task InitializeAsync(CancellationToken ct);
     Task<RealmCommandServer?> FindAsync(string realmId, string serverId, CancellationToken ct);
+    Task<RealmServerVersion[]> FindVersionsAsync(string realmId, string[] serverIds, CancellationToken ct);
     Task<bool> TryWriteAsync(RealmCommandServer server, long? expectedVersion, CancellationToken ct);
 }
 
@@ -46,6 +54,12 @@ public sealed class RealmCommandService(IRealmRepository realms, IRealmCommandRe
     private static bool ValidUuid(string? value) => Guid.TryParseExact(value, "D", out var id) && id != Guid.Empty && value == id.ToString("D");
     private static bool Active(RealmCommandServer state, DateTimeOffset now) =>
         state.LastSeenAt <= now && now - state.LastSeenAt <= TimeSpan.FromSeconds(30);
+    private static bool ValidGameVersion(string? value) => string.IsNullOrEmpty(value) || value.Length <= 64 &&
+        value.All(character => char.IsAsciiLetterOrDigit(character) || character is '.' or '-' or '+' or '_');
+    private static bool ValidSourceRevision(string? value) => string.IsNullOrEmpty(value) || value.Length is 40 or 64 &&
+        value.All(character => char.IsAsciiHexDigit(character));
+    private static bool ValidSourceRunId(string? value) => string.IsNullOrEmpty(value) || value.Length <= 24 &&
+        value.All(char.IsAsciiDigit);
 
     public async Task<bool> AuthorizeAsync(string realmId, string serverId, string? key, CancellationToken ct)
     {
@@ -70,10 +84,31 @@ public sealed class RealmCommandService(IRealmRepository realms, IRealmCommandRe
             var state = await repository.FindAsync(realmId, definition.Id, ct);
             capabilities.Add(new(definition.Id, state?.LastSeenAt,
                 state is not null && Active(state, now) && realm.Status == RealmStatus.Ready, state?.SupportedCommands ?? [],
-                state?.ConfigurationVersion ?? 0, state?.AppliedConfigurationRevision));
+                state?.ConfigurationVersion ?? 0, state?.AppliedConfigurationRevision,
+                state?.GameVersion, state?.SourceRevision, state?.SourceRunId));
             if (state is not null) commands.AddRange(Normalize(state.Commands, now, realm.Revision).Select(Public));
         }
         return new(capabilities.ToArray(), commands.OrderByDescending(command => command.CreatedAt).Take(50).ToArray());
+    }
+
+    public async Task<RealmServerVersion[]?> GetServerVersionsAsync(string realmId, CancellationToken ct)
+    {
+        var realm = await realms.FindAsync(realmId, ct);
+        if (realm is null || realm.Status == RealmStatus.Deleted) return null;
+        var now = clock.GetUtcNow();
+        var reports = (await repository.FindVersionsAsync(realmId, realm.Profile.Servers.Select(server => server.Id).ToArray(), ct))
+            .ToDictionary(report => report.ServerId);
+        var versions = new List<RealmServerVersion>();
+        foreach (var definition in realm.Profile.Servers)
+        {
+            reports.TryGetValue(definition.Id, out var report);
+            versions.Add(report is null ? new(definition.Id, null, false, null, null, null) : report with
+            {
+                Available = report.LastSeenAt is { } lastSeen && lastSeen <= now && now - lastSeen <= TimeSpan.FromSeconds(30) &&
+                    realm.Status == RealmStatus.Ready
+            });
+        }
+        return versions.ToArray();
     }
 
     public async Task<RealmCommandResult<RealmGameCommand>> EnqueueAsync(string realmId, EnqueueRealmCommand request,
@@ -121,7 +156,9 @@ public sealed class RealmCommandService(IRealmRepository realms, IRealmCommandRe
             request.SupportedCommands.Distinct().Count() != request.SupportedCommands.Length ||
             request.SupportedCommands.Any(type => !SupportedTypes.Contains(type)) ||
             request.ConfigurationVersion is < 0 or > 1 || request.AppliedConfigurationRevision is < -1 ||
-            request.ConfigurationVersion == 0 && request.AppliedConfigurationRevision is not null) return new(null, "invalid_poll");
+            request.ConfigurationVersion == 0 && request.AppliedConfigurationRevision is not null ||
+            !ValidGameVersion(request.GameVersion) || !ValidSourceRevision(request.SourceRevision) ||
+            !ValidSourceRunId(request.SourceRunId)) return new(null, "invalid_poll");
         var realm = await realms.FindAsync(realmId, ct);
         if (realm is null || RealmStatus.IsDeleting(realm.Status) || !realm.Profile.Servers.Any(server => server.Id == serverId)) return new(null, "realm_not_found");
         var configuration = RealmConfigurationSnapshot.From(realm.RuntimeConfiguration);
@@ -140,7 +177,10 @@ public sealed class RealmCommandService(IRealmRepository realms, IRealmCommandRe
             {
                 ConfigurationVersion = request.ConfigurationVersion,
                 AppliedConfigurationRevision = request.ConfigurationVersion == 1 && request.AppliedConfigurationRevision is >= 0
-                    ? request.AppliedConfigurationRevision : null
+                    ? request.AppliedConfigurationRevision : null,
+                GameVersion = string.IsNullOrEmpty(request.GameVersion) ? null : request.GameVersion,
+                SourceRevision = string.IsNullOrEmpty(request.SourceRevision) ? null : request.SourceRevision.ToLowerInvariant(),
+                SourceRunId = string.IsNullOrEmpty(request.SourceRunId) ? null : request.SourceRunId
             };
             if (await repository.TryWriteAsync(state, previous?.Version, ct))
                 return new(new(selected is null ? [] : [new(selected.Id, selected.Type, selected.Message, selected.CharacterId, selected.ExpiresAt)],

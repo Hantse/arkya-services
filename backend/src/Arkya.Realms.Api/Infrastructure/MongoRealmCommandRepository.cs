@@ -21,6 +21,14 @@ public sealed class MongoRealmCommandRepository(IMongoClient client, IOptions<Mo
         return document.State;
     }
 
+    public async Task<RealmServerVersion[]> FindVersionsAsync(string realmId, string[] serverIds, CancellationToken ct)
+    {
+        var ids = serverIds.Select(serverId => realmId + "/" + serverId).ToArray();
+        return (await collection.Find(Builders<RealmCommandDocument>.Filter.In(item => item.Id, ids))
+            .Project(item => new RealmServerVersion(item.State.ServerId, item.State.LastSeenAt, false,
+                item.State.GameVersion, item.State.SourceRevision, item.State.SourceRunId)).ToListAsync(ct)).ToArray();
+    }
+
     public async Task<bool> TryWriteAsync(RealmCommandServer server, long? expectedVersion, CancellationToken ct)
     {
         var document = new RealmCommandDocument { Id = server.RealmId + "/" + server.ServerId, State = server };

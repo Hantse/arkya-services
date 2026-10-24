@@ -82,7 +82,8 @@ public sealed class RealmSectionsEndpointTests
         string[] dependencies = section switch
         {
             "settings" or "history" => [ApiPath, ApiPath + "/commands", ApiPath + "/configuration"],
-            "maintenance" => [ApiPath, "/admin/realms/options", ApiPath + "/operations-options"],
+            "maintenance" => [ApiPath, ApiPath + "/server-versions", "/admin/realms/options", ApiPath + "/operations-options"],
+            "overview" => [ApiPath, ApiPath + "/server-versions"],
             "game" => [ApiPath, ApiPath + "/commands"],
             _ => [ApiPath]
         };
@@ -109,7 +110,7 @@ public sealed class RealmSectionsEndpointTests
         Assert.DoesNotContain("In-game configuration is unavailable", WebUtility.HtmlDecode(html));
         Assert.Contains("area-one", html);
         foreach (var handler in MutationHandlers) Assert.DoesNotContain("handler=" + handler, html);
-        Assert.Equal(ApiPath, Assert.Single(factory.Realms.Calls).Path);
+        Assert.Equal(new[] { ApiPath, ApiPath + "/server-versions" }, factory.Realms.Calls.Select(call => call.Path));
         AdminFactory.NoSecrets(html);
     }
 

@@ -227,6 +227,11 @@ internal sealed class MemoryRealmCommandRepository : IRealmCommandRepository
     public Task InitializeAsync(CancellationToken ct) => Task.CompletedTask;
     public Task<RealmCommandServer?> FindAsync(string realmId, string serverId, CancellationToken ct)
     { lock (gate) return Task.FromResult(servers.GetValueOrDefault(realmId + "/" + serverId)); }
+    public Task<RealmServerVersion[]> FindVersionsAsync(string realmId, string[] serverIds, CancellationToken ct)
+    {
+        lock (gate) return Task.FromResult(servers.Values.Where(state => state.RealmId == realmId && serverIds.Contains(state.ServerId))
+            .Select(state => new RealmServerVersion(state.ServerId, state.LastSeenAt, false, state.GameVersion, state.SourceRevision, state.SourceRunId)).ToArray());
+    }
     public Task<bool> TryWriteAsync(RealmCommandServer server, long? expectedVersion, CancellationToken ct)
     {
         lock (gate)
