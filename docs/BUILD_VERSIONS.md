@@ -55,3 +55,23 @@ La promotion commune évite de publier accidentellement deux builds issus de
 sources différentes. Elle n'ajoute pas de nouvelle règle d'admission imposant
 l'égalité stricte des versions de build ; la compatibilité réseau continue de
 reposer sur les contrats explicites existants.
+
+## Vérification du 24 octobre 2026
+
+- Realms : 448 tests réussis ; six tests MongoDB optionnels ignorés, dont la
+  projection réelle des versions, faute de `ARKYA_TEST_MONGO`. Le round-trip BSON
+  et les contrats HTTP ancien/nouveau sont vérifiés sans MongoDB.
+- Admin : 307 contrôles de realms réussis, puis suite complète de la copie de
+  travail avec 925 réussites et un test MongoDB ignoré. Un échec TLS intermittent
+  lors du premier passage n'est pas réapparu dans les quatre tests TLS ciblés ni
+  dans cette seconde suite complète.
+- CI : 88 tests Python réussis sur les sources qui seront committées, y compris
+  le refus de versions client/dedicated divergentes et d'archives remplacées.
+- Unity : compilation dans l'Editor, test dédié/client WebSocket avec heartbeat
+  versionné réussi et contrôle en mémoire du stamping/restauration de la version,
+  de la ressource temporaire et de son `.meta`. Le projet revient à `0.1.0`.
+- Rendu Admin inspecté dans Edge à 1 440 et 390 pixels ; aucun débordement de
+  page, tableau défilable sur mobile, états divergent/ancien/inconnu visibles.
+
+Les nouveaux players Windows/Linux complets et leur déploiement sur un realm
+réel restent à vérifier dans la CI et lors de l'adoption de la release.
