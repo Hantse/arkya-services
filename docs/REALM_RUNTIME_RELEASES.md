@@ -80,6 +80,14 @@ dans l'admin après le rollout des API Characters/Realms, de l'Admin et des rout
 La préparation GitOps ne redémarre pas le realm. L'admin affiche la version du
 jeu ainsi que les protocoles courant et cible avant la confirmation.
 
+Pour vérifier la publication sans lancer la maintenance, recharger la fiche du
+realm, ouvrir `Maintenance` puis `Update realm` et vérifier la version du jeu,
+les protocoles et la provenance proposés. Le bouton d'installation doit être
+disponible pour une release approuvée applicable. Laisser le motif et la
+confirmation vides pendant cette vérification. La présence du bouton ne prouve
+ni la migration des serveurs ni l'admission du nouveau client : ces contrôles
+se font après le lancement explicite de l'opération.
+
 ## Nova : version 0.1.49
 
 Le composant actif `native-nova` prépare la release issue de la CI Unity 49 :
