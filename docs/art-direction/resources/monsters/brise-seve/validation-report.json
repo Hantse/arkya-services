@@ -1,0 +1,1804 @@
+{
+  "schemaVersion": 1,
+  "scope": "DCC geometry, evaluated animation and runtime-format inspection; not gameplay certification",
+  "source": {
+    "armature": "BriseSeveRig",
+    "bone_count": 29,
+    "meshes": [
+      {
+        "name": "BriseSeve_LOD0",
+        "vertices": 63578,
+        "triangles": 126848,
+        "materials": [
+          "BriseSeve_Painted"
+        ],
+        "bounds_min_m": [
+          -0.7341676950454712,
+          -1.7070000171661377,
+          0.014408004470169544
+        ],
+        "bounds_max_m": [
+          0.7341676950454712,
+          1.5709030628204346,
+          1.9603482484817505
+        ],
+        "dimensions_m": [
+          1.4683353900909424,
+          3.2779030799865723,
+          1.945940244011581
+        ],
+        "finite_vertices": true,
+        "uv_layers": 1,
+        "finite_uvs": true,
+        "uv_bounds": [
+          [
+            0.010049526579678059,
+            0.01004953496158123
+          ],
+          [
+            0.9899504780769348,
+            0.9875257015228271
+          ]
+        ],
+        "max_influences": 4,
+        "max_weight_sum_error": 4.5925844460725784e-08,
+        "unweighted_vertices": 0,
+        "invalid_weight_vertices": 0
+      },
+      {
+        "name": "BriseSeve_LOD1",
+        "vertices": 30597,
+        "triangles": 60886,
+        "materials": [
+          "BriseSeve_Painted"
+        ],
+        "bounds_min_m": [
+          -0.7341676950454712,
+          -1.7070000171661377,
+          0.014245481230318546
+        ],
+        "bounds_max_m": [
+          0.7341676950454712,
+          1.5710214376449585,
+          1.9603482484817505
+        ],
+        "dimensions_m": [
+          1.4683353900909424,
+          3.278021454811096,
+          1.946102767251432
+        ],
+        "finite_vertices": true,
+        "uv_layers": 1,
+        "finite_uvs": true,
+        "uv_bounds": [
+          [
+            0.010037481784820557,
+            0.010048081167042255
+          ],
+          [
+            0.9841615557670593,
+            0.9875186681747437
+          ]
+        ],
+        "max_influences": 4,
+        "max_weight_sum_error": 1.5165642253123224e-07,
+        "unweighted_vertices": 0,
+        "invalid_weight_vertices": 0
+      },
+      {
+        "name": "BriseSeve_LOD2",
+        "vertices": 12838,
+        "triangles": 25368,
+        "materials": [
+          "BriseSeve_Painted"
+        ],
+        "bounds_min_m": [
+          -0.7338480353355408,
+          -1.7077367305755615,
+          0.01408546045422554
+        ],
+        "bounds_max_m": [
+          0.7338480353355408,
+          1.570900559425354,
+          1.9603482484817505
+        ],
+        "dimensions_m": [
+          1.4676960706710815,
+          3.2786372900009155,
+          1.946262788027525
+        ],
+        "finite_vertices": true,
+        "uv_layers": 1,
+        "finite_uvs": true,
+        "uv_bounds": [
+          [
+            0.010042431764304638,
+            0.010048081167042255
+          ],
+          [
+            0.9840786457061768,
+            0.9874843955039978
+          ]
+        ],
+        "max_influences": 4,
+        "max_weight_sum_error": 1.5087425708770752e-07,
+        "unweighted_vertices": 0,
+        "invalid_weight_vertices": 0
+      }
+    ],
+    "clips": [
+      {
+        "name": "Idle",
+        "frame_range": [
+          0.0,
+          240.0
+        ],
+        "duration_seconds": 4.0,
+        "fps": 60.0,
+        "evaluated_frames": 241,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7479196190834045,
+          -1.7111308574676514,
+          0.014407585375010967
+        ],
+        "bounds_max_m": [
+          0.7479196190834045,
+          1.5771783590316772,
+          1.9509445428848267
+        ],
+        "max_pose_displacement_m": 0.06626673755653098,
+        "loop_pose_error_m": 0.0,
+        "max_sampled_edge_stretch": 1.3426353163391425,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 241,
+            "min_contact_surface_z_m": 0.014407925307750702,
+            "max_contact_surface_z_m": 0.014408810064196587,
+            "max_planted_surface_slip_per_frame_m": 6.492891425285159e-07,
+            "max_marker_height_error_m": 4.652142524715075e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 241,
+            "min_contact_surface_z_m": 0.014407585375010967,
+            "max_contact_surface_z_m": 0.014408470131456852,
+            "max_planted_surface_slip_per_frame_m": 6.696167661671848e-07,
+            "max_marker_height_error_m": 4.652142524715075e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 241,
+            "min_contact_surface_z_m": 0.015381143428385258,
+            "max_contact_surface_z_m": 0.015382072888314724,
+            "max_planted_surface_slip_per_frame_m": 7.657588922375081e-07,
+            "max_marker_height_error_m": 4.996359348301282e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 241,
+            "min_contact_surface_z_m": 0.015381145291030407,
+            "max_contact_surface_z_m": 0.015382074750959873,
+            "max_planted_surface_slip_per_frame_m": 7.682380017989351e-07,
+            "max_marker_height_error_m": 4.996359348301282e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 0.0,
+            "min_surface_z_m": 0.01440785638988018,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.004629373550415
+            ]
+          },
+          {
+            "frame": 60.0,
+            "min_surface_z_m": 0.014408130198717117,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0106292963027954
+            ]
+          },
+          {
+            "frame": 120.0,
+            "min_surface_z_m": 0.014408078044652939,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0166293382644653
+            ]
+          },
+          {
+            "frame": 180.0,
+            "min_surface_z_m": 0.014408130198717117,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0106292963027954
+            ]
+          },
+          {
+            "frame": 240.0,
+            "min_surface_z_m": 0.01440785638988018,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.004629373550415
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Walk",
+        "frame_range": [
+          0.0,
+          72.0
+        ],
+        "duration_seconds": 1.2,
+        "fps": 60.0,
+        "evaluated_frames": 73,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.74906986951828,
+          -1.7118431329727173,
+          0.014407642185688019
+        ],
+        "bounds_max_m": [
+          0.7487038373947144,
+          1.5777486562728882,
+          1.9008848667144775
+        ],
+        "max_pose_displacement_m": 0.6010907484599776,
+        "loop_pose_error_m": 3.429011054889572e-18,
+        "max_sampled_edge_stretch": 3.632723939022444,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 49,
+            "min_contact_surface_z_m": 0.014407934620976448,
+            "max_contact_surface_z_m": 0.014408660121262074,
+            "max_planted_surface_slip_per_frame_m": 4.011085170433358e-06,
+            "max_marker_height_error_m": 4.065036773685804e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 50,
+            "min_contact_surface_z_m": 0.014407642185688019,
+            "max_contact_surface_z_m": 0.014408350922167301,
+            "max_planted_surface_slip_per_frame_m": 3.966585032910944e-06,
+            "max_marker_height_error_m": 3.5621225833934456e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 50,
+            "min_contact_surface_z_m": 0.01538099441677332,
+            "max_contact_surface_z_m": 0.015381849370896816,
+            "max_planted_surface_slip_per_frame_m": 2.1738245449789045e-06,
+            "max_marker_height_error_m": 6.467849016193739e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 50,
+            "min_contact_surface_z_m": 0.015380996279418468,
+            "max_contact_surface_z_m": 0.015381851233541965,
+            "max_planted_surface_slip_per_frame_m": 1.7501071286299456e-06,
+            "max_marker_height_error_m": 6.467849016193739e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 0.0,
+            "min_surface_z_m": 0.014408055692911148,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9376952052116394
+            ]
+          },
+          {
+            "frame": 18.0,
+            "min_surface_z_m": 0.014408162795007229,
+            "body_position_m": [
+              0.014000000432133675,
+              0.6499999761581421,
+              0.9616952538490295
+            ]
+          },
+          {
+            "frame": 36.0,
+            "min_surface_z_m": 0.014408395625650883,
+            "body_position_m": [
+              1.714505527444786e-18,
+              0.6499999761581421,
+              0.9376952052116394
+            ]
+          },
+          {
+            "frame": 54.0,
+            "min_surface_z_m": 0.014407966285943985,
+            "body_position_m": [
+              -0.014000000432133675,
+              0.6499999761581421,
+              0.9616952538490295
+            ]
+          },
+          {
+            "frame": 72.0,
+            "min_surface_z_m": 0.014408055692911148,
+            "body_position_m": [
+              -3.429011054889572e-18,
+              0.6499999761581421,
+              0.9376952052116394
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Charge",
+        "frame_range": [
+          0.0,
+          39.0
+        ],
+        "duration_seconds": 0.65,
+        "fps": 60.0,
+        "evaluated_frames": 40,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7341676950454712,
+          -1.6141064167022705,
+          0.01062743365764618
+        ],
+        "bounds_max_m": [
+          0.7341676950454712,
+          1.5810939073562622,
+          1.8925846815109253
+        ],
+        "max_pose_displacement_m": 0.8134178183010952,
+        "loop_pose_error_m": 0.0,
+        "max_sampled_edge_stretch": 4.316693978121883,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.014408163726329803,
+            "max_contact_surface_z_m": 0.014408493414521217,
+            "max_planted_surface_slip_per_frame_m": 1.3209986589142842e-05,
+            "max_marker_height_error_m": 1.6622245311778694e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.014407793991267681,
+            "max_contact_surface_z_m": 0.014408129267394543,
+            "max_planted_surface_slip_per_frame_m": 1.4541925945154317e-05,
+            "max_marker_height_error_m": 2.0533800125163704e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 12,
+            "min_contact_surface_z_m": 0.01538136601448059,
+            "max_contact_surface_z_m": 0.01538159977644682,
+            "max_planted_surface_slip_per_frame_m": 6.915201620407327e-06,
+            "max_marker_height_error_m": 2.761185169224134e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.015381080098450184,
+            "max_contact_surface_z_m": 0.015381806530058384,
+            "max_planted_surface_slip_per_frame_m": 5.81502405555349e-06,
+            "max_marker_height_error_m": 5.53652644157826e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 0.0,
+            "min_surface_z_m": 0.015381423756480217,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9569976329803467
+            ]
+          },
+          {
+            "frame": 9.0,
+            "min_surface_z_m": 0.015381364151835442,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9650802612304688
+            ]
+          },
+          {
+            "frame": 19.0,
+            "min_surface_z_m": 0.01440825778990984,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9157615900039673
+            ]
+          },
+          {
+            "frame": 29.0,
+            "min_surface_z_m": 0.014408000744879246,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9069710373878479
+            ]
+          },
+          {
+            "frame": 39.0,
+            "min_surface_z_m": 0.015381423756480217,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9569976329803467
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ChargeAnticipation",
+        "frame_range": [
+          0.0,
+          60.0
+        ],
+        "duration_seconds": 1.0,
+        "fps": 60.0,
+        "evaluated_frames": 61,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7341676950454712,
+          -1.7070000171661377,
+          0.014407724142074585
+        ],
+        "bounds_max_m": [
+          0.7341676950454712,
+          1.6175222396850586,
+          1.9353482723236084
+        ],
+        "max_pose_displacement_m": 0.401034288826621,
+        "loop_pose_error_m": null,
+        "max_sampled_edge_stretch": 2.2053468727737187,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 61,
+            "min_contact_surface_z_m": 0.01440806407481432,
+            "max_contact_surface_z_m": 0.014408537186682224,
+            "max_planted_surface_slip_per_frame_m": 3.2239096638503522e-06,
+            "max_marker_height_error_m": 2.9101967811626106e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 32,
+            "min_contact_surface_z_m": 0.014407724142074585,
+            "max_contact_surface_z_m": 0.01440819725394249,
+            "max_planted_surface_slip_per_frame_m": 2.2688512186664805e-06,
+            "max_marker_height_error_m": 2.9101967811626106e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 61,
+            "min_contact_surface_z_m": 0.015381202101707458,
+            "max_contact_surface_z_m": 0.015381910838186741,
+            "max_planted_surface_slip_per_frame_m": 9.4808959030358e-07,
+            "max_marker_height_error_m": 4.400312900547376e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 61,
+            "min_contact_surface_z_m": 0.015381203964352608,
+            "max_contact_surface_z_m": 0.01538191270083189,
+            "max_planted_surface_slip_per_frame_m": 8.766312653725791e-07,
+            "max_marker_height_error_m": 4.400312900547376e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 0.0,
+            "min_surface_z_m": 0.014407776296138763,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          },
+          {
+            "frame": 15.0,
+            "min_surface_z_m": 0.014408404938876629,
+            "body_position_m": [
+              0.0,
+              0.678284227848053,
+              0.9956835508346558
+            ]
+          },
+          {
+            "frame": 30.0,
+            "min_surface_z_m": 0.014408289454877377,
+            "body_position_m": [
+              0.0,
+              0.6899999976158142,
+              0.9599999785423279
+            ]
+          },
+          {
+            "frame": 45.0,
+            "min_surface_z_m": 0.014408007264137268,
+            "body_position_m": [
+              0.0,
+              0.678284227848053,
+              0.92431640625
+            ]
+          },
+          {
+            "frame": 60.0,
+            "min_surface_z_m": 0.014408127404749393,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9149999618530273
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Attack",
+        "frame_range": [
+          0.0,
+          54.0
+        ],
+        "duration_seconds": 0.9,
+        "fps": 60.0,
+        "evaluated_frames": 55,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7341676950454712,
+          -1.728994369506836,
+          0.01440765056759119
+        ],
+        "bounds_max_m": [
+          0.7341676950454712,
+          1.6134268045425415,
+          1.9353482723236084
+        ],
+        "max_pose_displacement_m": 0.48178152538107344,
+        "loop_pose_error_m": null,
+        "max_sampled_edge_stretch": 2.2941878778228753,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 55,
+            "min_contact_surface_z_m": 0.014407990500330925,
+            "max_contact_surface_z_m": 0.014408569782972336,
+            "max_planted_surface_slip_per_frame_m": 3.497664000164019e-05,
+            "max_marker_height_error_m": 3.5248696804088264e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 55,
+            "min_contact_surface_z_m": 0.01440765056759119,
+            "max_contact_surface_z_m": 0.014408229850232601,
+            "max_planted_surface_slip_per_frame_m": 3.821471731933222e-05,
+            "max_marker_height_error_m": 3.5248696804088264e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 55,
+            "min_contact_surface_z_m": 0.015381142497062683,
+            "max_contact_surface_z_m": 0.015381867066025734,
+            "max_planted_surface_slip_per_frame_m": 4.584102112647293e-06,
+            "max_marker_height_error_m": 4.996359348301282e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 55,
+            "min_contact_surface_z_m": 0.015381144359707832,
+            "max_contact_surface_z_m": 0.015381868928670883,
+            "max_planted_surface_slip_per_frame_m": 3.6796921463848365e-06,
+            "max_marker_height_error_m": 4.996359348301282e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 0.0,
+            "min_surface_z_m": 0.014407776296138763,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          },
+          {
+            "frame": 13.0,
+            "min_surface_z_m": 0.014408005401492119,
+            "body_position_m": [
+              0.0,
+              0.6814618706703186,
+              0.9767442941665649
+            ]
+          },
+          {
+            "frame": 27.0,
+            "min_surface_z_m": 0.014408081769943237,
+            "body_position_m": [
+              0.0,
+              0.5249999761581421,
+              0.9449999928474426
+            ]
+          },
+          {
+            "frame": 40.0,
+            "min_surface_z_m": 0.0144078703597188,
+            "body_position_m": [
+              0.0,
+              0.5699304938316345,
+              0.9732556343078613
+            ]
+          },
+          {
+            "frame": 54.0,
+            "min_surface_z_m": 0.014407776296138763,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Hit",
+        "frame_range": [
+          0.0,
+          30.0
+        ],
+        "duration_seconds": 0.5,
+        "fps": 60.0,
+        "evaluated_frames": 31,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7343933582305908,
+          -1.711454153060913,
+          0.014407776296138763
+        ],
+        "bounds_max_m": [
+          0.738086462020874,
+          1.6159698963165283,
+          1.9353482723236084
+        ],
+        "max_pose_displacement_m": 0.11826296631875588,
+        "loop_pose_error_m": null,
+        "max_sampled_edge_stretch": 1.8584571633214324,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 31,
+            "min_contact_surface_z_m": 0.014407950453460217,
+            "max_contact_surface_z_m": 0.014408654533326626,
+            "max_planted_surface_slip_per_frame_m": 1.1716682130794886e-05,
+            "max_marker_height_error_m": 3.878772258762708e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 31,
+            "min_contact_surface_z_m": 0.014407776296138763,
+            "max_contact_surface_z_m": 0.014408420771360397,
+            "max_planted_surface_slip_per_frame_m": 1.2625841297704545e-05,
+            "max_marker_height_error_m": 4.0747225284534783e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 31,
+            "min_contact_surface_z_m": 0.015381205826997757,
+            "max_contact_surface_z_m": 0.01538195088505745,
+            "max_planted_surface_slip_per_frame_m": 4.5723649594225814e-06,
+            "max_marker_height_error_m": 4.3816864490550667e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 31,
+            "min_contact_surface_z_m": 0.015381270088255405,
+            "max_contact_surface_z_m": 0.015381915494799614,
+            "max_planted_surface_slip_per_frame_m": 3.1978795766801754e-06,
+            "max_marker_height_error_m": 3.7483870983165413e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 0.0,
+            "min_surface_z_m": 0.014407776296138763,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          },
+          {
+            "frame": 7.0,
+            "min_surface_z_m": 0.014407802373170853,
+            "body_position_m": [
+              0.0,
+              0.6495168805122375,
+              1.00473153591156
+            ]
+          },
+          {
+            "frame": 15.0,
+            "min_surface_z_m": 0.014407814480364323,
+            "body_position_m": [
+              0.0,
+              0.6418689489364624,
+              1.0004826784133911
+            ]
+          },
+          {
+            "frame": 22.0,
+            "min_surface_z_m": 0.014407914131879807,
+            "body_position_m": [
+              0.0,
+              0.6420877575874329,
+              1.000604271888733
+            ]
+          },
+          {
+            "frame": 30.0,
+            "min_surface_z_m": 0.014407776296138763,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Death",
+        "frame_range": [
+          0.0,
+          84.0
+        ],
+        "duration_seconds": 1.4,
+        "fps": 60.0,
+        "evaluated_frames": 85,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -1.029761552810669,
+          -1.7070000171661377,
+          0.00099983811378479
+        ],
+        "bounds_max_m": [
+          1.1583988666534424,
+          1.60579252243042,
+          1.9353482723236084
+        ],
+        "max_pose_displacement_m": 1.186815450415408,
+        "loop_pose_error_m": null,
+        "max_sampled_edge_stretch": 4.918123372350607,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.014408267103135586,
+            "max_contact_surface_z_m": 0.014408267103135586,
+            "max_planted_surface_slip_per_frame_m": 0.0,
+            "max_marker_height_error_m": 9.171664714854866e-08
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.014407927170395851,
+            "max_contact_surface_z_m": 0.014407927170395851,
+            "max_planted_surface_slip_per_frame_m": 0.0,
+            "max_marker_height_error_m": 9.171664714854866e-08
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.015381474047899246,
+            "max_contact_surface_z_m": 0.015381474047899246,
+            "max_planted_surface_slip_per_frame_m": 0.0,
+            "max_marker_height_error_m": 1.6622245311778694e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.015381475910544395,
+            "max_contact_surface_z_m": 0.015381475910544395,
+            "max_planted_surface_slip_per_frame_m": 0.0,
+            "max_marker_height_error_m": 1.6622245311778694e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 0.0,
+            "min_surface_z_m": 0.014407927170395851,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          },
+          {
+            "frame": 21.0,
+            "min_surface_z_m": 0.014037035405635834,
+            "body_position_m": [
+              0.01541022676974535,
+              0.651540994644165,
+              0.9731521606445312
+            ]
+          },
+          {
+            "frame": 42.0,
+            "min_surface_z_m": 0.0009999126195907593,
+            "body_position_m": [
+              0.18278418481349945,
+              0.6682783961296082,
+              0.9247277975082397
+            ]
+          },
+          {
+            "frame": 63.0,
+            "min_surface_z_m": 0.0009998679161071777,
+            "body_position_m": [
+              0.29893505573272705,
+              0.6798934936523438,
+              0.8602423667907715
+            ]
+          },
+          {
+            "frame": 84.0,
+            "min_surface_z_m": 0.0009999871253967285,
+            "body_position_m": [
+              0.30000001192092896,
+              0.6799999475479126,
+              0.8604382276535034
+            ]
+          }
+        ]
+      }
+    ],
+    "integrity_passed": true,
+    "integrity_errors": [],
+    "surface_observations": [
+      "Walk: localized skin stretch reaches 3.63x; inspect joint silhouette",
+      "Charge: localized skin stretch reaches 4.32x; inspect joint silhouette",
+      "Death: localized skin stretch reaches 4.92x; inspect joint silhouette"
+    ]
+  },
+  "glb": {
+    "bytes": 8673084,
+    "meshes": 1,
+    "materials": 1,
+    "skins": 1,
+    "animations": [
+      {
+        "name": "Attack",
+        "duration_seconds": 0.9,
+        "channels": 87
+      },
+      {
+        "name": "Charge",
+        "duration_seconds": 0.65,
+        "channels": 87
+      },
+      {
+        "name": "ChargeAnticipation",
+        "duration_seconds": 1,
+        "channels": 87
+      },
+      {
+        "name": "Death",
+        "duration_seconds": 1.4,
+        "channels": 87
+      },
+      {
+        "name": "Hit",
+        "duration_seconds": 0.5,
+        "channels": 87
+      },
+      {
+        "name": "Idle",
+        "duration_seconds": 4,
+        "channels": 87
+      },
+      {
+        "name": "Walk",
+        "duration_seconds": 1.2,
+        "channels": 87
+      }
+    ],
+    "integrity_passed": true,
+    "integrity_errors": []
+  },
+  "fbx_roundtrip": {
+    "armature": "BriseSeveRig",
+    "bone_count": 29,
+    "meshes": [
+      {
+        "name": "BriseSeve_LOD1",
+        "vertices": 30597,
+        "triangles": 60886,
+        "materials": [
+          "BriseSeve_Painted"
+        ],
+        "bounds_min_m": [
+          -0.7341677011446017,
+          -1.706999879666289,
+          0.014245610354557126
+        ],
+        "bounds_max_m": [
+          0.7341676889463407,
+          1.5710215620842378,
+          1.9603483065024856
+        ],
+        "dimensions_m": [
+          1.4683353900909424,
+          3.2780214417505267,
+          1.9461026961479284
+        ],
+        "finite_vertices": true,
+        "uv_layers": 1,
+        "finite_uvs": true,
+        "uv_bounds": [
+          [
+            0.010037481784820557,
+            0.010048081167042255
+          ],
+          [
+            0.9841615557670593,
+            0.9875186681747437
+          ]
+        ],
+        "max_influences": 4,
+        "max_weight_sum_error": 1.5165642253123224e-07,
+        "unweighted_vertices": 0,
+        "invalid_weight_vertices": 0
+      },
+      {
+        "name": "BriseSeve_LOD2",
+        "vertices": 12838,
+        "triangles": 25368,
+        "materials": [
+          "BriseSeve_Painted"
+        ],
+        "bounds_min_m": [
+          -0.7338480414346713,
+          -1.7077365930756934,
+          0.014085590368789746
+        ],
+        "bounds_max_m": [
+          0.7338480292364102,
+          1.5709006838578357,
+          1.9603483065024856
+        ],
+        "dimensions_m": [
+          1.4676960706710815,
+          3.2786372769335292,
+          1.9462627161336958
+        ],
+        "finite_vertices": true,
+        "uv_layers": 1,
+        "finite_uvs": true,
+        "uv_bounds": [
+          [
+            0.010042431764304638,
+            0.010048081167042255
+          ],
+          [
+            0.9840786457061768,
+            0.9874843955039978
+          ]
+        ],
+        "max_influences": 4,
+        "max_weight_sum_error": 1.5087425708770752e-07,
+        "unweighted_vertices": 0,
+        "invalid_weight_vertices": 0
+      },
+      {
+        "name": "BriseSeve_LOD0",
+        "vertices": 63578,
+        "triangles": 126848,
+        "materials": [
+          "BriseSeve_Painted"
+        ],
+        "bounds_min_m": [
+          -0.7341677011446017,
+          -1.706999879666289,
+          0.014408134002661194
+        ],
+        "bounds_max_m": [
+          0.7341676889463407,
+          1.5709031872436328,
+          1.9603483065024856
+        ],
+        "dimensions_m": [
+          1.4683353900909424,
+          3.277903066909922,
+          1.9459401724998244
+        ],
+        "finite_vertices": true,
+        "uv_layers": 1,
+        "finite_uvs": true,
+        "uv_bounds": [
+          [
+            0.010049526579678059,
+            0.01004953496158123
+          ],
+          [
+            0.9899504780769348,
+            0.9875257015228271
+          ]
+        ],
+        "max_influences": 4,
+        "max_weight_sum_error": 4.5925844460725784e-08,
+        "unweighted_vertices": 0,
+        "invalid_weight_vertices": 0
+      }
+    ],
+    "clips": [
+      {
+        "name": "Idle",
+        "frame_range": [
+          1.0,
+          241.0
+        ],
+        "duration_seconds": 4.0,
+        "fps": 60.0,
+        "evaluated_frames": 241,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7479196251825351,
+          -1.7111307181824669,
+          0.014406910244759305
+        ],
+        "bounds_max_m": [
+          0.747919612984274,
+          1.5771781237439175,
+          1.9509444803215783
+        ],
+        "max_pose_displacement_m": 0.06626678597441167,
+        "loop_pose_error_m": 0.0,
+        "max_sampled_edge_stretch": 1.3160437006835815,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 241,
+            "min_contact_surface_z_m": 0.01440725018218925,
+            "max_contact_surface_z_m": 0.01440867883103813,
+            "max_planted_surface_slip_per_frame_m": 1.4277001241025845e-06,
+            "max_marker_height_error_m": 1.1310726404194227e-06
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 241,
+            "min_contact_surface_z_m": 0.014406910244759305,
+            "max_contact_surface_z_m": 0.014408338893608187,
+            "max_planted_surface_slip_per_frame_m": 1.392911124808568e-06,
+            "max_marker_height_error_m": 1.1310726404194227e-06
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 241,
+            "min_contact_surface_z_m": 0.01538108574572546,
+            "max_contact_surface_z_m": 0.01538225828085661,
+            "max_planted_surface_slip_per_frame_m": 1.2705174368941622e-06,
+            "max_marker_height_error_m": 6.356090307239881e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 241,
+            "min_contact_surface_z_m": 0.015381087608370717,
+            "max_contact_surface_z_m": 0.015382260143501868,
+            "max_planted_surface_slip_per_frame_m": 1.2710246338104582e-06,
+            "max_marker_height_error_m": 6.356090307239881e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 1.0,
+            "min_surface_z_m": 0.014408044595723164,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.004629373550415
+            ]
+          },
+          {
+            "frame": 61.0,
+            "min_surface_z_m": 0.014407024797358297,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0106292963027954
+            ]
+          },
+          {
+            "frame": 121.0,
+            "min_surface_z_m": 0.014408338893608187,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0166293382644653
+            ]
+          },
+          {
+            "frame": 181.0,
+            "min_surface_z_m": 0.014407882545556337,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0106292963027954
+            ]
+          },
+          {
+            "frame": 241.0,
+            "min_surface_z_m": 0.014408044595723164,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.004629373550415
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Walk",
+        "frame_range": [
+          1.0,
+          73.0
+        ],
+        "duration_seconds": 1.2,
+        "fps": 60.0,
+        "evaluated_frames": 73,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7490698756174106,
+          -1.7118431258764617,
+          0.014406820539984641
+        ],
+        "bounds_max_m": [
+          0.7487038312955838,
+          1.5777481726244573,
+          1.9008852797035136
+        ],
+        "max_pose_displacement_m": 0.6010907955704508,
+        "loop_pose_error_m": 0.0,
+        "max_sampled_edge_stretch": 3.964361133332857,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 49,
+            "min_contact_surface_z_m": 0.01440682706389403,
+            "max_contact_surface_z_m": 0.014408474019206563,
+            "max_planted_surface_slip_per_frame_m": 4.552016326524628e-06,
+            "max_marker_height_error_m": 1.5650689601902357e-06
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 50,
+            "min_contact_surface_z_m": 0.014406820539984641,
+            "max_contact_surface_z_m": 0.014408308641150067,
+            "max_planted_surface_slip_per_frame_m": 4.22497041891608e-06,
+            "max_marker_height_error_m": 1.2260675430302015e-06
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 50,
+            "min_contact_surface_z_m": 0.015381007716979327,
+            "max_contact_surface_z_m": 0.015382316339469541,
+            "max_planted_surface_slip_per_frame_m": 2.4494673166592026e-06,
+            "max_marker_height_error_m": 7.026642560963026e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 50,
+            "min_contact_surface_z_m": 0.015381009579624584,
+            "max_contact_surface_z_m": 0.015382318202114798,
+            "max_planted_surface_slip_per_frame_m": 2.0679465187888872e-06,
+            "max_marker_height_error_m": 7.026642560963026e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 1.0,
+            "min_surface_z_m": 0.014407789399173762,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9376952648162842
+            ]
+          },
+          {
+            "frame": 19.0,
+            "min_surface_z_m": 0.014408083942705244,
+            "body_position_m": [
+              0.014000000432133675,
+              0.6499999761581421,
+              0.9616953134536743
+            ]
+          },
+          {
+            "frame": 37.0,
+            "min_surface_z_m": 0.014408129336603705,
+            "body_position_m": [
+              1.714505527444786e-18,
+              0.6499999761581421,
+              0.9376952648162842
+            ]
+          },
+          {
+            "frame": 55.0,
+            "min_surface_z_m": 0.014407670875599172,
+            "body_position_m": [
+              -0.014000000432133675,
+              0.6499999761581421,
+              0.9616953134536743
+            ]
+          },
+          {
+            "frame": 73.0,
+            "min_surface_z_m": 0.014407789399173762,
+            "body_position_m": [
+              -3.429011054889572e-18,
+              0.6499999761581421,
+              0.9376952648162842
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Charge",
+        "frame_range": [
+          1.0,
+          40.0
+        ],
+        "duration_seconds": 0.65,
+        "fps": 60.0,
+        "evaluated_frames": 40,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7341677011446017,
+          -1.6141057323862826,
+          0.01062713915199117
+        ],
+        "bounds_max_m": [
+          0.7341676889463407,
+          1.5810934276375803,
+          1.8925843775310687
+        ],
+        "max_pose_displacement_m": 0.8134178648503856,
+        "loop_pose_error_m": 0.0,
+        "max_sampled_edge_stretch": 4.599138690121249,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.014407695359102126,
+            "max_contact_surface_z_m": 0.01440854875535347,
+            "max_planted_surface_slip_per_frame_m": 1.34957900994859e-05,
+            "max_marker_height_error_m": 6.84037804603993e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.01440735399721573,
+            "max_contact_surface_z_m": 0.014408217502651909,
+            "max_planted_surface_slip_per_frame_m": 1.4717548609194013e-05,
+            "max_marker_height_error_m": 6.803125143055311e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 12,
+            "min_contact_surface_z_m": 0.015381421946667306,
+            "max_contact_surface_z_m": 0.015382084760386522,
+            "max_planted_surface_slip_per_frame_m": 6.8202437850210245e-06,
+            "max_marker_height_error_m": 3.646314144130358e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.01538116098608364,
+            "max_contact_surface_z_m": 0.015381904350800873,
+            "max_planted_surface_slip_per_frame_m": 6.327499622668858e-06,
+            "max_marker_height_error_m": 5.666911602024427e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 1.0,
+            "min_surface_z_m": 0.015381536804092702,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9569976329803467
+            ]
+          },
+          {
+            "frame": 10.0,
+            "min_surface_z_m": 0.015381589716186283,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9650802612304688
+            ]
+          },
+          {
+            "frame": 20.0,
+            "min_surface_z_m": 0.014407843896473297,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9157615900039673
+            ]
+          },
+          {
+            "frame": 30.0,
+            "min_surface_z_m": 0.01440771707760779,
+            "body_position_m": [
+              0.0,
+              0.6499999165534973,
+              0.9069710373878479
+            ]
+          },
+          {
+            "frame": 40.0,
+            "min_surface_z_m": 0.015381536804092702,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9569976329803467
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ChargeAnticipation",
+        "frame_range": [
+          1.0,
+          61.0
+        ],
+        "duration_seconds": 1.0,
+        "fps": 60.0,
+        "evaluated_frames": 61,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7341677011446017,
+          -1.7069998837393505,
+          0.014407560307906676
+        ],
+        "bounds_max_m": [
+          0.7341676889463407,
+          1.6175219964398768,
+          1.935348091925784
+        ],
+        "max_pose_displacement_m": 0.4010341818507972,
+        "loop_pose_error_m": null,
+        "max_sampled_edge_stretch": 2.191958244156859,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 61,
+            "min_contact_surface_z_m": 0.01440790024533662,
+            "max_contact_surface_z_m": 0.014408738435741171,
+            "max_planted_surface_slip_per_frame_m": 3.3198004232212597e-06,
+            "max_marker_height_error_m": 4.884600639347425e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 32,
+            "min_contact_surface_z_m": 0.014407560307906676,
+            "max_contact_surface_z_m": 0.014408377077804613,
+            "max_planted_surface_slip_per_frame_m": 2.498160373382031e-06,
+            "max_marker_height_error_m": 4.884600639347425e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 61,
+            "min_contact_surface_z_m": 0.015381348378778898,
+            "max_contact_surface_z_m": 0.015382139071586481,
+            "max_planted_surface_slip_per_frame_m": 1.0918042615676541e-06,
+            "max_marker_height_error_m": 4.223734140391955e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 61,
+            "min_contact_surface_z_m": 0.015381350241424155,
+            "max_contact_surface_z_m": 0.01538214093423174,
+            "max_planted_surface_slip_per_frame_m": 1.0516112847021182e-06,
+            "max_marker_height_error_m": 4.223734140391955e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 1.0,
+            "min_surface_z_m": 0.014407859262540526,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          },
+          {
+            "frame": 16.0,
+            "min_surface_z_m": 0.014408518643642695,
+            "body_position_m": [
+              0.0,
+              0.678284227848053,
+              0.9956835508346558
+            ]
+          },
+          {
+            "frame": 31.0,
+            "min_surface_z_m": 0.014408167535012643,
+            "body_position_m": [
+              0.0,
+              0.6899999976158142,
+              0.9600000381469727
+            ]
+          },
+          {
+            "frame": 46.0,
+            "min_surface_z_m": 0.014408048320974618,
+            "body_position_m": [
+              0.0,
+              0.678284227848053,
+              0.9243164658546448
+            ]
+          },
+          {
+            "frame": 61.0,
+            "min_surface_z_m": 0.014408034351184554,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              0.9149999618530273
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Attack",
+        "frame_range": [
+          1.0,
+          55.0
+        ],
+        "duration_seconds": 0.9,
+        "fps": 60.0,
+        "evaluated_frames": 55,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7341677011446017,
+          -1.7289940182081072,
+          0.014407496978010446
+        ],
+        "bounds_max_m": [
+          0.7341676889463407,
+          1.6134263220211882,
+          1.935348091925784
+        ],
+        "max_pose_displacement_m": 0.4817811269177916,
+        "loop_pose_error_m": null,
+        "max_sampled_edge_stretch": 2.371298418075178,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 55,
+            "min_contact_surface_z_m": 0.014407836915440389,
+            "max_contact_surface_z_m": 0.014408762650147533,
+            "max_planted_surface_slip_per_frame_m": 3.492752249514937e-05,
+            "max_marker_height_error_m": 5.611032247547498e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 55,
+            "min_contact_surface_z_m": 0.014407496978010446,
+            "max_contact_surface_z_m": 0.014408422712717589,
+            "max_planted_surface_slip_per_frame_m": 3.812784555637612e-05,
+            "max_marker_height_error_m": 5.611032247547498e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 55,
+            "min_contact_surface_z_m": 0.015381236620040812,
+            "max_contact_surface_z_m": 0.015382149316134802,
+            "max_planted_surface_slip_per_frame_m": 4.3047594531800835e-06,
+            "max_marker_height_error_m": 4.791468381885877e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 55,
+            "min_contact_surface_z_m": 0.015381238482686068,
+            "max_contact_surface_z_m": 0.01538215117878006,
+            "max_planted_surface_slip_per_frame_m": 3.3995593533905227e-06,
+            "max_marker_height_error_m": 4.791468381885877e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 1.0,
+            "min_surface_z_m": 0.014407859262540526,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          },
+          {
+            "frame": 14.0,
+            "min_surface_z_m": 0.014407507222558767,
+            "body_position_m": [
+              0.0,
+              0.6814618706703186,
+              0.9767442941665649
+            ]
+          },
+          {
+            "frame": 28.0,
+            "min_surface_z_m": 0.014408308159972936,
+            "body_position_m": [
+              0.0,
+              0.5250000357627869,
+              0.9450000524520874
+            ]
+          },
+          {
+            "frame": 41.0,
+            "min_surface_z_m": 0.014408178706164197,
+            "body_position_m": [
+              0.0,
+              0.5699304938316345,
+              0.9732556343078613
+            ]
+          },
+          {
+            "frame": 55.0,
+            "min_surface_z_m": 0.014407859262540526,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Hit",
+        "frame_range": [
+          1.0,
+          31.0
+        ],
+        "duration_seconds": 0.5,
+        "fps": 60.0,
+        "evaluated_frames": 31,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -0.7343933643297214,
+          -1.7114541431221522,
+          0.014406955879487775
+        ],
+        "bounds_max_m": [
+          0.7380863367124539,
+          1.6159692978505884,
+          1.935348091925784
+        ],
+        "max_pose_displacement_m": 0.11826311495609988,
+        "loop_pose_error_m": null,
+        "max_sampled_edge_stretch": 1.714354100031746,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 31,
+            "min_contact_surface_z_m": 0.014407606878725616,
+            "max_contact_surface_z_m": 0.014408711427347664,
+            "max_planted_surface_slip_per_frame_m": 1.1351077009744813e-05,
+            "max_marker_height_error_m": 7.678568363193861e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 31,
+            "min_contact_surface_z_m": 0.014406955879487775,
+            "max_contact_surface_z_m": 0.014408387322450044,
+            "max_planted_surface_slip_per_frame_m": 1.2391392865765507e-05,
+            "max_marker_height_error_m": 1.1031329631809583e-06
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 31,
+            "min_contact_surface_z_m": 0.015381278529517825,
+            "max_contact_surface_z_m": 0.015382112063173553,
+            "max_planted_surface_slip_per_frame_m": 4.823343176440382e-06,
+            "max_marker_height_error_m": 4.3071806430858284e-07
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 31,
+            "min_contact_surface_z_m": 0.015381164908134699,
+            "max_contact_surface_z_m": 0.015382172599150722,
+            "max_planted_surface_slip_per_frame_m": 3.406478361035783e-06,
+            "max_marker_height_error_m": 5.611032247547498e-07
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 1.0,
+            "min_surface_z_m": 0.014407859262540526,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          },
+          {
+            "frame": 8.0,
+            "min_surface_z_m": 0.014407596629545352,
+            "body_position_m": [
+              0.0,
+              0.6495168805122375,
+              1.00473153591156
+            ]
+          },
+          {
+            "frame": 16.0,
+            "min_surface_z_m": 0.014407339584495336,
+            "body_position_m": [
+              0.0,
+              0.6418689489364624,
+              1.0004826784133911
+            ]
+          },
+          {
+            "frame": 23.0,
+            "min_surface_z_m": 0.014408247624015297,
+            "body_position_m": [
+              0.0,
+              0.6420877575874329,
+              1.000604271888733
+            ]
+          },
+          {
+            "frame": 31.0,
+            "min_surface_z_m": 0.014407859262540526,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Death",
+        "frame_range": [
+          1.0,
+          85.0
+        ],
+        "duration_seconds": 1.4,
+        "fps": 60.0,
+        "evaluated_frames": 85,
+        "finite_vertices": true,
+        "bounds_min_m": [
+          -1.0297619165376681,
+          -1.7069998837393505,
+          0.0009994991176865606
+        ],
+        "bounds_max_m": [
+          1.1583986221357327,
+          1.6057919310525886,
+          1.935348091925784
+        ],
+        "max_pose_displacement_m": 1.1868153485418633,
+        "loop_pose_error_m": null,
+        "max_sampled_edge_stretch": 4.278128652484249,
+        "max_root_translation_m": 0.0,
+        "actual_skin_contacts": {
+          "Fore.L": {
+            "sample_count": 226,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.014408068814771179,
+            "max_contact_surface_z_m": 0.014408068814771179,
+            "max_planted_surface_slip_per_frame_m": 0.0,
+            "max_marker_height_error_m": 3.152340650562635e-07
+          },
+          "Fore.R": {
+            "sample_count": 228,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.014407728877341236,
+            "max_contact_surface_z_m": 0.014407728877341236,
+            "max_planted_surface_slip_per_frame_m": 0.0,
+            "max_marker_height_error_m": 3.152340650562635e-07
+          },
+          "Hind.L": {
+            "sample_count": 203,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.015381644539318782,
+            "max_contact_surface_z_m": 0.015381644539318782,
+            "max_planted_surface_slip_per_frame_m": 0.0,
+            "max_marker_height_error_m": 7.6815485954701e-08
+          },
+          "Hind.R": {
+            "sample_count": 195,
+            "contact_samples": 11,
+            "min_contact_surface_z_m": 0.015381646401964039,
+            "max_contact_surface_z_m": 0.015381646401964039,
+            "max_planted_surface_slip_per_frame_m": 0.0,
+            "max_marker_height_error_m": 7.6815485954701e-08
+          }
+        },
+        "representative_poses": [
+          {
+            "frame": 1.0,
+            "min_surface_z_m": 0.014407728877341236,
+            "body_position_m": [
+              0.0,
+              0.6499999761581421,
+              1.0049999952316284
+            ]
+          },
+          {
+            "frame": 22.0,
+            "min_surface_z_m": 0.01403667107692787,
+            "body_position_m": [
+              0.01541022676974535,
+              0.651540994644165,
+              0.9731521606445312
+            ]
+          },
+          {
+            "frame": 43.0,
+            "min_surface_z_m": 0.0010001198295171182,
+            "body_position_m": [
+              0.18278418481349945,
+              0.6682783961296082,
+              0.9247277975082397
+            ]
+          },
+          {
+            "frame": 64.0,
+            "min_surface_z_m": 0.0009997251626723588,
+            "body_position_m": [
+              0.29893505573272705,
+              0.679893434047699,
+              0.8602423667907715
+            ]
+          },
+          {
+            "frame": 85.0,
+            "min_surface_z_m": 0.0010004402966552934,
+            "body_position_m": [
+              0.30000001192092896,
+              0.679999828338623,
+              0.8604382276535034
+            ]
+          }
+        ]
+      }
+    ],
+    "integrity_passed": true,
+    "integrity_errors": [],
+    "surface_observations": [
+      "Walk: localized skin stretch reaches 3.96x; inspect joint silhouette",
+      "Charge: localized skin stretch reaches 4.60x; inspect joint silhouette",
+      "Death: localized skin stretch reaches 4.28x; inspect joint silhouette"
+    ]
+  },
+  "integrity_passed": true
+}

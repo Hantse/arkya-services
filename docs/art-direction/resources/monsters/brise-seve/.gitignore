@@ -1,0 +1,4 @@
+*.blend1
+/assets/brise-seve-lookdev.blend
+/renders/lookdev.png
+/scripts/__pycache__/

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ebe8db">
+  <title>Arkya — Brise-Sève, étude 3D</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23535e40' d='M16 2 29 26 16 21 3 26Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="/vendor/model-viewer.min.js"></script>
+  <script type="module" src="viewer.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#animation-panel">Aller aux animations</a>
+  <header class="masthead">
+    <a class="brand" href="../../../viewer/index.html" aria-label="Arkya — bibliothèque artistique">
+      <svg viewBox="0 0 40 46" aria-hidden="true"><path d="m20 3 17 30-17 10L3 33Z M20 13 9 32l11-6 11 6Z M20 13v13"/></svg>
+      <span>ARKYA<small>Bestiaire · Atelier de création</small></span>
+    </a>
+    <p class="review-status"><span aria-hidden="true"></span>Première version 3D — revue artistique</p>
+    <a class="back-link" href="../README.md">Notes de création <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="workbench" aria-labelledby="creature-title">
+      <div class="stage-heading">
+        <div><p class="eyebrow">Créature des sous-bois</p><h1 id="creature-title">Brise-Sève<span>.</span></h1></div>
+        <span class="edition">Étude 01 <span aria-hidden="true">/</span> 3D & mouvement</span>
+      </div>
+      <div id="stage" class="stage">
+        <div class="model-column">
+          <span class="view-label">Modèle 3D</span>
+          <model-viewer id="monster" alt="Brise-Sève : quadrupède massif au masque d’écorce, aux défenses de bois clair et à la crinière de mousse. Modèle 3D animé." camera-controls touch-action="pan-y" environment-image="neutral" exposure="1.1" shadow-intensity="1" shadow-softness="1" camera-orbit="35deg 76deg 100%" field-of-view="30deg" min-camera-orbit="auto 15deg 35%" max-camera-orbit="auto 105deg 250%" interaction-prompt="none" interpolation-decay="100" animation-crossfade-duration="180" aria-describedby="stage-help">
+            <div class="loading" slot="poster" id="loading"><svg viewBox="0 0 40 46" aria-hidden="true"><path d="m20 3 17 30-17 10L3 33Z M20 13 9 32l11-6 11 6Z"/></svg><span id="loading-label">Le sous-bois prend forme…</span><a href="" id="retry" hidden>Recharger l’atelier</a></div>
+            <div slot="progress-bar" class="progress-track"><span id="progress-fill"></span></div>
+          </model-viewer>
+        </div>
+        <figure id="concept-panel" class="concept-panel" hidden>
+          <figcaption><span class="view-label">Concept de référence</span><span>Seconde image</span></figcaption>
+          <img id="concept-image" src="../reference/concept-v2.png" alt="Concept peint du Brise-Sève retenu comme référence pour cette adaptation en trois dimensions.">
+          <p id="concept-error" hidden>Image de référence indisponible.</p>
+          <a id="concept-link" href="../reference/concept-v2.png" target="_blank" rel="noopener">Ouvrir l’image <span aria-hidden="true">↗</span></a>
+        </figure>
+      </div>
+      <div class="stage-toolbar" role="group" aria-label="Vue du modèle">
+        <button id="reset-camera" type="button" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4"/><circle cx="10" cy="10" r="3"/></svg>Recentrer</button>
+        <button id="rotate" type="button" aria-pressed="false" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15 5a7 7 0 1 0 2 8M15 1v5h-5"/></svg>Rotation</button>
+        <button id="compare" type="button" aria-expanded="false" aria-controls="concept-panel"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v16M3 4h4v12H3Zm10 0h4v12h-4Z"/></svg>Comparer au concept</button>
+      </div>
+      <p id="stage-help">Glisser pour tourner · Pincer ou défiler pour zoomer <span>Clavier : flèches sur la vue 3D</span></p>
+      <div class="stage-footer"><span>Écorce · Mousse · Résine ambrée</span><span id="dimensions"></span></div>
+    </section>
+
+    <aside class="inspector" aria-label="Mouvement et fichiers du Brise-Sève">
+      <div class="creature-intro"><p class="eyebrow">Le gardien du vieux bois</p><h2>Une force enracinée.</h2><p>Des épaules lourdes, une tête basse et une crinière de mousse. Une présence à examiner sous tous les angles.</p></div>
+      <section id="animation-panel" class="animation-panel" aria-labelledby="motion-title" tabindex="-1">
+        <div class="section-heading"><h3 id="motion-title">Mouvements</h3><span id="clip-count">Chargement…</span></div>
+        <div id="animations" class="animation-choices" role="group" aria-label="Choisir une animation"><p class="empty-clips">Les animations apparaîtront au chargement du modèle.</p></div>
+        <p id="motion-description" class="motion-description">Examinez la silhouette, les appuis et les déformations.</p>
+        <div class="playback-controls">
+          <button id="play" class="play-button" type="button" aria-label="Mettre l’animation en pause" aria-pressed="true" disabled><svg id="pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10m6-10v10"/></svg><svg id="play-icon" viewBox="0 0 16 16" aria-hidden="true" hidden><path d="m5 3 8 5-8 5Z"/></svg><span id="play-label">Pause</span></button>
+          <label class="speed-control" for="speed">Vitesse<select id="speed" disabled><option value="0.25">× 0,25</option><option value="0.5">× 0,5</option><option value="1" selected>× 1</option><option value="1.5">× 1,5</option></select></label>
+        </div>
+        <div class="timeline"><label for="time">Position dans le cycle</label><output id="time-label" for="time">0,00 / 0,00 s</output><input id="time" type="range" min="0" max="1" step="0.001" value="0" disabled></div>
+        <p class="motion-note">Animations sur place. Le déplacement et les impacts en jeu restent pilotés par la simulation.</p>
+      </section>
+      <details class="model-info"><summary>Le modèle en détail <span aria-hidden="true">+</span></summary><dl id="model-stats"><dt>État</dt><dd>Chargement du modèle</dd></dl><p>Les noms et durées des animations sont lus directement dans le fichier 3D.</p></details>
+      <section class="downloads" aria-labelledby="download-title"><h3 id="download-title">Les fichiers de l’étude</h3><div><a id="download-glb" href="../models/brise-seve.glb" download>GLB <span aria-hidden="true">↓</span></a><a id="download-blend" href="../assets/brise-seve.blend" download>Blender <span aria-hidden="true">↓</span></a><a id="download-fbx" href="../assets/brise-seve.fbx" download>FBX <span aria-hidden="true">↓</span></a></div><p>Modèle animé, source éditable et export pour Unity.</p></section>
+    </aside>
+  </main>
+  <footer><p id="status" role="status" aria-live="polite">Chargement du Brise-Sève…</p><a href="../manifest.json">Manifeste de l’asset <span aria-hidden="true">↗</span></a></footer>
+  <noscript>Activez JavaScript pour examiner le modèle 3D. Les fichiers et le concept restent accessibles par leurs liens.</noscript>
+</body>
+</html>

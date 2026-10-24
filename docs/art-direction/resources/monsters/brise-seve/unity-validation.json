@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "unity": "6000.6.6f1",
+  "urp": "17.6.0",
+  "transport": "Installed CoplayDev Unity MCP, stdio",
+  "scope": "Asset import, sampled skinned vertices, controller evaluation, camera rendering in Editor",
+  "prefab": "Assets/Arkya/Monsters/BriseSeve/BriseSeve.prefab",
+  "meshes": [
+    {
+      "name": "BriseSeve_LOD0",
+      "triangles": 126848,
+      "vertices": 75996,
+      "bones": 29,
+      "worldBoundsSize": [
+        2.26817441,
+        2.0300684,
+        3.40930533
+      ]
+    },
+    {
+      "name": "BriseSeve_LOD1",
+      "triangles": 60886,
+      "vertices": 39875,
+      "bones": 29,
+      "worldBoundsSize": [
+        2.26817465,
+        2.03004622,
+        3.40937114
+      ]
+    },
+    {
+      "name": "BriseSeve_LOD2",
+      "triangles": 25368,
+      "vertices": 18959,
+      "bones": 29,
+      "worldBoundsSize": [
+        2.26769519,
+        2.03107214,
+        3.41009331
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "clip": "Idle",
+      "duration": 4.0,
+      "loop": true,
+      "samples": 61,
+      "minVertexY": 0.0144069791,
+      "envelopeMetres": [
+        1.495839,
+        1.9365344,
+        3.28830218
+      ]
+    },
+    {
+      "clip": "Walk",
+      "duration": 1.2,
+      "loop": true,
+      "samples": 19,
+      "minVertexY": 0.0144068,
+      "envelopeMetres": [
+        1.49745011,
+        1.88603628,
+        3.28959131
+      ]
+    },
+    {
+      "clip": "ChargeAnticipation",
+      "duration": 1.0,
+      "loop": false,
+      "samples": 16,
+      "minVertexY": 0.0144074559,
+      "envelopeMetres": [
+        1.46833539,
+        1.92094016,
+        3.324462
+      ]
+    },
+    {
+      "clip": "Charge",
+      "duration": 0.650000036,
+      "loop": true,
+      "samples": 11,
+      "minVertexY": 0.0106099248,
+      "envelopeMetres": [
+        1.46833539,
+        1.88198137,
+        3.19509888
+      ]
+    },
+    {
+      "clip": "Attack",
+      "duration": 0.900000036,
+      "loop": false,
+      "samples": 15,
+      "minVertexY": 0.0143817663,
+      "envelopeMetres": [
+        1.46833539,
+        1.92096591,
+        3.32355785
+      ]
+    },
+    {
+      "clip": "Hit",
+      "duration": 0.5,
+      "loop": false,
+      "samples": 9,
+      "minVertexY": 0.0139511824,
+      "envelopeMetres": [
+        1.47239542,
+        1.92139649,
+        3.326467
+      ]
+    },
+    {
+      "clip": "Death",
+      "duration": 1.4000001,
+      "loop": false,
+      "samples": 23,
+      "minVertexY": 0.000871956348,
+      "envelopeMetres": [
+        2.18817425,
+        1.9344759,
+        3.312749
+      ]
+    }
+  ],
+  "forward": "+Z",
+  "rootScale": [
+    1,
+    1,
+    1
+  ],
+  "import": {
+    "maxWeights": 4,
+    "rig": "Generic",
+    "rootMotion": false,
+    "bakeAxisConversion": false
+  },
+  "bounds": {
+    "samplesPerSecond": 15,
+    "method": "BakeMesh(useScale=true), each vertex transformed into root bone space",
+    "lodGroupSizeMetres": 3.41010857,
+    "paddingMetresPerSide": 0.04
+  },
+  "controller": {
+    "passed": true,
+    "method": "Manually evaluated AnimatorControllerPlayable in Editor, no Play Mode",
+    "steps": [
+      {
+        "expected": "Idle",
+        "matches": true,
+        "normalizedTime": 0.065
+      },
+      {
+        "expected": "Walk",
+        "matches": true,
+        "normalizedTime": 0.194444478
+      },
+      {
+        "expected": "ChargeAnticipation",
+        "matches": true,
+        "normalizedTime": 0.233333334
+      },
+      {
+        "expected": "Charge",
+        "matches": true,
+        "normalizedTime": 1.128205
+      },
+      {
+        "expected": "Idle",
+        "matches": true,
+        "normalizedTime": 0.0583333336
+      },
+      {
+        "expected": "Attack",
+        "matches": true,
+        "normalizedTime": 0.259259284
+      },
+      {
+        "expected": "Idle",
+        "matches": true,
+        "normalizedTime": 0.208333209
+      },
+      {
+        "expected": "Hit",
+        "matches": true,
+        "normalizedTime": 0.466666669
+      },
+      {
+        "expected": "Idle",
+        "matches": true,
+        "normalizedTime": 0.308333248
+      },
+      {
+        "expected": "Death",
+        "matches": true,
+        "normalizedTime": 0.166666672
+      },
+      {
+        "expected": "Death retained",
+        "matches": true,
+        "normalizedTime": 1.95237815
+      }
+    ]
+  },
+  "captures": {
+    "captures": [
+      {
+        "clip": "Idle",
+        "time": 0.0,
+        "lod": 0,
+        "path": "renders/unity-idle.png",
+        "transforms": [
+          {
+            "name": "Body",
+            "position": [
+              0.0,
+              1.00462914,
+              -0.649999857
+            ],
+            "rotation": [
+              82.03038,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Head",
+            "position": [
+              0.0,
+              1.17462909,
+              0.849999845
+            ],
+            "rotation": [
+              64.4338455,
+              180.0,
+              180.0
+            ]
+          }
+        ]
+      },
+      {
+        "clip": "Charge",
+        "time": 0.22,
+        "lod": 0,
+        "path": "renders/unity-charge.png",
+        "transforms": [
+          {
+            "name": "Body",
+            "position": [
+              0.0,
+              0.947028637,
+              -0.65
+            ],
+            "rotation": [
+              83.97731,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Head",
+            "position": [
+              0.0,
+              1.02467263,
+              0.8479373
+            ],
+            "rotation": [
+              43.6997337,
+              180.0,
+              180.0
+            ]
+          }
+        ]
+      },
+      {
+        "clip": "Death",
+        "time": 1.399,
+        "lod": 0,
+        "path": "renders/unity-death.png",
+        "transforms": [
+          {
+            "name": "Body",
+            "position": [
+              -0.3,
+              0.860438,
+              -0.6799998
+            ],
+            "rotation": [
+              26.969305,
+              88.77235,
+              89.44318
+            ]
+          },
+          {
+            "name": "Head",
+            "position": [
+              -0.274375319,
+              0.8473958,
+              0.824926436
+            ],
+            "rotation": [
+              17.9510021,
+              140.466263,
+              110.477272
+            ]
+          }
+        ]
+      },
+      {
+        "clip": "Idle",
+        "time": 0.0,
+        "lod": 2,
+        "path": "renders/unity-lod2.png",
+        "transforms": [
+          {
+            "name": "Body",
+            "position": [
+              0.0,
+              1.00462914,
+              -0.649999857
+            ],
+            "rotation": [
+              82.03038,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "name": "Head",
+            "position": [
+              0.0,
+              1.17462909,
+              0.849999845
+            ],
+            "rotation": [
+              64.4338455,
+              180.0,
+              180.0
+            ]
+          }
+        ]
+      }
+    ],
+    "method": "Manual AnimationClipPlayable evaluation and Camera.Render in the same Editor call"
+  },
+  "finalEditor": {
+    "unity": "6000.6.6f1",
+    "compiling": false,
+    "playing": false,
+    "missingScripts": 0,
+    "avatarValid": true,
+    "animatorEnabledInPrefab": true,
+    "clips": 7,
+    "shader": "Universal Render Pipeline/Lit",
+    "shaderSupported": true,
+    "textureDimensions": [
+      2048,
+      2048
+    ],
+    "lods": 3,
+    "reviewSceneClosed": true,
+    "remainingScenes": [
+      {
+        "name": "CharacterCreation",
+        "path": "Assets/Arkya/Characters/Scenes/CharacterCreation.unity",
+        "isDirty": false
+      }
+    ]
+  },
+  "console": {
+    "assetErrorsInReturnedEntries": 0,
+    "observedErrorEntries": 10,
+    "cleared": false,
+    "category": "Netcode server tick batching",
+    "note": "Existing Netcode messages are preserved. This task did not enter Play Mode or start a network server."
+  },
+  "notTested": [
+    "Full Play Mode gameplay",
+    "Network or combat integration",
+    "Population performance",
+    "Mobile browser"
+  ]
+}

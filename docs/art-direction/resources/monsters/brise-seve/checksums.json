@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "sha256": "e114f8d08bf8b8606c5d2d6fc1febe0dfaee89a0b4da104a31458fdb5ffd1b1c",
+      "path": "assets/brise-seve.blend"
+    },
+    {
+      "sha256": "1dc2dd43716e7a5b71d3eff393a1940487a8bcb6897d448c7b0abf0ac1656ebf",
+      "path": "assets/brise-seve.fbx"
+    },
+    {
+      "sha256": "609cd3166cf96c7204a5990694d3ebacccaf93e3da732f143f9633ee7ff55d7a",
+      "path": "models/brise-seve.glb"
+    },
+    {
+      "sha256": "ba451ab9a3b4c916c5bb3862ecbde8664aba4847d65b6c8a399f5e0f81331062",
+      "path": "textures/brise-seve-basecolor.png"
+    },
+    {
+      "sha256": "e5bf7addc3c3bcc65c827c9c4b2d51a3347a8df8b855a8b494b70832be6ab4bb",
+      "path": "reference/concept-v2.png"
+    }
+  ],
+  "algorithm": "SHA-256"
+}

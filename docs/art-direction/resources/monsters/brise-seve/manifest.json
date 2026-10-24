@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "revision": "2026-10-24-v1",
+  "name": "Brise-Sève",
+  "status": "first-3d-version-awaiting-art-review",
+  "triangles": 126848,
+  "dimensions": {
+    "heightM": 1.9203620525076985,
+    "lengthM": 3.282745122909546,
+    "widthM": 1.4683351516723633,
+    "pose": "Idle",
+    "frame": 1,
+    "measurement": "World-space mesh bounds in the initial Idle pose; maximum minus minimum on each axis"
+  },
+  "restDimensions": {
+    "heightM": 1.945940244011581,
+    "lengthM": 3.2779030799865723,
+    "widthM": 1.4683353900909424,
+    "pose": "Rest",
+    "measurement": "World-space mesh bounds before armature deformation; maximum minus minimum on each axis",
+    "source": "validation-report.json#/source/meshes/0"
+  },
+  "rig": {
+    "bones": 29,
+    "deformingBones": 24,
+    "maxInfluences": 4,
+    "rootMotion": false
+  },
+  "materials": 1,
+  "textures": [
+    {
+      "path": "textures/brise-seve-basecolor.png",
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "sRGB",
+      "role": "baseColor"
+    }
+  ],
+  "lods": [
+    {
+      "level": 0,
+      "triangles": 126848
+    },
+    {
+      "level": 1,
+      "triangles": 60886
+    },
+    {
+      "level": 2,
+      "triangles": 25368
+    }
+  ],
+  "animations": [
+    {
+      "name": "Idle",
+      "durationSeconds": 4,
+      "loop": true,
+      "expectedSpeedMps": 0
+    },
+    {
+      "name": "Walk",
+      "durationSeconds": 1.2,
+      "loop": true,
+      "expectedSpeedMps": 0.7
+    },
+    {
+      "name": "ChargeAnticipation",
+      "durationSeconds": 1,
+      "loop": false
+    },
+    {
+      "name": "Charge",
+      "durationSeconds": 0.65,
+      "loop": true,
+      "expectedSpeedMps": 2.8
+    },
+    {
+      "name": "Attack",
+      "durationSeconds": 0.9,
+      "loop": false
+    },
+    {
+      "name": "Hit",
+      "durationSeconds": 0.5,
+      "loop": false
+    },
+    {
+      "name": "Death",
+      "durationSeconds": 1.4,
+      "loop": false
+    }
+  ],
+  "files": {
+    "glb": "models/brise-seve.glb",
+    "blend": "assets/brise-seve.blend",
+    "fbx": "assets/brise-seve.fbx",
+    "concept": "reference/concept-v2.png"
+  },
+  "provenance": {
+    "conceptTool": "image_gen.imagegen built-in; exact prompts in reference/generation-prompts.json",
+    "geometry": "Authored from geometric surfaces in Blender 4.5.14 by build_monster.py; no third-party mesh",
+    "texture": "Authored procedural pigments baked from corner color to an atlas",
+    "rig": "Authored analytic quadruped rig and baked keyframe animation",
+    "date": "2026-10-24",
+    "rights": "Original project creation; no external asset license asserted or copied"
+  },
+  "verification": {
+    "sourceAndExports": "validation-report.json",
+    "rigAndContacts": "animation-report.json",
+    "geometry": "geometry-report.json",
+    "finalEyeCorrection": "repair-report.json",
+    "artApproved": false,
+    "productionReady": false,
+    "limitations": [
+      "Joint surface stretching still requires sculpt/skin refinement at extreme poses",
+      "Painted surface finish is simpler than the concept",
+      "No combat AI, server damage, navigation or world spawn integration",
+      "No measured multiplayer population/performance budget"
+    ],
+    "unity": "unity-validation.json",
+    "viewer": "viewer-validation.json"
+  },
+  "unityIntegration": {
+    "repository": "https://github.com/Hantse/arkya-mmorpg",
+    "commit": "bae69df098c9b0690156d3e404ad36880b0d6b8a",
+    "prefab": "Assets/Arkya/Monsters/BriseSeve/BriseSeve.prefab",
+    "scene": "Assets/Arkya/Monsters/BriseSeve/Scenes/BriseSeveReview.unity"
+  }
+}
