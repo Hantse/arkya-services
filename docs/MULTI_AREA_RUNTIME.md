@@ -315,10 +315,68 @@ complètes Runtime (76 sources) et tests Editor (62 sources) compilent avec
 Roslyn fourni par Unity `6000.6.6f1`, les références Unity installées et les
 générateurs Entities/Netcode, avec les sorties dans un dossier local isolé.
 La connexion MCP locale échouait à l'initialisation sur `127.0.0.1:8080` :
-l'import, la compilation et l'exécution dans l'Editor, ainsi qu'un nouveau
-parcours dedicated/client, restent à vérifier pour cette modification.
-Les parcours historiques ci-dessous valident le chargement multi-Area
-antérieur, pas ce nouveau sélecteur.
+ce premier contrôle ne vérifiait pas l'import, la compilation dans l'Editor
+ni un nouveau parcours dedicated/client. Le test réel ci-dessous complète
+la validation du démarrage Dedicated Windows. Les autres parcours historiques
+valident le chargement multi-Area antérieur, pas ce nouveau sélecteur.
+
+### Test réel d'isolation des dedicateds — 24 octobre 2026
+
+Le run `artifacts/dedicated-area-loading/runs/20261024-two-areas-2x2-02`
+termine avec `verification.json: passed = true`. Un nouveau player **Windows
+Dedicated Mono Development**, construit par Unity `6000.6.6f1`, utilise la
+paire actuelle `5 / arkya-town-npcs-v1`. Le snapshot part du commit Unity
+`2b36c90784d9b082b240dd4aa3fc9130692799c8`, avec uniquement le relevé de
+scènes de cette tâche ajouté au runtime. `source-provenance.json` conserve
+les empreintes des sources ; les builds et données des autres tâches sont
+préservés. L'import batch et le build Dedicated se terminent avec le code 0.
+
+Les quatre processus sont vivants simultanément et propriétaires de leurs
+ports TCP `51135` à `51138`. Chacun ne charge que le bootstrap commun
+`CharacterDedicated.unity` et sa scène d'Area :
+
+| Serveur | PID | Sélecteur | Seule scène de carte chargée |
+| --- | ---: | --- | --- |
+| `island-starter-island-01` | 70780 | `StarterIsland` | `StarterIslandServer.unity` |
+| `island-starter-island-02` | 10080 | `starter-island` | `StarterIslandServer.unity` |
+| `island-handoff-valley-01` | 114416 | `HandoffValley` | `HandoffValleyServer.unity` |
+| `island-handoff-valley-02` | 47188 | `handoff-valley` | `HandoffValleyServer.unity` |
+
+Les inventaires proviennent de `SceneManager` dans le vrai player : bootstrap,
+chaque événement `sceneLoaded`, readiness et état stable cinq secondes plus
+tard. Le harness observe ensuite les processus pendant au moins dix secondes
+après leur readiness et rejette toute scène étrangère dans cet historique,
+y compris les scènes client du catalogue. Les quatre rapports `*-scenes.json`
+et les logs bruts sont conservés dans le run.
+
+Un cinquième processus, PID `26096`, utilise la même identité StarterIsland
+avec `--area=HandoffValley`. Il sort avec le **code 1**, le message de refus
+d'affectation, le bootstrap seul et aucun fichier de readiness. Tous les
+processus créés par le test sont ensuite arrêtés et les clés temporaires
+supprimées.
+
+Le test est reproductible avec
+[`Test-DedicatedAreaLoading.ps1`](../scripts/area-prototype/Test-DedicatedAreaLoading.ps1)
+et un nouveau build Development :
+
+```powershell
+$artifactRoot = 'D:/Repositories/arkya/artifacts/dedicated-area-loading/build-20261024'
+$build = Get-Content "$artifactRoot/build.json" -Raw | ConvertFrom-Json
+pwsh -File scripts/area-prototype/Test-DedicatedAreaLoading.ps1 `
+  -ServerExecutable $build.serverExecutable `
+  -SourceProject "$artifactRoot/project-server"
+```
+
+Le relevé est activé seulement en Development/Editor par
+`ARKYA_DEDICATED_SCENE_VALIDATION=1`. La fixture HTTP locale fournit uniquement
+une topologie authentifiée, avec une clé distincte par dedicated ; elle ne
+simule pas le chargement Unity. Ce contrôle valide le démarrage, l'affectation,
+l'écoute et l'isolation des cartes. Aucun client, admission, persistance,
+handoff ni déploiement public n'est exercé par ce run. MCP reste inaccessible
+sur `127.0.0.1:8080` ; cette preuve provient du build batch isolé et des vrais
+players, sans inspection de l'Editor principal.
+
+### Autres validations du runtime multi-Area
 
 Les suites complètes passent avec MongoDB de test isolé : **271 tests
 Characters et 429 tests Realms**, soit 700 réussites, aucun échec ni test
