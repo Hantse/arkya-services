@@ -19,9 +19,12 @@ public static class GameProtocol
     public const string TownNpcBuildId = "arkya-town-npcs-v1";
     public const int CraftingVersion = 6;
     public const string CraftingBuildId = "arkya-crafting-v1";
+    public const int CraftSchoolsVersion = 7;
+    public const string CraftSchoolsBuildId = "arkya-craft-schools-v1";
     public static bool IsMultiArea(int version, string? buildId) =>
         version == MultiAreaVersion && buildId == MultiAreaBuildId || version == DivingVersion && buildId == DivingBuildId ||
-        version == TownNpcVersion && buildId == TownNpcBuildId || version == CraftingVersion && buildId == CraftingBuildId;
+        version == TownNpcVersion && buildId == TownNpcBuildId || version == CraftingVersion && buildId == CraftingBuildId ||
+        version == CraftSchoolsVersion && buildId == CraftSchoolsBuildId;
     public static bool IsHandoff(int version, string? buildId) => version == HandoffVersion &&
         buildId is HandoffBuildId or CharacterStatsBuildId || IsMultiArea(version, buildId);
     public static bool IsSupported(int version, string? buildId) => version == Version && buildId == BuildId || IsHandoff(version, buildId);

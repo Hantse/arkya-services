@@ -1,10 +1,18 @@
 # PNJ d’Aubefont
 
-La ville reçoit vingt PNJ fondés sur les modèles Paladin et Valkyrie : dix personnages
+La ville reçoit vingt-trois PNJ fondés sur les modèles Paladin et Valkyrie : treize personnages
 fixes, six qui se déplacent autour de leur poste et quatre qui suivent une patrouille.
 Le serveur ECS possède leurs positions et valide les conversations ; le client
 présente les modèles, les animations et le panneau de dialogue. L’exploration locale
 et le dedicated utilisent ces mêmes systèmes.
+
+Le build actif utilise **7 / `arkya-craft-schools-v1`**, décrit dans le guide
+d'artisanat. Les validations historiques ci-dessous portent sur leurs builds respectifs.
+
+Les trois nouveaux habitants fixes (IDs 21–23) sont les maîtres bûcheron,
+mineur et forgeron. Leurs boutons de service changent l'école de craft active,
+distribuent les outils de base une seule fois et enseignent les formules
+disponibles sans passer par l'inférence ; voir [l'artisanat](CRAFTING.md).
 
 ## Parler en jeu
 
@@ -45,6 +53,7 @@ de catalogue distant ni d’éditeur de PNJ dans le backoffice pour cette tranch
 | Champ | Utilisation |
 | --- | --- |
 | `Id` | Entier positif unique utilisé par les ghosts et les RPC. Conserver sa valeur pour un PNJ existant. |
+| `CraftSchool` | `None` pour un résident, ou `Logger`, `Miner`, `Blacksmith` pour exposer les services de maître artisan. |
 | `NpcId` | Identifiant stable en minuscules, chiffres et tirets simples, de 1 à 64 caractères. |
 | `DisplayName`, `Role` | Nom et métier affichés au joueur et transmis au modèle. |
 | `Greeting` | Salut écrit immédiatement disponible sans requête d’inférence, jusqu’à 512 caractères. |

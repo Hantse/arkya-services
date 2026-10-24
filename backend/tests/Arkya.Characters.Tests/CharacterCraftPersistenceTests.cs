@@ -18,7 +18,7 @@ public sealed class CharacterCraftPersistenceTests
             new() { RealmId = "beta-web", ServerId = "craft-valley", Key = "craft-valley-test-key-with-thirty-two-characters" }];
         public Task<GameRealmCatalog> ListAsync(CancellationToken cancellationToken) => Task.FromResult(new GameRealmCatalog([
             new("beta-web", "Craft persistence", true, Servers[0].ServerId, "wss://game.example/west",
-                GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId)
+                GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId)
             {
                 TopologyVersion = "craft-two-areas-v1",
                 Areas = [new("starter-island", "starter-island"), new("valley", "handoff-valley")],
@@ -42,7 +42,7 @@ public sealed class CharacterCraftPersistenceTests
         var service = new GameAdmissionService(characters, new MemoryGameLeaseStore(), new Catalog(),
             new DedicatedKeyValidator(options), clock, new TestSessionReferences(clock, account), options);
         var reference = SessionReference.Create("craft-persistence-test");
-        var request = new AdmissionRequest("beta-web", GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId);
+        var request = new AdmissionRequest("beta-web", GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId);
         var ticket = await service.IssueAsync(character.Id, account, clock.Now.AddHours(1), reference, request, default);
         Assert.Null(ticket.Error);
         var source = Catalog.Servers[0];
@@ -87,6 +87,9 @@ public sealed class CharacterCraftPersistenceTests
         Assert.Equal(47, craft.GetProperty("MinerExperience").GetInt32());
         Assert.Equal(231, craft.GetProperty("LoggerExperience").GetInt32());
         Assert.Equal(48, craft.GetProperty("CarpenterExperience").GetInt32());
+        Assert.Equal(2, payload.RootElement.GetProperty("craft").GetProperty("version").GetInt32());
+        Assert.Equal(3, craft.GetProperty("LearnedRecipes").GetInt32());
+        Assert.Equal(7, craft.GetProperty("StarterToolsClaimed").GetInt32());
         Assert.Equal("available", CharacterAdminGameplaySnapshot.Read(restored.Value.State.Simulation).Status);
         Assert.Equal("lease_rejected", (await service.SaveAsync(character.Id, source, save, default)).Error);
     }
@@ -110,9 +113,9 @@ public sealed class CharacterCraftPersistenceTests
         payload["version"] = 3;
         payload["colliderSupportHeight"] = supportHeight;
         payload["craft"] = JsonNode.Parse($$$"""
-            {"version":1,"value":{"ActiveSchool":4,"MinerLevel":4,"MinerExperience":{{{miningExperience}}},
+            {"version":2,"value":{"ActiveSchool":4,"MinerLevel":4,"MinerExperience":{{{miningExperience}}},
             "BlacksmithLevel":3,"BlacksmithExperience":19,"LoggerLevel":10,"LoggerExperience":231,
-            "CarpenterLevel":2,"CarpenterExperience":48}}
+            "CarpenterLevel":2,"CarpenterExperience":48,"LearnedRecipes":3,"StarterToolsClaimed":7}}
             """);
         return new(1, payload.ToJsonString());
     }

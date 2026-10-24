@@ -38,6 +38,15 @@ et les quêtes persistées, sans exposer le JSON de simulation brut. Les sacs,
 la banque et l'équipement sont sauvegardés atomiquement avec l'état du personnage
 et affichés dans la fiche ; voir la [persistance des possessions](CHARACTER_POSSESSIONS.md).
 
+L'[artisanat](CRAFTING.md) conserve les niveaux de toutes les écoles, une école
+active, les formules apprises et les dotations initiales déjà reçues. Les maîtres
+de métier acceptent des intentions par RPC ; le serveur vérifie leur identité,
+la proximité, la connexion propriétaire et l'inventaire avant de modifier l'état.
+L'XP reste limitée à l'école active. Les onglets personnage et le grimoire lisent
+le ghost privé ; le coût d'une formule est calculé côté serveur depuis ses seuils
+minimum et optimal. Le bloc de sauvegarde `craft` version 2 migre les anciens
+profils version 1 en conservant leurs deux formules de briques implicitement acquises.
+
 Arkya utilise Unity DOTS (Data-Oriented Technology Stack) pour la simulation temps réel et Netcode for Entities pour le multijoueur sous autorité serveur. La simulation, exécutée par un serveur dédié Unity, est séparée des services ASP.NET Core qui possèdent les comptes et les données persistantes. La décision sur ces services est détaillée dans [0002 — Services backend](decisions/0002-backend-services.md).
 
 ## Vue d'ensemble

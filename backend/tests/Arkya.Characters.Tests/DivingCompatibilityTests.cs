@@ -41,6 +41,9 @@ public sealed class DivingCompatibilityTests
     [InlineData(GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId, GameProtocol.DivingVersion, GameProtocol.DivingBuildId, false)]
     [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId, GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId, false)]
     [InlineData(GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId, GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId, true)]
+    [InlineData(GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId, GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId, true)]
+    [InlineData(GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId, GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId, false)]
+    [InlineData(GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId, GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId, false)]
     [InlineData(GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId, GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId, false)]
     [InlineData(GameProtocol.TownNpcVersion, GameProtocol.TownNpcBuildId, GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId, false)]
     public async Task AdmissionRequiresAnExactPairAndPreservesTheAuthoritativeSnapshotOnReconnect(
