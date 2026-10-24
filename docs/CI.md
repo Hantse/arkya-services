@@ -56,7 +56,14 @@ Les promotions restent sérialisées et refusent les sources devenues obsolètes
 Les agents ne doivent annuler aucun run ou job sans demande explicite de
 l'utilisateur, y compris pour libérer un runner ou privilégier un commit récent.
 
-Le workflow Unity exécute EditMode et PlayMode sans filtre, puis construit le
+Depuis le 24 octobre 2026, les jobs **Unity EditMode** et **Unity PlayMode** sont
+temporairement désactivés, y compris lors des lancements manuels. Les builds
+restent conditionnés au contrôle de confiance ; publication et promotion
+automatique restent actives. La reprise manuelle d'une promotion exige toujours
+les tests réussis et ne couvre donc pas les runs de cette pause. La procédure
+de réactivation est décrite dans le guide Unity ci-dessous.
+
+Le workflow Unity construit le
 client Windows, le client WebGL et le vrai dedicated Linux de l'île via
 `CharacterWebBetaBuilder`. Le prototype AreaPrototype n'est plus cette cible.
 
