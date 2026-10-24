@@ -206,6 +206,13 @@ Content de cette vérification navigateur est une fixture ; aucune publication
 ni inscription de production n'est modifiée. Les captures sont conservées dans
 `output/playwright/admin-publications-{news-1440,release-390}.png`.
 
+Livraison `087b1d1` : [CI entièrement verte](https://github.com/Hantse/arkya-services/actions/runs/40093801548),
+promotion GitOps `91aec186`, puis nouvelle image Admin observée à 12:36 UTC.
+`https://admin.arkya.online/publications.css` répond `200` et correspond au
+source commité. La liste et son URL filtrée restent protégées par une
+redirection vers Login ; le feed public filtré conserve son comportement.
+La session administrateur de production n'est pas utilisée pour ces contrôles.
+
 Les tests Content vérifient séparation des capacités, confidentialité des
 brouillons, publication/dépublication, limites, pagination, CORS, indisponibilité
 et conflits. Avec `ARKYA_TEST_MONGO`, ils vérifient également les opérations
