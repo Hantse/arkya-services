@@ -63,7 +63,9 @@ public sealed class MongoReportRepositoryTests
             Assert.Equal(3, (await List(10, 1, filters)).Total);
             Assert.Empty((await List(0, 20, filters with { Search = "^.*$" })).Items);
             Assert.Empty((await List(0, 20, filters with { Scene = "StarterIsland.*" })).Items);
-            Assert.Equal(3, (await List(0, 20, filters with { Search = "PERSONNAGE" })).Total);
+            var descriptionMatches = await List(0, 20, filters with { Search = "PERSONNAGE" });
+            Assert.Equal(4, descriptionMatches.Total);
+            Assert.Contains(descriptionMatches.Items, item => item.Title == "Collision port");
             Assert.Equal(first.Report.Id, Assert.Single((await List(0, 20, filters with { Search = first.Report.Id.ToString("D") })).Items).Id);
             Assert.Equal(records.Length, (await repository.ListAsync(null, null, null, 0, 20, default, filters:
                 new(CreatedFrom: DateOnly.MinValue, CreatedTo: DateOnly.MaxValue))).Total);
