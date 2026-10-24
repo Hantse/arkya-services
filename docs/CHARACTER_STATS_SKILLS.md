@@ -39,10 +39,11 @@ Le domaine accepte une autre `CharacterExperienceCurve` ; changer la courbe
 du runtime ou son plafond exige aussi de migrer/valider les profils persistants.
 Le rating est la moyenne des niveaux des seules classes débloquées.
 
-La récolte et la fabrication font progresser `CharacterCraftState` : Mineur,
-Forgeron, Bûcheron et Charpentier. Ces actions ne donnent aucune XP aux classes
-de combat et ne modifient pas leur rating. Les compétences artisanales suivent
-automatiquement le niveau de leur école ; l'apprentissage explicite et
+La récolte et la fabrication font progresser l'école active de `CharacterCraftState`
+si elle enseigne le skill de l'activité. Le catalogue compte neuf écoles et
+seize skills. Ces actions ne donnent aucune XP aux classes de combat et ne
+modifient pas leur rating. Les skills artisanaux conservent la meilleure
+contribution des écoles, avec gains +10/+8 par niveau ; l'apprentissage explicite et
 l'héritage des rangs décrits ici restent propres au catalogue de combat.
 
 Le catalogue contient 25 abilities et 40 rangs. Atteindre un seuil autorise
@@ -68,7 +69,7 @@ Les mises à jour de statistiques préservent les annonces, quêtes et barres
 d’actions déjà présentes.
 
 Les écoles d'artisanat disposent de leur propre panneau **Métiers · K**,
-avec leurs quatre niveaux/XP et leurs huit compétences. **V** ouvre les
+avec leurs neuf niveaux/XP et leurs seize compétences. **V** ouvre les
 recettes près du stone cutter ; voir les [commandes d'artisanat](CRAFTING.md).
 
 ## Persistance et compatibilité

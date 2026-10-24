@@ -34,6 +34,8 @@ public sealed class CharacterCraftPersistenceTests
     [InlineData(true, GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId)]
     [InlineData(false, GameProtocol.NpcVitalsVersion, GameProtocol.NpcVitalsBuildId)]
     [InlineData(true, GameProtocol.NpcVitalsVersion, GameProtocol.NpcVitalsBuildId)]
+    [InlineData(false, GameProtocol.CraftProgressionVersion, GameProtocol.CraftProgressionBuildId)]
+    [InlineData(true, GameProtocol.CraftProgressionVersion, GameProtocol.CraftProgressionBuildId)]
     public async Task CraftProgressAndMaterialsSurvivePeriodicSaveHandoffAndReconnect(bool interArea, int version, string buildId)
     {
         var account = Guid.NewGuid();
@@ -50,7 +52,8 @@ public sealed class CharacterCraftPersistenceTests
         var source = Catalog.Servers[0];
         var lease = (await service.ConsumeAsync(source, new(ticket.Value!.Ticket), default)).Value!;
         var possessions = Materials();
-        var simulation = Snapshot(37);
+        var craftVersion = version == GameProtocol.CraftProgressionVersion ? 3 : 2;
+        var simulation = Snapshot(37, craftVersion: craftVersion);
         var position = interArea ? new GamePosition(425, 22, 250) : new GamePosition(499, 22, 250);
         var save = new SaveWorldStateRequest(lease.LeaseId, lease.AuthorityEpoch, 0, position, new(1, 0))
             { Simulation = simulation, Possessions = possessions };
@@ -66,10 +69,10 @@ public sealed class CharacterCraftPersistenceTests
         Assert.Null(prepared.Error);
         var claim = await service.ClaimTransferAsync(target, new(prepared.Value!.Ticket), default);
         Assert.Null(claim.Error);
-        var final = Snapshot(47);
+        var final = Snapshot(47, craftVersion: craftVersion);
         var seal = new SealTransferRequest(lease.LeaseId, lease.AuthorityEpoch, saved.Value.Revision,
             interArea ? position : new(500, 22, 250), new(1, 0), final)
-            { ArrivalSimulation = interArea ? Snapshot(47, 30) : null, Possessions = possessions };
+            { ArrivalSimulation = interArea ? Snapshot(47, 30, craftVersion) : null, Possessions = possessions };
         Assert.Null((await service.SealTransferAsync(character.Id, transfer.TransferId, source, seal, default)).Error);
         var committed = await service.CommitTransferAsync(character.Id, transfer.TransferId, target, new(claim.Value!.ClaimId), default);
         Assert.Null(committed.Error);
@@ -89,7 +92,20 @@ public sealed class CharacterCraftPersistenceTests
         Assert.Equal(47, craft.GetProperty("MinerExperience").GetInt32());
         Assert.Equal(231, craft.GetProperty("LoggerExperience").GetInt32());
         Assert.Equal(48, craft.GetProperty("CarpenterExperience").GetInt32());
-        Assert.Equal(2, payload.RootElement.GetProperty("craft").GetProperty("version").GetInt32());
+        Assert.Equal(craftVersion, payload.RootElement.GetProperty("craft").GetProperty("version").GetInt32());
+        if (craftVersion == 3)
+        {
+            Assert.Equal(26, craft.GetProperty("SpellcrafterLevel").GetInt32());
+            Assert.Equal(59, craft.GetProperty("SpellcrafterExperience").GetInt32());
+            Assert.Equal(2, craft.GetProperty("ArmorerLevel").GetInt32());
+            Assert.Equal(63, craft.GetProperty("ArmorerExperience").GetInt32());
+            Assert.Equal(3, craft.GetProperty("TinkerLevel").GetInt32());
+            Assert.Equal(71, craft.GetProperty("TinkerExperience").GetInt32());
+            Assert.Equal(4, craft.GetProperty("EnchanterLevel").GetInt32());
+            Assert.Equal(89, craft.GetProperty("EnchanterExperience").GetInt32());
+            Assert.Equal(5, craft.GetProperty("MasonLevel").GetInt32());
+            Assert.Equal(97, craft.GetProperty("MasonExperience").GetInt32());
+        }
         Assert.Equal(3, craft.GetProperty("LearnedRecipes").GetInt32());
         Assert.Equal(7, craft.GetProperty("StarterToolsClaimed").GetInt32());
         Assert.Equal("available", CharacterAdminGameplaySnapshot.Read(restored.Value.State.Simulation).Status);
@@ -109,7 +125,7 @@ public sealed class CharacterCraftPersistenceTests
         new(150, [new(0, "resource:stone", 4), new(1, "resource:sandstone", 6), new(2, "resource:stone-brick", 2)]),
         new(150, [new(149, "resource:sandstone-brick", 3)]), []);
 
-    private static ActorStateEnvelope Snapshot(int miningExperience, int supportHeight = 22)
+    private static ActorStateEnvelope Snapshot(int miningExperience, int supportHeight = 22, int craftVersion = 2)
     {
         var payload = JsonNode.Parse(CharacterAdminDetailTests.GameplayPayload)!;
         payload["version"] = 3;
@@ -119,6 +135,24 @@ public sealed class CharacterCraftPersistenceTests
             "BlacksmithLevel":3,"BlacksmithExperience":19,"LoggerLevel":10,"LoggerExperience":231,
             "CarpenterLevel":2,"CarpenterExperience":48,"LearnedRecipes":3,"StarterToolsClaimed":7}}
             """);
+        if (craftVersion == 3)
+        {
+            payload["craft"]!["version"] = 3;
+            var craft = payload["craft"]!["value"]!;
+            craft["MinerLevel"] = 20;
+            craft["BlacksmithLevel"] = 26;
+            craft["LoggerLevel"] = 20;
+            craft["SpellcrafterLevel"] = 26;
+            craft["SpellcrafterExperience"] = 59;
+            craft["ArmorerLevel"] = 2;
+            craft["ArmorerExperience"] = 63;
+            craft["TinkerLevel"] = 3;
+            craft["TinkerExperience"] = 71;
+            craft["EnchanterLevel"] = 4;
+            craft["EnchanterExperience"] = 89;
+            craft["MasonLevel"] = 5;
+            craft["MasonExperience"] = 97;
+        }
         return new(1, payload.ToJsonString());
     }
 }

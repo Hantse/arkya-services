@@ -3,8 +3,9 @@
 La conception retenue le 24 octobre 2026 définit neuf écoles, seize skills
 et des gains par niveau propres à chaque couple école/skill. Les écoles
 spécialisées se débloquent à partir des skills acquis, avec des seuils de
-150 ou 200. Cette conception reste à implémenter ; l'état de la première
-implémentation et ses vérifications sont conservés plus bas.
+150 ou 200. Ces règles sont intégrées au catalogue, à l'état serveur, aux
+activités existantes, aux maîtres et à l'interface. Les vérifications et les
+limites d'exécution dans l'Editor sont précisées plus bas.
 
 ## Conception retenue
 
@@ -118,9 +119,10 @@ le seuil de 150 est donc atteint au niveau 20. Le seuil de 200 est atteint au
 niveau 26.
 
 Pour Carpenter, la cible remplace explicitement l'ancien prérequis
-**Logger niveau 10** par **Travail du bois 150**. La migration des personnages
-ayant déjà débloqué Carpenter dans le prototype reste à définir ; elle devra
-préserver ce déblocage et leur progression.
+**Logger niveau 10** par **Travail du bois 150**. La migration des sauvegardes
+`craft` version 1 ou 2 conserve les anciens niveaux et XP de Carpenter. Elle
+préserve aussi l'ancien droit d'accès dès Logger niveau 10, même si Carpenter
+était encore au niveau 0, en initialisant alors cette école au niveau 1.
 
 La règle du maximum produit un palier au début d'une spécialisation. Par
 exemple, Armorer débloqué grâce à Blacksmith niveau 26 hérite déjà de 200 en
@@ -136,47 +138,49 @@ Cette conception fixe les écoles, leurs rôles, les gains de skills, leur
 partage et les prérequis. Elle ne fournit pas encore les nouvelles recettes,
 les techniques, les effets des enchantements ou la construction de housing.
 La courbe d'XP et le plafond du prototype restent des réglages provisoires.
-Le calcul uniforme à +5, les règles actuelles d'attribution d'XP et le
-déblocage de Carpenter devront être adaptés lors de l'implémentation, avec
-préservation des progressions sauvegardées.
+Le calcul uniforme à +5 est remplacé par les gains +10/+8, avec recalcul des
+skills depuis les niveaux sauvegardés. Les nouvelles activités de forge,
+magie, outillage et housing restent à fournir : leurs écoles peuvent être
+sélectionnées, mais seuls les skills utilisés par une activité déjà disponible
+permettent actuellement de gagner de l'XP en jouant.
 
-## État de la première implémentation
+## Implémentation et accès en jeu
 
-La tranche du 24 octobre 2026 ajoute quatre écoles d'artisanat au personnage
-d'exploration, trois maîtres en ville et un grimoire de formules apprises.
-La récolte et la fabrication attribuent de l'XP uniquement lorsque l'école
-concernée est active, indépendamment des
-[classes de combat](CHARACTER_STATS_SKILLS.md).
+L'intégration du 24 octobre 2026 étend le personnage d'exploration aux neuf
+écoles et seize skills. Les trois maîtres en ville donnent accès au registre
+des écoles ; le grimoire conserve les formules apprises. La récolte et la
+fabrication attribuent de l'XP à l'école active lorsqu'elle enseigne le skill
+de l'activité, indépendamment des [classes de combat](CHARACTER_STATS_SKILLS.md).
 
 ### Écoles et compétences
 
-| École | Accès initial | Compétences |
-| --- | --- | --- |
-| Mineur | Niveau 1, sans prérequis | `Mining`, `Quarrying`, `Stonecrafting`, `Smelting` |
-| Forgeron | Niveau 1, sans prérequis | `Armorcraft`, `Weaponsmith` |
-| Bûcheron | Niveau 1, sans prérequis | `Logging`, `Woodworking` |
-| Charpentier | Bûcheron niveau 10 | À définir |
+Les catalogues `CharacterCraftSchoolCatalog` et `CharacterCraftSkillCatalog`
+portent les tableaux ci-dessus. Les IDs des quatre anciennes écoles et des
+huit anciens skills restent inchangés ; les nouveaux IDs sont ajoutés à leur
+suite. `Stonecrafting` désigne Travail de la pierre et `Weaponsmith` désigne
+Fabrication d'armes. Les libellés de skills affichés restent en anglais.
 
 Chaque école conserve son niveau et son XP lors des changements de métier.
-Une seule est active ; le profil neuf commence en Mineur. Les compétences
-d'une école valent **5 × (niveau − 1)** : niveau 1 donne 0, niveau 21 donne 100,
-niveau 41 donne 200. Cette conversion est un réglage initial explicite ; il n'y
-a pas de compteur d'XP distinct par compétence ni d'achat de rangs. Les
-compétences d'une même école montent ensemble. Elles modifient maintenant le
-coût des formules, sans ajouter de bonus à la puissance des outils.
+Une seule est active ; le profil neuf commence en Mineur. Mineur, Forgeron,
+Bûcheron et Créateur de sorts commencent au niveau 1 ; les cinq spécialisations
+commencent verrouillées. Les skills utilisent la meilleure contribution
+`(niveau − 1) × gain` et modifient le coût des formules, sans ajouter de bonus
+à la puissance des outils. Il n'y a pas de compteur d'XP distinct par skill.
 
 La courbe provisoire demande **100 × niveau courant** XP pour monter d'un
 niveau, avec un plafond à **100**. Les excédents peuvent traverser plusieurs
-niveaux ; au plafond, l'XP reste à zéro. Atteindre Bûcheron niveau 10 ouvre
-automatiquement Charpentier au niveau 1. Les recettes et compétences propres
-au charpentier, ainsi que les recettes du forgeron, restent à définir.
+niveaux ; au plafond, l'XP reste à zéro. Un gain d'XP réévalue les prérequis
+des spécialisations et initialise au niveau 1 celles qui deviennent éligibles.
+Un déblocage enregistré reste acquis lors des changements d'école.
 
-La récolte de bois progresse uniquement en Bûcheron actif ; la pierre, le grès
-et les minerais progressent uniquement en Mineur actif. Récolter du bois en
-Mineur accorde le bois, sans XP dans aucune école. Une formule déjà apprise
-reste utilisable dans une autre école, avec ses prérequis habituels, mais ne
-donne alors aucune XP artisanale. Le niveau de Warrior, Scout, Mage, Cleric ou Druid, leurs XP, leurs
-réserves et le rating de combat restent indépendants.
+La récolte de bois utilise `Logging` (Logger ou Carpenter actif), celle de
+pierre/grès utilise `Quarrying` (Miner ou Mason actif) et celle des minerais
+utilise `Mining` (Miner ou Blacksmith actif). Récolter du bois en Mineur accorde
+le bois, sans XP. Une formule apprise reste utilisable avec ses prérequis
+habituels ; elle récompense l'école active si celle-ci enseigne son skill.
+Les briques donnent ainsi de l'XP à Miner ou Mason via `Stonecrafting`.
+Le niveau de Warrior, Scout, Mage, Cleric ou Druid, leurs XP, leurs réserves
+et le rating de combat restent indépendants.
 
 La fiche **C** contient trois onglets : **Fiche personnage**, **Compétences**
 (combat et artisanat), **Écoles d'artisanat** (niveaux, XP et école active).
@@ -189,8 +193,11 @@ réservé aux recettes de cette machine. La jauge principale d'XP suit la classe
 Trois PNJ supplémentaires, fixes, utilisent le catalogue d'Aubefont et les
 modèles Paladin/Valkyrie existants : un maître bûcheron, un maître mineur et
 un maître forgeron (IDs stables 21, 22, 23). **E** ouvre leur dialogue à proximité.
-Les boutons permettent de choisir leur école, demander la dotation d'outils
-de base et apprendre leurs formules disponibles. Ces actions n'utilisent pas l'inférence.
+Le menu **Écoles d'artisanat** propose les neuf écoles, leurs gains et leurs
+prérequis ; **Choisir cette école** reste indisponible si le seuil n'est pas
+atteint. Chaque maître permet de choisir toute école débloquée. Les outils et
+formules restent liés au métier propre du maître. Ces actions n'utilisent pas
+l'inférence ; le serveur valide la cible demandée, le déblocage et la proximité.
 
 La dotation est gratuite et accordée une seule fois par école : hache de
 bûcheron, pioche de mineur et pic de carrier, ou marteau de forge. Un manque
@@ -202,15 +209,15 @@ Le maître mineur enseigne séparément les deux formules de briques. Le personn
 neuf ne les connaît pas ; une formule apprise apparaît une seule fois dans le
 grimoire. Un second apprentissage est refusé sans mutation. Les recettes de
 forge et de bois restent à définir ; leurs maîtres fournissent déjà les outils
-et le changement d'école. Le charpentier garde son prérequis Bûcheron 10, sans
-nouveau maître ni formule dans cette tranche.
+et le changement d'école. Aucun nouveau PNJ ni formule n'est ajouté pour les
+spécialisations ou la magie dans cette tranche.
 
 ### Récolte et premières recettes
 
 Maintenir **G** près d'une ressource permet de récolter les matériaux ; les
 [règles de portée, d'outils et de sacs](HARVESTING.md) s'appliquent. Seul le
 joueur qui termine une ressource et reçoit effectivement son butin gagne
-**5 XP** si l'école correspondante est active. Les coups intermédiaires et les
+**5 XP** si l'école active enseigne le skill de récolte. Les coups intermédiaires et les
 attributions refusées ne donnent pas d'XP.
 
 S'approcher du stone cutter, puis appuyer sur **V** ou sur l'invite affichée
@@ -222,8 +229,8 @@ avec une ligne de vue libre. Les demandes sont espacées d'au moins
 
 | Recette | Entrée dans les sacs | Sortie dans les sacs | Compétence et niveau requis | XP |
 | --- | --- | --- | --- | --- |
-| Brique de pierre | 4 → 2 `resource:stone` | 1 `resource:stone-brick` | Mineur 1, `Stonecrafting` 0 → 200 | 10 Mineur actif |
-| Brique de grès | 4 → 2 `resource:sandstone` | 1 `resource:sandstone-brick` | Mineur 1, `Stonecrafting` 0 → 200 | 10 Mineur actif |
+| Brique de pierre | 4 → 2 `resource:stone` | 1 `resource:stone-brick` | Mineur 1, `Stonecrafting` 0 → 200 | 10 à Miner ou Mason actif |
+| Brique de grès | 4 → 2 `resource:sandstone` | 1 `resource:sandstone-brick` | Mineur 1, `Stonecrafting` 0 → 200 | 10 à Miner ou Mason actif |
 
 Le coût est interpolé entre le skill minimum **0** et optimal **200**, avec
 arrondi supérieur et bornage : 4 à 0, 3 à 100, 2 à 200 et au-delà. Les prochains
@@ -273,19 +280,21 @@ transfert que la récolte.
 Les sauvegardes périodiques, déconnexions, handoffs entre partitions et passages
 entre Areas conservent tous les niveaux et XP artisanaux. L'enveloppe backend
 reste au schéma 1 et la simulation au format 3 ; un bloc facultatif `craft`
-version 2 contient le profil complet, les formules apprises et les dotations
-déjà reçues. Un ancien bloc `craft` version 1 conserve ses niveaux/XP et reçoit
-les deux formules de briques déjà accessibles dans cette version ; ses dotations
-restent disponibles. Les snapshots historiques aux formats
+version 3 contient les neuf écoles, les formules apprises et les dotations
+déjà reçues. Les anciens blocs `craft` version 1 ou 2 sont validés selon leur
+contrat d'origine, puis migrés : niveaux/XP et droits Carpenter conservés,
+Spellcrafter initialisé au niveau 1 et spécialisations éligibles débloquées.
+La version 1 reçoit les deux formules de briques auparavant implicites et
+laisse les dotations disponibles ; la version 2 conserve ses masques appris
+et réclamés. Les snapshots historiques aux formats
 1, 2 ou 3 sans ce bloc reçoivent le profil artisanal initial. Un bloc présent
 mais invalide, y compris `null`, est refusé au chargement au lieu de perdre la
 progression. Le parcours local sans compte conserve seulement sa session.
 
-Le composant ghost et les nouvelles RPC d'artisanat ont introduit la paire réseau
-**7 / `arkya-craft-schools-v1`**. Le build actif utilise désormais
-**8 / `arkya-npc-vitals-v1`** pour les réserves et niveaux répliqués des PNJ,
-en conservant les contrats artisanaux de cette tranche. Unity, Characters et
-le service CI de topology reconnaissent la nouvelle paire. L'admission exige une correspondance exacte entre
+Les nouveaux champs de progression du ghost privé et le champ d'école cible
+des RPC de maître utilisent la paire réseau **9 / `arkya-craft-progression-v2`**.
+Unity, Characters et le service CI de topology reconnaissent cette paire.
+L'admission exige une correspondance exacte entre
 client et destination ; les anciens builds ne sont pas compatibles avec ce
 ghost. Les profils de déploiement existants restent inchangés. Reconstruire
 ensemble client et dedicated, puis mettre à jour explicitement le profil du
@@ -293,33 +302,32 @@ realm avant d'ouvrir les admissions à ce build.
 
 ### Vérification et limites
 
-Les résultats suivants ont été consignés pour la première implémentation.
-Ils ne valident pas la nouvelle conception à neuf écoles ; la mise à jour
-présente est documentaire et ne modifie aucun code de jeu.
-
-La vérification ciblée backend donne **60 tests réussis, 0 échec** :
-compatibilité des paires réseau, admission exacte, sauvegarde, deux chemins
-de transfert, reconnexion et refus de l'ancienne autorité. Les trois tests
-Python du service CI de topology réussissent avec la nouvelle paire réseau.
+La vérification ciblée backend donne **87 tests réussis, 0 échec** : 80 côté
+Characters et 7 côté Realms. Elle couvre notamment la compatibilité de la paire
+9, l'admission exacte et la conservation du bloc `craft` version 3 lors des
+sauvegardes, transferts et reconnexions. Les **19 tests Python** de topology
+et de protection des promotions réseau réussissent.
 
 Les tests Unity ajoutés couvrent le catalogue, les prérequis, les courbes d'XP,
 la séparation des progressions, les recettes atomiques, les stations et la
-compatibilité des snapshots. **43 cas de règles pures réussissent hors Editor**,
-dont les coûts à 0/100/200, les prochains seuils configurables, l'apprentissage
-unique, les dotations par école et le refus d'XP pour une école inactive.
+compatibilité des snapshots. **65 cas de règles pures réussissent hors Editor**,
+dont les cinq seuils de déblocage, le maximum partagé, le palier spécialiste,
+la conservation des déblocages, l'XP de l'école active et les coûts des briques.
 Les quatre assemblies `Arkya.Gameplay`, `Arkya.Characters.Runtime`,
 `Arkya.Characters.Editor` et `Arkya.Characters.EditorTests` compilent hors
 Editor avec Roslyn et les générateurs ECS/Netcode. Les assemblies de runtime
 compilent également avec les symboles serveur ; cette variante utilise les
 références Editor disponibles et ne remplace pas un vrai build dédié.
 
-Des tests Unity supplémentaires couvrent les services des maîtres, la dotation
-atomique, les rejets d'autorité et les trois vues de l'interface. Les fixtures
-réseau couvrent deux clients de crafting, la récolte sans XP hors école et le
-parcours maître → école → formule → outils. Leur exécution dans Unity reste à effectuer.
+Des tests Unity supplémentaires couvrent la migration v1/v2, le format v3,
+les services des maîtres, les dotations atomiques, les rejets d'autorité et les
+vues de l'interface. Les fixtures réseau couvrent deux clients de crafting,
+le choix des neuf écoles, les refus de seuil/proximité, le déblocage d'Armorer
+en minant avec Blacksmith et la fabrication par Mason. Leur exécution dans
+Unity reste à effectuer.
 Le MCP Unity a échoué à son initialisation sur `127.0.0.1:8080` pendant cette
 intervention. La compilation Editor, les tests Edit Mode/Play Mode, un vrai
-parcours serveur/client et une capture du stone cutter ne sont donc pas
+parcours serveur/client et une capture des interfaces modifiées ne sont donc pas
 validés. Les contrôles hors Editor ne remplacent pas ces vérifications.
 
 Il n'y a pas encore de file de fabrication, de durée de recette, de coût en

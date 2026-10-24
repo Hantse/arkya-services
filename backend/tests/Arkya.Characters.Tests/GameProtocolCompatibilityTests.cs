@@ -14,6 +14,10 @@ public sealed class GameProtocolCompatibilityTests
     [InlineData(GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId, true, true)]
     [InlineData(GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId, true, true)]
     [InlineData(GameProtocol.NpcVitalsVersion, GameProtocol.NpcVitalsBuildId, true, true)]
+    [InlineData(GameProtocol.CraftProgressionVersion, GameProtocol.CraftProgressionBuildId, true, true)]
+    [InlineData(GameProtocol.CraftProgressionVersion, GameProtocol.NpcVitalsBuildId, false, false)]
+    [InlineData(GameProtocol.NpcVitalsVersion, GameProtocol.CraftProgressionBuildId, false, false)]
+    [InlineData(GameProtocol.CraftProgressionVersion, null, false, false)]
     [InlineData(GameProtocol.NpcVitalsVersion, GameProtocol.CraftSchoolsBuildId, false, false)]
     [InlineData(GameProtocol.CraftSchoolsVersion, GameProtocol.NpcVitalsBuildId, false, false)]
     [InlineData(GameProtocol.NpcVitalsVersion, null, false, false)]
@@ -53,6 +57,7 @@ public sealed class GameProtocolCompatibilityTests
     [InlineData(GameProtocol.CraftingVersion, GameProtocol.CraftingBuildId)]
     [InlineData(GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId)]
     [InlineData(GameProtocol.NpcVitalsVersion, GameProtocol.NpcVitalsBuildId)]
+    [InlineData(GameProtocol.CraftProgressionVersion, GameProtocol.CraftProgressionBuildId)]
     public void SupportedHandoffBuildsKeepTrustedPartitionRouting(int version, string buildId)
     {
         var entry = new GameRealmEntry("beta-web", "Test realm", true, "area-west", "wss://game.example/west",

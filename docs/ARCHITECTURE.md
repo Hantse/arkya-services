@@ -42,10 +42,16 @@ L'[artisanat](CRAFTING.md) conserve les niveaux de toutes les écoles, une écol
 active, les formules apprises et les dotations initiales déjà reçues. Les maîtres
 de métier acceptent des intentions par RPC ; le serveur vérifie leur identité,
 la proximité, la connexion propriétaire et l'inventaire avant de modifier l'état.
-L'XP reste limitée à l'école active. Les onglets personnage et le grimoire lisent
+Les neuf écoles partagent seize skills, calculés comme le maximum des contributions
+`(niveau − 1) × gain`, avec gains +10/+8 et déblocages permanents à 150/200.
+L'XP reste limitée à l'école active lorsqu'elle enseigne le skill de l'activité.
+Les trois maîtres existants permettent de sélectionner toute école débloquée ;
+leurs outils et formules restent liés à leur métier propre. Les onglets personnage et le grimoire lisent
 le ghost privé ; le coût d'une formule est calculé côté serveur depuis ses seuils
-minimum et optimal. Le bloc de sauvegarde `craft` version 2 migre les anciens
-profils version 1 en conservant leurs deux formules de briques implicitement acquises.
+minimum et optimal. Le bloc de sauvegarde `craft` version 3 migre les versions
+1/2, conserve leurs progressions et anciens droits Carpenter, ajoute Spellcrafter
+et les spécialisations éligibles. La paire réseau 9 / `arkya-craft-progression-v2`
+couvre les nouveaux champs ghost et la sélection d'école dans les RPC de maître.
 
 Arkya utilise Unity DOTS (Data-Oriented Technology Stack) pour la simulation temps réel et Netcode for Entities pour le multijoueur sous autorité serveur. La simulation, exécutée par un serveur dédié Unity, est séparée des services ASP.NET Core qui possèdent les comptes et les données persistantes. La décision sur ces services est détaillée dans [0002 — Services backend](decisions/0002-backend-services.md).
 

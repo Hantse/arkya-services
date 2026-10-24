@@ -32,6 +32,7 @@ public sealed class RealmAreaTransitionTests
     [InlineData(GameProtocol.MultiAreaVersion, GameProtocol.MultiAreaBuildId)]
     [InlineData(GameProtocol.DivingVersion, GameProtocol.DivingBuildId)]
     [InlineData(GameProtocol.NpcVitalsVersion, GameProtocol.NpcVitalsBuildId)]
+    [InlineData(GameProtocol.CraftProgressionVersion, GameProtocol.CraftProgressionBuildId)]
     public async Task ApprovedMultiAreaPlanPublishesContentAndExplicitTransitionsWithoutConfusingLocalCoordinates(int version, string buildId)
     {
         var plan = Plan();

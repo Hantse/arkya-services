@@ -73,8 +73,10 @@ l'inventaire empêchent la récolte pendant cette période.
 Les premiers coups réduisent le travail restant. **Seul le dernier coup
 attribue le butin à son auteur.** Le travail du nœud est partagé entre les
 joueurs ; le joueur qui termine reçoit la quantité complète. Une attribution
-réussie donne également **5 XP de Bûcheron** pour le bois ou **5 XP de Mineur**
-pour la pierre, le grès, le fer ou le cuivre. Les coups intermédiaires et les
+réussie donne également **5 XP à l'école active** si elle enseigne le skill
+de récolte : `Logging` pour le bois (Logger/Carpenter), `Quarrying` pour la
+pierre et le grès (Miner/Mason), `Mining` pour les minerais (Miner/Blacksmith).
+Les coups intermédiaires et les
 refus ne donnent pas d'XP. Cette progression appartient aux
 [écoles d'artisanat](CRAFTING.md), indépendamment des classes de combat.
 
@@ -97,7 +99,8 @@ des IDs distincts et restent distincts dans les sacs et en persistance. Le
 parcours local sans compte conserve seulement ses données de session.
 
 La pierre et le grès servent aux premières recettes du [stone cutter](CRAFTING.md) :
-**2 unités brutes → 1 brique**, avec **10 XP de Mineur** par fabrication réussie.
+**4 à 2 unités brutes → 1 brique**, selon le meilleur score de `Stonecrafting`,
+avec **10 XP à Miner ou Mason actif** par fabrication réussie.
 Les deux ressources et leurs briques possèdent des IDs persistants distincts.
 
 Une ressource épuisée disparaît et libère ses collisions ; une souche ou des
