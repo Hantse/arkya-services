@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
@@ -129,6 +130,233 @@ public sealed class AuthenticationGateTests(StaApplication application, ITestOut
         Assert.Null(fixture.Window.FindName("SettingsPanel"));
         Assert.Equal(0, fixture.Network.Requests);
     });
+
+    [Fact]
+    public Task SignedOutPlayerCanChangeLanguageAndBothSelectorsStayInSync() => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture();
+        var window = fixture.Window;
+        Invoke(window, "ShowError", new HttpRequestException("Synthetic network failure"));
+        Assert.Contains("Connexion au serveur impossible", Control<TextBlock>(window, "LoginStatus").Text);
+
+        await SelectLanguageAsync(window, "LoginLanguageSelector", "en");
+
+        Assert.Equal("en", Control<ComboBox>(window, "LoginLanguageSelector").SelectedValue);
+        Assert.Equal("en", Control<ComboBox>(window, "LauncherLanguageSelector").SelectedValue);
+        Assert.Equal("Continue with Discord", Control<Button>(window, "LoginButton").Content);
+        Assert.Equal("The game", Control<RadioButton>(window, "HomeTab").Content);
+        Assert.Equal("Not signed in", Control<TextBlock>(window, "AccountLabel").Text);
+        Assert.Equal("Featured", Control<TextBlock>(window, "FeedHeading").Text);
+        Assert.Equal("Unable to connect to the server. Check your connection and try again.", Control<TextBlock>(window, "LoginStatus").Text);
+        Assert.Equal(Control<TextBlock>(window, "LoginStatus").Text, Control<TextBlock>(window, "StatusLabel").Text);
+        Assert.Equal(Visibility.Visible, Control<Grid>(window, "LoginPage").Visibility);
+        AssertProtectedCommandsDisabled(window);
+
+        await SelectLanguageAsync(window, "LoginLanguageSelector", "fr");
+        Assert.Equal("fr", Control<ComboBox>(window, "LauncherLanguageSelector").SelectedValue);
+        Assert.Equal("Continuer avec Discord", Control<Button>(window, "LoginButton").Content);
+        Assert.Contains("Connexion au serveur impossible", Control<TextBlock>(window, "LoginStatus").Text);
+        Assert.Equal(0, fixture.Network.Requests);
+    });
+
+    [Fact]
+    public Task SelectedLanguageIsRestoredWhenTheLauncherWindowIsRecreated() => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture();
+        await SelectLanguageAsync(fixture.Window, "LoginLanguageSelector", "en");
+        fixture.Window.Close();
+
+        using var reopened = new WindowFixture(dataDirectory: fixture.DataDirectory);
+        Assert.Equal("en", Control<ComboBox>(reopened.Window, "LoginLanguageSelector").SelectedValue);
+        Assert.Equal("en", Control<ComboBox>(reopened.Window, "LauncherLanguageSelector").SelectedValue);
+        Assert.Equal("Continue with Discord", Control<Button>(reopened.Window, "LoginButton").Content);
+        Assert.Equal("en", ((GameInstallationSelection)Field(reopened.Window, "selection")!).Preferences.Language);
+        Assert.Equal(Visibility.Visible, Control<Grid>(reopened.Window, "LoginPage").Visibility);
+        Assert.Equal(0, fixture.Network.Requests + reopened.Network.Requests);
+    });
+
+    [Fact]
+    public Task ConnectedLanguageSwitchPreservesSessionChannelAndGameLocation() => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture();
+        var window = fixture.Window;
+        using var feedHandler = new LocalizedFeedHandler();
+        using var feedClient = new HttpClient(feedHandler);
+        Field(window, "publications", new ContentFeedClient(feedClient));
+        var selection = (GameInstallationSelection)Field(window, "selection")!;
+        selection.SelectDirectory(Path.Combine(fixture.DataDirectory, "chosen game"));
+        selection.SelectChannel(ReleaseChannel.Stable);
+        Invoke(window, "UpdateChannel");
+        Invoke(window, "UpdateLocation");
+        Authenticate(window);
+        var session = Field(window, "session");
+        var lifetime = Field(window, "sessionLifetime");
+        var before = selection.Preferences;
+        var installer = selection.Installer;
+        var location = Control<TextBlock>(window, "FooterLocationLabel").Text;
+        var sessionPath = Path.Combine(fixture.DataDirectory, "Launcher", "launcher-session.dat");
+        byte[] protectedSession = [1, 128, 255, 17];
+        File.WriteAllBytes(sessionPath, protectedSession);
+
+        await SelectLanguageAsync(window, "LauncherLanguageSelector", "en");
+
+        Assert.Equal(before with { Language = "en" }, selection.Preferences);
+        Assert.Same(installer, selection.Installer);
+        Assert.Same(session, Field(window, "session"));
+        Assert.Same(lifetime, Field(window, "sessionLifetime"));
+        Assert.Equal(protectedSession, File.ReadAllBytes(sessionPath));
+        Assert.Equal(location, Control<TextBlock>(window, "FooterLocationLabel").Text);
+        Assert.True(Control<RadioButton>(window, "StableChannel").IsChecked);
+        Assert.Equal("Aélyra", Control<TextBlock>(window, "AccountLabel").Text);
+        Assert.Equal("Sign out", Control<Button>(window, "LogoutButton").Content);
+        Assert.Equal("Install game", Control<Button>(window, "InstallButton").Content);
+        Assert.Equal("No version installed", Control<TextBlock>(window, "InstalledLabel").Text);
+        Assert.Equal(Visibility.Visible, Control<Grid>(window, "LauncherContent").Visibility);
+        Assert.Equal(0, fixture.Network.Requests);
+        Assert.Single(feedHandler.Requests);
+        Assert.Contains("language=en", feedHandler.Requests[0].Query);
+    });
+
+    [Theory]
+    [InlineData("fr", "Nouvelles françaises", "Actualités")]
+    [InlineData("en", "English news", "News")]
+    public Task PublicationRequestAndDisplayedCardsFollowTheSelectedLanguage(string language, string expectedTitle, string expectedHeading) => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture();
+        var window = fixture.Window;
+        await SelectLanguageAsync(window, "LoginLanguageSelector", language);
+        using var handler = new LocalizedFeedHandler();
+        using var client = new HttpClient(handler);
+        Field(window, "publications", new ContentFeedClient(client));
+        Authenticate(window);
+        var newsTab = Assert.Single(Descendants(window).OfType<RadioButton>(), button => (string?)button.Tag == "news");
+        newsTab.IsChecked = true;
+        await RenderAsync(window);
+
+        var request = Assert.Single(handler.Requests);
+        Assert.Equal("api.arkya.online", request.Host);
+        Assert.Contains("language=" + language, request.Query);
+        Assert.Contains("kind=news", request.Query);
+        Assert.Equal(expectedHeading, Control<TextBlock>(window, "FeedHeading").Text);
+        Assert.Equal(new[] { expectedTitle }, CardTitles(window));
+        Assert.Equal(0, fixture.Network.Requests);
+    });
+
+    [Fact]
+    public Task LanguageSwitchIgnoresThePreviousLanguageResponseAndRefreshesTheNewFeed() => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture();
+        var window = fixture.Window;
+        using var handler = new LocalizedFeedHandler(delayFrench: true);
+        using var client = new HttpClient(handler);
+        Field(window, "publications", new ContentFeedClient(client));
+        Authenticate(window);
+        var frenchRequest = (Task)Invoke(window, "RefreshFeedAsync")!;
+        Assert.False(frenchRequest.IsCompleted);
+        Assert.Single(handler.Requests);
+        Control<Border>(window, "ArticlePanel").Visibility = Visibility.Visible;
+        Control<TextBlock>(window, "ArticleBody").Text = "Ancien article français";
+
+        await SelectLanguageAsync(window, "LauncherLanguageSelector", "en");
+        Assert.Empty(CardTitles(window));
+        Assert.Equal(Visibility.Collapsed, Control<Border>(window, "ArticlePanel").Visibility);
+        Assert.Equal("", Control<TextBlock>(window, "ArticleBody").Text);
+        handler.CompleteFrenchResponse();
+        await frenchRequest.WaitAsync(TimeSpan.FromSeconds(5));
+        await RenderAsync(window);
+
+        Assert.Equal(new[] { "English news" }, CardTitles(window));
+        Assert.Equal(2, handler.Requests.Count);
+        Assert.Contains("language=fr", handler.Requests[0].Query);
+        Assert.Contains("language=en", handler.Requests[1].Query);
+        Assert.Equal("Featured", Control<TextBlock>(window, "FeedHeading").Text);
+        Assert.DoesNotContain("indisponibles", Control<TextBlock>(window, "FeedStatus").Text);
+        Assert.Equal(0, fixture.Network.Requests);
+    });
+
+    [Theory]
+    [InlineData("fr", false)]
+    [InlineData("en", false)]
+    [InlineData("fr", true)]
+    [InlineData("en", true)]
+    public Task LocalizedLoginAndLauncherRenderAtMinimumWindowSize(string language, bool connected) => application.RunAsync(async () =>
+    {
+        using var fixture = new WindowFixture(1040, 720);
+        var window = fixture.Window;
+        await SelectLanguageAsync(window, "LoginLanguageSelector", language);
+        if (connected)
+        {
+            Field(window, "available", Manifest());
+            Field(window, "installed", new InstalledGame(Manifest() with { Sha256 = new string('b', 64) }, "releases/ui-fixture", "beta"));
+            Authenticate(window);
+            Invoke(window, "ShowError", new HttpRequestException("Synthetic network failure"));
+        }
+        await RenderAsync(window);
+        var content = (FrameworkElement)window.Content;
+        var selector = Control<ComboBox>(window, connected ? "LauncherLanguageSelector" : "LoginLanguageSelector");
+        AssertVisibleInside(selector, content);
+        Assert.Equal(language == "en" ? "English" : "Français", Assert.IsType<ComboBoxItem>(selector.SelectedItem).Content);
+        foreach (var name in connected
+            ? new[] { "HomeTab", "BetaChannel", "StableChannel", "ChangeLocationButton", "InstallButton", "PlayButton", "CheckButton", "LogoutButton", "StatusLabel" }
+            : new[] { "LoginButton", "LoginStatus" })
+            AssertVisibleInside(Control<FrameworkElement>(window, name), content);
+        if (connected)
+            foreach (var tab in Descendants(window).OfType<RadioButton>().Where(button => button.GroupName == "Feed"))
+                AssertVisibleInside(tab, content);
+        SaveScreenshot(content, $"localized-{(connected ? "authenticated" : "login")}-{language}-1040x720.png");
+        Assert.Equal(0, fixture.Network.Requests);
+    });
+
+    private static async Task SelectLanguageAsync(MainWindow window, string selectorName, string language)
+    {
+        Control<ComboBox>(window, selectorName).SelectedValue = language;
+        await RenderAsync(window);
+    }
+
+    private static async Task RenderAsync(MainWindow window)
+    {
+        window.UpdateLayout();
+        await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
+        window.UpdateLayout();
+    }
+
+    private static string[] CardTitles(MainWindow window) => Control<ItemsControl>(window, "NewsList").Items.Cast<object>()
+        .Select(card => (string)card.GetType().GetProperty("Title")!.GetValue(card)!).ToArray();
+
+    private sealed class LocalizedFeedHandler(bool delayFrench = false) : HttpMessageHandler
+    {
+        private readonly TaskCompletionSource<HttpResponseMessage> frenchResponse = new(TaskCreationOptions.RunContinuationsAsynchronously);
+        public List<Uri> Requests { get; } = [];
+
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            Requests.Add(request.RequestUri!);
+            // Deliberately ignore cancellation to exercise an old response completing after a language switch.
+            if (delayFrench && request.RequestUri!.Query.Contains("language=fr", StringComparison.Ordinal)) return frenchResponse.Task;
+            return Task.FromResult(Response());
+        }
+
+        public void CompleteFrenchResponse() => frenchResponse.SetResult(Response());
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) frenchResponse.TrySetCanceled();
+            base.Dispose(disposing);
+        }
+
+        private static HttpResponseMessage Response() => new(System.Net.HttpStatusCode.OK)
+        {
+            Content = new StringContent(JsonSerializer.Serialize(new
+            {
+                items = new[]
+                {
+                    new ContentPost("french-post", "news", "fr", "Nouvelles françaises", "Résumé", "Article français", null, DateTimeOffset.UtcNow),
+                    new ContentPost("english-post", "news", "en", "English news", "Summary", "English article", null, DateTimeOffset.UtcNow)
+                },
+                hasMore = false
+            }, GameManifest.JsonOptions))
+        };
+    }
 
     [Theory]
     [InlineData(1280, 830)]
@@ -400,13 +628,14 @@ public sealed class AuthenticationGateTests(StaApplication application, ITestOut
 
     private sealed class WindowFixture : IDisposable
     {
-        public string DataDirectory { get; } = Path.Combine(Path.GetTempPath(), "arkya-launcher-ui-" + Guid.NewGuid().ToString("N"));
+        public string DataDirectory { get; }
         public MainWindow Window { get; }
         public DenyNetworkHandler Network { get; } = new();
         private readonly HttpClient networkClient;
 
-        public WindowFixture(int width = 1280, int height = 830)
+        public WindowFixture(int width = 1280, int height = 830, string? dataDirectory = null)
         {
+            DataDirectory = dataDirectory ?? Path.Combine(Path.GetTempPath(), "arkya-launcher-ui-" + Guid.NewGuid().ToString("N"));
             networkClient = new HttpClient(Network);
             Window = (MainWindow)Activator.CreateInstance(typeof(MainWindow), BindingFlags.Instance | BindingFlags.NonPublic,
                 null, new object[] { DataDirectory }, null)!;

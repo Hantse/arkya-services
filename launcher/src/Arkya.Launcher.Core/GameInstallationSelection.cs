@@ -44,6 +44,13 @@ public sealed class GameInstallationSelection
         Installer = candidate;
     }
 
+    public void SelectLanguage(string language)
+    {
+        var preferences = Preferences with { Language = language };
+        store.Save(preferences);
+        Preferences = preferences;
+    }
+
     private GameInstaller CreateInstaller(LauncherPreferences preferences) => new(
         ReleaseChannels.GetInstallationDirectory(preferences.GameDirectory, preferences.Channel), releases, preferences.Channel);
 }

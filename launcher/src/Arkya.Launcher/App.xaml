@@ -36,7 +36,7 @@
             <Setter Property="Background" Value="Transparent" /><Setter Property="BorderThickness" Value="0" /><Setter Property="Foreground" Value="{StaticResource Muted}" />
         </Style>
         <Style x:Key="NavigationTab" TargetType="RadioButton">
-            <Setter Property="Foreground" Value="{StaticResource Muted}" /><Setter Property="FontSize" Value="13" /><Setter Property="Cursor" Value="Hand" /><Setter Property="Padding" Value="0,18" />
+            <Setter Property="Foreground" Value="{StaticResource Muted}" /><Setter Property="FontSize" Value="13" /><Setter Property="Cursor" Value="Hand" /><Setter Property="Padding" Value="12,18" />
             <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="RadioButton">
                 <Border x:Name="TabBorder" Padding="{TemplateBinding Padding}" BorderThickness="0,0,0,2" BorderBrush="Transparent" Background="Transparent">
                     <ContentPresenter VerticalAlignment="Center" />
@@ -46,6 +46,42 @@
                     <Trigger Property="IsMouseOver" Value="True"><Setter Property="Foreground" Value="{StaticResource Paper}" /></Trigger>
                     <Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="TabBorder" Property="Background" Value="#30424D" /></Trigger>
                 </ControlTemplate.Triggers>
+            </ControlTemplate></Setter.Value></Setter>
+        </Style>
+        <Style x:Key="LanguageSelector" TargetType="ComboBox">
+            <Setter Property="Foreground" Value="{StaticResource Paper}" />
+            <Setter Property="Background" Value="{StaticResource Surface}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Line}" />
+            <Setter Property="Width" Value="118" /><Setter Property="Height" Value="32" />
+            <Setter Property="FontSize" Value="12" /><Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="ItemContainerStyle"><Setter.Value><Style TargetType="ComboBoxItem">
+                <Setter Property="Foreground" Value="{StaticResource Paper}" /><Setter Property="Padding" Value="12,8" />
+                <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ComboBoxItem">
+                    <Border x:Name="Option" Padding="{TemplateBinding Padding}" Background="Transparent"><ContentPresenter /></Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="True"><Setter TargetName="Option" Property="Background" Value="#30424D" /></Trigger>
+                        <Trigger Property="IsSelected" Value="True"><Setter TargetName="Option" Property="Background" Value="#243A3E" /></Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate></Setter.Value></Setter>
+            </Style></Setter.Value></Setter>
+            <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ComboBox">
+                <Grid>
+                    <ToggleButton Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                        <ToggleButton.Template><ControlTemplate TargetType="ToggleButton">
+                            <Border x:Name="SelectorSurface" Background="{Binding Background, RelativeSource={RelativeSource AncestorType=ComboBox}}" BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=ComboBox}}" BorderThickness="1" CornerRadius="3">
+                                <TextBlock Text="&#xE70D;" FontFamily="Segoe MDL2 Assets" Foreground="{StaticResource Muted}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="10" Margin="0,0,10,0" />
+                            </Border>
+                            <ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="SelectorSurface" Property="BorderBrush" Value="{StaticResource Gold}" /></Trigger></ControlTemplate.Triggers>
+                        </ControlTemplate></ToggleButton.Template>
+                    </ToggleButton>
+                    <ContentPresenter Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" VerticalAlignment="Center" Margin="11,0,29,0" IsHitTestVisible="False" />
+                    <Popup x:Name="PART_Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False">
+                        <Border MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}" Background="{StaticResource Surface}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="3" Padding="0,3" Margin="0,3,0,0">
+                            <ScrollViewer CanContentScroll="True"><ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" /></ScrollViewer>
+                        </Border>
+                    </Popup>
+                </Grid>
+                <ControlTemplate.Triggers><Trigger Property="IsKeyboardFocusWithin" Value="True"><Setter Property="BorderBrush" Value="{StaticResource Gold}" /></Trigger></ControlTemplate.Triggers>
             </ControlTemplate></Setter.Value></Setter>
         </Style>
         <Style TargetType="TextBox">

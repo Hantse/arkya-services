@@ -45,7 +45,9 @@ public partial class MainWindow : Window
     private string selectedKind = "all";
     private bool loadingFeed;
     private bool feedFailed;
-    private string feedMessage = "Les nouvelles de l’équipe Arkya apparaîtront ici.";
+    private Func<string>? feedMessage;
+    private CancellationTokenSource? feedRequest;
+    private long feedGeneration;
 
     public MainWindow() : this(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Arkya"), true)
     {
@@ -77,6 +79,8 @@ public partial class MainWindow : Window
             preferencesHealthy = false;
             ShowError(exception);
         }
+        UpdateLanguageResources();
+        ApplyLanguage();
         UpdateChannel();
         UpdateLocation();
         UpdateButtons();
@@ -110,7 +114,7 @@ public partial class MainWindow : Window
             token.ThrowIfCancellationRequested();
             if (restored is null) return;
             AcceptSession(restored);
-            SetStatus("Connexion retrouvée. Bienvenue sur Arkya.");
+            SetStatus(() => T("Connexion retrouvée. Bienvenue sur Arkya.", "Your connection was restored. Welcome to Arkya."));
         }, requiresSession: false);
         if (Authenticated && !closeAfterCancellation)
         {
@@ -143,7 +147,7 @@ public partial class MainWindow : Window
             }
             catch (Exception exception) when (IsExpected(exception) || exception is OperationCanceledException)
             {
-                SetStatus("Le renouvellement de connexion est momentanément indisponible. Nouvelle tentative automatique…");
+                SetStatus(() => T("Le renouvellement de connexion est momentanément indisponible. Nouvelle tentative automatique…", "Your connection could not be renewed right now. Retrying automatically…"));
             }
             finally
             {
@@ -165,10 +169,10 @@ public partial class MainWindow : Window
         {
             var currentVersion = typeof(MainWindow).Assembly.GetName().Version ?? new Version(0, 4, 0);
             launcherUpdate = await launcherUpdates.GetUpdateAsync(currentVersion, windowLifetime.Token);
-            if (launcherUpdate is null) return;
-            LauncherUpdateStatus.Text = "Arkya Launcher " + launcherUpdate.Version + " est disponible. Votre connexion et vos jeux seront conservés.";
-            LauncherUpdateButton.Content = LauncherUpdateInstaller.IsInstalledLauncher(AppContext.BaseDirectory)
-                ? "Mettre à jour et redémarrer" : "Installer le nouveau launcher";
+            if (launcherUpdate is not { } update) return;
+            SetLauncherUpdateText(() => "Arkya Launcher " + update.Version +
+                T(" est disponible. Votre connexion et vos jeux seront conservés.", " is available. Your sign-in and games will be kept."));
+            UpdateLauncherUpdateButton();
             LauncherUpdateBanner.Visibility = Visibility.Visible;
         }
         catch (Exception exception) when (IsExpected(exception) || exception is OperationCanceledException)
@@ -192,7 +196,8 @@ public partial class MainWindow : Window
             Directory.CreateDirectory(directory);
             var installer = Path.Combine(directory, "Arkya-Launcher-Setup.exe");
             var progress = new Progress<InstallProgress>(value =>
-                LauncherUpdateStatus.Text = "Mise à jour du launcher : " + value.Message + " · " + FormatBytes(value.CompletedBytes));
+                SetLauncherUpdateText(() => T("Mise à jour du launcher : ", "Launcher update: ") +
+                    LocalizeProgress(value.Message) + " · " + FormatBytes(value.CompletedBytes)));
             await launcherUpdates.DownloadAsync(update, installer, progress, token);
             token.ThrowIfCancellationRequested();
             LauncherUpdateInstaller.StartAfterLauncherExit(update, installer, AppContext.BaseDirectory);
@@ -213,21 +218,21 @@ public partial class MainWindow : Window
     private Task CheckAsync() => RunOperationAsync(async token =>
     {
         available = null;
-        SetStatus("Recherche de la dernière version…");
+        SetStatus(() => T("Recherche de la dernière version…", "Checking for the latest version…"));
         Progress.IsIndeterminate = true;
         var manifest = await releases.GetChannelReleaseAsync(selection.Preferences.Channel, token);
         token.ThrowIfCancellationRequested();
         available = manifest;
-        if (available is null)
+        if (manifest is null)
         {
-            AvailableLabel.Text = "Aucune version publiée sur ce canal";
-            ReleaseNotes.Text = "Les notes de version apparaîtront à la publication de ce canal.";
-            SetStatus("Aucune version Stable publiée pour le moment. La Bêta reste disponible dans son canal.");
+            SetAvailableText(() => T("Aucune version publiée sur ce canal", "No release is available in this channel"));
+            SetReleaseNotesText(() => T("Les notes de version apparaîtront à la publication de ce canal.", "Release notes will appear when this channel is published."));
+            SetStatus(() => T("Aucune version Stable publiée pour le moment. La Bêta reste disponible dans son canal.", "No Stable release is available yet. Beta remains available in its channel."));
             return;
         }
-        AvailableLabel.Text = "Version disponible : " + available.Version + " · " + FormatBytes(available.PackageSize);
-        ReleaseNotes.Text = string.IsNullOrWhiteSpace(available.ReleaseNotes) ? "Aucune note publiée pour cette version." : available.ReleaseNotes;
-        SetStatus(IsCurrent ? "Votre jeu est à jour. Bonne aventure !" : "Une version du jeu est prête à être installée.");
+        SetAvailableText(() => T("Version disponible : ", "Available version: ") + manifest.Version + " · " + FormatBytes(manifest.PackageSize));
+        SetReleaseNotesText(() => string.IsNullOrWhiteSpace(manifest.ReleaseNotes) ? T("Aucune note publiée pour cette version.", "No notes were published for this version.") : manifest.ReleaseNotes);
+        SetStatus(() => IsCurrent ? T("Votre jeu est à jour. Bonne aventure !", "Your game is up to date. Enjoy your adventure!") : T("Une version du jeu est prête à être installée.", "A game release is ready to install."));
     });
 
     private async void Channel_Checked(object sender, RoutedEventArgs e)
@@ -240,8 +245,8 @@ public partial class MainWindow : Window
             selection.SelectChannel(channel);
             available = null;
             installed = selection.Installed;
-            AvailableLabel.Text = "Recherche de la version de ce canal…";
-            ReleaseNotes.Text = "Les changements de la version disponible apparaîtront ici.";
+            SetAvailableText(() => T("Recherche de la version de ce canal…", "Checking this channel’s latest release…"));
+            SetReleaseNotesText(() => T("Les changements de la version disponible apparaîtront ici.", "Changes in the available release will appear here."));
             UpdateChannel();
             UpdateLocation();
             UpdateButtons();
@@ -256,8 +261,8 @@ public partial class MainWindow : Window
         var beta = selection.Preferences.Channel == ReleaseChannel.Beta;
         BetaChannel.IsChecked = beta;
         StableChannel.IsChecked = !beta;
-        ChannelBadge.Text = beta ? "BÊTA" : "STABLE";
-        ChannelDescription.Text = beta ? "Découvrez les versions en cours de développement." : "Les versions validées pour tous les joueurs.";
+        ChannelBadge.Text = beta ? T("BÊTA", "BETA") : "STABLE";
+        ChannelDescription.Text = beta ? T("Découvrez les versions en cours de développement.", "Explore releases currently in development.") : T("Les versions validées pour tous les joueurs.", "Releases approved for all players.");
         updatingChannel = false;
     }
 
@@ -276,12 +281,12 @@ public partial class MainWindow : Window
                 timer.Restart();
                 Progress.IsIndeterminate = value.TotalBytes == 0;
                 Progress.Value = value.Percentage;
-                StatusLabel.Text = value.TotalBytes > 1
-                    ? $"{value.Message} · {FormatBytes(value.CompletedBytes)} / {FormatBytes(value.TotalBytes)}"
-                    : value.Message;
+                SetStatus(() => value.TotalBytes > 1
+                    ? $"{LocalizeProgress(value.Message)} · {FormatBytes(value.CompletedBytes)} / {FormatBytes(value.TotalBytes)}"
+                    : LocalizeProgress(value.Message));
             });
             installed = await Task.Run(() => selection.Installer.InstallAsync(manifest, progress, token), token);
-            StatusLabel.Text = "Installation terminée. Arkya est prêt à démarrer.";
+            SetStatus(() => T("Installation terminée. Arkya est prêt à démarrer.", "Installation complete. Arkya is ready to launch."));
         });
     }
 
@@ -290,14 +295,14 @@ public partial class MainWindow : Window
         if (Authenticated || operation is not null) return;
         await RunOperationAsync(async token =>
         {
-            SetStatus("Terminez la connexion Discord dans votre navigateur…");
+            SetStatus(() => T("Terminez la connexion Discord dans votre navigateur…", "Complete your Discord sign-in in your browser…"));
             var connected = await identity.LoginWithDiscordAsync(uri =>
             {
                 using var browser = Process.Start(new ProcessStartInfo(uri.AbsoluteUri) { UseShellExecute = true });
             }, token);
             token.ThrowIfCancellationRequested();
             AcceptSession(connected);
-            SetStatus("Connexion établie. Bienvenue sur Arkya.");
+            SetStatus(() => T("Connexion établie. Bienvenue sur Arkya.", "You are signed in. Welcome to Arkya."));
         }, requiresSession: false);
         if (!Authenticated || closeAfterCancellation) return;
         var feed = RefreshFeedAsync();
@@ -312,15 +317,15 @@ public partial class MainWindow : Window
         UpdateButtons();
         await RunOperationAsync(async token =>
         {
-            SetStatus("Déconnexion…");
+            SetStatus(() => T("Déconnexion…", "Signing out…"));
             try
             {
                 await identity.LogoutAsync(current, token);
-                SetStatus("Vous êtes déconnecté. Connectez-vous avec Discord pour revenir au launcher.");
+                SetStatus(() => T("Vous êtes déconnecté. Connectez-vous avec Discord pour revenir au launcher.", "You are signed out. Sign in with Discord to return to the launcher."));
             }
             catch (Exception exception) when (IsExpected(exception) || exception is OperationCanceledException)
             {
-                SetStatus("Vous êtes déconnecté du launcher. La révocation sur le serveur n’a pas pu être confirmée.");
+                SetStatus(() => T("Vous êtes déconnecté du launcher. La révocation sur le serveur n’a pas pu être confirmée.", "You are signed out of the launcher. Sign-out on the server could not be confirmed."));
             }
         }, requiresSession: false);
     }
@@ -332,13 +337,16 @@ public partial class MainWindow : Window
         sessionLifetime?.Dispose();
         sessionLifetime = null;
         available = null;
+        feedGeneration++;
+        feedRequest?.Cancel();
         posts = [];
+        feedMessage = null;
         NewsList.ItemsSource = null;
         ArticlePanel.Visibility = Visibility.Collapsed;
         SettingsOverlay.Visibility = Visibility.Collapsed;
         ArticleCaption.Text = ArticleTitle.Text = ArticleSummary.Text = ArticleBody.Text = "";
-        AvailableLabel.Text = "Vérifiez les mises à jour après la connexion.";
-        ReleaseNotes.Text = "Les changements de la version disponible apparaîtront ici.";
+        SetAvailableText(() => T("Vérifiez les mises à jour après la connexion.", "Check for updates after signing in."));
+        SetReleaseNotesText(() => T("Les changements de la version disponible apparaîtront ici.", "Changes in the available release will appear here."));
     }
 
     private async void Play_Click(object sender, RoutedEventArgs e)
@@ -346,7 +354,7 @@ public partial class MainWindow : Window
         if (!Authenticated || installed is not { } currentInstall || GameRunning || session is not { } currentSession) return;
         await RunOperationAsync(async token =>
         {
-            StatusLabel.Text = "Vérification de votre session…";
+            SetStatus(() => T("Vérification de votre session…", "Verifying your session…"));
             session = await identity.VerifySessionAsync(currentSession, token);
             token.ThrowIfCancellationRequested();
             using var handoff = currentInstall.Manifest.LauncherSessionProtocol == 1 ? new LauncherSessionHandoff() : null;
@@ -360,13 +368,13 @@ public partial class MainWindow : Window
                 Dispatcher.BeginInvoke(() =>
                 {
                     if (game != launched) return;
-                    StatusLabel.Text = "Le jeu est fermé. À bientôt sur Arkya.";
+                    SetStatus(() => T("Le jeu est fermé. À bientôt sur Arkya.", "The game is closed. See you soon in Arkya."));
                     UpdateButtons();
                 });
             };
-            StatusLabel.Text = "Démarrage d’Arkya…";
+            SetStatus(() => T("Démarrage d’Arkya…", "Launching Arkya…"));
             if (handoff is not null) await handoff.SendAsync(launched.Id, session, token);
-            StatusLabel.Text = "Arkya est en cours d’exécution.";
+            SetStatus(() => T("Arkya est en cours d’exécution.", "Arkya is running."));
         });
     }
 
@@ -382,7 +390,7 @@ public partial class MainWindow : Window
         catch (OperationCanceledException)
         {
             if (!requiresSession || Authenticated)
-                SetStatus(currentOperation.IsCancellationRequested ? "Opération annulée." : "Le serveur ou le jeu n’a pas répondu à temps. Vous pouvez réessayer.");
+                SetStatus(() => currentOperation.IsCancellationRequested ? T("Opération annulée.", "Operation cancelled.") : T("Le serveur ou le jeu n’a pas répondu à temps. Vous pouvez réessayer.", "The server or game did not respond in time. Please try again."));
         }
         catch (LauncherAuthenticationException exception)
         {
@@ -421,13 +429,13 @@ public partial class MainWindow : Window
         if (session is not null && !Authenticated && !refreshingSession)
         {
             EndSession();
-            SetStatus("Votre session a expiré. Reconnectez-vous avec Discord pour continuer.");
+            SetStatus(() => T("Votre session a expiré. Reconnectez-vous avec Discord pour continuer.", "Your session has expired. Sign in with Discord again to continue."));
         }
         var busy = operation is not null || refreshingSession;
         var connected = Authenticated;
         LoginPage.Visibility = connected ? Visibility.Collapsed : Visibility.Visible;
         LauncherContent.Visibility = connected ? Visibility.Visible : Visibility.Collapsed;
-        AccountLabel.Text = session?.DisplayName ?? "Non connecté";
+        AccountLabel.Text = session?.DisplayName ?? T("Non connecté", "Not signed in");
         AccountLabel.ToolTip = session?.DisplayName;
         LoginButton.IsEnabled = !busy;
         LoginProgress.Visibility = !connected && busy ? Visibility.Visible : Visibility.Collapsed;
@@ -435,11 +443,11 @@ public partial class MainWindow : Window
         LoginCancelButton.Visibility = !connected && busy ? Visibility.Visible : Visibility.Collapsed;
         LogoutButton.Visibility = connected ? Visibility.Visible : Visibility.Collapsed;
         LogoutButton.IsEnabled = connected && !busy;
-        InstalledLabel.Text = installed is null ? "Aucune version installée" : "Arkya " + installed.Manifest.Version;
-        InstallButton.Content = IsCurrent ? "Jeu à jour" : installed is null ? "Installer le jeu" : "Mettre à jour";
+        InstalledLabel.Text = installed is null ? T("Aucune version installée", "No version installed") : "Arkya " + installed.Manifest.Version;
+        InstallButton.Content = IsCurrent ? T("Jeu à jour", "Game up to date") : installed is null ? T("Installer le jeu", "Install game") : T("Mettre à jour", "Update");
         InstallButton.IsEnabled = connected && !busy && !GameRunning && available is not null && !IsCurrent;
         InstallButton.Visibility = IsCurrent ? Visibility.Collapsed : Visibility.Visible;
-        PlayButton.Content = GameRunning ? "Jeu en cours" : "Jouer";
+        PlayButton.Content = GameRunning ? T("Jeu en cours", "Game running") : T("Jouer", "Play");
         PlayButton.IsEnabled = connected && !busy && !GameRunning && installed is not null;
         PlayButton.Visibility = installed is null ? Visibility.Collapsed : Visibility.Visible;
         CheckButton.IsEnabled = connected && !busy;
@@ -449,20 +457,8 @@ public partial class MainWindow : Window
         LauncherUpdateButton.IsEnabled = !busy && !GameRunning && launcherUpdate is not null;
     }
 
-    private void SetStatus(string message) => StatusLabel.Text = LoginStatus.Text = message;
-
-    private void ShowError(Exception exception)
-    {
-        SetStatus(exception is HttpRequestException
-            ? "Connexion au serveur impossible. Vérifiez votre connexion et réessayez."
-            : exception.Message);
-    }
-
     private static bool IsExpected(Exception exception) => exception is IOException or UnauthorizedAccessException
         or HttpRequestException or JsonException or Win32Exception or InvalidDataException or ArgumentException or LauncherAuthenticationException or CryptographicException;
-
-    private static string FormatBytes(long value) => value >= 1024L * 1024 * 1024
-        ? $"{value / (1024d * 1024 * 1024):0.0} Go" : $"{value / (1024d * 1024):0.0} Mo";
 
     private void Cancel_Click(object sender, RoutedEventArgs e) => operation?.Cancel();
 
@@ -475,7 +471,7 @@ public partial class MainWindow : Window
         {
             var dialog = new OpenFolderDialog
             {
-                Title = "Choisir le dossier d’installation du jeu Arkya",
+                Title = T("Choisir le dossier d’installation du jeu Arkya", "Choose the Arkya game installation folder"),
                 InitialDirectory = selection.Preferences.GameDirectory,
                 Multiselect = false
             };
@@ -486,9 +482,10 @@ public partial class MainWindow : Window
             installed = selection.Installed;
             UpdateLocation();
             UpdateButtons();
-            StatusLabel.Text = installed is null
-                ? "Dossier choisi. Cliquez sur Installer le jeu pour télécharger Arkya ici. Les autres installations sont conservées."
-                : "Installation existante retrouvée dans le dossier choisi.";
+            SetStatus(() => installed is null
+                ? T("Dossier choisi. Cliquez sur Installer le jeu pour télécharger Arkya ici. Les autres installations sont conservées.",
+                    "Folder selected. Click Install game to download Arkya here. Other installations are kept.")
+                : T("Installation existante retrouvée dans le dossier choisi.", "An existing installation was found in the selected folder."));
             return true;
         }
         catch (Exception exception) when (IsExpected(exception)) { ShowError(exception); return false; }
@@ -506,33 +503,45 @@ public partial class MainWindow : Window
     {
         if (!Authenticated || loadingFeed || sessionLifetime is null || windowLifetime.IsCancellationRequested) return;
         var requestedLifetime = sessionLifetime;
-        var token = requestedLifetime.Token;
+        using var request = CancellationTokenSource.CreateLinkedTokenSource(requestedLifetime.Token);
+        feedRequest = request;
+        var token = request.Token;
+        var requestedGeneration = feedGeneration;
+        var requestedLanguage = CurrentLanguage;
         loadingFeed = true;
         feedFailed = false;
         var requestedKind = selectedKind;
-        feedMessage = "Chargement des publications…";
+        feedMessage = () => T("Chargement des publications…", "Loading publications…");
         RenderFeed();
         try
         {
-            var address = "https://api.arkya.online/v1/content/posts?language=fr&limit=12" +
+            var address = "https://api.arkya.online/v1/content/posts?language=" + requestedLanguage + "&limit=12" +
                 (requestedKind == "all" ? "" : "&kind=" + requestedKind);
             var response = await publications.GetPostsAsync(address, token);
             token.ThrowIfCancellationRequested();
-            if (!ReferenceEquals(requestedLifetime, sessionLifetime)) return;
-            posts = response.Select(post => new PostCard(post)).ToArray();
-            feedMessage = "Aucune publication dans cette rubrique pour le moment. Retrouvez bientôt les nouvelles de l’équipe Arkya.";
+            if (requestedGeneration == feedGeneration && ReferenceEquals(requestedLifetime, sessionLifetime))
+            {
+                posts = response.Where(post => post.Language == requestedLanguage).Select(post => new PostCard(post, requestedLanguage)).ToArray();
+                feedMessage = () => T("Aucune publication dans cette rubrique pour le moment. Retrouvez bientôt les nouvelles de l’équipe Arkya.",
+                    "No publications in this section yet. Check back soon for news from the Arkya team.");
+            }
         }
-        catch (OperationCanceledException) when (token.IsCancellationRequested) { return; }
+        catch (OperationCanceledException) when (token.IsCancellationRequested) { }
         catch (ObjectDisposedException) when (windowLifetime.IsCancellationRequested) { return; }
         catch (Exception exception) when (IsExpected(exception) || exception is OperationCanceledException)
         {
-            feedFailed = true;
-            feedMessage = "Les publications sont momentanément indisponibles. Vous pouvez continuer à installer et lancer le jeu.";
+            if (requestedGeneration == feedGeneration && ReferenceEquals(requestedLifetime, sessionLifetime))
+            {
+                feedFailed = true;
+                feedMessage = () => T("Les publications sont momentanément indisponibles. Vous pouvez continuer à installer et lancer le jeu.",
+                    "Publications are temporarily unavailable. You can still install and launch the game.");
+            }
         }
-        finally { loadingFeed = false; }
-        if (!Authenticated || !ReferenceEquals(requestedLifetime, sessionLifetime)) return;
-        RenderFeed();
-        if (requestedKind != selectedKind) await RefreshFeedAsync();
+        finally { loadingFeed = false; feedRequest = null; }
+        if (!Authenticated || windowLifetime.IsCancellationRequested) return;
+        if (!ReferenceEquals(requestedLifetime, sessionLifetime) || requestedGeneration != feedGeneration || requestedKind != selectedKind)
+            await RefreshFeedAsync();
+        else RenderFeed();
     }
 
     private void RenderFeed()
@@ -540,8 +549,8 @@ public partial class MainWindow : Window
         if (NewsList is null) return;
         var visible = posts.Where(post => selectedKind == "all" || post.Post.Kind == selectedKind).ToArray();
         NewsList.ItemsSource = visible;
-        FeedHeading.Text = selectedKind switch { "news" => "Actualités", "release-note" => "Notes de version", _ => "À la une" };
-        FeedStatus.Text = feedMessage;
+        FeedHeading.Text = selectedKind switch { "news" => T("Actualités", "News"), "release-note" => T("Notes de version", "Release notes"), _ => T("À la une", "Featured") };
+        FeedStatus.Text = feedMessage?.Invoke() ?? T("Les nouvelles de l’équipe Arkya apparaîtront ici.", "News from the Arkya team will appear here.");
         FeedStatus.Visibility = visible.Length == 0 || loadingFeed || feedFailed ? Visibility.Visible : Visibility.Collapsed;
         Hero.Visibility = selectedKind == "all" ? Visibility.Visible : Visibility.Collapsed;
     }
@@ -611,11 +620,11 @@ public partial class MainWindow : Window
         game?.Dispose();
     }
 
-    private sealed record PostCard(ContentPost Post)
+    private sealed record PostCard(ContentPost Post, string Language)
     {
         public string Title => Post.Title;
         public string Summary => Post.Summary;
-        public string Caption => (Post.Kind == "release-note" ? "MISE À JOUR " + Post.GameVersion : "ACTUALITÉ") +
-            "  ·  " + Post.PublishedAt.ToLocalTime().ToString("dd MMM yyyy", CultureInfo.GetCultureInfo("fr-FR"));
+        public string Caption => (Post.Kind == "release-note" ? (Language == "en" ? "UPDATE " : "MISE À JOUR ") + Post.GameVersion : Language == "en" ? "NEWS" : "ACTUALITÉ") +
+            "  ·  " + Post.PublishedAt.ToLocalTime().ToString("dd MMM yyyy", CultureInfo.GetCultureInfo(Language == "en" ? "en-GB" : "fr-FR"));
     }
 }

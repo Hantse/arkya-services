@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
-        Title="Arkya — Launcher" Icon="Assets/Arkya.ico" Width="1280" Height="830" MinWidth="1040" MinHeight="720"
+        Title="{DynamicResource Ui.WindowTitle}" Icon="Assets/Arkya.ico" Width="1280" Height="830" MinWidth="1040" MinHeight="720"
         WindowStyle="None" WindowStartupLocation="CenterScreen" Background="{StaticResource Ink}" Foreground="{StaticResource Paper}"
         FontFamily="Segoe UI" Loaded="Window_Loaded" Closing="Window_Closing" UseLayoutRounding="True">
     <shell:WindowChrome.WindowChrome><shell:WindowChrome CaptionHeight="52" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0" /></shell:WindowChrome.WindowChrome>
@@ -16,14 +16,14 @@
                 <Grid.RowDefinitions><RowDefinition Height="72" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
                 <Image Source="Assets/Arkya.png" Width="44" Height="44" Margin="0,10,0,0" RenderOptions.BitmapScalingMode="HighQuality" />
                 <StackPanel Grid.Row="1" Margin="12,18,12,0">
-                    <Button Width="54" Height="58" Padding="0" Click="Home_Click" Background="#243A3E" BorderBrush="#7C876E" ToolTip="Arkya" AutomationProperties.Name="Accueil Arkya">
+                    <Button Width="54" Height="58" Padding="0" Click="Home_Click" Background="#243A3E" BorderBrush="#7C876E" ToolTip="Arkya" AutomationProperties.Name="{DynamicResource Ui.HomeAccessibleName}">
                         <Image Source="Assets/Arkya.png" Width="40" Height="40" RenderOptions.BitmapScalingMode="HighQuality" />
                     </Button>
                     <TextBlock Text="ARKYA" FontSize="9" Foreground="{StaticResource Gold}" HorizontalAlignment="Center" Margin="0,9,0,0" />
                 </StackPanel>
                 <StackPanel Grid.Row="2" Margin="12,0,12,20">
-                    <Button Style="{StaticResource QuietButton}" Content="&#xE774;" FontFamily="Segoe MDL2 Assets" FontSize="20" Padding="12" Click="Website_Click" ToolTip="Site officiel" AutomationProperties.Name="Ouvrir le site officiel" />
-                    <Button Style="{StaticResource QuietButton}" Content="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="20" Padding="12" Click="Settings_Click" ToolTip="Paramètres" AutomationProperties.Name="Paramètres du launcher" />
+                    <Button Style="{StaticResource QuietButton}" Content="&#xE774;" FontFamily="Segoe MDL2 Assets" FontSize="20" Padding="12" Click="Website_Click" ToolTip="{DynamicResource Ui.Website}" AutomationProperties.Name="{DynamicResource Ui.OpenWebsiteAccessibleName}" />
+                    <Button Style="{StaticResource QuietButton}" Content="&#xE713;" FontFamily="Segoe MDL2 Assets" FontSize="20" Padding="12" Click="Settings_Click" ToolTip="{DynamicResource Ui.Settings}" AutomationProperties.Name="{DynamicResource Ui.SettingsAccessibleName}" />
                 </StackPanel>
             </Grid>
         </Border>
@@ -33,25 +33,28 @@
                 <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" Margin="28,0,0,0" VerticalAlignment="Center">
                     <TextBlock Text="ARKYA" FontSize="15" FontWeight="SemiBold" />
-                    <Border Background="#263C3F" CornerRadius="3" Margin="13,0,0,0" Padding="7,3"><TextBlock x:Name="ChannelBadge" Text="BÊTA" FontSize="9" Foreground="#A6CCC0" /></Border>
+                    <Border Background="#263C3F" CornerRadius="3" Margin="13,0,0,0" Padding="7,3"><TextBlock x:Name="ChannelBadge" Text="{DynamicResource Ui.BetaBadge}" FontSize="9" Foreground="#A6CCC0" /></Border>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" shell:WindowChrome.IsHitTestVisibleInChrome="True">
-                    <TextBlock x:Name="AccountLabel" Text="Non connecté" MaxWidth="160" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Margin="10,0,12,0" Foreground="{StaticResource Muted}" FontSize="12" />
-                    <Button x:Name="LogoutButton" Content="Déconnexion" Click="Logout_Click" Style="{StaticResource QuietButton}" Margin="0,9,14,9" Padding="8,3" FontSize="12" Visibility="Collapsed" />
-                    <Button Style="{StaticResource QuietButton}" Content="&#xE921;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Minimize_Click" AutomationProperties.Name="Réduire" />
-                    <Button Style="{StaticResource QuietButton}" Content="&#xE922;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Maximize_Click" AutomationProperties.Name="Agrandir ou restaurer" />
-                    <Button Style="{StaticResource QuietButton}" Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Close_Click" AutomationProperties.Name="Fermer" />
+                    <ComboBox x:Name="LauncherLanguageSelector" Style="{StaticResource LanguageSelector}" SelectedValuePath="Tag" SelectionChanged="Language_SelectionChanged" Margin="0,0,12,0" ToolTip="{DynamicResource Ui.ChooseLanguage}" AutomationProperties.Name="{DynamicResource Ui.LanguageLabel}">
+                        <ComboBoxItem Tag="fr" Content="Français" /><ComboBoxItem Tag="en" Content="English" />
+                    </ComboBox>
+                    <TextBlock x:Name="AccountLabel" Text="{DynamicResource Ui.SignedOut}" MaxWidth="160" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Margin="10,0,12,0" Foreground="{StaticResource Muted}" FontSize="12" />
+                    <Button x:Name="LogoutButton" Content="{DynamicResource Ui.SignOut}" Click="Logout_Click" Style="{StaticResource QuietButton}" Margin="0,9,14,9" Padding="8,3" FontSize="12" Visibility="Collapsed" />
+                    <Button Style="{StaticResource QuietButton}" Content="&#xE921;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Minimize_Click" AutomationProperties.Name="{DynamicResource Ui.MinimizeAccessibleName}" />
+                    <Button Style="{StaticResource QuietButton}" Content="&#xE922;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Maximize_Click" AutomationProperties.Name="{DynamicResource Ui.MaximizeAccessibleName}" />
+                    <Button Style="{StaticResource QuietButton}" Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Close_Click" AutomationProperties.Name="{DynamicResource Ui.CloseAccessibleName}" />
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
                 <Border BorderBrush="{StaticResource Line}" BorderThickness="0,0,0,1" Background="#14202B">
                     <DockPanel Margin="28,0,28,0">
-                        <Button DockPanel.Dock="Right" Style="{StaticResource QuietButton}" Content="Site officiel  ↗" Padding="6,12" Click="Website_Click" />
+                        <Button DockPanel.Dock="Right" Style="{StaticResource QuietButton}" Content="{DynamicResource Ui.WebsiteLink}" Padding="6,12" Click="Website_Click" />
                         <StackPanel Orientation="Horizontal">
-                            <RadioButton x:Name="HomeTab" Content="Le jeu" GroupName="Feed" Tag="all" IsChecked="True" Style="{StaticResource NavigationTab}" Checked="FeedTab_Checked" Margin="0,0,28,0" />
-                            <RadioButton Content="Actualités" GroupName="Feed" Tag="news" Style="{StaticResource NavigationTab}" Checked="FeedTab_Checked" Margin="0,0,28,0" />
-                            <RadioButton Content="Notes de version" GroupName="Feed" Tag="release-note" Style="{StaticResource NavigationTab}" Checked="FeedTab_Checked" />
+                            <RadioButton x:Name="HomeTab" Content="{DynamicResource Ui.GameTab}" GroupName="Feed" Tag="all" IsChecked="True" Style="{StaticResource NavigationTab}" Checked="FeedTab_Checked" Margin="0,0,12,0" />
+                            <RadioButton Content="{DynamicResource Ui.NewsTab}" GroupName="Feed" Tag="news" Style="{StaticResource NavigationTab}" Checked="FeedTab_Checked" Margin="0,0,12,0" />
+                            <RadioButton Content="{DynamicResource Ui.ReleaseNotesTab}" GroupName="Feed" Tag="release-note" Style="{StaticResource NavigationTab}" Checked="FeedTab_Checked" />
                         </StackPanel>
                     </DockPanel>
                 </Border>
@@ -62,20 +65,20 @@
                             <Rectangle><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#F0101923" Offset="0" /><GradientStop Color="#80101923" Offset="0.43" /><GradientStop Color="#10101923" Offset="1" /></LinearGradientBrush></Rectangle.Fill></Rectangle>
                             <Rectangle><Rectangle.Fill><LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#00101923" Offset="0.6" /><GradientStop Color="#FF101923" Offset="1" /></LinearGradientBrush></Rectangle.Fill></Rectangle>
                             <StackPanel Margin="36,0,0,35" VerticalAlignment="Bottom" MaxWidth="480" HorizontalAlignment="Left">
-                                <TextBlock Text="UN MONDE À EXPLORER" FontSize="10" Foreground="{StaticResource Gold}" />
-                                <TextBlock Text="L’île vous attend." FontFamily="Georgia" FontSize="43" Margin="0,13,0,12" />
-                                <TextBlock Text="Créez votre personnage et découvrez les premiers pas d’Arkya." FontSize="14" LineHeight="23" Foreground="#D3DDD7" TextWrapping="Wrap" MaxWidth="355" HorizontalAlignment="Left" />
+                                <TextBlock Text="{DynamicResource Ui.HeroEyebrow}" FontSize="10" Foreground="{StaticResource Gold}" />
+                                <TextBlock Text="{DynamicResource Ui.HeroHeading}" FontFamily="Georgia" FontSize="43" Margin="0,13,0,12" />
+                                <TextBlock Text="{DynamicResource Ui.HeroDescription}" FontSize="14" LineHeight="23" Foreground="#D3DDD7" TextWrapping="Wrap" MaxWidth="355" HorizontalAlignment="Left" />
                             </StackPanel>
-                            <TextBlock Text="CAPTURE DU JEU · EN DÉVELOPPEMENT" FontSize="9" Foreground="#BBC8BF" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,25,27" />
+                            <TextBlock Text="{DynamicResource Ui.GameCaptureCaption}" FontSize="9" Foreground="#BBC8BF" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,25,27" />
                         </Grid>
                         <Grid Margin="28,18,28,28">
                             <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="26" /><ColumnDefinition Width="300" /></Grid.ColumnDefinitions>
                             <StackPanel>
                                 <DockPanel Margin="0,0,0,15">
-                                    <Button DockPanel.Dock="Right" Style="{StaticResource QuietButton}" Content="&#xE72C;" FontFamily="Segoe MDL2 Assets" Padding="9,4" Click="RefreshFeed_Click" AutomationProperties.Name="Actualiser les publications" ToolTip="Actualiser les publications" />
-                                    <TextBlock x:Name="FeedHeading" Text="À la une" FontSize="19" FontWeight="SemiBold" VerticalAlignment="Center" />
+                                    <Button DockPanel.Dock="Right" Style="{StaticResource QuietButton}" Content="&#xE72C;" FontFamily="Segoe MDL2 Assets" Padding="9,4" Click="RefreshFeed_Click" AutomationProperties.Name="{DynamicResource Ui.RefreshPublications}" ToolTip="{DynamicResource Ui.RefreshPublications}" />
+                                    <TextBlock x:Name="FeedHeading" Text="{DynamicResource Ui.FeaturedHeading}" FontSize="19" FontWeight="SemiBold" VerticalAlignment="Center" />
                                 </DockPanel>
-                                <TextBlock x:Name="FeedStatus" Text="Les nouvelles de l’équipe Arkya apparaîtront ici." TextWrapping="Wrap" Foreground="{StaticResource Muted}" Margin="0,0,0,14" LineHeight="21" />
+                                <TextBlock x:Name="FeedStatus" Text="{DynamicResource Ui.FeedPlaceholder}" TextWrapping="Wrap" Foreground="{StaticResource Muted}" Margin="0,0,0,14" LineHeight="21" />
                                 <ItemsControl x:Name="NewsList">
                                     <ItemsControl.ItemTemplate><DataTemplate>
                                         <Button Click="Post_Click" Tag="{Binding}" HorizontalContentAlignment="Stretch" Padding="18,16" Margin="0,0,0,10" Background="#192731" BorderBrush="#293D46">
@@ -83,7 +86,7 @@
                                                 <TextBlock Text="{Binding Caption}" FontSize="10" Foreground="{StaticResource Gold}" Margin="0,0,0,9" />
                                                 <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap" />
                                                 <TextBlock Text="{Binding Summary}" FontSize="12" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,8,0,0" LineHeight="20" />
-                                                <TextBlock Text="Lire la suite  →" FontSize="11" Foreground="#BFCAC9" Margin="0,12,0,0" />
+                                                <TextBlock Text="{DynamicResource Ui.ReadMore}" FontSize="11" Foreground="#BFCAC9" Margin="0,12,0,0" />
                                             </StackPanel>
                                         </Button>
                                     </DataTemplate></ItemsControl.ItemTemplate>
@@ -91,12 +94,12 @@
                             </StackPanel>
                             <Border Grid.Column="2" BorderBrush="{StaticResource Line}" BorderThickness="1" Background="#17242D" CornerRadius="5" Padding="21" VerticalAlignment="Top">
                                 <StackPanel>
-                                    <TextBlock Text="LA VERSION WINDOWS" FontSize="10" Foreground="{StaticResource Gold}" />
-                                    <TextBlock Text="Au fil des versions" FontFamily="Georgia" FontSize="22" Margin="0,12,0,13" />
-                                    <TextBlock x:Name="ReleaseNotes" Text="Les changements de la version disponible apparaîtront ici." TextWrapping="Wrap" Foreground="#B7C7CA" FontSize="12" LineHeight="21" />
+                                    <TextBlock Text="{DynamicResource Ui.WindowsVersionEyebrow}" FontSize="10" Foreground="{StaticResource Gold}" />
+                                    <TextBlock Text="{DynamicResource Ui.VersionsHeading}" FontFamily="Georgia" FontSize="22" Margin="0,12,0,13" />
+                                    <TextBlock x:Name="ReleaseNotes" Text="{DynamicResource Ui.ReleaseNotesPlaceholder}" TextWrapping="Wrap" Foreground="#B7C7CA" FontSize="12" LineHeight="21" />
                                     <Border Height="1" Background="{StaticResource Line}" Margin="0,20,0,16" />
-                                    <TextBlock Text="La bêta évolue avec vous." FontSize="12" />
-                                    <TextBlock Text="Connectez-vous avec Discord, puis retrouvez vos personnages dans le jeu." FontSize="12" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,8,0,0" LineHeight="20" />
+                                    <TextBlock Text="{DynamicResource Ui.BetaHeading}" FontSize="12" />
+                                    <TextBlock Text="{DynamicResource Ui.DiscordGameDescription}" FontSize="12" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,8,0,0" LineHeight="20" />
                                 </StackPanel>
                             </Border>
                         </Grid>
@@ -105,7 +108,7 @@
                 <Border x:Name="ArticlePanel" Grid.RowSpan="2" Visibility="Collapsed" Background="{StaticResource Ink}" Padding="32,24">
                     <Grid>
                         <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
-                        <Button Content="←  Retour aux publications" Click="CloseArticle_Click" Style="{StaticResource QuietButton}" HorizontalAlignment="Left" Padding="0,6" Margin="0,0,0,22" />
+                        <Button Content="{DynamicResource Ui.BackToPublications}" Click="CloseArticle_Click" Style="{StaticResource QuietButton}" HorizontalAlignment="Left" Padding="0,6" Margin="0,0,0,22" />
                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"><StackPanel MaxWidth="820" HorizontalAlignment="Left">
                             <TextBlock x:Name="ArticleCaption" Foreground="{StaticResource Gold}" FontSize="11" />
                             <TextBlock x:Name="ArticleTitle" FontFamily="Georgia" FontSize="34" TextWrapping="Wrap" Margin="0,15,0,18" />
@@ -116,17 +119,17 @@
                 </Border>
                 <Border x:Name="SettingsOverlay" Grid.RowSpan="2" Visibility="Collapsed" Background="{StaticResource Ink}" Padding="32,24">
                     <StackPanel MaxWidth="700" HorizontalAlignment="Left">
-                        <Button Content="←  Retour au jeu" Click="CloseSettings_Click" Style="{StaticResource QuietButton}" HorizontalAlignment="Left" Padding="0,6" Margin="0,0,0,24" />
-                        <TextBlock Text="Paramètres" FontFamily="Georgia" FontSize="32" Margin="0,0,0,24" />
-                        <TextBlock Text="Dossier du jeu" FontWeight="SemiBold" Margin="0,0,0,10" />
+                        <Button Content="{DynamicResource Ui.BackToGame}" Click="CloseSettings_Click" Style="{StaticResource QuietButton}" HorizontalAlignment="Left" Padding="0,6" Margin="0,0,0,24" />
+                        <TextBlock Text="{DynamicResource Ui.Settings}" FontFamily="Georgia" FontSize="32" Margin="0,0,0,24" />
+                        <TextBlock Text="{DynamicResource Ui.GameFolder}" FontWeight="SemiBold" Margin="0,0,0,10" />
                         <DockPanel Margin="0,0,0,10" LastChildFill="True">
-                            <Button x:Name="SettingsLocationButton" DockPanel.Dock="Right" Content="Modifier…" Click="ChangeLocation_Click" Style="{StaticResource QuietButton}" Margin="16,0,0,0" />
+                            <Button x:Name="SettingsLocationButton" DockPanel.Dock="Right" Content="{DynamicResource Ui.Change}" Click="ChangeLocation_Click" Style="{StaticResource QuietButton}" Margin="16,0,0,0" />
                             <TextBlock x:Name="LocationLabel" Foreground="{StaticResource Muted}" TextWrapping="Wrap" VerticalAlignment="Center" />
                         </DockPanel>
-                        <TextBlock Text="Choisissez un dossier vide ou retrouvez une installation existante. Changer de dossier conserve les fichiers à leur emplacement actuel." Foreground="{StaticResource Muted}" TextWrapping="Wrap" FontSize="12" LineHeight="20" Margin="0,0,0,25" />
-                        <TextBlock Text="Canal de distribution" FontWeight="SemiBold" Margin="0,0,0,10" />
-                        <TextBlock Text="Choisissez Bêta ou Stable depuis la barre du jeu. Chaque canal conserve son installation et ses mises à jour." Foreground="{StaticResource Muted}" TextWrapping="Wrap" FontSize="12" LineHeight="20" />
-                        <TextBlock Text="La distribution officielle est configurée par Arkya." Foreground="{StaticResource Muted}" FontSize="12" Margin="0,12,0,0" />
+                        <TextBlock Text="{DynamicResource Ui.GameFolderDescription}" Foreground="{StaticResource Muted}" TextWrapping="Wrap" FontSize="12" LineHeight="20" Margin="0,0,0,25" />
+                        <TextBlock Text="{DynamicResource Ui.DistributionChannel}" FontWeight="SemiBold" Margin="0,0,0,10" />
+                        <TextBlock Text="{DynamicResource Ui.DistributionChannelDescription}" Foreground="{StaticResource Muted}" TextWrapping="Wrap" FontSize="12" LineHeight="20" />
+                        <TextBlock Text="{DynamicResource Ui.OfficialDistributionDescription}" Foreground="{StaticResource Muted}" FontSize="12" Margin="0,12,0,0" />
                     </StackPanel>
                 </Border>
             </Grid>
@@ -134,31 +137,31 @@
                 <StackPanel>
                     <DockPanel Margin="0,0,0,13" LastChildFill="True">
                         <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,0,18,0">
-                            <TextBlock Text="CANAL" Foreground="{StaticResource Muted}" FontSize="9" VerticalAlignment="Center" Margin="0,0,13,0" />
-                            <RadioButton x:Name="BetaChannel" Content="Bêta" Tag="beta" GroupName="Channel" Style="{StaticResource NavigationTab}" Padding="3,6" Checked="Channel_Checked" Margin="0,0,18,0" />
-                            <RadioButton x:Name="StableChannel" Content="Stable" Tag="stable" GroupName="Channel" Style="{StaticResource NavigationTab}" Padding="3,6" Checked="Channel_Checked" />
+                            <TextBlock Text="{DynamicResource Ui.ChannelEyebrow}" Foreground="{StaticResource Muted}" FontSize="9" VerticalAlignment="Center" Margin="0,0,13,0" />
+                            <RadioButton x:Name="BetaChannel" Content="{DynamicResource Ui.BetaChannel}" Tag="beta" GroupName="Channel" Style="{StaticResource NavigationTab}" Padding="12,6" Checked="Channel_Checked" Margin="0,0,8,0" />
+                            <RadioButton x:Name="StableChannel" Content="{DynamicResource Ui.StableChannel}" Tag="stable" GroupName="Channel" Style="{StaticResource NavigationTab}" Padding="12,6" Checked="Channel_Checked" />
                         </StackPanel>
                         <TextBlock x:Name="ChannelDescription" Foreground="{StaticResource Muted}" FontSize="11" TextWrapping="Wrap" VerticalAlignment="Center" />
                     </DockPanel>
                     <DockPanel Margin="0,0,0,10">
-                        <Button x:Name="CancelButton" DockPanel.Dock="Right" Content="Annuler" Click="Cancel_Click" Padding="10,3" Style="{StaticResource QuietButton}" Visibility="Collapsed" />
-                        <TextBlock x:Name="StatusLabel" Text="Vérifiez les mises à jour pour préparer votre prochaine aventure." Foreground="#B8CDD0" TextWrapping="Wrap" FontSize="12" VerticalAlignment="Center" AutomationProperties.LiveSetting="Polite" />
+                        <Button x:Name="CancelButton" DockPanel.Dock="Right" Content="{DynamicResource Ui.Cancel}" Click="Cancel_Click" Padding="10,3" Style="{StaticResource QuietButton}" Visibility="Collapsed" />
+                        <TextBlock x:Name="StatusLabel" Text="{DynamicResource Ui.StatusPlaceholder}" Foreground="#B8CDD0" TextWrapping="Wrap" FontSize="12" VerticalAlignment="Center" AutomationProperties.LiveSetting="Polite" />
                     </DockPanel>
                     <ProgressBar x:Name="Progress" Height="3" Minimum="0" Maximum="100" Foreground="{StaticResource Gold}" Background="#30434B" BorderThickness="0" Margin="0,0,0,17" />
                     <DockPanel Margin="0,0,0,12" LastChildFill="True">
-                        <Button x:Name="ChangeLocationButton" DockPanel.Dock="Right" Content="Modifier…" Click="ChangeLocation_Click" Style="{StaticResource QuietButton}" Padding="8,2" AutomationProperties.Name="Modifier le dossier d’installation du jeu" />
-                        <TextBlock Text="DOSSIER DU JEU" Foreground="{StaticResource Muted}" FontSize="9" VerticalAlignment="Center" Margin="0,0,12,0" />
+                        <Button x:Name="ChangeLocationButton" DockPanel.Dock="Right" Content="{DynamicResource Ui.Change}" Click="ChangeLocation_Click" Style="{StaticResource QuietButton}" Padding="8,2" AutomationProperties.Name="{DynamicResource Ui.ChangeGameFolderAccessibleName}" />
+                        <TextBlock Text="{DynamicResource Ui.GameFolderEyebrow}" Foreground="{StaticResource Muted}" FontSize="9" VerticalAlignment="Center" Margin="0,0,12,0" />
                         <TextBlock x:Name="FooterLocationLabel" Foreground="#BCCDCF" TextTrimming="CharacterEllipsis" FontSize="11" VerticalAlignment="Center" />
                     </DockPanel>
                     <Grid>
                         <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
-                        <Button x:Name="InstallButton" Content="Installer le jeu" Width="208" Height="50" Background="{StaticResource Gold}" Foreground="#18242A" BorderBrush="{StaticResource Gold}" FontSize="16" FontWeight="SemiBold" Click="Install_Click" IsEnabled="False" />
-                        <Button x:Name="PlayButton" Grid.Column="1" Content="Jouer" Width="170" Height="50" Margin="12,0,0,0" Background="{StaticResource Gold}" Foreground="#18242A" BorderBrush="{StaticResource Gold}" FontSize="18" FontWeight="SemiBold" Click="Play_Click" IsEnabled="False" />
+                        <Button x:Name="InstallButton" Content="{DynamicResource Ui.InstallGame}" Width="208" Height="50" Background="{StaticResource Gold}" Foreground="#18242A" BorderBrush="{StaticResource Gold}" FontSize="16" FontWeight="SemiBold" Click="Install_Click" IsEnabled="False" />
+                        <Button x:Name="PlayButton" Grid.Column="1" Content="{DynamicResource Ui.Play}" Width="170" Height="50" Margin="12,0,0,0" Background="{StaticResource Gold}" Foreground="#18242A" BorderBrush="{StaticResource Gold}" FontSize="18" FontWeight="SemiBold" Click="Play_Click" IsEnabled="False" />
                         <StackPanel Grid.Column="2" Margin="22,0,12,0" VerticalAlignment="Center">
-                            <TextBlock x:Name="InstalledLabel" Text="Aucune version installée" FontSize="13" FontWeight="SemiBold" />
-                            <TextBlock x:Name="AvailableLabel" Text="Bêta Windows · 64 bits" Foreground="{StaticResource Muted}" FontSize="11" Margin="0,6,0,0" TextWrapping="Wrap" />
+                            <TextBlock x:Name="InstalledLabel" Text="{DynamicResource Ui.NoVersionInstalled}" FontSize="13" FontWeight="SemiBold" />
+                            <TextBlock x:Name="AvailableLabel" Text="{DynamicResource Ui.AvailableVersionPlaceholder}" Foreground="{StaticResource Muted}" FontSize="11" Margin="0,6,0,0" TextWrapping="Wrap" />
                         </StackPanel>
-                        <Button x:Name="CheckButton" Grid.Column="3" Content="&#xE72C;" FontFamily="Segoe MDL2 Assets" FontSize="19" Width="46" Height="46" Padding="0" Click="Check_Click" Style="{StaticResource QuietButton}" AutomationProperties.Name="Vérifier les mises à jour" ToolTip="Vérifier les mises à jour" />
+                        <Button x:Name="CheckButton" Grid.Column="3" Content="&#xE72C;" FontFamily="Segoe MDL2 Assets" FontSize="19" Width="46" Height="46" Padding="0" Click="Check_Click" Style="{StaticResource QuietButton}" AutomationProperties.Name="{DynamicResource Ui.CheckUpdates}" ToolTip="{DynamicResource Ui.CheckUpdates}" />
                     </Grid>
                 </StackPanel>
             </Border>
@@ -173,33 +176,36 @@
             <StackPanel Margin="48,52,48,50" VerticalAlignment="Bottom">
                 <TextBlock Text="ARKYA" FontFamily="Georgia" FontSize="66" Foreground="{StaticResource Paper}" />
                 <Border Width="46" Height="2" Background="{StaticResource Gold}" HorizontalAlignment="Left" Margin="2,22,0,23" />
-                <TextBlock Text="Un monde à découvrir.&#x0a;Une histoire à écrire." FontFamily="Georgia" FontSize="29" LineHeight="39" />
-                <TextBlock Text="LE VOYAGE COMMENCE ICI" Foreground="{StaticResource Gold}" FontSize="10" Margin="2,27,0,0" />
+                <TextBlock Text="{DynamicResource Ui.LoginWorldTagline}" FontFamily="Georgia" FontSize="29" LineHeight="39" />
+                <TextBlock Text="{DynamicResource Ui.LoginJourneyEyebrow}" Foreground="{StaticResource Gold}" FontSize="10" Margin="2,27,0,0" />
             </StackPanel>
         </Grid>
         <Grid Grid.Column="1" Margin="40,0,40,0">
             <Grid.RowDefinitions><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
             <StackPanel VerticalAlignment="Center" Margin="0,42,0,0">
                 <Image Source="Assets/Arkya.png" Width="56" Height="56" HorizontalAlignment="Left" Margin="0,0,0,23" RenderOptions.BitmapScalingMode="HighQuality" />
-                <TextBlock Text="BIENVENUE SUR ARKYA" FontSize="10" Foreground="{StaticResource Gold}" Margin="0,0,0,13" />
-                <TextBlock Text="Votre aventure&#x0a;vous attend." FontFamily="Georgia" FontSize="35" LineHeight="43" />
-                <TextBlock Text="Connectez-vous pour retrouver le launcher, installer le jeu et préparer votre prochaine aventure." Foreground="{StaticResource Muted}" TextWrapping="Wrap" LineHeight="23" Margin="0,21,0,28" />
-                <Button x:Name="LoginButton" Content="Continuer avec Discord" Background="#5865F2" BorderBrush="#7A84FF" Foreground="White" Height="52" FontSize="15" FontWeight="SemiBold" Click="Login_Click" />
-                <TextBlock x:Name="LoginStatus" Text="La connexion s’ouvre dans votre navigateur. Vous reviendrez ici automatiquement." Foreground="{StaticResource Muted}" TextWrapping="Wrap" LineHeight="21" FontSize="12" Margin="0,17,0,0" AutomationProperties.LiveSetting="Polite" />
+                <TextBlock Text="{DynamicResource Ui.LoginWelcomeEyebrow}" FontSize="10" Foreground="{StaticResource Gold}" Margin="0,0,0,13" />
+                <TextBlock Text="{DynamicResource Ui.LoginHeading}" FontFamily="Georgia" FontSize="35" LineHeight="43" />
+                <TextBlock Text="{DynamicResource Ui.LoginDescription}" Foreground="{StaticResource Muted}" TextWrapping="Wrap" LineHeight="23" Margin="0,21,0,28" />
+                <Button x:Name="LoginButton" Content="{DynamicResource Ui.SignInWithDiscord}" Background="#5865F2" BorderBrush="#7A84FF" Foreground="White" Height="52" FontSize="15" FontWeight="SemiBold" Click="Login_Click" />
+                <TextBlock x:Name="LoginStatus" Text="{DynamicResource Ui.LoginStatusPlaceholder}" Foreground="{StaticResource Muted}" TextWrapping="Wrap" LineHeight="21" FontSize="12" Margin="0,17,0,0" AutomationProperties.LiveSetting="Polite" />
                 <ProgressBar x:Name="LoginProgress" Height="3" Foreground="{StaticResource Gold}" Background="#30434B" BorderThickness="0" Margin="0,18,0,0" Visibility="Collapsed" />
-                <Button x:Name="LoginCancelButton" Content="Annuler la connexion" Style="{StaticResource QuietButton}" Click="Cancel_Click" Visibility="Collapsed" Margin="0,8,0,0" />
+                <Button x:Name="LoginCancelButton" Content="{DynamicResource Ui.CancelLogin}" Style="{StaticResource QuietButton}" Click="Cancel_Click" Visibility="Collapsed" Margin="0,8,0,0" />
             </StackPanel>
-            <Button Grid.Row="1" Content="Découvrir Arkya  ↗" Style="{StaticResource QuietButton}" Click="Website_Click" HorizontalAlignment="Left" Padding="0,10" Margin="0,0,0,27" />
+            <Button Grid.Row="1" Content="{DynamicResource Ui.DiscoverArkyaLink}" Style="{StaticResource QuietButton}" Click="Website_Click" HorizontalAlignment="Left" Padding="0,10" Margin="0,0,0,27" />
         </Grid>
         <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Height="51" shell:WindowChrome.IsHitTestVisibleInChrome="True">
-            <Button Style="{StaticResource QuietButton}" Content="&#xE921;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Minimize_Click" AutomationProperties.Name="Réduire" />
-            <Button Style="{StaticResource QuietButton}" Content="&#xE922;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Maximize_Click" AutomationProperties.Name="Agrandir ou restaurer" />
-            <Button Style="{StaticResource QuietButton}" Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Close_Click" AutomationProperties.Name="Fermer" />
+            <ComboBox x:Name="LoginLanguageSelector" Style="{StaticResource LanguageSelector}" SelectedValuePath="Tag" SelectionChanged="Language_SelectionChanged" Margin="0,0,14,0" ToolTip="{DynamicResource Ui.ChooseLanguage}" AutomationProperties.Name="{DynamicResource Ui.LanguageLabel}">
+                <ComboBoxItem Tag="fr" Content="Français" /><ComboBoxItem Tag="en" Content="English" />
+            </ComboBox>
+            <Button Style="{StaticResource QuietButton}" Content="&#xE921;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Minimize_Click" AutomationProperties.Name="{DynamicResource Ui.MinimizeAccessibleName}" />
+            <Button Style="{StaticResource QuietButton}" Content="&#xE922;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Maximize_Click" AutomationProperties.Name="{DynamicResource Ui.MaximizeAccessibleName}" />
+            <Button Style="{StaticResource QuietButton}" Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets" Width="46" Padding="0" Click="Close_Click" AutomationProperties.Name="{DynamicResource Ui.CloseAccessibleName}" />
         </StackPanel>
     </Grid>
     <Border x:Name="LauncherUpdateBanner" Grid.Row="1" Visibility="Collapsed" Background="#243A3E" BorderBrush="#7C876E" BorderThickness="0,1,0,0" Padding="22,12">
         <DockPanel LastChildFill="True">
-            <Button x:Name="LauncherUpdateButton" DockPanel.Dock="Right" Content="Mettre à jour et redémarrer" Click="LauncherUpdate_Click" Padding="16,8" Margin="20,0,0,0" Background="{StaticResource Gold}" Foreground="#18242A" />
+            <Button x:Name="LauncherUpdateButton" DockPanel.Dock="Right" Content="{DynamicResource Ui.UpdateAndRestart}" Click="LauncherUpdate_Click" Padding="16,8" Margin="20,0,0,0" Background="{StaticResource Gold}" Foreground="#18242A" />
             <TextBlock x:Name="LauncherUpdateStatus" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="{StaticResource Paper}" AutomationProperties.LiveSetting="Polite" />
         </DockPanel>
     </Border>

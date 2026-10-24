@@ -3,7 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace Arkya.Launcher.Core;
 
-public sealed record LauncherPreferences(ReleaseChannel Channel, string GameDirectory, bool GameDirectoryConfirmed = false);
+public sealed record LauncherPreferences(ReleaseChannel Channel, string GameDirectory, bool GameDirectoryConfirmed = false,
+    string Language = "fr");
 
 public sealed class LauncherPreferencesStore(string directory, string legacyGameDirectory)
 {
@@ -19,7 +20,10 @@ public sealed class LauncherPreferencesStore(string directory, string legacyGame
         var path = SafePaths.Resolve(DirectoryPath, "launcher-preferences.json");
         if (File.Exists(path))
         {
-            var saved = Read<LauncherPreferences>(path);
+            var persisted = Read<SavedPreferences>(path);
+            var language = persisted.Language.ValueKind == JsonValueKind.String ? persisted.Language.GetString() : null;
+            var saved = new LauncherPreferences(persisted.Channel, persisted.GameDirectory, persisted.GameDirectoryConfirmed,
+                language is "fr" or "en" ? language : "fr");
             Validate(saved);
             using var document = JsonDocument.Parse(File.ReadAllText(path));
             if (document.RootElement.TryGetProperty("manifestUrl", out _)) Save(saved);
@@ -64,5 +68,10 @@ public sealed class LauncherPreferencesStore(string directory, string legacyGame
         _ = ReleaseChannels.GetId(preferences.Channel);
         if (string.IsNullOrWhiteSpace(preferences.GameDirectory) || !Path.IsPathFullyQualified(preferences.GameDirectory))
             throw new InvalidDataException("Dossier du jeu invalide dans les préférences.");
+        if (preferences.Language is not ("fr" or "en"))
+            throw new InvalidDataException("Langue du launcher non prise en charge.");
     }
+
+    private sealed record SavedPreferences(ReleaseChannel Channel, string GameDirectory,
+        bool GameDirectoryConfirmed = false, JsonElement Language = default);
 }
