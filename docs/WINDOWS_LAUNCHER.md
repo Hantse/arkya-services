@@ -27,7 +27,7 @@ SHA-256 du ZIP réellement construit. Le launcher peut ouvrir une version déjà
 installée si le serveur de distribution est indisponible, après connexion du
 compte. Cela ne rend pas les services de jeu accessibles hors ligne.
 
-Le launcher `0.4.0` se distribue avec un installateur Windows autonome,
+Le launcher `0.4.1` se distribue avec un installateur Windows autonome,
 `Arkya-Launcher-Setup.exe`. Il installe le launcher pour l’utilisateur courant,
 par défaut dans `%LOCALAPPDATA%\Programs\Arkya Launcher`, avec choix du dossier
 dans l’assistant, raccourci Démarrer et raccourci bureau facultatif. Le runtime
@@ -338,7 +338,7 @@ La [source visuelle et les vérifications](APP_ICONS.md) couvrent aussi
 l’icône partagée avec le client Unity.
 
 Publier d’abord l’installateur dans une release immuable, puis modifier le lien
-du site. Le lien du launcher `0.4.0` utilise la release `launcher-v0.4.0` ; les
+du site. Le lien du launcher `0.4.1` utilise la release `launcher-v0.4.1` ; les
 mises à jour du jeu continuent à suivre le manifeste Windows et restent
 indépendantes de cette version du launcher.
 
@@ -376,9 +376,17 @@ et conservation/déchiffrement de la session DPAPI. Aucun launcher installé
 chez l’utilisateur n’est remplacé par ces essais.
 Le renouvellement accepte l’arrondi des dates par MongoDB sans jamais
 prolonger la limite absolue de connexion.
-Le manifeste officiel et le setup public `0.4.0` ont aussi été téléchargés
-par le vrai `LauncherUpdateClient` : taille et SHA-256 conformes. La page
-Jouer et le manifeste canonique servent cette version avec `no-cache`.
+Le manifeste officiel et le setup public `0.4.0` avaient aussi été téléchargés
+par le vrai `LauncherUpdateClient` : taille et SHA-256 conformes.
+
+La version `0.4.1` corrige les boutons coupés en fenêtre maximisée, avec et
+sans bannière de mise à jour. Elle passe **184 tests Core et 14 tests WPF**.
+L’installateur et le ZIP portable proviennent du commit `f56dc21` et sont
+publiés dans la release immuable `launcher-v0.4.1` avant la mise à jour du
+manifeste du site. Le manifeste contient la taille et le SHA-256 du setup exact.
+Le setup public `0.4.1` a été téléchargé par le vrai `LauncherUpdateClient` :
+taille et SHA-256 conformes au package vérifié.
+La page Jouer et le manifeste canonique sont servis avec `no-cache`.
 
 L’installateur peut être vérifié dans un dossier de test neuf, sans démarrer
 le launcher ni télécharger le jeu :

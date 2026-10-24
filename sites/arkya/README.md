@@ -85,7 +85,7 @@ de cette persistance. [Contrats, migration et limites Unity](../../docs/AUTH_SES
 `dist/play.html` est la page de téléchargement du launcher, en français et en anglais.
 Les liens **Installer le launcher** de l’accueil, des menus et du compte y mènent
 en conservant la langue. Le bouton principal télécharge l’installateur Windows
-`Arkya-Launcher-Setup.exe` depuis la release versionnée `launcher-v0.4.0` ; la page
+`Arkya-Launcher-Setup.exe` depuis la release versionnée `launcher-v0.4.1` ; la page
 explique l’assistant d’installation du launcher, sa connexion Discord dans le
 navigateur, puis le choix du canal et du dossier du jeu dans **Installer le jeu**,
 avant **Jouer**. Le dossier du jeu peut être choisi sur un
