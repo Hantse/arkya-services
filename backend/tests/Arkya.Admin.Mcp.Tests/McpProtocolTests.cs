@@ -70,7 +70,8 @@ public sealed class McpProtocolTests
             EnvironmentVariables = new Dictionary<string, string?>
             {
                 ["Reports__BaseUrl"] = address, ["Reports__AdminKey"] = key,
-                ["Reports__AllowLoopbackHttp"] = "true", ["Reports__Actor"] = "codex-test"
+                ["Reports__AllowLoopbackHttp"] = "true", ["Reports__Actor"] = "codex-test",
+                ["Publications__Enabled"] = "false"
             }
         });
         await using var client = await McpClient.CreateAsync(transport, cancellationToken: token);

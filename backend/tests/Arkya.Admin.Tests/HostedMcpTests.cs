@@ -24,6 +24,7 @@ public sealed class HostedMcpTests
     [InlineData(null)]
     [InlineData("wrong-key-with-enough-characters-123456")]
     [InlineData(AdminFactory.ReportsAdminKey)]
+    [InlineData(AdminFactory.AdminKey)]
     [InlineData(AdminFactory.Password)]
     public async Task BearerKeyIsRequiredBeforeParsingProtocolRequests(string? key)
     {
@@ -120,7 +121,9 @@ public sealed class HostedMcpTests
         var list = await Rpc(browser, "tools/list", new { });
         var names = list.GetProperty("result").GetProperty("tools").EnumerateArray()
             .Select(tool => tool.GetProperty("name").GetString()!).Order().ToArray();
-        Assert.Equal(["get_bug_report", "get_bug_report_screenshot", "list_bug_reports", "list_suggestions", "update_bug_report"], names);
+        Assert.Equal(["create_publication", "delete_publication", "get_bug_report", "get_bug_report_screenshot", "get_publication",
+            "list_bug_reports", "list_publications", "list_suggestions", "publish_publication", "unpublish_publication",
+            "update_bug_report", "update_publication"], names);
         Assert.Empty(factory.Reports.Calls);
         foreach (var path in new[] { "/mcp/reports/sse", "/mcp/reports/message", "/mcp/other" })
             Assert.Equal(HttpStatusCode.NotFound, (await browser.GetAsync(path)).StatusCode);
@@ -143,7 +146,7 @@ public sealed class HostedMcpTests
             TransportMode = HttpTransportMode.StreamableHttp
         }, browser);
         await using var mcp = await McpClient.CreateAsync(transport, cancellationToken: token);
-        Assert.Equal(5, (await mcp.ListToolsAsync(cancellationToken: token)).Count);
+        Assert.Equal(12, (await mcp.ListToolsAsync(cancellationToken: token)).Count);
         var list = await mcp.CallToolAsync(listTool, new Dictionary<string, object?>
         {
             ["tag"] = "urgent", ["status"] = "new"
@@ -187,11 +190,20 @@ public sealed class HostedMcpTests
     [InlineData("AdminMcp:Key", "too-short")]
     [InlineData("AdminMcp:Key", AdminFactory.ReportsAdminKey)]
     [InlineData("AdminMcp:Key", AdminFactory.Password)]
-    [InlineData("ReportsApi:Enabled", "false")]
+    [InlineData("AdminMcp:Key", AdminFactory.AdminKey)]
     public void UnsafeOrIncompleteConfigurationFailsStartup(string key, string value)
     {
         using var factory = EnabledFactory();
         factory.Settings[key] = value;
+        Assert.Throws<OptionsValidationException>(() => factory.Browser());
+    }
+
+    [Fact]
+    public void McpWithoutAnyEnabledBackendFailsStartup()
+    {
+        using var factory = EnabledFactory();
+        factory.Settings["ReportsApi:Enabled"] = "false";
+        factory.Settings["ContentApi:Enabled"] = "false";
         Assert.Throws<OptionsValidationException>(() => factory.Browser());
     }
 

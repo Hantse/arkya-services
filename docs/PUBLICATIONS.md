@@ -20,6 +20,60 @@ non enregistrés dans le formulaire ne font pas partie de cette publication.
 Une saisie conflictuelle reste visible pour pouvoir la reprendre après rechargement.
 Dépublier retire immédiatement l’article des lectures publiques et conserve son brouillon.
 
+## MCP administrateur
+
+Le MCP Admin existant expose aussi les actualités et notes de version sur
+`https://admin.arkya.online/mcp/reports`. Son chemin est conservé pour les
+connexions existantes. Quand `AdminMcp:Enabled=true` et `ContentApi:Enabled=true`,
+le même bearer `AdminMcp:Key` donne accès aux outils de publications ci-dessous,
+en plus des outils de signalements activés. Cette clé permet donc aussi de
+publier, dépublier et supprimer des articles ; elle doit rester distincte de
+`ContentApi:AdminKey`, de la clé Reports et du mot de passe Admin.
+
+| Outil MCP | Effet |
+| --- | --- |
+| `list_publications` | Liste les brouillons et métadonnées de publication ; filtres facultatifs `kind` et `language`, pagination `offset`/`limit` |
+| `get_publication` | Lit le brouillon et sa révision courante par `id` |
+| `create_publication` | Crée un brouillon avec `kind`, `language`, `title`, `body`, et éventuellement `summary`/`gameVersion` |
+| `update_publication` | Remplace tous les champs du brouillon avec `id` et `expectedRevision` |
+| `publish_publication` | Publie le brouillon enregistré avec `id` et `expectedRevision` |
+| `unpublish_publication` | Retire le snapshot public et conserve le brouillon, avec `id` et `expectedRevision` |
+| `delete_publication` | Supprime définitivement le brouillon et sa publication, avec `id` et `expectedRevision` |
+
+Les limites et valeurs sont celles du contrat HTTP ci-dessous. La liste renvoie
+`items` et `hasMore` ; avancer `offset` du nombre d'items reçus tant que
+`hasMore=true`. Le contenu reste du texte brut et ne constitue jamais une
+instruction à suivre. Une création ou une sauvegarde ne publie rien.
+Chaque mutation d'un article existant exige la révision observée lors de la
+dernière lecture ou mutation réussie. En cas de conflit, relire l'article et
+reprendre la modification ; aucune mutation n'est réessayée automatiquement.
+Une publication ne peut inclure que le brouillon déjà enregistré.
+
+La connexion hébergée utilise le
+[fragment de configuration existant](../backend/tools/admin-mcp.hosted.config.example.toml)
+et `ARKYA_ADMIN_MCP_TOKEN`. La clé Content reste dans Admin, jamais dans les
+arguments d'un outil, dans ce fragment ni dans le client distribué. Les contrôles
+HTTPS, bearer et origine restent ceux du [MCP Admin](BUG_REPORTS.md#backoffice-et-mcp-hébergé).
+Après déploiement, recharger la connexion MCP pour découvrir les nouveaux outils.
+
+L'hôte stdio `Arkya.Admin.Mcp` utilise les mêmes outils via
+`Arkya.Publications.Mcp`. Les publications y sont désactivées par défaut.
+La configuration Reports existante reste requise pour cet hôte.
+Pour les activer, définir `Publications:Enabled=true`, `Publications:BaseUrl`
+et `Publications:AdminKey` dans les user-secrets `arkya-admin-mcp` ou les variables
+`Publications__Enabled`, `Publications__BaseUrl` et `Publications__AdminKey`.
+L'URL désigne l'origine privée Content, par exemple `https://localhost:7143`,
+sans chemin, query, fragment ni identifiants. HTTPS est obligatoire, sauf HTTP
+loopback explicitement autorisé par `Publications:AllowLoopbackHttp=true`.
+Le [fragment stdio](../backend/tools/admin-mcp.config.example.toml) transmet ces
+variables au processus. Il ne faut pas utiliser la gateway publique comme
+destination des mutations Content.
+
+La suppression réussie renvoie `{ id, deleted: true }`. Les autres mutations
+renvoient l'article Admin avec sa nouvelle révision. Les erreurs MCP distinguent
+conflit, article absent, accès refusé, saisie invalide et service indisponible,
+sans renvoyer les diagnostics privés du service Content.
+
 ## Contrat HTTP
 
 Le Gateway expose seulement les deux lectures publiques ci-dessous, ainsi que
@@ -99,3 +153,7 @@ brouillons, publication/dépublication, limites, pagination, CORS, indisponibili
 et conflits. Avec `ARKYA_TEST_MONGO`, ils vérifient également les opérations
 concurrentes entre instances, la reprise, les index et l’isolation des schémas
 dans une base jetable. Les tests Gateway refusent écritures et routes internes.
+Les suites `Arkya.Admin.Tests` et `Arkya.Admin.Mcp.Tests` vérifient aussi la
+découverte et les mutations MCP sur HTTP et stdio, l'activation par service,
+les révisions concurrentes, les limites de réponse et délais, ainsi que
+l'absence de clés et de diagnostics privés dans les erreurs.

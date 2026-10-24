@@ -1,8 +1,9 @@
 # Merge into a trusted project's .codex/config.toml; adapt the absolute checkout path.
-# Credentials are read from dotnet user-secrets (arkya-admin-mcp) or Reports__* environment variables.
+# Credentials are read from dotnet user-secrets (arkya-admin-mcp) or Reports__*/Publications__* environment variables.
+# Publications are opt-in: set Publications__Enabled=true plus the private Content origin and its admin key.
 [mcp_servers.arkya_admin]
 command = "pwsh"
 args = ["-NoProfile", "-File", "D:/Repositories/arkya/backend/tools/Start-AdminMcp.ps1"]
 startup_timeout_sec = 120
 tool_timeout_sec = 60
-env_vars = ["Reports__BaseUrl", "Reports__AdminKey", "Reports__Actor", "Reports__AllowLoopbackHttp"]
+env_vars = ["Reports__BaseUrl", "Reports__AdminKey", "Reports__Actor", "Reports__AllowLoopbackHttp", "Publications__Enabled", "Publications__BaseUrl", "Publications__AdminKey", "Publications__AllowLoopbackHttp"]

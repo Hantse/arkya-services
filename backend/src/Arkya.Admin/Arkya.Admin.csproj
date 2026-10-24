@@ -9,5 +9,6 @@
     <PackageReference Include="ModelContextProtocol.AspNetCore" Version="2.2.0" />
     <ProjectReference Include="../Arkya.ServiceDefaults/Arkya.ServiceDefaults.csproj" />
     <ProjectReference Include="../Arkya.Reports.Mcp/Arkya.Reports.Mcp.csproj" />
+    <ProjectReference Include="../Arkya.Publications.Mcp/Arkya.Publications.Mcp.csproj" />
   </ItemGroup>
 </Project>

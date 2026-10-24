@@ -1,5 +1,7 @@
 # The endpoint becomes available after deployment of the reports profile.
 # Provide ARKYA_ADMIN_MCP_TOKEN to the Codex process from your secret store.
+# The same bearer also manages news and release notes when ContentApi:Enabled=true in Admin.
+# Reload the MCP connection after deploying the publication tools; the endpoint URL stays unchanged.
 [mcp_servers.arkya_admin]
 url = "https://admin.arkya.online/mcp/reports"
 bearer_token_env_var = "ARKYA_ADMIN_MCP_TOKEN"

@@ -4,18 +4,26 @@
     ViewData["Title"] = "Connect Codex";
 }
 <header class="page-header">
-    <div><div class="eyebrow">ASSISTANCE / CODEX</div><h1>Connect Codex</h1><p class="intro">Find player bugs, suggestions and screenshots from Codex.</p></div>
+    <div><div class="eyebrow">ASSISTANCE / CODEX</div><h1>Connect Codex</h1><p class="intro">Manage player reports, news and release notes from Codex.</p></div>
     <a class="button secondary" asp-page="/BugReports">Bugs and suggestions</a>
 </header>
 @if (!Model.Enabled)
 {
-    <div class="panel empty-state"><h2>The MCP connection is disabled</h2><p>Enable Reports MCP in the server configuration to connect Codex.</p></div>
+    <div class="panel empty-state"><h2>The MCP connection is disabled</h2><p>Enable Admin MCP and a Reports or Content service connection in the server configuration to connect Codex.</p></div>
 }
 else
 {
     <section class="panel">
         <h2>Local Codex configuration</h2>
-        <p>The server <code>@ReportsConnectionModel.McpUrl</code> lets you read reports and their screenshots, then update their statuses and tags.</p>
+        <p>Connect to <code>@ReportsConnectionModel.McpUrl</code> using the configuration below.</p>
+        @if (Model.ReportsEnabled)
+        {
+            <p>Read reports and their screenshots, then update their statuses and tags.</p>
+        }
+        @if (Model.PublicationsEnabled)
+        {
+            <p>Create and edit news and release-note drafts, then publish, unpublish or delete them. Saving a draft keeps its public version unchanged.</p>
+        }
         <p>The file contains an administrator access key for MCP. Keep it on your computer, outside the repository, and do not share it. Add its section to your local Codex configuration, then reload the MCP connection.</p>
         <form method="post" asp-page-handler="Download"><button type="submit" class="button primary">Download Codex configuration</button></form>
     </section>

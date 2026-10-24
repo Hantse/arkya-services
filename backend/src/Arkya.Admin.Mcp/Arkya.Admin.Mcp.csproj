@@ -9,5 +9,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.10" />
     <ProjectReference Include="../Arkya.Reports.Mcp/Arkya.Reports.Mcp.csproj" />
+    <ProjectReference Include="../Arkya.Publications.Mcp/Arkya.Publications.Mcp.csproj" />
   </ItemGroup>
 </Project>

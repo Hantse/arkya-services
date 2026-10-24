@@ -196,7 +196,7 @@ jusqu'à la configuration des dedicateds.
 | `Arkya.Characters.Api` | Personnages du compte, validation d’apparence, liaison au realm, admission, leases et sauvegarde autoritaire de position | Personnages, admissions et état persistant dans `arkya_characters` |
 | `Arkya.Content.Api` | Brouillons de quêtes, catalogues immuables, actualités et notes de version publiables | Catalogues et `content_posts` dans `arkya_content` |
 | `Arkya.Reports.Api` | Bugs (F8) et suggestions (F9) avec capture, type immuable, suivi, tags et révisions de triage | Rapports et PNG bornés dans `arkya_reports` |
-| `Arkya.Admin` | Interface web authentifiée pour le contenu, les realms et les signalements ; MCP Reports facultatif | Sessions d’administration dans `arkya_admin` ; données métier via les autres services |
+| `Arkya.Admin` | Interface web authentifiée pour le contenu, les realms et les signalements ; MCP signalements/publications facultatif | Sessions d’administration dans `arkya_admin` ; données métier via les autres services |
 | `Arkya.Realms.Api` | Catalogue opérateur des realms, demandes de déploiement durables et observation des dedicated k3s | Définitions, profils figés et état des opérations dans `arkya_realms` |
 | `Arkya.Backend.Api` | Ancien parcours local : annuaire de serveurs mock et connexion de développement | Sessions de développement en mémoire |
 | `Arkya.ServiceDefaults` | Bibliothèque technique commune : options MongoDB et authentification des appels de service | Aucune donnée métier |
@@ -205,9 +205,12 @@ Les [signalements](BUG_REPORTS.md) utilisent l'introspection Identity pour
 attribuer le propriétaire, une insertion MongoDB atomique rapport/capture,
 un UUID de retry par compte et des mises à jour administrateur conditionnées
 par révision. Admin expose une interface de triage et, sur activation explicite,
-un MCP HTTP `/mcp/reports` authentifié par un bearer distinct de sa clé Reports.
-Les outils partagés de `Arkya.Reports.Mcp` servent aussi l'hôte stdio
-`Arkya.Admin.Mcp`. Aucun de ces outils n'exécute de code ni ne déploie de build :
+un MCP HTTP `/mcp/reports` authentifié par un bearer distinct de ses clés Reports
+et Content. Quand Content est activé, ce même bearer autorise aussi les mutations
+des actualités et notes de version. Les outils partagés de `Arkya.Reports.Mcp`
+et `Arkya.Publications.Mcp` servent aussi l'hôte stdio `Arkya.Admin.Mcp` ; celui-ci
+active les publications uniquement avec `Publications:Enabled=true`.
+Aucun de ces outils n'exécute de code ni ne déploie de build :
 Codex utilise les preuves pour travailler dans le dépôt, puis consigne la validation.
 Le [profil Reports](../backend/deploy/gitops/reports/README.md) étend Admin
 sans modifier les profils antérieurs ; ses secrets et son image sont provisionnés
@@ -273,6 +276,14 @@ contrôles de session, antiforgery et sa clé Content privée. La publication et
 dépublication exigent la révision attendue ; une édition conserve le snapshot
 public précédent jusqu'à une nouvelle publication. Les notes de version portent
 une `gameVersion`, tandis que les actualités restent distinctes.
+
+Le MCP Admin partage ces opérations via `Arkya.Publications.Mcp`, sans accès
+direct à MongoDB. Sept outils lisent, créent, modifient, publient, dépublient ou
+suppriment les articles avec la clé Content conservée côté Admin. Chaque mutation
+d'un article existant porte `expectedRevision` ; un conflit impose une relecture,
+sans retry automatique. Le chemin `/mcp/reports` et son bearer restent communs
+aux signalements et publications activés. Le transport stdio conserve une
+configuration Content distincte et désactivée par défaut.
 
 Le launcher et le site peuvent consulter le feed anonyme publié, filtré par type
 et langue avec pagination bornée. Le routage public ne donne accès ni aux

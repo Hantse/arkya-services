@@ -5,6 +5,7 @@
     <Project Path="src/Arkya.Admin.Mcp/Arkya.Admin.Mcp.csproj" />
     <Project Path="src/Arkya.Reports.Api/Arkya.Reports.Api.csproj" />
     <Project Path="src/Arkya.Reports.Mcp/Arkya.Reports.Mcp.csproj" />
+    <Project Path="src/Arkya.Publications.Mcp/Arkya.Publications.Mcp.csproj" />
     <Project Path="src/Arkya.Realms.Api/Arkya.Realms.Api.csproj" />
     <Project Path="src/Arkya.Backend.Api/Arkya.Backend.Api.csproj" />
     <Project Path="src/Arkya.ServiceDefaults/Arkya.ServiceDefaults.csproj" />

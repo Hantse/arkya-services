@@ -6,6 +6,7 @@ using Arkya.Admin.Content;
 using Arkya.Admin.Realms;
 using Arkya.Admin.Reports;
 using Arkya.Admin.Mcp;
+using Arkya.Publications.Mcp;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
@@ -100,6 +101,7 @@ internal sealed class AdminFactory : WebApplicationFactory<Arkya.Admin.Program>
             services.AddHttpClient<RealmsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Realms);
             services.AddHttpClient<ReportsAdminClient>().ConfigurePrimaryHttpMessageHandler(() => Reports);
             services.AddHttpClient<ReportsMcpClient>().ConfigurePrimaryHttpMessageHandler(() => Reports);
+            services.AddHttpClient<PublicationsMcpClient>().ConfigurePrimaryHttpMessageHandler(() => Content);
             services.Configure<OAuthOptions>(AdminDiscordAuthentication.Scheme, options =>
                 options.Backchannel = new HttpClient(Discord) { MaxResponseContentBufferSize = 16 * 1024 });
         });

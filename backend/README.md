@@ -30,6 +30,11 @@ Content possède aussi les [actualités et notes de version](../docs/PUBLICATION
 L'Admin prépare, publie et dépublie les brouillons ; le launcher consulte un feed
 public anonyme. Les changements non publiés restent privés et les notes de version
 portent explicitement la version du jeu concernée.
+Le MCP Admin existant sur `/mcp/reports` expose aussi leur lecture, création,
+modification, publication, dépublication et suppression quand Content est activé.
+Le même bearer donne accès à ces mutations avec contrôle de révision ; la clé
+Content reste côté serveur. L'hôte stdio les active séparément avec
+`Publications:Enabled=true` ; voir le [guide MCP des publications](../docs/PUBLICATIONS.md#mcp-administrateur).
 
 Le [catalogue d'items](../docs/ITEM_CONTENT.md) ajoute les armes, armures, outils
 et autres objets : brouillons dans le backoffice, choix visuel de modèles

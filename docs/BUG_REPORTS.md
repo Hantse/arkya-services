@@ -120,7 +120,10 @@ https://admin.arkya.online/mcp/reports
 ```
 
 Il utilise `AdminMcp:Key` comme bearer, une clé différente de la clé
-Reports utilisée en interne. Un cookie Discord ou une session joueur ne
+Reports utilisée en interne et de la clé Content. Le même bearer autorise aussi
+la gestion des [actualités et notes de version](PUBLICATIONS.md#mcp-administrateur)
+quand `ContentApi:Enabled=true`, y compris publication, dépublication et suppression.
+Un cookie Discord ou une session joueur ne
 suffit pas. Le transport est sans session persistante ; un navigateur d'une
 autre origine est refusé. Aucun nouvel accès public à MongoDB n'est nécessaire.
 
@@ -172,6 +175,10 @@ accessible depuis le poste. Il lit `Reports:BaseUrl`, `Reports:AdminKey` et
 [`Start-AdminMcp.ps1`](../backend/tools/Start-AdminMcp.ps1) compile et réserve
 stdout au protocole. Le [SDK MCP C# officiel](https://github.com/modelcontextprotocol/csharp-sdk)
 est fixé à la version 2.2.0 pour les deux transports.
+Les outils de publications stdio s'activent séparément avec
+`Publications:Enabled=true` et les options `Publications:BaseUrl`/
+`Publications:AdminKey` ; les configurations Reports existantes restent valides.
+Voir le [guide des publications](PUBLICATIONS.md#mcp-administrateur).
 
 ## Configuration et déploiement
 

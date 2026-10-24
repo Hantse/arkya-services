@@ -7,6 +7,8 @@ ARG TARGETARCH
 WORKDIR /source
 COPY src/Arkya.Realms.Api/ src/Arkya.Realms.Api/
 COPY src/Arkya.Admin/ src/Arkya.Admin/
+COPY src/Arkya.Reports.Mcp/ src/Arkya.Reports.Mcp/
+COPY src/Arkya.Publications.Mcp/ src/Arkya.Publications.Mcp/
 COPY src/Arkya.ServiceDefaults/ src/Arkya.ServiceDefaults/
 
 FROM source AS build-realms
