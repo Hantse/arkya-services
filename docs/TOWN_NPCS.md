@@ -155,28 +155,65 @@ reconnaissent encore les anciennes paires exactes, mais n’admettent pas un cli
 
 ## Vérification
 
-La compilation directe avec Roslyn a réussi pour les assemblies runtime et
-`EditorTests`, en utilisant les fichiers de réponse et les générateurs de la
-version Unity installée **6000.6.6f1**. Cette vérification externe ne constitue
-ni une compilation validée dans l’Editor, ni une exécution des tests Unity.
-Elle a également réussi sur les sources exactes du commit Unity `5ad7d07`,
-sans les modifications locales des autres tâches.
+Le **24 octobre 2026**, après réouverture par l’utilisateur, Unity **6000.6.6f1**
+a compilé les scripts et exécuté les six fixtures PNJ via MCP : **39 réussites,
+aucun échec ni test ignoré**, en 15,824 secondes. `CharacterNpcTests` vérifie les
+règles et l’autorité, `CharacterNpcNetworkTests` les ghosts et RPC entre un vrai
+serveur et un client locaux, `CharacterNpcAssetTests` le catalogue et les prefabs,
+`CharacterNpcDialoguePanelTests` et `CharacterNpcDialogueRuntimeTests` l’interface,
+et `CharacterNpcInferenceTests` le contrat HTTP. L’assertion de saisie a été placée
+dans la fixture avec `UIDocument` attaché : un champ détaché ne distribue pas ses
+événements de changement. La saisie, l’envoi unique par Entrée, l’attente, le focus
+et la nouvelle tentative après erreur sont couverts.
 
-Pendant une tentative de rendu caméra, l’Editor local s’est arrêté sur un crash
-natif **`D3D12Fence::Wait`**. La sonde MCP a ensuite confirmé
-**`instance_count: 0`**. Les contrôles runtime, serveur/client et visuels des PNJ,
-ainsi que les captures, restent à exécuter après réouverture de l’Editor.
+L’exploration de `StarterIsland` a ensuite été exécutée en Play Mode avec un
+serveur et un client locaux : **20 ghosts de chaque côté et 20 présentations**.
+Sur deux relevés séparés de **60,551 secondes**, les dix statiques sont restés
+exactement fixes et les dix mobiles ont tous changé de position. Les six petits
+déplacements sont restés dans leur rayon aux deux relevés ; les quatre patrouilles
+ont avancé. L’écart serveur/client maximal observé est de **0,235 m** en mouvement
+avec interpolation, contre moins de **0,001 m** pour les statiques. Tessa, PNJ 15,
+est restée immobile en état de conversation pendant les deux relevés espacés de
+17,85 secondes, puis a parcouru 3,17 m après expiration de sa pause.
+Ces échantillons ne prouvent pas le franchissement de chaque segment à chaque tour.
 
-Les suites restant à exécuter sont `CharacterNpcTests` pour les règles et l’autorité,
-`CharacterNpcNetworkTests` pour les ghosts et RPC entre serveur/client réels,
-`CharacterNpcAssetTests` pour le catalogue et les prefabs,
-`CharacterNpcDialoguePanelTests` et `CharacterNpcDialogueRuntimeTests` pour
-la présentation du dialogue, et `CharacterNpcInferenceTests` pour HTTP.
-Ces six fixtures représentent **39 cas** inclus dans le job EditMode de la
-[CI Unity du commit](https://github.com/Hantse/arkya-mmorpg/actions/runs/40034851383),
-encore en file d’attente au moment de cette vérification. Le test réseau
-injecte une réponse de modèle contrôlée afin de vérifier le transport ; il ne
-remplace pas le parcours HTTP avec agent et modèle en fonctionnement.
+Le dialogue d’Aélis a été validé dans cette même session avec l’API ASP.NET,
+MongoDB temporaire réel, l’agent authentifié `RemoteDialogues` et le modèle
+**LFM2.5-1.2B-Instruct Q4_K_M**, sur CPU avec quatre threads. La question envoyée
+par Entrée dans le champ de l’interface a suivi le trajet **client RPC → serveur
+Unity → API → worker → serveur → client RPC → interface**. La requête
+`9d05ae879f6b4fa2ba733f25ff386126` a produit en **9,190 secondes de calcul modèle**
+une réponse conforme au rôle de capitaine du guet, effectivement affichée dans
+le panneau. Échap a ensuite fermé le dialogue. Les captures Game View ont été
+inspectées dans `Unity3D/Arkya/Captures/TownNpcs/`, notamment
+`Town-NPC-Aelis-model-dialogue.png` et `Town-NPC-patrol-resumed.png`.
+
+Pour cet essai piloté par MCP, le personnage a été placé près des PNJ côté serveur
+et l’ouverture a appelé la présentation, en neutralisant le contrôle de focus OS
+durant cet appel seulement : Codex avait le focus. La saisie et Échap ont utilisé
+les événements du panneau attaché. Cela ne remplace pas un essai manuel du raccourci
+physique E. Les preuves locales non sensibles sont conservées sous
+`artifacts/npc-dialogue-validation/live-125da01b/` : résultats des tests,
+`movement-summary.json`, relevés de patrouille, `unity-dialogue.json` et événements
+du worker. Après l’essai, l’Editor a retrouvé `CharacterCreation` propre, hors
+Play Mode, et ses variables d’environnement initiales. Aucun service déployé ni
+agent installé n’a été modifié ; l’activation distante reste à configurer.
+
+La console conserve les diagnostics de l’essai : un refus de chargement lors
+d’une première invocation directe du parcours et des retards Netcode
+`Server Tick Batching`. L’entrée via création d’un nouveau personnage a ensuite
+réussi. Aucune conclusion de performance n’est tirée de cette session Editor
+instrumentée. Le précédent crash de rendu caméra `D3D12Fence::Wait` ne s’est pas
+reproduit avec les captures normales de la Game View.
+
+La première CI avait échoué avant Unity à cause d’un validateur de publication
+resté sur le protocole 3. Le commit Unity `244520f` aligne les nouveaux artefacts
+sur **5 / arkya-town-npcs-v1** et autorise uniquement la lecture de l’ancien
+overlay lors de sa migration. Ses **78 tests Python** passent localement ; dans
+le [run CI](https://github.com/Hantse/arkya-mmorpg/actions/runs/40075935239),
+77 passent et un cas Windows est ignoré sous Linux. Le contrôle de confiance CI
+réussit ; les résultats Unity distants restent distincts des 39 réussites locales.
+Le correctif de fixture est publié dans le commit Unity `8b43904`.
 
 Les vérifications déjà exécutées dans le dépôt lors de l’ajout du protocole
 comptent **37 tests backend** de compatibilité/admission et **3 tests Python**
