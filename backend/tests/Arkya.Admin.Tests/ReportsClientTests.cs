@@ -1,11 +1,37 @@
 using System.Net;
 using Arkya.Admin.Reports;
+using Arkya.ServiceDefaults.Reports;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 
 namespace Arkya.Admin.Tests;
 
 public sealed class ReportsClientTests
 {
+    [Fact]
+    public async Task FilterValuesAreEncodedAsLiteralQueryParameters()
+    {
+        using var stub = new ReportsStub();
+        using var client = new HttpClient(stub) { BaseAddress = new Uri("https://reports.example/") };
+        var reports = new ReportsAdminClient(client, Options.Create(new ReportsApiOptions
+        {
+            Enabled = true, AdminKey = AdminFactory.ReportsAdminKey
+        }));
+        var filters = new BugReportListFilters("bridge&kind=bug", "Starter/Island?status=closed", "0.1+beta",
+            "Windows & WebGL", new DateOnly(2026, 10, 1), new DateOnly(2026, 10, 24), "updated");
+        await reports.ListAsync("urgent", "triaged", 40, 10, default, BugReportKinds.Suggestion, filters);
+        var query = QueryHelpers.ParseQuery(Assert.Single(stub.Calls).Uri.Query);
+        Assert.Equal("suggestion", Assert.Single(query["kind"]));
+        Assert.Equal("triaged", Assert.Single(query["status"]));
+        Assert.Equal(filters.Search, Assert.Single(query["search"]));
+        Assert.Equal(filters.Scene, Assert.Single(query["scene"]));
+        Assert.Equal(filters.ClientVersion, Assert.Single(query["clientVersion"]));
+        Assert.Equal(filters.Platform, Assert.Single(query["platform"]));
+        Assert.Equal("2026-10-01", Assert.Single(query["createdFrom"]));
+        Assert.Equal("2026-10-24", Assert.Single(query["createdTo"]));
+        Assert.Equal("updated", Assert.Single(query["sort"]));
+    }
+
     [Fact]
     public async Task ScreenshotDeadlineIncludesReadingTheBodyAfterResponseHeaders()
     {

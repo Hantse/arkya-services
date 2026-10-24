@@ -7,9 +7,12 @@
 }
 <header class="page-header">
     <div><div class="eyebrow">SUPPORT / REPORTS</div><h1>Bugs and suggestions</h1><p class="intro">View player screenshots and track their bugs and ideas.</p></div>
-    <a class="button secondary" asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind" asp-route-offset="@Model.Offset" asp-route-limit="@Model.Limit">Refresh</a>
+    <div class="report-header-actions">
+        <a class="button secondary" asp-page="/BugReports" asp-all-route-data="@Model.Routes()">Refresh</a>
+        <a class="text-link" asp-page="/ReportsConnection">Connect Codex to reports</a>
+    </div>
 </header>
-@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind">Try again</a></div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/BugReports" asp-all-route-data="@Model.Routes()">Try again</a></div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
 @if (!Model.Enabled)
 {
@@ -17,33 +20,75 @@
 }
 else
 {
-    <p><a class="text-link" asp-page="/ReportsConnection">Connect Codex to reports</a></p>
-    <form method="get" class="panel report-filters">
-        <div class="field"><label asp-for="Kind">Type</label><select asp-for="Kind"><option value="">All types</option>@foreach (var kind in BugReportKinds.All) { <option value="@kind">@BugReportPresentation.KindLabel(kind)</option> }</select></div>
-        <div class="field"><label asp-for="Tag">Tag</label><input asp-for="Tag" maxlength="32" placeholder="urgent" /></div>
-        <div class="field"><label asp-for="Status">Status</label><select asp-for="Status"><option value="">All statuses</option>@foreach (var status in BugReportStatuses.All) { <option value="@status">@BugReportPresentation.StatusLabel(status, Model.Kind)</option> }</select></div>
-        <input type="hidden" asp-for="Limit" />
-        <button type="submit" class="button primary">Filter</button><a class="text-link" asp-page="/BugReports">Clear filters</a>
+    <nav class="report-tabs" aria-label="Report type">
+        <a asp-page="/BugReports" asp-all-route-data="@Model.Routes(offset: 0, kind: BugReportKinds.Bug)" aria-current="@(Model.Kind == BugReportKinds.Bug ? "page" : null)">Bugs</a>
+        <a asp-page="/BugReports" asp-all-route-data="@Model.Routes(offset: 0, kind: BugReportKinds.Suggestion)" aria-current="@(Model.Kind == BugReportKinds.Suggestion ? "page" : null)">Suggestions</a>
+    </nav>
+    <form method="get" class="panel report-list-filters" aria-label="Filter reports">
+        <input type="hidden" asp-for="Kind" />
+        <div class="report-filter-primary">
+            <div class="field report-search"><label asp-for="Search">Search @Model.KindPlural.ToLowerInvariant()</label><input asp-for="Search" type="search" maxlength="120" placeholder="Title, description or report ID…" /></div>
+            <div class="field"><label asp-for="Status">Status</label><select asp-for="Status"><option value="">All statuses</option>@foreach (var status in BugReportStatuses.All) { <option value="@status">@BugReportPresentation.StatusLabel(status, Model.Kind)</option> }</select></div>
+            <div class="field"><label asp-for="Tag">Tag</label><input asp-for="Tag" maxlength="32" placeholder="e.g. urgent" /></div>
+            <div class="field"><label asp-for="Sort">Sort by</label><select asp-for="Sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="updated">Recently updated</option></select></div>
+        </div>
+        <div class="report-filter-secondary">
+            <div class="field"><label asp-for="Scene">Scene</label><input asp-for="Scene" maxlength="128" placeholder="All scenes" /></div>
+            <div class="field"><label asp-for="ClientVersion">Client version</label><input asp-for="ClientVersion" maxlength="64" placeholder="All versions" /></div>
+            <div class="field"><label asp-for="Platform">Platform</label><input asp-for="Platform" maxlength="64" placeholder="All platforms" /></div>
+            <div class="field"><label asp-for="CreatedFrom">Received from (UTC)</label><input asp-for="CreatedFrom" type="date" asp-format="{0:yyyy-MM-dd}" /></div>
+            <div class="field"><label asp-for="CreatedTo">Received to (UTC)</label><input asp-for="CreatedTo" type="date" asp-format="{0:yyyy-MM-dd}" /></div>
+        </div>
+        <div class="report-filter-footer">
+            <div class="field report-page-size"><label asp-for="Limit">Results per page</label><select asp-for="Limit">@foreach (var size in new[] { 10, 20, 50, 100 }.Append(Model.Limit).Where(size => size is >= 1 and <= 100).Distinct().Order()) { <option value="@size">@size</option> }</select></div>
+            <div class="report-filter-actions"><a class="text-link" asp-page="/BugReports" asp-all-route-data="@Model.Routes(offset: 0, clearFilters: true)">Clear filters</a><button type="submit" class="button primary">Apply filters</button></div>
+        </div>
     </form>
     @if (Model.Reports is { } reports)
     {
-        <div class="section-heading"><h2>Reports</h2><span class="muted">@reports.Total report(s)</span></div>
+        <div class="section-heading report-results-heading"><h2>@Model.KindPlural <span class="badge">@reports.Total</span></h2><span class="muted" role="status">@if (reports.Items.Length > 0) { <text>@Model.FirstResult–@Model.LastResult of @reports.Total</text> } else { <text>0 of @reports.Total</text> } @(Model.HasFilters ? "matching" : "total")</span></div>
         @if (reports.Items.Length == 0)
         {
-            <div class="panel empty-state"><h3>No reports on this page</h3><p>New reports will appear here. Adjust the filters or return to the first page.</p><a class="text-link" asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind">First page</a></div>
+            <div class="panel empty-state">
+                @if (reports.Total > 0)
+                {
+                    <h3>No reports on this page</h3><p>Return to the first page to see the available @Model.KindPlural.ToLowerInvariant().</p><a class="button secondary" asp-page="/BugReports" asp-all-route-data="@Model.Routes(offset: 0)">First page</a>
+                }
+                else if (Model.HasFilters)
+                {
+                    <h3>No @Model.KindPlural.ToLowerInvariant() match these filters</h3><p>Try another search or widen the filters.</p><a class="button secondary" asp-page="/BugReports" asp-all-route-data="@Model.Routes(offset: 0, clearFilters: true)">Clear filters</a>
+                }
+                else
+                {
+                    <h3>No @Model.KindPlural.ToLowerInvariant() yet</h3><p>New player @Model.KindPlural.ToLowerInvariant() will appear here.</p>
+                }
+            </div>
         }
         else
         {
-            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Bugs and suggestions</caption><thead><tr><th scope="col">Report</th><th scope="col">Type</th><th scope="col">Status and tags</th><th scope="col">Received</th></tr></thead><tbody>
+            <div class="panel table-scroll"><table class="realm-table report-list-table"><caption class="sr-only">@Model.KindPlural</caption><thead><tr><th scope="col">Report</th><th scope="col">Type</th><th scope="col">Status and tags</th><th scope="col">Received</th></tr></thead><tbody>
             @foreach (var report in reports.Items)
             {
-                <tr><th scope="row"><a asp-page="/BugReport" asp-route-id="@report.Id">@report.Title</a><small>@report.Scene · @report.ClientVersion</small></th><td><span class="badge">@BugReportPresentation.KindLabel(report.Kind)</span></td><td><span class="realm-status @BugReportPresentation.StatusClass(report.Status)">@BugReportPresentation.StatusLabel(report.Status, report.Kind)</span><div class="report-tags">@foreach (var tag in report.Tags) { <a class="badge" asp-page="/BugReports" asp-route-tag="@tag" asp-route-kind="@Model.Kind" asp-route-status="@Model.Status">@tag</a> }</div></td><td><time datetime="@report.CreatedAt.ToString("O")">@report.CreatedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></td></tr>
+                <tr><th scope="row"><a asp-page="/BugReport" asp-route-id="@report.Id">@report.Title</a><small>@report.Scene · @report.ClientVersion · @report.Platform</small></th><td><span class="badge">@BugReportPresentation.KindLabel(report.Kind)</span></td><td><span class="realm-status @BugReportPresentation.StatusClass(report.Status)">@BugReportPresentation.StatusLabel(report.Status, report.Kind)</span><div class="report-tags">@foreach (var tag in report.Tags) { <a class="badge" asp-page="/BugReports" asp-all-route-data="@Model.Routes(offset: 0, tag: tag)">@tag</a> }</div></td><td><time datetime="@report.CreatedAt.ToString("O")">@report.CreatedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></td></tr>
             }
             </tbody></table></div>
         }
-        <nav class="report-pagination" aria-label="Report pages">
-            @if (Model.HasPrevious) { <a class="button secondary" asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind" asp-route-offset="@Math.Max(0, Model.Offset - Model.Limit)" asp-route-limit="@Model.Limit">Previous</a> }
-            @if (Model.HasNext) { <a class="button secondary" asp-page="/BugReports" asp-route-tag="@Model.Tag" asp-route-status="@Model.Status" asp-route-kind="@Model.Kind" asp-route-offset="@(Model.Offset + Model.Limit)" asp-route-limit="@Model.Limit">Next</a> }
+        <nav class="report-list-pagination" aria-label="Report pages">
+            @if (Model.HasPrevious) { <a class="button secondary" asp-page="/BugReports" asp-all-route-data="@Model.Routes(offset: Math.Max(0, Model.Offset - Model.Limit))">← Previous</a> }
+            else { <span class="button secondary" aria-disabled="true">← Previous</span> }
+            <div class="report-page-numbers">
+                @{ long previousPage = 0; }
+                @foreach (var number in Model.VisiblePages)
+                {
+                    if (previousPage > 0 && number > previousPage + 1) { <span class="muted" aria-hidden="true">…</span> }
+                    if (number == Model.PageNumber) { <span class="button report-page-current" aria-current="page" aria-label="Page @number">@number</span> }
+                    else { <a class="button secondary" asp-page="/BugReports" asp-all-route-data="@Model.PageRoutes(number)" aria-label="Page @number">@number</a> }
+                    previousPage = number;
+                }
+                <span class="report-page-summary">Page @Model.PageNumber of @Model.PageCount</span>
+            </div>
+            @if (Model.HasNext) { <a class="button secondary" asp-page="/BugReports" asp-all-route-data="@Model.Routes(offset: Model.Offset + Model.Limit)">Next →</a> }
+            else { <span class="button secondary" aria-disabled="true">Next →</span> }
         </nav>
     }
 }

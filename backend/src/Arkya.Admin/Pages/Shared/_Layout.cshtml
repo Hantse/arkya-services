@@ -25,6 +25,7 @@
     @if (page is "/Items" or "/Item") { <link rel="stylesheet" href="~/items.css" asp-append-version="true" /> }
     @if (page == "/Character") { <link rel="stylesheet" href="~/character.css" asp-append-version="true" /> }
     @if (page == "/BetaRegistrations") { <link rel="stylesheet" href="~/beta-registrations.css" asp-append-version="true" /> }
+    @if (page == "/BugReports") { <link rel="stylesheet" href="~/reports.css" asp-append-version="true" /> }
 </head>
 <body class="@(authenticated ? "signed-in" : "signed-out")">
     <a class="skip-link" href="#main">Skip to content</a>

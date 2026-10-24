@@ -10,7 +10,7 @@ public interface IReportRepository
     Task<ReportInsertResult> InsertAsync(StoredReport report, CancellationToken cancellationToken);
     Task<BugReportResponse?> FindAsync(Guid id, Guid? accountId, CancellationToken cancellationToken);
     Task<BugReportListResponse> ListAsync(Guid? accountId, string? tag, string? status, int offset, int limit,
-        CancellationToken cancellationToken, string? kind = null);
+        CancellationToken cancellationToken, string? kind = null, BugReportListFilters? filters = null);
     Task<byte[]?> ScreenshotAsync(Guid id, CancellationToken cancellationToken);
     Task<BugReportResponse?> UpdateAsync(Guid id, long expectedRevision, string status, string[] tags,
         string resolution, string actor, DateTimeOffset now, CancellationToken cancellationToken);

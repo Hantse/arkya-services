@@ -13,6 +13,65 @@ namespace Arkya.Reports.Tests;
 public sealed class MongoReportRepositoryTests
 {
     [MongoFact]
+    public async Task ExtendedFiltersUseLiteralSearchInclusiveUtcDatesAndStableServerPagination()
+    {
+        var database = $"arkya_reports_test_{Guid.NewGuid():N}";
+        var client = Client();
+        try
+        {
+            var repository = Repository(client, database);
+            await repository.InitializeAsync(default);
+            var midnight = new DateTimeOffset(2026, 10, 20, 0, 0, 0, TimeSpan.Zero);
+            var first = Fixtures.StoredReport(Guid.Parse("10000000-0000-0000-0000-000000000000"), midnight, midnight.AddDays(3));
+            first = first with
+            {
+                Report = first.Report with { Title = "Collision [port]", Kind = BugReportKinds.Suggestion,
+                    Tags = ["urgent"], Status = BugReportStatuses.Triaged }
+            };
+            var last = first with { Report = first.Report with
+                { Id = Guid.Parse("30000000-0000-0000-0000-000000000000"), CreatedAt = midnight.AddDays(1).AddMilliseconds(-1), UpdatedAt = midnight } };
+            var tied = last with { Report = last.Report with { Id = Guid.Parse("20000000-0000-0000-0000-000000000000") } };
+            var records = new[]
+            {
+                first, tied, last,
+                first with { Report = first.Report with { Id = Guid.NewGuid(), CreatedAt = midnight.AddMilliseconds(-1) } },
+                first with { Report = first.Report with { Id = Guid.NewGuid(), CreatedAt = midnight.AddDays(1) } },
+                first with { Report = first.Report with { Id = Guid.NewGuid(), Scene = "StarterIsland2" } },
+                first with { Report = first.Report with { Id = Guid.NewGuid(), ClientVersion = "test-v10" } },
+                first with { Report = first.Report with { Id = Guid.NewGuid(), Platform = "WindowsPlayer2" } },
+                first with { Report = first.Report with { Id = Guid.NewGuid(), Title = "Collision port" } },
+                first with { Report = first.Report with { Id = Guid.NewGuid(), Kind = BugReportKinds.Bug } }
+            };
+            foreach (var record in records)
+                await repository.InsertAsync(record with { Report = record.Report with { ClientReportId = Guid.NewGuid() } }, default);
+            var filters = new BugReportListFilters(Search: "[PORT]", Scene: "starterisland", ClientVersion: "TEST-V1",
+                Platform: "windowsplayer", CreatedFrom: new(2026, 10, 20), CreatedTo: new(2026, 10, 20));
+            Task<BugReportListResponse> List(int offset, int limit, BugReportListFilters selected) =>
+                repository.ListAsync(null, "urgent", BugReportStatuses.Triaged, offset, limit, default, BugReportKinds.Suggestion, selected);
+            var newest = await List(0, 1, filters);
+            var next = await List(1, 1, filters);
+            Assert.Equal(3, newest.Total);
+            Assert.Equal(newest.Total, next.Total);
+            Assert.Equal(last.Report.Id, Assert.Single(newest.Items).Id);
+            Assert.Equal(tied.Report.Id, Assert.Single(next.Items).Id);
+            Assert.Empty(newest.Items[0].History);
+            Assert.Equal(new[] { first.Report.Id, tied.Report.Id, last.Report.Id },
+                (await List(0, 20, filters with { Sort = BugReportSorts.Oldest })).Items.Select(item => item.Id));
+            Assert.Equal(new[] { first.Report.Id, last.Report.Id, tied.Report.Id },
+                (await List(0, 20, filters with { Sort = BugReportSorts.Updated })).Items.Select(item => item.Id));
+            Assert.Empty((await List(10, 1, filters)).Items);
+            Assert.Equal(3, (await List(10, 1, filters)).Total);
+            Assert.Empty((await List(0, 20, filters with { Search = "^.*$" })).Items);
+            Assert.Empty((await List(0, 20, filters with { Scene = "StarterIsland.*" })).Items);
+            Assert.Equal(3, (await List(0, 20, filters with { Search = "PERSONNAGE" })).Total);
+            Assert.Equal(first.Report.Id, Assert.Single((await List(0, 20, filters with { Search = first.Report.Id.ToString("D") })).Items).Id);
+            Assert.Equal(records.Length, (await repository.ListAsync(null, null, null, 0, 20, default, filters:
+                new(CreatedFrom: DateOnly.MinValue, CreatedTo: DateOnly.MaxValue))).Total);
+        }
+        finally { await client.DropDatabaseAsync(database); }
+    }
+
+    [MongoFact]
     public async Task LegacyBugsAndSuggestionsRemainCompatibleAcrossPersistenceFiltersAndRetries()
     {
         var database = $"arkya_reports_test_{Guid.NewGuid():N}";

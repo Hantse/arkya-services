@@ -1,4 +1,5 @@
 using System.Net;
+using System.Globalization;
 using System.Text.Json;
 using Arkya.ServiceDefaults.Reports;
 using Microsoft.Extensions.Options;
@@ -24,12 +25,21 @@ public sealed class ReportsAdminClient(HttpClient client, IOptions<ReportsApiOpt
     private const int MaximumScreenshotBytes = 2 * 1024 * 1024;
     public bool Enabled => options.Value.Enabled;
 
-    public Task<BugReportListResponse> ListAsync(string? tag, string? status, int offset, int limit, CancellationToken ct, string? kind = null)
+    public Task<BugReportListResponse> ListAsync(string? tag, string? status, int offset, int limit, CancellationToken ct,
+        string? kind = null, BugReportListFilters? filters = null)
     {
         var path = $"internal/bug-reports?offset={offset}&limit={limit}";
         if (!string.IsNullOrEmpty(tag)) path += "&tag=" + Uri.EscapeDataString(tag);
         if (!string.IsNullOrEmpty(status)) path += "&status=" + Uri.EscapeDataString(status);
         if (!string.IsNullOrEmpty(kind)) path += "&kind=" + Uri.EscapeDataString(kind);
+        if (filters is not null)
+        {
+            foreach (var (key, value) in new[] { ("search", filters.Search), ("scene", filters.Scene),
+                ("clientVersion", filters.ClientVersion), ("platform", filters.Platform), ("sort", filters.Sort),
+                ("createdFrom", filters.CreatedFrom?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)),
+                ("createdTo", filters.CreatedTo?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)) })
+                if (!string.IsNullOrEmpty(value)) path += "&" + key + "=" + Uri.EscapeDataString(value);
+        }
         return SendAsync<BugReportListResponse>(HttpMethod.Get, path, null, null, ct);
     }
 

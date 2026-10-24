@@ -19,6 +19,7 @@ internal sealed class ReportsStub : HttpMessageHandler
     public byte[] Screenshot { get; set; } = Convert.FromBase64String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aZc8AAAAASUVORK5CYII=");
     public string ScreenshotContentType { get; set; } = "image/png";
     public long Total { get; set; } = 1;
+    public BugReportResponse[]? ListItems { get; set; }
     public bool Empty { get; set; }
     public List<ReportCall> Calls { get; } = [];
     public HttpStatusCode? WriteError { get; set; }
@@ -45,7 +46,7 @@ internal sealed class ReportsStub : HttpMessageHandler
             if (call.Uri.AbsolutePath == "/internal/bug-reports")
             {
                 var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(call.Uri.Query);
-                return Json(new BugReportListResponse(Empty ? [] : [Report], int.Parse(query["offset"].ToString()),
+                return Json(new BugReportListResponse(Empty ? [] : ListItems ?? [Report], int.Parse(query["offset"].ToString()),
                     int.Parse(query["limit"].ToString()), Total));
             }
             if (call.Uri.AbsolutePath == $"/internal/bug-reports/{Id:D}") return Json(Report);

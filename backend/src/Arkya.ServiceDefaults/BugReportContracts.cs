@@ -17,6 +17,17 @@ public static class BugReportStatuses
     public static readonly string[] All = [New, Triaged, InProgress, Resolved, Closed];
 }
 
+public static class BugReportSorts
+{
+    public const string Newest = "newest";
+    public const string Oldest = "oldest";
+    public const string Updated = "updated";
+    public static readonly string[] All = [Newest, Oldest, Updated];
+}
+
+public sealed record BugReportListFilters(string? Search = null, string? Scene = null, string? ClientVersion = null,
+    string? Platform = null, DateOnly? CreatedFrom = null, DateOnly? CreatedTo = null, string Sort = BugReportSorts.Newest);
+
 public sealed record SubmitBugReportRequest(Guid ClientReportId, string? Title, string? Description,
     string? ClientVersion, string? Scene, string? Platform, string? ScreenshotBase64, string? Kind = BugReportKinds.Bug);
 

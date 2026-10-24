@@ -75,6 +75,15 @@ Les listes renvoient `{items, offset, limit, total}`. `limit` est borné à
 100 et `offset` à 100 000. L'introspection Identity détermine le propriétaire ;
 aucun `accountId` soumis par le joueur n'est accepté.
 
+La liste interne accepte aussi `search` (120 caractères, recherche littérale
+sans distinction de casse dans titre/description/ID), `scene`
+(128), `clientVersion` (64) et `platform` (64). Ces trois derniers filtres
+comparent la valeur complète sans distinction de casse. `createdFrom` et
+`createdTo` sont des dates `yyyy-MM-dd`, inclusives en UTC. `sort` accepte
+`newest` (défaut), `oldest` et `updated` ; l'ID départage les dates identiques
+pour stabiliser la pagination. Tous les filtres se combinent avant le comptage
+et la pagination MongoDB ; les filtres avancés restent réservés à l'API interne.
+
 Les routes conservent leur nom `bug-reports` pour compatibilité et servent les
 deux types. Le champ `kind` vaut `bug` ou `suggestion` et reste immuable.
 Un envoi sans `kind` et un ancien document MongoDB sans ce champ sont traités
@@ -107,9 +116,14 @@ joueur, et retire les en-têtes internes des requêtes publiques.
 
 ## Backoffice et MCP hébergé
 
-Le menu des signalements ouvre `/BugReports` : filtre bug/suggestion, tags,
-statut, pagination,
-détail avec capture, statut, tags, résolution et historique. Les pages utilisent
+Le menu des signalements ouvre `/BugReports` sur l'onglet **Bugs** ; l'onglet
+**Suggestions** utilise `kind=suggestion`. Chaque onglet propose recherche,
+statut, tag, scène, version client, plateforme et période de réception UTC,
+avec tri par réception ou dernière mise à jour. La pagination affiche les
+numéros de page, les liens précédent/suivant, la plage de résultats et le total,
+avec un choix de 10, 20, 50 ou 100 résultats par page. Les liens conservent les
+filtres ; changer d'onglet ou appliquer les filtres revient à la première page.
+Le détail conserve capture, statut, tags, résolution et historique. Les pages utilisent
 l'authentification Admin existante et l'antiforgery. Un conflit de révision
 recharge l'état courant avant toute nouvelle soumission.
 

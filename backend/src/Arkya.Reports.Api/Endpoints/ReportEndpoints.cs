@@ -20,7 +20,7 @@ public static class ReportEndpoints
         });
         player.MapGet("", async (HttpContext context, IReportRepository repository, CancellationToken cancellationToken) =>
         {
-            if (!Query(context, false, out var tag, out var status, out var kind, out var offset, out var limit))
+            if (!Query(context, false, out var tag, out var status, out var kind, out var offset, out var limit, out _))
                 return InvalidQuery();
             var result = await repository.ListAsync(Account(context), tag, status, offset, limit, cancellationToken, kind);
             return Results.Ok(result with { Items = result.Items.Select(ForPlayer).ToArray() });
@@ -34,9 +34,9 @@ public static class ReportEndpoints
         var admin = app.MapGroup("/internal/bug-reports").AllowAnonymous();
         admin.MapGet("", async (HttpContext context, IReportRepository repository, CancellationToken cancellationToken) =>
         {
-            if (!Query(context, true, out var tag, out var status, out var kind, out var offset, out var limit))
+            if (!Query(context, true, out var tag, out var status, out var kind, out var offset, out var limit, out var filters))
                 return InvalidQuery();
-            return Results.Ok(await repository.ListAsync(null, tag, status, offset, limit, cancellationToken, kind));
+            return Results.Ok(await repository.ListAsync(null, tag, status, offset, limit, cancellationToken, kind, filters));
         });
         admin.MapGet("/{id:guid}", async (Guid id, IReportRepository repository, CancellationToken cancellationToken) =>
         {
@@ -78,13 +78,14 @@ public static class ReportEndpoints
     }
 
     private static bool Query(HttpContext context, bool admin, out string? tag, out string? status, out string? kind,
-        out int offset, out int limit)
+        out int offset, out int limit, out BugReportListFilters filters)
     {
         tag = null;
         status = null;
         kind = null;
         offset = 0;
         limit = 20;
+        filters = new();
         foreach (var (key, values) in context.Request.Query)
         {
             if (values.Count != 1) return false;
@@ -110,14 +111,50 @@ public static class ReportEndpoints
                     kind = values[0];
                     if (!BugReportKinds.All.Contains(kind)) return false;
                     break;
+                case "search" when admin:
+                    if (!FilterText(values[0], 120, out var search)) return false;
+                    filters = filters with { Search = search };
+                    break;
+                case "scene" when admin:
+                    if (!FilterText(values[0], 128, out var scene)) return false;
+                    filters = filters with { Scene = scene };
+                    break;
+                case "clientVersion" when admin:
+                    if (!FilterText(values[0], 64, out var version)) return false;
+                    filters = filters with { ClientVersion = version };
+                    break;
+                case "platform" when admin:
+                    if (!FilterText(values[0], 64, out var platform)) return false;
+                    filters = filters with { Platform = platform };
+                    break;
+                case "createdFrom" when admin:
+                    if (!DateOnly.TryParseExact(values[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var from))
+                        return false;
+                    filters = filters with { CreatedFrom = from };
+                    break;
+                case "createdTo" when admin:
+                    if (!DateOnly.TryParseExact(values[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var to))
+                        return false;
+                    filters = filters with { CreatedTo = to };
+                    break;
+                case "sort" when admin:
+                    if (!BugReportSorts.All.Contains(values[0])) return false;
+                    filters = filters with { Sort = values[0]! };
+                    break;
                 default: return false;
             }
         }
-        return true;
+        return filters.CreatedFrom is not { } start || filters.CreatedTo is not { } end || start <= end;
+    }
+
+    private static bool FilterText(string? value, int maximum, out string? normalized)
+    {
+        normalized = value?.Trim();
+        return value is not null && value.Length <= maximum && !value.Any(char.IsControl) && !string.IsNullOrEmpty(normalized);
     }
 
     private static IResult InvalidQuery() => Results.ValidationProblem(new Dictionary<string, string[]>
     {
-        ["query"] = ["Use offset 0–100000 and limit 1–100, optional kind bug/suggestion, and valid admin tag/status filters."]
+        ["query"] = ["Use offset 0–100000, limit 1–100 and kind bug/suggestion. Admin filters allow valid tag/status, search up to 120 characters, scene up to 128, clientVersion/platform up to 64, inclusive UTC dates createdFrom/createdTo (yyyy-MM-dd), and sort newest/oldest/updated."]
     });
 }

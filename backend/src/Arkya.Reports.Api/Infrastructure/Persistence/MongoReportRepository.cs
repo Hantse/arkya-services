@@ -1,7 +1,9 @@
+using System.Text.RegularExpressions;
 using Arkya.Reports.Api.Application;
 using Arkya.ServiceDefaults;
 using Arkya.ServiceDefaults.Reports;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Arkya.Reports.Api.Infrastructure.Persistence;
@@ -31,7 +33,11 @@ public sealed class MongoReportRepository(IMongoClient client, IOptions<MongoOpt
                 .Descending(document => document.Id), new CreateIndexOptions { Name = "ix_report_kind_created" }),
         new(Builders<ReportDocument>.IndexKeys.Ascending(document => document.AccountId).Ascending(document => document.Kind)
                 .Descending(document => document.CreatedAt).Descending(document => document.Id),
-            new CreateIndexOptions { Name = "ix_report_owner_kind_created" })
+            new CreateIndexOptions { Name = "ix_report_owner_kind_created" }),
+        new(Builders<ReportDocument>.IndexKeys.Ascending(document => document.Kind).Descending(document => document.UpdatedAt)
+                .Descending(document => document.Id), new CreateIndexOptions { Name = "ix_report_kind_updated" }),
+        new(Builders<ReportDocument>.IndexKeys.Descending(document => document.UpdatedAt).Descending(document => document.Id),
+            new CreateIndexOptions { Name = "ix_report_updated" })
     ], cancellationToken);
 
     public async Task<ReportInsertResult> InsertAsync(StoredReport report, CancellationToken cancellationToken)
@@ -61,7 +67,7 @@ public sealed class MongoReportRepository(IMongoClient client, IOptions<MongoOpt
     }
 
     public async Task<BugReportListResponse> ListAsync(Guid? accountId, string? tag, string? status, int offset, int limit,
-        CancellationToken cancellationToken, string? kind = null)
+        CancellationToken cancellationToken, string? kind = null, BugReportListFilters? filters = null)
     {
         var filter = Builders<ReportDocument>.Filter.Empty;
         if (accountId is not null) filter &= Builders<ReportDocument>.Filter.Eq(document => document.AccountId, accountId.Value.ToString("D"));
@@ -75,11 +81,38 @@ public sealed class MongoReportRepository(IMongoClient client, IOptions<MongoOpt
                 matchingKind |= Builders<ReportDocument>.Filter.Exists(document => document.Kind, false);
             filter &= matchingKind;
         }
+        filters ??= new();
+        if (filters.Search is { } search)
+        {
+            var literal = new BsonRegularExpression(Regex.Escape(search), "i");
+            filter &= Builders<ReportDocument>.Filter.Regex(document => document.Title, literal) |
+                Builders<ReportDocument>.Filter.Regex(document => document.Description, literal) |
+                Builders<ReportDocument>.Filter.Regex(document => document.Id, literal);
+        }
+        if (filters.Scene is { } scene)
+            filter &= Builders<ReportDocument>.Filter.Regex(document => document.Scene, Exact(scene));
+        if (filters.ClientVersion is { } version)
+            filter &= Builders<ReportDocument>.Filter.Regex(document => document.ClientVersion, Exact(version));
+        if (filters.Platform is { } platform)
+            filter &= Builders<ReportDocument>.Filter.Regex(document => document.Platform, Exact(platform));
+        if (filters.CreatedFrom is { } from)
+            filter &= Builders<ReportDocument>.Filter.Gte(document => document.CreatedAt, from.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc));
+        // The exclusive next-day boundary includes the complete UTC date at MongoDB's millisecond precision.
+        if (filters.CreatedTo is { } to && to < DateOnly.MaxValue)
+            filter &= Builders<ReportDocument>.Filter.Lt(document => document.CreatedAt, to.AddDays(1).ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc));
+        var sort = filters.Sort switch
+        {
+            BugReportSorts.Oldest => Builders<ReportDocument>.Sort.Ascending(document => document.CreatedAt).Ascending(document => document.Id),
+            BugReportSorts.Updated => Builders<ReportDocument>.Sort.Descending(document => document.UpdatedAt).Descending(document => document.Id),
+            _ => Builders<ReportDocument>.Sort.Descending(document => document.CreatedAt).Descending(document => document.Id)
+        };
         var total = await reports.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
-        var documents = await reports.Find(filter).SortByDescending(document => document.CreatedAt).ThenByDescending(document => document.Id)
+        var documents = await reports.Find(filter).Sort(sort)
             .Skip(offset).Limit(limit).Project(Summary).ToListAsync(cancellationToken);
         return new(documents.Select(document => document.ToResponse()).ToArray(), offset, limit, total);
     }
+
+    private static BsonRegularExpression Exact(string value) => new("\\A" + Regex.Escape(value) + "\\z", "i");
 
     public async Task<byte[]?> ScreenshotAsync(Guid id, CancellationToken cancellationToken) => await reports
         .Find(document => document.Id == id.ToString("D")).Project(document => document.ScreenshotBytes)

@@ -42,15 +42,28 @@ internal sealed class MemoryReportRepository : IReportRepository
     }
 
     public Task<BugReportListResponse> ListAsync(Guid? accountId, string? tag, string? status, int offset, int limit,
-        CancellationToken cancellationToken, string? kind = null)
+        CancellationToken cancellationToken, string? kind = null, BugReportListFilters? filters = null)
     {
         lock (gate)
         {
+            filters ??= new();
             var matches = reports.Values.Select(item => item.Report).Where(item =>
                 (accountId is null || item.AccountId == accountId) && (tag is null || item.Tags.Contains(tag)) &&
-                (status is null || item.Status == status) && (kind is null || item.Kind == kind))
-                .OrderByDescending(item => item.CreatedAt).ThenByDescending(item => item.Id).ToArray();
-            return Task.FromResult(new BugReportListResponse(matches.Skip(offset).Take(limit)
+                (status is null || item.Status == status) && (kind is null || item.Kind == kind) &&
+                (filters.Search is null || item.Title.Contains(filters.Search, StringComparison.OrdinalIgnoreCase) ||
+                    item.Description.Contains(filters.Search, StringComparison.OrdinalIgnoreCase) || item.Id.ToString("D").Contains(filters.Search, StringComparison.OrdinalIgnoreCase)) &&
+                (filters.Scene is null || item.Scene.Equals(filters.Scene, StringComparison.OrdinalIgnoreCase)) &&
+                (filters.ClientVersion is null || item.ClientVersion.Equals(filters.ClientVersion, StringComparison.OrdinalIgnoreCase)) &&
+                (filters.Platform is null || item.Platform.Equals(filters.Platform, StringComparison.OrdinalIgnoreCase)) &&
+                (filters.CreatedFrom is null || DateOnly.FromDateTime(item.CreatedAt.UtcDateTime) >= filters.CreatedFrom) &&
+                (filters.CreatedTo is null || DateOnly.FromDateTime(item.CreatedAt.UtcDateTime) <= filters.CreatedTo)).ToArray();
+            var ordered = filters.Sort switch
+            {
+                BugReportSorts.Oldest => matches.OrderBy(item => item.CreatedAt).ThenBy(item => item.Id.ToString("D"), StringComparer.Ordinal),
+                BugReportSorts.Updated => matches.OrderByDescending(item => item.UpdatedAt).ThenByDescending(item => item.Id.ToString("D"), StringComparer.Ordinal),
+                _ => matches.OrderByDescending(item => item.CreatedAt).ThenByDescending(item => item.Id.ToString("D"), StringComparer.Ordinal)
+            };
+            return Task.FromResult(new BugReportListResponse(ordered.Skip(offset).Take(limit)
                 .Select(item => item with { History = [] }).ToArray(), offset, limit, matches.LongLength));
         }
     }
@@ -134,6 +147,15 @@ internal sealed class ReportsFactory(bool production = false) : WebApplicationFa
 
 internal static class Fixtures
 {
+    public static StoredReport StoredReport(Guid id, DateTimeOffset createdAt, DateTimeOffset? updatedAt = null)
+    {
+        var image = Png();
+        return new(new BugReportResponse(1, id, Guid.NewGuid(), StubSessions.Alice, "Collision dans le port",
+            "Le personnage traverse le quai.", "test-v1", "StarterIsland", "WindowsPlayer", BugReportStatuses.New,
+            [], "", 1, createdAt, updatedAt ?? createdAt,
+            new(1, 1, image.Length, "image/png", Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(image))), []), "test", image);
+    }
+
     public static SubmitBugReportRequest Request(Guid? clientId = null) =>
         new(clientId ?? Guid.NewGuid(), "Collision dans le port", "Le personnage traverse le quai.", "test-v1",
             "StarterIsland", "WindowsPlayer", Convert.ToBase64String(Png()));
