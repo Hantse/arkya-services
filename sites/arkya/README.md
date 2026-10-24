@@ -44,8 +44,8 @@ lien canonique `https://arkya.online/beta.html` propose un bouton local
 les articles partageables, la pagination, l'inscription et les états d'erreur
 avec des réponses isolées. Les données des tests restent hors de `dist/`.
 
-Vérification du 24 octobre 2026 : **160 tests Node**, **148 tests Content avec
-MongoDB** et **140 contrôles Edge** réussis. Les rendus bureau/mobile sont
+Vérification du 24 octobre 2026 : **161 tests Node**, **148 tests Content avec
+MongoDB**, **140 contrôles Edge sur la page** et **36 sur la navigation** réussis. Les rendus bureau/mobile sont
 inspectés dans `output/playwright/arkya-news-{desktop,mobile}.png` ; le scénario
 n'effectue aucune inscription ni mutation de production.
 

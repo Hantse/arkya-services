@@ -170,8 +170,9 @@ La lecture reste indépendante de la restauration de session Discord.
 Chaque document utilise un ID GUID stable, `SchemaVersion=1`, un brouillon et
 un snapshot publié facultatif. Le remplacement conditionnel Mongo vérifie ID,
 schéma et révision dans une seule opération, sans transaction multi-document.
-Les index `ix_posts_public_feed` et `ix_posts_admin_feed` couvrent les filtres et
-l’ordre de consultation. Les schémas inconnus restent invisibles et non modifiables.
+Les index `ix_posts_public_feed` et `ix_posts_admin_feed` couvrent type, langue et
+ordre de consultation. La recherche littérale utilise des expressions régulières
+échappées sur le texte publié. Les schémas inconnus restent invisibles et non modifiables.
 Les erreurs de persistance donnent `503`, sans remplacer le résultat par un faux feed vide.
 
 Le CORS public autorise `GET` depuis toute origine, sans credentials. Les réponses

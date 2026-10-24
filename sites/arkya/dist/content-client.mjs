@@ -1,7 +1,8 @@
 const idPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const versionPattern = /^[A-Za-z0-9][A-Za-z0-9._+-]{0,63}$/;
 const timestampPattern = /^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d{1,9})?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)$/;
-const maximumResponseBytes = 4 * 1024 * 1024;
+// Fifty maximum-size posts can exceed 6 MiB with JSON's escaped Unicode.
+const maximumResponseBytes = 8 * 1024 * 1024;
 const fail = code => Object.assign(new Error(`Publication request failed: ${code}`), { code });
 const validId = value => typeof value === 'string' && idPattern.test(value) && value !== '00000000-0000-0000-0000-000000000000';
 

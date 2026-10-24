@@ -280,8 +280,21 @@ test('a full Unicode page below the response ceiling is accepted without an ASCI
   assert.equal(result.items.at(-1).body.length, 20000);
 });
 
+test('a full page accepts Unicode escaped by the default .NET JSON serializer', async () => {
+  const articles = Array.from({ length: 48 }, (_, index) => ({ ...news,
+    id: `${(index + 1).toString(16).padStart(8, '0')}-83c2-45cb-bb26-f4b574e88ee8`, body: '界'.repeat(20000) }));
+  const escaped = JSON.stringify(page(articles)).replace(/[^\x00-\x7f]/g,
+    character => `\\u${character.charCodeAt(0).toString(16).padStart(4, '0')}`);
+  assert.ok(Buffer.byteLength(escaped) > 4 * 1024 * 1024);
+  const { client } = fixture({ responses: [new Response(escaped,
+    { headers: { 'Content-Type': 'application/json' } })] });
+  const result = await client.list({ limit: 48 });
+  assert.equal(result.items.length, 48);
+  assert.equal(result.items.at(-1).body, articles.at(-1).body);
+});
+
 test('oversized declared and chunked responses fail without exposing upstream content', async () => {
-  const byteLimit = 4 * 1024 * 1024;
+  const byteLimit = 8 * 1024 * 1024;
   const oversized = new ReadableStream({ start(controller) {
     controller.enqueue(new Uint8Array(byteLimit));
     controller.enqueue(new TextEncoder().encode('private-service-diagnostic'));
@@ -301,7 +314,7 @@ test('oversized declared and chunked responses fail without exposing upstream co
 test('the byte ceiling terminates an oversized stream before waiting for its end', { timeout: 1500 }, async () => {
   let cancelled = false;
   const body = new ReadableStream({
-    start(controller) { controller.enqueue(new Uint8Array(4 * 1024 * 1024 + 1)); },
+    start(controller) { controller.enqueue(new Uint8Array(8 * 1024 * 1024 + 1)); },
     cancel() { cancelled = true; },
   });
   const { client } = fixture({ timeoutMs: 1000,
