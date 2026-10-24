@@ -139,9 +139,11 @@ restent disponibles. Les snapshots historiques aux formats
 mais invalide, y compris `null`, est refusé au chargement au lieu de perdre la
 progression. Le parcours local sans compte conserve seulement sa session.
 
-Le composant ghost et les nouvelles RPC exigent la paire réseau
-**7 / `arkya-craft-schools-v1`**. Unity, Characters et le service CI de topology
-reconnaissent cette paire. L'admission exige une correspondance exacte entre
+Le composant ghost et les nouvelles RPC d'artisanat ont introduit la paire réseau
+**7 / `arkya-craft-schools-v1`**. Le build actif utilise désormais
+**8 / `arkya-npc-vitals-v1`** pour les réserves et niveaux répliqués des PNJ,
+en conservant les contrats artisanaux de cette tranche. Unity, Characters et
+le service CI de topology reconnaissent la nouvelle paire. L'admission exige une correspondance exacte entre
 client et destination ; les anciens builds ne sont pas compatibles avec ce
 ghost. Les profils de déploiement existants restent inchangés. Reconstruire
 ensemble client et dedicated, puis mettre à jour explicitement le profil du

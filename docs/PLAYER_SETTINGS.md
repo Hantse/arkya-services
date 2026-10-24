@@ -137,3 +137,27 @@ restent présents pendant les essais locaux.
 
 Le redimensionnement d’un client natif exporté et les contraintes réelles du
 navigateur ne sont pas validés par cette exécution dans l’Editor.
+
+## Correctifs des rapports urgents du 24 octobre 2026
+
+Le thème autonome fournit désormais la structure des zones défilantes et des
+listes déroulantes au niveau du panneau runtime. Les popups restent en position
+absolue, sans déplacer le menu, et leur fond est porté par la liste plutôt que
+par toute la surface de capture des clics. Les boutons de retour et de
+confirmation gardent leur hauteur lorsque le contenu doit défiler. Changer
+d’onglet replace le défilement en haut ; Échap ferme d’abord une liste ouverte.
+
+Les jauges du HUD utilisent un cadre fin propre, sans étirer le sprite d’un
+bouton décoratif. Vie et mana disposent de valeurs centrées et plus grandes ;
+l’endurance, l’expérience et les deux rangées de raccourcis ont des espacements
+distincts. Les titres longs et les actions des fenêtres peuvent revenir à la
+ligne.
+
+`RuntimeUiLayoutTests` ajoute deux tests de géométrie runtime : options sur
+1440 × 810, 980 × 600 et 640 × 480, ouverture/fermeture d’une vraie liste,
+défilement jusqu’à Appliquer, puis lisibilité des jauges dans les trois thèmes.
+Ces tests ont été exécutés avec succès dans Unity 6000.6.6f1 après
+rétablissement de MCP et recompilation. Les options et les jauges ont aussi
+été inspectées dans une capture du jeu à 1198 × 584. Le client Windows
+exporté et les contraintes propres au navigateur restent hors de cette
+validation Editor.

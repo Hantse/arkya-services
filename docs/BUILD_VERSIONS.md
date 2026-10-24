@@ -7,6 +7,31 @@ du même run conserve la version ; un nouveau run reçoit une nouvelle version.
 La version de build est distincte de `ProtocolVersion` / `BuildId`, qui décrivent
 la compatibilité du contrat réseau.
 
+## Protocole PNJ du 24 octobre 2026
+
+Le code Unity actif utilise **8 / `arkya-npc-vitals-v1`**. L'ajout de `Level`,
+`Health` et `MaxHealth` au ghost des PNJ change son format réseau : les nouveaux
+clients et dedicateds doivent partager cette paire. Ces valeurs viennent du
+serveur ; ce changement ne crée pas un système de combat pour les résidents.
+
+Characters et Realms reconnaissent toujours les paires historiques, dont
+**7 / `arkya-craft-schools-v1`**, pour leurs anciens realms. Cette reconnaissance
+n'autorise pas un client 7 sur un serveur 8, ni l'inverse. L'admission exige
+l'égalité de la version **et** du BuildId, et les contrôles de promotion CI
+refusent également ces mélanges. La fixture de topology CI correspond au
+protocole 8 ; un test compare cette fixture aux constantes réelles de Unity.
+
+Déployer les services acceptant la paire 8, reconstruire client et dedicated
+ensemble puis migrer explicitement le profil du realm avant de lui ouvrir les
+admissions. Un profil existant n'est pas réécrit automatiquement. Cette passe
+ne modifie ni le format des sauvegardes de personnages ni les profils déployés.
+
+Vérification ciblée : **76 tests backend réussis** (70 Characters et 6 Realms)
+et **18 tests Python CI réussis**. Ils couvrent l'admission 8/8, les refus 7/8
+et 8/7, les paires invalides, la reconnexion, les sauvegardes d'artisanat et les
+transferts intra/inter-Area sous les protocoles 7 et 8. Ils ne remplacent pas
+un essai client/dedicated des ghosts Unity après reconstruction.
+
 ## Construction et publication
 
 La CI fournit la même identité à chaque cible. Le build l'intègre dans

@@ -81,7 +81,9 @@ reçoit le profil initial lors de sa première lecture. Un bloc présent mais
 invalide est refusé, sans remplissage silencieux des réserves.
 
 La première tranche de statistiques utilisait la paire **2 / `arkya-character-stats-v1`**.
-Le build actif avec écoles, maîtres et formules utilise désormais **7 / `arkya-craft-schools-v1`** ;
+Les écoles, maîtres et formules ont introduit **7 / `arkya-craft-schools-v1`**.
+Le build actif utilise désormais **8 / `arkya-npc-vitals-v1`**, qui ajoute les
+niveaux et réserves de vie répliqués des PNJ ;
 la simulation reste au format 3 introduit pour la plongée et possède un bloc
 `craft` versionné, indépendant du bloc `gameplay`.
 Les services reconnaissent aussi les anciennes paires ; ils exigent une

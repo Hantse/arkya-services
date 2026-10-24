@@ -10,7 +10,7 @@ namespace Arkya.Characters.Tests;
 
 public sealed class CharacterCraftPersistenceTests
 {
-    private sealed class Catalog : IGameRealmCatalog
+    private sealed class Catalog(int version, string buildId) : IGameRealmCatalog
     {
         public static readonly DedicatedServerIdentity[] Servers = [
             new() { RealmId = "beta-web", ServerId = "craft-west", Key = "craft-west-test-key-with-thirty-two-characters" },
@@ -18,7 +18,7 @@ public sealed class CharacterCraftPersistenceTests
             new() { RealmId = "beta-web", ServerId = "craft-valley", Key = "craft-valley-test-key-with-thirty-two-characters" }];
         public Task<GameRealmCatalog> ListAsync(CancellationToken cancellationToken) => Task.FromResult(new GameRealmCatalog([
             new("beta-web", "Craft persistence", true, Servers[0].ServerId, "wss://game.example/west",
-                GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId)
+                version, buildId)
             {
                 TopologyVersion = "craft-two-areas-v1",
                 Areas = [new("starter-island", "starter-island"), new("valley", "handoff-valley")],
@@ -30,19 +30,21 @@ public sealed class CharacterCraftPersistenceTests
     }
 
     [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public async Task CraftProgressAndMaterialsSurvivePeriodicSaveHandoffAndReconnect(bool interArea)
+    [InlineData(false, GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId)]
+    [InlineData(true, GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId)]
+    [InlineData(false, GameProtocol.NpcVitalsVersion, GameProtocol.NpcVitalsBuildId)]
+    [InlineData(true, GameProtocol.NpcVitalsVersion, GameProtocol.NpcVitalsBuildId)]
+    public async Task CraftProgressAndMaterialsSurvivePeriodicSaveHandoffAndReconnect(bool interArea, int version, string buildId)
     {
         var account = Guid.NewGuid();
         var clock = new GameClock();
         var characters = new MemoryCharacterRepository();
         var character = (await new CharacterService(characters, clock).CreateAsync(account, "Aelys", default)).Character!;
         var options = Options.Create(new CharacterGameAccessOptions { DedicatedServers = Catalog.Servers });
-        var service = new GameAdmissionService(characters, new MemoryGameLeaseStore(), new Catalog(),
+        var service = new GameAdmissionService(characters, new MemoryGameLeaseStore(), new Catalog(version, buildId),
             new DedicatedKeyValidator(options), clock, new TestSessionReferences(clock, account), options);
         var reference = SessionReference.Create("craft-persistence-test");
-        var request = new AdmissionRequest("beta-web", GameProtocol.CraftSchoolsVersion, GameProtocol.CraftSchoolsBuildId);
+        var request = new AdmissionRequest("beta-web", version, buildId);
         var ticket = await service.IssueAsync(character.Id, account, clock.Now.AddHours(1), reference, request, default);
         Assert.Null(ticket.Error);
         var source = Catalog.Servers[0];
