@@ -48,6 +48,7 @@ public static partial class CharacterPossessionRules
         "resource:wood" or "resource:enchanted-wood" or "resource:stone" or "resource:enchanted-stone" or
         "resource:ore" or "resource:enchanted-ore" or "resource:crystal" or "resource:enchanted-crystal" or
         "resource:berries" or "resource:enchanted-berries" or "resource:fiber" or "resource:enchanted-fiber" ||
+        value is "resource:sandstone" or "resource:stone-brick" or "resource:sandstone-brick" ||
         value is { Length: >= 1 and <= 64 } && ItemIdPattern().IsMatch(value);
 
     public static bool Equivalent(CharacterPossessionsSnapshot? first, CharacterPossessionsSnapshot? second)

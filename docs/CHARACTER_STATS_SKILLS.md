@@ -3,6 +3,8 @@
 Première tranche implémentée le 23 octobre 2026 dans le projet Unity actif.
 Elle reprend les cinq classes et les seuils du [catalogue accepté](GAMEPLAY_STARTER_SKILLS.md),
 avec les [règles de rating et d’héritage](GAMEPLAY_CLASSES.md).
+Les [écoles d'artisanat](CRAFTING.md), ajoutées séparément, possèdent leurs
+propres niveaux, compétences et XP.
 
 ## État et autorité
 
@@ -35,6 +37,12 @@ Le domaine accepte une autre `CharacterExperienceCurve` ; changer la courbe
 du runtime ou son plafond exige aussi de migrer/valider les profils persistants.
 Le rating est la moyenne des niveaux des seules classes débloquées.
 
+La récolte et la fabrication font progresser `CharacterCraftState` : Mineur,
+Forgeron, Bûcheron et Charpentier. Ces actions ne donnent aucune XP aux classes
+de combat et ne modifient pas leur rating. Les compétences artisanales suivent
+automatiquement le niveau de leur école ; l'apprentissage explicite et
+l'héritage des rangs décrits ici restent propres au catalogue de combat.
+
 Le catalogue contient 25 compétences et 40 rangs. Atteindre un seuil autorise
 l’apprentissage ; le rang doit ensuite être appris explicitement. Apprendre
 R2 d’une compétence transmissible rend son R1 disponible dans les autres
@@ -57,6 +65,10 @@ et catalogue des compétences avec rang appris/hérité ou seuil requis.
 Les mises à jour de statistiques préservent les annonces, quêtes et barres
 d’actions déjà présentes.
 
+Les écoles d'artisanat disposent de leur propre panneau **Métiers · K**,
+avec leurs quatre niveaux/XP et leurs huit compétences. **V** ouvre les
+recettes près du stone cutter ; voir les [commandes d'artisanat](CRAFTING.md).
+
 ## Persistance et compatibilité
 
 Les sauvegardes périodiques, la sortie et les deux captures de handoff incluent
@@ -66,7 +78,10 @@ versionné. Un ancien snapshot de mouvement `version: 1`, sans bloc de stats,
 reçoit le profil initial lors de sa première lecture. Un bloc présent mais
 invalide est refusé, sans remplissage silencieux des réserves.
 
-Le schéma ghost utilise la nouvelle paire **2 / `arkya-character-stats-v1`**.
+La première tranche de statistiques utilisait la paire **2 / `arkya-character-stats-v1`**.
+Le build actif avec artisanat utilise désormais **6 / `arkya-crafting-v1`** ;
+la simulation reste au format 3 introduit pour la plongée et possède un bloc
+`craft` versionné, indépendant du bloc `gameplay`.
 Les services reconnaissent aussi les anciennes paires ; ils exigent une
 correspondance exacte entre le client et la destination. Les profils de
 déploiement existants ne sont pas migrés automatiquement : client et dedicated
