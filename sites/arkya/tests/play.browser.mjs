@@ -3,7 +3,7 @@
 async (page) => {
   const base = new URL(page.url()).origin;
   const api = 'https://api.arkya.online';
-  const installer = 'https://github.com/Hantse/arkya-services/releases/download/launcher-v0.4.1/Arkya-Launcher-Setup.exe';
+  const installer = 'https://github.com/Hantse/arkya-services/releases/download/launcher-v0.4.2/Arkya-Launcher-Setup.exe';
   const checks = [];
   const errors = [];
   const requests = [];

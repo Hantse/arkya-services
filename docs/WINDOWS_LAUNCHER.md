@@ -1,6 +1,6 @@
 # Launcher Windows Arkya
 
-`launcher/` fournit un launcher WPF .NET 10, en français, pour Windows x64.
+`launcher/` fournit un launcher WPF .NET 10, en français et en anglais, pour Windows x64.
 Il vérifie les versions disponibles, télécharge et installe un build Unity,
 puis lance son exécutable. La publication autonome inclut .NET et ne demande
 pas de droits administrateur. Au démarrage, sa page de connexion Discord
@@ -27,7 +27,7 @@ SHA-256 du ZIP réellement construit. Le launcher peut ouvrir une version déjà
 installée si le serveur de distribution est indisponible, après connexion du
 compte. Cela ne rend pas les services de jeu accessibles hors ligne.
 
-Le launcher `0.4.1` se distribue avec un installateur Windows autonome,
+Le launcher `0.4.2` se distribue avec un installateur Windows autonome,
 `Arkya-Launcher-Setup.exe`. Il installe le launcher pour l’utilisateur courant,
 par défaut dans `%LOCALAPPDATA%\Programs\Arkya Launcher`, avec choix du dossier
 dans l’assistant, raccourci Démarrer et raccourci bureau facultatif. Le runtime
@@ -39,7 +39,7 @@ secondaire pour les usages manuels.
 L’accueil rassemble une capture du jeu, les actualités et les notes de version,
 avec une barre d’installation et de lancement toujours accessible. Les onglets
 **Actualités** et **Notes de version** chargent les dernières publications
-françaises depuis `https://api.arkya.online/v1/content/posts`. Leur contenu est
+dans la langue choisie depuis `https://api.arkya.online/v1/content/posts`. Leur contenu est
 administré dans **Admin → Publications** ; voir [le guide](PUBLICATIONS.md).
 Les articles sont affichés en texte brut. Une panne de ce flux ne bloque ni
 l’installation ni le lancement ; les notes du manifeste restent disponibles
@@ -52,6 +52,22 @@ ainsi que l’éventuelle bannière de mise à jour, restent entièrement visibl
 La fenêtre sans bordure applique ces limites via
 [`WM_GETMINMAXINFO`](https://learn.microsoft.com/en-us/windows/win32/winmsg/wm-getminmaxinfo),
 en pixels natifs, puis laisse WPF appliquer les dimensions minimales.
+
+## Langue du launcher
+
+Le sélecteur **Français / English** est accessible dans la barre supérieure,
+sur la page de connexion comme dans l’accueil. Le changement s’applique
+immédiatement aux libellés, messages, dates et unités, sans redémarrage.
+La préférence `language` (`fr` ou `en`) est mémorisée dans
+`launcher-preferences.json` ; les anciennes préférences gardent le français.
+Une langue sauvegardée inconnue revient au français en conservant les autres
+préférences valides.
+
+Changer de langue conserve la session, le canal, le dossier et les opérations
+d’installation en cours. Le flux des publications est rechargé avec le filtre
+`language` correspondant ; un article de l’ancienne langue est fermé et une
+réponse tardive ne le réintroduit pas. Les articles et les notes rédigées par
+l’équipe restent affichés dans leur texte publié, sans traduction locale.
 
 ## Connexion au launcher
 
@@ -338,7 +354,7 @@ La [source visuelle et les vérifications](APP_ICONS.md) couvrent aussi
 l’icône partagée avec le client Unity.
 
 Publier d’abord l’installateur dans une release immuable, puis modifier le lien
-du site. Le lien du launcher `0.4.1` utilise la release `launcher-v0.4.1` ; les
+du site. Le lien du launcher `0.4.2` utilise la release `launcher-v0.4.2` ; les
 mises à jour du jeu continuent à suivre le manifeste Windows et restent
 indépendantes de cette version du launcher.
 
@@ -387,6 +403,14 @@ manifeste du site. Le manifeste contient la taille et le SHA-256 du setup exact.
 Le setup public `0.4.1` a été téléchargé par le vrai `LauncherUpdateClient` :
 taille et SHA-256 conformes au package vérifié.
 La page Jouer et le manifeste canonique sont servis avec `no-cache`.
+
+La version `0.4.2` ajoute le choix Français / English et améliore l’espacement
+des onglets. Elle passe **205 tests Core et 24 tests WPF**, avec captures
+des pages de connexion et d’accueil dans les deux langues en 1040 × 720.
+Les tests vérifient la préférence conservée après réouverture, l’isolation
+de la session et de l’installation, ainsi que le rejet d’une ancienne réponse
+de publications après un changement de langue. Les sources de l’installateur
+et du ZIP portable sont fixées au commit `9081769`.
 
 L’installateur peut être vérifié dans un dossier de test neuf, sans démarrer
 le launcher ni télécharger le jeu :
