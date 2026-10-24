@@ -34,7 +34,10 @@ pages de 12. La page publique ne présente aucun bloc de recherche ou de filtres
 `content-client.mjs` lit uniquement les routes anonymes `/v1/content/posts` de
 l'origine API configurée, sans cookie ni bearer, avec délai et réponse bornés.
 L'onglet, la langue et la pagination restent dans l'URL ; `post=UUID` ouvre l'article
-complet. Le texte publié est affiché comme texte brut. Une news contenant le
+complet dans une vue de lecture dédiée, avec titre, retour et texte alignés.
+Le contenu reste du texte brut : les paragraphes, intertitres en majuscules et
+listes à tirets sont espacés par le rendu, et les URL HTTP(S) sont cliquables.
+Le HTML et le Markdown restent littéraux. Une news contenant le
 lien canonique `https://arkya.online/beta.html` propose un bouton local
 **S'inscrire à la bêta**, dans la liste et dans l'article.
 
@@ -46,6 +49,11 @@ avec des réponses isolées. Les données des tests restent hors de `dist/`.
 Le retrait du bloc public de filtres est vérifié par **193 contrôles Edge**
 en FR/EN, de 320 à 1440 px : onglets, pagination, articles, inscription et
 nettoyage des anciens paramètres d'URL. Les **161 tests Node** passent également.
+
+La mise en page des articles est ensuite vérifiée par **241 contrôles Edge**
+en FR/EN, de 320 à 1440 px : alignement du retour, du titre et du corps,
+hiérarchie des sections, listes, liens et contenu HTML laissé littéral.
+Les **172 tests Node** passent, dont 11 sur le rendu du texte publié.
 
 Vérification initiale du 24 octobre 2026 : **161 tests Node**, **148 tests Content avec
 MongoDB**, **140 contrôles Edge sur la page** et **36 sur la navigation** réussis. Les rendus bureau/mobile sont

@@ -8,6 +8,15 @@ L’Admin utilise sa clé Content existante ; les identifiants joueurs et la cl�
 des serveurs dédiés ne permettent aucune modification. Le launcher et le site
 lisent uniquement les publications publiques, sans compte ni cookie.
 
+## Rédaction des notes publiques
+
+Les notes de version parlent des fonctionnalités et corrections destinées aux
+joueurs. Elles ne mentionnent ni l'administration, ni ses outils internes,
+ni le MCP. Cette règle s'applique aux titres, résumés et corps, en français
+comme en anglais. Les preuves techniques et les détails d'exploitation restent
+dans la documentation interne ; les limites de disponibilité du jeu restent
+explicites dans les notes publiques.
+
 ## Backoffice
 
 - `/Publications` : deux onglets **News / Release notes**, avec recherche,
@@ -145,6 +154,11 @@ Publication/dépublication : `{ revision }` uniquement.
 
 Le contenu est du **texte brut**, sans HTML ni Markdown rendu. Les consommateurs
 l’affichent comme texte, jamais dans `innerHTML` ou un navigateur embarqué.
+Sur le site, un rendu DOM distingue les paragraphes, les intertitres courts en
+majuscules et les listes à tirets ou puces, puis rend les URL HTTP(S) cliquables.
+Il ne lit aucune balise HTML ni syntaxe Markdown ; le texte et le contrat API
+restent inchangés. L’article dispose d’une colonne de lecture commune au titre,
+au retour et au corps, sans la grande introduction réservée à la liste.
 Les champs JSON inconnus, valeurs invalides et révisions manquantes donnent `400`.
 Le serveur conserve la limite globale de requête à 512 Kio.
 

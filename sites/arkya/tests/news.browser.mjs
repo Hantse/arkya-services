@@ -24,12 +24,15 @@ async (page) => {
         sequence += 1;
         const beta = kind === 'news' && index === 0;
         posts.push({ id: `10000000-0000-4000-8000-${String(sequence).padStart(12, '0')}`, kind, language,
-          title: beta ? language === 'fr' ? 'La bêta ouvre ses inscriptions' : 'Beta registration is open' :
+          title: beta ? language === 'fr' ? 'La bêta fermée d’Arkya ouvre ses inscriptions' : 'Registration for Arkya’s closed beta is open' :
             kind === 'news' ? `${language === 'fr' ? 'Nouvelles de l’île' : 'Island news'} ${index}` :
               `${language === 'fr' ? 'Le monde évolue' : 'The world evolves'} ${index}`,
           summary: language === 'fr' ? 'Une île à explorer, des personnages et les premières aventures à partager.' :
             'An island to explore, characters and the first adventures to share.',
-          body: beta ? `Closed beta / Bêta fermée\n\nhttps://arkya.online/beta.html?lang=${language}\n\n<img src=x onerror="window.newsInjected=true">\n<script>window.newsInjected=true</script>` :
+          body: beta ? (language === 'fr' ?
+            'L’Île de l’Aube vous attend. Les inscriptions à la bêta fermée sont ouvertes.\n\nCOMMENT S’INSCRIRE\nRendez-vous sur https://arkya.online/beta.html?lang=fr, connectez-vous avec Discord et confirmez votre inscription.\n\nLes accès seront attribués par vagues parmi les comptes inscrits.\n\nLES PREMIÈRES SESSIONS\n- Créez votre personnage.\n- Explorez l’île et partagez vos retours.' :
+            'The Isle of Dawn awaits. Registration for Arkya’s closed beta is now open.\n\nHOW TO REGISTER\nVisit https://arkya.online/beta.html?lang=en, sign in with Discord, and confirm your registration.\n\nAccess will be granted in waves from the registered accounts.\n\nTHE FIRST SESSIONS\n- Create your character.\n- Explore the island and share your feedback.') +
+            '\n\n<img src=x onerror="window.newsInjected=true">\n<script>window.newsInjected=true</script>' :
             `Development journal ${index}\n\nMovement, characters and the starter island.\n\nPlain text stays plain text.`,
           gameVersion: kind === 'news' ? null : index % 2 ? '0.1.0' : '0.2.0',
           publishedAt: new Date(Date.UTC(2026, 9, 24 - index, 12)).toISOString(),
@@ -159,9 +162,29 @@ async (page) => {
     check((await page.locator('#news-article-body').textContent()).includes('<script>'), 'Article markup is displayed literally');
     check(await page.locator('#news-article-body img, #news-article-body script').count() === 0, 'Publication body cannot create HTML elements');
     check(await page.evaluate(() => !window.newsInjected), 'Publication markup cannot execute');
-    for (const width of [1440, 760, 390, 320]) {
-      await page.setViewportSize({ width, height: 1100 });
-      check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Article fits ${width}px`);
+    for (const lang of ['fr', 'en']) {
+      const article = posts.find(post => post.kind === 'news' && post.language === lang);
+      await page.goto(`${base}/news.html?lang=${lang}&post=${article.id}`);
+      await state('ready');
+      check(await page.locator('.news-intro').isHidden(), `${lang}: article has a dedicated reading view`);
+      check(await page.locator('h1:visible').count() === 1, `${lang}: article title is the main heading`);
+      check(await page.locator('#news-article-body h2').count() === 2, `${lang}: plain text section labels become headings`);
+      check(await page.locator('#news-article-body ul li').count() === 2, `${lang}: plain text bullets become a readable list`);
+      check(await page.locator('#news-article-body a').getAttribute('href') === `https://arkya.online/beta.html?lang=${lang}`, `${lang}: article URL is clickable without trailing punctuation`);
+      check((await page.locator('#news-article-body').textContent()).includes('<script>'), `${lang}: HTML remains literal after formatting`);
+      for (const width of [1440, 1100, 820, 760, 390, 320]) {
+        await page.setViewportSize({ width, height: 1100 });
+        check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${lang}: article fits ${width}px`);
+        const back = await page.locator('#news-back').boundingBox();
+        const title = await page.locator('#news-article-title').boundingBox();
+        const body = await page.locator('#news-article-body').boundingBox();
+        check(Math.abs(back.x - title.x) < 1 && Math.abs(body.x - title.x) < 1, `${lang}: article and return link align at ${width}px`);
+        check(Number.parseFloat(await page.locator('#news-article-title').evaluate(node => getComputedStyle(node).fontSize)) <= 48, `${lang}: title stays within the reading scale at ${width}px`);
+        if (width === 1440 || width === 390) {
+          await page.evaluate(() => scrollTo(0, 0));
+          await page.screenshot({ path: `output/playwright/arkya-news-article-${lang}-${width === 1440 ? 'desktop' : 'mobile'}.png`, fullPage: true });
+        }
+      }
     }
     await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({ path: 'output/playwright/arkya-news-article-mobile.png', fullPage: true });

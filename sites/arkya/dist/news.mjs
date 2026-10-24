@@ -1,5 +1,6 @@
 import './common.js';
 import { createPublicationClient, betaRegistrationHref } from './content-client.mjs';
+import { renderPublicationBody } from './publication-body.mjs';
 
 const client = createPublicationClient({ baseUrl: window.ArkyaAuthConfig?.identityBaseUrl || 'https://api.arkya.online' });
 const $ = selector => document.querySelector(selector);
@@ -99,6 +100,7 @@ function card(post) {
 }
 
 function renderShell() {
+  $('.news-main').dataset.view = current.post ? 'article' : 'list';
   tabs.forEach(tab => {
     const selected = tab.dataset.kind === current.tab;
     tab.setAttribute('aria-selected', String(selected));
@@ -160,7 +162,7 @@ function renderArticle(post) {
   $('#news-article-meta').replaceChildren(...metadata(post));
   $('#news-article-title').textContent = post.title;
   $('#news-article-summary').textContent = post.summary;
-  $('#news-article-body').textContent = post.body;
+  renderPublicationBody($('#news-article-body'), post.body);
   const beta = $('#news-article-beta');
   const href = betaRegistrationHref(post, current.language);
   beta.hidden = !href;
@@ -185,7 +187,10 @@ async function load({ focus = false } = {}) {
       const post = await client.get(snapshot.post, { signal: request.signal });
       if (thisGeneration !== generation) return;
       renderArticle(post);
-      if (focus) $('#news-article-title').focus({ preventScroll: true });
+      if (focus) {
+        $('#news-article-title').focus({ preventScroll: true });
+        $('#news-article-view').scrollIntoView({ block: 'start', behavior: 'instant' });
+      }
     } else {
       if (snapshot.page < 1) { status('invalid'); return; }
       const result = await client.list({ kind: snapshot.tab, language: snapshot.language,
