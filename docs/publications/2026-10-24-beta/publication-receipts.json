@@ -59,36 +59,36 @@
       "title": "Développement des 23–24 octobre : exploration, combats et PNJ",
       "language": "fr",
       "kind": "release-note",
-      "revision": 2,
-      "publishedAt": "2026-10-24T10:47:18.452+00:00",
-      "publishedRevision": 2
+      "revision": 4,
+      "publishedAt": "2026-10-24T14:43:57.1521186+00:00",
+      "publishedRevision": 4
     },
     {
       "id": "4da3eaf0-f3ac-4b17-af63-13f47f8f7984",
       "title": "23–24 October development: exploration, encounters, and NPCs",
       "language": "en",
       "kind": "release-note",
-      "revision": 2,
-      "publishedAt": "2026-10-24T10:47:18.753+00:00",
-      "publishedRevision": 2
+      "revision": 4,
+      "publishedAt": "2026-10-24T14:43:57.0082235+00:00",
+      "publishedRevision": 4
     },
     {
       "id": "7ec30125-65f4-4bfb-ab13-d80224955d98",
-      "title": "Depuis la première bêta : services, royaumes et outils de contenu",
+      "title": "Depuis la première bêta : royaumes, continuité du personnage et retours des joueurs",
       "language": "fr",
       "kind": "release-note",
-      "revision": 3,
-      "publishedAt": "2026-10-24T10:45:18.972+00:00",
-      "publishedRevision": 3
+      "revision": 5,
+      "publishedAt": "2026-10-24T14:43:57.2872311+00:00",
+      "publishedRevision": 5
     },
     {
       "id": "3d9211dd-2e1d-47bf-8955-724bd2f5d4a5",
-      "title": "Since the first beta: services, realms, and content tools",
+      "title": "Since the first beta: realms, character continuity, and player support",
       "language": "en",
       "kind": "release-note",
-      "revision": 3,
-      "publishedAt": "2026-10-24T10:45:03.297+00:00",
-      "publishedRevision": 3
+      "revision": 5,
+      "publishedAt": "2026-10-24T14:43:57.4326524+00:00",
+      "publishedRevision": 5
     }
   ]
 }

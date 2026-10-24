@@ -27,13 +27,22 @@ réel n'a été créé par les tests de cette mission.
 
 ## Périmètre et versions
 
+Actualisation éditoriale du 24 octobre : les deux bilans de développement
+et les deux bilans du parcours joueur ont été corrigés puis republiés via
+le MCP, avec leurs identifiants existants. Les versions de jeu sont conservées.
+Les huit notes publiques FR/EN ont été relues avec le client du site et
+comparées aux textes attendus : elles se limitent au jeu et au parcours joueur.
+Les titres, résumés et corps ne présentent plus les fonctions d'administration
+ni les outils internes. Les nouvelles révisions et dates figurent dans
+`publication-receipts.json`.
+
 | Sujet | `gameVersion` | Portée |
 | --- | --- | --- |
 | Inscription bêta | `null` | News, inscription distincte de l'attribution d'accès |
 | Rétrospective web → Windows | `0.1.0-beta.20261023.3` | Client Windows proposé dans le manifeste public au moment de la rédaction |
 | Launcher | `0.4.1` | Release GitHub publiée et manifeste canonique du site vérifié avant publication de la note |
 | Développement jeu des 23–24 octobre | `dev.20261024` | Repère éditorial explicitement présenté comme développement, pas une version téléchargeable |
-| Services et outils | `dev.20261024` | Bilan de réalisation ; activation/déploiement propres à chaque service et royaume |
+| Royaumes et continuité du personnage | `dev.20261024` | Bilan du parcours joueur ; disponibilité propre à chaque royaume |
 
 Les manifestes HTTPS ont été relus publiquement le 24 octobre 2026 avec
 `Invoke-WebRequest`, sans authentification :
