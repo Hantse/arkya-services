@@ -30,9 +30,12 @@ def render_preview(components):
             else:
                 rebased_resources.append(relative(value))
         source["resources"] = rebased_resources
+        npc_active = "../npc-dialogue" in source.get("components", [])
         source["components"] = [relative(value) for value in source.get("components", [])
-                                if value not in ("../reports-control", "../inference-control")]
+                                if value not in ("../reports-control", "../inference-control", "../npc-dialogue")]
         source["components"] += [relative("../" + value + "-control") for value in components]
+        if npc_active and "inference" in components:
+            source["components"].append(relative("../npc-dialogue"))
         # The Admin profile uses local env files; copies keep Kustomize's loader boundary intact.
         for generator in source.get("configMapGenerator", []):
             for name in generator.get("envs", []):

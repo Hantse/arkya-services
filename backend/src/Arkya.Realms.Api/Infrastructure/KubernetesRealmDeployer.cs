@@ -332,6 +332,13 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
                 else annotations[RestartAnnotation] = restart.PreviousRevision.ToString(System.Globalization.CultureInfo.InvariantCulture);
             }
         }
+        var activateInference = false;
+        if (restartRequired && realm?.Restart is { Completed: false } && runtimeOptions.InferenceBaseUrl.Length > 0 &&
+            InferenceDisabledConfiguration(configuration, existing) is { } inferenceDisabled)
+        {
+            configuration = inferenceDisabled;
+            activateInference = true;
+        }
         if (realm?.ImageRelease is { } release)
         {
             if (!RealmImageReleases.Authorizes(options, realm)) throw new DeploymentFailure("image_release_conflict");
@@ -350,9 +357,25 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
         }
         else if (!ContainsDesired(configuration["spec"], existing["spec"])) throw new DeploymentFailure("resource_configuration_drift");
         if (restartRequired)
-            existing = await RestartAsync(resource, desired, existing, realm!.Restart!, cancellationToken);
+            existing = await RestartAsync(resource, desired, existing, realm!.Restart!, activateInference, cancellationToken);
         return existing;
     }
+
+    private static JsonObject? InferenceDisabledConfiguration(JsonObject desired, JsonObject existing)
+    {
+        var disabled = desired.DeepClone().AsObject();
+        var environment = disabled["spec"]!["template"]!["spec"]!["containers"]![0]!["env"]!.AsArray();
+        var inference = environment.Where(IsInferenceEnvironment).ToArray();
+        if (inference.Length != 2) return null;
+        foreach (var variable in inference) environment.Remove(variable);
+        // This exception accepts only the exact previous environment, including its order and secret references.
+        if (!JsonNode.DeepEquals(environment, existing["spec"]?["template"]?["spec"]?["containers"]?[0]?["env"]) ||
+            !ContainsDesired(disabled["spec"], existing["spec"])) return null;
+        return disabled;
+    }
+
+    private static bool IsInferenceEnvironment(JsonNode? variable) =>
+        variable?["name"]?.GetValue<string>() is "ARKYA_INFERENCE_API_URL" or "ARKYA_INFERENCE_SERVICE_KEY";
 
     private static long RestartRevision(JsonObject deployment)
     {
@@ -364,7 +387,7 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
     }
 
     private async Task<JsonObject> RestartAsync(string resource, JsonObject desired, JsonObject existing,
-        RealmRestartTransition restart, CancellationToken cancellationToken)
+        RealmRestartTransition restart, bool activateInference, CancellationToken cancellationToken)
     {
         var resourceVersion = existing["metadata"]?["resourceVersion"]?.GetValue<string>();
         if (string.IsNullOrWhiteSpace(resourceVersion)) throw new DeploymentFailure("resource_configuration_drift");
@@ -373,6 +396,12 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
         var patch = new JsonArray(
             new JsonObject { ["op"] = "test", ["path"] = "/metadata/resourceVersion", ["value"] = resourceVersion },
             new JsonObject { ["op"] = "add", ["path"] = "/spec/template/metadata/annotations", ["value"] = annotations });
+        if (activateInference)
+            foreach (var variable in desired["spec"]!["template"]!["spec"]!["containers"]![0]!["env"]!.AsArray().Where(IsInferenceEnvironment))
+                patch.Add(new JsonObject
+                {
+                    ["op"] = "add", ["path"] = "/spec/template/spec/containers/0/env/-", ["value"] = variable!.DeepClone()
+                });
         using var response = await SendAsync(HttpMethod.Patch, resource, patch, cancellationToken, "application/json-patch+json");
         if (response.StatusCode is HttpStatusCode.Conflict or HttpStatusCode.UnprocessableEntity)
             throw new DeploymentFailure("resource_conflict");

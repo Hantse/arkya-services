@@ -31,6 +31,7 @@ public partial class Program
         builder.Services.AddOptions<DeploymentOptions>().Bind(builder.Configuration.GetSection("Deployment"))
             .Validate(value => value.IsValid(), "Deployment configuration requires unique allowlisted namespaces, valid profiles and digest-pinned images.").ValidateOnStart();
         builder.Services.AddOptions<RealmRuntimeOptions>().BindConfiguration("RealmRuntime")
+            .PostConfigure(value => value.InferenceServiceKey = NpcDialogueKeys.ResolveRealms(builder.Configuration, value.InferenceServiceKey))
             .Validate(value => value.IsValid(), "Realm runtime requires a dedicated key seed and an explicitly allowed Characters endpoint.").ValidateOnStart();
         builder.Services.AddSingleton<IMongoClient>(services =>
         {

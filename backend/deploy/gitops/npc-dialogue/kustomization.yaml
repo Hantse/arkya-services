@@ -21,11 +21,11 @@ patches:
             env:
             - name: NpcDialogue__Enabled
               value: 'true'
-            - name: NpcDialogue__ServiceKey
+            - name: NpcDialogue__KeySeed
               valueFrom:
                 secretKeyRef:
-                  name: arkya-npc-dialogue-secrets
-                  key: service-key
+                  name: arkya-admin-secrets
+                  key: ContentApi__AdminKey
 - target:
     kind: Role
     name: arkya-realm-deployer
@@ -52,8 +52,8 @@ patches:
             env:
             - name: RealmRuntime__InferenceBaseUrl
               value: http://arkya-inference.arkya-beta.svc.cluster.local:8080/
-            - name: RealmRuntime__InferenceServiceKey
+            - name: NpcDialogue__KeySeed
               valueFrom:
                 secretKeyRef:
-                  name: arkya-npc-dialogue-secrets
-                  key: service-key
+                  name: arkya-admin-secrets
+                  key: ContentApi__AdminKey

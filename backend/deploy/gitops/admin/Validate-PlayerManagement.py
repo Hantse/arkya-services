@@ -321,6 +321,10 @@ def without_partition_handoff_component(documents):
 def check_profile(documents, frontend_documents=None, beta_documents=None, require_digests=False):
     documents = without_native_nova_component(documents)
     documents = without_partition_handoff_component(documents)
+    npc_spec = importlib.util.spec_from_file_location("arkya_npc_dialogue", ROOT.parent / "npc-dialogue/Test-Manifests.py")
+    npc = importlib.util.module_from_spec(npc_spec)
+    npc_spec.loader.exec_module(npc)
+    documents = npc.without_component(documents)
     web_documents = [document for document in documents if document["metadata"]["name"] == "arkya-web-client"]
     web.check_profile(web_documents)
     documents = [document for document in documents if document not in web_documents]

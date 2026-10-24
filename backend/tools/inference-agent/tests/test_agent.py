@@ -220,7 +220,7 @@ class HeartbeatTests(unittest.TestCase):
 
 @unittest.skipUnless(os.name == "nt", "Windows process job integration")
 class WindowsProcessTests(unittest.TestCase):
-    def test_unavailable_enrollment_route_has_actionable_diagnostic_and_preserves_identity(self):
+    def test_enrollment_failures_have_actionable_diagnostics_and_preserve_identity(self):
         with tempfile.TemporaryDirectory(prefix="Arkya enrollment unavailable ") as temporary:
             root = pathlib.Path(temporary)
             status = [404]
@@ -260,15 +260,22 @@ class WindowsProcessTests(unittest.TestCase):
 
             try:
                 original_key = None
-                for code in (404, 502, 503):
+                for code in (404, 409, 502, 503):
                     status[0] = code
                     failed = invoke()
                     self.assertEqual(failed.returncode, 1)
                     self.assertIn(f"HTTP {code}", failed.stderr)
                     self.assertIn(url + "/agent/inference/enroll", failed.stderr)
-                    self.assertIn("Arkya.Inference.Api", failed.stderr)
-                    self.assertIn("gateway", failed.stderr)
-                    self.assertIn("même commande", failed.stderr)
+                    if code == 409:
+                        self.assertIn("Conflit d'identité", failed.stderr)
+                        self.assertIn(str(root), failed.stderr)
+                        self.assertIn("-InstallDirectory", failed.stderr)
+                        self.assertIn("même compte Windows", failed.stderr)
+                        self.assertNotIn("correction côté serveur", failed.stderr)
+                    else:
+                        self.assertIn("Arkya.Inference.Api", failed.stderr)
+                        self.assertIn("gateway", failed.stderr)
+                        self.assertIn("même commande", failed.stderr)
                     if code == 404:
                         self.assertIn("activation", failed.stderr)
                     self.assertNotIn("private-upstream-response-details", failed.stderr)

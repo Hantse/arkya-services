@@ -32,6 +32,7 @@ public partial class Program
         builder.Services.AddOptions<InferenceOptions>().BindConfiguration("Inference")
             .Validate(value => value.IsValid(), "Inference limits or heartbeat configuration are invalid.").ValidateOnStart();
         builder.Services.AddOptions<NpcDialogueOptions>().BindConfiguration("NpcDialogue")
+            .PostConfigure(value => value.ServiceKey = NpcDialogueKeys.ResolveInference(builder.Configuration, value.ServiceKey))
             .Validate(value => value.IsValid(), "NPC dialogue configuration is invalid.").ValidateOnStart();
         builder.Services.AddSingleton<IMongoClient>(services =>
         {

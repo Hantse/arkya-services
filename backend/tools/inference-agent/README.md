@@ -14,8 +14,12 @@ Le serveur public doit router `/agent/inference/enroll` et `/agent/inference/hea
 Exécuter simplement :
 
 ```powershell
-.\Install.cmd -BackendUrl 'https://inference.example.net'
+.\Install.cmd -BackendUrl "https://inference.example.net"
 ```
+
+Cette commande fonctionne aussi dans l'invite de commandes (`cmd.exe`). Utiliser
+des guillemets doubles : dans `cmd.exe`, les apostrophes sont transmises dans
+l'URL et provoquent l'erreur `BackendUrl must use HTTPS`.
 
 Le jeton temporaire est demandé par une saisie masquée. L’installateur dérive une identité
 stable `pc-<nom-du-PC>` et affiche le nom Windows comme nom de machine ; `-AgentId` et
@@ -76,6 +80,14 @@ choisir le chemin. `-NoAutoStart` et `-SkipScheduledTask` servent aux validation
 `-AllowLoopbackHttp` autorise uniquement un backend HTTP sur loopback pour les tests.
 L’installation est relançable : elle arrête uniquement son propre agent, conserve
 le cache et le jeton de la même inscription, puis met à jour les fichiers.
+
+Pour une mise à jour, conserver le dossier d'installation, le compte Windows et
+le mode d'élévation d'origine. Sans `-InstallDirectory`, une console administrateur
+vise `C:\ProgramData\ArkyaInference`, tandis qu'une console utilisateur vise
+`%LOCALAPPDATA%\ArkyaInference`. Un changement de contexte peut donc tenter une
+nouvelle inscription du même identifiant avec un autre jeton et recevoir **HTTP 409**.
+Reprendre le dossier qui contient le `config\agent.json` de l'agent existant ;
+le message 409 indique le dossier de configuration utilisé par la tentative.
 
 ## Contrôle et fonctionnement
 

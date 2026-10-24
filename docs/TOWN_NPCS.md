@@ -134,7 +134,21 @@ HTTPS ; HTTP est limité au loopback et à l’origine interne explicitement aut
 requête ou fragment n’est accepté dans l’origine.
 
 Côté Inference, activer `NpcDialogue__Enabled=true` et fournir le même secret
-via `NpcDialogue__ServiceKey`. Un agent Windows 1.2 inscrit et un worker disponible
+via `NpcDialogue__ServiceKey`. Dans le profil GitOps, Inference et Realms utilisent
+plutôt `NpcDialogue__KeySeed`, référencé depuis le Secret existant de l'Admin :
+une dérivation HMAC dédiée produit leur clé commune sans réutiliser une clé
+opérateur ou d'admission. Seule la clé dérivée rejoint le Secret du dedicated ;
+la graine reste dans les services. Les clés explicites restent acceptées pour
+les autres installations.
+
+Après activation du composant et promotion des images, un realm déjà déployé
+exige un **Restart** explicite dans l'Admin pour ajouter les deux variables
+d'inférence manquantes. Cette adaptation est refusée dès qu'une des variables
+existe déjà ou qu'un autre champ du Deployment diffère. La réconciliation
+automatique conserve son contrôle de dérive. Attendre le retour Ready, puis
+vérifier la conversation dans le client.
+
+Un agent Windows 1.2 inscrit et un worker disponible
 sont nécessaires. Le [guide des agents d’inférence](INFERENCE_AGENTS.md#dialogues-pnj-du-jeu)
 décrit l’authentification, les routes, les limites et la configuration du
 [composant de déploiement facultatif](../backend/deploy/gitops/npc-dialogue/README.md).

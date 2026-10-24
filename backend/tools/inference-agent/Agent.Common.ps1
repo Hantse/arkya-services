@@ -52,11 +52,14 @@ function Assert-AgentEnrollmentIdentity {
 }
 
 function Get-AgentEnrollmentFailureMessage {
-    param([int]$StatusCode, [string]$EnrollmentUrl)
+    param([int]$StatusCode, [string]$EnrollmentUrl, [string]$ConfigDirectory)
     $retry = "L'identité locale est conservée. Après correction côté serveur, relancez la même commande avec le même dossier d'installation."
     switch ($StatusCode) {
         404 {
             return "Route d'inscription introuvable (HTTP 404) sur $EnrollmentUrl. Vérifiez l'URL du backend, puis le déploiement et l'activation du service Arkya.Inference.Api et du routage /agent/inference/* dans la gateway. $retry"
+        }
+        409 {
+            return "Conflit d'identité de l'agent (HTTP 409) sur $EnrollmentUrl. Dossier de configuration utilisé : $ConfigDirectory. Pour une mise à jour, reprenez le dossier de l'installation existante avec -InstallDirectory, le même compte Windows et le même mode d'élévation. Vérifiez C:\ProgramData\ArkyaInference et %LOCALAPPDATA%\ArkyaInference. L'identité locale est conservée."
         }
         { $_ -in @(502,503) } {
             return "Service d'inscription indisponible (HTTP $StatusCode) sur $EnrollmentUrl. Vérifiez que la gateway peut joindre le service Arkya.Inference.Api et que celui-ci est prêt. $retry"
@@ -139,7 +142,7 @@ function Register-AgentEnrollment {
                             $EnrollmentToken = Read-Host "Jeton temporaire d'inscription fourni par le backoffice" -AsSecureString
                             continue
                         }
-                        throw (Get-AgentEnrollmentFailureMessage -StatusCode ([int]$response.StatusCode) -EnrollmentUrl $enrollmentUrl)
+                        throw (Get-AgentEnrollmentFailureMessage -StatusCode ([int]$response.StatusCode) -EnrollmentUrl $enrollmentUrl -ConfigDirectory $ConfigDirectory)
                     }
                     $result = $response.Content.ReadAsStringAsync().GetAwaiter().GetResult() | ConvertFrom-Json
                     if ($result.agentId -ne $AgentId) { throw 'Enrollment response identity mismatch.' }

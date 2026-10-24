@@ -60,8 +60,12 @@ Conserver le dossier d'installation et son identité DPAPI après cet échec. Re
 4. Ouvrir PowerShell en administrateur dans le dossier extrait, puis :
 
 ```powershell
-.\Install.cmd -BackendUrl https://api.arkya.online
+.\Install.cmd -BackendUrl "https://api.arkya.online"
 ```
+
+Les guillemets doubles fonctionnent dans PowerShell et dans `cmd.exe`. Ne pas
+les remplacer par des apostrophes dans `cmd.exe` : elles font alors partie de
+l'URL et l'installateur la refuse avec `BackendUrl must use HTTPS`.
 
 Coller la clé d'installation à l'invite sécurisée. L'installateur déduit un identifiant de la machine, génère son jeton permanent, le protège localement avec DPAPI et enregistre automatiquement l'agent dans le backend. La machine apparaît ensuite dans Admin. Par défaut, elle demande **3 workers LFM, 4 threads chacun, maximum 6 workers**. C'est un réglage de départ à mesurer sur le serveur i9-12900K.
 
@@ -78,6 +82,18 @@ Le modèle est téléchargé une fois dans le cache partagé ; chaque worker cha
 La démo est accessible sur la machine Windows à `http://127.0.0.1:8767/`, notamment depuis une session Bureau à distance. Les ports des workers sont également limités à loopback. Le pilotage distant de l'agent ne demande pas d'ouverture d'un port entrant sur cette machine. Un éventuel accès à la démo depuis un autre poste doit passer par un tunnel privé.
 
 Les détails des options, du démarrage automatique et de la désinstallation sont fournis dans le `README.md` inclus au ZIP et dans [`backend/tools/inference-agent`](../backend/tools/inference-agent/README.md).
+
+### Si une mise à jour renvoie HTTP 409
+
+L'inscription est en conflit avec une identité existante. Vérifier que la commande
+reprend le dossier de l'agent déjà installé, avec le même compte et le même mode
+d'élévation : par défaut, la console administrateur utilise
+`C:\ProgramData\ArkyaInference`, la console utilisateur `%LOCALAPPDATA%\ArkyaInference`.
+Une nouvelle tentative dans l'autre dossier ne possède pas le jeton de l'agent
+déjà enregistré. Utiliser `-InstallDirectory` pour désigner son dossier existant,
+celui qui contient `config\agent.json`. La mise à jour conserve alors cette
+inscription et ses workers. Le diagnostic affiche le dossier de configuration
+utilisé sans révéler le jeton ou le corps de réponse du serveur.
 
 Pour démarrer sans session ouverte sur le serveur, ouvrir PowerShell **en administrateur** : l'installation par défaut utilise `C:\ProgramData\ArkyaInference` et une tâche SYSTEM au démarrage de Windows. Sans élévation, le mode utilisateur démarre à l'ouverture de session. Un superviseur PowerShell retente le lancement de Python trois fois, à dix secondes d'intervalle, après un échec. La tâche configure aussi une reprise du superviseur, avec trois tentatives espacées d'une minute ; la reprise de Python ne dépend pas de cette option du Planificateur. Un arrêt volontaire n'est pas traité comme un crash.
 
@@ -130,13 +146,22 @@ L'agent partage ses workers avec la démo locale, à raison d'une requête en co
 par worker. Les modèles produisent seulement une réplique ; ils n'accordent aucun
 objet, récompense, acceptation ou progression de quête.
 
-Configuration Inference : `NpcDialogue__Enabled=true`,
-`NpcDialogue__ServiceKey=<secret dédié de 32 à 512 caractères>`.
+Configuration Inference : `NpcDialogue__Enabled=true`, avec
+`NpcDialogue__ServiceKey=<secret dédié de 32 à 512 caractères>` ou
+`NpcDialogue__KeySeed=<graine secrète de 32 à 512 caractères>`, jamais les deux.
+Le mode graine dérive une clé HMAC-SHA256 pour la finalité
+`arkya.inference.npc-dialogue.v1`, distincte des clés d'administration et de
+la graine elle-même. Realms reçoit la même graine via `NpcDialogue__KeySeed`
+et résout sa `RealmRuntime__InferenceServiceKey` avant validation.
 Configuration du dedicated : `ARKYA_INFERENCE_API_URL=<origine Inference>`,
 `ARKYA_INFERENCE_SERVICE_KEY=<même secret>`. Le secret n'est jamais dans un asset
 Unity ou le client. Le [composant facultatif de déploiement](../backend/deploy/gitops/npc-dialogue/README.md)
-fournit les références de secrets, le câblage Realms et l'accès réseau privé.
-Il reste désactivé tant que les images, agents et secrets ne sont pas prêts.
+fournit les références de la graine existante, le câblage Realms et l'accès
+réseau privé. L'activation attend les nouvelles images et un agent 1.2 prêt.
+Pour un realm existant, une demande explicite **Maintenance → Restart** permet
+alors d'ajouter atomiquement les deux variables d'inférence absentes aux
+dedicateds, sous contrôle de leur propriétaire et de leur version Kubernetes.
+Une configuration partielle ou une autre dérive reste refusée.
 
 | Route | Accès | Contrat |
 |---|---|---|

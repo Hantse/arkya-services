@@ -87,7 +87,14 @@ def main():
         "name": "arkya-admin-secrets", "key": "ContentApi__AdminKey"}}}
     expected_mongo = {"name": "Mongo__ConnectionString", "valueFrom": {"secretKeyRef": {
         "name": "arkya-content-secrets", "key": "Mongo__ConnectionString"}}}
-    assert container["env"] == [expected_mongo, expected_seed]
+    npc_active = ("NetworkPolicy", NS, "arkya-inference-dedicateds") in by_key
+    expected_npc = ([{"name": "NpcDialogue__Enabled", "value": "true"},
+                     {"name": "NpcDialogue__KeySeed", "valueFrom": {"secretKeyRef": {
+                         "name": "arkya-admin-secrets", "key": "ContentApi__AdminKey"}}}]
+                    if npc_active else [])
+    npc_env = [row for row in container["env"] if row["name"].startswith("NpcDialogue__")]
+    assert len(npc_env) == len(expected_npc) and all(npc_env.count(row) == 1 for row in expected_npc)
+    assert [row for row in container["env"] if not row["name"].startswith("NpcDialogue__")] == [expected_mongo, expected_seed]
     assert container["readinessProbe"]["httpGet"]["path"] == "/health/ready"
     admin_container, = by_key["Deployment", NS, "arkya-admin"]["spec"]["template"]["spec"]["containers"]
     assert expected_seed in admin_container["env"]
