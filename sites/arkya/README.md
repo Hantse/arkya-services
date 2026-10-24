@@ -49,6 +49,15 @@ MongoDB**, **140 contrôles Edge sur la page** et **36 sur la navigation** réus
 inspectés dans `output/playwright/arkya-news-{desktop,mobile}.png` ; le scénario
 n'effectue aucune inscription ni mutation de production.
 
+La livraison `c14991f` est vérifiée sur [arkya.online](https://arkya.online/news.html?lang=fr)
+après la [CI verte](https://github.com/Hantse/arkya-services/actions/runs/40091784344)
+et la promotion GitOps `dd3ea2be`. **27 contrôles supplémentaires en production**
+valident les menus, les dix publications FR/EN, les articles et leurs liens,
+le filtre de version et l'arrivée sur la page d'inscription depuis la news.
+La recherche, les dates UTC, les erreurs `400` et les deux tris sont également
+vérifiés sur l'API publique. Le client JavaScript servi correspond au source
+commité. Aucun compte de production n'est inscrit par ces contrôles.
+
 ## Realms publics
 
 L’accueil affiche la liste des realms, également disponible dans `dist/realms.html`.
