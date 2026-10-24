@@ -14,7 +14,7 @@ Ouvrir <http://127.0.0.1:51806>. Le serveur expose uniquement `dist/`, sur l’i
 
 ## Contenu et interactions
 
-- Accueil `dist/index.html` : inscription/statut bêta, installation Windows, premiers pas, avancement, trois dernières actualités et état des realms. L’image d’ouverture est une capture du prototype, identifiée comme telle.
+- Accueil `dist/index.html` : inscription/statut bêta, installation Windows, premiers pas, avancement, trois dernières actualités et état des realms. L’image d’ouverture est une capture du prototype, identifiée comme telle. Le bouton **Rejoindre le Discord / Join our Discord** ouvre l’invitation communautaire `https://discord.gg/gS6HfsWr5w` dans un nouvel onglet.
 - Wiki `dist/wiki.html` : **57 fiches FR/EN** avec recherche, sept rubriques et liens entre articles ; classes, capacités, métiers, recettes, ressources, monde et premiers pas.
 - Navigation commune : Accueil, Wiki, Realms, Actualités, Bêta et launcher, avec compte et langue sur bureau et mobile.
 - Atlas artistique conservé dans `dist/atlas.html` : trois ambiances issues des concepts Royaumes de l’Aube, Cités d’Éther et Terres des Anciens, arbre V3 et ses trois matières.
