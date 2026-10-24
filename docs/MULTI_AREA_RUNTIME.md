@@ -35,6 +35,50 @@ identifiant au plan backend ne crée pas une scène : son contenu, ses collision
 et son inclusion dans les deux builds doivent être préparés dans Unity.
 L'allocation dynamique de copies privées, d'instances et de raids reste séparée.
 
+## Choisir l'Area au lancement du dedicated
+
+Une invocation du dedicated sert **une seule Area**. Plusieurs processus du
+même realm peuvent sélectionner cette Area ; chacun conserve son `serverId`,
+sa partition d'autorité et son endpoint. Le même binaire contient les cartes
+enregistrées, mais chaque processus ne charge que la scène serveur de son
+Area, en plus de sa scène de bootstrap.
+
+Le lancement accepte `--area=StarterIsland`, `--area=starter-island` ou
+`--area StarterIsland`. Les noms abrégés ignorent la casse et les tirets :
+`StarterIsland` désigne l'ID logique `starter-island`. Si plusieurs IDs du
+realm correspondent à ce nom, utiliser l'ID exact. Le sélecteur porte sur
+l'Area logique, pas sur son `contentId` ni sur un chemin de scène.
+
+Exemples de **processus distincts**, pour le plan à deux Areas ci-dessous :
+
+```powershell
+.\ArkyaServer.exe -batchmode -nographics --area=StarterIsland `
+  -arkya-realm-id eu-one -arkya-server-id island-starter-island-01 -arkya-game-port 17943
+.\ArkyaServer.exe -batchmode -nographics --area=StarterIsland `
+  -arkya-realm-id eu-one -arkya-server-id island-starter-island-02 -arkya-game-port 17944
+.\ArkyaServer.exe -batchmode -nographics --area=HandoffValley `
+  -arkya-realm-id eu-one -arkya-server-id island-handoff-valley-01 -arkya-game-port 17945
+```
+
+L'origine Characters et la clé liée au couple realm/serveur doivent être
+fournies séparément dans l'environnement de chaque processus. Les ports et
+endpoints de la topologie doivent correspondre à ces écoutes. Chaque commande
+conserve le processus au premier plan ; utiliser des terminaux distincts ou le
+superviseur de déploiement pour les exécuter ensemble.
+
+La priorité de configuration est `--area`, puis `ARKYA_AREA_ID`, puis le nom
+historique `ARKYA_ISLAND_ID` déjà injecté par Realms. En leur absence, le
+dedicated résout son Area depuis sa partition. Une topologie historique sans
+partitions conserve uniquement le repli `starter-island`.
+
+La topologie authentifiée reste l'autorité : demander une autre Area que
+celle attribuée au `serverId`, une Area inconnue ou un nom ambigu arrête le
+processus avec le code 1 **avant le chargement de la carte et l'écoute réseau**.
+Une option vide, invalide ou répétée est également refusée. Pour servir deux
+Areas, lancer deux processus ; ne pas répéter `--area` dans une invocation.
+Un contenu absent du build empêche toujours le démarrage. Le journal de
+readiness indique le realm, le serveur, l'Area, le contenu et la scène chargée.
+
 ## Exemple : deux Areas et quatre dedicateds
 
 Le corps suivant peut être utilisé avec `POST /admin/realms`, après provision
@@ -262,6 +306,19 @@ chargement d'une autre carte peut être visible et immobilise le joueur côté
 source : aucun délai nul ou passage imperceptible n'est promis.
 
 ## Vérifications disponibles
+
+L'ajout du sélecteur de lancement le 24 octobre 2026 comporte des tests
+déterministes de parsing, d'affectation et d'isolation des Areas, y compris
+les contenus partagés et les alias ambigus : **32 cas passent, aucun échec**,
+exécutés sous .NET contre les vraies assemblies compilées. Les assemblies
+complètes Runtime (76 sources) et tests Editor (62 sources) compilent avec
+Roslyn fourni par Unity `6000.6.6f1`, les références Unity installées et les
+générateurs Entities/Netcode, avec les sorties dans un dossier local isolé.
+La connexion MCP locale échouait à l'initialisation sur `127.0.0.1:8080` :
+l'import, la compilation et l'exécution dans l'Editor, ainsi qu'un nouveau
+parcours dedicated/client, restent à vérifier pour cette modification.
+Les parcours historiques ci-dessous valident le chargement multi-Area
+antérieur, pas ce nouveau sélecteur.
 
 Les suites complètes passent avec MongoDB de test isolé : **271 tests
 Characters et 429 tests Realms**, soit 700 réussites, aucun échec ni test

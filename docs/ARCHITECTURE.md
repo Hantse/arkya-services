@@ -139,6 +139,12 @@ Un realm est un univers logique persistant choisi par le joueur. Il contient plu
 
 La hiérarchie est `Realm → Areas → partitions → dedicateds`. Deux Areas peuvent avoir les mêmes coordonnées locales ; leur identifiant les distingue. Les champs historiques `topology.islands` et `islandId` désignent respectivement les Areas et leur identifiant dans les contrats et snapshots existants. Le type `Island` et les IDs de processus `island-*` restent compatibles ; cette clarification ne les migre pas.
 
+Chaque processus dedicated peut préciser `--area=StarterIsland` ou l'ID logique
+exact de son Area. Le démarrage vérifie ce choix contre la partition attribuée
+à son `serverId`, puis charge uniquement la scène serveur du contenu associé.
+Plusieurs processus peuvent ainsi servir une même Area. Le [guide multi-Area](MULTI_AREA_RUNTIME.md#choisir-larea-au-lancement-du-dedicated)
+décrit les arguments, les variables d'environnement et les refus de démarrage.
+
 La topologie est définie à la création du realm et conservée dans un snapshot de profil. Une édition explicite avec révision attendue peut encore changer ce plan et son profil en état `Draft`. Dès qu'un déploiement est engagé, le découpage reste figé ; une migration à chaud demandera un workflow de drain distinct. La liste accepte toutes les Areas à prévoir, sans règle spécifique à StarterIsland. Les dimensions utilisent le plan X/Z Unity : une Area de 1 000 × 1 000 à l'origine (0, 0), répartie sur quatre dedicateds, produit quatre partitions de 500 × 500. Les frontières intérieures appartiennent à une seule partition selon des intervalles semi-ouverts ; le bord extérieur maximal reste inclus. Les indices, le nombre de partitions et leurs bornes décrivent le plan de simulation. Le build doit encore disposer du contenu et du routage correspondants.
 
 Les compteurs dédiés aux instances et raids décrivent des emplacements de processus distincts des partitions d'Area. Leur allocation à une partie ou à un groupe, les droits d'entrée, le retour au monde ouvert et leur cycle de vie restent à implémenter. Ces instances privées conservent le realm du personnage.
