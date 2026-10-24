@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using Arkya.Identity.Api.Application;
 using Arkya.Identity.Api.Domain;
 using Arkya.Identity.Api.Infrastructure;
+using Arkya.ServiceDefaults.Accounts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.WebUtilities;
@@ -38,13 +39,14 @@ internal sealed class FakeDiscordIdentityClient : IDiscordIdentityClient
 }
 
 // Atomic conditions match the storage port without depending on Mongo TTL cleanup.
-internal sealed class MemoryIdentityStore : IIdentityStore
+internal sealed class MemoryIdentityStore : IIdentityStore, IBetaAccessStore
 {
     private readonly object gate = new();
     private readonly Dictionary<string, LoginChallenge> challenges = [];
     private readonly Dictionary<string, Account> accounts = [];
     private readonly Dictionary<string, Session> sessions = [];
     private readonly Dictionary<string, RefreshSession> refreshSessions = [];
+    private readonly Dictionary<Guid, (string Reason, string Actor, BetaRandomGrantResponse Result)> betaGrants = [];
 
     public Session[] Sessions { get { lock (gate) return sessions.Values.ToArray(); } }
     public Account[] Accounts { get { lock (gate) return accounts.Values.ToArray(); } }
@@ -160,6 +162,70 @@ internal sealed class MemoryIdentityStore : IIdentityStore
         }
     }
 
+    public Task<Account?> RegisterBetaAsync(string accountId, DateTime now, CancellationToken cancellationToken)
+    {
+        lock (gate)
+        {
+            var account = accounts.Values.SingleOrDefault(x => x.Id == accountId && !x.IsBanned);
+            if (account is null) return Task.FromResult<Account?>(null);
+            var registered = account with { BetaRegisteredAt = account.BetaRegisteredAt ?? now };
+            accounts[account.DiscordId] = registered;
+            return Task.FromResult<Account?>(registered);
+        }
+    }
+
+    public Task<(IReadOnlyList<Account> Items, long Total)> ListBetaRegistrationsAsync(string? search, string status,
+        int page, int pageSize, CancellationToken cancellationToken)
+    {
+        lock (gate)
+        {
+            var selected = accounts.Values.Where(x => x.BetaRegisteredAt.HasValue && (status switch
+                {
+                    "pending" => !x.IsBanned && !x.HasBetaAccess,
+                    "granted" => x.HasBetaAccess,
+                    "banned" => x.IsBanned,
+                    _ => true
+                }) && (string.IsNullOrEmpty(search) || x.Id == search || x.DiscordId == search ||
+                    x.DisplayName.Contains(search, StringComparison.OrdinalIgnoreCase)))
+                .OrderBy(x => x.BetaRegisteredAt).ThenBy(x => x.Id).ToArray();
+            return Task.FromResult<(IReadOnlyList<Account>, long)>((selected.Skip((page - 1) * pageSize).Take(pageSize).ToArray(), selected.LongLength));
+        }
+    }
+
+    public Task<Account?> GrantBetaAsync(string accountId, long expectedRevision, string reason, string actor,
+        DateTime now, CancellationToken cancellationToken)
+    {
+        lock (gate)
+        {
+            var account = accounts.Values.SingleOrDefault(x => x.Id == accountId && x.Revision == expectedRevision &&
+                x.BetaRegisteredAt.HasValue && !x.HasBetaAccess && !x.IsBanned);
+            if (account is null) return Task.FromResult<Account?>(null);
+            return AdministerAccountAsync(accountId, expectedRevision, "beta-access", true, reason, actor, now, cancellationToken);
+        }
+    }
+
+    public Task<BetaRandomGrantResponse?> GrantRandomBetaAsync(Guid requestId, int count, string reason, string actor,
+        DateTime now, CancellationToken cancellationToken)
+    {
+        lock (gate)
+        {
+            if (betaGrants.TryGetValue(requestId, out var existing))
+                return Task.FromResult<BetaRandomGrantResponse?>(existing.Result.RequestedCount == count &&
+                    existing.Reason == reason && existing.Actor == actor ? existing.Result : null);
+            var candidates = accounts.Values.Where(x => x.BetaRegisteredAt.HasValue && !x.IsBanned && !x.HasBetaAccess &&
+                x.Revision < long.MaxValue).ToArray();
+            RandomNumberGenerator.Shuffle(candidates.AsSpan());
+            var granted = candidates.Take(count).ToArray();
+            foreach (var account in granted)
+                accounts[account.DiscordId] = account with { HasBetaAccess = true, Revision = account.Revision + 1, UpdatedAt = now };
+            var result = new BetaRandomGrantResponse(requestId, count, granted.Length, granted.Select(x => x.Id).ToArray(), new(now, TimeSpan.Zero));
+            betaGrants.Add(requestId, (reason, actor, result));
+            return Task.FromResult<BetaRandomGrantResponse?>(result);
+        }
+    }
+
+    public Task RecoverBetaGrantsAsync(CancellationToken cancellationToken) => Task.CompletedTask;
+
     public Task CreateSessionAsync(Session session, CancellationToken cancellationToken)
     {
         lock (gate) sessions.Add(session.TokenHash, session);
@@ -274,6 +340,8 @@ internal sealed class IdentityFactory : WebApplicationFactory<global::Program>
             services.Remove(initializer);
             services.RemoveAll<IIdentityStore>();
             services.AddSingleton<IIdentityStore>(Store);
+            services.RemoveAll<IBetaAccessStore>();
+            services.AddSingleton<IBetaAccessStore>(Store);
             services.RemoveAll<IDiscordIdentityClient>();
             services.AddSingleton<IDiscordIdentityClient>(Discord);
             services.RemoveAll<IDiscordSocialClient>();

@@ -38,6 +38,30 @@ public sealed class IdentityAdminClient(HttpClient client, IOptions<IdentityAdmi
     public Task<AdminAccountSummary> SetBetaAccessAsync(Guid id, long revision, bool hasBetaAccess, string reason, string actor, CancellationToken ct) =>
         SendAsync<AdminAccountSummary>(HttpMethod.Post, $"admin/accounts/{id:D}/beta-access",
             new AccountBetaAccessRequest(revision, hasBetaAccess, reason), actor, ct);
+    public async Task<BetaRegistrationPage> ListBetaRegistrationsAsync(string? search, string status, int page, int pageSize, CancellationToken ct)
+    {
+        var result = await SendAsync<BetaRegistrationPage>(HttpMethod.Get,
+            $"admin/beta/registrations?search={Uri.EscapeDataString(search ?? "")}&status={Uri.EscapeDataString(status)}&page={page}&pageSize={pageSize}", null, null, ct);
+        if (result.Page != page || result.PageSize != pageSize)
+            throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "The service returned another registration page. Try again shortly.");
+        return result;
+    }
+    public async Task<BetaRegistrationSummary> GrantBetaRegistrationAsync(Guid id, long revision, string reason, string actor, CancellationToken ct)
+    {
+        var result = await SendAsync<BetaRegistrationSummary>(HttpMethod.Post, $"admin/beta/registrations/{id:D}/grant",
+            new BetaGrantRequest(revision, reason), actor, ct);
+        if (!Guid.TryParse(result.AccountId, out var returnedId) || returnedId != id || !result.HasBetaAccess || result.IsBanned)
+            throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "The service returned another access decision. Reload the registrations.");
+        return result;
+    }
+    public async Task<BetaRandomGrantResponse> GrantRandomBetaAccessAsync(Guid requestId, int count, string reason, string actor, CancellationToken ct)
+    {
+        var result = await SendAsync<BetaRandomGrantResponse>(HttpMethod.Post, "admin/beta/grants/random",
+            new BetaRandomGrantRequest(requestId, count, reason), actor, ct);
+        if (result.RequestId != requestId || result.RequestedCount != count)
+            throw new PlayerAdminApiException(HttpStatusCode.BadGateway, "The service returned another draw. Retry this same draw to check its result.");
+        return result;
+    }
 
     private Task<T> SendAsync<T>(HttpMethod method, string path, object? body, string? actor, CancellationToken ct) =>
         PlayerAdminTransport.SendAsync<T>(client, options.Value, "accounts", method, path, body, actor, ct);
@@ -123,6 +147,13 @@ internal static class PlayerAdminTransport
         AdminAccountPage page => page.Items is not null && page.Items.Count <= 100 && page.Total >= 0 &&
             page.Page is >= 1 and <= 10000 && page.PageSize is >= 1 and <= 100 && page.Items.All(ValidAccount),
         AdminAccountSummary account => ValidAccount(account),
+        BetaRegistrationPage page => page.Items is not null && page.Items.Count <= page.PageSize && page.Total >= 0 &&
+            PlayerAdminPresentation.ValidPagination(page.Page, page.PageSize) && page.Items.All(ValidBetaRegistration),
+        BetaRegistrationSummary registration => ValidBetaRegistration(registration),
+        BetaRandomGrantResponse draw => draw.RequestId != Guid.Empty && draw.RequestedCount is >= 1 and <= 100 &&
+            draw.GrantedCount >= 0 && draw.GrantedCount <= draw.RequestedCount && draw.GrantedAccountIds is not null &&
+            draw.GrantedAccountIds.Count == draw.GrantedCount && draw.GrantedAccountIds.Distinct().Count() == draw.GrantedCount &&
+            draw.GrantedAccountIds.All(id => Guid.TryParse(id, out var parsed) && parsed != Guid.Empty),
         AdminCharacterPage page => page.Items is not null && page.Items.Length <= 100 && page.Total >= 0 &&
             page.Page is >= 1 and <= 10000 && page.PageSize is >= 1 and <= 100 && page.Items.All(character => character is not null &&
                 Guid.TryParse(character.CharacterId, out _) && Guid.TryParse(character.AccountId, out _) && character.DisplayName is not null),
@@ -135,6 +166,10 @@ internal static class PlayerAdminTransport
 
     private static bool ValidAccount(AdminAccountSummary account) => account is not null &&
         Guid.TryParse(account.AccountId, out _) && account.DisplayName is not null && account.DiscordUserId is not null && account.Revision >= 0;
+
+    private static bool ValidBetaRegistration(BetaRegistrationSummary registration) => registration is not null &&
+        Guid.TryParse(registration.AccountId, out var id) && id != Guid.Empty && registration.DisplayName is not null &&
+        registration.DiscordUserId is not null && registration.Revision >= 0 && registration.RegisteredAt != default;
 
     private static PlayerAdminApiException InvalidResponse() =>
         new(HttpStatusCode.BadGateway, "The service returned an invalid response. Try again shortly.");

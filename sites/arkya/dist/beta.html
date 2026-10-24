@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111d28">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Inscrivez-vous à la bêta fermée d’Arkya avec votre compte Discord. Les accès sont attribués par vagues." data-i18n-content="meta.description">
+  <meta property="og:locale" content="fr_FR">
+  <title data-i18n="page.title">Arkya — Inscription à la bêta</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/world.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="beta.css">
+  <script src="beta-copy.js" defer></script>
+  <script src="auth-config.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="beta.js" type="module"></script>
+</head>
+<body class="beta-page">
+  <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
+  <header class="beta-header section-shell">
+    <a class="brand" href="/?lang=fr" data-language-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
+    <nav aria-label="Navigation principale" data-i18n-aria-label="nav.main"><a href="development.html?lang=fr" data-language-link data-i18n="nav.development">Avancement</a><a href="play.html?lang=fr" data-language-link data-i18n="nav.play">Installer le launcher</a><a href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a></nav>
+    <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+  </header>
+  <main id="contenu" class="beta-main section-shell">
+    <section class="beta-invitation" aria-labelledby="beta-title">
+      <img class="beta-landscape" src="assets/world.webp" alt="" width="1400" height="800" fetchpriority="high">
+      <div class="beta-intro">
+        <p class="eyebrow" data-i18n="beta.eyebrow">ARKYA · BÊTA FERMÉE</p>
+        <h1 id="beta-title" data-i18n-html="beta.title">Les premiers pas.<br>La suite, <em>avec vous.</em></h1>
+        <p class="beta-lead" data-i18n="beta.intro">Une île à découvrir. Un monde encore en construction. Inscrivez-vous pour participer aux premières sessions de test d’Arkya.</p>
+        <p class="beta-caption" data-i18n="beta.caption">L’ÎLE DE DÉPART · CAPTURE DU JEU EN DÉVELOPPEMENT</p>
+      </div>
+      <section class="beta-register" aria-labelledby="beta-register-title" aria-busy="true" id="beta-panel">
+        <span class="beta-seal" aria-hidden="true">◇</span>
+        <p class="eyebrow" data-i18n="beta.registration">VOTRE INSCRIPTION</p>
+        <h2 id="beta-register-title" data-i18n="beta.registerTitle">Rejoignez l’aventure.</h2>
+        <p id="beta-status" class="beta-status" role="status" aria-live="polite">Vérification de votre inscription…</p>
+        <p id="beta-account" class="beta-account" hidden></p>
+        <p id="beta-date" class="beta-date" hidden></p>
+        <a id="beta-sign-in" class="button primary" href="account.html?returnTo=beta.html&amp;lang=fr" data-language-link data-i18n="beta.signIn" hidden>Continuer avec Discord</a>
+        <button id="beta-register" class="button primary" type="button" data-i18n="beta.submit" disabled hidden>M’inscrire à la bêta</button>
+        <a id="beta-play" class="button primary" href="play.html?lang=fr" data-language-link data-i18n="nav.play" hidden>Installer le launcher</a>
+        <button id="beta-refresh" class="beta-refresh" type="button" data-i18n="beta.refresh" hidden>Vérifier mon statut</button>
+        <p class="beta-consent" data-i18n="beta.consent">L’inscription enregistre votre compte Arkya et sa date d’inscription. Aucune adresse e-mail ni autre information à renseigner.</p>
+        <a class="beta-privacy" href="privacy.html?lang=fr" data-language-link data-i18n="beta.privacy">Utilisation de mes données ↗</a>
+        <noscript><p lang="fr">Activez JavaScript pour vous connecter et vous inscrire à la bêta.</p><p lang="en">Enable JavaScript to sign in and register for the beta.</p></noscript>
+      </section>
+    </section>
+    <section class="beta-waves" aria-labelledby="beta-waves-title">
+      <div><p class="eyebrow" data-i18n="beta.wavesEyebrow">COMMENT PARTICIPER</p><h2 id="beta-waves-title" data-i18n="beta.wavesTitle">Les portes s’ouvrent par vagues.</h2><p data-i18n="beta.wavesIntro">L’inscription ne donne pas automatiquement accès au jeu. L’équipe attribue les accès parmi les inscrits, avec des sélections manuelles ou aléatoires selon les besoins des tests.</p></div>
+      <ol class="beta-steps">
+        <li><span aria-hidden="true">01</span><div><h3 data-i18n="beta.step1Title">Connectez-vous avec Discord</h3><p data-i18n="beta.step1">Retrouvez votre compte Arkya, puis confirmez votre inscription sur cette page.</p></div></li>
+        <li><span aria-hidden="true">02</span><div><h3 data-i18n="beta.step2Title">Suivez votre inscription</h3><p data-i18n="beta.step2">Votre statut reste disponible ici. Aucun accès ni date d’invitation n’est garanti.</p></div></li>
+        <li><span aria-hidden="true">03</span><div><h3 data-i18n="beta.step3Title">Rejoignez une session de test</h3><p data-i18n="beta.step3">Une fois votre accès accordé, installez le launcher Windows et connectez-vous avec le même compte Discord.</p></div></li>
+      </ol>
+    </section>
+    <aside class="beta-development"><p data-i18n="beta.development">Arkya est en développement : contenu incomplet, bugs et évolutions font partie de la bêta. Vos retours aideront à construire la suite.</p><a href="development.html?lang=fr" data-language-link data-i18n="beta.progress">Découvrir l’avancement ↗</a></aside>
+  </main>
+  <footer class="beta-footer section-shell"><p>Pyxion Sarl-S · Arkya</p><a href="privacy.html?lang=fr" data-language-link data-i18n="footer.privacy">Politique de confidentialité</a><a href="terms.html?lang=fr" data-language-link data-i18n="footer.terms">Conditions d’utilisation</a><a href="/?lang=fr" data-language-link data-i18n="beta.home">Retour au site</a></footer>
+</body>
+</html>

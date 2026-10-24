@@ -188,9 +188,11 @@ public sealed class AccountAdministrationTests
     }
 
     [Theory]
-    [InlineData("10.42.1.9", true)]
-    [InlineData("203.0.113.9", false)]
-    public async Task ClusterHttpAdministrationRequiresExplicitOptInAndAllowlistedDirectPeer(string peer, bool allowed)
+    [InlineData("10.42.1.9", "/admin/accounts", true)]
+    [InlineData("203.0.113.9", "/admin/accounts", false)]
+    [InlineData("10.42.1.9", "/admin/beta/registrations", true)]
+    [InlineData("203.0.113.9", "/admin/beta/registrations", false)]
+    public async Task ClusterHttpAdministrationRequiresExplicitOptInAndAllowlistedDirectPeer(string peer, string path, bool allowed)
     {
         await using var factory = Configured(production: true, clusterHttp: true);
         var response = await factory.Server.SendAsync(context =>
@@ -199,7 +201,7 @@ public sealed class AccountAdministrationTests
             context.Request.Scheme = "http";
             context.Request.Host = new HostString("localhost");
             context.Request.Method = "GET";
-            context.Request.Path = "/admin/accounts";
+            context.Request.Path = path;
             context.Request.Headers["X-Forwarded-For"] = "10.42.1.9";
             context.Request.Headers["X-Forwarded-Proto"] = "https";
             context.Request.Headers["X-Arkya-Admin-Key"] = AdminKey;

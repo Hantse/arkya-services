@@ -38,6 +38,8 @@ public sealed class GatewayProxyTests
     [InlineData("POST", "/v1/auth/refresh/native")]
     [InlineData("POST", "/v1/auth/logout/native")]
     [InlineData("POST", "/v1/auth/logout")]
+    [InlineData("GET", "/v1/beta/registration")]
+    [InlineData("POST", "/v1/beta/registration")]
     public async Task Public_identity_routes_preserve_method_path_query_body_and_bearer(string method, string path)
     {
         await using var identity = await Downstream.StartAsync("identity");
@@ -111,6 +113,8 @@ public sealed class GatewayProxyTests
     [InlineData("/internal/sessions/introspect-reference")]
     [InlineData("/internal/characters/11111111-1111-1111-1111-111111111111/resolve")]
     [InlineData("/admin")]
+    [InlineData("/admin/beta/registrations")]
+    [InlineData("/admin/beta/grants/random")]
     [InlineData("/dev/auth/login")]
     [InlineData("/v1/auth/discord/social/config")]
     [InlineData("/v1/auth/discord/social/exchange")]

@@ -1,5 +1,5 @@
 import { auth, ready, announceSession } from './common.js';
-import { gameReturnPath } from './game-navigation.mjs';
+import { accountReturnPath } from './game-navigation.mjs';
 
 const $ = (selector) => document.querySelector(selector);
 const language = () => window.ArkyaI18n?.language || document.documentElement.lang;
@@ -15,12 +15,13 @@ let error = false;
 function accountReturnUrl() {
   const target = new URL('/account.html', location.origin);
   target.searchParams.set('lang', language() === 'en' ? 'en' : 'fr');
-  if (gameReturnPath(location.search, language())) target.searchParams.set('returnTo', 'play.html');
+  const returnPath = accountReturnPath(location.search, language());
+  if (returnPath) target.searchParams.set('returnTo', returnPath.split('?')[0]);
   return target.href;
 }
 
-function returnToGame() {
-  const target = gameReturnPath(location.search, language());
+function returnToDestination() {
+  const target = accountReturnPath(location.search, language());
   if (auth.session() && target) location.replace(target);
 }
 
@@ -67,7 +68,7 @@ async function pollAttempt(run) {
     if (result.status === 'authenticated') {
       mode = 'signed-in'; message = 'auth.connected'; error = false;
       announceSession(); render();
-      returnToGame();
+      returnToDestination();
     } else if (result.status === 'pending') {
       render(); schedulePoll(run, result.pollIntervalSeconds);
     } else {
@@ -146,7 +147,7 @@ async function initialize() {
   message = !auth.available ? 'auth.unavailable' : auth.session() ? 'auth.connected' : 'auth.idle';
   announceSession();
   render();
-  returnToGame();
+  returnToDestination();
 }
 
 window.addEventListener('pageshow', event => {

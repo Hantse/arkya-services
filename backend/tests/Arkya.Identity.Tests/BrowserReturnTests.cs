@@ -19,6 +19,7 @@ public sealed class BrowserReturnTests
     [InlineData(SiteOrigin + "/account.html?returnTo=play.html")]
     [InlineData(ReturnUrl)]
     [InlineData(SiteOrigin + "/account.html?returnTo=play.html&lang=en")]
+    [InlineData(SiteOrigin + "/account.html?returnTo=beta.html&lang=fr")]
     public async Task WebLoginReturnsToPersistedAccountPageBeforeExchangingSession(string returnUrl)
     {
         await using var factory = new IdentityFactory { WebClientOrigins = [SiteOrigin] };

@@ -35,7 +35,10 @@ builder.Services.AddOptions<CorsOptions>().Configure<IOptions<WebClientOptions>>
         .WithExposedHeaders("Retry-After")));
 builder.Services.AddSingleton<MongoIdentityStore>();
 builder.Services.AddSingleton<IIdentityStore>(sp => sp.GetRequiredService<MongoIdentityStore>());
+builder.Services.AddSingleton<IBetaAccessStore>(sp => sp.GetRequiredService<MongoIdentityStore>());
 builder.Services.AddHostedService<IdentityIndexInitializer>();
+builder.Services.AddHostedService<BetaGrantRecoveryService>();
+builder.Services.AddScoped<BetaAccessService>();
 builder.Services.AddHttpClient<IDiscordIdentityClient, DiscordIdentityClient>(client => client.Timeout = TimeSpan.FromSeconds(15))
     .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler { AllowAutoRedirect = false });
 builder.Services.AddScoped<IdentityService>();
@@ -62,6 +65,7 @@ app.UseCors();
 app.UseRateLimiter();
 app.MapIdentityEndpoints();
 app.MapAccountAdminEndpoints();
+app.MapBetaAccessEndpoints();
 app.MapDiscordSocialEndpoints();
 app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "arkya-identity" }));
 app.Run();

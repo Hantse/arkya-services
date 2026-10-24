@@ -1,0 +1,68 @@
+@page
+@model BetaRegistrationsModel
+@{ ViewData["Title"] = "Beta registrations"; }
+<header class="page-header">
+    <div><div class="eyebrow">COMMUNITY / BETA</div><h1>Beta registrations</h1><p class="intro">Review the waiting list and invite the next players into Arkya.</p></div>
+    @if (Model.Enabled) { <a class="button primary" asp-page="/BetaRegistrations" asp-route-draw="true" data-open-draw>Give x random access</a> }
+</header>
+@if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice</div> }
+@if (!Model.Draw && Model.Error is not null) { <div class="alert error" role="alert">@Model.Error</div> }
+@if (!Model.Draw && !ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
+@if (!Model.Enabled)
+{
+    <div class="panel empty-state"><h2>Beta registration management is disabled</h2><p>Configure the private Identity service connection to view registrations and grant access.</p></div>
+}
+else
+{
+    <form method="get" class="panel filter-bar">
+        <div class="field"><label asp-for="Search">Search registrations</label><input asp-for="Search" maxlength="100" placeholder="Name, Arkya ID or Discord ID" /></div>
+        <div class="field"><label asp-for="Status">Status</label><select asp-for="Status"><option value="pending">Pending</option><option value="granted">Access granted</option><option value="banned">Banned</option><option value="all">All registrations</option></select></div>
+        <div class="field"><label asp-for="PageSize">Results per page</label><select asp-for="PageSize"><option>25</option><option>50</option><option>100</option></select></div>
+        <button class="button secondary" type="submit">Filter</button>
+    </form>
+    @if (Model.Registrations is { } registrations)
+    {
+        <div class="section-heading"><h2>Registered players</h2><span class="muted">@registrations.Total matching registration(s)</span></div>
+        @if (registrations.Items.Count == 0) { <div class="panel empty-state"><h3>No registrations match</h3><p>Players join the waiting list from the public beta page. Change the filters to see other registrations.</p><a href="https://arkya.online/beta.html" target="_blank" rel="noopener">Open beta registration page ↗</a></div> }
+        else
+        {
+            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">Beta waiting list and access decisions</caption><thead><tr><th scope="col">Player</th><th scope="col">Registered UTC</th><th scope="col">Status</th><th scope="col">Access</th></tr></thead><tbody>
+            @foreach (var registration in registrations.Items)
+            {
+                <tr><th scope="row"><a asp-page="/Account" asp-route-id="@registration.AccountId">@registration.DisplayName</a><small class="mono">Discord @registration.DiscordUserId</small></th>
+                    <td>@registration.RegisteredAt.UtcDateTime.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td><span class="realm-status @(registration.IsBanned ? "failed" : registration.HasBetaAccess ? "ready" : "draft")">@(registration.IsBanned ? "Banned" : registration.HasBetaAccess ? "Granted" : "Pending")</span></td>
+                    <td>@if (!registration.IsBanned && !registration.HasBetaAccess)
+                    {
+                        <form method="post" asp-page-handler="Grant" class="beta-grant-form">
+                            <input type="hidden" name="AccountId" value="@registration.AccountId" /><input type="hidden" name="ExpectedRevision" value="@registration.Revision" />
+                            <input type="hidden" asp-for="Search" /><input type="hidden" asp-for="Status" /><input type="hidden" asp-for="PageNumber" /><input type="hidden" asp-for="PageSize" />
+                            <label class="sr-only" for="reason-@registration.AccountId">Reason for granting access to @registration.DisplayName</label><input id="reason-@registration.AccountId" name="GrantReason" value="@(registration.AccountId == Model.AccountId.ToString("D") ? Model.GrantReason : "Beta registration approved")" required maxlength="500" aria-label="Reason for granting access to @registration.DisplayName" />
+                            <button class="button secondary" type="submit">Grant access</button>
+                        </form>
+                    }
+                    else { <a asp-page="/Account" asp-route-id="@registration.AccountId">Manage account</a> }</td>
+                </tr>
+            }
+            </tbody></table></div>
+        }
+        <nav class="pagination" aria-label="Beta registration pagination">
+            @if (Model.PageNumber > 1) { <a class="button secondary" asp-route-search="@Model.Search" asp-route-status="@Model.Status" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-pageSize="@Model.PageSize">Previous</a> }
+            <span class="muted">Page @registrations.Page</span>
+            @if (Model.HasNext) { <a class="button secondary" asp-route-search="@Model.Search" asp-route-status="@Model.Status" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-pageSize="@Model.PageSize">Next</a> }
+        </nav>
+    }
+    <dialog id="beta-draw" class="beta-draw" aria-labelledby="draw-title" open="@Model.Draw">
+        <div class="beta-draw-header"><h2 id="draw-title">Give x random access</h2><a class="text-link" asp-page="/BetaRegistrations" data-close-draw aria-label="Close random access dialog">Close</a></div>
+        @if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error</div> }
+        @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
+        <p>Randomly invite registered players who are waiting for access. Banned accounts and players with access are excluded. This draw uses the complete waiting list, regardless of the filters above.</p>
+        <form method="post" asp-page-handler="Random">
+            <input type="hidden" asp-for="RequestId" />
+            <div class="field"><label asp-for="Count">Number of accesses</label><input asp-for="Count" type="number" min="1" max="100" required autofocus /><span class="muted">1–100 per draw. If fewer players are eligible, only those players receive access.</span></div>
+            <div class="field"><label asp-for="Reason">Reason</label><input asp-for="Reason" maxlength="500" required /></div>
+            <p class="muted">Access is granted immediately when you confirm. Retrying this same draw does not invite additional players.</p>
+            <div class="beta-draw-actions"><button type="submit" class="button primary">Grant random access</button><a class="button secondary" asp-page="/BetaRegistrations" data-close-draw>Cancel</a></div>
+        </form>
+    </dialog>
+}

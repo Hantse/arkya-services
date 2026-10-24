@@ -234,6 +234,13 @@ Un même processus MongoDB peut héberger les deux bases en développement. Chaq
 
 ### Identity et Discord
 
+Identity possède aussi les [inscriptions à la bêta](BETA_REGISTRATION.md) :
+date de candidature par compte Discord, consultation du statut et attributions
+administrateur conditionnées à l'éligibilité et à la révision. Les tirages
+aléatoires possèdent une opération durable pour empêcher un retry de distribuer
+des accès supplémentaires. Le site ne peut pas s'attribuer un droit ; Characters
+continue d'appliquer l'entitlement autoritaire existant.
+
 Le fournisseur initial est Discord, avec le flux OAuth2 Authorization Code et le seul scope `identify` pour la connexion du compte Arkya. Le secret de l'application Discord et l'échange du code restent dans Identity. Ce parcours de connexion ne transmet aucun jeton Discord au client Unity. Ce fonctionnement suit les mécanismes documentés par [Discord OAuth2](https://docs.discord.com/developers/topics/oauth2).
 
 Le protocole Arkya relie le launcher Windows au navigateur ; le client Unity dans l’Editor conserve ce flux pour le développement :

@@ -20,7 +20,8 @@ public static class GatewayRoutes
             Route("identity-refresh", "identity", "/v1/auth/refresh", "POST", "OPTIONS"),
             Route("identity-refresh-native", "identity", "/v1/auth/refresh/native", "POST"),
             Route("identity-logout-native", "identity", "/v1/auth/logout/native", "POST"),
-            Route("identity-logout", "identity", "/v1/auth/logout", "POST", "OPTIONS")
+            Route("identity-logout", "identity", "/v1/auth/logout", "POST", "OPTIONS"),
+            Route("beta-registration", "identity", "/v1/beta/registration", "GET", "POST", "OPTIONS")
         };
         if (charactersEnabled)
         {

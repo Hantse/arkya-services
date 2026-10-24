@@ -94,7 +94,7 @@ function webReturnUrl(value, siteOrigin) {
     const params = target.searchParams;
     if ([...params.keys()].some(key => !['lang', 'returnTo'].includes(key)) ||
       params.getAll('lang').length !== 1 || !['fr', 'en'].includes(params.get('lang')) ||
-      params.getAll('returnTo').length > 1 || (params.has('returnTo') && params.get('returnTo') !== 'play.html')) return null;
+      params.getAll('returnTo').length > 1 || (params.has('returnTo') && !['play.html', 'beta.html'].includes(params.get('returnTo')))) return null;
     return target.href;
   } catch { return null; }
 }
@@ -398,6 +398,26 @@ export function createAuthClient({
     } catch { return { revoked: false }; }
   }
 
+  async function betaRegistration({ register = false } = {}) {
+    const current = session();
+    const user = current && Date.parse(current.expiresAt) - now() > REFRESH_AHEAD_MS ? current : await restore();
+    if (!user || !session()) throw authError('unauthenticated');
+    const revision = sessionRevision;
+    const response = await request('/v1/beta/registration', { method: register ? 'POST' : 'GET',
+      ...(register ? { body: {} } : {}), token: record.sessionToken, controllers: sessionRequests });
+    if (revision !== sessionRevision) throw authError('cancelled');
+    if (response.status === 401) { clearSession(); throw authError('unauthenticated'); }
+    if (response.status !== 200) throw failedResponse(response.status);
+    const value = response.data;
+    if (!value || typeof value !== 'object' || Array.isArray(value) ||
+      typeof value.registered !== 'boolean' || typeof value.hasBetaAccess !== 'boolean' ||
+      (value.registered ? typeof value.registeredAt !== 'string' ||
+        !/^\d{4}-\d{2}-\d{2}T.+(?:Z|[+-]\d{2}:\d{2})$/.test(value.registeredAt) ||
+        !Number.isFinite(Date.parse(value.registeredAt)) : value.registeredAt != null)) throw authError('invalid_response');
+    return { registered: value.registered, registeredAt: value.registered ? new Date(value.registeredAt).toISOString() : null,
+      hasBetaAccess: value.hasBetaAccess };
+  }
+
   // Only the first-party Unity bridge consumes this temporary value, synchronously.
   async function withGameSession(callback) {
     if (typeof callback !== 'function') throw new TypeError('A game session callback is required.');
@@ -410,5 +430,5 @@ export function createAuthClient({
     finally { payload.sessionToken = ''; }
   }
 
-  return Object.freeze({ available, restore, begin, resume, poll, suspend, cancel, logout, session, withGameSession });
+  return Object.freeze({ available, restore, begin, resume, poll, suspend, cancel, logout, session, betaRegistration, withGameSession });
 }

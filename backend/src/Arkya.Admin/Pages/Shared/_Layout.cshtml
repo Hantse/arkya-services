@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="~/dark-admin.css" asp-append-version="true" />
     @if (page is "/Items" or "/Item") { <link rel="stylesheet" href="~/items.css" asp-append-version="true" /> }
     @if (page == "/Character") { <link rel="stylesheet" href="~/character.css" asp-append-version="true" /> }
+    @if (page == "/BetaRegistrations") { <link rel="stylesheet" href="~/beta-registrations.css" asp-append-version="true" /> }
 </head>
 <body class="@(authenticated ? "signed-in" : "signed-out")">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -73,6 +74,7 @@
                     <details class="nav-group" open>
                         <summary>Community</summary>
                         <a class="nav-item" asp-page="/Accounts" aria-current="@(page is "/Accounts" or "/Account" ? "page" : null)"><partial name="_AdminIcon" model='@("users")' />Accounts and access</a>
+                        <a class="nav-item" asp-page="/BetaRegistrations" aria-current="@(page == "/BetaRegistrations" ? "page" : null)"><partial name="_AdminIcon" model='@("users")' />Beta registrations</a>
                         <a class="nav-item" asp-page="/Players" aria-current="@(page == "/Players" ? "page" : null)"><partial name="_AdminIcon" model='@("players")' />Online players</a>
                         <a class="nav-item" asp-page="/Characters" aria-current="@(page is "/Characters" or "/Character" ? "page" : null)"><partial name="_AdminIcon" model='@("character")' />Characters</a>
                     </details>
@@ -97,5 +99,6 @@
         }
         <main id="main" class="main-content" tabindex="-1"><div class="console-bar"><span>Administration <span aria-hidden="true">/</span> @(realmContextId ?? ViewData["Title"])</span><span class="console-access"><partial name="_AdminIcon" model='@("shield")' />Operator access</span></div><div class="page-content">@RenderBody()</div></main>
     </div>
+    @if (page == "/BetaRegistrations") { <script src="~/beta-registrations.js" asp-append-version="true" defer></script> }
 </body>
 </html>

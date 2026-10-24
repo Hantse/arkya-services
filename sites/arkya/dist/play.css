@@ -25,6 +25,7 @@
 .launcher-note{display:flex;align-items:start;justify-content:space-between;gap:35px;margin-top:36px;padding:21px 0;border-top:1px solid var(--line);font-size:12px}
 .launcher-note p{color:var(--muted);max-width:660px}
 .launcher-note a{color:var(--gold);flex-shrink:0}
+.launcher-beta{margin-top:30px;padding:20px 24px;border:1px solid #cfb27b70;background:#1b2b3755;font-size:12px}.launcher-beta a{color:var(--gold);font-weight:600;border-bottom:1px solid #cfb27b66;padding-bottom:3px}.launcher-beta p{color:var(--muted);font-size:11px;margin-top:10px;line-height:1.8}
 .play-footer{display:flex;gap:25px;flex-wrap:wrap;padding-block:25px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
 .play-footer>p{margin-right:auto}
 @media(max-width:800px){.play-header{gap:18px;min-height:80px}.play-header .brand{font-size:25px}.play-header nav{gap:15px}.play-header nav a:first-child{display:none}.play-header [data-auth-link]{max-width:140px}.launcher-hero-copy{padding:36px}.launcher-hero{min-height:560px}.installation-steps{grid-template-columns:1fr;gap:24px}.installation-steps p{max-width:560px}.launcher-note{display:block}.launcher-note a{display:inline-block;margin-top:16px}.launcher-caption{max-width:190px}}

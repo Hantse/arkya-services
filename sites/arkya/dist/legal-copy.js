@@ -18,7 +18,7 @@
     'nav.language': 'Choose language',
     'legal.nav.atlas': 'The atlas',
     'legal.nav.account': 'My account',
-    'legal.updated': 'Last updated: 18 October 2026',
+    'legal.updated': page === 'privacy' ? 'Last updated: 24 October 2026' : 'Last updated: 18 October 2026',
     'legal.contents': 'ON THIS PAGE',
     'legal.terms': 'Terms of use',
     'legal.privacy': 'Privacy policy',
@@ -80,6 +80,7 @@
       'terms.changes.language': 'The French and English versions aim to provide the same information. If you notice a difference, please contact us so it can be corrected.'
     },
     privacy: {
+      'privacy.beta.registration': 'If you confirm beta registration, Arkya records your account ID and registration date. The authorized team can view registrations and grant access through manual or random selections. Registration requires no email address and does not guarantee access. This data remains linked to your account; you can ask support to delete it.',
       'page.title': 'Arkya — Privacy policy',
       'meta.description': 'How Pyxion Sarl-S processes data on the Arkya website: browsing, language preference, Discord sign-in and exercising your rights.',
       'legal.eyebrow': 'YOUR DATA, CLEARLY EXPLAINED',

@@ -20,7 +20,7 @@ public sealed class WebClientOptions
             return parameters.All(parameter => parameter switch
             {
                 "lang=fr" or "lang=en" => names.Add("lang"),
-                "returnTo=play.html" => names.Add("returnTo"),
+                "returnTo=play.html" or "returnTo=beta.html" => names.Add("returnTo"),
                 _ => false
             });
         }

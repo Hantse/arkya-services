@@ -13,7 +13,7 @@ namespace Arkya.Admin.Tests;
 
 internal sealed record PlayerAdminCall(HttpMethod Method, Uri Uri, JsonElement? Body, string? Actor);
 
-internal sealed class AccountsStub : HttpMessageHandler
+internal sealed partial class AccountsStub : HttpMessageHandler
 {
     public const string Key = "accounts-private-outbound-admin-key-123456";
     public static readonly Guid Id = Guid.Parse("2f3b0e58-3fb1-4d9c-b2e8-dceba2dc92cf");
@@ -44,6 +44,7 @@ internal sealed class AccountsStub : HttpMessageHandler
         if ((request.Method == HttpMethod.Get ? ReadError : WriteError) is { } error)
             return new(error) { Content = new StringContent($"private upstream details {Key}") };
         if (InvalidJson) return new(HttpStatusCode.OK) { Content = new StringContent("{}") };
+        if (uri.AbsolutePath.StartsWith("/admin/beta/", StringComparison.Ordinal)) return HandleBeta(request.Method, uri, body, actor);
         if (request.Method != HttpMethod.Get)
         {
             Assert.Equal("admin:operator", actor);

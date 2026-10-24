@@ -149,6 +149,12 @@ contourne jamais un bannissement.
 
 ## API privées
 
+La page `/BetaRegistrations` ajoute la liste des inscriptions publiques,
+l'attribution individuelle et la modale **Give x random access**. Elle réutilise
+la connexion privée Identity et les sessions/antiforgery de l'Admin.
+Les [règles d'inscription et de tirage](BETA_REGISTRATION.md) décrivent les
+révisions, l'audit, les reprises et les endpoints `/admin/beta`.
+
 Les routes exigent `X-Arkya-Admin-Key` et un transport admis. Les mutations de
 compte exigent aussi `X-Arkya-Admin-Actor`. Ces endpoints restent absents des
 routes publiques de la gateway.

@@ -11,6 +11,78 @@ namespace Arkya.Identity.Tests;
 public sealed class MongoIdentityStoreTests
 {
     [MongoFact]
+    public async Task BetaRegistrationAndRandomGrantAreDurableAtomicAuditedAndNeverRedrawOnReplay()
+    {
+        await using var database = await TestDatabase.CreateAsync();
+        var now = DateTimeOffset.FromUnixTimeMilliseconds(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()).UtcDateTime;
+        var applicants = new List<Account>();
+        for (var index = 0; index < 8; index++)
+        {
+            var account = await database.Store.UpsertAccountAsync(index.ToString(), "Player " + index, now, default);
+            await database.Store.RegisterBetaAsync(account.Id, now, default);
+            applicants.Add(account);
+        }
+        var first = applicants[0];
+        var registrations = await Task.WhenAll(Enumerable.Range(0, 8).Select(_ => database.Store.RegisterBetaAsync(first.Id, now.AddDays(1), default)));
+        Assert.All(registrations, x => Assert.Equal(now, x!.BetaRegisteredAt));
+        var banned = applicants[1];
+        await database.Store.AdministerAccountAsync(banned.Id, 0, "ban", null, "Abuse", "admin:test", now, default);
+        await database.Store.AdministerAccountAsync(applicants[2].Id, 0, "beta-access", true, "Existing grant", "admin:test", now, default);
+        var unregistered = await database.Store.UpsertAccountAsync("unregistered", "Unregistered", now, default);
+        var requestId = Guid.NewGuid();
+        var concurrent = await Task.WhenAll(Enumerable.Range(0, 8).Select(_ => database.Store.GrantRandomBetaAsync(requestId, 100, "Wave", "admin:test", now, default)));
+        Assert.All(concurrent, result => Assert.Equal(6, result!.GrantedCount));
+        Assert.All(concurrent, result => Assert.Equal(concurrent[0]!.GrantedAccountIds.Order(), result!.GrantedAccountIds.Order()));
+        Assert.False((await database.Store.GetAccountAsync(banned.Id, default))!.HasBetaAccess);
+        Assert.False((await database.Store.GetAccountAsync(unregistered.Id, default))!.HasBetaAccess);
+        var revokedId = concurrent[0]!.GrantedAccountIds[0];
+        Assert.NotNull(await database.Store.AdministerAccountAsync(revokedId, 1, "beta-access", false, "Revoked", "admin:test", now, default));
+        var replay = (await database.Store.GrantRandomBetaAsync(requestId, 100, "Wave", "admin:test", now.AddDays(1), default))!;
+        Assert.Equal(6, replay.GrantedCount);
+        Assert.False((await database.Store.GetAccountAsync(revokedId, default))!.HasBetaAccess);
+        Assert.Null(await database.Store.GrantRandomBetaAsync(requestId, 99, "Wave", "admin:test", now, default));
+        var persisted = await database.Collection("accounts").Find(new BsonDocument("_id", revokedId)).SingleAsync();
+        Assert.False(persisted.Contains("PendingBetaGrantOperationId"));
+        var audit = persisted["AdministrationHistory"].AsBsonArray[0];
+        Assert.Equal("admin:test", audit["Actor"].AsString);
+        Assert.Equal("Wave", audit["Reason"].AsString);
+        Assert.Equal("beta-random-access:" + requestId.ToString("D"), audit["Action"].AsString);
+        var operation = await database.Collection("beta_grant_operations").Find(new BsonDocument("_id", requestId.ToString("D"))).SingleAsync();
+        Assert.True(operation["Completed"].AsBoolean);
+        Assert.Equal(6, operation["Selections"].AsBsonArray.Count);
+    }
+
+    [MongoFact]
+    public async Task RecoveryFinishesPersistedDrawsAndReleasesCrashBarriersBeforeLaterRevocation()
+    {
+        await using var database = await TestDatabase.CreateAsync();
+        var now = DateTimeOffset.FromUnixTimeMilliseconds(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()).UtcDateTime;
+        var account = await database.Store.UpsertAccountAsync("recovery", "Player", now, default);
+        await database.Store.RegisterBetaAsync(account.Id, now, default);
+        var id = Guid.NewGuid();
+        await database.Collection("beta_grant_operations").InsertOneAsync(new BsonDocument
+        {
+            ["_id"] = id.ToString("D"), ["SchemaVersion"] = 1, ["Count"] = 10,
+            ["Actor"] = "admin:test", ["Reason"] = "Recovery wave", ["CreatedAt"] = now, ["Completed"] = false,
+            ["Selections"] = new BsonArray { new BsonDocument { ["AccountId"] = account.Id, ["Revision"] = 0L, ["Granted"] = BsonNull.Value } }
+        });
+        // Model a process crash after the atomic account grant but before the operation outcome was written.
+        await database.Collection("accounts").UpdateOneAsync(new BsonDocument("_id", account.Id), new BsonDocument("$set", new BsonDocument
+        {
+            ["HasBetaAccess"] = true, ["Revision"] = 1L, ["PendingBetaGrantOperationId"] = id.ToString("D")
+        }));
+        Assert.Null(await database.Store.AdministerAccountAsync(account.Id, 1, "beta-access", false, "Must wait for durable outcome", "admin:test", now, default));
+        await database.Store.RecoverBetaGrantsAsync(default);
+        var recovered = (await database.Store.GrantRandomBetaAsync(id, 10, "Recovery wave", "admin:test", now, default))!;
+        Assert.Equal(account.Id, Assert.Single(recovered.GrantedAccountIds));
+        Assert.NotNull(await database.Store.AdministerAccountAsync(account.Id, 1, "beta-access", false, "Revoke after recovery", "admin:test", now, default));
+        await database.Store.RecoverBetaGrantsAsync(default);
+        Assert.Equal(1, (await database.Store.GrantRandomBetaAsync(id, 10, "Recovery wave", "admin:test", now, default))!.GrantedCount);
+        Assert.False((await database.Store.GetAccountAsync(account.Id, default))!.HasBetaAccess);
+        Assert.Equal(2, (await database.Store.GetAccountAsync(account.Id, default))!.Revision);
+    }
+
+    [MongoFact]
     public async Task RefreshRotationIsAtomicAndHonorsExpiryRevocationAndBoundedReplayHistory()
     {
         await using var database = await TestDatabase.CreateAsync();

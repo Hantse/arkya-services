@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace Arkya.Identity.Api.Infrastructure;
 
-public sealed class MongoIdentityStore : IIdentityStore
+public sealed partial class MongoIdentityStore : IIdentityStore, IBetaAccessStore
 {
     private readonly IMongoCollection<ChallengeDocument> challenges;
     private readonly IMongoCollection<AccountDocument> accounts;
@@ -23,10 +23,12 @@ public sealed class MongoIdentityStore : IIdentityStore
         accounts = db.GetCollection<AccountDocument>("accounts");
         sessions = db.GetCollection<SessionDocument>("sessions");
         refreshSessions = db.GetCollection<RefreshSessionDocument>("refresh_sessions");
+        betaGrantOperations = db.GetCollection<BetaGrantOperationDocument>("beta_grant_operations");
     }
 
     public async Task InitializeAsync(CancellationToken cancellationToken)
     {
+        await InitializeBetaAsync(cancellationToken);
         await accounts.Indexes.CreateOneAsync(new CreateIndexModel<AccountDocument>(Builders<AccountDocument>.IndexKeys.Ascending(x => x.DiscordId),
             new CreateIndexOptions { Unique = true, Name = "discord_id_unique" }), cancellationToken: cancellationToken);
         await accounts.Indexes.CreateOneAsync(new CreateIndexModel<AccountDocument>(Builders<AccountDocument>.IndexKeys.Ascending(x => x.DisplayName).Ascending(x => x.Id),
@@ -146,7 +148,8 @@ public sealed class MongoIdentityStore : IIdentityStore
             "beta-access" when hasBetaAccess.HasValue => update.Set(x => x.HasBetaAccess, hasBetaAccess.Value),
             _ => throw new ArgumentException("Unknown account administration action.", nameof(action))
         };
-        var account = await accounts.FindOneAndUpdateAsync(filters.Eq(x => x.Id, accountId) & revision, update,
+        var account = await accounts.FindOneAndUpdateAsync(filters.Eq(x => x.Id, accountId) & revision &
+            filters.Eq(x => x.PendingBetaGrantOperationId, null), update,
             new() { ReturnDocument = ReturnDocument.After }, cancellationToken);
         // SessionVersion is the durable revocation barrier, including concurrent session creation.
         if (account is not null && action == "ban")
@@ -223,10 +226,12 @@ public sealed class MongoIdentityStore : IIdentityStore
         public bool HasBetaAccess { get; set; }
         public long Revision { get; set; }
         public long SessionVersion { get; set; }
+        [BsonIgnoreIfNull] public DateTime? BetaRegisteredAt { get; set; }
+        [BsonIgnoreIfNull] public string? PendingBetaGrantOperationId { get; set; }
         public DateTime UpdatedAt { get; set; }
         public AccountAdministrationChange[] AdministrationHistory { get; set; } = [];
         public Account ToDomain() => new(Id, DiscordId, DisplayName, IsBanned, BanReason, HasBetaAccess, Revision,
-            CreatedAt, UpdatedAt == default ? (LastLoginAt == default ? CreatedAt : LastLoginAt) : UpdatedAt, SessionVersion);
+            CreatedAt, UpdatedAt == default ? (LastLoginAt == default ? CreatedAt : LastLoginAt) : UpdatedAt, SessionVersion, BetaRegisteredAt);
     }
 
     private sealed class SessionDocument

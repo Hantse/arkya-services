@@ -1,5 +1,6 @@
 window.ArkyaPageTranslations = {
   fr: {
+    'windows.betaAccess': 'L’accès au jeu est réservé aux comptes autorisés. L’inscription ne donne pas automatiquement accès à la bêta.',
     'page.title': 'Arkya — Installer le launcher',
     'meta.description': 'Téléchargez le launcher Arkya pour installer, mettre à jour et lancer la bêta Windows.',
     'windows.eyebrow': 'ARKYA · BÊTA WINDOWS', 'windows.title': 'L’aventure,<br>sur <em>votre PC.</em>',
@@ -17,6 +18,7 @@ window.ArkyaPageTranslations = {
     'windows.progress': 'Suivre l’avancement ↗',
   },
   en: {
+    'windows.betaAccess': 'Game access is limited to authorized accounts. Registering does not automatically grant beta access.',
     'page.title': 'Arkya — Install the launcher',
     'meta.description': 'Download the Arkya launcher to install, update and launch the Windows beta.',
     'windows.eyebrow': 'ARKYA · WINDOWS BETA', 'windows.title': 'Adventure,<br>on <em>your PC.</em>',

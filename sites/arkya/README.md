@@ -65,9 +65,42 @@ Les liens de page marqués `data-language-link` conservent explicitement la lang
 
 Les pages `dist/terms.html` et `dist/privacy.html` présentent les Conditions d’utilisation et la Politique de confidentialité en FR/EN, avec **Pyxion Sarl-S** comme éditeur/responsable et **support@arkya.online** comme contact. Le français est présent dans le HTML ; `legal-copy.js` fournit les traductions et `legal.js` les interactions. Les liens sont accessibles depuis les pieds de page et l’écran de connexion. Ces textes décrivent la vitrine actuelle et la future connexion séparément ; revoir la politique lors de l’activation d’Identity.
 
-`dist/account.html`, `account-copy.js`, `account.js` et `account.css` composent l’écran de compte. La connexion Discord utilise le même onglet : `auth-client.mjs` conserve temporairement la preuve S256 dans `sessionStorage`, puis Identity renvoie le navigateur sur la page Compte. Le site reprend l’échange et valide `/me` avant d’afficher le compte ou de retourner à la page du launcher. La destination de retour conserve seulement la langue et l’éventuel `returnTo=play.html`. Si le stockage de session est indisponible, la connexion affiche une erreur avant de quitter le site. `common.js` restaure la session et met à jour la navigation. Le bearer Arkya reste lié à l’origine API et n’est jamais placé dans une URL. La déconnexion appelle le backend puis efface l’état local même si le serveur ne répond pas.
+`dist/account.html`, `account-copy.js`, `account.js` et `account.css` composent l’écran de compte. La connexion Discord utilise le même onglet : `auth-client.mjs` conserve temporairement la preuve S256 dans `sessionStorage`, puis Identity renvoie le navigateur sur la page Compte. Le site reprend l’échange et valide `/me` avant d’afficher le compte ou de retourner au launcher ou à l’inscription bêta. La destination de retour conserve seulement la langue et l’éventuel `returnTo=play.html` ou `returnTo=beta.html`. Si le stockage de session est indisponible, la connexion affiche une erreur avant de quitter le site. `common.js` restaure la session et met à jour la navigation. Le bearer Arkya reste lié à l’origine API et n’est jamais placé dans une URL. La déconnexion appelle le backend puis efface l’état local même si le serveur ne répond pas.
 
 **Configuration de cette révision :** `dist/auth-config.js` pointe Identity et Characters sur `https://api.arkya.online` via YARP. Une panne DNS, HTTP ou CORS est une erreur visible ; aucun compte ni monde local n’est simulé. La disponibilité publique des services et le parcours Discord réel restent à vérifier avant de considérer la bêta utilisable. Le [guide de raccordement Discord](DISCORD_SETUP.md) fournit le callback actualisé et les contrôles d’activation. L’achat du domaine chez Gandi ne déplace pas la vitrine vers `arkya.online`.
+
+## Inscription à la bêta fermée
+
+`dist/beta.html` permet de s’inscrire en français ou en anglais avec le compte
+Discord existant. L’accueil, les menus, le compte et la page du launcher y donnent
+accès. Seuls le compte Arkya et la date d’inscription sont enregistrés ; aucune
+adresse e-mail ou information supplémentaire n’est demandée.
+
+La page consulte `GET /v1/beta/registration` sur l’origine Identity configurée.
+Un clic explicite sur **M’inscrire à la bêta** envoie `POST /v1/beta/registration`
+avec `{}` et le bearer du compte vérifié. Le retour Discord conserve uniquement
+la langue et `returnTo=beta.html` dans la même liste fermée que `play.html` ; il
+ne déclenche jamais d’inscription automatique. Le jeton reste dans le client
+d’authentification et ne figure dans aucune URL.
+
+Les états sans connexion, inscription disponible, accès en attente, accès accordé
+et erreur sont distincts. Une inscription ne garantit ni accès ni date
+d’invitation. L’équipe attribue les accès par vagues, manuellement ou par tirage
+aléatoire. Le bouton **Vérifier mon statut** relit le serveur ; une panne masque
+l’accès précédemment affiché jusqu’à sa confirmation. Le téléchargement du
+launcher demeure indépendant de ce contrôle.
+
+Vérification : `node --test tests/*.test.mjs` couvre le transport authentifié,
+la validation des réponses, les retours sûrs et la révocation. Le scénario
+`tests/beta.browser.mjs` couvre FR/EN, les formats 320–1440 px, le retour Discord
+sans inscription automatique, l’inscription explicite, l’attente, l’accès accordé,
+la panne et la session révoquée avec des réponses isolées. Il n’inscrit aucun
+compte de production.
+
+Contrôle du 24 octobre 2026 : **129 tests Node réussis** et **64 contrôles bêta
+dans Edge réussis**. Les régressions compte (17), renouvellement (15) et launcher
+(123) passent également. Les rendus bureau et mobile ont été inspectés dans
+`output/playwright/arkya-beta-{desktop,mobile}.png` à la racine du dépôt.
 
 ## Sessions renouvelables
 

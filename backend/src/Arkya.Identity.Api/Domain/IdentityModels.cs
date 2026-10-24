@@ -2,7 +2,8 @@ namespace Arkya.Identity.Api.Domain;
 
 public sealed record Account(string Id, string DiscordId, string DisplayName,
     bool IsBanned = false, string? BanReason = null, bool HasBetaAccess = false, long Revision = 0,
-    DateTime CreatedAt = default, DateTime UpdatedAt = default, long SessionVersion = 0);
+    DateTime CreatedAt = default, DateTime UpdatedAt = default, long SessionVersion = 0,
+    DateTime? BetaRegisteredAt = null);
 public sealed record Session(string TokenHash, string AccountId, string DisplayName, DateTime ExpiresAt,
     long SessionVersion = 0, bool HasBetaAccess = false, string? RefreshSessionId = null);
 public sealed record RefreshSession(string Id, string AccountId, long SessionVersion, string TokenHash,

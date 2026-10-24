@@ -31,7 +31,8 @@ public static class RuntimeExtensions
     {
         var administration = app.Services.GetRequiredService<IOptions<AdministrationOptions>>().Value;
         app.UseArkyaInternalHttp(context => context.Request.Path.StartsWithSegments("/internal/sessions") ||
-            (administration.Enabled && administration.AllowClusterHttp && context.Request.Path.StartsWithSegments("/admin/accounts")));
+            (administration.Enabled && administration.AllowClusterHttp &&
+             (context.Request.Path.StartsWithSegments("/admin/accounts") || context.Request.Path.StartsWithSegments("/admin/beta"))));
         app.UseArkyaProxyTrust();
 
         var management = app.Services.GetRequiredService<IOptions<ManagementOptions>>().Value;
