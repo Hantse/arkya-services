@@ -77,6 +77,7 @@ public sealed class RealmSiteTests
 
     [Theory]
     [InlineData("overview")]
+    [InlineData("map")]
     [InlineData("players")]
     [InlineData("settings")]
     [InlineData("maintenance")]
@@ -91,7 +92,7 @@ public sealed class RealmSiteTests
         var html = await browser.GetStringAsync(Dedicated + "/?section=" + section);
         var navigation = Regex.Match(html, @"<nav\b[^>]*aria-label=""Main menu""[^>]*>.*?</nav>", RegexOptions.Singleline).Value;
         var sectionLinks = Regex.Matches(navigation, @"<a\b[^>]*href=""/\?section=[^""]*""[^>]*>.*?</a>", RegexOptions.Singleline);
-        Assert.Equal(6, sectionLinks.Count);
+        Assert.Equal(7, sectionLinks.Count);
         var active = Assert.Single(sectionLinks.Cast<Match>(), link => link.Value.Contains("aria-current=\"page\""));
         Assert.Contains("href=\"/?section=" + section + "\"", active.Value);
         Assert.Contains("data-realm-section=\"" + section + "\"", html);

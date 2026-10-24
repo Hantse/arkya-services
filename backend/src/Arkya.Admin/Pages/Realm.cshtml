@@ -5,7 +5,7 @@
     ViewData["Title"] = Model.Realm?.DisplayName ?? "Realm";
 }
 <div class="realm-workspace">
-<header class="page-header realm-header"><div><div class="eyebrow">WORLD / OPERATIONS</div><h1>@(Model.Realm?.DisplayName ?? "Realm")</h1>@if (Model.Realm is { } current) { <div class="realm-heading-meta"><span class="mono">@current.RealmId</span><span class="realm-status @RealmPresentation.StatusClass(current.Status)">@RealmPresentation.StatusLabel(current.Status)</span></div> }</div><a class="button secondary" asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]" asp-route-section="@Model.ActiveSection" asp-route-island="@(Model.ActiveSection == "overview" ? Model.SelectedIsland?.Plan.IslandId : null)" asp-route-search="@(Model.ActiveSection == "players" ? Model.Search : null)" asp-route-onlineOnly="@(Model.ActiveSection == "players" && Model.OnlineOnly ? "true" : null)" asp-route-pageNumber="@(Model.ActiveSection == "players" && Model.PageNumber != 1 ? Model.PageNumber : (int?)null)" asp-route-pageSize="@(Model.ActiveSection == "players" && Model.PageSize != 25 ? Model.PageSize : (int?)null)">Refresh</a></header>
+<header class="page-header realm-header"><div><div class="eyebrow">WORLD / OPERATIONS</div><h1>@(Model.Realm?.DisplayName ?? "Realm")</h1>@if (Model.Realm is { } current) { <div class="realm-heading-meta"><span class="mono">@current.RealmId</span><span class="realm-status @RealmPresentation.StatusClass(current.Status)">@RealmPresentation.StatusLabel(current.Status)</span></div> }</div><a class="button secondary" asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]" asp-route-section="@Model.ActiveSection" asp-route-island="@(Model.ActiveSection is "overview" or "map" ? Model.SelectedIsland?.Plan.IslandId : null)" asp-route-search="@(Model.ActiveSection == "players" ? Model.Search : null)" asp-route-onlineOnly="@(Model.ActiveSection == "players" && Model.OnlineOnly ? "true" : null)" asp-route-pageNumber="@(Model.ActiveSection == "players" && Model.PageNumber != 1 ? Model.PageNumber : (int?)null)" asp-route-pageSize="@(Model.ActiveSection == "players" && Model.PageSize != 25 ? Model.PageSize : (int?)null)">Refresh</a></header>
 @if (Model.Notice is not null) { <div class="alert success" role="status">@Model.Notice <a asp-page="/Realm" asp-route-realmId="@RouteData.Values["realmId"]" asp-route-section="history">View history</a></div> }
 @if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error</div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
@@ -16,6 +16,7 @@
     @if (realm.Status == "Deleting") { <p class="realm-progress-note" role="status">Deletion in progress. The realm will disappear from the list after its resources are removed. Characters and their saves are retained.</p> }
     <div class="realm-pane" data-realm-section="@Model.ActiveSection">
     @if (Model.ActiveSection == "overview") { <partial name="_RealmOverview" model="Model" /> }
+    else if (Model.ActiveSection == "map") { <partial name="_RealmMap" model="Model" /> }
     else
     {
         @if (Model.ActiveSection == "maintenance")

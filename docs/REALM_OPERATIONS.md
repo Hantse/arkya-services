@@ -36,18 +36,26 @@ La fiche `/Realms/{realmId}` affiche une seule section à la fois :
 | Section | Contenu |
 | --- | --- |
 | Aperçu | Liste d'Areas, carte de l'Area sélectionnée et partitions, pools de donjons/raids séparés ; serveurs et coordonnées repliés. |
+| Carte en direct | Positions autoritaires des joueurs, PNJ et créatures, sélection d'Area et filtres ; état de fraîcheur des dedicateds. |
+| Joueurs | Personnages liés au realm, recherche et présence par lease. |
 | Réglages | Multiplicateurs XP/récolte et confirmation de leur application. |
 | Maintenance | Déploiement, redémarrage, mise à jour et suppression ; ouvrir l’action voulue pour afficher son formulaire. |
 | En jeu | Annonce, déconnexion et sauvegarde ; ouvrir le formulaire souhaité. |
 | Historique | Commandes, opérations serveur et changements de taux dans trois volets repliables. |
 
-La section est portée par `?section=overview|settings|maintenance|game|history`.
+La section est portée par `?section=overview|map|players|settings|maintenance|game|history`.
 Actualiser et les retours de formulaire la conservent. Une erreur de validation
 rouvre l’action concernée et conserve ses champs. Les historiques ne sont plus
 répétés sous les formulaires ; leurs tableaux défilent dans leur propre zone.
 L’aperçu ne dépend que de la lecture du royaume : les autres sources sont
 chargées à l’ouverture de leur section. Une panne du suivi serveur est
 explicitement distinguée d’un serveur qui n’a pas encore reçu les taux.
+
+**Live map** interroge le dernier relevé autoritaire de chaque dedicated sans
+recharger la page. Les positions expirent après dix secondes ; un ancien
+serveur sans télémétrie reste explicitement signalé. Les contrats, budgets
+et conditions de mise en service sont décrits dans la
+[carte en direct](ADMIN_LIVE_MAP.md).
 
 La refonte de navigation a été vérifiée le 23 octobre 2026 : suite Admin avec
 467 réussites et un test MongoDB ignoré, puis 27 contrôles ciblés après les

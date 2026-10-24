@@ -110,6 +110,14 @@ public sealed class RealmsAdminClient(HttpClient client, IOptions<RealmsApiOptio
         "admin/realms/" + Uri.EscapeDataString(realmId) + "/commands", null, ct);
     public Task<RealmServerVersion[]> ServerVersionsAsync(string realmId, CancellationToken ct) => SendAsync<RealmServerVersion[]>(HttpMethod.Get,
         "admin/realms/" + Uri.EscapeDataString(realmId) + "/server-versions", null, ct);
+    public async Task<RealmWorldMap> WorldMapAsync(string realmId, CancellationToken ct)
+    {
+        var map = await SendAsync<RealmWorldMap>(HttpMethod.Get,
+            "admin/realms/" + Uri.EscapeDataString(realmId) + "/world-map", null, ct);
+        if (map.RealmId != realmId || map.Servers is null || map.Servers.Any(server => server is null || server.Entities is null))
+            throw new RealmsApiException(HttpStatusCode.BadGateway, "The realm service returned an invalid map response.");
+        return map;
+    }
     public Task<RealmCommand> CommandAsync(string realmId, RealmCommandRequest command, string actor, CancellationToken ct) =>
         SendAsync<RealmCommand>(HttpMethod.Post, "admin/realms/" + Uri.EscapeDataString(realmId) + "/commands", command, ct, actor);
     public Task<RealmConfiguration> ConfigurationAsync(string realmId, CancellationToken ct) => SendAsync<RealmConfiguration>(HttpMethod.Get,

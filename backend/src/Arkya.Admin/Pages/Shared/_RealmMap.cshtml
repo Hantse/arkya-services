@@ -1,0 +1,73 @@
+@model RealmModel
+@using Arkya.Admin.Realms
+@using System.Globalization
+@{
+    var realm = Model.Realm!;
+    var selected = Model.SelectedIsland;
+    string N(double value) => value.ToString("0.###", CultureInfo.InvariantCulture);
+}
+<div class="section-heading"><div><h2>Live world map</h2><p class="muted">Authoritative positions from the dedicated servers. Updates every 2 seconds.</p></div></div>
+@if (selected is null)
+{
+    <div class="panel empty-state"><h3>No mapped Areas</h3><p>This realm has no Area with configured map coordinates.</p></div>
+}
+else
+{
+    var plan = selected.Plan;
+    var grid = RealmIslandPresentation.Grid(plan);
+    var image = RealmIslandPresentation.ImageMatchesPlan(plan) ? RealmIslandPresentation.ImagePath(plan.ContentId ?? plan.IslandId) : null;
+    <section class="realm-live-map" data-world-map data-map-endpoint="@Url.Page("/Realm", "WorldMap", new { realmId = realm.RealmId })"
+             data-realm-id="@realm.RealmId" data-island-id="@plan.IslandId" data-fixed-profile="@selected.FixedProfile.ToString().ToLowerInvariant()"
+             data-server-ids="@System.Text.Json.JsonSerializer.Serialize(selected.Servers.Select(server => server.Id))"
+             data-origin-x="@N(plan.OriginX)" data-origin-z="@N(plan.OriginZ)" data-width="@N(plan.Width)" data-depth="@N(plan.Depth)">
+        <div class="panel realm-map-toolbar">
+            <form method="get" class="realm-map-area">
+                <input type="hidden" name="section" value="map" />
+                <label for="map-island">Area</label><select id="map-island" name="island">
+                @foreach (var island in Model.Islands)
+                {
+                    <option value="@island.Plan.IslandId" selected="@(island.Plan.IslandId == plan.IslandId)">@RealmIslandPresentation.Label(island.Plan.IslandId)</option>
+                }
+                </select><button class="button secondary" type="submit">View Area</button>
+            </form>
+            <fieldset class="realm-map-filters"><legend>Show on map</legend>
+                <label><input type="checkbox" data-map-kind="player" checked /><span class="realm-map-key player" aria-hidden="true"></span>Players <strong data-count="player">—</strong></label>
+                <label><input type="checkbox" data-map-kind="npc" checked /><span class="realm-map-key npc" aria-hidden="true"></span>NPCs <strong data-count="npc">—</strong></label>
+                <label><input type="checkbox" data-map-kind="creature" checked /><span class="realm-map-key creature" aria-hidden="true"></span>Creatures <strong data-count="creature">—</strong></label>
+            </fieldset>
+        </div>
+        <div class="realm-map-status" role="status" aria-live="polite" data-map-status>Connecting to the dedicated servers…</div>
+        <div class="realm-map-layout">
+            <figure class="panel realm-map-canvas">
+                <svg viewBox="0 0 @N(plan.Width) @N(plan.Depth)" aria-label="Live positions in @RealmIslandPresentation.Label(plan.IslandId)" role="group" data-map-svg>
+                    <rect class="realm-map-water" width="@N(plan.Width)" height="@N(plan.Depth)" />
+                    @if (image is not null) { <image href="@image" width="@N(plan.Width)" height="@N(plan.Depth)" preserveAspectRatio="none" /> }
+                    @for (var index = 0; index < plan.DedicatedCount; index++)
+                    {
+                        var server = selected.Servers.FirstOrDefault(server => server.PartitionIndex == index) ?? (selected.FixedProfile ? selected.Servers.FirstOrDefault() : null);
+                        var bounds = server?.Bounds ?? new AreaBounds(plan.OriginX + plan.Width * (index % grid.Columns) / grid.Columns,
+                            plan.OriginZ + plan.Depth * (index / grid.Columns) / grid.Rows,
+                            plan.OriginX + plan.Width * (index % grid.Columns + 1) / grid.Columns,
+                            plan.OriginZ + plan.Depth * (index / grid.Columns + 1) / grid.Rows);
+                        <g class="realm-map-partition" aria-hidden="true">
+                            <rect x="@N(bounds.MinX - plan.OriginX)" y="@N(plan.Depth - (bounds.MaxZ - plan.OriginZ))" width="@N(bounds.MaxX - bounds.MinX)" height="@N(bounds.MaxZ - bounds.MinZ)" />
+                            <text x="@N((bounds.MinX + bounds.MaxX) / 2 - plan.OriginX)" y="@N(plan.Depth - ((bounds.MinZ + bounds.MaxZ) / 2 - plan.OriginZ))" font-size="@N(Math.Min(plan.Width / grid.Columns, plan.Depth / grid.Rows) * .08)">@RealmIslandPresentation.PartitionLabel(index)</text>
+                        </g>
+                    }
+                    <g data-map-markers></g>
+                </svg>
+                <figcaption><strong>@RealmIslandPresentation.Label(plan.IslandId)</strong><span>X → · Z ↑</span></figcaption>
+                @if (image is null) { <p class="muted">Coordinate map: no aligned terrain image is available for this Area.</p> }
+                <p class="muted">Select a marker or an entity below to inspect its position.</p>
+            </figure>
+            <aside class="panel realm-map-inspector" aria-labelledby="map-details-heading">
+                <h3 id="map-details-heading">Entity details</h3><div data-map-details><p class="muted">Select a player, NPC or creature.</p></div>
+                <h3>Dedicated servers</h3><ul class="realm-map-servers" data-map-servers><li>Waiting for telemetry…</li></ul>
+            </aside>
+        </div>
+        <div class="panel realm-map-directory"><div class="section-heading"><h3>Entities in this Area</h3><label class="realm-map-search">Search <input type="search" maxlength="100" data-map-search placeholder="Name or ID" /></label></div>
+            <p class="muted" data-map-directory-note>Waiting for the first position report.</p><ul class="realm-map-entities" data-map-entities></ul>
+        </div>
+        <noscript><p class="alert error">Enable JavaScript to display live positions and automatic updates.</p></noscript>
+    </section>
+}

@@ -24,7 +24,7 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
     public RealmIslandView[] Islands => Realm is null ? [] : RealmIslandPresentation.Islands(Realm);
     public RealmIslandView? SelectedIsland => Islands.FirstOrDefault(island => island.Plan.IslandId == Island) ?? Islands.FirstOrDefault();
     public string? ActiveAction { get; private set; }
-    public string ActiveSection => Section is "settings" or "maintenance" or "players" or "game" or "history" ? Section : "overview";
+    public string ActiveSection => Section is "settings" or "maintenance" or "players" or "game" or "history" or "map" ? Section : "overview";
     public bool CharactersEnabled => characters.Enabled;
     public AdminCharacterPage? Characters { get; private set; }
     public string? CharactersError { get; private set; }
@@ -66,6 +66,15 @@ public sealed class RealmModel(RealmsAdminClient realms, RealmSiteLinks sites, C
             Request.Host.Host.Equals(sites.AdminDomain, StringComparison.OrdinalIgnoreCase))
             return Redirect(sites.AdminUrl(realmId) + Request.QueryString);
         return await LoadAsync(realmId, ct);
+    }
+
+    public async Task<IActionResult> OnGetWorldMapAsync(string realmId, CancellationToken ct)
+    {
+        if (!realms.Enabled || !ValidId(realmId)) return NotFound();
+        try { return new JsonResult(await realms.WorldMapAsync(realmId, ct)); }
+        catch (RealmsApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound) { return NotFound(); }
+        catch (Exception ex) when (RealmPresentation.IsDependencyError(ex, ct))
+        { return new JsonResult(new { error = "The live map is unavailable. Retrying automatically." }) { StatusCode = StatusCodes.Status503ServiceUnavailable }; }
     }
 
     public async Task<IActionResult> OnPostDeployAsync(string realmId, CancellationToken ct)

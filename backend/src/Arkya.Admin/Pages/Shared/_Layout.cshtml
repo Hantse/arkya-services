@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="~/console.css" asp-append-version="true" />
     @if (page == "/Realm") { <link rel="stylesheet" href="~/realm-islands.css" asp-append-version="true" /> }
     <link rel="stylesheet" href="~/dark-admin.css" asp-append-version="true" />
+    @if (page == "/Realm" && currentSection == "map") { <link rel="stylesheet" href="~/realm-map.css" asp-append-version="true" /> }
     @if (page is "/Items" or "/Item") { <link rel="stylesheet" href="~/items.css" asp-append-version="true" /> }
     @if (page == "/Character") { <link rel="stylesheet" href="~/character.css" asp-append-version="true" /> }
     @if (page == "/BetaRegistrations") { <link rel="stylesheet" href="~/beta-registrations.css" asp-append-version="true" /> }
@@ -55,7 +56,7 @@
                     <div class="realm-context"><span>Current realm</span><strong><partial name="_AdminIcon" model='@("world")' />@realmContextId</strong></div>
                     <details class="nav-group" open>
                         <summary>Realm management</summary>
-                        @foreach (var (section, label, icon) in new[] { ("overview", "Overview", "overview"), ("players", "Players and characters", "players"), ("settings", "Settings", "settings"), ("maintenance", "Maintenance", "activity"), ("game", "In game", "activity"), ("history", "History", "history") })
+                        @foreach (var (section, label, icon) in new[] { ("overview", "Overview", "overview"), ("map", "Live map", "world"), ("players", "Players and characters", "players"), ("settings", "Settings", "settings"), ("maintenance", "Maintenance", "activity"), ("game", "In game", "activity"), ("history", "History", "history") })
                         {
                             <a class="nav-item" href="@(realmPath + "?section=" + section)" aria-current="@(currentSection == section ? "page" : null)"><partial name="_AdminIcon" model="icon" />@label</a>
                         }
@@ -102,5 +103,6 @@
         <main id="main" class="main-content" tabindex="-1"><div class="console-bar"><span>Administration <span aria-hidden="true">/</span> @(realmContextId ?? ViewData["Title"])</span><span class="console-access"><partial name="_AdminIcon" model='@("shield")' />Operator access</span></div><div class="page-content">@RenderBody()</div></main>
     </div>
     @if (page == "/BetaRegistrations") { <script src="~/beta-registrations.js" asp-append-version="true" defer></script> }
+    @if (page == "/Realm" && currentSection == "map") { <script src="~/realm-map.js" asp-append-version="true" defer></script> }
 </body>
 </html>

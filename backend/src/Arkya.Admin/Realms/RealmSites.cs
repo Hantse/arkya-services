@@ -72,6 +72,7 @@ public static class RealmSiteExtensions
             { context.Response.StatusCode = 404; return; }
         }
         else if (path is not ("/Logout" or "/Error" or "/health") &&
+            path != "/realm-map.js" &&
             !path.EndsWith(".css", StringComparison.OrdinalIgnoreCase) &&
             !path.EndsWith(".svg", StringComparison.OrdinalIgnoreCase) &&
             !path.StartsWith("/images/", StringComparison.OrdinalIgnoreCase))

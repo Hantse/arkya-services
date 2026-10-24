@@ -7,7 +7,7 @@ public sealed class RealmSectionsEndpointTests
 {
     private const string Path = "/Realms/terres-aube";
     private const string ApiPath = "/admin/realms/terres-aube";
-    private static readonly string[] Sections = ["overview", "players", "settings", "maintenance", "game", "history"];
+    private static readonly string[] Sections = ["overview", "map", "players", "settings", "maintenance", "game", "history"];
     private static readonly string[] MutationHandlers = ["Deploy", "Configuration", "Restart", "Update", "Delete", "Announce", "Command"];
 
     private static AdminFactory Factory(bool enabled = true)
@@ -20,6 +20,7 @@ public sealed class RealmSectionsEndpointTests
 
     [Theory]
     [InlineData("overview")]
+    [InlineData("map")]
     [InlineData("players")]
     [InlineData("settings")]
     [InlineData("maintenance")]
@@ -68,6 +69,7 @@ public sealed class RealmSectionsEndpointTests
 
     [Theory]
     [InlineData("overview")]
+    [InlineData("map")]
     [InlineData("players")]
     [InlineData("settings")]
     [InlineData("maintenance")]
@@ -116,6 +118,7 @@ public sealed class RealmSectionsEndpointTests
 
     [Theory]
     [InlineData("overview")]
+    [InlineData("map")]
     [InlineData("players")]
     [InlineData("settings")]
     [InlineData("maintenance")]

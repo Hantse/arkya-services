@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
 using Arkya.Admin.Realms;
+using Arkya.ServiceDefaults;
 
 namespace Arkya.Admin.Tests;
 
@@ -18,6 +19,9 @@ internal sealed class RealmsStub : HttpMessageHandler
         "registry.example/arkya/server@sha256:" + new string('b', 64), 2, null);
     public RealmCommands Commands { get; set; } = new([new("area-one", DateTimeOffset.UtcNow, true, ["announce", "kick", "save"])], []);
     public RealmServerVersion[] ServerVersions { get; set; } = [];
+    public RealmWorldMap WorldMap { get; set; } = new("terres-aube", DateTimeOffset.UtcNow, 2, 10, []);
+    public HttpStatusCode? WorldMapReadError { get; set; }
+    public bool WorldMapInvalidJson { get; set; }
     public RealmConfiguration Configuration { get; set; } = new(0, 1, 1, null, null, []);
     public HttpStatusCode? ConfigurationReadError { get; set; }
     public HttpStatusCode? CommandsReadError { get; set; }
@@ -51,6 +55,12 @@ internal sealed class RealmsStub : HttpMessageHandler
                     return new(versionsError) { Content = new StringContent("private upstream details " + AdminFactory.RealmsAdminKey) };
                 if (ServerVersionsInvalidJson) return new(HttpStatusCode.OK) { Content = new StringContent("invalid upstream response") };
             }
+            if (call.Path.EndsWith("/world-map"))
+            {
+                if (WorldMapReadError is { } mapError)
+                    return new(mapError) { Content = new StringContent("private upstream details " + AdminFactory.RealmsAdminKey) };
+                if (WorldMapInvalidJson) return new(HttpStatusCode.OK) { Content = new StringContent("invalid upstream response") };
+            }
             return call.Path switch
             {
                 "/admin/realms" => Json(new[] { Realm }),
@@ -59,6 +69,7 @@ internal sealed class RealmsStub : HttpMessageHandler
                 "/admin/realms/terres-aube/operations-options" => Json(OperationsOptions),
                 "/admin/realms/terres-aube/commands" => Json(Commands),
                 "/admin/realms/terres-aube/server-versions" => Json(ServerVersions),
+                "/admin/realms/terres-aube/world-map" => Json(WorldMap),
                 "/admin/realms/terres-aube/configuration" => Json(Configuration),
                 _ => new(HttpStatusCode.NotFound)
             };

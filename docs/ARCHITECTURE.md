@@ -38,6 +38,14 @@ et les quêtes persistées, sans exposer le JSON de simulation brut. Les sacs,
 la banque et l'équipement sont sauvegardés atomiquement avec l'état du personnage
 et affichés dans la fiche ; voir la [persistance des possessions](CHARACTER_POSSESSIONS.md).
 
+La [carte d'administration en direct](ADMIN_LIVE_MAP.md) lit un relevé distinct
+des sauvegardes Characters. Chaque dedicated transmet ses joueurs admis, PNJ
+et créatures vivantes à Realms toutes les deux secondes environ, avec sa clé
+privée liée au realm et au serveur. Realms conserve le dernier relevé par
+dedicated et masque les positions après dix secondes sans réception ou après
+changement de révision du realm. Admin garde le filtrage des Areas, les clés
+côté serveur et une lecture réservée aux opérateurs.
+
 L'[artisanat](CRAFTING.md) conserve les niveaux de toutes les écoles, une école
 active, les formules apprises et les dotations initiales déjà reçues. Les maîtres
 de métier acceptent des intentions par RPC ; le serveur vérifie leur identité,

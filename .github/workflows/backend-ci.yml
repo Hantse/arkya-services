@@ -80,6 +80,15 @@ jobs:
       - name: Validate the inference agent contracts and worker pool
         run: python3 -m unittest discover -s tools/inference-agent/tests -v
 
+      - name: Set up the Admin browser-script test runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.x'
+          package-manager-cache: false
+
+      - name: Validate the Admin live map client
+        run: node --test tests/Arkya.Admin.Tests/RealmWorldMapClientTests.cjs
+
       - name: Run all tests including MongoDB persistence and service flows
         env:
           ARKYA_TEST_MONGO: mongodb://127.0.0.1:${{ job.services.mongo.ports['27017'] }}/

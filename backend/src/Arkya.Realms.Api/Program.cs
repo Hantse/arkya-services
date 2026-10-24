@@ -4,6 +4,7 @@ using Arkya.Realms.Api.Contracts;
 using Arkya.Realms.Api.Endpoints;
 using Arkya.Realms.Api.Infrastructure;
 using Arkya.ServiceDefaults;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -50,6 +51,8 @@ public partial class Program
             policy => policy.AllowAnyOrigin().WithMethods("GET").AllowAnyHeader()));
         builder.Services.AddSingleton<IRealmCommandRepository, MongoRealmCommandRepository>();
         builder.Services.AddSingleton<RealmCommandService>();
+        builder.Services.AddSingleton<IRealmWorldMapRepository, MongoRealmWorldMapRepository>();
+        builder.Services.AddSingleton<RealmWorldMapService>();
         builder.Services.AddSingleton<RealmConfigurationService>();
         builder.Services.AddOptions<GameEntryOptions>().BindConfiguration("GameAccess")
             .Validate(value => value.IsValid(builder.Environment.IsDevelopment()), "Game entry configuration is invalid.").ValidateOnStart();
@@ -76,7 +79,11 @@ public partial class Program
                 context.Response.StatusCode = 400;
                 return;
             }
-            if (context.Request.ContentLength > 32768)
+            var worldMapReport = context.GetEndpoint()?.Metadata.GetMetadata<RealmWorldMapBodyLimit>() is not null;
+            var bodyLimit = worldMapReport ? RealmWorldMapService.MaxRequestBodyBytes : 32768;
+            if (worldMapReport && context.Features.Get<IHttpMaxRequestBodySizeFeature>() is { IsReadOnly: false } bodySize)
+                bodySize.MaxRequestBodySize = bodyLimit;
+            if (context.Request.ContentLength > bodyLimit)
             {
                 context.Response.StatusCode = 413;
                 return;
@@ -109,6 +116,7 @@ public partial class Program
         app.MapRealmEndpoints();
         app.MapPublicRealmEndpoints();
         app.MapRealmCommandEndpoints();
+        app.MapRealmWorldMapEndpoints();
         app.MapRealmConfigurationEndpoints();
         app.MapGet("/internal/realms/entries", async (HttpContext context, GameEntryService entries, CancellationToken cancellationToken) =>
         {

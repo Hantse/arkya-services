@@ -13,7 +13,7 @@ décrit les contenus et portails associés au plan du realm.
 La fiche de chaque realm propose aussi le redémarrage, la mise à jour approuvée, les annonces en jeu, la déconnexion, la sauvegarde des joueurs et les multiplicateurs XP/récolte modifiables en direct : voir [actions, suivi et configuration](REALM_OPERATIONS.md).
 
 La liste des royaumes `/Realms` ouvre un formulaire séparé sous `/CreateRealm`.
-Chaque fiche utilise six sections : Aperçu, Joueurs, Réglages, Maintenance, En jeu
+Chaque fiche utilise sept sections : Aperçu, Carte en direct, Joueurs, Réglages, Maintenance, En jeu
 et Historique, réunies dans le menu latéral du realm. Ce menu remplace la navigation
 générale sur sa fiche, y compris en accès local `/Realms/{realmId}` ; la création
 et les pages centrales conservent le menu général. Les liens vers la liste des
@@ -27,6 +27,10 @@ pools de donjons/raids séparés. Le formulaire de création permet de choisir
 les colonnes X et les lignes Y avec une prévisualisation immédiate ; Y désigne
 le Z du monde Unity. Une partition d'Area correspond à un dédié. Voir
 [le plan et ses limites](REALM_DEPLOYMENT.md).
+
+La section **Live map** ajoute les positions autoritaires des joueurs, PNJ et
+créatures, avec actualisation périodique, filtres et état de fraîcheur par
+dedicated. Voir les [contrats et limites de la carte en direct](ADMIN_LIVE_MAP.md).
 
 ## Présentation de la console
 
