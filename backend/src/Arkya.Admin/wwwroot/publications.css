@@ -1,0 +1,9 @@
+.publication-list-filters .report-filter-primary { grid-template-columns: minmax(220px, 2fr) repeat(2, minmax(140px, 1fr)); }
+.publication-list-filters .report-filter-secondary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.publication-filter-help { margin: 16px 0 0; font-size: 12px; }
+@media (max-width: 900px) {
+    .publication-list-filters .report-filter-primary, .publication-list-filters .report-filter-secondary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 540px) {
+    .publication-list-filters .report-filter-primary, .publication-list-filters .report-filter-secondary { grid-template-columns: minmax(0, 1fr); }
+}

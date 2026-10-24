@@ -284,6 +284,11 @@ dépublication exigent la révision attendue ; une édition conserve le snapshot
 public précédent jusqu'à une nouvelle publication. Les notes de version portent
 une `gameVersion`, tandis que les actualités restent distinctes.
 
+La liste Admin sépare News et Release notes en deux onglets, avec recherche,
+langue, version exacte, période UTC, tri et pagination. Elle filtre le brouillon
+courant et sa date de modification avant pagination, y compris sans publication.
+Le feed public conserve ses filtres sur le snapshot et la date de publication.
+
 Le MCP Admin partage ces opérations via `Arkya.Publications.Mcp`, sans accès
 direct à MongoDB. Sept outils lisent, créent, modifient, publient, dépublient ou
 suppriment les articles avec la clé Content conservée côté Admin. Chaque mutation

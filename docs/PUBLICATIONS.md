@@ -10,8 +10,12 @@ lisent uniquement les publications publiques, sans compte ni cookie.
 
 ## Backoffice
 
-- `/Publications` : liste filtrée par type/langue, avec pagination.
-- `/Publication` : création d’un brouillon.
+- `/Publications` : deux onglets **News / Release notes**, avec recherche,
+  langue, version exacte pour les notes, période UTC, tri et pagination.
+  L'onglet News et 12 résultats sont sélectionnés par défaut ; les tailles
+  proposées sont 12, 24 et 48. Les anciens liens avec 1 à 50 résultats restent valides.
+- `/Publication` : création d’un brouillon ; le type et la langue sélectionnés
+  dans la liste préremplissent le formulaire.
 - `/Publication/{id}` : édition, aperçu en texte brut, publication et dépublication.
 
 Enregistrer un article déjà publié conserve le contenu public précédent.
@@ -19,6 +23,14 @@ Publier copie le brouillon enregistré dans le snapshot public. Les changements
 non enregistrés dans le formulaire ne font pas partie de cette publication.
 Une saisie conflictuelle reste visible pour pouvoir la reprendre après rechargement.
 Dépublier retire immédiatement l’article des lectures publiques et conserve son brouillon.
+
+Les filtres de l'admin portent sur le contenu du brouillon, qu'il soit publié
+ou non. Les dates **Modified from/to (UTC)** sont inclusives et le tri porte
+sur la dernière modification, afin de retrouver aussi les brouillons.
+Les onglets, la pagination et le lien de retry conservent la sélection ;
+changer d'onglet revient à la première page et News retire le filtre de version.
+Effacer les filtres conserve l'onglet courant. Le retour depuis l'éditeur
+retrouve l'onglet correspondant au type de l'article enregistré.
 
 ## MCP administrateur
 
@@ -99,26 +111,27 @@ Les deux listes acceptent `kind=news|release-note`, `language=fr|en`,
 `limit=1..50` (défaut `20`) et `offset=0..10000` (défaut `0`). Omettre type ou
 langue sélectionne toutes leurs valeurs.
 
-Le feed public accepte aussi les filtres suivants, combinables entre eux :
+Les listes publique et Admin acceptent aussi les filtres suivants, combinables :
 
-| Paramètre public | Valeur |
+| Paramètre | Valeur |
 | --- | --- |
-| `q` | Recherche littérale de sous-chaîne, insensible à la casse, dans le titre, résumé ou corps publié ; 100 caractères maximum, sans contrôles. Les espaces de début/fin sont retirés et une recherche vide ne filtre rien. |
+| `q` | Recherche littérale de sous-chaîne, insensible à la casse, dans le titre, résumé ou corps ; 100 caractères maximum, sans contrôles. Les espaces de début/fin sont retirés et une recherche vide ne filtre rien. |
 | `gameVersion` | Version exacte, sensible à la casse, suivant le motif de création ci-dessous ; 1 à 64 caractères. |
-| `from` / `to` | Dates de publication UTC inclusives au format strict `YYYY-MM-DD` ; `from` doit précéder ou égaler `to`. Chaque borne est facultative. |
+| `from` / `to` | Dates UTC inclusives au format strict `YYYY-MM-DD` ; `from` doit précéder ou égaler `to`. Dates de publication sur le feed public, dernière modification sur la liste Admin. Chaque borne est facultative. |
 | `sort` | `newest` (défaut) ou `oldest`. |
 
 Le feed public trie par date de publication puis ID, décroissants avec `newest`
-et croissants avec `oldest`. La liste Admin conserve son tri par date de
-modification puis ID décroissants et ses filtres type/langue. Le filtrage public
-porte uniquement sur le snapshot publié, même après une modification du
-brouillon ; tous les filtres sont appliqués avant la pagination et le calcul de
+et croissants avec `oldest`. La liste Admin trie par dernière modification puis
+ID dans le même sens. Ses filtres portent sur le brouillon courant, même non
+publié. Le filtrage public porte uniquement sur le snapshot publié, même après
+une modification du brouillon ; tous les filtres sont appliqués avant la pagination et le calcul de
 `hasMore`. Une publication simultanée à la pagination peut déplacer les entrées ;
 recharger la première page actualise la liste.
 
 Exemple : `/v1/content/posts?kind=release-note&language=fr&q=b%C3%AAta&gameVersion=0.4-beta&from=2026-10-01&to=2026-10-24&sort=newest&limit=20&offset=0`.
 Une date ou un tri invalide, une plage inversée ou un filtre dépassant ses bornes
-donne `400`, sans lecture partielle ni recherche dans les brouillons.
+donne `400`, sans lecture partielle. Le feed public ne recherche jamais dans
+les brouillons.
 
 Création : `{ kind, language, title, summary, body, gameVersion }`.
 Modification : mêmes champs avec `revision` obligatoire.
@@ -183,6 +196,15 @@ Le profil GitOps `admin` active `Gateway__ContentEnabled`, configure la destinat
 Content interne, accepte le Host public et autorise uniquement le Gateway et
 l’Admin vers le port Content 8080. L’accès réseau de Realms reste inchangé.
 La livraison passe par Git, CI, les images puis la réconciliation Argo CD.
+
+Vérification des onglets et filtres Admin du 24 octobre 2026 : **951 tests Admin**
+et **171 tests Content** réussis, tous avec MongoDB réel et aucun test ignoré.
+**69 contrôles Edge** sur une administration locale isolée vérifient les deux
+onglets, les filtres combinés, la pagination UTC, la conservation des URL, les
+erreurs, les brouillons préremplis et les formats 320 à 1440 px. Le service
+Content de cette vérification navigateur est une fixture ; aucune publication
+ni inscription de production n'est modifiée. Les captures sont conservées dans
+`output/playwright/admin-publications-{news-1440,release-390}.png`.
 
 Les tests Content vérifient séparation des capacités, confidentialité des
 brouillons, publication/dépublication, limites, pagination, CORS, indisponibilité

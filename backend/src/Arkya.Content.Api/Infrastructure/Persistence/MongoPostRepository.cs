@@ -55,11 +55,24 @@ public sealed class MongoPostRepository(IMongoClient client, IOptions<MongoOptio
         {
             if (kind is not null) filter &= f.Eq(post => post.Draft.Kind, kind);
             if (language is not null) filter &= f.Eq(post => post.Draft.Language, language);
+            if (feedFilter?.GameVersion is { } version) filter &= f.Eq(post => post.Draft.GameVersion, version);
+            if (feedFilter?.From is { } from) filter &= f.Gte(post => post.UpdatedAt, from.UtcDateTime);
+            if (feedFilter?.ToExclusive is { } to) filter &= f.Lt(post => post.UpdatedAt, to.UtcDateTime);
+            if (!string.IsNullOrEmpty(feedFilter?.Query))
+            {
+                var search = new BsonRegularExpression(Regex.Escape(feedFilter.Query), "i");
+                filter &= f.Or(f.Regex(post => post.Draft.Title, search),
+                    f.Regex(post => post.Draft.Summary, search), f.Regex(post => post.Draft.Body, search));
+            }
         }
-        var sort = !publishedOnly ? Builders<PostDocument>.Sort.Descending(post => post.UpdatedAt).Descending(post => post.Id)
+        var s = Builders<PostDocument>.Sort;
+        var sort = publishedOnly
+            ? feedFilter?.OldestFirst == true
+                ? s.Ascending(post => post.Published!.PublishedAt).Ascending(post => post.Id)
+                : s.Descending(post => post.Published!.PublishedAt).Descending(post => post.Id)
             : feedFilter?.OldestFirst == true
-                ? Builders<PostDocument>.Sort.Ascending(post => post.Published!.PublishedAt).Ascending(post => post.Id)
-                : Builders<PostDocument>.Sort.Descending(post => post.Published!.PublishedAt).Descending(post => post.Id);
+                ? s.Ascending(post => post.UpdatedAt).Ascending(post => post.Id)
+                : s.Descending(post => post.UpdatedAt).Descending(post => post.Id);
         var documents = await posts.Find(filter).Sort(sort).Skip(offset).Limit(limit).ToListAsync(ct);
         return documents.Select(post => post.ToDomain()).ToArray();
     }

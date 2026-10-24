@@ -11,11 +11,14 @@ public sealed record UpdateContentPost(long Revision, string Kind, string Langua
 
 public sealed partial class ContentAdminClient
 {
-    public Task<ContentPostList> GetPostsAsync(string? kind, string? language, int offset, int limit, CancellationToken ct)
+    public Task<ContentPostList> GetPostsAsync(string? kind, string? language, int offset, int limit, CancellationToken ct,
+        string? q = null, string? gameVersion = null, string? from = null, string? to = null, string? sort = null)
     {
         var path = $"admin/content/posts?offset={offset}&limit={limit}";
         if (!string.IsNullOrEmpty(kind)) path += "&kind=" + Uri.EscapeDataString(kind);
         if (!string.IsNullOrEmpty(language)) path += "&language=" + Uri.EscapeDataString(language);
+        foreach (var (key, value) in new[] { ("q", q), ("gameVersion", gameVersion), ("from", from), ("to", to), ("sort", sort) })
+            if (!string.IsNullOrEmpty(value)) path += "&" + key + "=" + Uri.EscapeDataString(value);
         return SendAsync<ContentPostList>(HttpMethod.Get, path, null, ct, publication: true);
     }
 

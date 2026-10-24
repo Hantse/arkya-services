@@ -81,7 +81,7 @@ public sealed partial class PostService(IPostRepository repository, TimeProvider
         return errors;
     }
 
-    public static Dictionary<string, string[]> ValidatePublicQuery(string? kind, string? language, int limit, int offset,
+    public static Dictionary<string, string[]> ValidateFeedQuery(string? kind, string? language, int limit, int offset,
         string? q, string? gameVersion, string? from, string? to, string? sort, out PostFeedFilter filter)
     {
         var errors = ValidateQuery(kind, language, limit, offset);

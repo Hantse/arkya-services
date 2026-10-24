@@ -16,13 +16,19 @@ public sealed class PublicationModel(ContentAdminClient content) : PageModel
     public Guid? PostId { get; private set; }
     public bool Loaded { get; private set; }
     public string? Error { get; private set; }
+    public string ListKind => ContentPublicationPresentation.IsKind(Publication?.Kind) ? Publication!.Kind
+        : ContentPublicationPresentation.IsKind(Input.Kind) ? Input.Kind : "news";
     [TempData] public string? Notice { get; set; }
 
-    public async Task<IActionResult> OnGetAsync(Guid? id, CancellationToken ct)
+    public async Task<IActionResult> OnGetAsync(Guid? id, string? kind, string? language, CancellationToken ct)
     {
         PostId = id;
         if (!content.Enabled || id == Guid.Empty) return NotFound();
         if (id is { } postId) return await LoadAsync(postId, true, ct);
+        if (!string.IsNullOrEmpty(kind) && !ContentPublicationPresentation.IsKind(kind) ||
+            !string.IsNullOrEmpty(language) && !ContentPublicationPresentation.IsLanguage(language)) return BadRequest();
+        Input.Kind = string.IsNullOrEmpty(kind) ? "news" : kind;
+        Input.Language = string.IsNullOrEmpty(language) ? "fr" : language;
         Loaded = true;
         return Page();
     }

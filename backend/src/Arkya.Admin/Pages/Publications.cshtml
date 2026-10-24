@@ -6,9 +6,9 @@
 }
 <header class="page-header">
     <div><div class="eyebrow">COMMUNITY / PUBLICATIONS</div><h1>News and releases</h1><p class="intro">Prepare game news and notes for each update.</p></div>
-    @if (Model.Enabled) { <a class="button primary" asp-page="/Publication">Create a draft</a> }
+    @if (Model.Enabled) { <a class="button primary" asp-page="/Publication" asp-route-kind="@Model.Kind" asp-route-language="@Model.Language">Create a draft</a> }
 </header>
-@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Publications" asp-route-kind="@Model.Kind" asp-route-language="@Model.Language">Try again</a></div> }
+@if (Model.Error is not null) { <div class="alert error" role="alert">@Model.Error <a asp-page="/Publications" asp-all-route-data="@Model.Routes()">Try again</a></div> }
 @if (!ViewData.ModelState.IsValid) { <div asp-validation-summary="All" class="alert error" role="alert"></div> }
 @if (!Model.Enabled)
 {
@@ -16,21 +16,54 @@
 }
 else
 {
-    <form method="get" class="panel report-filters">
-        <div class="field"><label asp-for="Kind">Type</label><select asp-for="Kind"><option value="">All types</option><option value="news">News</option><option value="release-note">Release notes</option></select></div>
-        <div class="field"><label asp-for="Language">Language</label><select asp-for="Language"><option value="">All languages</option><option value="fr">French</option><option value="en">English</option></select></div>
-        <input type="hidden" asp-for="Limit" />
-        <button type="submit" class="button secondary">Filter</button><a class="text-link" asp-page="/Publications">Clear filters</a>
+    <nav class="report-tabs" aria-label="Publication type">
+        <a asp-page="/Publications" asp-all-route-data="@Model.Routes(offset: 0, kind: "news")" aria-current="@(Model.Kind == "news" ? "page" : null)">News</a>
+        <a asp-page="/Publications" asp-all-route-data="@Model.Routes(offset: 0, kind: "release-note")" aria-current="@(Model.Kind == "release-note" ? "page" : null)">Release notes</a>
+    </nav>
+    <form method="get" class="panel report-list-filters publication-list-filters" aria-label="Filter publications">
+        <input type="hidden" asp-for="Kind" />
+        <div class="report-filter-primary">
+            <div class="field report-search"><label asp-for="Q">Search @Model.KindPlural.ToLowerInvariant()</label><input asp-for="Q" name="q" type="search" maxlength="100" placeholder="Title, summary or text…" /></div>
+            <div class="field"><label asp-for="Language">Language</label><select asp-for="Language"><option value="">All languages</option><option value="fr">French</option><option value="en">English</option></select></div>
+            <div class="field"><label asp-for="Sort">Sort by</label><select asp-for="Sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></div>
+        </div>
+        <div class="report-filter-secondary">
+            @if (Model.Kind == "release-note")
+            {
+                <div class="field"><label asp-for="GameVersion">Game version</label><input asp-for="GameVersion" maxlength="64" placeholder="All versions" /></div>
+            }
+            <div class="field"><label asp-for="From">Modified from (UTC)</label><input asp-for="From" type="date" min="0001-01-01" max="9999-12-31" /></div>
+            <div class="field"><label asp-for="To">Modified to (UTC)</label><input asp-for="To" type="date" min="0001-01-01" max="9999-12-31" /></div>
+        </div>
+        <p class="publication-filter-help muted">Dates and sorting use the last modification, including drafts. Both dates are inclusive.</p>
+        <div class="report-filter-footer">
+            <div class="field report-page-size"><label asp-for="Limit">Results per page</label><select asp-for="Limit">@foreach (var size in new[] { 12, 24, 48 }.Append(Model.Limit).Where(size => size is >= 1 and <= 50).Distinct().Order()) { <option value="@size">@size</option> }</select></div>
+            <div class="report-filter-actions"><a class="text-link" asp-page="/Publications" asp-all-route-data="@Model.Routes(offset: 0, clearFilters: true)">Clear filters</a><button type="submit" class="button primary">Apply filters</button></div>
+        </div>
     </form>
     @if (Model.Publications is { } posts)
     {
+        <div class="section-heading report-results-heading"><h2>@Model.KindPlural</h2><span class="muted" role="status">@posts.Items.Length @(Model.HasFilters ? "matching results" : "results") on this page</span></div>
         @if (posts.Items.Length == 0)
         {
-            <div class="panel empty-state"><h2>No publications on this page</h2><p>Create a draft or adjust the filters to find a publication.</p></div>
+            <div class="panel empty-state">
+                @if (Model.HasPrevious)
+                {
+                    <h3>No @Model.KindPlural.ToLowerInvariant() on this page</h3><p>Return to the first page to see available publications.</p><a class="button secondary" asp-page="/Publications" asp-all-route-data="@Model.Routes(offset: 0)">First page</a>
+                }
+                else if (Model.HasFilters)
+                {
+                    <h3>No @Model.KindPlural.ToLowerInvariant() match these filters</h3><p>Try another search or widen the filters.</p><a class="button secondary" asp-page="/Publications" asp-all-route-data="@Model.Routes(offset: 0, clearFilters: true)">Clear filters</a>
+                }
+                else
+                {
+                    <h3>No @Model.KindPlural.ToLowerInvariant() yet</h3><p>Create a draft to prepare your first publication.</p>
+                }
+            </div>
         }
         else
         {
-            <div class="panel table-scroll"><table class="realm-table"><caption class="sr-only">News and release notes</caption><thead><tr><th scope="col">Publication</th><th scope="col">Type and language</th><th scope="col">Visibility</th><th scope="col">Modified</th></tr></thead><tbody>
+            <div class="panel table-scroll"><table class="realm-table report-list-table"><caption class="sr-only">@Model.KindPlural</caption><thead><tr><th scope="col">Publication</th><th scope="col">Type and language</th><th scope="col">Visibility</th><th scope="col">Modified</th></tr></thead><tbody>
             @foreach (var post in posts.Items)
             {
                 <tr><th scope="row"><a asp-page="/Publication" asp-route-id="@post.Id">@post.Title</a>@if (post.GameVersion is not null) { <small>Version @post.GameVersion</small> }</th><td>@ContentPublicationPresentation.KindLabel(post.Kind)<small>@ContentPublicationPresentation.LanguageLabel(post.Language)</small></td><td><span class="realm-status @(post.PublishedAt is null ? "pending" : "ready")">@(post.PublishedAt is null ? "Draft" : "Published")</span></td><td><time datetime="@post.UpdatedAt.ToString("O")">@post.UpdatedAt.ToUniversalTime().ToString("dd/MM/yyyy HH:mm 'UTC'")</time></td></tr>
@@ -38,8 +71,8 @@ else
             </tbody></table></div>
         }
         <nav class="report-pagination" aria-label="Publication pages">
-            @if (Model.HasPrevious) { <a class="button secondary" asp-page="/Publications" asp-route-kind="@Model.Kind" asp-route-language="@Model.Language" asp-route-offset="@Math.Max(0, Model.Offset - Model.Limit)" asp-route-limit="@Model.Limit">Previous</a> }
-            @if (Model.HasNext) { <a class="button secondary" asp-page="/Publications" asp-route-kind="@Model.Kind" asp-route-language="@Model.Language" asp-route-offset="@(Model.Offset + Model.Limit)" asp-route-limit="@Model.Limit">Next</a> }
+            @if (Model.HasPrevious) { <a class="button secondary" asp-page="/Publications" asp-all-route-data="@Model.Routes(offset: Math.Max(0, Model.Offset - Model.Limit))">Previous</a> }
+            @if (Model.HasNext) { <a class="button secondary" asp-page="/Publications" asp-all-route-data="@Model.Routes(offset: Model.Offset + Model.Limit)">Next</a> }
         </nav>
     }
 }

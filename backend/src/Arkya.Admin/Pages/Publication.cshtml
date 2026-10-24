@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = Model.PostId is null ? "New draft" : "Edit publication";
 }
-<a class="text-link" asp-page="/Publications">← News and releases</a>
+<a class="text-link" asp-page="/Publications" asp-route-kind="@Model.ListKind">← News and releases</a>
 <header class="page-header realm-header">
     <div><div class="eyebrow">COMMUNITY / PUBLICATIONS</div><h1>@ViewData["Title"]</h1><p class="intro">Write, review, then choose when to publish.</p></div>
 </header>

@@ -52,7 +52,7 @@ public sealed class PublicationEndpointTests
         await AdminFactory.Login(browser);
         using var response = await browser.GetAsync("/Publications?kind=release-note&language=en&offset=20&limit=10");
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Equal("?offset=20&limit=10&kind=release-note&language=en", Assert.Single(factory.Content.PostQueries));
+        Assert.Equal("?offset=20&limit=10&kind=release-note&language=en&sort=newest", Assert.Single(factory.Content.PostQueries));
         var html = WebUtility.HtmlDecode(await response.Content.ReadAsStringAsync());
         Assert.Contains("Une île à découvrir", html);
         Assert.Contains("offset=30", html);

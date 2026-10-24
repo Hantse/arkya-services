@@ -121,6 +121,41 @@ public sealed class MongoPostRepositoryTests
         finally { await client.DropDatabaseAsync(database); }
     }
 
+    [MongoFact]
+    public async Task AdminFiltersUseDraftAndUpdatedTimeBeforePagingIncludingUnpublishedPosts()
+    {
+        var client = new MongoClient(Environment.GetEnvironmentVariable("ARKYA_TEST_MONGO"));
+        var database = $"arkya_posts_test_{Guid.NewGuid():N}";
+        try
+        {
+            var repository = Repository(client, database);
+            await repository.InitializeAsync(default);
+            await AdminPostFeedFixtures.SeedAsync(repository);
+            var from = new DateTimeOffset(2026, 10, 23, 0, 0, 0, TimeSpan.Zero);
+            var filter = new PostFeedFilter("RECRUTEMENT", "0.4-beta", from, from.AddDays(1));
+            var first = await repository.ListAsync(false, "release-note", "fr", 2, 0, default, filter);
+            var second = await repository.ListAsync(false, "release-note", "fr", 2, 2, default, filter);
+            var third = await repository.ListAsync(false, "release-note", "fr", 2, 4, default, filter);
+            Assert.Equal(new[] { AdminPostFeedFixtures.Id(3), AdminPostFeedFixtures.Id(10) }, first.Select(post => post.Id));
+            Assert.Equal(new[] { AdminPostFeedFixtures.Id(9), AdminPostFeedFixtures.Id(2) }, second.Select(post => post.Id));
+            Assert.Null(second[0].Published);
+            Assert.Equal(AdminPostFeedFixtures.Id(1), Assert.Single(third).Id);
+            var oldest = await repository.ListAsync(false, "release-note", "fr", 2, 0, default, filter with { OldestFirst = true });
+            Assert.Equal(new[] { AdminPostFeedFixtures.Id(1), AdminPostFeedFixtures.Id(2) }, oldest.Select(post => post.Id));
+            var literal = await repository.ListAsync(false, null, null, 20, 0, default, new("literal.*[text]"));
+            Assert.Equal(AdminPostFeedFixtures.Id(10), Assert.Single(literal).Id);
+            Assert.Empty(await repository.ListAsync(false, null, null, 20, 0, default, new("PublishedOnlyMarker")));
+            Assert.Empty(await repository.ListAsync(false, null, null, 20, 0, default, new(GameVersion: "0.4-BETA")));
+            var dateOnly = await repository.ListAsync(false, null, null, 20, 0, default, new(From: from, ToExclusive: from.AddDays(1)));
+            Assert.Equal(9, dateOnly.Count);
+            Assert.All(dateOnly, post => Assert.Equal(new DateOnly(2026, 10, 23), DateOnly.FromDateTime(post.UpdatedAt.UtcDateTime)));
+            var service = new PostService(repository, new FixedTimeProvider());
+            Assert.Equal(3, (await service.ListAsync(false, "release-note", "fr", 2, 0, default, filter)).Count);
+            Assert.Single(await service.ListAsync(false, "release-note", "fr", 2, 4, default, filter));
+        }
+        finally { await client.DropDatabaseAsync(database); }
+    }
+
     private static MongoPostRepository Repository(IMongoClient client, string database) =>
         new(client, Options.Create(new MongoOptions { DatabaseName = database }));
 }

@@ -25,13 +25,14 @@ internal sealed class MemoryPostRepository : IPostRepository
                 .Where(post => !publishedOnly || post.Published is not null)
                 .Where(post => kind is null || (publishedOnly ? post.Published!.Content : post.Draft).Kind == kind)
                 .Where(post => language is null || (publishedOnly ? post.Published!.Content : post.Draft).Language == language)
-                .Where(post => !publishedOnly || filter is null ||
-                    (filter.GameVersion is null || post.Published!.Content.GameVersion == filter.GameVersion) &&
-                    (filter.From is null || post.Published!.PublishedAt >= filter.From) &&
-                    (filter.ToExclusive is null || post.Published!.PublishedAt < filter.ToExclusive) &&
-                    (string.IsNullOrEmpty(filter.Query) || Matches(post.Published!.Content, filter.Query)));
-            var sorted = publishedOnly && filter?.OldestFirst == true
-                ? matches.OrderBy(post => post.Published!.PublishedAt).ThenBy(post => post.Id.ToString("D"), StringComparer.Ordinal)
+                .Where(post => filter is null ||
+                    (filter.GameVersion is null || (publishedOnly ? post.Published!.Content : post.Draft).GameVersion == filter.GameVersion) &&
+                    (filter.From is null || (publishedOnly ? post.Published!.PublishedAt : post.UpdatedAt) >= filter.From) &&
+                    (filter.ToExclusive is null || (publishedOnly ? post.Published!.PublishedAt : post.UpdatedAt) < filter.ToExclusive) &&
+                    (string.IsNullOrEmpty(filter.Query) || Matches(publishedOnly ? post.Published!.Content : post.Draft, filter.Query)));
+            var sorted = filter?.OldestFirst == true
+                ? matches.OrderBy(post => publishedOnly ? post.Published!.PublishedAt : post.UpdatedAt)
+                    .ThenBy(post => post.Id.ToString("D"), StringComparer.Ordinal)
                 : matches.OrderByDescending(post => publishedOnly ? post.Published!.PublishedAt : post.UpdatedAt)
                     .ThenByDescending(post => post.Id.ToString("D"), StringComparer.Ordinal);
             return Task.FromResult<IReadOnlyList<ContentPost>>(sorted.Skip(offset).Take(limit).ToArray());

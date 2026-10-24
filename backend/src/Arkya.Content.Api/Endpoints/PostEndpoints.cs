@@ -9,11 +9,12 @@ public static class PostEndpoints
 
     public static void MapPostEndpoints(this WebApplication app, RouteGroupBuilder admin)
     {
-        admin.MapGet("/posts", async (string? kind, string? language, int? limit, int? offset, PostService service, CancellationToken ct) =>
+        admin.MapGet("/posts", async (string? kind, string? language, string? q, string? gameVersion, string? from, string? to,
+            string? sort, int? limit, int? offset, PostService service, CancellationToken ct) =>
         {
-            var errors = PostService.ValidateQuery(kind, language, limit ?? 20, offset ?? 0);
+            var errors = PostService.ValidateFeedQuery(kind, language, limit ?? 20, offset ?? 0, q, gameVersion, from, to, sort, out var filter);
             if (errors.Count > 0) return Results.ValidationProblem(errors);
-            var posts = await service.ListAsync(false, kind, language, limit ?? 20, offset ?? 0, ct);
+            var posts = await service.ListAsync(false, kind, language, limit ?? 20, offset ?? 0, ct, filter);
             return Results.Ok(new PostPage<AdminPostResponse>(posts.Take(limit ?? 20).Select(AdminPostResponse.From).ToArray(), posts.Count > (limit ?? 20)));
         });
         admin.MapGet("/posts/{id:guid}", async (Guid id, PostService service, CancellationToken ct) =>
@@ -40,7 +41,7 @@ public static class PostEndpoints
         feed.MapGet("", async (string? kind, string? language, string? q, string? gameVersion, string? from, string? to,
             string? sort, int? limit, int? offset, PostService service, CancellationToken ct) =>
         {
-            var errors = PostService.ValidatePublicQuery(kind, language, limit ?? 20, offset ?? 0, q, gameVersion, from, to, sort, out var filter);
+            var errors = PostService.ValidateFeedQuery(kind, language, limit ?? 20, offset ?? 0, q, gameVersion, from, to, sort, out var filter);
             if (errors.Count > 0) return Results.ValidationProblem(errors);
             var posts = await service.ListAsync(true, kind, language, limit ?? 20, offset ?? 0, ct, filter);
             return Results.Ok(new PostPage<PublicPostResponse>(posts.Take(limit ?? 20).Select(PublicPostResponse.From).ToArray(), posts.Count > (limit ?? 20)));
