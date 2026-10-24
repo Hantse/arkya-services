@@ -28,23 +28,26 @@ Ouvrir <http://127.0.0.1:51806>. Le serveur expose uniquement `dist/`, sur l’i
 
 `dist/news.html`, accessible depuis les menus de l'accueil, des classes, de
 l'avancement, du launcher et de la bêta, présente deux onglets **News** et
-**Notes de version** en FR/EN. Les filtres incluent la recherche dans le texte,
-la version exacte pour les notes, les dates UTC inclusives, le tri chronologique
-et 12, 24 ou 48 publications par page. Content les applique avant la pagination.
+**Notes de version** en FR/EN. Les plus récentes apparaissent en premier, par
+pages de 12. La page publique ne présente aucun bloc de recherche ou de filtres.
 
 `content-client.mjs` lit uniquement les routes anonymes `/v1/content/posts` de
 l'origine API configurée, sans cookie ni bearer, avec délai et réponse bornés.
-Les filtres et la pagination restent dans l'URL ; `post=UUID` ouvre l'article
+L'onglet, la langue et la pagination restent dans l'URL ; `post=UUID` ouvre l'article
 complet. Le texte publié est affiché comme texte brut. Une news contenant le
 lien canonique `https://arkya.online/beta.html` propose un bouton local
 **S'inscrire à la bêta**, dans la liste et dans l'article.
 
 `tests/content-client.test.mjs` vérifie les contrats et le transport ;
-`tests/news.browser.mjs` couvre les onglets au clavier, FR/EN, les filtres,
+`tests/news.browser.mjs` couvre les onglets au clavier, FR/EN, l'absence de filtres,
 les articles partageables, la pagination, l'inscription et les états d'erreur
 avec des réponses isolées. Les données des tests restent hors de `dist/`.
 
-Vérification du 24 octobre 2026 : **161 tests Node**, **148 tests Content avec
+Le retrait du bloc public de filtres est vérifié par **193 contrôles Edge**
+en FR/EN, de 320 à 1440 px : onglets, pagination, articles, inscription et
+nettoyage des anciens paramètres d'URL. Les **161 tests Node** passent également.
+
+Vérification initiale du 24 octobre 2026 : **161 tests Node**, **148 tests Content avec
 MongoDB**, **140 contrôles Edge sur la page** et **36 sur la navigation** réussis. Les rendus bureau/mobile sont
 inspectés dans `output/playwright/arkya-news-{desktop,mobile}.png` ; le scénario
 n'effectue aucune inscription ni mutation de production.

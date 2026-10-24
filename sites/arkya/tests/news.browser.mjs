@@ -61,15 +61,14 @@ async (page) => {
     }
     const query = url.searchParams;
     let items = posts.filter(post => post.kind === query.get('kind') && post.language === query.get('language'));
-    if (query.get('q')) items = items.filter(post => `${post.title} ${post.summary} ${post.body}`.toLowerCase().includes(query.get('q').toLowerCase()));
-    if (query.get('gameVersion')) items = items.filter(post => post.gameVersion === query.get('gameVersion'));
-    if (query.get('from')) items = items.filter(post => post.publishedAt.slice(0, 10) >= query.get('from'));
-    if (query.get('to')) items = items.filter(post => post.publishedAt.slice(0, 10) <= query.get('to'));
-    items.sort((a, b) => query.get('sort') === 'oldest' ? a.publishedAt.localeCompare(b.publishedAt) : b.publishedAt.localeCompare(a.publishedAt));
+    check(!['q', 'gameVersion', 'from', 'to'].some(key => query.has(key)), 'Public feeds omit removed filters');
+    check(query.get('sort') === 'newest', 'Public feeds always request newest first');
+    check(query.get('limit') === '12', 'Public feeds always request twelve publications');
+    items.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
     const offset = Number(query.get('offset'));
     const limit = Number(query.get('limit'));
     const data = scenario === 'empty' ? { items: [], hasMore: false } : { items: items.slice(offset, offset + limit), hasMore: items.length > offset + limit };
-    if (scenario === 'slow' && query.get('q') === 'Island') {
+    if (scenario === 'slow' && query.get('kind') === 'news' && query.get('language') === 'en') {
       slowStarted?.();
       await new Promise(resolve => { releaseSlow = resolve; });
       try { await response(route, data); } catch { /* Cancelled requests may already be closed by the browser. */ }
@@ -79,7 +78,13 @@ async (page) => {
     await response(route, data);
   };
   const state = value => page.locator(`#publication-panel[data-state="${value}"]`).waitFor();
-  const apply = () => page.locator('#news-filters button[type="submit"]').click();
+  const legacyKeys = ['q', 'gameVersion', 'from', 'to', 'sort', 'limit'];
+  const noLegacyUrl = () => check(!legacyKeys.some(key => new URL(page.url()).searchParams.has(key)), 'Removed filters are absent from the public URL');
+  const noFilterControls = async () => {
+    check(await page.locator('#news-filters, #news-query, #news-version, #news-from, #news-to, #news-sort, #news-limit, #news-reset, #news-filter-error, #news-empty-reset').count() === 0,
+      'Public search, dates, version, sorting, page size, apply and reset controls are removed');
+    check(await page.getByRole('search').count() === 0, 'The public journal has no search form');
+  };
   try {
     await page.context().route(`${api}/**`, apiRoute);
     await page.goto(`${base}/news.html?lang=en`);
@@ -87,7 +92,7 @@ async (page) => {
     check(await page.title() === 'Arkya — News & release notes', 'English page title');
     check(await page.locator('.news-card').count() === 12, 'First page shows the requested 12 publications');
     check(await page.getByRole('tab', { name: 'News', exact: true }).getAttribute('aria-selected') === 'true', 'News is the default tab');
-    check(await page.locator('#news-version-field').isHidden(), 'Game version filter is reserved for release notes');
+    await noFilterControls();
     check(await page.locator('.news-card .news-beta-link').getAttribute('href') === 'beta.html?lang=en', 'Beta news card links to local registration');
     for (const lang of ['fr', 'en']) {
       await page.getByRole('button', { name: lang === 'fr' ? 'Français' : 'English', exact: true }).click();
@@ -100,6 +105,7 @@ async (page) => {
       }
     }
     await page.setViewportSize({ width: 1440, height: 1100 });
+    await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({ path: 'output/playwright/arkya-news-desktop.png', fullPage: true });
     await page.locator('#news-next').click();
     await state('ready');
@@ -115,22 +121,16 @@ async (page) => {
     await state('ready');
     check(await page.locator('#tab-release-note').getAttribute('aria-selected') === 'true', 'Arrow key activates the release notes tab');
     check(await page.locator('#tab-release-note').evaluate(node => node === document.activeElement), 'Keyboard tab switching preserves focus');
-    check(await page.locator('#news-version-field').isVisible(), 'Release notes expose the version filter');
+    await noFilterControls();
     check(requests.at(-1).searchParams.get('kind') === 'release-note', 'Release notes use the release feed');
-    await page.locator('#news-version').fill('0.1.0');
-    await page.locator('#news-query').fill('world');
-    await page.locator('#news-from').fill('2026-10-01');
-    await page.locator('#news-to').fill('2026-10-23');
-    await page.locator('#news-sort').selectOption('oldest');
-    await page.locator('#news-limit').selectOption('24');
-    await apply();
+    check((await page.locator('.news-card time').first().getAttribute('datetime')).startsWith('2026-10-24'), 'The newest release note is shown first');
+    await page.goto(`${base}/news.html?lang=en&tab=release-note&page=2&q=does-not-exist&gameVersion=0.1.0&from=2026-02-31&to=bad&sort=oldest&limit=48`);
     await state('ready');
-    const filtered = requests.at(-1).searchParams;
-    for (const [key, value] of Object.entries({ kind: 'release-note', language: 'en', q: 'world', gameVersion: '0.1.0', from: '2026-10-01', to: '2026-10-23', sort: 'oldest', limit: '24', offset: '0' }))
-      check(filtered.get(key) === value, `Filter ${key} is applied on the server`);
-    check(await page.locator('.news-card').count() === 12, 'Combined filters return the complete matching page');
-    check((await page.locator('.news-card time').first().getAttribute('datetime')).startsWith('2026-10-01'), 'Oldest-first order is rendered from the server');
-    const filterUrl = page.url();
+    check(await page.locator('.news-card').count() === 12, 'Obsolete filters cannot hide public releases');
+    check(requests.at(-1).searchParams.get('offset') === '12', 'Legacy URL retains the selected page');
+    check(new URL(page.url()).searchParams.get('tab') === 'release-note', 'Legacy URL retains the selected tab');
+    noLegacyUrl();
+    const listUrl = page.url();
     await page.locator('.news-card h3 a').first().click();
     await state('ready');
     check(await page.locator('#news-article').isVisible(), 'An article opens in full');
@@ -141,24 +141,19 @@ async (page) => {
     check(await page.locator('#news-article').isVisible(), 'Article deep link survives reload');
     await page.locator('#news-back').click();
     await state('ready');
-    check(page.url() === filterUrl, 'Article back link preserves all result filters');
+    check(page.url() === listUrl, 'Article back link preserves its tab, language and result page');
     await page.getByRole('button', { name: 'Français', exact: true }).click();
-    await state('empty');
-    check(new URL(page.url()).searchParams.get('gameVersion') === '0.1.0', 'Language switch preserves the version filter');
-    check(requests.at(-1).searchParams.get('language') === 'fr', 'Language switch fetches distinct French publications');
-    await page.locator('#news-empty-reset').click();
     await state('ready');
+    check(new URL(page.url()).searchParams.get('tab') === 'release-note', 'Language switch preserves the selected tab');
+    check(!new URL(page.url()).searchParams.has('page'), 'Language switch returns to the first page');
+    check(requests.at(-1).searchParams.get('language') === 'fr', 'Language switch fetches distinct French publications');
     await page.getByRole('button', { name: 'English', exact: true }).click();
     await state('ready');
     await page.locator('#tab-release-note').focus();
     await page.keyboard.press('Home');
     await state('ready');
     check(await page.locator('#tab-news').getAttribute('aria-selected') === 'true', 'Home key returns to the first tab');
-    await page.locator('#news-query').fill('Beta');
-    await apply();
-    await state('ready');
-    check(await page.locator('.news-card').count() === 1, 'Text search is applied by the API');
-    await page.locator('.news-card h3 a').click();
+    await page.locator('.news-card h3 a').first().click();
     await state('ready');
     check(await page.locator('#news-article-beta').getAttribute('href') === 'beta.html?lang=en', 'Opened beta news offers registration');
     check((await page.locator('#news-article-body').textContent()).includes('<script>'), 'Article markup is displayed literally');
@@ -168,28 +163,20 @@ async (page) => {
       await page.setViewportSize({ width, height: 1100 });
       check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Article fits ${width}px`);
     }
+    await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({ path: 'output/playwright/arkya-news-article-mobile.png', fullPage: true });
     await page.getByRole('button', { name: 'Français', exact: true }).click();
     await state('ready');
     check(await page.locator('#news-article-view').isHidden(), 'Language change returns to that language’s results');
     check(!new URL(page.url()).searchParams.has('post'), 'Language change never relabels a different-language article');
 
-    await page.goto(`${base}/news.html?lang=en&tab=news&from=2026-10-24&to=2026-10-24`);
+    await page.goto(`${base}/news.html?lang=en&tab=news&post=${beta.id}&q=unknown&gameVersion=broken!&from=invalid&to=invalid&sort=oldest&limit=48`);
     await state('ready');
-    check(await page.locator('.news-card').count() === 1, 'Inclusive date range includes the last publication day');
-    const beforeInvalidDates = requests.length;
-    await page.locator('#news-from').fill('2026-10-25');
-    await apply();
-    check(await page.locator('#news-filter-error').isVisible(), 'Reversed dates have an accessible validation message');
-    check(requests.length === beforeInvalidDates, 'Invalid date ranges are not requested');
-    await page.locator('#news-reset').click();
-    await state('ready');
-    await page.locator('#news-query').fill('does-not-exist');
-    await apply();
-    await state('empty');
-    check(await page.locator('#news-empty-reset').isVisible(), 'Empty search offers a filter reset');
+    check(await page.locator('#news-article-beta').isVisible(), 'Legacy article links retain the requested publication');
+    check(new URL(page.url()).searchParams.get('post') === beta.id, 'Canonical article URL retains its publication ID');
+    noLegacyUrl();
     scenario = 'unavailable';
-    await page.locator('#news-reset').click();
+    await page.goto(`${base}/news.html?lang=en`);
     await state('error');
     check(await page.locator('#news-retry').isVisible(), 'Unavailable service offers retry');
     check(await page.locator('.news-card').count() === 0, 'Failed request never retains stale result cards');
@@ -203,7 +190,15 @@ async (page) => {
     scenario = 'empty';
     await page.locator('#news-retry').click();
     await state('empty');
-    check(await page.locator('#news-empty-reset').isHidden(), 'Empty unfiltered feed is distinct from an empty search');
+    check(await page.locator('#news-first-page').isHidden(), 'Empty first page has no unnecessary recovery control');
+    await noFilterControls();
+    await page.goto(`${base}/news.html?lang=en&page=3`);
+    await state('empty');
+    check(await page.locator('#news-first-page').isVisible(), 'Empty later page offers a route to the first page');
+    scenario = 'normal';
+    await page.locator('#news-first-page').click();
+    await state('ready');
+    check(await page.locator('.news-card').count() === 12, 'First page recovery restores the public feed');
     scenario = 'missing';
     await page.goto(`${base}/news.html?lang=en&post=${beta.id}`);
     await state('missing');
@@ -212,28 +207,28 @@ async (page) => {
     scenario = 'normal';
     await page.goto(`${base}/news.html?lang=en&post=not-a-guid`);
     await state('missing');
-    await page.goto(`${base}/news.html?lang=en&from=2026-02-31`);
+    await page.goto(`${base}/news.html?lang=en&page=0`);
     await state('invalid');
-    check(await page.locator('#news-empty-reset').isVisible(), 'Invalid shared filters offer a reset');
-    await page.locator('#news-empty-reset').click();
+    check(await page.locator('#news-first-page').isVisible(), 'Invalid shared page offers first page recovery');
+    await page.locator('#news-first-page').click();
     await state('ready');
 
     scenario = 'slow';
     const started = slowStartedPromise();
     slowDone = slowDonePromise();
-    await page.locator('#news-query').fill('Island');
-    await apply();
+    await page.goto(`${base}/news.html?lang=en&tab=news`);
     await started;
     check(await page.locator('#publication-panel').getAttribute('aria-busy') === 'true', 'Loading is announced while a request is pending');
-    await page.locator('#news-query').fill('Beta');
-    await apply();
+    await page.locator('#tab-release-note').click();
     await state('ready');
     releaseSlow();
     await slowDone;
-    check(await page.locator('.news-card').count() === 1, 'An older response cannot replace newer search results');
-    check(new URL(page.url()).searchParams.get('q') === 'Beta', 'An older response cannot change the current URL');
+    check(await page.locator('.news-card').count() === 12, 'An older response cannot replace the selected feed');
+    check((await page.locator('.news-card h3').first().textContent()).includes('The world evolves'), 'Only the newly selected release note feed is rendered');
+    check(new URL(page.url()).searchParams.get('tab') === 'release-note', 'An older response cannot change the selected tab');
     scenario = 'normal';
     await page.setViewportSize({ width: 320, height: 1100 });
+    await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({ path: 'output/playwright/arkya-news-mobile.png', fullPage: true });
     check(errors.length === 0, 'No uncaught browser exceptions');
   } finally {

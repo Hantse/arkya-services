@@ -164,8 +164,10 @@ une réussite dont la réponse aurait été perdue.
 
 La page publique [Actualités](https://arkya.online/news.html?lang=fr) est reliée
 aux menus du site. Les onglets **News** et **Notes de version** consultent le
-feed anonyme dans la langue sélectionnée. Recherche, version exacte, période,
-ordre et taille de page sont transmis au service ; l'URL conserve la sélection.
+feed anonyme dans la langue sélectionnée. La page affiche les plus récentes
+en premier, par pages de 12, sans bloc de recherche ni filtres.
+L'URL conserve l'onglet, la langue et la page ; les anciens paramètres de
+recherche, version, période, tri et taille de page sont retirés.
 `post=UUID` permet de partager un article complet, y compris après rechargement.
 
 Le site rend titre, résumé et corps en texte brut. La news bêta contenant

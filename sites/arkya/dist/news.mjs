@@ -4,8 +4,7 @@ import { createPublicationClient, betaRegistrationHref } from './content-client.
 const client = createPublicationClient({ baseUrl: window.ArkyaAuthConfig?.identityBaseUrl || 'https://api.arkya.online' });
 const $ = selector => document.querySelector(selector);
 const tabs = [...document.querySelectorAll('[data-kind]')];
-const form = $('#news-filters');
-const fields = Object.fromEntries(['q', 'gameVersion', 'from', 'to', 'sort', 'limit'].map(name => [name, form.elements.namedItem(name)]));
+const pageSize = 12;
 const language = () => window.ArkyaI18n?.language === 'en' ? 'en' : 'fr';
 const t = (key, values = {}) => (window.ArkyaPageTranslations?.[language()]?.[`news.${key}`] || key)
   .replace(/\{(\w+)\}/g, (_, name) => String(values[name] ?? ''));
@@ -19,14 +18,10 @@ let returnFocusId;
 function readUrl() {
   const params = new URL(location.href).searchParams;
   const page = params.get('page') || '1';
-  const limit = params.get('limit') || '12';
   return {
     tab: params.get('tab') === 'release-note' ? 'release-note' : 'news',
     language: params.get('lang') === 'en' ? 'en' : params.get('lang') === 'fr' ? 'fr' : language(),
-    q: params.get('q') || '', gameVersion: params.get('gameVersion') || '',
-    from: params.get('from') || '', to: params.get('to') || '', sort: params.get('sort') || 'newest',
     page: /^\d+$/.test(page) && Number.isSafeInteger(Number(page)) ? Number(page) : 0,
-    limit: /^\d+$/.test(limit) ? Number(limit) : 0,
     post: params.has('post') ? params.get('post') || 'invalid' : null,
   };
 }
@@ -35,12 +30,7 @@ function urlFor(state) {
   const url = new URL('news.html', location.href);
   url.searchParams.set('lang', state.language);
   url.searchParams.set('tab', state.tab);
-  for (const key of ['q', 'gameVersion', 'from', 'to']) {
-    if (state[key] && (key !== 'gameVersion' || state.tab === 'release-note')) url.searchParams.set(key, state[key]);
-  }
-  if (state.sort !== 'newest') url.searchParams.set('sort', state.sort);
   if (state.page !== 1) url.searchParams.set('page', String(state.page));
-  if (state.limit !== 12) url.searchParams.set('limit', String(state.limit));
   if (state.post) url.searchParams.set('post', state.post);
   return url.pathname + url.search;
 }
@@ -108,10 +98,6 @@ function card(post) {
   return article;
 }
 
-function hasFilters() {
-  return Boolean(current.q || (current.tab === 'release-note' && current.gameVersion) || current.from || current.to);
-}
-
 function renderShell() {
   tabs.forEach(tab => {
     const selected = tab.dataset.kind === current.tab;
@@ -123,12 +109,7 @@ function renderShell() {
   $('#news-article-view').hidden = !current.post;
   $('#news-article').hidden = true;
   $('#news-back').href = urlFor({ ...current, post: null });
-  for (const [name, input] of Object.entries(fields)) input.value = String(current[name]);
-  $('#news-version-field').hidden = current.tab !== 'release-note';
-  fields.gameVersion.disabled = current.tab !== 'release-note';
-  fields.to.setCustomValidity('');
-  $('#news-filter-error').hidden = true;
-  $('#news-results-title').textContent = t(hasFilters() ? 'filteredResults' : current.tab === 'news' ? 'latestNews' : 'latestReleases');
+  $('#news-results-title').textContent = t(current.tab === 'news' ? 'latestNews' : 'latestReleases');
   $('#news-result-count').textContent = '';
   $('#news-items').replaceChildren();
   $('#news-pagination').hidden = true;
@@ -138,16 +119,14 @@ function renderShell() {
 
 function status(kind) {
   const loading = kind === 'loading';
-  const filteredEmpty = kind === 'empty' && hasFilters();
   $('#publication-panel').setAttribute('aria-busy', String(loading));
   $('#publication-panel').dataset.state = kind;
   $('#news-status').hidden = kind === 'ready';
-  const title = kind === 'ready' ? '' : loading ? t(current.post ? 'loadingArticle' : 'loading') :
-    t(filteredEmpty ? 'emptyFiltered' : kind);
+  const title = kind === 'ready' ? '' : loading ? t(current.post ? 'loadingArticle' : 'loading') : t(kind);
   $('#news-status-title').textContent = title;
-  $('#news-status-description').textContent = loading || kind === 'ready' ? '' : t(filteredEmpty ? 'emptyFilteredDescription' : `${kind}Description`);
+  $('#news-status-description').textContent = loading || kind === 'ready' ? '' : t(`${kind}Description`);
   $('#news-retry').hidden = kind !== 'error';
-  $('#news-empty-reset').hidden = Boolean(current.post) || !(filteredEmpty || kind === 'invalid');
+  $('#news-first-page').hidden = Boolean(current.post) || !(kind === 'invalid' || kind === 'empty' && current.page > 1);
 }
 
 function renderList(data) {
@@ -193,6 +172,7 @@ function renderArticle(post) {
 }
 
 async function load({ focus = false } = {}) {
+  history.replaceState(history.state, '', urlFor(current));
   request?.abort();
   request = new AbortController();
   const thisGeneration = ++generation;
@@ -207,11 +187,9 @@ async function load({ focus = false } = {}) {
       renderArticle(post);
       if (focus) $('#news-article-title').focus({ preventScroll: true });
     } else {
-      if (snapshot.page < 1 || ![12, 24, 48].includes(snapshot.limit)) { status('invalid'); return; }
+      if (snapshot.page < 1) { status('invalid'); return; }
       const result = await client.list({ kind: snapshot.tab, language: snapshot.language,
-        q: snapshot.q, gameVersion: snapshot.tab === 'release-note' ? snapshot.gameVersion : '',
-        from: snapshot.from, to: snapshot.to, sort: snapshot.sort,
-        offset: (snapshot.page - 1) * snapshot.limit, limit: snapshot.limit }, { signal: request.signal });
+        offset: (snapshot.page - 1) * pageSize, limit: pageSize }, { signal: request.signal });
       if (thisGeneration !== generation) return;
       renderList(result);
       if (focus) $('#news-results-title').scrollIntoView({ block: 'start', behavior: 'instant' });
@@ -222,34 +200,12 @@ async function load({ focus = false } = {}) {
   }
 }
 
-function resetFilters() {
-  navigate({ ...current, q: '', gameVersion: '', from: '', to: '', sort: 'newest', page: 1, limit: 12, post: null });
-}
-
-form.addEventListener('submit', event => {
-  event.preventDefault();
-  fields.to.setCustomValidity('');
-  if (fields.from.value && fields.to.value && fields.from.value > fields.to.value) {
-    fields.to.setCustomValidity(t('dateRange'));
-    $('#news-filter-error').textContent = t('dateRange');
-    $('#news-filter-error').hidden = false;
-    fields.to.reportValidity();
-    return;
-  }
-  navigate({ ...current, q: fields.q.value.trim(), gameVersion: fields.gameVersion.value.trim(),
-    from: fields.from.value, to: fields.to.value, sort: fields.sort.value, limit: Number(fields.limit.value), page: 1, post: null });
-});
-for (const input of [fields.from, fields.to]) input.addEventListener('input', () => {
-  fields.to.setCustomValidity('');
-  $('#news-filter-error').hidden = true;
-});
-$('#news-reset').addEventListener('click', resetFilters);
-$('#news-empty-reset').addEventListener('click', resetFilters);
+$('#news-first-page').addEventListener('click', () => navigate({ ...current, page: 1, post: null }));
 $('#news-retry').addEventListener('click', () => void load());
 
 function selectTab(tab) {
   if (current.tab === tab && !current.post) return;
-  navigate({ ...current, tab, post: null, page: 1, gameVersion: '' });
+  navigate({ ...current, tab, post: null, page: 1 });
 }
 tabs.forEach((tab, index) => {
   tab.addEventListener('click', () => selectTab(tab.dataset.kind));
