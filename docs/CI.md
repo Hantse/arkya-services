@@ -52,20 +52,32 @@ actif ni le précédent run en attente. Le groupe de branche et les verrous de
 promotion utilisent `cancel-in-progress: false` avec `queue: max`. GitHub
 permet ainsi jusqu'à 100 exécutions en attente par groupe ; au-delà, sa limite
 s'applique ([syntaxe officielle](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#example-queueing-multiple-pending-runs)).
-Les promotions restent sérialisées et refusent les sources devenues obsolètes.
+Les promotions restent sérialisées. Une version terminée peut être publiée même
+si des sources plus récentes sont déjà sur `main` ou en attente de build :
+`0.1.50` remplace `0.1.49` pendant l’attente de `0.1.51` et `0.1.52`.
+Seule une version déjà publiée plus récente empêche le remplacement de
+l’inventaire ; la reprise réussit alors sans retour arrière. Les preuves de
+source, version, run et compatibilité client/dedicated restent obligatoires.
 Les agents ne doivent annuler aucun run ou job sans demande explicite de
 l'utilisateur, y compris pour libérer un runner ou privilégier un commit récent.
 
 Depuis le 24 octobre 2026, les jobs **Unity EditMode** et **Unity PlayMode** sont
 temporairement désactivés, y compris lors des lancements manuels. Les builds
 restent conditionnés au contrôle de confiance ; publication et promotion
-automatique restent actives. La reprise manuelle d'une promotion exige toujours
-les tests réussis et ne couvre donc pas les runs de cette pause. La procédure
-de réactivation est décrite dans le guide Unity ci-dessous.
+automatique restent actives. La reprise manuelle applique les contrôles
+configurés au commit source : tests réussis lorsqu’ils sont activés, ou job
+explicitement ignoré pendant cette pause. Elle exige toujours les builds et
+la publication réussis. La procédure de réactivation est décrite dans le guide
+Unity ci-dessous.
 
 Le workflow Unity construit le
 client Windows, le client WebGL et le vrai dedicated Linux de l'île via
 `CharacterWebBetaBuilder`. Le prototype AreaPrototype n'est plus cette cible.
+
+Les builds Unity utilisent uniquement le runner distant dédié. Le runner local
+du poste de développement et sa relance automatique restent désactivés.
+Lors de son retrait, laisser finir son job actif avant d’arrêter le superviseur ;
+une file d’attente n’autorise pas à le relancer.
 
 Unity 6000.6.6f1 utilise un runner Windows x64 licencié avec les modules Windows
 Mono, WebGL IL2CPP et Linux Dedicated Server Mono. La cible Linux est compilée
