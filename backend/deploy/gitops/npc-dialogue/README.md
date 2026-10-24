@@ -1,7 +1,7 @@
 # Dialogues PNJ — activation facultative
 
-Ce composant complète `admin` et son composant `inference-control`. Il n'est pas
-activé dans le profil livré. Il ne crée ni valeur secrète ni modèle : les agents
+Ce composant complète `admin` et son composant `inference-control`. Le profil
+`admin` l'active pour raccorder les dialogues du jeu. Il ne crée ni valeur secrète ni modèle : les agents
 Windows doivent déjà être inscrits et mis à jour avec le package **1.2.0**.
 
 1. Publier les nouvelles images Inference et Realms. Vérifier que la Gateway

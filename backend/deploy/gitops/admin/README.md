@@ -8,6 +8,11 @@ existante **`arkya-beta`**. Le composant `../realm-control` prépare
 Les composants `../inference-control` et `../reports-control` déjà actifs
 portent le total à neuf services ; leurs activations et pins d'image sont
 conservées.
+Le composant `../npc-dialogue` raccorde les dialogues PNJ au service d'inférence
+et aux dedicateds, depuis la graine secrète existante. Il n'ajoute pas de service.
+Les agents Windows doivent annoncer au moins 1.2.0 avec un worker prêt. Pour un
+realm déjà déployé, **Maintenance → Restart realm** applique l'ajout contrôlé des
+deux variables manquantes ; voir le [guide d'activation](../npc-dialogue/README.md).
 Le composant `../web-client-control` ajoute le serveur statique WebGL dans
 `arkya-beta`, portant le total à dix applications. Le frontend configure
 `ARKYA_UNITY_UPSTREAM=arkya-web-client.arkya-beta.svc.cluster.local:8080` pour
