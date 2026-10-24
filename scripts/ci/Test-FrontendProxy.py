@@ -98,13 +98,21 @@ def published_url(container):
 def check_site(base_url):
     status, _, body = request(base_url, "/healthz")
     require(status == 200 and body == b"ok\n", "Frontend health probe failed")
-    for path in ("/", "/play.html"):
+    for path in ("/", "/play.html", "/wiki.html", "/atlas.html"):
         status, headers, body = request(base_url, path)
         require(status == 200 and headers.get_content_type() == "text/html" and body,
                 f"Frontend page unavailable: {path} (HTTP {status})")
-    status, headers, body = request(base_url, "/auth-client.mjs")
+    for path in ("/auth-client.mjs", "/wiki.mjs", "/wiki-data.mjs", "/public-navigation.mjs"):
+        status, headers, body = request(base_url, path)
+        require(status == 200 and headers.get_content_type() == "application/javascript" and body,
+                f"Frontend module must be served as application/javascript: {path}")
+    realm_headers = {"Host": "wiki-check.arkya.online"}
+    status, headers, body = request(base_url, "/public-navigation.mjs", realm_headers)
     require(status == 200 and headers.get_content_type() == "application/javascript" and body,
-            "Frontend module must be served as application/javascript")
+            "Realm pages must expose their shared navigation module")
+    for path in ("/wiki.html", "/auth-client.mjs"):
+        status, _, _ = request(base_url, path, realm_headers)
+        require(status == 404, f"Realm hosts must keep central site routes isolated: {path}")
     status, _, _ = request(base_url, "/frontend-proxy-ci-missing.html")
     require(status == 404, "Unknown frontend paths must remain 404")
 

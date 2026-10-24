@@ -16,13 +16,17 @@
   <script src="auth-config.js" defer></script>
   <script src="i18n.js" defer></script>
   <script src="common.js" type="module"></script>
+  <script src="public-navigation.mjs" type="module"></script>
 </head>
 <body class="play-page">
   <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
-  <header class="play-header section-shell">
-    <a class="brand" href="/?lang=fr" data-language-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
-    <nav aria-label="Navigation principale" data-i18n-aria-label="nav.main"><a href="beta.html?lang=fr" data-language-link data-i18n="nav.beta">Bêta</a><a href="development.html?lang=fr" data-language-link data-i18n="nav.development">Avancement</a><a href="news.html?lang=fr" data-language-link data-i18n="nav.news">Actualités</a><a href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a></nav>
-    <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+  <header class="site-header has-mobile-menu public-header" style="position:relative;background:var(--deep)">
+    <a class="brand" href="index.html?lang=fr" data-language-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
+    <nav aria-label="Navigation principale" data-i18n-aria-label="nav.main"><a href="index.html?lang=fr" data-language-link data-i18n="nav.homeLabel">Accueil</a><a href="wiki.html?lang=fr" data-language-link data-i18n="nav.wiki">Wiki</a><a href="realms.html?lang=fr" data-language-link data-i18n="nav.realms">Les realms</a><a href="news.html?lang=fr" data-language-link data-i18n="nav.news">Actualités</a><a href="beta.html?lang=fr" data-language-link data-i18n="nav.beta">Bêta</a><a href="play.html?lang=fr" data-language-link aria-current="page" data-i18n="nav.play">Installer le launcher</a></nav>
+    <a class="header-link account-nav-link" href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a>
+    <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true" class="active">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+    <button class="menu-toggle" data-shared-menu="true" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    <nav id="mobile-menu" aria-label="Navigation mobile" data-i18n-aria-label="nav.mobile" hidden><a href="index.html?lang=fr" data-language-link data-i18n="nav.homeLabel">Accueil</a><a href="wiki.html?lang=fr" data-language-link data-i18n="nav.wiki">Wiki</a><a href="realms.html?lang=fr" data-language-link data-i18n="nav.realms">Les realms</a><a href="news.html?lang=fr" data-language-link data-i18n="nav.news">Actualités</a><a href="beta.html?lang=fr" data-language-link data-i18n="nav.beta">Bêta</a><a href="play.html?lang=fr" data-language-link aria-current="page" data-i18n="nav.play">Installer le launcher</a><a href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a></nav>
   </header>
   <main id="contenu" class="play-main section-shell">
     <section class="launcher-hero" aria-labelledby="launcher-title">
@@ -47,6 +51,6 @@
       <div class="launcher-beta"><a href="beta.html?lang=fr" data-language-link data-i18n="nav.betaRegister">S’inscrire à la bêta</a><p data-i18n="windows.betaAccess">L’accès au jeu est réservé aux comptes autorisés. L’inscription ne donne pas automatiquement accès à la bêta.</p></div><div class="launcher-note"><p data-i18n="windows.note">Les canaux Bêta et Stable sont séparés. La Bêta est disponible ; aucune version Stable n’est encore publiée. Le launcher vérifie les mises à jour du canal choisi avant de jouer.</p><a href="development.html?lang=fr" data-language-link data-i18n="windows.progress">Suivre l’avancement ↗</a></div>
     </section>
   </main>
-  <footer class="play-footer section-shell"><p>Pyxion Sarl-S · Arkya</p><a href="privacy.html?lang=fr" data-language-link data-i18n="footer.privacy">Politique de confidentialité</a><a href="terms.html?lang=fr" data-language-link data-i18n="footer.terms">Conditions d’utilisation</a><a href="/?lang=fr#credits" data-language-link data-i18n="footer.credits">Crédits & images</a></footer>
+  <footer class="play-footer section-shell"><p>Pyxion Sarl-S · Arkya</p><a href="privacy.html?lang=fr" data-language-link data-i18n="footer.privacy">Politique de confidentialité</a><a href="terms.html?lang=fr" data-language-link data-i18n="footer.terms">Conditions d’utilisation</a><a href="atlas.html?lang=fr#credits" data-language-link data-i18n="footer.credits">Crédits & images</a></footer>
 </body>
 </html>

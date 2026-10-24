@@ -81,7 +81,7 @@ For Unity work, Codex should use the installed **CoplayDev Unity MCP** bridge fo
 - [Sessions renouvelables du site et de l’admin](docs/AUTH_SESSIONS.md).
 - [Launcher Windows : connexion Discord, installation, transfert de session et distribution](docs/WINDOWS_LAUNCHER.md).
 
-- [Site vitrine et atlas visuel des directions artistiques](sites/arkya/README.md).
+- [Site public, wiki du jeu et atlas visuel](sites/arkya/README.md).
 - `AGENTS.md`: working rules for coding agents and collaborators.
 - `docs/ARCHITECTURE.md`: target system architecture.
 - `docs/ENTER_WORLD_FLOW.md`: current local development flow from dev session to mock game server entry.

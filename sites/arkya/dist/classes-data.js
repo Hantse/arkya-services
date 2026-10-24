@@ -10,8 +10,8 @@ window.ArkyaClasses = [
       en: 'A proposed identity built around melee combat, resilience and protection. The Warrior chooses when to hold position and when to close in on a target.',
     },
     note: {
-      fr: 'Garde demande une arme de mêlée, sans imposer de bouclier. Attaquer ou lancer un sort, y compris Soin hérité, met fin à la garde. Provocation et Charge restent réservées au Warrior dans cette proposition.',
-      en: 'Guard requires a melee weapon, but no shield. Attacking or casting a spell, including inherited Heal, ends the guard. Taunt and Charge remain exclusive to Warrior in this proposal.',
+      fr: 'Garde demande une arme de mêlée, sans imposer de bouclier. Attaquer ou lancer un sort, y compris Soin hérité, met fin à la garde. Provocation et Charge restent réservées au Warrior dans le catalogue.',
+      en: 'Guard requires a melee weapon, but no shield. Attacking or casting a spell, including inherited Heal, ends the guard. Taunt and Charge remain exclusive to Warrior in the catalogue.',
     },
     spells: [
       {
@@ -220,8 +220,8 @@ window.ArkyaClasses = [
       en: 'A proposed identity centered on direct healing and protection for allies. The Cleric restores health, absorbs damage and watches over the group.',
     },
     note: {
-      fr: 'Les seuils de Soin sont confirmés : R1 au niveau 1, puis R2 au niveau 5 libère R1 pour les autres classes. Son effet détaillé reste proposé. Soin hérité conserve son incantation ; la résurrection sera étudiée plus tard.',
-      en: 'Heal’s thresholds are confirmed: R1 at level 1, then learning R2 at level 5 unlocks R1 for other classes. Its detailed effect remains proposed. Inherited Heal keeps its cast time; resurrection will be explored later.',
+      fr: 'Le catalogue intègre les seuils de Soin : R1 au niveau 1, puis apprendre R2 au niveau 5 libère R1 pour les autres classes. Son effet détaillé reste à développer. Soin hérité conserve son incantation ; la résurrection sera étudiée plus tard.',
+      en: 'The catalogue includes Heal’s thresholds: R1 at level 1, then learning R2 at level 5 unlocks R1 for other classes. Its detailed effect remains to be implemented. Inherited Heal keeps its cast time; resurrection will be explored later.',
     },
     spells: [
       {
@@ -231,8 +231,8 @@ window.ArkyaClasses = [
         rank2: 5,
         confirmed: true,
         description: {
-          fr: 'Effet proposé : une incantation restaure directement la vie d’un allié ou de soi-même. Seuls les niveaux 1 et 5 et l’héritage de R1 après l’apprentissage de R2 sont confirmés.',
-          en: 'Proposed effect: a cast directly restores an ally’s health or your own. Only the level 1 and 5 thresholds and inheritance of R1 after learning R2 are confirmed.',
+          fr: 'Effet à développer : une incantation restaure directement la vie d’un allié ou de soi-même. Les seuils aux niveaux 1 et 5 et l’héritage de R1 après apprentissage de R2 sont intégrés au prototype.',
+          en: 'Effect to implement: a cast directly restores an ally’s health or your own. The level 1 and 5 thresholds and inheritance of R1 after learning R2 are included in the prototype.',
         },
       },
       {

@@ -100,9 +100,22 @@ directement vers ce profil, avec destination `arkya-beta` et une seule
 source. La bêta complète conserve son profil distinct,
 avec ingress site et deuxième source Unity.
 
+## Site public et wiki
+
+Le site statique `sites/arkya/dist/` sépare l’accueil joueur (`index.html`),
+le wiki (`wiki.html`) et les recherches artistiques (`atlas.html`). L’accueil
+regroupe bêta, launcher, premiers pas, actualités anonymes Content et état public
+des realms. Le wiki possède un catalogue bilingue versionné avec le site :
+classes, compétences, métiers, recettes, ressources et guides. Les fiches
+distinguent prototype et conception, et conservent des références aux documents
+de gameplay. Recherche, catégories et articles ont des URL partageables ; ils
+ne consultent aucune donnée privée ni état de personnage. Les contrats API et
+les règles du jeu restent possédés par les services et le serveur Unity.
+Voir [la maintenance et les vérifications du site](../sites/arkya/README.md).
+
 ## Client et serveur dédié Unity
 
-La [conception du combat et des classes](GAMEPLAY_CLASSES.md) prévoit Warrior, Scout, Mage, Cleric et Druid, une classe active à la fois, des sorts hérités des autres classes et un rating de niveau global. Elle distingue les règles confirmées des choix encore ouverts ; ce système de progression n'est pas encore implémenté.
+La [conception du combat et des classes](GAMEPLAY_CLASSES.md) prévoit Warrior, Scout, Mage, Cleric et Druid, une classe active à la fois, des sorts hérités des autres classes et un rating de niveau global. La [première tranche de statistiques et compétences](CHARACTER_STATS_SKILLS.md) intègre catalogue, progression, apprentissage et héritage au prototype ; le lancement et les effets des 25 capacités restent à développer.
 
 Les [familiers totems](GAMEPLAY_TOTEMS.md) ajoutent une direction confirmée : chaque joueur se lie dès le départ à une âme animale, avec le loup et le renard comme premières espèces. Les assets riggés et leurs pelages relèvent de la présentation. Le choix persistant, l'apparition et les règles de gameplay restent à intégrer sous autorité serveur.
 

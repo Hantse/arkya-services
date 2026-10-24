@@ -13,13 +13,17 @@
   <script src="/realm-copy.js" defer></script>
   <script src="/i18n.js" defer></script>
   <script src="/realms.mjs" type="module"></script>
+  <script src="/public-navigation.mjs" type="module"></script>
 </head>
 <body class="realm-page">
   <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
-  <header class="site-header realm-header">
+  <header class="site-header has-mobile-menu public-header" style="position:relative;background:var(--deep)">
     <a class="brand" href="https://arkya.online/?lang=fr" data-realm-global-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
-    <a class="realm-header-link" href="https://arkya.online/?lang=fr" data-realm-global-link data-i18n="realm.navAtlas">Découvrir Arkya</a>
+    <nav aria-label="Navigation principale" data-i18n-aria-label="nav.main"><a href="https://arkya.online/index.html?lang=fr" data-realm-global-link data-i18n="nav.homeLabel">Accueil</a><a href="https://arkya.online/wiki.html?lang=fr" data-realm-global-link data-i18n="nav.wiki">Wiki</a><a href="https://arkya.online/realms.html?lang=fr" data-realm-global-link aria-current="page" data-i18n="nav.realms">Les realms</a><a href="https://arkya.online/news.html?lang=fr" data-realm-global-link data-i18n="nav.news">Actualités</a><a href="https://arkya.online/beta.html?lang=fr" data-realm-global-link data-i18n="nav.beta">Bêta</a><a href="https://arkya.online/play.html?lang=fr" data-realm-global-link data-i18n="nav.play">Installer le launcher</a></nav>
+    <a class="header-link account-nav-link" href="https://arkya.online/account.html?lang=fr" data-realm-global-link data-auth-link data-i18n="nav.account">Connexion Discord</a>
     <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true" class="active">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+    <button class="menu-toggle" data-shared-menu="true" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    <nav id="mobile-menu" aria-label="Navigation mobile" data-i18n-aria-label="nav.mobile" hidden><a href="https://arkya.online/index.html?lang=fr" data-realm-global-link data-i18n="nav.homeLabel">Accueil</a><a href="https://arkya.online/wiki.html?lang=fr" data-realm-global-link data-i18n="nav.wiki">Wiki</a><a href="https://arkya.online/realms.html?lang=fr" data-realm-global-link aria-current="page" data-i18n="nav.realms">Les realms</a><a href="https://arkya.online/news.html?lang=fr" data-realm-global-link data-i18n="nav.news">Actualités</a><a href="https://arkya.online/beta.html?lang=fr" data-realm-global-link data-i18n="nav.beta">Bêta</a><a href="https://arkya.online/play.html?lang=fr" data-realm-global-link data-i18n="nav.play">Installer le launcher</a><a href="https://arkya.online/account.html?lang=fr" data-realm-global-link data-auth-link data-i18n="nav.account">Connexion Discord</a></nav>
   </header>
   <main id="contenu" class="realm-main section-shell">
     <section class="realm-intro" aria-labelledby="realms-title">

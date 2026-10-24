@@ -82,15 +82,15 @@ async (page) => {
           await page.setViewportSize({ width, height: 1000 });
           check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${path}: ${lang} fits ${width}px`);
           if (path === 'index.html' && width <= 390) {
-            const actions = await page.locator('.hero-actions').boundingBox();
-            const caption = await page.locator('.hero-caption').boundingBox();
+            const actions = await page.locator('.home-actions').boundingBox();
+            const caption = await page.locator('.home-hero-caption').boundingBox();
             check(actions.y + actions.height < caption.y, `Homepage: ${lang} installation action does not overlap artwork caption at ${width}px`);
           }
         }
       }
     }
     await page.goto(`${base}/index.html?lang=en`);
-    check(await page.locator('.hero-actions .primary').getAttribute('href') === '/play.html?lang=en', 'Homepage primary action opens the launcher installation page');
+    check(await page.locator('.home-essentials a[href="/play.html?lang=en"]').count() === 1, 'Homepage useful links expose launcher installation');
     scenario = 'unavailable';
     await page.goto(`${base}/play.html?lang=en`);
     check(await page.locator('#launcher-download').isVisible(), 'Identity outage does not hide or disable the launcher download');
@@ -100,8 +100,9 @@ async (page) => {
     await page.locator('#discord-login:not([disabled])').click();
     await page.waitForURL(`${base}/play.html?lang=en`);
     check(await page.locator('#launcher-download').isVisible(), 'An old sign-in return opens the new download page');
+    if (await page.locator('.menu-toggle').isVisible()) await page.locator('.menu-toggle').click();
     await page.getByRole('link', { name: 'My account · QA Explorer' }).waitFor();
-    check(await page.locator('[data-auth-link]').innerText() === 'QA Explorer', 'Site account restoration is preserved on the download page');
+    check((await page.locator('[data-auth-link]').allTextContents()).every(name => name === 'QA Explorer'), 'Site account restoration is preserved in desktop and mobile navigation');
     check(!page.url().includes(token), 'Site session is absent from the URL');
     check(!requests.some(url => /\/(?:game\/|unity-loader\.mjs|unity-payloads\.mjs|game-client\.mjs|play\.js)/.test(url)), 'No Unity loader, game payload or old player bootstrap is requested');
     check(!requests.some(url => url.includes('/v1/realms') || url.includes('/admissions')), 'The website does not choose a realm or request game admission');

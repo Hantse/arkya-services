@@ -110,7 +110,7 @@ async (page) => {
       const link = path === 'account.html' ? page.locator('#auth-profile a[data-i18n="nav.betaRegister"]') : page.locator('a[href*="beta.html"]').first();
       check(await link.count() > 0, `${path}: beta registration is linked`);
       if (path === 'index.html') {
-        check(await page.locator('.hero-atlas-link').getAttribute('href') === '/beta.html?lang=en', 'Homepage invitation links to beta registration');
+        check(await page.locator('.home-actions .primary').getAttribute('href') === '/beta.html?lang=en', 'Homepage invitation links to beta registration');
         for (const width of [1440, 1200, 1100, 390, 320]) {
           await page.setViewportSize({ width, height: 1000 });
           check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Homepage beta navigation fits ${width}px`);

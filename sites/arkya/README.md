@@ -1,6 +1,6 @@
-# Arkya — site vitrine et atlas visuel
+# Arkya — site public, wiki et atlas visuel
 
-Vitrine bilingue français / anglais du projet et de ses directions artistiques. Les fichiers servis sont dans `dist/` : HTML, CSS, JavaScript et images WebP. La consultation publique ne demande aucun build, compte, backend ou dépendance JavaScript externe. La connexion Discord nécessite le service Identity. La page Installer le launcher distribue le launcher Windows sans exiger de session : le jeu se lance depuis le launcher.
+Site public bilingue français / anglais. L’accueil rassemble les accès utiles, le wiki documente le jeu et l’atlas conserve les recherches artistiques. Les fichiers servis sont dans `dist/` : HTML, CSS, JavaScript et images WebP. Le wiki et l’atlas se consultent sans compte, backend ou dépendance JavaScript externe ; les actualités et les états des realms proviennent de leurs API publiques. La connexion Discord nécessite le service Identity. La page Installer le launcher distribue le launcher Windows sans exiger de session : le jeu se lance depuis le launcher.
 
 ## Lancer localement
 
@@ -14,15 +14,64 @@ Ouvrir <http://127.0.0.1:51806>. Le serveur expose uniquement `dist/`, sur l’i
 
 ## Contenu et interactions
 
-- Accueil avec trois ambiances issues des concepts Royaumes de l’Aube, Cités d’Éther et Terres des Anciens.
-- Présentation de la référence arbre V3 avec ses trois matières.
+- Accueil `dist/index.html` : inscription/statut bêta, installation Windows, premiers pas, avancement, trois dernières actualités et état des realms. L’image d’ouverture est une capture du prototype, identifiée comme telle.
+- Wiki `dist/wiki.html` : **56 fiches FR/EN** avec recherche, sept rubriques et liens entre articles ; classes, compétences, métiers, recettes, ressources, monde et premiers pas.
+- Navigation commune : Accueil, Wiki, Realms, Actualités, Bêta et launcher, avec compte et langue sur bureau et mobile.
+- Atlas artistique conservé dans `dist/atlas.html` : trois ambiances issues des concepts Royaumes de l’Aube, Cités d’Éther et Terres des Anciens, arbre V3 et ses trois matières.
 - Atlas de **205 visuels** dans sept catégories, recherche tolérante aux accents, filtres de statut, pagination et liens de recherche conservés dans l’URL.
 - Vue agrandie avec précédent/suivant, flèches du clavier, fermeture par Échap et restitution du focus.
 - Personnages, trois thèmes HUD V3 et présentation de l’état réel du prototype Unity.
 - Navigation mobile, libellés accessibles, réduction des mouvements et crédits Rain/Snow.
 - Sélecteur FR / EN sur ordinateur et mobile : textes, métadonnées, libellés d’accessibilité, 205 titres et descriptions de l’atlas traduits. Les textes incorporés dans les œuvres originales restent ceux de ces images.
-- Page [Classes & grimoire](https://arkya-atlas.easykrill33.chatgpt.site/classes.html?lang=fr), reliée aux menus et à l’accueil : cinq classes, 25 capacités FR/EN, exploration des rangs aux niveaux 1–10, exemple interactif de Heal et calculateur de rating.
+- Page `dist/classes.html`, reliée aux fiches de classes du wiki : cinq classes, 25 capacités FR/EN, exploration des rangs aux niveaux 1–10, exemple interactif de Heal et calculateur de rating.
 - Page `dist/development.html` en FR/EN, reliée à l’accueil, aux classes et au compte : état du prototype, quêtes, inventaire/récolte, totems et services en préparation. Une rubrique technique repliable présente YARP, les images Docker et le déploiement k3s sans publier les adresses privées.
+
+## Wiki et maintenance du contenu
+
+`wiki-data.mjs` contient sept rubriques et 56 articles : cinq classes, 25 capacités,
+quatre écoles de métier, huit compétences artisanales, deux recettes, cinq
+ressources et sept guides, dont les rencontres de l’île. Chaque fiche possède un identifiant stable, des titres
+et textes FR/EN, un statut, des sections, des renvois et un chemin de source.
+`reviewedAt` indique la date de revue du catalogue. Les sources principales sont
+[les statistiques et compétences](../../docs/CHARACTER_STATS_SKILLS.md),
+[les capacités de départ](../../docs/GAMEPLAY_STARTER_SKILLS.md),
+[l’artisanat](../../docs/CRAFTING.md) et [la récolte](../../docs/HARVESTING.md).
+Vérifier les catalogues Unity actuels lorsque ces documents divergent.
+
+Les statuts **Prototype** et **En conception** distinguent les systèmes intégrés
+au dépôt des effets encore proposés. Ils n’annoncent pas qu’un realm public
+dispose de ces fonctionnalités. Les recettes décrivent le coût actuel de
+4 / 3 / 2 matériaux à Stonecrafting 0 / 100 / 200 ; aucune recette de forge,
+de fonte ou de bois n’est inventée.
+
+`wiki-model.mjs` gère la recherche insensible à la casse et aux accents, avec
+intersection des mots et de la rubrique. `wiki.mjs` rend le contenu en texte,
+les fiches, leur sommaire et les renvois. Les paramètres `category`, `q` et `entry`
+forment des URL partageables, par exemple
+`wiki.html?lang=fr&category=recipes&entry=stone-brick`. Le changement de langue,
+le rechargement et l’historique du navigateur préservent la consultation.
+Une fiche inconnue ou une recherche sans résultat propose un retour à l’index.
+
+Pour ajouter une fiche, compléter les deux langues, choisir une rubrique et un
+statut, renseigner sa source et ses renvois puis mettre à jour la date de revue.
+`tests/wiki.test.mjs` vérifie recherche, URL et intégrité du catalogue.
+`tests/wiki.browser.mjs` vérifie les parcours sur le serveur local avec réponses
+API isolées, en FR/EN et de 320 à 1440 px. Le wiki nécessite JavaScript ; un lien
+vers la présentation des classes reste disponible sans script.
+
+L’accueil utilise `home-copy.js`, `home.css` et `home.mjs`. Les actualités sont
+lues avec le client Content existant : requêtes anonymes, trois publications les
+plus récentes dans la langue choisie, états vide/erreur et bouton de reprise.
+Les changements de langue annulent la requête précédente pour éviter d’afficher
+un résultat périmé. Les créations et crédits restent accessibles dans l’atlas.
+
+Vérification du 24 octobre 2026 : **186 tests Node** et **785 contrôles Edge**
+réussis, avec réponses API isolées : wiki/accueil 272, launcher 123, bêta 64,
+compte 17, actualités 241, realms 26 et atlas 42. Rendus bureau/mobile inspectés
+dans `output/playwright/` à la racine. Le test local de l’image Nginx n’a pas pu
+être exécuté, le moteur Docker étant arrêté ; la CI vérifie désormais aussi les
+routes wiki/atlas, leurs modules et le module de navigation des sous-domaines de
+realm, tout en conservant l’isolement des routes centrales.
 
 ## Actualités publiques
 
@@ -98,7 +147,7 @@ Le DNS, TLS, le routage Gateway et les limites sont décrits dans
 
 ## Classes et gameplay
 
-La page `dist/classes.html` reprend les règles de [classes et progression](../../docs/GAMEPLAY_CLASSES.md) et la [proposition de premières capacités](../../docs/GAMEPLAY_STARTER_SKILLS.md). Elle annonce explicitement que ce système n’est pas encore disponible en jeu. Les principes confirmés, les seuils/héritage de Heal et les propositions de capacités restent distincts ; aucun chiffre de dégâts, portée, coût ou délai n’est inventé.
+La page `dist/classes.html` reprend les règles de [classes et progression](../../docs/CHARACTER_STATS_SKILLS.md) et la [proposition de premières capacités](../../docs/GAMEPLAY_STARTER_SKILLS.md). Catalogue, progression et héritage ont une première intégration au prototype ; les effets et le lancement des capacités restent à développer. Les seuils et les effets proposés sont distingués ; aucun chiffre de dégâts, portée, coût ou délai n’est inventé.
 
 `dist/classes-data.js` contient les cinq classes et leurs cinq capacités bilingues. `classes-copy.js` contient le texte de la page et étend les libellés partagés de `i18n.js` ; `classes.js` gère les interactions, `classes.css` leur présentation. Modifier ensemble les deux langues si la conception évolue. Les SVG des cinq symboles sont dessinés pour la navigation ; l’image d’en-tête réutilise le concept Cités d’Éther existant.
 

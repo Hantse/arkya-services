@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111d28">
+  <meta name="description" content="Le guide d’Arkya : classes, compétences, métiers, recettes, ressources et premiers pas sur l’île." data-i18n-content="meta.description">
+  <meta property="og:title" content="Wiki Arkya — Classes, compétences et recettes" data-i18n-content="page.title">
+  <meta property="og:description" content="Les classes, compétences, recettes et guides d’Arkya." data-i18n-content="meta.description">
+  <meta property="og:locale" content="fr_FR">
+  <title data-i18n="page.title">Wiki Arkya — Classes, compétences et recettes</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="wiki.css">
+  <script src="auth-config.js" defer></script>
+  <script src="wiki-copy.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="common.js" type="module"></script>
+  <script src="public-navigation.mjs" type="module"></script>
+  <script src="wiki.mjs" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
+  <header class="site-header has-mobile-menu public-header">
+    <a class="brand" href="index.html?lang=fr" data-language-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
+    <nav aria-label="Navigation principale" data-i18n-aria-label="nav.main"><a href="index.html?lang=fr" data-language-link data-i18n="nav.homeLabel">Accueil</a><a href="wiki.html?lang=fr" data-language-link data-i18n="nav.wiki" aria-current="page">Wiki</a><a href="realms.html?lang=fr" data-language-link data-i18n="nav.realms">Realms</a><a href="news.html?lang=fr" data-language-link data-i18n="nav.news">Actualités</a><a href="beta.html?lang=fr" data-language-link data-i18n="nav.beta">Bêta</a><a href="play.html?lang=fr" data-language-link data-i18n="nav.play">Installer le launcher</a></nav>
+    <a class="header-link account-nav-link" href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a>
+    <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true" class="active">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    <nav id="mobile-menu" aria-label="Navigation mobile" data-i18n-aria-label="nav.mobile" hidden><a href="index.html?lang=fr" data-language-link data-i18n="nav.homeLabel">Accueil</a><a href="wiki.html?lang=fr" data-language-link data-i18n="nav.wiki" aria-current="page">Wiki</a><a href="realms.html?lang=fr" data-language-link data-i18n="nav.realms">Realms</a><a href="news.html?lang=fr" data-language-link data-i18n="nav.news">Actualités</a><a href="beta.html?lang=fr" data-language-link data-i18n="nav.beta">Bêta</a><a href="play.html?lang=fr" data-language-link data-i18n="nav.play">Installer le launcher</a><a href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a></nav>
+  </header>
+  <main id="contenu">
+    <section class="wiki-masthead section-shell" aria-labelledby="wiki-title">
+      <p class="eyebrow" data-i18n="wiki.eyebrow">LE COMPAGNON DE VOTRE AVENTURE</p>
+      <h1 id="wiki-title" data-i18n="wiki.title">Le wiki d’Arkya.</h1>
+      <p data-i18n="wiki.intro">Une classe à explorer, une recette à retrouver, un métier à apprendre. Tous vos repères au même endroit.</p>
+      <form class="wiki-search" role="search" id="wiki-search-form"><span aria-hidden="true">⌕</span><label class="sr-only" for="wiki-search" data-i18n="wiki.search">Rechercher dans le wiki</label><input type="search" id="wiki-search" name="q" maxlength="120" placeholder="Soin, brique, mineur…" data-i18n-placeholder="wiki.placeholder" autocomplete="off"><button type="button" id="wiki-clear" aria-label="Effacer la recherche" data-i18n-aria-label="wiki.clear" hidden>×</button></form>
+    </section>
+    <div class="wiki-layout section-shell">
+      <aside class="wiki-sidebar"><p class="eyebrow" data-i18n="wiki.categories">Rubriques du wiki</p><nav id="wiki-categories" aria-label="Rubriques du wiki" data-i18n-aria-label="wiki.categories"></nav><p class="wiki-sidebar-note" data-i18n="wiki.note">Arkya évolue. Les fiches distinguent les systèmes du prototype et les effets encore en conception.</p></aside>
+      <div id="wiki-content"></div>
+    </div>
+    <noscript><p class="section-shell" lang="fr">Activez JavaScript pour consulter les fiches et rechercher dans le wiki. <a href="classes.html?lang=fr">Consulter la présentation des classes</a>.</p><p class="section-shell" lang="en">Enable JavaScript to read and search wiki articles. <a href="classes.html?lang=en">Read the class overview</a>.</p></noscript>
+  </main>
+  <footer class="wiki-footer section-shell"><span data-i18n="wiki.footer">ARKYA · WIKI</span><a href="development.html?lang=fr" data-language-link data-i18n="nav.project">Le projet</a><a href="atlas.html?lang=fr#credits" data-language-link data-i18n="wiki.atlas">Atlas visuel & crédits</a><a href="terms.html?lang=fr" data-language-link data-i18n="footer.terms">Conditions d’utilisation</a><a href="privacy.html?lang=fr" data-language-link data-i18n="footer.privacy">Politique de confidentialité</a></footer>
+</body>
+</html>

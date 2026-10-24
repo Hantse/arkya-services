@@ -24,3 +24,7 @@ dialog{padding:0;background:#14232e;color:var(--text);width:min(1180px,92vw);max
 @media(max-width:560px){.hero{height:auto;max-height:none;min-height:700px}.hero-copy{position:relative;top:auto;left:auto;right:auto;padding:165px var(--gutter) 205px}}
 
 @media(max-width:1600px){.has-mobile-menu>nav:not(#mobile-menu),.has-mobile-menu>.header-link{display:none}.has-mobile-menu{min-height:80px;gap:14px}.has-mobile-menu>.brand{margin-right:auto}.has-mobile-menu .menu-toggle{display:flex;width:44px;height:44px;flex-direction:column;justify-content:center;gap:7px;background:none;border:1px solid #ffffff55;align-items:center}.has-mobile-menu .menu-toggle span{height:1px;width:18px;background:var(--text)}.has-mobile-menu #mobile-menu{position:absolute;top:79px;left:0;right:0;padding:22px var(--gutter);background:#111d28f7;display:flex;flex-direction:column;gap:20px;border-bottom:1px solid var(--line);font-size:14px;max-height:calc(100svh - 80px);overflow-y:auto}}
+
+.site-header nav a[aria-current="page"]{color:var(--gold)}
+@media(min-width:1180px){.has-mobile-menu>nav:not(#mobile-menu){display:flex;gap:24px}.has-mobile-menu>.header-link{display:block}.has-mobile-menu .menu-toggle{display:none}}
+@media print{.legal-page .public-header{display:none!important}}
