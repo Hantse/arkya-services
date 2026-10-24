@@ -14,11 +14,16 @@ public partial class Program
 {
     private static readonly object SecureTransport = new();
 
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
         PlayerAdministrationKeys.ConfigureCharacters(builder.Configuration);
         builder.Services.AddArkyaServiceDefaults(builder.Configuration);
+        builder.Services.AddOptions<RealmStorageOptions>().BindConfiguration("RealmStorage")
+            .Validate(value => value.IsValid(builder.Configuration["Mongo:DatabaseName"] ?? ""),
+                "RealmStorage requires unique realm IDs, distinct database names and valid MongoDB connections.").ValidateOnStart();
+        builder.Services.AddSingleton<RealmMongoDatabaseProvider>();
+        builder.Services.AddSingleton<IRealmStorageRouting>(services => services.GetRequiredService<RealmMongoDatabaseProvider>());
         builder.Services.AddArkyaInternalHttp(builder.Configuration);
         builder.Services.AddArkyaProxyTrust(builder.Configuration);
         builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 262144);
@@ -60,9 +65,10 @@ public partial class Program
                 options.Key != builder.Configuration["Identity:ServiceKey"], "The character administrator key must differ from service keys.")
             .ValidateOnStart();
         builder.Services.AddSingleton<CharacterAdminKeyValidator>();
-        builder.Services.AddSingleton<ICharacterAdminRepository, MongoCharacterAdminRepository>();
+        builder.Services.AddSingleton<ICharacterAdminRepository>(services => new MongoCharacterAdminRepository(
+            services.GetRequiredService<RealmMongoDatabaseProvider>()));
         builder.Services.AddScoped<CharacterAdminDetailService>();
-        builder.Services.AddSingleton<MongoGameLeaseStore>();
+        builder.Services.AddSingleton(services => new MongoGameLeaseStore(services.GetRequiredService<RealmMongoDatabaseProvider>()));
         builder.Services.AddSingleton<IGameLeaseStore>(services => services.GetRequiredService<MongoGameLeaseStore>());
         builder.Services.AddScoped<GameAdmissionService>();
         builder.Services.AddHttpClient<IGameRealmCatalog, GameRealmClient>(client => client.Timeout = TimeSpan.FromSeconds(5))
@@ -76,9 +82,9 @@ public partial class Program
             .Validate(options => options.ServiceKey.Length is >= 32 and <= 512,
                 "Identity:ServiceKey must contain 32 to 512 characters.")
             .ValidateOnStart();
-        builder.Services.AddSingleton<MongoCharacterRepository>();
+        builder.Services.AddSingleton(services => new MongoCharacterRepository(services.GetRequiredService<RealmMongoDatabaseProvider>()));
         builder.Services.AddSingleton<ICharacterRepository>(services => services.GetRequiredService<MongoCharacterRepository>());
-        builder.Services.AddSingleton<MongoCharacterQuestRepository>();
+        builder.Services.AddSingleton(services => new MongoCharacterQuestRepository(services.GetRequiredService<RealmMongoDatabaseProvider>()));
         builder.Services.AddSingleton<ICharacterQuestRepository>(services => services.GetRequiredService<MongoCharacterQuestRepository>());
         builder.Services.AddHostedService<CharacterIndexInitializer>();
         builder.Services.AddScoped<CharacterService>();
@@ -100,6 +106,17 @@ public partial class Program
         builder.Services.AddAuthorization();
 
         var app = builder.Build();
+        if (builder.Configuration["realm-storage-migration"] is { } migrationMode)
+        {
+            if (migrationMode is not ("plan" or "apply"))
+                throw new ArgumentException("Use --realm-storage-migration plan or apply.");
+            var migration = new RealmStorageMigration(app.Services.GetRequiredService<RealmMongoDatabaseProvider>());
+            var report = await migration.RunAsync(migrationMode == "apply",
+                builder.Configuration.GetValue<bool>("writers-stopped"), builder.Configuration["unassigned-realm"], CancellationToken.None);
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(report));
+            await app.DisposeAsync();
+            return;
+        }
         var gameAccess = app.Services.GetRequiredService<IOptions<CharacterGameAccessOptions>>().Value;
         app.UseArkyaInternalHttp(context => context.Request.Path.StartsWithSegments("/admin/characters") || context.Request.Path == "/health" ||
             gameAccess.AllowPrivateHttp && context.Request.Path.StartsWithSegments("/internal/game"));
@@ -129,6 +146,6 @@ public partial class Program
         app.MapCharacterQuestEndpoints();
         app.MapGameAdmissionEndpoints();
         app.MapCharacterAdminEndpoints();
-        app.Run();
+        await app.RunAsync();
     }
 }

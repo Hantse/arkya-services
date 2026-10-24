@@ -547,7 +547,9 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
         {
             if (!runtime.IsValid()) throw new DeploymentFailure("runtime_configuration_invalid");
             var environment = (JsonArray)container["env"]!;
-            environment.Add(new JsonObject { ["name"] = "ARKYA_CHARACTERS_URL", ["value"] = runtime.CharactersBaseUrl });
+            environment.Add(new JsonObject { ["name"] = "ARKYA_CHARACTERS_URL", ["value"] = runtime.CharactersUrlFor(realm.RealmId) });
+            if (runtime.RealmsBaseUrl.Length > 0)
+                environment.Add(new JsonObject { ["name"] = "ARKYA_REALMS_API_URL", ["value"] = runtime.RealmsBaseUrl });
             environment.Add(new JsonObject
             {
                 ["name"] = "ARKYA_DEDICATED_KEY",

@@ -5,6 +5,11 @@ prévoit une base gameplay et un flux d'événements isolés par realm, avec
 persistance par worker et supervision des dedicateds. Ce guide conserve le
 périmètre du déployeur existant ; il ne provisionne pas encore ces composants.
 
+La [première tranche de stockage et de routage](REALM_STORAGE.md) permet de
+configurer les bases de realms et une URL Characters par realm. L'activation
+de l'isolation exige une migration hors ligne ; ces options ne provisionnent
+pas automatiquement MongoDB, ses utilisateurs ni les certificats des services.
+
 La cible reprend le schéma fourni le 16 octobre 2026 : une VM Traefik reçoit les domaines Arkya, une gateway YARP dessert les applications web, et les serveurs dédiés d'un realm appellent les services de jeu par une gateway interne. Le premier parcours implémenté est l'administration des déploiements k3s.
 
 Pour l'installation progressive actuelle, le [profil Argo `admin`](../backend/deploy/gitops/admin/README.md)

@@ -11,6 +11,11 @@ de réalisation de cette cible. Les valeurs d'exploitation restent à mesurer.
 Les guides [déploiement](REALM_DEPLOYMENT.md), [opérations](REALM_OPERATIONS.md)
 et [multi-Area](MULTI_AREA_RUNTIME.md) décrivent les implémentations existantes.
 
+La [première tranche de stockage et routage par realm](REALM_STORAGE.md) est
+maintenant implémentée, avec activation explicite après migration hors ligne.
+Le tableau d'écarts ci-dessous conserve le constat initial de cette revue ;
+le guide de stockage décrit le nouveau comportement disponible.
+
 ## Organisation du monde
 
 ```text

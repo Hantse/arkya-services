@@ -6,7 +6,10 @@ stockage gameplay et événements isolés par realm, simulation en mémoire,
 batches vers un service de persistance, commandes et mesures depuis l'admin.
 Elle distingue cette cible de l'existant : base Characters commune,
 sauvegardes de snapshots HTTP et observation partielle. Les sections suivantes
-décrivent les services et parcours implémentés ; cette revue ne les migre pas.
+décrivent les services et parcours implémentés. La [première tranche de stockage
+et routage par realm](REALM_STORAGE.md) ajoute maintenant un annuaire Characters
+global, des destinations MongoDB explicites et une migration hors ligne contrôlée.
+L'isolation s'active après migration ; journal d'événements et worker restent à réaliser.
 
 Les [sites dédiés aux realms](REALM_SITES.md) ajoutent une liste publique sur
 le site principal, une page `https://{realmId}.arkya.online/` et un espace
@@ -207,7 +210,7 @@ jusqu'à la configuration des dedicateds.
 | --- | --- | --- |
 | `Arkya.Gateway` | Reverse proxy YARP, routes publiques explicitement autorisées dont Identity, Characters et publications Content ; backoffice sur un domaine distinct | Aucune donnée métier |
 | `Arkya.Identity.Api` | Connexion Discord, identité Arkya, création, validation et révocation des sessions | Comptes, challenges de connexion, sessions dans `arkya_identity` |
-| `Arkya.Characters.Api` | Personnages du compte, validation d’apparence, liaison au realm, admission, leases et sauvegarde autoritaire de position | Personnages, admissions et état persistant dans `arkya_characters` |
+| `Arkya.Characters.Api` | Personnages du compte, validation d’apparence, liaison au realm, admission, leases et sauvegarde autoritaire de position | Stockage historique dans `arkya_characters` ; après migration, annuaire global et données gameplay dans les bases propres aux realms configurés |
 | `Arkya.Content.Api` | Brouillons de quêtes, catalogues immuables, actualités et notes de version publiables | Catalogues et `content_posts` dans `arkya_content` |
 | `Arkya.Reports.Api` | Bugs (F8) et suggestions (F9) avec capture, type immuable, suivi, tags et révisions de triage | Rapports et PNG bornés dans `arkya_reports` |
 | `Arkya.Admin` | Interface web authentifiée pour le contenu, les realms et les signalements ; MCP signalements/publications facultatif | Sessions d’administration dans `arkya_admin` ; données métier via les autres services |

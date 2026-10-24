@@ -30,7 +30,7 @@ The targeted Valkyrie integration check on 22 October 2026 reports **67 tests: 6
 - Realm deployment backoffice: `Arkya.Admin` manages persistent realm definitions through `Arkya.Realms.Api`, which creates and observes dedicated workloads in approved k3s namespaces. A realm contains several Areas, each representing a complete map such as StarterIsland. Creation configures each Area's dimensions and dedicated partitions, plus separate instance and raid capacities; [configuration and runtime limits](docs/REALM_DEPLOYMENT.md). Each partition is one authority with one Kubernetes replica. The protocol 2 runtime adds player handoff between StarterIsland partitions with an atomic persistent lease transfer; [implementation and current validation](docs/STARTER_ISLAND_HANDOFF.md). A real run passed with four dedicated executables and one rendered Unity Editor client: six handoffs, with a measured boundary stall of up to 0.43 seconds. The exported native client remains unvalidated. Instance and raid plans remain undeployable until their runtime and allocator exist.
 - Admin console: grouped navigation, live service/realm/player dashboard, account search, bans and beta entitlements, and character presence; [contracts, configuration and k3s integration](docs/ADMIN_CONSOLE.md).
 - Beta registration: Discord account signup on the public site, a private waiting list and individual or random access grants; [flow, contracts and retry guarantees](docs/BETA_REGISTRATION.md).
-- Backend persistence: MongoDB, with a separate database owned by each service and local Compose setup.
+- Backend persistence: MongoDB, with service-owned databases and opt-in [per-realm gameplay storage and service routing](docs/REALM_STORAGE.md), enabled after an explicit offline migration.
 - Quest content: an ASP.NET admin edits kill objectives and publishes immutable catalogs; dedicated partition servers load a pinned version at startup and save character progress through Characters. See the [quest content guide](docs/QUEST_CONTENT.md).
 - Town NPCs: twenty Paladin/Valkyrie residents with server-owned movement, proximity dialogue and optional inference workers; edit identities, behavior, personality and quest links in the [town NPC catalog](docs/TOWN_NPCS.md). Quest acceptance and rewards remain separate.
 - Item content: the backoffice edits weapons, armor and other items using a gallery of models exported from Unity; immutable publications synchronize back into Unity before builds. See the [item content pipeline](docs/ITEM_CONTENT.md) for setup and validation limits.
@@ -70,6 +70,8 @@ arkya/
 For Unity work, Codex should use the installed **CoplayDev Unity MCP** bridge for live Editor inspection, scene/asset changes and validation. The [Unity MCP workflow](docs/UNITY_MCP.md) describes connection checks, tool selection, tests and fallback behavior; the root and Unity-project `AGENTS.md` files carry these instructions for future chats.
 
 ## Useful Documents
+
+- [Per-realm storage and service routing: configuration, migration and activation](docs/REALM_STORAGE.md).
 
 - [Realm infrastructure review: per-realm storage, event batches, admin commands and dedicated load](docs/REALM_INFRASTRUCTURE.md).
 

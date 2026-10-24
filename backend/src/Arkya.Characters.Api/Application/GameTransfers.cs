@@ -105,7 +105,7 @@ public sealed partial class GameAdmissionService
         if (request.Ticket is not { Length: 43 }) return new(Error: "transfer_rejected", Status: 409);
         for (var attempt = 0; attempt < 5; attempt++)
         {
-            var current = await leases.FindTicketAsync(HashTicket(request.Ticket), cancellationToken);
+            var current = await leases.FindTicketAsync(HashTicket(request.Ticket), server.RealmId, cancellationToken);
             var now = clock.GetUtcNow();
             if (current?.Transfer is not { } transfer || current.RealmId != server.RealmId || transfer.TargetServerId != server.ServerId ||
                 transfer.ExpiresAt <= now || current.SessionExpiresAt <= now || transfer.Status == TransferStatus.Aborted)

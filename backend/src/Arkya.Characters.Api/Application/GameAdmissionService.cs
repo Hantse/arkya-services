@@ -23,6 +23,8 @@ public interface IGameLeaseStore
 {
     Task<GameLeaseRecord?> FindCharacterAsync(Guid characterId, CancellationToken cancellationToken);
     Task<GameLeaseRecord?> FindTicketAsync(string ticketHash, CancellationToken cancellationToken);
+    Task<GameLeaseRecord?> FindTicketAsync(string ticketHash, string realmId, CancellationToken cancellationToken) =>
+        FindTicketAsync(ticketHash, cancellationToken);
     Task<GameLeaseRecord?> FindLastConnectedAsync(Guid accountId, IReadOnlyCollection<Guid> characterIds, CancellationToken cancellationToken);
     Task<bool> TryWriteAsync(GameLeaseRecord record, long? expectedVersion, CancellationToken cancellationToken, GameWriteCondition condition = GameWriteCondition.None);
 }
@@ -31,7 +33,7 @@ public sealed record GameResult<T>(T? Value = default, string? Error = null, int
 
 public sealed partial class GameAdmissionService(ICharacterRepository characters, IGameLeaseStore leases,
     IGameRealmCatalog realms, DedicatedKeyValidator servers, TimeProvider clock, ISessionReferenceValidator sessions,
-    IOptions<CharacterGameAccessOptions> options)
+    IOptions<CharacterGameAccessOptions> options, IRealmStorageRouting? storage = null)
 {
     public const int TicketSeconds = 60;
     public const int LeaseSeconds = 90;
@@ -52,6 +54,7 @@ public sealed partial class GameAdmissionService(ICharacterRepository characters
         var catalog = await realms.ListAsync(cancellationToken);
         return new(catalog.Realms.Select(value => value with { Ready = value.Ready &&
             GameProtocol.IsSupported(value.ProtocolVersion, value.BuildId) && GameTopology.IsValid(value, true) &&
+            (storage?.IsConfigured(value.RealmId) ?? true) &&
             servers.IsConfigured(value.RealmId, value.ServerId) && value.Partitions.All(partition => servers.IsConfigured(value.RealmId, partition.ServerId)) }).ToArray());
     }
 
@@ -118,7 +121,7 @@ public sealed partial class GameAdmissionService(ICharacterRepository characters
     {
         if (request.Ticket is null || !Regex.IsMatch(request.Ticket, @"\A[A-Za-z0-9_-]{43}\z"))
             return new(Error: "admission_rejected", Status: 409);
-        var current = await leases.FindTicketAsync(HashTicket(request.Ticket), cancellationToken);
+        var current = await leases.FindTicketAsync(HashTicket(request.Ticket), server.RealmId, cancellationToken);
         var now = clock.GetUtcNow();
         if (current is null || current.Transfer is not null || current.TicketExpiresAt <= now || current.SessionExpiresAt <= now ||
             current.RealmId != server.RealmId || current.ServerId != server.ServerId || current.LeaseId != Guid.Empty || current.AuthorityEpoch == long.MaxValue)

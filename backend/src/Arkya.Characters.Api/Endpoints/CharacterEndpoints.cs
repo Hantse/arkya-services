@@ -41,8 +41,10 @@ public static class CharacterEndpoints
         });
 
         characters.MapPost("", async (CreateCharacterRequest request, ClaimsPrincipal user, CharacterService service, GameAdmissionService game,
-            CancellationToken cancellationToken) =>
+            IRealmStorageRouting storage, CancellationToken cancellationToken) =>
         {
+            if (storage.Enabled && (request.RealmId is null || !storage.IsConfigured(request.RealmId)))
+                return Results.Json(new { code = "realm_required" }, statusCode: 400);
             if (request.RealmId is not null && (!GameProtocol.ValidId(request.RealmId) ||
                 !(await game.CatalogAsync(cancellationToken)).Realms.Any(value => value.RealmId == request.RealmId)))
                 return Results.Json(new { code = "invalid_realm" }, statusCode: 400);
