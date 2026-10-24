@@ -117,7 +117,7 @@ son royaume. Pour un compte déjà joué, le client retrouve le dernier royaume
 dont le serveur a accepté une admission, puis affiche les personnages de ce
 royaume. Le choix d’un autre royaume reste accessible.
 
-Le client `0.1.0-beta.20261023.3` reçoit la session du launcher par un pipe
+Le client `0.1.49` reçoit la session du launcher par un pipe
 Windows réservé à l’utilisateur courant. Le launcher vérifie le PID du jeu et
 Unity revalide `/v1/auth/me` avant l’accueil. Son manifeste déclare
 `launcherSessionProtocol: 1` ; aucun second parcours Discord n’est demandé
@@ -133,29 +133,35 @@ remplace pas cet historique : seul le backend l’enregistre après consommation
 réussie du ticket par un serveur dédié. Il est associé au compte, indépendamment
 du PC et du launcher.
 
-Le client `0.1.0-beta.20261023.3` provient de la
-[CI Unity du 23 octobre](https://github.com/Hantse/arkya-mmorpg/actions/runs/40022478349),
-source `ffca47da7cb0335e8b61a4cbf17c1df0f4d2c4dd`. Il inclut l’icône Arkya,
-le transfert de session et le runtime natif protocole `3`, build
-`arkya-multi-area-v1`. Il exige des serveurs compatibles avec cette paire.
-Installer cette Bêta avec le launcher pour recevoir ces changements.
+Le client `0.1.49` provient de la
+[CI Unity 49 du 24 octobre](https://github.com/Hantse/arkya-mmorpg/actions/runs/40095092545),
+source `22bc5eeabce7dfadaba55a42e4b4e9cf40fd8460`. Il inclut l’icône Arkya,
+le transfert de session et le runtime natif protocole `5`, build
+`arkya-town-npcs-v1`. Le manifeste Bêta doit proposer ce client vérifié pour
+rester compatible avec les quatre serveurs Nova en `0.1.49`. Un ancien client
+de protocole `3 / arkya-multi-area-v1` ne peut pas rejoindre ce runtime.
+La publication du serveur et celle du manifeste client sont deux opérations
+à coordonner ; le retour à `Ready` du realm ne remplace pas cette publication.
 Les publications historiques conservent leur propre binaire. Voir
 [le contrat d’entrée](CHARACTER_ENTRY.md) pour l’historique et
 [le contrat d’admission](WEB_BETA_CONTRACT.md) pour le transport et les contrôles
 côté serveur.
 
-Cette publication a passé 867 tests Edit Mode (un ignoré), trois tests Play
-Mode et le build Windows officiel. L’icône de l’EXE et chaque fichier du ZIP
-ont été comparés au build CI. Le vrai Core du launcher a téléchargé et activé
-le package public dans un dossier isolé ; le client exporté n’a pas été lancé
-pour une admission authentifiée ni un transfert entre zones. La provenance
-et le manifeste sont joints à la
-[release Windows](https://github.com/Hantse/arkya-services/releases/tag/windows-beta-2026.10.23.3).
+La CI 49 fournit le build Windows officiel. Les jobs Edit Mode et Play Mode
+étaient désactivés dans ce workflow ; son succès ne constitue donc pas une
+nouvelle exécution de ces tests. La publication Windows doit conserver
+`build-info.json`, les preuves `build.json`, `invocation.json` et `version.json`
+de cette source, puis joindre l’archive, le manifeste et `build-provenance.json`
+à la [release Windows Bêta](https://github.com/Hantse/arkya-services/releases/tag/windows-beta-0.1.49).
+Les identités version/commit/run, les tailles et les empreintes doivent
+correspondre au package réellement distribué. L’admission authentifiée et les
+transferts entre zones avec ce client exporté restent à valider ; la provenance
+du build et la disponibilité des serveurs ne les valident pas.
 
 Le client natif conserve le domaine de l’URL d’admission et son éventuel port
 non standard dans l’en-tête HTTP `Host` du WebSocket. Le nom TLS et la
 validation des certificats restent inchangés. Le
-[correctif du Transport embarqué](https://github.com/Hantse/arkya-mmorpg/blob/ffca47da7cb0335e8b61a4cbf17c1df0f4d2c4dd/Packages/com.unity.transport/ARKYA_FORK.md)
+[correctif du Transport embarqué](https://github.com/Hantse/arkya-mmorpg/blob/22bc5eeabce7dfadaba55a42e4b4e9cf40fd8460/Packages/com.unity.transport/ARKYA_FORK.md)
 ne modifie ni les routes publiques ni les autorisations par adresse IP client.
 Les contrôles natifs couvrent TLS, WebSocket et la connexion UTP ; l’admission
 authentifiée dans le royaume public reste à vérifier.

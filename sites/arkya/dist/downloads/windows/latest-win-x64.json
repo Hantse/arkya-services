@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.0-beta.20261023.3",
+  "version": "0.1.49",
   "platform": "win-x64",
-  "packageUrl": "https://github.com/Hantse/arkya-services/releases/download/windows-beta-2026.10.23.3/Arkya-0.1.0-beta.20261023.3-win-x64.zip",
-  "packageSize": 474937814,
-  "unpackedSize": 2054055617,
-  "sha256": "64fa73c12d4bf9d1ec6907660336da65dee786ca3e04be38f8bc29403aa96366",
+  "packageUrl": "https://github.com/Hantse/arkya-services/releases/download/windows-beta-0.1.49/Arkya-0.1.49-win-x64.zip",
+  "packageSize": 510743811,
+  "unpackedSize": 2127445486,
+  "sha256": "ac10830da37ec44b86d7d5efbb9933c690b22e5af5e6308dbbcced8a30382174",
   "executable": "Arkya.exe",
-  "releaseNotes": "Nouvelle icône Arkya intégrée au jeu Windows. Connexion transmise par le launcher et compatibilité avec le protocole de jeu 3 (Nova).",
+  "releaseNotes": "Client Windows compatible avec Nova 0.1.49 (protocole 5). Session de connexion transmise par le launcher.",
   "launcherSessionProtocol": 1
 }

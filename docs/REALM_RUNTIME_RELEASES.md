@@ -98,10 +98,13 @@ dans la fiche Nova en ligne avant préparation. Les anciens profil, endpoints et
 Services sont conservés. La release reste manuelle et exige un client compatible.
 Voir les [manifests et leur vérification](../backend/deploy/gitops/native-nova/README.md).
 
-Le feed Bêta public du launcher pointait encore vers le client de protocole 3
-lors de cette préparation. Prévoir le client 0.1.49 vérifié avant de lancer la
-maintenance ; la préparation de cette migration ne bascule pas ce feed. Le
-retour à `Ready` du realm ne prouve pas l'admission du client distribué.
+Le client Windows correspondant est distribué par la
+[release Bêta 0.1.49](https://github.com/Hantse/arkya-services/releases/tag/windows-beta-0.1.49).
+Son manifeste Bêta doit proposer `0.1.49` avec `launcherSessionProtocol=1`,
+indépendant du protocole de jeu `5`. Vérifier aussi cette distribution avant
+la maintenance : la préparation d'une migration ne bascule pas le feed du
+launcher. Un ancien client de protocole `3` ne voit plus Nova après sa migration.
+Le retour à `Ready` du realm ne prouve pas l'admission du client distribué.
 
 Le composant `backend/deploy/gitops/partition-handoff` prépare cette transition
 pour StarterIsland (1 536 × 1 536, quatre partitions de 768 × 768). Il reste
