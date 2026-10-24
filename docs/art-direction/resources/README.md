@@ -77,6 +77,7 @@ pas recopier le motif d'écorce sur les objets minéraux.
 | Familiers totems | Loup, renard riggés | 12 pelages par animal, 12 teintes de référence par palette | Loup V10 et renard V2 à examiner | [Atelier des totems](totems/README.md) |
 | Armes et boucliers — concepts 2D | 3 variantes × 7 catégories | Acier/cuir, bois/jade, cristal turquoise | Direction approuvée le 23 octobre | [21 concepts](armes/concepts-2026-10-23/README.md) |
 | Armes et boucliers — objets 3D | 21 modèles, 3 LOD chacun | Pigments de sommets, 5 matériaux partagés | Adaptations 3D à examiner | [Sources et objets Unity](armes/README.md) |
+| Monstre Garde-Vase — concept | Amphibien bipède à carapace minérale | Peau pétrole, pierre jade, ventre ivoire, yeux ambre | Proposition à examiner ; génération Meshy bloquée par l'offre du compte | [DA et suivi Meshy](monsters/garde-vase/README.md) |
 
 Les neuf premières familles comptent **108 modèles 3D**. Les trois formes de
 mares de mana ajoutent neuf variantes colorées, soit **117 modèles 3D validés**,

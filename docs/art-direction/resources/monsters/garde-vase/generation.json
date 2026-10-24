@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "assetId": "garde-vase",
+  "displayName": "Garde-Vase",
+  "date": "2026-10-25",
+  "status": "concept_created_meshy_submission_rejected",
+  "concept": {
+    "file": "reference/concept.png",
+    "tool": "image_gen.imagegen",
+    "prompt": "Use case: stylized-concept. Asset type: Arkya MMORPG monster concept and single-image reference for 3D reconstruction. Create ONE original monster named Garde-Vase: a menacing stocky bipedal amphibian stoneback guardian. Whole creature in a clean three-quarter front view on a uniform light warm grey studio background. Broad flattened toad-like head merged naturally into a thick neck, sculpted angular heavy brow over two small bright amber eyes, wide closed mouth, subtle nostrils, determined territorial expression, no tusks. Very broad shoulders, compact muscular torso, two long powerful arms angled slightly away from the body with clear negative space at armpits, oversized hands with exactly three chunky separated clawed fingers each, two sturdy bent hind legs with broad three-toed feet distinctly apart. On its upper back and shoulders a single coherent low carapace built of five or six thick overlapping smooth river-stone jade plates with beveled softly chipped edges; these are part of its anatomy, no equipment. Short thick tapering amphibian tail visible to the right, no extra limbs. Skin dark petrol blue and muted turquoise with broad painted gradients, pale warm grey throat and belly, carapace deep moss jade with muted ochre worn edges and a few small burnt orange mineral patches; claws warm ivory, two tiny amber eyes as focal accents. High quality hand-painted fantasy game aesthetic, carefully sculpted continuous organic volumes, selected generous rounded planes, strong readable anatomy and believable heavy weight, refined colored shadows and deliberate brushwork following forms, smooth curved silhouettes with no crude polygon faceting. Creature should feel native to a painted magical river valley. Restrained broad skin folds instead of realistic tiny warts. Orthographic-like camera at chest height, near frontal three quarter view shows both arms and both feet, entire head tail claws and feet within frame with generous margin. Neutral even diffuse lighting, tiny soft contact shadow only, no dramatic rimlights. No landscape, water, plants, rocks outside creature, pedestal, ground disk, scene dressing, smoke, particles, lettering, watermark, weapons, armor straps, loose props, floating pieces, wings, huge spines, extra creature, multiple views or inset images. Image is a production reference for Meshy: preserve clear separation of all limbs and a single coherent body.",
+    "visuallyInspected": true,
+    "artisticApproval": "pending"
+  },
+  "meshy": {
+    "cliVersion": "0.4.0",
+    "resource": "image-to-3d",
+    "operationId": "arkya-garde-vase-20261025-v1",
+    "workspace": "meshy_output",
+    "projectDirectory": null,
+    "taskId": null,
+    "request": {
+      "imageUrl": "reference/concept.png",
+      "modelType": "standard",
+      "shouldTexture": true,
+      "enablePbr": true,
+      "textureResolution": "4k",
+      "texturePrompt": "Hand-painted stylized fantasy monster for Arkya. Petrol-blue and muted turquoise amphibian skin, broad painted gradients, warm grey ivory throat and belly, jade river-stone carapace with ochre worn edges and small rusty-orange mineral patches, ivory claws, tiny amber eyes. Matte organic skin and stone; no metallic skin, photorealistic pores or baked directional shadows. Carefully sculpted volumes, readable large color blocks, restrained highlights, matching the reference.",
+      "imageEnhancement": false,
+      "removeLighting": true,
+      "targetFormats": [
+        "glb"
+      ]
+    },
+    "estimate": {
+      "credits": 30,
+      "source": "meshy make reference/concept.png --dry-run",
+      "requestsMadeByPlanner": 0
+    },
+    "balanceBefore": 3230,
+    "balanceAfterRejection": 3230,
+    "consumedCredits": null,
+    "submission": {
+      "accepted": false,
+      "cliExitCode": 1,
+      "httpStatus": 402,
+      "code": "credit",
+      "message": "meshy api 402 on /image-to-3d: NoMorePendingTasks: Task creation on the free plan is no longer supported. To continue creating tasks, please upgrade your plan. You can manage your plan at https://www.meshy.ai/settings/subscription",
+      "retryable": false
+    },
+    "recovery": "Activate a compatible Meshy plan, then reconcile the original operation before retrying the unfulfilled generation. Do not replace an accepted task.",
+    "deliveredModel": null,
+    "deliveredTextures": [],
+    "preview": null
+  },
+  "validation": {
+    "conceptInspected": true,
+    "modelInspected": false,
+    "unityImported": false,
+    "rigged": false,
+    "animated": false
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "concept": {
+    "file": "reference/concept.png",
+    "width": 1312,
+    "height": 1199,
+    "bytes": 2252630,
+    "sha256": "dd680ce04f72e46a97abba393e042b8937a39230186e716b6bfa54bde52ea667",
+    "visuallyInspected": true
+  },
+  "generationRecordParsed": true,
+  "readmeLocalLinksResolve": true,
+  "meshProduced": false,
+  "reason": "Meshy HTTP 402 NoMorePendingTasks: free plan disallows new task creation",
+  "unityChecks": "not applicable: no Unity asset or code changed"
+}

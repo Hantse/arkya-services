@@ -1,0 +1,3 @@
+meshy_output/**/task_*.json
+meshy_output/**/metadata.json
+meshy_output/**/metadata.json.*
