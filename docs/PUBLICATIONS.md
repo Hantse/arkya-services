@@ -97,11 +97,28 @@ conserve les brouillons et propose la dépublication.
 
 Les deux listes acceptent `kind=news|release-note`, `language=fr|en`,
 `limit=1..50` (défaut `20`) et `offset=0..10000` (défaut `0`). Omettre type ou
-langue sélectionne toutes leurs valeurs. Le feed public trie par date de
-publication décroissante puis ID décroissant ; la liste Admin par date de
-modification puis ID. Le filtrage public porte sur le snapshot publié, même si
-le type ou la langue du brouillon a changé. Une publication simultanée à la
-pagination peut déplacer les entrées ; recharger la première page actualise la liste.
+langue sélectionne toutes leurs valeurs.
+
+Le feed public accepte aussi les filtres suivants, combinables entre eux :
+
+| Paramètre public | Valeur |
+| --- | --- |
+| `q` | Recherche littérale de sous-chaîne, insensible à la casse, dans le titre, résumé ou corps publié ; 100 caractères maximum, sans contrôles. Les espaces de début/fin sont retirés et une recherche vide ne filtre rien. |
+| `gameVersion` | Version exacte, sensible à la casse, suivant le motif de création ci-dessous ; 1 à 64 caractères. |
+| `from` / `to` | Dates de publication UTC inclusives au format strict `YYYY-MM-DD` ; `from` doit précéder ou égaler `to`. Chaque borne est facultative. |
+| `sort` | `newest` (défaut) ou `oldest`. |
+
+Le feed public trie par date de publication puis ID, décroissants avec `newest`
+et croissants avec `oldest`. La liste Admin conserve son tri par date de
+modification puis ID décroissants et ses filtres type/langue. Le filtrage public
+porte uniquement sur le snapshot publié, même après une modification du
+brouillon ; tous les filtres sont appliqués avant la pagination et le calcul de
+`hasMore`. Une publication simultanée à la pagination peut déplacer les entrées ;
+recharger la première page actualise la liste.
+
+Exemple : `/v1/content/posts?kind=release-note&language=fr&q=b%C3%AAta&gameVersion=0.4-beta&from=2026-10-01&to=2026-10-24&sort=newest&limit=20&offset=0`.
+Une date ou un tri invalide, une plage inversée ou un filtre dépassant ses bornes
+donne `400`, sans lecture partielle ni recherche dans les brouillons.
 
 Création : `{ kind, language, title, summary, body, gameVersion }`.
 Modification : mêmes champs avec `revision` obligatoire.
@@ -129,6 +146,24 @@ une édition, `revision > publishedRevision`. Toute mutation exige la révision
 courante ; un conflit concurrent donne `409`, sans écraser l’autre modification.
 Une répétition avec une ancienne révision demande donc de recharger, même après
 une réussite dont la réponse aurait été perdue.
+
+## Consultation sur le site
+
+La page publique [Actualités](https://arkya.online/news.html?lang=fr) est reliée
+aux menus du site. Les onglets **News** et **Notes de version** consultent le
+feed anonyme dans la langue sélectionnée. Recherche, version exacte, période,
+ordre et taille de page sont transmis au service ; l'URL conserve la sélection.
+`post=UUID` permet de partager un article complet, y compris après rechargement.
+
+Le site rend titre, résumé et corps en texte brut. La news bêta contenant
+`https://arkya.online/beta.html` affiche un bouton d'inscription vers la page
+locale dans la langue du lecteur. Une URL provenant du texte n'est jamais
+utilisée directement comme destination de ce bouton. Aucun accès au jeu ni
+inscription ne résulte de la seule lecture d'une news.
+
+Une panne, une sélection vide et un article retiré ont des états distincts.
+Le client annule les requêtes dépassées et borne leur durée et leur réponse.
+La lecture reste indépendante de la restauration de session Discord.
 
 ## Persistance et livraison
 

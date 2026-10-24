@@ -16,16 +16,30 @@ internal sealed class MemoryPostRepository : IPostRepository
     {
         lock (gate) return Task.FromResult(posts.GetValueOrDefault(id));
     }
-    public Task<IReadOnlyList<ContentPost>> ListAsync(bool publishedOnly, string? kind, string? language, int limit, int offset, CancellationToken ct)
+    public Task<IReadOnlyList<ContentPost>> ListAsync(bool publishedOnly, string? kind, string? language, int limit, int offset,
+        CancellationToken ct, PostFeedFilter? filter = null)
     {
         lock (gate)
-            return Task.FromResult<IReadOnlyList<ContentPost>>(posts.Values
+        {
+            var matches = posts.Values
                 .Where(post => !publishedOnly || post.Published is not null)
                 .Where(post => kind is null || (publishedOnly ? post.Published!.Content : post.Draft).Kind == kind)
                 .Where(post => language is null || (publishedOnly ? post.Published!.Content : post.Draft).Language == language)
-                .OrderByDescending(post => publishedOnly ? post.Published!.PublishedAt : post.UpdatedAt)
-                .ThenByDescending(post => post.Id.ToString("D"), StringComparer.Ordinal).Skip(offset).Take(limit).ToArray());
+                .Where(post => !publishedOnly || filter is null ||
+                    (filter.GameVersion is null || post.Published!.Content.GameVersion == filter.GameVersion) &&
+                    (filter.From is null || post.Published!.PublishedAt >= filter.From) &&
+                    (filter.ToExclusive is null || post.Published!.PublishedAt < filter.ToExclusive) &&
+                    (string.IsNullOrEmpty(filter.Query) || Matches(post.Published!.Content, filter.Query)));
+            var sorted = publishedOnly && filter?.OldestFirst == true
+                ? matches.OrderBy(post => post.Published!.PublishedAt).ThenBy(post => post.Id.ToString("D"), StringComparer.Ordinal)
+                : matches.OrderByDescending(post => publishedOnly ? post.Published!.PublishedAt : post.UpdatedAt)
+                    .ThenByDescending(post => post.Id.ToString("D"), StringComparer.Ordinal);
+            return Task.FromResult<IReadOnlyList<ContentPost>>(sorted.Skip(offset).Take(limit).ToArray());
+        }
     }
+
+    private static bool Matches(PostContent content, string query) => content.Title.Contains(query, StringComparison.OrdinalIgnoreCase) ||
+        content.Summary.Contains(query, StringComparison.OrdinalIgnoreCase) || content.Body.Contains(query, StringComparison.OrdinalIgnoreCase);
     public Task<bool> TryReplaceAsync(long expectedRevision, ContentPost replacement, CancellationToken ct)
     {
         lock (gate)

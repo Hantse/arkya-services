@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.RegularExpressions;
 using Arkya.Content.Api.Contracts;
 using Arkya.Content.Api.Domain;
@@ -15,10 +16,11 @@ public sealed partial class PostService(IPostRepository repository, TimeProvider
     public const int MaxGameVersionLength = 64;
     public const int MaxPageSize = 50;
     public const int MaxOffset = 10000;
+    public const int MaxSearchLength = 100;
 
     public Task<ContentPost?> FindAsync(Guid id, CancellationToken ct) => repository.FindAsync(id, ct);
     public Task<IReadOnlyList<ContentPost>> ListAsync(bool publishedOnly, string? kind, string? language, int limit, int offset,
-        CancellationToken ct) => repository.ListAsync(publishedOnly, kind, language, limit + 1, offset, ct);
+        CancellationToken ct, PostFeedFilter? filter = null) => repository.ListAsync(publishedOnly, kind, language, limit + 1, offset, ct, filter);
 
     public async Task<PostChangeResult> CreateAsync(CreatePostRequest request, CancellationToken ct)
     {
@@ -78,6 +80,33 @@ public sealed partial class PostService(IPostRepository repository, TimeProvider
         if (offset is < 0 or > MaxOffset) errors["offset"] = [$"Use an offset from 0 to {MaxOffset}."];
         return errors;
     }
+
+    public static Dictionary<string, string[]> ValidatePublicQuery(string? kind, string? language, int limit, int offset,
+        string? q, string? gameVersion, string? from, string? to, string? sort, out PostFeedFilter filter)
+    {
+        var errors = ValidateQuery(kind, language, limit, offset);
+        if (q is not null && (q.Length > MaxSearchLength || q.Any(char.IsControl)))
+            errors["q"] = [$"Use at most {MaxSearchLength} characters without control characters."];
+        if (gameVersion is not null && (gameVersion.Length is < 1 or > MaxGameVersionLength || !GameVersionPattern().IsMatch(gameVersion)))
+            errors["gameVersion"] = ["Use a version of 1 to 64 ASCII letters, digits, dots, underscores, plus signs or hyphens, starting with a letter or digit."];
+        if (sort is not null && sort is not ("newest" or "oldest")) errors["sort"] = ["Use newest or oldest."];
+        var fromDate = ParseDate(from, "from", errors);
+        var toDate = ParseDate(to, "to", errors);
+        if (fromDate > toDate) errors["to"] = ["Use an end date on or after the start date."];
+        filter = new(q?.Trim(), gameVersion, fromDate is { } start ? UtcMidnight(start) : null,
+            toDate is { } end && end < DateOnly.MaxValue ? UtcMidnight(end.AddDays(1)) : null, sort == "oldest");
+        return errors;
+    }
+
+    private static DateOnly? ParseDate(string? text, string field, Dictionary<string, string[]> errors)
+    {
+        if (text is null) return null;
+        if (DateOnly.TryParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)) return date;
+        errors[field] = ["Use a valid UTC calendar date in YYYY-MM-DD format."];
+        return null;
+    }
+
+    private static DateTimeOffset UtcMidnight(DateOnly date) => new(date.ToDateTime(TimeOnly.MinValue, DateTimeKind.Utc));
 
     private static Dictionary<string, string[]> Validate(CreatePostRequest request)
     {

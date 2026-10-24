@@ -24,6 +24,31 @@ Ouvrir <http://127.0.0.1:51806>. Le serveur expose uniquement `dist/`, sur l’i
 - Page [Classes & grimoire](https://arkya-atlas.easykrill33.chatgpt.site/classes.html?lang=fr), reliée aux menus et à l’accueil : cinq classes, 25 capacités FR/EN, exploration des rangs aux niveaux 1–10, exemple interactif de Heal et calculateur de rating.
 - Page `dist/development.html` en FR/EN, reliée à l’accueil, aux classes et au compte : état du prototype, quêtes, inventaire/récolte, totems et services en préparation. Une rubrique technique repliable présente YARP, les images Docker et le déploiement k3s sans publier les adresses privées.
 
+## Actualités publiques
+
+`dist/news.html`, accessible depuis les menus de l'accueil, des classes, de
+l'avancement, du launcher et de la bêta, présente deux onglets **News** et
+**Notes de version** en FR/EN. Les filtres incluent la recherche dans le texte,
+la version exacte pour les notes, les dates UTC inclusives, le tri chronologique
+et 12, 24 ou 48 publications par page. Content les applique avant la pagination.
+
+`content-client.mjs` lit uniquement les routes anonymes `/v1/content/posts` de
+l'origine API configurée, sans cookie ni bearer, avec délai et réponse bornés.
+Les filtres et la pagination restent dans l'URL ; `post=UUID` ouvre l'article
+complet. Le texte publié est affiché comme texte brut. Une news contenant le
+lien canonique `https://arkya.online/beta.html` propose un bouton local
+**S'inscrire à la bêta**, dans la liste et dans l'article.
+
+`tests/content-client.test.mjs` vérifie les contrats et le transport ;
+`tests/news.browser.mjs` couvre les onglets au clavier, FR/EN, les filtres,
+les articles partageables, la pagination, l'inscription et les états d'erreur
+avec des réponses isolées. Les données des tests restent hors de `dist/`.
+
+Vérification du 24 octobre 2026 : **160 tests Node**, **148 tests Content avec
+MongoDB** et **140 contrôles Edge** réussis. Les rendus bureau/mobile sont
+inspectés dans `output/playwright/arkya-news-{desktop,mobile}.png` ; le scénario
+n'effectue aucune inscription ni mutation de production.
+
 ## Realms publics
 
 L’accueil affiche la liste des realms, également disponible dans `dist/realms.html`.

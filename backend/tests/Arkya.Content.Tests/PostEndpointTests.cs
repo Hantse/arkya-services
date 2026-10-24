@@ -189,7 +189,8 @@ public sealed class PostEndpointTests
 
     private sealed class UnavailablePosts : IPostRepository
     {
-        public Task<IReadOnlyList<ContentPost>> ListAsync(bool publishedOnly, string? kind, string? language, int limit, int offset, CancellationToken ct) => throw new TimeoutException("private-database");
+        public Task<IReadOnlyList<ContentPost>> ListAsync(bool publishedOnly, string? kind, string? language, int limit, int offset,
+            CancellationToken ct, PostFeedFilter? filter = null) => throw new TimeoutException("private-database");
         public Task CreateAsync(ContentPost post, CancellationToken ct) => throw new NotSupportedException();
         public Task<ContentPost?> FindAsync(Guid id, CancellationToken ct) => throw new NotSupportedException();
         public Task<bool> TryReplaceAsync(long expectedRevision, ContentPost replacement, CancellationToken ct) => throw new NotSupportedException();

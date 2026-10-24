@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111d28">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Les nouvelles d’Arkya et les notes de version : suivez la bêta, les mises à jour et le développement du monde." data-i18n-content="meta.description">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="website">
+  <title data-i18n="page.title">Arkya — News & notes de version</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="news.css">
+  <script src="news-copy.js" defer></script>
+  <script src="auth-config.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="news.mjs" type="module"></script>
+</head>
+<body class="news-page">
+  <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
+  <header class="news-header section-shell">
+    <a class="brand" href="/?lang=fr" data-language-link aria-label="Arkya, accueil" data-i18n-aria-label="nav.home"><svg viewBox="0 0 36 44" aria-hidden="true"><path d="M18 2 33 34 18 27 3 34Z M18 2v25m0-11 9 17m-9-17L9 33M18 27v15"/></svg><span>ARKYA</span></a>
+    <nav aria-label="Navigation principale" data-i18n-aria-label="nav.main"><a href="development.html?lang=fr" data-language-link data-i18n="nav.development">Avancement</a><a href="news.html?lang=fr" data-language-link aria-current="page" data-i18n="news.nav">News & mises à jour</a><a href="beta.html?lang=fr" data-language-link data-i18n="nav.betaRegister">S’inscrire à la bêta</a><a href="account.html?lang=fr" data-language-link data-auth-link data-i18n="nav.account">Connexion Discord</a></nav>
+    <div class="language-switch" role="group" aria-label="Choisir la langue" data-i18n-aria-label="nav.language"><button type="button" data-language="fr" lang="fr" aria-label="Français" aria-pressed="true">FR</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+  </header>
+  <main id="contenu" class="news-main section-shell">
+    <section class="news-intro" aria-labelledby="news-title">
+      <div><p class="eyebrow" data-i18n="news.eyebrow">LE JOURNAL D’ARKYA</p><h1 id="news-title" data-i18n-html="news.title">Le monde avance.<br>Gardons <em>le lien.</em></h1><p class="news-lead" data-i18n="news.intro">Les nouvelles de l’aventure et le détail de chaque mise à jour, au même endroit.</p></div>
+      <figure class="news-world"><img src="assets/world.webp" alt="" width="1400" height="800"><figcaption data-i18n="news.capture">L’ÎLE DE DÉPART · CAPTURE DU PROTOTYPE</figcaption></figure>
+    </section>
+    <div class="news-tabs" role="tablist" aria-label="Type de publication" data-i18n-aria-label="news.tabs">
+      <button id="tab-news" type="button" role="tab" aria-selected="true" aria-controls="publication-panel" data-kind="news" data-i18n="news.tabNews">News</button>
+      <button id="tab-release-note" type="button" role="tab" aria-selected="false" aria-controls="publication-panel" tabindex="-1" data-kind="release-note" data-i18n="news.tabRelease">Notes de version</button>
+    </div>
+    <section id="publication-panel" role="tabpanel" aria-labelledby="tab-news" tabindex="0" aria-busy="true">
+      <div id="news-list-view">
+        <form id="news-filters" class="news-filters" role="search" aria-label="Filtrer les publications" data-i18n-aria-label="news.filters">
+          <div class="news-field news-search"><label for="news-query" data-i18n="news.search">Rechercher</label><input id="news-query" name="q" type="search" maxlength="100" placeholder="Un sujet, une nouveauté…" data-i18n-placeholder="news.searchPlaceholder" autocomplete="off"></div>
+          <div class="news-field" id="news-version-field" hidden><label for="news-version" data-i18n="news.version">Version du jeu</label><input id="news-version" name="gameVersion" type="text" maxlength="64" placeholder="Ex. 0.1.0" data-i18n-placeholder="news.versionPlaceholder" autocomplete="off" disabled></div>
+          <div class="news-field"><label for="news-from" data-i18n="news.from">Publié à partir du</label><input id="news-from" name="from" type="date" min="0001-01-01" max="9999-12-31"></div>
+          <div class="news-field"><label for="news-to" data-i18n="news.to">Publié jusqu’au</label><input id="news-to" name="to" type="date" min="0001-01-01" max="9999-12-31"></div>
+          <div class="news-field"><label for="news-sort" data-i18n="news.sort">Ordre</label><select id="news-sort" name="sort"><option value="newest" data-i18n="news.newest">Plus récentes</option><option value="oldest" data-i18n="news.oldest">Plus anciennes</option></select></div>
+          <div class="news-field"><label for="news-limit" data-i18n="news.perPage">Par page</label><select id="news-limit" name="limit"><option value="12">12</option><option value="24">24</option><option value="48">48</option></select></div>
+          <div class="news-filter-actions"><button class="button primary" type="submit" data-i18n="news.apply">Appliquer les filtres</button><button id="news-reset" class="news-text-button" type="button" data-i18n="news.reset">Réinitialiser</button></div>
+          <p id="news-filter-error" class="news-filter-error" role="alert" hidden></p>
+        </form>
+        <div class="news-results-heading"><h2 id="news-results-title" data-i18n="news.latestNews">Les dernières nouvelles</h2><p id="news-result-count"></p></div>
+        <div id="news-items" class="news-grid" aria-labelledby="news-results-title"></div>
+        <nav id="news-pagination" class="news-pagination" aria-label="Pages des publications" data-i18n-aria-label="news.pagination" hidden><a id="news-previous" class="news-page-link" href="news.html" data-i18n="news.previous">← Précédent</a><p id="news-page-number"></p><a id="news-next" class="news-page-link" href="news.html" data-i18n="news.next">Suivant →</a></nav>
+      </div>
+      <div id="news-article-view" hidden>
+        <a id="news-back" class="news-back" href="news.html?lang=fr" data-i18n="news.back">← Toutes les publications</a>
+        <article id="news-article" class="news-article" hidden><header><div id="news-article-meta" class="news-publication-meta"></div><h2 id="news-article-title" tabindex="-1"></h2><p id="news-article-summary" class="news-article-summary"></p></header><a id="news-article-beta" class="button primary news-beta-link" href="beta.html?lang=fr" data-i18n="news.beta" hidden>S’inscrire à la bêta</a><div id="news-article-body" class="news-article-body"></div><footer><a id="news-permalink" class="news-permalink" href="news.html" data-i18n="news.permalink">Lien vers cette publication ↗</a></footer></article>
+      </div>
+      <div id="news-status" class="news-status" role="status" aria-live="polite"><span class="news-status-mark" aria-hidden="true">◇</span><h2 id="news-status-title" data-i18n="news.loading">Chargement des publications…</h2><p id="news-status-description"></p><button id="news-retry" class="button" type="button" data-i18n="news.retry" hidden>Réessayer</button><button id="news-empty-reset" class="news-text-button" type="button" data-i18n="news.clearFilters" hidden>Effacer les filtres</button></div>
+    </section>
+    <noscript><p class="news-noscript" lang="fr">Activez JavaScript pour consulter les news et les notes de version publiées.</p><p class="news-noscript" lang="en">Enable JavaScript to read the published news and release notes.</p></noscript>
+  </main>
+  <footer class="news-footer section-shell"><p>Pyxion Sarl-S · Arkya</p><a href="privacy.html?lang=fr" data-language-link data-i18n="footer.privacy">Politique de confidentialité</a><a href="terms.html?lang=fr" data-language-link data-i18n="footer.terms">Conditions d’utilisation</a><a href="/?lang=fr" data-language-link data-i18n="news.home">Retour au site</a></footer>
+</body>
+</html>

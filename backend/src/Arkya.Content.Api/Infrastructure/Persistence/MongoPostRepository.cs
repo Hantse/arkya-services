@@ -1,7 +1,9 @@
+using System.Text.RegularExpressions;
 using Arkya.Content.Api.Application;
 using Arkya.Content.Api.Domain;
 using Arkya.ServiceDefaults;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Arkya.Content.Api.Infrastructure.Persistence;
@@ -30,7 +32,7 @@ public sealed class MongoPostRepository(IMongoClient client, IOptions<MongoOptio
             .FirstOrDefaultAsync(ct))?.ToDomain();
 
     public async Task<IReadOnlyList<ContentPost>> ListAsync(bool publishedOnly, string? kind, string? language, int limit, int offset,
-        CancellationToken ct)
+        CancellationToken ct, PostFeedFilter? feedFilter = null)
     {
         var filter = Supported;
         var f = Builders<PostDocument>.Filter;
@@ -39,14 +41,25 @@ public sealed class MongoPostRepository(IMongoClient client, IOptions<MongoOptio
             filter &= f.Ne(post => post.Published, null);
             if (kind is not null) filter &= f.Eq(post => post.Published!.Content.Kind, kind);
             if (language is not null) filter &= f.Eq(post => post.Published!.Content.Language, language);
+            if (feedFilter?.GameVersion is { } version) filter &= f.Eq(post => post.Published!.Content.GameVersion, version);
+            if (feedFilter?.From is { } from) filter &= f.Gte(post => post.Published!.PublishedAt, from.UtcDateTime);
+            if (feedFilter?.ToExclusive is { } to) filter &= f.Lt(post => post.Published!.PublishedAt, to.UtcDateTime);
+            if (!string.IsNullOrEmpty(feedFilter?.Query))
+            {
+                var search = new BsonRegularExpression(Regex.Escape(feedFilter.Query), "i");
+                filter &= f.Or(f.Regex(post => post.Published!.Content.Title, search),
+                    f.Regex(post => post.Published!.Content.Summary, search), f.Regex(post => post.Published!.Content.Body, search));
+            }
         }
         else
         {
             if (kind is not null) filter &= f.Eq(post => post.Draft.Kind, kind);
             if (language is not null) filter &= f.Eq(post => post.Draft.Language, language);
         }
-        var sort = publishedOnly ? Builders<PostDocument>.Sort.Descending(post => post.Published!.PublishedAt).Descending(post => post.Id)
-            : Builders<PostDocument>.Sort.Descending(post => post.UpdatedAt).Descending(post => post.Id);
+        var sort = !publishedOnly ? Builders<PostDocument>.Sort.Descending(post => post.UpdatedAt).Descending(post => post.Id)
+            : feedFilter?.OldestFirst == true
+                ? Builders<PostDocument>.Sort.Ascending(post => post.Published!.PublishedAt).Ascending(post => post.Id)
+                : Builders<PostDocument>.Sort.Descending(post => post.Published!.PublishedAt).Descending(post => post.Id);
         var documents = await posts.Find(filter).Sort(sort).Skip(offset).Limit(limit).ToListAsync(ct);
         return documents.Select(post => post.ToDomain()).ToArray();
     }

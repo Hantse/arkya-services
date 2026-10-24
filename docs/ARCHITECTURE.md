@@ -292,8 +292,12 @@ sans retry automatique. Le chemin `/mcp/reports` et son bearer restent communs
 aux signalements et publications activés. Le transport stdio conserve une
 configuration Content distincte et désactivée par défaut.
 
-Le launcher et le site peuvent consulter le feed anonyme publié, filtré par type
-et langue avec pagination bornée. Le routage public ne donne accès ni aux
+Le launcher et la page `news.html` du site consultent le feed anonyme publié.
+Le site sépare news et notes de version en deux onglets FR/EN, avec recherche
+textuelle, version exacte, période UTC, tri et pagination bornée. Content applique
+les filtres au snapshot publié avant la pagination. Les articles disposent d'un
+lien direct ; la news bêta propose l'inscription sur `beta.html`.
+Le routage public ne donne accès ni aux
 brouillons ni aux mutations. Aucun article n'est prépublié au démarrage ; une
 indisponibilité de Content est distinguée d'un feed vide. Le [guide des
 publications](PUBLICATIONS.md) décrit les contrats et le backoffice.
