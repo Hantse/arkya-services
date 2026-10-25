@@ -69,6 +69,13 @@ logs/
 /.playwright-cli/
 /.codex/
 
+# Local agent attachments, recovery copies and validation state
+/.codex-attachments/
+/.codex-remote-attachments/
+/.codex-task-backups/
+/.codex-task-baselines/
+/.local/
+
 # JavaScript dependencies and Python caches
 node_modules/
 __pycache__/

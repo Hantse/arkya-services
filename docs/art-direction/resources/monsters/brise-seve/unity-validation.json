@@ -1,43 +1,44 @@
 {
   "schemaVersion": 1,
-  "date": "2026-10-24",
+  "date": "2026-10-25",
+  "revision": "2026-10-25-v2-final",
   "unity": "6000.6.6f1",
   "urp": "17.6.0",
   "transport": "Installed CoplayDev Unity MCP, stdio",
-  "scope": "Asset import, sampled skinned vertices, controller evaluation, camera rendering in Editor",
+  "scope": "Asset import, actual skinned vertices sampled at15fps, controller evaluation, actual camera renders in Editor without Play Mode",
   "prefab": "Assets/Arkya/Monsters/BriseSeve/BriseSeve.prefab",
   "meshes": [
     {
       "name": "BriseSeve_LOD0",
-      "triangles": 126848,
-      "vertices": 75996,
+      "triangles": 174906,
+      "vertices": 106419,
       "bones": 29,
       "worldBoundsSize": [
-        2.26817441,
-        2.0300684,
-        3.40930533
+        2.40222263,
+        2.273307,
+        3.52987361
       ]
     },
     {
       "name": "BriseSeve_LOD1",
-      "triangles": 60886,
-      "vertices": 39875,
+      "triangles": 61216,
+      "vertices": 43265,
       "bones": 29,
       "worldBoundsSize": [
-        2.26817465,
-        2.03004622,
-        3.40937114
+        2.40220332,
+        2.273268,
+        3.52988386
       ]
     },
     {
       "name": "BriseSeve_LOD2",
-      "triangles": 25368,
-      "vertices": 18959,
+      "triangles": 24486,
+      "vertices": 20517,
       "bones": 29,
       "worldBoundsSize": [
-        2.26769519,
-        2.03107214,
-        3.41009331
+        2.40269327,
+        2.27279472,
+        3.53010774
       ]
     }
   ],
@@ -47,11 +48,11 @@
       "duration": 4.0,
       "loop": true,
       "samples": 61,
-      "minVertexY": 0.0144069791,
+      "minVertexY": 0.019998908,
       "envelopeMetres": [
-        1.495839,
-        1.9365344,
-        3.28830218
+        1.60154867,
+        2.16179419,
+        3.40304136
       ]
     },
     {
@@ -59,11 +60,11 @@
       "duration": 1.2,
       "loop": true,
       "samples": 19,
-      "minVertexY": 0.0144068,
+      "minVertexY": 0.01999855,
       "envelopeMetres": [
-        1.49745011,
-        1.88603628,
-        3.28959131
+        1.6290102,
+        2.11401749,
+        3.40628576
       ]
     },
     {
@@ -71,11 +72,11 @@
       "duration": 1.0,
       "loop": false,
       "samples": 16,
-      "minVertexY": 0.0144074559,
+      "minVertexY": 0.0199994445,
       "envelopeMetres": [
-        1.46833539,
-        1.92094016,
-        3.324462
+        1.59332347,
+        2.14422226,
+        3.44185281
       ]
     },
     {
@@ -83,11 +84,11 @@
       "duration": 0.650000036,
       "loop": true,
       "samples": 11,
-      "minVertexY": 0.0106099248,
+      "minVertexY": 0.0199328661,
       "envelopeMetres": [
-        1.46833539,
-        1.88198137,
-        3.19509888
+        1.60754633,
+        2.10563469,
+        3.31686926
       ]
     },
     {
@@ -95,11 +96,11 @@
       "duration": 0.900000036,
       "loop": false,
       "samples": 15,
-      "minVertexY": 0.0143817663,
+      "minVertexY": 0.0199740529,
       "envelopeMetres": [
-        1.46833539,
-        1.92096591,
-        3.32355785
+        1.59332347,
+        2.14424753,
+        3.444973
       ]
     },
     {
@@ -107,11 +108,11 @@
       "duration": 0.5,
       "loop": false,
       "samples": 9,
-      "minVertexY": 0.0139511824,
+      "minVertexY": 0.01954323,
       "envelopeMetres": [
-        1.47239542,
-        1.92139649,
-        3.326467
+        1.605015,
+        2.14467859,
+        3.44460154
       ]
     },
     {
@@ -119,33 +120,22 @@
       "duration": 1.4000001,
       "loop": false,
       "samples": 23,
-      "minVertexY": 0.000871956348,
+      "minVertexY": 0.0006890297,
       "envelopeMetres": [
-        2.18817425,
-        1.9344759,
-        3.312749
+        2.32222366,
+        2.19330764,
+        3.43033886
       ]
     }
   ],
+  "lodSize": 3.530108,
   "forward": "+Z",
   "rootScale": [
-    1,
-    1,
-    1
+    1.0,
+    1.0,
+    1.0
   ],
-  "import": {
-    "maxWeights": 4,
-    "rig": "Generic",
-    "rootMotion": false,
-    "bakeAxisConversion": false
-  },
-  "bounds": {
-    "samplesPerSecond": 15,
-    "method": "BakeMesh(useScale=true), each vertex transformed into root bone space",
-    "lodGroupSizeMetres": 3.41010857,
-    "paddingMetresPerSide": 0.04
-  },
-  "controller": {
+  "controllerValidation": {
     "passed": true,
     "method": "Manually evaluated AnimatorControllerPlayable in Editor, no Play Mode",
     "steps": [
@@ -212,7 +202,7 @@
         "clip": "Idle",
         "time": 0.0,
         "lod": 0,
-        "path": "renders/unity-idle.png",
+        "path": "Captures/BriseSeve/brise-seve-unity-idle-evaluated.png",
         "transforms": [
           {
             "name": "Body",
@@ -246,14 +236,14 @@
         "clip": "Charge",
         "time": 0.22,
         "lod": 0,
-        "path": "renders/unity-charge.png",
+        "path": "Captures/BriseSeve/brise-seve-unity-charge-evaluated.png",
         "transforms": [
           {
             "name": "Body",
             "position": [
               0.0,
-              0.947028637,
-              -0.65
+              0.945613,
+              -0.649999857
             ],
             "rotation": [
               83.97731,
@@ -265,8 +255,8 @@
             "name": "Head",
             "position": [
               0.0,
-              1.02467263,
-              0.8479373
+              1.02325714,
+              0.847937167
             ],
             "rotation": [
               43.6997337,
@@ -280,32 +270,32 @@
         "clip": "Death",
         "time": 1.399,
         "lod": 0,
-        "path": "renders/unity-death.png",
+        "path": "Captures/BriseSeve/brise-seve-unity-death-evaluated.png",
         "transforms": [
           {
             "name": "Body",
             "position": [
               -0.3,
-              0.860438,
-              -0.6799998
+              0.771793544,
+              -0.68
             ],
             "rotation": [
-              26.969305,
-              88.77235,
-              89.44318
+              9.768681,
+              86.5641556,
+              89.41636
             ]
           },
           {
             "name": "Head",
             "position": [
-              -0.274375319,
-              0.8473958,
-              0.824926436
+              -0.362658918,
+              0.78260076,
+              0.8307416
             ],
             "rotation": [
-              17.9510021,
-              140.466263,
-              110.477272
+              17.1743011,
+              111.973289,
+              96.64755
             ]
           }
         ]
@@ -314,7 +304,7 @@
         "clip": "Idle",
         "time": 0.0,
         "lod": 2,
-        "path": "renders/unity-lod2.png",
+        "path": "Captures/BriseSeve/brise-seve-unity-lod2-evaluated.png",
         "transforms": [
           {
             "name": "Body",
@@ -347,7 +337,12 @@
     ],
     "method": "Manual AnimationClipPlayable evaluation and Camera.Render in the same Editor call"
   },
-  "finalEditor": {
+  "console": {
+    "success": true,
+    "message": "Retrieved 0 log entries.",
+    "data": []
+  },
+  "finalEditorState": {
     "unity": "6000.6.6f1",
     "compiling": false,
     "playing": false,
@@ -371,17 +366,10 @@
       }
     ]
   },
-  "console": {
-    "assetErrorsInReturnedEntries": 0,
-    "observedErrorEntries": 10,
-    "cleared": false,
-    "category": "Netcode server tick batching",
-    "note": "Existing Netcode messages are preserved. This task did not enter Play Mode or start a network server."
-  },
-  "notTested": [
-    "Full Play Mode gameplay",
-    "Network or combat integration",
-    "Population performance",
-    "Mobile browser"
-  ]
+  "boundsMeasurement": "BakeMesh(mesh,true); transform each actual vertex into rootBone local space; pad envelope by4cm per side",
+  "captureSkinUpdate": "forceMatrixRecalculationPerRender=true temporarily on review instance only",
+  "assetSha256": {
+    "assets/brise-seve.fbx": "268a91d15c74b1ca22a9f6cb53c6929882c92f1a5ea566b88d875539d52246db",
+    "textures/brise-seve-basecolor.png": "cda54e739ed3d4b702823a29e322ae32ea0ce6c95592f56accd7d261b67540af"
+  }
 }

@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
-  "revision": "2026-10-24-v1",
+  "revision": "2026-10-25-v2-final",
   "name": "Brise-Sève",
-  "status": "first-3d-version-awaiting-art-review",
-  "triangles": 126848,
+  "status": "v2-art-and-skin-refinement-awaiting-review",
+  "triangles": 174906,
   "dimensions": {
-    "heightM": 1.9203620525076985,
-    "lengthM": 3.282745122909546,
-    "widthM": 1.4683351516723633,
+    "heightM": 2.1435820255428553,
+    "lengthM": 3.4001067876815796,
+    "widthM": 1.5933234691619873,
     "pose": "Idle",
     "frame": 1,
     "measurement": "World-space mesh bounds in the initial Idle pose; maximum minus minimum on each axis"
   },
   "restDimensions": {
-    "heightM": 1.945940244011581,
-    "lengthM": 3.2779030799865723,
-    "widthM": 1.4683353900909424,
+    "heightM": 2.1692225746810436,
+    "lengthM": 3.3955297470092773,
+    "widthM": 1.5933234691619873,
     "pose": "Rest",
     "measurement": "World-space mesh bounds before armature deformation; maximum minus minimum on each axis",
     "source": "validation-report.json#/source/meshes/0"
@@ -39,15 +39,15 @@
   "lods": [
     {
       "level": 0,
-      "triangles": 126848
+      "triangles": 174906
     },
     {
       "level": 1,
-      "triangles": 60886
+      "triangles": 61216
     },
     {
       "level": 2,
-      "triangles": 25368
+      "triangles": 24486
     }
   ],
   "animations": [
@@ -99,30 +99,31 @@
   "provenance": {
     "conceptTool": "image_gen.imagegen built-in; exact prompts in reference/generation-prompts.json",
     "geometry": "Authored from geometric surfaces in Blender 4.5.14 by build_monster.py; no third-party mesh",
-    "texture": "Authored procedural pigments baked from corner color to an atlas",
+    "texture": "Authored directional pigment networks baked with corner Paint colors to a single atlas",
     "rig": "Authored analytic quadruped rig and baked keyframe animation",
     "date": "2026-10-24",
-    "rights": "Original project creation; no external asset license asserted or copied"
+    "rights": "Original project creation; no external asset license asserted or copied",
+    "updated": "2026-10-25"
   },
   "verification": {
     "sourceAndExports": "validation-report.json",
     "rigAndContacts": "animation-report.json",
     "geometry": "geometry-report.json",
-    "finalEyeCorrection": "repair-report.json",
     "artApproved": false,
     "productionReady": false,
     "limitations": [
-      "Joint surface stretching still requires sculpt/skin refinement at extreme poses",
-      "Painted surface finish is simpler than the concept",
+      "Localized joint stretching remains in extreme poses; exact before/after values in deformation-comparison.json",
+      "Geometry and painted finish are an interpretation of the reference, pending user art approval",
       "No combat AI, server damage, navigation or world spawn integration",
       "No measured multiplayer population/performance budget"
     ],
     "unity": "unity-validation.json",
-    "viewer": "viewer-validation.json"
+    "viewer": "viewer-validation.json",
+    "deformationComparison": "deformation-comparison.json"
   },
   "unityIntegration": {
     "repository": "https://github.com/Hantse/arkya-mmorpg",
-    "commit": "bae69df098c9b0690156d3e404ad36880b0d6b8a",
+    "commit": "cf745eb2efa087c5454b93ce28b60c28bcc9d726",
     "prefab": "Assets/Arkya/Monsters/BriseSeve/BriseSeve.prefab",
     "scene": "Assets/Arkya/Monsters/BriseSeve/Scenes/BriseSeveReview.unity"
   }

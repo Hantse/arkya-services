@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 
 import bpy
+import numpy as np
 from mathutils import Matrix, Quaternion, Vector
 
 FPS = 60
@@ -78,39 +79,49 @@ def _skeleton():
 
 def _weight_point(point, rig):
     """Blend two axial and two limb influences with continuous support regions."""
-    nodes = ((.65, "Body"), (.15, "Spine"), (-.36, "Chest"), (-.66, "Neck"), (-.84, "Head"))
-    torso = {"Body" if point.y >= nodes[0][0] else "Head": 1.}
+    nodes = ((.65, "Body"), (.15, "Spine"), (-.36, "Chest"), (-.61, "Neck"), (-.95, "Head"))
+    axial_y = point.y + .20 * (1 - _smooth((point.z - .60) / .70)) * _smooth((point.y + 1.20) / .60)
+    torso = {"Body" if axial_y >= nodes[0][0] else "Head": 1.}
     for (back, a), (front, b) in zip(nodes, nodes[1:]):
-        if front <= point.y <= back:
-            mix = _smooth((back - point.y) / (back - front))
+        if front <= axial_y <= back:
+            mix = _smooth((back - axial_y) / (back - front))
             torso = {a: 1 - mix, b: mix}
             break
     if point.y > .95:
         tail = _smooth((point.y - .95) / .25) * _smooth((point.z - .70) / .12)
         torso = {"Body": 1 - tail, "Tail01": tail}
-    jaw = _smooth((-point.y - .91) / .22) * (1 - _smooth((point.z - .86) / .12))
+    jaw = _smooth((-point.y - 1.05) / .18) * (1 - _smooth((point.z - .86) / .12))
     if jaw:
         torso = {"Head": 1 - jaw, "Jaw": jaw}
     side = "L" if point.x >= 0 else "R"
-    leg_amount = (1 - _smooth((point.z - .60) / .46)) * _smooth((abs(point.x) - .17) / .18)
-    # The muzzle can extend below the neck, but never belongs to a foreleg.
-    leg_amount *= _smooth((point.y + 1.15) / .25)
+    # The medial elbow belongs to the limb. A fixed lateral mask leaves it
+    # attached to the neck and stretches the armpit whenever the paw advances.
+    shoulder = _smooth((point.z - .65) / .45)
+    inner = .04 * shoulder
+    outer = .22 + .28 * _smooth((point.z - .24) / .22) + .08 * shoulder
+    leg_amount = (1 - _smooth((point.z - .72) / .56)) * _smooth((abs(point.x) - inner) / (outer - inner))
+    # Raise the muzzle exclusion with height, keeping the broad forepaw intact.
+    leg_amount *= 1 - _smooth((point.z - .30) / .55) * (1 - _smooth((point.y + 1.0) / .45))
     kind = "Fore" if point.y < .10 else "Hind"
     # Both limbs fade out at the belly, so their supports never switch abruptly.
-    leg_amount *= (1 - _smooth((point.y + .10) / .20)) if kind == "Fore" else _smooth((point.y - .10) / .28)
+    leg_amount *= (1 - _smooth((point.y + .35) / .45)) if kind == "Fore" else _smooth((point.y - .10) / .40)
     weights = {name: weight * (1 - leg_amount) for name, weight in torso.items()}
     if kind == "Fore":
-        if point.z > .36:
+        if point.z > .42:
             blend = _smooth((point.z - .42) / .32)
+            medial = (1 - _smooth((abs(point.x) - .16) / .24)) * _smooth((point.z - .42) / .16)
+            blend = 1 - (1 - blend) * (1 - medial)
             parts = {"Upper": blend, "Lower": 1 - blend}
         else:
-            blend = _smooth((point.z - .15) / .18)
+            blend = _smooth((point.z - .14) / .26)
             parts = {"Lower": blend, "Paw": 1 - blend}
-    elif point.z > .57:
-        blend = _smooth((point.z - .59) / .25)
+    elif point.z > .55:
+        blend = _smooth((point.z - .55) / .36)
+        medial = (1 - _smooth((abs(point.x) - .14) / .23)) * _smooth((point.z - .57) / .15)
+        blend = 1 - (1 - blend) * (1 - medial)
         parts = {"Upper": blend, "Lower": 1 - blend}
     elif point.z > .31:
-        blend = _smooth((point.z - .32) / .24)
+        blend = _smooth((point.z - .32) / .22)
         parts = {"Lower": blend, "Paw": 1 - blend}
     else:
         blend = _smooth((point.z - .16) / .14)
@@ -200,9 +211,9 @@ def _body_pose(rig, motion, t):
     elif name == "Death":
         fall = _smooth((t - .12) / .68)
         shift = Vector((.30 * fall, .03 * fall, -.62 * fall))
-        roll, pitch = 1.10 * fall, .12 * fall
-        head, neck = .23 * fall, .12 * fall
-        _rotate(rig, "Jaw", .13 * fall)
+        roll, pitch = 1.40 * fall, .08 * fall
+        head, neck = -.06 * fall, -.04 * fall
+        _rotate(rig, "Jaw", .06 * fall)
     shift.z -= motion["drop"]
     body_rest = rig.data.bones["Body"].matrix_local
     rig.pose.bones["Body"].location = body_rest.to_3x3().inverted() @ shift
@@ -211,6 +222,11 @@ def _body_pose(rig, motion, t):
     _rotate(rig, "Spine", .008 * math.sin(phase) if motion["loop"] else 0)
     _rotate(rig, "Neck", neck - .3 * pitch)
     _rotate(rig, "Head", head - .5 * pitch)
+    if name == "Death":
+        head_rest = rig.data.bones["Head"].matrix_local.to_quaternion()
+        rig.pose.bones["Head"].rotation_quaternion = (
+            head_rest.inverted() @ Quaternion((0, 1, 0), -.15 * fall) @ head_rest
+            @ rig.pose.bones["Head"].rotation_quaternion)
     if name == "Idle":
         axis = rig.data.bones["Head"].matrix_local.to_quaternion().inverted() @ Vector((0, 0, 1))
         rig.pose.bones["Head"].rotation_quaternion @= Quaternion(axis, .022 * math.sin(phase))
@@ -286,15 +302,22 @@ def _pose_limb(rig, limb, sole, offset, pitch):
     upper, lower, paw, toe = _limb_names(limb)
     ankle, toe_head, toe_tail, rotation = _targets(rig, limb, sole, offset, pitch)
     hip = rig.pose.bones[upper].head.copy()
-    pole = Vector((0, 1 if limb.startswith("Fore") else -1, 0))
-    if isinstance(pitch, Quaternion):
-        pole = pitch @ pole
+    upper_rest, lower_rest = rig.data.bones[upper], rig.data.bones[lower]
+    parent = upper_rest.parent
+    reference = (rig.pose.bones[parent.name].matrix @ parent.matrix_local.inverted()).to_quaternion()
+    rest_axis = (lower_rest.tail_local - upper_rest.head_local).normalized()
+    rest_bend = lower_rest.head_local - upper_rest.head_local
+    pole = reference @ (rest_bend - rest_axis * rest_bend.dot(rest_axis)).normalized()
     knee, reached, error = _solve(hip, ankle, rig.data.bones[upper].length,
                                   rig.data.bones[lower].length, pole)
     shift = reached - ankle
     matrices = {}
-    _pose_segment(rig, upper, hip, knee, matrices)
-    _pose_segment(rig, lower, knee, reached, matrices)
+    # Transport the rest frame before swinging each segment. A shortest-arc
+    # rotation from world rest loses the body's twist when it falls sideways.
+    upper_delta = (reference @ (upper_rest.tail_local - upper_rest.head_local)).rotation_difference(knee - hip) @ reference
+    lower_delta = (upper_delta @ (lower_rest.tail_local - lower_rest.head_local)).rotation_difference(reached - knee) @ upper_delta
+    _pose_segment(rig, upper, hip, knee, matrices, upper_delta)
+    _pose_segment(rig, lower, knee, reached, matrices, lower_delta)
     _pose_segment(rig, paw, reached, toe_head + shift, matrices, rotation)
     _pose_segment(rig, toe, toe_head + shift, toe_tail + shift, matrices, rotation)
     return error
@@ -315,7 +338,7 @@ def _motions():
             motion.update(speed=.70, duty=.68, clearance=.095,
                           phases={"Hind.L": 0., "Fore.L": .75, "Hind.R": .5, "Fore.R": .25})
         elif name == "Charge":
-            motion.update(speed=2.8, duty=.28, clearance=.20,
+            motion.update(speed=2.8, duty=.28, clearance=.185,
                           phases={"Hind.L": 0., "Hind.R": .93, "Fore.L": .55, "Fore.R": .47})
         result.append(motion)
     return result
@@ -363,17 +386,22 @@ def _mesh_floor(meshes):
             continue
         evaluated = obj.evaluated_get(graph)
         mesh = evaluated.to_mesh()
-        minimum = min(minimum, min(((evaluated.matrix_world @ vertex.co).z for vertex in mesh.vertices), default=float("inf")))
+        points = np.empty(len(mesh.vertices) * 3, dtype=np.float64)
+        mesh.vertices.foreach_get("co", points)
+        if len(points):
+            transform = np.array(evaluated.matrix_world, dtype=np.float64)
+            heights = points.reshape((-1, 3)) @ transform[2, :3] + transform[2, 3]
+            minimum = min(minimum, float(heights.min()))
         evaluated.to_mesh_clear()
     return minimum
 
 
-def _bake(rig, soles, meshes=()):
+def _bake(rig, soles, meshes=(), motions=None):
     scene = bpy.context.scene
     scene.render.fps, scene.render.fps_base = FPS, 1.
     rig.animation_data_create()
     reports, actions = [], []
-    for motion in _motions():
+    for motion in (_motions() if motions is None else motions):
         rig.animation_data.action = None
         _fit_body_height(rig, motion, soles)
         action = bpy.data.actions.new(motion["name"])
@@ -402,9 +430,13 @@ def _bake(rig, soles, meshes=()):
                 if motion["name"] == "Death":
                     fall = _smooth((t - .12) / .68)
                     rest = rig.data.bones["Body"].matrix_local
-                    deformed = rig.pose.bones["Body"].matrix @ rest.inverted() @ soles[limb]
+                    # The ground-side paws fold inward so the armored flank
+                    # carries the body instead of balancing on the paw edge.
+                    tuck = Vector((-.18 if limb.endswith("L") else 0,
+                                   .10 if limb.startswith("Fore") else -.08, .14)) * fall
+                    deformed = rig.pose.bones["Body"].matrix @ rest.inverted() @ (soles[limb] + tuck)
                     offset = deformed - soles[limb]
-                    offset.z = max(GROUND, soles[limb].z + offset.z) - soles[limb].z
+                    offset.z += motion["drop"] * (1 - fall)
                     contact = t < .12
                     pitch = rig.pose.bones["Body"].matrix.to_quaternion() @ rest.to_quaternion().inverted()
                 error = _pose_limb(rig, limb, soles[limb], offset, pitch)
@@ -475,57 +507,68 @@ def _bake(rig, soles, meshes=()):
 
 
 def _validate_deformation(rig, meshes, actions):
-    """Inspect actual evaluated skin bounds, finite vertices and moving geometry."""
+    """Measure every skinned vertex and nondegenerate edge at every baked frame."""
     scene = bpy.context.scene
-    result = dict(finite=True, evaluated_vertex_samples=0, max_sampled_edge_stretch=0., clips=[])
+    result = dict(finite=True, evaluated_vertex_samples=0, max_sampled_edge_stretch=0.,
+                  stretch_limit=3., sampling="all vertices and edges; every baked frame", clips=[])
     rest_edges = {}
     for obj in meshes:
         if obj.type != "MESH" or obj.get("skin_region") != "body":
             continue
-        edge_step = max(1, len(obj.data.edges) // 2000)
-        samples = []
-        for edge in list(obj.data.edges)[::edge_step]:
-            a, b = edge.vertices
-            length = (obj.data.vertices[a].co - obj.data.vertices[b].co).length
-            if length > .0001:
-                samples.append((a, b, length))
-        rest_edges[obj.name] = samples
+        points = np.empty(len(obj.data.vertices) * 3, dtype=np.float64)
+        obj.data.vertices.foreach_get("co", points)
+        points = points.reshape((-1, 3))
+        indices = np.array([list(edge.vertices) for edge in obj.data.edges], dtype=np.int32)
+        lengths = np.linalg.norm(points[indices[:, 0]] - points[indices[:, 1]], axis=1)
+        valid = lengths > 1e-6
+        rest_edges[obj.name] = (indices[valid], lengths[valid])
     for action in actions:
         rig.animation_data.action = action
-        minimum, maximum = Vector((1e10,) * 3), Vector((-1e10,) * 3)
-        for fraction in (0., .25, .5, .75, 1.):
-            scene.frame_set(round(action.frame_range[1] * fraction))
+        if len(action.slots) == 1:
+            rig.animation_data.action_slot = action.slots[0]
+        minimum, maximum = np.full(3, np.inf), np.full(3, -np.inf)
+        max_stretch, min_ratio, max_over_two = 1., 1., 0
+        for frame in range(round(action.frame_range[0]), round(action.frame_range[1]) + 1):
+            scene.frame_set(frame)
             graph = bpy.context.evaluated_depsgraph_get()
             for obj in meshes:
                 if obj.type != "MESH":
                     continue
                 evaluated = obj.evaluated_get(graph)
                 mesh = evaluated.to_mesh()
-                for a, b, length in rest_edges.get(obj.name, []):
-                    if a < len(mesh.vertices) and b < len(mesh.vertices):
-                        stretch = (mesh.vertices[a].co - mesh.vertices[b].co).length / length
-                        if stretch > result["max_sampled_edge_stretch"]:
-                            result["max_sampled_edge_stretch"] = stretch
-                            result["worst_edge"] = dict(mesh=obj.name, action=action.name, frame=scene.frame_current,
-                                                        vertices=[a, b], rest_length_m=length,
-                                                        rest_positions=[list(obj.data.vertices[v].co) for v in (a, b)],
-                                                        deformed_positions=[list(mesh.vertices[v].co) for v in (a, b)],
-                                                        weights=[{obj.vertex_groups[g.group].name: g.weight for g in obj.data.vertices[v].groups} for v in (a, b)])
-                for vertex in mesh.vertices:
-                    point = evaluated.matrix_world @ vertex.co
-                    result["finite"] &= all(math.isfinite(v) for v in point)
-                    for axis in range(3):
-                        minimum[axis] = min(minimum[axis], point[axis])
-                        maximum[axis] = max(maximum[axis], point[axis])
+                points = np.empty(len(mesh.vertices) * 3, dtype=np.float64)
+                mesh.vertices.foreach_get("co", points)
+                points = points.reshape((-1, 3))
+                if obj.name in rest_edges:
+                    indices, lengths = rest_edges[obj.name]
+                    ratios = np.linalg.norm(points[indices[:, 0]] - points[indices[:, 1]], axis=1) / lengths
+                    max_stretch = max(max_stretch, float(ratios.max()))
+                    min_ratio = min(min_ratio, float(ratios.min()))
+                    max_over_two = max(max_over_two, int((ratios > 2).sum()))
+                    if ratios.max() > result["max_sampled_edge_stretch"]:
+                        index = int(ratios.argmax())
+                        a, b = map(int, indices[index])
+                        result["max_sampled_edge_stretch"] = float(ratios[index])
+                        result["worst_edge"] = dict(mesh=obj.name, action=action.name, frame=scene.frame_current,
+                                                    vertices=[a, b], rest_length_m=float(lengths[index]),
+                                                    rest_positions=[list(obj.data.vertices[v].co) for v in (a, b)],
+                                                    deformed_positions=[points[v].tolist() for v in (a, b)],
+                                                    weights=[{obj.vertex_groups[g.group].name: g.weight for g in obj.data.vertices[v].groups} for v in (a, b)])
+                matrix = np.array(evaluated.matrix_world, dtype=np.float64)
+                points = points @ matrix[:3, :3].T + matrix[:3, 3]
+                result["finite"] &= bool(np.isfinite(points).all())
+                minimum = np.minimum(minimum, points.min(axis=0))
+                maximum = np.maximum(maximum, points.max(axis=0))
                 result["evaluated_vertex_samples"] += len(mesh.vertices)
                 evaluated.to_mesh_clear()
-        result["clips"].append(dict(name=action.name, bounds_min_m=list(minimum), bounds_max_m=list(maximum)))
+        result["clips"].append(dict(name=action.name, bounds_min_m=minimum.tolist(), bounds_max_m=maximum.tolist(),
+                                    max_edge_stretch=max_stretch, min_edge_ratio=min_ratio, max_edges_over_two=max_over_two))
     rig.animation_data.action = actions[0]
     scene.frame_set(0)
     return result
 
 
-def build_rig(mesh_objects):
+def build_rig(mesh_objects, report_directory=None):
     meshes = list(mesh_objects)
     rig, soles = _skeleton()
     skin = _skin(meshes, rig)
@@ -535,9 +578,13 @@ def build_rig(mesh_objects):
                       parent=bone.parent.name if bone.parent else None, deform=bone.use_deform) for bone in rig.data.bones},
                   deformation=_validate_deformation(rig, meshes, actions))
     report["passed"] = (all(clip["checks"]["passed"] for clip in clips) and report["deformation"]["finite"]
-                        and report["deformation"]["max_sampled_edge_stretch"] < 5 and not skin["unweighted_vertices"])
+                        and report["deformation"]["max_sampled_edge_stretch"] < 3
+                        and all(clip["bounds_min_m"][2] >= -.02 for clip in report["deformation"]["clips"])
+                        and skin["max_influences"] <= 4 and skin["max_weight_sum_error"] < .0001
+                        and not skin["unweighted_vertices"])
     if not report["passed"]:
         failures = {clip["name"]: clip["checks"] for clip in clips if not clip["checks"]["passed"]}
-        (Path(__file__).resolve().parents[1] / "animation-failure-report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+        directory = Path(report_directory) if report_directory else Path(__file__).resolve().parents[1]
+        (directory / "animation-failure-report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
         raise ValueError(f"Brise-Seve rig validation failed: clips={failures}, skin={skin}, deformation={report['deformation']}")
     return rig, report

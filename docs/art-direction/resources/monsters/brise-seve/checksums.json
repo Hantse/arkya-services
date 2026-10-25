@@ -1,19 +1,19 @@
 {
   "files": [
     {
-      "sha256": "e114f8d08bf8b8606c5d2d6fc1febe0dfaee89a0b4da104a31458fdb5ffd1b1c",
+      "sha256": "13341604510c0207584cf1355988e4e69a3c0436af3c64c10d945b951033b1cd",
       "path": "assets/brise-seve.blend"
     },
     {
-      "sha256": "1dc2dd43716e7a5b71d3eff393a1940487a8bcb6897d448c7b0abf0ac1656ebf",
+      "sha256": "268a91d15c74b1ca22a9f6cb53c6929882c92f1a5ea566b88d875539d52246db",
       "path": "assets/brise-seve.fbx"
     },
     {
-      "sha256": "609cd3166cf96c7204a5990694d3ebacccaf93e3da732f143f9633ee7ff55d7a",
+      "sha256": "5b89467b4018d37d2b02fc133d676de9dcb082e2d8c5e074e2235dccfece1f36",
       "path": "models/brise-seve.glb"
     },
     {
-      "sha256": "ba451ab9a3b4c916c5bb3862ecbde8664aba4847d65b6c8a399f5e0f81331062",
+      "sha256": "cda54e739ed3d4b702823a29e322ae32ea0ce6c95592f56accd7d261b67540af",
       "path": "textures/brise-seve-basecolor.png"
     },
     {
@@ -21,5 +21,6 @@
       "path": "reference/concept-v2.png"
     }
   ],
-  "algorithm": "SHA-256"
+  "algorithm": "SHA-256",
+  "revision": "2026-10-25-v2-final"
 }

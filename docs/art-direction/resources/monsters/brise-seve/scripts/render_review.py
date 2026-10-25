@@ -1,7 +1,7 @@
 """Render review images from the final Brise-Seve source without modifying it.
 
 Blender 4.5: blender -b --threads 4 --python render_review.py
-The three views use 1024x768/12 samples; the four-pose sheet uses 640x480/16.
+The four views use 1024x768/12 samples; the four-pose sheet uses 640x480/16.
 """
 from pathlib import Path
 import sys
@@ -33,7 +33,7 @@ def main():
     camera = scene.camera
     hero_matrix = camera.matrix_world.copy()
     for name, location in (("hero.png", None), ("profile.png", (5, 0, 1.95)),
-                           ("rear.png", (3.4, 4.5, 2.6))):
+                           ("rear.png", (3.4, 4.5, 2.6)), ("front.png", (0, -5, 2.0))):
         if location:
             camera.location = location
             camera.rotation_euler = (Vector((0, -.05, .85)) - camera.location).to_track_quat("-Z", "Y").to_euler()

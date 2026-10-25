@@ -1,21 +1,25 @@
 {
   "schemaVersion": 1,
-  "date": "2026-10-24",
-  "scope": "Desktop browser review through CUA, performed by the coordinating agent",
+  "date": "2026-10-25",
+  "revision": "2026-10-25-v2-final",
+  "scope": "Local browser review through CUA; native AX and some CDP queries intermittently timed out",
   "capture": "renders/viewer.png",
   "observations": {
     "glbLoadedAndRendered": true,
     "animationControls": 7,
     "walkPlayed": true,
-    "playbackRateHalfEffective": true,
-    "conceptComparisonDisplayed": true,
-    "deathStoppedAtSeconds": 1.4,
-    "deathDisplayedDurationSeconds": 1.4,
-    "deathFinishedButtonLabel": "Lecture",
-    "recenterUsed": true,
-    "capturedErrorLogs": 0
+    "playbackRateHalfSelected": true,
+    "correctedDeathRendered": true,
+    "finiteDeathTimingRechecked": false,
+    "conceptComparisonRechecked": false,
+    "finalCaptureShowsHitStoppedAtSeconds": 0.5,
+    "finalCapturePlaybackButton": "Lecture"
   },
-  "notTested": [
-    "Mobile layout and touch interaction"
-  ]
+  "notVerified": [
+    "Final console error count: DOM/CDP queries timed out",
+    "Exact finite clip stop time in V2 browser",
+    "Concept toggle re-test in V2",
+    "Mobile/touch interactions"
+  ],
+  "independentValidation": "All7actions verified in Blender and Unity; Unity controller and captures in unity-validation.json"
 }

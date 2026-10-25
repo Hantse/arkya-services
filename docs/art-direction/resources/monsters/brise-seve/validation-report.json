@@ -7,121 +7,121 @@
     "meshes": [
       {
         "name": "BriseSeve_LOD0",
-        "vertices": 63578,
-        "triangles": 126848,
+        "vertices": 87673,
+        "triangles": 174906,
         "materials": [
           "BriseSeve_Painted"
         ],
         "bounds_min_m": [
-          -0.7341676950454712,
-          -1.7070000171661377,
-          0.014408004470169544
+          -0.7966617345809937,
+          -1.774999976158142,
+          0.019999999552965164
         ],
         "bounds_max_m": [
-          0.7341676950454712,
-          1.5709030628204346,
-          1.9603482484817505
+          0.7966617345809937,
+          1.6205297708511353,
+          2.189222574234009
         ],
         "dimensions_m": [
-          1.4683353900909424,
-          3.2779030799865723,
-          1.945940244011581
+          1.5933234691619873,
+          3.3955297470092773,
+          2.1692225746810436
         ],
         "finite_vertices": true,
         "uv_layers": 1,
         "finite_uvs": true,
         "uv_bounds": [
           [
-            0.010049526579678059,
-            0.01004953496158123
+            0.007187505252659321,
+            0.007187515031546354
           ],
           [
-            0.9899504780769348,
-            0.9875257015228271
+            0.99281245470047,
+            0.9927449822425842
           ]
         ],
         "max_influences": 4,
-        "max_weight_sum_error": 4.5925844460725784e-08,
+        "max_weight_sum_error": 4.842877388000488e-08,
         "unweighted_vertices": 0,
         "invalid_weight_vertices": 0
       },
       {
         "name": "BriseSeve_LOD1",
-        "vertices": 30597,
-        "triangles": 60886,
+        "vertices": 30828,
+        "triangles": 61216,
         "materials": [
           "BriseSeve_Painted"
         ],
         "bounds_min_m": [
-          -0.7341676950454712,
-          -1.7070000171661377,
-          0.014245481230318546
+          -0.7966617345809937,
+          -1.774999976158142,
+          0.019973313435912132
         ],
         "bounds_max_m": [
-          0.7341676950454712,
-          1.5710214376449585,
-          1.9603482484817505
+          0.7966617345809937,
+          1.6206341981887817,
+          2.189222574234009
         ],
         "dimensions_m": [
-          1.4683353900909424,
-          3.278021454811096,
-          1.946102767251432
+          1.5933234691619873,
+          3.395634174346924,
+          2.1692492607980967
         ],
         "finite_vertices": true,
         "uv_layers": 1,
         "finite_uvs": true,
         "uv_bounds": [
           [
-            0.010037481784820557,
-            0.010048081167042255
+            0.007174903992563486,
+            0.007187509443610907
           ],
           [
-            0.9841615557670593,
-            0.9875186681747437
+            0.992811918258667,
+            0.9927444458007812
           ]
         ],
         "max_influences": 4,
-        "max_weight_sum_error": 1.5165642253123224e-07,
+        "max_weight_sum_error": 1.6391277313232422e-07,
         "unweighted_vertices": 0,
         "invalid_weight_vertices": 0
       },
       {
         "name": "BriseSeve_LOD2",
-        "vertices": 12838,
-        "triangles": 25368,
+        "vertices": 12463,
+        "triangles": 24486,
         "materials": [
           "BriseSeve_Painted"
         ],
         "bounds_min_m": [
-          -0.7338480353355408,
-          -1.7077367305755615,
-          0.01408546045422554
+          -0.7947486639022827,
+          -1.7752368450164795,
+          0.019911982119083405
         ],
         "bounds_max_m": [
-          0.7338480353355408,
-          1.570900559425354,
-          1.9603482484817505
+          0.7952504754066467,
+          1.62075674533844,
+          2.1886377334594727
         ],
         "dimensions_m": [
-          1.4676960706710815,
-          3.2786372900009155,
-          1.946262788027525
+          1.5899991393089294,
+          3.3959935903549194,
+          2.1687257513403893
         ],
         "finite_vertices": true,
         "uv_layers": 1,
         "finite_uvs": true,
         "uv_bounds": [
           [
-            0.010042431764304638,
-            0.010048081167042255
+            0.00714501366019249,
+            0.007182700093835592
           ],
           [
-            0.9840786457061768,
-            0.9874843955039978
+            0.9927181005477905,
+            0.9909512400627136
           ]
         ],
         "max_influences": 4,
-        "max_weight_sum_error": 1.5087425708770752e-07,
+        "max_weight_sum_error": 1.4388933777809143e-07,
         "unweighted_vertices": 0,
         "invalid_weight_vertices": 0
       }
@@ -138,57 +138,97 @@
         "evaluated_frames": 241,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7479196190834045,
-          -1.7111308574676514,
-          0.014407585375010967
+          -0.800774335861206,
+          -1.7763934135437012,
+          0.019999340176582336
         ],
         "bounds_max_m": [
-          0.7479196190834045,
-          1.5771783590316772,
-          1.9509445428848267
+          0.800774335861206,
+          1.626650333404541,
+          2.1817939281463623
         ],
-        "max_pose_displacement_m": 0.06626673755653098,
+        "max_pose_displacement_m": 0.07397767002961739,
         "loop_pose_error_m": 0.0,
-        "max_sampled_edge_stretch": 1.3426353163391425,
+        "max_sampled_edge_stretch": 1.2081020393125987,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.7682397348872909,
+        "max_p99_edge_stretch": 1.096485217226201,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 37.0,
+          "vertices": [
+            1223,
+            42885
+          ],
+          "rest_positions_m": [
+            [
+              -0.5858278870582581,
+              -0.3586353659629822,
+              0.5852426886558533
+            ],
+            [
+              -0.5908204913139343,
+              -0.35063451528549194,
+              0.605225682258606
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              -0.6225430369377136,
+              -0.3085228204727173,
+              0.5551325082778931
+            ],
+            [
+              -0.625850260257721,
+              -0.3004814386367798,
+              0.5803717374801636
+            ]
+          ],
+          "rest_length_m": 0.022096600239515297,
+          "evaluated_length_m": 0.026694947811233688
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 241,
-            "min_contact_surface_z_m": 0.014407925307750702,
-            "max_contact_surface_z_m": 0.014408810064196587,
-            "max_planted_surface_slip_per_frame_m": 6.492891425285159e-07,
+            "min_contact_surface_z_m": 0.019999602809548378,
+            "max_contact_surface_z_m": 0.020000455901026726,
+            "max_planted_surface_slip_per_frame_m": 7.29328091425934e-07,
             "max_marker_height_error_m": 4.652142524715075e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 241,
-            "min_contact_surface_z_m": 0.014407585375010967,
-            "max_contact_surface_z_m": 0.014408470131456852,
-            "max_planted_surface_slip_per_frame_m": 6.696167661671848e-07,
+            "min_contact_surface_z_m": 0.019999602809548378,
+            "max_contact_surface_z_m": 0.020000455901026726,
+            "max_planted_surface_slip_per_frame_m": 7.291942355136774e-07,
             "max_marker_height_error_m": 4.652142524715075e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 241,
-            "min_contact_surface_z_m": 0.015381143428385258,
-            "max_contact_surface_z_m": 0.015382072888314724,
-            "max_planted_surface_slip_per_frame_m": 7.657588922375081e-07,
-            "max_marker_height_error_m": 4.996359348301282e-07
+            "min_contact_surface_z_m": 0.019999340176582336,
+            "max_contact_surface_z_m": 0.020000498741865158,
+            "max_planted_surface_slip_per_frame_m": 7.509650194813083e-07,
+            "max_marker_height_error_m": 6.765872240070692e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 241,
-            "min_contact_surface_z_m": 0.015381145291030407,
-            "max_contact_surface_z_m": 0.015382074750959873,
-            "max_planted_surface_slip_per_frame_m": 7.682380017989351e-07,
-            "max_marker_height_error_m": 4.996359348301282e-07
+            "min_contact_surface_z_m": 0.019999340176582336,
+            "max_contact_surface_z_m": 0.020000498741865158,
+            "max_planted_surface_slip_per_frame_m": 7.507896163991266e-07,
+            "max_marker_height_error_m": 6.765872240070692e-07
           }
         },
         "representative_poses": [
           {
             "frame": 0.0,
-            "min_surface_z_m": 0.01440785638988018,
+            "min_surface_z_m": 0.01999969780445099,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -197,7 +237,7 @@
           },
           {
             "frame": 60.0,
-            "min_surface_z_m": 0.014408130198717117,
+            "min_surface_z_m": 0.01999998651444912,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -206,7 +246,7 @@
           },
           {
             "frame": 120.0,
-            "min_surface_z_m": 0.014408078044652939,
+            "min_surface_z_m": 0.020000116899609566,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -215,7 +255,7 @@
           },
           {
             "frame": 180.0,
-            "min_surface_z_m": 0.014408130198717117,
+            "min_surface_z_m": 0.020000018179416656,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -224,7 +264,7 @@
           },
           {
             "frame": 240.0,
-            "min_surface_z_m": 0.01440785638988018,
+            "min_surface_z_m": 0.01999969780445099,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -244,57 +284,97 @@
         "evaluated_frames": 73,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.74906986951828,
-          -1.7118431329727173,
-          0.014407642185688019
+          -0.8147589564323425,
+          -1.7794643640518188,
+          0.01999950036406517
         ],
         "bounds_max_m": [
-          0.7487038373947144,
-          1.5777486562728882,
-          1.9008848667144775
+          0.8146937489509583,
+          1.6268588304519653,
+          2.1342923641204834
         ],
-        "max_pose_displacement_m": 0.6010907484599776,
+        "max_pose_displacement_m": 0.6056536272352951,
         "loop_pose_error_m": 3.429011054889572e-18,
-        "max_sampled_edge_stretch": 3.632723939022444,
+        "max_sampled_edge_stretch": 2.2721877736773863,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.03260855526163585,
+        "max_p99_edge_stretch": 1.5136759394419572,
+        "max_edges_over_two": 212,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0010762841796379218,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 38.0,
+          "vertices": [
+            2557,
+            43287
+          ],
+          "rest_positions_m": [
+            [
+              -0.3042394518852234,
+              -0.7320835590362549,
+              0.6984750032424927
+            ],
+            [
+              -0.29345428943634033,
+              -0.7453077435493469,
+              0.7042779922485352
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              -0.3999878764152527,
+              -0.5569571852684021,
+              0.5332651138305664
+            ],
+            [
+              -0.3792853355407715,
+              -0.5916145443916321,
+              0.5401601195335388
+            ]
+          ],
+          "rest_length_m": 0.018024246627511245,
+          "evaluated_length_m": 0.040954472816776916
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 49,
-            "min_contact_surface_z_m": 0.014407934620976448,
-            "max_contact_surface_z_m": 0.014408660121262074,
-            "max_planted_surface_slip_per_frame_m": 4.011085170433358e-06,
-            "max_marker_height_error_m": 4.065036773685804e-07
+            "min_contact_surface_z_m": 0.01999950036406517,
+            "max_contact_surface_z_m": 0.020000269636511803,
+            "max_planted_surface_slip_per_frame_m": 6.767470033413763e-07,
+            "max_marker_height_error_m": 4.884600639347425e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 50,
-            "min_contact_surface_z_m": 0.014407642185688019,
-            "max_contact_surface_z_m": 0.014408350922167301,
-            "max_planted_surface_slip_per_frame_m": 3.966585032910944e-06,
-            "max_marker_height_error_m": 3.5621225833934456e-07
+            "min_contact_surface_z_m": 0.019999565556645393,
+            "max_contact_surface_z_m": 0.020000319927930832,
+            "max_planted_surface_slip_per_frame_m": 5.949594488780574e-07,
+            "max_marker_height_error_m": 4.195421934131971e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 50,
-            "min_contact_surface_z_m": 0.01538099441677332,
-            "max_contact_surface_z_m": 0.015381849370896816,
-            "max_planted_surface_slip_per_frame_m": 2.1738245449789045e-06,
-            "max_marker_height_error_m": 6.467849016193739e-07
+            "min_contact_surface_z_m": 0.01999957486987114,
+            "max_contact_surface_z_m": 0.020000243559479713,
+            "max_planted_surface_slip_per_frame_m": 6.369831046031576e-07,
+            "max_marker_height_error_m": 4.363059997562757e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 50,
-            "min_contact_surface_z_m": 0.015380996279418468,
-            "max_contact_surface_z_m": 0.015381851233541965,
-            "max_planted_surface_slip_per_frame_m": 1.7501071286299456e-06,
-            "max_marker_height_error_m": 6.467849016193739e-07
+            "min_contact_surface_z_m": 0.01999957486987114,
+            "max_contact_surface_z_m": 0.020000243559479713,
+            "max_planted_surface_slip_per_frame_m": 6.374830782560979e-07,
+            "max_marker_height_error_m": 4.363059997562757e-07
           }
         },
         "representative_poses": [
           {
             "frame": 0.0,
-            "min_surface_z_m": 0.014408055692911148,
+            "min_surface_z_m": 0.01999957486987114,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -303,7 +383,7 @@
           },
           {
             "frame": 18.0,
-            "min_surface_z_m": 0.014408162795007229,
+            "min_surface_z_m": 0.019999803975224495,
             "body_position_m": [
               0.014000000432133675,
               0.6499999761581421,
@@ -312,7 +392,7 @@
           },
           {
             "frame": 36.0,
-            "min_surface_z_m": 0.014408395625650883,
+            "min_surface_z_m": 0.01999957486987114,
             "body_position_m": [
               1.714505527444786e-18,
               0.6499999761581421,
@@ -321,7 +401,7 @@
           },
           {
             "frame": 54.0,
-            "min_surface_z_m": 0.014407966285943985,
+            "min_surface_z_m": 0.019999787211418152,
             "body_position_m": [
               -0.014000000432133675,
               0.6499999761581421,
@@ -330,7 +410,7 @@
           },
           {
             "frame": 72.0,
-            "min_surface_z_m": 0.014408055692911148,
+            "min_surface_z_m": 0.01999957486987114,
             "body_position_m": [
               -3.429011054889572e-18,
               0.6499999761581421,
@@ -350,97 +430,137 @@
         "evaluated_frames": 40,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7341676950454712,
-          -1.6141064167022705,
-          0.01062743365764618
+          -0.8076142072677612,
+          -1.686661720275879,
+          0.019999634474515915
         ],
         "bounds_max_m": [
-          0.7341676950454712,
-          1.5810939073562622,
-          1.8925846815109253
+          0.8045655488967896,
+          1.630258560180664,
+          2.126298427581787
         ],
-        "max_pose_displacement_m": 0.8134178183010952,
+        "max_pose_displacement_m": 0.8157090771000377,
         "loop_pose_error_m": 0.0,
-        "max_sampled_edge_stretch": 4.316693978121883,
+        "max_sampled_edge_stretch": 2.5178694744238794,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.02029263582680819,
+        "max_p99_edge_stretch": 1.7588037002029673,
+        "max_edges_over_two": 531,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.002695787261262908,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 34.0,
+          "vertices": [
+            20462,
+            8679
+          ],
+          "rest_positions_m": [
+            [
+              0.31076866388320923,
+              -0.567396879196167,
+              0.3857419788837433
+            ],
+            [
+              0.31403467059135437,
+              -0.5554519295692444,
+              0.3721216022968292
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              0.37097829580307007,
+              -0.19870391488075256,
+              0.46166688203811646
+            ],
+            [
+              0.3740560710430145,
+              -0.15245911478996277,
+              0.46214228868484497
+            ]
+          ],
+          "rest_length_m": 0.01840823945348181,
+          "evaluated_length_m": 0.04634954419780717
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.014408163726329803,
-            "max_contact_surface_z_m": 0.014408493414521217,
-            "max_planted_surface_slip_per_frame_m": 1.3209986589142842e-05,
-            "max_marker_height_error_m": 1.6622245311778694e-07
+            "min_contact_surface_z_m": 0.019999805837869644,
+            "max_contact_surface_z_m": 0.02000020444393158,
+            "max_planted_surface_slip_per_frame_m": 5.07330994106769e-07,
+            "max_marker_height_error_m": 2.2307038307148308e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.014407793991267681,
-            "max_contact_surface_z_m": 0.014408129267394543,
-            "max_planted_surface_slip_per_frame_m": 1.4541925945154317e-05,
-            "max_marker_height_error_m": 2.0533800125163704e-07
+            "min_contact_surface_z_m": 0.0199997927993536,
+            "max_contact_surface_z_m": 0.020000198855996132,
+            "max_planted_surface_slip_per_frame_m": 3.6697198214990916e-07,
+            "max_marker_height_error_m": 2.1189451217609734e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 12,
-            "min_contact_surface_z_m": 0.01538136601448059,
-            "max_contact_surface_z_m": 0.01538159977644682,
-            "max_planted_surface_slip_per_frame_m": 6.915201620407327e-06,
-            "max_marker_height_error_m": 2.761185169224134e-07
+            "min_contact_surface_z_m": 0.019999634474515915,
+            "max_contact_surface_z_m": 0.020000183954834938,
+            "max_planted_surface_slip_per_frame_m": 5.501777236763254e-07,
+            "max_marker_height_error_m": 3.8228929042857795e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.015381080098450184,
-            "max_contact_surface_z_m": 0.015381806530058384,
-            "max_planted_surface_slip_per_frame_m": 5.81502405555349e-06,
-            "max_marker_height_error_m": 5.53652644157826e-07
+            "min_contact_surface_z_m": 0.019999748095870018,
+            "max_contact_surface_z_m": 0.020000191405415535,
+            "max_planted_surface_slip_per_frame_m": 3.4962414916105457e-07,
+            "max_marker_height_error_m": 2.5004148483318e-07
           }
         },
         "representative_poses": [
           {
             "frame": 0.0,
-            "min_surface_z_m": 0.015381423756480217,
+            "min_surface_z_m": 0.019999967887997627,
             "body_position_m": [
               0.0,
               0.6499999761581421,
-              0.9569976329803467
+              0.9555820226669312
             ]
           },
           {
             "frame": 9.0,
-            "min_surface_z_m": 0.015381364151835442,
+            "min_surface_z_m": 0.019999634474515915,
             "body_position_m": [
               0.0,
               0.6499999761581421,
-              0.9650802612304688
+              0.9636646509170532
             ]
           },
           {
             "frame": 19.0,
-            "min_surface_z_m": 0.01440825778990984,
+            "min_surface_z_m": 0.020000027492642403,
             "body_position_m": [
               0.0,
               0.6499999761581421,
-              0.9157615900039673
+              0.9143459796905518
             ]
           },
           {
             "frame": 29.0,
-            "min_surface_z_m": 0.014408000744879246,
+            "min_surface_z_m": 0.019999975338578224,
             "body_position_m": [
               0.0,
               0.6499999761581421,
-              0.9069710373878479
+              0.9055554270744324
             ]
           },
           {
             "frame": 39.0,
-            "min_surface_z_m": 0.015381423756480217,
+            "min_surface_z_m": 0.019999967887997627,
             "body_position_m": [
               0.0,
               0.6499999761581421,
-              0.9569976329803467
+              0.9555820226669312
             ]
           }
         ]
@@ -456,57 +576,97 @@
         "evaluated_frames": 61,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7341676950454712,
-          -1.7070000171661377,
-          0.014407724142074585
+          -0.7966617345809937,
+          -1.7750000953674316,
+          0.019999604672193527
         ],
         "bounds_max_m": [
-          0.7341676950454712,
-          1.6175222396850586,
-          1.9353482723236084
+          0.7966617345809937,
+          1.6668601036071777,
+          2.1642227172851562
         ],
-        "max_pose_displacement_m": 0.401034288826621,
+        "max_pose_displacement_m": 0.42166020483638633,
         "loop_pose_error_m": null,
-        "max_sampled_edge_stretch": 2.2053468727737187,
+        "max_sampled_edge_stretch": 1.5296841557516219,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.36574625090125545,
+        "max_p99_edge_stretch": 1.2573254014649118,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 60.0,
+          "vertices": [
+            8727,
+            8730
+          ],
+          "rest_positions_m": [
+            [
+              0.26810476183891296,
+              -0.5848419070243835,
+              0.5723323822021484
+            ],
+            [
+              0.28176337480545044,
+              -0.5793747305870056,
+              0.5742437839508057
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              0.32758828997612,
+              -0.5119134783744812,
+              0.44426098465919495
+            ],
+            [
+              0.3455222249031067,
+              -0.49928200244903564,
+              0.4500783681869507
+            ]
+          ],
+          "rest_length_m": 0.014835807460730138,
+          "evaluated_length_m": 0.022694099610460594
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 61,
-            "min_contact_surface_z_m": 0.01440806407481432,
-            "max_contact_surface_z_m": 0.014408537186682224,
-            "max_planted_surface_slip_per_frame_m": 3.2239096638503522e-06,
-            "max_marker_height_error_m": 2.9101967811626106e-07
+            "min_contact_surface_z_m": 0.019999604672193527,
+            "max_contact_surface_z_m": 0.020000338554382324,
+            "max_planted_surface_slip_per_frame_m": 4.939565726310059e-07,
+            "max_marker_height_error_m": 3.9160251617473274e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 32,
-            "min_contact_surface_z_m": 0.014407724142074585,
-            "max_contact_surface_z_m": 0.01440819725394249,
-            "max_planted_surface_slip_per_frame_m": 2.2688512186664805e-06,
-            "max_marker_height_error_m": 2.9101967811626106e-07
+            "min_contact_surface_z_m": 0.01999967359006405,
+            "max_contact_surface_z_m": 0.020000116899609566,
+            "max_planted_surface_slip_per_frame_m": 4.945864015975286e-07,
+            "max_marker_height_error_m": 3.2640993595164924e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 61,
-            "min_contact_surface_z_m": 0.015381202101707458,
-            "max_contact_surface_z_m": 0.015381910838186741,
-            "max_planted_surface_slip_per_frame_m": 9.4808959030358e-07,
-            "max_marker_height_error_m": 4.400312900547376e-07
+            "min_contact_surface_z_m": 0.01999964565038681,
+            "max_contact_surface_z_m": 0.02000020258128643,
+            "max_planted_surface_slip_per_frame_m": 6.110117791427821e-07,
+            "max_marker_height_error_m": 3.6925077438396126e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 61,
-            "min_contact_surface_z_m": 0.015381203964352608,
-            "max_contact_surface_z_m": 0.01538191270083189,
-            "max_planted_surface_slip_per_frame_m": 8.766312653725791e-07,
-            "max_marker_height_error_m": 4.400312900547376e-07
+            "min_contact_surface_z_m": 0.01999964565038681,
+            "max_contact_surface_z_m": 0.02000020258128643,
+            "max_planted_surface_slip_per_frame_m": 6.111219654144383e-07,
+            "max_marker_height_error_m": 3.6925077438396126e-07
           }
         },
         "representative_poses": [
           {
             "frame": 0.0,
-            "min_surface_z_m": 0.014407776296138763,
+            "min_surface_z_m": 0.019999762997031212,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -515,7 +675,7 @@
           },
           {
             "frame": 15.0,
-            "min_surface_z_m": 0.014408404938876629,
+            "min_surface_z_m": 0.02000000700354576,
             "body_position_m": [
               0.0,
               0.678284227848053,
@@ -524,7 +684,7 @@
           },
           {
             "frame": 30.0,
-            "min_surface_z_m": 0.014408289454877377,
+            "min_surface_z_m": 0.019999733194708824,
             "body_position_m": [
               0.0,
               0.6899999976158142,
@@ -533,7 +693,7 @@
           },
           {
             "frame": 45.0,
-            "min_surface_z_m": 0.014408007264137268,
+            "min_surface_z_m": 0.01999988965690136,
             "body_position_m": [
               0.0,
               0.678284227848053,
@@ -542,7 +702,7 @@
           },
           {
             "frame": 60.0,
-            "min_surface_z_m": 0.014408127404749393,
+            "min_surface_z_m": 0.020000018179416656,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -562,57 +722,97 @@
         "evaluated_frames": 55,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7341676950454712,
-          -1.728994369506836,
-          0.01440765056759119
+          -0.7966617345809937,
+          -1.7984108924865723,
+          0.019999602809548378
         ],
         "bounds_max_m": [
-          0.7341676950454712,
-          1.6134268045425415,
-          1.9353482723236084
+          0.7966617345809937,
+          1.6626423597335815,
+          2.1642227172851562
         ],
-        "max_pose_displacement_m": 0.48178152538107344,
+        "max_pose_displacement_m": 0.5818596411682335,
         "loop_pose_error_m": null,
-        "max_sampled_edge_stretch": 2.2941878778228753,
+        "max_sampled_edge_stretch": 1.910870001666512,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.08958996967722867,
+        "max_p99_edge_stretch": 1.3554725542790762,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 27.0,
+          "vertices": [
+            14629,
+            43466
+          ],
+          "rest_positions_m": [
+            [
+              -0.07375738024711609,
+              -1.593309760093689,
+              0.9257583618164062
+            ],
+            [
+              -0.07255107909440994,
+              -1.5888937711715698,
+              0.917182981967926
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              -0.07375738024711609,
+              -1.4777746200561523,
+              0.463861882686615
+            ],
+            [
+              -0.07255107909440994,
+              -1.4638468027114868,
+              0.45163094997406006
+            ]
+          ],
+          "rest_length_m": 0.009720764382342567,
+          "evaluated_length_m": 0.018575117051486713
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 55,
-            "min_contact_surface_z_m": 0.014407990500330925,
-            "max_contact_surface_z_m": 0.014408569782972336,
-            "max_planted_surface_slip_per_frame_m": 3.497664000164019e-05,
-            "max_marker_height_error_m": 3.5248696804088264e-07
+            "min_contact_surface_z_m": 0.01999971829354763,
+            "max_contact_surface_z_m": 0.020000243559479713,
+            "max_planted_surface_slip_per_frame_m": 4.2156440230303176e-07,
+            "max_marker_height_error_m": 2.7798116207164436e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 55,
-            "min_contact_surface_z_m": 0.01440765056759119,
-            "max_contact_surface_z_m": 0.014408229850232601,
-            "max_planted_surface_slip_per_frame_m": 3.821471731933222e-05,
-            "max_marker_height_error_m": 3.5248696804088264e-07
+            "min_contact_surface_z_m": 0.01999972015619278,
+            "max_contact_surface_z_m": 0.020000243559479713,
+            "max_planted_surface_slip_per_frame_m": 4.2168209026981283e-07,
+            "max_marker_height_error_m": 2.7798116207164436e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 55,
-            "min_contact_surface_z_m": 0.015381142497062683,
-            "max_contact_surface_z_m": 0.015381867066025734,
-            "max_planted_surface_slip_per_frame_m": 4.584102112647293e-06,
-            "max_marker_height_error_m": 4.996359348301282e-07
+            "min_contact_surface_z_m": 0.019999604672193527,
+            "max_contact_surface_z_m": 0.0200002770870924,
+            "max_planted_surface_slip_per_frame_m": 5.863050139683474e-07,
+            "max_marker_height_error_m": 4.1209161281627327e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 55,
-            "min_contact_surface_z_m": 0.015381144359707832,
-            "max_contact_surface_z_m": 0.015381868928670883,
-            "max_planted_surface_slip_per_frame_m": 3.6796921463848365e-06,
-            "max_marker_height_error_m": 4.996359348301282e-07
+            "min_contact_surface_z_m": 0.019999602809548378,
+            "max_contact_surface_z_m": 0.0200002770870924,
+            "max_planted_surface_slip_per_frame_m": 5.864823593578995e-07,
+            "max_marker_height_error_m": 4.1209161281627327e-07
           }
         },
         "representative_poses": [
           {
             "frame": 0.0,
-            "min_surface_z_m": 0.014407776296138763,
+            "min_surface_z_m": 0.019999762997031212,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -621,7 +821,7 @@
           },
           {
             "frame": 13.0,
-            "min_surface_z_m": 0.014408005401492119,
+            "min_surface_z_m": 0.019999917596578598,
             "body_position_m": [
               0.0,
               0.6814618706703186,
@@ -630,7 +830,7 @@
           },
           {
             "frame": 27.0,
-            "min_surface_z_m": 0.014408081769943237,
+            "min_surface_z_m": 0.019999753683805466,
             "body_position_m": [
               0.0,
               0.5249999761581421,
@@ -639,7 +839,7 @@
           },
           {
             "frame": 40.0,
-            "min_surface_z_m": 0.0144078703597188,
+            "min_surface_z_m": 0.01999971829354763,
             "body_position_m": [
               0.0,
               0.5699304938316345,
@@ -648,7 +848,7 @@
           },
           {
             "frame": 54.0,
-            "min_surface_z_m": 0.014407776296138763,
+            "min_surface_z_m": 0.019999762997031212,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -668,57 +868,97 @@
         "evaluated_frames": 31,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7343933582305908,
-          -1.711454153060913,
-          0.014407776296138763
+          -0.7987119555473328,
+          -1.7798902988433838,
+          0.01999923400580883
         ],
         "bounds_max_m": [
-          0.738086462020874,
-          1.6159698963165283,
-          1.9353482723236084
+          0.8064336776733398,
+          1.6655876636505127,
+          2.1642227172851562
         ],
-        "max_pose_displacement_m": 0.11826296631875588,
+        "max_pose_displacement_m": 0.1635878740453308,
         "loop_pose_error_m": null,
-        "max_sampled_edge_stretch": 1.8584571633214324,
+        "max_sampled_edge_stretch": 1.4815421662168453,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.5217270889014377,
+        "max_p99_edge_stretch": 1.1460346758628774,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 3.0,
+          "vertices": [
+            24032,
+            44668
+          ],
+          "rest_positions_m": [
+            [
+              0.08937244117259979,
+              -0.8917957544326782,
+              0.7345761656761169
+            ],
+            [
+              0.08880598843097687,
+              -0.8806493878364563,
+              0.7324752807617188
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              0.07965493202209473,
+              -0.8780287504196167,
+              0.6860089898109436
+            ],
+            [
+              0.0790325254201889,
+              -0.8616002798080444,
+              0.6824290156364441
+            ]
+          ],
+          "rest_length_m": 0.011356763378243378,
+          "evaluated_length_m": 0.016825523816614833
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 31,
-            "min_contact_surface_z_m": 0.014407950453460217,
-            "max_contact_surface_z_m": 0.014408654533326626,
-            "max_planted_surface_slip_per_frame_m": 1.1716682130794886e-05,
-            "max_marker_height_error_m": 3.878772258762708e-07
+            "min_contact_surface_z_m": 0.01999923400580883,
+            "max_contact_surface_z_m": 0.020000414922833443,
+            "max_planted_surface_slip_per_frame_m": 8.593186405339216e-07,
+            "max_marker_height_error_m": 7.604062557224622e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 31,
-            "min_contact_surface_z_m": 0.014407776296138763,
-            "max_contact_surface_z_m": 0.014408420771360397,
-            "max_planted_surface_slip_per_frame_m": 1.2625841297704545e-05,
-            "max_marker_height_error_m": 4.0747225284534783e-07
+            "min_contact_surface_z_m": 0.019999634474515915,
+            "max_contact_surface_z_m": 0.02000042051076889,
+            "max_planted_surface_slip_per_frame_m": 6.629161318920651e-07,
+            "max_marker_height_error_m": 4.1864812374073357e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 31,
-            "min_contact_surface_z_m": 0.015381205826997757,
-            "max_contact_surface_z_m": 0.01538195088505745,
-            "max_planted_surface_slip_per_frame_m": 4.5723649594225814e-06,
-            "max_marker_height_error_m": 4.3816864490550667e-07
+            "min_contact_surface_z_m": 0.019999632611870766,
+            "max_contact_surface_z_m": 0.02000022679567337,
+            "max_planted_surface_slip_per_frame_m": 4.5532723051869936e-07,
+            "max_marker_height_error_m": 3.8601458072703987e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 31,
-            "min_contact_surface_z_m": 0.015381270088255405,
-            "max_contact_surface_z_m": 0.015381915494799614,
-            "max_planted_surface_slip_per_frame_m": 3.1978795766801754e-06,
-            "max_marker_height_error_m": 3.7483870983165413e-07
+            "min_contact_surface_z_m": 0.01999967359006405,
+            "max_contact_surface_z_m": 0.02000020071864128,
+            "max_planted_surface_slip_per_frame_m": 5.963816501762864e-07,
+            "max_marker_height_error_m": 3.4876167774242073e-07
           }
         },
         "representative_poses": [
           {
             "frame": 0.0,
-            "min_surface_z_m": 0.014407776296138763,
+            "min_surface_z_m": 0.019999762997031212,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -727,7 +967,7 @@
           },
           {
             "frame": 7.0,
-            "min_surface_z_m": 0.014407802373170853,
+            "min_surface_z_m": 0.019999606534838676,
             "body_position_m": [
               0.0,
               0.6495168805122375,
@@ -736,7 +976,7 @@
           },
           {
             "frame": 15.0,
-            "min_surface_z_m": 0.014407814480364323,
+            "min_surface_z_m": 0.01999986544251442,
             "body_position_m": [
               0.0,
               0.6418689489364624,
@@ -745,7 +985,7 @@
           },
           {
             "frame": 22.0,
-            "min_surface_z_m": 0.014407914131879807,
+            "min_surface_z_m": 0.01999983936548233,
             "body_position_m": [
               0.0,
               0.6420877575874329,
@@ -754,7 +994,7 @@
           },
           {
             "frame": 30.0,
-            "min_surface_z_m": 0.014407776296138763,
+            "min_surface_z_m": 0.019999762997031212,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -774,57 +1014,97 @@
         "evaluated_frames": 85,
         "finite_vertices": true,
         "bounds_min_m": [
-          -1.029761552810669,
-          -1.7070000171661377,
-          0.00099983811378479
+          -0.9762343764305115,
+          -1.7750000953674316,
+          0.0009998083114624023
         ],
         "bounds_max_m": [
-          1.1583988666534424,
-          1.60579252243042,
-          1.9353482723236084
+          1.347259521484375,
+          1.6553705930709839,
+          2.1939828395843506
         ],
-        "max_pose_displacement_m": 1.186815450415408,
+        "max_pose_displacement_m": 1.7273592854434066,
         "loop_pose_error_m": null,
-        "max_sampled_edge_stretch": 4.918123372350607,
+        "max_sampled_edge_stretch": 1.932073016290142,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.08406548697321238,
+        "max_p99_edge_stretch": 1.41024265162978,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 67.0,
+          "vertices": [
+            2502,
+            18607
+          ],
+          "rest_positions_m": [
+            [
+              -0.27017349004745483,
+              -0.7030264735221863,
+              0.6485390663146973
+            ],
+            [
+              -0.2801947295665741,
+              -0.6939994692802429,
+              0.6473813652992249
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              -0.2763226628303528,
+              -0.5508604645729065,
+              1.0178979635238647
+            ],
+            [
+              -0.2785142958164215,
+              -0.5298577547073364,
+              1.033329963684082
+            ]
+          ],
+          "rest_length_m": 0.013537072014466309,
+          "evaluated_length_m": 0.026154611558726792
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.014408267103135586,
-            "max_contact_surface_z_m": 0.014408267103135586,
+            "min_contact_surface_z_m": 0.020000118762254715,
+            "max_contact_surface_z_m": 0.020000118762254715,
             "max_planted_surface_slip_per_frame_m": 0.0,
-            "max_marker_height_error_m": 9.171664714854866e-08
+            "max_marker_height_error_m": 1.1317431926685662e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.014407927170395851,
-            "max_contact_surface_z_m": 0.014407927170395851,
+            "min_contact_surface_z_m": 0.020000118762254715,
+            "max_contact_surface_z_m": 0.020000118762254715,
             "max_planted_surface_slip_per_frame_m": 0.0,
-            "max_marker_height_error_m": 9.171664714854866e-08
+            "max_marker_height_error_m": 1.1317431926685662e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.015381474047899246,
-            "max_contact_surface_z_m": 0.015381474047899246,
+            "min_contact_surface_z_m": 0.019999919459223747,
+            "max_contact_surface_z_m": 0.019999919459223747,
             "max_planted_surface_slip_per_frame_m": 0.0,
-            "max_marker_height_error_m": 1.6622245311778694e-07
+            "max_marker_height_error_m": 1.0475516319316536e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.015381475910544395,
-            "max_contact_surface_z_m": 0.015381475910544395,
+            "min_contact_surface_z_m": 0.019999919459223747,
+            "max_contact_surface_z_m": 0.019999919459223747,
             "max_planted_surface_slip_per_frame_m": 0.0,
-            "max_marker_height_error_m": 1.6622245311778694e-07
+            "max_marker_height_error_m": 1.0475516319316536e-07
           }
         },
         "representative_poses": [
           {
             "frame": 0.0,
-            "min_surface_z_m": 0.014407927170395851,
+            "min_surface_z_m": 0.019999919459223747,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -833,38 +1113,38 @@
           },
           {
             "frame": 21.0,
-            "min_surface_z_m": 0.014037035405635834,
+            "min_surface_z_m": 0.0010000020265579224,
             "body_position_m": [
               0.01541022676974535,
               0.651540994644165,
-              0.9731521606445312
+              1.0225039720535278
             ]
           },
           {
             "frame": 42.0,
-            "min_surface_z_m": 0.0009999126195907593,
+            "min_surface_z_m": 0.001000046730041504,
             "body_position_m": [
               0.18278418481349945,
               0.6682783961296082,
-              0.9247277975082397
+              1.0364148616790771
             ]
           },
           {
             "frame": 63.0,
-            "min_surface_z_m": 0.0009998679161071777,
+            "min_surface_z_m": 0.0009999275207519531,
             "body_position_m": [
               0.29893505573272705,
               0.6798934936523438,
-              0.8602423667907715
+              0.7709105014801025
             ]
           },
           {
             "frame": 84.0,
-            "min_surface_z_m": 0.0009999871253967285,
+            "min_surface_z_m": 0.001000046730041504,
             "body_position_m": [
               0.30000001192092896,
-              0.6799999475479126,
-              0.8604382276535034
+              0.6800000071525574,
+              0.7717936038970947
             ]
           }
         ]
@@ -873,13 +1153,12 @@
     "integrity_passed": true,
     "integrity_errors": [],
     "surface_observations": [
-      "Walk: localized skin stretch reaches 3.63x; inspect joint silhouette",
-      "Charge: localized skin stretch reaches 4.32x; inspect joint silhouette",
-      "Death: localized skin stretch reaches 4.92x; inspect joint silhouette"
+      "Walk: localized skin stretch reaches 2.27x; inspect joint silhouette",
+      "Charge: localized skin stretch reaches 2.52x; inspect joint silhouette"
     ]
   },
   "glb": {
-    "bytes": 8673084,
+    "bytes": 10591468,
     "meshes": 1,
     "materials": 1,
     "skins": 1,
@@ -928,122 +1207,122 @@
     "bone_count": 29,
     "meshes": [
       {
-        "name": "BriseSeve_LOD1",
-        "vertices": 30597,
-        "triangles": 60886,
+        "name": "BriseSeve_LOD2",
+        "vertices": 12463,
+        "triangles": 24486,
         "materials": [
           "BriseSeve_Painted"
         ],
         "bounds_min_m": [
-          -0.7341677011446017,
-          -1.706999879666289,
-          0.014245610354557126
+          -0.7947486700014132,
+          -1.775236707103338,
+          0.019912122058310885
         ],
         "bounds_max_m": [
-          0.7341676889463407,
-          1.5710215620842378,
-          1.9603483065024856
+          0.7952504693075162,
+          1.620756869794014,
+          2.1886378239886635
         ],
         "dimensions_m": [
-          1.4683353900909424,
-          3.2780214417505267,
-          1.9461026961479284
+          1.5899991393089294,
+          3.395993576897352,
+          2.1687257019303527
         ],
         "finite_vertices": true,
         "uv_layers": 1,
         "finite_uvs": true,
         "uv_bounds": [
           [
-            0.010037481784820557,
-            0.010048081167042255
+            0.00714501366019249,
+            0.007182700093835592
           ],
           [
-            0.9841615557670593,
-            0.9875186681747437
+            0.9927181005477905,
+            0.9909512400627136
           ]
         ],
         "max_influences": 4,
-        "max_weight_sum_error": 1.5165642253123224e-07,
+        "max_weight_sum_error": 1.4388933777809143e-07,
         "unweighted_vertices": 0,
         "invalid_weight_vertices": 0
       },
       {
-        "name": "BriseSeve_LOD2",
-        "vertices": 12838,
-        "triangles": 25368,
+        "name": "BriseSeve_LOD1",
+        "vertices": 30828,
+        "triangles": 61216,
         "materials": [
           "BriseSeve_Painted"
         ],
         "bounds_min_m": [
-          -0.7338480414346713,
-          -1.7077365930756934,
-          0.014085590368789746
+          -0.7966617406801242,
+          -1.7749998355628114,
+          0.01997345552201933
         ],
         "bounds_max_m": [
-          0.7338480292364102,
-          1.5709006838578357,
-          1.9603483065024856
+          0.7966617284818631,
+          1.6206343226163011,
+          2.18922266464633
         ],
         "dimensions_m": [
-          1.4676960706710815,
-          3.2786372769335292,
-          1.9462627161336958
+          1.5933234691619873,
+          3.3956341581791127,
+          2.1692492091243105
         ],
         "finite_vertices": true,
         "uv_layers": 1,
         "finite_uvs": true,
         "uv_bounds": [
           [
-            0.010042431764304638,
-            0.010048081167042255
+            0.007174903992563486,
+            0.007187509443610907
           ],
           [
-            0.9840786457061768,
-            0.9874843955039978
+            0.992811918258667,
+            0.9927444458007812
           ]
         ],
         "max_influences": 4,
-        "max_weight_sum_error": 1.5087425708770752e-07,
+        "max_weight_sum_error": 1.6391277313232422e-07,
         "unweighted_vertices": 0,
         "invalid_weight_vertices": 0
       },
       {
         "name": "BriseSeve_LOD0",
-        "vertices": 63578,
-        "triangles": 126848,
+        "vertices": 87673,
+        "triangles": 174906,
         "materials": [
           "BriseSeve_Painted"
         ],
         "bounds_min_m": [
-          -0.7341677011446017,
-          -1.706999879666289,
-          0.014408134002661194
+          -0.7966617406801242,
+          -1.7749998355628114,
+          0.019999869658230522
         ],
         "bounds_max_m": [
-          0.7341676889463407,
-          1.5709031872436328,
-          1.9603483065024856
+          0.7966617284818631,
+          1.6205298952556013,
+          2.18922266464633
         ],
         "dimensions_m": [
-          1.4683353900909424,
-          3.277903066909922,
-          1.9459401724998244
+          1.5933234691619873,
+          3.3955297308184127,
+          2.1692227949880993
         ],
         "finite_vertices": true,
         "uv_layers": 1,
         "finite_uvs": true,
         "uv_bounds": [
           [
-            0.010049526579678059,
-            0.01004953496158123
+            0.007187505252659321,
+            0.007187515031546354
           ],
           [
-            0.9899504780769348,
-            0.9875257015228271
+            0.99281245470047,
+            0.9927449822425842
           ]
         ],
         "max_influences": 4,
-        "max_weight_sum_error": 4.5925844460725784e-08,
+        "max_weight_sum_error": 4.842877388000488e-08,
         "unweighted_vertices": 0,
         "invalid_weight_vertices": 0
       }
@@ -1060,57 +1339,97 @@
         "evaluated_frames": 241,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7479196251825351,
-          -1.7111307181824669,
-          0.014406910244759305
+          -0.8007743419603366,
+          -1.7763929141929582,
+          0.019998816120842988
         ],
         "bounds_max_m": [
-          0.747919612984274,
-          1.5771781237439175,
-          1.9509444803215783
+          0.8007743297620755,
+          1.6266499789159596,
+          2.1817937782498427
         ],
-        "max_pose_displacement_m": 0.06626678597441167,
+        "max_pose_displacement_m": 0.07397766491518,
         "loop_pose_error_m": 0.0,
-        "max_sampled_edge_stretch": 1.3160437006835815,
+        "max_sampled_edge_stretch": 1.2081021835158823,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.7682397348872897,
+        "max_p99_edge_stretch": 1.0964861792809961,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 37.0,
+          "vertices": [
+            42885,
+            1223
+          ],
+          "rest_positions_m": [
+            [
+              -0.5908204974130649,
+              -0.3506344455238784,
+              0.6052257402657557
+            ],
+            [
+              -0.5858278931573886,
+              -0.35863529945701134,
+              0.585242747966507
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              -0.6258444847063083,
+              -0.3004797337965106,
+              0.580372681385745
+            ],
+            [
+              -0.6225373805955905,
+              -0.308521179349085,
+              0.5551334534935916
+            ]
+          ],
+          "rest_length_m": 0.022096600239515558,
+          "evaluated_length_m": 0.026694950997636312
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 241,
-            "min_contact_surface_z_m": 0.01440725018218925,
-            "max_contact_surface_z_m": 0.01440867883103813,
-            "max_planted_surface_slip_per_frame_m": 1.4277001241025845e-06,
-            "max_marker_height_error_m": 1.1310726404194227e-06
+            "min_contact_surface_z_m": 0.019998816120842988,
+            "max_contact_surface_z_m": 0.020000527905108288,
+            "max_planted_surface_slip_per_frame_m": 1.3888806226269445e-06,
+            "max_marker_height_error_m": 1.1906772851948133e-06
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 241,
-            "min_contact_surface_z_m": 0.014406910244759305,
-            "max_contact_surface_z_m": 0.014408338893608187,
-            "max_planted_surface_slip_per_frame_m": 1.392911124808568e-06,
-            "max_marker_height_error_m": 1.1310726404194227e-06
+            "min_contact_surface_z_m": 0.01999881612778635,
+            "max_contact_surface_z_m": 0.02000052791897547,
+            "max_planted_surface_slip_per_frame_m": 1.3894732666651049e-06,
+            "max_marker_height_error_m": 1.1906772851948133e-06
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 241,
-            "min_contact_surface_z_m": 0.01538108574572546,
-            "max_contact_surface_z_m": 0.01538225828085661,
-            "max_planted_surface_slip_per_frame_m": 1.2705174368941622e-06,
-            "max_marker_height_error_m": 6.356090307239881e-07
+            "min_contact_surface_z_m": 0.019999421860815738,
+            "max_contact_surface_z_m": 0.02000054363204053,
+            "max_planted_surface_slip_per_frame_m": 1.2555411555714552e-06,
+            "max_marker_height_error_m": 6.635487079624525e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 241,
-            "min_contact_surface_z_m": 0.015381087608370717,
-            "max_contact_surface_z_m": 0.015382260143501868,
-            "max_planted_surface_slip_per_frame_m": 1.2710246338104582e-06,
-            "max_marker_height_error_m": 6.356090307239881e-07
+            "min_contact_surface_z_m": 0.019999421870390725,
+            "max_contact_surface_z_m": 0.020000543641440733,
+            "max_planted_surface_slip_per_frame_m": 1.2557959899160645e-06,
+            "max_marker_height_error_m": 6.635487079624525e-07
           }
         },
         "representative_poses": [
           {
             "frame": 1.0,
-            "min_surface_z_m": 0.014408044595723164,
+            "min_surface_z_m": 0.01999997298958435,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1119,7 +1438,7 @@
           },
           {
             "frame": 61.0,
-            "min_surface_z_m": 0.014407024797358297,
+            "min_surface_z_m": 0.019999237078627292,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1128,7 +1447,7 @@
           },
           {
             "frame": 121.0,
-            "min_surface_z_m": 0.014408338893608187,
+            "min_surface_z_m": 0.02000014233761095,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1137,7 +1456,7 @@
           },
           {
             "frame": 181.0,
-            "min_surface_z_m": 0.014407882545556337,
+            "min_surface_z_m": 0.01999985921559682,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1146,7 +1465,7 @@
           },
           {
             "frame": 241.0,
-            "min_surface_z_m": 0.014408044595723164,
+            "min_surface_z_m": 0.01999997298958435,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1166,57 +1485,97 @@
         "evaluated_frames": 73,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7490698756174106,
-          -1.7118431258764617,
-          0.014406820539984641
+          -0.8147589625314731,
+          -1.7794641158095619,
+          0.019998562233753108
         ],
         "bounds_max_m": [
-          0.7487038312955838,
-          1.5777481726244573,
-          1.9008852797035136
+          0.8146937428518277,
+          1.6268584664288164,
+          2.134292689616345
         ],
-        "max_pose_displacement_m": 0.6010907955704508,
+        "max_pose_displacement_m": 0.605653988120889,
         "loop_pose_error_m": 0.0,
-        "max_sampled_edge_stretch": 3.964361133332857,
+        "max_sampled_edge_stretch": 2.272183582661976,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.03260760622225252,
+        "max_p99_edge_stretch": 1.513676014722229,
+        "max_edges_over_two": 212,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0010762841796379218,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 39.0,
+          "vertices": [
+            43287,
+            2557
+          ],
+          "rest_positions_m": [
+            [
+              -0.29345429553547087,
+              -0.7453076576500647,
+              0.704278114556112
+            ],
+            [
+              -0.3042394579843539,
+              -0.7320834740823995,
+              0.6984751233955765
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              -0.37928525223293486,
+              -0.5916143064165997,
+              0.5401602764059322
+            ],
+            [
+              -0.39998776330509367,
+              -0.5569570080213436,
+              0.533265324661214
+            ]
+          ],
+          "rest_length_m": 0.01802424662751141,
+          "evaluated_length_m": 0.04095439727688192
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 49,
-            "min_contact_surface_z_m": 0.01440682706389403,
-            "max_contact_surface_z_m": 0.014408474019206563,
-            "max_planted_surface_slip_per_frame_m": 4.552016326524628e-06,
-            "max_marker_height_error_m": 1.5650689601902357e-06
+            "min_contact_surface_z_m": 0.019998562233753108,
+            "max_contact_surface_z_m": 0.020000381909089395,
+            "max_planted_surface_slip_per_frame_m": 1.2049621960217721e-06,
+            "max_marker_height_error_m": 1.4439970254902235e-06
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 50,
-            "min_contact_surface_z_m": 0.014406820539984641,
-            "max_contact_surface_z_m": 0.014408308641150067,
-            "max_planted_surface_slip_per_frame_m": 4.22497041891608e-06,
-            "max_marker_height_error_m": 1.2260675430302015e-06
+            "min_contact_surface_z_m": 0.019998938764636386,
+            "max_contact_surface_z_m": 0.020000193748853787,
+            "max_planted_surface_slip_per_frame_m": 9.79035577343406e-07,
+            "max_marker_height_error_m": 1.0882318019871107e-06
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 50,
-            "min_contact_surface_z_m": 0.015381007716979327,
-            "max_contact_surface_z_m": 0.015382316339469541,
-            "max_planted_surface_slip_per_frame_m": 2.4494673166592026e-06,
-            "max_marker_height_error_m": 7.026642560963026e-07
+            "min_contact_surface_z_m": 0.019999509750279983,
+            "max_contact_surface_z_m": 0.020000522465090532,
+            "max_planted_surface_slip_per_frame_m": 8.108316300842232e-07,
+            "max_marker_height_error_m": 5.666911602024427e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 50,
-            "min_contact_surface_z_m": 0.015381009579624584,
-            "max_contact_surface_z_m": 0.015382318202114798,
-            "max_planted_surface_slip_per_frame_m": 2.0679465187888872e-06,
-            "max_marker_height_error_m": 7.026642560963026e-07
+            "min_contact_surface_z_m": 0.01999951150883487,
+            "max_contact_surface_z_m": 0.02000052239183215,
+            "max_planted_surface_slip_per_frame_m": 8.109573874211254e-07,
+            "max_marker_height_error_m": 5.666911602024427e-07
           }
         },
         "representative_poses": [
           {
             "frame": 1.0,
-            "min_surface_z_m": 0.014407789399173762,
+            "min_surface_z_m": 0.019999675251949144,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1225,7 +1584,7 @@
           },
           {
             "frame": 19.0,
-            "min_surface_z_m": 0.014408083942705244,
+            "min_surface_z_m": 0.01999973945386107,
             "body_position_m": [
               0.014000000432133675,
               0.6499999761581421,
@@ -1234,7 +1593,7 @@
           },
           {
             "frame": 37.0,
-            "min_surface_z_m": 0.014408129336603705,
+            "min_surface_z_m": 0.019999675175476236,
             "body_position_m": [
               1.714505527444786e-18,
               0.6499999761581421,
@@ -1243,7 +1602,7 @@
           },
           {
             "frame": 55.0,
-            "min_surface_z_m": 0.014407670875599172,
+            "min_surface_z_m": 0.01999961170181392,
             "body_position_m": [
               -0.014000000432133675,
               0.6499999761581421,
@@ -1252,7 +1611,7 @@
           },
           {
             "frame": 73.0,
-            "min_surface_z_m": 0.014407789399173762,
+            "min_surface_z_m": 0.019999675251949144,
             "body_position_m": [
               -3.429011054889572e-18,
               0.6499999761581421,
@@ -1272,97 +1631,137 @@
         "evaluated_frames": 40,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7341677011446017,
-          -1.6141057323862826,
-          0.01062713915199117
+          -0.8076140941576022,
+          -1.6866609158196728,
+          0.019999186249971886
         ],
         "bounds_max_m": [
-          0.7341676889463407,
-          1.5810934276375803,
-          1.8925843775310687
+          0.8045656024023038,
+          1.6302581997010839,
+          2.1262982730025315
         ],
-        "max_pose_displacement_m": 0.8134178648503856,
+        "max_pose_displacement_m": 0.8157093387002357,
         "loop_pose_error_m": 0.0,
-        "max_sampled_edge_stretch": 4.599138690121249,
+        "max_sampled_edge_stretch": 2.5178726141412153,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.020293829173101227,
+        "max_p99_edge_stretch": 1.7588068165174437,
+        "max_edges_over_two": 531,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.002695787261262908,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 35.0,
+          "vertices": [
+            8679,
+            20462
+          ],
+          "rest_positions_m": [
+            [
+              0.31403466449222384,
+              -0.555451897785104,
+              0.3721216936729694
+            ],
+            [
+              0.3107686577840787,
+              -0.5673968451929857,
+              0.3857420722059627
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              0.37405615435085116,
+              -0.15245874051406985,
+              0.4621421653934601
+            ],
+            [
+              0.3709784089132291,
+              -0.19870360028696285,
+              0.46166673647865275
+            ]
+          ],
+          "rest_length_m": 0.01840823945348211,
+          "evaluated_length_m": 0.04634960199447646
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.014407695359102126,
-            "max_contact_surface_z_m": 0.01440854875535347,
-            "max_planted_surface_slip_per_frame_m": 1.34957900994859e-05,
-            "max_marker_height_error_m": 6.84037804603993e-07
+            "min_contact_surface_z_m": 0.019999186249971886,
+            "max_contact_surface_z_m": 0.020000235498920434,
+            "max_planted_surface_slip_per_frame_m": 8.999613280470213e-07,
+            "max_marker_height_error_m": 8.181482553486219e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.01440735399721573,
-            "max_contact_surface_z_m": 0.014408217502651909,
-            "max_planted_surface_slip_per_frame_m": 1.4717548609194013e-05,
-            "max_marker_height_error_m": 6.803125143055311e-07
+            "min_contact_surface_z_m": 0.019999349375714386,
+            "max_contact_surface_z_m": 0.020000021023262156,
+            "max_planted_surface_slip_per_frame_m": 6.588545700361071e-07,
+            "max_marker_height_error_m": 6.523728370670667e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 12,
-            "min_contact_surface_z_m": 0.015381421946667306,
-            "max_contact_surface_z_m": 0.015382084760386522,
-            "max_planted_surface_slip_per_frame_m": 6.8202437850210245e-06,
-            "max_marker_height_error_m": 3.646314144130358e-07
+            "min_contact_surface_z_m": 0.019999797434322137,
+            "max_contact_surface_z_m": 0.02000037143383994,
+            "max_planted_surface_slip_per_frame_m": 4.942345100948355e-07,
+            "max_marker_height_error_m": 2.882629632945666e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.01538116098608364,
-            "max_contact_surface_z_m": 0.015381904350800873,
-            "max_planted_surface_slip_per_frame_m": 6.327499622668858e-06,
-            "max_marker_height_error_m": 5.666911602024427e-07
+            "min_contact_surface_z_m": 0.019999682469321052,
+            "max_contact_surface_z_m": 0.020000366204013603,
+            "max_planted_surface_slip_per_frame_m": 7.366093885983699e-07,
+            "max_marker_height_error_m": 3.9905309677165657e-07
           }
         },
         "representative_poses": [
           {
             "frame": 1.0,
-            "min_surface_z_m": 0.015381536804092702,
+            "min_surface_z_m": 0.02000006470692174,
             "body_position_m": [
               0.0,
               0.6499999761581421,
-              0.9569976329803467
+              0.9555820226669312
             ]
           },
           {
             "frame": 10.0,
-            "min_surface_z_m": 0.015381589716186283,
+            "min_surface_z_m": 0.02000009068498599,
             "body_position_m": [
               0.0,
               0.6499999761581421,
-              0.9650802612304688
+              0.9636646509170532
             ]
           },
           {
             "frame": 20.0,
-            "min_surface_z_m": 0.014407843896473297,
+            "min_surface_z_m": 0.01999990223784464,
             "body_position_m": [
               0.0,
-              0.6499999761581421,
-              0.9157615900039673
+              0.6499999165534973,
+              0.9143459796905518
             ]
           },
           {
             "frame": 30.0,
-            "min_surface_z_m": 0.01440771707760779,
+            "min_surface_z_m": 0.019999754380004064,
             "body_position_m": [
               0.0,
               0.6499999165534973,
-              0.9069710373878479
+              0.9055554866790771
             ]
           },
           {
             "frame": 40.0,
-            "min_surface_z_m": 0.015381536804092702,
+            "min_surface_z_m": 0.02000006470692174,
             "body_position_m": [
               0.0,
               0.6499999761581421,
-              0.9569976329803467
+              0.9555820226669312
             ]
           }
         ]
@@ -1378,57 +1777,97 @@
         "evaluated_frames": 61,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7341677011446017,
-          -1.7069998837393505,
-          0.014407560307906676
+          -0.7966617406801242,
+          -1.774999839635863,
+          0.01999958913204047
         ],
         "bounds_max_m": [
-          0.7341676889463407,
-          1.6175219964398768,
-          1.935348091925784
+          0.7966617284818631,
+          1.6668598603448854,
+          2.164222569278908
         ],
-        "max_pose_displacement_m": 0.4010341818507972,
+        "max_pose_displacement_m": 0.42166020158694867,
         "loop_pose_error_m": null,
-        "max_sampled_edge_stretch": 2.191958244156859,
+        "max_sampled_edge_stretch": 1.5296819651365259,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.3657462509012587,
+        "max_p99_edge_stretch": 1.2573259660123555,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 61.0,
+          "vertices": [
+            8730,
+            8727
+          ],
+          "rest_positions_m": [
+            [
+              0.2817633687063199,
+              -0.5793746658729838,
+              0.5742438792244646
+            ],
+            [
+              0.26810475573978243,
+              -0.5848418426217686,
+              0.5723324783665235
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              0.3455221591993314,
+              -0.49928210697572895,
+              0.4500785100165177
+            ],
+            [
+              0.3275882540746671,
+              -0.511913554046629,
+              0.44426109874436326
+            ]
+          ],
+          "rest_length_m": 0.014835807460730184,
+          "evaluated_length_m": 0.02269406711091688
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 61,
-            "min_contact_surface_z_m": 0.01440790024533662,
-            "max_contact_surface_z_m": 0.014408738435741171,
-            "max_planted_surface_slip_per_frame_m": 3.3198004232212597e-06,
-            "max_marker_height_error_m": 4.884600639347425e-07
+            "min_contact_surface_z_m": 0.01999958913204047,
+            "max_contact_surface_z_m": 0.02000039895839627,
+            "max_planted_surface_slip_per_frame_m": 8.671154202706616e-07,
+            "max_marker_height_error_m": 4.288554191593519e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 32,
-            "min_contact_surface_z_m": 0.014407560307906676,
-            "max_contact_surface_z_m": 0.014408377077804613,
-            "max_planted_surface_slip_per_frame_m": 2.498160373382031e-06,
-            "max_marker_height_error_m": 4.884600639347425e-07
+            "min_contact_surface_z_m": 0.019999589145907652,
+            "max_contact_surface_z_m": 0.020000317440122158,
+            "max_planted_surface_slip_per_frame_m": 6.548861012902539e-07,
+            "max_marker_height_error_m": 4.288554191593519e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 61,
-            "min_contact_surface_z_m": 0.015381348378778898,
-            "max_contact_surface_z_m": 0.015382139071586481,
-            "max_planted_surface_slip_per_frame_m": 1.0918042615676541e-06,
-            "max_marker_height_error_m": 4.223734140391955e-07
+            "min_contact_surface_z_m": 0.019999693807046366,
+            "max_contact_surface_z_m": 0.020000354222804145,
+            "max_planted_surface_slip_per_frame_m": 6.848051114911377e-07,
+            "max_marker_height_error_m": 3.897398710255018e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 61,
-            "min_contact_surface_z_m": 0.015381350241424155,
-            "max_contact_surface_z_m": 0.01538214093423174,
-            "max_planted_surface_slip_per_frame_m": 1.0516112847021182e-06,
-            "max_marker_height_error_m": 4.223734140391955e-07
+            "min_contact_surface_z_m": 0.019999693816621356,
+            "max_contact_surface_z_m": 0.02000035426654184,
+            "max_planted_surface_slip_per_frame_m": 6.842766305330235e-07,
+            "max_marker_height_error_m": 3.897398710255018e-07
           }
         },
         "representative_poses": [
           {
             "frame": 1.0,
-            "min_surface_z_m": 0.014407859262540526,
+            "min_surface_z_m": 0.019999866666167706,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1437,7 +1876,7 @@
           },
           {
             "frame": 16.0,
-            "min_surface_z_m": 0.014408518643642695,
+            "min_surface_z_m": 0.019999874116767725,
             "body_position_m": [
               0.0,
               0.678284227848053,
@@ -1446,7 +1885,7 @@
           },
           {
             "frame": 31.0,
-            "min_surface_z_m": 0.014408167535012643,
+            "min_surface_z_m": 0.019999888734926283,
             "body_position_m": [
               0.0,
               0.6899999976158142,
@@ -1455,7 +1894,7 @@
           },
           {
             "frame": 46.0,
-            "min_surface_z_m": 0.014408048320974618,
+            "min_surface_z_m": 0.020000067551439484,
             "body_position_m": [
               0.0,
               0.678284227848053,
@@ -1464,7 +1903,7 @@
           },
           {
             "frame": 61.0,
-            "min_surface_z_m": 0.014408034351184554,
+            "min_surface_z_m": 0.020000059752174556,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1484,57 +1923,97 @@
         "evaluated_frames": 55,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7341677011446017,
-          -1.7289940182081072,
-          0.014407496978010446
+          -0.7966617406801242,
+          -1.798410537807164,
+          0.01999969727029586
         ],
         "bounds_max_m": [
-          0.7341676889463407,
-          1.6134263220211882,
-          1.935348091925784
+          0.7966617284818631,
+          1.6626418771951177,
+          2.164222569278908
         ],
-        "max_pose_displacement_m": 0.4817811269177916,
+        "max_pose_displacement_m": 0.5818592106338706,
         "loop_pose_error_m": null,
-        "max_sampled_edge_stretch": 2.371298418075178,
+        "max_sampled_edge_stretch": 1.9108619267786235,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.08959492276580985,
+        "max_p99_edge_stretch": 1.3554723548539014,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 28.0,
+          "vertices": [
+            43466,
+            14629
+          ],
+          "rest_positions_m": [
+            [
+              -0.07255108519354048,
+              -1.588893650585664,
+              0.9171832417131043
+            ],
+            [
+              -0.07375738634624662,
+              -1.5933096381106764,
+              0.9257586222810403
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              -0.07255108519354048,
+              -1.4638464003457032,
+              0.4516315469743127
+            ],
+            [
+              -0.07375738634624662,
+              -1.4777742156977165,
+              0.4638623627467074
+            ]
+          ],
+          "rest_length_m": 0.009720764382342643,
+          "evaluated_length_m": 0.01857503855740428
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 55,
-            "min_contact_surface_z_m": 0.014407836915440389,
-            "max_contact_surface_z_m": 0.014408762650147533,
-            "max_planted_surface_slip_per_frame_m": 3.492752249514937e-05,
-            "max_marker_height_error_m": 5.611032247547498e-07
+            "min_contact_surface_z_m": 0.01999969727029586,
+            "max_contact_surface_z_m": 0.020000505553463603,
+            "max_planted_surface_slip_per_frame_m": 8.703452342122642e-07,
+            "max_marker_height_error_m": 5.136430263515124e-07
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 55,
-            "min_contact_surface_z_m": 0.014407496978010446,
-            "max_contact_surface_z_m": 0.014408422712717589,
-            "max_planted_surface_slip_per_frame_m": 3.812784555637612e-05,
-            "max_marker_height_error_m": 5.611032247547498e-07
+            "min_contact_surface_z_m": 0.019999697571980928,
+            "max_contact_surface_z_m": 0.020000505567330785,
+            "max_planted_surface_slip_per_frame_m": 8.702662032721496e-07,
+            "max_marker_height_error_m": 5.136430263515124e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 55,
-            "min_contact_surface_z_m": 0.015381236620040812,
-            "max_contact_surface_z_m": 0.015382149316134802,
-            "max_planted_surface_slip_per_frame_m": 4.3047594531800835e-06,
-            "max_marker_height_error_m": 4.791468381885877e-07
+            "min_contact_surface_z_m": 0.019999795854048465,
+            "max_contact_surface_z_m": 0.02000045562885414,
+            "max_planted_surface_slip_per_frame_m": 9.007814552512088e-07,
+            "max_marker_height_error_m": 3.609061241145739e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 55,
-            "min_contact_surface_z_m": 0.015381238482686068,
-            "max_contact_surface_z_m": 0.01538215117878006,
-            "max_planted_surface_slip_per_frame_m": 3.3995593533905227e-06,
-            "max_marker_height_error_m": 4.791468381885877e-07
+            "min_contact_surface_z_m": 0.01999979550849013,
+            "max_contact_surface_z_m": 0.020000455638429126,
+            "max_planted_surface_slip_per_frame_m": 9.014245453648434e-07,
+            "max_marker_height_error_m": 3.609061241145739e-07
           }
         },
         "representative_poses": [
           {
             "frame": 1.0,
-            "min_surface_z_m": 0.014407859262540526,
+            "min_surface_z_m": 0.019999866666167706,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1543,7 +2022,7 @@
           },
           {
             "frame": 14.0,
-            "min_surface_z_m": 0.014407507222558767,
+            "min_surface_z_m": 0.019999987457707778,
             "body_position_m": [
               0.0,
               0.6814618706703186,
@@ -1552,7 +2031,7 @@
           },
           {
             "frame": 28.0,
-            "min_surface_z_m": 0.014408308159972936,
+            "min_surface_z_m": 0.020000132395335376,
             "body_position_m": [
               0.0,
               0.5250000357627869,
@@ -1561,7 +2040,7 @@
           },
           {
             "frame": 41.0,
-            "min_surface_z_m": 0.014408178706164197,
+            "min_surface_z_m": 0.02000010445563872,
             "body_position_m": [
               0.0,
               0.5699304938316345,
@@ -1570,7 +2049,7 @@
           },
           {
             "frame": 55.0,
-            "min_surface_z_m": 0.014407859262540526,
+            "min_surface_z_m": 0.019999866666167706,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1590,57 +2069,97 @@
         "evaluated_frames": 31,
         "finite_vertices": true,
         "bounds_min_m": [
-          -0.7343933643297214,
-          -1.7114541431221522,
-          0.014406955879487775
+          -0.7987119616464633,
+          -1.7798901667411147,
+          0.019998966995148627
         ],
         "bounds_max_m": [
-          0.7380863367124539,
-          1.6159692978505884,
-          1.935348091925784
+          0.8064336715742093,
+          1.6655870651585283,
+          2.164222569278908
         ],
-        "max_pose_displacement_m": 0.11826311495609988,
+        "max_pose_displacement_m": 0.1635879642379666,
         "loop_pose_error_m": null,
-        "max_sampled_edge_stretch": 1.714354100031746,
+        "max_sampled_edge_stretch": 1.4815421662168424,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.5217189075244673,
+        "max_p99_edge_stretch": 1.1460333539048855,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 4.0,
+          "vertices": [
+            44668,
+            24032
+          ],
+          "rest_positions_m": [
+            [
+              0.08880598233184633,
+              -0.8806492973432529,
+              0.732475425119247
+            ],
+            [
+              0.08937243507346926,
+              -0.8917956635971973,
+              0.7345763118496187
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              0.07903251932105837,
+              -0.8616000782591517,
+              0.6824289780765251
+            ],
+            [
+              0.07965492592296419,
+              -0.8780285482874722,
+              0.6860089549275621
+            ]
+          ],
+          "rest_length_m": 0.01135676337824356,
+          "evaluated_length_m": 0.01682552381661507
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 31,
-            "min_contact_surface_z_m": 0.014407606878725616,
-            "max_contact_surface_z_m": 0.014408711427347664,
-            "max_planted_surface_slip_per_frame_m": 1.1351077009744813e-05,
-            "max_marker_height_error_m": 7.678568363193861e-07
+            "min_contact_surface_z_m": 0.019998966995148627,
+            "max_contact_surface_z_m": 0.02000043049221907,
+            "max_planted_surface_slip_per_frame_m": 1.117630787017743e-06,
+            "max_marker_height_error_m": 1.0491162538532606e-06
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 31,
-            "min_contact_surface_z_m": 0.014406955879487775,
-            "max_contact_surface_z_m": 0.014408387322450044,
-            "max_planted_surface_slip_per_frame_m": 1.2391392865765507e-05,
-            "max_marker_height_error_m": 1.1031329631809583e-06
+            "min_contact_surface_z_m": 0.019999228185315927,
+            "max_contact_surface_z_m": 0.02000023920911329,
+            "max_planted_surface_slip_per_frame_m": 9.314665856700268e-07,
+            "max_marker_height_error_m": 7.902085781101575e-07
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 31,
-            "min_contact_surface_z_m": 0.015381278529517825,
-            "max_contact_surface_z_m": 0.015382112063173553,
-            "max_planted_surface_slip_per_frame_m": 4.823343176440382e-06,
-            "max_marker_height_error_m": 4.3071806430858284e-07
+            "min_contact_surface_z_m": 0.019999531756811566,
+            "max_contact_surface_z_m": 0.020000581465492932,
+            "max_planted_surface_slip_per_frame_m": 1.0623116432908078e-06,
+            "max_marker_height_error_m": 5.443394184116712e-07
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 31,
-            "min_contact_surface_z_m": 0.015381164908134699,
-            "max_contact_surface_z_m": 0.015382172599150722,
-            "max_planted_surface_slip_per_frame_m": 3.406478361035783e-06,
-            "max_marker_height_error_m": 5.611032247547498e-07
+            "min_contact_surface_z_m": 0.019999583131450057,
+            "max_contact_surface_z_m": 0.020000455638429126,
+            "max_planted_surface_slip_per_frame_m": 7.18059027854876e-07,
+            "max_marker_height_error_m": 4.959106445316663e-07
           }
         },
         "representative_poses": [
           {
             "frame": 1.0,
-            "min_surface_z_m": 0.014407859262540526,
+            "min_surface_z_m": 0.019999866666167706,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1649,7 +2168,7 @@
           },
           {
             "frame": 8.0,
-            "min_surface_z_m": 0.014407596629545352,
+            "min_surface_z_m": 0.019999600307930788,
             "body_position_m": [
               0.0,
               0.6495168805122375,
@@ -1658,7 +2177,7 @@
           },
           {
             "frame": 16.0,
-            "min_surface_z_m": 0.014407339584495336,
+            "min_surface_z_m": 0.0199992724758382,
             "body_position_m": [
               0.0,
               0.6418689489364624,
@@ -1667,7 +2186,7 @@
           },
           {
             "frame": 23.0,
-            "min_surface_z_m": 0.014408247624015297,
+            "min_surface_z_m": 0.01999997034513942,
             "body_position_m": [
               0.0,
               0.6420877575874329,
@@ -1676,7 +2195,7 @@
           },
           {
             "frame": 31.0,
-            "min_surface_z_m": 0.014407859262540526,
+            "min_surface_z_m": 0.019999866666167706,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1696,57 +2215,97 @@
         "evaluated_frames": 85,
         "finite_vertices": true,
         "bounds_min_m": [
-          -1.0297619165376681,
-          -1.7069998837393505,
-          0.0009994991176865606
+          -0.9762347997621554,
+          -1.774999839635863,
+          0.0009990706974606107
         ],
         "bounds_max_m": [
-          1.1583986221357327,
-          1.6057919310525886,
-          1.935348091925784
+          1.3472595153852445,
+          1.6553701055117302,
+          2.193982931597123
         ],
-        "max_pose_displacement_m": 1.1868153485418633,
+        "max_pose_displacement_m": 1.7273592849719255,
         "loop_pose_error_m": null,
-        "max_sampled_edge_stretch": 4.278128652484249,
+        "max_sampled_edge_stretch": 1.932072647338845,
+        "evaluated_edges_per_frame": 196974,
+        "min_evaluated_edge_ratio": 0.08407294829786383,
+        "max_p99_edge_stretch": 1.410241711906077,
+        "max_edges_over_two": 0,
+        "max_edges_over_three": 0,
+        "max_fraction_edges_over_two": 0.0,
+        "max_fraction_edges_over_three": 0.0,
+        "worst_edge": {
+          "frame": 69.0,
+          "vertices": [
+            2502,
+            18607
+          ],
+          "rest_positions_m": [
+            [
+              -0.27017349614658537,
+              -0.7030263967039273,
+              0.6485391817337812
+            ],
+            [
+              -0.28019473566570463,
+              -0.6939993926505973,
+              0.6473814792476232
+            ]
+          ],
+          "evaluated_positions_m": [
+            [
+              -0.2763225199178714,
+              -0.55086032757839,
+              1.017898411779829
+            ],
+            [
+              -0.27851409329929533,
+              -0.5298576151986281,
+              1.0333304085182708
+            ]
+          ],
+          "rest_length_m": 0.013537072014466441,
+          "evaluated_length_m": 0.02615460656420677
+        },
         "max_root_translation_m": 0.0,
         "actual_skin_contacts": {
           "Fore.L": {
-            "sample_count": 226,
+            "sample_count": 353,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.014408068814771179,
-            "max_contact_surface_z_m": 0.014408068814771179,
+            "min_contact_surface_z_m": 0.019999978424847527,
+            "max_contact_surface_z_m": 0.019999978424847527,
             "max_planted_surface_slip_per_frame_m": 0.0,
-            "max_marker_height_error_m": 3.152340650562635e-07
+            "max_marker_height_error_m": 4.701316356700569e-08
           },
           "Fore.R": {
-            "sample_count": 228,
+            "sample_count": 347,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.014407728877341236,
-            "max_contact_surface_z_m": 0.014407728877341236,
+            "min_contact_surface_z_m": 0.01999997843871471,
+            "max_contact_surface_z_m": 0.01999997843871471,
             "max_planted_surface_slip_per_frame_m": 0.0,
-            "max_marker_height_error_m": 3.152340650562635e-07
+            "max_marker_height_error_m": 4.701316356700569e-08
           },
           "Hind.L": {
-            "sample_count": 203,
+            "sample_count": 302,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.015381644539318782,
-            "max_contact_surface_z_m": 0.015381644539318782,
+            "min_contact_surface_z_m": 0.020000117494232448,
+            "max_contact_surface_z_m": 0.020000117494232448,
             "max_planted_surface_slip_per_frame_m": 0.0,
-            "max_marker_height_error_m": 7.6815485954701e-08
+            "max_marker_height_error_m": 3.494322299915642e-08
           },
           "Hind.R": {
-            "sample_count": 195,
+            "sample_count": 305,
             "contact_samples": 11,
-            "min_contact_surface_z_m": 0.015381646401964039,
-            "max_contact_surface_z_m": 0.015381646401964039,
+            "min_contact_surface_z_m": 0.02000011774618834,
+            "max_contact_surface_z_m": 0.02000011774618834,
             "max_planted_surface_slip_per_frame_m": 0.0,
-            "max_marker_height_error_m": 7.6815485954701e-08
+            "max_marker_height_error_m": 3.494322299915642e-08
           }
         },
         "representative_poses": [
           {
             "frame": 1.0,
-            "min_surface_z_m": 0.014407728877341236,
+            "min_surface_z_m": 0.019999978424847527,
             "body_position_m": [
               0.0,
               0.6499999761581421,
@@ -1755,38 +2314,38 @@
           },
           {
             "frame": 22.0,
-            "min_surface_z_m": 0.01403667107692787,
+            "min_surface_z_m": 0.0009991233565099778,
             "body_position_m": [
               0.01541022676974535,
               0.651540994644165,
-              0.9731521606445312
+              1.0225039720535278
             ]
           },
           {
             "frame": 43.0,
-            "min_surface_z_m": 0.0010001198295171182,
+            "min_surface_z_m": 0.0009997702324482784,
             "body_position_m": [
               0.18278418481349945,
               0.6682783961296082,
-              0.9247277975082397
+              1.0364148616790771
             ]
           },
           {
             "frame": 64.0,
-            "min_surface_z_m": 0.0009997251626723588,
+            "min_surface_z_m": 0.0009999410035534159,
             "body_position_m": [
               0.29893505573272705,
               0.679893434047699,
-              0.8602423667907715
+              0.7709105014801025
             ]
           },
           {
             "frame": 85.0,
-            "min_surface_z_m": 0.0010004402966552934,
+            "min_surface_z_m": 0.0010000601974318817,
             "body_position_m": [
               0.30000001192092896,
-              0.679999828338623,
-              0.8604382276535034
+              0.6799998879432678,
+              0.7717936038970947
             ]
           }
         ]
@@ -1795,9 +2354,8 @@
     "integrity_passed": true,
     "integrity_errors": [],
     "surface_observations": [
-      "Walk: localized skin stretch reaches 3.96x; inspect joint silhouette",
-      "Charge: localized skin stretch reaches 4.60x; inspect joint silhouette",
-      "Death: localized skin stretch reaches 4.28x; inspect joint silhouette"
+      "Walk: localized skin stretch reaches 2.27x; inspect joint silhouette",
+      "Charge: localized skin stretch reaches 2.52x; inspect joint silhouette"
     ]
   },
   "integrity_passed": true

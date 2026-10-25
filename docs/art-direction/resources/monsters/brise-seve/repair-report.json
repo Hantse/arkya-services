@@ -220,5 +220,8 @@
       "vertices": 12838,
       "triangles": 25368
     }
-  ]
+  ],
+  "revision": "2026-10-24-v1",
+  "historicalOnly": true,
+  "supersededBy": "2026-10-25-v2 full geometry rebuild"
 }

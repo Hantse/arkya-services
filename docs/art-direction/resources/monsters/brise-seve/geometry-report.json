@@ -1,27 +1,10 @@
 {
-  "vertices": 63578,
-  "triangles": 126848,
+  "vertices": 87673,
+  "triangles": 174906,
   "materials": 1,
   "dimensionsM": [
-    1.4683351516723633,
-    3.282745122909546,
-    1.9203620525076985
-  ],
-  "lods": [
-    {
-      "name": "BriseSeve_LOD0",
-      "vertices": 63578,
-      "triangles": 126848
-    },
-    {
-      "name": "BriseSeve_LOD1",
-      "vertices": 30597,
-      "triangles": 60886
-    },
-    {
-      "name": "BriseSeve_LOD2",
-      "vertices": 12838,
-      "triangles": 25368
-    }
+    1.5933234691619873,
+    3.4001067876815796,
+    2.1435820255428553
   ]
 }

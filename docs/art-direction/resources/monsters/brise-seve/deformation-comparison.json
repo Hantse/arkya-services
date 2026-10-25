@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "revision": "2026-10-25-v2-final",
+  "method": "All nondegenerate LOD0 edges evaluated at each authored 60fps frame; max deformed/rest edge length. Denominator includes rigid ornaments. Different mesh topology between versions.",
+  "baselineBlendSha256": "e114f8d08bf8b8606c5d2d6fc1febe0dfaee89a0b4da104a31458fdb5ffd1b1c",
+  "finalBlendSha256": "13341604510c0207584cf1355988e4e69a3c0436af3c64c10d945b951033b1cd",
+  "clips": [
+    {
+      "clip": "Idle",
+      "v1MaxEdgeStretch": 1.3651059305368523,
+      "v2MaxEdgeStretch": 1.2081020393125987,
+      "reductionPercent": 11.501224023142942,
+      "v2EvaluatedFrames": 241,
+      "v2EvaluatedEdgesPerFrame": 196974,
+      "v2MaxEdgesOverTwo": 0,
+      "v2FractionEdgesOverTwo": 0.0,
+      "v2WorstEdge": {
+        "frame": 37.0,
+        "vertices": [
+          1223,
+          42885
+        ],
+        "rest_positions_m": [
+          [
+            -0.5858278870582581,
+            -0.3586353659629822,
+            0.5852426886558533
+          ],
+          [
+            -0.5908204913139343,
+            -0.35063451528549194,
+            0.605225682258606
+          ]
+        ],
+        "evaluated_positions_m": [
+          [
+            -0.6225430369377136,
+            -0.3085228204727173,
+            0.5551325082778931
+          ],
+          [
+            -0.625850260257721,
+            -0.3004814386367798,
+            0.5803717374801636
+          ]
+        ],
+        "rest_length_m": 0.022096600239515297,
+        "evaluated_length_m": 0.026694947811233688
+      }
+    },
+    {
+      "clip": "Walk",
+      "v1MaxEdgeStretch": 4.52200468193873,
+      "v2MaxEdgeStretch": 2.2721877736773863,
+      "reductionPercent": 49.75264438020825,
+      "v2EvaluatedFrames": 73,
+      "v2EvaluatedEdgesPerFrame": 196974,
+      "v2MaxEdgesOverTwo": 212,
+      "v2FractionEdgesOverTwo": 0.0010762841796379218,
+      "v2WorstEdge": {
+        "frame": 38.0,
+        "vertices": [
+          2557,
+          43287
+        ],
+        "rest_positions_m": [
+          [
+            -0.3042394518852234,
+            -0.7320835590362549,
+            0.6984750032424927
+          ],
+          [
+            -0.29345428943634033,
+            -0.7453077435493469,
+            0.7042779922485352
+          ]
+        ],
+        "evaluated_positions_m": [
+          [
+            -0.3999878764152527,
+            -0.5569571852684021,
+            0.5332651138305664
+          ],
+          [
+            -0.3792853355407715,
+            -0.5916145443916321,
+            0.5401601195335388
+          ]
+        ],
+        "rest_length_m": 0.018024246627511245,
+        "evaluated_length_m": 0.040954472816776916
+      }
+    },
+    {
+      "clip": "Charge",
+      "v1MaxEdgeStretch": 5.015618801363092,
+      "v2MaxEdgeStretch": 2.5178694744238794,
+      "reductionPercent": 49.799425073141535,
+      "v2EvaluatedFrames": 40,
+      "v2EvaluatedEdgesPerFrame": 196974,
+      "v2MaxEdgesOverTwo": 531,
+      "v2FractionEdgesOverTwo": 0.002695787261262908,
+      "v2WorstEdge": {
+        "frame": 34.0,
+        "vertices": [
+          20462,
+          8679
+        ],
+        "rest_positions_m": [
+          [
+            0.31076866388320923,
+            -0.567396879196167,
+            0.3857419788837433
+          ],
+          [
+            0.31403467059135437,
+            -0.5554519295692444,
+            0.3721216022968292
+          ]
+        ],
+        "evaluated_positions_m": [
+          [
+            0.37097829580307007,
+            -0.19870391488075256,
+            0.46166688203811646
+          ],
+          [
+            0.3740560710430145,
+            -0.15245911478996277,
+            0.46214228868484497
+          ]
+        ],
+        "rest_length_m": 0.01840823945348181,
+        "evaluated_length_m": 0.04634954419780717
+      }
+    },
+    {
+      "clip": "ChargeAnticipation",
+      "v1MaxEdgeStretch": 2.21165715452423,
+      "v2MaxEdgeStretch": 1.5296841557516219,
+      "reductionPercent": 30.835385013339177,
+      "v2EvaluatedFrames": 61,
+      "v2EvaluatedEdgesPerFrame": 196974,
+      "v2MaxEdgesOverTwo": 0,
+      "v2FractionEdgesOverTwo": 0.0,
+      "v2WorstEdge": {
+        "frame": 60.0,
+        "vertices": [
+          8727,
+          8730
+        ],
+        "rest_positions_m": [
+          [
+            0.26810476183891296,
+            -0.5848419070243835,
+            0.5723323822021484
+          ],
+          [
+            0.28176337480545044,
+            -0.5793747305870056,
+            0.5742437839508057
+          ]
+        ],
+        "evaluated_positions_m": [
+          [
+            0.32758828997612,
+            -0.5119134783744812,
+            0.44426098465919495
+          ],
+          [
+            0.3455222249031067,
+            -0.49928200244903564,
+            0.4500783681869507
+          ]
+        ],
+        "rest_length_m": 0.014835807460730138,
+        "evaluated_length_m": 0.022694099610460594
+      }
+    },
+    {
+      "clip": "Attack",
+      "v1MaxEdgeStretch": 2.568107417843534,
+      "v2MaxEdgeStretch": 1.910870001666512,
+      "reductionPercent": 25.592286818318165,
+      "v2EvaluatedFrames": 55,
+      "v2EvaluatedEdgesPerFrame": 196974,
+      "v2MaxEdgesOverTwo": 0,
+      "v2FractionEdgesOverTwo": 0.0,
+      "v2WorstEdge": {
+        "frame": 27.0,
+        "vertices": [
+          14629,
+          43466
+        ],
+        "rest_positions_m": [
+          [
+            -0.07375738024711609,
+            -1.593309760093689,
+            0.9257583618164062
+          ],
+          [
+            -0.07255107909440994,
+            -1.5888937711715698,
+            0.917182981967926
+          ]
+        ],
+        "evaluated_positions_m": [
+          [
+            -0.07375738024711609,
+            -1.4777746200561523,
+            0.463861882686615
+          ],
+          [
+            -0.07255107909440994,
+            -1.4638468027114868,
+            0.45163094997406006
+          ]
+        ],
+        "rest_length_m": 0.009720764382342567,
+        "evaluated_length_m": 0.018575117051486713
+      }
+    },
+    {
+      "clip": "Hit",
+      "v1MaxEdgeStretch": 1.8613118590357278,
+      "v2MaxEdgeStretch": 1.4815421662168453,
+      "reductionPercent": 20.40333493687759,
+      "v2EvaluatedFrames": 31,
+      "v2EvaluatedEdgesPerFrame": 196974,
+      "v2MaxEdgesOverTwo": 0,
+      "v2FractionEdgesOverTwo": 0.0,
+      "v2WorstEdge": {
+        "frame": 3.0,
+        "vertices": [
+          24032,
+          44668
+        ],
+        "rest_positions_m": [
+          [
+            0.08937244117259979,
+            -0.8917957544326782,
+            0.7345761656761169
+          ],
+          [
+            0.08880598843097687,
+            -0.8806493878364563,
+            0.7324752807617188
+          ]
+        ],
+        "evaluated_positions_m": [
+          [
+            0.07965493202209473,
+            -0.8780287504196167,
+            0.6860089898109436
+          ],
+          [
+            0.0790325254201889,
+            -0.8616002798080444,
+            0.6824290156364441
+          ]
+        ],
+        "rest_length_m": 0.011356763378243378,
+        "evaluated_length_m": 0.016825523816614833
+      }
+    },
+    {
+      "clip": "Death",
+      "v1MaxEdgeStretch": 4.9349205323423,
+      "v2MaxEdgeStretch": 1.932073016290142,
+      "reductionPercent": 60.848953825542004,
+      "v2EvaluatedFrames": 85,
+      "v2EvaluatedEdgesPerFrame": 196974,
+      "v2MaxEdgesOverTwo": 0,
+      "v2FractionEdgesOverTwo": 0.0,
+      "v2WorstEdge": {
+        "frame": 67.0,
+        "vertices": [
+          2502,
+          18607
+        ],
+        "rest_positions_m": [
+          [
+            -0.27017349004745483,
+            -0.7030264735221863,
+            0.6485390663146973
+          ],
+          [
+            -0.2801947295665741,
+            -0.6939994692802429,
+            0.6473813652992249
+          ]
+        ],
+        "evaluated_positions_m": [
+          [
+            -0.2763226628303528,
+            -0.5508604645729065,
+            1.0178979635238647
+          ],
+          [
+            -0.2785142958164215,
+            -0.5298577547073364,
+            1.033329963684082
+          ]
+        ],
+        "rest_length_m": 0.013537072014466309,
+        "evaluated_length_m": 0.026154611558726792
+      }
+    }
+  ],
+  "deathFinalSupport": {
+    "whole": {
+      "min_z_m": 0.001000046730041504,
+      "vertex": 83075,
+      "rest_m": [
+        0.7894057035446167,
+        0.6221842765808105,
+        1.07429039478302
+      ],
+      "evaluated_m": [
+        0.47548907995224,
+        0.648733913898468,
+        0.001000046730041504
+      ],
+      "weights": {
+        "Spine": 1.0
+      }
+    },
+    "axial_skin": {
+      "min_z_m": 0.02910006046295166,
+      "vertex": 10533,
+      "rest_m": [
+        0.7343699932098389,
+        -0.4368599057197571,
+        1.007543921470642
+      ],
+      "evaluated_m": [
+        0.32430708408355713,
+        -0.3831785023212433,
+        0.02910006046295166
+      ],
+      "weights": {
+        "Chest": 0.5251294374465942,
+        "Neck": 0.00011698285379679874,
+        "ForeUpper.L": 0.47475355863571167
+      }
+    },
+    "shoulder_skin": {
+      "min_z_m": 0.02910006046295166,
+      "vertex": 10533,
+      "rest_m": [
+        0.7343699932098389,
+        -0.4368599057197571,
+        1.007543921470642
+      ],
+      "evaluated_m": [
+        0.32430708408355713,
+        -0.3831785023212433,
+        0.02910006046295166
+      ],
+      "weights": {
+        "Chest": 0.5251294374465942,
+        "Neck": 0.00011698285379679874,
+        "ForeUpper.L": 0.47475355863571167
+      }
+    },
+    "torso_skin": {
+      "min_z_m": 0.06486684083938599,
+      "vertex": 25081,
+      "rest_m": [
+        0.7122614979743958,
+        -0.2926306426525116,
+        1.0257319211959839
+      ],
+      "evaluated_m": [
+        0.3693094849586487,
+        -0.25412940979003906,
+        0.06486684083938599
+      ],
+      "weights": {
+        "Spine": 0.06202627718448639,
+        "Chest": 0.5306729674339294,
+        "ForeUpper.L": 0.40730077028274536
+      }
+    },
+    "hips_skin": {
+      "min_z_m": 0.16363966464996338,
+      "vertex": 25805,
+      "rest_m": [
+        0.6128709316253662,
+        0.6885405778884888,
+        1.0098031759262085
+      ],
+      "evaluated_m": [
+        0.37890511751174927,
+        0.7094555497169495,
+        0.16363966464996338
+      ],
+      "weights": {
+        "Body": 0.532796323299408,
+        "HindUpper.L": 0.46720367670059204
+      }
+    }
+  },
+  "deathRepairPreservedOtherSixClips": true,
+  "deathRepairPreservedMeshesWeightsUvs": true,
+  "remainingIssue": "Localized strain remains at the inner forearm and armpit in extreme Charge and Walk; inspect silhouette, not only aggregate metrics."
+}

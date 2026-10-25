@@ -99,6 +99,7 @@ For Unity tasks, actively use the running Editor through MCP for inspection, ass
 ### Git workflow
 
 - Work directly on `master` in this services repository and on `main` in the separate `Unity3D/Arkya/` repository. Commits and pushes go to the corresponding default branch.
+- After implementing and verifying each feature, commit the task's changes and push them to the corresponding default branch (`master` for services, `main` for Unity) without waiting for a separate user request. Include only changes belonging to the task.
 - Do not create task branches or additional Git worktrees unless the user explicitly requests them. This applies to subagents too.
 - Preserve existing uncommitted changes. Do not reset, delete or overwrite existing branches or worktrees as part of this workflow.
 

@@ -130,10 +130,9 @@ def _motion(rig, lod0, sole_indices, source_report):
     traces = {clip["name"]: clip for clip in source_report.get("clips", [])}
     signature_indices = np.linspace(0, len(lod0.data.vertices) - 1, min(500, len(lod0.data.vertices)), dtype=np.int32)
     rest = _rest_positions(lod0)
-    edge_step = max(1, len(lod0.data.edges) // 2000)
-    edge_indices = np.array([list(edge.vertices) for edge in list(lod0.data.edges)[::edge_step]], dtype=np.int32)
+    edge_indices = np.array([list(edge.vertices) for edge in lod0.data.edges], dtype=np.int32)
     edge_lengths = np.linalg.norm(rest[edge_indices[:, 0]] - rest[edge_indices[:, 1]], axis=1)
-    valid_edges = edge_lengths > .002
+    valid_edges = edge_lengths > 1e-6
     edge_indices, edge_lengths = edge_indices[valid_edges], edge_lengths[valid_edges]
     for name in EXPECTED:
         if name not in actions:
@@ -153,6 +152,11 @@ def _motion(rig, lod0, sole_indices, source_report):
         first_signature = None
         displacement = 0.
         max_edge_stretch = 1.
+        min_edge_ratio = 1.
+        worst_edge = None
+        max_edges_over_two = 0
+        max_edges_over_three = 0
+        max_p99_stretch = 1.
         loop_displacement = None
         prior = {}
         feet = {foot: dict(sample_count=len(indices), contact_samples=0, min_contact_surface_z_m=None,
@@ -167,7 +171,18 @@ def _motion(rig, lod0, sole_indices, source_report):
             minimum = np.minimum(minimum, positions.min(axis=0))
             maximum = np.maximum(maximum, positions.max(axis=0))
             stretched_lengths = np.linalg.norm(positions[edge_indices[:, 0]] - positions[edge_indices[:, 1]], axis=1)
-            max_edge_stretch = max(max_edge_stretch, float((stretched_lengths / edge_lengths).max()))
+            ratios = stretched_lengths / edge_lengths
+            min_edge_ratio = min(min_edge_ratio, float(ratios.min()))
+            max_edges_over_two = max(max_edges_over_two, int((ratios > 2).sum()))
+            max_edges_over_three = max(max_edges_over_three, int((ratios > 3).sum()))
+            max_p99_stretch = max(max_p99_stretch, float(np.quantile(ratios, .99)))
+            if ratios.max() > max_edge_stretch:
+                maximum_index = int(ratios.argmax())
+                max_edge_stretch = float(ratios[maximum_index])
+                pair = edge_indices[maximum_index]
+                worst_edge = dict(frame=frame, vertices=pair.tolist(), rest_positions_m=rest[pair].tolist(),
+                                  evaluated_positions_m=positions[pair].tolist(), rest_length_m=float(edge_lengths[maximum_index]),
+                                  evaluated_length_m=float(stretched_lengths[maximum_index]))
             signature = positions[signature_indices]
             if first_signature is None:
                 first_signature = signature.copy()
@@ -208,6 +223,11 @@ def _motion(rig, lod0, sole_indices, source_report):
                       bounds_min_m=minimum.tolist(), bounds_max_m=maximum.tolist(),
                       max_pose_displacement_m=displacement, loop_pose_error_m=loop_displacement if is_loop else None,
                       max_sampled_edge_stretch=max_edge_stretch,
+                      evaluated_edges_per_frame=len(edge_indices), min_evaluated_edge_ratio=min_edge_ratio,
+                      max_p99_edge_stretch=max_p99_stretch, max_edges_over_two=max_edges_over_two,
+                      max_edges_over_three=max_edges_over_three,
+                      max_fraction_edges_over_two=max_edges_over_two / len(edge_indices),
+                      max_fraction_edges_over_three=max_edges_over_three / len(edge_indices), worst_edge=worst_edge,
                       max_root_translation_m=root_translation, actual_skin_contacts=feet, representative_poses=pose_samples)
         reports.append(result)
         if not finite or abs(duration - EXPECTED[name]) > 1 / fps + .001 or displacement < .001 or root_translation > .001:
@@ -215,8 +235,10 @@ def _motion(rig, lod0, sole_indices, source_report):
         if is_loop and loop_displacement > .003:
             errors.append(f"{name}: evaluated skin loop seam {loop_displacement:.5f}m")
         if minimum[2] < -.02:
-            observations.append(f"{name}: actual geometry penetrates the floor by {-minimum[2]:.4f}m")
+            errors.append(f"{name}: actual geometry penetrates the floor by {-minimum[2]:.4f}m")
         if max_edge_stretch > 3:
+            errors.append(f"{name}: evaluated skin stretch reaches {max_edge_stretch:.2f}x (limit 3x)")
+        elif max_edge_stretch > 2:
             observations.append(f"{name}: localized skin stretch reaches {max_edge_stretch:.2f}x; inspect joint silhouette")
         for foot, record in feet.items():
             if record["min_contact_surface_z_m"] is not None and record["min_contact_surface_z_m"] < -.02:
@@ -310,6 +332,9 @@ def _render_sheet(path):
 
 
 def main(args):
+    global ROOT
+    if args.asset_root:
+        ROOT = args.asset_root.resolve()
     source_report = json.loads((ROOT / "animation-report.json").read_text(encoding="utf-8"))
     bpy.ops.wm.open_mainfile(filepath=str(ROOT / "assets" / "brise-seve.blend"))
     report = dict(schemaVersion=1, scope="DCC geometry, evaluated animation and runtime-format inspection; not gameplay certification",
@@ -338,4 +363,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--fbx-roundtrip", action="store_true")
     parser.add_argument("--render-sheet", action="store_true")
+    parser.add_argument("--asset-root", type=Path, help="Inspect an isolated asset copy instead of the delivered source")
     main(parser.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []))
