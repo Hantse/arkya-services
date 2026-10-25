@@ -47,3 +47,28 @@ data:
   Deployment__RuntimeReleases__0__Topology__Islands__0__OriginZ: '0'
   Deployment__RuntimeReleases__0__Topology__InstanceDedicatedCount: '0'
   Deployment__RuntimeReleases__0__Topology__RaidDedicatedCount: '0'
+  Deployment__Profiles__3__Id: nova-native-v9
+  Deployment__Profiles__3__DisplayName: Nova · Starter Island · 4 partitions · native releases
+  Deployment__Profiles__3__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:ae1333150e0a31def941eb88eb600fad3c0e0d8529cd28bf1a959e627a988e53
+  Deployment__Profiles__3__ImagePullSecretName: arkya-ghcr
+  Deployment__Profiles__3__TopologyTemplateServerId: island
+  Deployment__Profiles__3__TopologyPublicEndpointTemplate: wss://api.arkya.online/game/{realmId}/{serverId}/
+  Deployment__Profiles__3__Servers__0__Id: island
+  Deployment__Profiles__3__Servers__0__Port: '17943'
+  Deployment__Profiles__3__Servers__0__Transport: WebSocket
+  Deployment__Profiles__3__Servers__0__PublicEndpoint: wss://api.arkya.online/game/nova/island/
+  Deployment__Profiles__3__Servers__0__ProtocolVersion: '9'
+  Deployment__Profiles__3__Servers__0__BuildId: arkya-craft-progression-v2
+  Deployment__Profiles__3__TopologyServerIdPrefix: v9
+  NativeReleases__Enabled: 'true'
+  NativeReleases__Namespace: arkya-beta
+  NativeReleases__ConfigMapName: arkya-native-runtime-release
+  NativeReleases__PollIntervalSeconds: '15'
+  NativeReleases__Targets__0__RealmId: nova
+  NativeReleases__Targets__0__ProfileId: nova-native-v9
+  NativeReleases__InitialRelease__GameVersion: 0.1.62
+  NativeReleases__InitialRelease__SourceRevision: cf745eb2efa087c5454b93ce28b60c28bcc9d726
+  NativeReleases__InitialRelease__SourceRunId: '40141089077'
+  NativeReleases__InitialRelease__Image: ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:ae1333150e0a31def941eb88eb600fad3c0e0d8529cd28bf1a959e627a988e53
+  NativeReleases__InitialRelease__ProtocolVersion: '9'
+  NativeReleases__InitialRelease__BuildId: arkya-craft-progression-v2

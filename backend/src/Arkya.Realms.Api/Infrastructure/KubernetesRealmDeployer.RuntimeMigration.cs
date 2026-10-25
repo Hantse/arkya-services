@@ -11,7 +11,7 @@ public sealed partial class KubernetesRealmDeployer
 {
     private async Task<bool> RetirePreviousRuntimeAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
-        if (!RealmRuntimeReleases.Authorizes(options, realm)) throw new DeploymentFailure("runtime_release_conflict");
+        if (!RealmRuntimeReleases.Authorizes(ReleaseOptions(realm), realm)) throw new DeploymentFailure("runtime_release_conflict");
         var transition = realm.RuntimeRelease!;
         var previous = realm with
         {
@@ -97,7 +97,7 @@ public sealed partial class KubernetesRealmDeployer
     private async Task<JsonObject> MigrateDedicatedSecretAsync(RealmRecord realm, string resource,
         JsonObject desired, JsonObject existing, CancellationToken cancellationToken)
     {
-        if (realm.RuntimeRelease is not { Completed: false } transition || !RealmRuntimeReleases.Authorizes(options, realm) ||
+        if (realm.RuntimeRelease is not { Completed: false } transition || !RealmRuntimeReleases.Authorizes(ReleaseOptions(realm), realm) ||
             !JsonNode.DeepEquals(desired["type"], existing["type"]))
             throw new DeploymentFailure("resource_configuration_drift");
         var previousData = new JsonObject();

@@ -241,8 +241,9 @@ def without_native_nova_component(documents):
     source = checks.yaml.safe_load((ROOT / "kustomization.yaml").read_text(encoding="utf-8"))
     active = "../native-nova" in source.get("components", [])
     markers = any(document["metadata"]["name"].startswith("arkya-nova-") or
-        document["metadata"]["name"] in {"arkya-characters-nova-admission", "arkya-realms-nova-commands"} or
+        document["metadata"]["name"] in {"arkya-characters-nova-admission", "arkya-realms-nova-commands", "arkya-native-release-reader"} or
         document.get("data", {}).get("Deployment__Profiles__1__Id") == "nova-native" or
+        any(key.startswith("NativeReleases__") for key in document.get("data", {})) or
         any(key.startswith("Gateway__RealmGamePartitions__") and key.endswith("__RealmId") and value == "nova"
             for key, value in document.get("data", {}).items()) for document in documents)
     if not active:

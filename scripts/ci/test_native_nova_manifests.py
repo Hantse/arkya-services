@@ -62,8 +62,9 @@ class NativeNovaManifestTests(unittest.TestCase):
     def test_adoption_preserves_legacy_profile_and_requires_no_new_credentials_or_workloads(self):
         self.stage()
         before, after = self.native.check(adopted=True)
-        self.assertEqual(11, len(set(after) - set(before)))
-        self.assertEqual({"Service", "NetworkPolicy"}, {key[0] for key in set(after) - set(before)})
+        self.assertEqual(17, len(set(after) - set(before)))
+        self.assertEqual({"Service", "NetworkPolicy", "Role", "RoleBinding"},
+                         {key[0] for key in set(after) - set(before)})
         for app in ("characters", "realms"):
             name = next(key for key in before if key[:2] == ("ConfigMap", "arkya-beta") and
                         key[2].startswith(f"arkya-{app}-config"))
@@ -113,7 +114,7 @@ class NativeNovaManifestTests(unittest.TestCase):
                 if case == "missing":
                     config["data"].pop("Gateway__RealmGamePartitions__3__Address")
                 elif case == "extra":
-                    config["data"]["Gateway__RealmGamePartitions__8__RealmId"] = "nova"
+                    config["data"]["Gateway__RealmGamePartitions__12__RealmId"] = "nova"
                 else:
                     field = "RealmId" if case == "realm" else "Address"
                     config["data"]["Gateway__RealmGamePartitions__0__" + field] = "beta-web"
@@ -122,7 +123,7 @@ class NativeNovaManifestTests(unittest.TestCase):
                     self.validate()
 
     def test_rendered_route_or_policy_drift_is_not_masked_by_normalization(self):
-        for case in ("route", "policy", "missing service"):
+        for case in ("route", "policy", "missing service", "reader role"):
             with self.subTest(case=case):
                 documents = self.stage()
                 if case == "route":
@@ -132,6 +133,10 @@ class NativeNovaManifestTests(unittest.TestCase):
                 elif case == "policy":
                     policy = next(document for document in documents if document["metadata"]["name"] == "arkya-nova-partitions-game")
                     policy["spec"]["ingress"][0]["from"] = [{"ipBlock": {"cidr": "0.0.0.0/0"}}]
+                elif case == "reader role":
+                    role = next(document for document in documents if document["kind"] == "Role" and
+                                document["metadata"]["name"] == "arkya-native-release-reader")
+                    role["rules"][0]["verbs"].append("list")
                 else:
                     documents = [document for document in documents if document["metadata"]["name"] != "arkya-nova-partition-04"]
                 with self.assertRaisesRegex(AssertionError, "exact validated component"):
@@ -168,7 +173,7 @@ class NativeNovaManifestTests(unittest.TestCase):
                 else:
                     services.append({"apiVersion": "v1", "kind": "Secret", "metadata": {"name": "unwanted"}})
                 path.write_text(yaml.safe_dump_all(services, sort_keys=False), encoding="utf-8")
-                with self.assertRaisesRegex(AssertionError, "eight private Services"):
+                with self.assertRaisesRegex(AssertionError, "twelve private Services"):
                     self.validate()
 
     def test_prepared_manual_release_keeps_the_original_profile_and_routes(self):
@@ -185,10 +190,81 @@ class NativeNovaManifestTests(unittest.TestCase):
         self.assertEqual(self.native.SOURCE_REVISION, realms["Deployment__RuntimeReleases__0__SourceRevision"])
         self.assertEqual(self.native.SOURCE_RUN_ID, realms["Deployment__RuntimeReleases__0__SourceRunId"])
         self.assertNotEqual("0" * 64, realms["Deployment__RuntimeReleases__0__PreviousProfileSha256"])
-        for index, server in enumerate(self.native.SERVERS + self.native.NEXT_SERVERS):
+        for index, server in enumerate(self.native.ALL_SERVERS):
             self.assertEqual(server, gateway[f"Gateway__RealmGamePartitions__{index}__ServerId"])
         self.assertFalse(set(self.native.SERVERS).intersection(self.native.NEXT_SERVERS))
+        self.assertFalse(set(self.native.SERVERS + self.native.NEXT_SERVERS).intersection(self.native.CURRENT_SERVERS))
         self.assertNotIn("Deployment__RuntimeReleases__0__Topology__Islands__0__ContentId", realms)
+
+    def test_seed_and_finite_protocol_nine_profile_prepare_manual_native_proposals(self):
+        self.stage()
+        realms = self.native.expected_configs()["realms"]
+        self.assertEqual("v9", realms["Deployment__Profiles__3__TopologyServerIdPrefix"])
+        self.assertEqual("9", realms["Deployment__Profiles__3__Servers__0__ProtocolVersion"])
+        self.assertEqual("arkya-craft-progression-v2", realms["Deployment__Profiles__3__Servers__0__BuildId"])
+        self.assertEqual(self.native.CURRENT_IMAGE, realms["Deployment__Profiles__3__Image"])
+        self.assertEqual("true", realms["NativeReleases__Enabled"])
+        self.assertEqual("arkya-beta", realms["NativeReleases__Namespace"])
+        self.assertEqual("arkya-native-runtime-release", realms["NativeReleases__ConfigMapName"])
+        self.assertEqual("15", realms["NativeReleases__PollIntervalSeconds"])
+        self.assertEqual("nova", realms["NativeReleases__Targets__0__RealmId"])
+        self.assertEqual("nova-native-v9", realms["NativeReleases__Targets__0__ProfileId"])
+        self.assertEqual("0.1.62", realms["NativeReleases__InitialRelease__GameVersion"])
+        self.assertEqual(self.native.CURRENT_SOURCE_REVISION, realms["NativeReleases__InitialRelease__SourceRevision"])
+        self.assertEqual(self.native.CURRENT_SOURCE_RUN_ID, realms["NativeReleases__InitialRelease__SourceRunId"])
+        self.assertEqual(self.native.CURRENT_IMAGE, realms["NativeReleases__InitialRelease__Image"])
+        self.assertFalse(any("Automatic" in key for key in realms if key.startswith("NativeReleases__")))
+
+    def test_native_seed_target_and_protocol_drift_are_rejected(self):
+        for field, value in (("Enabled", "false"), ("Namespace", "arkya-beta-realm"),
+                ("ConfigMapName", "unapproved"), ("PollIntervalSeconds", "1"),
+                ("Targets__0__RealmId", "beta-web"), ("Targets__0__ProfileId", "nova-native-v5"),
+                ("InitialRelease__GameVersion", "0.1.61"), ("InitialRelease__Image", self.native.NEXT_IMAGE),
+                ("InitialRelease__ProtocolVersion", "5"), ("InitialRelease__BuildId", "arkya-town-npcs-v1"),
+                ("InitialRelease__SourceRunId", "9999"), ("InitialRelease__SourceRevision", "1" * 40),
+                ("Automatic", "true")):
+            with self.subTest(field=field):
+                self.stage()
+                config = self.native.read(self.root / "native-nova/realms-config.yaml")
+                config["data"]["NativeReleases__" + field] = value
+                self.write("realms-config.yaml", config)
+                with self.assertRaisesRegex(AssertionError, "manual native release proposals"):
+                    self.validate()
+
+    def test_native_inventory_reader_is_scoped_to_one_configmap_without_list_or_write(self):
+        self.stage()
+        resources = self.native.expected_resources()
+        role = resources[("Role", "arkya-beta", "arkya-native-release-reader")]
+        self.assertEqual([{"apiGroups": [""], "resources": ["configmaps"],
+                           "resourceNames": ["arkya-native-runtime-release"], "verbs": ["get"]}], role["rules"])
+        binding = resources[("RoleBinding", "arkya-beta", "arkya-native-release-reader")]
+        self.assertEqual([{"kind": "ServiceAccount", "name": "arkya-realm-deployer", "namespace": "arkya-beta"}],
+                         binding["subjects"])
+        self.assertEqual({"apiGroup": "rbac.authorization.k8s.io", "kind": "Role", "name": "arkya-native-release-reader"},
+                         binding["roleRef"])
+
+    def test_native_inventory_reader_cannot_gain_other_namespaces_resources_or_verbs(self):
+        for case in ("list", "patch", "other configmap", "all configmaps", "secrets", "namespace", "subject"):
+            with self.subTest(case=case):
+                self.stage()
+                path = self.root / "native-nova/native-release-rbac.yaml"
+                documents = list(yaml.safe_load_all(path.read_text(encoding="utf-8")))
+                role, binding = documents
+                if case in {"list", "patch"}:
+                    role["rules"][0]["verbs"].append(case)
+                elif case == "other configmap":
+                    role["rules"][0]["resourceNames"] = ["another-configmap"]
+                elif case == "all configmaps":
+                    del role["rules"][0]["resourceNames"]
+                elif case == "secrets":
+                    role["rules"][0]["resources"] = ["secrets"]
+                elif case == "namespace":
+                    role["metadata"]["namespace"] = "arkya-beta-realm"
+                else:
+                    binding["subjects"][0]["name"] = "default"
+                path.write_text(yaml.safe_dump_all(documents, sort_keys=False), encoding="utf-8")
+                with self.assertRaisesRegex(AssertionError, "native release reader RBAC"):
+                    self.validate()
 
     def test_manual_migration_requires_exact_fingerprint_topology_and_ci_identity(self):
         for field, value in (("Automatic", "true"), ("PreviousProfileSha256", "0" * 64),

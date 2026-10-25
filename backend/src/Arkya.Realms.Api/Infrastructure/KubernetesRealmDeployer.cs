@@ -12,7 +12,7 @@ using Microsoft.Extensions.Options;
 namespace Arkya.Realms.Api.Infrastructure;
 
 public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<DeploymentOptions> configured,
-    IOptions<RealmRuntimeOptions>? runtime = null) : IRealmDeployer
+    IOptions<RealmRuntimeOptions>? runtime = null, IRealmNativeReleaseCatalog? nativeReleases = null) : IRealmDeployer
 {
     private const string DedicatedSecretName = "arkya-dedicated";
     private const string InferenceSecretName = "arkya-npc-dialogue";
@@ -20,6 +20,9 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
     private const string RestartAnnotation = "arkya.online/restart-revision";
     private readonly DeploymentOptions options = configured.Value;
     private readonly RealmRuntimeOptions runtimeOptions = runtime?.Value ?? new();
+
+    private DeploymentOptions ReleaseOptions(RealmRecord realm) =>
+        nativeReleases?.Select(options, realm, propose: false).Options ?? options;
 
     public async Task<bool> DeleteAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
@@ -138,6 +141,7 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
 
     public async Task<ServerObservation[]> ReconcileAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
+        var options = ReleaseOptions(realm);
         if (!RealmTopologyBuilder.SnapshotSupportsRuntime(realm.Profile))
             throw new DeploymentFailure("topology_runtime_unsupported");
         if (!options.Enabled || !options.Targets.Any(target => target.Id == realm.TargetId && target.Namespace == realm.Namespace &&
@@ -341,7 +345,7 @@ public sealed partial class KubernetesRealmDeployer(HttpClient client, IOptions<
         }
         if (realm?.ImageRelease is { } release)
         {
-            if (!RealmImageReleases.Authorizes(options, realm)) throw new DeploymentFailure("image_release_conflict");
+            if (!RealmImageReleases.Authorizes(ReleaseOptions(realm), realm)) throw new DeploymentFailure("image_release_conflict");
             if (ContainsDesired(configuration["spec"], existing["spec"]))
             {
                 if (ReleaseVersion(existing) != release.Version) throw new DeploymentFailure("image_release_conflict");

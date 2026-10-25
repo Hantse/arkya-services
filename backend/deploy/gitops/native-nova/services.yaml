@@ -149,3 +149,79 @@ spec:
     port: 17943
     targetPort: 17943
     protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-nova-v9-partition-01
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/managed-by: arkya-realms
+    arkya.online/realm-id: nova
+    arkya.online/server-id: v9-starter-island-01
+  ports:
+  - name: game
+    port: 17943
+    targetPort: 17943
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-nova-v9-partition-02
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/managed-by: arkya-realms
+    arkya.online/realm-id: nova
+    arkya.online/server-id: v9-starter-island-02
+  ports:
+  - name: game
+    port: 17943
+    targetPort: 17943
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-nova-v9-partition-03
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/managed-by: arkya-realms
+    arkya.online/realm-id: nova
+    arkya.online/server-id: v9-starter-island-03
+  ports:
+  - name: game
+    port: 17943
+    targetPort: 17943
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: arkya-nova-v9-partition-04
+  namespace: arkya-beta-realm
+  annotations:
+    argocd.argoproj.io/sync-wave: '-5'
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/managed-by: arkya-realms
+    arkya.online/realm-id: nova
+    arkya.online/server-id: v9-starter-island-04
+  ports:
+  - name: game
+    port: 17943
+    targetPort: 17943
+    protocol: TCP

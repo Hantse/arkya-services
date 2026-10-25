@@ -86,6 +86,7 @@ public sealed record RealmRecord(string RealmId, string DisplayName, string Targ
 {
     public RealmImageTransition? ImageRelease { get; init; }
     public RealmRuntimeTransition? RuntimeRelease { get; init; }
+    public RealmNativeReleasePin? NativeRelease { get; init; }
     public RealmRestartTransition? Restart { get; init; }
     public RealmOperation[] Operations { get; init; } = [];
     public RealmRuntimeConfiguration RuntimeConfiguration { get; init; } = new();

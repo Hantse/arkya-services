@@ -31,6 +31,10 @@ public partial class Program
             .Validate(value => value.Key is { Length: >= 32 and <= 512 }, "RealmsAdmin:Key must contain 32 to 512 characters.").ValidateOnStart();
         builder.Services.AddOptions<DeploymentOptions>().Bind(builder.Configuration.GetSection("Deployment"))
             .Validate(value => value.IsValid(), "Deployment configuration requires unique allowlisted namespaces, valid profiles and digest-pinned images.").ValidateOnStart();
+        builder.Services.AddOptions<RealmNativeReleaseOptions>().BindConfiguration("NativeReleases")
+            .Validate(value => value.IsValid(), "Native release source configuration is invalid.").ValidateOnStart();
+        builder.Services.AddSingleton<RealmNativeReleaseCatalog>();
+        builder.Services.AddSingleton<IRealmNativeReleaseCatalog>(services => services.GetRequiredService<RealmNativeReleaseCatalog>());
         builder.Services.AddOptions<RealmRuntimeOptions>().BindConfiguration("RealmRuntime")
             .PostConfigure(value => value.InferenceServiceKey = NpcDialogueKeys.ResolveRealms(builder.Configuration, value.InferenceServiceKey))
             .Validate(value => value.IsValid(), "Realm runtime requires a dedicated key seed and an explicitly allowed Characters endpoint.").ValidateOnStart();
@@ -65,6 +69,14 @@ public partial class Program
                 return options.Enabled ? KubernetesTransport.CreateHandler(options) : new SocketsHttpHandler { AllowAutoRedirect = false };
             });
         builder.Services.AddSingleton<RealmReconciler>();
+        builder.Services.AddHttpClient<KubernetesNativeReleaseSource>(client => client.Timeout = TimeSpan.FromSeconds(10))
+            .ConfigurePrimaryHttpMessageHandler(services =>
+            {
+                var options = services.GetRequiredService<IOptions<DeploymentOptions>>().Value;
+                var native = services.GetRequiredService<IOptions<RealmNativeReleaseOptions>>().Value;
+                return options.Enabled && native.Enabled ? KubernetesTransport.CreateHandler(options) : new SocketsHttpHandler { AllowAutoRedirect = false };
+            });
+        builder.Services.AddHostedService<RealmNativeReleaseWorker>();
         builder.Services.AddHostedService<RealmDeploymentWorker>();
         var app = builder.Build();
         app.UseArkyaInternalHttp();

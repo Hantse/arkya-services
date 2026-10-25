@@ -6,7 +6,8 @@ namespace Arkya.Realms.Api.Application;
 
 public sealed record RealmResult(RealmRecord? Realm = null, string? Error = null);
 
-public sealed class RealmService(IRealmRepository repository, IOptions<DeploymentOptions> configured, TimeProvider clock)
+public sealed class RealmService(IRealmRepository repository, IOptions<DeploymentOptions> configured, TimeProvider clock,
+    IRealmNativeReleaseCatalog? nativeReleases = null)
 {
     private readonly DeploymentOptions options = configured.Value;
 
@@ -56,7 +57,7 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
 
     public async Task<RealmResult> RequestDeploymentAsync(string id, long expectedRevision, CancellationToken cancellationToken)
     {
-        if (!options.Enabled) return new(Error: "deployment_disabled");
+        if (!this.options.Enabled) return new(Error: "deployment_disabled");
         var realm = await repository.FindAsync(id, cancellationToken);
         if (realm is null || realm.Status == RealmStatus.Deleted) return new(Error: "realm_not_found");
         if (RealmStatus.IsDeleting(realm.Status)) return new(Error: "deletion_unavailable");
@@ -78,8 +79,12 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         return current?.RequestedFromRevision == expectedRevision ? new(current) : new(Error: "revision_conflict");
     }
 
-    public RealmOperationsOptions GetOperationsOptions(RealmRecord realm)
+    public RealmOperationsOptions GetOperationsOptions(RealmRecord realm) =>
+        GetOperationsOptions(realm, SelectRelease(realm));
+
+    private RealmOperationsOptions GetOperationsOptions(RealmRecord realm, RealmReleaseSelection selection)
     {
+        var options = selection.Options;
         var reason = !options.Enabled ? "deployment_disabled" : !TargetAvailable(realm) ? "target_unavailable" :
             !RealmTopologyBuilder.SnapshotSupportsRuntime(realm.Profile) ? "topology_runtime_unsupported" :
             realm.Status is not (RealmStatus.Ready or RealmStatus.Failed) ? "operation_in_progress" : null;
@@ -109,7 +114,10 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
             update ? profile!.Image : null, update ? release!.Version : null,
             reason ?? (update ? null : runtimeUnavailable ? "runtime_migration_unavailable" : "no_approved_update"),
             update ? "Image" : null, currentPair.Version, currentPair.BuildId,
-            update ? target.Version : null, update ? target.BuildId : null);
+            update ? target.Version : null, update ? target.BuildId : null,
+            update ? selection.Approval?.Release.GameVersion : null,
+            update ? selection.Approval?.Release.SourceRevision : null,
+            update ? selection.Approval?.Release.SourceRunId : null);
     }
 
     public Task<RealmResult> RequestRestartAsync(string id, RestartRealmRequest request, string? actor,
@@ -167,14 +175,16 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         if (!ValidAuditText(actor, 128)) return new(Error: "invalid_operator");
         if (!ValidAuditText(reason, 500)) return new(Error: "invalid_operation_reason");
         if (kind == "Update" && !DeploymentOptions.ValidImage(expectedImage)) return new(Error: "invalid_update_image");
-        if (!options.Enabled) return new(Error: "deployment_disabled");
+        if (!this.options.Enabled) return new(Error: "deployment_disabled");
         var realm = await repository.FindAsync(id, cancellationToken);
         if (realm is null || realm.Status == RealmStatus.Deleted) return new(Error: "realm_not_found");
         if (RealmStatus.IsDeleting(realm.Status)) return new(Error: "deletion_unavailable");
         if (IsRetry(realm)) return new(realm);
         if (expectedRevision < 0 || expectedRevision == long.MaxValue || realm.Revision != expectedRevision)
             return new(Error: "revision_conflict");
-        var available = GetOperationsOptions(realm);
+        var selection = SelectRelease(realm, propose: kind == "Update");
+        var options = selection.Options;
+        var available = GetOperationsOptions(realm, selection);
         if (kind == "Restart" ? !available.CanRestart : !available.CanUpdate)
             return new(Error: available.UnavailableReason ?? "operation_unavailable");
         if (kind == "Update" && available.UpdateImage != expectedImage) return new(Error: "approved_image_changed");
@@ -182,7 +192,8 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
         if (kind == "Update" && available.UpdateKind == "RuntimeMigration")
         {
             var migration = RealmRuntimeReleases.ManualApproval(options, realm)!.Value;
-            var requested = RealmRuntimeReleases.BeginTransition(realm, migration.Release, migration.Profile, now, actor!, reason!);
+            var requested = RealmRuntimeReleases.BeginTransition(realm with { NativeRelease = selection.Approval },
+                migration.Release, migration.Profile, now, actor!, reason!);
             if (await repository.TryReplaceAsync(requested, realm.Version, cancellationToken)) return new(requested);
             var winner = await repository.FindAsync(id, cancellationToken);
             return winner is not null && IsRetry(winner) ? new(winner) : new(Error: "revision_conflict");
@@ -205,7 +216,8 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
             next = next with
             {
                 Profile = realm.Profile with { Image = available.UpdateImage! },
-                ImageRelease = new(release.Version, release.PreviousImage, available.UpdateImage!, realm.ImageRelease?.Version ?? 0)
+                ImageRelease = new(release.Version, release.PreviousImage, available.UpdateImage!, realm.ImageRelease?.Version ?? 0),
+                NativeRelease = selection.Approval
             };
         }
         next = next with { Operations = realm.Operations.Append(new RealmOperation(kind, revision, expectedRevision,
@@ -218,6 +230,9 @@ public sealed class RealmService(IRealmRepository repository, IOptions<Deploymen
             (operation.Kind == kind || kind == "Update" && operation.Kind == "RuntimeMigration") && operation.RequestedBy == actor && operation.Reason == reason &&
             (kind != "Update" || operation.Image == expectedImage));
     }
+
+    private RealmReleaseSelection SelectRelease(RealmRecord realm, bool propose = true) =>
+        nativeReleases?.Select(options, realm, propose) ?? new(options, null);
 
     private bool TargetAvailable(RealmRecord realm) => options.Targets.Any(target => target.Id == realm.TargetId &&
         target.Namespace == realm.Namespace && (target.RealmId is null || target.RealmId == realm.RealmId));

@@ -3,6 +3,7 @@ kind: Component
 resources:
 - services.yaml
 - network-policies.yaml
+- native-release-rbac.yaml
 patches:
 - path: gateway-config.yaml
 - path: realms-config.yaml

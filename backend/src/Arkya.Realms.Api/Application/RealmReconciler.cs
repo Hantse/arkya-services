@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 namespace Arkya.Realms.Api.Application;
 
 public sealed class RealmReconciler(IRealmRepository repository, IRealmDeployer deployer,
-    IOptions<DeploymentOptions> configured, TimeProvider clock)
+    IOptions<DeploymentOptions> configured, TimeProvider clock, IRealmNativeReleaseCatalog? nativeReleases = null)
 {
     private readonly DeploymentOptions options = configured.Value;
     private readonly SemaphoreSlim reconcileGate = new(1, 1);
@@ -67,9 +67,11 @@ public sealed class RealmReconciler(IRealmRepository repository, IRealmDeployer 
 
     private async Task ReconcileDeploymentAsync(RealmRecord realm, CancellationToken cancellationToken)
     {
+        var options = nativeReleases?.Select(this.options, realm, propose: false).Options ?? this.options;
+        if (!options.Enabled) return;
         var runtime = await RealmRuntimeReleases.PrepareAsync(realm, repository, options, clock, cancellationToken);
         if (runtime is null) return;
-        var prepared = await PrepareImageReleaseAsync(runtime, cancellationToken);
+        var prepared = await PrepareImageReleaseAsync(runtime, options, cancellationToken);
         if (prepared is null) return;
         realm = prepared;
         if (realm.Status is not (RealmStatus.Pending or RealmStatus.Deploying or RealmStatus.Ready) &&
@@ -133,7 +135,7 @@ public sealed class RealmReconciler(IRealmRepository repository, IRealmDeployer 
             realm.Version, saveTimeout.Token);
     }
 
-    private async Task<RealmRecord?> PrepareImageReleaseAsync(RealmRecord realm, CancellationToken cancellationToken)
+    private async Task<RealmRecord?> PrepareImageReleaseAsync(RealmRecord realm, DeploymentOptions options, CancellationToken cancellationToken)
     {
         var release = RealmImageReleases.Find(options, realm.RealmId);
         if (realm.RuntimeRelease is not null && (release is null || release.ProfileId != realm.Profile.Id)) return realm;
@@ -178,7 +180,7 @@ public sealed class RealmDeploymentWorker(IRealmRepository repository, RealmReco
                 var realms = await repository.ListAsync(queryTimeout.Token);
                 foreach (var realm in realms.Where(value => value.Status is RealmStatus.Pending or RealmStatus.Deploying or RealmStatus.Ready or RealmStatus.Deleting ||
                     value.Status == RealmStatus.Failed && (RealmImageReleases.Find(configured.Value, value.RealmId) is not null ||
-                        value.RuntimeRelease is { Completed: false } || value.Restart is not null)))
+                        value.RuntimeRelease is { Completed: false } || value.Restart is not null || value.NativeRelease is not null)))
                 {
                     try { await reconciler.ReconcileAsync(realm, stoppingToken); }
                     catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested) { return; }

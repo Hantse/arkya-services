@@ -88,7 +88,37 @@ confirmation vides pendant cette vérification. La présence du bouton ne prouve
 ni la migration des serveurs ni l'admission du nouveau client : ces contrôles
 se font après le lancement explicite de l'opération.
 
-## Nova : version 0.1.49
+## Propositions natives automatiques pour Nova
+
+`NativeReleases` lit toutes les 15 secondes le ConfigMap
+`arkya-beta/arkya-native-runtime-release`, publié par la CI Unity via la source
+Argo `arkya-mmorpg/main:deploy/gitops/native-beta`. Le droit Kubernetes autorise
+uniquement `get` sur cet objet nommé. Le catalogue valide ensemble le digest,
+les révisions Windows/dedicated identiques, le numéro de build, le run et la
+paire réseau. Une publication plus ancienne ou une identité différente pour
+la même version est refusée.
+
+Le profil `native-nova` fournit la publication initiale **0.1.62** et prépare
+`nova-native-v9`, avec `9 / arkya-craft-progression-v2` et quatre identifiants
+`v9-starter-island-01..04`. À la lecture de **Update realm**, Realms construit
+la proposition depuis le snapshot persistant de Nova. Aucune empreinte à
+recopier ni édition de configuration n'est nécessaire pour les publications
+suivantes conservant cette paire réseau. Un nouveau protocole exige toujours
+un profil et des routes compatibles préparés avant sa proposition.
+
+Toutes ces propositions restent manuelles. Lire le catalogue ou synchroniser
+GitOps ne migre aucun dedicated. La demande d'installation conserve dans MongoDB
+(schéma 4) la publication exacte choisie, son profil précédent et son empreinte
+cible. Le réconciliateur et le déployeur réutilisent cette autorisation après
+redémarrage, même si une nouvelle publication arrive entre-temps. Un redémarrage
+de realm conserve également la version installée. Les documents historiques
+des schémas 1 à 3 restent lisibles sans conversion forcée.
+
+La source Argo doit être activée pour recevoir les versions suivantes ; le
+[guide du composant](../backend/deploy/gitops/native-nova/README.md) précise
+la configuration et les vérifications sans installation.
+
+## Migration historique de Nova : version 0.1.49
 
 Le composant actif `native-nova` prépare la release issue de la CI Unity 49 :
 protocole `5 / arkya-town-npcs-v1`, quatre processus `v5-starter-island-01..04`
