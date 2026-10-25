@@ -2,6 +2,7 @@ using Arkya.Realms.Api.Application;
 using Arkya.Realms.Api.Contracts;
 using Arkya.Realms.Api.Domain;
 using Arkya.Realms.Api.Infrastructure;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -20,6 +21,41 @@ public sealed class RealmNativeReleaseIntegrationTests
         Image = NativePublishedRelease.ImageRepository + "@sha256:" + new string('b', 64)
     };
     private static readonly RealmTopology Topology = new([new("starter-island", 4, 1536, 1536, 0, 0, 2, 2)]);
+
+    [Fact]
+    public void DeploymentConfigurationBindsTheInitialPublishedReleaseAndNovaTarget()
+    {
+        var environment = new Dictionary<string, string?>
+        {
+            ["NativeReleases__Enabled"] = "true",
+            ["NativeReleases__Namespace"] = "arkya-beta",
+            ["NativeReleases__ConfigMapName"] = "arkya-native-runtime-release",
+            ["NativeReleases__PollIntervalSeconds"] = "15",
+            ["NativeReleases__Targets__0__RealmId"] = "nova",
+            ["NativeReleases__Targets__0__ProfileId"] = "nova-native-v9",
+            ["NativeReleases__InitialRelease__GameVersion"] = "0.1.62",
+            ["NativeReleases__InitialRelease__SourceRevision"] = "cf745eb2efa087c5454b93ce28b60c28bcc9d726",
+            ["NativeReleases__InitialRelease__SourceRunId"] = "40141089077",
+            ["NativeReleases__InitialRelease__Image"] = Release62.Image,
+            ["NativeReleases__InitialRelease__ProtocolVersion"] = "9",
+            ["NativeReleases__InitialRelease__BuildId"] = "arkya-craft-progression-v2"
+        };
+        var configuration = new ConfigurationBuilder().AddInMemoryCollection(environment.Select(pair =>
+            new KeyValuePair<string, string?>(pair.Key.Replace("__", ":", StringComparison.Ordinal), pair.Value))).Build();
+
+        var settings = configuration.GetSection("NativeReleases").Get<RealmNativeReleaseOptions>()!;
+
+        Assert.True(settings.IsValid());
+        Assert.True(settings.Enabled);
+        Assert.Equal(15, settings.PollIntervalSeconds);
+        Assert.Equal("arkya-beta", settings.Namespace);
+        Assert.Equal("arkya-native-runtime-release", settings.ConfigMapName);
+        var target = Assert.Single(settings.Targets);
+        Assert.Equal("nova", target.RealmId);
+        Assert.Equal("nova-native-v9", target.ProfileId);
+        Assert.Equal(Release62, settings.InitialRelease);
+        Assert.Equal(62, settings.InitialRelease!.Version);
+    }
 
     [Fact]
     public async Task PublishedRuntimeIsProposedWithoutChangingNovaOrStartingAMigration()

@@ -13,6 +13,7 @@ Le profil `nova-native-v9` et la version initiale de `NativeReleases` épinglent
 - Version : **0.1.62**.
 - Source : `cf745eb2efa087c5454b93ce28b60c28bcc9d726`.
 - [CI Unity](https://github.com/Hantse/arkya-mmorpg/actions/runs/40141089077) : run `40141089077`.
+- [Reprise de publication réussie](https://github.com/Hantse/arkya-mmorpg/actions/runs/40182007180) : les artefacts du run source sont conservés.
 - Paire réseau : `9 / arkya-craft-progression-v2`.
 - Image : `ghcr.io/hantse/arkya-mmorpg-dedicated@sha256:ae1333150e0a31def941eb88eb600fad3c0e0d8529cd28bf1a959e627a988e53`.
 
@@ -45,6 +46,14 @@ lecture Kubernetes locale a expiré pendant la préparation du 25 octobre 2026 ;
 l'activation de cette source et l'affichage de la version dans l'Admin vivant
 restent à vérifier après synchronisation. Le seed 0.1.62 ne remplace pas cette
 activation pour recevoir automatiquement les publications suivantes.
+
+Le [déploiement des images de cette intégration](https://github.com/Hantse/arkya-services/actions/runs/40184983139)
+a passé toute la CI et promu ses digests dans GitOps (`1c33161`). La vérification
+vivante reste distincte : le kubeconfig local pointe sur une ancienne API,
+le certificat du K3SMasterVM accessible par Tailscale n'est pas signé par sa
+CA et la clé SSH disponible est refusée. Utiliser un accès actuel pour relire
+les sources Argo, activer l'inventaire natif s'il manque, puis vérifier
+**Update realm** sans lancer l'installation.
 
 ## Migration historique 0.1.49 conservée
 
