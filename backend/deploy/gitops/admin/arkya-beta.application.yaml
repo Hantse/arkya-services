@@ -1,0 +1,33 @@
+# Edit the existing Application in Argo CD; keep this outside the workload resources.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arkya-beta
+  namespace: argocd
+spec:
+  project: arkya-beta
+  sources:
+  - repoURL: git@github.com:Hantse/arkya-services.git
+    targetRevision: master
+    path: backend/deploy/gitops/admin
+  - repoURL: git@github.com:Hantse/arkya-mmorpg.git
+    targetRevision: main
+    path: deploy/gitops/native-beta
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arkya-beta
+  revisionHistoryLimit: 10
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - PruneLast=true
+    - FailOnSharedResource=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 1m

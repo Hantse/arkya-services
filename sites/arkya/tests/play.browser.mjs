@@ -50,7 +50,7 @@ async (page) => {
     check(stable.ok() && JSON.stringify(await stable.json()) === JSON.stringify({ schemaVersion: 1, channel: 'stable', available: false }), 'Stable distribution explicitly has no published release');
     const beta = await page.request.get(`${base}/downloads/windows/latest-win-x64.json`);
     const betaManifest = await beta.json();
-    check(beta.ok() && betaManifest.version === '0.1.49' && betaManifest.packageUrl.includes('/windows-beta-0.1.49/') && betaManifest.launcherSessionProtocol === 1, 'The current Beta game publication includes the launcher session protocol');
+    check(beta.ok() && /^0\.1\.[1-9][0-9]*$/.test(betaManifest.version) && betaManifest.packageUrl === `https://github.com/Hantse/arkya-services/releases/download/windows-beta-${betaManifest.version}/Arkya-${betaManifest.version}-win-x64.zip` && betaManifest.launcherSessionProtocol === 1, 'The current Beta game publication includes the launcher session protocol and matching versioned package');
     check(await page.locator('canvas, #game-cover, #game-fullscreen, #game-sign-in').count() === 0, 'The web player and its session gate are removed');
     for (const lang of ['en', 'fr']) {
       await page.getByRole('button', { name: lang === 'en' ? 'English' : 'Français', exact: true }).click();

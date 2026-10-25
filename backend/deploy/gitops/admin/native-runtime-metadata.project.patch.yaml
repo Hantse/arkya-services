@@ -1,0 +1,5 @@
+# Optional JSON6902 patch for AppProject argocd/arkya-beta.
+# Append only if absent; retain every existing repository and permission.
+- op: add
+  path: /spec/sourceRepos/-
+  value: git@github.com:Hantse/arkya-mmorpg.git

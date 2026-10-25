@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.49",
+  "version": "0.1.62",
   "platform": "win-x64",
-  "packageUrl": "https://github.com/Hantse/arkya-services/releases/download/windows-beta-0.1.49/Arkya-0.1.49-win-x64.zip",
-  "packageSize": 510743811,
-  "unpackedSize": 2127445486,
-  "sha256": "ac10830da37ec44b86d7d5efbb9933c690b22e5af5e6308dbbcced8a30382174",
+  "packageUrl": "https://github.com/Hantse/arkya-services/releases/download/windows-beta-0.1.62/Arkya-0.1.62-win-x64.zip",
+  "packageSize": 510834650,
+  "unpackedSize": 2127925902,
+  "sha256": "15680c2587be6394b8a516dc8f6c11a2aa4ce8b5b5e2afaa6413db04fc0fbbcf",
   "executable": "Arkya.exe",
-  "releaseNotes": "Client Windows compatible avec Nova 0.1.49 (protocole 5). Session de connexion transmise par le launcher.",
+  "releaseNotes": "Client Windows bêta 0.1.62 (protocole 9). Mise à jour requise pour rejoindre les royaumes sur ce protocole. Session transmise par le launcher.",
   "launcherSessionProtocol": 1
 }

@@ -117,7 +117,7 @@ son royaume. Pour un compte déjà joué, le client retrouve le dernier royaume
 dont le serveur a accepté une admission, puis affiche les personnages de ce
 royaume. Le choix d’un autre royaume reste accessible.
 
-Le client `0.1.49` reçoit la session du launcher par un pipe
+Le client Windows reçoit la session du launcher par un pipe
 Windows réservé à l’utilisateur courant. Le launcher vérifie le PID du jeu et
 Unity revalide `/v1/auth/me` avant l’accueil. Son manifeste déclare
 `launcherSessionProtocol: 1` ; aucun second parcours Discord n’est demandé
@@ -133,12 +133,24 @@ remplace pas cet historique : seul le backend l’enregistre après consommation
 réussie du ticket par un serveur dédié. Il est associé au compte, indépendamment
 du PC et du launcher.
 
-Le client `0.1.49` provient de la
+Le manifeste Bêta versionné propose maintenant le client **0.1.62**, source
+`cf745eb2efa087c5454b93ce28b60c28bcc9d726`, construit par le
+[run Unity 62](https://github.com/Hantse/arkya-mmorpg/actions/runs/40141089077)
+et vérifié par la [reprise de publication réussie](https://github.com/Hantse/arkya-mmorpg/actions/runs/40182007180).
+Le paquet, son manifeste et sa provenance sont conservés dans la
+[release Windows Bêta 0.1.62](https://github.com/Hantse/arkya-services/releases/tag/windows-beta-0.1.62).
+Il utilise le protocole de session launcher `1` et la paire de jeu
+`9 / arkya-craft-progression-v2`. Nova doit être mis à jour depuis l'Admin
+avant l'admission de ce client. Publier l'inventaire serveur ne met pas à jour
+le flux du launcher : celui-ci est le JSON du site, déployé avec l'image frontend.
+La disponibilité publique de ce JSON se vérifie après synchronisation Argo.
+
+Le client historique `0.1.49` provient de la
 [CI Unity 49 du 24 octobre](https://github.com/Hantse/arkya-mmorpg/actions/runs/40095092545),
 source `22bc5eeabce7dfadaba55a42e4b4e9cf40fd8460`. Il inclut l’icône Arkya,
 le transfert de session et le runtime natif protocole `5`, build
-`arkya-town-npcs-v1`. Le manifeste Bêta doit proposer ce client vérifié pour
-rester compatible avec les quatre serveurs Nova en `0.1.49`. Un ancien client
+`arkya-town-npcs-v1`. Il reste compatible avec les quatre serveurs Nova
+tant qu'ils utilisent cette version. Un ancien client
 de protocole `3 / arkya-multi-area-v1` ne peut pas rejoindre ce runtime.
 La publication du serveur et celle du manifeste client sont deux opérations
 à coordonner ; le retour à `Ready` du realm ne remplace pas cette publication.
